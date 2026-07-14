@@ -126,7 +126,7 @@ Failed to obtain the post processing track because sports type is not supported.
 
 **处理步骤**
 
-请参考[getPostProcessingTrack](./js-apis-geoLocationManager.md#getpostprocessingtrack)入参说明，使用支持的sports类型。</br>
+请参考[getPostProcessingTrack](./js-apis-geoLocationManager.md#geolocationmanagergetpostprocessingtrack)入参说明，使用支持的sports类型。</br>
 
 ### 5. 其他原因导致定位失败
 
