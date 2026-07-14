@@ -10,6 +10,8 @@
 
 后台录音涉及麦克风采集和后台运行，属于隐私敏感能力。应用需要同时满足麦克风权限、录音能力实现、后台长时任务声明和系统管控要求，不应在用户无感知或未授权的情况下启动录音。
 
+后台长时任务是实现后台录音的必备条件，从API version 9开始支持后台长时任务开发，详情见[长时任务(ArkTS)](../../task-management/continuous-task.md)。
+
 ## 约束与限制
 
 后台录音涉及用户隐私和系统资源，应用设计时需要关注以下管控要求。
@@ -78,6 +80,6 @@
    ```ts
    import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-   // 取消长时任务
+   // 取消长时任务。
    backgroundTaskManager.stopBackgroundRunning(context)
    ```
