@@ -554,7 +554,7 @@ if (isRegistered) {
 | angle   | [RangingMeasurement](#rangingrangingmeasurement) | 否   | 否   | 测距输出的方位角，value单位：度，取值范围：[0, 360)。   |
 | rssi    | number                           | 否   | 否   | 接收信号强度指示[RSSI](../../connectivity/terminology.md#rssi)，单位：dBm。    |
 
-## ranging.RangingCapabilitySupported
+## RangingCapabilitySupported
 
 描述设备支持的测距类型。
 
