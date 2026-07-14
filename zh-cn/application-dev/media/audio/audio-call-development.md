@@ -18,7 +18,7 @@
 
 该过程与[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->   
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -26,7 +26,7 @@ import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { fileIo as fs } from '@kit.CoreFileKit'; // 导入文件操作模块。
 import { common } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 
-// 与使用AudioRenderer开发音频播放功能过程相似,关键区别在于audioRendererInfo参数和音频数据来源。
+// 与使用AudioRenderer开发音频播放功能过程相似，关键区别在于audioRendererInfo参数和音频数据来源。
 const TAG = 'VoIPDemoForAudioRenderer';
 
 class Options {
@@ -44,8 +44,8 @@ let audioStreamInfo: audio.AudioStreamInfo = {
 };
 let audioRendererInfo: audio.AudioRendererInfo = {
   // 需使用通话场景相应的参数。
-  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型:VoIP通话。
-  rendererFlags: 0 // 音频渲染器标志:默认为0即可。
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：VoIP通话。
+  rendererFlags: 0 // 音频渲染器标志：默认为0即可。
 };
 let audioRendererOptions: audio.AudioRendererOptions = {
   streamInfo: audioStreamInfo,
@@ -56,7 +56,7 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 // ...
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // 此处仅作示例,实际使用时需要将文件替换为应用要播放的PCM文件。
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
@@ -68,11 +68,11 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧,空白区域需要使用静音数据填充,否则会导致播放出现杂音。
+      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充,否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据,使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
       }
@@ -87,13 +87,17 @@ async function initArguments(context: common.UIAbilityContext) {
       console.error('Error reading file:', error);
 
       // ...
-      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
-      return audio.AudioDataCallbackResult.INVALID;
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     }
   };
 }
 
-// 初始化,创建实例,设置监听事件。
+// 初始化，创建实例，设置监听事件。
 async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // 创建AudioRenderer实例。
     if (!err) {
@@ -177,7 +181,7 @@ async function stop() {
   }
 }
 
-// 销毁实例,释放资源。
+// 销毁实例，释放资源。
 async function release() {
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态,才能release。
@@ -196,7 +200,7 @@ async function release() {
         // ...
       }
     });
-    fs.close(file);
+    fs.close(file.fd);
   }
 }
 ```
@@ -207,14 +211,15 @@ async function release() {
 
 所有录制均需要申请麦克风权限：ohos.permission.MICROPHONE，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->   
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { fileIo as fs } from '@kit.CoreFileKit'; // 导入文件操作模块。
-import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
-// 与使用AudioCapturer开发音频录制功能过程相似,关键区别在于audioCapturerInfo参数和音频数据流向。
+import { common, abilityAccessCtrl } from '@kit.AbilityKit'; // 导入UIAbilityContext。
+// ...
+// 与使用AudioCapturer开发音频录制功能过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。
 const TAG = 'VoIPDemoForAudioCapturer';
 
 class Options {
@@ -232,8 +237,8 @@ let audioStreamInfo: audio.AudioStreamInfo = {
 };
 let audioCapturerInfo: audio.AudioCapturerInfo = {
   // 需使用通话场景相应的参数。
-  source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // 音源类型:语音通话。
-  capturerFlags: 0 // 音频采集器标志:默认为0即可。
+  source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // 音源类型：语音通话。
+  capturerFlags: 0 // 音频采集器标志：默认为0即可。
 };
 let audioCapturerOptions: audio.AudioCapturerOptions = {
   streamInfo: audioStreamInfo,
@@ -260,7 +265,7 @@ async function initArguments(context: common.UIAbilityContext) {
   }
 }
 
-// 初始化,创建实例,设置监听事件。
+// 初始化，创建实例，设置监听事件。
 async function init() {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
     if (err) {
@@ -326,7 +331,7 @@ async function stop() {
   }
 }
 
-// 销毁实例,释放资源。
+// 销毁实例，释放资源。
 async function release() {
   if (audioCapturer !== undefined) {
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
