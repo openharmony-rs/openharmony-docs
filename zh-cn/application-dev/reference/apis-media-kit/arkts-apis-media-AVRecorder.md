@@ -421,7 +421,7 @@ let metadata: Record<string, string> = {
 try {
   avRecorder.setMetadata(metadata);
   console.info('set metadata successfully');
-} catch (err: Error) {
+} catch (err) {
   let error: BusinessError = err as BusinessError;
   console.error(`set metadata failed with error: ${error.code}, ${error.message}`);
 }
@@ -1525,7 +1525,8 @@ async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) 
     await phAccessHelper.applyChanges(assetChangeRequest);
     console.info('apply saveVideo successfully');
   } catch (err) {
-    console.error(`apply saveVideo failed with error: ${err.code}, ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`apply saveVideo failed with error: ${error.code}, ${error.message}`);
   }
 }
 // 注册photoAsset监听。
