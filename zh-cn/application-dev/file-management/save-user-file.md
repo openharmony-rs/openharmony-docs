@@ -248,7 +248,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    > - 建议使用全局变量保存URI以供后续使用。
    > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+3. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    <!--@[document_open_sync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
    
@@ -260,7 +260,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
        console.info('file fd: ' + file.fd);
    ```
 
-5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+4. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ArkTS-Dyn示例：
 
