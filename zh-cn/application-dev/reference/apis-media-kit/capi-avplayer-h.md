@@ -62,7 +62,7 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | [OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_VolumeMode volumeMode)](#oh_avplayer_setvolumemode) | - | 设置player音频流音量模式。 |
 | [OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInterrupt_Mode interruptMode)](#oh_avplayer_setaudiointerruptmode) | - | 设置player音频流的打断模式。 |
 | [OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_AudioEffectMode effectMode)](#oh_avplayer_setaudioeffectmode) | - | 设置player音频流的音效模式。 |
-| [OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)](#oh_avplayer_selectbitrate) | - | 设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率链表，如果用户指定的码率不在此列表中，则播放器将从可用码率列表中选择最接近的码率。 |
+| [OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)](#oh_avplayer_selectbitrate) | - | 设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率列表，如果用户指定的码率不在此列表中，则播放器将从可用码率列表中选择最接近的码率。 |
 | [OH_AVErrCode OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosurface) | - | 设置播放画面窗口。<br> 此函数必须在SetSource之后，Prepare之前调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)](#oh_avplayer_getduration) | - | 获取媒体文件的总时长，精确到毫秒。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)](#oh_avplayer_getstate) | - | 获取当前播放状态。 |
@@ -148,7 +148,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 **描述**
 
-创建播放器。<br> 推荐单个应用创建的音视频播放器实例（即音频、视频、音视频三类相加）不超过16个。<br> <!--Del-->可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd-->
+创建播放器。<br> 推荐单个应用创建的音视频播放器实例总数不超过16个。<br> <!--Del-->可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -168,7 +168,7 @@ OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 
 **描述**
 
-设置播放器的播放源。对应的源可以是http url。
+设置播放器的播放源。对应的源可以是HTTP或HTTPS URL。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -812,7 +812,7 @@ OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 
 **描述**
 
-设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率链表，如果用户指定的码率不在此列表中，则播放器将从可用码率列表中选择最接近的码率。
+设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率列表，如果用户指定的码率不在此列表中，则播放器将从可用码率列表中选择最接近的码率。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
