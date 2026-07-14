@@ -155,7 +155,7 @@ chainAnimation(enable: Optional\<boolean>)
 
 | 参数名 | 类型               | 必填 | 说明                                                         |
 | ------ | ------------------ | ---- | ------------------------------------------------------------ |
-| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否启用链式联动动效。需配合边缘效果[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)使用。<br>默认值：false，不启用链式联动。true，启用链式联动。 |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否启用链式联动动效。仅当边缘效果为[EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect)时，链式联动动效才会生效。<br>默认值：false，不启用链式联动。true，启用链式联动。 |
 
 ### enableScrollInteraction
 
@@ -405,8 +405,8 @@ onDidScroll(handler: Optional\<OnScrollCallback>)
 | 名称       | 类型                                    | 只读 | 可选 | 说明                                                     |
 | ------------ | ------------------------------------------- | ---- | --- | ------------------------------------------------------------ |
 | initialIndex | number                                      | 否   | 是 | 设置当前ArcList初次加载时视窗起始位置显示的item的索引值。<br>默认值：0<br>**说明：** <br>设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。 |
-| scroller     | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。<br>**说明：** <br>不允许和其他滚动类组件，如：[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | 否   | 是 | ArcList的头部组件，用于在列表顶部显示标题或自定义内容。                                               |
+| scroller     | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。不设置时不绑定滚动控制器。<br>**说明：** <br>不允许和其他滚动类组件，如：[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
+| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | 否   | 是 | ArcList的头部组件，用于在列表顶部显示标题或自定义内容。不设置时不显示头部组件。                                               |
 
 ## ArcScrollIndexHandler
 

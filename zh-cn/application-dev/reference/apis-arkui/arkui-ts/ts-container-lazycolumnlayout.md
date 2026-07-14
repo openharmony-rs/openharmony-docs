@@ -94,7 +94,7 @@ alignItems(value: HorizontalAlign | undefined)
 
 header(builder: CustomBuilder | undefined)
 
-设置当前LazyColumnLayout的头部组件。
+设置当前LazyColumnLayout的头部组件。未通过该接口设置时，默认不设置头部组件。
 
 > **说明：**
 >
@@ -120,7 +120,7 @@ header(builder: CustomBuilder | undefined)
 
 footer(builder: CustomBuilder | undefined)
 
-设置当前LazyColumnLayout的尾部组件。
+设置当前LazyColumnLayout的尾部组件。未通过该接口设置时，默认不设置尾部组件。
 
 > **说明：**
 >
@@ -176,15 +176,15 @@ sticky(sticky: StickyStyle | undefined)
 
 onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 
-设置onVisibleIndexesChange回调函数。当LazyColumnLayout在可视区域内的子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和结束索引值。
+设置onVisibleIndexesChange回调函数。当LazyColumnLayout在可视区域内的子组件的索引值发生变化时触发回调，返回可视区域内子组件的起始索引值和结束索引值。未通过该接口设置时，默认不监听可视区域索引变化。
 
 > **说明：**
 >
-> 当父组件设置主轴方向尺寸时，LazyColumnLayout按照父组件可视区域进行懒加载。此时onVisibleIndexesChange回调中start返回当前可视区域起始位置子组件的索引值，end返回当前可视区域结束位置子组件的索引值。
+> 当父组件设置主轴方向尺寸且懒加载功能生效时，LazyColumnLayout按照父组件可视区域进行懒加载。此时onVisibleIndexesChange回调中start返回当前可视区域起始位置子组件的索引值，end返回当前可视区域结束位置子组件的索引值。
 >
 > 当父组件未设置主轴方向尺寸时，LazyColumnLayout会被内容撑开，导致所有子组件都会被加载布局。此时onVisibleIndexesChange回调中start返回0，end返回数据源最后一个子组件的索引值。
 >
-> 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
+> 此处的父组件指最靠近当前组件的上层滚动组件，其他文档中“父组件”的具体含义请参考对应内容。
 
 **起始版本：** 26.0.0
 
@@ -204,7 +204,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 
 ### 示例1（实现懒加载线性布局）
 
-通过[Scroll](ts-container-scroll.md)和LazyColumnLayout组件实现懒加载线性布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时回调索引。
+通过[Scroll](ts-container-scroll.md)和LazyColumnLayout组件实现懒加载线性布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时回调起始和结束索引值。
 
 从API版本26.0.0开始，新增支持LazyColumnLayout组件和onVisibleIndexesChange事件。
 
