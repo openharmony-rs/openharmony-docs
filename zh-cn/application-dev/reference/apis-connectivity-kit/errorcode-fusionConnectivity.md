@@ -135,7 +135,7 @@ The specified type of ranging service is not supported.
 
 **处理步骤**
 
-该类型服务并不支持测距，请参考[RangingTypes](js-apis-fusionConnectivity-ranging.md#rangingrangingtypes)使用有效的测距类型。
+该类型服务并不支持测距，请参考[RangingTypes](js-apis-fusionConnectivity-ranging.md#rangingtypes)使用有效的测距类型。
 
 ## 34900053 测距服务关闭
 
