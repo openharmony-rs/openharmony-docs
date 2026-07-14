@@ -4850,6 +4850,8 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 > 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)<sup>20+</sup>或[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)接口启用默认错误页，才会生效。
 >
 > 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
+>
+> 通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#isMainFrame)分别设置mainframe和subframe的自定义错误展示页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4871,17 +4873,24 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
     build() {
       Column() {
         Web({ src: "www.error-test.com", controller: this.controller })
-         .onControllerAttached(() => {
-              this.controller.setErrorPageEnabled(true);
-              if (!this.controller.getErrorPageEnabled()) {
-                  this.controller.setErrorPageEnabled(true);
-              }
+          .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true);
+            if (!this.controller.getErrorPageEnabled()) {
+                this.controller.setErrorPageEnabled(true);
+            }
           })
           .onOverrideErrorPage(event => {
-                let htmlStr = "<html><h1>error occur : ";
-                htmlStr += event.error.getErrorCode();
-                htmlStr += "</h1></html>";
-                return htmlStr;
+            let htmlStr = ""
+            if (event.request.isMainFrame()) {
+              htmlStr = "<html><h1>mainframe error occur : ";
+              htmlStr += event.error.getErrorCode();
+              htmlStr += "</h1></html>";
+              return htmlStr;
+            }
+            htmlStr = "<html><h1>subframe error occur : ";
+            htmlStr += event.error.getErrorCode();
+            htmlStr += "</h1></html>";
+            return htmlStr;
           })
       }
     }
