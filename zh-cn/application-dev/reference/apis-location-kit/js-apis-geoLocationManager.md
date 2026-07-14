@@ -3695,7 +3695,7 @@ getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;
   }
   ```
    
-## geoLocationManager.startBluetoothSearch<sup>26+</sup>
+## geoLocationManager.startBluetoothSearch
 
 startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
 
