@@ -708,11 +708,11 @@ function processWithTypeof(value: string | number): void {
 ``` TypeScript
 class Animal {
   public name: string;
-
+  
   constructor(name: string) {
     this.name = name;
   }
-
+  
   public speak(): void {
     console.info(`${this.name} makes a sound`);
   }
@@ -720,12 +720,12 @@ class Animal {
 
 class Dog extends Animal {
   public breed: string;
-
+  
   constructor(name: string, breed: string) {
     super(name);
     this.breed = breed;
   }
-
+  
   public bark(): void {
     console.info(`${this.name} barks: Woof! Woof!`);
   }
@@ -733,12 +733,12 @@ class Dog extends Animal {
 
 class Cat extends Animal {
   public color: string;
-
+  
   constructor(name: string, color: string) {
     super(name);
     this.color = color;
   }
-
+  
   public meow(): void {
     console.info(`${this.name} meows: Meow!`);
   }
@@ -770,20 +770,20 @@ interface IShape {
 class Rectangle implements IShape {
   private width: number;
   private height: number;
-
+  
   constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
   }
-
+  
   public getArea(): number {
     return this.width * this.height;
   }
-
+  
   public getPerimeter(): number {
     return 2 * (this.width + this.height);
   }
-
+  
   // Rectangle特有的方法
   public getDiagonal(): number {
     return Math.sqrt(this.width ** 2 + this.height ** 2);
@@ -792,19 +792,19 @@ class Rectangle implements IShape {
 
 class Circle implements IShape {
   private radius: number;
-
+  
   constructor(radius: number) {
     this.radius = radius;
   }
-
+  
   public getArea(): number {
     return Math.PI * this.radius ** 2;
   }
-
+  
   public getPerimeter(): number {
     return 2 * Math.PI * this.radius;
   }
-
+  
   // Circle特有的方法
   public getDiameter(): number {
     return 2 * this.radius;
