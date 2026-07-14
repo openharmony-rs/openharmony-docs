@@ -14,9 +14,7 @@
 - 支持被动测距模式，设备可作为测距信标被其他设备发现和测量。
 - 支持测距状态变化订阅，实时监听设备测距开始、停止等状态通知。
 
-> **说明：**
->
-> - 本模块首批接口从API version 26开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+**起始版本**：26.0.0
 
 ## 导入模块
 
@@ -31,6 +29,8 @@ isRangingSupported(): boolean
 判断本端设备是否支持测距特性。
 
 建议在调用本模块其他接口前先调用此接口检查设备是否支持测距特性，避免因不支持而导致功能异常。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -63,6 +63,8 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 - 建议先使用[isRangingSupported](#rangingisrangingsupported)判断本端是否支持测距特性。仅在特性支持的情况下才能使用融合测距的功能。
 - 获取成功后，使用Promise异步返回测距类型是否支持。仅当[nearlinkHadm](#rangingrangingcapabilitysupported)值为true，才可以使用[startRanging](#rangingstartranging)发起星闪[HADM](../../connectivity/terminology.md#hadm)测距，或使用[startPassiveRanging](#rangingstartpassiveranging)启动被动测距。
 
+**起始版本**：26.0.0
+
 **需要权限**：ohos.permission.ACCESS_NEARLINK
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
@@ -71,13 +73,13 @@ getRangingCapability(): Promise&lt;RangingCapabilitySupported&gt;
 
 **返回值**：
 
-| 类型                      | 说明               |
-| ----------------------- | ------------------ |
-| Promise&lt;RangingCapabilitySupported&gt; | Promise对象，返回设备测距类型是否支持的状态信息。 |
+| 类型                                                         | 说明                         |
+| ---------------------------------------------------------- | -------------------------- |
+| Promise&lt;[RangingCapabilitySupported](#rangingrangingcapabilitysupported)&gt; | Promise对象，返回本端设备支持的测距类型。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ---------------------------------- |
@@ -114,9 +116,11 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
   1. 融合测距服务内部先尝试与目标设备建立连接，连接成功后进行配对和加密操作；配对时需要用户主动在设备上操作授权；如果用户拒绝授权或者超时未授权，本次测距将会停止，停止的状态会通过[onRangingStateChange](#rangingonrangingstatechange)接口注册的callback通知，停止后需要在应用侧主动调用[stopRanging](#rangingstopranging)停止测距接口释放测距资源。
   2. 连接完成后，测距服务会先查询目标设备是否支持对应的测距服务[UUID](../../connectivity/terminology.md#uuid)，确认服务支持后自动发起测距；如果在连接后，对端设备不支持测距服务[UUID](../../connectivity/terminology.md#uuid)，融合测距服务内部会主动断开与对端设备已建立的连接，并通过回调通知测距停止。
 
-测距状态发生变化时通过[onRangingStateChange](#rangingonrangingstatechange)回调通知。测距结果通过本接口中的入参callback返回。
+开始测距后，可通过[onRangingStateChange](#rangingonrangingstatechange)实时监听测距状态变化，测距结果通过本接口中的入参callback返回。
 
 由于在成功启动测距后，结果会频繁回调上报，建议在拿到测距结果后根据实际需要适时调用stopRanging停止测距，业务需要时可再次发起测距，避免无意义的测距结果上报引起本端设备不必要的功耗损失。
+
+**起始版本**：26.0.0
 
 > **说明：**
 >
@@ -139,7 +143,7 @@ startRanging(params: RangingParams, callback: Callback&lt;RangingResult&gt;): vo
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | -------------------------------------------------------------- |
@@ -190,6 +194,8 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 > - 测距状态的变化通过[onRangingStateChange](#rangingonrangingstatechange)回调进行通知。
 > - 如果未调用过[startRanging](#rangingstartranging)直接调用[stopRanging](#rangingstopranging)将抛出设备未初始化错误34900050。
 
+**起始版本**：26.0.0
+
 **需要权限**：ohos.permission.ACCESS_NEARLINK
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
@@ -201,11 +207,11 @@ stopRanging(callback: Callback&lt;RangingResult&gt;, params?: RangingParams): vo
 | 参数名    | 类型                                         | 必填 | 说明                      |
 | ------- | ------------------------------------------ | ---- | ----------------------- |
 | callback | Callback&lt;[RangingResult](#rangingrangingresult)&gt; | 是 | 测距结果回调，需与[startRanging](#rangingstartranging)传入的callback为同一引用对象，否则将无法停止已启动的测距。该入参要求与[startRanging](#rangingstartranging)中的callback要求相同。   |
-| params   | [RangingParams](#rangingrangingparams) | 否 | 测距参数，包含deviceId和测距类型与[startRanging](#rangingstartranging)接口中的params相同。指定此参数时仅停止与指定目标设备的测距；不传入此参数时停止与callback关联的所有设备的测距。 |
+| params   | [RangingParams](#rangingrangingparams) | 否 | 测距参数，包含deviceId和测距类型与[startRanging](#rangingstartranging)接口中的params相同。默认值：undefined。指定此参数时仅停止与指定目标设备的测距；不传入此参数时停止与callback关联的所有设备的测距。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                   |
 | -------- | ------------------------------------------------------------------------ |
@@ -246,7 +252,7 @@ try {
 
 ## ranging.startPassiveRanging
 
-startPassiveRanging(capabilityType: RangingTypes): Promise&lt;int&gt;
+startPassiveRanging(capabilityType: RangingTypes): Promise&lt;number&gt;
 
 启动被动测距模式。本端设备将作为测距信标广播测距数据包，允许其他支持对应测距类型的主动测距设备发现本端设备。
 
@@ -257,6 +263,8 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;int&gt;
 > - 同一测距能力如果想再次调用[startPassiveRanging](#rangingstartpassiveranging)，需要先调用[stopPassiveRanging](#rangingstoppassiveranging)结束本次的被动测距，如果直接再次调用，接口将返回错误码34900099。
 > - 被动测距期间，主动测距设备可以通过[startRanging](#rangingstartranging)向本端设备发起测距。
 > - 如果启动测距时，对应类型的测距服务已下线，那么调用本接口时会抛出服务未使能错误码34900053。
+
+**起始版本**：26.0.0
 
 **需要权限**：ohos.permission.ACCESS_NEARLINK
 
@@ -274,11 +282,11 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;int&gt;
 
 | 类型               | 说明         |
 | ---------------- | ---------- |
-| Promise&lt;int&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, INT_MAX)。该句柄用于：1、在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。2、在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingrangingstatechangeinfo)中标识对应的被动测距会话。   |
+| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, INT_MAX)。该句柄用于：1、在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。2、在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingrangingstatechangeinfo)中标识对应的被动测距会话。   |
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                         |
 | -------- | --------------------------------------------------------------- |
@@ -311,7 +319,7 @@ try {
 
 ## ranging.stopPassiveRanging
 
-stopPassiveRanging(handle: int, capabilityType: RangingTypes): void
+stopPassiveRanging(handle: number, capabilityType: RangingTypes): void
 
 停止被动测距模式。根据指定的句柄和测距类型停止对应的被动测距广播，并清理相关资源。
 
@@ -319,6 +327,8 @@ stopPassiveRanging(handle: int, capabilityType: RangingTypes): void
 > 
 > - 只有[startPassiveRanging](#rangingstartpassiveranging)接口调用成功之后，才需要调用本接口停止被动测距广播。
 > - 停止测距的状态变化通过[onRangingStateChange](#rangingonrangingstatechange)回调通知。
+
+**起始版本**：26.0.0
 
 **需要权限**：ohos.permission.ACCESS_NEARLINK
 
@@ -330,12 +340,12 @@ stopPassiveRanging(handle: int, capabilityType: RangingTypes): void
 
 | 参数名         | 类型                         | 必填 | 说明         |
 | ------------ | -------------------------- | ---- | ---------- |
-| handle       | int                     | 是   | 测距监控句柄，由startPassiveRanging返回。handle应为[startPassiveRanging](#rangingstartpassiveranging)返回的有效句柄，否则会抛出34900054错误；停止后该handle不再有效，不可重复使用。   |
+| handle       | number                     | 是   | 测距监控句柄，由startPassiveRanging返回。handle应为[startPassiveRanging](#rangingstartpassiveranging)返回的有效句柄，否则会抛出34900054错误；停止后该handle不再有效，不可重复使用。   |
 | capabilityType | [RangingTypes](#rangingrangingtypes) | 是   | 测距能力类型，参数要求与[startPassiveRanging](#rangingstartpassiveranging)接口中的capabilityType相同，并且需与[startPassiveRanging](#rangingstartpassiveranging)接口传入的类型一致。   |
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                   |
 | -------- | ------------------------------------------------------------------------ |
@@ -376,6 +386,8 @@ onRangingStateChange(callback: Callback&lt;RangingStateChangeInfo&gt;): void
 > - 多次调用将注册多个回调，每个回调都会收到状态变化通知。
 > - 当测距状态变为[RANGING_STOPPED](#rangingrangingstate)时，[cause](#rangingrangingstoppedcause)字段表示停止原因。
 
+**起始版本**：26.0.0
+
 **需要权限**：ohos.permission.ACCESS_NEARLINK
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
@@ -390,7 +402,7 @@ onRangingStateChange(callback: Callback&lt;RangingStateChangeInfo&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ----------- |
@@ -432,6 +444,8 @@ offRangingStateChange(callback?: Callback&lt;RangingStateChangeInfo&gt;): void
 >
 > - 该接口只有在[onRangingStateChange](#rangingonrangingstatechange)之后调用才会有效。
 
+**起始版本**：26.0.0
+
 **需要权限**：ohos.permission.ACCESS_NEARLINK
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
@@ -446,7 +460,7 @@ offRangingStateChange(callback?: Callback&lt;RangingStateChangeInfo&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参考[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)。
+以下错误码的详细介绍请参见[融合短距服务子系统错误码](../apis-connectivity-kit/errorcode-fusionConnectivity.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ----------- |
@@ -495,6 +509,8 @@ if (isRegistered) {
 
 测距参数，用于指定主动测距的目标设备和测距类型。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -508,6 +524,8 @@ if (isRegistered) {
 
 描述测距状态变化信息，主动测距和被动测距的状态变化共用此结构。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -517,11 +535,13 @@ if (isRegistered) {
 | state  | [RangingState](#rangingrangingstate)              | 否   | 否   | 测距状态。    |
 | cause  | [RangingStoppedCause](#rangingrangingstoppedcause) | 否   | 否   | 测距停止原因，仅在state为RANGING_STOPPED时有意义。  |
 | deviceId | string           | 否   | 是   | 测距设备地址，主动测距场景下标识发生状态变化的目标设备。  |
-| handle | int           | 否   | 是   | 测距监控句柄，被动测距场景下标识发生状态变化的被动测距会话。  |
+| handle | number           | 否   | 是   | 测距监控句柄，被动测距场景下标识发生状态变化的被动测距会话。  |
 
 ## ranging.RangingResult
 
 描述测距结果，每次测距测量完成后通过[startRanging](#rangingstartranging)的callback回调返回。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -532,11 +552,13 @@ if (isRegistered) {
 | deviceId | string                           | 否   | 否   | 测距设备地址。    |
 | distance | [RangingMeasurement](#rangingrangingmeasurement) | 否   | 否   | 测距输出的距离测量结果，value单位：cm。  |
 | angle   | [RangingMeasurement](#rangingrangingmeasurement) | 否   | 否   | 测距输出的方位角，value单位：度，取值范围：[0, 360)。   |
-| rssi    | int                           | 否   | 否   | 接收信号强度指示[RSSI](../../connectivity/terminology.md#rssi)，单位：dBm。    |
+| rssi    | number                           | 否   | 否   | 接收信号强度指示[RSSI](../../connectivity/terminology.md#rssi)，单位：dBm。    |
 
 ## ranging.RangingCapabilitySupported
 
 描述设备支持的测距类型。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -550,18 +572,22 @@ if (isRegistered) {
 
 描述测量结果，包含测量值和对应的置信度。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称       | 类型                                 | 只读 | 可选 | 说明             |
 | -------- | ---------------------------------- | ---- | ---- | -------------- |
-| value    | int                             | 否   | 否   | 测量结果值。距离测量时单位：cm，角度测量时单位：度。 |
+| value    | number                             | 否   | 否   | 测量结果值。距离测量时单位：cm，角度测量时单位：度。 |
 | confidence | [RangingConfidence](#rangingrangingconfidence) | 否   | 否   | 测量结果的置信度，表示本次测量值的可信程度。   |
 
 ## ranging.RangingTypes
 
 枚举，测距能力类型。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -575,6 +601,8 @@ if (isRegistered) {
 
 枚举，测距状态。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -587,6 +615,8 @@ if (isRegistered) {
 ## ranging.RangingStoppedCause
 
 枚举，测距停止原因。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
@@ -602,6 +632,8 @@ if (isRegistered) {
 ## ranging.RangingConfidence
 
 枚举，测距测量置信度，表示测量结果值的可信程度。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Communication.FusionConnectivity.Core
 
