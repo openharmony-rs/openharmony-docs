@@ -184,7 +184,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 >
 > 当父组件未设置主轴方向尺寸时，LazyColumnLayout会被内容撑开，导致所有子组件都会被加载布局。此时onVisibleIndexesChange回调中start返回0，end返回数据源最后一个子组件的索引值。
 >
-> 此处的父组件指最靠近当前组件的上层滚动组件，其他文档中“父组件”的具体含义请参考对应内容。
+> 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
 
 **起始版本：** 26.0.0
 
