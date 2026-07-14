@@ -478,15 +478,13 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBool);
 
 hilog输出类型的枚举值，DEFAULT和CONSOLE_ONLY适用于仅输出到控制台的场景，PRIVATE_SANDBOX_ONLY适用于隐私日志存储，SHARE_SANDBOX_ONLY适用于需要云端采集日志的场景，PRIVATE_SANDBOX_WITH_CONSOLE和SHARE_SANDBOX_WITH_CONSOLE适用于同时需要控制台输出和沙箱存储的场景。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 | 名称  |   值   | 说明                                                         |
 | ------ | --------------------- | ------------------------------------------------------------ |
@@ -503,15 +501,13 @@ setOutputType(type: OutputType): OutputType
 
 设置hilog的输出类型。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -547,15 +543,13 @@ ArkTS-Sta: setOutputTypeByDomainID(type: OutputType, domainIDs: Array&lt;int&gt;
 
 设置hilog的输出类型，并且配置输出的domainID列表，可选择仅输出列表中的domainID，或不输出列表中的domainID。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -597,15 +591,13 @@ getOutputType(): OutputType
 
 获取当前hilog的输出类型。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **返回值：**
 
@@ -633,15 +625,13 @@ getOutputDir(): string
 
 返回hilog日志在沙箱中的路径，如果hilog的输出类型为DEFAULT，则返回空。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **返回值：**
 
@@ -669,15 +659,13 @@ clean(): void
 
 删除沙箱中的所有hilog日志。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **示例：**
 ```js
@@ -690,15 +678,13 @@ flush(): void
 
 刷新沙箱中的hilog日志。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **示例：**
 ```js
@@ -713,15 +699,13 @@ ArkTS-Sta: getLogFile(latestSeconds: int): Array&lt;string&gt;
 
 返回指定秒数内修改过的hilog沙箱日志文件。
 
-**起始版本**：26.0.0
-
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
