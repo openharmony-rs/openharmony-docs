@@ -525,7 +525,7 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
-import { State, Entry, Column, Component, Web, Button, Text } from '@kit.ArkUI';
+import { State, Entry, Column, Component, Web, Button, Text, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 class TestObj {
@@ -562,7 +562,7 @@ struct WebComponent {
           try {
             console.info("In ArkTS side send true start");
             if (this.nativePort) {
-              this.message.setType(1);
+              this.message.setType(webview.WebMessageType.STRING);
               this.message.setString("helloFromEts");
               this.nativePort.postMessageEventExt(this.message);
             }
@@ -579,7 +579,7 @@ struct WebComponent {
           try {
             console.info("In ArkTS side send true start");
             if (this.nativePort) {
-              this.message.setType(2);
+              this.message.setType(webview.WebMessageType.NUMBER);
               this.message.setNumber(12345);
               this.nativePort.postMessageEventExt(this.message);
             }
@@ -595,7 +595,7 @@ struct WebComponent {
           try {
             console.info("In ArkTS side send true start");
             if (this.nativePort) {
-              this.message.setType(3);
+              this.message.setType(webview.WebMessageType.BOOLEAN);
               this.message.setBoolean(true);
               this.nativePort.postMessageEventExt(this.message);
             }
@@ -611,7 +611,7 @@ struct WebComponent {
           try {
             console.info("In ArkTS side send true start");
             if (this.nativePort) {
-              this.message.setType(4);
+              this.message.setType(webview.WebMessageType.ARRAY_BUFFER);
               this.message.setArrayBuffer(this.testObjtest.test("Name=test&Password=test"));
               this.nativePort.postMessageEventExt(this.message);
             }
@@ -628,8 +628,8 @@ struct WebComponent {
           try {
             console.info("In ArkTS side send true start");
             if (this.nativePort) {
-              this.message.setType(5);
-              this.message.setArray([1, 2, 3]);
+              this.message.setType(webview.WebMessageType.ARRAY);
+              this.message.setArray(['1', '2', '3']);
               this.nativePort.postMessageEventExt(this.message);
             }
           }
@@ -648,7 +648,7 @@ struct WebComponent {
           }
           catch (error) {
             if (this.nativePort) {
-              this.message.setType(6);
+              this.message.setType(webview.WebMessageType.ERROR);
               this.message.setError(error);
               this.nativePort.postMessageEventExt(this.message);
             }
