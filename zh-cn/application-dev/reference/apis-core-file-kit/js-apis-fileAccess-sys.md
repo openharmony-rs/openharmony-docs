@@ -2217,7 +2217,7 @@ async function UnregisterObserver03() {
 | 参数名   | 类型                                              | 必填 | 说明                      |
 | -------- | ------------------------------------------------- | ---- | ------------------------- |
 | uri      | string                                            | 是   | 文件或目录的uri。           |
-| callback | Callback&lt;[NotifyMessage](#notifymessage10)&gt; | 否   | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callbackback。 |
+| callback | Callback&lt;[NotifyMessage](#notifymessage10)&gt; | 否   | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callback。 |
 
 **示例1: 解注册监听uri的一个callback**
 
@@ -2386,7 +2386,7 @@ moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array
 
 | 类型                                                    | 说明                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | 返回 moveresult 数组。moveResult 为移动操作失败的返回信息；复制成功无返回信息。 |
+| Promise&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | 返回moveresult数组。moveResult为移动操作失败的返回信息；移动成功无返回信息。 |
 
 **错误码：**
 
@@ -2784,7 +2784,7 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 | 名称 | 类型                        | 只读 | 可选 | 说明                                                      |
 | ---- | --------------------------- | ---- | ---- | --------------------------------------------------------- |
 | type | [NotifyType](#notifytype10) | 否   | 否   | 变更的通知类型。                                            |
-| uris | Array&lt;string&gt;         | 否   | 否   | 所变更文件的uri集合，目前仅支持单条通知，后序支持多条通知。 |
+| uris | Array&lt;string&gt;         | 否   | 否   | 所变更文件的uri集合，目前仅支持单条通知，后续支持多条通知。 |
 
 ## MoveResult<sup>11+</sup>
 
