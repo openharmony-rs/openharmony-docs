@@ -170,7 +170,7 @@ let rangingCallback = (result: ranging.RangingResult) => {
 };
 
 let params: ranging.RangingParams = {
-  deviceId: "11:22:33:44:55:66",
+  deviceId: "11:22:33:44:55:66",   // 请替换为实际的目标设备地址
   capabilityType: ranging.RangingTypes.NEARLINK_HADM
 };
 try {
@@ -237,7 +237,7 @@ let rangingCallback = (result: ranging.RangingResult) => {
 };
 
 let params: ranging.RangingParams = {
-  deviceId: "11:22:33:44:55:66",
+  deviceId: "11:22:33:44:55:66",   // 请替换为实际的目标设备地址
   capabilityType: ranging.RangingTypes.NEARLINK_HADM
 };
 try {
@@ -302,7 +302,7 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;number&gt;
 import { ranging } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let passiveHandle = -1; // -1 is invalid handle
+let passiveHandle = -1;  // -1表示无效句柄
 try {
   ranging.startPassiveRanging(ranging.RangingTypes.NEARLINK_HADM).then((handle) => {
     if (handle >= 0) {
