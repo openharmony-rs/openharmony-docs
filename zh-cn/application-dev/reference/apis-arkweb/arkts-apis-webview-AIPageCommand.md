@@ -445,7 +445,7 @@
 
 ## screenCapture
 
-获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
+获取当前网页视口截图或视口内目标元素截图或视口内目标区域截图，返回Base64编码的图片数据。
 
 ### ScreenCaptureCommand
 
@@ -457,10 +457,16 @@
 | params | - | - | Object | 否 | 命令参数。不传或为空时获取当前网页视口截图。|
 | params | nodeid | - | string | 否 | 目标元素的节点标识，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取。 |
 | params | xpath | - | string | 否 | 目标元素的XPath，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`xpath`字段获取。 |
+| params | clip | - | Object | 否 | 基于当前网页视口的目标截图区域信息，包含`x`、`y`、`width`、`height`、`scale`。 |
+| params | clip | x | number | 是 | 目标截图区域矩形左上角x坐标，<br>单位：vp。入参要求大于等于0，当入参大于当前网页视口的宽度时，返回空白像素图片数据。 |
+| params | clip | y | number | 是 | 目标截图区域矩形左上角y坐标，<br>单位：vp。入参要求大于等于0，当入参大于当前网页视口的高度时，返回空白像素图片数据。 |
+| params | clip | width | number | 是 | 目标截图区域矩形宽度。<br>单位：vp。入参要求大于0，当入参大于当前网页视口的宽度时将根据超出的宽度继续从头开始截图并拼接图片，如果设置的x参数大于0时，拼接的图片的前x宽度范围的像素是空白的。 |
+| params | clip | height | number | 是 | 目标截图区域矩形高度。<br>单位：vp。入参要求大于0，当入参大于当前网页视口的高度时将根据超出的高度继续从头开始截图并拼接图片，如果设置的y参数大于0时，拼接的图片的前y高度范围的像素是空白的。 |
+| params | clip | scale | number | 是 | 指定截图结果缩放比例。入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。 |
 
 > **说明：**
 >
-> - `nodeid`与`xpath`互斥。同时存在时，优先使用`nodeid`定位元素；若`nodeid`为空，则使用`xpath`；若`xpath`为空，则默认获取当前网页视口截图。
+> - `nodeid`、`xpath`、`clip`不能同时生效，当存在两个以上设置时，生效优先级`nodeid` > `xpath` > `clip`; 三者都不存在时，默认获取当前网页视口截图。
 > - 支持获取iframe元素截图，不支持跨域获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
 
 ### 返回说明
@@ -484,7 +490,7 @@
 | 351 | 截图获取通道初始化失败。 |
 | 352 | 截图获取执行失败（含XPath定位目标元素失败，目标元素不在当前网页内）。 |
 | 353 | 截图获取响应解析失败。 |
-| 392 | `nodeid`格式错误、`frameToken`或`documentToken`不匹配、或DOM节点不存在于当前网页。 |
+| 392 | `nodeid`格式错误、`frameToken`或`documentToken`不匹配、DOM节点不存在于当前网页、`clip`中五个参数其中任意一个参数格式错误或者任意一个参数未设置。 |
 
 ### 请求示例
 
@@ -506,6 +512,23 @@
   "method": "screenCapture",
   "params": {
     "xpath": "/html/body/div/p[2]/a"
+  }
+}
+```
+
+通过clip获取目标区域截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "clip": {
+      "x": 0,
+      "y": 0,
+      "width": 200,
+      "height": 200,
+      "scale": 1
+    }
   }
 }
 ```
@@ -552,9 +575,18 @@
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+interface ClipParams {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  scale: number;
+}
+
 interface CaptureParams {
   xpath?: string;
   nodeid?: string;
+  clip?: ClipParams;
 }
 
 interface PageCommand {
