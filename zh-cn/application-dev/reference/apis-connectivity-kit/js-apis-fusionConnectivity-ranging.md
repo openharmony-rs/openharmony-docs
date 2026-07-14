@@ -568,7 +568,7 @@ if (isRegistered) {
 | ---------- | ------ | ---- | ---- | ----------------------- |
 | nearlinkHadm | boolean | 否   | 否   | 星闪[HADM](../../connectivity/terminology.md#hadm)测距类型是否支持。值为true时可使用[startRanging](#rangingstartranging)或[startPassiveRanging](#rangingstartpassiveranging)发起测距。 |
 
-## ranging.RangingMeasurement
+## RangingMeasurement
 
 描述测量结果，包含测量值和对应的置信度。
 
