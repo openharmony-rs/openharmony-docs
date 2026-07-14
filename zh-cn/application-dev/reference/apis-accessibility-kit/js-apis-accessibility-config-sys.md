@@ -1025,14 +1025,14 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| mode | BlinkingMode&lt;[BlinkingMode](#blinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
-| scenario | BlinkingScenario&lt;[BlinkingScenario](#blinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
+| mode | BlinkingMode&lt;[BlinkingMode](#blinkingmode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
+| scenario | BlinkingScenario&lt;[BlinkingScenario](#blinkingscenario)&gt; | 是 | 表示触发闪烁的场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| BlinkResultCode&lt;[BlinkResultCode](#blinkResultCode)&gt; | 接口调用返回的结果码。|
+| BlinkResultCode&lt;[BlinkResultCode](#blinkresultcode)&gt; | 接口调用返回的结果码。|
 
 **错误码：**
 
@@ -1077,14 +1077,14 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| mode | BlinkingMode&lt;[BlinkingMode](#blinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
-| scenario | BlinkingScenario&lt;[BlinkingScenario](#blinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
+| mode | BlinkingMode&lt;[BlinkingMode](#blinkingmode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
+| scenario | BlinkingScenario&lt;[BlinkingScenario](#blinkingscenario)&gt; | 是 | 表示触发闪烁的场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| BlinkResultCode&lt;[BlinkResultCode](#blinkResultCode)&gt; | 接口调用返回的结果码。|
+| BlinkResultCode&lt;[BlinkResultCode](#blinkresultcode)&gt; | 接口调用返回的结果码。|
 
 **错误码：**
 
