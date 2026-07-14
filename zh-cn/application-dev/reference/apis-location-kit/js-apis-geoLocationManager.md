@@ -3493,7 +3493,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
 ## geoLocationManager.getPostProcessingTrack
 
-getPostProcessingTrack(sportsType: [SportsType](#sportstype18)): Promise&lt;Array&lt;[Location](#toc-location-15)&gt;&gt;
+getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;&gt;
 
 根据传入的[sportsType](#sportstype18)获取特定运动模式下得后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置想要获取的运动模式轨迹，以开始轨迹记录。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
 
@@ -3515,7 +3515,7 @@ getPostProcessingTrack(sportsType: [SportsType](#sportstype18)): Promise&lt;Arra
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[Location](#toc-location-15)&gt;&gt | Promise对象，后处理运动轨迹。 |
+  | Promise&lt;Array&lt;[Location](#toc-location-15)&gt;&gt; | Promise对象，后处理运动轨迹。 |
 
 **错误码**：
 
