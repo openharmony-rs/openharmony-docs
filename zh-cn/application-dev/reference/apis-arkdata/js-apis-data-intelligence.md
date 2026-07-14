@@ -178,7 +178,7 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
 | ------------ | --------------------------------------- | ---- | :--------------------------------- |
-| text | string | 是   | 待分块的文本。 |
+| text | string | 是   | 待分块的文本。单个文本长度上限为100000个字符。 |
 | config | [SplitConfig](#splitconfig) | 是   | 文本分块的配置信息。 |
 
 **返回值：**
@@ -229,7 +229,7 @@ intelligence.splitText(textToSplit, splitConfig)
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。超出长度时抛出异常。 |
 | modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，在使用文本向量模型时配置，通过[getSupportedCloudModel](#intelligencegetsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型时使用的网络策略。在使用文本嵌入模型时，此参数必填。在使用图像嵌入模型场景此参数不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| networkPolicy | [NetworkPolicy](#networkpolicy) | 否 | 是 |下载云侧模型时使用的网络策略。在使用文本嵌入模型时，默认值为WIFI_ONLY。在使用图像嵌入模型场景此参数不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ModelVersion
 
@@ -268,8 +268,8 @@ intelligence.splitText(textToSplit, splitConfig)
 
 | 名称       | 值         | 说明      |
 |----------|-----------|---------|
-| WIFI_ONLY  | 0 | 仅在WiFi状态下下载模型，适用于需要节省移动数据流量的场景。|
-| WIFI_AND_CELLULAR  | 1 | 在WiFi和蜂窝网络状态下下载模型，适用于需要快速获取模型且允许使用移动数据的场景。 |
+| WIFI_ONLY  | 0 | 仅在Wi-Fi状态下下载模型，适用于需要节省移动数据流量的场景。|
+| WIFI_AND_CELLULAR  | 1 | 在Wi-Fi和蜂窝网络状态下下载模型，适用于需要快速获取模型且允许使用移动数据的场景。 |
 
 ## Image
 
@@ -310,6 +310,11 @@ type Image = string
 loadModel(): Promise&lt;void&gt;
 
 加载文本嵌入模型。使用Promise异步回调。
+
+**配对调用：**
+- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源
+- 未调用releaseModel()会导致资源泄漏，影响系统性能
+- 建议将releaseModel()放在finally块中确保资源被正确释放
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -508,6 +513,11 @@ textEmbedding.loadModel()
 loadModel(): Promise&lt;void&gt;
 
 加载图像嵌入模型。使用Promise异步回调。
+
+**配对调用：**
+- 调用loadModel()后，必须在使用完毕后调用releaseModel()释放模型资源
+- 未调用releaseModel()会导致资源泄漏，影响系统性能
+- 建议将releaseModel()放在finally块中确保资源被正确释放
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
