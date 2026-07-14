@@ -2011,7 +2011,7 @@ OH_AVFormat* OH_AVPlayer_GetPlaybackInfo(OH_AVPlayer *player)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针，需在prepared、playing或者paused状态时调用。。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针，需在prepared、playing或者paused状态时调用。 |
 
 **返回：**
 
