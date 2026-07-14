@@ -3706,4 +3706,4 @@ Icc账户信息。
 
 | 名称       | 类型    | 只读|可选| 说明             |
 | simLabelIndex  | number  |  否 | 是| 卡槽位置。  <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| operatorName | string  |  否 | 是| SIM卡运营商名字。    <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| operatorName | string  |  否 | 是| SIM卡运营商名称。    <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
