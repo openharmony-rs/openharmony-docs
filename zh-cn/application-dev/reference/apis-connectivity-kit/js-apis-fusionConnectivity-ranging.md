@@ -282,7 +282,7 @@ startPassiveRanging(capabilityType: RangingTypes): Promise&lt;number&gt;
 
 | 类型               | 说明         |
 | ---------------- | ---------- |
-| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, INT_MAX)。该句柄用于：1、在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。2、在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingrangingstatechangeinfo)中标识对应的被动测距会话。   |
+| Promise&lt;number&gt; | Promise对象，返回被动测距会话的句柄标识符handle，数值范围[0, INT_MAX)。<br> 该句柄用于：1. 在[stopPassiveRanging](#rangingstoppassiveranging)中指定要停止的被动测距会话。2. 在[onRangingStateChange](#rangingonrangingstatechange)回调的[stateInfo.handle](#rangingrangingstatechangeinfo)中标识对应的被动测距会话。   |
 
 **错误码**：
 
