@@ -360,7 +360,7 @@ stopPassiveRanging(handle: number, capabilityType: RangingTypes): void
 ```js
 import { ranging } from '@kit.ConnectivityKit';
 
-// passiveHandle 为 startPassiveRanging 返回的有效句柄
+// passiveHandle为startPassiveRanging返回的有效句柄
 let passiveHandle = 0;
 
 try {
