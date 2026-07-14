@@ -220,6 +220,7 @@ ArkTS-Dyn示例：
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct ComponentPage {
@@ -250,7 +251,6 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```
 
 ArkTS-Sta示例：

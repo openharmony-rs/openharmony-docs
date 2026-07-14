@@ -377,10 +377,10 @@ ArkTS-Dyn示例：
 export struct AccessibilityLevelCase01 {
   build() {
     // ...
-        Column() {
-          Text('HelloWorld')
-          Text('文本1')
-            .accessibilityLevel('yes')
+      Column() {
+        Text('HelloWorld')
+        Text('文本1')
+          .accessibilityLevel('yes')
       }
       .accessibilityGroup(true)
       // ...
@@ -434,10 +434,10 @@ Column() {
   Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  .accessibilityText('分组')
-  .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
-  .accessibilityChecked(true)
+.accessibilityLevel('yes')
+.accessibilityText('分组')
+.accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
+.accessibilityChecked(true)
 ```
 
 ArkTS-Sta示例：
@@ -591,6 +591,7 @@ ArkTS-Dyn示例：
 <!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
 ``` TypeScript
+@Entry
 @Component
 export struct AccessibilityText {
   @Builder
@@ -599,7 +600,7 @@ export struct AccessibilityText {
       Text(`virtual node`)
     }
     .width(10)
-      .height(10)
+    .height(10)
   }
 
   build() {
@@ -615,13 +616,13 @@ export struct AccessibilityText {
             .fontWeight(FontWeight.Bold)
         }
         .width('100%')
-          .accessibilityGroup(true)
-          .accessibilityLevel('yes')
-          .accessibilityText('分组')
-          .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
-          .accessibilityVirtualNode(this.customAccessibilityNode)
-          .accessibilityChecked(true)
-          .accessibilitySelected(undefined)
+        .accessibilityGroup(true)
+        .accessibilityLevel('yes')
+        .accessibilityText('分组')
+        .accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
+        .accessibilityVirtualNode(this.customAccessibilityNode)
+        .accessibilityChecked(true)
+        .accessibilitySelected(undefined)
       }
       .height('100%')
       // ...
