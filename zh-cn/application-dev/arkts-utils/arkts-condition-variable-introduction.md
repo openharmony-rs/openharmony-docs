@@ -52,7 +52,7 @@ ArkTS语言支持异步操作，现已增加异步任务的等待和唤醒功能
    @Entry
    @Component
    struct Index {
-     @State message: string | ResourceStr = $r('app.string.AsyncButton');
+     @State message: string | ResourceStr = $r('app.string.AsyncButton'); // 加载资源，可根据项目实际资源自定义
    
      build() {
        Row() {
