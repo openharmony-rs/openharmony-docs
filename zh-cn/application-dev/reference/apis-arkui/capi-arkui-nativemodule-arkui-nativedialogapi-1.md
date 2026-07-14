@@ -209,7 +209,7 @@ int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  bool isModal | 设置是否开启模态窗口。模态窗口有蒙层，非模态窗口无蒙层。true表示开启模态窗口，false表示不开启模态窗口。 |
+|  bool isModal | 设置是否开启模态窗口。模态窗口有遮罩层，非模态窗口无遮罩层。true表示开启模态窗口，false表示不开启模态窗口。 |
 
 **返回：**
 
@@ -264,7 +264,7 @@ int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const Ar
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
 | uint32_t maskColor                                                                 | 设置遮罩颜色，0xARGB格式。 |
-| const [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect                                                     | 遮蔽层区域范围的指针，遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。参数类型[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)。 |
+| const [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect                                                     | 遮罩层区域范围的指针，遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。参数类型[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)。 |
 
 **返回：**
 

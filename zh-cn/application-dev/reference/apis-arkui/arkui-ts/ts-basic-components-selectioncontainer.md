@@ -201,7 +201,7 @@ bindSelectionMenu(spanType: Optional\<TextSpanType>, content: Optional\<CustomBu
 
 editMenuOptions(editMenu: Optional\<SelectionContainerEditMenuOptions>)
 
-设置选中文本后的扩展菜单选项，包括菜单文本、图标和回调等。
+设置选中文本后的编辑菜单选项，包括菜单文本、图标和回调等。
 
 > **说明：**
 >
@@ -217,7 +217,7 @@ editMenuOptions(editMenu: Optional\<SelectionContainerEditMenuOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| editMenu | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerEditMenuOptions](#selectioncontainereditmenuoptions)> | 是 | 自定义菜单扩展配置。 |
+| editMenu | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerEditMenuOptions](#selectioncontainereditmenuoptions)> | 是 | 自定义编辑菜单配置。 |
 
 ## 事件
 
