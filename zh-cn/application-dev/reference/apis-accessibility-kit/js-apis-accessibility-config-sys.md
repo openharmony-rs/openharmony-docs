@@ -750,14 +750,14 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| mode | BlinkingMode&lt;[BlinkingMode](#BlinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
-| scenario | BlinkingScenario&lt;[BlinkingScenario](#BlinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
+| mode | BlinkingMode&lt;[BlinkingMode](#blinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
+| scenario | BlinkingScenario&lt;[BlinkingScenario](#blinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| BlinkResultCode&lt;[BlinkResultCode](#BlinkResultCode)&gt; | 返回结果码。|
+| BlinkResultCode&lt;[BlinkResultCode](#blinkResultCode)&gt; | 接口调用返回的结果码。|
 
 **错误码：**
 
@@ -767,7 +767,7 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 9300000 | System abnormality.  |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy.|
 
 **示例：**
 
@@ -802,14 +802,14 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| mode | BlinkingMode&lt;[BlinkingMode](#BlinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
-| scenario | BlinkingScenario&lt;[BlinkingScenario](#BlinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
+| mode | BlinkingMode&lt;[BlinkingMode](#blinkingMode)&gt; | 是 | 表示屏幕闪烁或闪光灯闪烁的模式。 |
+| scenario | BlinkingScenario&lt;[BlinkingScenario](#blinkingScenario)&gt; | 是 | 表示触发闪烁的场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| BlinkResultCode&lt;[BlinkResultCode](#BlinkResultCode)&gt; | 返回结果码。|
+| BlinkResultCode&lt;[BlinkResultCode](#blinkResultCode)&gt; | 接口调用返回的结果码。|
 
 **错误码：**
 
@@ -819,7 +819,7 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 | ------- | -------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 9300000 | System abnormality.  |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy.|
 
 **示例：**
 
@@ -1184,7 +1184,7 @@ type OnDisconnectCallback = () => void
 
 ## BlinkingMode
 
-闪烁模式枚举
+表示闪烁模式的枚举。
 
 **起始版本：** 26.0.0
 
@@ -1201,7 +1201,7 @@ type OnDisconnectCallback = () => void
 
 ## BlinkingScenario
 
-闪烁场景枚举
+表示闪烁场景的枚举。
 
 **起始版本：** 26.0.0
 
@@ -1220,7 +1220,7 @@ type OnDisconnectCallback = () => void
 
 ## BlinkResultCode
 
-闪烁操作的结果枚举
+表示闪烁操作的结果枚举。
 
 **起始版本：** 26.0.0
 
@@ -1232,9 +1232,9 @@ type OnDisconnectCallback = () => void
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
-| SUCCESS                         |  0 | 表示执行成功。          |
-| ALREADY_FLASHING                |  1 | 表示当前正在闪烁。       |
+| SUCCESS                         |  0 | 表示闪烁接口执行成功。          |
+| ALREADY_FLASHING                |  1 | 表示设备正在闪烁中。       |
 | DEVICE_IN_USE                   |  2 | 表示设备正在使用中。     |
-| FLASH_BLINKING_UNSUPPORTED      |  3 | 表示不支持闪光灯闪烁。   |
-| SCREEN_BLINKING_UNSUPPORTED     |  4 | 表示不支持屏幕闪烁。     |
+| FLASH_BLINKING_UNSUPPORTED      |  3 | 表示设备不支持闪光灯闪烁。   |
+| SCREEN_BLINKING_UNSUPPORTED     |  4 | 表示设备不支持屏幕闪烁。     |
 | FEATURE_DISABLED                |  5 | 表示闪烁功能开关未开启。 |
