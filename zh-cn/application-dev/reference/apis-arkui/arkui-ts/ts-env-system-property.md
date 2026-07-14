@@ -6,6 +6,8 @@
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
+\@Env装饰器用于获取系统环境变量，帮助开发者便捷感知系统环境变化并动态调整UI显示。
+
 > **说明：**
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -37,7 +39,12 @@ struct Index {
   // @Env读取系统环境变量
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
-  build() {}
+  build() {
+    Column() {
+        Text(`breakpoint height ${this.breakpoint.heightBreakpoint}`)
+        Text(`breakpoint width ${this.breakpoint.widthBreakpoint}`)
+    }
+  }
 }
 ```
 ## EnvDecorator 
@@ -78,7 +85,7 @@ type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 | 名称        | 值   | 说明                                       |
 | ----------- | ---- | ------------------------------------------------------------ |
-|BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env)变量参数，通过\@Env(SystemProperties.BREAK_POINT)可获取[WindowSizeLayoutBreakpointInfo](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的尺寸布局断点信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+|BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env)变量参数，通过\@Env(SystemProperties.BREAK_POINT)可获取[WindowSizeLayoutBreakpointInfo](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的尺寸布局断点信息。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 |WINDOW_SIZE<sup>23+</sup>|'system.window.size'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_SIZE)可获取[SizeInVP](../arkts-apis-window-i.md#sizeinvp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
 |WINDOW_SIZE_PX<sup>23+</sup>|'system.window.size.px'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_SIZE_PX)可获取[Size](../arkts-apis-window-i.md#size7)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为px。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
 |WINDOW_AVOID_AREA<sup>23+</sup>|'system.window.avoidarea'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_AVOID_AREA)可获取[UIEnvWindowAvoidAreaInfoVP](../arkts-apis-window-i.md#uienvwindowavoidareainfovp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
@@ -103,7 +110,7 @@ type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                              |
 | -------- | -------- | -------- | -------- |-------------------------------------------------------------------------------------------------|
-| type | T | 否 | 是 | 系统环境变量Key对应的类型。|
+| type | T | 否 | 是 | 系统环境变量Key所对应值的数据类型。|
 
 ### constructor
 
@@ -121,7 +128,7 @@ protected constructor()
 
 ## WritableSystemEnvKey\<T\>
 
-定义可写的系统环境变量Key，继承自[SystemEnvKey\<T\>](#systemenvkeyt)。
+定义可写的系统环境变量Key，继承自[SystemEnvKey\<T\>](#systemenvkeyt)。可通过[WithEnv](./ts-container-with-env.md)中的[env](./ts-container-with-env.md#env)方法设置局部环境变量值以影响后代组件渲染，具体示例请参见[示例2（设置局部布局方向）](./ts-container-with-env.md#示例2设置局部布局方向)。
 
 **起始版本：** 26.0.0
 
@@ -146,7 +153,7 @@ protected constructor()
 
 ## WritableEnvKey
 
-定义可写的系统环境变量Key。
+定义可写的系统环境变量Key集合，用于通过@Env装饰器获取对应的系统环境变量。
 
 **起始版本：** 26.0.0
 
@@ -160,12 +167,12 @@ protected constructor()
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                              |
 | -------- | -------- | -------- | -------- |-------------------------------------------------------------------------------------------------|
-| DIRECTION | [WritableSystemEnvKey\<T\>](#writablesystemenvkeyt)| 是 | 否 |[\@Env](#env)变量参数，通过\@Env(WritableSystemEnvKey.DIRECTION)可获取Direction类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取窗口所在屏幕的布局方向。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| FONT_SCALE | [WritableSystemEnvKey\<T\>](#writablesystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(WritableSystemEnvKey.FONT_SCALE)可获取number类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于为后代组件提供局部字体缩放比例，表示字体缩放倍数。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| DIRECTION | [WritableSystemEnvKey\<T\>](#writablesystemenvkeyt)| 是 | 否 |[\@Env](#env)变量参数，通过\@Env(WritableEnvKey.DIRECTION)可获取[Direction](./ts-appendix-enums.md#direction)枚举类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取窗口所在屏幕的布局方向。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| FONT_SCALE | [WritableSystemEnvKey\<T\>](#writablesystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(WritableEnvKey.FONT_SCALE)可获取number类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于为后代组件提供局部字体缩放比例，表示字体缩放倍数。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ReadonlyEnvKey
 
-定义只读的系统环境变量Key。
+定义只读的系统环境变量Key集合，用于通过\@Env装饰器获取只读的系统环境变量。
 
 **起始版本：** 26.0.0
 
@@ -185,5 +192,5 @@ protected constructor()
 | WINDOW_SIZE_PX | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_SIZE_PX)可获取[Size](../arkts-apis-window-i.md#size7)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为px。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | WINDOW_DISPLAY_ID | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_DISPLAY_ID)可获取number类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的屏幕ID。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | WINDOW_SYSTEM_DENSITY | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY)可获取number类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的系统显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| WINDOW_IS_FOCUSED | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_IS_FOCUSED)可获取boolean类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口是否处于获焦状态，true表示当前处于获焦状态，false表示当前不处于获焦状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| WINDOW_IS_HIGHLIGHTED | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED)可获取boolean类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口是否处于高亮状态，true表示当前处于高亮状态，false表示当前不处于高亮状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_IS_FOCUSED | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_IS_FOCUSED)可获取boolean类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口是否处于获焦状态，true表示当前处于获焦状态，false表示当前不处于获焦状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_IS_HIGHLIGHTED | [ReadonlySystemEnvKey\<T\>](#readonlysystemenvkeyt) | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED)可获取boolean类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口是否处于高亮状态，true表示当前处于高亮状态，false表示当前不处于高亮状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |

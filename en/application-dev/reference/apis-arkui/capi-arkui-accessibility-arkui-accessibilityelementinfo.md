@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityElementInfo ArkUI_AccessibilityElementInfo
 
 ## Overview
 
-Provides accessibility node information for accessibility services and assistive applications (such as screen readers).
+Defines accessibility node information, which is used to transfer node information to accessibility services and applications.
 
 **Since**: 13
 

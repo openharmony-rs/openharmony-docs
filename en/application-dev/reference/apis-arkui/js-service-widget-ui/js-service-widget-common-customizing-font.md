@@ -7,14 +7,14 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-**font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your application and then reference this font from **font-family**.
+**font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your app and then reference this font from **font-family**.
 
 
 The custom font can be loaded from the font file in a project or a network font file.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > The font format can be .ttf or .otf.
 
@@ -42,7 +42,7 @@ The custom font can be loaded from the font file in a project or a network font 
 
 ## Using font-face
 
-You can set **font-face** in **style** and specify the name of the **font-face** using **font-family**. The code snippet is as follows:
+You can set **font-face** in **style** and specify the name of the **font-face** using **font-family**. The following is an example:
 
 - Page layout
   

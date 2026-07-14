@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 Sendable对象在不同并发实例间默认采用引用传递，这种方式比序列化更高效，且不会丢失类成员方法。因此，Sendable能够解决两个关键场景的问题：
 
 - 跨并发实例传输大数据（例如达到100KB以上的数据）。
@@ -64,19 +64,24 @@ struct Index {
             console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
           });
           taskpool.execute(sensorTask).then(() => {
+            this.listenerTask = 'success';
             console.info('Add listener of ACCELEROMETER success');
           }).catch((e: BusinessError) => {
             // Process error
+            this.listenerTask = 'failed';
           })
-          this.listenerTask = 'success';
         })
       Text(this.dataProcessingTask)
         .id('Data processing task')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          test();
-          this.dataProcessingTask = 'success';
+          test().then(() => {
+            this.dataProcessingTask = 'success';
+          }).catch((e: BusinessError) => {
+            this.dataProcessingTask = 'failed';
+            console.error('taskpool execute failed. Code: ' + e.code + ', message: ' + e.message);
+          })
         })
     }
     .height('100%')

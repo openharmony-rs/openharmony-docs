@@ -40,7 +40,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 | 参数名  | 类型                                             | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [DistortionComponentOptions](#distortioncomponentoptions)  | 否  | 空间扭曲形变选项。                                           |
+| options | [DistortionComponentOptions](#distortioncomponentoptions)  | 否  | 空间扭曲形变选项，用于配置组件的空间形变效果。                                           |
 
 ## DistortionComponentOptions
 
@@ -56,7 +56,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 | 名称        | 类型                                              | 只读  | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| distortion  | [DistortionParam](#distortionparam) | 否  | 是  | 空间扭曲形变参数。通过指定四个角的位置关系和四条边的桶形变程度产生空间扭曲效果。                                        |
+| distortion  | [DistortionParam](#distortionparam) | 否  | 是  | 空间扭曲形变参数，通过指定四个角的位置关系和四条边的桶形扭曲程度产生空间扭曲效果。当需要施加空间形变时传入此参数，不传入时组件正常渲染、不施加任何形变效果。                                        |
 
 ## DistortionParam
 
@@ -64,7 +64,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 > **说明：**
 > - 四个角的坐标可以按照如下坐标系设置。一个组件，左上角位置为[0, 0]，右上角位置为[1, 0]，左下角位置为[0, 1]，右下角位置为[1, 1]。
-> - 如bottomLeft属性设置为[0.5, 0.5]，则表示左下角形变到组件中心点的位置，产生对应的形变效果。
+> - 如bottomLeft属性设置为[0.5, 0.5]，则表示左下角形变到组件中心点的位置，使组件左下区域产生向内收缩的形变效果。
 > - 设置四个角坐标位置时请符合空间感逻辑。如topLeft = [0, 0.7]，bottomLeft = [0, 0.2]，左上角的位置低于左下角的位置，违背空间感的逻辑，可能导致渲染异常。
 
 **起始版本：** 26.0.0
@@ -134,7 +134,6 @@ type Vector4 = Vector4
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：动态更新角点形变，组件前景内容会跟随角点位置发生形变
 @Entry
 @Component
 struct DistortionCornerExample {
@@ -148,6 +147,7 @@ struct DistortionCornerExample {
 
   build() {
     Column({ space: 40 }) {
+      // 动态更新角点形变，组件前景内容会跟随角点位置发生形变。
       DistortionComponent({
         distortion: this.distortionParam
       }) {
@@ -194,7 +194,6 @@ struct DistortionCornerExample {
 从API版本26.0.0开始，新增[DistortionParam](#distortionparam)的barrelDistortion属性。
 
 ```ts
-// 示例：单独控制四条边的桶形扭曲，突出z/w对上下边的作用
 @Entry
 @Component
 struct DistortionBarrelExample {
@@ -202,6 +201,7 @@ struct DistortionBarrelExample {
 
   build() {
     Column({ space: 40 }) {
+      // 单独控制四条边的桶形扭曲，突出z/w对上下边的作用
       DistortionComponent({
         distortion: {
           topLeft: { x: 0, y: 0 },
@@ -267,7 +267,6 @@ struct DistortionBarrelExample {
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：组合角点形变与桶形扭曲，产生更强烈的空间透视感
 @Entry
 @Component
 struct DistortionCombinedExample {
@@ -305,6 +304,7 @@ struct DistortionCombinedExample {
 
   build() {
     Column({ space: 40 }) {
+      // 组合角点形变与桶形扭曲，产生更强烈的空间透视感
       DistortionComponent({
         distortion: this.distortionParam
       }) {
@@ -312,6 +312,7 @@ struct DistortionCombinedExample {
           Column()
             .width(200)
             .height(200)
+            // 'app.media.icon'需要替换为开发者所需的图像资源文件
             .backgroundImage($r('app.media.icon'))
             .backgroundImageSize(ImageSize.Cover)
             .opacity(0.8)

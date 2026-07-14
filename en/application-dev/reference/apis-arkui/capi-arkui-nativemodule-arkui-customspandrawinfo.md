@@ -12,10 +12,10 @@ typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo
 
 ## Overview
 
-Defines a struct for the drawing information of a custom span.
+Defines the drawing information of a custom span.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [custom_span.h](capi-custom-span-h.md)

@@ -1,10 +1,12 @@
 # label
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:20.790Z pushedAt=2026-06-22T06:41:34.626Z -->
 
 >  **NOTE**
 >
@@ -16,11 +18,9 @@ The **\<label>** component defines labels for the **\<input>**, **\<button>**, a
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -30,7 +30,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | ------ | ------ | ---- | ---- | ----------- |
 | target | string | -    | No   | Attribute ID of the target component.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -38,14 +37,14 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | Name               | Type                        | Default Value       | Mandatory  | Description                                      |
 | ----------------- | -------------------------- | ---------- | ---- | ---------------------------------------- |
 | color             | &lt;color&gt;              | #e5000000  | No   | Font color.                                |
-| font-size         | &lt;length&gt;             | 30px       | No   | Font size.                                |
+| font-size         | &lt;length&gt;             | 30px       | No    | Font size.                                 |
 | allow-scale       | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.<br>For details about how to make the configuration take effect dynamically, see the **config-changes** attribute in the **config.json** file.|
 | letter-spacing    | &lt;length&gt;             | 0px        | No   | Character spacing (px).                              |
 | font-style        | string                     | normal     | No   | Font style. Available values are as follows:<br>- **normal**: standard font style.<br>- **italic**: italic font style.|
 | font-weight       | number \| string | normal     | No   | Font weight. For the number type, the value ranges from 100 to 900. The default value is 400. A larger value indicates a heavier font weight.<br>The value of the number type must be an integer multiple of 100.<br>The value of the string type can be **lighter**, **normal**, **bold**, or **bolder**.|
-| text-decoration   | string                     | none       | No   | Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
-| text-align        | string                     | start<br>| No   | Text alignment mode. Available values are as follows:<br>- **left**: The text is left-aligned.<br>- **center**: The text is center-aligned.<br>- **right**: The text is right-aligned.<br>- **start**: The text is aligned with the direction in which the text is written.<br>- **end**: The text is aligned with the opposite direction in which the text is written.<br>If the text width is not specified, the alignment effect may not be obvious when the text width is the same as the width of the parent container.|
-| line-height       | &lt;length&gt;             | 0px        | No   | Text line height. When this parameter is set to **0px**, the text line height is not limited and the font size is adaptive.      |
+| text-decoration   | string                     | none       | No    | Text decoration. Available values are as follows:<br/>-&nbsp;**underline**: An underline is used.<br/>-&nbsp;**line-through**: A strikethrough is used.<br/>-&nbsp;**none**: The standard text is used. |
+| text-align        | string                     | start<br/> | No    | Text alignment mode. Available values are as follows:<br/>-&nbsp;**left**: The text is left-aligned.<br/>-&nbsp;**center**: The text is center-aligned.<br/>-&nbsp;**right**: The text is right-aligned.<br/>-&nbsp;**start**: The text is aligned with the direction in which the text is written.<br/>-&nbsp;**end**: The text is aligned with the opposite direction in which the text is written.<br/>If the text width is not specified, the alignment effect may not be obvious when the text width is the same as the width of the parent container. |
+| line-height       | &lt;length&gt;             | 0px        | No    | Text line height. When this parameter is set to **0px**, the text line height is not limited and the font size is adaptive.       |
 | text-overflow     | string                     | clip       | No   | Takes effect when the maximum number of lines is specified. Available values are as follows:<br>- **clip**: The text is clipped and displayed based on the size of the parent container.<br>- **ellipsis**: The text is displayed based on the size of the parent container. The text that cannot be displayed is replaced with ellipsis. This style must be used together with **max-lines**.|
 | font-family       | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 | max-lines         | number                     | -          | No   | Maximum number of lines in the text.                              |
@@ -54,16 +53,13 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-size-step    | &lt;length&gt;             | 1px        | No   | Step for dynamically adjusting the font size in the text. The minimum and maximum font sizes must be set.           |
 | prefer-font-sizes | &lt;array&gt;              | -          | No   | Preset preferred font sizes. For dynamic font size adjustment, the preset sizes are used to match the maximum number of lines in the text. If the preferred font sizes were not set, the font size will be adjusted based on the maximum and minimum font sizes and the step you have set. If the maximum number of lines in the text cannot be met, **text-overflow** is used to truncate the text. If this parameter is set, **font-size**, **max-font-size**, **min-font-size**, and **font-size-step** do not take effect.<br>Example: prefer-font-sizes: 12px,14px,16px|
 
-
 ## Events
 
 Not supported
 
-
 ## Methods
 
 Not supported
-
 
 ## Example
 

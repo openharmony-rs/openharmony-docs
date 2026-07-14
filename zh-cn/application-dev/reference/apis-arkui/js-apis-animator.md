@@ -18,7 +18,7 @@
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
-> - 自定义组件中通常会持有一个由[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口返回的[AnimatorResult](#animatorresult)对象，以确保动画对象在动画过程中不被析构，该对象通过回调捕获了自定义组件对象，因此需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)生命周期中释放动画对象，以避免因循环依赖导致内存泄漏。详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+> - 自定义组件中通常会持有一个由[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口返回的[AnimatorResult](#animatorresult)对象，以确保动画对象在动画过程中不被析构，该对象通过回调捕获了自定义组件对象，因此需要在自定义组件销毁时的[aboutToDisappear](./arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)生命周期中释放动画对象，以避免因循环依赖导致内存泄漏。详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 >
 > - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)方法时，都会触发一次额外的[onFrame](#属性)，返回值是动画终点值。因此，如果在动画过程中调用[cancel](#cancel)、[finish](#finish)，会导致属性值在一帧内跳变至终点。若希望动画在中途暂停，可先将onFrame设置为空函数，再调用[finish](#finish)。
 >
@@ -58,15 +58,15 @@ create(options: AnimatorOptions): AnimatorResult
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | 是    | 定义动画选项。 |
+| options | [AnimatorOptions](#animatoroptions) | 是 | 动画配置选项，包含播放时长、插值曲线、延时、填充模式、播放方向、播放次数及插值起止值等参数。 |
 
 **返回值：** 
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator结果接口。 |
+| [AnimatorResult](#animatorresult) | 动画控制对象，可用于设置动画过程中的回调函数。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
@@ -88,7 +88,7 @@ import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
 
 let options: AnimatorOptions = {
   duration: 1500,
-  easing: "friction",
+  easing: 'friction',
   delay: 0,
   fill: "forwards",
   direction: "normal",
@@ -115,13 +115,13 @@ create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) \| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 是    | 定义动画参数选项。 |
+| options | [AnimatorOptions](#animatoroptions) \| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 是    | 定义动画选项。AnimatorOptions适用于需要完整自定义所有动画参数的场景；SimpleAnimatorOptions适用于仅需指定起点和终点的简易动画场景，其余参数使用默认值。 |
 
 **返回值：** 
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator结果接口。 |
+| [AnimatorResult](#animatorresult) | 动画控制对象，可设置动画过程中的回调函数。 |
 
 **错误码**：
 
@@ -143,7 +143,7 @@ create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
 ```ts
 import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
 let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
-animator.create(options);// 建议使用 UIContext.createAnimator()接口
+animator.create(options); // 建议使用 UIContext.createAnimator()接口
 ```
 
 ### createAnimator<sup>(deprecated)</sup>
@@ -162,13 +162,13 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | 是    | 定义动画选项。 |
+| options | [AnimatorOptions](#animatoroptions) | 是 | 动画配置选项，用于定义动画的播放时长、插值曲线、延时、填充模式、播放方向、播放次数及插值起止值等参数。 |
 
 **返回值：** 
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator结果接口。 |
+| [AnimatorResult](#animatorresult) | 动画控制对象，可设置动画过程中的回调函数。 |
 
 **示例：** 
 
@@ -193,7 +193,7 @@ this.animator = animator.createAnimator(options);
 
 ## AnimatorResult
 
-定义Animator结果接口。
+定义AnimatorResult接口，提供动画播放状态回调及动画控制方法。
 
 ### 属性
 
@@ -201,14 +201,14 @@ this.animator = animator.createAnimator(options);
 
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                         |
 | ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
-| onFrame<sup>12+</sup>   | (progress: number) => void                    | 否 | 否   | 接收到帧时回调。<br/>progress表示动画的当前值。取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | 否 | 否   | 接收到帧时回调。<br>progress表示动画的当前值。取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。                        |
 | onFinish<sup>12+</sup>   | () => void                    | 否 | 否   | 动画完成时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
 | onCancel<sup>12+</sup>   | () => void                    | 否 | 否   | 动画被取消时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
 | onRepeat<sup>12+</sup>   | () => void                    | 否 | 否   | 动画重复时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                        |
-| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | 否 | 否   | 接收到帧时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFrame。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| onfinish<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画完成时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFinish。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| oncancel<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画被取消时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onCancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| onrepeat<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画重复时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onRepeat。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | 否 | 否   | 接收到帧时回调。<br>**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onFrame](#属性)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onfinish<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画完成时回调。<br/>**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onFinish](#属性)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| oncancel<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画被取消时回调。<br/>**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onCancel](#属性)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onrepeat<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画重复时回调。<br/>**说明：** 从API version 6开始支持，从API version 12开始废弃，推荐使用[onRepeat](#属性)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
 
 ### reset<sup>9+</sup>
 
@@ -224,7 +224,7 @@ reset(options: AnimatorOptions): void
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | 是    | 定义动画选项。 |
+| options | [AnimatorOptions](#animatoroptions) | 是 | 动画配置选项，用于定义动画的播放时长、插值曲线、延时、填充模式、播放方向、播放次数及插值起止值等参数。 |
 
 **错误码：**
 
@@ -312,7 +312,7 @@ import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOp
 
 let options: AnimatorOptions = {
   duration: 1500,
-  easing: "ease",
+  easing: 'ease',
   delay: 0,
   fill: "forwards",
   direction: "normal",
@@ -332,7 +332,7 @@ animatorResult.reset(optionsNew);
 
 play(): void
 
-启动动画。动画会保留上一次的播放状态，比如播放状态设置reverse后，再次播放会保留reverse的播放状态。
+启动动画。动画暂停后调用此方法可恢复播放。动画会保留上一次的播放状态，比如播放状态设置reverse后，再次播放会保留reverse的播放状态。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -422,7 +422,7 @@ animator.reverse();
 
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
-设置期望的帧率范围。
+设置期望的帧率范围，包含最小、最大和期望帧率值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -454,7 +454,7 @@ let expectedFrameRate: ExpectedFrameRateRange = {
 @Entry
 @Component
 struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
+  private backAnimator: AnimatorResult | undefined = undefined;
 
   create() {
     this.backAnimator = this.getUIContext().createAnimator({
@@ -480,7 +480,7 @@ struct AnimatorTest {
 
 update(options: AnimatorOptions): void
 
-更新当前动画器。
+更新当前animator动画参数。
 
 > **说明：**  
 >
@@ -492,7 +492,7 @@ update(options: AnimatorOptions): void
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | 是    | 定义动画选项。 |
+| options | [AnimatorOptions](#animatoroptions) | 是 | 动画配置选项，用于定义动画的播放时长、插值曲线、延时、填充模式、播放方向、播放次数及插值起止值等参数。 |
 
 **示例：**
 
@@ -508,7 +508,7 @@ animator.update(options);
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
 
@@ -564,8 +564,8 @@ SimpleAnimatorOptions的构造函数。
 
 | 参数名       | 类型                                                        | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  begin      | number                                                      | 是   | 动画插值起点。                                               |
-|  end        | number                                                      | 是   | 动画插值终点。                                               |
+|  begin      | number                                                      | 是   | 动画插值起点。<br/>**说明：** 会影响[onFrame](#属性)回调的入参值。                                               |
+|  end        | number                                                      | 是   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。                                               |
 
 **示例：**
 
@@ -606,13 +606,13 @@ duration(duration: number): SimpleAnimatorOptions
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| duration | number | 是    | 设置动画时长，单位毫秒。<br/>默认值：1000 |
+| duration | number | 是    | 设置动画播放的时长，单位毫秒。<br/>默认值：1000<br/>**说明:** 使用interpolating-spring曲线时，duration不生效，由弹簧参数决定。 |
 
 **返回值：** 
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 返回当前简易动画参数对象，支持链式调用以继续配置动画参数。 |
 
 **示例：**
 
@@ -659,7 +659,7 @@ easing(curve: string): SimpleAnimatorOptions
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 返回当前简易动画参数对象，支持链式调用以继续配置动画参数。 |
 
 **示例：**
 
@@ -688,7 +688,7 @@ struct AnimatorTest {
 
 delay(delay: number): SimpleAnimatorOptions
 
-设置animator动画播放时延。
+设置animator动画延时播放时长。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -706,7 +706,7 @@ delay(delay: number): SimpleAnimatorOptions
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 返回当前简易动画参数对象，支持链式调用以继续配置动画参数。 |
 
 **示例：**
 
@@ -753,7 +753,7 @@ fill(fillMode: [FillMode](./arkui-ts/ts-appendix-enums.md#fillmode)): SimpleAnim
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 返回当前简易动画参数对象，支持链式调用以继续配置动画参数。 |
 
 **示例：**
 
@@ -782,7 +782,7 @@ struct AnimatorTest {
 
 direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): SimpleAnimatorOptions
 
-设置animator动画播放方向。
+设置animator动画播放模式。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -800,7 +800,7 @@ direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): Simp
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 返回当前简易动画参数对象，支持链式调用以继续配置动画参数。 |
 
 **示例：**
 
@@ -841,13 +841,13 @@ iterations(iterations: number): SimpleAnimatorOptions
 
 | 参数名     | 类型                                  | 必填   | 说明      |
 | ------- | ----------------------------------- | ---- | ------- |
-| iterations | number | 是    | 设置animator动画播放次数，设置为0时不播放，设置为-1时无限次播放。<br/>默认值：1 |
+| iterations | number | 是    | 设置animator动画播放次数，设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。<br/>**说明：** 设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。<br/>默认值：1<br/>使用interpolating-spring曲线时，iterations设置无效，固定设置为1。 |
 
 **返回值：** 
 
 | 类型                                | 说明            |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | 返回当前简易动画参数对象，支持链式调用以继续配置动画参数。 |
 
 **示例：**
 
@@ -1001,18 +1001,18 @@ struct AnimatorTest {
       end: 200 // 动画插值终点
     })
     this.backAnimator.onFinish = () => {
-      this.flag = true
-      console.info(this.TAG, 'backAnimator onFinish')
+      this.flag = true;
+      console.info(this.TAG, 'backAnimator onFinish');
     }
     this.backAnimator.onRepeat = () => {
-      console.info(this.TAG, 'backAnimator repeat')
+      console.info(this.TAG, 'backAnimator repeat');
     }
     this.backAnimator.onCancel = () => {
-      console.info(this.TAG, 'backAnimator cancel')
+      console.info(this.TAG, 'backAnimator cancel');
     }
     this.backAnimator.onFrame = (value: number) => {
-      this.columnWidth = value
-      this.columnHeight = value
+      this.columnWidth = value;
+      this.columnHeight = value;
     }
   }
 
@@ -1163,7 +1163,7 @@ struct AnimatorTest {
       this.flag = true
       console.info(this.TAG, 'backAnimator onFinish')
     }
-    this.backAnimator.onFrame = (value:number) => {
+    this.backAnimator.onFrame = (value: number) => {
       this.translate_ = value
     }
   }

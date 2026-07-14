@@ -6,21 +6,21 @@
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 
-软总线具备常驻运行能力，可为跨设备通信提供稳定可靠的底层通道。本模块基于软总线进程开发，支持手机与穿戴设备间高效的数据互通，可为用户提供无缝的设备互联体验。使用场景：手机侧APP与手表侧APP协同时，当手机APP不在前台被使用，手机应用的下行消息经由通知服务器，通过代理模块发送给手表侧。模块核心功能包括：代理通道管理、数据路由管理、 应用状态感知和唤醒、链路状态监听。
+软总线具备常驻运行能力，可为跨设备通信提供稳定可靠的底层通道。本模块基于软总线进程开发，支持手机与穿戴设备间的数据互通，可为用户提供无缝的设备互联体验，同时降低开发者跨设备通信的实现复杂度，无需自行处理底层通信协议和进程唤醒逻辑。使用场景：手机侧应用与穿戴设备侧应用协同时，当手机侧应用不在前台时，手机侧应用的下行消息经由通知服务器，通过代理模块发送给穿戴设备侧；当穿戴设备向手机发送数据时，代理模块可动态唤醒手机侧对应应用进程以接收和处理数据。模块核心功能包括：代理通道管理、数据路由管理、应用状态感知和唤醒、全链路状态监控。
 
-- 代理通道管理：通过蓝牙 BR 协议建立手机与穿戴设备的双向数据通道，支持的数据通道 ID 范围是[1,2147483647] 。
+- 代理通道管理：通过蓝牙 BR 协议建立手机与穿戴设备的双向数据通道，确保跨设备间可靠的双向数据通信，无需开发者自行实现底层通信协议。支持的数据通道ID范围是1~2147483647。
 
-- 数据路由管理：基于 UUID 服务识别机制，精准转发穿戴设备数据。
+- 数据路由管理：基于 UUID 服务识别机制转发穿戴设备侧应用数据，实现数据的精准路由至目标服务端口，避免数据丢失或错发。UUID用于唯一标识对端设备上监听的服务，代理模块根据对端设备的UUID将数据路由至对应服务端口。
 
-- 应用状态感知和唤醒：代理通道使能后，收到穿戴设备发送的数据后，动态分析和唤醒手机端对应应用进程。
+- 应用状态感知和唤醒：代理通道使能并收到穿戴设备侧应用数据后，代理模块根据module.json5中配置的action字段（如'action.ohos.pull.listener'）识别目标应用，并代理拉起对应手机侧应用进程以处理数据，无需应用常驻前台即可接收数据，节省系统资源。
 
-- 全链路状态监控：通过回调实时感知通道连接状态。
+- 全链路状态监控：通过回调实时感知代理通道全生命周期的连接状态变化，帮助手机侧应用及时响应连接异常并调整业务策略，提升数据传输可靠性。包括连接恢复、异常断连、配对关系删除等事件。
 
 > **说明：**
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> **模型约束**：此接口仅可在Stage模型下使用
+> **模型约束**：此接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -30,17 +30,27 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 
 ## 使用说明
 
-调用模块接口前，需要完成如下配置。
+调用模块接口前，需要完成如下配置：
 
-1. 需要申请ohos.permission.ACCESS_BLUETOOTH权限。如何配置和申请权限，具体操作请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+1. 申请ohos.permission.ACCESS_BLUETOOTH权限。如何配置和申请权限，具体操作请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-2. 对于需要代理拉起的应用进程，需要在module.json5文件中配置action字段: "action.ohos.pull.listener"。
+2. 在module.json5文件中配置action字段"action.ohos.pull.listener"，用于需要被代理拉起的手机侧应用进程。
+
+典型调用流程：
+
+1. 调用openProxyChannel打开代理通道，获取channelId。
+
+2. 调用sendData发送数据，并根据业务需求订阅事件：调用on('receiveData')接收对端数据，调用on('channelStateChange')感知通道连接状态变化（断连、恢复等）。两者可同时订阅，建议在数据传输场景中同时使用，以便通道异常时及时暂停发送并处理断连恢复逻辑。
+
+3. 使用完毕后，调用off('receiveData')/off('channelStateChange')取消订阅。
+
+4. 调用closeProxyChannel关闭代理通道释放资源。
 
 ## proxyChannelManager.openProxyChannel
 
 openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
-打开代理通道，使用Promise异步回调返回结果。
+打开代理通道，使用Promise异步回调。基于ChannelInfo中配置的链路类型和对端设备信息，通过蓝牙BR协议与对端设备协商建立双向数据通道，并返回唯一标识该通道的channelId。适用于手机侧应用需要与穿戴设备侧应用建立双向数据通道的场景，例如消息通知转发等。调用此方法后，必须在不再使用代理通道时调用[closeProxyChannel](#proxychannelmanagercloseproxychannel)关闭通道以释放资源。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -48,19 +58,19 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390101，不支持分布式业务的Wearable设备中会返回错误码801。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| channelInfo | [ChannelInfo](#channelinfo) | 是    | 对端设备及服务的MAC和UUID信息。  |
+| channelInfo | [ChannelInfo](#channelinfo) | 是    | 代理通道的链路类型及对端设备的MAC地址和对端监听服务的UUID信息。  |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;number&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同入参将返回相同channelId。 |
+| &nbsp;Promise&lt;number&gt; | 打开代理通道成功时resolve，返回代理通道的channelId，取值范围为1~2147483647，channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同入参将返回相同channelId；失败时reject返回错误信息，错误码详见错误码表。 |
 
 **错误码：**
 
@@ -88,26 +98,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
           let channelInfo: proxyChannelManager.ChannelInfo = {
             linkType: proxyChannelManager.LinkType.LINK_BR,
-            peerDevAddr: "xx:xx:xx:xx:xx:xx", // 穿戴设备蓝牙mac
-            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 穿戴侧监听的uuid
+            peerDevAddr: 'xx:xx:xx:xx:xx:xx', // 穿戴设备蓝牙MAC
+            peerUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', // 穿戴侧监听的UUID
           };
           // 以下为使用 try/catch 判断
           try {
             proxyChannelManager.openProxyChannel(channelInfo)
               .then((channelId: number) => {
-                // 获得通道id
+                // 获得通道ID
               })
               .catch((error: BusinessError) => {
-                console.error(`getErr: ${error.code} ${error.message}`);
+                console.error(`Failed to open proxy channel. Code: ${error.code}, message: ${error.message}`);
               });
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
-            // 如果 code:undefined message:"Cannot read property openProxyChannel of undefined"， 则这个 API 在当前镜像不支持
+            console.error(`Failed to open proxy channel. Code: ${error.code}, message: ${error.message}`);
+            // 如果返回的error.code为undefined且error.message为"Cannot read property openProxyChannel of undefined"，则当前镜像不支持该API
           }
         })
     }
@@ -121,7 +131,7 @@ struct Index {
 
 closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
-关闭已打开的代理通道。
+关闭已打开的代理通道。适用于手机侧应用不再需要与穿戴设备侧应用通信的场景，例如完成数据同步任务后主动释放通道资源等。此方法必须与[openProxyChannel](#proxychannelmanageropenproxychannel)配对使用，在使用完毕后调用此方法关闭通道以释放资源。关闭通道后，已注册的receiveData和channelStateChange回调将自动取消订阅，正在传输的数据将中断。未及时关闭代理通道可能导致通道资源泄漏。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -129,13 +139,13 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
+| channelId | number | 是    | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
 
 **错误码：**
 
@@ -161,15 +171,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
           // 以下为使用 try/catch 判断
           try {
-            proxyChannelManager.closeProxyChannel(1); // 假设通道id为1
+            proxyChannelManager.closeProxyChannel(channelId); // channelId通过openProxyChannel接口的Promise返回值获取
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
-            // 如果 code:undefined message:"Cannot read property closeProxyChannel of undefined"， 则这个 API 在当前镜像不支持
+            console.error(`Failed to close proxy channel. Code: ${error.code}, message: ${error.message}`);
+            // 如果返回的error.code为undefined且error.message为"Cannot read property closeProxyChannel of undefined"，则当前镜像不支持该API
           }
         })
     }
@@ -181,9 +191,9 @@ struct Index {
 
 ## proxyChannelManager.sendData
 
-sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
+sendData(channelId:&nbsp;number, data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-向对端发送数据，使用Promise异步回调。
+向对端发送数据，使用Promise异步回调。适用于手机侧应用通过代理通道向穿戴设备侧应用发送指令或数据的场景，例如发送配置更新、通知消息等。必须在[openProxyChannel](#proxychannelmanageropenproxychannel)成功打开代理通道后才能调用此方法发送数据。当代理通道处于不可用状态（如[ChannelState](#channelstate).CHANNEL_WAIT_RESUME、CHANNEL_EXCEPTION_SOFTWARE_FAILED、CHANNEL_BR_NO_PAIRED）时，调用此方法将失败，建议订阅[on('channelStateChange')](#proxychannelmanageronchannelstatechange)事件监测通道状态，在通道不可用时暂停数据发送，通道恢复后继续发送。数据通过已建立的代理通道经蓝牙BR链路传输至对端设备，数据长度最大为4096字节，超出将返回错误码32390103。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -191,20 +201,20 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
-| data      | ArrayBuffer | 是 | 向对端发送的字节消息，长度最大为4096个字节。 |
+| channelId | number | 是    | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| data      | ArrayBuffer | 是 | 向对端发送的二进制数据，数据格式由应用层自定义，最大长度为4096字节。超出长度限制时返回错误码32390103。 |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;void&gt; | 无返回值的Promise的对象。 |
+| &nbsp;Promise&lt;void&gt; | 无返回值的Promise对象。数据发送成功时resolve，发送失败时reject并返回错误信息。 |
 
 **错误码：**
 
@@ -232,19 +242,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
           const data = new ArrayBuffer(10); // 创建一个长度为 10 的 ArrayBuffer
           try {
-            proxyChannelManager.sendData(1, data)// 假设通道id为1
+            proxyChannelManager.sendData(channelId, data) // channelId通过openProxyChannel接口的Promise返回值获取
               .then(() => {
               })
               .catch((error: BusinessError) => {
-                console.error(`getErr: ${error.code} ${error.message}`);
+                console.error(`Failed to send data. Code: ${error.code}, message: ${error.message}`);
               });
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
+            console.error(`Failed to send data. Code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -258,7 +268,7 @@ struct Index {
 
 on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;DataInfo&gt;):&nbsp;void
 
-订阅数据接收事件，使用异步回调。
+订阅数据接收事件，使用Callback异步回调。适用于手机侧应用需要持续接收穿戴设备侧应用上报数据的场景，例如接收穿戴设备侧应用数据等。代理模块基于openProxyChannel时配置的对端UUID接收对端数据，将接收到的穿戴设备侧应用数据通过回调传递给订阅者。必须在[openProxyChannel](#proxychannelmanageropenproxychannel)成功打开代理通道后才能订阅数据接收事件。若需代理唤醒手机侧应用进程以接收和处理对端数据，使用前请在module.json5中配置action字段"action.ohos.pull.listener"。订阅后需调用[off('receiveData')](#proxychannelmanageroffreceivedata)取消订阅，避免回调持续触发。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -266,15 +276,15 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
 | type      | string | 是 | 设置订阅类型，固定取值为'receiveData'。|
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
-| callback  | Callback&lt;[DataInfo](#datainfo)&gt; | 是 | 回调函数，返回接收到的数据。多次注册回调函数，最后一次注册的回调函数生效。 |
+| channelId | number | 是    | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| callback  | Callback&lt;[DataInfo](#datainfo)&gt; | 是 | 回调函数，用于接收代理通道的数据。回调参数为[DataInfo](#datainfo)对象，包含channelId（通道ID）和data（接收到的字节数据）。需先通过openProxyChannel打开代理通道后才能接收数据。多次注册时，仅最后一次注册的生效。 |
 
 **错误码：**
 
@@ -299,15 +309,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
           const receiveDataCallback = (dataInfo: proxyChannelManager.DataInfo) => {
           };
           try {
-            proxyChannelManager.on('receiveData', 1, receiveDataCallback); // 假设通道id为1
+            proxyChannelManager.on('receiveData', channelId, receiveDataCallback); // channelId通过openProxyChannel接口的Promise返回值获取
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`register receiveData error: ${error.code} ${error.message}`);
+            console.error(`Failed to register receiveData callback. Code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -321,7 +331,7 @@ struct Index {
 
 off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nbsp;void
 
-取消订阅数据接收事件，停止接收数据。
+取消订阅数据接收事件，不再通过回调接收数据。适用于手机侧应用不再需要接收穿戴设备侧应用数据的场景，例如用户切换到其他功能模块等。必须在[openProxyChannel](#proxychannelmanageropenproxychannel)成功打开代理通道后才能取消订阅。此方法必须与[on('receiveData')](#proxychannelmanageronreceivedata)配对使用，用于取消之前通过on('receiveData')注册的数据接收回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -329,15 +339,15 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type      | string | 是 | 设置订阅类型，固定取值为'receiveData'。|
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
-| callback  | Callback&lt;[DataInfo](#datainfo)&gt; | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
+| type      | string | 是 | 设置订阅类型，固定取值为'receiveData'。 |
+| channelId | number | 是    | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| callback  | Callback&lt;[DataInfo](#datainfo)&gt; | 否 | 注册的回调函数。默认效果：不传入此参数时取消订阅所有的数据接收事件。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅；传入其他回调函数不会生效。 |
 
 **错误码：**
 
@@ -362,13 +372,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
           try {
-            proxyChannelManager.off('receiveData', 1); // 假设通道id为1
+            proxyChannelManager.off('receiveData', channelId); // channelId通过openProxyChannel接口的Promise返回值获取
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
+            console.error(`Failed to unregister receiveData callback. Code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -382,7 +392,7 @@ struct Index {
 
 on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
 
-订阅通道状态事件，使用callback进行异步回调。
+订阅通道状态事件，使用Callback异步回调。适用于手机侧应用需要实时感知代理通道连接状态的场景，例如监测通道断开后暂停数据发送、通道恢复后自动重试业务等。代理模块实时监控蓝牙BR链路状态变化，当发生连接恢复、异常断连、配对关系删除等事件时通过回调上报ChannelStateInfo。必须在[openProxyChannel](#proxychannelmanageropenproxychannel)成功打开代理通道后才能订阅通道状态事件。订阅后需调用[off('channelStateChange')](#proxychannelmanageroffchannelstatechange)取消订阅，避免回调持续触发。调用[closeProxyChannel](#proxychannelmanagercloseproxychannel)关闭通道后，已注册的channelStateChange回调将自动取消订阅。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -390,15 +400,15 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type      | string | 是 | 设置订阅类型，固定取值为'channelStateChange'。|
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
-| callback  | Callback&lt;[ChannelStateInfo](#channelstateinfo)&gt; | 是 | 回调函数，返回接收到的通道状态。多次注册callback，最后一次注册的callback生效 |
+| type      | string | 是 | 设置订阅类型，固定取值为'channelStateChange'。 |
+| channelId | number | 是    | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| callback  | Callback&lt;[ChannelStateInfo](#channelstateinfo)&gt; | 是 | 回调函数，用于接收代理通道的状态变更信息。回调参数为[ChannelStateInfo](#channelstateinfo)对象，包含channelId（通道ID）和state（通道连接状态）。需先通过openProxyChannel打开代理通道后才能接收通道状态。多次注册时，仅最后一次注册的回调函数生效。 |
 
 **错误码：**
 
@@ -423,15 +433,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
-          const receiveStatusCallback = (channelStateInfo: proxyChannelManager.ChannelStateInfo) => {
+          const channelStateChangeCallback = (channelStateInfo: proxyChannelManager.ChannelStateInfo) => {
           };
           try {
-            proxyChannelManager.on('channelStateChange', 1, receiveStatusCallback); // 假设打开的通道id为1
+            proxyChannelManager.on('channelStateChange', channelId, channelStateChangeCallback); // channelId通过openProxyChannel接口的Promise返回值获取
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
+            console.error(`Failed to register channelStateChange callback. Code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -445,7 +455,7 @@ struct Index {
 
 off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
 
-取消订阅通道状态事件。
+取消订阅通道状态事件。适用于手机侧应用不再需要监听代理通道连接状态变化的场景，例如用户退出相关业务页面、完成数据传输流程后等。必须在[openProxyChannel](#proxychannelmanageropenproxychannel)成功打开代理通道后才能取消订阅。此方法必须与[on('channelStateChange')](#proxychannelmanageronchannelstatechange)配对使用，用于取消之前通过on('channelStateChange')注册的通道状态回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -453,15 +463,15 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type      | string | 是 | 设置订阅类型为'channelStateChange'。|
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
-| callback  | Callback&lt;[ChannelStateInfo](#channelstateinfo)&gt; | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
+| type      | string | 是 | 设置订阅类型，固定取值为'channelStateChange'。 |
+| channelId | number | 是    | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
+| callback  | Callback&lt;[ChannelStateInfo](#channelstateinfo)&gt; | 否 | 注册的回调函数。默认效果：不传入此参数时取消订阅所有的通道状态事件。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅；传入其他回调函数不会生效。 |
 
 **错误码：**
 
@@ -486,13 +496,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("测试")
+      Button('测试')
         .onClick(() => {
           try {
-            proxyChannelManager.off('channelStateChange', 1); // 假设打开的通道id为1
+            proxyChannelManager.off('channelStateChange', channelId); // channelId通过openProxyChannel接口的Promise返回值获取
           } catch (err) {
             let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
+            console.error(`Failed to unregister channelStateChange callback. Code: ${error.code}, message: ${error.message}`);
           }
         })
     }
@@ -504,26 +514,26 @@ struct Index {
 
 ## DataInfo
 
-存放接收的数据信息，包括通道Id和数据。
+存放接收的数据信息，包括通道ID和数据。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
-| channelId | number | 否 | 否    | 代理通道的channelId。 |
-| data | ArrayBuffer | 否 | 否 | 接收到的字节数据。 |
+| channelId | number | 否 | 否    | 代理通道的channelId，取值范围为1~2147483647。 |
+| data | ArrayBuffer | 否 | 否 | 接收到的字节数据，长度最大为4096字节。 |
 
 ## ChannelInfo
 
-打开代理通道函数的入参，包括对端设备的MAC地址和监听服务的UUID。
+打开代理通道函数的入参，包括代理通道的链路类型、对端设备的MAC地址和监听服务的UUID。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
-| linkType | [LinkType](#linktype) | 否 | 否    | 代理通道的链路类型。 |
-| peerDevAddr | string | 否 | 否 | 对端设备的MAC地址。 |
-| peerUuid | string | 否 | 否 | 对端监听的服务的UUID。 |
+| linkType | [LinkType](#linktype) | 否 | 否    | 代理通道的链路类型，取值范围见[LinkType](#linktype)，目前仅支持LINK_BR（蓝牙BR协议）。 |
+| peerDevAddr | string | 否 | 否 | 对端设备的MAC地址，格式为XX:XX:XX:XX:XX:XX，其中XX为十六进制字符（0~9、A~F或a~f）。对端设备必须已配对，未配对时返回错误码32390002。格式不符合要求时返回错误码32390006。 |
+| peerUuid | string | 否 | 否 | 对端监听的服务的UUID，格式为标准UUID字符串，如xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx。格式不符合要求时返回错误码32390006。 |
 
 ## ChannelStateInfo
 
@@ -533,8 +543,8 @@ struct Index {
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
-| channelId | number | 否 | 否    | 代理通道的channelId。 |
-| state | [ChannelState](#channelstate) | 否 | 否 | 通道的连接状态。 |
+| channelId | number | 否 | 否    | 代理通道的channelId，取值范围为1~2147483647。 |
+| state | [ChannelState](#channelstate) | 否 | 否 | 通道的连接状态，取值范围见[ChannelState](#channelstate)。建议根据不同状态值调整业务策略，如通道断开时暂停数据发送、通道恢复后重试业务。 |
 
 ## ChannelState
 
@@ -546,7 +556,7 @@ struct Index {
 | --------- | ---------------------------------------- |  -------- |
 | CHANNEL_WAIT_RESUME | 0 | 连接已断开，通道不可用。 |
 | CHANNEL_RESUME | 1 | 连接已恢复，通道可用。 |
-| CHANNEL_EXCEPTION_SOFTWARE_FAILED | 2 | 其他软件错误导致通道不可用。 |
+| CHANNEL_EXCEPTION_SOFTWARE_FAILED | 2 | 软件异常导致通道不可用，如内部协议栈错误、资源分配失败等。建议检查日志定位具体原因。 |
 | CHANNEL_BR_NO_PAIRED | 3 | 蓝牙配对关系被删除，通道不可用。 |
 
 ## LinkType
@@ -557,4 +567,4 @@ struct Index {
 
 | 名称       | 值                                       | 说明       |
 | --------- | ---------------------------------------- |  -------- |
-| LINK_BR | 0 | 蓝牙。 |
+| LINK_BR | 0 | 蓝牙BR协议，适用于通过蓝牙BR链路与穿戴设备建立双向数据通道的场景。 |

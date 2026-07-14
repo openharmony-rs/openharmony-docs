@@ -186,7 +186,7 @@ function GetImageInfoSync(context : Context) {
 
 getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<string>
 
-获取图片中给定索引处图像的指定属性键的值。用Promise异步回调。
+获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
@@ -784,8 +784,8 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 | ---------- | ----------- | ---- | ------------ |
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
-| offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | number              | 是   | 当前buffer的长度。单位：字节（byte）。            |
+| offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节（Byte）。             |
+| length     | number              | 是   | 当前buffer的长度。单位：字节（Byte）。            |
 
 **返回值：**
 
@@ -823,8 +823,8 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 | ---------- | ------------------- | ---- | -------------------- |
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
-| offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | number              | 是   | 当前buffer的长度。单位：字节（byte）。            |
+| offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节（Byte）。             |
+| length     | number              | 是   | 当前buffer的长度。单位：字节（Byte）。            |
 | callback   | AsyncCallback\<void> | 是   |  回调函数，当更新增量数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -875,7 +875,7 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. <br>适用版本：24+ |
 | 7700301  | Decode failed.                                               |
 
 **示例：**

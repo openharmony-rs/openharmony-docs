@@ -14,7 +14,7 @@
 > - 本模块接口从API version 9开始不再维护，建议使用新接口[@ohos.systemParameterEnhance](js-apis-system-parameterEnhance-sys.md)替代。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
-> - 由于系统参数都是各个系统服务的内部信息和控制参数，每个系统参数都有各自不同的DAC和MAC访问控制权限，三方应用不能使用此类接口。
+> - 由于系统参数都是各个系统服务的内部信息和控制参数，每个系统参数都有各自不同的DAC（Discretionary Access Control，自主访问控制）和MAC（Mandatory Access Control，强制访问控制）访问控制权限，三方应用不能使用此类接口。
 
 
 ## 导入模块
@@ -27,7 +27,15 @@ import systemParameter from '@ohos.systemparameter';
 
 getSync(key: string, def?: string): string
 
-获取系统参数Key对应的值。
+获取系统参数key对应的值。
+
+> **说明：**
+>
+> getSync和get方法都用于获取系统参数值：
+> - getSync：同步方法，直接返回系统参数值，适用于简单同步场景。
+> - get：异步方法，使用callback或Promise异步返回结果，适用于需要异步处理的场景。
+>
+> 开发者应根据具体场景选择合适的方法。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -35,23 +43,34 @@ getSync(key: string, def?: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。 |
-| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br>def可以传undefined或自定义的任意值。 |
+| key | string | 是 | 待查询的系统参数key。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 系统参数值。<br> 若key存在,返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
+| string | 系统参数值。<br> 若key存在，返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
 ```ts
 try {
-    let info: string = systemParameter.getSync("const.ohos.apiversion");
-    console.info(JSON.stringify(info));
-} catch(e) {
-    console.error("getSync unexpected error: " + e);
+  let info: string = systemParameter.getSync('const.ohos.apiversion');
+  console.info(JSON.stringify(info));
+} catch (e) {
+  console.error('getSync unexpected error: ' + e);
 }
 ```
 
@@ -59,16 +78,27 @@ try {
 
 get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
-获取系统参数Key对应的值，使用callback异步回调。
+获取系统参数key对应的值，使用callback异步回调。
 
-**系统能力：** SystemCapability.Startup.SystemInfo
+**系统能力：** SystemCapability.Startup.SystemInfo 
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。 |
+| key | string | 是 | 待查询的系统参数key。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回系统参数值。当获取成功时，err为undefined，data为系统参数值；当获取失败时，err为错误对象，data为undefined。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -76,14 +106,15 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemParameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
-    if (err == undefined) {
-        console.info("get test.parameter.key value success:" + data)
+  systemParameter.get('const.ohos.apiversion', (err: BusinessError, data: string) => {
+    if (err) {
+      console.error(`Failed to get system parameter. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error(" get test.parameter.key value err:" + err.code)
-    }});
-} catch(e) {
-    console.error("get unexpected error: " + e);
+      console.info('get const.ohos.apiversion success: ' + data);
+    }
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
 }
 ```
 
@@ -91,7 +122,7 @@ try {
 
 get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
-获取系统参数Key对应的值，使用callback异步回调。
+获取系统参数key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -99,9 +130,20 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。 |
-| def | string | 是 | 默认值。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。 |
+| key | string | 是 | 待查询的系统参数key。 |
+| def | string | 是 | def为所要获取的系统参数的默认值。调用时必须传入此参数，但参数值可以传任意字符串类型的值。仅当系统参数不存在时，def参数值生效。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回系统参数值。当获取成功时，err为undefined，data为系统参数值；当获取失败时，err为错误对象，data为undefined。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -109,15 +151,15 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemParameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
-        if (err == undefined) {
-            console.info("get test.parameter.key value success:" + data)
-        } else {
-            console.error(" get test.parameter.key value err:" + err.code)
-        }
-    });
-} catch(e) {
-    console.error("get unexpected error:" + e)
+  systemParameter.get('const.ohos.apiversion', 'default', (err: BusinessError, data: string) => {
+    if (err) {
+      console.error(`Failed to get system parameter. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('get const.ohos.apiversion success: ' + data);
+    }
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
 }
 ```
 
@@ -125,7 +167,7 @@ try {
 
 get(key: string, def?: string): Promise&lt;string&gt;
 
-获取系统参数Key对应的值，使用Promise异步回调。
+获取系统参数key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -133,14 +175,25 @@ get(key: string, def?: string): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待查询的系统参数Key。 |
-| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或自定义的任意值。 |
+| key | string | 是 | 待查询的系统参数key。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise示例，用于异步获取结果。 |
+| Promise&lt;string&gt; | Promise实例，用于异步获取结果。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -148,14 +201,14 @@ get(key: string, def?: string): Promise&lt;string&gt;
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<string> = systemParameter.get("const.ohos.apiversion");
-    p.then((value: string) => {
-        console.info("get test.parameter.key success: " + value);
-    }).catch((err: BusinessError) => {
-        console.error("get test.parameter.key error: " + err.code);
-    });
-} catch(e) {
-    console.error("get unexpected error: " + e);
+  let getPromise: Promise<string> = systemParameter.get('const.ohos.apiversion');
+  getPromise.then((value: string) => {
+    console.info('get const.ohos.apiversion success: ' + value);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get system parameter. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
 }
 ```
 
@@ -163,7 +216,15 @@ try {
 
 setSync(key: string, value: string): void
 
-设置系统参数Key对应的值。
+设置系统参数key对应的值。
+
+> **说明：**
+>
+> setSync和set方法都用于设置系统参数值：
+> - setSync：同步方法，直接设置系统参数并立即返回，适用于简单同步场景。
+> - set：异步方法，使用callback或Promise异步返回结果，适用于需要异步处理的场景。
+>
+> 开发者应根据具体场景选择合适的方法。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -171,21 +232,30 @@ setSync(key: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待设置的系统参数Key。 |
-| value | string | 是 | 待设置的系统参数值。 |
+| key | string | 是 | 待设置的系统参数key。 |
+| value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数设置。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档:[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 
 **示例：**
 
 ```ts
+import { BusinessError } from '@ohos.base';
+
 try {
-    systemParameter.setSync("test.parameter.key", "default");
-} catch(e) {
-    console.error("set unexpected error: " + e);
+  systemParameter.setSync('test.parameter.key', 'default');
+} catch (e) {
+  console.error(`Failed to set system parameter. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
 }
 ```
 
@@ -193,7 +263,7 @@ try {
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置系统参数Key对应的值，使用callback异步回调。
+设置系统参数key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -201,13 +271,20 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待设置的系统参数Key。 |
-| value | string | 是 | 待设置的系统参数值。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| key | string | 是 | 待设置的系统参数key。 |
+| value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数设置。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档:[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -215,14 +292,15 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemParameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
-    if (err == undefined) {
-        console.info("set test.parameter.key value success :" + data)
+  systemParameter.set('test.parameter.key', 'testValue', (err: BusinessError, data: void) => {
+    if (err) {
+      console.error(`Failed to set system parameter. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error("set test.parameter.key value err:" + err.code)
-    }});
-} catch(e) {
-    console.error("set unexpected error: " + e);
+      console.info('set test.parameter.key value success');
+    }
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
 }
 ```
 
@@ -230,7 +308,7 @@ try {
 
 set(key: string, value: string): Promise&lt;void&gt;
 
-设置系统参数Key对应的值，使用Promise异步回调。
+设置系统参数key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -238,18 +316,25 @@ set(key: string, value: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | string | 是 | 待设置的系统参数Key。 |
-| value| string | 是 | 待设置的系统参数值。 |
+| key | string | 是 | 待设置的系统参数key。 |
+| value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise示例，用于异步获取结果。 |
+| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 
-> **说明：**
-> - 此接口只能用于系统应用的参数设置。
-> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档:[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)
+**错误码**：
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
+| 14700102 | Invalid system parameter value.                                          |
+| 14700103 | The operation on the system permission is denied.                        |
+| 14700104 | System internal error such as out memory or deadlock.                    |
+
+以上错误码详细介绍请参考[系统参数错误码](errorcode-system-parameterV9.md)。
 
 **示例：**
 
@@ -257,13 +342,13 @@ set(key: string, value: string): Promise&lt;void&gt;
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<void> = systemParameter.set("test.parameter.key", "testValue");
-    p.then((value: void) => {
-        console.info("set test.parameter.key success: " + value);
-    }).catch((err: BusinessError) => {
-        console.error(" set test.parameter.key error: " + err.code);
-    });
-} catch(e) {
-    console.error("set unexpected error: " + e);
+  let setPromise: Promise<void> = systemParameter.set('test.parameter.key', 'testValue');
+  setPromise.then(() => {
+    console.info('set test.parameter.key success');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set system parameter. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
 }
 ```

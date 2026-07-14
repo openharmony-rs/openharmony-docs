@@ -1,14 +1,14 @@
 # oh_window_pip.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-定义画中画功能的相关接口，包含创建、删除画中画控制器，以及启动、停止画中画等。主要用于视频播放、直播、视频通话或视频会议场景下，以小窗（画中画）模式呈现内容。
+定义画中画功能的相关接口，包含创建、删除画中画控制器，以及启动、停止画中画等。主要用于视频播放、直播、视频通话或视频会议场景下，以小窗（画中画）模式呈现内容。从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet、Car设备使用画中画功能，其他设备不可用。
 
 **引用文件：** <window_manager/oh_window_pip.h>
 
@@ -75,6 +75,7 @@
 | [int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY,uint32_t width, uint32_t height)](#oh_pictureinpicture_setpipinitialsurfacerect) | - | 设置画中画拉起动效开始时的位置和大小，可用于实现一镜到底效果。 |
 | [int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)](#oh_pictureinpicture_unsetpipinitialsurfacerect) | - | 取消已设置的画中画拉起动效的起始位置和大小。 |
 | [int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)](#oh_pictureinpicture_setparentwindowid) | - | 设置画中画主窗口ID。 |
+| [int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)](#oh_pictureinpicture_setautostartenabled) | - | 设置是否在应用主窗退后台时自动启动画中画，默认不自动拉起。 |
 
 ## 枚举类型说明
 
@@ -571,6 +572,7 @@ int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t
 
 **起始版本：** 20
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中不报错也不生效。
 
 **参数：**
 
@@ -1029,3 +1031,28 @@ int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t wi
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示设备不支持画中画。<br>返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。 |
+
+### OH_PictureInPicture_SetAutoStartEnabled()
+
+```c
+int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)
+```
+
+**描述**
+
+设置是否在应用主窗退后台时自动启动画中画，默认不自动拉起。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint32_t controllerId | 画中画控制器ID。取值为非负整数。 |
+| bool enabled | 如应用主窗退后台时需自动启动画中画，则该参数配置为true，否则为false。若设置-系统-智慧多窗-自动启动画中画开关为关闭状态，就算该参数配置为true，应用主窗退后台时也不会自动启动画中画窗口。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果码。 <br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：找不到controllerId对应的画中画控制器。<br>返回WINDOW_MANAGER_ERRORCODE_PIP_INTERNAL_ERROR，表示画中画内部错误。可能原因：画中画控制器已被销毁。 |

@@ -5,7 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -43,8 +43,11 @@ The number of reminders exceeds the limit when **publishReminder()** is called.
 
 **Possible Causes**
 <!--RP1-->
-1. Since API version 10, the number of reminders generated for the application exceeds 30 (for a regular application) or 10,000 (for a system application). In API version 9 and earlier versions, the number of reminders for a single application exceeds 30.
-2. Since API version 10, the total number of reminders for all applications exceeds 12,000. For API version 9 and earlier versions, the total number of reminders exceeds 2,000.
+1. The maximum number of reminders for applications varies depending on the API version and application type:
+    - For API version 26.0.0 or later: A maximum of 64 reminders can be set for a common application, and 10,000 can be set for a system application.
+    - For API versions 10 to 25: A maximum of 30 reminders can be set for a common application, and 10,000 can be set for a system application.
+    - For API version 9 and earlier versions: A maximum of 30 reminders can be set for a single application.
+2. Since API version 10, the total number of reminders for all applications cannot exceed 12,000. For API version 9 and earlier versions, the total number of reminders cannot exceed 2,000.
 
 **Solution**
 

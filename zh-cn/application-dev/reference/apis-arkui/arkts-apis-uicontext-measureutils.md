@@ -84,7 +84,7 @@ struct Index {
 
 measureTextSize(options: MeasureOptions): SizeOptions
 
-计算指定文本单行布局下的宽度和高度。
+计算指定文本的宽度和高度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -142,9 +142,7 @@ struct Index {
 @Entry
 @Component
 struct TextDemo {
-  @State isExpanded: boolean = false;
   @State displayedText: string = '';
-  @State defaultFontSize: number = 16;
   @State textWidth: number = 150;
   @State numLength: number = 0;
   @State numUnicode: number = 0;
@@ -173,7 +171,7 @@ struct TextDemo {
     return codePoints;
   }
 
-  lastUnicodeLength(str: string) { // 获得字符串最后一个字符的unicode长度
+  lastUnicodeLength(str: string): number { // 获得字符串最后一个字符的unicode长度
     if (!str || str.length < 1) {
       return 0;
     }
@@ -181,14 +179,14 @@ struct TextDemo {
       return 1;
     }
     let lastCodePoint = str.codePointAt(str.length - 2);
-    if (lastCodePoint == undefined) {
+    if (lastCodePoint === undefined) {
       return 1;
     }
     let lastStr = String.fromCodePoint(lastCodePoint);
     return lastStr.length;
   }
 
-  calculateText(maxLines: number, fullText: string) { // 计算文本是否需要截断
+  calculateText(maxLines: number, fullText: string): void { // 计算文本是否需要截断
     const noMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
       textContent: fullText,
       constraintWidth: this.textWidth
@@ -199,7 +197,7 @@ struct TextDemo {
       maxLines: this.maxLines
     });
 
-    this.displayedText = this.displayedText = this.fullText;
+    this.displayedText = this.fullText;
     if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // 存在截断
       while (this.displayedText.length > 0) {
         this.displayedText =
@@ -228,7 +226,7 @@ struct TextDemo {
       Text(this.fullText)
         .borderWidth(1)
 
-      Text('下面是设置了maxLines和texOverflow')
+      Text('下面是设置了maxLines和textOverflow')
       Text(this.fullText)
         .maxLines(this.maxLines)
         .textOverflow({ overflow: TextOverflow.Ellipsis })

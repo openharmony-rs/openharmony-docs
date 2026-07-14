@@ -1,4 +1,4 @@
-# Interface (ManualIso)
+# APIs (ManualIso)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -27,11 +27,11 @@ getIso(): number
 
 Obtains the ISO value.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
-**Returns**
+**Return value**
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
@@ -68,11 +68,13 @@ function getIso(photoSession: camera.PhotoSession): number {
 
 setIso(iso: number): void
 
-Sets the ISO sensitivity or ISO speed. The setting is supported only when [ExposureMode](arkts-apis-camera-e.md#exposuremode) is set to **EXPOSURE_MODE_LOCKED**. The value must be within the range specified by [getSupportedIsoRange](arkts-apis-camera-ManualIsoQuery.md#getsupportedisorange24).
+Sets the ISO sensitivity or ISO speed.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+When [ExposureMode](arkts-apis-camera-e.md#exposuremode) is set to **EXPOSURE_MODE_LOCKED**, the ISO sensitivity or ISO speed cannot be set. The value must be within the range specified by [getSupportedIsoRange](arkts-apis-camera-ManualIsoQuery.md#getsupportedisorange24).
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 

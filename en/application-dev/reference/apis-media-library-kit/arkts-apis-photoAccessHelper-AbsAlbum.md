@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:05.559Z pushedAt=2026-06-23T09:25:46.738Z -->
 
 > **NOTE**
 >
@@ -29,7 +30,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | count | number | Yes   | No   |  Number of files in the album.|
 | coverUri | string | Yes   | No   | URI of the cover file of the album.|
 | lpath<sup>23+</sup> | string | Yes   | Yes   | Virtual path of the album.|
-| changeTime<sup>23+</sup> | number | Yes   | Yes   | Time when the album is changed.|
+| changeTime<sup>23+</sup> | number | Yes    | Yes    | Change time of the album, in seconds. |
 
 ## getAssets
 

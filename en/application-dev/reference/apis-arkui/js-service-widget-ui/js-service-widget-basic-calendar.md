@@ -10,11 +10,11 @@ The **\<calendar>** component is used to display the calendar page.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Child Components
 
-Not supported
+Not supported.
 
 
 ## Attributes
@@ -23,14 +23,14 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 
 | Name            | Type    | Default Value  | Mandatory  | Description                                      |
 | -------------- | ------ | ----- | ---- | ---------------------------------------- |
-| date           | string | Current date | No   | Date selected on the current page. The default value is the current date in the format of YYYY-MM-DD, for example, 2019-11-22.|
-| cardcalendar   | boolean   | false | No   | Whether the current calendar is a widget calendar.                          |
+| date           | string | Current date | No   | Date selected on the current page. The default value is the current date in the format of *YYYY-MM-DD*, for example, **2019-11-22**.|
+| cardcalendar   | boolean   | false | No   | Whether the current calendar is a widget calendar.<br>The default value is **false**, indicating that the current calendar is not a widget calendar.                          |
 | startdayofweek | int    | 6     | No   | Start day of a week on the widget calendar. The default value is Sunday. The value ranges from 0 to 6.            |
 | offdays        | string | 5, 6  | No   | Rest days of a week on the widget calendar. The default value is Saturday and Sunday. The value ranges from 0 to 6.        |
-| calendardata   | string | -     | Yes   | Data to be displayed on the monthly widget calendar. You can pass data of 5*7 or 6*7 days in the JSON format. For details about the **"data"** attribute, see Table 1.|
-| showholiday    | bool   | true  | No   | Whether to display holiday information.                          |
+| calendardata   | string | -     | Yes   | Data to be displayed on the monthly widget calendar. You can pass data of 5\*7 or 6\*7 days in the JSON format. For details about the **"data"** attributes, see **Table 1 "data" attributes of calendardata**.|
+| showholiday    | boolean   | true  | No   | Whether to display holiday information.<br>The default value is **true**, indicating that the holiday information is displayed.                          |
 
-**Table 1** "data" attributes of calendardata
+ **Table 1** "data" attributes of calendardata
 
 | Name            | Type    | Description                                     |
 | -------------- | ------ | --------------------------------------- |
@@ -38,17 +38,17 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | day            | int    | Day.                               |
 | month          | int    | Month.                                  |
 | year           | int    | Year.                                  |
-| isFirstOfLunar | boolean   | Whether the day is the first day of the lunar calendar. The first day is underlined.            |
-| hasSchedule    | boolean   | Whether there is an event scheduled for the day. If there is, a circle is drawn around the date number.                 |
-| markLunarDay   | boolean   | Whether the day is a holiday, on which lunar calendar data is marked in blue.                       |
+| isFirstOfLunar | boolean  | Whether the current day is the first day of the lunar calendar. The first day is underlined. The value **true** indicates that the current day is the first day of the lunar calendar. The value **false** indicates that the current day is not the first day of the lunar calendar.            |
+| hasSchedule    | boolean  | Whether there is a schedule on the day. If there is, a circle is drawn under the date. The value **true** indicates that there is a schedule on the current day. The value **false** indicates that there is no schedule on the current day.              |
+| markLunarDay   | boolean  | Whether to mark holidays on the lunar calendar in blue. The value **true** indicates that holidays are marked in blue on the lunar calendar. The value **false** indicates that holidays are not marked in blue on the lunar calendar.                      |
 | lunarDay       | string | Lunar date.                                  |
 | lunarMonth     | string | Lunar month.                                  |
-| dayMark        | string | Day mark.<br>- **work**: workday.<br>- **off**: rest day.|
-| dayMarkValue   | string | Text to be displayed for a workday or a rest day.                    |
+| dayMark        | string | Day mark.<br>- **"work"**: workday.<br>- **"off"**: rest day.|
+| dayMarkValue   | string | Text to be displayed for a working day or a rest day.                    |
 
 Example of **calendardata**:
 
-```
+```json
 {
 "year":2021,
 "month":1,
@@ -67,7 +67,7 @@ Example of **calendardata**:
   },  {
     "index": 1,
     "lunarMonth": "11",
-    "lunarDay": "14",   
+    "lunarDay": "14",    
     "year": 2020,    
     "month": 12,    
     "day": 28,    
@@ -79,7 +79,7 @@ Example of **calendardata**:
   },  {
     "index": 2,
     "lunarMonth": "11",
-    "lunarDay": "15",   
+    "lunarDay": "15",    
     "year": 2020,    
     "month": 12,    
     "day": 29,    
@@ -110,7 +110,7 @@ Example of **calendardata**:
 | selectedchange | changeEvent  | A user clicks a date or switches between months.|
 | requestdata    | requestEvent | A date is requested.       |
 
-**Table 2** changeEvent
+  **Table 2** changeEvent
 
 | Name          | Type    | Description    |
 | ------------ | ------ | ------ |
@@ -118,7 +118,7 @@ Example of **calendardata**:
 | $event.month | string | Selected month.|
 | $event.year  | string | Selected year.|
 
-**Table 3** requestEvent
+  **Table 3** requestEvent
 
 | Name                 | Type    | Description      |
 | ------------------- | ------ | -------- |
@@ -129,7 +129,7 @@ Example of **calendardata**:
 
 ## Example
 
-The following examples are not intended as copy-paste-ready. Further customization is required.
+The following are examples only. Add date data during use.
 
 
 ```html
@@ -198,4 +198,6 @@ The following examples are not intended as copy-paste-ready. Further customizati
     }
 }
 ```
+**4 x 4 widget**
 
+![en-us_calendar-example](figures/calendar-example.png)

@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-dialogSession模块用于支持系统应用弹框功能。
+dialogSession模块用于支持系统应用弹框功能，提供系统级的弹框会话管理能力。
 
 > **说明：**
 >
@@ -39,9 +39,9 @@ import { dialogSession } from '@kit.AbilityKit';
 | bundleIconId | number | 否 | 否 | 表示Bundle图标ID。 |
 | bundleLabelId | number | 否 | 否 | 表示Bundle标签ID。 |
 | visible<sup>12+</sup> | boolean | 否 | 否 | 表示Ability是否可见。true表示Ability可见，false表示Ability不可见。 |
-| appIndex<sup>12+</sup> | number | 否 | 否 | 表示应用的分身索引。 |
+| appIndex<sup>12+</sup> | number | 否 | 否 | 表示应用的分身索引。取值从0开始，0表示主应用实例，1及以上表示分身实例。 |
 | multiAppMode<sup>12+</sup> | [MultiAppMode](./js-apis-bundleManager-applicationInfo.md#multiappmode12) | 否 | 否 | 表示应用的多开模式。|
-| codePath<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装目录。|
+| codePath<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装目录。当需要获取应用安装路径时传入，不传入时此字段为空。|
 | installSource<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装来源，支持的取值如下：<br/> - pre-installed：表示首次开机时安装的预置应用。<br/> - ota：表示系统升级时新增的预置应用。<br/> - recovery：表示用户卸载后又手动恢复的预置应用。<br/> - bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。<br/> - unknown：表示应用安装来源未知。|
 
 ## DialogSessionInfo
@@ -54,7 +54,7 @@ import { dialogSession } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | callerAbilityInfo | [DialogAbilityInfo](#dialogabilityinfo)| 否 | 否 | 表示请求方组件信息。 |
 | targetAbilityInfos | Array\<[DialogAbilityInfo](#dialogabilityinfo)\> | 否 | 否 | 表示目标组件信息列表。 |
-| parameters | Record<string, Object> | 否 | 是 | 表示其他参数。 |
+| parameters | Record<string, Object> | 否 | 是 | 表示其他参数，用于传递会话相关的自定义数据。 |
 
 ## getDialogSessionInfo
 
@@ -70,7 +70,7 @@ getDialogSessionInfo(dialogSessionId: string): [DialogSessionInfo](#dialogsessio
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID。 |
+  | dialogSessionId | string | 是 | 用户请求会话ID，由系统在会话创建时自动生成。 |
 
 **返回值：**
 
@@ -123,7 +123,7 @@ sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean, 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | dialogSessionId | string | 是 | 用户请求会话ID。 |
-  | targetWant | Want | 是 | 用户请求目标。 |
+  | targetWant | Want | 是 | 目标Ability的Want信息。 |
   | isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
   | callback | AsyncCallback\<void\> | 是 | 回调函数。当发送用户请求成功，err为undefined，否则为错误对象。 |
 
@@ -236,7 +236,7 @@ export default class UIExtAbility extends UIExtensionAbility {
     try {
       dialogSession.sendDialogResult(dialogSessionId, targetWant, isAllow)
         .then((data) => {
-          console.info(`sendDialogResult success, pid: ${data}`);
+          console.info(`sendDialogResult success`);
         }, (err: BusinessError) => {
           console.error(`sendDialogResult error, errorCode: ${err.code}`);
         });

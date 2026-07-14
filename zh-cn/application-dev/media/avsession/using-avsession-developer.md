@@ -10,9 +10,9 @@
 
 ## 基本概念
 
-- 媒体会话元数据（AVMetadata）： 用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等属性。
+- 媒体会话元数据（AVMetadata）：用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等属性。
 
-- 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体Id（activeItemId）、自定义媒体数据（extras）等属性。
+- 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等属性。
 
 ## 接口说明
 
@@ -22,20 +22,20 @@
 
 | 接口名 | 说明 | 
 | -------- | -------- |
-| createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback&lt;AVSession&gt;): void<sup>10+<sup> | 创建媒体会话。<br/>一个UIAbility只能存在一个媒体会话，重复创建会失败。 | 
-| setAVMetadata(data: AVMetadata, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置媒体会话元数据。 | 
-| setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置媒体会话播放状态。 | 
-| setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置启动UIAbility。 | 
-| getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+<sup> | 获取当前会话自身控制器。 | 
-| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | 获取播放设备相关信息。 |
-| activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 激活媒体会话。 | 
-| deactivate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 禁用当前会话。 |
-| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 销毁媒体会话。 | 
-| setAVQueueItems(items: Array&lt;AVQueueItem&gt;, callback: AsyncCallback&lt;void&gt;): void <sup>10+<sup> | 设置媒体播放列表。 |
-| setAVQueueTitle(title: string, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置媒体播放列表名称。 |
-| dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置会话内自定义事件。 |
-| setExtras(extras: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置键值对形式的自定义媒体数据包。|
-| getOutputDeviceSync(): OutputDeviceInfo<sup>10+<sup> | 使用同步方法获取当前输出设备信息。 |
+| createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback&lt;AVSession&gt;): void<sup>10+</sup> | 创建媒体会话。<br/>一个UIAbility只能存在一个媒体会话，重复创建会失败。 | 
+| setAVMetadata(data: AVMetadata, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置媒体会话元数据。 | 
+| setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置媒体会话播放状态。 | 
+| setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置启动UIAbility。 | 
+| getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+</sup> | 获取当前会话自身控制器。 | 
+| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+</sup> | 获取播放设备相关信息。 |
+| activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 激活媒体会话。 | 
+| deactivate(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 禁用当前会话。 |
+| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 销毁媒体会话。 | 
+| setAVQueueItems(items: Array&lt;AVQueueItem&gt;, callback: AsyncCallback&lt;void&gt;): void <sup>10+</sup> | 设置媒体播放列表。 |
+| setAVQueueTitle(title: string, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置媒体播放列表名称。 |
+| dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置会话内自定义事件。 |
+| setExtras(extras: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置键值对形式的自定义媒体数据包。|
+| getOutputDeviceSync(): OutputDeviceInfo<sup>10+</sup> | 使用同步方法获取当前输出设备信息。 |
 
 ## 开发步骤
 
@@ -336,7 +336,7 @@
    6.1 固定控制命令的监听。
    > **说明：**
    >
-   > 媒体会话提供方在注册相关固定播控命令事件监听时，监听的事件会在媒体会话控制方的getValidCommands()方法中体现，即媒体会话控制方会认为对应的方法有效，进而根据需要触发相应暂不使用时的事件。为了保证媒体会话控制方下发的播控命令可以被正常执行，媒体会话提供方请勿进行无逻辑的空实现监听。
+   > 媒体会话提供方在注册相关固定播控命令事件监听时，监听的事件会在媒体会话控制方的getValidCommands()方法中体现，即媒体会话控制方会认为对应的方法有效，进而根据需要触发相应的事件。为了保证媒体会话控制方下发的播控命令可以被正常执行，媒体会话提供方请勿进行无逻辑的空实现监听。
 
    Session侧的固定播控命令主要包括播放、暂停、上一首、下一首等基础操作命令，详细介绍请参见[AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10)。
 
@@ -441,7 +441,7 @@
 
    6.2 高级播控事件的监听。
 
-   Session侧的可以注册的高级播控事件主要包括：
+   Session侧可注册的高级播控事件主要包括：
 
    - skipToQueueItem: 播放列表其中某项被选中的事件。
    - handleKeyEvent: 按键事件。
@@ -563,7 +563,7 @@
 
 8. 音视频应用在退出，并且不需要继续播放时，及时取消监听以及销毁媒体会话释放资源。
 
-   取消播控命令监听的示例代码如下所示 ：
+   取消播控命令监听的示例代码如下所示：
 
    <!-- @[off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Off.ets) -->
    

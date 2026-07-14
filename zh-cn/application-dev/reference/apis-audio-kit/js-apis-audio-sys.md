@@ -2376,7 +2376,7 @@ setAudioEffectProperty(propertyArray: Array\<AudioEffectProperty>): void
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or catergory of the input audioEffectProperties is incorrect.|
+| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or category of the input audioEffectProperties is incorrect.|
 | 6800301 | System error. |
 
 **示例：**
@@ -2472,7 +2472,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2557,7 +2557,7 @@ offAudioSeparationEffectEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2603,7 +2603,7 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -6060,7 +6060,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 >
 > - 此采集器可用于同时录制麦克风输入（Mic-In）音频数据和回声参考信号，供应用层进行算法处理。
 > - 麦克风输入音频数据和回声参考信号会根据应用层设置的配置，被放入同一个缓冲区或多个独立缓冲区中。
-> - 仅允许使用[SourceType](js-apis-audio-sys.md#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。此外，当应用处于后台运行状态时，不允许创建该采集器实例。
+> - 仅允许使用[SourceType](#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。此外，当应用处于后台运行状态时，不允许创建该采集器实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6074,7 +6074,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 
 | 参数名  | 类型                                           | 必填 | 说明             |
 | :------ | :--------------------------------------------- | :--- | :--------------- |
-| config | [AudioCapturerMicInConfig](js-apis-audio-sys.md#audiocapturermicinconfig23) | 是   | 配置音频采集器。 |
+| config | [AudioCapturerMicInConfig](#audiocapturermicinconfig23) | 是   | 配置音频采集器。 |
 
 **返回值：**
 
@@ -6091,7 +6091,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 |     201 | Permission denied, including background recording.             |
 |     202 | Not system App.                |
 | 6800101 | Parameter verification failed. |
-| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](js-apis-audio-sys.md#sourcetype8) is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
+| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](#sourcetype8) is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
 | 6800301 | Audio system internal error, such as system process crash.            |
 
 **示例：**

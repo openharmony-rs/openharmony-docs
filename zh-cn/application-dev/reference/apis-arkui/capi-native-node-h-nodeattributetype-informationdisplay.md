@@ -156,13 +156,13 @@ NODE_PROGRESS_TYPE = 10003
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 进度条类型枚举值[ArkUI_ProgressType](capi-native-type-h.md#arkui_progresstype)，默认值为ARKUI_PROGRESS_TYPE_LINEAR。 |
+| .value[0].i32 | 进度条类型枚举值[ArkUI_ProgressType](capi-progress-h.md#arkui_progresstype)，默认值为ARKUI_PROGRESS_TYPE_LINEAR。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 进度条类型枚举值[ArkUI_ProgressType](capi-native-type-h.md#arkui_progresstype)。 |
+| .value[0].i32 | 进度条类型枚举值[ArkUI_ProgressType](capi-progress-h.md#arkui_progresstype)。 |
 
 ## NODE_PROGRESS_LINEAR_STYLE
 

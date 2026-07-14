@@ -6,21 +6,19 @@
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
+Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组件配合使用。
+
+本文档仅为API参数说明。组件描述和使用说明见[Repeat开发者指南](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
-Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组件配合使用。
-
-本文档仅为API参数说明。组件描述和使用说明见[Repeat开发者指南](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)。
-
 ## 接口
 
 ### Repeat: \<T\>(arr: Array\<T\>)
-
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -43,8 +41,6 @@ Repeat<string>(this.arr)
 > **说明：**
 >
 > 从API version 18开始，Repeat数据源支持RepeatArray类型。
-
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -402,6 +398,8 @@ List() {
 
 type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -412,6 +410,12 @@ type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 | ------ | ------ | ---- | -------------------------------------------- |
 | item   | T      | 否   | arr中每一个数据项。T为开发者传入的数据类型。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
 | index  | number | 否   | 当前数据项对应的索引。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。|
+
+**返回值：**
+
+| 类型   | 说明                                         |
+| ------ | -------------------------------------------- |
+| string      | 当前数据项生成的template type。|
 
 ## RepeatMemOptStrategy
 

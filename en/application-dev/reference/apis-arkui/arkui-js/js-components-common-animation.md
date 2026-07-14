@@ -12,6 +12,7 @@
 
 Components support dynamic rotation, translation, and scaling effects. These effects can be set in the **style** attribute or CSS files.
 
+## Attributes
 
 | Name                               | Type                                      | Description                                      |
 | --------------------------------- | ---------------------------------------- | ---------------------------------------- |
