@@ -1054,7 +1054,7 @@ function isTorchLevelControlSupported(cameraManager: camera.CameraManager): bool
 
 ## SetTorchModeOnWithLevel
 
-SetTorchModeOnWithLevel(torchLevel: number): void
+setTorchModeOnWithLevel(torchLevel: number): void
 
 手电筒设置指定亮度级别。
 
