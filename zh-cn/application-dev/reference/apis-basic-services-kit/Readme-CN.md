@@ -20,7 +20,7 @@
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
-    - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
+    - [@ohos.runningLock (RunningLock锁)](js-apis-runninglock.md)
     - [@ohos.thermal (热管理)](js-apis-thermal.md)
     - [@ohos.usbManager (USB管理)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (串口管理)](js-apis-serialManager.md)
