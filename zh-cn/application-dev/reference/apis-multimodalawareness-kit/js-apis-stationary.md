@@ -70,8 +70,7 @@ type ActivityType = 'still' | 'relativeStill'
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
-设备状态管理，订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件，用于持续监听设备状态变化事件。
-- 调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
+设备状态管理，订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件，用于持续监听设备状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 
@@ -81,7 +80,7 @@ on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callba
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
 | activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
 | event  | [ActivityEvent](#activityevent)  | 是   | 事件类型。              |
-| reportLatencyNs  | number  | 是   | 报告延时，单位为纳秒（ns），取值范围[1000000000, 3000000000]。超出范围时返回错误。建议根据业务场景选择合适的值，较小值可提高实时性但会增加功耗，较大值可降低功耗但会降低响应速度。              |
+| reportLatencyNs  | number  | 是   | 报告延时，单位：纳秒（ns），取值范围[1000000000, 3000000000]。超出范围时返回错误。建议根据业务场景选择合适的值，较小值可提高实时性但会增加功耗，较大值可降低功耗但会降低响应速度。              |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | 是   | 回调函数，用于接收设备状态变化结果。    |
 
 **错误码**：
@@ -128,8 +127,7 @@ stationary.once('still', (data) => {
 
 off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;ActivityResponse&gt;): void
 
-设备状态管理，取消订阅设备状态服务。取消订阅后，将停止接收该状态相关的回调函数调用。
-- 调用off()时需要使用与on()相同的activity和event参数，才能正确取消对应的订阅
+设备状态管理，取消订阅设备状态服务。取消订阅后，将停止接收该状态相关的回调函数调用。调用off()时需要使用与on()相同的activity和event参数，才能正确取消对应的订阅。
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Stationary
 

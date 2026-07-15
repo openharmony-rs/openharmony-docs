@@ -108,8 +108,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
-订阅拾取传感器事件。
-- 需与offPickupChange配对使用，使用完毕后应调用offPickupChange取消订阅以释放系统资源。
+订阅拾取传感器事件。需与offPickupChange配对使用，使用完毕后应调用offPickupChange取消订阅以释放系统资源。
 
 **起始版本**：26.0.0
 
@@ -153,8 +152,7 @@ try {
 
 onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
-订阅旋转传感器事件。
-- 需与offRotateChange配对使用，使用完毕后应调用offRotateChange取消订阅以释放系统资源。
+订阅旋转传感器事件。需与offRotateChange配对使用，使用完毕后应调用offRotateChange取消订阅以释放系统资源。
 
 **起始版本**：26.0.0
 
@@ -198,8 +196,7 @@ try {
 
 onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
-订阅智能旋转传感器事件。
-- 需与offSmartRotateChange配对使用，使用完毕后应调用offSmartRotateChange取消订阅以释放系统资源。
+订阅智能旋转传感器事件。需与offSmartRotateChange配对使用，使用完毕后应调用offSmartRotateChange取消订阅以释放系统资源。
 
 **起始版本**：26.0.0
 
@@ -244,8 +241,7 @@ try {
 
 offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
-取消订阅拾取传感器事件。
-- 当应用不再需要监听拾取事件时使用，如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。
+取消订阅拾取传感器事件。当应用不再需要监听拾取事件时使用，如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。
 
 **起始版本**：26.0.0
 
@@ -304,8 +300,7 @@ try {
 
 offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
-取消订阅旋转传感器事件。
-- 当应用不再需要监听旋转事件时使用，应调用此接口取消订阅以释放系统资源。
+取消订阅旋转传感器事件。当应用不再需要监听旋转事件时使用，应调用此接口取消订阅以释放系统资源。
 
 **起始版本**：26.0.0
 
@@ -364,8 +359,7 @@ try {
 
 offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
-取消订阅智能旋转传感器事件。
-- 当应用不再需要监听智能旋转事件时使用，应调用此接口取消订阅以释放系统资源。
+取消订阅智能旋转传感器事件。当应用不再需要监听智能旋转事件时使用，应调用此接口取消订阅以释放系统资源。
 
 **起始版本**：26.0.0
 

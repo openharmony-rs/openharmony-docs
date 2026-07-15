@@ -59,8 +59,7 @@ try {
 ## metadataBinding.on('operationSubmitMetadata')
 on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;number&gt;): void 
 
-订阅系统获取编码内容的事件。应用注册回调，事件发生时通过回调通知应用。
-- 调用on()方法订阅事件后，必须在不再需要监听事件时调用off()方法取消订阅，释放监听资源
+订阅系统获取编码内容的事件。应用注册回调，事件发生时通过回调通知应用。调用on()方法订阅事件后，必须在不再需要监听事件时调用off()方法取消订阅，释放监听资源。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -92,7 +91,7 @@ let bundleName: string = '';
 try {
   metadataBinding.on('operationSubmitMetadata', bundleName, (event: number) => {
     if (event == 1) {
-      console.info("The screenshot request is intercepted and the app link is obtained");
+      console.info("The screenshot request is received and the app link is obtained");
     }
   });
 } catch (error) {

@@ -106,10 +106,10 @@ import { image } from '@kit.ImageKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// encodeImage需通过encodeImage接口处理后的图片获取。
-let encodeImage: image.PixelMap | undefined = undefined;
+// encodedImage需通过encodeImage接口处理后的图片获取。
+let encodedImage: image.PixelMap | undefined = undefined;
 let captureMetadata: string = "";
-metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
+metadataBinding.decodeImage(encodedImage).then((metadata: string) => {
   // 将从图片解析出的元数据信息保存到captureMetadata变量，供后续使用
   captureMetadata = metadata;
 }).catch((error: BusinessError) => {

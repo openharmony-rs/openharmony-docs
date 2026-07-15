@@ -62,7 +62,7 @@
    ```ts
    try {
       deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
-         console.info(`succeed to get status, now status = ${JSON.stringify(data)}`);
+         console.info(`succeeded to get status, now status = ${JSON.stringify(data)}`);
       });
    } catch (err) {
       console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
@@ -111,7 +111,7 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
    ```ts
    // 定义callback变量
    let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus.SteadyStandingStatus) => {
-      console.info('succeed to get status, now status = ' + JSON.stringify(data));
+      console.info('succeeded to get status, now status = ' + JSON.stringify(data));
    };
    // 以callback为回调函数，订阅设备静止姿态感知（支架态）事件
    try {
@@ -123,6 +123,6 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
    try {
       deviceStatus.off('steadyStandingDetect', callback);
    } catch (err) {
-      console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
+      console.error(`off failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```

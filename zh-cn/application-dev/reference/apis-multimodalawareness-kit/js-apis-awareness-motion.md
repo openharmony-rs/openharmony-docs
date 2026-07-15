@@ -49,9 +49,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;): void
 
-订阅触控操作手感知事件。
-- 调用on()订阅事件后，建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。
-- 相关方法：off('operatingHandChanged')：取消订阅触控操作手感知事件。
+订阅触控操作手感知事件。调用on()订阅事件后，建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。相关方法：off('operatingHandChanged')：取消订阅触控操作手感知事件。
 
 如果设备不支持此功能，将返回801错误码。
 
@@ -102,9 +100,7 @@ try {
 
 off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void
 
-取消订阅触控操作手感知事件。
-- 若未调用on()就调用off()，该方法会抛出异常。
-- 相关方法：on('operatingHandChanged')：订阅触控操作手感知事件。
+取消订阅触控操作手感知事件。若未调用on()就调用off()，该方法会抛出异常。相关方法：on('operatingHandChanged')：订阅触控操作手感知事件。
 
 **需要权限**：
 - API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
@@ -180,7 +176,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
-    console.info('get succeeded' + data);
+    console.info('get succeeded: ' + data);
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to get recent operating hand status. Code: ${error.code}, message: ${error.message}`);
@@ -191,9 +187,7 @@ try {
 
 on(type: 'holdingHandChanged', callback: Callback&lt;HoldingHandStatus&gt;): void
 
-订阅握持手状态变化感知事件。
-- 调用on()订阅事件后，建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。
-- 相关方法：off('holdingHandChanged')：取消订阅握持手状态变化感知事件。
+订阅握持手状态变化感知事件。调用on()订阅事件后，建议在使用完毕后调用off()取消订阅以释放资源，避免多余的性能功耗开销。相关方法：off('holdingHandChanged')：取消订阅握持手状态变化感知事件。
 
 **需要权限**：ohos.permission.DETECT_GESTURE
 
@@ -239,9 +233,7 @@ try {
 
 off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): void
 
-取消订阅握持手状态变化感知事件。
-- 若未调用on()就调用off()，该方法会抛出异常。
-- 相关方法：on('holdingHandChanged')：订阅握持手状态变化感知事件。
+取消订阅握持手状态变化感知事件。若未调用on()就调用off()，该方法会抛出异常。相关方法：on('holdingHandChanged')：订阅握持手状态变化感知事件。
 
 **需要权限**：ohos.permission.DETECT_GESTURE
 
