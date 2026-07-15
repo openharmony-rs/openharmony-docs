@@ -90,9 +90,9 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| deviceId  | string  | 是    | 目标设备的networkId或UDID。可通过调用[getTrustedDevices()](#conversationgettrusteddevices)获取。传入无效值时返回错误码401。  |
-| bundleName | string  | 是    | 数据发送目标包名，需与远端设备上通过[registerConversationListener](#conversationregisterconversationlistener)注册会话监听的应用包名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。  |
-| abilityName | string  | 是    | 数据发送目标Ability名，需与远端设备上已注册会话监听的Ability名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。  |
+| deviceId  | string  | 是    | 目标设备的networkId或UDID。可通过调用[getTrustedDevices()](#conversationgettrusteddevices)获取。networkId、UDID的长度都应为64字节。传入无效值时返回错误码401。  |
+| bundleName | string  | 是    | 数据发送目标包名，包名长度范围为1-127字节，必须符合反向域名格式（如com.example.demo），需与远端设备上通过[registerConversationListener](#conversationregisterconversationlistener)注册会话监听的应用包名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。  |
+| abilityName | string  | 是    | 数据发送目标Ability名，Ability名长度范围为1-127字节，需与远端设备上已注册会话监听的Ability名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。  |
 | msg | ArrayBuffer  | 是    | 要发送的数据内容，为ArrayBuffer格式的二进制数据，不能为空。数据结构由应用层协议定义。传入空数据或无效数据时返回错误码401。  |
 
 **返回值**：
@@ -127,9 +127,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = 'conversationDemo';
 
 try {
-  let deviceId: string = "device_network_id_or_udid"; // deviceId需通过调用conversation.getTrustedDevices()获取目标设备的networkId或UDID
-  let bundleName: string = "com.example.demo";
-  let abilityName: string = "EntryAbility";
+  let deviceId: string = 'device_network_id_or_udid'; // deviceId需通过调用conversation.getTrustedDevices()获取目标设备的networkId或UDID
+  let bundleName: string = 'com.example.demo';
+  let abilityName: string = 'EntryAbility';
   let msg: ArrayBuffer = new ArrayBuffer(10);
   let view = new Uint8Array(msg);
   view[0] = 1;
@@ -165,8 +165,8 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| bundleName  | string  | 是    | 接收数据的包名，需与本应用的包名一致。不满足此要求时，监听器可能无法正确接收数据。传入无效或空值时返回错误码401。  |
-| abilityName | string  | 是    | 接收数据的Ability名，需与本应用中的Ability名一致。不满足此要求时，监听器可能无法正确接收数据。传入无效或空值时返回错误码401。  |
+| bundleName  | string  | 是    | 接收数据的包名，包名长度范围为1-127字节，必须符合反向域名格式（如com.example.demo），需与本应用的包名一致。不满足此要求时，监听器可能无法正确接收数据。传入无效或空值时返回错误码401。  |
+| abilityName | string  | 是    | 接收数据的Ability名，Ability名长度范围为1-127字节，需与本应用中的Ability名一致。不满足此要求时，监听器可能无法正确接收数据。传入无效或空值时返回错误码401。  |
 | dataCallback | [DataCallback](#datacallback)  | 是    | 收到数据时的回调函数，用于接收跨设备数据。传入无效值时返回错误码401。  |
 
 **错误码**：
@@ -191,8 +191,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = 'conversationDemo';
 
 try {
-  let bundleName: string = "com.example.demo";
-  let abilityName: string = "EntryAbility";
+  let bundleName: string = 'com.example.demo';
+  let abilityName: string = 'EntryAbility';
 
   conversation.registerConversationListener(bundleName, abilityName, (deviceId: string, msg: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'received message from deviceId = ' + deviceId + ', msg length = ' + msg.byteLength);
@@ -208,7 +208,7 @@ try {
 
 unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string):&nbsp;void
 
-注销指定包名和Ability名的会话监听。需与[registerConversationListener](#conversationregisterconversationlistener)配对使用，用于注销已注册的会话监听器。同一包名和Ability名只能注册一个监听器，重复注册会覆盖之前的监听器，注销后将移除当前生效的监听器。调用此接口后，应用将不再接收对应包名和Ability名的会话数据。如果之前未注册过指定包名和Ability名的监听器，此接口同样返回成功。
+注销指定包名和Ability名的会话监听。需与[registerConversationListener](#conversationregisterconversationlistener)配对使用，用于注销已注册的会话监听器。在不再需要接受消息时应调用注销监听器以释放资源，未注销可能导致资源持续占用。同一包名和Ability名只能注册一个监听器，重复注册会覆盖之前的监听器，注销后将移除当前生效的监听器。调用此接口后，应用将不再接收对应包名和Ability名的会话数据。如果之前未注册过指定包名和Ability名的监听器，此接口同样返回成功。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -222,8 +222,8 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| bundleName  | string  | 是    | 要取消监听的包名，需与注册监听时使用的包名一致。传入无效或空值时返回错误码401。  |
-| abilityName | string  | 是    | 要取消监听的Ability名，需与注册监听时使用的Ability名一致。传入无效或空值时返回错误码401。  |
+| bundleName  | string  | 是    | 要取消监听的包名包，名长度范围为1-127字节，必须符合反向域名格式（如com.example.demo），需与注册监听时使用的包名一致。传入无效或空值时返回错误码401。  |
+| abilityName | string  | 是    | 要取消监听的Ability名，Ability名长度范围为1-127字节，需与注册监听时使用的Ability名一致。传入无效或空值时返回错误码401。  |
 
 **错误码**：
 
@@ -247,8 +247,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = 'conversationDemo';
 
 try {
-  let bundleName: string = "com.example.demo";
-  let abilityName: string = "EntryAbility";
+  let bundleName: string = 'com.example.demo';
+  let abilityName: string = 'EntryAbility';
 
   conversation.unregisterConversationListener(bundleName, abilityName);
   hilog.info(0x0000, TAG, 'unregisterConversationListener success');
@@ -272,15 +272,15 @@ try {
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备，用于发送数据时的设备寻址。与UDID互为替代标识，发送数据时可任选其一。     |
 | deviceName           | string | 否    |否   | 设备名称。 |
-| deviceTypeId            | number | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数（如手机、平板、电视、穿戴设备等对应的类型标识值）。 |
+| deviceTypeId            | number | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数（如手机、平板、电视、穿戴设备等对应的类型标识值，具体数值以系统定义为准）。 |
 | nearby            | boolean | 否    |否    | 设备是否在近场。true表示设备在近场，false表示设备不在近场。 |
 | udid            | string | 否    |否    | 设备的UDID，唯一标识一台设备，用于发送数据时的设备寻址。与networkId不同，UDID为设备的永久唯一标识，不随网络拓扑变化而改变，两者互为替代标识，发送数据时可任选其一。 |
 
 ## DataCallback
 
-数据接收回调函数类型。
+type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
 
-**type DataCallback = (deviceId: string, msg: ArrayBuffer) => void**
+数据接收回调函数类型。
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
