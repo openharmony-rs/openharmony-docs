@@ -44,7 +44,7 @@ setCookie()
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setCookie<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#setcookiedeprecated)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[configCookieSync<sup>11+</sup>](./arkts-apis-webview-WebCookieManager.md#configcookiesync11)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
