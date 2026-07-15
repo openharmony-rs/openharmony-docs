@@ -190,7 +190,7 @@ Column index is out of bounds.
 1. 确认问题时间点附近，是否可搜索到关键日志：`GetColumnIndex:Failed, columnName`，同时排查[getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex)的入参是否为表中不存在的列名。
    - 是：确保传入参数符合预期，必须为表中存在的列名。
    - 否：转下一步。
-2. 确认问题时间点附近，是否可正则搜索到关键日志：`column index.*out of range`，同时排查[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)或[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)的入参是否超出有效范围。排查[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等查询数据的接口入参是否超出有效范围。
+2. 确认问题时间点附近，是否可正则搜索到关键日志：`column index.*out of range`，同时排查[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)、[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)、[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)的入参是否超出有效范围。
    - 是：确保传入参数的值处在合法范围内。
    - 否：提供hilog系统日志，联系技术支撑人员定位。
 
