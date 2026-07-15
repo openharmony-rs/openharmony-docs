@@ -11319,7 +11319,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| enable | boolean | 是 | 表示是否启用默认错误页。true表示启用，false表示不启用。|
+| enable | boolean | 是 | 表示是否启用mainframe错误页。true表示启用，false表示不启用。|
 | includeSubframe | boolean | 是 | 表示是否启用subframe默认错误页。true表示启用，false表示不启用。|
 
 **错误码：**
@@ -11381,7 +11381,7 @@ getSubframeErrorPageEnabled(): boolean
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用。<br>不启用默认错误页功能或者不启用subframe错误页功能时，返回false。|
+| boolean | 返回是否启用subframe错误页功能。<br>true：已启用；false：未启用。<br>不启用mainframe错误页功能，返回false。<br>启用了mainframe错误页功能但没有启用subframe错误页功能，返回false。|
 
 **错误码：**
 
