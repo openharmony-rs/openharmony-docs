@@ -827,14 +827,14 @@ URL不合法时返回：
 
 常见失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 11 | annotation command failed或具体失败原因 | 标注命令执行失败。无法获取具体原因时，`message`为`"annotation command failed"`。 |
-| 110 | params is invalid | `params`缺失或不是Object。 |
-| 130 | timed out | 标注命令执行超时。 |
-| 132 | browser or frame is null | browser、main frame或ArkWeb frame为空。 |
-| 391 | missing elementList | `elementList`缺失。 |
-| 392 | invalid elementList | `elementList`不是数组、为空数组、数组项不是字符串或为空字符串。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 标注命令执行失败。 |
+| 110 | `params`缺失或不是Object。 |
+| 130 | 标注命令执行超时。 |
+| 132 | browser、main frame或ArkWeb frame为空。 |
+| 391 | `elementList`缺失。 |
+| 392 | `elementList`不是数组、为空数组、数组项不是字符串或为空字符串。 |
 
 ## removePageAnnotation
 
@@ -867,12 +867,12 @@ URL不合法时返回：
 
 常见失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 11 | overlay not found | 当前页面不存在可清理的标注overlay。 |
-| 11 | annotation command failed或具体失败原因 | 取消标注命令执行失败。无法获取具体原因时，`message`为`"annotation command failed"`。 |
-| 130 | timed out | 取消标注命令执行超时。 |
-| 132 | browser or frame is null | browser、main frame或ArkWeb frame为空。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 当前页面不存在可清理的标注overlay。 |
+| 11 | 取消标注命令执行失败。 |
+| 130 | 取消标注命令执行超时。 |
+| 132 | browser、main frame或ArkWeb frame为空。 |
 ## screenCapture
 
 获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
