@@ -11300,14 +11300,14 @@ struct WebComponent {
 
 setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
-设置是否启用默认错误页，并可控制subframe错误页是否启用。
+设置是否启用mainframe错误页，并可控制是否启用subframe错误页。
 
 当enable设置为true时，如果页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，可在该回调中设置自定义的错误展示页；当enable和includeSubframe同时设置为true时，subframe加载发生错误也会触发onOverrideErrorPage回调，onOverrideErrorPage接口设置的自定义错误展示页对subframe也会生效。
 
 > **说明：**
 
 > - 当enable设置为false时，includeSubframe设置不生效。
-> - includeSubframe的配置也受onOverrideErrorPage回调控制，可在该回调中设置自定义subframe的错误展示页面。
+> - 当subframe错误页启用时，onOverrideErrorPage设置的自定义错误展示页可同时用于subframe。
 
 **起始版本：** 26.0.0
 
@@ -11343,7 +11343,7 @@ struct WebComponent {
       Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
         .onControllerAttached(() => {
           this.controller.setErrorPageEnabled(true, true);
-          let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
+          let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
           console.info("Subframe error page enabled: " + isEnabled);
         })
     }
@@ -11404,7 +11404,7 @@ struct WebComponent {
       Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
         .onControllerAttached(() => {
           this.controller.setErrorPageEnabled(true, true);
-          let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled()
+          let isEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
           console.info("Subframe error page enabled: " + isEnabled);
         })
     }
