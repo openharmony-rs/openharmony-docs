@@ -4039,7 +4039,7 @@ ArkTS-Sta示例：
   ```ts
   // xxx.ets
   'use static'
-  import { Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnGeolocationShowEvent } from '@kit.ArkUI';
+  import { $rawfile, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnGeolocationShowEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
   @Entry
