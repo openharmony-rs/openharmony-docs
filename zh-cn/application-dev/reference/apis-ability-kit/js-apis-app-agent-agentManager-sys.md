@@ -655,11 +655,15 @@ connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callb
 
 将AgentExtensionAbility连接到ServiceExtensionAbility。若目标ServiceExtensionAbility可见，可直接连接；若不可见，需申请`ohos.permission.START_INVISIBLE_ABILITY`权限；若目标ServiceExtensionAbility位于远程设备上，需申请`ohos.permission.DISTRIBUTED_DATASYNC`权限。
 
+> **说明：**
+>
+> 该接口不支持在多线程中调用，子进程内调用将返回16000050错误码。
+
 **起始版本**：26.0.0
 
 **系统接口**：该接口为系统接口。
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
