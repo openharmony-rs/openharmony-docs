@@ -744,7 +744,9 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
   onExecute(): Promise<insightIntent.IntentResult<string>> {
     hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
     hilog.info(0x0000, LOG_TAG, '%{public}s', JSON.stringify(this));
+    // 创建LocalStorage实例，用于在页面间传递参数
     let storage = new LocalStorage();
+    // 将歌曲名称保存到LocalStorage中，供目标页面读取
     storage.setOrCreate('songName', this.songName);
     // 根据executeMode参数的不同情况，提供不同拉起PlayMusicPage页面的方式。
     if (this.executeMode == insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND) {
@@ -758,7 +760,7 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
       result: 'result'
     }
     hilog.error(0x0000, LOG_TAG, `Failed to execute PlayMusicDemo. Code: ${result.code}, message: ${result.result}`);
-    // 以Promise的方式返回意图执行结果
+    // 以Promise.reject的方式返回意图执行失败结果
     return Promise.reject(result);
   }
 }
@@ -912,7 +914,7 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
 
 ```ts
 import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
-import { insightIntent, Want, InsightIntentForm } from '@kit.AbilityKit';
+import { Want, InsightIntentForm } from '@kit.AbilityKit';
 
 // 使用@InsightIntentForm装饰器将该FormExtensionAbility名为widget的卡片定义为意图
 @InsightIntentForm({
