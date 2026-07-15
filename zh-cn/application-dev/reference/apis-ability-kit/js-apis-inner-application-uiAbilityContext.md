@@ -348,7 +348,7 @@ UIAbility被启动后，有如下情况：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | 是 | 启动Ability的必要信息。 |
+| want |[Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的必要信息。 |
 | callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起方退出时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
