@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-SelectionContainer组件用于为多个文本节点提供跨节点文本选中、复制及菜单扩展能力。
+SelectionContainer组件用于为多个文本节点提供跨节点文本选中、复制及菜单扩展能力，支持统一配置选中文本的手柄颜色和底板颜色，支持灵活的文本拼接策略，支持自定义选择菜单和扩展菜单选项。适用于需要跨多个Text组件实现文本连续选中、统一复制、样式自定义及菜单扩展的场景，解决了多Text组件场景下文本选择体验割裂的问题，提升了用户在复杂文本布局中的交互体验。
 
 > **说明：**
 >
@@ -69,19 +69,18 @@ copyOption(value: Optional\<CopyOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CopyOptions](ts-appendix-enums.md#copyoptions9)> | 是 | 复制粘贴配置项。 |
+| value | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CopyOptions](ts-appendix-enums.md#copyoptions9)> | 是 | 复制粘贴配置项，用于设置文本的可复制范围。具体说明请参考CopyOptions枚举。 |
 
 ### caretColor
 
 caretColor(color: Optional\<ResourceColor>)
 
-设置选中文本手柄颜色。
+设置选中文本手柄颜色。未通过该接口设置时，默认手柄颜色为'#007DFF'（蓝色）。
 
 > **说明：**
 >
 > - 该属性在跨节点场景中用于各Text子组件选中文本手柄颜色。
 > - 在跨节点场景中Text子组件[caretColor](ts-basic-components-text.md#caretcolor14)设置无效，始终使用SelectionContainer的配置。
-> - 未设置该属性时手柄颜色默认值：'#007DFF'，表示蓝色。
 
 **起始版本：** 26.0.0
 
@@ -99,13 +98,12 @@ caretColor(color: Optional\<ResourceColor>)
 
 selectedBackgroundColor(color: Optional\<ResourceColor>)
 
-设置选中文本底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置选中文本底板颜色。未通过该接口设置时，默认选中文本底板颜色为'#007DFF'（蓝色），如果未设置不透明度，默认为20%不透明度。
 
 > **说明：**
 >
 > - 该属性在跨节点场景中用于各Text子组件选中区域的高亮颜色。
 > - Text子组件已显式设置[selectedBackgroundColor](ts-basic-components-text.md#selectedbackgroundcolor14)时，优先使用Text子组件的配置；未设置时，使用SelectionContainer的配置。
-> - 未设置该属性时选中文本底板颜色默认值：'#007DFF'，表示蓝色。
 
 **起始版本：** 26.0.0
 
@@ -145,7 +143,7 @@ enableHapticFeedback(isEnabled: Optional\<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| isEnabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否开启触控反馈。<br/>true表示开启触控反馈，false表示不开启触控反馈。 |
+| isEnabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否开启触控反馈。<br>true表示开启触控反馈，false表示不开启触控反馈。 |
 
 ### textJoinStyle
 
@@ -174,12 +172,12 @@ textJoinStyle(style: Optional\<SelectionContainerTextJoinStyle>)
 
 bindSelectionMenu(spanType: Optional\<TextSpanType>, content: Optional\<CustomBuilder>, responseType: Optional\<TextResponseType>, options?: Optional\<SelectionContainerMenuOptions>)
 
-设置自定义选择菜单。未通过该接口设置时，spanType默认值为TextSpanType.TEXT，responseType默认值为TextResponseType.LONG_PRESS。
+设置自定义选择菜单。未通过该接口设置时，默认spanType为TextSpanType.TEXT，responseType为TextResponseType.LONG_PRESS。
 
 > **说明：**
 >
 > - bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)的长按响应时长为800ms，当两者同时绑定且触发方式均为长按时，优先响应bindSelectionMenu。
-> - 自定义菜单过长时，建议内部嵌套使用[Scroll](./ts-container-scroll.md)组件，避免键盘被遮挡。
+> - 自定义菜单过长时，建议内部嵌套使用[Scroll](ts-container-scroll.md)组件，避免键盘被遮挡。
 > - 选区跨越不可复制Text时，菜单仅基于实际选中的可复制文本进行显示和处理。
 
 **起始版本：** 26.0.0
@@ -192,10 +190,10 @@ bindSelectionMenu(spanType: Optional\<TextSpanType>, content: Optional\<CustomBu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| spanType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextSpanType](ts-basic-components-text.md#textspantype11枚举说明)> | 是 | 选择菜单类型。 |
+| spanType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextSpanType](ts-basic-components-text.md#textspantype11枚举说明)> | 是 | 选择菜单类型。用于指定选择菜单作用的文本类型范围，不同类型对应不同的菜单行为。各枚举值的含义及适用场景详见[TextSpanType](ts-basic-components-text.md#textspantype11枚举说明)。 |
 | content | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CustomBuilder](ts-types.md#custombuilder8)> | 是 | 选择菜单内容。 |
 | responseType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextResponseType](ts-basic-components-text.md#textresponsetype11枚举说明)> | 是 | 选择菜单响应类型。 |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerMenuOptions](#selectioncontainermenuoptions)> | 否 | 选择菜单选项。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerMenuOptions](#selectioncontainermenuoptions)> | 否 | 选择菜单选项，用于配置菜单出现、消失、显示、隐藏等事件的回调。当需要监听这些菜单事件时传入此参数，不传入时默认不监听菜单事件。 |
 
 ### editMenuOptions
 
@@ -205,7 +203,7 @@ editMenuOptions(editMenu: Optional\<SelectionContainerEditMenuOptions>)
 
 > **说明：**
 >
-> 当同时为当前场景设置了[bindSelectionMenu](#bindselectionmenu)和editMenuOptions时，优先使用bindSelectionMenu，editMenuOptions不生效。
+> 当同时为当前场景设置了[bindSelectionMenu](#bindselectionmenu)和editMenuOptions时，优先使用bindSelectionMenu，editMenuOptions不生效。bindSelectionMenu用于完全自定义菜单风格和触发条件，由开发者定义所有菜单项；editMenuOptions用于在系统默认菜单基础上添加扩展项，触发条件不变。建议根据自定义程度需求选择。
 
 **起始版本：** 26.0.0
 
@@ -259,7 +257,7 @@ onWillCopy(callback: Optional\<Callback\<string, boolean>>)
 
 > **说明：**
 >
-> - 回调参数为按Text组件视觉顺序拼接后的选中文本。
+> - 回调参数为按Text组件视觉顺序拼接后的选中文本，拼接方式由[textJoinStyle](#textjoinstyle)配置决定。
 > - 返回false时，会阻止本次跨节点复制及容器级[onCopy](#oncopy)回调触发，但不会影响各Text子组件已独立处理完成的复制事件逻辑。
 
 **起始版本：** 26.0.0
@@ -278,11 +276,11 @@ onWillCopy(callback: Optional\<Callback\<string, boolean>>)
 
 onCopy(callback: Optional\<Callback\<string>>)
 
-长按文本内部区域弹出剪贴板后，点击剪贴板复制按钮，触发该回调。仅支持复制文本。使用callback异步回调。
+长按文本内部区域弹出选择菜单后，点击选择菜单的复制按钮，触发该回调。仅支持复制文本。使用callback异步回调。
 
 > **说明：**
 >
-> - 回调参数为按Text组件视觉顺序拼接后的选中文本。
+> - 回调参数为按Text组件视觉顺序拼接后的选中文本，拼接方式由[textJoinStyle](#textjoinstyle)配置决定。
 > - 仅当容器级[onWillCopy](#onwillcopy)返回true时，该回调才会触发。
 
 **起始版本：** 26.0.0
@@ -324,10 +322,10 @@ onCopy(callback: Optional\<Callback\<string>>)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| onAppear | [Callback](ts-types.md#callback12)\<string> | 否 | 是 | 选择菜单出现时触发。回调参数为按Text组件视觉顺序拼接后的选中文本。默认值为空。 |
-| onDisappear | [Callback](ts-types.md#callback12)\<void> | 否 | 是 | 选择菜单消失时触发。默认值为空。 |
-| onMenuShow | [Callback](ts-types.md#callback12)\<string> | 否 | 是 | 选择菜单显示时触发。回调参数为按Text组件视觉顺序拼接后的选中文本。默认值为空。 |
-| onMenuHide | [Callback](ts-types.md#callback12)\<string> | 否 | 是 | 选择菜单隐藏时触发。回调参数为按Text组件视觉顺序拼接后的选中文本。默认值为空。 |
+| onAppear | [Callback](ts-types.md#callback12)\<string> | 否 | 是 | 选择菜单出现时触发。回调参数为按Text组件视觉顺序拼接后的选中文本，拼接方式由textJoinStyle配置决定。默认值为空，不触发该回调。 |
+| onDisappear | [Callback](ts-types.md#callback12)\<void> | 否 | 是 | 选择菜单消失时触发。默认值为空，不触发该回调。 |
+| onMenuShow | [Callback](ts-types.md#callback12)\<string> | 否 | 是 | 选择菜单显示时触发。回调参数为按Text组件视觉顺序拼接后的选中文本，拼接方式由textJoinStyle配置决定。默认值为空，不触发该回调。 |
+| onMenuHide | [Callback](ts-types.md#callback12)\<string> | 否 | 是 | 选择菜单隐藏时触发。回调参数为按Text组件视觉顺序拼接后的选中文本，拼接方式由textJoinStyle配置决定。默认值为空，不触发该回调。 |
 
 ## OnMenuItemClickWithTextCallback
 
@@ -366,9 +364,9 @@ SelectionContainer自定义编辑菜单选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| onCreateMenu | [OnCreateMenuCallback](ts-text-common.md#oncreatemenucallback) | 否 | 是 | 每次菜单显示前触发，传入默认菜单项并返回处理后的菜单项。默认值为空。 |
-| onMenuItemClick | [OnMenuItemClickWithTextCallback](#onmenuitemclickwithtextcallback) | 否 | 是 | 点击菜单项时触发，可拦截系统默认菜单执行行为。默认值为空。 |
-| onPrepareMenu | [OnPrepareMenuCallback](ts-text-common.md#onpreparemenucallback20) | 否 | 是 | 文本选中内容变化后、菜单显示前触发，可在该回调中调整菜单数据。默认值为空。 |
+| onCreateMenu | [OnCreateMenuCallback](ts-text-common.md#oncreatemenucallback) | 否 | 是 | 每次菜单显示前触发，传入默认菜单项并返回处理后的菜单项。默认值为空，不触发该回调。 |
+| onMenuItemClick | [OnMenuItemClickWithTextCallback](#onmenuitemclickwithtextcallback) | 否 | 是 | 点击菜单项时触发，可拦截系统默认菜单执行行为。默认值为空，不触发该回调。 |
+| onPrepareMenu | [OnPrepareMenuCallback](ts-text-common.md#onpreparemenucallback20) | 否 | 是 | 文本选中内容变化后、菜单显示前触发，可在该回调中调整菜单数据。默认值为空，不触发该回调。 |
 
 ## SelectionContainerController
 
@@ -639,7 +637,6 @@ struct SelectionContainerExample3 {
       content: '推送',
       icon: $r('app.media.startIcon'),
       id: TextMenuItemId.of('push'),
-
     };
     menuItems.push(customItem1);
     menuItems.push(customItem2);
