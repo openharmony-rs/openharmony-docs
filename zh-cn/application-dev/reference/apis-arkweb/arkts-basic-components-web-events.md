@@ -4874,7 +4874,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
       Column() {
         Web({ src: "www.error-test.com", controller: this.controller })
           .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true, true);
+            this.controller.setErrorPageEnabled(true, true);  // 此重载方法从API 26开始支持，若兼容低版本请使用setErrorPageEnabled(true)
             console.info("Set error page enabled: " + this.controller.getErrorPageEnabled());
           })
           .onOverrideErrorPage(event => {

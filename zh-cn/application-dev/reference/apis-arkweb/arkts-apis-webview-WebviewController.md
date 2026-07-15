@@ -11307,7 +11307,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 > **说明：**
 
 > - 当enable设置为false时，includeSubframe设置不生效。
-> - 当subframe错误页启用时，onOverrideErrorPage设置的自定义错误展示页可同时用于subframe。
+> - 当subframe错误页启用时，onOverrideErrorPage设置的自定义错误展示页可同时用于subframe。调用单参数版本setErrorPageEnabled(enable)时，includeSubframe默认为false，即不启用subframe错误页。
 
 **起始版本：** 26.0.0
 
