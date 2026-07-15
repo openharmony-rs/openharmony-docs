@@ -28,7 +28,7 @@ By registering a conversation listener, an app can receive messages from other d
 
 - The target device must be a trusted device under the same account.
 
-- The system's native fast device wake-up capability is supported, allowing the device to remain reachable even when plugged in and with the lid closed.
+- The system's native fast device wake-up capability is supported. For nearby devices, Bluetooth and Wi-Fi must be enabled, and the devices must be connected to the same local area network (LAN) over Wi-Fi.
 
 - This capability is supported since API version 26.1.0.
 
@@ -71,7 +71,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 1. Import the required module.
 
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -110,7 +110,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Define the conversation listener callback function.
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
@@ -118,16 +118,16 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
      hilog.info(DOMAIN, TAG, 'Message length: %{public}d', msg.byteLength);
      let bufferView = new Uint8Array(msg);
      let messageStr = '';
-      for (let i = 0; i < bufferView.length; i++) {
-        messageStr += String.fromCharCode(bufferView[i]);
-      }
+     for (let i = 0; i < bufferView.length; i++) {
+       messageStr += String.fromCharCode(bufferView[i]);
+     }
      hilog.info(DOMAIN, TAG, 'Message content: %{public}s', messageStr);
    }
    ```
 
 4. Register the conversation listener to receive data from trusted devices.
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    registerListener(): void {
@@ -136,15 +136,15 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
        conversation.registerConversationListener(bundleName, abilityName, messageCallback);
        hilog.info(DOMAIN, TAG, 'Listener registered for %{public}s/%{public}s', bundleName, abilityName);
      } catch (err) {
-      let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'registerConversationListener error: %{public}s - %{public}s', error.code, error.message);
-      }
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'registerConversationListener error: %{public}s - %{public}s', error.code, error.message);
+     }
    }
    ```
 
 5. Unregister the conversation listener.
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    unregisterListener(): void {
@@ -153,9 +153,9 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
        conversation.unregisterConversationListener(bundleName, abilityName);
        hilog.info(DOMAIN, TAG, 'Listener unregistered');
      } catch (err) {
-      let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'unregisterConversationListener error: %{public}s - %{public}s', error.code, error.message);
-      }
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'unregisterConversationListener error: %{public}s - %{public}s', error.code, error.message);
+     }
    }
    ```
 
@@ -163,10 +163,10 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 1. Import the required module.
 
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-   import { conversation } from '@kit.DistributedServiceKit';
+   import { conversation } from '@kit.DistributedServiceKit'
    ```
 
 2. Configure the distributed data synchronization permission and UDID access permission in the **module.json5** configuration file.
@@ -202,54 +202,54 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Obtain the trusted device list and select the target device.
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-    getTrustedDevices(): void {
-      hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
-      try {
-        let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
-        if (devices && devices.length > 0) {
-          let deviceInfo = devices.map((d, idx) =>
-            `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
-          ).join('\n');
-          hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
-            hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
-          } else {
-            hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
-        }
-      } catch (err) {
-        let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'getTrustedDevices error: %{public}s - %{public}s', error.code, error.message);
-      }
-    }
+   getTrustedDevices(): void {
+     hilog.info(DOMAIN, TAG, 'getTrustedDevices called');
+     try {
+       let devices = conversation.getTrustedDevices() as conversation.DeviceNodeInfo[];
+       if (devices && devices.length > 0) {
+         let deviceInfo = devices.map((d, idx) =>
+           `${idx + 1}. ${d.deviceName} (${d.networkId}) - Type:${d.deviceTypeId} - Nearby:${d.nearby}`
+         ).join('\n');
+         hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+           hilog.info(DOMAIN, TAG, 'Devices list: \n %{public}s', deviceInfo);
+         } else {
+           hilog.info(DOMAIN, TAG, 'Found %{public}d devices', devices.length);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'getTrustedDevices error: %{public}s - %{public}s', error.code, error.message);
+     }
+   }
    ```
 
 4. Send conversation data to the specified device.
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code\DocsSample\DistributedAppDev\DistributedSoftbusConversationDemo\entry\src\main\ets\pages\Index.ets) -->
+   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
-    sendMessage(): void {
-      hilog.info(DOMAIN, TAG, 'sendMessage called');
-      try {
-        let arrayBuffer = new ArrayBuffer(messageToSend.length);
-        let bufferView = new Uint8Array(arrayBuffer);
-        for (let i = 0; i < messageToSend.length; i++) {
-          bufferView[i] = messageToSend.charCodeAt(i);
-        }
+   sendMessage(): void {
+     hilog.info(DOMAIN, TAG, 'sendMessage called');
+     try {
+       let arrayBuffer = new ArrayBuffer(messageToSend.length);
+       let bufferView = new Uint8Array(arrayBuffer);
+       for (let i = 0; i < messageToSend.length; i++) {
+         bufferView[i] = messageToSend.charCodeAt(i);
+       }
 
-        conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
-          .then(() => {
-            hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
-          })
-          .catch((err : BusinessError) => {
-            hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', err.code, err.message);
-          });
-      } catch (err) {
-        let error = err as BusinessError;
-        hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', error.code, error.message);
-      }
-    }
+       conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
+         .then(() => {
+           hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
+         })
+         .catch((err : BusinessError) => {
+           hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', err.code, err.message);
+         });
+     } catch (err) {
+       let error = err as BusinessError;
+       hilog.error(DOMAIN, TAG, 'sendMessage error: %{public}s - %{public}s', error.code, error.message);
+     }
+   }
    ```
    <!--no_check-->

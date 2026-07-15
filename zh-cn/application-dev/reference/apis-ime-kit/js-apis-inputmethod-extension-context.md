@@ -6,7 +6,7 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-**@ohos.InputMethodExtensionContext**模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，为输入法扩展能力提供上下文级别的操作接口。
+@ohos.InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，为输入法扩展能力提供上下文级别的操作接口。
 
 本模块是输入法ExtensionAbility的上下文类，继承自`ExtensionContext`，作为`InputMethodExtensionAbility`实例的`context`属性提供。它承载了输入法扩展应用在其生命周期内可使用的上下文能力，包括销毁自身和拉起其他应用。
 
@@ -20,18 +20,14 @@
 > 本模块接口仅可在Stage模型下使用。
 
 模块内的核心API按功能分为两类：
-1. **生命周期管理**：`destroy()`用于销毁输入法ExtensionAbility自身，终止输入法应用运行。
-2. **Ability交互**：`startAbility()`用于从输入法应用拉起目标Ability（如设置页面等），拓展输入法应用与其他应用的交互能力。
+1. 生命周期管理：`destroy()`用于销毁输入法ExtensionAbility自身，终止输入法应用运行。
+2. Ability交互：`startAbility()`用于从输入法应用拉起目标Ability（如设置页面等），拓展输入法应用与其他应用的交互能力。
 
 典型使用流程：在`InputMethodExtensionAbility`的`onCreate`回调中获取`this.context` → 在需要终止输入法时调用`context.destroy()` → 在需要拉起其他应用时调用`context.startAbility(want)`。
 
-> **说明：**
->
-
-
 | Class | 说明 |
 |---|---|
-| **InputMethodExtensionContext** | 输入法扩展上下文类，继承自`ExtensionContext`，为`InputMethodExtensionAbility`提供上下文操作能力。关键方法包括：`destroy()`销毁输入法自身（支持callback和Promise两种异步方式）、`startAbility(want)`拉起目标应用（Promise方式，API 12+新增）。 |
+| InputMethodExtensionContext | 输入法扩展上下文类，继承自`ExtensionContext`，为`InputMethodExtensionAbility`提供上下文操作能力。关键方法包括：`destroy()`销毁输入法自身（支持callback和Promise两种异步方式）、`startAbility(want)`拉起目标应用（Promise方式，API 12+新增）。 |
 
 > **说明：**
 > 
@@ -96,9 +92,9 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 
 销毁输入法应用。使用callback异步回调。
 
-- **含义/功能**：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
-- **使用场景**：当输入法应用需要主动终止自身运行时使用。例如：输入法应用在处理完特定任务后主动退出、或在`onDestroy`回调中配合销毁以确保资源释放。
-- **使用后效果**：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。调用后再进行其他上下文操作将不起效。
+- 含义/功能：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
+- 使用场景：当输入法应用需要主动终止自身运行时使用。例如：输入法应用在处理完特定任务后主动退出、或在`onDestroy`回调中配合销毁以确保资源释放。
+- 使用后效果：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。调用后再进行其他上下文操作将不起效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,9 +136,9 @@ destroy(): Promise&lt;void&gt;
 
 销毁输入法应用。使用Promise异步回调。
 
-- **含义/功能**：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
-- **使用场景**：当输入法应用需要主动终止自身运行时使用。与callback形式功能相同，适合需要使用Promise链式调用的场景。
-- **使用后效果**：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。
+- 含义/功能：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
+- 使用场景：当输入法应用需要主动终止自身运行时使用。与callback形式功能相同，适合需要使用Promise链式调用的场景。
+- 使用后效果：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -152,7 +148,7 @@ destroy(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。Promise回调成功时表示销毁成功，失败时返回错误对象。 |
+| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -182,9 +178,9 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 拉起目标应用。使用Promise异步回调。
 
-- **含义/功能**：从输入法应用启动指定的Ability，使输入法应用能够与其他应用交互。通过Want参数指定目标应用的Ability名称和Bundle名称。
-- **使用场景**：当输入法应用需要拉起其他应用时使用。例如：输入法应用拉起系统设置页面供用户配置输入法、拉起浏览器打开帮助文档等。
-- **使用后效果**：调用成功后，目标Ability被启动并显示在前台。输入法应用自身不会受到影响，继续正常运行。
+- 含义/功能：从输入法应用启动指定的Ability，使输入法应用能够与其他应用交互。通过Want参数指定目标应用的Ability名称和Bundle名称。
+- 使用场景：当输入法应用需要拉起其他应用时使用。例如：输入法应用拉起系统设置页面供用户配置输入法、拉起浏览器打开帮助文档等。
+- 使用后效果：调用成功后，目标Ability被启动并显示在前台。输入法应用自身不会受到影响，继续正常运行。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,12 +192,12 @@ startAbility(want: Want): Promise&lt;void&gt;
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标应用的Want类型信息，包括ability名称、bundle名称等。 |
 
-**want参数使用建议：**
+want参数使用建议：
 
-- **含义/功能**：Want类型信息，描述要启动的目标Ability。
-- **必填属性**：`bundleName`（目标应用包名）和`abilityName`（目标Ability名称）为必填项，否则无法定位目标Ability。
-- **取值范围**：Want对象的属性值均为string类型，需与目标应用在module.json5中配置的bundleName和abilityName保持一致。
-- **注意事项**：want中的bundleName和abilityName必须与目标应用的配置严格一致（包括大小写），否则将返回16000001错误（指定的Ability不存在）。开发者可通过查看目标应用的module.json5配置文件或使用AppGallery获取正确的包名和Ability名。
+- 含义/功能：Want类型信息，描述要启动的目标Ability。
+- 必填属性：`bundleName`（目标应用包名）和`abilityName`（目标Ability名称）为必填项，否则无法定位目标Ability。
+- 取值范围：Want对象的属性值均为string类型，需与目标应用在module.json5中配置的bundleName和abilityName保持一致。
+- 注意事项：want中的bundleName和abilityName必须与目标应用的配置严格一致（包括大小写），否则将返回16000001错误（指定的Ability不存在）。开发者可通过查看目标应用的module.json5配置文件或使用AppGallery获取正确的包名和Ability名。
 
 **返回值：**
 

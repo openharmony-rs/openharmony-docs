@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Curves** module provides APIs for interpolation calculation to create step, cubic Bezier, and spring curves.
+This module provides the capability of setting interpolation curves for animations, which is used to construct step curve objects, cubic Bézier curve objects, spring curve objects, spring animation curve objects, responsive spring animation curve objects, interpolating spring curve objects, and custom curve objects.
 
 > **NOTE**
 > 
@@ -70,7 +70,7 @@ Defines an interpolation curve. For details about the curves and animations, see
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.initCurve(Curve.EaseIn) // Create a default ease-in curve, where the interpolation starts slowly and then picks up speed.
+curves.initCurve(Curve.EaseIn); // Create a default ease-in curve, where the interpolation starts slowly and then picks up speed.
 ```
 
 
@@ -101,7 +101,7 @@ Creates a step curve.
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.stepsCurve(9, true)  // Create a step curve.
+curves.stepsCurve(9, true);  // Create a step curve.
 ```
 
 
@@ -109,7 +109,7 @@ curves.stepsCurve(9, true)  // Create a step curve.
 
 cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve
 
-Creates a cubic Bezier curve, with x-coordinates automatically normalized between 0 and 1.
+Creates a cubic Bézier curve object. The x-coordinates (x1 and x2) of the two control points of the curve must be from 0 to 1.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -135,7 +135,7 @@ Creates a cubic Bezier curve, with x-coordinates automatically normalized betwee
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // Create a cubic Bézier curve.
+curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0); // Create a cubic Bézier curve.
 ```
 
 
@@ -143,7 +143,7 @@ curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // Create a cubic Bézier curve.
 
 springCurve(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 
-Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration is subject to the **duration** parameter in **animation** and **animateTo**.
+Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration is subject to the duration parameter in the animation parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -169,7 +169,7 @@ Creates a spring curve. The curve shape is subject to the spring parameters, and
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.springCurve(10, 1, 228, 30) // Create a spring curve.
+curves.springCurve(10, 1, 228, 30); // Create a spring curve.
 ```
 
 
@@ -201,11 +201,11 @@ Creates a spring animation curve. If multiple spring animations are applied to t
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.springMotion() // Create a spring animation curve with default settings.
-curves.springMotion(0.5) // Create a spring animation curve with the specified response value.
-curves.springMotion(0.5, 0.6) // Create a spring animation curve with the specified response and dampingFraction values.
-curves.springMotion(0.5, 0.6, 0) // Create a spring animation curve with the specified parameter values.
+import { curves } from '@kit.ArkUI';
+curves.springMotion(); // Create a spring animation curve with default settings.
+curves.springMotion(0.5); // Create a spring animation curve with the specified response value.
+curves.springMotion(0.5, 0.6); // Create a spring animation curve with the specified response and dampingFraction values.
+curves.springMotion(0.5, 0.6, 0); // Create a spring animation curve with the specified parameter values.
 ```
 
 
@@ -236,8 +236,8 @@ Creates a responsive spring animation curve. It is a special case of [springMoti
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.responsiveSpringMotion() // Create a responsive spring animation curve with default settings.
+import { curves } from '@kit.ArkUI';
+curves.responsiveSpringMotion(); // Create a responsive spring animation curve with default settings.
 ```
 
 
@@ -245,7 +245,7 @@ curves.responsiveSpringMotion() // Create a responsive spring animation curve wi
 
 interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 
-Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based on the curve. The animation duration is subject to the curve parameters, rather than the **duration** parameter in **animation** or **animateTo**.
+Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based on the curve. The animation duration is subject to the curve parameters, rather than the duration parameter in the animation parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -270,8 +270,8 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.interpolatingSpring(10, 1, 228, 30) // Create an interpolating spring curve whose duration is subject to spring parameters.
+import { curves } from '@kit.ArkUI';
+curves.interpolatingSpring(10, 1, 228, 30); // Create an interpolating spring curve whose duration is subject to spring parameters.
 ```
 
 ## curves.customCurve<sup>10+</sup>
@@ -301,11 +301,11 @@ Creates a custom curve.
 **Example**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-let interpolate = (fraction:number):number => {
-  return Math.sqrt(fraction)
+import { curves } from '@kit.ArkUI';
+let interpolate = (fraction: number): number => {
+  return Math.sqrt(fraction);
 }
-let curve = curves.customCurve(interpolate) // Create a custom interpolation curve.
+let curve = curves.customCurve(interpolate); // Create a custom interpolation curve.
 ```
 
 ## ICurve<sup>9+</sup>
@@ -338,8 +338,8 @@ Calculates the interpolated value along the curve at the specified normalized ti
 
 ```ts
 import { curves } from '@kit.ArkUI'
-let curveValue = curves.initCurve(Curve.EaseIn) // Create an ease-in curve.
-let value: number = curveValue.interpolate(0.5) // Calculate the interpolation for half of the time.
+let curveValue = curves.initCurve(Curve.EaseIn); // Create an ease-in curve.
+let interpolatedValue: number = curveValue.interpolate(0.5); // Calculate the interpolation for half of the time.
 ```
 
 
@@ -352,7 +352,7 @@ Implements initialization for the interpolation curve, which is used to create a
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.initCurve](#curvesinitcurve9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [curves.initCurve](#curvesinitcurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -401,11 +401,11 @@ Creates a step curve.
 cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 
-Creates a cubic Bézier curve. The curve values must be between 0 and 1.
+Creates a cubic Bézier curve object. The x-coordinates (x1 and x2) of the two control points of the curve must be from 0 to 1.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.cubicBezierCurve](#curvescubicbeziercurve9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [curves.cubicBezierCurve](#curvescubicbeziercurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,7 +432,7 @@ Constructs a spring curve object.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.springCurve](#curvesspringcurve9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [curves.springCurve](#curvesspringcurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -476,9 +476,9 @@ struct ImageComponent {
           this.heightSize = curve.interpolate(0.5) * this.heightSize;
         })
         .animation({ duration: 2000, curve: curves.stepsCurve(9, true) })
-    }.width("100%").height("100%")
+    }.width('100%').height('100%')
   }
 }
 ```
 
-![curves-spring-example](figures/curves-spring-example.gif)
+![en-us_image_0000001174104410](figures/curves-spring-example.gif)

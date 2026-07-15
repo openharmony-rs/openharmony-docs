@@ -9,7 +9,7 @@
 
 UIAbilityContext是[UIAbility](./js-apis-app-ability-uiAbility.md)组件的上下文，继承自[Context](./js-apis-inner-application-context.md)。各类Context之间的关联与差异详见[应用上下文Context](../../application-models/application-context-stage.md)。
 
-每个UIAbility组件实例化时，系统都会自动创建对应的UIAbilityContext。开发者可以通过UIAbilityContext获取组件信息AbilityInfo、获取应用信息ApplicationInfo、拉起其他UIAbility、连接系统服务、销毁UIAbility等。
+每个UIAbility组件实例化时，系统都会自动创建对应的UIAbilityContext。开发者可以通过UIAbilityContext获取组件信息AbilityInfo、获取应用信息ApplicationInfo、拉起其他UIAbility、连接系统服务、销毁UIAbility等。UIAbilityContext的主要特点包括生命周期管理、资源访问、任务管理等，适用于UIAbility间通信、数据共享、任务管理等场景。
 
 > **说明：**
 >
@@ -242,7 +242,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的必要信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。不传此参数时，使用系统默认的启动配置。 |
 
 **返回值：**
 
@@ -1390,8 +1390,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.setMissionLabel('test', (result: BusinessError) => {
-      console.info(`setMissionLabel: ${JSON.stringify(result)}`);
+    this.context.setMissionLabel('test', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`setMissionLabel failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('setMissionLabel succeed');
     });
   }
 }
@@ -2274,7 +2278,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;Abi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
-| options | [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) | 否 | 启动原子化服务所携带的参数。 |
+| options | [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) | 否 | 启动原子化服务所携带的参数。不传此参数时，使用系统默认的启动配置。 |
 
 
 **返回值：**
@@ -2362,8 +2366,8 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。 |
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 否 | 回调函数，包含返回给拉起方的信息。 |
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。不传此参数时，使用系统默认的打开配置。 |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 否 | 回调函数，包含返回给拉起方的信息。不传此参数时，不会接收被拉起方的返回结果。 |
 
 **返回值：**
 
@@ -2450,7 +2454,7 @@ struct Index {
 
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise&lt;void&gt;
 
-当通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。
+当通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2648,7 +2652,7 @@ export default class EntryAbility extends UIAbility {
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-启动一个UIServiceExtensionAbility。使用Promise异步回调。
+启动一个UIServiceExtensionAbility。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -2735,7 +2739,7 @@ struct Index {
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
-连接一个UIServiceExtensionAbility。使用Promise异步回调。
+连接一个UIServiceExtensionAbility。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -2850,7 +2854,7 @@ struct UIServiceExtensionAbility {
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
-断开与UIServiceExtensionAbility的连接。使用Promise异步回调。
+断开与UIServiceExtensionAbility的连接。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -3146,7 +3150,7 @@ export default class MyAbility extends UIAbility {
 
 startAppServiceExtensionAbility(want: Want): Promise\<void>
 
-启动[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。
+启动[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -3227,7 +3231,7 @@ export default class EntryAbility extends UIAbility {
 
 stopAppServiceExtensionAbility(want: Want): Promise\<void>
 
-停止[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。
+停止[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -3523,7 +3527,7 @@ export default class EntryAbility extends UIAbility {
 
 startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise\<void>
 
-在当前进程中启动应用程序自己的UIAbility。
+在当前进程中启动应用程序自己的UIAbility。仅支持在主线程调用。
 
 > **说明：**
 >- 只能冷启动目标UIAbility，如果目标UIAbility实例已经启动过，则启动失败。
@@ -3541,7 +3545,7 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的必要信息。只支持[显式启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持[隐式启动](../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
 | specifiedFlag | string  | 是 | 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。 <br>**说明：**<br>当通过该接口拉起启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发[onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant)回调。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。不传此参数时，使用系统默认的启动配置。 |
 
 **返回值：**
 
@@ -3766,7 +3770,7 @@ export default class EntryAbility extends UIAbility {
 
 startSelf(): Promise\<void>
 
-启动当前UIAbility实例，将UIAbility切换至前台，用于将停留在中间阶段的Native UIAbility拉到前台。使用Promise异步回调。
+启动当前UIAbility实例，将UIAbility切换至前台，用于将停留在中间阶段的Native UIAbility拉到前台。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -3828,7 +3832,7 @@ export default class EntryAbility extends UIAbility {
 
 startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<void>
 
-在子进程中启动当前应用的UIAbility，子进程中的UIAbility支持加载Native模块。使用Promise异步回调。
+在子进程中启动当前应用的UIAbility，子进程中的UIAbility支持加载Native模块。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >

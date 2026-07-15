@@ -11,13 +11,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从 API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
 
 ```js
-import {batteryInfo} from '@kit.BasicServicesKit';
+import { batteryInfo } from '@kit.BasicServicesKit';
 ```
 
 ## 常量
@@ -28,8 +28,8 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 
 | 名称      | 类型        | 只读 |  说明     |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比，取值范围是[0，100]。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
-| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
+| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比，取值范围是[0，100]。<br>**原子化服务API：** 从 API version 12开始，该接口支持在原子化服务中使用。                           |
+| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从 API version 12开始，该接口支持在原子化服务中使用。                               |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | 是   | 表示当前设备电池的健康状态。                               |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | 是   | 表示当前设备连接的充电器类型。                             |
 | voltage                                   | number                                         | 是   | 表示当前设备电池的电压，单位微伏。                         |
@@ -42,37 +42,37 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 **示例**：
 
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
+  import { batteryInfo } from '@kit.BasicServicesKit';
 
   let batterySOCInfo: number = batteryInfo.batterySOC;
-  console.info("The batterySOCInfo is: " + batterySOCInfo);
+  console.info('The batterySOCInfo is: ' + batterySOCInfo);
 
   let chargingStatusInfo = batteryInfo.chargingStatus;
-  console.info("The chargingStatusInfo is: " + chargingStatusInfo);
+  console.info('The chargingStatusInfo is: ' + chargingStatusInfo);
 
   let healthStatusInfo = batteryInfo.healthStatus;
-  console.info("The healthStatusInfo is: " + healthStatusInfo);
+  console.info('The healthStatusInfo is: ' + healthStatusInfo);
 
   let pluggedTypeInfo = batteryInfo.pluggedType;
-  console.info("The pluggedTypeInfo is: " + pluggedTypeInfo);
+  console.info('The pluggedTypeInfo is: ' + pluggedTypeInfo);
 
   let voltageInfo: number = batteryInfo.voltage;
-  console.info("The voltageInfo is: " + voltageInfo);
+  console.info('The voltageInfo is: ' + voltageInfo);
 
   let technologyInfo: string = batteryInfo.technology;
-  console.info("The technologyInfo is: " + technologyInfo);
+  console.info('The technologyInfo is: ' + technologyInfo);
 
   let batteryTemperatureInfo: number = batteryInfo.batteryTemperature;
-  console.info("The batteryTemperatureInfo is: " + batteryTemperatureInfo);
+  console.info('The batteryTemperatureInfo is: ' + batteryTemperatureInfo);
 
   let isBatteryPresentInfo: boolean = batteryInfo.isBatteryPresent;
-  console.info("The isBatteryPresentInfo is: " + isBatteryPresentInfo);
+  console.info('The isBatteryPresentInfo is: ' + isBatteryPresentInfo);
 
   let batteryCapacityLevelInfo = batteryInfo.batteryCapacityLevel;
-  console.info("The batteryCapacityLevelInfo is: " + batteryCapacityLevelInfo);
+  console.info('The batteryCapacityLevelInfo is: ' + batteryCapacityLevelInfo);
 
   let nowCurrentInfo: number = batteryInfo.nowCurrent;
-  console.info("The nowCurrentInfo is: " + nowCurrentInfo);
+  console.info('The nowCurrentInfo is: ' + nowCurrentInfo);
   ```
 
 ## BatteryPluggedType
@@ -92,7 +92,7 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 
 表示电池充电状态的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从 API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
 

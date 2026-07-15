@@ -22,6 +22,8 @@ getUIContext(): UIContext
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -67,6 +69,8 @@ getUniqueId(): number
 获取当前组件的UniqueId。UniqueId由系统为每个组件分配，可保证在当前应用中唯一。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

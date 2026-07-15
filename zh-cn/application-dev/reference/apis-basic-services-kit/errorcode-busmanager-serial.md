@@ -17,11 +17,11 @@
 ## 错误码汇总
 | 错误码ID | 错误信息 | 触发接口 |
 | --- | --- | --- |
-| 35700001 | Service error. | getSerialPortList、open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、getDsr、sendBrk、onDisconnect、offDisconnect、setDtr |
-| 35700002 | Invalid parameter. | open、write |
-| 35700003 | Virtual serial port disconnected. |open、write、onDataRead、flush、drain、setRts、getCts、sendBrk、getDsr、setDtr |
+| 35700001 | Service error. | getSerialPortList, open, close, write, onDataRead, offDataRead, flush, drain, setRts, getCts, getDsr, sendBrk, onDisconnect, offDisconnect, setDtr |
+| 35700002 | Invalid parameter. | open, write |
+| 35700003 | Virtual serial port disconnected. |open, write, onDataRead, flush, drain, setRts, getCts, sendBrk, getDsr, setDtr |
 | 35700004 | Port already in use. | open |
-| 35700005 | Port not open. | close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、getDsr、setDtr、onDisconnect、offDisconnect |
+| 35700005 | Port not open. | close, write, onDataRead, offDataRead, flush, drain, setRts, getCts, sendBrk, getDsr, setDtr, onDisconnect, offDisconnect |
 | 35700006 | Transmission timeout. | write |
 | 35700007 | User authorization required. | open |
 | 35700008 | Permission denied. | addPortAuthorization |
@@ -60,7 +60,7 @@ Invalid parameter.
 
 **可能原因**
 
-1. 波特率取值不在支持的范围内。
+1. 波特率取值不在支持的范围内（标准值为9600/19200/38400/57600/115200等常用波特率，或[0, 115200]范围内的正整数）。
 
 2. 写入数据长度超出(0, 4096]范围（单位：字节）。
 
@@ -219,7 +219,7 @@ Permission denied.
 
 **错误描述**
 
-调用serial.addPortAuthorization接口时，该接口仅允许串口授权弹窗应用调用，若当前应用不是串口授权弹窗应用则会报权限被拒绝错误。
+调用serial.addPortAuthorization接口时，该接口仅允许串口授权弹窗应用（系统指定的用于处理串口设备授权弹窗的预置应用）调用，若当前应用不是串口授权弹窗应用则会报权限被拒绝错误。
 
 **可能原因**
 

@@ -31,7 +31,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 ## DistributedExtensionContext.connectServiceExtensionAbility
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
+connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility，建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备限定协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#distributedextensioncontextdisconnectserviceextensionability)断开连接并释放资源。
 
@@ -52,7 +52,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| long | 返回连接ID，后续通过该ID断开连接。 |
+| number | 返回连接ID，后续通过该ID断开连接。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 ## DistributedExtensionContext.disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: long): Promise\<void\>
+disconnectServiceExtensionAbility(connection: number): Promise\<void\>
 
 断开与远端ServiceExtensionAbility的连接，与[connectServiceExtensionAbility](#distributedextensioncontextconnectserviceextensionability)配对使用。调用connectServiceExtensionAbility后，必须在使用完毕后调用此方法释放连接资源，需要使用connectServiceExtensionAbility返回的连接ID调用此方法。断开连接之后开发者需要将连接成功时onConnect回调中返回的remote对象置空，以避免后续误用已失效的代理对象。使用Promise异步回调。
 
@@ -170,7 +170,7 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 | 参数名     | 类型   | 必填 | 说明                                                     |
 | ---------- | ------ | ---- | -------------------------------------------------------- |
-| connection | long | 是   | 连接ID，必须使用connectServiceExtensionAbility返回的连接ID值。 |
+| connection | number | 是   | 连接ID，必须使用connectServiceExtensionAbility返回的连接ID值。 |
 
 **返回值：**
 
