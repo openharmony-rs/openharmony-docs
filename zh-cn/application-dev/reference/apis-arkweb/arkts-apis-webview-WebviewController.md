@@ -11360,7 +11360,7 @@ struct WebComponent {
     <title>iframe</title>
 </head>
 <body>
-<iframe src="https://example.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+<iframe src="https://error-test.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 </body>
 </html>
 ```
@@ -11421,7 +11421,7 @@ struct WebComponent {
     <title>iframe</title>
 </head>
 <body>
-<iframe src="https://example.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+<iframe src="https://error-test.com/" title="iframe_error.html" loading="lazy" referrerpolicy="no-referrer" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 </body>
 </html>
 ```
