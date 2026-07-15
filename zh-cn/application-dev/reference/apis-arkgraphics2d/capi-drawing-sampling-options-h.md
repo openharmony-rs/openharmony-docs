@@ -144,7 +144,7 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 
 **描述**
 
-销毁采样选项对象并回收该对象占有内存。
+销毁采样选项对象并回收该对象占用内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

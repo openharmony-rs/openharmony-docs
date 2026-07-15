@@ -180,7 +180,7 @@ void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)
 
 **描述**
 
-用于销毁字形对象并回收该对象占有的内存。
+用于销毁字形对象并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
