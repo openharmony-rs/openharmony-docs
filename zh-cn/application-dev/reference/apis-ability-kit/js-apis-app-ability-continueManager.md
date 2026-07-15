@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-continueManager提供了应用跨端迁移的管理能力，例如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移是指当用户在一个设备上操作某个应用时，可以在另一个设备的同一个应用中快速切换，无缝衔接上一个设备的应用体验。具体是指在用户使用过程中，当使用情景发生变化：之前使用的设备不再适合继续当前任务，或者周围有更合适的设备时，用户可以选择使用新的设备来继续当前的任务。跨端迁移完成后，之前设备的应用可退出或保留，用户可以将注意力集中在被启动的设备上，继续执行任务。<!--Del-->详细的设计逻辑和实现机制请参见[跨端迁移](../../application-models/hop-cross-device-migration.md)。<!--DelEnd-->
+continueManager（跨端迁移）提供了应用跨端迁移的管理能力，例如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移是指当用户在一个设备上操作某个应用时，可以在另一个设备的同一个应用中快速切换，无缝衔接上一个设备的应用体验。具体是指在用户使用过程中，当使用情景发生变化：之前使用的设备不再适合继续当前任务，或者周围有更合适的设备时，用户可以选择使用新的设备来继续当前的任务。跨端迁移完成后，之前设备的应用可退出或保留，用户可以将注意力集中在被启动的设备上，继续执行任务。<!--Del-->详细的设计逻辑和实现机制请参见[跨端迁移](../../application-models/hop-cross-device-migration.md)。<!--DelEnd-->
 
 > **说明：**
 > 
@@ -43,7 +43,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback\<ContinueR
   | 参数名 | 类型                                                                                              | 必填 | 说明                                       |
   | -------- |-------------------------------------------------------------------------------------------------| -------- |------------------------------------------|
   | type | string                                                                                          | 是 | 固定值：prepareContinue。                     |
-  | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                                                                                         | 是 | Ability的Context。                         |
+  | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                                                                                         | 是 | Ability（应用组件）的Context。                         |
   | callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 是 | 回调函数。当快速拉起结果获取成功，err为undefined，ContinueResultInfo为获取到的快速启动结果。否则为错误对象。 |
 
 **错误码：**
@@ -73,7 +73,7 @@ export default class MigrationAbility extends UIAbility {
         if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
             // 注册快速拉起结果通知的回调函数
             try {
-              continueManager.on("prepareContinue", this.context, (err, continueResultInfo) => {
+              continueManager.on('prepareContinue', this.context, (err, continueResultInfo) => {
                 if (err.code != 0) {
                   hilog.error(DOMAIN_NUMBER, TAG, 'register failed, cause: %{public}s', JSON.stringify(err));
                   return;
@@ -114,7 +114,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback\<Continu
 | 参数名 | 类型                                 | 必填 | 说明                                   |
 | -------- |------------------------------------| -------- |--------------------------------------|
 | type | string                             | 是 | 固定值：prepareContinue。                 |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability的Context。                     |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability（应用组件）的Context。                     |
 | callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获取到的回调函数注销结果。否则为错误对象。若未填写，则注销所有已注册的回调；若已填写，则注销指定的回调函数。 |
 
 **错误码：**
@@ -144,7 +144,7 @@ export default class MigrationAbility extends UIAbility {
         if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
             // 注销快速拉起结果通知的回调函数
             try {
-              continueManager.off("prepareContinue", this.context, (err, continueResultInfo) => {
+              continueManager.off('prepareContinue', this.context, (err, continueResultInfo) => {
                 if (err.code != 0) {
                   hilog.error(DOMAIN_NUMBER, TAG, 'unregister failed, cause: %{public}s', JSON.stringify(err));
                   return;
