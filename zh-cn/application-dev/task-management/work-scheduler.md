@@ -44,7 +44,7 @@
 
 - **调度延迟：** 系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
 
-- **WorkSchedulerExtensionAbility接口调用限制：** 针对[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)接口调用限制，详细请参考[约束限制](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#约束限制)。
+- 针对[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)接口调用限制，详细请参考API中的[约束限制](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#约束限制)。
 
 
 ## 接口说明
