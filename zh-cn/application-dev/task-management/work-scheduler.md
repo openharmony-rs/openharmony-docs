@@ -44,17 +44,7 @@
 
 - **调度延迟：** 系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
 
-- **WorkSchedulerExtensionAbility接口调用限制：** 为保障系统安全性和稳定性，防止延迟任务滥用系统资源，对WorkSchedulerExtensionAbility能力进行管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
-
-  [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
-
-  [@ohos.backgroundTaskManager (后台任务管理)](../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)
-
-  [@ohos.multimedia.camera (相机管理)](../reference/apis-camera-kit/arkts-apis-camera.md)
-
-  [@ohos.multimedia.audio (音频管理)](../reference/apis-audio-kit/arkts-apis-audio.md)
-
-  [@ohos.multimedia.media (媒体服务)](../reference/apis-media-kit/arkts-apis-media.md)
+- **WorkSchedulerExtensionAbility接口调用限制：** 针对[WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)接口调用限制，详细请参考[约束限制](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#约束限制)。
 
 
 ## 接口说明
