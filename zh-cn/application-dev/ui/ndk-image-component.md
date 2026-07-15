@@ -454,7 +454,7 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     **NAPI初始化**
 
-<!-- @[napi_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[napi_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/napi_init.cpp) -->
 
 3. 实现Native入口
 
@@ -534,7 +534,7 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     **NativeEntry.cpp**
 
-<!-- @[native_root_creator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/NativeEntry.cpp) -->
+    <!-- @[native_root_creator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/NativeEntry.cpp) -->
 
 4. 显示并设置图片
 
@@ -557,7 +557,7 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     **ImageExample.cpp**
 
-<!-- @[image_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    <!-- @[image_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 5. 效果预览
 
