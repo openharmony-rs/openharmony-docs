@@ -845,8 +845,6 @@ offLocationChange(callback?: Callback\<Location\>): void
 
 **起始版本：** 26.0.0
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -3513,7 +3511,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION  
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3577,8 +3575,6 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 **起始版本：** 26.0.0
   
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
-  
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
   
 **系统能力**：SystemCapability.Location.Location.Core
   
