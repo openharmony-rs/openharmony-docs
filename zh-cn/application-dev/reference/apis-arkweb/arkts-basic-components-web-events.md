@@ -4874,7 +4874,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
       Column() {
         Web({ src: "www.error-test.com", controller: this.controller })
           .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
+            this.controller.setErrorPageEnabled(true, true);
             console.info("Set error page enabled: " + this.controller.getErrorPageEnabled());
           })
           .onOverrideErrorPage(event => {
