@@ -292,7 +292,7 @@ async function fetchFramesByTimesDemo() {
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this pixelMap = frameInfo.image;
+        this.pixelMap = frameInfo.image;
       }});
   }
 }
@@ -367,7 +367,7 @@ async function fetchFramesByTimesDemo() {
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this pixelMap = frameInfo.image;
+        this.pixelMap = frameInfo.image;
       }});
   }
 }
