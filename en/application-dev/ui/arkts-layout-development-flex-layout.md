@@ -315,7 +315,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
   ![en-us_image_0000001563060677](figures/en-us_image_0000001563060677.png)
 
-- **ItemAlign.Center**: The child elements are aligned with the start edge of the container along the cross axis.
+- **ItemAlign.Start**: The child elements are aligned with the start edge of the container along the cross axis.
 
 
   <!-- @[FlexItemAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStart.ets) -->
@@ -333,7 +333,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
   ![en-us_image_0000001562700453](figures/en-us_image_0000001562700453.png)
 
-- **ItemAlign.Start**: The child elements are aligned with the center of the container along the cross axis.
+- **ItemAlign.Center**: The child elements are aligned with the center of the container along the cross axis.
 
 
   <!-- @[FlexItemAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignCenter.ets) -->
