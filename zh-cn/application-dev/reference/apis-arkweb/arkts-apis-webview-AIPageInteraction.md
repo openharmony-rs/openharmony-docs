@@ -709,9 +709,12 @@
 | 110 | invalid params JSON | `params`缺失或不是Object。 |
 | 132 | browser or host is null | browser或browser host为空。 |
 | 350 | SendDevToolsMessage failed | 鼠标事件命令下发失败。 |
-| 391 | missing type | `type`缺失、不是string或为空字符串。 |
-| 391 | missing x or y | `x`或`y`缺失，或者不是number。 |
+| 391 | missing type | `type`缺失或为空字符串。 |
+| 391 | missing x or y | `x`或`y`缺失。 |
+| 392 | invalid param: type | `type`已传入，但不是string。 |
 | 392 | invalid mouse event type | `type`是非空字符串，但不在`mousePressed`、`mouseReleased`、`mouseMoved`、`mouseWheel`范围内。 |
+| 392 | invalid param: x | `x`已传入，但不是number。 |
+| 392 | invalid param: y | `y`已传入，但不是number。 |
 | 392 | invalid param: timestamp | `timestamp`已传入，但不是number。 |
 | 392 | invalid param: force | `force`已传入，但不是number。 |
 | 392 | invalid param: tangentialPressure | `tangentialPressure`已传入，但不是number。 |
@@ -805,7 +808,8 @@
 | 110 | invalid params JSON | `params`缺失或不是Object。 |
 | 132 | browser or host is null | browser或browser host为空。 |
 | 350 | SendDevToolsMessage failed | 键盘事件命令下发失败。 |
-| 391 | missing type | `type`缺失、不是string或为空字符串。 |
+| 391 | missing type | `type`缺失或为空字符串。 |
+| 392 | invalid param: type | `type`已传入，但不是string。 |
 | 392 | invalid key event type | `type`是非空字符串，但不在`keyDown`、`keyUp`、`rawKeyDown`、`char`范围内。 |
 | 392 | invalid param: text | `text`已传入，但不是string。 |
 | 392 | invalid param: unmodifiedText | `unmodifiedText`已传入，但不是string。 |
@@ -912,10 +916,11 @@
 | 203 | input command failed | `value`不满足目标`input`元素实际类型的值格式要求。 |
 | 204 | input command failed | `type`不是`default`，且与目标`input`元素的实际类型不一致。 |
 | 391 | id or xpath is required | `id`和`xpath`均未提供。 |
-| 391 | missing type | `type`缺失、不是string或为空字符串。 |
+| 391 | missing type | `type`缺失或为空字符串。 |
 | 391 | missing value | `value`缺失。 |
 | 392 | id and xpath are mutually exclusive | `id`和`xpath`同时传入。 |
 | 392 | invalid id or xpath | `id`或`xpath`已传入，但不是string或为空字符串。 |
+| 392 | invalid param: type | `type`已传入，但不是string。 |
 | 392 | input command failed | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
 
 ### 返回示例

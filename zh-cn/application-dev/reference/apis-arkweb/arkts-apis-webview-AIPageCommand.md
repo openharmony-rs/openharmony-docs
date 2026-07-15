@@ -653,8 +653,8 @@
 
 > **说明：**
 >
-> - `params.url`缺失、不是string或为空字符串时，返回`{"code":391,"message":"params.url is required"}`。
-> - `params.url`不是合法URL，或使用不支持的协议时，返回`{"code":392,"message":"params.url is invalid"}`。
+> - `params.url`缺失或为空字符串时，返回`{"code":391,"message":"params.url is required"}`。
+> - `params.url`不是string、不是合法URL，或使用不支持的协议时，返回`{"code":392,"message":"params.url is invalid"}`。
 > - `resource`、`javascript`、`data`和`ftp`协议不支持。
 
 ### 返回说明
@@ -667,8 +667,8 @@
 | ---- | ---- | ---- |
 | 132 | browser is not available | browser为空。 |
 | 160 | main frame is not available | browser存在，但main frame为空。 |
-| 391 | params.url is required | `params`缺失或不是Object，或者`url`缺失、不是string或为空字符串。 |
-| 392 | params.url is invalid | `url`是非空字符串，但不是合法URL或协议不在`http`、`https`、`file`、`about`范围内。 |
+| 391 | params.url is required | `params`缺失或不是Object，或者`url`缺失或为空字符串。 |
+| 392 | params.url is invalid | `url`已传入但不是string，或者是非空字符串但不是合法URL或协议不在`http`、`https`、`file`、`about`范围内。 |
 
 ### 请求示例
 
