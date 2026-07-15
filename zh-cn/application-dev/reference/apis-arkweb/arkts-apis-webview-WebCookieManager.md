@@ -100,35 +100,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('fetchCookieSync')
-        .onClick(() => {
-          try {
-            let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com');
-            console.info("fetchCookieSync cookie = " + value);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## fetchCookie<sup>11+</sup>
 
 static fetchCookie(url: string, callback: AsyncCallback\<string>): void
@@ -186,42 +157,6 @@ struct WebComponent {
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('fetchCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.fetchCookie('https://www.example.com', (error, cookie) => {
-              if (error) {
-                console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-                return;
-              }
-              if (cookie) {
-                console.info('fetchCookie cookie = ' + cookie);
-              }
-            })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -290,40 +225,6 @@ struct WebComponent {
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('fetchCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.fetchCookie('https://www.example.com')
-              .then(cookie => {
-                console.info("fetchCookie cookie = " + cookie);
-              })
-              .catch((error: Error) => {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -401,40 +302,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('fetchCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.fetchCookie('https://www.example.com', false)
-              .then(cookie => {
-                console.info("fetchCookie cookie = " + cookie);
-              })
-              .catch((error: Error) => {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## fetchAllCookies<sup>23+</sup>
 
 static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
@@ -461,7 +328,6 @@ static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -488,47 +354,6 @@ struct WebComponent {
         .onClick(() => {
           webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
             for (let i = 0; i < cookies.length; i++) {
-              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
-              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
-            }
-          })
-        })
-
-        Web({ src: 'https://www.example.com', controller: this.controller})
-      }
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, Row, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined)
-
-  build() {
-    Row() {
-      Column() {
-        Button('Config Cookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-
-        Button('Get All Cookies')
-        .onClick(() => {
-          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
-            for (let i: int = 0; i < cookies.length; i++) {
               console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
               console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
             }
@@ -618,35 +443,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('configCookieSync')
-        .onClick(() => {
-          try {
-            // configCookieSync每次仅支持设置单个cookie值。
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## configCookieSync<sup>14+</sup>
 
 static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void
@@ -714,35 +510,6 @@ struct WebComponent {
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', false, false);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('configCookieSync')
-        .onClick(() => {
-          try {
-            // 仅支持设置单个cookie值。
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', false, false);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -822,38 +589,6 @@ struct WebComponent {
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('configCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookie('https://www.example.com', "a=b", (error) => {
-              if (error) {
-                console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-              }
-            })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -948,40 +683,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('configCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookie('https://www.example.com', 'a=b')
-              .then(() => {
-                console.info('configCookie success!');
-              })
-              .catch((error: Error) => {
-                console.info('error: ' + JSON.stringify(error));
-              })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## configCookie<sup>14+</sup>
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
@@ -1068,40 +769,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('configCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookie('https://www.example.com', 'a=b', false, false)
-              .then(() => {
-                console.info('configCookie success!');
-              })
-              .catch((error: Error) => {
-                console.info('error: ' + JSON.stringify(error));
-              })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## saveCookieSync<sup>15+</sup>
 
 static saveCookieSync(): void
@@ -1122,7 +789,6 @@ static saveCookieSync(): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1141,34 +807,6 @@ struct WebComponent {
             webview.WebCookieManager.saveCookieSync();
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('saveCookieSync')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.saveCookieSync();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -1228,38 +866,6 @@ struct WebComponent {
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('saveCookieAsync')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.saveCookieAsync((error) => {
-              if (error) {
-                console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-              }
-            })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -1329,40 +935,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('saveCookieAsync')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.saveCookieAsync()
-              .then(() => {
-                console.info("saveCookieAsyncCallback success!");
-              })
-              .catch((error: Error) => {
-                console.error("error: " + error);
-              });
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## putAcceptCookieEnabled
 
 static putAcceptCookieEnabled(accept: boolean): void
@@ -1418,34 +990,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('putAcceptCookieEnabled')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.putAcceptCookieEnabled(false);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## isCookieAllowed
 
 static isCookieAllowed(): boolean
@@ -1475,31 +1019,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('isCookieAllowed')
-        .onClick(() => {
-          let result = webview.WebCookieManager.isCookieAllowed();
-          console.info("result: " + result);
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -1569,34 +1088,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('putAcceptThirdPartyCookieEnabled')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(false);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## isThirdPartyCookieAllowed
 
 static isThirdPartyCookieAllowed(): boolean
@@ -1626,31 +1117,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('isThirdPartyCookieAllowed')
-        .onClick(() => {
-          let result = webview.WebCookieManager.isThirdPartyCookieAllowed();
-          console.info("result: " + result);
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -1714,31 +1180,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('existCookie')
-        .onClick(() => {
-          let result = webview.WebCookieManager.existCookie();
-          console.info("result: " + result);
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## clearAllCookiesSync<sup>11+</sup>
 
 static clearAllCookiesSync(incognito?: boolean): void
@@ -1768,30 +1209,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('clearAllCookiesSync')
-        .onClick(() => {
-          webview.WebCookieManager.clearAllCookiesSync();
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -1864,38 +1281,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('clearAllCookies')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.clearAllCookies((error) => {
-              if (error) {
-                console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-              }
-            })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## clearAllCookies<sup>11+</sup>
 
 static clearAllCookies(): Promise\<void>
@@ -1953,36 +1338,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('clearAllCookies')
-        .onClick(() => {
-          webview.WebCookieManager.clearAllCookies()
-            .then(() => {
-              console.info("clearAllCookies success!");
-            })
-            .catch((error: Error) => {
-              console.error("error: " + error);
-            });
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## clearSessionCookieSync<sup>11+</sup>
 
 static clearSessionCookieSync(): void
@@ -2006,30 +1361,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('clearSessionCookieSync')
-        .onClick(() => {
-          webview.WebCookieManager.clearSessionCookieSync();
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -2102,38 +1433,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('clearSessionCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.clearSessionCookie((error) => {
-              if (error) {
-                console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-              }
-            })
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## clearSessionCookie<sup>11+</sup>
 
 static clearSessionCookie(): Promise\<void>
@@ -2195,40 +1494,6 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-
-  build() {
-    Column() {
-      Button('clearSessionCookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.clearSessionCookie()
-              .then(() => {
-                console.info("clearSessionCookie success!");
-              })
-              .catch((error: Error) => {
-                console.error("error: " + error);
-              });
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as Error).code},  Message: ${(error as Error).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## setLazyInitializeWebEngine<sup>22+</sup>
 
 static setLazyInitializeWebEngine(lazy: boolean): void
@@ -2255,7 +1520,6 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2266,33 +1530,6 @@ webview.WebCookieManager.setLazyInitializeWebEngine(true);
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
-  aboutToAppear(): void {
-    webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-    webview.WebCookieManager.fetchCookieSync('https://www.example.com');
-  }
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-import { Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-
-webview.WebCookieManager.setLazyInitializeWebEngine(true);
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear(): void {
     webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
