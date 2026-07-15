@@ -477,7 +477,7 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| bool muteWhenInterrupted | 是否开启静音打断模式。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制。 |
+| bool muteWhenInterrupted | 是否开启静音打断模式。true表示开启静音打断模式，音频流被打断时录制静音；false表示关闭静音打断模式，音频流被打断时停止录制。 |
 
 **返回：**
 
