@@ -15259,7 +15259,7 @@ struct Index {
                 }
                 let arrayBuffer: Uint8Array = result?.pdfArrayBuffer() as Uint8Array;
                 fileIo.write(file.fd, arrayBuffer.buffer).then((writeLen: long) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: Error) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
@@ -15400,7 +15400,7 @@ struct Index {
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: Error) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
