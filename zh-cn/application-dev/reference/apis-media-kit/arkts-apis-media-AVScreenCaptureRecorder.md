@@ -492,7 +492,10 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 设置麦克风开关。使用Promise异步回调。
 
-在需要录制或静音麦克风音频时调用此接口，例如用户需要临时关闭麦克风或重新开启麦克风录制。使用前需要先调用[init](#init12)接口。
+> **说明：**
+>
+> 在需要录制或静音麦克风音频时调用此接口，例如用户需要临时关闭麦克风或重新开启麦克风录制。
+> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
