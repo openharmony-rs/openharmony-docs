@@ -310,7 +310,7 @@ struct Page1 {
   // globalConnect支持持久化Map类型的数据
   @Local map: Map<number, number> = PersistenceV2.globalConnect({
     type: Map<number, number>, defaultCreator: () => new Map<number, number>()
-  })!
+  })!;
   output: string[] = [];
 
   // 启动应用，第一次进入，展示restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined
@@ -365,7 +365,7 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs
 ```ts
 @ObservedV2
 class SampleClass {
-  @Trace p: number = 0;
+  @Trace value: number = 0;
 }
 
 // 假设PersistenceV2中存在key为key_as2的键，持久化该键值对数据
@@ -392,7 +392,7 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | 是   | 持久化失败时调用。 |
+| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | 是   | 持久化失败时的回调函数。回调参数包括：key（出错的键值）、reason（出错原因类型，取值为'quota'、'serialization'或'unknown'）、message（出错的详细信息）和oldValue（反序列化失败时返回的旧数据，可选）。 |
 
 **示例：**
 
@@ -430,8 +430,8 @@ globalConnect参数类型。
 
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
-|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   | 用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认构造器`defaultCreator`，不提供默认构造器会导致持久化失败。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。如果提供defaultSubCreator，没有提供defaultCreator，会导致持久化失败。 |
-|defaultSubCreator   | StorageDefaultCreator\<S\> |否   |是   | 使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`时，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   | 用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认构造器`defaultCreator`，不提供默认构造器会导致持久化失败。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
+|defaultSubCreator   | StorageDefaultCreator\<S\> |否   |是   | 使用该集合项默认构造函数，用于持久化容器类数据。使用此参数时，必须同时提供`defaultCreator`，否则会导致持久化失败。如果defaultSubCreator返回的是`undefined`或`null`时，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 
@@ -605,7 +605,7 @@ static getTarget\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源对象。 |
+| source | T    | 是   |  数据源对象，即被状态管理框架包裹的代理对象，用于获取去除代理后的原始对象。 |
 
 **返回值：**
 
@@ -841,7 +841,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 | 类型 | 说明                                             |
 | ---- | ------------------------------------------------ |
-| T    | 可观察的数据。 |
+| T    | 对于支持的入参类型，返回可观察的数据。对于不支持的入参类型，返回数据源对象本身。 |
 
 **示例：**
 
@@ -888,7 +888,7 @@ static enableV2Compatibility\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源，仅支持V1状态数据。 |
+| source | T    | 是   | 数据源，仅支持V1状态数据，如被@Observed装饰的对象或被makeV1Observed方法转换的对象。传入非V1状态数据时返回数据源本身。 |
 
 **返回值：**
 
@@ -1048,7 +1048,6 @@ function CustomButton(num1: Binding<number>) {
 @ComponentV2
 struct CompV2 {
   @Local number1: number = 5;
-  @Local number2: number = 10;
 
   build() {
     Column() {
@@ -1101,12 +1100,12 @@ static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>
 import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
-function CustomButton(num2: MutableBinding<number>) {
+function CustomButton(num1: MutableBinding<number>) {
   Row() {
-    Button(`Custom Button: ${num2.value}`)
+    Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
         // MutableBinding类型支持修改
-        num2.value += 1;
+        num1.value += 1;
       })
   }
 }
@@ -1114,8 +1113,7 @@ function CustomButton(num2: MutableBinding<number>) {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local number1: number = 5;
-  @Local number2: number = 10;
+  @Local number1: number = 10;
 
   build() {
     Column() {
@@ -1124,7 +1122,7 @@ struct CompV2 {
       CustomButton(
         /**
          * 创建可变绑定
-         * @param getter - 返回this.number2的函数
+         * @param getter - 返回this.number1的函数
          * @param setter - 当绑定值修改时调用的回调
          * @returns 可变的MutableBinding<number>对象
          *
@@ -1133,9 +1131,9 @@ struct CompV2 {
          * 2. 修改.value时会自动调用setter回调
          */
         UIUtils.makeBinding<number>(
-          () => this.number2, // GetterCallback
+          () => this.number1, // GetterCallback
           (val: number) => {
-            this.number2 = val;
+            this.number1 = val;
           }) // SetterCallback
       )
     }
@@ -1400,8 +1398,8 @@ import { UIUtils } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
-  @Local w: number = 50; // 宽度
-  @Local h: number = 50; // 高度
+  @Local columnWidth: number = 50; // 宽度
+  @Local columnHeight: number = 50; // 高度
   @Local message: string = 'Hello';
 
   build() {
@@ -1410,19 +1408,19 @@ struct Index {
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
+          this.columnWidth = 100;
+          this.columnHeight = 100;
           this.message = 'Hello World';
           UIUtils.flushUpdates();
           // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
           this.getUIContext().animateTo({
             duration: 1000
           }, () => {
-            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
-            this.w = 200;
-            this.h = 200;
+            console.info(`animateTo-in, width=${this.columnWidth}, height=${this.columnHeight}`);
+            this.columnWidth = 200;
+            this.columnHeight = 200;
             this.message = 'Hello ArkUI';
-            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+            console.info(`animateTo-out, width=${this.columnWidth}, height=${this.columnHeight}`);
           });
         })
       // Column方框
@@ -1430,8 +1428,8 @@ struct Index {
         Text(`${this.message}`)
       }
       .backgroundColor('#ff17a98d')
-      .width(this.w)
-      .height(this.h)
+      .width(this.columnWidth)
+      .height(this.columnHeight)
     }
   }
 }
@@ -1464,8 +1462,8 @@ import { UIUtils } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
-  @Local w: number = 50; // 宽度
-  @Local h: number = 50; // 高度
+  @Local columnWidth: number = 50; // 宽度
+  @Local columnHeight: number = 50; // 高度
   @Local message: string = 'Hello';
 
   build() {
@@ -1474,8 +1472,8 @@ struct Index {
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
+          this.columnWidth = 100;
+          this.columnHeight = 100;
           this.message = 'Hello World';
           // 立即处理上述状态变量修改，同步标脏对应的UI节点
           UIUtils.flushUIUpdates();
@@ -1483,11 +1481,11 @@ struct Index {
           this.getUIContext().animateTo({
             duration: 1000
           }, () => {
-            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
-            this.w = 200;
-            this.h = 200;
+            console.info(`animateTo-in, width=${this.columnWidth}, height=${this.columnHeight}`);
+            this.columnWidth = 200;
+            this.columnHeight = 200;
             this.message = 'Hello ArkUI';
-            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+            console.info(`animateTo-out, width=${this.columnWidth}, height=${this.columnHeight}`);
           });
         })
       // Column方框
@@ -1495,8 +1493,8 @@ struct Index {
         Text(`${this.message}`)
       }
       .backgroundColor('#ff17a98d')
-      .width(this.w)
-      .height(this.h)
+      .width(this.columnWidth)
+      .height(this.columnHeight)
     }
   }
 }
@@ -1628,7 +1626,7 @@ type MonitorCallback = (monitorValue: IMonitor) => void
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| monitorValue | [IMonitor](./arkui-ts/ts-state-management-watch-monitor.md#imonitor12) | 是   | 回调函数传入的变化信息。 |
+| monitorValue | [IMonitor](./arkui-ts/ts-state-management-monitor.md#imonitor) | 是   | 回调函数传入的变化信息，包含状态变量变化的路径（dirty）、变化前后的值（通过value方法获取）等详细信息。具体属性和方法详见IMonitor。 |
 
 ## StorageDefaultCreator\<T\>
 
@@ -1787,7 +1785,6 @@ struct Index {
   // 在PersistenceV2中创建一个key为Sample的键值对（如果存在，则返回PersistenceV2中的数据），并且和data关联
   // 对于需要换connect对象的data属性，需要加@Local修饰（不建议对属性换connect的对象）
   @Local data: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
-  pageStack: NavPathStack = new NavPathStack();
 
   build() {
     Text(`Index add 1 to data.id: ${this.data.sampleChild.id}`)
@@ -1869,7 +1866,7 @@ type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| type | [TypeConstructor\<T\>](#typeconstructort)    | 是   | 标记类属性的类型。   |
+| type | [TypeConstructor\<T\>](#typeconstructort)    | 是   | 标记类属性的类型，仅支持自定义class类型，传入其他类型会导致持久化失败。 |
 
 **返回值：**
 
@@ -1969,7 +1966,6 @@ function CustomButton(num1: Binding<number>) {
 @ComponentV2
 struct CompV2 {
   @Local number1: number = 5;
-  @Local number2: number = 10;
 
   build() {
     Column() {
@@ -2008,12 +2004,12 @@ type SetterCallback\<T\> = (newValue: T) => void
 import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
-function CustomButton(num2: MutableBinding<number>) {
+function CustomButton(num1: MutableBinding<number>) {
   Row() {
-    Button(`Custom Button: ${num2.value}`)
+    Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
-        // MutableBinding支持可变，可以修改num2.value
-        num2.value += 1;
+        // MutableBinding支持可变，可以修改num1.value
+        num1.value += 1;
       })
   }
 }
@@ -2021,8 +2017,7 @@ function CustomButton(num2: MutableBinding<number>) {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local number1: number = 5;
-  @Local number2: number = 10;
+  @Local number1: number = 10;
 
   build() {
     Column() {
@@ -2031,9 +2026,9 @@ struct CompV2 {
       CustomButton(
         // 对于UIUtils.makeBinding函数的第二个参数需要传入SetterCallback
         UIUtils.makeBinding<number>(
-          () => this.number2, // GetterCallback
+          () => this.number1, // GetterCallback
           (val: number) => {
-            this.number2 = val;
+            this.number1 = val;
           }) // SetterCallback 必须提供，否则触发时会造成运行时错误
       )
     }
@@ -2081,7 +2076,6 @@ function CustomButton(num1: Binding<number>) {
 @ComponentV2
 struct CompV2 {
   @Local number1: number = 5;
-  @Local number2: number = 10;
 
   build() {
     Column() {
@@ -2137,13 +2131,13 @@ get value(): T
 import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
-function CustomButton(num2: MutableBinding<number>) {
+function CustomButton(num1: MutableBinding<number>) {
   // CustomButton的第二个参数为MutableBinding，一个可变数据绑定的泛型类
   Row() {
-    Button(`Custom Button: ${num2.value}`)
+    Button(`Custom Button: ${num1.value}`)
       .onClick(() => {
         // 可变数据绑定的泛型类可以修改绑定的值
-        num2.value += 1;
+        num1.value += 1;
       })
   }
 }
@@ -2151,8 +2145,7 @@ function CustomButton(num2: MutableBinding<number>) {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local number1: number = 5;
-  @Local number2: number = 10;
+  @Local number1: number = 10;
 
   build() {
     Column() {
@@ -2160,9 +2153,9 @@ struct CompV2 {
 
       CustomButton(
         UIUtils.makeBinding<number>(
-          () => this.number2, // GetterCallback
+          () => this.number1, // GetterCallback
           (val: number) => {
-            this.number2 = val;
+            this.number1 = val;
           }) // SetterCallback 必须提供，否则触发时会造成运行时错误
       )
     }
@@ -2241,7 +2234,7 @@ struct PoolOwner {
 
 ## IReusePool
 
-`IReusePool` 接口提供自定义组件上的全局复用池的相关功能。
+`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
 
 **起始版本：** 26.0.0
 
