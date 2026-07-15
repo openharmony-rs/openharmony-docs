@@ -38825,5 +38825,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/introduction-to-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"generic_array",
+						"start_line":20
+					}
+				]
+			}
+		]
 	}
 ]
