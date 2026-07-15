@@ -4880,7 +4880,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
             }
           })
           .onOverrideErrorPage(event => {
-            let htmlStr = event.error.getErrorCode() + "</h1></html>"
+            let htmlStr = event.error.getErrorCode() + "</h1></html>";
             if (event.request.isMainFrame()) {
               let mainFrameHtml = "<html><h1>mainframe error occurs : " + htmlStr;
               return mainFrameHtml;
