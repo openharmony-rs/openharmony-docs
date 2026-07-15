@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（滚动容器类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @shengu_lancer; @guozejun-->
+<!--Designer: @yangcan18; @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
