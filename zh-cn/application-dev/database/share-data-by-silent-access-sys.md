@@ -67,7 +67,7 @@
 
 - 目前持久化数据中仅关系型数据库支持静默数据访问方式。
 - 整个系统最多同时并发32路查询，有多出来的查询请求需要重试处理。
-- 查询完成后返回的数据共享结果集应在使用后及时释放，参见[close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#toc-close-15)。
+- 查询完成后返回的数据共享结果集应在使用后及时释放，参见[close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)。
 - 持久化数据不支持代理创建数据库，如果需要创建数据库，需要拉起数据提供方。
 - 数据提供方如果是normal级别签名的应用，配置的数据读写权限必须为system_basic及以上权限。
 - 调用静默访问接口（insert、delete、update或者query）时需遵循流量控制机制：每30秒为一个流控周期，若在该流控周期内调用对应接口的次数大于等于3000次，则该流控周期剩余时间内调用该接口均返回失败，到下一个流控周期重新开始计数，接口恢复正常。建议避免短时间高频调用接口，合理控制接口调用频率。
