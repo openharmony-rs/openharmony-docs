@@ -78,28 +78,6 @@
 
 若默认的音频焦点策略无法满足特定场景的需求，应用程序可利用[音频会话管理](audio-session-management.md)，调整本应用音频流所采用的音频焦点策略。
 
-### 焦点模式
-
-针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
-
-系统预设了两种焦点模式：
-
-- 共享焦点模式（SHARE_MODE）：同一应用创建的多个音频流共享一个音频焦点。这些音频流之间的并发规则由应用自行决定，音频焦点策略不会介入。仅当其他应用创建的音频流与该应用的音频流同时播放时，才会触发音频焦点策略的管理。
-
-- 独立焦点模式（INDEPENDENT_MODE）：应用创建的每个音频流均独立拥有一个音频焦点，多个音频流同时播放时，将触发音频焦点策略的管理。
-
-应用可根据需求选择合适的焦点模式。在创建音频流时，系统默认采用共享焦点模式（SHARE_MODE），应用可主动设置所需模式。
-
-设置焦点模式的方法：
-
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
-
-- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
-
-- 若[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
-
-- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
-
 ### 处理音频焦点变化
 
 在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）通知应用。
@@ -150,6 +128,29 @@
   - 停止（INTERRUPT_HINT_STOP）：音频停止，彻底失去音频焦点。
   - 降低音量（INTERRUPT_HINT_DUCK）：音频降低音量播放，而不会停止。默认降低至正常音量的20%。
   - 恢复音量（INTERRUPT_HINT_UNDUCK）：音频恢复正常音量。
+
+### 同应用内焦点管理
+
+针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
+
+系统预设了两种焦点模式：
+
+| 焦点模式 | 说明 | 同应用内焦点策略 | 适用场景 |
+|---------|------|-------------------|---------|
+| SHARE_MODE（默认） | 同一应用创建的多个音频流共享一个音频焦点。 | 不触发焦点策略，应用自行决定各流的播放、暂停、停止等操作，系统不发送DUCK/PAUSE/STOP/RESUME事件。 | 应用内多流不冲突，或应用已有自定义并发逻辑。 |
+| INDEPENDENT_MODE | 应用创建的每个音频流均独立拥有一个音频焦点。 | 触发焦点策略，按跨应用焦点策略管理 | 应用内多流需差异化焦点管理 |
+
+> **关键**：INDEPENDENT_MODE下，同应用内多流之间的焦点策略与跨应用规则相同。例如音乐与音乐之间为STOP，音乐与视频之间为STOP等。
+
+设置焦点模式的方法：
+
+- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
+
+- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
+
+- 若[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
+
+- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
 
 ### 典型场景
 

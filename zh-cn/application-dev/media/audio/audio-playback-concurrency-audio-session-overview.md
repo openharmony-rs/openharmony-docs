@@ -115,3 +115,13 @@
 
 ## 同应用内不同音频流之间的焦点管理
 同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。
+ 
+同应用内常见焦点管理场景如下：
+
+<!--Table: 6%; 30%; 30%; 17%; 17% -->
+| - | 流A | 流B | 推荐体验 | 适配方案 |
+|--|-------|-------|---------|---------|
+| 同应用内音乐和音乐互相打断 | 播放音乐（STREAM_USAGE_MUSIC） | 播放音乐（STREAM_USAGE_MUSIC） | SHARE_MODE下两流共享焦点，系统不介入，应用自行决定各流的播放或暂停；<br>INDEPENDENT_MODE下音乐与音乐之间默认策略为STOP，先播方被打断不恢复，参考上方音频会话使用场景中的方案进行适配。 | 根据业务需求选择焦点模式：不希望系统介入用SHARE_MODE自行管控；<br>希望系统管理焦点恢复用INDEPENDENT_MODE + AudioSession CONCURRENCY_PAUSE_OTHERS。 |
+| 同应用内音乐和视频互相打断 | 播放音乐（STREAM_USAGE_MUSIC） | 播放视频音频（STREAM_USAGE_MOVIE） | SHARE_MODE下两流共享焦点，系统不介入，应用自行决定各流的播放或暂停；<br>INDEPENDENT_MODE下音乐与视频之间默认策略为STOP，先播方被打断不恢复，参考上方音频会话使用场景中的方案进行适配。 | 根据业务需求选择焦点模式：不希望系统介入用SHARE_MODE自行管控；<br>希望系统管理焦点恢复用INDEPENDENT_MODE + AudioSession CONCURRENCY_PAUSE_OTHERS。 |
+| 同应用内游戏配乐和视频并发 | 游戏配乐（STREAM_USAGE_GAME） | 视频音频（STREAM_USAGE_MOVIE） | GAME与所有媒体类流默认并发混音，互不影响。 | SHARE_MODE或INDEPENDENT_MODE下均可并发，无需额外焦点策略适配。 |
+| 同应用内游戏配乐和游戏音效并发 | 游戏配乐（STREAM_USAGE_GAME） | 游戏音效（STREAM_USAGE_GAME） | GAME与所有媒体类流默认并发混音，互不影响。 | SHARE_MODE或INDEPENDENT_MODE下均可并发，无需额外焦点策略适配。 |
