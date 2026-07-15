@@ -730,6 +730,7 @@ ArkTS-Sta: getLogFile(latestSeconds: int): Array&lt;string&gt;
 **示例：**
 
 获取5分钟之内修改过的文件。
+
 ArkTS-Dyn示例：
 ```js
 hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
