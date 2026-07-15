@@ -5130,7 +5130,7 @@ gztell(): Promise&lt;number&gt;
 
 | 类型                  | 说明                                                     |
 | --------------------- | -------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回文件中下一个gzread或gzwrite的起始位置。 |
+| Promise&lt;number&gt; | Promise对象，返回文件种下一个gzread或gzwrite的起始位置。 |
 
 **错误码：**
 

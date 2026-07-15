@@ -62,7 +62,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
   }
 ```
 
-（3）打开SDK安装目录，在“{SDK安装目录}\{版本号}\openharmony\native\llvm\lib\aarch64-linux-ohos”目录下找到libomp.so动态库文件，并将其拷贝到工程目录entry/libs/arm64-v8a文件夹。
+（3）打开Sdk安装目录，在“{Sdk安装目录}\{版本号}\openharmony\native\llvm\lib\aarch64-linux-ohos”目录下找到libomp.so动态库文件，并将其拷贝到工程目录entry/libs/arm64-v8a文件夹。
 
 ### 修改源文件
 
