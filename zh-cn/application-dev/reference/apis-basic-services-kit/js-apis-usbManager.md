@@ -135,7 +135,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
-1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及USBDevice;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -160,7 +160,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 
 **示例：**
 
@@ -269,6 +269,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import {BusinessError} from '@kit.BasicServicesKit';
 function requestRight() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -394,6 +395,10 @@ async function claimInterface() {
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   console.info(`claimInterface = ${ret}`);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -458,6 +463,10 @@ async function releaseInterface() {
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
   usbManager.closePipe(devicepipe);
@@ -581,6 +590,10 @@ async function setInterface() {
   }
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
   usbManager.closePipe(devicepipe);
@@ -731,6 +744,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 **示例：**
 
 ```ts
+import {BusinessError} from '@kit.BasicServicesKit';
 // 控制传输参数：根据USB协议规范、设备描述符或设备规格文档设置各字段值
 // bmRequestType：请求控制类型，常见取值0x00(标准设备请求)、0x01(类请求)、0x02(厂商请求)
 // bRequest：具体控制请求命令（如获取描述符、设置地址等）
@@ -819,6 +833,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 ```ts
+import {BusinessError} from '@kit.BasicServicesKit';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -844,7 +859,11 @@ async function bulkTransfer() {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
-      usbManager.claimInterface(devicepipe, interfaces);
+      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      if (ret !== 0) {
+        console.error(`claim interface failed`);
+        continue;
+      }
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
@@ -886,7 +905,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
@@ -925,7 +944,11 @@ async function usbSubmitTransfer() {
     return value.direction === 0 && value.type === 2
   })
   // 获取设备的第一个id。
-  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -983,7 +1006,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1. Unrecognized discard error code. |
 | 14400011 | The transfer is not in progress, or is already complete or cancelled.|
@@ -1025,7 +1048,11 @@ async function usbCancelTransfer() {
     return;
   }
   // 获取设备的第一个id。
-  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  if (ret !== 0) {
+    console.error(`claim interface failed`);
+    return;
+  }
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1148,13 +1175,12 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.hasAccessoryRight(accList?.[0])
-  hilog.info(0, 'testTag ui', `hasAccessoryRight success, ret:${flag}`)
+  console.info(`hasAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.error(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1195,13 +1221,14 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  hilog.info(0, 'testTag ui', `requestAccessoryRight success, ret:${flag}`)
-} catch (error) {
-  hilog.error(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
+async function requestAccessoryRight() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    console.info(`requestAccessoryRight success, ret:${flag}`)
+  } catch (error) {
+    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`)
+  }
 }
 ```
 
@@ -1237,17 +1264,18 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 <!--code_no_check-->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  if (!flag) {
-    return
+async function cancelAccessoryRight() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    if (!flag) {
+      return
+    }
+    usbManager.cancelAccessoryRight(accList?.[0])
+    console.info(`cancelAccessoryRight success`)
+  } catch (error) {
+    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`)
   }
-  usbManager.cancelAccessoryRight(accList?.[0])
-  hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
-} catch (error) {
-  hilog.error(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1277,12 +1305,11 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  hilog.info(0, 'testTag ui', `getAccessoryList success, accList: ${JSON.stringify(accList)}`)
+  console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`)
 } catch (error) {
-  hilog.error(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
+  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1316,7 +1343,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
 | 14401002 | Failed to open the native accessory node. Possible causes: 1. The device node does not exist. 2. The device node is already opened by another process. |
@@ -1326,21 +1353,23 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 <!--code_no_check-->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  if (!flag) {
-    return
+async function openAccessory() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    if (!flag) {
+      return
+    }
+    let handle = usbManager.openAccessory(accList?.[0])
+    console.info(`openAccessory success`)
+    let arrayBuffer = new ArrayBuffer(4096);
+    let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
+    console.info('readSync ret: ' + readLength.toString(10));
+    usbManager.closeAccessory(handle)
+  } catch (error) {
+    console.error(`openAccessory error ${error.code}, message is ${error.message}`)
   }
-  let handle = usbManager.openAccessory(accList?.[0])
-  hilog.info(0, 'testTag ui', `openAccessory success`)
-  let arrayBuffer = new ArrayBuffer(4096);
-  let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
-  hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
-} catch (error) {
-  hilog.error(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1374,18 +1403,19 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 <!--code_no_check-->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList?.[0])
-  if (!flag) {
-    return
+async function closeAccessory() {
+  try {
+    let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+    let flag = await usbManager.requestAccessoryRight(accList?.[0])
+    if (!flag) {
+      return
+    }
+    let handle = usbManager.openAccessory(accList?.[0])
+    usbManager.closeAccessory(handle)
+    console.info(`closeAccessory success`)
+  } catch (error) {
+    console.error(`closeAccessory error ${error.code}, message is ${error.message}`)
   }
-  let handle = usbManager.openAccessory(accList?.[0])
-  usbManager.closeAccessory(handle)
-  hilog.info(0, 'testTag ui', `closeAccessory success`)
-} catch (error) {
-  hilog.error(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1424,7 +1454,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
+| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
 | 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
@@ -1433,6 +1463,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 **示例：**
 
 ```ts
+import {BusinessError} from '@kit.BasicServicesKit';
 async function resetUsbDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -1497,6 +1528,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 **示例：**
 
 ```ts
+import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
