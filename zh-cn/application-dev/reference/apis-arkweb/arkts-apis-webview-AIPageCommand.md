@@ -487,9 +487,9 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 132 | browser host is not available | browser或browser host为空。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 132 | browser或browser host为空。 |
 
 ### 请求示例
 
@@ -552,10 +552,10 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 11 | Cannot go back | 当前页面没有可后退的历史项。 |
-| 132 | browser is not available | browser为空。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 当前页面没有可后退的历史项。 |
+| 132 | browser为空。 |
 
 ### 返回示例
 
@@ -603,10 +603,10 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 11 | Cannot go forward | 当前页面没有可前进的历史项。 |
-| 132 | browser is not available | browser为空。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 当前页面没有可前进的历史项。 |
+| 132 | browser为空。 |
 
 ### 返回示例
 
@@ -663,12 +663,12 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 132 | browser is not available | browser为空。 |
-| 160 | main frame is not available | browser存在，但main frame为空。 |
-| 391 | params.url is required | `params`缺失或不是Object，或者`url`缺失或为空字符串。 |
-| 392 | params.url is invalid | `url`已传入但不是string，或者是非空字符串但不是合法URL或协议不在`http`、`https`、`file`、`about`范围内。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 132 | browser为空。 |
+| 160 | browser存在，但main frame为空。 |
+| 391 | `params`缺失或不是Object，或者`url`缺失或为空字符串。 |
+| 392 | `url`已传入但不是string，或者是非空字符串但不是合法URL或协议不在`http`、`https`、`file`、`about`范围内。 |
 
 ### 请求示例
 

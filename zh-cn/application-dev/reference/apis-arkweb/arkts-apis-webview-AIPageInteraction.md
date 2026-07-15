@@ -704,31 +704,31 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 110 | invalid params JSON | `params`缺失或不是Object。 |
-| 132 | browser or host is null | browser或browser host为空。 |
-| 350 | SendDevToolsMessage failed | 鼠标事件命令下发失败。 |
-| 391 | missing type | `type`缺失或为空字符串。 |
-| 391 | missing x or y | `x`或`y`缺失。 |
-| 392 | invalid param: type | `type`已传入，但不是string。 |
-| 392 | invalid mouse event type | `type`是非空字符串，但不在`mousePressed`、`mouseReleased`、`mouseMoved`、`mouseWheel`范围内。 |
-| 392 | invalid param: x | `x`已传入，但不是number。 |
-| 392 | invalid param: y | `y`已传入，但不是number。 |
-| 392 | invalid param: timestamp | `timestamp`已传入，但不是number。 |
-| 392 | invalid param: force | `force`已传入，但不是number。 |
-| 392 | invalid param: tangentialPressure | `tangentialPressure`已传入，但不是number。 |
-| 392 | invalid param: tiltX | `tiltX`已传入，但不是number。 |
-| 392 | invalid param: tiltY | `tiltY`已传入，但不是number。 |
-| 392 | invalid param: deltaX | `deltaX`已传入，但不是number。 |
-| 392 | invalid param: deltaY | `deltaY`已传入，但不是number。 |
-| 392 | invalid param: modifiers | `modifiers`已传入，但不是整数。 |
-| 392 | invalid param: buttons | `buttons`已传入，但不是整数。 |
-| 392 | invalid param: clickCount | `clickCount`已传入，但不是整数。 |
-| 392 | invalid param: twist | `twist`已传入，但不是整数。 |
-| 392 | invalid param: button | `button`不是string，或取值不在`none`、`left`、`middle`、`right`、`back`、`forward`范围内。 |
-| 392 | invalid param: pointerType | `pointerType`已传入，但不是string。 |
-| 392 | pointerType must be mouse | `pointerType`是string，但取值不是`mouse`。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 110 | `params`缺失或不是Object。 |
+| 132 | browser或browser host为空。 |
+| 350 | 鼠标事件命令下发失败。 |
+| 391 | `type`缺失或为空字符串。 |
+| 391 | `x`或`y`缺失。 |
+| 392 | `type`已传入，但不是string。 |
+| 392 | `type`是非空字符串，但不在`mousePressed`、`mouseReleased`、`mouseMoved`、`mouseWheel`范围内。 |
+| 392 | `x`已传入，但不是number。 |
+| 392 | `y`已传入，但不是number。 |
+| 392 | `timestamp`已传入，但不是number。 |
+| 392 | `force`已传入，但不是number。 |
+| 392 | `tangentialPressure`已传入，但不是number。 |
+| 392 | `tiltX`已传入，但不是number。 |
+| 392 | `tiltY`已传入，但不是number。 |
+| 392 | `deltaX`已传入，但不是number。 |
+| 392 | `deltaY`已传入，但不是number。 |
+| 392 | `modifiers`已传入，但不是整数。 |
+| 392 | `buttons`已传入，但不是整数。 |
+| 392 | `clickCount`已传入，但不是整数。 |
+| 392 | `twist`已传入，但不是整数。 |
+| 392 | `button`不是string，或取值不在`none`、`left`、`middle`、`right`、`back`、`forward`范围内。 |
+| 392 | `pointerType`已传入，但不是string。 |
+| 392 | `pointerType`是string，但取值不是`mouse`。 |
 
 ### 返回示例
 
@@ -803,28 +803,28 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 110 | invalid params JSON | `params`缺失或不是Object。 |
-| 132 | browser or host is null | browser或browser host为空。 |
-| 350 | SendDevToolsMessage failed | 键盘事件命令下发失败。 |
-| 391 | missing type | `type`缺失或为空字符串。 |
-| 392 | invalid param: type | `type`已传入，但不是string。 |
-| 392 | invalid key event type | `type`是非空字符串，但不在`keyDown`、`keyUp`、`rawKeyDown`、`char`范围内。 |
-| 392 | invalid param: text | `text`已传入，但不是string。 |
-| 392 | invalid param: unmodifiedText | `unmodifiedText`已传入，但不是string。 |
-| 392 | invalid param: key | `key`已传入，但不是string。 |
-| 392 | invalid param: code | `code`已传入，但不是string。 |
-| 392 | invalid param: timestamp | `timestamp`已传入，但不是number。 |
-| 392 | invalid param: modifiers | `modifiers`已传入，但不是整数。 |
-| 392 | invalid param: windowsVirtualKeyCode | `windowsVirtualKeyCode`已传入，但不是整数。 |
-| 392 | invalid param: nativeVirtualKeyCode | `nativeVirtualKeyCode`已传入，但不是整数。 |
-| 392 | invalid param: location | `location`已传入，但不是整数。 |
-| 392 | invalid param: autoRepeat | `autoRepeat`已传入，但不是boolean。 |
-| 392 | invalid param: isKeypad | `isKeypad`已传入，但不是boolean。 |
-| 392 | invalid param: isSystemKey | `isSystemKey`已传入，但不是boolean。 |
-| 392 | invalid param: isForwarded | `isForwarded`已传入，但不是boolean。 |
-| 392 | invalid param: commands | `commands`不是数组，或数组中存在非string成员。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 110 | `params`缺失或不是Object。 |
+| 132 | browser或browser host为空。 |
+| 350 | 键盘事件命令下发失败。 |
+| 391 | `type`缺失或为空字符串。 |
+| 392 | `type`已传入，但不是string。 |
+| 392 | `type`是非空字符串，但不在`keyDown`、`keyUp`、`rawKeyDown`、`char`范围内。 |
+| 392 | `text`已传入，但不是string。 |
+| 392 | `unmodifiedText`已传入，但不是string。 |
+| 392 | `key`已传入，但不是string。 |
+| 392 | `code`已传入，但不是string。 |
+| 392 | `timestamp`已传入，但不是number。 |
+| 392 | `modifiers`已传入，但不是整数。 |
+| 392 | `windowsVirtualKeyCode`已传入，但不是整数。 |
+| 392 | `nativeVirtualKeyCode`已传入，但不是整数。 |
+| 392 | `location`已传入，但不是整数。 |
+| 392 | `autoRepeat`已传入，但不是boolean。 |
+| 392 | `isKeypad`已传入，但不是boolean。 |
+| 392 | `isSystemKey`已传入，但不是boolean。 |
+| 392 | `isForwarded`已传入，但不是boolean。 |
+| 392 | `commands`不是数组，或数组中存在非string成员。 |
 
 ### 返回示例
 
@@ -902,26 +902,26 @@
 
 失败结果如下：
 
-| code | message | 触发场景 |
-| ---- | ---- | ---- |
-| 11 | input command failed | 输入命令执行超时，或renderer侧执行对象不可用。 |
-| 110 | invalid params JSON | `params`缺失或不是Object。 |
-| 131 | input command failed | XPath未匹配到元素，或节点标识对应的frame、文档或DOM节点已失效。 |
-| 132 | browser or host is null | browser或browser host为空。 |
-| 160 | input command failed | main frame无效、frame未就绪或renderer通信通道未就绪。 |
-| 161 | input command failed | 定位到的目标元素不是`input`元素。 |
-| 201 | invalid input value | `value`已传入，但不是string。 |
-| 202 | unsupported input type | `type`是非空字符串，但不在该命令支持的输入框类型范围内。 |
-| 202 | input command failed | 目标`input`元素的实际类型不支持设置字符串值。 |
-| 203 | input command failed | `value`不满足目标`input`元素实际类型的值格式要求。 |
-| 204 | input command failed | `type`不是`default`，且与目标`input`元素的实际类型不一致。 |
-| 391 | id or xpath is required | `id`和`xpath`均未提供。 |
-| 391 | missing type | `type`缺失或为空字符串。 |
-| 391 | missing value | `value`缺失。 |
-| 392 | id and xpath are mutually exclusive | `id`和`xpath`同时传入。 |
-| 392 | invalid id or xpath | `id`或`xpath`已传入，但不是string或为空字符串。 |
-| 392 | invalid param: type | `type`已传入，但不是string。 |
-| 392 | input command failed | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
+| 错误码 | 触发条件 |
+| ---- | ---- |
+| 11 | 输入命令执行超时，或renderer侧执行对象不可用。 |
+| 110 | `params`缺失或不是Object。 |
+| 131 | XPath未匹配到元素，或节点标识对应的frame、文档或DOM节点已失效。 |
+| 132 | browser或browser host为空。 |
+| 160 | main frame无效、frame未就绪或renderer通信通道未就绪。 |
+| 161 | 定位到的目标元素不是`input`元素。 |
+| 201 | `value`已传入，但不是string。 |
+| 202 | `type`是非空字符串，但不在该命令支持的输入框类型范围内。 |
+| 202 | 目标`input`元素的实际类型不支持设置字符串值。 |
+| 203 | `value`不满足目标`input`元素实际类型的值格式要求。 |
+| 204 | `type`不是`default`，且与目标`input`元素的实际类型不一致。 |
+| 391 | `id`和`xpath`均未提供。 |
+| 391 | `type`缺失或为空字符串。 |
+| 391 | `value`缺失。 |
+| 392 | `id`和`xpath`同时传入。 |
+| 392 | `id`或`xpath`已传入，但不是string或为空字符串。 |
+| 392 | `type`已传入，但不是string。 |
+| 392 | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
 
 ### 返回示例
 
