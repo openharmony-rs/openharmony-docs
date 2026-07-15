@@ -52,7 +52,7 @@
    针对应用在后台录音被其他音频流打断后无法恢复的场景，推荐使用以下解决方案：
 
    - 应用录音在后台被打断，收到焦点恢复通知时出现start失败，可以弹窗提醒用户再次打开应用手动重新开始录音。
-   - 可以使用[OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerwillmutewheninterrupted)将录音模式设置成静音打断模式。
+   - 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED，录音流焦点策略被设置成静音打断模式，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音，其他应用录制动作完成后恢复录制有声数据。
 
 3. 申请录音类型长时任务。
 
