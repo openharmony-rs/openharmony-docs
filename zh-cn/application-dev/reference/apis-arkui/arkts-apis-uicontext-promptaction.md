@@ -818,7 +818,7 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗配置。用于设置自定义弹窗的内容、样式、位置等属性。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则以showInSubWindow的设置为准，在子窗口中显示，不显示蒙层。|
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗选项。用于设置自定义弹窗的内容、样式、位置等属性。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则以showInSubWindow的设置为准，在子窗口中显示，不显示蒙层。|
 
 **返回值：**
 

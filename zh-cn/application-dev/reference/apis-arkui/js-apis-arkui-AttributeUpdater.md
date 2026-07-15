@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
+将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。适用于需要在不定义状态变量的情况下动态更新组件属性的场景，如动态修改组件构造参数、避免为一次性属性更新定义状态变量等。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 
 >  **使用说明：**
 >  
->  1. 由于与属性方法同时设置或者在AttributeUpdater中实现applyNormalAttribute等方法时，涉及到与状态管理更新机制同时使用，易出现混淆，因此不建议在同一组件上同时用两种方法设置相同属性。
+>  1. 当与属性方法同时设置，或在AttributeUpdater中实现applyNormalAttribute等方法时，AttributeUpdater会与状态管理更新机制同时生效，易出现混淆。因此，不建议在同一组件上同时使用属性方法（状态管理机制）和AttributeUpdater属性直通更新两种方式设置相同属性。
 >  
 >  2. 当与属性方法同时设置时，属性生效的原则为：后设置的生效。
 >  若先进行属性直通更新，后通过状态管理机制更新属性方法，则后更新的属性方法生效；
@@ -34,7 +34,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >  4. 开发者需要自行保障AttributeUpdater中T和C的类型匹配。比如T为ImageAttribute，C要对应为ImageInterface，否则可能导致
 >  使用updateConstructorParams时功能异常。
 >  
->  5. updateConstructorParams当前只支持Button，Image，Text，Span，SymbolSpan和ImageSpan组件。
+>  5. updateConstructorParams当前只支持Button、Image、Text、Span、SymbolSpan和ImageSpan组件。
 >  
 >  6. AttributeUpdater不支持深浅色切换等状态管理相关的操作。
 >
@@ -43,7 +43,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 ## Initializer\<T>
 type Initializer\<T> = () => T
 
-可以将属性更新到本地的修饰器。
+组件属性的初始化函数类型，用于创建并返回组件的属性实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -53,9 +53,9 @@ type Initializer\<T> = () => T
 
 | 类型     |                说明         |
 | -------- | ------------------------- |
-|  T       | 返回当前组件。              |
+|  T       | 返回当前组件的属性实例。        |
 
-## AttributeUpdater<T, C = Initializer\<T>>
+## AttributeUpdater\<T, C = Initializer\<T>>
 为[AttributeModifier](arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifiert)的实现类，开发者需要自定义class继承AttributeUpdater。
 
 其中C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等，仅在使用updateConstructorParams时才需要传递C类型。
@@ -67,7 +67,7 @@ type Initializer\<T> = () => T
 ### applyNormalAttribute
 applyNormalAttribute?(instance: T): void
 
-定义正常态更新属性函数。
+定义正常态更新属性函数，在AttributeUpdater后续更新属性时触发。不建议在同一组件上同时用属性直通更新和属性方法设置相同属性，否则易出现混淆。当与属性方法同时设置时，属性生效的原则为后设置的生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -77,12 +77,12 @@ applyNormalAttribute?(instance: T): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
+| instance | T | 是 | 组件的属性类实例，开发者通过调用该实例的属性方法来设置或更新组件的正常态属性，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
 
 ### initializeModifier
 initializeModifier(instance: T): void
 
-AttributeUpdater首次设置给组件时提供的样式。
+AttributeUpdater首次设置给组件时提供的样式。不建议在同一组件上同时用属性直通更新和属性方法设置相同属性，否则易出现混淆。当与属性方法同时设置时，属性生效的原则为后设置的生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -92,7 +92,7 @@ AttributeUpdater首次设置给组件时提供的样式。
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| instance | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
+| instance | T | 是 | 组件的属性类实例，开发者通过调用该实例的属性方法来初始化设置组件的样式属性，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
 
 **示例：** 
 
@@ -107,7 +107,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
   initializeModifier(instance: ButtonAttribute): void {
     instance.backgroundColor('#ffd5d5d5')
       .labelStyle({ maxLines: 3 })
-      .width('80%')
+      .width('80%');
   }
 
   // 该AttributeUpdater对象后续使用或者更新的时候触发的回调
@@ -150,9 +150,9 @@ struct Index {
 
 
 ### attribute
-get attribute(): T | undefined
+get attribute(): T \| undefined
 
-获取AttributeUpdater中组件对应的属性类实例，通过该实例实现属性直通更新的功能。
+获取AttributeUpdater中组件对应的属性类实例，通过该实例实现属性直通更新。需先通过组件的attributeModifier属性方法建立组件与AttributeUpdater的绑定关系，绑定后方可获取到属性类实例。不建议在同一组件上同时用属性直通更新和属性方法设置相同属性；当与属性方法同时设置时，属性生效的原则为后设置的生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -182,13 +182,13 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
 
 @Entry
 @Component
-struct updaterDemo2 {
+struct UpdaterDemo2 {
   modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
           .onClick(() => {
             this.modifier.attribute?.backgroundColor('#ff2787d9').width('30%');
@@ -210,7 +210,7 @@ struct updaterDemo2 {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| updateConstructorParams | [C](#attributeupdatert-c--initializert) | 否 | 否 | C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。用于更改组件的构造函数入参。 |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | 否 | 否 | C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等。用于更改组件的构造函数入参。需先通过组件的attributeModifier属性方法建立组件与AttributeUpdater的绑定关系，绑定后方可使用。当前仅支持Button、Image、Text、Span、SymbolSpan和ImageSpan组件，使用前需确保T和C类型匹配，否则可能导致功能异常。 |
 
 **示例：** 
 
@@ -221,25 +221,25 @@ struct updaterDemo2 {
 import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
-  initializeModifier(instance: TextAttribute) {
+  initializeModifier(instance: TextAttribute): void {
   }
 }
 
 @Entry
 @Component
-struct attributeDemo3 {
+struct AttributeDemo3 {
   private modifier: MyTextModifier = new MyTextModifier();
 
   build() {
     Row() {
       Column() {
-        Text("Initialize")
+        Text('Initialize')
           .attributeModifier(this.modifier)
           .fontSize(14).border({ width: 1 }).textAlign(TextAlign.Center).lineHeight(20)
           .width(200).height(50)
           .backgroundColor('#fff7f7f7')
           .onClick(() => {
-            this.modifier.updateConstructorParams("Updated");
+            this.modifier.updateConstructorParams('Updated');
           })
       }
       .width('100%')
@@ -254,7 +254,7 @@ struct attributeDemo3 {
 
 onComponentChanged(component: T): void
 
-绑定相同的自定义的Modifier对象，组件发生切换时，通过该接口通知到应用。
+当多个组件绑定同一个自定义AttributeUpdater对象，且绑定的组件发生切换时，通过该接口通知应用。需注意一个AttributeUpdater对象只能同时关联一个组件，否则将出现设置的属性只在一个组件上生效的现象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -264,7 +264,7 @@ onComponentChanged(component: T): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| component | T | 是 | 组件的属性类，用来标识进行属性设置的组件的类型，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
+| component | T | 是 | 组件的属性类实例，开发者通过调用该实例的属性方法来设置切换后组件的属性，比如Button组件的ButtonAttribute，Text组件的TextAttribute等。|
 
 **示例：** 
 
@@ -279,8 +279,8 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute): void {
-    instance.backgroundColor('#ff519db4')
+  onComponentChanged(component: ButtonAttribute): void {
+    component.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -288,23 +288,23 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
 
 @Entry
 @Component
-struct updaterDemo4 {
+struct UpdaterDemo4 {
   @State btnState: boolean = false;
   modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {
     Row() {
       Column() {
-        Button("Test")
+        Button('Test')
           .onClick(() => {
             this.btnState = !this.btnState;
           }).margin({ bottom: 20 })
 
         if (this.btnState) {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
         } else {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
         }
       }

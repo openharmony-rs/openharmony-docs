@@ -57,7 +57,7 @@ This API can only be called within the click event callback and must be called d
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

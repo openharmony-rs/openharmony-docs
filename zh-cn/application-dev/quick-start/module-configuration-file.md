@@ -104,6 +104,8 @@
       {
         "name": "my-skill",
         "abilityName": "EntryAbility",
+        "version": "1.0.0",
+        "visibility": "public",
         "srcEntries": [
           "../../my-skill/scripts/Test.ets"
         ],
@@ -1469,6 +1471,8 @@ skillProfiles标签示例：
       {
         "name": "my-skill",
         "abilityName": "EntryAbility",
+        "version": "1.0.0",
+        "visibility": "public",
         "srcEntries": [
           "../../my-skill/scripts/Test.ets"
         ],

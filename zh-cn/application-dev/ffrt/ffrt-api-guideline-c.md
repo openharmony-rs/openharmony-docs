@@ -417,7 +417,7 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 
 **参数**
 
-- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义拓展类型。
+- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义扩展类型。
 - `in_deps`：任务的输入数据依赖。输入数据依赖通常以实际数据的地址表达，也支持`ffrt_task_handle_t`作为一种特殊输入依赖。
 - `out_deps`：任务的输出数据依赖。输出数据依赖通常以实际数据的地址表达，不支持`ffrt_task_handle_t`。
 - `attr`：任务的属性设置。
@@ -605,7 +605,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 
 **参数**
 
-- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义拓展类型。
+- `f`：用户的任务执行体，可以是原生的`ffrt_function_header_t`类型，也可以基于`ffrt_function_header_t`自定义扩展类型。
 - `in_deps`：任务的输入数据依赖。输入数据依赖通常以实际数据的地址表达，也支持`ffrt_task_handle_t`作为一种特殊输入依赖。
 - `out_deps`：任务的输出数据依赖。输出数据依赖通常以实际数据的地址表达，不支持`ffrt_task_handle_t`。
 - `attr`：任务的属性设置。

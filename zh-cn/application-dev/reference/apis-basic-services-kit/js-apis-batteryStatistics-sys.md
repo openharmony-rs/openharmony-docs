@@ -11,14 +11,14 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从 API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
 
 ## 导入模块
 
 ```js
-import {batteryStats} from '@kit.BasicServicesKit';
+import { batteryStats, BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## batteryStats.getBatteryStats
@@ -100,7 +100,7 @@ batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStat
 
 getAppPowerValue(uid: number): number
 
-获取应用的耗电量，单位毫安时。与getAppPowerPercent相比，本方法返回绝对耗电值（毫安时），适用于需要精确耗电数值的场景；getAppPowerPercent返回相对百分比，适用于需要比较不同应用耗电占比的场景。
+获取应用的耗电量，单位毫安时。适用于需要精确耗电数值的场景。如需比较不同应用耗电占比，请使用getAppPowerPercent获取相对百分比。
 
 **系统接口：** 此接口为系统接口。
 
@@ -186,7 +186,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-根据耗电类型获取硬件单元的耗电量，单位毫安时。与getHardwareUnitPowerPercent相比，本方法返回绝对耗电值（毫安时），适用于需要精确耗电数值的场景；getHardwareUnitPowerPercent返回相对百分比，适用于需要比较不同硬件单元耗电占比的场景。
+根据耗电类型获取硬件单元的耗电量，单位毫安时。适用于需要精确耗电数值的场景。如需比较不同硬件单元耗电占比，请使用getHardwareUnitPowerPercent获取相对百分比。
 
 **系统接口：** 此接口为系统接口。
 
@@ -219,7 +219,7 @@ getHardwareUnitPowerValue(type: ConsumptionType): number
 ```js
 try {
     let powerValue = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
-    console.info('battery statistics value of hardware is: ' + value);
+    console.info('battery statistics value of hardware is: ' + powerValue);
 } catch (err) {
     console.error(`Failed to get battery statistics value of hardware. Code: ${err.code}, message: ${err.message}`);
 }
@@ -280,8 +280,8 @@ try {
 
 | 名称  | 类型                                | 只读 | 可选 | 说明                   |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | 否   | 否   | 耗电信息相关的UID。    |
-| type  | [ConsumptionType](#consumptiontype) | 否   | 否   | 耗电信息相关的类型。   |
+| uid   | number                              | 否   | 否   | 耗电信息对应的应用UID。  |
+| type  | [ConsumptionType](#consumptiontype) | 否   | 否   | 耗电信息的消耗类型。   |
 | power | number                              | 否   | 否   | 耗电的值，单位毫安时。 |
 
 ## ConsumptionType
@@ -298,8 +298,8 @@ try {
 | CONSUMPTION_TYPE_APP       | -16  | 表示应用消耗的电量类型。      |
 | CONSUMPTION_TYPE_BLUETOOTH | -15  | 表示蓝牙消耗的电量类型。      |
 | CONSUMPTION_TYPE_IDLE      | -14  | 表示CPU空闲时消耗的电量类型。 |
-| CONSUMPTION_TYPE_PHONE     | -13  | 表示通话来电消耗的电量类型。  |
-| CONSUMPTION_TYPE_RADIO     | -12  | 表示无线通讯消耗的电量类型。  |
+| CONSUMPTION_TYPE_PHONE     | -13  | 表示通话消耗的电量类型。  |
+| CONSUMPTION_TYPE_RADIO     | -12  | 表示蜂窝通讯消耗的电量类型。  |
 | CONSUMPTION_TYPE_SCREEN    | -11  | 表示屏幕消耗的电量类型。      |
 | CONSUMPTION_TYPE_USER      | -10  | 表示用户消耗的电量类型。      |
 | CONSUMPTION_TYPE_WIFI      | -9   | 表示无线网消耗的电量类型。    |

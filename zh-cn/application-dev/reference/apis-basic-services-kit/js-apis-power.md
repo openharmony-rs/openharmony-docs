@@ -11,12 +11,12 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从 API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
 ```js
-import {power} from '@kit.BasicServicesKit';
+import { power } from '@kit.BasicServicesKit';
 ```
 
 ## power.isActive<sup>9+</sup>
@@ -50,7 +50,7 @@ rebootDevice(reason: string): void
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始不再维护<!--Del-->。建议使用[power.reboot](js-apis-power-sys.md#powerreboot9)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
+> 从 API version 7开始支持，从 API version 9开始废弃<!--Del-->。建议使用[power.reboot](js-apis-power-sys.md#powerreboot9)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
 
 **需要权限：** ohos.permission.REBOOT，该权限仅系统应用可申请。
 
@@ -131,7 +131,7 @@ isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
+> 从 API version 7开始支持，从 API version 9开始废弃，建议使用[power.isActive](#powerisactive9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -161,7 +161,7 @@ isScreenOn(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
+> 从 API version 7开始支持，从 API version 9开始废弃，建议使用[power.isActive](#powerisactive9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 

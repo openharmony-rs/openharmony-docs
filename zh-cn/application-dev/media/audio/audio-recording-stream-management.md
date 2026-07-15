@@ -34,11 +34,11 @@
   });
   ```
 
-获取state后可对照[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如显示录制结束的提示等。
+获取state后可根据[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如显示录制结束的提示等。
 
 ## 读取或监听所有录制流的变化
 
-如果部分应用需要查询获取所有音频流的变化信息，可以通过AudioStreamManager读取或监听所有音频流的变化。
+如果部分应用需要查询所有音频流的变化信息，可以通过AudioStreamManager读取或监听所有音频流的变化。
 
 <!--Del-->
 > **说明：**
@@ -68,7 +68,7 @@
    let audioStreamManager = audioManager.getStreamManager();
    ```
 
-2. 使用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流更改事件。 如果音频流监听应用需要在音频录制流状态变化、设备变化时获取通知，可以订阅该事件。
+2. 使用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流变化事件。如果应用需要在音频录制流状态变化、设备变化时获取通知，可以订阅该事件。
 
    <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
    

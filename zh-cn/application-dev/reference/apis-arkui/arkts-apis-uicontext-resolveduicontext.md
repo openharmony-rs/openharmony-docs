@@ -20,8 +20,10 @@ ResolvedUIContext实例对象。用于表示通过[resolveUIContext](arkts-apis-
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
-| strategy      | [ResolveStrategy](./arkts-apis-uicontext-e.md#resolvestrategy22) | 否   | 否   | [UIContext](arkts-apis-uicontext-uicontext.md)的解析策略，用于标识[resolveUIContext](arkts-apis-uicontext-uicontext.md#resolveuicontext22)返回该UIContext实例时采用的解析规则。             |
+| strategy      | [ResolveStrategy](arkts-apis-uicontext-e.md#resolvestrategy22) | 否   | 否   | [UIContext](arkts-apis-uicontext-uicontext.md)的解析策略，用于标识[resolveUIContext](arkts-apis-uicontext-uicontext.md#resolveuicontext22)返回该UIContext实例时采用的解析规则。             |

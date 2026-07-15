@@ -70,6 +70,7 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 function add(x: number, y: number): number {
   return x + y;
 }
+  // ...
   // 简洁的箭头函数形式，类似Swift的闭包语法
   const multiply = (a: number, b: number): number => a * b;
 ```
@@ -87,6 +88,7 @@ function add(x: number, y: number): number {
    function foo(x: string): void;            /* 第二个函数定义。 */
    function foo(x: number | string): void {  /* 函数实现。 */
    }
+     // ...
      foo(123);     // OK，使用第一个定义
      foo('aa'); // OK，使用第二个定义
    ```
@@ -97,6 +99,7 @@ function add(x: number, y: number): number {
 
    ``` TypeScript
    function foo2(name?: string) {}  /* name为可选参数。 */
+     // ...
      foo2('hello');     // OK，传入name参数
      foo2();     // OK，不传name参数
    ```
@@ -151,6 +154,7 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 namespace Models {
   export class User {
     // 实现细节
+    // ...
   }
 
   export interface Repository {

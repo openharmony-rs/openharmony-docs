@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-下拉菜单标题栏包含一个下拉菜单，用于页面之间的切换，支持一级页面、二级及其以上界面（配置返回键）。
+下拉菜单标题栏是一个包含下拉菜单的标题栏组件，支持页面间的快速切换，可配置返回按钮和右侧菜单项。该组件适用于需要在不同视图或页面间进行导航切换的场景，支持一级页面、二级及其以上界面。使用该组件可以方便用户快速访问和切换不同的内容视图，提升页面导航的便捷性和用户体验。
 
 
 > **说明：**
@@ -66,8 +66,8 @@ SelectTitleBar({selected: number, options: Array&lt;SelectOption&gt;, menuItems?
 | -------- | -------- |---|---| -------- |
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源，用于设置标题栏右侧菜单项的图标，支持通过$r引用资源。当同时设置symbolStyle时，symbolStyle优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。不设置时，默认无标签。标签内容可作为accessibilityText的默认值。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| isEnabled | boolean | 否 | 是 | 是否启用。<br>默认值：false。true：启用，false：禁用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述，可作为accessibilityText的默认值。同时设置label和accessibilityText时，accessibilityText优先级更高。不设置时，默认无标签。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| isEnabled | boolean | 否 | 是 | 是否启用。<br>默认值：false。true：启用该菜单项，false：禁用该菜单项（置灰且不可点击）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 右侧自定义按钮被点击时执行的回调函数。开发者可在此定义按钮点击后需要执行的自定义操作。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件根据具体情况自动转换为"yes"或"no"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：设置了label时默认值为当前项label属性内容，未设置label时默认值为空格字符。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                     |

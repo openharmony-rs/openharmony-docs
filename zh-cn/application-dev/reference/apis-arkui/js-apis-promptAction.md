@@ -612,7 +612,7 @@ Dialog关闭的信息。
 
 ## Button
 
-菜单中的菜单项按钮。
+弹窗或菜单中的按钮信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

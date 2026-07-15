@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-弧形按钮组件提供强调、普通等样式按钮，推荐用于圆形屏幕的设备。
+弧形按钮组件提供强调、常规、自定义等样式按钮，推荐用于圆形屏幕的设备。
 
 > **说明：**
 >
@@ -103,7 +103,7 @@ ArcButton的默认样式或自定义样式参数。
 
 | 名称                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| position            | [ArcButtonPosition](#arcbuttonposition)                      |否  |是  | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| position            | [ArcButtonPosition](#arcbuttonposition)                      |否  |是  | 弧形按钮的显示位置，用于控制按钮位于圆形屏幕的上方或底部。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | styleMode           | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否  | 是 | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)同时使用。<br/>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | status              | [ArcButtonStatus](#arcbuttonstatus)                          |否   |是   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | label               | [ResourceStr](ts-types.md#resourcestr)                       |否 |是 | 弧形按钮显示文本。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -139,7 +139,7 @@ ArcButton内进度条的参数配置。
 
 ## ArcButtonPosition
 
-定义ArcButton可设置的弧形按钮的类型。
+定义ArcButton可设置的弧形按钮的位置。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

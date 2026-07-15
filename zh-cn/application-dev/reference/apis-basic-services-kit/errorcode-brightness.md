@@ -23,9 +23,9 @@ Failed to connect to the service.
 
 **可能原因**
 
-1. 亮度模块依赖的DisplayPowerManagerService系统服务停止运行，导致亮度控制操作无法建立服务连接。
+1. 亮度模块依赖的 DisplayPowerManagerService 系统服务停止运行，导致亮度控制操作无法建立服务连接。
 
-2. 亮度模块与DisplayPowerManagerService系统服务之间的服务通信发生异常，导致连接请求无法正常建立或响应。
+2. 亮度模块与 DisplayPowerManagerService 系统服务之间的服务通信发生异常，导致连接请求无法正常建立或响应。
 
 **处理步骤**
 
@@ -37,6 +37,7 @@ Failed to connect to the service.
       hdc shell hidumper -ls
     ```
 
-2. 查看系统服务列表中是否包含DisplayPowerManagerService系统服务。
-3. 若服务列表中不包含DisplayPowerManagerService系统服务，说明系统服务停止运行；若服务列表中包含DisplayPowerManagerService系统服务但仍报错，说明系统服务内部通信发生异常。请尝试手动重启设备后重新执行操作。
+2. 查看系统服务列表中是否包含 DisplayPowerManagerService 系统服务。
+
+3. 请尝试手动重启设备后重新执行操作。
 

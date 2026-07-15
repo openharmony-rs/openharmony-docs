@@ -40,11 +40,11 @@ Node already has children.
 
 **可能原因**
 
-开发者构造 render 树时，作为根节点的自定义节点已挂载子 FrameNode 或 RenderNode。
+开发者构造渲染树时，作为根节点的自定义节点已挂载子 FrameNode 或 RenderNode。
 
 **处理步骤**
 
-接入渲染节点流程时，排查使用的自定义节点是否已存在子节点。
+接入渲染节点流程时，使用未挂载子节点的自定义节点作为根节点；如果目标自定义节点已存在子节点，先移除其子节点。
 
 ## 106403 当前渲染节点存在父节点
 
@@ -62,7 +62,7 @@ RenderNode parent is existed.
 
 **处理步骤**
 
-接入渲染节点流程时，排查作为根节点的 RenderNode 是否已挂载至其他组件下。
+接入渲染节点流程时，使用未挂载至其他组件的 RenderNode；如果目标 RenderNode 已有父节点，先将其从原父节点移除。
 
 ## 106404 未找到对应的渲染子节点
 
@@ -80,7 +80,7 @@ RenderNode child is not exist.
 
 **处理步骤**
 
-排查传入的下标是否超出节点范围，或该指针对应的渲染节点是否存在子节点。
+确认 ArkUI_RenderNodeHandle 指针对应的渲染节点存在子节点，并将传入的下标调整到该节点的有效子节点索引范围内。
 
 ## 106405 参数值超出范围
 
@@ -98,7 +98,7 @@ Param is out of range.
 
 **处理步骤**
 
-检查接口调用的入参范围。
+检查接口允许的入参范围，并将参数值调整到该范围内。
 
 ## 106406 当前渲染节点从FrameNode中获取
 
@@ -148,7 +148,7 @@ The node is not adopted.
 
 **可能原因**
 
-该节点未被接纳，不能获取其 RenderNode。
+调用 OH_ArkUI_RenderNodeUtils_GetRenderNode 前，未通过 OH_ArkUI_NativeModule_AdoptChild 将该节点接纳为附属节点。
 
 **处理步骤**
 

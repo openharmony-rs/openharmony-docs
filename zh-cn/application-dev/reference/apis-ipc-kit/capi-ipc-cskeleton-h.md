@@ -327,14 +327,8 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 
 恢复调用方凭证信息至IPC上下文中。将IPC上下文的身份凭证恢复为原始调用方的凭证。必须在IPC请求处理上下文中调用。适用于完成临时权限提升操作后恢复正常权限的场景，例如：在服务端完成受保护资源访问后恢复调用方身份、在权限代理操作完成后还原调用方权限状态。
 
-**调用后的行为：**
 
-调用此方法后，IPC上下文的身份凭证将恢复为之前通过[OH_IPCSkeleton_ResetCallingIdentity()](#oh_ipcskeleton_resetcallingidentity)保存的调用方凭证。
-
-**约束和限制：**
-
-- 必须与[OH_IPCSkeleton_ResetCallingIdentity()](#oh_ipcskeleton_resetcallingidentity)配对使用。
-- 只能使用[OH_IPCSkeleton_ResetCallingIdentity()](#oh_ipcskeleton_resetcallingidentity)返回的有效凭证。
+- 调用此方法后，IPC上下文的身份凭证将恢复为之前通过[OH_IPCSkeleton_ResetCallingIdentity()](#oh_ipcskeleton_resetcallingidentity)保存的调用方凭证。
 - 应在完成需要服务端身份的操作后立即调用。
 - 身份凭证应正确管理，避免凭证泄露。
 

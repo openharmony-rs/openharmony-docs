@@ -368,7 +368,7 @@ maxFontScale(scale: number | Resource)
 | 名称      | 值     | 说明               |
 | ------- | ------- | ------- |
 | Normal | 0 | 普通按钮（默认不带圆角）。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Capsule | 1 | 胶囊型按钮（圆角默认为高度的一半）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Capsule | 1 | 胶囊型按钮（圆角默认为宽、高中较小值的一半）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Circle  | 2 | 圆形按钮。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | ROUNDED_RECTANGLE<sup>15+</sup> | 8 | 圆角矩形按钮（在不设置borderRadius时，默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。<br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -483,8 +483,8 @@ type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| xPos | number | 是 | 点击位置x的坐标。单位：vp |
-| yPos | number | 是 | 点击位置y的坐标。单位：vp |
+| xPos | number | 是 | 点击位置x的坐标。<br/>单位：vp |
+| yPos | number | 是 | 点击位置y的坐标。<br/>单位：vp |
 
 ## 事件
 

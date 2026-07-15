@@ -330,7 +330,7 @@ onChange(callback: Optional\<OnCheckboxChangeCallback>)
 
 type OnCheckboxChangeCallback  = (value: boolean) => void
 
-选中的状态。
+多选框选中状态发生变化时的回调。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 

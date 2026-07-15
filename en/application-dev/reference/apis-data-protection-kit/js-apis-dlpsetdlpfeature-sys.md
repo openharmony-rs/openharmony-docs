@@ -67,7 +67,7 @@ This API is used to enable or disable the DLP function in enterprise policies.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Non-system applications use system APIs. |
 | 19100001 | Invalid parameter value. |

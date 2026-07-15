@@ -65,11 +65,11 @@ InputMethod_TextConfig *OH_TextConfig_Create(void)
 
 创建一个新的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例。主要用于在[OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc)回调中对config参数进行设置操作。
 
-**使用场景：** 当开发者需要在GetTextConfigFunc回调外部预先创建TextConfig对象以准备配置信息时调用此函数。通常config参数由回调框架提供，开发者直接在回调内设置即可，无需自行创建。
+使用场景：当开发者需要在GetTextConfigFunc回调外部预先创建TextConfig对象以准备配置信息时调用此函数。通常config参数由回调框架提供，开发者直接在回调内设置即可，无需自行创建。
 
-**使用后效果：** 创建成功后返回一个新的TextConfig实例指针，后续可通过Set*接口设置配置属性。
+使用后效果：创建成功后返回一个新的TextConfig实例指针，后续可通过Set*接口设置配置属性。
 
-**生命周期管理：** 返回的对象必须通过[OH_TextConfig_Destroy](#oh_textconfig_destroy)销毁，Create与Destroy必须配对使用。未销毁会导致内存泄漏。同一个实例只能被销毁一次。
+生命周期管理：返回的对象必须通过[OH_TextConfig_Destroy](#oh_textconfig_destroy)销毁，Create与Destroy必须配对使用。未销毁会导致内存泄漏。同一个实例只能被销毁一次。
 
 **起始版本：** 12
 
@@ -89,11 +89,11 @@ void OH_TextConfig_Destroy(InputMethod_TextConfig *config)
 
 销毁一个[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例。销毁后config指针不可再使用，建议将指针设置为NULL避免误用。
 
-**使用场景：** 当应用不再需要TextConfig对象时调用此函数释放资源。
+使用场景：当应用不再需要TextConfig对象时调用此函数释放资源。
 
-**使用后效果：** config对象将被释放，其内部资源被回收，此后不可再通过config指针调用任何函数。
+使用后效果：config对象将被释放，其内部资源被回收，此后不可再通过config指针调用任何函数。
 
-**生命周期管理：** 与[OH_TextConfig_Create](#oh_textconfig_create)配对使用。同一个实例只能被销毁一次，不可重复销毁。若config为NULL，函数不做任何处理。
+生命周期管理：与[OH_TextConfig_Create](#oh_textconfig_create)配对使用。同一个实例只能被销毁一次，不可重复销毁。若config为NULL，函数不做任何处理。
 
 **起始版本：** 12
 
@@ -113,11 +113,11 @@ InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config,
 
 设置文本配置信息中的输入框类型。输入法框架将根据此类型调整键盘布局。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框的输入类型，或在创建TextConfig后预先设置输入类型。
+使用场景：在GetTextConfigFunc回调内设置编辑框的输入类型，或在创建TextConfig后预先设置输入类型。
 
-**使用后效果：** 设置成功后，输入法框架将据此切换对应的键盘布局（如文本键盘、数字键盘等）。
+使用后效果：设置成功后，输入法框架将据此切换对应的键盘布局（如文本键盘、数字键盘等）。
 
-**前置条件：** config须为有效的InputMethod_TextConfig实例指针。
+前置条件：config须为有效的InputMethod_TextConfig实例指针。
 
 **起始版本：** 12
 
@@ -144,9 +144,9 @@ InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *conf
 
 设置文本配置信息中的回车键功能类型。输入法框架将据此调整回车键的显示标签和功能。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框的回车键类型。
+使用场景：在GetTextConfigFunc回调内设置编辑框的回车键类型。
 
-**使用后效果：** 设置成功后，输入法键盘上的回车键将显示对应的标签（如"搜索"、"完成"等）并执行对应功能。
+使用后效果：设置成功后，输入法键盘上的回车键将显示对应的标签（如"搜索"、"完成"等）并执行对应功能。
 
 **起始版本：** 12
 
@@ -173,9 +173,9 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 
 将预上屏支持情况设置到文本配置信息中。预上屏是输入法的候选文本展示功能，设置supported为true后输入法将启用预上屏功能。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框是否支持预上屏功能。
+使用场景：在GetTextConfigFunc回调内设置编辑框是否支持预上屏功能。
 
-**使用后效果：** 设置为true后，输入法将启用预上屏功能，通过SetPreviewTextFunc回调向编辑框发送预上屏文本；设置为false后，输入法不使用预上屏功能。
+使用后效果：设置为true后，输入法将启用预上屏功能，通过SetPreviewTextFunc回调向编辑框发送预上屏文本；设置为false后，输入法不使用预上屏功能。
 
 **起始版本：** 12
 
@@ -202,9 +202,9 @@ InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config,
 
 设置文本配置信息中的选中文本范围。用于告知输入法当前编辑框的文本选区状态。
 
-**使用场景：** 在GetTextConfigFunc回调内设置当前编辑框的选区范围。
+使用场景：在GetTextConfigFunc回调内设置当前编辑框的选区范围。
 
-**使用后效果：** 设置成功后，输入法将据此感知编辑框的选中状态。
+使用后效果：设置成功后，输入法将据此感知编辑框的选中状态。
 
 **起始版本：** 12
 
@@ -232,9 +232,9 @@ InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, 
 
 设置文本配置信息中所属窗口的窗口id。用于标识编辑框所属的应用窗口，输入法据此确定避让区域和候选词窗口定位。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框所属窗口的窗口ID。
+使用场景：在GetTextConfigFunc回调内设置编辑框所属窗口的窗口ID。
 
-**使用后效果：** 设置成功后，输入法将据此确定候选词窗口的定位和避让策略。
+使用后效果：设置成功后，输入法将据此确定候选词窗口的定位和避让策略。
 
 **起始版本：** 12
 
@@ -261,9 +261,9 @@ InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *confi
 
 设置文本配置信息中的占位符文本信息。占位符文本是编辑框中当无用户输入时显示的提示文本，输入法据此感知编辑框的提示内容。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框的占位符提示文本。
+使用场景：在GetTextConfigFunc回调内设置编辑框的占位符提示文本。
 
-**使用后效果：** 设置成功后，输入法将据此感知编辑框的占位提示内容，可用于上下文分析。
+使用后效果：设置成功后，输入法将据此感知编辑框的占位提示内容，可用于上下文分析。
 
 **起始版本：** 20
 
@@ -291,9 +291,9 @@ InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *confi
 
 设置文本配置信息中的abilityName信息。abilityName用于标识编辑框所属的Ability，输入法据此感知编辑框的业务场景。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框所属Ability的名称。
+使用场景：在GetTextConfigFunc回调内设置编辑框所属Ability的名称。
 
-**使用后效果：** 设置成功后，输入法将据此感知编辑框的业务场景。
+使用后效果：设置成功后，输入法将据此感知编辑框的业务场景。
 
 **起始版本：** 20
 
@@ -321,11 +321,11 @@ InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *
 
 将编辑框是否具有完整处理字母、字符、功能等按键的能力设置到文本配置信息中。当设置为true时，表示编辑框具备完整处理按键事件的能力，输入法框架将跳过对这些按键的处理；当设置为false时，表示编辑框不具备此能力，按键事件将由输入法框架自行处理。
 
-**使用场景：** 在GetTextConfigFunc回调内设置编辑框是否具有按键事件处理能力。当编辑框已实现完整的按键处理逻辑（如自行处理字母键、字符键、功能键等）时，应设置为true；否则应设置为false。
+使用场景：在GetTextConfigFunc回调内设置编辑框是否具有按键事件处理能力。当编辑框已实现完整的按键处理逻辑（如自行处理字母键、字符键、功能键等）时，应设置为true；否则应设置为false。
 
-**使用后效果：** 设置为true后，输入法框架将跳过对字母、字符、功能等按键的处理，由编辑框自行消费这些按键事件；设置为false后，输入法框架将自行处理这些按键事件，编辑框不再消费。
+使用后效果：设置为true后，输入法框架将跳过对字母、字符、功能等按键的处理，由编辑框自行消费这些按键事件；设置为false后，输入法框架将自行处理这些按键事件，编辑框不再消费。
 
-**前置条件：** config须为有效的InputMethod_TextConfig实例指针。
+前置条件：config须为有效的InputMethod_TextConfig实例指针。
 
 **起始版本：** 26.0.0
 
@@ -352,7 +352,7 @@ InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config,
 
 获取文本配置信息中的输入框类型。
 
-**使用场景：** 当需要读取已设置的输入框类型时调用此函数。
+使用场景：当需要读取已设置的输入框类型时调用此函数。
 
 **起始版本：** 12
 
@@ -379,7 +379,7 @@ InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *conf
 
 获取文本配置信息中的回车键功能类型。
 
-**使用场景：** 当需要读取已设置的回车键类型时调用此函数。
+使用场景：当需要读取已设置的回车键类型时调用此函数。
 
 **起始版本：** 12
 
@@ -406,7 +406,7 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 
 获取文本配置中是否支持预上屏。
 
-**使用场景：** 当需要读取已设置的预上屏支持状态时调用此函数。
+使用场景：当需要读取已设置的预上屏支持状态时调用此函数。
 
 **起始版本：** 12
 
@@ -433,11 +433,11 @@ InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config
 
 获取文本配置信息中的光标信息。此接口使用双指针参数，函数内部分配内存返回CursorInfo对象。
 
-**使用场景：** 当需要读取已设置的光标信息时调用此函数。
+使用场景：当需要读取已设置的光标信息时调用此函数。
 
-**使用后效果：** 调用成功后，cursorInfo指向由函数内部分配的CursorInfo对象，包含光标位置和高度等信息。
+使用后效果：调用成功后，cursorInfo指向由函数内部分配的CursorInfo对象，包含光标位置和高度等信息。
 
-**内存管理：** cursorInfo为双指针（输出指针），函数内部分配内存创建[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)对象并通过此参数返回。返回的CursorInfo对象必须在使用完毕后调用[OH_CursorInfo_Destroy](capi-inputmethod-cursor-info-capi-h.md#oh_cursorinfo_destroy)释放，否则会造成内存泄漏。不可使用free直接释放。
+内存管理：cursorInfo为双指针（输出指针），函数内部分配内存创建[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)对象并通过此参数返回。返回的CursorInfo对象必须在使用完毕后调用[OH_CursorInfo_Destroy](capi-inputmethod-cursor-info-capi-h.md#oh_cursorinfo_destroy)释放，否则会造成内存泄漏。不可使用free直接释放。
 
 **起始版本：** 12
 
@@ -464,11 +464,11 @@ InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *con
 
 获取文本配置信息中的避让信息。此接口使用双指针参数，函数内部分配内存返回TextAvoidInfo对象。
 
-**使用场景：** 当需要读取已设置的避让信息时调用此函数。
+使用场景：当需要读取已设置的避让信息时调用此函数。
 
-**使用后效果：** 调用成功后，avoidInfo指向由函数内部分配的TextAvoidInfo对象，包含避让区域的位置和尺寸等信息。
+使用后效果：调用成功后，avoidInfo指向由函数内部分配的TextAvoidInfo对象，包含避让区域的位置和尺寸等信息。
 
-**内存管理：** avoidInfo为双指针（输出指针），函数内部分配内存创建[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)对象并通过此参数返回。返回的TextAvoidInfo对象必须在使用完毕后调用[OH_TextAvoidInfo_Destroy](capi-inputmethod-text-avoid-info-capi-h.md#oh_textavoidinfo_destroy)释放，否则会造成内存泄漏。不可使用free直接释放。
+内存管理：avoidInfo为双指针（输出指针），函数内部分配内存创建[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)对象并通过此参数返回。返回的TextAvoidInfo对象必须在使用完毕后调用[OH_TextAvoidInfo_Destroy](capi-inputmethod-text-avoid-info-capi-h.md#oh_textavoidinfo_destroy)释放，否则会造成内存泄漏。不可使用free直接释放。
 
 **起始版本：** 12
 
@@ -495,7 +495,7 @@ InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config,
 
 获取文本配置信息中的选区范围信息。
 
-**使用场景：** 当需要读取已设置的选区范围时调用此函数。
+使用场景：当需要读取已设置的选区范围时调用此函数。
 
 **起始版本：** 12
 
@@ -523,7 +523,7 @@ InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, 
 
 获取文本配置信息中所属窗口的窗口id。
 
-**使用场景：** 当需要读取已设置的窗口ID时调用此函数。
+使用场景：当需要读取已设置的窗口ID时调用此函数。
 
 **起始版本：** 12
 
@@ -550,11 +550,9 @@ InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *confi
 
 获取文本配置信息中的占位符文本信息。此接口采用两步调用策略：第一次调用时以NULL作为placeholder参数，length将返回实际占位文本长度；根据返回的长度分配足够内存后第二次调用获取完整内容。
 
-**使用场景：** 当需要读取已设置的占位符文本时调用此函数。
+使用场景：当需要读取已设置的占位符文本时调用此函数。
 
-**使用后效果：** 调用成功后，placeholder中将包含完整的占位文本内容，length返回实际长度。
-
-**两步调用策略：** 1. 第一次调用：placeholder传NULL，length传有效指针，函数将设置length为实际占位文本长度，并返回IME_ERR_PARAMCHECK错误码。2. 根据返回的length值分配足够的char16_t数组内存（含结尾符需length+1个元素）。3. 第二次调用：placeholder传已分配的内存指针，length传可用长度值，函数将写入完整的占位文本内容。
+使用后效果：调用成功后，placeholder中将包含完整的占位文本内容，length返回实际长度。
 
 **起始版本：** 20
 
@@ -582,11 +580,9 @@ InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *confi
 
 获取文本配置信息中的abilityName信息。此接口采用两步调用策略：第一次调用时以NULL作为abilityName参数，length将返回实际abilityName长度；根据返回的长度分配足够内存后第二次调用获取完整内容。
 
-**使用场景：** 当需要读取已设置的abilityName时调用此函数。
+使用场景：当需要读取已设置的abilityName时调用此函数。
 
-**使用后效果：** 调用成功后，abilityName中将包含完整的abilityName内容，length返回实际长度。
-
-**两步调用策略：** 1. 第一次调用：abilityName传NULL，length传有效指针，函数将设置length为实际abilityName长度，并返回IME_ERR_PARAMCHECK错误码。2. 根据返回的length值分配足够的char16_t数组内存（含结尾符需length+1个元素）。3. 第二次调用：abilityName传已分配的内存指针，length传可用长度值，函数将写入完整的abilityName内容。
+使用后效果：调用成功后，abilityName中将包含完整的abilityName内容，length返回实际长度。
 
 **起始版本：** 20
 
@@ -614,9 +610,9 @@ InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *
 
 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。即读取通过[OH_TextConfig_SetConsumeKeyEvents](#oh_textconfig_setconsumekeyevents)设置的按键事件消费能力配置。
 
-**使用场景：** 当需要读取已设置的按键事件处理能力配置时调用此函数，用于判断编辑框是否具备完整消费按键事件的能力。
+使用场景：当需要读取已设置的按键事件处理能力配置时调用此函数，用于判断编辑框是否具备完整消费按键事件的能力。
 
-**使用后效果：** 调用成功后，consumeKeyEvents将返回编辑框的按键事件处理能力状态。true表示编辑框具备完整处理按键事件的能力，输入法框架将跳过对字母、字符、功能等按键的处理；false表示编辑框不具备此能力，按键事件将由输入法框架处理。
+使用后效果：调用成功后，consumeKeyEvents将返回编辑框的按键事件处理能力状态。true表示编辑框具备完整处理按键事件的能力，输入法框架将跳过对字母、字符、功能等按键的处理；false表示编辑框不具备此能力，按键事件将由输入法框架处理。
 
 **起始版本：** 26.0.0
 

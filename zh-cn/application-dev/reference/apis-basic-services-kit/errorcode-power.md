@@ -23,9 +23,9 @@ Failed to connect to the service.
 
 **可能原因**
 
-1. 电源管理模块依赖的PowerManagerService系统服务停止运行，导致接口调用无法建立服务连接。
+1. 电源管理模块依赖的 PowerManagerService 系统服务停止运行，导致接口调用无法建立服务连接。
 
-2. 电源管理模块与PowerManagerService系统服务之间的服务通信发生异常，导致连接请求无法正常建立或响应。
+2. 电源管理模块与 PowerManagerService 系统服务之间的服务通信发生异常，导致连接请求无法正常建立或响应。
 
 **处理步骤**
 
@@ -37,9 +37,9 @@ Failed to connect to the service.
       hdc shell hidumper -ls
     ```
 
-2. 查看系统服务列表中是否包含PowerManagerService系统服务。
+2. 查看系统服务列表中是否包含 PowerManagerService 系统服务。
 
-3. 若服务列表中不包含PowerManagerService系统服务，说明系统服务停止运行；若服务列表中包含PowerManagerService系统服务但仍报错，说明系统服务内部通信发生异常。请尝试手动重启设备后重新执行操作。
+3. 请尝试手动重启设备后重新执行操作。
 
 ## 4900102 正在关机中
 
@@ -95,7 +95,7 @@ Setting the power mode failed.
 
 当前电源模式不可切换至目标电源模式，请使用[getPowerMode](js-apis-power.md#powergetpowermode9)接口查询当前电源模式。
 
-## 4900400 接口入参错误
+## 4900400 接口入参无效
 
 **错误信息**
 
@@ -125,7 +125,7 @@ Failed to read the power configuration value.
 
 **可能原因**
 
-设备中配置文件power_config.json的配置节点不存在
+设备中配置文件 power_config.json 的配置节点不存在。
 
 **处理步骤**
 
@@ -143,7 +143,7 @@ Failed to write the power configuration value.
 
 **可能原因**
 
-设备中配置文件power_config.json的配置节点不存在
+设备中配置文件 power_config.json 的配置节点不存在。
 
 **处理步骤**
 

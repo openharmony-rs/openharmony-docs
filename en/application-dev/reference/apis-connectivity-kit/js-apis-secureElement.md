@@ -68,7 +68,7 @@ The returned **SEService** instance is available only when **true** is returned 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -117,7 +117,7 @@ The **SEService** object is available only when [isConnected](#seserviceisconnec
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -165,7 +165,7 @@ Call this API to register a callback after you use [omapi.newSEService](#omapine
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -192,7 +192,7 @@ Disables listening for service status change events.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -263,7 +263,7 @@ Obtains available SE readers, which include all the SEs on the device.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -312,7 +312,7 @@ Checks whether this SE service is connected.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -352,7 +352,7 @@ Releases all SE resources allocated to this SE service. After that, [isConnected
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -393,7 +393,7 @@ Obtains the version of the Open Mobile API (OMAPI) specification used.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -438,7 +438,7 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 For details about error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -480,7 +480,7 @@ Checks whether the SE corresponding to this reader is available.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -523,7 +523,7 @@ Opens a session to connect to an SE in this reader. Multiple sessions can be ope
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -566,7 +566,7 @@ Closes all sessions opened on this reader. All channels opened by these sessions
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -626,7 +626,7 @@ Obtains the reader that provides this session.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -679,7 +679,7 @@ Obtains the Answer to Reset (ATR) of this SE. If the ATR of this SE is not avail
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -715,7 +715,7 @@ Closes the session with the SE. All channels opened by this session will be clos
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -756,7 +756,7 @@ Checks whether this session is closed.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -791,7 +791,7 @@ Closes all channels opened on this session.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |801 | Capability not supported.          |
 | 3300101  | IllegalStateError, service state exception. |
@@ -838,7 +838,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -896,7 +896,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -962,7 +962,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1022,7 +1022,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1088,7 +1088,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1146,7 +1146,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1212,7 +1212,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1272,7 +1272,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1335,7 +1335,7 @@ Obtains the session used to open this channel.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1370,7 +1370,7 @@ Closes this channel.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1409,7 +1409,7 @@ Checks whether this channel is a basic channel.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1449,7 +1449,7 @@ Checks whether this channel is closed.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1489,7 +1489,7 @@ Obtains the response data including the status word of **SELECT Applet**.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1535,7 +1535,7 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses a promise to 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1585,7 +1585,7 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchrono
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |

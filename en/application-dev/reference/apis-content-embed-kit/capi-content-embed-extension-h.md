@@ -116,7 +116,7 @@ Obtains the AbilityRuntime context from the OE Extension context.
 | Name| Description|
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontext8h.md) ceContext | Pointer to the OE Extension context object.|
-| AbilityRuntime_ContextHandle *context | Output parameter. After the call is successful, this pointer points to the AbilityRuntime_ContextHandle context object.|
+| [AbilityRuntime_ContextHandle](../apis-ability-kit/capi-abilityruntime-abilityruntime-context8h.md) *context | Output parameter. After the call is successful, this pointer points to the [AbilityRuntime_ContextHandle](../apis-ability-kit/capi-abilityruntime-abilityruntime-context8h.md) context object.|
 
 **Returns:**
 

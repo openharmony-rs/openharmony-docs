@@ -32,7 +32,7 @@
 | [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) | ArkUI_NativeDialogAPI_2 | ArkUI提供的Native侧自定义弹窗接口集合。 |
 | [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md) | ArkUI_NativeDialogAPI_3 | ArkUI提供的Native侧自定义弹窗接口集合。 |
 | [ArkUI_DialogDismissEvent](capi-arkui-nativemodule-arkui-dialogdismissevent.md) | ArkUI_DialogDismissEvent | 定义弹窗关闭事件对象。 |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md) | ArkUI_CustomDialogOptions | 定义自定义弹窗的内容对象。 |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md) | ArkUI_CustomDialogOptions | 定义自定义弹窗的配置选项。 |
 
 ### 枚举
 
@@ -42,7 +42,7 @@
 | [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | 设置弹窗显示层级。 |
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | 指定嵌入式弹窗的蒙层覆盖区域。 |
 | [OH_ArkUI_DialogDisplayModeInSubWindow](#oh_arkui_dialogdisplaymodeinsubwindow) | OH_ArkUI_DialogDisplayModeInSubWindow | 弹窗在子窗口中的显示模式。 |
-| [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | 枚举对话框的状态。 |
+| [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | 弹窗的状态。 |
 
 ### 函数
 
@@ -108,7 +108,7 @@ enum ArkUI_DismissReason
 | 枚举项 | 描述 |
 | -- | -- |
 | DIALOG_DISMISS_BACK_PRESS = 0 | 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。 |
-| DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | 点击遮障层触发。 |
+| DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | 点击遮罩层触发。 |
 | DIALOG_DISMISS_CLOSE_BUTTON = 2 | 点击关闭按钮。 |
 | DIALOG_DISMISS_SLIDE_DOWN = 3 | 下拉关闭。 |
 
@@ -175,7 +175,7 @@ enum ArkUI_DialogState
 **描述：**
 
 
-枚举对话框的状态。
+弹窗的状态。
 
 **起始版本：** 20
 
@@ -287,7 +287,7 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 关闭原因，异常情况返回-1。<br>         [DIALOG_DISMISS_BACK_PRESS](#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](#arkui_dismissreason) 点击遮障层触发。<br>         [DIALOG_DISMISS_CLOSE_BUTTON](#arkui_dismissreason) 点击关闭按钮。<br>         [DIALOG_DISMISS_SLIDE_DOWN](#arkui_dismissreason) 下拉关闭。 |
+| int32_t | 关闭原因，异常情况返回-1。<br>         [DIALOG_DISMISS_BACK_PRESS](#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](#arkui_dismissreason) 点击遮罩层触发。<br>         [DIALOG_DISMISS_CLOSE_BUTTON](#arkui_dismissreason) 点击关闭按钮。<br>         [DIALOG_DISMISS_SLIDE_DOWN](#arkui_dismissreason) 下拉关闭。 |
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
@@ -1076,7 +1076,7 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | uint32_t maskColor | 弹窗的遮罩颜色，0xARGB格式。 |
-| [const ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect | 遮蔽层区域范围的指针，遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。 |
+| [const ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect | 遮罩层区域范围的指针，遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。 |
 
 **返回：**
 

@@ -33,7 +33,7 @@ Starts configuration for the session.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400105                |  Session config locked.               |
 | 7400201                |  Camera service fatal error.<br>Applicable versions: 12+            |
@@ -74,7 +74,7 @@ Commits the configuration for this session. This API uses an asynchronous callba
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -115,7 +115,7 @@ Commits the configuration for this session. This API uses a promise to return th
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -186,7 +186,7 @@ Adds a [CameraInput](arkts-apis-camera-CameraInput.md) instance to this session.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                  |
@@ -229,7 +229,7 @@ Removes a [CameraInput](arkts-apis-camera-CameraInput.md) instance from this ses
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                |
@@ -303,7 +303,7 @@ Adds a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance to this sessio
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                |
@@ -346,7 +346,7 @@ Removes a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance from this s
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                |
@@ -389,7 +389,7 @@ Starts this session. This API uses an asynchronous callback to return the result
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed.<br>Applicable versions: 12+                |
 | 7400103                |  Session not config.                                   |
@@ -431,7 +431,7 @@ Starts this session. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed.<br>Applicable versions: 12+                |
 | 7400103                |  Session not config.                                   |
@@ -471,7 +471,7 @@ Stops this session. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -511,7 +511,7 @@ Stops this session. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -549,7 +549,7 @@ Releases this session. This API uses an asynchronous callback to return the resu
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -589,7 +589,7 @@ Releases this session. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                           |
 

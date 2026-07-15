@@ -39,7 +39,7 @@ Obtains the supported manual exposure durations, in microseconds.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, session or inputdevice maybe abnormal. |
 | 7400103 | Session not config, only throw in session usage. |
@@ -83,7 +83,7 @@ Obtains the exposure bias step.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, session or inputdevice maybe abnormal. |
 | 7400103 | Session not config. |

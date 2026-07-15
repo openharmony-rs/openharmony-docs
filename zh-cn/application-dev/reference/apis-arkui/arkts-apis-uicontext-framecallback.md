@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于设置下一帧渲染时需要执行的任务。
+用于定义帧回调任务，可在下一帧渲染阶段或帧渲染任务结束后的空闲阶段执行。
 
 > **说明：**
 >
@@ -82,7 +82,7 @@ struct Index {
 
 onIdle(timeLeftInNano: number): void
 
-在下一帧渲染任务结束后，如果距离该帧下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
+下一帧渲染任务结束后，若当前时间到下一个VSync信号的剩余时间大于1ms，则执行该回调；若剩余时间小于等于1ms，则将回调顺延至后续某一帧，待当前时间到下一个VSync信号的剩余时间大于1ms时执行。若当前没有已请求的下一帧，系统会自动请求一帧。
 
 继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。
 

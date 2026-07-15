@@ -50,7 +50,7 @@ import {
 >  **说明：** 
 >
 >  - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
->- 不建议在执行翻页动画过程中增加或减少子组件，会导致未进行动画的子组件提前进入视窗，引起显示异常。
+>  - 不建议在执行翻页动画过程中增加或减少子组件，会导致未进行动画的子组件提前进入视窗，引起显示异常。
 
 ## 接口
 
@@ -77,7 +77,7 @@ ArcSwiper(controller?: ArcSwiperController)
 
 index(index: Optional\<number>)
 
-设置当前在容器中显示的子组件的索引值。设置小于0或大于等于子组件数量时，按照默认值0处理。
+设置当前在容器中显示的子组件的索引值。当index值为undefined、小于0或大于等于子组件数量时，按照默认值0处理。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -119,7 +119,7 @@ duration(duration: Optional\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                                                  |
 | ------ | ------ | ---- | ----------------------------------------------------- |
-| duration  | Optional\<number> | 是   | 子组件切换的动画时长。<br/>默认值：400<br/>单位：毫秒 |
+| duration  | Optional\<number> | 是   | 子组件切换的动画时长。<br/>默认值：400<br/>单位：毫秒。传入负数时按默认值处理。 |
 
 ### vertical
 
@@ -157,7 +157,7 @@ disableSwipe(disabled: Optional\<boolean>)
 
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
-设置旋转表冠的灵敏度。
+设置旋转表冠的灵敏度。通过旋转表冠可以控制ArcSwiper组件的翻页，设置不同灵敏度级别可调整表冠滚动的响应速度，灵敏度越高，单位旋转角度对应的页面切换步进越大。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -189,7 +189,7 @@ effectMode(edgeEffect: Optional\<EdgeEffect>)
 
 disableTransitionAnimation(disabled: Optional\<boolean>)
 
-是否关闭特殊动效效果。
+设置是否关闭特殊动效效果。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -223,7 +223,7 @@ ArcSwiperController的构造函数。
 
 showNext()
 
-翻至下一页。翻页带动效切换过程，时长通过[duration](#duration)指定。
+翻至下一页。翻页带动效切换过程，时长通过[duration](#duration)指定。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -233,7 +233,7 @@ showNext()
 
 showPrevious()
 
-翻至上一页。翻页带动效切换过程，时长通过[duration](#duration)指定。
+翻至上一页。翻页带动效切换过程，时长通过[duration](#duration)指定。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -243,7 +243,7 @@ showPrevious()
 
 finishAnimation(handler?: FinishAnimationHandler)
 
-停止播放动画。
+停止播放动画。通过此方法控制翻页时，effectMode设置的回弹效果不生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -411,7 +411,7 @@ type FinishAnimationHandler = () => void
 
 type IndexChangedHandler = (index: number) => void
 
-当前显示元素的索引变化时，告知应用。
+当前显示元素的索引变化时，告知应用。index序列从0开始。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -519,7 +519,7 @@ onAnimationEnd(handler: Optional\<AnimationEndHandler>)
 
 切换动画结束时触发该回调。
 
-当ArcSwiper切换动效结束时触发，包括动画过程中手势中断，通过[ArcSwiperController](#arcswipercontroller)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
+当ArcSwiper切换动效结束时触发，包括动画过程中手势中断或通过[ArcSwiperController](#arcswipercontroller)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -563,7 +563,7 @@ customContentTransition(transition: Optional\<SwiperContentAnimatedTransition>)
 
 | 参数名     | 类型                                                         | 必填 | 说明                              |
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------- |
-| transition | Optional\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)> | 是   | ArcSwiper自定义切换动画相关信息。 |
+| transition | Optional\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)> | 是   | ArcSwiper自定义切换动画相关信息，包含timeout和transition两个属性。 |
 
 ## SwiperContentAnimatedTransition
 
@@ -575,7 +575,7 @@ ArcSwiper自定义切换动画相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | number | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。<br/>单位：ms<br/>默认值：0。 |
+| timeout | number | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，组件将强制结束该页面的自定义动画，并立即在该页面节点下渲染树。<br/>单位：ms<br/>默认值：0。 |
 | transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
 
 ## SwiperContentTransitionProxy
@@ -599,7 +599,7 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 | selectedIndex | number | 否 | 否 | 当前选中页面的索引。 |
 | index | number | 否 | 否 | 视窗内页面的索引。 |
 | position | number | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
-| mainAxisLength | number | 否 | 否 | index对应页面在主轴方向上的长度。 |
+| mainAxisLength | number | 否 | 否 | index对应页面在主轴方向上的长度。单位：vp。 |
 
 ### finishTransition
 

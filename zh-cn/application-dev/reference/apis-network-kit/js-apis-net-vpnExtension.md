@@ -15,8 +15,8 @@
 > 以下模块不支持在VpnExtensionAbility中引用，可能会导致程序异常退出。<br>
 > - [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
 > - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
-> - [@ohos.multimedia.audio(音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
-> - [@ohos.multimedia.camera(相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
+> - [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
+> - [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
 > - [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
 > - [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
 > - [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
@@ -763,7 +763,7 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。API version 23之前，最多支持64个IP地址；从API version 23开始，最多支持2000个IP地址。                                  |
 | vpnId<sup>20+</sup>           | string | 否 | 是 | VPN唯一标识。 | 
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（API version 23前最多可配置1024条路由；从API version 23开始最多可配置10000条路由）。                  |
-| dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。                                    |
+| dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。最多可配置64个DNS服务器地址。                                    |
 | searchDomains       | Array\<string\>                                                | 否  | 是 | DNS的搜索域列表。                                     |
 | mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576，1500]。               |
 | isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv4。true表示支持，false表示不支持, 默认值为true。<br>**注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。  |
@@ -782,7 +782,9 @@ let vpnConfig: vpnExtension.VpnConfig = {
   addresses: [],
   vpnId: '123',
   routes: [{
-    interface: "eth0",
+    // 网卡名称配置为空时，系统默认将路由配置到VPN虚拟网卡。
+    // 如填写非虚拟网卡实际名称，可能导致路由配置异常。
+    interface: "vpn-tun",
     destination: {
       address: {
         address:'',
@@ -792,6 +794,8 @@ let vpnConfig: vpnExtension.VpnConfig = {
       prefixLength:1
     },
     gateway: {
+      // 网关地址配置为空时，系统默认将VPN虚拟网卡地址作为网关地址。
+      // 如需使用非VPN虚拟网卡地址，请确保地址可达，否则可能导致路由配置失败。
       address:'',
       family:1,
       port:8080

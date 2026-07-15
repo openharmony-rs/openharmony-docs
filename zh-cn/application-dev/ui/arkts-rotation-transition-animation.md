@@ -38,7 +38,7 @@ struct rotation {
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
 {
-  "orientation": "auto_rotation",
+  "orientation": "auto_rotation"
 }
 ```
 
@@ -143,7 +143,7 @@ const TAG: string = 'EntryAbility';
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
 {
-  "orientation": "auto_rotation",
+  "orientation": "auto_rotation"
 }
 ```
 

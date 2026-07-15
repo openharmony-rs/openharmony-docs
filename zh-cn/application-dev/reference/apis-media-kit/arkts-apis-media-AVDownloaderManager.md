@@ -28,8 +28,6 @@ allowsCellularAccess(value: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -57,8 +55,6 @@ setRequestTimeout(expired: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -85,8 +81,6 @@ addAVDownloadTask(source: MediaSource): string
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -124,8 +118,6 @@ removeDownloadTask(taskId?: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -140,7 +132,7 @@ removeDownloadTask(taskId?: string): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400108  | If the specified ID is not in the offline download task manager. |
 
 **示例：**
 
@@ -164,8 +156,6 @@ pauseDownloadTask(taskId?: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -180,7 +170,7 @@ pauseDownloadTask(taskId?: string): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400108  | If the specified ID is not in the offline download task manager. |
 | 5400102  | Operation not allowed. |
 
 **示例：**
@@ -205,8 +195,6 @@ resumeDownloadTask(taskId?: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -221,7 +209,7 @@ resumeDownloadTask(taskId?: string): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400108  | If the specified ID is not in the offline download task manager. |
 | 5400102  | Operation not allowed. |
 
 **示例：**
@@ -246,8 +234,6 @@ getDownloadTasks(): Array\<string>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -280,8 +266,6 @@ getTaskCacheDirectory(taskId: string): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -302,7 +286,7 @@ getTaskCacheDirectory(taskId: string): string
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400108  | If the specified ID is not in the manager, an error is returned. |
 
 **示例：**
 
@@ -327,8 +311,6 @@ getTaskStatus(taskId: string): AVDownloadTaskState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -349,7 +331,7 @@ getTaskStatus(taskId: string): AVDownloadTaskState
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400108  | If the specified ID is not in the manager, an error is returned. |
 
 **示例：**
 
@@ -374,8 +356,6 @@ getTaskProgress(taskId: string): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -396,7 +376,7 @@ getTaskProgress(taskId: string): number
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400108  | If the specified ID is not in the AVDownloaderManager. |
+| 5400108  | If the specified ID is not in the manager, an error is returned. |
 
 **示例：**
 
@@ -420,8 +400,6 @@ onStatusChange(callback: OnAVDownloadTaskStateHandle): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -452,8 +430,6 @@ onProgressChange(callback: OnAVDownloadProgressChangeHandle): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -483,8 +459,6 @@ offStatusChange(callback?: OnAVDownloadTaskStateHandle): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -512,8 +486,6 @@ offProgressChange(callback?: OnAVDownloadProgressChangeHandle): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **参数：**
@@ -540,8 +512,6 @@ release(): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

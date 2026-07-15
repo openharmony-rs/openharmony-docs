@@ -6,9 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-AppServiceExtensionContext模块是[AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
-
-AppServiceExtensionContext提供了连接、断开ServiceExtensionAbility（系统应用后台服务扩展组件）的能力，以及AppServiceExtensionAbility终止自身的能力。这里的ServiceExtensionAbility只能由系统应用开发，支持三方应用连接。
+AppServiceExtensionContext模块是[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。提供了连接、断开ServiceExtensionAbility（系统应用后台服务扩展组件）的能力，以及AppServiceExtensionAbility终止自身的能力。可用于三方应用与系统后台服务通信。
 
 
 > **说明：**
@@ -25,7 +23,7 @@ import { common } from '@kit.AbilityKit';
 
 ## 使用说明
 
-在使用AppServiceExtensionContext的功能前，需要通过AppServiceExtensionAbility子类实例获取。
+使用AppServiceExtensionContext功能前，通过AppServiceExtensionAbility子类实例获取AppServiceExtensionContext。
 
 **示例：**
 
@@ -45,7 +43,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-启动UIAbility。仅支持在主线程调用。使用Promise异步回调。
+启动UIAbility。调用后，系统根据Want信息启动目标UIAbility。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,13 +52,13 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备、进程模式等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -131,7 +129,7 @@ export default class MyAppServiceExtensionAbility extends AppServiceExtensionAbi
 
 connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
-将当前AppServiceExtensionAbility连接到一个ServiceExtensionAbility，通过返回的proxy与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。仅支持在主线程调用。
+将当前AppServiceExtensionAbility连接到一个ServiceExtensionAbility（ServiceExtensionAbility仅支持由系统应用开发，三方应用可连接），通过ConnectOptions的onConnect回调返回的remote对象与ServiceExtensionAbility通信，以使用ServiceExtensionAbility对外提供的能力。可使用返回的connectionID调用disconnectServiceExtensionAbility()断开连接。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -139,14 +137,14 @@ connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要连接的Ability的信息，如Ability名称，Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要连接的Ability的信息，如Ability名称、Bundle名称等。 |
 | callback | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，用于监听服务连接状态的变化，包括连接成功、连接失败、断开连接。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接id来断开连接。 |
+| number | 返回连接标识符，用于后续通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)断开连接。 |
 
 **错误码：**
 
@@ -224,7 +222,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-将AppServiceExtensionAbility与已连接的ServiceExtensionAbility断开连接。仅支持在主线程调用。使用Promise异步回调。
+将AppServiceExtensionAbility与已连接的ServiceExtensionAbility断开连接，connection为connectServiceExtensionAbility()返回的连接ID。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -238,7 +236,7 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -257,7 +255,7 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 terminateSelf(): Promise&lt;void&gt;
 
-销毁AppServiceExtensionAbility自身。仅支持在主线程调用。使用Promise异步回调。
+销毁AppServiceExtensionAbility自身。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -265,7 +263,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

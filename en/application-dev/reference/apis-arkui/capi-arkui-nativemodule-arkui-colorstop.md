@@ -26,6 +26,6 @@ Defines a gradient color stop.
 
 | Name| Description|
 | -- | -- |
-| const uint32_t* colors | Color array.|
-| float* stops | Position array.|
-| int size | Length of the array.|
+| const uint32_t* colors | Pointer to the color array. The elements in this array correspond to the elements in the **stops** array in pairs, that is, each color corresponds to the position of a gradient stop. The array length must be the same as the value of **size**.|
+| float* stops | Pointer to the color stop array. The value ranges from 0.0 to 1.0, indicating the position offset of a gradient stop. The array length must be the same as the value of **size**.|
+| int size | Array length, that is, the actual number of elements in the **colors** or **stops** arrays.|

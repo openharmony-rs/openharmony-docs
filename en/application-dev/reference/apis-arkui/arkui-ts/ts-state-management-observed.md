@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-**@Observed** is a class decorator used in state management V1 to observe property changes of object classes.
+**@Observed** is a class decorator used in state management V1 to observe property changes of nested class objects.
 
 For details, see [@Observed and @ObjectLink Decorators: Observing Property Changes in Nested Class Objects](../../../ui/state-management/arkts-observed-and-objectlink.md).
 

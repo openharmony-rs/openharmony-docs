@@ -1176,8 +1176,8 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
-| 12000002 | algorithm param is missing.<br>适用版本：11-11 |
-| 12000003 | algorithm param is invalid.<br>适用版本：11-11 |
+| 12000002 | algorithm param is missing.<br>适用版本：11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |

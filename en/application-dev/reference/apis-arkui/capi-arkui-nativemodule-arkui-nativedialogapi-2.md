@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_NativeDialogAPI_2
 
 ## Overview
 
-Provides a collection of native-side custom dialog box APIs provided by ArkUI.
+Defines a set of custom dialog box APIs of ArkUI on the native side, which can be used to create and manage custom dialog boxes at the native layer. You can set the distance between the dialog box and the keyboard after keyboard avoidance is applied, display level, ID of the node under a level, and display area of the embedded dialog box overlay. These APIs are applicable to scenarios where refined control over dialog box behavior is required.
 
 **Since**: 15
 
@@ -33,7 +33,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 
 | Name| Description|
 | -- | -- |
-| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | Distance between the dialog box and the keyboard after keyboard avoidance is applied.|
+| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | Sets the distance between the dialog box and the keyboard after keyboard avoidance is applied.|
 | [int32_t (\*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)](#setlevelmode) | Sets the display level of a dialog box.|
 | [int32_t (\*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)](#setleveluniqueid) | Sets the ID of the node under the dialog box's display level.|
 | [int32_t (\*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)](#setimmersivemode) | Sets the display area of the embedded dialog box overlay.|
@@ -48,7 +48,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 
 **Description**
 
-Distance between the dialog box and the keyboard after keyboard avoidance is applied.
+Sets the distance between the dialog box and the keyboard after keyboard avoidance is applied.
 
 > **NOTE**
 >
@@ -61,14 +61,14 @@ Distance between the dialog box and the keyboard after keyboard avoidance is app
 | Name                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-| float distance                                                                     | Distance to avoid the keyboard, in vp by default.|
+| float distance                                                                     | Avoidance distance between the dialog box and the keyboard. The unit is specified by the **unit** parameter.|
 | [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit        | Unit of the avoidance distance. The parameter type is [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if an API initialization error occurs.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if an API initialization error occurs. Ensure that the Native module has been correctly initialized.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. Ensure that the parameter is valid.|
 
 ### setLevelMode()
 
@@ -83,7 +83,7 @@ Sets the display level of a dialog box.
 
 > **NOTE**
 >
-> This API must be called before the [show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show) API is invoked.
+> The **setLevelMode** API must be called before [show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show) is called. If **setLevelMode** needs to be used together with [setLevelUniqueId](#setleveluniqueid), it must be called after **setLevelUniqueId** is called.
 
 **Since**: 15
 
@@ -98,7 +98,7 @@ Sets the display level of a dialog box.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. Ensure that the parameter is valid.|
 
 ### setLevelUniqueId()
 
@@ -113,7 +113,7 @@ Sets the ID of the node under the dialog box's display level.
 
 > **NOTE**
 >
-> This API must be called before the [setLevelMode](#setlevelmode) API is invoked.
+> The **setLevelUniqueId** API must be called before [setLevelMode](#setlevelmode) and [show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show) are called.
 
 **Since**: 15
 
@@ -122,13 +122,13 @@ Sets the ID of the node under the dialog box's display level.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  int32_t uniqueId | ID of the node under the dialog box's display level. The dialog box will be displayed on the same page as this node.|
+| int32_t uniqueId | ID of the node under the dialog box's display level. The dialog box will be displayed on the same page as this node.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. Ensure that the parameter is valid.|
 
 ### setImmersiveMode()
 
@@ -158,4 +158,4 @@ Sets the display area of the embedded dialog box overlay.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. Ensure that the parameter is valid.|

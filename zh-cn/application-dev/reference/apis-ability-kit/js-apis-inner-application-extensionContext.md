@@ -6,9 +6,9 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ExtensionContext是[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的上下文环境，继承自[Context](js-apis-inner-application-context.md#context)。
+ExtensionContext是[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的上下文环境，继承自[Context](js-apis-inner-application-context.md#context)，用于访问指定ExtensionAbility的资源，并获取HAP模块信息、配置信息以及ExtensionAbility自身信息。
 
-ExtensionContext模块提供访问特定[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的资源的能力。
+ExtensionContext模块用于访问特定[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的信息。
 
 > **说明：**
 >
@@ -27,14 +27,14 @@ import { common } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称 | 类型 | 只读 | 可选 | 说明 | 
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | 所属Hap包的信息。 |
-| config   | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 所属Module的配置信息。 |
-| extensionAbilityInfo | [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md) | 否 | 否 | 所属[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的信息。 |
+| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | 当前ExtensionAbility所属HAP模块的信息，包含模块名称、类型、描述等。 |
+| config   | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 当前ExtensionAbility的配置信息，可用于获取语言、颜色模式等配置。 |
+| extensionAbilityInfo | [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md) | 否 | 否 | 当前ExtensionAbility的信息，包含名称、类型、标签ID等。 |
 
 ## 使用场景
-ExtensionContext主要用于查询所属ExtensionAbility的信息、Module的配置信息以及HAP包的信息，开发者可根据自身业务需求使用对应的信息。
+ExtensionContext主要用于查询所属ExtensionAbility的信息、Module的配置信息以及HAP包的信息，帮助开发者全面了解扩展能力的运行环境和配置，从而根据实际业务需求做出正确的逻辑处理。
 
 **示例：**
 

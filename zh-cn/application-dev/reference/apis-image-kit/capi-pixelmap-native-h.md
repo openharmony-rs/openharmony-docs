@@ -87,28 +87,28 @@
 | [Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_tosdr) | 将HDR的图像内容转换为SDR的图像内容。 |
 | [Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)](#oh_pixelmapnative_getimageinfo) | 获取图像像素信息。 |
 | [Image_ErrorCode OH_PixelmapNative_SetOpacity(OH_PixelmapNative *pixelmap, float value)](#oh_pixelmapnative_setopacity) | 设置Pixelmap的不透明度。指定的不透明度值将被应用于所有像素。 |
-| [Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rate)](#oh_pixelmapnative_opacity) | 设置Pixelmap的不透明度。指定的不透明度值将被应用于所有像素。<br>     建议使用[OH_PixelmapNative_SetOpacity](capi-pixelmap-native-h.md#oh_pixelmapnative_setopacity)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rate)](#oh_pixelmapnative_opacity) | 设置Pixelmap的不透明度。指定的不透明度值将被应用于所有像素。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_SetOpacity](capi-pixelmap-native-h.md#oh_pixelmapnative_setopacity)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyScale(OH_PixelmapNative *pixelmap, float scaleX, float scaleY)](#oh_pixelmapnative_applyscale) | 根据指定的宽高缩放倍数对Pixelmap进行水平或垂直方向的缩放。 |
-| [Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scaleX, float scaleY)](#oh_pixelmapnative_scale) | 根据输入的缩放比例对Pixelmap进行缩放。<br>     建议使用[OH_PixelmapNative_ApplyScale](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscale)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scaleX, float scaleY)](#oh_pixelmapnative_scale) | 根据输入的缩放比例对Pixelmap进行缩放。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyScale](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscale)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_applyscalewithantialiasing) | 根据指定的宽高缩放倍数和缩放算法对Pixelmap进行水平或垂直方向的缩放。 |
-| [Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_scalewithantialiasing) | 根据指定的缩放算法和输入的缩放比例对图片进行缩放。<br>     建议使用[OH_PixelmapNative_ApplyScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscalewithantialiasing)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_scalewithantialiasing) | 根据指定的缩放算法和输入的缩放比例对图片进行缩放。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscalewithantialiasing)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY)](#oh_pixelmapnative_createscaledpixelmap) | 根据输入的宽高的缩放比例，创建一个新的缩放后的图像，生成的新Pixelmap不可编辑。该接口不会拷贝原图像的HDR元数据和EXIF信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_createscaledpixelmapwithantialiasing) | 根据指定的缩放算法和输入的宽高的缩放比例，创建一个新的缩放后的图像，生成的新Pixelmap不可编辑。该接口不会拷贝原图像的HDR元数据和EXIF信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createalphapixelmap) | 从源Pixelmap创建一个仅包含Alpha通道的ALPHA_8格式的Pixelmap，生成的新Pixelmap不可编辑。<br>若源Pixelmap的格式是ALPHA_F16，则新生成的Pixelmap将维持ALPHA_F16格式。 |
 | [Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_clone) | 对源Pixelmap进行拷贝，生成一个新的Pixelmap。该接口不会拷贝原图像的EXIF信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createcroppedandscaledpixelmap) | 基于源Pixelmap创建一个裁剪并缩放的新Pixelmap。该接口不会拷贝原图像的EXIF信息。 |
-| [Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_applytranslate) | 根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。 |
-| [Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_translate) | 根据输入的平移距离对图片进行位置变换。<br>     建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_applytranslate) | 根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。 |
+| [Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_translate) | 根据输入的平移距离对图片进行位置变换。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyRotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_applyrotate) | 根据指定的角度对Pixelmap进行旋转。YUV格式仅支持90°倍数的旋转角。 |
-| [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转，YUV格式仅支持90°倍数的旋转角。<br>     建议使用[OH_PixelmapNative_ApplyRotate](capi-pixelmap-native-h.md#oh_pixelmapnative_applyrotate)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转，YUV格式仅支持90°倍数的旋转角。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyRotate](capi-pixelmap-native-h.md#oh_pixelmapnative_applyrotate)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyFlip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)](#oh_pixelmapnative_applyflip) | 根据指定的水平或垂直翻转条件对Pixelmap进行翻转。 |
-| [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)](#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。<br>     建议使用[OH_PixelmapNative_ApplyFlip](capi-pixelmap-native-h.md#oh_pixelmapnative_applyflip)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)](#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyFlip](capi-pixelmap-native-h.md#oh_pixelmapnative_applyflip)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyCrop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_applycrop) | 根据指定的区域信息对Pixelmap进行裁剪。 |
-| [Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_crop) | 根据输入的区域信息对图片进行裁剪。<br>     建议使用[OH_PixelmapNative_ApplyCrop](capi-pixelmap-native-h.md#oh_pixelmapnative_applycrop)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_crop) | 根据输入的区域信息对图片进行裁剪。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyCrop](capi-pixelmap-native-h.md#oh_pixelmapnative_applycrop)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_release) | 释放OH_PixelmapNative指针（当内存被[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)锁定时无法释放）。<br>推荐使用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)。 |
 | [Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_destroy) | 释放OH_PixelmapNative指针，不受[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)锁定内存的影响。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative *dstPixelmap, const bool toPremul)](#oh_pixelmapnative_convertalphatype) | 将Pixelmap像素数据的透明度类型在预乘模式（[PIXELMAP_ALPHA_TYPE_PREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）和非预乘模式（[PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     像素格式的列表请参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
-| [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替。 |
+| [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | 利用OH_Pixelmap_InitializationOptions创建空的Pixelmap对象，内存数据为0。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | 根据入参options创建空的Pixelmap，Pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | 通过Surface的ID创建一个Pixelmap。若Surface携带旋转或翻转的变换信息且需要处理，请使用[OH_PixelmapNative_CreatePixelmapFromSurfaceWithTransformation](#oh_pixelmapnative_createpixelmapfromsurfacewithtransformation)。 |
@@ -1175,7 +1175,7 @@ Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rat
 
 **描述**
 
-设置Pixelmap的不透明度。指定的不透明度值将被应用于所有像素。<br>     建议使用[OH_PixelmapNative_SetOpacity](#oh_pixelmapnative_setopacity)代替。
+设置Pixelmap的不透明度。指定的不透明度值将被应用于所有像素。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_SetOpacity](#oh_pixelmapnative_setopacity)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1226,7 +1226,7 @@ Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scale
 
 **描述**
 
-根据输入的缩放比例对Pixelmap进行缩放。<br>     建议使用[OH_PixelmapNative_ApplyScale](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscale)代替。
+根据输入的缩放比例对Pixelmap进行缩放。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyScale](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscale)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1279,7 +1279,7 @@ Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixel
 
 **描述**
 
-根据指定的缩放算法和输入的缩放比例对图片进行缩放。<br>     建议使用[OH_PixelmapNative_ApplyScaleWithAntiAliasing](#oh_pixelmapnative_applyscalewithantialiasing)代替。
+根据指定的缩放算法和输入的缩放比例对图片进行缩放。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyScaleWithAntiAliasing](#oh_pixelmapnative_applyscalewithantialiasing)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1439,7 +1439,7 @@ Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, fl
 
 **描述**
 
-根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。
+根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 
 **起始版本：** 26.0.0
 
@@ -1448,8 +1448,8 @@ Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被平移的OH_PixelmapNative的指针。 |
-| float x | 横向平移的距离。单位：像素（px）。 |
-| float y | 纵向平移的距离。单位：像素（px）。 |
+| float x | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| float y | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 
 **返回：**
 
@@ -1465,7 +1465,7 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 
 **描述**
 
-根据输入的平移距离对图片进行位置变换。<br>     建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替。
+根据输入的平移距离对图片进行位置变换。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1474,8 +1474,8 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| float x | 横向平移的距离。单位：像素（px）。 |
-| float y | 纵向平移的距离。单位：像素（px）。 |
+| float x | 横向平移的距离。方向为正数向右，负数向左。取值范围是(-图像宽度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像左侧起的x列像素。 |
+| float y | 纵向平移的距离。方向为正数向下，负数向上。取值范围是(-图像高度, +∞)。单位：像素（px）。<br>取值为负数时，平移的效果等同于裁剪掉自图像上方起的y行像素。 |
 
 **返回：**
 
@@ -1516,7 +1516,7 @@ Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angl
 
 **描述**
 
-根据输入的角度对图片进行旋转，YUV格式仅支持90°倍数的旋转角。<br>     建议使用[OH_PixelmapNative_ApplyRotate](#oh_pixelmapnative_applyrotate)代替。
+根据输入的角度对图片进行旋转，YUV格式仅支持90°倍数的旋转角。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyRotate](#oh_pixelmapnative_applyrotate)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1567,7 +1567,7 @@ Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldF
 
 **描述**
 
-根据输入的条件对图片进行翻转。<br>     建议使用[OH_PixelmapNative_ApplyFlip](capi-pixelmap-native-h.md#oh_pixelmapnative_applyflip)代替。
+根据输入的条件对图片进行翻转。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyFlip](capi-pixelmap-native-h.md#oh_pixelmapnative_applyflip)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1618,7 +1618,7 @@ Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region
 
 **描述**
 
-根据输入的区域信息对图片进行裁剪。<br>     建议使用[OH_PixelmapNative_ApplyCrop](capi-pixelmap-native-h.md#oh_pixelmapnative_applycrop)代替。
+根据输入的区域信息对图片进行裁剪。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyCrop](capi-pixelmap-native-h.md#oh_pixelmapnative_applycrop)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1717,7 +1717,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 
 **描述**
 
-将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替。
+将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1912,7 +1912,7 @@ Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针，Pixelmap的内存类型必须是DMA。 |
 | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey) key | 元数据的关键字。 |
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | 元数据的值。 |
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | 元数据的值。<br>如果获取的是动态元数据（HDR_DYNAMIC_METADATA）且接口调用成功，使用完成后必须调用free(value->dynamicMetadata.data)释放内存。 |
 
 **返回：**
 

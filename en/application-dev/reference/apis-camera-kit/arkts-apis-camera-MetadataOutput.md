@@ -38,7 +38,7 @@ Starts to output metadata. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
@@ -79,7 +79,7 @@ Starts to output metadata. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
@@ -304,7 +304,7 @@ Adds the types of metadata objects to be detected.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -346,7 +346,7 @@ Removes the types of metadata objects to be detected.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.                                   |
 | 7400103                |  Session not config.                                   |
@@ -426,7 +426,7 @@ Locks a metadata object (such as a cat or dog face) for tracking.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -464,7 +464,7 @@ Unlocks the metadata object (such as a cat or dog face) for tracking.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.                                   |
 | 7400201                |  Camera service fatal error.                           |

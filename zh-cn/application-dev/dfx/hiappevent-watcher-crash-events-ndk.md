@@ -31,7 +31,7 @@
 
 1. 获取该示例工程依赖的jsoncpp文件，打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，点击“下载当前目录”，下载EventSub工程文件。
 
-2. 新建Native C++工程，并将上述文件导入到新建工程，目录结构如下。
+2. 在DevEco Studio新建Native C++模板工程，并将上述文件导入到新建工程，目录结构如下。
 
    ```yml
    entry:

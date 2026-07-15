@@ -37,7 +37,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 **添加头文件**
 
-<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) --> 
 
 ``` C
 #include "hilog/log.h"
@@ -74,7 +74,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 > **设置失败的处理**：如果区域位置设置失败，系统将按照上一次的区域进行捕获。建议开发者在设置区域时进行错误检查和处理，以确保捕获区域的准确性。
 > **参数设置非负**：该接口设置的坐标和宽高不能为负数，捕获区域不能跨屏幕，区域位置设置失败后仍按照上一次的区域进行捕获。
 
-<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
 g_avCapture = OH_AVScreenCapture_Create();
@@ -97,7 +97,7 @@ region->x = 0;
 region->y = 0;
 region->width = CAPTURE_REGION_SIZE;
 region->height = CAPTURE_REGION_SIZE;
-// 2.传入矩形区域所在的屏幕Id。
+// 2.传入矩形区域所在的屏幕ID。
 uint64_t regionDisplayId = 0;
 OH_AVScreenCapture_SetCaptureArea(g_avCapture, regionDisplayId, region);
 // 开始录屏。

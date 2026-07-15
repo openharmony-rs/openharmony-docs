@@ -102,7 +102,7 @@ Enables NFC. This API can be called only by system applications.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -144,7 +144,7 @@ Disables NFC. This API can be called only by system applications.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |

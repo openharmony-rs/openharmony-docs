@@ -81,7 +81,7 @@ struct CustomPropertyExample {
         // 获取Column对应的frameNode节点并查询设置的自定义属性
         const uiContext: UIContext = this.getUIContext();
         if (uiContext) {
-          const node: FrameNode | null = uiContext.getFrameNodeById('Test_Column') || null;
+          const node: FrameNode | null = uiContext.getFrameNodeById('Test_Column');
           if (node) {
             for (let i = 1; i < 4; i++) {
               const key = 'customProperty' + i;

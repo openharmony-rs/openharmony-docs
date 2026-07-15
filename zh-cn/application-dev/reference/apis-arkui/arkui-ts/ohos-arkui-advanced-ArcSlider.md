@@ -26,8 +26,7 @@ import {
   ArcSliderValueOptionsConstructorOptions,
   ArcSliderLayoutOptionsConstructorOptions,
   ArcSliderStyleOptionsConstructorOptions,
-  ArcSliderOptionsConstructorOptions,
-  CrownSensitivity
+  ArcSliderOptionsConstructorOptions
 } from '@kit.ArkUI';
 ```
 
@@ -47,7 +46,7 @@ import {
 
 ArcSlider({ options: ArcSliderOptions })
 
-创建ArcSlider实例，入参是弧形进度条配置选项。
+创建ArcSlider实例，入参是弧形滑动条配置选项。
 
 **装饰器类型：**@Component
 
@@ -340,8 +339,7 @@ import {
   ArcSliderValueOptionsConstructorOptions,
   ArcSliderLayoutOptionsConstructorOptions,
   ArcSliderStyleOptionsConstructorOptions,
-  ArcSliderOptionsConstructorOptions,
-  CrownSensitivity
+  ArcSliderOptionsConstructorOptions
 } from '@kit.ArkUI';
 
 @Entry

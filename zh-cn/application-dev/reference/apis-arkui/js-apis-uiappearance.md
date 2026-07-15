@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用户界面外观提供获取系统外观的基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例。
+用户界面外观提供获取系统外观的基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例，适用于需要根据系统外观配置动态调整应用界面风格（如深浅色主题切换）、以及适配系统字体大小和粗细缩放设置的场景，帮助应用保持与系统外观的一致性，提升用户体验。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { uiAppearance } from '@kit.ArkUI';
 
 ## DarkMode
 
-深色模式枚举。
+深浅色模式枚举，用于配置系统的深色或浅色模式。
 
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -36,7 +36,7 @@ import { uiAppearance } from '@kit.ArkUI';
 
 getDarkMode(): DarkMode
 
-获取系统当前的深色模式配置。
+获取系统当前的深浅色模式配置。适用于需要根据系统外观模式动态适配应用UI主题的场景，例如应用内实现深色/浅色主题风格自动切换。
 
 <!--Del-->
 > **说明：**
@@ -44,13 +44,13 @@ getDarkMode(): DarkMode
 > 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。
 <!--DelEnd-->
 
-**系统能力**：SystemCapability.ArkUI.UiAppearance
+**系统能力：** SystemCapability.ArkUI.UiAppearance
 
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-|[DarkMode](#darkmode) | 系统当前的深色模式配置。具体取值请参见[DarkMode](#darkmode)。 |
+|[DarkMode](#darkmode) | 系统当前的深浅色模式配置。 |
 
 **错误码：**
 
@@ -80,7 +80,7 @@ try {
 
 getFontScale(): number
 
-获取系统当前的字体大小缩放比例。
+获取系统当前的字体大小缩放比例。该比例为系统设置中用户配置的字体大小相对于默认字体大小的倍数，取值范围请参考系统字体大小设置。开发者可基于该比例值调整应用内字体大小，以适配用户的字体偏好设置。
 
 <!--Del-->
 > **说明：**
@@ -88,13 +88,13 @@ getFontScale(): number
 > 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。
 <!--DelEnd-->
 
-**系统能力**：SystemCapability.ArkUI.UiAppearance
+**系统能力：** SystemCapability.ArkUI.UiAppearance
 
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| number | 系统当前的字体大小缩放比例。 |
+| number | 系统当前的字体大小缩放比例，1.0表示默认字体大小，大于1.0表示放大，小于1.0表示缩小。 |
 
 **错误码：**
 
@@ -124,7 +124,7 @@ try {
 
 getFontWeightScale(): number
 
-获取系统当前的字体粗细缩放比例。
+获取系统当前的字体粗细缩放比例。该比例为系统设置中用户配置的字体粗细相对于默认字体粗细的倍数，取值范围请参考系统字体粗细设置。开发者可基于该比例值调整应用内字体粗细，以适配用户的字体粗细偏好设置。
 
 <!--Del-->
 > **说明：**
@@ -132,13 +132,13 @@ getFontWeightScale(): number
 > 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。
 <!--DelEnd-->
 
-**系统能力**：SystemCapability.ArkUI.UiAppearance
+**系统能力：** SystemCapability.ArkUI.UiAppearance
 
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| number | 系统当前的字体粗细缩放比例。 |
+| number | 系统当前的字体粗细缩放比例，1.0表示默认字体粗细，大于1.0表示加粗，小于1.0表示变细。 |
 
 **错误码：**
 
