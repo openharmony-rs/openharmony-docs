@@ -709,26 +709,8 @@
 | 110 | `params`缺失或不是Object。 |
 | 132 | browser或browser host为空。 |
 | 350 | 鼠标事件命令下发失败。 |
-| 391 | `type`缺失或为空字符串。 |
-| 391 | `x`或`y`缺失。 |
-| 392 | `type`已传入，但不是string。 |
-| 392 | `type`是非空字符串，但不在`mousePressed`、`mouseReleased`、`mouseMoved`、`mouseWheel`范围内。 |
-| 392 | `x`已传入，但不是number。 |
-| 392 | `y`已传入，但不是number。 |
-| 392 | `timestamp`已传入，但不是number。 |
-| 392 | `force`已传入，但不是number。 |
-| 392 | `tangentialPressure`已传入，但不是number。 |
-| 392 | `tiltX`已传入，但不是number。 |
-| 392 | `tiltY`已传入，但不是number。 |
-| 392 | `deltaX`已传入，但不是number。 |
-| 392 | `deltaY`已传入，但不是number。 |
-| 392 | `modifiers`已传入，但不是整数。 |
-| 392 | `buttons`已传入，但不是整数。 |
-| 392 | `clickCount`已传入，但不是整数。 |
-| 392 | `twist`已传入，但不是整数。 |
-| 392 | `button`不是string，或取值不在`none`、`left`、`middle`、`right`、`back`、`forward`范围内。 |
-| 392 | `pointerType`已传入，但不是string。 |
-| 392 | `pointerType`是string，但取值不是`mouse`。 |
+| 391 | 缺少必填参数，或`type`为空字符串。 |
+| 392 | 除391所述情况外，入参说明中所列字段的类型或取值不符合约束；其中`pointerType`仅支持`mouse`。 |
 
 ### 返回示例
 
@@ -809,22 +791,7 @@
 | 132 | browser或browser host为空。 |
 | 350 | 键盘事件命令下发失败。 |
 | 391 | `type`缺失或为空字符串。 |
-| 392 | `type`已传入，但不是string。 |
-| 392 | `type`是非空字符串，但不在`keyDown`、`keyUp`、`rawKeyDown`、`char`范围内。 |
-| 392 | `text`已传入，但不是string。 |
-| 392 | `unmodifiedText`已传入，但不是string。 |
-| 392 | `key`已传入，但不是string。 |
-| 392 | `code`已传入，但不是string。 |
-| 392 | `timestamp`已传入，但不是number。 |
-| 392 | `modifiers`已传入，但不是整数。 |
-| 392 | `windowsVirtualKeyCode`已传入，但不是整数。 |
-| 392 | `nativeVirtualKeyCode`已传入，但不是整数。 |
-| 392 | `location`已传入，但不是整数。 |
-| 392 | `autoRepeat`已传入，但不是boolean。 |
-| 392 | `isKeypad`已传入，但不是boolean。 |
-| 392 | `isSystemKey`已传入，但不是boolean。 |
-| 392 | `isForwarded`已传入，但不是boolean。 |
-| 392 | `commands`不是数组，或数组中存在非string成员。 |
+| 392 | 除391所述情况外，入参说明中所列字段的类型或取值不符合约束；`commands`不是数组或包含非string成员也属于该错误。 |
 
 ### 返回示例
 
@@ -911,17 +878,11 @@
 | 160 | main frame无效、frame未就绪或renderer通信通道未就绪。 |
 | 161 | 定位到的目标元素不是`input`元素。 |
 | 201 | `value`已传入，但不是string。 |
-| 202 | `type`是非空字符串，但不在该命令支持的输入框类型范围内。 |
-| 202 | 目标`input`元素的实际类型不支持设置字符串值。 |
+| 202 | `type`是非空字符串但不在支持范围，或目标`input`元素的实际类型不支持设置字符串值。 |
 | 203 | `value`不满足目标`input`元素实际类型的值格式要求。 |
 | 204 | `type`不是`default`，且与目标`input`元素的实际类型不一致。 |
-| 391 | `id`和`xpath`均未提供。 |
-| 391 | `type`缺失或为空字符串。 |
-| 391 | `value`缺失。 |
-| 392 | `id`和`xpath`同时传入。 |
-| 392 | `id`或`xpath`已传入，但不是string或为空字符串。 |
-| 392 | `type`已传入，但不是string。 |
-| 392 | `id`是非空字符串，但不符合ArkWeb节点标识格式。 |
+| 391 | 缺少定位参数、`type`或`value`；`type`为空字符串也属于该错误。 |
+| 392 | 除391所述情况外，定位参数的类型、组合或格式不符合入参说明，或`type`不是string。 |
 
 ### 返回示例
 
