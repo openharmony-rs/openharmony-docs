@@ -251,6 +251,14 @@ function open() {
   } catch (error) {
     console.error('open usbSerial error, ' + JSON.stringify(error));
   }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -339,6 +347,14 @@ function getAttribute() {
   } catch (error) {
     console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
   }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -423,6 +439,14 @@ function setAttribute() {
     console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
   } catch (error) {
     console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
   }
 }
 ```
@@ -511,6 +535,14 @@ function read() {
   }).catch((error: Error) => {
     console.error('read usbSerial error, ' + JSON.stringify(error));
   })
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -598,6 +630,14 @@ function readSync() {
     console.info('readSync usbSerial success, readSyncBuffer: ' + readSyncBuffer.toString());
   } catch (error) {
     console.error('readSync usbSerial error, ' + JSON.stringify(error));
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
   }
 }
 ```
@@ -687,6 +727,14 @@ function write() {
   }).catch((error: Error) => {
     console.error('write usbSerial error, ' + JSON.stringify(error));
   })
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -775,6 +823,14 @@ function writeSync() {
     console.info('writeSync usbSerial success, writeSyncBuffer: ' + writeSyncBuffer.toString());
   } catch (error) {
     console.error('writeSync usbSerial error, ' + JSON.stringify(error));
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
   }
 }
 ```
