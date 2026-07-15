@@ -9,7 +9,7 @@
 
 ## 概述
 
-声明用于音视频媒体数据解析的接口，支持通过URI、文件描述符或用户自定义数据源创建媒体资源对象，并获取媒体资源、轨道及自定义元数据的基础信息，适用于应用在解封装、解码等媒体处理流程前解析音视频资源信息的场景。
+声明用于音视频媒体数据解析的接口。
 
 **引用文件：** <multimedia/player_framework/native_avsource.h>
 
@@ -54,7 +54,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 **描述**
 
-为用户自定义数据源的资源对象创建OH_AVSource实例，适用于应用需要从自定义输入源读取音视频媒体数据并进行解析的场景，可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br>参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
+为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br>参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -81,7 +81,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 
 **描述**
 
-为用户自定义数据源的资源对象创建OH_AVSource实例，适用于应用需要通过扩展自定义数据源读取音视频媒体数据并进行解析的场景，可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br> 回调支持通过userData传递用户自定义数据。<br>参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
+为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br> 回调支持通过userData传递用户自定义数据。<br>参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -136,7 +136,7 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 
 **描述**
 
-为文件描述符对应的资源对象创建OH_AVSource实例，适用于应用通过文件描述符访问本地音视频媒体资源并进行解析的场景。可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br> 调用该接口时，如果传入的offset不是文件起始位置，或size不是文件大小，可能会因数据获取不完整导致OH_AVSource创建失败或后续解封装失败。
+为文件描述符对应的资源对象创建OH_AVSource实例。可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br> 调用该接口时，如果传入的offset不是文件起始位置，或size不是文件大小，可能会因数据获取不完整导致OH_AVSource创建失败或后续解封装失败。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -165,7 +165,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 **描述**
 
-销毁OH_AVSource实例并清理内部资源，适用于媒体资源解析完成或不再使用OH_AVSource实例时释放资源的场景。<br> 同一实例只能被销毁一次。销毁的实例在被重新创建之前不能再被使用。建议实例销毁成功后将指针置为NULL。
+销毁OH_AVSource实例并清理内部资源。<br> 同一实例只能被销毁一次。销毁的实例在被重新创建之前不能再被使用。建议实例销毁成功后将指针置为NULL。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -192,7 +192,7 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 
 **描述**
 
-获取媒体资源文件的基础信息，适用于应用在解析媒体资源后读取文件整体格式信息的场景。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+获取媒体资源文件的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -219,7 +219,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 **描述**
 
-获取轨道的基础信息，适用于应用按轨道索引读取音频、视频等媒体轨道格式信息的场景。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+获取轨道的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 

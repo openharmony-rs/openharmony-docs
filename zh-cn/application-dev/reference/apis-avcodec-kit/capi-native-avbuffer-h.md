@@ -9,7 +9,7 @@
 
 ## 概述
 
-声明了媒体数据结构AVBuffer的函数接口，提供AVBuffer实例创建与销毁、缓冲区属性和参数设置、数据地址与容量获取、NativeBuffer获取等能力，适用于媒体数据缓冲区管理场景，帮助开发者管理媒体数据的缓存与传递。
+声明了媒体数据结构AVBuffer的函数接口。
 
 **引用文件：** <multimedia/player_framework/native_avbuffer.h>
 
@@ -110,7 +110,7 @@ OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr
 
 **描述**
 
-获取数据缓冲区的pts、size、offset、flags高频属性参数，适用于读取媒体数据缓冲区基础属性的场景。
+获取数据缓冲区的pts、size、offset、flags高频属性参数。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -138,7 +138,7 @@ OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBuff
 
 **描述**
 
-设置数据缓冲区的pts、size、offset、flags高频属性参数，适用于配置媒体数据缓冲区基础属性的场景。
+设置数据缓冲区的pts、size、offset、flags高频属性参数。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -193,7 +193,7 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 
 **描述**
 
-设置除基础属性外的其他参数，适用于配置媒体缓冲区扩展参数或格式相关信息的场景，信息在OH_AVFormat中承载。
+设置除基础属性外的其他参数。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -221,7 +221,7 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 
 **描述**
 
-获取数据缓冲区的虚拟地址，适用于需要访问或处理数据缓冲区内存的场景。
+获取数据缓冲区的虚拟地址。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -248,7 +248,7 @@ int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 
 **描述**
 
-获取数据缓冲区的容量（字节数），适用于处理数据前确认缓冲区容量的场景。
+获取数据缓冲区的容量（字节数）。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

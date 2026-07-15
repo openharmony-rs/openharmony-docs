@@ -9,7 +9,7 @@
 
 ## 概述
 
-AVDemuxer模块提供从媒体文件码流中提取[sample](../../media/avcodec/audio-video-demuxer.md)的接口，适用于音视频媒体数据解析场景，帮助开发者从媒体文件中分离并获取媒体样本数据。
+AVDemuxer模块提供从媒体文件码流中提取[sample](../../media/avcodec/audio-video-demuxer.md)的接口。
 
 对应的开发指南及样例可参考[媒体数据解析](../../media/avcodec/audio-video-demuxer.md)。
 
