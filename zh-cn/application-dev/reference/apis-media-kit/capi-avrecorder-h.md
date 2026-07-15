@@ -349,7 +349,7 @@ OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRec
 
 **描述**
 
-获取AVRecorder可用的编码器和编码器信息。<br>参数*info必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。
+获取AVRecorder可用的编码器信息。<br>参数*info必须为nullptr，由框架层统一分配和释放内存，以避免内存管理混乱，防止内存泄漏或重复释放等问题。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -477,7 +477,7 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| bool muteWhenInterrupted | 是否开启静音打断模式。设置成true表示录制被中断时录制静音，设置成false表示录制被中断时停止录制。 |
+| bool muteWhenInterrupted | 是否开启静音打断模式。设置成true表示音频流被打断时录制静音，设置成false表示音频流被打断时停止录制。 |
 
 **返回：**
 
