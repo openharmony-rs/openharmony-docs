@@ -46,7 +46,7 @@ import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备上不生效。
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
@@ -120,7 +120,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
     console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
     let sessionId = -1;
     const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-    if (collaborationValues == undefined) {
+    if (!collaborationValues) {
+      console.error('Failed to get collaborationValues.');
       return sessionId;
     }
     console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);

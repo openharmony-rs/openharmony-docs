@@ -58,7 +58,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。 |
+| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。取值范围是大于100的整数。 |
 
 **错误码：**
 
@@ -120,9 +120,9 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          abilityName: 'EntryAbility',
          serviceName: 'collabTest'
        };
-       const myRecord: Record<string, string> = {
-         "newKey1": "value1",
-       };
+        const myRecord: Record<string, string> = {
+          'newKey1': 'value1',
+        };
    
        // 定义连接选项
        const connectOptions: abilityConnectionManager.ConnectOptions = {
@@ -147,9 +147,10 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 2. 在设备B上，对于createAbilityConnectionSession接口的调用，可在应用被拉起后触发协同生命周期函数onCollaborate时，在onCollaborate内进行。
 
    ```ts
-   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
     
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
@@ -178,7 +179,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
-         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
        } catch (error) {
          hilog.error(0x0000, 'testTag', error);
        }
@@ -204,7 +205,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明                              |
 | --------- | ---------------------------------------- | ---- |---------------------------------|
-| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。|
+| sessionId | number | 是 | 待销毁的协同会话ID。<br />取值范围是大于100的整数。传入不大于100的值时返回错误码401。|
 
 **示例：**
 
@@ -301,6 +302,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   let sessionId = 100;
   abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
@@ -308,8 +310,9 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
       hilog.info(0x0000, 'testTag', 'connect failed');
       return;
     }
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
+  }).catch((err) => {
+    const error = err as BusinessError;
+    hilog.error(0x0000, 'testTag', `connect failed. Code: ${error.code}, message: ${error.message}`);
   })
   ```
 
@@ -376,8 +379,9 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
       const collabToken = collabParam["ohos.dms.collabToken"] as string;
       abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
         hilog.info(0x0000, 'testTag', 'acceptConnect success');
-      }).catch(() => {
-        hilog.error(0x0000, 'testTag', 'failed'); 
+      }).catch((err) => {
+        const error = err as BusinessError;
+        hilog.error(0x0000, 'testTag', `acceptConnect failed. Code: ${error.code}, message: ${error.message}`);
       })
     }
 
@@ -392,7 +396,7 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+        hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
       } catch (error) {
         hilog.error(0x0000, 'testTag', error);
       }
@@ -848,7 +852,7 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
   abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
+    hilog.error(0x0000, 'testTag', "sendMessage failed");
   })
   ```
 
@@ -890,6 +894,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { util } from '@kit.ArkTS';
  
   let textEncoder = util.TextEncoder.create("utf-8");
@@ -897,9 +902,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
   let sessionId = 100;
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "sendMessage failed");
+    hilog.info(0x0000, 'testTag', "sendData success");
+  }).catch((err) => {
+    const error = err as BusinessError;
+    hilog.error(0x0000, 'testTag', `sendData failed. Code: ${error.code}, message: ${error.message}`);
   })
   ```
 
@@ -919,7 +925,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 | bundleName        | string | 否   |否    | 对端应用的包名，用于唯一标识要连接的应用。需与对端应用的bundleName保持一致。 |
 | moduleName        | string | 否   |否    | 对端应用的模块名，用于标识要连接的应用模块。通常为'entry'或其他自定义模块名。 |
 | abilityName       | string | 否   |否     | 对端应用的组件名，用于标识要连接的UIAbility组件。需与对端应用的abilityName保持一致。 |
-| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。 |
+| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。不设置此值时，使用默认服务名称。 |
 
 ## ConnectOptions
 
