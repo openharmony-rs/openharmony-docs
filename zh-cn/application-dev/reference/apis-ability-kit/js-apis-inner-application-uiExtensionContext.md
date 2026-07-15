@@ -1364,7 +1364,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | -------- | -------- | -------- | -------- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
 | options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。不传入时使用默认选项。|
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 否 | 回调函数，用于异步接收操作结果和返回数据。 |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 否 | 回调函数，用于异步接收操作结果和返回数据。当获取被拉起方终止后的结果时，err为undefined，result为AbilityResult类型的结果对象；否则err为错误对象。 |
 
 **返回值：**
 
@@ -1697,7 +1697,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 | 参数名               | 类型                             | 必填 | 说明                 |
 | -------------------- | -------------------------------- | ---- |  -------------------- |
-| want                 | Want                             | 是 | 用于连接的Want信息。 |
+| want                 | [Want](js-apis-app-ability-want.md) | 是 | 用于连接的Want信息。 |
 | callback | [UIServiceExtensionConnectCallback](js-apis-inner-application-uiServiceExtensionconnectcallback.md) | 是 | 连接UIServiceExtensionAbility回调。     |
 
 **返回值：**
