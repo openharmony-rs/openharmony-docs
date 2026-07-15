@@ -32,7 +32,7 @@ The specified ability does not exist.
     ```bash
     hdc shell bm dump -a
     ```
-3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的hap和ability，说明ability所属的hap未被安装。
+3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若查询结果中没有包含ability所属的HAP，说明该HAP未被安装。
     ```bash
     hdc shell bm dump -n 包名
     ```
