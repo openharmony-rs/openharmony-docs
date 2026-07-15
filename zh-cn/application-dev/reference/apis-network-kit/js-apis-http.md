@@ -246,8 +246,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 
@@ -333,8 +334,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -449,8 +451,9 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
 | 2300999 | Internal error.                                                 |
 
 **示例：**
@@ -561,9 +564,10 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
-| 2300999 | Internal error.                                                 |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
+| 2300999 | Unknown error.                                                 |
 
 **示例：**
 
@@ -638,9 +642,10 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
-| 2300999 | Internal error.                                                 |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
+| 2300999 | Unknown error.                                                 |
 
 **示例：**
 
@@ -742,9 +747,10 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
-| 2300997 | Cleartext traffic not permitted.                               |
-| 2300998 | It is not allowed to access this domain.                       |
-| 2300999 | Internal error.                                                 |
+| 2300996 | The request was intercepted by the HTTP global interceptor. <br>适用版本：26.0.0+ |
+| 2300997 | Cleartext traffic not permitted. <br>适用版本：18+              |
+| 2300998 | It is not allowed to access this domain. <br>适用版本：12+      |
+| 2300999 | Unknown error.                                                 |
 
 **示例：**
 
@@ -843,6 +849,7 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 | 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
 | 2300078 | Remote file not found.                                         |
 | 2300094 | Authentication error.                                          |
+| 2300996 | The request was intercepted by the HTTP global interceptor.    |
 | 2300997 | Cleartext traffic not permitted.                               |
 | 2300998 | It is not allowed to access this domain.                       |
 | 2300999 | Internal error.                                                 |
