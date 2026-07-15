@@ -695,7 +695,7 @@ static Delete(propName: string): boolean
 
 在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中删除propName对应的属性。
 
-在AppStorage中删除该属性的前提是该属性没有订阅者。如果有订阅者，则返回false。如果没有订阅者则删除成功并返回true。
+仅当AppStorage中该属性没有任何订阅者时可删除成功并返回true；如果有订阅者，则返回false。
 
 属性的订阅者为[Link](#linkdeprecated)、[Prop](#propdeprecated)等接口返回的实例，以及[@StorageLink](../../../ui/state-management/arkts-appstorage.md#storagelink)和[@StorageProp](../../../ui/state-management/arkts-appstorage.md#storageprop)装饰的变量。如果\@StorageLink('propName')、\@StorageProp('propName')装饰的变量或SubscribedAbstractProperty实例依旧对propName有同步关系，则该属性不能从AppStorage中删除。
 
@@ -780,7 +780,7 @@ let clearResult = AppStorage.staticClear();
 
 static Clear(): boolean
 
-删除[AppStorage](../../../ui/state-management/arkts-appstorage.md)中所有属性。删除所有属性的前提是，AppStorage已经没有任何订阅者。如果有订阅者，Clear将不会生效并返回false。如果没有订阅者且删除成功则返回true。
+删除[AppStorage](../../../ui/state-management/arkts-appstorage.md)中所有属性。前提是AppStorage已经没有任何订阅者。如果有订阅者，Clear将不会生效并返回false。如果没有订阅者且删除成功则返回true。
 
 订阅者的含义参考[delete](#delete10)。
 
