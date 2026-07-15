@@ -62,6 +62,7 @@ sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Prom
 import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class InsightIntentExecutorUI extends InsightIntentExecutor {
   onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -184,6 +185,7 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
 设置意图执行结果延迟返回示例：
 ```ts
 import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class PlayVideoResultDef {
   resultCode: number = 0;
