@@ -15,6 +15,8 @@ You can use lists to easily and efficiently display structured, scrollable infor
 
 On devices with circular screens, the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component is recommended. For details, see [Creating an Arc List (ArcList)](./arkts-layout-development-create-arclist.md).
 
+The examples in the following are code snippets. You can click the link at the lower‑right corner of each snippet to obtain the complete example.
+
 ## Layout and Constraints
 
 A list automatically arranges child components in the direction it scrolls. Adding or removing child components from the list will trigger re-arrangement of the child components.
@@ -869,7 +871,7 @@ The following describes the implementation of the pull-and-refresh feature:
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
- You can also use the third-party component [PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
+ You can also use the third-party component [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
 
 
 ## Editing a List
