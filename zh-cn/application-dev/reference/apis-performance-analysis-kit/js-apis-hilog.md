@@ -606,9 +606,17 @@ getOutputType(): OutputType
 | [OutputType](#outputtype) | 返回当前hilog的输出类型。 |
 
 **示例：**
+ArkTS-Dyn示例：
 ```js
 hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 let last = hilog.getOutputType();
+hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
+```
+
+ArkTS-Sta示例：
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let last:int = hilog.getOutputType();
 hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
 ```
 
@@ -722,11 +730,23 @@ ArkTS-Sta: getLogFile(latestSeconds: int): Array&lt;string&gt;
 **示例：**
 
 获取5分钟之内修改过的文件。
+ArkTS-Dyn示例：
 ```js
 hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
 hilog.flush();
-let logs = hilog.getLogFile(300);
+let timeInterval = 300
+let logs = hilog.getLogFile(timeInterval);
+hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+```
+
+ArkTS-Sta示例：
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
+hilog.flush();
+let timeInterval:int = 300
+let logs:Array<string> = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
 ```
 
