@@ -184,8 +184,6 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库类型枚举。
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
