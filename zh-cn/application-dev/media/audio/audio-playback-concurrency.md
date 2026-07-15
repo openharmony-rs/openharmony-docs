@@ -140,8 +140,6 @@
 | SHARE_MODE（默认） | 同一应用创建的多个音频流共享一个音频焦点。 | 不触发焦点策略，应用自行决定各流的播放、暂停、停止等操作，系统不发送DUCK/PAUSE/STOP/RESUME事件。 | 应用内多流不冲突，或应用已有自定义并发逻辑。 |
 | INDEPENDENT_MODE | 应用创建的每个音频流均独立拥有一个音频焦点。 | 触发焦点策略，按跨应用焦点策略管理 | 应用内多流需差异化焦点管理 |
 
-> **关键**：INDEPENDENT_MODE下，同应用内多流之间的焦点策略与跨应用规则相同。例如音乐与音乐之间为STOP，音乐与视频之间为STOP等。
-
 设置焦点模式的方法：
 
 - 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
