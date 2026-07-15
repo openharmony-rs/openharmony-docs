@@ -1,4 +1,4 @@
-#  (系统接口)
+# ContinueMissionInfo(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: DistributedAbilityManager-->
 <!--Owner: @hobbycao-->

@@ -64,8 +64,7 @@ const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 export default class MigrationAbility extends UIAbility {
-    storage : LocalStorage = new LocalStorage();
-
+    
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
 
@@ -135,8 +134,7 @@ const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 export default class MigrationAbility extends UIAbility {
-    storage : LocalStorage = new LocalStorage();
-
+    
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
 
