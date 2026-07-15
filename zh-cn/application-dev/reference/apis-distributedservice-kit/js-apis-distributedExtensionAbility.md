@@ -46,7 +46,7 @@ import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备上不生效。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
