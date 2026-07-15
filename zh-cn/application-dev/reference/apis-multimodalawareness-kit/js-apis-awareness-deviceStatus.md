@@ -35,8 +35,7 @@
 
  on(type: 'steadyStandingDetect', callback: Callback&lt;SteadyStandingStatus&gt;): void
 
-订阅设备静止姿态感知（支架态）事件。
-- 建议在不需要时调用off()取消订阅，释放资源。
+订阅设备静止姿态感知（支架态）事件。建议在不需要时调用off()取消订阅，释放资源。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 

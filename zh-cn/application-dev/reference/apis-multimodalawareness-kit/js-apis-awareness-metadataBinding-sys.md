@@ -34,7 +34,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 | 参数名   | 类型                             | 必填 | 说明                                                |
 | -------- | -------------------------------- | ---- |---------------------------------------------------|
 | srcImage     | [PixelMap](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-image-pixelmap)                        | 是   | 待编码的原始图片，用于嵌入metadata信息的图片。     |
-| metadata     | string | 是 | 嵌入的信息。字符串编码格式建议使用UTF-8，长度不应超过128 Bytes，且避免包含不可打印字符。 |
+| metadata     | string | 是 | 嵌入的信息。字符串编码格式建议使用UTF-8，长度不应超过128Bytes，且避免包含不可打印字符。 |
 
 **返回值：**
 

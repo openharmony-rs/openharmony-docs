@@ -83,10 +83,6 @@ on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callba
 | reportLatencyNs  | number  | 是   | 报告延时，单位：纳秒（ns），取值范围[1000000000, 3000000000]。超出范围时返回错误。建议根据业务场景选择合适的值，较小值可提高实时性但会增加功耗，较大值可降低功耗但会降低响应速度。              |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | 是   | 回调函数，用于接收设备状态变化结果。    |
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
 **示例：**
 
 ```ts
@@ -111,10 +107,6 @@ once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 | activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | 是   | 回调函数，用于接收设备状态查询结果。    |
 
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
 **示例：**
 
 ```ts
@@ -138,10 +130,6 @@ off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;Activit
 | activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
 | event  | [ActivityEvent](#activityevent)  | 是   | 事件类型。              |
 | callback | Callback<[ActivityResponse](#activityresponse)\>  | 否   | 要移除的回调函数。未传递callback参数或传递undefined时，移除该进程下订阅该类型的所有callback。  |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
