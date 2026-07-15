@@ -27,7 +27,7 @@ ExtensionAbility功能与约束：
 
 ## 约束限制
 
-CryptoExtensionAbility作为密钥管理扩展能力，为减少安全攻击面，保障CryptoExtensionAbility合理实现，系统对网络、蓝牙、位置等方面的能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+CryptoExtensionAbility作为密钥管理扩展能力，为减少安全攻击面，保障CryptoExtensionAbility合理实现，系统对网络、蓝牙、位置等能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
 
 ## 导入模块
 
