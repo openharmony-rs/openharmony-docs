@@ -36,7 +36,7 @@ void onError(int32_t code, const char *name, const char *message) {}
 void onTerminated(int32_t code, AbilityBase_Want *want) {}
 const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
 #define SIZE_300 300 // 节点的宽/高数值，单位 vp（用于设置 NODE_WIDTH/NODE_HEIGHT）
-#define PARAMETER_ERROR_CODE 401 // 参数错误码（OH_ArkUI_NodeContent_AddNode 返回值表示入参非法）
+#define PARAMETER_ERROR_CODE 401 // 参数错误码（OH_ArkUI_NodeContent_AddNode返回值表示入参非法）
 // ...
     // 创建节点
     ArkUI_NodeHandle embeddedNode = nodeAPI->createNode(ARKUI_NODE_EMBEDDED_COMPONENT);

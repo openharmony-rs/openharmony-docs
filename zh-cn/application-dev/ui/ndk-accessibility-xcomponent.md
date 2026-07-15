@@ -51,7 +51,7 @@
    // ...
    AccessibilityManager::AccessibilityManager()
    {
-   //    多实例场景
+   // 多实例场景
        accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
        accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
        accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -59,7 +59,7 @@
        accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction = ExecuteAccessibilityAction;
        accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
        accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
-   //    单实例场景
+   // 单实例场景
        accessibilityProviderCallbacks_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
        accessibilityProviderCallbacks_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
        accessibilityProviderCallbacks_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -507,7 +507,7 @@ provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../re
         AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition =
             GetAccessibilityNodeCursorPosition;
     
-        // 获取 native 层提供的 accessibility provider，并为其注册回调
+        // 获取native层提供的accessibility provider，并为其注册回调
         OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
         if (accessibilityProvider_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
