@@ -310,9 +310,8 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
       hilog.info(0x0000, 'testTag', 'connect failed');
       return;
     }
-  }).catch((err) => {
-    const error = err as BusinessError;
-    hilog.error(0x0000, 'testTag', `connect failed. Code: ${error.code}, message: ${error.message}`);
+  }).catch(() => {
+    hilog.error(0x0000, 'testTag', "connect failed");
   })
   ```
 
@@ -379,9 +378,8 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
       const collabToken = collabParam["ohos.dms.collabToken"] as string;
       abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
         hilog.info(0x0000, 'testTag', 'acceptConnect success');
-      }).catch((err) => {
-        const error = err as BusinessError;
-        hilog.error(0x0000, 'testTag', `acceptConnect failed. Code: ${error.code}, message: ${error.message}`);
+      }).catch(() => {
+        hilog.error(0x0000, 'testTag', 'failed'); 
       })
     }
 
@@ -903,9 +901,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
   let sessionId = 100;
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendData success");
-  }).catch((err) => {
-    const error = err as BusinessError;
-    hilog.error(0x0000, 'testTag', `sendData failed. Code: ${error.code}, message: ${error.message}`);
+  }).catch(() => {
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 

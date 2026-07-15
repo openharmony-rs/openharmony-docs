@@ -567,7 +567,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promise&lt;void&gt;
 
-通过指定任务ID（missionId）的方式将任务从源设备迁移到目标设备。使用promise异步回调。
+通过指定任务ID（missionId）的方式将任务从源设备迁移到目标设备。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
