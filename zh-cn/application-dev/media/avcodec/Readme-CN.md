@@ -29,7 +29,7 @@
   - 视频编解码典型场景实践<!--audio-video-typical-scenarios-codec-->
     - [各类场景的视频编码基础参数配置](video-encoding-configuration-typical-scenarios.md)
     - [高压缩率B帧编码](video-encoding-b-frame.md)
-    - [指定区域更清晰的ROI视频编码](video-encoding-ROI.md)
+    - [实现指定区域更清晰的ROI编码](video-encoding-ROI.md)
     - [具有抗弱网丢包能力的时域可分层编码](video-encoding-temporal-scalability.md)<!--RP2--><!--RP2End-->
 - 媒体数据封装与解封装<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
