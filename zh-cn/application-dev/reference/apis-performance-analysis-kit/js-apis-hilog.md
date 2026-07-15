@@ -606,6 +606,7 @@ getOutputType(): OutputType
 | [OutputType](#outputtype) | 返回当前hilog的输出类型。 |
 
 **示例：**
+
 ArkTS-Dyn示例：
 ```js
 hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
