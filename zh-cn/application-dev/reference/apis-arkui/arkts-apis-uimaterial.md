@@ -22,7 +22,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 沉浸式材质类，继承自[Material](#material)。
 
-沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高算力和中算力设备上，通过材质层滤镜属性[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果，当systemMaterial属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在低算力设备上，通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
+沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高算力和中算力设备上，通过材质层滤镜属性[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果，当[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在低算力设备上，通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
 
 ### constructor
 
@@ -89,8 +89,6 @@ static get empty(): Material
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,7 +206,7 @@ getMaterialInfo(): MaterialInfo
 | colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源（见下表1）值时生效，生效的属性接口包括：<br/>Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，<br/>Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，<br/>SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，<br/>Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，<br/>Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)，[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，[searchButton](arkui-ts/ts-basic-components-search.md#searchbutton) 中的按钮颜色，<br/>TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)，<br/>Chip组件的[prefixIcon](arkui-ts/ohos-arkui-advanced-Chip.md#prefixiconoptions)、suffixIcon属性的[fillColor](arkui-ts/ohos-arkui-advanced-Chip.md#iconcommonoptions)，[label](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions)属性的[fontColor](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions)，<br/>ChipGroup组件的[itemStyle](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipgroup-1)的[fontColor](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipitemstyle)，<br/>TextArea组件的[fontColor](arkui-ts/ts-basic-components-textarea.md#fontcolor)、[placeholderColor](arkui-ts/ts-basic-components-textarea.md#placeholdercolor)，<br/>TextInput组件的[fontColor](arkui-ts/ts-basic-components-textinput.md#fontcolor)、[placeholderColor](arkui-ts/ts-basic-components-textinput.md#placeholdercolor)，<br/>SegmentButton组件的[fontColor](arkui-ts/ohos-arkui-advanced-SegmentButton.md#属性-1)，<br/>Swiper组件的[fontColor](arkui-ts/ts-container-swiper.md#fontcolor)，<br/>使用以上接口时，其中的文本和图标颜色会自动反色。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：false |
 | applyShadow   | boolean                                   | 否 | 是   | 是否添加材质的阴影效果。<br/>当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：true |
 | interactive   | boolean                                   | 否 | 是   | 是否启用交互形变效果。<br/>当该参数为true时，启用交互形变效果。当该参数为false时，不启用交互形变效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：false |
-| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 光感交互反馈效果参数。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
+| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 光感交互反馈效果参数。传入LightEffectOptions对象时启用光感交互反馈；传入null时显式禁用光感交互反馈效果；不传入时默认为undefined，取决于组件是否默认有交互光感效果。<br/>**说明**：该参数仅对支持沉浸式材质的高算力和中算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
 
 **表1** 特殊资源值对应的深浅色值
 
@@ -438,7 +436,7 @@ struct MaterialInfoPage {
 从API版本26.0.0开始，新增interactive接口。
 
 ``` ts
-import { uiMaterial } from '@kit.ArkUI'
+import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -449,7 +447,7 @@ struct Index {
       Image($r('app.media.startIcon'))
       Column() {
         Column() {
-          Text("Context")
+          Text('Context')
         }
         .margin({ bottom: 100 })
         .width(248)
@@ -484,6 +482,7 @@ struct LightEffect {
   @State itemsKey: number[] = [0, 1, 2];
   @State circleRadius: number = 40;
   @State spaceValue: number = 10;
+  // 创建沉浸式材质对象，启用交互形变和光感交互反馈效果（lightEffect.color为undefined时使用默认白色光感颜色）
   @State myMaterial: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
     style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
     interactive: true,
