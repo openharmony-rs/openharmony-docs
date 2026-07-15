@@ -71,7 +71,7 @@
 | const char * OH_PLAYER_BUFFERING_TYPE | 获取缓冲更新消息类型的关键字，对应值类型是[AVPlayerBufferingType](#avplayerbufferingtype)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlayerBufferingType类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_BUFFERING_VALUE | 获取缓冲更新消息数值的关键字，对应值类型是int32_t，参见[AVPlayerBufferingType](#avplayerbufferingtype)。<br> 当缓冲更新消息类型是AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_SEEK_POSITION | 获取Seek后播放进度的关键字，对应值类型是int32_t，单位为毫秒（ms）。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
-| const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字, 对应值类型是[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字，对应值类型是[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_PLAYBACK_RATE | 获取有效播放速率的关键字，对应值类型是浮点数。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_BITRATE | 获取比特率信息的关键字，对应值类型是uint32_t。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_CURRENT_POSITION | 获取播放进度信息的关键字，对应值类型是int32_t，单位为毫秒。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
