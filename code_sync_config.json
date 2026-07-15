@@ -42556,11 +42556,6 @@
 						"end_line":49,
 						"name":"generic_function",
 						"start_line":41
-					},
-					{
-						"end_line":60,
-						"name":"generic_array",
-						"start_line":56
 					}
 				]
 			},
@@ -42798,6 +42793,16 @@
 						"end_line":56,
 						"name":"annotation_source_retention_annotation",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericArray.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"generic_array",
+						"start_line":20
 					}
 				]
 			}
