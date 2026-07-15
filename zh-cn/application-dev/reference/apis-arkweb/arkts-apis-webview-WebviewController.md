@@ -11320,7 +11320,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
 | enable | boolean | 是 | 表示是否启用mainframe错误页。true表示启用，false表示不启用。|
-| includeSubframe | boolean | 是 | 表示是否启用subframe默认错误页。true表示启用，false表示不启用。|
+| includeSubframe | boolean | 是 | 表示是否启用subframe错误页。true表示启用，false表示不启用。|
 
 **错误码：**
 
