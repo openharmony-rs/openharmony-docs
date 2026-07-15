@@ -147,8 +147,8 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 2. 在设备B上，对于createAbilityConnectionSession接口的调用，可在应用被拉起后触发协同生命周期函数onCollaborate时，在onCollaborate内进行。
 
    ```ts
-   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';	 
-   import { abilityConnectionManager } from '@kit.DistributedServiceKit';	 
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { BusinessError } from '@kit.BasicServicesKit';
     
