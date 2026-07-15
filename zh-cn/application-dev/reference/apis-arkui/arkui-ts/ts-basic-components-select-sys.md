@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[select](./ts-basic-components-select.md)。
 
@@ -18,7 +18,7 @@
 
 menuDistortionMode(mode: DistortionMode)
 
-系统材质下，设置下拉菜单的非线性动画模式。未通过该接口设置时，默认为DistortionMode.DISTORTION_AUTO。
+系统材质下，设置下拉菜单的扭曲动画模式。未通过该接口设置时，默认为DistortionMode.DISTORTION_AUTO。
 
 **起始版本：** 26.0.0
 
@@ -32,7 +32,7 @@ menuDistortionMode(mode: DistortionMode)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置系统材质下下拉菜单的非线性动画模式。 |
+| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置系统材质下下拉菜单的扭曲动画模式。 |
 
 ## menuEdgeLightMode
 

@@ -434,7 +434,7 @@ PhotoPickerComponent产生错误时的回调。
 
 ## PhotoBrowserZoomCallback 
 
-export type PhotoBrowserZoomCallback = (scale: double) => void
+export type PhotoBrowserZoomCallback = (scale: number) => void
 
 PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 
@@ -450,7 +450,7 @@ PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
-| scale  | double | 是 | 图片相比原图放大缩小的比例。 |
+| scale  | number | 是 | 图片相比原图放大缩小的比例。 |
 
 ## PickerController
 

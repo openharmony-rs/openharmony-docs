@@ -91,7 +91,7 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | OH_AVTranscoder实例的指针。 |
 | [OH_AVTranscoder_State](#oh_avtranscoder_state) state | 转码状态，详细说明请参见[OH_AVTranscoder_State](#oh_avtranscoder_state)。 |
-|  void *userData | 用户特定数据的指针。 |
+| void *userData | 用户特定数据的指针。 |
 
 ### OH_AVTranscoder_OnError()
 

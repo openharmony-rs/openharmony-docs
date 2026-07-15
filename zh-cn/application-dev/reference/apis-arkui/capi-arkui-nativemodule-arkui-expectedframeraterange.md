@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_ExpectedFrameRateRange
 
 ## 概述
 
-设置动画的期望帧率。
+设置动画的期望帧率。该结构体通过min、max和expected三个字段定义帧率范围，系统尽可能满足期望帧率。
 
 **起始版本：** 12
 
