@@ -14,13 +14,11 @@
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
-**支持设备**：Lite Wearable
 ```js
 import settingsLite from '@ohos.settingsLite';
 ```
 
 ## settingsLite.openPinSettingPage
-**支持设备**：Lite Wearable
 
 openPinSettingPage(): void
 
@@ -30,7 +28,6 @@ openPinSettingPage(): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**起始版本：** 6.1.1(24)
 
 **示例：**
 
@@ -41,7 +38,6 @@ settingsLite.openPinSettingPage();
 ```
 
 ## settingsLite.openNfcSettingsPage
-**支持设备**：Lite Wearable
 
 openNfcSettingsPage(): void
 
@@ -51,7 +47,6 @@ openNfcSettingsPage(): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**起始版本：** 6.1.1(24)
 
 **示例：**
 
@@ -62,7 +57,6 @@ settingsLite.openNfcSettingsPage();
 ```
 
 ## settingsLite.openDoubleClickSettingsPage
-**支持设备**：Lite Wearable
 
 openDoubleClickSettingsPage(): void
 
@@ -72,7 +66,6 @@ openDoubleClickSettingsPage(): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**起始版本：** 6.1.1(24)
 
 **示例：**
 
@@ -83,7 +76,6 @@ settingsLite.openDoubleClickSettingsPage();
 ```
 
 ## settingsLite.isDoubleClickAppForSelf
-**支持设备**：Lite Wearable
 
 isDoubleClickAppForSelf(callback: ClickCallback): void
 
@@ -93,7 +85,6 @@ isDoubleClickAppForSelf(callback: ClickCallback): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**起始版本：** 6.1.1(24)
 
 **参数：**
 
