@@ -28,7 +28,7 @@
 | [dispatchMouseEvent](#dispatchmouseevent) | 注入鼠标事件 | [DispatchMouseEventCommand](#dispatchmouseeventcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 按视口坐标注入鼠标事件。 |
 | [dispatchKeyEvent](#dispatchkeyevent) | 注入键盘事件 | [DispatchKeyEventCommand](#dispatchkeyeventcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 注入键盘事件。 |
 | [input](#input) | 设置输入框内容 | [InputCommand](#inputcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置指定`input`元素的值。 |
-| [scroll](#toc-scroll-52) | 页面滚动 | [ScrollCommand](#scrollcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 根据坐标点或节点标识滚动页面。 |
+| [scroll](#scroll命令) | 页面滚动 | [ScrollCommand](#scrollcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 根据坐标点或节点标识滚动页面。 |
 | [select](#select) | 选中下拉选项 | [SelectCommand](#selectcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 选中`<select>`标签的选项。 |
 | [uploadFile](#uploadfile) | 文件上传 | [UploadFileCommand](#uploadfilecommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置`<input type='file'>`标签的文件列表。 |
 | [setZoomLevel](#setzoomlevel) | 设置网页缩放比例 | [SetZoomLevelCommand](#setzoomlevelcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置当前网页的缩放比例，等价于CTRL+Wheel缩放。 |
@@ -63,12 +63,12 @@
 
 ### 失败
 
-返回格式列为本节[返回格式](#返回格式)的命令失败时返回：
+返回格式列为本节[返回格式](#返回格式)的命令失败时返回包含`code`和`error`字段的JSON。以下以`click`命令未提供`params`字段为例：
 
 ```json
 {
-  "code": <错误码>,
-  "error": "<错误信息>"
+  "code": 420,
+  "error": "click/focus params not found"
 }
 ```
 
@@ -684,12 +684,25 @@
 | params | pointerType | - | string | 否 | 指针类型。当前仅支持`mouse`；不传入时按`mouse`处理。 |
 | params | timestamp | - | number | 否 | 事件时间戳。 |
 | params | modifiers | - | number | 否 | 键盘修饰键位掩码，必须为整数。 |
-| params | buttons | - | number | 否 | 当前按下的鼠标按键位掩码，必须为整数。 |
+| params | buttons | - | number | 否 | 事件触发时处于按下状态的鼠标按键位掩码，必须为整数。不传入时该字段按0处理，位值说明见下表。 |
 | params | force | - | number | 否 | 按压力度。 |
 | params | tangentialPressure | - | number | 否 | 切向压力。 |
 | params | tiltX | - | number | 否 | 指针相对x轴倾斜角。 |
 | params | tiltY | - | number | 否 | 指针相对y轴倾斜角。 |
 | params | twist | - | number | 否 | 指针旋转角，必须为整数。 |
+
+`buttons`各位值如下：
+
+| 位值 | 按键状态 |
+| ---- | ---- |
+| 0 | 没有鼠标按键处于按下状态。 |
+| 1 | 左键处于按下状态。 |
+| 2 | 右键处于按下状态。 |
+| 4 | 中键处于按下状态。 |
+| 8 | 后退键处于按下状态。 |
+| 16 | 前进键处于按下状态。 |
+
+多个按键同时处于按下状态时，将对应位值按位或。例如，`3`表示左键和右键同时处于按下状态，`5`表示左键和中键同时处于按下状态。`buttons`表示事件触发时所有处于按下状态的按键，`button`表示本次事件对应的单个按键。当前实现只读取上述5个按键位，不额外校验掩码范围；其他位不会映射为鼠标按键状态。
 
 > **说明：**
 >
@@ -913,7 +926,7 @@
 }
 ```
 
-## scroll
+## scroll命令
 
 按视口坐标或节点标识滚动页面。使用节点标识时，命令会以目标元素位置执行滚动。
 
