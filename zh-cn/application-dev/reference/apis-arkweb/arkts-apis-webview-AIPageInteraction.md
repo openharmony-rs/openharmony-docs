@@ -28,7 +28,7 @@
 | [dispatchMouseEvent](#dispatchmouseevent) | 注入鼠标事件 | [DispatchMouseEventCommand](#dispatchmouseeventcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 按视口坐标注入鼠标事件。 |
 | [dispatchKeyEvent](#dispatchkeyevent) | 注入键盘事件 | [DispatchKeyEventCommand](#dispatchkeyeventcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 注入键盘事件。 |
 | [input](#input) | 设置输入框内容 | [InputCommand](#inputcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置指定`input`元素的值。 |
-| [scroll](#aipageinteraction-scroll) | 页面滚动 | [ScrollCommand](#scrollcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 根据坐标点或节点标识滚动页面。 |
+| [scroll](#toc-scroll-52) | 页面滚动 | [ScrollCommand](#scrollcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 根据坐标点或节点标识滚动页面。 |
 | [select](#select) | 选中下拉选项 | [SelectCommand](#selectcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 选中`<select>`标签的选项。 |
 | [uploadFile](#uploadfile) | 文件上传 | [UploadFileCommand](#uploadfilecommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置`<input type='file'>`标签的文件列表。 |
 | [setZoomLevel](#setzoomlevel) | 设置网页缩放比例 | [SetZoomLevelCommand](#setzoomlevelcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置当前网页的缩放比例，等价于CTRL+Wheel缩放。 |
@@ -912,8 +912,6 @@
   "message": "id and xpath are mutually exclusive"
 }
 ```
-
-<a name="aipageinteraction-scroll"></a>
 
 ## scroll
 
