@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于视频解码的Native API，支持创建、配置、启动、停止、刷新、重置和销毁视频解码器，并支持Surface/Buffer模式输出、同步/异步缓冲区处理及DRM解密配置，适用于应用对视频码流进行解码和渲染的场景。
+声明用于视频解码的Native API。
 
 **引用文件：** <multimedia/player_framework/native_avcodec_videodecoder.h>
 
@@ -103,7 +103,7 @@ OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)
 
 **描述**
 
-根据MIME类型创建视频解码器实例，大多数情况下建议使用。成功创建的视频解码器实例在不再使用时，必须调用[OH_VideoDecoder_Destroy](#oh_videodecoder_destroy)销毁并释放内部资源，否则可能造成资源泄漏。
+根据MIME类型创建视频解码器实例，大多数情况下建议使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -129,7 +129,7 @@ OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)
 
 **描述**
 
-根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。成功创建的视频解码器实例在不再使用时，必须调用[OH_VideoDecoder_Destroy](#oh_videodecoder_destroy)销毁并释放内部资源，否则可能造成资源泄漏。<br> 详情请参见：[获取支持的编解码能力](../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。
+根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。<br> 详情请参见：[获取支持的编解码能力](../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -268,7 +268,7 @@ OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **描述**
 
-配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从[OH_AVSource](capi-avsource-oh-avsource.md)中提取。该接口仅可在Initialized状态调用，且必须在调用OH_VideoDecoder_Prepare接口之前调用。<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。
+配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从[OH_AVSource](capi-avsource-oh-avsource.md)中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。
 
 参数校验规则：
 | Key    | 配置正常范围的值 | 配置超出范围的值 | 不配置该参数 |
@@ -412,7 +412,7 @@ OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)
 
 **描述**
 
-重置解码器，解码器回到初始化状态。适用于需要重新配置解码器实例或使解码器恢复到初始化状态的场景。如果要继续解码，需要再次调用OH_VideoDecoder_Configure接口配置解码器实例。
+重置解码器，解码器回到初始化状态。如果要继续解码，需要再次调用OH_VideoDecoder_Configure接口配置解码器实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -554,7 +554,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 **描述**
 
-将处理后的输出缓冲区返回到解码器。用户使用完需要及时调用此接口释放输出缓存区，否则会阻塞解码流程。
+将处理后的输出缓冲区返回到解码器。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -694,7 +694,7 @@ OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 **描述**
 
-在解码器实例存在的情况下，检查当前解码器服务是否有效，适用于解码异常、服务状态不确定或继续使用解码器前需要确认服务可用性的场景。
+在解码器实例存在的情况下，检查当前解码器服务是否有效。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
