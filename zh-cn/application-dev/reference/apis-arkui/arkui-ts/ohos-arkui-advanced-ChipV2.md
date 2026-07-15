@@ -302,8 +302,8 @@ ChipV2LocalizedLabelMarginConfig用于定义本地化文本与左右侧图标之
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>单位：vp<br>取值范围：[0, +∞)<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
-| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>单位：vp<br>取值范围：[0, +∞)<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
+| start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与起始侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，start默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>单位：vp<br>取值范围：[0, +∞)<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
+| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是   | 文本与结束侧图标之间间距，不支持百分比。传入百分比时按默认值处理。<br>默认值：<br>size为ChipV2Size.SMALL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_small_text_margin'))`。<br>size为ChipV2Size.NORMAL时，end默认值：<br>`LengthMetrics.resource($r('sys.float.chip_normal_text_margin'))`。<br>单位：vp<br>取值范围：[0, +∞)<br>超出取值范围按默认值处理。<br>值为undefined时，按默认值处理。 |
 
 ## ChipV2Icon
 
@@ -341,7 +341,7 @@ ChipV2Icon的构造函数。
 
 ChipV2SymbolIcon定义Symbol图标类。
 
-继承于[ChipV2Icon](#chipv2icon)。
+继承自[ChipV2Icon](#chipv2icon)。
 
 **起始版本：** 26.0.0
 
@@ -417,7 +417,7 @@ ChipV2SymbolIconConfig定义Symbol图标的属性配置。
 
 ChipV2PrefixSymbolIcon定义前缀Symbol图标类。
 
-继承于[ChipV2SymbolIcon](#chipv2symbolicon)。
+继承自[ChipV2SymbolIcon](#chipv2symbolicon)。
 
 **起始版本：** 26.0.0
 
@@ -457,7 +457,7 @@ ChipV2PrefixSymbolIcon的构造函数。
 
 ChipV2PrefixSymbolIconConfig定义前缀Symbol图标的属性配置。
 
-继承于[ChipV2SymbolIconConfig](#chipv2symboliconconfig)。
+继承自[ChipV2SymbolIconConfig](#chipv2symboliconconfig)。
 
 **起始版本：** 26.0.0
 
@@ -473,7 +473,7 @@ ChipV2PrefixSymbolIconConfig定义前缀Symbol图标的属性配置。
 
 ChipV2SuffixSymbolIcon定义后缀Symbol图标类。
 
-继承于[ChipV2SymbolIcon](#chipv2symbolicon)。
+继承自[ChipV2SymbolIcon](#chipv2symbolicon)。
 
 **起始版本：** 26.0.0
 
@@ -531,7 +531,7 @@ ChipV2SuffixSymbolIcon的构造函数。
 
 ChipV2SuffixSymbolIconConfig定义后缀Symbol图标的属性配置。
 
-继承于[ChipV2SymbolIconConfig](#chipv2symboliconconfig)。
+继承自[ChipV2SymbolIconConfig](#chipv2symboliconconfig)。
 
 **起始版本：** 26.0.0
 
@@ -553,7 +553,7 @@ ChipV2SuffixSymbolIconConfig定义后缀Symbol图标的属性配置。
 
 ChipV2ImageIcon定义图标图片的基类。
 
-继承于[ChipV2Icon](#chipv2icon)。
+继承自[ChipV2Icon](#chipv2icon)。
 
 **起始版本：** 26.0.0
 
@@ -635,7 +635,7 @@ ChipV2ImageIconConfig定义图标的通用属性配置。
 
 ChipV2PrefixImageIcon定义前缀图标类。
 
-继承于[ChipV2ImageIcon](#chipv2imageicon)。
+继承自[ChipV2ImageIcon](#chipv2imageicon)。
 
 **起始版本：** 26.0.0
 
@@ -675,7 +675,7 @@ ChipV2PrefixImageIcon的构造函数。
 
 ChipV2PrefixImageIconConfig定义前缀图标的属性配置。
 
-继承于[ChipV2ImageIconConfig](#chipv2imageiconconfig)。
+继承自[ChipV2ImageIconConfig](#chipv2imageiconconfig)。
 
 **起始版本：** 26.0.0
 
@@ -691,7 +691,7 @@ ChipV2PrefixImageIconConfig定义前缀图标的属性配置。
 
 ChipV2SuffixImageIcon定义后缀图标类。
 
-继承于[ChipV2ImageIcon](#chipv2imageicon)。
+继承自[ChipV2ImageIcon](#chipv2imageicon)。
 
 **起始版本：** 26.0.0
 
@@ -750,7 +750,7 @@ ChipV2SuffixImageIcon的构造函数。
 
 ChipV2SuffixImageIconConfig定义后缀图标的属性配置。
 
-继承于[ChipV2ImageIconConfig](#chipv2imageiconconfig)和[ChipV2AccessibilityConfig](#chipv2accessibilityconfig)。
+继承自[ChipV2ImageIconConfig](#chipv2imageiconconfig)和[ChipV2AccessibilityConfig](#chipv2accessibilityconfig)。
 
 **起始版本：** 26.0.0
 
@@ -770,7 +770,7 @@ ChipV2SuffixImageIconConfig定义后缀图标的属性配置。
 
 ChipV2CloseIcon用于定义ChipV2组件关闭图标的功能属性类，包括无障碍功能属性。
 
-继承于[ChipV2Accessibility](#chipv2accessibility)。
+继承自[ChipV2Accessibility](#chipv2accessibility)。
 
 **起始版本：** 26.0.0
 
@@ -826,7 +826,7 @@ ChipV2CloseIcon的构造函数。
 
 ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包括无障碍功能属性。
 
-继承于[ChipV2AccessibilityConfig](#chipv2accessibilityconfig)。
+继承自[ChipV2AccessibilityConfig](#chipv2accessibilityconfig)。
 
 **起始版本：** 26.0.0
 
