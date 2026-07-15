@@ -46,7 +46,7 @@ type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: strin
 | 参数名 | 类型     | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，路径以点号（.）分隔表示嵌套属性（如'a.b.c'），内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
-| ...args   | string[] | 否   | 用于监听的变量名路径数组，路径以点号（.）分隔表示嵌套属性（如'a.b.c'），内容由开发者指定。当开发者已使用MonitorDecoratorOptions或传入多个字符串时，入参为该类型。不传该参数时默认为空，当value为string类型时，仅监听value参数指定的变量路径；当value为MonitorDecoratorOptions类型时，需通过该参数指定监听的变量路径。 |
+| ...args   | string[] | 否   | 用于监听的变量名路径数组，路径以点号（.）分隔表示嵌套属性（如'a.b.c'），内容由开发者指定。当开发者已使用MonitorDecoratorOptions或传入多个字符串时，入参为该类型。不传该参数时默认为空，当value为string类型时，仅监听value参数指定的变量路径；当value为MonitorDecoratorOptions类型时，需通过该参数指定监听的变量路径。传入undefined时，对应的监听不生效。 |
 
 **返回值：**
 
