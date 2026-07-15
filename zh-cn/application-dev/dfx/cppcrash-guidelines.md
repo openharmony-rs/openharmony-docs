@@ -18,7 +18,7 @@
 
 - **信号处理函数**
 
-  定义了进程在接收到信号之后进行一系列处理操作的函数，信号处理函数需要明确处理哪些信号。
+  定义了进程在接收到信号之后进行一系列处理操作的函数，信号处理函数明确需要处理的信号。
 
 - **pc**
 
@@ -67,7 +67,7 @@
 | 6 | SIGABRT | 进程终止 | 进程异常终止，通常为进程自身调用标准函数库的abort()函数。 |
 | 7 | SIGBUS | 非法内存访问 | 进程访问了未对齐或者不存在的物理地址。 |
 | 8 | SIGFPE | 浮点异常 | 进程执行了错误的算术运算，如除数为0、浮点溢出、整数溢出等。 |
-| 11 | SIGSEGV | 无效内存访问 | 进程访问了无效内存引用。 |
+| 11 | SIGSEGV | 无效内存访问 | 进程访问了无效内存。 |
 | 16 | SIGSTKFLT | 栈错误 | 处理器执行了错误的栈操作，如栈空时弹出、栈满时压入。<br>SIGSTKFLT信号不支持生成minidump。 |
 | 31 | SIGSYS | 错误系统调用 | 系统调用时使用了错误或非法参数。 |
 
@@ -738,7 +738,7 @@ OpenFiles:
 
 ### 有页面切换轨迹的故障场景日志规格
 
-针对包含页面切换的应用，自API 20起，维测进程会记录应用切换历史。应用发生故障后，生成的故障文件将包含页面切换历史轨迹。
+针对包含页面切换的应用，自API version 20起，维测进程会记录应用切换历史。应用发生故障后，生成的故障文件将包含页面切换历史轨迹。
 
 故障日志文件最多记录最新的10条历史轨迹。
 
@@ -833,7 +833,7 @@ b. 去除PC偏移和BuildID；
 
 c. 保留文件路径（如 `/system/lib/platformsdk/libace_napi.z.so`）；
 
-d. 保留函数完整签名（如 `panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)`，括号内的内容，含类名、函数名、参数，包括 `const`、参数类型等，若日志中已解析）。
+d. 保留函数完整签名（如 `panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)`，括号内的内容，含类名、函数名、参数，包括 `const`、参数类型等）。
 
 若Native栈帧存在仅有二进制文件名而没有函数名时，可选择保留PC的偏移值与文件路径：
 
@@ -899,7 +899,7 @@ libarkjs_runtime.z.so
 JS栈帧默认为业务栈帧：
 
 ```text
-onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 ```
 
 应用的Native栈帧：
