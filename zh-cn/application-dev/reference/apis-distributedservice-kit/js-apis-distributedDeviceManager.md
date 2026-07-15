@@ -61,8 +61,7 @@ createDeviceManager(bundleName: string): DeviceManager
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 
 **示例：**
-
-  ```ts
+~~~~  ```ts
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -721,7 +720,7 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | number                    | 返回指定设备类型，表示指定设备的类别信息。 |
+  | number                    | <!--RP2-->返回指定设备类型，表示指定设备的类别信息。<!--RP2End--> |
 
 **错误码：**
 
