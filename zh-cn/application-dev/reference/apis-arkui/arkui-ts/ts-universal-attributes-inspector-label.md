@@ -16,7 +16,7 @@ ArkTS-Dyn: inspectorLabel(label: string | undefined): T
 
 ArkTS-Sta: inspectorLabel(label: string | undefined): this
 
-设置组件的调测标签。未设置时，组件调测标签默认为空。如果同一个组件设置了多个调测标签，仅最后一次设置的生效。
+设置组件的调测标签。未设置时，组件调测标签默认为空字符串。如果同一个组件设置了多个调测标签，仅最后一次设置的生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -32,13 +32,13 @@ ArkTS-Sta: inspectorLabel(label: string | undefined): this
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| label  | string \| undefined  |  是  | 组件的调测标签，请开发者保证标签的唯一性。如果传入undefined表示调测标签为空字符串。 |
+| label  | string \| undefined  |  是  | 组件的调测标签，请开发者保证不同组件设置的调测标签互不相同，以便在调测时准确定位和区分节点。如果同一个组件设置了多个调测标签，仅最后一次设置的生效。传入undefined时清除调测标签，调测标签默认为空字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br>ArkTS-Sta: this | 返回当前组件，可用于链式调用。 |
 
 **示例：**
 ```ts
