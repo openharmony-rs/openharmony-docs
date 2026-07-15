@@ -414,7 +414,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 interface ConfigParam {
   description: string;
-  value: number[] | string[];
+  value: number[];
 }
 interface ConfigDetail {
   params: ConfigParam[];
