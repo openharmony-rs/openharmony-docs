@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-EmbeddedComponent组件允许当前页面嵌入同一应用内其他EmbeddedUIExtensionAbility供给的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
+EmbeddedComponent组件允许当前页面嵌入同一应用内其他EmbeddedUIExtensionAbility提供的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
 
 EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面集成，其核心目标是通过模块化设计提升应用的灵活性和用户体验。
 
@@ -20,7 +20,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
 
-  提供方应用中定义使用，用于实现跨进程界面嵌入功能，仅能被同应用的UIAbility拉起，并需在多进程权限的场景下使用。
+  提供方应用中定义使用，用于实现跨进程界面嵌入功能，默认仅能被同应用的UIAbility拉起（从API版本26.0.0开始，满足特定权限条件时支持跨应用拉起，详见使用约束-应用范围），并需在多进程权限的场景下使用。
 
 ## 使用约束
 
@@ -100,7 +100,7 @@ export struct Embedded {
 }
 ```
 
-在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionAbility目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionAbility/目录中。
+在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionability目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionability/目录中。
 
 在实现加载项首页时，开发者需要注意以下几点：
 
@@ -169,11 +169,11 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 - 生命周期阶段
 
-  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：组件初始化到可见的完整流程；
+  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：EmbeddedUIExtensionAbility初始化到可见的完整流程；
 
-  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → onForeground：前后台切换时的状态迁移；
+  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：前后台切换时的状态迁移；
 
-  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：组件被宿主主动销毁时的资源回收点。
+  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：EmbeddedUIExtensionAbility被销毁时的资源回收点。
 
 - 会话管理
 
@@ -185,9 +185,9 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
   通过[LocalStorage](../ui/state-management/arkts-localstorage.md)实现[UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)的跨组件传递；
 
-  使用[loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法绑定ArkTS页面与扩展能力上下文。
+  使用[loadContent](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)方法绑定ArkTS页面与扩展能力上下文。
 
-**入口页面** 
+**入口页面**
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
