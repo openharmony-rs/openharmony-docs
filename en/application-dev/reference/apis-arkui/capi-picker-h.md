@@ -10,7 +10,7 @@
 
 Defines **Picker** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/picker.h>
+**File to include:** <arkui/node_attributes/picker.h>
 
 **Library:** libace_ndk.z.so
 

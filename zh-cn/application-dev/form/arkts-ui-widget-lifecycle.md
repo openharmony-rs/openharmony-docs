@@ -10,7 +10,7 @@
 
 1. 在EntryFormAbility.ets中，导入相关模块。
 
-    <!-- @[import_entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+    <!-- @[import_entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -19,10 +19,10 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
-
+    
 2. 在EntryFormAbility.ets中，实现[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)生命周期接口，其中在onAddForm的入参[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中可以通过[FormParam](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam)取出卡片的相关信息。
 
-    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -68,14 +68,26 @@
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-        // ···
+        class FormDataClass {
+          title: string = 'Title Update.'; // 和卡片布局中对应
+          detail: string = 'Description update success.'; // 和卡片布局中对应
+        }
+    
+        // 请根据业务替换为实际刷新的卡片数据
+        let formData = new FormDataClass();
+        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+        formProvider.updateForm(formId, formInfo).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        });
       }
     
       onRemoveForm(formId: string): void {
         // 删除卡片实例数据
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         // 删除之前持久化的卡片实例数据
-        // 此接口请根据实际情况实现，具体请参考：FormExtAbility Stage模型卡片实例
+        // 此接口请根据实际情况实现，具体请参考：FormExtensionAbility Stage模型卡片实例
       }
     
       onConfigurationUpdate(config: Configuration) {
@@ -84,13 +96,15 @@
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
       }
     
+    
       onAcquireFormState(want: Want): formInfo.FormState {
         // 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态。
         return formInfo.FormState.READY;
       }
+    
     }
     ```
-
+    
 > **说明：**
 >
 > FormExtensionAbility进程不能常驻后台，即在卡片生命周期回调函数中无法处理长时间的任务，在生命周期调度完成后会继续存在10秒，若在10秒内未收到新的生命周期回调，则进程将自动退出。针对可能需要10秒以上才能完成的业务逻辑，建议[拉起主应用](arkts-ui-widget-event-overview.md)进行处理，处理完成后使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)通知卡片进行刷新。

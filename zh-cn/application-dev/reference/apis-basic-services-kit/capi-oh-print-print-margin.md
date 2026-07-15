@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_Margin;
+typedef struct {...} Print_Margin
 ```
 
 ## 概述

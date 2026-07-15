@@ -10,7 +10,7 @@
 
 定义一组文本公共的枚举和接口。
 
-**引用文件：** <arkui/text_common.h>
+**引用文件：** <arkui/node_attributes/text_common.h>
 
 **库：** libace_ndk.z.so
 

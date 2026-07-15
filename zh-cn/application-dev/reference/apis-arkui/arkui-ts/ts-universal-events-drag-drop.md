@@ -25,7 +25,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 > **说明：**
 >
-> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice。
+> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice。
 
 ## onDragStart
 
@@ -307,7 +307,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | ------ | ------ | ----- | ---- | ------- |
 | useCustomDropAnimation<sup>10+</sup> | boolean | 否 | 否 |当拖拽结束时，是否禁用系统默认落位动效。<br/>应用可将该值设定为true来禁用系统默认落位动效，并实现自己的自定义落位动效。<br/>当不配置或设置为false时，系统默认落位动效生效，当[setResult](#setresult10)设置为DRAG_SUCCESSFUL时，落位为缩小消失动效，不为DRAG_SUCCESSFUL时，则为放大消失动效。<br/>当未禁用系统默认落位动效时，应用不应再实现自定义动效，以避免动效上的冲突。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否 | 是 |设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>仅在[onDragStart](#ondragstart)回调中设置生效。拖拽成功发起后，系统会在显示拖拽预览窗口前隐藏目标组件。<br/>若拖拽源本身也需要隐藏，需要同时传入拖拽源组件的uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](../arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者应在[onDragEnd](#ondragend10)或[onDrop](#ondrop)中恢复组件显示状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪贴模式的角标显示状态。<br/>默认值：DragBehavior.COPY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | 否 | 否 |切换复制和剪切模式的角标显示状态。<br/>默认值：DragBehavior.COPY。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### setData<sup>10+</sup>
 

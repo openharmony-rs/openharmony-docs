@@ -34,6 +34,8 @@
 | [int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)](#oh_netstack_iscleartextpermitted) | 整体明文HTTP是否允许。 |
 | [int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)](#oh_netstack_iscleartextpermittedbyhostname) | 按域名明文HTTP是否允许。 |
 | [int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)](#oh_netstack_iscleartextcfgbycomponent) | 检查组件是否已配置开启明文HTTP拦截功能。 |
+| [uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob \*cert, size_t certCount, const struct NetStack_CertBlob \*caCert, const char \*hostname, struct NetStack_CertBlob \*\*outSortedChain, size_t \*outSortedCount)](#oh_netstack_createandverifysortedcertchain) | 创建并校验证书链，返回排序后的证书链。 |
+| [void OH_NetStack_FreeCertChain(struct NetStack_CertBlob \*certChain, size_t certCount)](#oh_netstack_freecertchain) | 释放由[OH_NetStack_CreateAndVerifySortedCertChain](#oh_netstack_createandverifysortedcertchain)分配的证书链内存。 |
 
 
 ## 函数说明
@@ -224,3 +226,62 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 | -- | -- |
 | int32_t | 0 - 成功。<br>         2100001 - 无效的参数值。 |
 
+### OH_NetStack_CreateAndVerifySortedCertChain()
+
+```c
+uint32_t OH_NetStack_CreateAndVerifySortedCertChain(
+    const struct NetStack_CertBlob *cert,
+    size_t certCount,
+    const struct NetStack_CertBlob *caCert,
+    const char *hostname,
+    struct NetStack_CertBlob **outSortedChain,
+    size_t *outSortedCount)
+```
+
+**描述**
+
+传入证书链数组进行校验，并构建从叶子节点到根节点的排序证书链。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | 待校验证书数组。第一个元素（cert[0]）必须是叶子证书（end-entity certificate），其余元素为中间证书。 |
+| size_t certCount | 待校验证书数组cert的实际大小。 |
+| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | 用户指定的CA证书，传入NULL则使用系统预置证书进行校验。 |
+| const char *hostname | 需要验证的主机名，传入NULL则跳过主机名验证。 |
+| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) **outSortedChain | 输出参数，排序后的证书链（从叶子节点到根节点）。调用者需要使用[OH_NetStack_FreeCertChain](#oh_netstack_freecertchain)释放，否则会导致内存泄漏。 |
+| size_t *outSortedCount | 输出参数，排序后证书链outSortedChain的实际大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint32_t | 0 - 成功。<br> 2305001 - 未指定的错误。<br> 2305002 - 无法获取颁发者证书。<br> 2305003 - 无法获取证书吊销列表（CRL）。<br> 2305004 - 无法解密证书签名。<br> 2305005 - 无法解密CRL签名。<br> 2305006 - 无法解码颁发者公钥。<br> 2305007 - 证书签名失败。<br> 2305008 - CRL签名失败。<br> 2305009 - 证书尚未生效。<br> 2305010 - 证书已过期。<br> 2305011 - CRL尚未有效。<br> 2305012 - CRL已过期。<br> 2305018 - 自签名证书。<br> 2305023 - 证书已被吊销。<br> 2305024 - 证书颁发机构（CA）无效。<br> 2305027 - 证书不受信任。<br> 2305062 - 主机名验证失败。<br> 2305069 - 无效的证书验证上下文。 |
+
+### OH_NetStack_FreeCertChain()
+
+```c
+void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)
+```
+
+**描述**
+
+释放由[OH_NetStack_CreateAndVerifySortedCertChain](#oh_netstack_createandverifysortedcertchain)分配的证书链内存。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *certChain | 由[OH_NetStack_CreateAndVerifySortedCertChain](#oh_netstack_createandverifysortedcertchain)返回的证书链。 |
+| size_t certCount | 证书链certChain的实际大小。 |

@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Component装饰器能装饰struct关键字声明的数据结构。struct被\@Component装饰后具备组件化的能力，可实现UI的封装与复用，适用于构建可复用的自定义组件、拆分复杂界面等场景。使用时需要实现build方法描述UI，一个struct只能被一个\@Component装饰。开发指南参考：[创建自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。
+\@Component装饰器能装饰struct关键字声明的结构体。struct被\@Component装饰后具备组件化的能力，可实现UI的封装与复用，适用于构建可复用的自定义组件、拆分复杂界面等场景。使用时需要实现build方法描述UI，一个struct只能被一个\@Component装饰。开发指南参考：[创建自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。
 
 > **说明：**
 >

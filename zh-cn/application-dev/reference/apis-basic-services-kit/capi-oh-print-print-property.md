@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_Property;
+typedef struct {...} Print_Property
 ```
 
 ## 概述
@@ -26,7 +26,7 @@ Print_Property表示打印机属性，以键值对形式描述打印机的各类
 
 | 名称 | 描述 |
 | -- | -- |
-| char *key | 属性键，用于标识打印机属性的类型，具体取值参考OH_Print模块定义的有效属性名称。 |
+| char *key | 属性键，用于标识打印机属性的类型，取值须为[OH_Print](capi-oh-print.md)模块定义的有效属性名称。 |
 | char *value | 属性值，与属性键key对应的值内容，其格式和有效范围取决于对应的属性键。 |
 
 

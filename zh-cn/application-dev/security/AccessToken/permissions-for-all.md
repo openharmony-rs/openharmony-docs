@@ -222,6 +222,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：9
 
 **变更信息：** API 9-10，权限级别为system_basic；从API 11开始，变更为normal。
@@ -285,6 +287,18 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**起始版本**：7
+
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet | Car | Phone | TV | Wearable
 
 **起始版本**：7
 
@@ -446,11 +460,13 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
+仅用于在Native层启动同应用内的UIAbility，适用于C/C++调用接口拉起UIAbility的场景。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1 | Tablet
+**支持设备**：PC/2in1 | Tablet | Phone
 
 **起始版本**：15
 
@@ -736,34 +752,6 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
-
-## ohos.permission.QUERY_PUBLIC_CLI_TOOL
-
-允许应用查询可用的CLI工具。
-
-获取该权限后，可帮助三方智能体应用接入Claw功能。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：PC/2in1
-
-**起始版本**：26.1.0
-
-## ohos.permission.EXEC_PUBLIC_CLI_TOOL
-
-允许应用执行可用的CLI工具。
-
-获取该权限后，可帮助三方智能体应用接入Claw功能。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：PC/2in1
-
-**起始版本**：26.1.0
 
 ## ohos.permission.GET_ENTERPRISE_CONFIG
 

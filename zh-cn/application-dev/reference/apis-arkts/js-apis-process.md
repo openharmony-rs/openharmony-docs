@@ -208,8 +208,8 @@ kill(signal: number, pid: number): boolean
 **示例：**
 
 ```js
-let pres = process.pid;
-let result = process.kill(28, pres);
+let pid = process.pid;
+let result = process.kill(28, pid);
 ```
 
 
@@ -219,7 +219,7 @@ exit(code: number): void
 
 终止程序。
 
-请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非0，可能会导致数据丢失或出现异常。
+请谨慎使用此接口。调用此接口后应用将退出。如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。
 
 > **说明：**
 >
@@ -330,7 +330,9 @@ isAppUid(v: number): boolean
 **示例：**
 
 ```js
-let result = process.isAppUid(688);
+// uid通过process.uid获取
+let pres = process.uid;
+let result = process.isAppUid(pres);
 ```
 
 
@@ -370,7 +372,7 @@ let pres = process.getSystemConfig(_SC_ARG_MAX);
 
 getEnvironmentVar(name: string): string
 
-获取环境变量名对应的值。
+获取环境变量名对应的值。如果环境变量不存在，返回undefined。
 
 > **说明：**
 >
@@ -399,7 +401,7 @@ let pres = process.getEnvironmentVar("PATH");
 
 ## ProcessManager<sup>9+</sup>
 
-提供进程管理相关接口，包括进程UID判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。
+提供进程管理相关接口，包括进程uid判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。
 
 通过`new process.ProcessManager()`构造ProcessManager对象。
 
@@ -428,11 +430,13 @@ isAppUid(v: number): boolean
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
 // uid通过process.uid获取
 let pres = process.uid;
-let result = pro.isAppUid(pres);
-console.info("result: " + result); // result: true
+// 判断uid是否属于当前应用程序
+let result = processManager.isAppUid(pres);
+console.info("result:", result); // result: true
 ```
 
 
@@ -440,7 +444,7 @@ console.info("result: " + result); // result: true
 
 getUidForName(v: string): number
 
-根据指定的用户名，从系统的用户数据库中获取该用户uid。
+根据指定的用户名，从系统的用户数据库中获取该用户的uid。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -461,8 +465,10 @@ getUidForName(v: string): number
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
-let pres = pro.getUidForName("tool");
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 根据用户名获取uid
+let pres = processManager.getUidForName("tool");
 ```
 
 
@@ -480,7 +486,7 @@ getThreadPriority(v: number): number
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| v      | number | 是   | 指定的线程tid。 |
+| v      | number | 是   | 指定的线程tid。可通过process.tid获取。 |
 
 **返回值：**
 
@@ -491,9 +497,12 @@ getThreadPriority(v: number): number
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取当前线程tid
 let tid = process.tid;
-let pres = pro.getThreadPriority(tid);
+// 根据tid获取线程优先级
+let pres = processManager.getThreadPriority(tid);
 ```
 
 
@@ -522,9 +531,12 @@ getSystemConfig(name: number): number
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 定义系统配置参数
 let _SC_ARG_MAX = 0;
-let pres = pro.getSystemConfig(_SC_ARG_MAX);
+// 获取系统配置信息
+let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 ```
 
 
@@ -553,8 +565,10 @@ getEnvironmentVar(name: string): string
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
-let pres = pro.getEnvironmentVar("PATH");
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取PATH环境变量的值
+let pres = processManager.getEnvironmentVar("PATH");
 ```
 
 
@@ -564,7 +578,7 @@ exit(code: number): void
 
 终止程序。
 
-请谨慎使用此接口，此接口调用后应用会退出，如果入参非0会产生数据丢失或者异常情况。
+请谨慎使用此接口，此接口调用后应用会退出，如果输入参数非0，可能会导致数据丢失或出现未定义的运行异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -579,8 +593,8 @@ exit(code: number): void
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
-pro.exit(0);
+let processManager = new process.ProcessManager();
+processManager.exit(0);
 ```
 
 
@@ -588,7 +602,7 @@ pro.exit(0);
 
 kill(signal: number, pid: number): boolean
 
-发送signal到指定的进程，结束指定进程（仅支持结束本进程）。
+发送信号到指定的进程，结束指定进程（仅支持结束本进程）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -598,8 +612,8 @@ kill(signal: number, pid: number): boolean
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| signal | number | 是   | 发送特定的信号给目标进程。 取值范围：1 <= signal <= 64。|
-| pid    | number | 是   | 进程的id。   |
+| signal | number | 是   | 发送特定的信号给指定进程。 取值范围：1 <= signal <= 64。|
+| pid    | number | 是   | 进程的id。可通过process.pid获取。 |
 
 **返回值：**
 
@@ -610,7 +624,10 @@ kill(signal: number, pid: number): boolean
 **示例：**
 
 ```js
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取当前进程pid
 let pres = process.pid;
-let result = pro.kill(28, pres);
+// 发送信号28结束当前进程
+let result = processManager.kill(28, pres);
 ```

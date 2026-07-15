@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_PrintJob;
+typedef struct {...} Print_PrintJob
 ```
 
 ## 概述
@@ -29,7 +29,7 @@ typedef struct {...} Print_PrintJob;
 | char *jobName | 任务名称，用于标识和区分不同的打印任务。 |
 | uint32_t *fdList | 待打印的文件描述符数组。需与fdListCount配合使用，fdListCount应等于该数组的元素数量。 |
 | uint32_t fdListCount | 待打印的文件描述符数量。取值原则：大于等于1，且需与fdList数组长度一致。 |
-| char *printerId | 打印机 ID，用于指定目标打印机，可通过相关查询接口（如[OH_Print_QueryPrinterList](capi-ohprint-h.md#OH_Print_QueryPrinterList)）获取有效的打印机 ID。 |
+| char *printerId | 打印机 ID，用于指定目标打印机，可通过相关查询接口（如[OH_Print_QueryPrinterList](capi-ohprint-h.md#oh_print_queryprinterlist)）获取有效的打印机 ID。 |
 | uint32_t copyNumber | 打印份数。取值原则：大于等于1。 |
 | char *paperSource | 纸张来源，用于指定打印纸张的进纸方式。具体可选取值取决于打印机支持的纸张来源选项。 |
 | char *mediaType | 介质类型，用于指定打印介质的种类，如普通纸、光面纸、照片纸等。具体可选取值取决于打印机支持的介质类型选项。 |

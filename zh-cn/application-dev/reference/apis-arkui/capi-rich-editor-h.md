@@ -10,7 +10,7 @@
 
 定义RichEditor相关的枚举和接口。
 
-**引用文件：** <arkui/rich_editor.h>
+**引用文件：** <arkui/node_attributes/rich_editor.h>
 
 **库：** libace_ndk.z.so
 

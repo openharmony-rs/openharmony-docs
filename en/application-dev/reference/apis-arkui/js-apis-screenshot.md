@@ -63,6 +63,8 @@ pick(): Promise&lt;PickInfo&gt;
 
 Obtains this screenshot. Currently, only the screenshot of the display whose ID is **0** can be obtained. (If a screenshot of the extended screen is needed, you can use the [capture](#screenshotcapture14) API.) This API uses a promise to return the result.
 
+The **PixelMap** object in **PickInfo** returned must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -72,8 +74,6 @@ Obtains this screenshot. Currently, only the screenshot of the display whose ID 
 **API comparison**: The [pick](#screenshotpick) API supports regional screenshot capturing and can only be used on the primary screen (**displayId** is **0**), without requiring permissions. The [capture](#screenshotcapture14) API supports full-screen screenshot capturing and can be used on both the primary screen and extended screen (specified by **displayId**), with requiring permission.
 
 **Selection suggestion**: Use the [pick](#screenshotpick) API for regional screenshot capturing and the [capture](#screenshotcapture14) API for full-screen or extended-screen screenshot capturing.
-
-**Resource management**: The **PixelMap** object in **PickInfo** returned needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
 
 **Return value**
 
@@ -118,6 +118,8 @@ Takes a screenshot of the entire screen. This API uses a promise to return the r
 
 This API allows you to take screenshots of different screens by setting various **displayId** values, but only full-screen captures are supported. The [pick](#screenshotpick) API allows you to take screenshots of a specified region.
 
+The returned **PixelMap** object must be manually released. After using the object, you must call [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) to release the memory. Otherwise, memory leakage may occur.
+
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -125,10 +127,8 @@ This API allows you to take screenshots of different screens by setting various 
 **Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Since API version 21, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Required permissions**:
-- API version 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
 - API versions 14 to 21: **ohos.permission.CUSTOM_SCREEN_CAPTURE**
-
-**Resource management**: The returned **PixelMap** object needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
 
 **Parameters**
 
@@ -167,7 +167,7 @@ try {
   // Call the capture API to obtain a full-screen screenshot.
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
     pixelMap.release(); // Release the memory in time after the PixelMap is used.
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);

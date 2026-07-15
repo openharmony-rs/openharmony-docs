@@ -7,7 +7,7 @@
 <!--Tester:@baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-该模块提供扫描框架的 JS API，支持扫描仪的发现与管理、扫描执行、设备事件监听等能力。
+该模块提供扫描框架的 JS API，支持扫描仪的发现与管理、扫描执行、设备事件监听等能力，适用于应用需要集成扫描仪进行文档数字化采集与设备管理的场景，可帮助开发者实现扫描相关功能。
 
 > **说明：**
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -202,7 +202,7 @@ import { scan } from '@kit.BasicServicesKit';
 
 init(): Promise&lt;void&gt;
 
-初始化扫描服务，必须在调用其他扫描接口前完成初始化。使用Promise异步回调。使用完毕后需调用exit()退出扫描服务，释放资源。
+初始化扫描服务，必须在调用其它扫描接口前完成初始化。使用Promise异步回调。使用完毕后需调用exit()退出扫描服务，释放资源。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -236,7 +236,7 @@ scan.init().then(() => {
 
 exit(): Promise&lt;void&gt;
 
-退出扫描服务。使用Promise异步回调。扫描服务退出后，其他扫描方法将不可用，如需再次使用需重新调用init()。
+退出扫描服务。使用Promise异步回调。扫描服务退出后，其它扫描方法将不可用，如需再次使用需重新调用init()。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -270,7 +270,7 @@ scan.exit().then(() => {
 
 startScannerDiscovery(): Promise&lt;void&gt;
 
-开始发现扫描仪，发现的扫描仪设备信息通过on('scanDeviceFound')事件回调通知。使用Promise异步回调。
+开始发现扫描仪，发现的扫描仪设备信息通过on('scanDeviceFound')事件回调通知。需在调用init()完成初始化后使用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -304,7 +304,7 @@ scan.startScannerDiscovery().then(() => {
 
 openScanner(scannerId: string): Promise&lt;void&gt;
 
-打开扫描仪。使用Promise异步回调。在使用完毕后，需调用closeScanner()关闭扫描仪，释放资源。
+打开扫描仪。需在调用init()完成初始化后使用。使用Promise异步回调。在使用完毕后，需调用closeScanner()关闭扫描仪，释放资源。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -344,7 +344,7 @@ scan.openScanner(scannerId).then(() => {
 
 closeScanner(scannerId: string): Promise&lt;void&gt;
 
-关闭扫描仪。使用Promise异步回调。扫描仪关闭后，将不能再对该扫描仪执行参数获取、设置、扫描等操作。
+关闭扫描仪。使用Promise异步回调。扫描仪关闭后，将不能再对该扫描仪执行参数获取、设置、扫描等操作。如需再次使用需重新调用openScanner()。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -353,7 +353,7 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 要关闭的扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 要关闭的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -384,7 +384,7 @@ scan.closeScanner(scannerId).then(() => {
 
 getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 
-获取扫描仪参数。使用Promise异步回调。应用可通过此方法获取参数索引（optionIndex），用于其它扫描方法的调用。
+获取扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。应用可通过此方法获取参数索引（optionIndex），用于其它扫描方法的调用。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -393,7 +393,7 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -424,7 +424,7 @@ scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) =
 
 setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOptionValue): Promise&lt;void&gt;
 
-设置扫描仪参数。使用Promise异步回调。
+设置扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -433,7 +433,7 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 要设置参数的扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 要设置参数的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | optionIndex | number | 是 | 要设置的选项的索引，可通过getScannerParameter()获取。 |
 | value | [ScannerOptionValue](#scanneroptionvalue) | 是 | 要设置的扫描仪选项值，包含值类型（valueType）及对应的数值（numValue）、字符串值（strValue）或布尔值（boolValue）。 |
 
@@ -471,7 +471,7 @@ scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
 
 setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 
-设置扫描选项为自动模式。使用Promise异步回调。
+设置扫描选项为自动模式，由扫描仪自动确定该选项的取值。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -480,7 +480,7 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | optionIndex | number | 是 | 要设置为自动的选项的索引，可通过getScannerParameter()获取。 |
 
 **返回值：**
@@ -513,7 +513,7 @@ scan.setScanAutoOption(scannerId, optionIndex).then(() => {
 
 getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;ScannerOptionValue&gt;
 
-获取当前扫描仪设置。使用Promise异步回调。
+获取当前扫描仪设置。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -522,7 +522,7 @@ getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;Sca
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 要获取当前设置的扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 要获取当前设置的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | optionIndex | number | 是 | 要获取的选项的索引，可通过getScannerParameter()获取。 |
 
 **返回值：**
@@ -555,7 +555,7 @@ scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerO
 
 startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 
-开始扫描。使用Promise异步回调。扫描过程中可通过getPictureScanProgress()获取扫描进度；需要取消扫描时，可调用cancelScan()。
+开始扫描。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。扫描过程中可通过getPictureScanProgress()获取扫描进度；需要取消扫描时，可调用cancelScan()。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -564,7 +564,7 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | batchMode | boolean | 是 | 是否使用批处理模式。true表示使用批处理模式，可连续扫描多页文档；false表示不使用批处理模式，仅扫描单页。 |
 
 **返回值：**
@@ -597,7 +597,7 @@ scan.startScan(scannerId, batchMode).then(() => {
 
 cancelScan(scannerId: string): Promise&lt;void&gt;
 
-取消扫描。使用Promise异步回调。必须在开始扫描之后才能调用此方法取消扫描，否则将返回错误。
+取消扫描。使用Promise异步回调。必须在开始扫描之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -606,7 +606,7 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -637,7 +637,7 @@ scan.cancelScan(scannerId).then(() => {
 
 getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 
-获取图片扫描进度。使用Promise异步回调。必须在开始扫描后才能调用此方法获取扫描进度，否则将返回错误。
+获取图片扫描进度。使用Promise异步回调。必须在开始扫描后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -646,7 +646,7 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| scannerId | string | 是 | 扫描仪的ID，需在startScannerDiscovery后通过scanDeviceFound回调获取。 |
+| scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -744,7 +744,7 @@ scan.off('scanDeviceFound', callback);
 
 on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
-注册扫描仪设备同步事件回调。使用callback异步回调。
+注册扫描仪设备同步事件回调，当扫描仪设备状态发生变化（如扫描仪设备ID变更或掉线）时会触发此事件，通知应用同步维护扫描仪列表。使用callback异步回调。适用于应用需要持续跟踪扫描仪设备状态变化的场景，如扫描仪重新连接时更新本地设备信息。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 

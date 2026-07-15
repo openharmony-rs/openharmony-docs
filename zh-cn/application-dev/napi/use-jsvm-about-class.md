@@ -46,7 +46,7 @@ cpp部分代码
 // ...
 std::string ToString(JSVM_Env env, JSVM_Value val)
 {
-    JSVM_Value jsonString;
+    JSVM_Value jsonString = nullptr;
     JSVM_CALL(OH_JSVM_JsonStringify(env, val, &jsonString));
     size_t totalLen = 0;
     JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, jsonString, nullptr, 0, &totalLen));
@@ -120,7 +120,7 @@ cpp部分代码
 // ...
 JSVM_Value CreateInstance(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    JSVM_Value newTarget;
+    JSVM_Value newTarget = nullptr;
     // 获取构造函数的new.target值
     JSVM_CALL(OH_JSVM_GetNewTarget(env, info, &newTarget));
     OH_LOG_INFO(LOG_APP, "Create Instance");
@@ -139,7 +139,7 @@ JSVM_Value CreateInstance(JSVM_Env env, JSVM_CallbackInfo info)
 
 std::string ToString(JSVM_Env env, JSVM_Value val)
 {
-    JSVM_Value jsonString;
+    JSVM_Value jsonString = nullptr;
     JSVM_CALL(OH_JSVM_JsonStringify(env, val, &jsonString));
     size_t totalLen = 0;
     JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, jsonString, nullptr, 0, &totalLen));
@@ -158,7 +158,7 @@ JSVM_Value DefineClass(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_CallbackStruct param;
     param.data = nullptr;
     param.callback = CreateInstance;
-    JSVM_Value cons;
+    JSVM_Value cons = nullptr;
     // 用于在JavaScript中定义一个类
     JSVM_CALL(OH_JSVM_DefineClass(env, "MyObject", JSVM_AUTO_LENGTH, &param, 0, nullptr, &cons));
     JSVM_Value instanceValue = nullptr;
@@ -168,12 +168,12 @@ JSVM_Value DefineClass(JSVM_Env env, JSVM_CallbackInfo info)
     OH_LOG_INFO(LOG_APP, "NewInstance:%{public}s", str.c_str());
 
     // 作为普通的函数调用
-    JSVM_Value global;
+    JSVM_Value global = nullptr;
     JSVM_CALL(OH_JSVM_GetGlobal(env, &global));
-    JSVM_Value key;
+    JSVM_Value key = nullptr;
     JSVM_CALL(OH_JSVM_CreateStringUtf8(env, "Constructor", JSVM_AUTO_LENGTH, &key));
     JSVM_CALL(OH_JSVM_SetProperty(env, global, key, cons));
-    JSVM_Value result;
+    JSVM_Value result = nullptr;
     JSVM_CALL(OH_JSVM_CallFunction(env, global, cons, 0, nullptr, &result));
     std::string buf = ToString(env, result);
     OH_LOG_INFO(LOG_APP, "NewInstance:%{public}s", buf.c_str());

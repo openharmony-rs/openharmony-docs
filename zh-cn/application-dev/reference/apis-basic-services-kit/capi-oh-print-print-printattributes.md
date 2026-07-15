@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_PrintAttributes;
+typedef struct {...} Print_PrintAttributes
 ```
 
 ## 概述
@@ -29,7 +29,7 @@ typedef struct {...} Print_PrintAttributes;
 | [Print_Range](capi-oh-print-print-range.md) pageRange      | 打印范围。             |
 | [Print_PageSize](capi-oh-print-print-pagesize.md) pageSize | 打印纸张尺寸。         |
 | [Print_Margin](capi-oh-print-print-margin.md) pageMargin   | 打印边距。             |
-| uint32_t copyNumber                                        | 份数。取值原则：大于等于1。                 |
+| uint32_t copyNumber                                        | 份数。取值范围：大于等于1。                 |
 | uint32_t duplexMode                                        | 双面模式。有效取值参见[Print_DuplexMode](capi-ohprint-h.md#print_duplexmode)枚举定义。             |
 | uint32_t colorMode                                         | 色彩模式。有效取值参见[Print_ColorMode](capi-ohprint-h.md#print_colormode)枚举定义。             |
 | bool isSequential                                          | 顺序打印。<br>true 表示顺序打印，false 表示逆序打印。 |

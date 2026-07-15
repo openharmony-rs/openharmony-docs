@@ -271,7 +271,7 @@ try {
 
 writeInterfaceToken(token: string): void
 
-将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证等。建议使用唯一且有意义的描述符字符串（如"com.example.service"），避免使用敏感信息，长度应小于40960字节。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法性。
+将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证等。建议使用唯一且有意义的描述符字符串（如"com.example.service"），避免使用敏感信息，长度应小于40960。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法性。
 
 接口描述符的作用:
 
@@ -281,7 +281,7 @@ writeInterfaceToken(token: string): void
 
 **约束和限制**
 
-- 接口描述符长度必须小于40960字节。
+- 接口描述符长度必须小于40960。
 - 建议使用有意义的接口名称作为描述符。
 - 必须与readInterfaceToken配对使用。
 - 长度超过限制会抛出参数错误异常。
@@ -292,7 +292,7 @@ writeInterfaceToken(token: string): void
 
   | 参数名 | 类型   | 必填 | 说明               |
   | ------ | ------ | ---- | ------------------ |
-  | token  | string | 是   | 字符串类型描述符，用于本次通信的接口身份校验。远端对象可使用该信息验证本次通信的合法性。其长度应小于40960字节。 |
+  | token  | string | 是   | 字符串类型描述符，用于本次通信的接口身份校验。远端对象可使用该信息验证本次通信的合法性。其长度应小于40960。 |
 
 **错误码：**
 
@@ -300,7 +300,7 @@ writeInterfaceToken(token: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes:<br/> 1.The number of parameters is incorrect;<br/> 2.The parameter type does not match;<br/> 3.The string length is greater than or equal to 40960 bytes;<br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes:<br/> 1.The number of parameters is incorrect;<br/> 2.The parameter type does not match;<br/> 3.The string length is greater than or equal to 40960;<br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -1450,7 +1450,7 @@ writeString(val: string): void
 
 **约束和限制**
 
-- 字符串UTF-8编码后长度必须小于40960字节。
+- 字符串UTF-8编码后长度必须小于40960。
 - 注意区分字符数和字节数，中文字符占用更多字节。
 - 长字符串会占用较多缓冲区空间。
 - 写入前建议检查getWritableBytes。
@@ -1462,7 +1462,7 @@ writeString(val: string): void
 
   | 参数名 | 类型   | 必填 | 说明                                      |
   | ------ | ------ | ---- | ----------------------------------------- |
-  | val    | string | 是   | 要写入的字符串值，长度范围0-40959字节。 |
+  | val    | string | 是   | 要写入的字符串值，其长度应小于40960。 |
 
 **错误码：**
 
@@ -1470,7 +1470,7 @@ writeString(val: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -2694,7 +2694,7 @@ writeStringArray(stringArray: string[]): void
 
   | 参数名      | 类型     | 必填 | 说明                                                    |
   | ----------- | -------- | ---- | ------------------------------------------------------- |
-  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度范围0-40959字节。 |
+  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960。 |
 
 **错误码：**
 
@@ -2702,7 +2702,7 @@ writeStringArray(stringArray: string[]): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The parameter is an empty array; <br/> 2.The number of parameters is incorrect; <br/> 3.The parameter type does not match; <br/> 4.The string length is greater than or equal to 40960 bytes; <br/> 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The parameter is an empty array; <br/> 2.The number of parameters is incorrect; <br/> 3.The parameter type does not match; <br/> 4.The string length is greater than or equal to 40960; <br/> 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -4239,7 +4239,7 @@ writeInterfaceToken(token: string): boolean
 
   | 参数名 | 类型   | 必填 | 说明               |
   | ------ | ------ | ---- | ------------------ |
-  | token  | string | 是   | 字符串类型描述符，其长度应小于40960字节。 |
+  | token  | string | 是   | 字符串类型描述符，其长度应小于40960。 |
 
 **返回值：**
 
@@ -5298,7 +5298,7 @@ writeString(val: string): boolean
 
   | 参数名 | 类型   | 必填 | 说明                                      |
   | ------ | ------ | ---- | ----------------------------------------- |
-  | val    | string | 是   | 要写入的字符串值，其长度应小于40960字节。 |
+  | val    | string | 是   | 要写入的字符串值，其长度应小于40960。 |
 
 **返回值：**
 
@@ -6403,7 +6403,7 @@ writeStringArray(stringArray: string[]): boolean
 
   | 参数名      | 类型     | 必填 | 说明             |
   | ----------- | -------- | ---- | ---------------- |
-  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960字节。 |
+  | stringArray | string[] | 是   | 要写入的字符串数组，数组单个元素的长度应小于40960。 |
 
 **返回值：**
 
@@ -7738,7 +7738,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 参数名     | 类型   | 必填 | 说明                 |
   | ---------- | ------ | ---- | -------------------- |
-  | descriptor | string | 是   | 接口描述符的字符串，其长度应小于40960字节。 |
+  | descriptor | string | 是   | 接口描述符的字符串，其长度应小于40960。 |
 
 **返回值：**
 
@@ -7752,7 +7752,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 ### queryLocalInterface<sup>(deprecated)</sup>
 
@@ -8461,7 +8461,7 @@ getLocalInterface(interfaceDes: string): IRemoteBroker
 
   | 参数名    | 类型   | 必填 | 说明                   |
   | --------- | ------ | ---- | ---------------------- |
-  | interfaceDes | string | 是   | 需要查询的接口描述符，其长度应小于40960字节。 |
+  | interfaceDes | string | 是   | 需要查询的接口描述符，其长度应小于40960。 |
 
 **返回值：**
 
@@ -9850,7 +9850,7 @@ static restoreCallingIdentity(identity: string): void
 
   | 参数名   | 类型   | 必填 | 说明                                                               |
   | -------- | ------ | ---- | ------------------------------------------------------------------ |
-  | identity | string | 是   | 标识表示包含远程用户UID和PID的字符串，其长度应小于40960字节。由resetCallingIdentity返回。 |
+  | identity | string | 是   | 标识表示包含远程用户UID和PID的字符串，其长度应小于40960。由resetCallingIdentity返回。 |
 
 **错误码：**
 
@@ -9858,7 +9858,7 @@ static restoreCallingIdentity(identity: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -9946,7 +9946,7 @@ RemoteObject构造函数。
 
   | 参数名     | 类型   | 必填 | 说明         |
   | ---------- | ------ | ---- | ------------ |
-  | descriptor | string | 是   | 接口描述符，其长度应小于40960字节。 |
+  | descriptor | string | 是   | 接口描述符，其长度应小于40960。 |
 
 **示例：**
 
@@ -10598,7 +10598,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 参数名     | 类型   | 必填 | 说明                 |
   | ---------- | ------ | ---- | -------------------- |
-  | descriptor | string | 是   | 接口描述符的字符串，其长度应小于40960字节。 |
+  | descriptor | string | 是   | 接口描述符的字符串，其长度应小于40960。 |
 
 **返回值：**
 
@@ -10612,7 +10612,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -10798,7 +10798,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 | 参数名         | 类型                            | 必填 | 说明                                  |
 | -------------- | ------------------------------- | ---- | ------------------------------------- |
 | localInterface | [IRemoteBroker](#iremotebroker) | 是   | 将与描述符绑定的IRemoteBroker对象。   |
-| descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符，其长度应小于40960字节。 |
+| descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符，其长度应小于40960。 |
 
 **错误码：**
 
@@ -10806,7 +10806,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 

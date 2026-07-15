@@ -10,7 +10,7 @@
 
 定义Progress相关的枚举和接口。
 
-**引用文件：** <arkui/progress.h>
+**引用文件：** <arkui/node_attributes/progress.h>
 
 **库：** libace_ndk.z.so
 
