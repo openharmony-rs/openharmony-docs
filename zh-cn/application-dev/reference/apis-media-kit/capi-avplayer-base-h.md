@@ -360,7 +360,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **描述**
 
-在API version 9及以上的版本发生错误时调用。<br>从API version 12开始废弃。
+在API version 9及以上的版本发生错误时调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
