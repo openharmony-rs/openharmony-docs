@@ -1697,7 +1697,7 @@ async function  test(){
   let audioTrackIndex: Object = 0;
   avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
     if (arrList != null) {
-      // 遍历轨道描述列表，提取非首个轨道的索引用于音频轨道选择
+      // 遍历轨道描述列表，提取非首个轨道的索引用于音频轨道选择。
       for (let i = 0; i < arrList.length; i++) {
         if (i != 0) {
           // 获取音频轨道列表。
