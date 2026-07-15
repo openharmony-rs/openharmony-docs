@@ -38,7 +38,7 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | -- | -- | -- |
 | [typedef void (\*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#player_mediakeysysteminfocallback) | Player_MediaKeySystemInfoCallback | 播放器DRM信息更新时调用。 |
 | [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | 创建播放器。<br> 推荐单个应用创建的音视频播放器实例总数不超过16个。<!--Del--><br> 可创建的音视频播放器实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放器实例。<!--DelEnd--> |
-| [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | 设置播放器的播放源。对应的源可以是HTTP或HTTPS URL。 |
+| [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | 设置播放器的播放源。对应的源可以是HTTP URL或HTTPS URL。 |
 | [OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_setfdsource) | - | 设置播放器的媒体文件描述符来源。 |
 | [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer \*player, OH_AVDataSourceExt\* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | 设置播放器的媒体源，该媒体源的数据由应用程序提供。 |
 | [OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)](#oh_avplayer_prepare) | - | 准备播放环境，异步缓存媒体数据。<br> 此函数必须在SetSource之后调用。 |
@@ -48,21 +48,21 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | [OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)](#oh_avplayer_reset) | - | 将播放器恢复到初始状态。<br> 函数调用完成后，调用SetSource添加播放源。调用[OH_AVPlayer_Prepare](#oh_avplayer_prepare)后，再调用[OH_AVPlayer_Play](#oh_avplayer_play)重新开始播放。 |
 | [OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)](#oh_avplayer_release) | - | 异步释放播放器资源。<br> 异步释放可以提升性能，但不能确保播放画面的SurfaceBuffer已释放。调用者需要确保播放画面窗口的生命周期安全。 |
 | [OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)](#oh_avplayer_releasesync) | - | 同步释放播放器资源。<br> 同步过程保证了播放画面的SurfaceBuffer释放，但该过程耗时较长，建议调用者自行设计异步机制。 |
-| [OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float rightVolume)](#oh_avplayer_setvolume) | - | 设置播放器的音量。<br> 可以在播放或暂停的过程中使用。0表示无声音，1为原始值。默认音量为1.0。 |
-| [OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)](#oh_avplayer_setloudnessgain) | - | 设置播放器的响度。当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。<br> 默认响度增益0.0dB。播放器流的usage参数必须是以下之一：[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频渲染器的延迟模式必须是[OH_AudioStream_LatencyMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 如果通过高分辨率管道播放，则不支持此操作。 |
+| [OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float rightVolume)](#oh_avplayer_setvolume) | - | 设置播放器的音量。<br> 可以在播放或暂停的过程中使用。0表示无声音，1为原始值。默认音量为1。 |
+| [OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)](#oh_avplayer_setloudnessgain) | - | 设置播放器的响度。当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。<br> 默认响度增益0.0dB。播放器流的usage参数必须是以下枚举值之一：[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频渲染器的延迟模式必须是[OH_AudioStream_LatencyMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 如果通过高分辨率管道播放，则不支持此操作。 |
 | [OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSeekMode mode)](#oh_avplayer_seek) | - | 改变播放位置。<br> 此函数可以在播放或暂停时使用。 |
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTime)](#oh_avplayer_getcurrenttime) | - | 获取当前播放时间（通过参数返回），精确到毫秒。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)](#oh_avplayer_getvideowidth) | - | 获取视频宽度。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeight)](#oh_avplayer_getvideoheight) | - | 获取视频高度。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed speed)](#oh_avplayer_setplaybackspeed) | - | 根据指定的[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)，设置播放器的播放速率。默认播放速率为1.0倍速（正常速度）。 |
-| [OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)](#oh_avplayer_setplaybackrate) | - | 在有效范围内，设置播放器的播放速率。<br> 支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0。 |
+| [OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)](#oh_avplayer_setplaybackrate) | - | 在有效范围内，设置播放器的播放速率。<br> 支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度）。 |
 | [OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *speed)](#oh_avplayer_getplaybackspeed) | - | 获取当前播放器的播放速率。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetPlaybackRate(OH_AVPlayer *player, float *rate)](#oh_avplayer_getplaybackrate) | - | 获取当前播放器播放速率。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStream_Usage streamUsage)](#oh_avplayer_setaudiorendererinfo) | - | 设置player音频流类型。 |
 | [OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_VolumeMode volumeMode)](#oh_avplayer_setvolumemode) | - | 设置player音频流音量模式。 |
 | [OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInterrupt_Mode interruptMode)](#oh_avplayer_setaudiointerruptmode) | - | 设置player音频流的打断模式。 |
 | [OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_AudioEffectMode effectMode)](#oh_avplayer_setaudioeffectmode) | - | 设置player音频流的音效模式。 |
-| [OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)](#oh_avplayer_selectbitrate) | - | 设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率列表，如果用户指定的码率不在此列表中，则播放器将从可用码率列表中选择最接近的码率。 |
+| [OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)](#oh_avplayer_selectbitrate) | - | 设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率列表，如果用户指定的码率不在此列表中，播放器将从可用码率列表中选择最接近的码率。 |
 | [OH_AVErrCode OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosurface) | - | 设置播放画面窗口。<br> 此函数必须在SetSource之后，Prepare之前调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)](#oh_avplayer_getduration) | - | 获取媒体文件的总时长，精确到毫秒。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)](#oh_avplayer_getstate) | - | 获取当前播放状态。 |
@@ -70,9 +70,9 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | [bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)](#oh_avplayer_islooping) | - | 判断是否循环播放。此接口可在AVPlayer处于任何状态下调用。 |
 | [OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)](#oh_avplayer_setlooping) | - | 设置循环播放。默认不循环播放。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | 设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API version 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。<br>从API version 12开始废弃。 |
-| [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。选择字幕轨道时播放器应处于准备/播放/暂停/完成状态，选择音轨时播放器应处于准备状态。 |
+| [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。选择字幕轨道时，播放器应处于prepared、playing、paused或completed状态；选择音轨时，播放器应处于prepared状态。 |
 | [OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_deselecttrack) | - | 取消选择当前音频或字幕轨道。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
-| [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | 获取当前有效的轨道索引。调用该接口时播放器应处于prepared/playing/paused/completed状态。 |
+| [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | 获取当前有效的轨道索引。调用该接口时，播放器应处于prepared、playing、paused或completed状态。 |
 | [OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Player_MediaKeySystemInfoCallback callback)](#oh_avplayer_setmediakeysysteminfocallback) | - | 设置播放器媒体密钥系统信息回调的方法。适用于播放DRM加密媒体内容的场景，如监听DRM信息更新、获取加密内容密钥、处理版权保护内容等。 |
 | [OH_AVErrCode OH_AVPlayer_GetMediaKeySystemInfo(OH_AVPlayer *player, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#oh_avplayer_getmediakeysysteminfo) | - | 获取媒体密钥系统信息以创建媒体密钥会话。 |
 | [OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_avplayer_setdecryptionconfig) | - | 设置解密信息。适用于DRM加密媒体内容的场景，如播放加密视频、播放付费内容、播放受版权保护的媒体资源等。 |
@@ -80,18 +80,18 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | [OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnErrorCallback callback, void *userData)](#oh_avplayer_setonerrorcallback) | - | 设置播放器错误回调监听函数。 |
 | [OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)](#oh_avplayer_getmediadescription) | - | 获取播放器媒体源信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
 | [OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)](#oh_avplayer_gettrackdescription) | - | 通过索引下标获取播放器媒体源轨道信息。设置完播放资源并且播放处于initialized/prepared/playing/paused/completed/stopped状态，可调用该接口。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
-| [OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_addfdsubtitlesource) | - | 将由文件描述符字幕资源添加到播放器。目前，外挂字幕必须在AVPlayer设置完视频资源的fdSrc之后再设置。 |
-| [OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_addurlsubtitlesource) | - | 将由URL字幕资源添加到播放器。外挂字幕必须在AVPlayer设置完url之后再设置。 |
+| [OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_addfdsubtitlesource) | - | 将文件描述符字幕资源添加到播放器。目前，外挂字幕必须在AVPlayer设置完视频资源的fdSrc之后再设置。 |
+| [OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_addurlsubtitlesource) | - | 将URL字幕资源添加到播放器。外挂字幕必须在AVPlayer设置完URL之后再设置。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsStart, int32_t mSecondsEnd, bool closestRange)](#oh_avplayer_setplaybackrange) | - | 设置播放起始位置和结束位置。仅播放指定范围内的内容。可在初始化、已准备、暂停、停止或完成状态下调用。 |
 | [OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaType, bool muted)](#oh_avplayer_setmediamuted) | - | 静音媒体流。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [int32_t OH_AVPlayer_GetPlaybackPosition(OH_AVPlayer *player)](#oh_avplayer_getplaybackposition) | - | 获取播放位置，精确到毫秒。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
-| [bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)](#oh_avplayer_isseekcontinuoussupported) | - | 检查媒体源是否支持连续跳转。在prepared、playing、paused或completed状态下调用时返回实际值；在其他状态下调用时返回 false。对于不支持[AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode)模式跳转操作的设备，返回false。 |
+| [bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)](#oh_avplayer_isseekcontinuoussupported) | - | 检查媒体源是否支持连续跳转。在prepared、playing、paused或completed状态下调用时返回实际值；在其他状态下调用时返回false。对于不支持[AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode)模式跳转操作的设备，返回false。 |
 | [OH_AVErrCode OH_AVPlayer_SelectTrackWithMode(OH_AVPlayer *player, int32_t index, AVPlayerTrackSwitchMode mode)](#oh_avplayer_selecttrackwithmode) | - | 在播放包含多个音视频轨道的资源时，使用指定的切换模式选择轨道。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
 | [OH_AVErrCode OH_AVPlayer_SetAmplitudeUpdateCallback(OH_AVPlayer *player, OH_AVPlayerOnAmplitudeUpdateCallback callback, void *userData)](#oh_avplayer_setamplitudeupdatecallback) | - | 订阅最大音频电平值的更新事件，该值在播放音频资源时周期性上报。适用于需要音频可视化或音频强度检测的场景，如音频波形显示、音频强度可视化、音频能量检测等。 |
 | [OH_AVErrCode OH_AVPlayer_SetSeiReceivedCallback(OH_AVPlayer *player, const int32_t *payloadTypes, uint32_t typeNum, OH_AVPlayerOnSeiMessageReceivedCallback callback, void *userData)](#oh_avplayer_setseireceivedcallback) | - | 订阅接收到补充增强信息（SEI）消息的事件。仅适用于HTTP-FLV直播流，当视频流中存在SEI消息时触发。必须在调用prepare之前发起订阅。 |
 | [uint32_t OH_AVSeiMessage_GetSeiCount(OH_AVSeiMessageArray *message)](#oh_avseimessage_getseicount) | - | 获取SEI消息数组中的消息项数量。 |
-| [OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t index)](#oh_avseimessage_getsei) | - | 通过索引获取SEI消息数组中某一项的SEI，需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
-| [OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t width, int32_t height)](#oh_avplayer_settargetvideowindowsize) | - | 为超分辨率设置视频窗口大小。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。输入参数值必须在320x320至1920x1080（像素）范围内。适用于超分辨率视频显示的场景，如低分辨率视频画质提升、视频增强显示等。 |
+| [OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t index)](#oh_avseimessage_getsei) | - | 通过索引获取Supplemental Enhancement Information（补充增强信息，简称SEI）消息数组中某一项的SEI。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
+| [OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t width, int32_t height)](#oh_avplayer_settargetvideowindowsize) | - | 为超分辨率设置视频窗口大小。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。输入参数值必须在320x320至1920x1080范围内。单位为像素（px）。适用于超分辨率视频显示的场景，如低分辨率视频画质提升、视频增强显示等。 |
 | [OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool enabled)](#oh_avplayer_setvideosuperresolutionenable) | - | 动态启用或禁用超分辨率。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。必须在调用prepare之前在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。适用于需要动态控制视频画质增强的场景，如根据设备性能动态调整、根据网络状态切换画质等。 |
 | [OH_AVPlaybackStrategy *OH_AVPlaybackStrategy_Create(void)](#oh_avplaybackstrategy_create) | - | 创建一个播放策略实例。 |
 | [OH_AVErrCode OH_AVPlaybackStrategy_Destroy(OH_AVPlaybackStrategy *strategy)](#oh_avplaybackstrategy_destroy) | - | 释放一个播放策略实例。 |
@@ -103,15 +103,15 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredAudioLanguage(OH_AVPlaybackStrategy *strategy, const char *lang)](#oh_avplaybackstrategy_setpreferredaudiolanguage) | - | 设置首选音频语言。 |
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetMutedMediaType(OH_AVPlaybackStrategy *strategy, OH_MediaType mediaType)](#oh_avplaybackstrategy_setmutedmediatype) | - | 设置播放时要静音的媒体类型。 |
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetShowFirstFrameOnPrepare(OH_AVPlaybackStrategy *strategy, bool enabled)](#oh_avplaybackstrategy_setshowfirstframeonprepare) | - | 设置是否在prepare时显示首帧。 |
-| [OH_AVErrCode OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(OH_AVPlaybackStrategy *strategy, double seconds)](#oh_avplaybackstrategy_setthresholdforautoquickplay) | - | 设置自动快速播放的阈值。当缓冲数据不足导致播放可能卡顿时，播放器会自动提高播放速率快速播放已缓存内容，该阈值控制触发此行为的条件。 |
+| [OH_AVErrCode OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(OH_AVPlaybackStrategy *strategy, double seconds)](#oh_avplaybackstrategy_setthresholdforautoquickplay) | - | 设置自动快速播放的阈值。当缓冲数据不足导致播放可能卡顿时，播放器会自动提高播放速率快速播放已缓存内容，该阈值是控制触发此行为的条件。 |
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetSuperResolutionEnable(OH_AVPlaybackStrategy *strategy, bool enabled)](#oh_avplaybackstrategy_setsuperresolutionenable) | - | 启用或禁用超分辨率。 |
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredBufferDurationForPlaying(OH_AVPlaybackStrategy *strategy, double seconds)](#oh_avplaybackstrategy_setpreferredbufferdurationforplaying) | - | 设置播放时的首选缓冲时长（秒，double类型）。 |
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetKeepDecodingOnMute(OH_AVPlaybackStrategy *strategy, bool enabled)](#oh_avplaybackstrategy_setkeepdecodingonmute) | - | 设置静音时是否继续解码。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackStrategy(OH_AVPlayer *player, OH_AVPlaybackStrategy *strategy)](#oh_avplayer_setplaybackstrategy) | - | 将播放策略设置给AVPlayer。此接口仅可在AVPlayer处于初始化状态时调用。 |
-| [OH_AVFormat* OH_AVPlayer_GetPlaybackInfo(OH_AVPlayer *player)](#oh_avplayer_getplaybackinfo) | - | 获取当前播放器的统计信息。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
+| [OH_AVFormat* OH_AVPlayer_GetPlaybackInfo(OH_AVPlayer *player)](#oh_avplayer_getplaybackinfo) | - | 获取当前播放器的统计信息。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
 | [OH_AVErrCode OH_AVPlayer_SetMediaSource(OH_AVPlayer *player, OH_AVMediaSource *source)](#oh_avplayer_setmediasource) | - | 将OH_AVMediaSource设置给播放器。 |
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | 获取播放器媒体源的轨道数量。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。 |
-| [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | 通过索引获取播放器轨道信息。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用，需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
+| [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | 通过索引获取播放器轨道信息。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | 获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。<br> 需要注意返回值[OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。 |
 | [OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)](#oh_avplayer_setpcmoutputcallback) | - | 设置音频PCM数据输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取音频原始数据的场景，如音频数据分析、音频录制、音频处理、音频可视化等。 |
 | [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取视频解密帧的场景，如视频帧分析、视频滤镜处理、视频截图、视频特效处理等。 |
@@ -168,7 +168,7 @@ OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 
 **描述**
 
-设置播放器的播放源。对应的源可以是HTTP或HTTPS URL。
+设置播放器的播放源。对应的源可以是HTTP URL或HTTPS URL。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -434,7 +434,7 @@ OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float 
 
 **描述**
 
-设置播放器的音量。<br> 可以在播放或暂停的过程中使用。0表示无声音，1为原始值。默认音量为1.0。
+设置播放器的音量。<br> 可以在播放或暂停的过程中使用。0表示无声音，1为原始值。默认音量为1。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -462,7 +462,7 @@ OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain
 
 **描述**
 
-设置播放器的响度。当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。<br> 默认响度增益0.0dB。播放器流的usage参数必须是以下之一：[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频渲染器的延迟模式必须是[OH_AudioStream_LatencyMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 如果通过高分辨率管道播放，则不支持此操作。
+设置播放器的响度。当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。<br> 默认响度增益0.0dB。播放器流的usage参数必须是以下枚举值之一：[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频渲染器的延迟模式必须是[OH_AudioStream_LatencyMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 如果通过高分辨率管道播放，则不支持此操作。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -625,7 +625,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 **描述**
 
-在有效范围内，设置播放器的播放速率。<br> 支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0。
+在有效范围内，设置播放器的播放速率。<br> 支持的状态包括prepared、playing、paused、completed。默认播放速率为1.0倍速（正常速度）。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -812,7 +812,7 @@ OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 
 **描述**
 
-设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率列表，如果用户指定的码率不在此列表中，则播放器将从可用码率列表中选择最接近的码率。
+设置HLS播放器使用的码率。仅对HLS协议网络流有效。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 默认情况下，播放器会根据网络连接情况选择合适的码率和速度。<br> 通过INFO_TYPE_BITRATE_COLLECT上报有效码率列表，如果用户指定的码率不在此列表中，播放器将从可用码率列表中选择最接近的码率。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1030,7 +1030,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 **描述**
 
-选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。选择字幕轨道时播放器应处于准备/播放/暂停/完成状态，选择音轨时播放器应处于准备状态。
+选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。选择字幕轨道时，播放器应处于prepared、playing、paused或completed状态；选择音轨时，播放器应处于prepared状态。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1084,7 +1084,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType,
 
 **描述**
 
-获取当前有效的轨道索引。调用该接口时播放器应处于prepared/playing/paused/completed状态。
+获取当前有效的轨道索引。调用该接口时，播放器应处于prepared、playing、paused或completed状态。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1303,7 +1303,7 @@ OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, in
 
 **描述**
 
-将由文件描述符字幕资源添加到播放器。目前，外挂字幕必须在AVPlayer设置完视频资源的fdSrc之后再设置。
+将文件描述符字幕资源添加到播放器。目前，外挂字幕必须在AVPlayer设置完视频资源的fdSrc之后再设置。
 
 **起始版本：** 23
 
@@ -1330,7 +1330,7 @@ OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *u
 
 **描述**
 
-将由URL字幕资源添加到播放器。外挂字幕必须在AVPlayer设置完url之后再设置。
+将URL字幕资源添加到播放器。外挂字幕必须在AVPlayer设置完URL之后再设置。
 
 **起始版本：** 23
 
@@ -1432,7 +1432,7 @@ bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)
 
 **描述**
 
-检查媒体源是否支持连续跳转。在prepared、playing、paused或completed状态下调用时返回实际值；在其他状态下调用时返回 false。对于不支持[AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode)模式跳转操作的设备，返回false。
+检查媒体源是否支持连续跳转。在prepared、playing、paused或completed状态下调用时返回实际值；在其他状态下调用时返回false。对于不支持[AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode)模式跳转操作的设备，返回false。
 
 **起始版本：** 23
 
@@ -1560,7 +1560,7 @@ OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t inde
 
 **描述**
 
-通过索引获取SEI消息数组中某一项的SEI，需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
+通过索引获取Supplemental Enhancement Information（补充增强信息，简称SEI）消息数组中某一项的SEI。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
 
 **起始版本：** 23
 
@@ -1585,7 +1585,7 @@ OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t w
 
 **描述**
 
-为超分辨率设置视频窗口大小。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。输入参数值必须在320x320至1920x1080（像素）范围内。适用于超分辨率视频显示的场景，如低分辨率视频画质提升、视频增强显示等。
+为超分辨率设置视频窗口大小。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。输入参数值必须在320x320至1920x1080范围内。单位为像素（px）。适用于超分辨率视频显示的场景，如低分辨率视频画质提升、视频增强显示等。
 
 **起始版本：** 23
 
@@ -1594,8 +1594,8 @@ OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t w
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| int32_t width | 窗口宽度，取值范围[320-1920]，单位：像素。超出范围时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
-| int32_t height | 窗口高度，取值范围[320-1080]，单位：像素。超出范围时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
+| int32_t width | 窗口宽度，取值范围[320-1920]，单位为像素（px）。超出范围时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
+| int32_t height | 窗口高度，取值范围[320-1080]，单位为像素（px）。超出范围时返回错误码AV_ERR_INVALID_VAL（参数错误）。 |
 
 **返回：**
 
@@ -1878,7 +1878,7 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(OH_AVPlaybackStr
 
 **描述**
 
-设置自动快速播放的阈值。当缓冲数据不足导致播放可能卡顿时，播放器会自动提高播放速率快速播放已缓存内容，该阈值控制触发此行为的条件。
+设置自动快速播放的阈值。当缓冲数据不足导致播放可能卡顿时，播放器会自动提高播放速率快速播放已缓存内容，该阈值是控制触发此行为的条件。
 
 **起始版本：** 23
 
@@ -2003,7 +2003,7 @@ OH_AVFormat* OH_AVPlayer_GetPlaybackInfo(OH_AVPlayer *player)
 
 **描述**
 
-获取当前播放器的统计信息。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
+获取当前播放器的统计信息。此接口仅可在AVPlayer处于prepared、playing或者paused状态时调用。需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
 
 **起始版本：** 23
 
@@ -2076,7 +2076,7 @@ OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex
 
 **描述**
 
-通过索引获取播放器轨道信息。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用，需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
+通过索引获取播放器轨道信息。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
 
 **起始版本：** 23
 
@@ -2101,7 +2101,7 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 
 **描述**
 
-获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。<br> 需要注意返回值[OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。
+获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于prepared、playing、paused、completed或stopped状态时，可调用该接口。<br> 需要注意返回值[OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。
 
 **起始版本：** 23
 
