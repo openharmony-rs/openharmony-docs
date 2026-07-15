@@ -893,7 +893,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
   avPlayer.prepare((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
+      console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in preparing');
     }
@@ -939,7 +939,7 @@ async function  test(){
   avPlayer.prepare().then(() => {
     console.info('Succeeded in preparing');
   }, (err: BusinessError) => {
-    console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -990,7 +990,7 @@ async function  test(){
     console.info('Succeeded in preparing');
     avPlayer.setMediaMuted(media.MediaType.MEDIA_TYPE_AUD, true);
   }, (err: BusinessError) => {
-    console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1029,7 +1029,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/paused/completed状态后才能调用。
   avPlayer.play((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to play.Code:${err.code},message:${err.message}`);
+      console.error(`Failed to play. Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in playing');
     }
@@ -1072,7 +1072,7 @@ async function  test(){
   avPlayer.play().then(() => {
     console.info('Succeeded in playing');
   }, (err: BusinessError) => {
-    console.error(`Failed to play.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to play. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1111,7 +1111,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至playing状态后才能调用。
   avPlayer.pause((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to pause.Code:${err.code},message:${err.message}`);
+      console.error(`Failed to pause. Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in pausing');
     }
@@ -1154,7 +1154,7 @@ async function  test(){
   avPlayer.pause().then(() => {
     console.info('Succeeded in pausing');
   }, (err: BusinessError) => {
-    console.error(`Failed to pause.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to pause. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1193,7 +1193,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
   avPlayer.stop((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to stop.Code:${err.code},message:${err.message}`);
+      console.error(`Failed to stop. Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in stopping');
     }
@@ -1236,7 +1236,7 @@ async function  test(){
   avPlayer.stop().then(() => {
     console.info('Succeeded in stopping');
   }, (err: BusinessError) => {
-    console.error(`Failed to stop.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to stop. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1275,7 +1275,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped/error状态后才能调用。
   avPlayer.reset((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to reset.Code:${err.code},message:${err.message}`);
+      console.error(`Failed to reset. Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in resetting');
     }
@@ -1318,7 +1318,7 @@ async function  test(){
   avPlayer.reset().then(() => {
     console.info('Succeeded in resetting');
   }, (err: BusinessError) => {
-    console.error(`Failed to reset.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to reset. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1357,7 +1357,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发除released以外的状态才能调用。
   avPlayer.release((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to release.Code:${err.code},message:${err.message}`);
+      console.error(`Failed to release. Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in releasing');
     }
@@ -1400,7 +1400,7 @@ async function  test(){
   avPlayer.release().then(() => {
     console.info('Succeeded in releasing');
   }, (err: BusinessError) => {
-    console.error(`Failed to release.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to release. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1482,7 +1482,7 @@ async function  test(){
   avPlayer.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
     console.info('Succeeded in getting TrackDescription');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get TrackDescription.Code:${error.code},message:${error.message}`);
+    console.error(`Failed to get TrackDescription. Code:${error.code},message:${error.message}`);
   });
 }
 ```
@@ -1522,7 +1522,7 @@ async function  test(){
   avPlayer.getSelectedTracks().then((arrList: Array<number>) => {
     console.info('Succeeded in getting SelectedTracks');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get SelectedTracks.Code:${error.code},message:${error.message}`);
+    console.error(`Failed to get SelectedTracks. Code:${error.code},message:${error.message}`);
   });
 }
 ```
@@ -1603,7 +1603,7 @@ async function  test(){
     let playbackPosition: number = avPlayer.getPlaybackPosition();
     console.info(`AVPlayer getPlaybackPosition== ${playbackPosition}`);
   }, (err: BusinessError) => {
-    console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1647,7 +1647,7 @@ async function  test(){
     let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
     console.info(`AVPlayer getCurrentPresentationTimestamp== ${currentPresentation}`);
   }, (err: BusinessError) => {
-    console.error(`Failed to play.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to play. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1705,7 +1705,7 @@ async function  test(){
         }
       }
     } else {
-      console.error(`Failed to get TrackDescription.Code:${error.code},message:${error.message}`);
+      console.error(`Failed to get TrackDescription. Code:${error.code},message:${error.message}`);
     }
   });
 
@@ -1762,7 +1762,7 @@ avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDe
       }
     }
   } else {
-    console.error(`Failed to get TrackDescription.Code:${error.code},message:${error.message}`);
+    console.error(`Failed to get TrackDescription. Code:${error.code},message:${error.message}`);
   }
 });
 
@@ -2218,7 +2218,7 @@ async function test(){
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
     console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getLoadedTimeRanges.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to getLoadedTimeRanges. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -2254,7 +2254,7 @@ async function test(){
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
     console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getSeekableTimeRanges.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to getSeekableTimeRanges. Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -2290,7 +2290,7 @@ async function test(){
     avPlayer.seekToDefaultPosition()
     console.info('Succeeded in calling seekToDefaultPosition.');
   } catch (err) {
-    console.error(`Failed to seekToDefaultPosition.Code:${err.code},message:${err.message}`);
+    console.error(`Failed to seekToDefaultPosition. Code:${err.code},message:${err.message}`);
   }
 }
 ```
@@ -3966,7 +3966,7 @@ async function test(){
     console.info('Succeeded in getting CurrentTrack');
     myTrackId = trackId;
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get CurrentTrack.Code:${error.code},message:${error.message}`);
+    console.error(`Failed to get CurrentTrack. Code:${error.code},message:${error.message}`);
   });
 }
 ```
