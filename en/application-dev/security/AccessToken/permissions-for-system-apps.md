@@ -6715,6 +6715,34 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.CREATE_SIGN_CONTENT_TRUST
+ 	 
+Allows an application to create a content trust signature.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.APPEND_SIGN_CONTENT_TRUST
+
+Allows an application to append a content trust signature.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
 Allows an application to set cellular network information.
