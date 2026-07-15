@@ -7,6 +7,61 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+## 模块简介
+
+CodecBase 模块提供用于音视频封装、解封装、编解码基础功能的 C API，包括编解码器基础结构体、异步回调机制、MIME 类型定义、媒体描述键、用户自定义数据源以及视频特定配置等。本模块是 AVCodecKit 的基础模块，为视频编码器、视频解码器、音频编码器、音频解码器、封装器、解封装器等模块提供通用的类型定义和属性键。
+
+本模块提供的主要能力包括：
+
+- **编解码器基础结构体**：定义编解码器实例 `OH_AVCodec` 和图形接口 `OHNativeWindow`，是音视频编解码操作的核心对象。
+- **异步回调机制**：提供错误回调、流变化回调、输入缓冲区回调、输出缓冲区回调等函数指针类型，以及回调集合结构体 `OH_AVCodecCallback`，用于处理编解码过程中的异步事件。
+- **用户自定义数据源**：支持通过回调函数 `OH_AVDataSourceReadAt` 和结构体 `OH_AVDataSource` 自定义媒体数据读取方式。
+- **MIME 类型定义**：定义视频编解码（H.264、H.265、H.266、AV1、VP9、MPEG2、MPEG4 等）、音频编解码（AAC、FLAC、MP3、OPUS、APE、ALAC 等）、图片（JPG、PNG、BMP）、字幕（SRT、WEBVTT）等格式的 MIME 类型常量。
+- **媒体描述键**：提供统一的键名常量（`OH_MD_KEY_*`）用于配置和查询媒体参数，涵盖视频分辨率、帧率、码率、档次、像素格式、色彩空间，音频采样率、声道数、声道布局，编解码特性（分层编码、长期参考帧、B 帧、低时延），以及媒体元数据（标题、艺术家、专辑等）。
+- **视频 ROI 配置**：支持感兴趣区域（ROI）编码配置，包括 ROI 区域坐标、量化参数偏移、语义标签等，并提供 ROI 字符串解析与格式化函数。
+- **音频声道布局**：定义音频声道集合和声道布局枚举（已废弃，推荐使用 `OH_AudioChannelLayout`）。
+
+适用场景包括：音视频编解码、媒体封装与解封装、媒体数据处理等需要使用通用编解码基础类型和属性键的场景。
+
+本模块包含三个头文件：
+
+- `native_avcodec_base.h`：提供编解码器基础结构体、回调类型、数据源类型、MIME 类型常量、媒体描述键等核心定义。
+- `native_avcodec_videobase.h`：提供视频编解码特定功能，包括 ROI 配置相关的键、枚举和函数。
+- `avcodec_audio_channel_layout.h`：提供音频声道布局枚举（已废弃）。
+
+## 关键术语
+
+### 视频解码术语
+
+#### 动态分辨率切换
+仅硬件解码器支持的能力。当输入码流分辨率发生变化时触发OnStreamChanged回调，解码器自动适应新的分辨率。
+
+#### 动态切换surface
+Surface模式下动态切换输出NativeWindow的能力。通过调用OH_VideoDecoder_SetSurface接口实现。
+
+#### 低时延解码
+通过配置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY使能的解码模式。若平台支持，视频解码器按照解码序输出帧，适用于低时延场景。
+
+#### SPS/PPS重传
+解码器执行Flush/Reset/Stop后重新开始解码时，必须重新向解码器发送SPS/PPS码流参数集。确保解码器能正确解码后续帧。
+
+#### 解码器多路约束
+多路解码器绑定同一NativeWindow时的约束。若1号解码器Destroy时2号解码器处于Running状态，会导致2号解码器画面卡住。需按正确顺序操作。
+
+#### 安全解码器创建
+创建安全解码器的方式。使用OH_VideoDecoder_CreateByName函数，参数为解码器名称后拼接.secure（如"[CodecName].secure"），用于安全视频通路。
+
+### 视频编码术语
+
+#### 历史帧重复编码
+视频编码器的特殊能力。在码流中断或需要时自动重复发送历史编码帧，通过OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER触发重复发送，OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT限制最大重复次数。
+
+#### 编码器输入描述 (GetInputDescription)
+编码器输入缓冲区的元数据信息。包含宽跨距、高跨距、像素格式等，通过OH_VideoEncoder_GetInputDescription获取，用于Buffer模式下正确处理内存对齐的图像数据。
+
+#### 随帧参数通路 (Per-Frame Parameter Pathway)
+Surface模式下逐帧配置编码参数的回调机制。通过OH_VideoEncoder_RegisterParameterCallback注册回调，在每帧编码前配置随帧参数，通过OH_VideoEncoder_PushInputParameter推送生效，适用于IDR请求、LTR标记等场景。
+
 ## 概述
 
 CodecBase模块提供用于音视频封装、解封装、编解码基础功能的变量、属性以及函数。
