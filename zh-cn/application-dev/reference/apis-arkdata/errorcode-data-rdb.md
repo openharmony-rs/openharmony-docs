@@ -183,20 +183,16 @@ Column index is out of bounds.
 **可能原因**
 
 1. 调用[getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex)接口时，传参为表中不存在的列名，然后将其返回结果作为[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等获取数据接口的入参，会导致接口执行失败。
-2. 传入的列索引参数超出有效范围，合法范围：[0, 表字段数量 - 1]，因此调用[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)或[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)接口获取列类型时会失败。
-3. 传入的列索引参数超出有效范围，合法范围：[0, 表字段数量 - 1]，因此调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等接口获取数据时会失败。
+2. 传入的列索引参数超出有效范围，合法范围：[0, 表字段数量 - 1]，因此调用[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)或[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)接口获取列类型时会失败。调用[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等接口获取数据时会失败。
 
 **处理步骤**
 
 1. 确认问题时间点附近，是否可搜索到关键日志：`GetColumnIndex:Failed, columnName`，同时排查[getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex)的入参是否为表中不存在的列名。
-  - 是：确保传入参数符合预期，必须为表中存在的列名。
-  - 否：转下一步。
-2. 确认问题时间点附近，是否可正则搜索到关键日志：`column index.*out of range`，同时排查[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)或[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)的入参是否超出有效范围。
-  - 是：确保传入参数的值处在合法范围内。
-  - 否：转下一步。
-3. 排查[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等查询数据的接口入参是否超出有效范围。
-  - 是：确保传入参数的值处在合法范围内。
-  - 否：提供hilog系统日志，联系技术支撑人员定位。
+   - 是：确保传入参数符合预期，必须为表中存在的列名。
+   - 否：转下一步。
+2. 确认问题时间点附近，是否可正则搜索到关键日志：`column index.*out of range`，同时排查[getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18)或[getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18)的入参是否超出有效范围。排查[getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong)或[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等查询数据的接口入参是否超出有效范围。
+   - 是：确保传入参数的值处在合法范围内。
+   - 否：提供hilog系统日志，联系技术支撑人员定位。
 
 ## 14800014 目标实例已关闭
 
