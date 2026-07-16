@@ -10,7 +10,9 @@ ScreenCaptureHandler 是 Web 组件提供的屏幕捕获权限处理类，用于
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 10开始支持。
 >
@@ -82,4 +84,4 @@ grant(config: ScreenCaptureConfig): void
 
 | 参数名    | 类型                                     | 必填   | 说明    |
 | ------ | ---------------------------------------- | ---- | ------- |
-| config | [ScreenCaptureConfig](./arkts-basic-components-web-i.md#screencaptureconfig10) | 是   | 屏幕捕获配置。配置对象的属性设置对授权效果产生影响。 |
+| config | [ScreenCaptureConfig](./arkts-basic-components-web-i.md#screencaptureconfig10) | 是   | 屏幕捕获配置，用于设置屏幕捕获的相关参数。 |
