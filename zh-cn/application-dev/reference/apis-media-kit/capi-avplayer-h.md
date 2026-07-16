@@ -90,7 +90,7 @@ AVPlayer是鸿蒙系统提供的音视频播放组件，提供完整的播放控
 | [OH_AVErrCode OH_AVPlayer_SetAmplitudeUpdateCallback(OH_AVPlayer *player, OH_AVPlayerOnAmplitudeUpdateCallback callback, void *userData)](#oh_avplayer_setamplitudeupdatecallback) | - | 订阅最大音频电平值的更新事件，该值在播放音频资源时周期性上报。适用于需要音频可视化或音频强度检测的场景，如音频波形显示、音频强度可视化、音频能量检测等。 |
 | [OH_AVErrCode OH_AVPlayer_SetSeiReceivedCallback(OH_AVPlayer *player, const int32_t *payloadTypes, uint32_t typeNum, OH_AVPlayerOnSeiMessageReceivedCallback callback, void *userData)](#oh_avplayer_setseireceivedcallback) | - | 订阅接收到补充增强信息（SEI）消息的事件。仅适用于HTTP-FLV直播流，当视频流中存在SEI消息时触发。必须在调用prepare之前发起订阅。 |
 | [uint32_t OH_AVSeiMessage_GetSeiCount(OH_AVSeiMessageArray *message)](#oh_avseimessage_getseicount) | - | 获取SEI消息数组中的消息项数量。 |
-| [OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t index)](#oh_avseimessage_getsei) | - | 通过索引获取Supplemental Enhancement Information（补充增强信息，简称SEI）消息数组中某一项的SEI。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
+| [OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t index)](#oh_avseimessage_getsei) | - | 通过索引获取SEI（Supplemental Enhancement Information）消息数组中某一项的SEI。需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
 | [OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t width, int32_t height)](#oh_avplayer_settargetvideowindowsize) | - | 为超分辨率设置视频窗口大小。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。输入参数值必须在320x320至1920x1080范围内。单位为像素（px）。适用于超分辨率视频显示的场景，如低分辨率视频画质提升、视频增强显示等。 |
 | [OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool enabled)](#oh_avplayer_setvideosuperresolutionenable) | - | 动态启用或禁用超分辨率。此接口可在AVPlayer处于idle、prepared、playing、paused、completed或stopped状态时调用。必须在调用prepare之前在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。适用于需要动态控制视频画质增强的场景，如根据设备性能动态调整、根据网络状态切换画质等。 |
 | [OH_AVPlaybackStrategy *OH_AVPlaybackStrategy_Create(void)](#oh_avplaybackstrategy_create) | - | 创建一个播放策略实例。 |
@@ -1560,7 +1560,7 @@ OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t inde
 
 **描述**
 
-通过索引获取Supplemental Enhancement Information（补充增强信息，简称SEI）消息数组中某一项的SEI。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
+通过索引获取SEI（Supplemental Enhancement Information）消息数组中某一项的SEI。需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。
 
 **起始版本：** 23
 
