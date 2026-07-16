@@ -3308,7 +3308,7 @@ ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | 
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> | 是 | 收到权限请求时触发。事件对象包含请求的权限类型（如摄像头、麦克风）、请求来源等信息。 |
+| callback | ArkTS-Dyn: Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\><br/>ArkTS-Sta: Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> \|  undefined | 是 | 收到权限请求时触发。事件对象包含请求的权限类型（如摄像头、麦克风）、请求来源等信息。 |
 
 **示例：**
 
@@ -3350,19 +3350,19 @@ ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | 
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    // 用户点击拒绝，调用deny通知Web组件拒绝权限请求
+                    // 用户点击拒绝，调用 deny 通知 Web 组件拒绝权限请求
                     event.request.deny();
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    // 用户点击确认，调用grant通知Web组件授予权限
+                    // 用户点击确认，调用 grant 通知 Web 组件授予权限
                     event.request.grant(event.request.getAccessibleResource());
                   }
                 },
                 cancel: () => {
-                  // 用户取消对话框，调用deny通知Web组件拒绝权限请求
+                  // 用户取消对话框，调用 deny 通知 Web 组件拒绝权限请求
                   event.request.deny();
                 }
               })
@@ -4187,7 +4187,7 @@ ArkTS-Dyn: onFullScreenEnter(callback: OnFullScreenEnterCallback)
 
 ArkTS-Sta: onFullScreenEnter(callback: OnFullScreenEnterCallback | undefined)
 
-通知开发者Web组件进入全屏模式。用于隐藏状态栏和导航栏、调整页面布局以适应全屏、实现沉浸式视频播放等全屏体验。
+通知开发者 Web 组件进入全屏模式。用于隐藏状态栏和导航栏、调整页面布局以适应全屏、实现沉浸式视频播放等全屏体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4199,7 +4199,7 @@ ArkTS-Sta: onFullScreenEnter(callback: OnFullScreenEnterCallback | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback<[OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12)> | 是 | Web组件进入全屏时的回调信息，包含 videoWidth、videoHeight 和 handler 字段。 |
+| callback |ArkTS-Dyn: [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12)<br/>ArkTS-Sta: [OnFullScreenEnterCallback](./arkts-basic-components-web-t.md#onfullscreenentercallback12) \|  undefined | 是 | Web组件进入全屏时的回调信息，包含 videoWidth、videoHeight 和 handler 字段。 |
 
 **示例：**
 
@@ -4220,7 +4220,7 @@ ArkTS-Dyn示例：
           .onFullScreenEnter((event) => {
             console.info("onFullScreenEnter videoWidth: " + event.videoWidth +
               ", videoHeight: " + event.videoHeight);
-            // 保存handler供后续退出全屏使用
+            // 保存 handler 供后续退出全屏使用
             this.handler = event.handler;
           })
       }
@@ -4261,7 +4261,7 @@ ArkTS-Dyn: onFullScreenExit(callback: () => void)
 
 ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined)
 
-通知开发者Web组件退出全屏模式。用于恢复状态栏和导航栏、调整页面布局恢复正常显示、实现全屏与正常显示的平滑切换，提供更好的全屏交互体验。
+通知开发者 Web 组件退出全屏模式。用于恢复状态栏和导航栏、调整页面布局恢复正常显示、实现全屏与正常显示的平滑切换，提供更好的全屏交互体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4273,7 +4273,7 @@ ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 退出全屏模式时的回调函数，无参数。 |
+| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \|  undefined| 是 | 退出全屏模式时的回调函数，无参数。 |
 
 **示例：**
 
@@ -5835,7 +5835,7 @@ ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEven
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> | 是 | 收到屏幕捕获请求时触发。事件对象包含请求来源URL、请求的捕获模式等信息。 |
+| callback |ArkTS-Dyn:  Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> <br/>ArkTS-Sta:  Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> \|  undefined| 是 | 收到屏幕捕获请求时触发。事件对象包含请求来源 URL、请求的捕获模式等信息。 |
 
 **示例：**
 
@@ -5862,19 +5862,19 @@ ArkTS-Dyn示例：
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    // 用户点击拒绝，调用deny通知Web组件拒绝屏幕捕获请求
+                    // 用户点击拒绝，调用 deny 通知 Web 组件拒绝屏幕捕获请求
                     event.handler.deny();
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    // 用户点击确认，调用grant通知Web组件允许屏幕捕获，并指定捕获模式为HOME_SCREEN
+                    // 用户点击确认，调用 grant 通知 Web 组件允许屏幕捕获，并指定捕获模式为 HOME_SCREEN
                     event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });
                   }
                 },
                 cancel: () => {
-                  // 用户取消对话框，调用deny通知Web组件拒绝屏幕捕获请求
+                  // 用户取消对话框，调用 deny 通知 Web 组件拒绝屏幕捕获请求
                   event.handler.deny();
                 }
               })
@@ -8825,7 +8825,7 @@ ArkTS-Sta: onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallba
 **参数：**
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| callback  | [OnCameraCaptureStateChangeCallback](./arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| callback  | ArkTS-Dyn: [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) <br/>ArkTS-Sta: [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) \|  undefined | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 **示例：**
 
@@ -9064,7 +9064,7 @@ ArkTS-Sta: onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChan
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发，返回原来的状态和改变后的状态。 |
+| callback  | ArkTS-Dyn: [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) <br/>ArkTS-Sta: [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) \|  undefined | 是   | 回调函数。当麦克风捕获状态改变时触发，返回原来的状态和改变后的状态。 |
 
 **示例：**
 
