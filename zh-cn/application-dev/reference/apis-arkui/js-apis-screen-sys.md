@@ -2157,7 +2157,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 屏幕类型的枚举。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此字段仅可在Stage模型下使用。
 
