@@ -26,7 +26,7 @@ import { kioskManager } from '@kit.AbilityKit';
 
 enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
-进入Kiosk模式。使用Promise异步回调。
+进入Kiosk模式。使用Promise异步回调。若触发进入Kiosk模式的应用进程被终止，系统将自动退出Kiosk模式。
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
