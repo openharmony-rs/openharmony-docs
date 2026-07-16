@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **batteryInfo** module provides APIs for querying the charger type, battery health status, and battery charging status.
 
@@ -28,7 +28,7 @@ Describes battery information.
 
 | Name     | Type       | Read-Only|  Description    |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | Yes  | Battery state of charge (SoC) of the device, in unit of percentage, which ranges from 0 to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                          |
+| batterySOC                                | number                                         | Yes  | Battery state of charge (SoC) of the device, in unit of percentage. The value range is [0, 100].<br>**Atomic service API**: This API can be used in atomic services since API version 12.                          |
 | chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | Battery charging state of the current device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                              |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | Yes  | Battery health status of the device.                              |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | Yes  | Charger type of the device.                            |

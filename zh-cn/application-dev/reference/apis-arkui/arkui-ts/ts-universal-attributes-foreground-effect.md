@@ -1,8 +1,8 @@
 # 前景属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -59,7 +59,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 struct Index {
   build() {
     Row() {
-      // $r("app.media.icon")需要替换为开发者所需的图像资源文件。
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.icon'))
           .width(100)
           .height(100)

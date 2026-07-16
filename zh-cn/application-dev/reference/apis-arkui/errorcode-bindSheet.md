@@ -1,8 +1,8 @@
 # 半模态错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,11 +22,11 @@ The bindSheetContent is incorrect.
 
 **可能原因**
 
-输入的bindSheetContent错误。
+bindSheetContent为空或类型不符合要求。
 
 **处理步骤**
 
-请检查输入的bindSheetContent是否正确。
+请检查输入的bindSheetContent是否正确，确保传入的内容节点为有效的Builder或CustomBuilder实例，且内容节点已正确注册和构建。
 
 ## 120002 内容节点对应半模态页面已存在
 
@@ -44,7 +44,7 @@ The bindSheetContent already exists.
 
 **处理步骤**
 
-请检查输入的bindSheetContent是否重复。
+若需重新打开同一bindSheetContent对应的半模态页面，请先关闭已打开的半模态页面，再重新打开。
 
 ## 120003 无法找到内容节点对应的半模态页面
 
@@ -95,11 +95,11 @@ The node of targetId is not in the component tree.
 
 **可能原因**
 
-指定的targetId对应的节点未挂载在节点树上。
+当将半模态页面指定为EMBEDDED模式时，指定的targetId对应的节点未挂载在组件树上。
 
 **处理步骤**
 
-等待targetId对应的节点挂载上树后，再调用方法；或者将半模态页面指定为OVERLAY模式。
+等待targetId对应的节点挂载上树后，再调用方法；或者将SheetMode设置为OVERLAY模式。
 
 ## 120006 指定的targetId对应的节点并不是page节点或NavDestination节点的子节点
 

@@ -42,7 +42,7 @@ svg{
 }
 ```
 
-![en-us_image_0000001218280036](figures/en-us_image_0000001218280036.png)
+![svg-Component](figures/svg-Component.png)
 
 
 ## Setting Attributes
@@ -79,7 +79,7 @@ svg{
 }
 ```
 
-![en-us_image_0000001218599996](figures/en-us_image_0000001218599996.png)
+![Setting-Attributes](figures/Setting-Attributes.png)
 
 > **NOTE**
 > - If the **\<svg>** component is the root node, the x-axis and y-axis attributes are invalid.

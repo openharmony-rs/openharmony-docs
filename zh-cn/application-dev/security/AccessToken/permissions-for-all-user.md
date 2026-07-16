@@ -64,6 +64,8 @@
 
 **授权方式**：用户授权（user_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
+
 **起始版本**：7
 
 ## ohos.permission.CAMERA
@@ -162,11 +164,13 @@
 
 ## ohos.permission.READ_HEALTH_DATA
 
-允许应用读取用户的健康数据。
+允许应用读取用户的健康数据，如心率数据等。
 
 **权限级别**：normal
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 

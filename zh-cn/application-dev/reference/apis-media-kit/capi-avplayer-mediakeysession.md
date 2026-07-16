@@ -1,7 +1,7 @@
 # MediaKeySession
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -12,7 +12,7 @@ typedef struct MediaKeySession MediaKeySession
 
 ## 概述
 
-MediaKeySession类型。
+MediaKeySession结构体类型。
 
 **起始版本：** 12
 

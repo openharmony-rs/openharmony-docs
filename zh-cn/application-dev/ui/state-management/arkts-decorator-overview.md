@@ -51,6 +51,7 @@ ArkUI包含的通用UI装饰器列表如下：
 
 | 通用装饰器                                         | 装饰器说明          |
 | -------------------------------------------------- | ------------------- |
+| [\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry) | 标记页面入口。      |
 | [\@Builder](./arkts-builder.md)                    | 自定义构建函数。    |
 | [\@LocalBuilder](./arkts-localBuilder.md)          | 维持组件关系。      |
 | [\@BuilderParam](./arkts-builderparam.md)          | 引用\@Builder函数。 |

@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件是否启用默认点击音效。
+设置组件是否启用默认点击音效，适用于需要控制组件点击反馈音效或自定义播放点击音效的场景。
 
 > **说明：**
 >
-> - 从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -18,7 +18,7 @@
 
 enableClickSoundEffect(enabled: boolean | undefined): T
 
-设置组件是否启用默认点击音效。是否能够发音依赖设备声音相关的设置，如静音模式下不会播放音效。
+设置组件是否启用默认点击音效，适用于需要控制组件点击反馈音效或自定义点击发音的场景。是否能够发音还依赖设备声音相关的设置，如静音模式下不会播放音效。禁用默认点击音效后，开发者可以在onClick回调中调用音频相关接口自定义发音。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,22 +26,22 @@ enableClickSoundEffect(enabled: boolean | undefined): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异**：该接口在TV中可正常调用，在其他设备中无效果。
+**设备行为差异：** 该接口在TV中可正常调用，在其他设备中无效果。
 
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enabled  | boolean&nbsp;\|&nbsp;undefined | 是   | 设置此组件是否启用默认点击音效。<br/>true表示启用默认点击音效；false表示禁用默认点击音效。<br/>值为undefined时，启用默认点击音效。 |
+| enabled  | boolean&nbsp;\|&nbsp;undefined | 是   | 设置此组件是否启用默认点击音效。<br>true表示启用默认点击音效；false表示禁用默认点击音效。<br>值为undefined时，启用默认点击音效。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于链式调用。 |
 
 ## 示例
-### 示例1（启用默认点击音效）
+### 示例1（禁用默认点击音效）
 
 该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义发音。自定义发音可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
 
@@ -58,7 +58,7 @@ struct Index {
         .width('200')
         .enableClickSoundEffect(false)
         .onClick(() => {
-          // 此处自定义发音，参考SoundPool播放短音频指南
+          // 此处自定义发音，参考SoundPool播放短音频指南。
         })
     }
     .width('100%')

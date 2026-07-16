@@ -1,8 +1,8 @@
 # 特效绘制合并
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,7 +18,7 @@
 
 useEffect(value: boolean): T
 
-用于对背景模糊等特效进行绘制合并。
+用于控制组件是否继承父级EffectComponent的特效属性参数，对背景模糊等特效进行绘制合并。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
@@ -100,8 +100,8 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 |  设备类型    | 模糊半径(单位: px)   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |
 | 移动设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
-| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为淡红色的半透明效果。 |
-| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的深红色。 |
+| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为半透明的深灰色。 |
+| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的白色。 |
 | Tablet设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
 
 <!--Del-->
@@ -112,7 +112,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 <!--code_no_check-->
 
 ```ts
-//Index.ets
+// Index.ets
 @Entry
 @Component
 struct Index {
@@ -120,7 +120,7 @@ struct Index {
 
   build() {
     Stack() {
-      Image($r("app.media.mountain"))
+      Image($r('app.media.mountain'))
         .autoResize(true)
       EffectComponent() {
         Column({ space: 20 }) {
@@ -172,5 +172,5 @@ struct Index {
 }
 ```
 
-![zh_image_useeffect_effecttype](figures/zh_image_useeffect_effecttype.png)
+![zh_image_useeffect_effecttype](figures/image-useeffect-effecttype.png)
 <!--DelEnd-->

@@ -187,7 +187,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -207,6 +207,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -672,6 +674,63 @@ With this permission, an application can manage transparent encryption/decryptio
 
 **Valid since**: 26.0.0
 
+## ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA
+ 	 
+Allows an application to launch EmbeddedUIExtension on other applications.
+
+<!--RP3--><!--RP3End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.SUPPORT_NP_PLUGIN_FOR_WEB
+ 	 
+Allows an application to release plugin libraries.
+
+<!--RP4--><!--RP4End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY_FOR_WEB
+ 	 
+Allows an application to load plugin libraries signed with binary certificates.
+
+<!--RP5--><!--RP5End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
 Allows an enterprise common application to obtain the list of all installed applications.
@@ -688,3 +747,46 @@ Allows an enterprise common application to obtain the list of all installed appl
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.0
+
+## ohos.permission.kernel.TRAFFIC_FILTER
+
+Allows an application to check data packets in the network traffic path and determine whether to permit their passage, and redirect traffic to local ports.
+
+With this permission, the application can:
+
+1. Inline-intercept the network traffic processing path to perform real-time inspection, analysis, and policy judgment on network packets passing through the device or system. Based on packet attributes such as source address, destination address, port, and protocol type, the application can decide whether to allow the traffic to proceed, block the connection, drop the packets, modify the packets, or execute security actions such as triggering alerts and logging events. 
+2. Redirect specific network traffic to designated local ports for further processing by local security agents, proxy services, detection engines, or policy execution components. For example, it can be used for malicious traffic detection, intrusion prevention, data loss prevention, access control, threat analysis, content filtering, and enterprise compliance auditing. 
+
+<!--RP6--><!--RP6End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
+ ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
+
+Allows an application to use backup and restore capabilities.
+
+With this permission, the application can back up and restore user data and application sandbox data.
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0

@@ -32,7 +32,7 @@ Create a **\<button>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001267887821](figures/en-us_image_0000001267887821.png)
+![button-Component](figures/button-Component.png)
 
 
 ## Setting the Button Type
@@ -76,7 +76,7 @@ Set the **type** attribute of the **\<button>** component to **circle**, **text*
 ```
 
 
-![en-us_image_0000001222967744](figures/en-us_image_0000001222967744.png)
+![Button-Type](figures/Button-Type.png)
 
 
 > **NOTE**
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223287652](figures/en-us_image_0000001223287652.gif)
+![Download-Progress](figures/Download-Progress.gif)
 
 > **NOTE**
 >
@@ -285,4 +285,4 @@ export default {
 ```
 
 
-![en-us_image_0000001222967740](figures/en-us_image_0000001222967740.gif)
+![Example-Scenario-1](figures/Example-Scenario-1.gif)

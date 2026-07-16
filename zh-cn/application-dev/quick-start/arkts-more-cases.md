@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文通过具体应用场景中的案例，提供在ArkTS语法规则下将TS代码适配成ArkTS代码的建议。各章以ArkTS语法规则的英文名称命名，每个案例展示适配前的TS代码和适配后的ArkTS代码。
 
@@ -72,8 +72,8 @@ function printObj(obj: string) {
   console.info(obj);
   // ...
 }
-// ...
-          printObj('abc'); // abc
+
+printObj('abc'); // abc
 ```
 
 ### 标注JSON.parse返回值类型
@@ -1052,7 +1052,7 @@ let t: typeof c = { value: 123 };
 <!-- @[no_type_query_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module1.ets) -->  
 
 ``` TypeScript
-// 文件名：module1.ets
+// module1.ets
 class C {
   public value: number = 0
 }
@@ -1063,7 +1063,7 @@ export { C }
 <!-- @[no_type_query_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module2.ets) -->  
 
 ``` TypeScript
-// 文件名：module2.ets
+// module2.ets
 import { C } from './module1'
 let t: C = { value: 123 };
 ```
@@ -1790,24 +1790,22 @@ class Test {
 <!-- @[strictProperty_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
 
 ``` TypeScript
-{
-  interface I {
-    name:string
-  }
+interface I {
+  name:string
+}
 
-  class A {}
+class A {}
 
-  class Test {
-    public a: number;
-    public b: string;
-    public c: boolean;
-    public d: I = { name:'abc' };
-    public e: A | null = null;
-    constructor(a:number, b:string, c:boolean) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-    }
+class Test {
+  public a: number;
+  public b: string;
+  public c: boolean;
+  public d: I = { name:'abc' };
+  public e: A | null = null;
+  constructor(a:number, b:string, c:boolean) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 }
 ```

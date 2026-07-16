@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 拆包工具是OpenHarmony提供的一种调测工具，支持通过命令行方式将HAP、HSP、App等文件解压成文件夹，并且提供Java接口对HAP、HSP、App等文件进行解析。
 
@@ -166,10 +166,10 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 
 | 类名               | 接口原型                                                     | 类型     | 接口详细描述                                                            |
 | ------------------ | ------------------------------------------------------------ | -------- |-------------------------------------------------------------------|
-| UncompressEntrance | UncompressResult parseApp(String appPath, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析app包的pack.info信息。<br/>输入参数：appPath app包路径，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
-| UncompressEntrance | UncompressResult parseApp(InputStream input, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析app包的pack.info信息。<br/>输入参数：input app文件流，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
-| UncompressEntrance | UncompressResult parseHap(String hapPath)                    | Java接口 | 接口功能：根据参数解析app包的json配置文件。<br/>输入参数：hapPath HAP包路径。<br/>返回值：UncompressResult。    |
-| UncompressEntrance | UncompressResult parseHap(InputStream input)                 | Java接口 | 接口功能：根据参数解析app包的json配置文件。<br/>输入参数：input HAP包文件流。<br/>返回值：UncompressResult。   |
+| UncompressEntrance | UncompressResult parseApp(String appPath, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析App包的pack.info信息。<br/>输入参数：appPath App包路径，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
+| UncompressEntrance | UncompressResult parseApp(InputStream input, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析App包的pack.info信息。<br/>输入参数：input App文件流，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
+| UncompressEntrance | UncompressResult parseHap(String hapPath)                    | Java接口 | 接口功能：根据参数解析HAP包的json配置文件。<br/>输入参数：hapPath HAP包路径。<br/>返回值：UncompressResult。    |
+| UncompressEntrance | UncompressResult parseHap(InputStream input)                 | Java接口 | 接口功能：根据参数解析HAP包的json配置文件。<br/>输入参数：input HAP包文件流。<br/>返回值：UncompressResult。   |
 
 ## 拆包工具信息字段
 
@@ -236,6 +236,21 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
 | buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
+| deduplicateSo                  | boolean | 标识App打包时是否启用so去重功能。true表示启用so去重，false表示不启用so去重。该字段来源于pack.info文件中的deduplicateSo配置。 | 从API版本26.0.0开始支持。 |
+| alternateIcons                  | List\<[AlternateIcon](#alternateicon)\> | 标识应用的动态图标列表。 | 从API版本26.0.0开始支持。  |
+
+### AlternateIcon
+
+应用的备选图标，支持应用在运行时动态切换图标。
+
+详情请参考[alternateIcons标签](../quick-start/app-configuration-file.md#alternateicons标签)。
+
+**起始版本：** API版本26.0.0
+
+| 字段  | 类型   | 描述                           |
+| ----- | ------ | ----------------------------- |
+| name  | String | 标识动态图标的名称。           |
+| icon  | String | 标识动态图标的资源路径。       |
 
 ### HapInfo结构体信息
 
@@ -603,7 +618,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 
 ### SkillProfileInfo
 
-> 从API版本26.0.0开始支持。
+**起始版本：** API版本26.0.0
 
 | 字段               | 类型           | 描述                                                         | 备注 |
 | ------------------ | -------------- | ------------------------------------------------------------ | ---- |
@@ -611,3 +626,5 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | abilityName        | String         | 标识与该技能关联的组件名称。仅适用于entry、feature、shared类型的模块，对于skill类型的模块不支持该字段。缺省值为入口Ability名称。 | NA   |
 | srcEntries         | List\<String\> | 标识实现技能的代码文件路径列表，指向技能实现逻辑的.ets文件。每个元素为相对于当前模块skills目录的文件路径。 | NA   |
 | permissions        | List\<String\> | 标识调用该技能所需要的权限列表。 | NA   |
+| version        | String | 标识技能的版本号。 | 遵循语义化版本格式：主版本号.次版本号.补丁号   |
+| visibility        | String | 标识技能的可见性。 | private（仅本应用可见）/system（系统应用可见）/public（所有应用可见）。|

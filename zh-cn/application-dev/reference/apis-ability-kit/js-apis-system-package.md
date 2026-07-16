@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 
@@ -30,7 +30,7 @@ import Package from '@system.package';
 
 hasInstalled(options: CheckPackageHasInstalledOptions): void
 
-查询指定应用是否存在，或者原生应用是否安装。
+查询指定应用是否存在，或者应用是否安装。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

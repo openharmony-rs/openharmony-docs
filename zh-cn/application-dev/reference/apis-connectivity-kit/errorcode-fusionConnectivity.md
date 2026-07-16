@@ -83,6 +83,96 @@ Bluetooth disabled.
 
 打开蓝牙。
 
+## 34900050 该设备未发起测距
+
+**错误信息**
+
+The device has not initiated ranging.
+
+**错误描述**
+
+该设备未发起测距。
+
+**可能原因**
+
+该设备未发起测距，例如：在未调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)的情况下直接调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)。
+
+**处理步骤**
+
+建议先调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)发起测距后再进行后续操作。
+
+## 34900051 该设备已发起测距
+
+**错误信息**
+
+The device has already initiated ranging.
+
+**错误描述**
+
+该设备已发起测距。
+
+**可能原因**
+
+该设备已发起测距，例如：对同一设备重复调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)而未先调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)停止之前的测距。
+
+**处理步骤**
+
+建议不要在已经发起测距后重复发起，可以先调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)结束测距后再重新调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)发起测距。
+
+## 34900052 不支持指定类型的测距服务
+
+**错误信息**
+
+The specified type of ranging service is not supported.
+
+**错误描述**
+
+不支持指定类型的测距服务。
+
+**可能原因**
+
+不支持指定类型的测距服务，例如：传入的测距类型枚举值不在规定范围内，或指定的测距类型在本设备上不支持。
+
+**处理步骤**
+
+该类型服务并不支持测距，请参考[RangingTypes](js-apis-fusionConnectivity-ranging.md#rangingtypes)使用有效的测距类型。
+
+## 34900053 测距服务关闭
+
+**错误信息**
+
+The ranging service is disabled.
+
+**错误描述**
+
+测距服务关闭。
+
+**可能原因**
+
+测距服务关闭，例如：测距服务未使能或已被关闭，无法发起测距操作。
+
+**处理步骤**
+
+建议用户打开服务后再发起测距。
+
+## 34900054 参数不符合业务规格
+
+**错误信息**
+
+The parameter value does not meet specifications.
+
+**错误描述**
+
+参数不符合业务规格。
+
+**可能原因**
+
+参数不符合业务规格：比如设备ID不符合xx:xx:xx:xx:xx:xx（十六进制）的格式。
+
+**处理步骤**
+
+检视入参是否符合业务要求。
+
 ## 34900099 操作失败
 
 **错误信息**

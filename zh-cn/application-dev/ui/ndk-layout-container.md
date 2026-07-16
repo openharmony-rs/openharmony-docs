@@ -9,7 +9,7 @@
 
 从API version 12开始，ArkUI在NDK中提供了常用布局组件[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)对应的节点类型和属性设置接口。Flex用于弹性布局，Row和Column用于线性布局，Stack用于层叠布局，对应节点类型和属性设置枚举可参考[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)。
 
-本文以弹性组件Flex为例，提供NDK下布局组件接入和属性设置的开发指导。本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDKFlexSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample)<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考[接入ArkTS页面](../ui/ndk-access-the-arkts-page.md)。
+本文以弹性组件Flex为例，提供NDK下布局组件接入和属性设置的开发指导。本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDKFlexSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKFlexSample?_fb=blob)<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考[接入ArkTS页面](../ui/ndk-access-the-arkts-page.md)。
 
 ## 封装容器组件
 
@@ -112,7 +112,7 @@ inline std::shared_ptr<ArkUIFlexNode> CreateFlexWrapExample()
 
 如果要将布局方向改为纵向，则可将direction改为ARKUI_FLEX_DIRECTION_COLUMN。此时代码结构保持不变，主轴和交叉轴上的摆放逻辑也保持一致。
 
-## 使用flexBasis和flexGrow分配剩余空间
+## 使用flexBasis、flexGrow和flexShrink控制伸缩行为
 
 Flex不仅能够控制子组件排列方向，还能够控制主轴上的剩余空间分配。通过[flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)和[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)三个属性，可以控制子组件的在弹性容器下伸缩行为。
 

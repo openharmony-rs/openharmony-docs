@@ -36,7 +36,7 @@ If the application frequently crashes when the Node-API is used, and the crash s
 
    Multi Thread Check in DevEco Studio:  
 
-   ![Multi-thread check switch in DevEco Studio](figures/en_us_image_20-25-06-40-15-09.png)  
+   ![multi-thread-check](figures/multi-thread-check.png)  
 2. Check whether the input parameter of the Node-API is invalid.  
 - In this case, the .so file appears higher on the crash stack. The .so file calls a specific Node-API, for example, **napi_call_function**. Then, the Node-API calls **libark_jsruntime .so**, and the crash occurs in **libark_jsruntime**. 
 

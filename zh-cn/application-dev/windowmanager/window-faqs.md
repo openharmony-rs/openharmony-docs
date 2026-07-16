@@ -164,7 +164,7 @@ export default class EntryAbility extends UIAbility {
 
 [沉浸式布局](immersive-window-feature.md#沉浸式布局)是一种让应用可布局区域拓展至整个窗口显示区域的状态。
 
-非[自由窗口](window-terminology.md#自由窗口)可以通过调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置沉浸式布局；自由窗口可以通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
+非[自由窗口](window-terminology.md#freeform-window自由窗口)可以通过调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置沉浸式布局；自由窗口可以通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
 
 可以通过[isImmersiveLayout()](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20)判断当前窗口是否处于沉浸式布局。
 
@@ -265,9 +265,9 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**
 > 
-> - 在支持[自由多窗](window-terminology.md#自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
+> - 在支持[自由窗口](window-terminology.md#freeform-window自由窗口)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
 > 
-> - 在2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
+> - 在PC/2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
 
 示例代码如下所示：
 
@@ -440,7 +440,7 @@ supportWindowMode支持的取值如下：
 > 
 > - supportWindowMode字段类型为字符串数组，可缺省，缺省值为["fullscreen", "split", "floating"]。
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以自由悬浮窗口模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
+> - 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以自由悬浮窗口模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
 
 module.json5配置示例如下：
 
@@ -492,8 +492,8 @@ module.json5配置示例如下：
   | 名称 | 值 | 说明 |
   | -------- | -------- | -------- |
   | UNDEFINED | 0 | 表示APP未定义窗口模式。 |
-  | FULL_SCREEN | 1 | 表示APP全屏模式。<br/>[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br/>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br/>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br/>非[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
-  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
+  | FULL_SCREEN | 1 | 表示APP全屏模式。<br>[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
+  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在PC/2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
   | MINIMIZE | 3 | 表示APP窗口最小化模式。 |
   | FLOATING | 4 | 表示APP自由悬浮窗口模式。 |
   | SPLIT_SCREEN | 5 | 表示APP分屏模式。 |
@@ -575,6 +575,72 @@ module.json5配置示例如下：
 
 若需要对隐私窗口进行截图，可使用[snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18)接口。
 
+## APP退后台在多任务窗口展示时，如何实现模糊效果
+APP可以通过监听主窗口生命周期状态，并用[AppStorage]( ../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
+
+示例代码如下所示：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+    AppStorage.setOrCreate('windowStage', windowStage);
+    windowStage.on('windowStageEvent', (data) => {
+      console.info('Succeeded in enabling the listener for window stage event changes. Data : ' +
+        JSON.stringify(data));
+      // 根据事件状态类型选择进行相应的处理
+      if (data == window.WindowStageEventType.SHOWN) {
+        console.info('current window stage event is SHOWN');
+        AppStorage.setOrCreate('interact', true);
+        // 应用进入前台为前台状态时，默认为可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.HIDDEN) {
+        console.info('current window stage event is HIDDEN');
+        AppStorage.setOrCreate('interact', false);
+        // 应用进入后台为后台状态时，默认为不可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.PAUSED) {
+        console.info('current window stage event is PAUSED');
+        AppStorage.setOrCreate('interact', false);
+        // 前台应用进入多任务为前台不可交互状态时，转为不可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.RESUMED) {
+        console.info('current window stage event is RESUMED');
+        AppStorage.setOrCreate('interact', true);
+        // 应用进入多任务后又继续返回前台为前台可交互状态时，恢复可交互状态
+        // ...
+      }
+    });
+  }
+}
+```
+
+```ts
+// ets/pages/Index.ets
+@Entry
+@Component
+struct Index {
+  @StorageLink('interact') interact: boolean = true;
+  build() {
+    Column() {
+      Text('文本文本')
+        .fontSize(60)
+    }
+    .foregroundBlurStyle(this.interact ? BlurStyle.NONE : BlurStyle.COMPONENT_ULTRA_THICK) // 可自定义模糊程度
+  }
+}
+```
+
 ## resize、moveWindowTo等接口有什么位置/大小限制
 
 当调用[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9-1)接口调整窗口大小时，窗口尺寸大小范围会受到[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)限制，具体尺寸限制范围可以通过[getWindowLimits](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-window-window#getwindowlimits11)接口进行查询。
@@ -585,19 +651,19 @@ module.json5配置示例如下：
 > 
 > **resize接口其他限制：**
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
+> - 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
 > 
-> - 在非[自由窗口](window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 在非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
 > 
 > **moveWindowTo接口其他限制：**
 > 
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）外的其他窗口模式下使用。
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
 > 
 > - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)。
 > 
-> - 在非[自由窗口](window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 在非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
 
 ## 如何设置或取消水印
 

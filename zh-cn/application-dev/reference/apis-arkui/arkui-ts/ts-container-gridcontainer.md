@@ -152,4 +152,4 @@ struct GridContainerExample {
 }
 ```
 
-![zh-cn_image_0000001219744187](figures/zh-cn_image_0000001219744187.gif)
+![gridContainer](figures/gridContainer.gif)

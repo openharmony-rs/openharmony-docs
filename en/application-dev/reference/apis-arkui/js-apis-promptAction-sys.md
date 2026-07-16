@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **PromptAction** module provides APIs for creating and showing toasts, dialog boxes, and action menus.
+The **PromptAction** module provides APIs for creating and showing toasts, dialog boxes, and action menus. This module is applicable to scenarios where you need to display messages to users, obtain user confirmation, or provide operation options. It allows you to quickly implement pop-up interaction without the need for custom components, ensuring a consistent UI style.
 
 > **NOTE**
 >
@@ -20,9 +20,9 @@ The **PromptAction** module provides APIs for creating and showing toasts, dialo
 import { promptAction } from '@kit.ArkUI';
 ```
 
-### ToastShowMode
+## ToastShowMode
 
-Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in sub-windows.
+Sets the display mode of a prompt. The prompt can be displayed in a window of the **TYPE_SYSTEM_TOAST** type.
 
 **System API**: This is a system API.
 
@@ -32,17 +32,20 @@ Enumerates display modes for toasts. By default, the toast is displayed within t
 | -------- | ---- | ---------------------- |
 | SYSTEM_TOP_MOST | 2    | The toast is displayed in a window of the TYPE_SYSTEM_TOAST type.|
 
-### BaseDialogOptions<sup>11+</sup>
+## BaseDialogOptions<sup>11+</sup>
 
 Defines the options of the dialog box.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 | Name           | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No| Yes| Non-linear animation mode for a dialog box with a new material.<br>**Default value**: DistortionMode.DISTORTION_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No| Yes| Flowing light animation mode for a dialog box with a new material.<br>**Default value**: EdgeLightMode.EDGELIGHT_DISABLED<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No| Yes| Non-linear animation mode for a dialog box with the system material.<br>**Default value**: DistortionMode.DISTORTION_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No| Yes| Flowing light animation mode for a dialog box with the system material.<br>**Default value**: EdgeLightMode.EDGELIGHT_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
-### ActionMenuOptions
+## ActionMenuOptions
 
 Describes the options for showing the action menu.
 
@@ -50,10 +53,10 @@ Describes the options for showing the action menu.
 
 | Name                         | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No| Yes| Non-linear animation mode for a dialog box with a new material.<br>**Default value**: DistortionMode.DISTORTION_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No| Yes| Flowing light animation mode for a dialog box with a new material.<br>**Default value**: EdgeLightMode.EDGELIGHT_DISABLED<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No| Yes| Non-linear animation mode for a dialog box with the system material.<br>**Default value**: DistortionMode.DISTORTION_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No| Yes| Flowing light animation mode for a dialog box with the system material.<br>**Default value**: EdgeLightMode.EDGELIGHT_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
-### ShowDialogOptions
+## ShowDialogOptions
 
 Describes the options for showing the dialog box.
 
@@ -61,7 +64,5 @@ Describes the options for showing the dialog box.
 
 | Name                             | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No| Yes| Non-linear animation mode for a dialog box with a new material.<br>**Default value**: DistortionMode.DISTORTION_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No| Yes| Flowing light animation mode for a dialog box with a new material.<br>**Default value**: EdgeLightMode.EDGELIGHT_DISABLED<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-
-<!--no_check-->
+| distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | No| Yes| Non-linear animation mode for a dialog box with the system material.<br>**Default value**: DistortionMode.DISTORTION_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | No| Yes| Flowing light animation mode for a dialog box with the system material.<br>**Default value**: EdgeLightMode.EDGELIGHT_AUTO<br>**System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|

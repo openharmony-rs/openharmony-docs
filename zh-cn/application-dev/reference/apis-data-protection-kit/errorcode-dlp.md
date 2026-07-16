@@ -30,7 +30,7 @@ Invalid parameter value.
 
 4. 系统时间晚于授权到期时间。
 
-5. Fd小于0。
+5. fd（文件描述符，File Descriptor）小于0。
 
 6. tokenId等于0。
 
@@ -42,7 +42,7 @@ Invalid parameter value.
 
 **处理步骤**
 
-请检查并传入符合要求的参数，包括账号长度、类型、aesKey、iv格式、系统时间与授权时间关系、Fd、tokenId、包名、appIndex、userId等。
+请检查并传入符合要求的参数，包括账号长度、类型、aesKey、iv格式、系统时间与授权时间关系、fd、tokenId、包名、appIndex、userId等。
 
 ## 19100002 加解密出错
 
@@ -72,7 +72,7 @@ Credential task time out.
 
 **错误描述**
 
-DLP文件加解密操作在规定时间内未完成，导致操作超时失败。
+DLP（数据防泄漏，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
 
 **可能原因**
 
@@ -238,11 +238,11 @@ DLP相关的系统服务无法正常运行，导致相关功能不可用。
 
 1. DLP权限服务无法正常启动。
 
-2. DLP权限服务的RPC对象无法获取。
+2. DLP权限服务的RPC（远程过程调用，Remote Procedure Call）对象无法获取。
 
 3. DLP权限服务依赖的其他服务无法正常启动。
 
-4. IPC数据读取写入失败。
+4. IPC（进程间通信，Inter-Process Communication）数据读取写入失败。
 
 5. 服务未初始化。
 
@@ -336,7 +336,7 @@ The uri field is missing in the want parameter.
 
 **可能原因**
 
-调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
+调用DLP文件相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
 
 **处理步骤**
 
@@ -454,7 +454,7 @@ Parameter error.
 
 **处理步骤**
 
-请检查以下内容：
+请检查以下参数：
 1. 确保策略格式符合要求。
 2. 确保参数在有效范围内。
 
@@ -466,11 +466,11 @@ Sensitive file content identification timed out.
 
 **错误描述**
 
-文件敏感信息识别超时。
+对文件进行敏感信息识别时超时，无法在规定时间内完成识别流程。
 
 **可能原因**
 
-文件敏感信息识别超时。
+文件敏感信息识别处理时间超过系统设定的超时阈值。可能原因包括：文件过大、文件内容复杂度高、系统资源占用较高等。
 
 **处理步骤**
 
@@ -484,7 +484,7 @@ The file is not supported.
 
 **错误描述**
 
-文件不支持。
+传入的文件不被当前操作支持，可能是路径、类型或权限不符合要求。
 
 **可能原因**
 
@@ -509,7 +509,7 @@ A system error has occurred.
 
 **错误描述**
 
-系统功能运行异常。
+系统内部功能模块运行异常，导致文件敏感信息识别相关操作无法正常执行。
 
 **可能原因**
 
@@ -524,3 +524,39 @@ A system error has occurred.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试或重启设备。
+
+## 19100023 指定的用户ID与当前用户ID不一致
+
+**错误信息**
+
+The specified userId is inconsistent with the current userId.
+
+**错误描述**
+
+指定的用户ID与当前用户ID不一致。
+
+**可能原因**
+
+指定的用户ID与当前用户ID不一致。
+
+**处理步骤**
+
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
+
+## 19100024 个人空间用户不支持设置受控应用
+
+**错误信息**
+
+The specified userId belongs to a personal space user and cannot be managed.
+
+**错误描述**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**可能原因**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**处理步骤**
+
+请确保传入的用户ID不属于个人空间用户。

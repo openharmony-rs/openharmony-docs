@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
+URI权限管理模块。用于应用A授权/撤销授权URI给应用B。支持在应用间安全地共享文件访问权限，授权后目标应用可访问指定URI的文件，临时授权的权限在目标应用退出后自动回收。适用于应用间文件分享、跨应用数据访问等需要临时授权的场景。
 
 > **说明：**
 > 
@@ -31,7 +31,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
->- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时，可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
 >- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
@@ -44,12 +44,12 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
-  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 | 
-  | targetBundleName | string | 是 | 被授权URI的应用包名。 | 
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 |
+  | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 |
+  | targetBundleName | string | 是 | 被授权URI的应用包名。 |
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示授权成功，返回-1表示授权失败。 |
 
 **错误码：**
 
@@ -60,7 +60,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 | 201 | Permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000059 | Invalid URI type. |
@@ -73,24 +73,26 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
 
-  let targetBundleName = 'com.example.test_case1'
+  let targetBundleName = 'com.example.test_case1';
   let path = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
+  // 创建目录
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
-    } else {
-      console.info(`mkdir success.`);
+      return;
     }
+    console.info(`mkdir success.`);
+    let uri = fileUri.getUriFromPath(path);
+    // 授权URI给指定应用
+    uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
+      (error) => {
+        if (error && error.code !== 0) {
+          console.error(`grantUriPermission failed, err code: ${error.code}, err msg: ${error.message}.`);
+          return;
+        }
+        console.info(`grantUriPermission success.`);
+      });
   });
-  let uri = fileUri.getUriFromPath(path);
-  uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
-    (error) => {
-      if (error && error.code !== 0) {
-        console.error(`grantUriPermission failed, err code: ${error.code}, err msg: ${error.message}.`);
-        return;
-      }
-      console.info(`grantUriPermission success.`);
-    });
   ```
 
 
@@ -125,7 +127,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 | 
+  | Promise&lt;number&gt; | Promise对象。返回0表示授权成功，返回-1表示授权失败。 | 
 
 **错误码：**
 
@@ -136,7 +138,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   | 201 | Permission denied. |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>适用版本：19+ |
   | 16000050 | Internal error. |
   | 16000058 | Invalid URI flag. |
   | 16000059 | Invalid URI type. |
@@ -152,19 +154,21 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   let targetBundleName = 'com.example.test_case1'
   let path = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
 
+  // 创建目录
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
-    } else {
-      console.info(`mkdir success.`);
+      return;
     }
-  });
-  let uri = fileUri.getUriFromPath(path);
-  uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
-    .then((data) => {
-      console.info(`Verification succeeded, data: ${JSON.stringify(data)}.`);
-    }).catch((err: BusinessError) => {
-    console.error(`Verification failed, err code: ${err.code}, err msg: ${err.message}.`);
+    console.info(`mkdir success.`);
+    let uri = fileUri.getUriFromPath(path);
+    // 授权URI给指定应用
+    uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
+      .then((data) => {
+        console.info(`grantUriPermission succeeded, data: ${JSON.stringify(data)}.`);
+      }).catch((err: BusinessError) => {
+      console.error(`grantUriPermission failed, err code: ${err.code}, err msg: ${err.message}.`);
+    });
   });
   ```
 
@@ -212,7 +216,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   | 201 | Permission denied. |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>适用版本：19+ |
   | 16000050 | Internal error. |
   | 16000058 | Invalid URI flag. |
   | 16000059 | Invalid URI type. |
@@ -234,7 +238,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
       let targetBundleName: string = 'com.example.demo1';
       let filePath: string = this.context.filesDir + "/test.txt";
       let uri: string = fileUri.getUriFromPath(filePath);
-      // grant uri permission to main application
+      // 授予主应用URI权限
       try {
         let appCloneIndex: number = 0;
         uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
@@ -248,7 +252,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
         console.error(`grantUriPermission failed. error: ${JSON.stringify(error)}.`);
       }
 
-      // grant uri permission to clone application
+      // 授予分身应用URI权限
       try {
         let appCloneIndex: number = 1;
         uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
@@ -289,7 +293,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
   | -------- | -------- | -------- | -------- |
   | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | targetBundleName | string | 是 | 被撤销授权uri的应用包名。 | 
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示撤销成功，返回-1表示撤销失败。 |
 
 **错误码：**
 
@@ -297,11 +301,13 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
   | 错误码ID | 错误信息 |
   | ------- | -------------------------------- |
+  | 201 | Permission denied. <br>适用版本：10 - 11 |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
   | 801 | Capability not supported. |
   | 16000050 | Internal error. |
   | 16000059 | Invalid URI type. |
+  | 801 | Capability not supported. <br>适用版本：19+ |
 
 **示例：**
     
@@ -311,12 +317,13 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
   let targetBundleName = 'com.example.test_case2';
   let uri = "file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir";
 
+  // 撤销指定应用的URI权限
   uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
     if (error && error.code !== 0) {
-      console.error("revokeUriPermission failed, error.code = " + error.code);
+      console.error(`revokeUriPermission failed. Code: ${error.code}, message: ${error.message}.`);
       return;
     }
-    console.info("revokeUriPermission success");
+    console.info('revokeUriPermission success');
   });
   ```
 
@@ -349,7 +356,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 | 
+  | Promise&lt;number&gt; | Promise对象。返回0表示撤销成功，返回-1表示撤销失败。 | 
 
 **错误码：**
 
@@ -357,9 +364,10 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
   | 错误码ID | 错误信息 |
   | ------- | -------------------------------- |
+  | 201 | Permission denied. <br>适用版本：10 - 11 |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>适用版本：19+ |
   | 16000050 | Internal error. |
   | 16000059 | Invalid URI type. |
 
@@ -373,6 +381,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
   let targetBundleName = 'com.example.test_case2';
   let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
 
+  // 撤销指定应用的URI权限
   uriPermissionManager.revokeUriPermission(uri, targetBundleName)
     .then((data) => {
       console.info(`Verification success, data: ${JSON.stringify(data)}.`);
@@ -420,7 +429,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
   | ------- | -------------------------------- |
   | 202 | Not System App. Interface caller is not a system app. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  | 801 | Capability not supported. |
+  | 801 | Capability not supported. <br>适用版本：19+ |
   | 16000050 | Internal error. |
   | 16000059 | Invalid URI type. |
   | 16000081 | Failed to obtain the target application information. |
@@ -441,7 +450,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
       let targetBundleName: string = 'com.example.demo1';
       let filePath: string = this.context.filesDir + "/test.txt";
       let uri: string = fileUri.getUriFromPath(filePath);
-      // revoke uri permission of main application
+      // 撤销主应用的URI权限
       try {
         let appCloneIndex: number = 0;
         uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
@@ -454,7 +463,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
         console.error(`revokeUriPermission failed. error: ${JSON.stringify(error)}.`);
       }
 
-      // revoke uri permission of clone application
+      // 撤销分身应用的URI权限
       try {
         let appCloneIndex: number = 1;
         uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
@@ -488,7 +497,7 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
   | -------- | -------- | -------- | -------- |
   | key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过[unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../database/unified-data-channels.md)。| 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
-  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。 |
+  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。目标应用需要与接口调用方为不同应用。 |
 
 **返回值：**
 
@@ -565,7 +574,7 @@ grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, callerTok
   | key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../database/unified-data-channels.md)。| 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 | 
   | callerTokenId  | number  | 是 | 拉起方应用的身份标识，可以通过[want](js-apis-app-ability-want.md)中的"ohos.aafwk.param.callerToken"字段获取。 |
-  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。 |
+  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。目标应用必须与拉起方为不同应用。 |
 
 **返回值：**
 

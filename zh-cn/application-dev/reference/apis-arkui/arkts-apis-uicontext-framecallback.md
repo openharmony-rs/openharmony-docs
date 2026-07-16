@@ -6,13 +6,15 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于设置下一帧渲染时需要执行的任务。
+用于定义帧回调任务，可在下一帧渲染阶段或帧渲染任务结束后的空闲阶段执行。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 以下API需要配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)和[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。开发者需要继承该类并重写[onFrame](#onframe12)或[onIdle](#onidle12)方法，实现具体的业务逻辑。
 
@@ -22,6 +24,10 @@ onFrame(frameTimeInNano: number): void
 
 在下一帧进行渲染时，该方法将被执行。
 
+继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -30,7 +36,7 @@ onFrame(frameTimeInNano: number): void
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| frameTimeInNano | number | 是   | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
+| frameTimeInNano | number | 是   | 下一帧渲染开始执行的时间，以纳秒为单位，由系统回调时传入，开发者无需手动传入。<br>取值范围：[0, +∞) |
 
 **示例：**
 
@@ -45,8 +51,8 @@ class MyFrameCallback extends FrameCallback {
     this.tag = tag;
   }
 
-  onFrame(frameTimeNanos: number) {
-    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  onFrame(frameTimeInNano: number) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeInNano.toString());
   }
 }
 
@@ -58,11 +64,11 @@ struct Index {
       Column() {
         Button('点击触发postFrameCallback')
           .onClick(() => {
-            this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+            this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
           })
         Button('点击触发postDelayedFrameCallback')
           .onClick(() => {
-            this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
+            this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
           })
       }
       .width('100%')
@@ -76,7 +82,11 @@ struct Index {
 
 onIdle(timeLeftInNano: number): void
 
-在下一帧渲染结束时，如果距离下一个Vsync信号到来还有1ms以上的剩余时间，该方法将被执行，否则将顺延至后面的帧。
+下一帧渲染任务结束后，若当前时间到下一个VSync信号的剩余时间大于1ms，则执行该回调；若剩余时间小于等于1ms，则将回调顺延至后续某一帧，待当前时间到下一个VSync信号的剩余时间大于1ms时执行。若当前没有已请求的下一帧，系统会自动请求一帧。
+
+继承FrameCallback类并重写该方法后，可配合[UIContext](arkts-apis-uicontext-uicontext.md)中的[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)或[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +96,7 @@ onIdle(timeLeftInNano: number): void
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| timeLeftInNano | number | 是   | 这一帧剩余的空闲时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
+| timeLeftInNano | number | 是   | 这一帧剩余的空闲时间，以纳秒为单位，由系统回调时传入，开发者无需手动传入。<br>取值范围：[0, +∞) |
 
 **示例：**
 
@@ -114,11 +124,11 @@ struct Index {
       Column() {
         Button('点击触发postFrameCallback')
           .onClick(() => {
-            this.getUIContext().postFrameCallback(new MyIdleCallback("normTask"));
+            this.getUIContext().postFrameCallback(new MyIdleCallback('normTask'));
           })
         Button('点击触发postDelayedFrameCallback')
           .onClick(() => {
-            this.getUIContext().postDelayedFrameCallback(new MyIdleCallback("delayTask"), 5);
+            this.getUIContext().postDelayedFrameCallback(new MyIdleCallback('delayTask'), 5);
           })
       }
       .width('100%')

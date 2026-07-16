@@ -171,22 +171,24 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_OBJECT_FIT属性设置图片在容器中的缩放方式。
 
-```c++
-// 设置图片缩放类型
-ArkUI_NumberValue objectFitValue[] = {{.i32 = ARKUI_OBJECT_FIT_CONTAIN}};
-ArkUI_AttributeItem objectFitItem = {objectFitValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &objectFitItem);
+<!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
+ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
+ArkUI_AttributeItem fitItem = {fitValue, 1};
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 ```
 
 ### 设置图片插值效果
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_INTERPOLATION属性设置图片插值效果。
 
-```c++
-// 设置图片插值效果
+<!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
 ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
 ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_INTERPOLATION, &interpolationItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
 ```
 
 ### 设置图片重复样式
@@ -195,7 +197,7 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_INTERPOLATION, &interpolationItem)
 
 ```c++
 // 设置图片重复样式
-ArkUI_NumberValue repeatValue[] = {{.i32 = ARKUI_IMAGE_REPEAT_NO_REPEAT}};
+ArkUI_NumberValue repeatValue[] = {{.i32 = ARKUI_IMAGE_REPEAT_NONE}};
 ArkUI_AttributeItem repeatItem = {repeatValue, 1};
 nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 ```
@@ -204,33 +206,35 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_FILL_COLOR属性设置SVG图片填充颜色。
 
-```c++
-// 设置图片填充颜色（0xARGB格式）
-// 例如：0xFFFF0000表示红色
+<!-- @[image_fillcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
 ArkUI_NumberValue fillColorValue[] = {{.u32 = 0xFF007DFF}};
 ArkUI_AttributeItem fillColorItem = {fillColorValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_FILL_COLOR, &fillColorItem);
+nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 ```
 
 ### 设置占位图
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_ALT属性设置占位图。
 
-```c++
-// 设置加载失败时的占位图
-ArkUI_AttributeItem altItem = {nullptr, 0, "/data/storage/el2/base/haps/entry/files/placeholder.png"};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_ALT, &altItem);
+<!-- @[image_alt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
+ArkUI_AttributeItem altItem = {nullptr, 0, "resources/rawfile/imageCapiExample.png"};
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 ```
 
 ### 设置图片解码尺寸
 
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_SOURCE_SIZE属性设置图片解码尺寸。
 
-```c++
-// 设置图片解码尺寸（单位：px）
-ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 200}, {.i32 = 200}};
+<!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
+ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
 ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
 ```
 
 ### 设置图片渲染模式
@@ -308,31 +312,27 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_ORIENTATION, &orientationItem);
 
 在处理图片事件之前，需要先通过[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)接口注册全局事件接收器。
 
-```c++
-// 全局事件接收器函数
+<!-- @[image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
 void GlobalEventReceiver(ArkUI_NodeEvent* event)
 {
     auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-    auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
-    // 根据事件类型处理
-    switch (eventType) {
-        case NODE_IMAGE_ON_COMPLETE:
-            // 处理图片加载完成事件
-            break;
-        case NODE_IMAGE_ON_ERROR:
-            // 处理图片加载失败事件
-            break;
-        case NODE_IMAGE_ON_SVG_PLAY_FINISH:
-            // 处理SVG播放完成事件
-            break;
-        default:
-            break;
+    if (eventType == NODE_IMAGE_ON_COMPLETE) {
+        ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_INFO(LOG_APP, "Image loaded: %.0fx%.0f",
+                        componentEvent->data[IMAGE_WIDTH_INDEX].f32, componentEvent->data[IMAGE_HEIGHT_INDEX].f32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_ERROR) {
+        ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Image load failed, error: %d", componentEvent->data[ERROR_CODE_INDEX].i32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_SVG_PLAY_FINISH) {
+        OH_LOG_INFO(LOG_APP, "SVG animation play finished");
     }
 }
-
-// 注册全局事件接收器
-nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
 ```
 
 ### 监听图片加载完成事件
@@ -450,43 +450,44 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     在ArkTS页面上声明用于Native页面挂载的占位组件，并在页面创建时通知Native侧创建图片界面。
 
-    ```typescript
-    // entry/src/main/ets/pages/Index.ets
+    <!-- @[index_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     import nativeNode from 'libentry.so';
     import { NodeContent } from '@kit.ArkUI';
-
+    
     @Entry
     @Component
     struct Index {
-    // 初始化NodeContent对象
-    private rootSlot: NodeContent = new NodeContent();
-    @State @Watch('changeNativeFlag') showNative: boolean = false;
-
-    changeNativeFlag(): void {
+      // 初始化NodeContent对象
+      private rootSlot: NodeContent = new NodeContent();
+      @State @Watch('changeNativeFlag') showNative: boolean = false;
+    
+      changeNativeFlag(): void {
         if (this.showNative) {
-        // 传递NodeContent对象用于Native创建组件的挂载显示
-        nativeNode.createNativeRoot(this.rootSlot)
+          // 传递NodeContent对象用于Native创建组件的挂载显示
+          nativeNode.createNativeRoot(this.rootSlot)
         } else {
-        // 销毁NativeModule组件
-        nativeNode.destroyNativeRoot()
+          // 销毁NativeModule组件
+          nativeNode.destroyNativeRoot()
         }
-    }
-
-    build() {
+      }
+    
+      build() {
         Column() {
-        Button(this.showNative ? 'Hide Native UI' : 'Show Native UI')
+          Button(this.showNative ? 'Hide Native UI' : 'Show Native UI')
             .onClick(() => {
-            this.showNative = !this.showNative
+              this.showNative = !this.showNative
             })
             .id('btn')
-        Row() {
+          Row() {
             // 将NodeContent和ContentSlot占位组件绑定
             ContentSlot(this.rootSlot)
-        }.layoutWeight(1)
+          }.layoutWeight(1)
         }
         .width('100%')
         .height('100%')
-    }
+      }
     }
     ```
 
@@ -496,36 +497,33 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     **接口声明**
 
-    ```typescript
-    // entry/src/main/cpp/types/libentry/Index.d.ts
+    <!-- @[index_d_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
     export const createNativeRoot: (content: Object) => void;
     export const destroyNativeRoot: () => void;
     ```
 
     **NAPI初始化**
 
-    ```cpp
-    // entry/src/main/cpp/napi_init.cpp
-    #include "napi/native_api.h"
-    #include "NativeEntry.h"
-
-    EXTERN_C_START
+    <!-- @[napi_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     static napi_value Init(napi_env env, napi_value exports)
     {
         // 绑定Native侧的创建组件和销毁组件
         napi_property_descriptor desc[] = {
             {"createNativeRoot", nullptr,
-            NativeModule::CreateNativeRoot, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
+             NativeModule::CreateNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr},
             {"destroyNativeRoot", nullptr,
-            NativeModule::DestroyNativeRoot, nullptr, nullptr,
-            nullptr, napi_default, nullptr}
-        };
+             NativeModule::DestroyNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr}};
         napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
         return exports;
     }
     EXTERN_C_END
-
+    
     static napi_module demoModule = {
         .nm_version = 1,
         .nm_flags = 0,
@@ -535,7 +533,7 @@ nativeNodeApi->unregisterNodeEventReceiver();
         .nm_priv = ((void *)0),
         .reserved = {0},
     };
-
+    
     extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
     {
         napi_module_register(&demoModule);
@@ -548,41 +546,42 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     **NativeEntry.h**
 
-    ```cpp
-    // entry/src/main/cpp/NativeEntry.h
+    <!-- @[native_entry_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/NativeEntry.h) -->
+    
+    ``` C
     #ifndef NATIVE_ENTRY_H
     #define NATIVE_ENTRY_H
-
+    
     #include <arkui/native_node.h>
     #include <arkui/native_node_napi.h>
     #include <arkui/native_interface.h>
     #include <js_native_api.h>
-
+    
     namespace NativeModule {
-
+    
     // 获取ArkUI nativeNodeApi
-    inline ArkUI_NativeNodeAPI_1* GetNativeNodeAPI()
+    inline ArkUI_NativeNodeAPI_1 *GetNativeNodeAPI()
     {
-        static ArkUI_NativeNodeAPI_1* api = nullptr;
+        static ArkUI_NativeNodeAPI_1 *api = nullptr;
         if (api == nullptr) {
             OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, api);
         }
         return api;
     }
-
+    
     class NativeEntry {
     public:
-        static NativeEntry* GetInstance()
+        static NativeEntry *GetInstance()
         {
             static NativeEntry instance;
             return &instance;
         }
-
+    
         void SetContentHandle(ArkUI_NodeContentHandle contentHandle)
         {
             contentHandle_ = contentHandle;
         }
-
+    
         void SetRootNode(ArkUI_NodeHandle rootNode)
         {
             if (rootNode != nullptr && contentHandle_ != nullptr) {
@@ -590,7 +589,7 @@ nativeNodeApi->unregisterNodeEventReceiver();
                 OH_ArkUI_NodeContent_AddNode(contentHandle_, rootNode);
             }
         }
-
+    
         void DisposeRootNode()
         {
             if (rootNode_ != nullptr && contentHandle_ != nullptr) {
@@ -600,60 +599,59 @@ nativeNodeApi->unregisterNodeEventReceiver();
                 rootNode_ = nullptr;
             }
         }
-
+    
     private:
         NativeEntry() = default;
         ~NativeEntry() = default;
-
+    
         ArkUI_NodeContentHandle contentHandle_ = nullptr;
         ArkUI_NodeHandle rootNode_ = nullptr;
     };
-
+    
     // NAPI函数声明
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info);
     napi_value DestroyNativeRoot(napi_env env, napi_callback_info info);
-
+    
     } // namespace NativeModule
-
+    
     #endif // NATIVE_ENTRY_H
     ```
 
     **NativeEntry.cpp**
 
-    ```cpp
-    // entry/src/main/cpp/NativeEntry.cpp
-    #include "NativeEntry.h"
-    #include "ImageExample.h"
-
+    <!-- @[native_root_creator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/NativeEntry.cpp) -->
+    
+    ``` C++
     namespace NativeModule {
-
+    
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
         napi_value args[1] = {nullptr};
-
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+    
         // 获取NodeContent
         ArkUI_NodeContentHandle contentHandle;
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-
+    
         // 创建图片示例界面
         auto root = CreateImageExample();
-
+    
         // 挂载到NodeContent
         NativeEntry::GetInstance()->SetRootNode(root);
-
+    
         return nullptr;
     }
-
+    
     napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
     {
+        // 清理图片示例资源
+        CleanupImageExample();
         NativeEntry::GetInstance()->DisposeRootNode();
         return nullptr;
     }
-
+    
     } // namespace NativeModule
     ```
 
@@ -663,185 +661,183 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
     **ImageExample.h**
 
-    ```cpp
-    // entry/src/main/cpp/ImageExample.h
+    <!-- @[image_example_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.h) -->
+    
+    ``` C
     #ifndef IMAGE_EXAMPLE_H
     #define IMAGE_EXAMPLE_H
-
+    
     #include <arkui/native_node.h>
-
+    
     // 创建图片示例界面
     ArkUI_NodeHandle CreateImageExample();
-
+    
+    // 清理图片示例资源
+    void CleanupImageExample();
+    
     #endif // IMAGE_EXAMPLE_H
     ```
 
     **ImageExample.cpp**
 
-    ```cpp
-    // entry/src/main/cpp/ImageExample.cpp
-    #include "ImageExample.h"
-    #include "NativeEntry.h"
-    #include <arkui/native_node.h>
-    #include <arkui/native_type.h>
-    #include <arkui/native_interface.h>
-    #include <hilog/log.h>
-
-    // 日志标签
-    #undef LOG_DOMAIN
-    #undef LOG_TAG
-    #define LOG_DOMAIN 0x3200
-    #define LOG_TAG "ImageExample"
-
-    // 全局事件接收器
-    void GlobalEventReceiver(ArkUI_NodeEvent* event)
-    {
-        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-
-        if (eventType == NODE_IMAGE_ON_COMPLETE) {
-            ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-            if (componentEvent != nullptr) {
-                OH_LOG_INFO(LOG_APP, "Image loaded: %.0fx%.0f",
-                            componentEvent->data[0].f32, componentEvent->data[1].f32);
-            }
-        } else if (eventType == NODE_IMAGE_ON_ERROR) {
-            ArkUI_NodeComponentEvent* componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-            if (componentEvent != nullptr) {
-                OH_LOG_ERROR(LOG_APP, "Image load failed, error: %d", componentEvent->data[0].i32);
-            }
-        } else if (eventType == NODE_IMAGE_ON_SVG_PLAY_FINISH) {
-            OH_LOG_INFO(LOG_APP, "SVG animation play finished");
-        }
-    }
-
-    // 创建图片组件界面
-    ArkUI_NodeHandle CreateImageExample()
+    <!-- @[image_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    
+    ``` C++
+    
+    // 函数1：初始化 + Column + 第一张图
+    ArkUI_NodeHandle CreateImageColumnAndFirstImage()
     {
         auto nativeNodeApi = NativeModule::GetNativeNodeAPI();
         if (nativeNodeApi == nullptr) {
             OH_LOG_ERROR(LOG_APP, "Get native node API failed");
             return nullptr;
         }
-
+    
         // 注册全局事件接收器
         nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
-
+        
         // 创建Column容器
         ArkUI_NodeHandle column = nativeNodeApi->createNode(ARKUI_NODE_COLUMN);
         if (column == nullptr) {
             OH_LOG_ERROR(LOG_APP, "Create Column failed");
             return nullptr;
         }
-
+        g_rootNode = column;
+    
         // 设置Column padding属性
         ArkUI_NumberValue paddingValue[] = {{.f32 = 20.0f}};
         ArkUI_AttributeItem paddingItem = {paddingValue, 1};
         nativeNodeApi->setAttribute(column, NODE_PADDING, &paddingItem);
-
+    
         // 创建Image组件1 - 基础图片
         ArkUI_NodeHandle image1 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
         if (image1 != nullptr) {
-            // 设置图片源
-            ArkUI_AttributeItem srcItem = {nullptr, 0, "entry/resources/rawfile/pic0.png"};
+            g_image1 = image1;
+            // 设置图片源（使用rawfile资源）
+            ArkUI_AttributeItem srcItem = {nullptr, 0, "resources/rawfile/sky.png"};
             nativeNodeApi->setAttribute(image1, NODE_IMAGE_SRC, &srcItem);
-
+    
             // 设置宽高
             ArkUI_NumberValue widthValue[] = {{.f32 = 200.0f}};
             ArkUI_AttributeItem widthItem = {widthValue, 1};
             nativeNodeApi->setAttribute(image1, NODE_WIDTH, &widthItem);
-
+    
             ArkUI_NumberValue heightValue[] = {{.f32 = 200.0f}};
             ArkUI_AttributeItem heightItem = {heightValue, 1};
             nativeNodeApi->setAttribute(image1, NODE_HEIGHT, &heightItem);
-
+    
+            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+            nativeNodeApi->setAttribute(image1, NODE_BORDER_WIDTH, &borderWidthItem);
+    
             // 设置缩放类型
             ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
             ArkUI_AttributeItem fitItem = {fitValue, 1};
             nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
-
+    
             // 设置插值效果
             ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
             ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
             nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
-
-            // 设置边框宽度
-            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
-            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
-            nativeNodeApi->setAttribute(image1, NODE_BORDER_WIDTH, &borderWidthItem);
-
+    
             // 注册事件
             nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
             nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_ERROR, 0, nullptr);
-
+    
             // 添加到Column
             nativeNodeApi->addChild(column, image1);
         }
-
+        return column;
+    }
+    
+    // 函数2：添加第二张图
+    void AddSecondImage(ArkUI_NodeHandle column)
+    {
+        auto nativeNodeApi = NativeModule::GetNativeNodeAPI();
+        if (nativeNodeApi == nullptr || column == nullptr) {
+            return;
+        };
+    
         // 创建Image组件2 - 带填充颜色的SVG
         ArkUI_NodeHandle image2 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
         if (image2 != nullptr) {
             // 设置图片源（可以是SVG）
-            ArkUI_AttributeItem srcItem2 = {nullptr, 0, "entry/resources/rawfile/pic1.svg"};
+            ArkUI_AttributeItem srcItem2 = {nullptr, 0, "resources/rawfile/cloud.svg"};
             nativeNodeApi->setAttribute(image2, NODE_IMAGE_SRC, &srcItem2);
-
+    
             // 设置宽高
             ArkUI_NumberValue widthValue2[] = {{.f32 = 200.0f}};
             ArkUI_AttributeItem widthItem2 = {widthValue2, 1};
             nativeNodeApi->setAttribute(image2, NODE_WIDTH, &widthItem2);
-
+    
             ArkUI_NumberValue heightValue2[] = {{.f32 = 200.0f}};
             ArkUI_AttributeItem heightItem2 = {heightValue2, 1};
             nativeNodeApi->setAttribute(image2, NODE_HEIGHT, &heightItem2);
-
+    
+            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+            nativeNodeApi->setAttribute(image2, NODE_BORDER_WIDTH, &borderWidthItem);
+    
             // 设置填充颜色（蓝色）
             ArkUI_NumberValue fillColorValue[] = {{.u32 = 0xFF007DFF}};
             ArkUI_AttributeItem fillColorItem = {fillColorValue, 1};
             nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
-
+    
             // 设置边框宽度
             ArkUI_NumberValue borderWidthValue2[] = {{.f32 = 2.0f}};
             ArkUI_AttributeItem borderWidthItem2 = {borderWidthValue2, 1};
             nativeNodeApi->setAttribute(image2, NODE_BORDER_WIDTH, &borderWidthItem2);
-
+    
             // 添加到Column
             nativeNodeApi->addChild(column, image2);
         }
-
+    }
+    
+    // 函数3：添加第三张图
+    void AddThirdImage(ArkUI_NodeHandle column)
+    {
+        auto nativeNodeApi = NativeModule::GetNativeNodeAPI();
+        if (nativeNodeApi == nullptr || column == nullptr) {
+            return;
+        };
+    
         // 创建Image组件3 - 带占位图
         ArkUI_NodeHandle image3 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
         if (image3 != nullptr) {
-            // 设置图片源
-            ArkUI_AttributeItem srcItem3 = {nullptr, 0, "entry/resources/rawfile/pic2.png"};
+            // 设置网络图片源
+            ArkUI_AttributeItem srcItem3 = {nullptr, 0, "resources/rawfile/clouds.jpg"};
             nativeNodeApi->setAttribute(image3, NODE_IMAGE_SRC, &srcItem3);
-
+    
             // 设置宽高
             ArkUI_NumberValue widthValue3[] = {{.f32 = 200.0f}};
             ArkUI_AttributeItem widthItem3 = {widthValue3, 1};
             nativeNodeApi->setAttribute(image3, NODE_WIDTH, &widthItem3);
-
+    
             ArkUI_NumberValue heightValue3[] = {{.f32 = 200.0f}};
             ArkUI_AttributeItem heightItem3 = {heightValue3, 1};
             nativeNodeApi->setAttribute(image3, NODE_HEIGHT, &heightItem3);
-
+    
+            ArkUI_NumberValue borderWidthValue[] = {{.f32 = 2.0f}};
+            ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+            nativeNodeApi->setAttribute(image3, NODE_BORDER_WIDTH, &borderWidthItem);
+    
             // 设置占位图
-            ArkUI_AttributeItem altItem = {nullptr, 0, "entry/resources/rawfile/pic3.png"};
+            ArkUI_AttributeItem altItem = {nullptr, 0, "resources/rawfile/imageCapiExample.png"};
             nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
-
+    
             // 设置解码尺寸
             ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
             ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
             nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
-
+    
             // 设置边框宽度
             ArkUI_NumberValue borderWidthValue3[] = {{.f32 = 2.0f}};
             ArkUI_AttributeItem borderWidthItem3 = {borderWidthValue3, 1};
             nativeNodeApi->setAttribute(image3, NODE_BORDER_WIDTH, &borderWidthItem3);
-
+    
             // 添加到Column
             nativeNodeApi->addChild(column, image3);
         }
-
-        return column;
     }
     ```
 

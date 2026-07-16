@@ -1333,7 +1333,7 @@ Draws a text blob. If the typeface used to construct **blob** does not support a
 | x      | number                | Yes  | X coordinate of the left point (red point in the figure below) of the text baseline (blue line in the figure below). The value is a floating point number.|
 | y      | number                | Yes  | Y coordinate of the left point (red point in the figure below) of the text baseline (blue line in the figure below). The value is a floating point number.|
 
-![image_Text_Blob.png](figures/image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **Error codes**
 
@@ -1381,7 +1381,7 @@ Draws a single character. If the typeface of the current font does not support t
 | x      | number | Yes  | X coordinate of the left point (red point in the figure below) of the character baseline (blue line in the figure below). The value is a floating point number.|
 | y      | number | Yes  | Y coordinate of the left point (red point in the figure below) of the character baseline (blue line in the figure below). The value is a floating point number.|
 
-![image_Text_Blob.png](figures/image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **Error codes**
 

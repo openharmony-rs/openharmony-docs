@@ -54,32 +54,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
-    let CallBack: systemConfiguration.UpdatedCallback = {
-      onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+    let callback: systemConfiguration.UpdatedCallback = {
+      onColorModeUpdated: (colorMode: ConfigurationConstant.ColorMode) => {
         console.info(`system configuration updated colormode:` + colorMode);
       },
-      onFontSizeScaleUpdated(fontSizeScale: number) {
+      onFontSizeScaleUpdated: (fontSizeScale: number) => {
         console.info(`system configuration updated fontSizeScale:` + fontSizeScale);
       },
-      onFontWeightScaleUpdated(fontWeightScale: number) {
+      onFontWeightScaleUpdated: (fontWeightScale: number) => {
         console.info(`system configuration updated fontWeightScale:` + fontWeightScale);
       },
-      onLanguageUpdated(language: string) {
+      onLanguageUpdated: (language: string) => {
         console.info(`system configuration updated language:` + language);
       },
-      onFontIdUpdated(fontId: string) {
+      onFontIdUpdated: (fontId: string) => {
         console.info(`system configuration updated fontId:` + fontId);
       },
-      onMCCUpdated(mcc: string) {
+      onMCCUpdated: (mcc: string) => {
         console.info(`system configuration updated mcc:` + mcc);
       },
-      onMNCUpdated(mnc: string) {
+      onMNCUpdated: (mnc: string) => {
         console.info(`system configuration updated mnc:` + mnc);
       },
-      onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+      onHasPointerDeviceUpdated: (hasPointerDevice: boolean) => {
         console.info(`system configuration updated hasPointerDevice:` + hasPointerDevice);
       },
-      onLocaleUpdated(locale: string) {
+      onLocaleUpdated: (locale: string) => {
         console.info(`system configuration updated locale:` + locale);
       }
     }
@@ -87,7 +87,7 @@ export default class EntryAbility extends UIAbility {
     let applicationContext = this.context.getApplicationContext();
     try {
       // 2.通过applicationContext注册监听
-      applicationContext.onSystemConfigurationUpdated(CallBack);
+      applicationContext.onSystemConfigurationUpdated(callback);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }

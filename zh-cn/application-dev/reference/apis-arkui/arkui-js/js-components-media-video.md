@@ -113,7 +113,7 @@ export default {
         duration: '',
     },
     preparedCallback: function (e) {
-        this.event = '视频连接成功';
+        this.event = '视频准备完成';
         this.duration = e.duration;
     },
     startCallback: function () {
@@ -146,4 +146,4 @@ export default {
 }
 ```
 
-![zh-cn_gif_js_media_video](figures/zh-cn_gif_js_media_video.gif)
+![zh-cn_gif_js_media_video](figures/js-media-video.gif)

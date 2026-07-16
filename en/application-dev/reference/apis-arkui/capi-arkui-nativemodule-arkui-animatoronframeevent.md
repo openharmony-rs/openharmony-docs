@@ -1,8 +1,8 @@
 # ArkUI_AnimatorOnFrameEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_AnimatorOnFrameEvent ArkUI_AnimatorOnFrameEvent
 
 ## Overview
 
-Defines the callback object when the animator receives a frame.
+Defines the event data object for frame-by-frame callback during the playback of an animator animation.
 
 **Since**: 12
 

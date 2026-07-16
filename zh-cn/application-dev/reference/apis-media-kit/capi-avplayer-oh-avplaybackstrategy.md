@@ -1,18 +1,18 @@
 # OH_AVPlaybackStrategy
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy
+typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy;
 ```
 
 ## 概述
 
-音视频播放策略的结构体类型。
+音视频播放策略的结构体类型，用于配置播放器在播放音视频内容时的策略参数，适用于需要精细控制播放行为的场景。
 
 **起始版本：** 23
 

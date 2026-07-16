@@ -1,12 +1,12 @@
 # @ohos.curves (插值计算)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供设置动画插值曲线功能，用于构造阶梯曲线对象、三阶贝塞尔曲线对象和弹簧曲线对象。
+本模块提供设置动画插值曲线功能，用于构造阶梯曲线对象、三阶贝塞尔曲线对象、弹簧曲线对象、弹性动画曲线对象、弹性跟手动画曲线对象、插值器弹簧曲线对象和自定义曲线对象。
 
 > **说明：**
 > 
@@ -70,7 +70,7 @@ initCurve(curve?: Curve): ICurve
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.initCurve(Curve.EaseIn) // 创建一个默认先慢后快插值曲线
+curves.initCurve(Curve.EaseIn); // 创建一个默认先慢后快插值曲线
 ```
 
 
@@ -101,7 +101,7 @@ stepsCurve(count: number, end: boolean): ICurve
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.stepsCurve(9, true)  // 创建一个阶梯曲线
+curves.stepsCurve(9, true);  // 创建一个阶梯曲线
 ```
 
 
@@ -109,7 +109,7 @@ curves.stepsCurve(9, true)  // 创建一个阶梯曲线
 
 cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve
 
-构造三阶贝塞尔曲线对象，确保曲线的值在0到1之间。
+构造三阶贝塞尔曲线对象，曲线的两个控制点横坐标x1、x2的取值范围限定在0到1之间。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -135,7 +135,7 @@ cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // 创建一个三阶贝塞尔曲线
+curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0); // 创建一个三阶贝塞尔曲线
 ```
 
 
@@ -143,7 +143,7 @@ curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // 创建一个三阶贝塞尔曲线
 
 springCurve(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 
-构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。
+构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受动画参数中的时长参数控制。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -169,7 +169,7 @@ springCurve(velocity: number, mass: number, stiffness: number, damping: number):
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.springCurve(10, 1, 228, 30) // 创建一个弹簧插值曲线
+curves.springCurve(10, 1, 228, 30); // 创建一个弹簧插值曲线
 ```
 
 
@@ -196,16 +196,16 @@ springMotion(response?: number, dampingFraction?: number, overlapDuration?: numb
 
 | 类型                           | 说明             |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | 曲线对象。<br>**说明:**  <br>弹性动画曲线为物理曲线，[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于springMotion动画曲线参数和之前的速度。时间不能归一，故不能通过该曲线的[interpolate](#interpolate9)函数获得插值。 |
+| [ICurve](#icurve9) | 曲线对象。<br>**说明：**  <br>弹性动画曲线为物理曲线，[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于springMotion动画曲线参数和之前的速度。时间不能归一，故不能通过该曲线的[interpolate](#interpolate9)函数获得插值。 |
 
 **示例：**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.springMotion() // 创建一个默认弹性动画曲线
-curves.springMotion(0.5) // 创建指定response、其余参数默认的弹性动画曲线
-curves.springMotion(0.5, 0.6) // 创建指定response和dampingFraction、其余参数默认的弹性动画曲线
-curves.springMotion(0.5, 0.6, 0) // 创建三个参数均自定义的弹性动画曲线
+import { curves } from '@kit.ArkUI';
+curves.springMotion(); // 创建一个默认弹性动画曲线
+curves.springMotion(0.5); // 创建指定response、其余参数默认的弹性动画曲线
+curves.springMotion(0.5, 0.6); // 创建指定response和dampingFraction、其余参数默认的弹性动画曲线
+curves.springMotion(0.5, 0.6, 0); // 创建三个参数均自定义的弹性动画曲线
 ```
 
 
@@ -231,13 +231,13 @@ responsiveSpringMotion(response?: number, dampingFraction?: number, overlapDurat
 
 | 类型                           | 说明             |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | 曲线对象。<br>**说明:** <br>1、弹性跟手动画曲线为springMotion的一种特例，仅默认值不同。如果使用自定义参数的弹性曲线，推荐使用springMotion构造曲线；如果使用跟手动画，推荐使用默认参数的弹性跟手动画曲线。<br>2、[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于responsiveSpringMotion动画曲线参数和之前的速度，也不能通过该曲线的[interpolate](#interpolate9)函数获得插值。 |
+| [ICurve](#icurve9) | 曲线对象。<br>**说明：** <br>1、弹性跟手动画曲线为springMotion的一种特例，仅默认值不同。如果使用自定义参数的弹性曲线，推荐使用springMotion构造曲线；如果使用跟手动画，推荐使用默认参数的弹性跟手动画曲线。<br>2、[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于responsiveSpringMotion动画曲线参数和之前的速度，也不能通过该曲线的[interpolate](#interpolate9)函数获得插值。 |
 
 **示例：**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.responsiveSpringMotion() // 创建一个默认弹性跟手动画曲线
+import { curves } from '@kit.ArkUI';
+curves.responsiveSpringMotion(); // 创建一个默认弹性跟手动画曲线
 ```
 
 
@@ -245,7 +245,7 @@ curves.responsiveSpringMotion() // 创建一个默认弹性跟手动画曲线
 
 interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: number): ICurve
 
-构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受动画参数中的时长参数控制。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -265,13 +265,13 @@ interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: 
 
 | 类型                           | 说明             |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | 曲线对象。<br>**说明:** 弹性动画曲线为物理曲线，[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于interpolatingSpring动画曲线参数。时间不能归一，故不能通过该曲线的[interpolate](#interpolate9)函数获得插值。 |
+| [ICurve](#icurve9) | 曲线对象。<br>**说明：** 弹性动画曲线为物理曲线，[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)等动画参数中的duration参数不生效，动画持续时间取决于interpolatingSpring动画曲线参数。时间不能归一，故不能通过该曲线的[interpolate](#interpolate9)函数获得插值。 |
 
 **示例：**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-curves.interpolatingSpring(10, 1, 228, 30) // 创建一个时长由弹簧参数决定的弹簧插值曲线
+import { curves } from '@kit.ArkUI';
+curves.interpolatingSpring(10, 1, 228, 30); // 创建一个时长由弹簧参数决定的弹簧插值曲线
 ```
 
 ## curves.customCurve<sup>10+</sup>
@@ -301,11 +301,11 @@ customCurve(interpolate: (fraction: number) => number): ICurve
 **示例：**
 
 ```ts
-import { curves } from '@kit.ArkUI'
-let interpolate = (fraction:number):number => {
-  return Math.sqrt(fraction)
-}
-let curve = curves.customCurve(interpolate) // 创建一个用户自定义插值曲线
+import { curves } from '@kit.ArkUI';
+let interpolate = (fraction: number): number => {
+  return Math.sqrt(fraction);
+};
+let curve = curves.customCurve(interpolate); // 创建一个用户自定义插值曲线
 ```
 
 ## ICurve<sup>9+</sup>
@@ -332,14 +332,14 @@ interpolate(fraction:&nbsp;number): number
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 返回归一化time时间点对应的曲线插值。 |
+| number | 返回归一化时间点对应的曲线插值。 |
 
 **示例：**
 
 ```ts
 import { curves } from '@kit.ArkUI'
-let curveValue = curves.initCurve(Curve.EaseIn) // 创建一个默认先慢后快插值曲线
-let value: number = curveValue.interpolate(0.5) // 计算得到时间到一半时的插值
+let curveValue = curves.initCurve(Curve.EaseIn); // 创建一个默认先慢后快插值曲线
+let interpolatedValue: number = curveValue.interpolate(0.5); // 计算得到时间到一半时的插值
 ```
 
 
@@ -352,7 +352,7 @@ init(curve?: Curve): string
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.initCurve](#curvesinitcurve9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[curves.initCurve](#curvesinitcurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -378,7 +378,7 @@ steps(count: number, end: boolean): string
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves. stepsCurve](#curvesstepscurve9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[curves.stepsCurve](#curvesstepscurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -401,11 +401,11 @@ steps(count: number, end: boolean): string
 cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 
-构造三阶贝塞尔曲线对象，曲线的值必须处于0-1之间。
+构造三阶贝塞尔曲线对象，曲线的两个控制点横坐标x1、x2的取值范围限定在0到1之间。
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.cubicBezierCurve](#curvescubicbeziercurve9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[curves.cubicBezierCurve](#curvescubicbeziercurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,7 +432,7 @@ spring(velocity: number, mass: number, stiffness: number, damping: number): stri
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.springCurve](#curvesspringcurve9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[curves.springCurve](#curvesspringcurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -476,9 +476,9 @@ struct ImageComponent {
           this.heightSize = curve.interpolate(0.5) * this.heightSize;
         })
         .animation({ duration: 2000, curve: curves.stepsCurve(9, true) })
-    }.width("100%").height("100%")
+    }.width('100%').height('100%')
   }
 }
 ```
 
-![zh-cn_image_0000001174104410](figures/zh-cn_image_0000001174104410.gif)
+![zh-cn_image_0000001174104410](figures/curves-spring-example.gif)

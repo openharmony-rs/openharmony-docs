@@ -32,7 +32,7 @@
 
 ### NodeContainer
 
-NodeContainer(controller: NodeController)
+NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -42,14 +42,14 @@ NodeContainer(controller: NodeController)
 
 | 参数名     | 类型                                                 | 必填 | 说明                                                         |
 | ---------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| controller | [NodeController](../js-apis-arkui-nodeController.md) | 是   | NodeController用于控制NodeContainer中的节点的上树和下树，反映NodeContainer容器的生命周期。 |
+| controller | import('../api/@ohos.arkui.node').[NodeController](../js-apis-arkui-nodeController.md) | 是   | NodeController用于控制NodeContainer中的节点的上树和下树，反映NodeContainer容器的生命周期。 |
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)。
+支持[通用属性](./ts-component-general-attributes.md)，但不支持[动态属性设置](./ts-universal-attributes-attribute-modifier.md)。
 
 ## 事件
 
-支持[通用事件](ts-component-general-events.md)。
+支持[通用事件](./ts-component-general-events.md)。
 
 ## 示例
 
@@ -83,7 +83,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.rootNode === null) {
       this.rootNode = new BuilderNode(uiContext);
-      this.rootNode.build(this.wrapBuilder, { text: "This is a Text" })
+      this.rootNode.build(this.wrapBuilder, { text: 'This is a Text' })
     }
     return this.rootNode.getFrameNode();
   }
@@ -97,13 +97,13 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceEvenly }) {
-      Text("This is a NodeContainer contains a text and a button ")
+      Text('This is a NodeContainer contains a text and a button ')
         .fontSize(9)
         .fontColor(0xCCCCCC)
       NodeContainer(this.baseNode)
         .borderWidth(1)
         .onClick(() => {
-          console.info("click event");
+          console.info('click event');
         })
     }
     .padding({ left: 35, right: 35, top: 35 })
@@ -112,4 +112,4 @@ struct Index {
   }
 }
 ```
-![patternlock](figures/nodeContainer_sample.jpg)
+![NodeContainer示例](figures/nodeContainer_sample.jpg)

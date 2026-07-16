@@ -10,7 +10,7 @@ This module provides basic capabilities for obtaining system appearance configur
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 20. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -29,7 +29,7 @@ Enumerates the color modes.
 
 | Name| Value| Description|
 | -- | -- | -- |
-| ALWAYS_DARK | 0 | The system is always in dark mode. |
+| ALWAYS_DARK | 0 | The system is always in dark mode.|
 | ALWAYS_LIGHT | 1 | The system is always in light mode.|
 
 ## uiAppearance.getDarkMode
@@ -50,7 +50,7 @@ Obtains the current system dark mode configuration.
 
 | Type| Description|
 | -- | -- |
-|[DarkMode](#darkmode) | Color mode obtained.|
+|[DarkMode](#darkmode) | Color mode obtained. For details, see [DarkMode](#darkmode).|
 
 **Error codes**
 
@@ -70,8 +70,8 @@ try {
   let darkMode = uiAppearance.getDarkMode();
   console.info('Get dark-mode ' + darkMode);
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Get dark-mode failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Get dark-mode failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -114,8 +114,8 @@ try {
   let fontScale = uiAppearance.getFontScale();
   console.info('Get fontScale ' + fontScale);
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Get fontScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Get fontScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -156,9 +156,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let fontWeightScale = uiAppearance.getFontWeightScale();
-  console.info('Get fontScale ' + fontWeightScale);
+  console.info('Get fontWeightScale ' + fontWeightScale);
 } catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('Get fontWeightScale failed, ' + message);
+  let err = error as BusinessError;
+  console.error(`Get fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```

@@ -1649,7 +1649,7 @@
         <!--DelEnd-->
         - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
-        - [使用AudioHaptic开发音振协同播放功能(ArkTs)](media/audio/using-audiohaptic-for-playback.md)
+        - [使用AudioHaptic开发音振协同播放功能(ArkTS)](media/audio/using-audiohaptic-for-playback.md)
         - [使用SoundPlayer开发系统音效播放功能](media/audio/using-soundplayer-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
         - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)

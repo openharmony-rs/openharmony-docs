@@ -26,9 +26,9 @@ The FrameNode is not modifiable.
 
 **处理步骤**
 
-避免对不可修改的节点进行修改性操作。可通过try catch捕捉并处理错误，避免影响其他逻辑。
+避免对不可修改的节点进行修改性操作。可通过try-catch捕获并处理错误，避免影响其他逻辑。
 
-## 100022 FrameNode节点的组件类型不支持调整跨语言的属性设置权限
+## 100022 FrameNode节点的组件类型不支持调整跨语言的通用属性设置权限
 
 **错误信息**
 
@@ -36,15 +36,15 @@ The FrameNode cannot be set whether to support cross-language common attribute s
 
 **错误描述**
 
-当前FrameNode节点不支持跨语言属性设置，无法调整其跨语言的属性设置权限。
+当前FrameNode节点的组件类型不支持调整跨语言通用属性设置权限。
 
 **可能原因**
 
-开发者尝试调整目标FrameNode节点的跨语言属性设置权限。
+开发者尝试调整目标FrameNode节点的跨语言通用属性设置权限。
 
 **处理步骤**
 
-NA
+避免对不支持设置跨ArkTS语言访问选项的FrameNode节点调用[setCrossLanguageOptions](./js-apis-arkui-frameNode.md#setcrosslanguageoptions15)接口调整跨语言访问权限。可参考setCrossLanguageOptions接口说明，确认目标节点类型是否支持设置跨ArkTS语言访问选项。
 
 ## 100023 参数错误
 
@@ -64,7 +64,7 @@ Parameter error. Possible causes: 1. The component type of the node is incorrect
 
 **处理步骤**
 
-调整传入的参数值，或是提前进行判断。
+确认传入的节点参数组件类型正确，并在调用接口前判断节点参数或控制器参数是否为null或undefined。
 
 ## 100024 节点没有公共祖先节点
 
@@ -74,15 +74,15 @@ The current FrameNode and the target FrameNode do not have a common ancestor nod
 
 **错误描述**
 
-当前节点和目标节点没有共同父节点。
+当前节点和目标节点没有公共祖先节点。
 
 **可能原因**
 
-找不到当前节点和目标节点的共同父节点。
+找不到当前节点和目标节点的公共祖先节点。
 
 **处理步骤**
 
-修改传入的参数值。
+传入与当前节点存在公共祖先节点的目标节点。
 
 ## 100025 传入参数不符合要求
 
@@ -96,19 +96,19 @@ The parameter is invalid. Details about the invalid parameter and the reason are
 
 **可能原因**
 
-如果传入null、undefined或其他有误参数，请查看错误信息以了解具体原因。
+如果传入null、undefined或其他无效参数，请查看错误信息以了解具体原因。
 
 **处理步骤**
 
 1. 当报错信息显示传入参数为null，改为传入一个非空的FrameNode对象。
-2. 当报错信息显示找不到公共父节点，传入之前判断目标节点是否为离屏节点，修改目标节点。
-3. 其他原因的报错可参考错误信息进行修改。
+2. 当报错信息显示找不到公共祖先节点时，传入目标节点前判断目标节点是否为离屏节点，并传入与当前节点存在公共祖先节点的目标节点。
+3. 根据错误信息中指明的无效参数及原因，修改对应参数。
 
 ## 100026 调用接口的实例对象已与后端实体节点解绑
 
 **错误信息**
 
-The current item has been disposed.
+The current FrameNode has been disposed.
 
 **错误描述**
 
@@ -116,7 +116,7 @@ The current item has been disposed.
 
 **可能原因**
 
-开发者在之前的某个地方使用该实例对象调用了[disposeNode](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)接口，例如：item.dispose()。
+开发者在当前接口调用前，使用该实例对象调用了[dispose](./js-apis-arkui-frameNode.md#dispose12)接口，例如：item.dispose()。
 
 **处理步骤**
 
@@ -139,7 +139,7 @@ The current node has been adopted.
 
 **处理步骤**
 
-将当前节点取消被接纳，再执行当前操作。
+取消当前节点被接纳为附属节点的状态后，再执行当前操作。
 
 ## 100028 当前节点不在主节点树上
 
@@ -167,7 +167,7 @@ Reuse/Recycle not implemented for ViewV2, yet.
 
 **错误描述**
 
-BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[组件复用](./js-apis-arkui-builderNode.md#reuse12)。
+BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[reuse](./js-apis-arkui-builderNode.md#reuse12)。
 
 **可能原因**
 
@@ -218,7 +218,7 @@ The node not mounted to component tree.
 
 **错误信息**
 
-Operation on passed in nodes in non UI threads is not supported.
+Operations on the provided node are not supported on non-UI threads.
 
 **错误描述**
 

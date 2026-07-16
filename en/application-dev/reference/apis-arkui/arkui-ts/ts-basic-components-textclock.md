@@ -47,6 +47,8 @@ Options used to build the **TextClock** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name           | Type     | Read-Only  | Optional | Description                                                    |
@@ -92,29 +94,29 @@ The following table shows how different settings of **format** work out.
 
 | Input Format               | Display Effect           |
 | ----------------------- | ------------------- |
-| EEEE, M, d, yyyy      | Saturday, February 4, 2023|
-| MMM d, yyyy           | February 4, 2023       |
-| EEEE, M, d            | Saturday, February 4      |
-| MMM d                 | February 4             |
-| MM/dd/yyyy              | 02/04/2023          |
-| EEEE MM dd          | Saturday February 04    |
-| yyyy       | 2023             |
-| yy       | 23               |
-| MM         | February               |
-| M              | February                |
-| dd (complete date)         | 04               |
-| d               | 4                |
-| EEEE (full name)       | Saturday             |
-| E, EE, EEE (abbreviation) | Sat               |
-| MMM d, yyyy           | February 4, 2023       |
-| yyyy/M/d                | 2023/2/4            |
-| yyyy-M-d                | 2023-2-4            |
-| yyyy.M.d                | 2023.2.4            |
+| EEEE, M d, yyyy      | Saturday, Feb 4, 2023|
+| M d, yyyy           | Feb 4, 2023       |
+| EEEE, M d            | Saturday, Feb 4      |
+| M d                 | Feb 4             |
+| MM/dd/yyyy              | Feb/04/2023         |
+| EEEE MM dd          | Saturday Feb 04    |
+| yyyy (4-digit year)       | 2023             |
+| yy (2-digit year)       | 23               |
+| MM         | Feb               |
+| M              | Feb                |
+| dd (2-digit day)         | 04               |
+| d              | 4                |
+| EEEE (full week name)       | Saturday             |
+| E, EE, EEE (abbreviated week name) | Sat               |
+| M d, yyyy           | Feb 4, 2023       |
+| yyyy/M/d                | 2023/Feb/4            |
+| yyyy-M-d                | 2023-Feb-4           |
+| yyyy.M.d                | 2023.Feb.4           |
 | HH:mm:ss   | 17:00:04            |
-| aa hh:mm:ss| 5:00:04 AM       |
+| aa hh:mm:ss| AM 5:00:04       |
 | hh:mm:ss   | 5:00:04             |
 | HH:mm         | 17:00               |
-| aa hh:mm      | 5:00 AM          |
+| aa hh:mm      | AM 5:00          |
 | hh:mm         | 5:00                |
 | mm:ss         | 00:04               |
 | mm:ss.SS | 00:04.91            |
@@ -138,7 +140,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: '#c5ffffff'; default value for other devices: 'e6182431'|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: **'#c5ffffff'**; default value for other devices: **'e6182431'**|
 
 ### fontSize
 
@@ -210,7 +212,7 @@ Sets the font family.
 
 | Name| Type                                  | Mandatory| Description                                                        |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported for applications.<br>Only the 'HarmonyOS Sans' font is supported for widgets.|
+| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>The **'HarmonyOS Sans'** font and [registered custom fonts](../js-apis-font.md) are supported for applications.<br>Only the **'HarmonyOS Sans'** font is supported for widgets.|
 
 ### textShadow<sup>11+</sup>
 
@@ -222,13 +224,15 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Font shadow of the text.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow.|
 
 ### fontFeature<sup>11+</sup>
 
@@ -248,6 +252,8 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -264,13 +270,15 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextClockConfiguration>](#textclockconfiguration12)| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12)>| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
 
 ### dateTimeOptions<sup>12+</sup>
 
@@ -281,6 +289,8 @@ Sets whether to display a leading zero for the hour.
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,12 +386,14 @@ You need a custom class to implement the **ContentModifier** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | timeZoneOffset | number | No| No| Time zone offset of the text clock.<br>The value range is [-14, 12], indicating UTC+12 to UTC-12. A negative value indicates Eastern Standard Time, and a positive value indicates Western Standard Time. For example, **-8** indicates UTC+8. If the value is a floating point number within the value range, it is rounded off, with the decimal portion discarded.|
-| started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is disabled.<br>Default value: **true**|
+| started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is stopped.<br>Default value: **true**|
 | timeValue | number | No| No| Time zone offset of the text clock in seconds from UTC.|
 
 ## Example
@@ -389,9 +401,9 @@ You need a custom class to implement the **ContentModifier** API.
 
 This example demonstrates the basic usage of the **TextClock** component, setting the clock display format using the [format](#format) attribute.
 
-Clicking **"start TextClock"** triggers the callback to invoke **TextClockController** and initiate the clock. Clicking **"stop TextClock"** pauses the clock via **TextClockController**.
+Clicking **"start TextClock"** triggers the callback to invoke **TextClockController** and initiate the clock. Clicking **"stop TextClock"** to invoke **TextClockController** and stop the clock.
 
-The example demonstrates how to continuously update **accumulateTime** content during clock updates by invoking the [TextClockController](#textclockcontroller) callback.
+This example uses the [onDateChange](#ondatechange) callback to update **accumulateTime** whenever the text clock refreshes.
 
 ```ts
 @Entry
@@ -477,7 +489,7 @@ struct TextClockExample {
 ![TextshadowExample](figures/text_clock_textshadow.png)
 
 ### Example 3: Configuring the Custom Content Area
-This example implements the functionality of customizing the style of a text clock, creating a time picker component with a custom style: The time picker dynamically adjusts its selected value based on the text clock's timezone offset and the time zone offset in seconds from UTC, creating a clock effect; depending on whether the text clock is started, the time picker toggles between a 12-hour and a 24-hour format display.
+This example implements the functionality of customizing the style of a text clock, creating a time picker component with a custom style: The time picker dynamically adjusts its selected value based on the text clock's timezone offset and the timezone offset in seconds from UTC to deliver a clock effect. Depending on whether the text clock is started, the time picker toggles between a 12-hour and a 24-hour format display.
 
 ``` ts
 class MyTextClockStyle implements ContentModifier<TextClockConfiguration> {

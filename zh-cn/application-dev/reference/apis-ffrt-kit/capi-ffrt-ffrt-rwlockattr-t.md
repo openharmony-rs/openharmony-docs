@@ -2,11 +2,10 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-
 
 ```c
 typedef struct {...} ffrt_rwlockattr_t
@@ -14,7 +13,7 @@ typedef struct {...} ffrt_rwlockattr_t
 
 ## 概述
 
-FFRT读写锁属性结构。
+读写锁属性结构体，用于存储读写锁的属性信息。
 
 **起始版本：** 18
 
@@ -28,6 +27,6 @@ FFRT读写锁属性结构。
 
 | 名称 | 描述 |
 | -- | -- |
-| long storage | FFRT读写锁属性占用空间 |
+| long storage | 读写锁属性的内部存储。请勿直接访问，直接访问可能导致读写锁属性失效。 |
 
 

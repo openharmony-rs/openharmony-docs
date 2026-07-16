@@ -12,7 +12,7 @@ typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle
 
 ## Overview
 
-Defines a content modifier pointer.
+Defines the pointer to a render content modifier.
 
 **Since**: 20
 

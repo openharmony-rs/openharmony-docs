@@ -42,9 +42,9 @@
 | by             | number                             | -      | 相对被指定动画的属性偏移值，from默认为原属性值。             |
 | opacity        | number                             | 1      | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。<br/>默认值：1 |
 | fill-opacity   | number                             | 1.0    | 字体填充透明度。<br/>默认值：1.0                             |
-| stroke         | &lt;color&gt;                      | black  | 绘制字体边框并指定颜色。<br/>默认值：black                   |
-| stroke-width   | number                             | 1      | 字体边框宽度。<br/>默认值：1px                               |
-| stroke-opacity | number                             | 1.0    | 字体边框透明度。<br/>默认值：1.0                             |
+| stroke         | &lt;color&gt;                      | black  | 绘制字体描边并指定颜色。<br/>默认值：black                   |
+| stroke-width   | number                             | 1      | 字体描边宽度。<br/>默认值：1，单位px。                          |
+| stroke-opacity | number                             | 1.0    | 字体描边透明度。<br/>默认值：1.0                             |
 
 
 ## 示例
@@ -77,7 +77,7 @@ textPath属性示例，textpath文本内容沿着属性path中的路径绘制文
 ```
 
 
-![zh-cn_image_0000001173164775](figures/zh-cn_image_0000001173164775.png)
+![textPath](figures/textPath.png)
 
 textpath与tspan组合示例与效果图
 
@@ -97,7 +97,7 @@ textpath与tspan组合示例与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173324691](figures/zh-cn_image_0000001173324691.png)
+![textPath02](figures/textPath02.png)
 
 ```html
 <!-- xxx.hml -->
@@ -117,7 +117,7 @@ textpath与tspan组合示例与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173324689](figures/zh-cn_image_0000001173324689.png)
+![textPath01](figures/textPath01.png)
 
 ```html
 <!-- xxx.hml -->
@@ -170,7 +170,7 @@ startOffset属性动画，文本绘制时起点偏移从10%运动到40%，不绘
 </div>
 ```
 
-![zh-cn_image_0000001127125118](figures/zh-cn_image_0000001127125118.gif)
+![onTextPath](figures/onTextPath.gif)
 
 textpath与tspan组合属性动画与效果图
 
@@ -201,7 +201,7 @@ textpath与tspan组合属性动画与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173324693](figures/zh-cn_image_0000001173324693.gif)
+![textPath03](figures/textPath03.gif)
 
 (1) "tspan attribute x|rotate"  文本绘制起点偏移从50px运动到100px，顺时针旋转0度到360度。
 
@@ -237,7 +237,7 @@ textpath与tspan组合属性动画与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173164779](figures/zh-cn_image_0000001173164779.gif)
+![textPath](figures/textPath.gif)
 
 (1) "This is TextPath." 在path上无偏移绘制第一段文本内容，大小30px，颜色"\#D2691E"。
 

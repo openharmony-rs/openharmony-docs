@@ -11,7 +11,7 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的音频解码，即将媒体数据解码为PCM码流。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#音频解码)。
 
@@ -19,7 +19,7 @@
 
 通常推荐使用异步模式，详细内容请参考[音频解码](audio-decoding.md)。若需要主动请求buffer去送帧，则可以使用同步模式。
 
-将音视频文件解码为PCM码流，通常需要以下步骤：[媒体数据解析](audio-video-demuxer.md) -> 音频解码。
+将音视频文件解码为PCM码流，通常需要以下步骤：[媒体数据解封装](audio-video-demuxer.md) -> 音频解码。
 
 本指南描述音频解码过程：输入音频帧和解码出PCM码流。
 
@@ -148,7 +148,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ![Audio decoder format range description](figures/decoder_format.png)
    <!--RP2End-->
 
-   从API version 20开始，支持[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
+   从API version 20开始，支持通过[OH_AVCapability_GetAudioSupportedSampleRateRanges](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
 
    | 音频解码类型 |    采样率(Hz)   |
    | ----------- | --------------- |
@@ -157,6 +157,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | APE         | 1 ~ 2147483647  |
 
    ```c++
+   // 以下配置的值仅为示例值，开发者需根据实际解码能力动态设置。
    // 配置音频采样率（必须）。
    constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
    // 配置音频声道数（必须）。
@@ -214,7 +215,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 7. （可选）调用OH_AVCencInfo_SetAVBuffer()，设置cencInfo。
 
-   如果当前播放的节目是DRM加密节目，并且由上层应用进行[媒体数据解析](audio-video-demuxer.md)，则需要调用OH_AVCencInfo_SetAVBuffer()将cencInfo设置给AVBuffer，以实现媒体数据的解密。
+   如果当前播放的节目是DRM加密节目，并且由上层应用进行[媒体数据解封装](audio-video-demuxer.md)，则需要调用OH_AVCencInfo_SetAVBuffer()将cencInfo设置给AVBuffer，以实现媒体数据的解密。
 
    添加头文件：
 

@@ -142,7 +142,7 @@ OH_Drawing_MatrixDestroy(matrix);
 
 | Original Image| Translated Image|
 | -------- | -------- |
-| ![image_0000002194110929](figures/image_0000002194110929.png)| ![image_0000002194025285](figures/image_0000002194025285.png)|
+| ![Original-Image3](figures/Original-Image3.png)| ![Translated-Image](figures/Translated-Image.png)|
 
 
 ### Rotation
@@ -175,7 +175,7 @@ OH_Drawing_MatrixDestroy(matrix);
 
 | Original Image| Rotated Image|
 | -------- | -------- |
-| ![image_0000002158584410](figures/image_0000002158584410.png)| ![image_0000002158584398](figures/image_0000002158584398.png)|
+| ![Original-Image1](figures/Original-Image1.png)| ![Rotated-Image](figures/Rotated-Image.png)|
 
 
 ### Scaling
@@ -207,7 +207,7 @@ OH_Drawing_RectDestroy(rect);
 
 | Original Image| Scaled up Image|
 | -------- | -------- |
-| ![image_0000002194110925](figures/image_0000002194110925.png)| ![image_0000002158584402](figures/image_0000002158584402.png)|
+| ![Original-Image2](figures/Original-Image2.png)| ![Scaled-up-Image](figures/Scaled-up-Image.png)|
 
 
 ## Saving and Restoring the Canvas Status
@@ -259,7 +259,7 @@ OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-![image_0000002158744186](figures/image_0000002158744186.png)
+![Development-example](figures/Development-example.png)
 
 <!--RP1-->
 ## Samples

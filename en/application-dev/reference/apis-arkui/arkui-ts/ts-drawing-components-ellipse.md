@@ -281,7 +281,7 @@ struct EllipseExample {
 }
 ```
 
-![en-us_image_0000001174104394](figures/en-us_image_0000001174104394.png)
+![ellipse1](figures/ellipse1.png)
 
 ### Example 2: Drawing an Ellipse with Different Parameter Types for Width and Height
 

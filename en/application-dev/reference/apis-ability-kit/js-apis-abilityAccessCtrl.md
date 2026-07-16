@@ -6,11 +6,132 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7fb5bd7ccfe62b909963659269cc03a975018baf translatedAt=2026-06-17T03:27:46.065Z pushedAt=2026-06-18T12:56:34.955Z -->
 
-This module provides permission verification and management capabilities for applications.
+## Module Overview
+
+Program access control provides permission verification and management capabilities for apps, supporting permission status checks before accessing protected resources, runtime authorization requests, settings page authorization guidance, and permission status change monitoring. Permissions are divided into three categories: system_grant (automatically granted by the system), user_grant (requires manual user authorization), and [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) (manual setting authorization). Apps must declare the required permissions in the configuration file. For details about the permission management mechanism, see [Application Permission Management Overview](../../security/AccessToken/app-permission-mgmt-overview.md).
+
+This module is mainly used in the following scenarios:
+
+- Before executing a service, verify whether the current app has the permissions required to access protected resources.
+
+- When a permission is not granted, bring up the runtime permission dialog box or the permission settings page to request user authorization.
+
+- Subscribe to permission status change events of the current app, and adjust the service process in a timely manner after the permission status changes.
 
 > **NOTE**
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
+## Key Classes/Interfaces
+
+### Core Enum Types
+
+- **[GrantStatus](#grantstatus):** Enum for permission authorization status, used to indicate the authorization status of the current permission.
+
+- **[SwitchType](#switchtype12):** Enum for global switch types, used to indicate the type of system global switch to request.
+
+- **[PermissionStateChangeType](#permissionstatechangetype18):** Enum for permission state change types, used to indicate changes such as authorization and deauthorization.
+
+- **[PermissionStatus](#permissionstatus20):** Enum for permission status, used to indicate the current permission status.
+
+- **[SelectedResult](#selectedresult22):** Enum for the selection result on the settings page authorization, used to indicate the user's selection result in the permission settings dialog box.
+
+### Core Interface Types
+
+- **[PermissionStateChangeInfo](#permissionstatechangeinfo18):** Permission state change event object, used to return the change type, app identity, and permission name.
+
+- **[PermissionRequestResult](#permissionrequestresult10):** Permission request result object, used to return the list of requested permission names, authorization results, and dialog box display results.
+
+- **[Context](#context10):** Context object, used to initiate a permission request or open the permission settings dialog box.
+
+### Core Classes
+
+- **[AtManager](#atmanager):** Program access control management class, providing capabilities such as permission verification, permission dialog box request, settings page authorization guidance, and permission status monitoring.
+
+![](figures/abilityAccessCtrl.png)
+
+### API Combination Usage Description
+
+Scenario 1: Request authorization before accessing protected resources.
+
+Scenario description: Before an app accesses protected resources such as the camera, microphone, or location, it can verify the permission status through [AtManager](#atmanager), wait for the authorization status to be returned, and then determine whether to request user authorization.
+
+The typical usage process is as follows:
+
+```ts
+import { abilityAccessCtrl, Context, Permissions, bundleManager, common } from '@kit.AbilityKit';
+
+// 1. Create a permission management instance
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let bundleInfo: bundleManager.BundleInfo =
+  bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+let permissionName: Permissions = 'ohos.permission.CAMERA';
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+// 2. Check whether the target permission has been granted
+await atManager.checkAccessToken(tokenID, permissionName);
+
+// 3. If not granted, request the permission from the user
+await atManager.requestPermissionsFromUser(context, [permissionName]);
+
+// 4. After the request is complete, confirm the current permission status again
+atManager.getSelfPermissionStatus(permissionName);
+
+// 5. Call the protected service capability after the permission is satisfied
+// call protected API
+```
+
+Scenario 2: Guide the user to authorize through the settings page.
+
+Scenario description: When the user has denied authorization, or the current permission only allows authorization through the settings page, you can first query the current permission status, and then call [openPermissionOnSetting](#openpermissiononsetting22) or [requestPermissionOnSetting](#requestpermissiononsetting12) to guide the user to continue completing the authorization.
+
+The typical usage process is as follows:
+
+```ts
+import { abilityAccessCtrl, Context, Permissions, common } from '@kit.AbilityKit';
+
+// 1. Create a permission management instance
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permissionName: Permissions = 'ohos.permission.CAMERA';
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+// 2. Query the current permission status
+atManager.getSelfPermissionStatus(permissionName);
+
+// 3. Guide the user to the Settings page based on the status
+await atManager.openPermissionOnSetting(context, permissionName);
+
+// 4. Or request the permission through the Settings authorization process
+await atManager.requestPermissionOnSetting(context, [permissionName]);
+```
+
+Scenario 3: Monitor changes in your own permission status.
+
+Scenario description: When an app needs to adjust the UI or service logic in real time based on authorization changes, it can use [on](#on18) to subscribe to its own permission status changes. When monitoring is no longer needed, use [off](#off18) to unsubscribe.
+
+The typical usage process is as follows:
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+
+// 1. Create a permission management instance
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+let callback: (data: abilityAccessCtrl.PermissionStateChangeInfo) => void =
+  (data: abilityAccessCtrl.PermissionStateChangeInfo): void => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  };
+
+// 2. Subscribe to the status change of the specified permission
+atManager.on('selfPermissionStateChange', permissionList, callback);
+
+// 3. Unsubscribe when no longer needed
+atManager.off('selfPermissionStateChange', permissionList, callback);
+```
 
 ## Modules to Import
 
@@ -22,12 +143,11 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 createAtManager(): AtManager
 
-Access control: Creates an object for application access control.
+Creates a program access control management instance for scenarios such as permission verification, runtime permission request, settings page authorization guidance, and permission status change monitoring. After the call is successful, an AtManager instance is returned, which can be used for subsequent permission management operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Security.AccessToken
-
 
 **Return value**
 
@@ -38,18 +158,21 @@ Access control: Creates an object for application access control.
 **Example**
 
 ```ts
+// Create a permission management instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 ```
 
 ## AtManager
 
-Provides APIs for application access control.
+Program access control management class, providing capabilities such as permission verification, runtime permission dialog box request, settings page authorization guidance, global switch request, and permission status monitoring. Obtain an instance through [createAtManager](#abilityaccessctrlcreateatmanager).
 
 ### checkAccessToken<sup>9+</sup>
 
 checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
 
-Checks whether the user has granted the permission. This API uses a promise to return the result.
+Verifies whether an app has been granted the specified permission. After the call is successful, the authorization status of the current permission is returned. The developer can decide accordingly whether to directly execute subsequent services, continue to initiate a permission request, or guide the user to go to system settings to modify the authorization status. This API uses a promise to return the result.
+
+Applicable to scenarios where a pre-permission check is performed before an app accesses protected resources such as the camera, microphone, or location.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -59,14 +182,14 @@ Checks whether the user has granted the permission. This API uses a promise to r
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | ID of the target application to be verified, which can be obtained from the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of [BundleInfo](js-apis-bundleManager-bundleInfo.md). The token ID of the current application can be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10).|
-| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes  | Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID   |  number   | Yes   | Identity identifier of the target app to be verified. It can be obtained through [bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14). If verifying the current app, it can also be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001. |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be verified. The permission name cannot exceed 256 characters. Passing in an invalid value returns error code 12100001. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise used to return the result. Returns the authorization status result.|
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise used to return the authorization status result. |
 
 **Error codes**
 
@@ -83,10 +206,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the bundleInfo of the app
 let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// Obtain the TokenID of the app
 let tokenID: number = bundleInfo.appInfo.accessTokenId;
+// Set the permission name to be verified
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+// Verify whether the app has been granted the permission
 atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`checkAccessToken success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -98,7 +226,11 @@ atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtr
 
 checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
-Verifies whether a permission is granted to an application. This API returns the result synchronously.
+Verifies whether an app has been granted the specified permission, and synchronously returns the authorization status of the permission. The developer can decide accordingly whether to directly execute subsequent service processes, continue to initiate a permission request, or guide the user to go to the settings page to modify the authorization status.
+
+Compared with [checkAccessToken](#checkaccesstoken9), this API returns the authorization status synchronously, making it suitable for permission verification scenarios that do not require asynchronous processing.
+
+Applicable to scenarios where a pre-permission check is performed before an app accesses protected resources such as the camera, microphone, or location.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -108,8 +240,8 @@ Verifies whether a permission is granted to an application. This API returns the
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | ID of the target application to be verified, which can be obtained from the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of [BundleInfo](js-apis-bundleManager-bundleInfo.md). The token ID of the current application can be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10).|
-| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes  | Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID   |  number   | Yes   | Identity identifier of the target app to be verified. It can be obtained through [bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14). If verifying the current app, it can also be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10). This parameter must be an integer greater than 0. If 0 is passed in, error code 12100001 is returned. |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be verified. The permission name cannot exceed 256 characters. If an invalid value is passed in, error code 12100001 is returned. |
 
 **Return value**
 
@@ -131,10 +263,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the bundleInfo of the app
 let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// Obtain the TokenID of the app
 let tokenID: number = bundleInfo.appInfo.accessTokenId;
+// Set the permission name to be verified
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+// Synchronously verify whether the app has been granted the permission
 let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
 console.info(`Result: ${data}`);
 ```
@@ -143,11 +280,19 @@ console.info(`Result: ${data}`);
 
 on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-Subscribes to the permission state change events of the specified permission list of the current application. Such event triggers a corresponding callback. This API uses an asynchronous callback to return the result.
+Subscribes to permission authorization status change events for a specified permission list of this app, using an asynchronous callback. It can be used in scenarios such as updating the UI or service logic in real time based on permission status, and monitoring user authorization behavior. When monitoring is no longer needed, call [off](#off18) to unsubscribe.
 
 - When this subscription API is called for multiple times, if the subscribed permission lists are the same but the callbacks are different, the subscription is successful.
 
 - When this subscription API is called for multiple times, if the subscribed permission lists contain the same subset and the callbacks are the same, the subscription fails.
+
+There are two possible scenarios when the permission status changes from "authorized" to "unauthorized":
+
+- User actively revokes: The system will terminate the corresponding app process.
+
+- System actively reclaims: The app process will not be terminated. A typical scenario is the one-time authorization of a security component, which is automatically reclaimed by the system after the authorization period ends.
+
+This API is usually used in conjunction with [off](#off18). When monitoring is no longer needed, call off to unsubscribe.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -158,7 +303,7 @@ Subscribes to the permission state change events of the specified permission lis
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'selfPermissionStateChange'**, which indicates the changes in the permission states specific to this application alone. |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to state changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes   | List of permission names to subscribe to. If empty, it indicates subscription to status changes of all permissions.<br/>The length of each permission name in the list cannot exceed 256 characters. If all permission names in the list are invalid, error code 12100001 is returned.<br/>The array length cannot exceed 1024. If the limit is exceeded, error code 12100001 is returned. |
 | callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | Yes| Callback used to return the result. Callback for subscribing to status change events of the specified permission name.|
 
 **Error codes**
@@ -177,16 +322,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Create a permission management instance
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  // Set the list of permissions to subscribe to
   let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+  // Subscribe to permission status changes
   atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
     console.info('receive permission state change');
     console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
   });
-} catch(err) {
-  console.error(`Code: ${err.code}, message: ${err.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -194,9 +344,13 @@ try {
 
 off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-Unsubscribes from changes in the state of the specified permissions for this application. This API uses an asynchronous callback to return the result.
+Unsubscribes from permission status change events for the specified permission list of itself. After the unsubscription is successful, status change notifications for the specified permission list will no longer be received.
 
-If **callback** is not specified, this API will unregister all callbacks for **permissionList**.
+This API can be called to unsubscribe in scenarios such as when there is no need to continue monitoring permission changes, when the app exits, or when switching pages.
+
+When the callback parameter is not passed in, all callback functions associated with the permissionList will be deleted in batch.
+
+This API is usually used in conjunction with [on](#on18) to cancel the monitoring relationship created through on.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -206,9 +360,9 @@ If **callback** is not specified, this API will unregister all callbacks for **p
 
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
-| type               | string         | Yes  | Event type. The value is **'selfPermissionStateChange'**, which indicates the changes in the permission states specific to this application alone. |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#on18). If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | No| Callback used to return the result. Unsubscribes the callback for status change events of the specified tokenID and permission name.|
+| type               | string         | Yes   | Type of the unsubscription event, which is fixed as 'selfPermissionStateChange', indicating a permission status change event.  |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes   | List of permission names to unsubscribe from. If empty, it indicates unsubscribing from all permission status changes, and must match the permission list used during [on](#on18) subscription (order insensitive). |
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | No | Callback function. Callback for unsubscribing from the status change event of the specified permission names. If this parameter is not passed, all callback functions associated with permissionList will be deleted in batch.|
 
 **Error codes**
 
@@ -224,13 +378,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Create a permission management instance
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  // Set the permission list to unsubscribe from
   let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+  // Unsubscribe from permission status changes
   atManager.off('selfPermissionStateChange', permissionList);
-} catch(err) {
-  console.error(`Code: ${err.code}, message: ${err.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -238,9 +397,11 @@ try {
 
 requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permissions&gt;, requestCallback: AsyncCallback&lt;PermissionRequestResult&gt;): void
 
-Starts a dialog box for [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md) for <!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->. This API uses an asynchronous callback to return the result.
+Used by <!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End--> to bring up a dialog box to request [user authorization](../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses an asynchronous callback to return the result.
 
-If the user rejects to grant permissions, the dialog box cannot be displayed again. If permission granting is required, the user can manually grant permissions on the **Settings** page or call [requestPermissionOnSetting](#requestpermissiononsetting12) to display the permission settings dialog box for the user to grant permissions.
+Applicable to scenarios where an app proactively applies for [user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) permissions from the user before accessing protected resources for the first time.
+
+If the user denies authorization, the authorization dialog box cannot be brought up again through this API. The developer can guide the user to go to the system settings interface for manual authorization, or call [requestPermissionOnSetting](#requestpermissiononsetting12) to bring up the permission settings dialog box to guide the user to complete authorization.
 
 <!--RP3-->
 ![requestPermissionsFromUser](figures/requestPermissionsFromUser.png)
@@ -256,9 +417,9 @@ If the user rejects to grant permissions, the dialog box cannot be displayed aga
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the <!--RP1-->UIAbility<!--RP1End--> that requests the permission.|
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes| Permissions to request. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| requestCallback | AsyncCallback&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Yes| Callback used to return the result. If the dialog box for requesting permissions is displayed successfully, **err** is **undefined**, and **data** is the obtained **PermissionRequestResult**. Otherwise, **err** is an error object.|
+| context | [Context](js-apis-inner-application-context.md) | Yes | Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes | List of permission names. This array cannot be empty. It is recommended to pass in only the sensitive permissions necessary for the current business scenario, avoiding requesting too many permissions at once. The length of a permission name cannot exceed 256 characters. |
+| requestCallback | AsyncCallback&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Yes | Callback function. After the call is complete, error information is returned through **err**, and the permission request result object is returned through **data**. The developer can determine whether the user has authorized, whether a dialog box has been displayed, and the reason for failure based on the permission request result. |
 
 **Error codes**
 
@@ -276,13 +437,16 @@ For details about how to obtain the context in the example, see [Obtaining the C
 
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 // Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// Request user authorization
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
   if (err) {
     console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
@@ -300,9 +464,11 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
 
 requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permissions&gt;): Promise&lt;PermissionRequestResult&gt;
 
-Starts a dialog box for [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md) for <!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->. This API uses a promise to return the result.
+Used by <!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End--> to bring up a dialog box to request [user authorization](../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses a promise to return the result.
 
-If the user rejects to grant permissions, the dialog box cannot be displayed again. If permission granting is required, the user can manually grant permissions on the **Settings** page or call [requestPermissionOnSetting](#requestpermissiononsetting12) to display the permission settings dialog box for the user to grant permissions.
+Applicable to scenarios where an app proactively applies for user_grant permissions from the user before accessing protected resources for the first time.
+
+If the user denies authorization, the authorization dialog box cannot be brought up again through this API. The developer can guide the user to go to the system settings interface for manual authorization, or call [requestPermissionOnSetting](#requestpermissiononsetting12) to bring up the permission settings dialog box to guide the user to complete authorization.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -314,14 +480,14 @@ If the user rejects to grant permissions, the dialog box cannot be displayed aga
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the <!--RP1-->UIAbility<!--RP1End--> that requests the permission.|
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes| Permissions to request. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| context | [Context](js-apis-inner-application-context.md) | Yes | Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes | List of permission names. This array cannot be empty. It is recommended to pass in only the sensitive permissions necessary for the current business scenario and avoid requesting too many permissions at once. The length of a permission name cannot exceed 256 characters. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise used to return the result. Returns the API result.|
+| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise used to return the permission request result object, which contains information such as the permission array, the authorization result of each permission, whether to show a dialog box, and the failure reason. |
 
 **Error codes**
 
@@ -339,13 +505,16 @@ For details about how to obtain the context in the example, see [Obtaining the C
 
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 // Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// Request user authorization
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
   console.info(`requestPermissionsFromUser success, result: ${data}`);
   console.info('requestPermissionsFromUser data permissions:' + data.permissions);
@@ -361,9 +530,11 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
 
 requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permissions&gt;): Promise&lt;Array&lt;GrantStatus&gt;&gt;
 
-Starts a permission setting dialog box again for [UIAbility](js-apis-app-ability-uiAbility.md#uiability) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability). This API uses a promise to return the result.
+Used by [UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability) to bring up the permission settings dialog box for a second time, and returns an array of authorization statuses. This API uses a promise to return the result.
 
-Before calling this API, the application must have called [requestPermissionsFromUser](#requestpermissionsfromuser9). If the user grants the permissions required when the authorization dialog box is displayed the first time, calling this API will not display the permission settings dialog box.
+Applicable to scenarios where the user has already denied the permission grant in the first dialog box and needs to continue applying for the permission through the settings page.
+
+Before calling this API, the app needs to call [requestPermissionsFromUser](#requestpermissionsfromuser9) first. If the user has already authorized in the first dialog box, calling this API will not bring up the authorization dialog box.
 
 <!--RP4-->
 ![requestPermissionOnSetting](figures/requestPermissionOnSetting.png)
@@ -379,14 +550,14 @@ Before calling this API, the application must have called [requestPermissionsFro
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the UIAbility/UIExtensionAbility that requests the permissions.|
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes| Permissions to request. For details about the permissions, see [Application Permission Groups](../../security/AccessToken/app-permission-group-list.md).|
+| context | [Context](js-apis-inner-application-context.md) | Yes | Context of the UIAbility or UIExtensionAbility requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the pop-up window. |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes | List of permission names. This array cannot be empty. Only user_grant permissions that have been declared and for which the user has revoked authorization can be passed in, and the permissions passed in must belong to the same [permission group](../../security/AccessToken/app-permission-group-list.md). The length of a permission name cannot exceed 256 characters. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[GrantStatus](#grantstatus)&gt;&gt; | Promise used to return the result. Returns the authorization status result.|
+| Promise&lt;Array&lt;[GrantStatus](#grantstatus)&gt;&gt; | Promise used to return an array of authorization statuses. Each element in the array corresponds to the authorization result of the respective permission in permissionList.|
 
 **Error codes**
 
@@ -403,13 +574,16 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 **Example**
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 // Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// Open the permission settings dialog box
 atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info(`requestPermissionOnSetting success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -421,9 +595,11 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 
 requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 
-Displays a dialog box for setting a global switch for UIAbility or UIExtensionAbility. This API uses a promise to return the result.
+Used by UIAbility/UIExtensionAbility to bring up the global switch settings dialog box. After the call is successful, if the global switch is off, the global switch settings interface will pop up for the user to operate. If the global switch is already on, the dialog box will not be brought up and **true** will be returned. This API uses a promise to return the result.
 
-When the features such as recording and photographing are disabled, the application can display the dialog box, asking the user to enable the related features. If the global switch is turned on, no dialog box will be displayed.
+Applicable to scenarios that depend on system-level global switches (such as camera, microphone, and location) being turned on.
+
+When an app needs to use functions such as the camera, microphone, or location that require global switch control, if the corresponding global switch is turned off, the app can bring up this dialog box to request the user to turn on the corresponding function. If the current global switch status is on, the dialog box will not be brought up.
 
 <!--RP5-->
 ![requestGlobalSwitch](figures/requestGlobalSwitch.png)
@@ -439,14 +615,14 @@ When the features such as recording and photographing are disabled, the applicat
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the UIAbility/UIExtensionAbility that requests the permissions.|
-| type | [SwitchType](#switchtype12) | Yes| Type of the global switch.|
+| context | [Context](js-apis-inner-application-context.md) | Yes | Context of the UIAbility or UIExtensionAbility that requests the global switch. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
+| type | [SwitchType](#switchtype12) | Yes | Specifies the type of global switch to request to enable. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if the global switch is enabled. Returns **false** if the global switch is disabled.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates the current global switch is enabled, and **false** indicates the current global switch is still disabled. |
 
 **Error codes**
 
@@ -462,14 +638,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 // Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
+// Open the global switch settings dialog box
+atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
 }).catch((err: BusinessError): void => {
   console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
@@ -480,7 +659,9 @@ atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then
 
 getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 
-Queries the permission status of an application. This API returns the result synchronously.
+Queries the permission status of the current app and returns the result synchronously. After the call is successful, the status of the current permission is returned. Unlike [checkAccessToken](#checkaccesstoken9), this API does not require passing in the app identity and is only used to query the permission status of the current app itself.
+
+Applicable to scenarios such as before determining whether to request a permission, confirming the authorization result after a permission request, or re-querying after monitoring a permission status change.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -490,7 +671,7 @@ Queries the permission status of an application. This API returns the result syn
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes  | Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes | Name of the permission whose status is to be queried. The permission name cannot be empty and its length cannot exceed 256 characters. If an invalid value is passed, error code 12100001 is returned. |
 
 **Return value**
 
@@ -513,12 +694,15 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission management instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 try {
+  // Query the permission status of the current app
   let data: abilityAccessCtrl.PermissionStatus = atManager.getSelfPermissionStatus('ohos.permission.CAMERA');
   console.info(`getSelfPermissionStatus success, result: ${data}`);
-} catch(err) {
-  console.error(`getSelfPermissionStatus fail, code: ${err.code}, message: ${err.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getSelfPermissionStatus fail, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -526,7 +710,9 @@ try {
 
 openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
 
-Starts the dialog box for redirection to the settings page for [UIAbility](js-apis-app-ability-uiAbility.md#uiability) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability). This API uses a promise to return the result.
+Used by [UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability) to bring up the permission settings page. After the call is successful, the permission settings page will be opened. After the user operates on the page, the user's selection result on the settings page will be returned. This API uses a promise to return the result.
+
+Applicable to scenarios where [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) type permissions cannot be applied for through the normal authorization dialog box and the user must be guided to enter system settings to complete authorization. manual_settings type permissions are permissions that can only be manually enabled by the user in system settings and cannot be directly applied for through the normal authorization dialog box.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -536,14 +722,14 @@ Starts the dialog box for redirection to the settings page for [UIAbility](js-ap
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the UIAbility/UIExtensionAbility that requests the permissions.|
-| permission | [Permissions](../../security/AccessToken/app-permissions.md) | Yes| Permission name. Only permissions whose authorization mode is [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) are supported.|
+| context | [Context](js-apis-inner-application-context.md) | Yes | Context of the UIAbility or UIExtensionAbility requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to open the settings page. |
+| permission | [Permissions](../../security/AccessToken/app-permissions.md) | Yes | Name of the permission for which the settings page needs to be opened. The permission name cannot exceed 256 characters. If an invalid permission or a permission not declared in module.json is passed in, error code 12100001 is returned. Only permissions of the [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization) type are supported. If a permission of another type is passed in, error code 12100014 is returned. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise used to return the result. Returns the pop-up window result of the redirection settings page.|
+| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise used to return the user's selection result on the settings page. |
 
 **Error codes**
 
@@ -563,9 +749,11 @@ For details about how to obtain the context in the example, see [Obtaining the C
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 // Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// Launch the pop-up window for redirecting to the settings page
 atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
   console.info(`openPermissionOnSetting success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -577,7 +765,11 @@ atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').the
 
 verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
-Verifies whether a permission is granted to an application. This API returns the result synchronously.
+Verifies whether an app has been granted the specified permission, and synchronously returns the authorization status of the permission. The developer can decide accordingly whether to directly execute subsequent service processes, continue to initiate a permission request, or guide the user to go to system settings to modify the authorization status.
+
+Applicable to scenarios where a pre-permission check is performed before an app accesses protected resources such as the camera, microphone, or location.
+
+It is recommended to use [checkAccessTokenSync](#checkaccesstokensync10) instead.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -585,8 +777,8 @@ Verifies whether a permission is granted to an application. This API returns the
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | ID of the target application to be verified, which can be obtained from the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of [BundleInfo](js-apis-bundleManager-bundleInfo.md). The token ID of the current application can be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10).|
-| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes  | Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID   |  number   | Yes   | Identity identifier of the target app to be verified. It can be obtained through [bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14). If verifying the current app, it can also be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10). This parameter must be an integer greater than 0. If 0 is passed in, error code 12100001 is returned. |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be verified. The permission name cannot exceed 256 characters. If an invalid value is passed in, error code 12100001 is returned. |
 
 **Return value**
 
@@ -607,16 +799,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the bundleInfo of the app
 let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// Obtain the TokenID of the app
 let tokenID: number = bundleInfo.appInfo.accessTokenId;
 try {
+  // Set the permission name to be verified
   let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+  // Synchronously verify whether the app has been granted the permission
   let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, permissionName);
   console.info(`verifyAccessTokenSync success, result: ${data}`);
-} catch(err) {
-  console.error(`verifyAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`verifyAccessTokenSync fail, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -624,7 +823,9 @@ try {
 
 verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
 
-Checks whether the user has granted the permission. This API uses a promise to return the result.
+Verifies whether an app has been granted the specified permission. After the call is successful, the authorization status of the current permission is returned. The developer can decide accordingly whether to directly execute subsequent services, continue to initiate a permission request, or guide the user to go to system settings to modify the authorization status. This API uses a promise to return the result.
+
+Applicable to scenarios where a pre-permission check is performed before an app accesses protected resources.
 
 > **NOTE**
 >
@@ -636,14 +837,14 @@ Checks whether the user has granted the permission. This API uses a promise to r
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | ID of the target application to be verified, which can be obtained from the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of [BundleInfo](js-apis-bundleManager-bundleInfo.md). The token ID of the current application can be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10).|
-| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes  | Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID   |  number   | Yes   | Identity identifier of the target app to be verified. It can be obtained through [bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14). If verifying the current app, it can also be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10). This parameter must be an integer greater than 0. If 0 is passed in, error code 12100001 is returned. |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to be verified. The permission name cannot exceed 256 characters. If an invalid value is passed in, error code 12100001 is returned. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise used to return the result. Returns the authorization status result.|
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise used to return the authorization status result. |
 
 **Example**
 
@@ -651,10 +852,15 @@ Checks whether the user has granted the permission. This API uses a promise to r
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the bundleInfo of the app
 let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// Obtain the TokenID of the app
 let tokenID: number = bundleInfo.appInfo.accessTokenId;
+// Set the permission name to be verified
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+// Verify whether the app has been granted the permission
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -666,11 +872,11 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 verifyAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStatus&gt;
 
-Checks whether the user has granted the permission. This API uses a promise to return the result.
+Verifies whether an app has been granted the specified permission. After the call is successful, the authorization status of the current permission is returned, and the developer can decide on subsequent operations accordingly. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [checkAccessToken](#checkaccesstoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. It is recommended to use [checkAccessToken](#checkaccesstoken9) instead.
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -678,14 +884,14 @@ Checks whether the user has granted the permission. This API uses a promise to r
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | Yes  | ID of the target application to be verified, which can be obtained from the accessTokenId field in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) of [BundleInfo](js-apis-bundleManager-bundleInfo.md). The token ID of the current application can be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10).|
-| permissionName | string | Yes  | Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| tokenID   |  number   | Yes   | Identity identifier of the target app to be verified. It can be obtained through [bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14). If verifying the current app, it can also be obtained through [bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001. |
+| permissionName | string | Yes   | Name of the permission to be verified. The permission name cannot exceed 256 characters. Passing in an invalid value returns error code 12100001. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise used to return the result. Returns the authorization status result.|
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise used to return the authorization status result. |
 
 **Example**
 
@@ -693,10 +899,15 @@ Checks whether the user has granted the permission. This API uses a promise to r
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a permission manager instance
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the bundleInfo of the app
 let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+// Obtain the TokenID of the app
 let tokenID: number = bundleInfo.appInfo.accessTokenId;
+// Set the permission name to be verified
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+// Verify whether the app has been granted the permission
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
 }).catch((err: BusinessError): void => {
@@ -762,7 +973,7 @@ Represents the permission state change details.
 
 type PermissionRequestResult = _PermissionRequestResult
 
-Represents the permission request result.
+Permission request result object, containing information such as the list of requested permission names, the authorization result of each permission, the dialog box display result, and the failure reason.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -772,13 +983,13 @@ Represents the permission request result.
 
 | Type| Description|
 | -------- | -------- |
-| [_PermissionRequestResult](js-apis-permissionrequestresult.md) | Permission request result object.|
+| [_PermissionRequestResult](js-apis-permissionrequestresult.md) | Permission request result object, which contains information such as the list of requested permission names, the authorization result of each permission, the pop-up display result, and the failure reason. |
 
 ## Context<sup>10+</sup>
 
 type Context = _Context
 
-Represents the context for the ability or application. It allows access to application-specific resources.
+Provides the context for the ability or application, which can be used to access application resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -788,7 +999,7 @@ Represents the context for the ability or application. It allows access to appli
 
 | Type| Description|
 | -------- | -------- |
-| [_Context](js-apis-inner-application-context.md) | Context for an ability or application to access to application-specific resources.|
+| [_Context](js-apis-inner-application-context.md) | Provides the context of an ability or application, which can be used to access the resources of the app. |
 
 ## PermissionStatus<sup>20+</sup>
 
@@ -802,9 +1013,9 @@ Enumerates the permission states.
 | ------------------ | ----- | ----------- |
 | DENIED  | -1    | The permission is not granted.|
 | GRANTED | 0     | The permission is granted.|
-| NOT_DETERMINED | 1     | The permission state is not determined. This value is returned when the application declares [user_grant permissions](../../security/AccessToken/permissions-for-all-user.md) and does not call [requestPermissionsFromUser](#requestpermissionsfromuser9) to request user authorization, or when the user changes the permission state to **Ask each time** in **Settings**.|
+| NOT_DETERMINED | 1     | Indicates not operated. The app declares a [user authorization permission](../../security/AccessToken/permissions-for-all-user.md) but has not yet called the [requestPermissionsFromUser](#requestpermissionsfromuser9) API to request authorization, or the user has changed the permission status to asking every time in settings, and this value is returned when querying the permission status. |
 | INVALID | 2     | The permission is invalid. The application does not [declare permissions](../../security/AccessToken/declare-permissions.md) or cannot process the request. For example, if the status of the approximate location permission is **NOT_DETERMINED**, this value will be returned when the status of the precise location permission is queried.|
-| RESTRICTED | 3     | The permission is restricted. <!--RP2-->The application is not allowed to call [requestPermissionsFromUser](#requestpermissionsfromuser9) to request user authorization.<!--RP2End--> |
+| RESTRICTED | 3     | Indicates restricted. <!--RP2-->The app is prohibited from requesting user authorization through the [requestPermissionsFromUser](#requestpermissionsfromuser9) API. <!--RP2End--> |
 
 ## SelectedResult<sup>22+</sup>
 

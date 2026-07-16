@@ -79,11 +79,11 @@ Button()
 
 | 名称                      | 类型                                          | 只读 | 可选 | 说明                                                       |
 | ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| type                      | [ButtonType](#buttontype枚举说明)             | 否   | 是  | 按钮显示样式。<br/>默认值：ButtonType.ROUNDED_RECTANGLE<br/>API version 18及之后，ButtonType的默认值修改为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| stateEffect               | boolean                                       | 否   | 是  | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true<br/>**说明：** <br/>当开启按压态显示效果，且开发者设置状态样式时，会基于状态样式设置完成后的背景色再进行颜色叠加。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11枚举说明) | 否   | 是  | 按钮的样式和重要程度，根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role12)接口设置，实际显示效果以最后一次设置为准。<br/>默认值：ButtonStyleMode.EMPHASIZED <br/>**说明：**  <br/>按钮重要程度：强调按钮>普通按钮>文字按钮。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| type                      | [ButtonType](#buttontype枚举说明)             | 否   | 是  | 按钮显示样式。<br/>默认值：API version 18及之后为ButtonType.ROUNDED_RECTANGLE，API version 18之前为ButtonType.Capsule。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| stateEffect               | boolean                                       | 否   | 是  | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true<br/>**说明：** <br/>当开启按压态显示效果，且开发者设置状态样式时，会基于状态样式设置完成后的背景色再进行颜色叠加。使用多态样式设置按压态时，需优先设置stateEffect为false，防止内置按压态与多态样式按压态冲突。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11枚举说明) | 否   | 是  | 按钮的样式和重要程度。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role12)接口设置，实际显示效果以最后一次设置为准。<br/>默认值：ButtonStyleMode.EMPHASIZED <br/>**说明：** 按钮重要程度：强调按钮>普通按钮>文字按钮。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | controlSize<sup>11+</sup> | [ControlSize](#controlsize11枚举说明)         | 否   | 是  | 按钮的尺寸。<br/>默认值：ControlSize.NORMAL<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| role<sup>12+</sup> | [ButtonRole](#buttonrole12枚举说明)         | 否   | 是  | 按钮的角色，根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle11)接口设置，实际显示效果以最后一次设置为准。<br/>默认值：ButtonRole.NORMAL <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| role<sup>12+</sup> | [ButtonRole](#buttonrole12枚举说明)         | 否   | 是  | 按钮的角色。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle11)接口设置，实际显示效果以最后一次设置为准。<br/>默认值：ButtonRole.NORMAL <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 属性
 
@@ -123,7 +123,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，不支持百分比。 |
+| value  | [Length](ts-types.md#length) | 是   | 设置文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，支持vp、fp等单位，不支持百分比。 |
 
 ### fontColor
 
@@ -141,7 +141,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')，显示为白色字体。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')。 |
 
 ### fontWeight
 
@@ -241,7 +241,7 @@ labelStyle(value: LabelStyle)
 
 buttonStyle(value: ButtonStyleMode)
 
-设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role12)接口设置，实际显示效果以最后一次设置为准。
+设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role12)接口设置，实际显示效果以最后一次设置为准。
 
 >**说明：**
 >
@@ -289,7 +289,7 @@ controlSize(value: ControlSize)
 
 role(value: ButtonRole)
 
-设置Button组件的角色。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle11)接口设置，实际显示效果以最后一次设置为准。
+设置Button组件的角色。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle11)接口设置，实际显示效果以最后一次设置为准。ERROR角色通常用于删除、清空等危险或警示性操作。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -303,7 +303,7 @@ role(value: ButtonRole)
 
 | 参数名 | 类型                                | 必填 | 说明                                                 |
 | ------ | ----------------------------------- | ---- | ---------------------------------------------------- |
-| value  | [ButtonRole](#buttonrole12枚举说明) | 是   | 设置Button组件的角色。<br/>默认值：ButtonRole.NORMAL |
+| value  | [ButtonRole](#buttonrole12枚举说明) | 是   | Button组件的角色。<br/>默认值：ButtonRole.NORMAL |
 
 ### contentModifier<sup>12+</sup>
 
@@ -368,14 +368,14 @@ maxFontScale(scale: number | Resource)
 | 名称      | 值     | 说明               |
 | ------- | ------- | ------- |
 | Normal | 0 | 普通按钮（默认不带圆角）。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Capsule | 1 | 胶囊型按钮（圆角默认为高度的一半）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Capsule | 1 | 胶囊型按钮（圆角默认为宽、高中较小值的一半）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Circle  | 2 | 圆形按钮。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| ROUNDED_RECTANGLE<sup>15+</sup> | 8 | 圆角矩形按钮（默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。<br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ROUNDED_RECTANGLE<sup>15+</sup> | 8 | 圆角矩形按钮（在不设置borderRadius时，默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。<br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 >  **说明：**
 >  - 按钮圆角通过[通用属性borderRadius](ts-universal-attributes-border.md#borderradius)设置。
 >  - 当按钮类型为Capsule时，borderRadius设置不生效，按钮圆角始终为宽、高中较小值的一半。
->  - 当按钮类型为Circle时，若同时设置了宽和高，则borderRadius不生效，且按钮半径为宽高中较小值的一半；若只设置宽、高中的一个，则borderRadius不生效，且按钮半径为所设宽或所设高值的一半；若不设置宽高，则borderRadius为按钮半径；若borderRadius的值为负，则borderRadius的值按照0处理。
+>  - 当按钮类型为Circle时，若同时设置了宽和高，则borderRadius不生效，且按钮半径为宽高中较小值的一半；若只设置宽、高中的一个，则borderRadius不生效，且按钮半径为所设宽或所设高值的一半；若不设置宽高，则按钮半径为borderRadius的值；若borderRadius的值为负，则borderRadius的值按照0处理。
 >  - 按钮文本通过[fontSize](#fontsize)、[fontColor](#fontcolor)、[fontStyle](#fontstyle8)、[fontFamily](#fontfamily8)、[fontWeight](#fontweight)进行设置。
 >  - 设置[颜色渐变](ts-universal-attributes-gradient-color.md)需先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)为透明色。
 >  - 在不设置borderRadius时，圆角矩形按钮的圆角大小保持默认值不变。圆角大小不会随按钮高度变化而变化，和controlSize属性有关，controlSize为NORMAL时圆角大小20vp，controlSize为SMALL时圆角大小14vp。
@@ -393,11 +393,11 @@ Button组件的label文本及其字体样式。
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 是   | 设置label文本超长时的显示方式。文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格。<br>默认值：TextOverflow.Ellipsis <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | maxLines             | number                                                       | 否   | 是   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过overflow来指定截断方式。<br>默认值：1<br/>**说明：** <br/>设置小于等于0的值时，按默认值处理。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。为number类型时单位：fp。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。为number类型时单位：fp。<br/>**说明：** <br/>maxFontSize小于或等于0时，自适应字号不生效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 是   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | font                 | [Font](ts-types.md#font)                                     | 否   | 是   | 设置label文本字体样式。<br>默认值：<br/> {<br/>size:'16.0fp',<br/> weight:FontWeight.Medium,<br/> style:FontStyle.Normal,<br/>  family:'HarmonyOS Sans'<br/>} <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 是   | 设置label文本在水平方向上的对齐方式，label文本被截断时生效。当使用子节点的Text组件设置label时，此属性不生效，实际的文本对齐方式由子节点Text组件的textAlign属性决定。<br> Wearable设备默认值为TextAlign.Center，其他设备默认值为TextAlign.Start。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 是   | 设置label文本在水平方向上的对齐方式。当label文本被截断时属性生效。当使用子节点的Text组件设置label时，此属性不生效，实际的文本对齐方式由子节点Text组件的textAlign属性决定。<br> 可穿戴设备默认值为TextAlign.Center，其他设备默认值为TextAlign.Start。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ButtonStyleMode<sup>11+</sup>枚举说明
 
@@ -413,9 +413,9 @@ Button组件的label文本及其字体样式。
 
 | 名称      | 值 | 说明               |
 | ------- | -- |------------------ |
-| NORMAL  | 0 |普通按钮（一般界面操作）。              |
-| EMPHASIZED | 1 |强调按钮（用于强调当前操作）。 |
-| TEXTUAL  | 2 |文本按钮（纯文本，无背景颜色）。      |
+| NORMAL  | 0 |普通按钮（一般界面操作），适用于取消、关闭等非关键交互。              |
+| EMPHASIZED | 1 |强调按钮（用于强调当前操作），适用于提交表单、确认删除等关键操作。 |
+| TEXTUAL  | 2 |文本按钮（纯文本，无背景颜色），适用于次要操作或不需要强调的场景。      |
 
 ## ControlSize<sup>11+</sup>枚举说明
 
@@ -449,7 +449,7 @@ Button组件的label文本及其字体样式。
 | 名称      | 值 |说明               |
 | ------- | -- |------------------ |
 | NORMAL | 0 |正常按钮。 |
-| ERROR  | 1 |警示按钮。              |
+| ERROR  | 1 |警示按钮，通常用于删除、清空等危险或警示性操作。              |
 
 ## ButtonConfiguration<sup>12+</sup>对象说明
 
@@ -463,9 +463,9 @@ Button组件的label文本及其字体样式。
 
 | 名称  | 类型    | 只读  | 可选 | 说明              |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
-| label | string | 否 | 否 | Button的文本标签。<br/>**说明**：当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
+| label | string | 否 | 否 | Button的文本标签，用于标识按钮的功能。<br/>**说明**：当文本长度超过按钮本身的宽度时，文本将会被截断。 |
 | pressed | boolean | 否 | 否 | 指示是否按下Button。<br/>true：按下；false：未按下。<br/>默认值：false <br/>**说明：**  <br/>此按压属性生效区域大小为原本Button组件的大小，而非build出来的新组件大小。|
-| triggerClick | [ButtonTriggerClickCallback](#buttontriggerclickcallback12) | 否 | 否 | 使用builder新构建出来组件的点击事件。 |
+| triggerClick | [ButtonTriggerClickCallback](#buttontriggerclickcallback12) | 否 | 否 | 点击事件回调，用于处理使用builder新构建出来组件的点击操作。 |
 
 ## ButtonTriggerClickCallback<sup>12+</sup>
 
@@ -493,7 +493,7 @@ type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
 
 ### 示例1（设置按钮的显示样式）
 
-该示例实现了两种创建按钮的方式，包含子组件或使用文本内容创建相应的按钮。
+该示例展示两种创建按钮的方式：包含子组件或使用文本内容。
 
 ```ts
 // xxx.ets
@@ -504,11 +504,11 @@ struct ButtonExample {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('Normal button').fontSize(9).fontColor(0xCCCCCC)
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Button('OK', { type: ButtonType.Normal, stateEffect: true })
-          .borderRadius(8)
-          .backgroundColor(0x317aff)
-          .width(90)
-          .onClick(() => {
+        Button('OK', { type: ButtonType.Normal, stateEffect: true }) // 创建普通按钮，开启按压效果
+          .borderRadius(8) // 设置圆角大小
+          .backgroundColor(0x317aff) // 设置背景颜色
+          .width(90) // 设置按钮宽度
+          .onClick(() => { // 设置按钮点击事件
             console.info('ButtonType.Normal');
           })
         Button({ type: ButtonType.Normal, stateEffect: true }) {
@@ -571,11 +571,11 @@ struct SwipeGestureExample {
         .onClick(() => {
           this.count++;
         })
-      if (this.count <= 0) {
+      if (this.count <= 0) { // 当count小于等于0时，显示负数按钮
         Button('count is negative').fontSize(30).height(50)
-      } else if (this.count % 2 === 0) {
+      } else if (this.count % 2 === 0) { // 当count为偶数时，显示偶数按钮
         Button('count is even').fontSize(30).height(50)
-      } else {
+      } else { // 当count为奇数时，显示奇数按钮
         Button('count is odd').fontSize(30).height(50)
       }
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
@@ -605,10 +605,10 @@ struct ButtonTestDemo {
           .width(this.widthShortSize)
           .height(100)
           .backgroundColor(0x317aff)
-          .labelStyle({ overflow: TextOverflow.Clip,
-            maxLines: 1,
-            minFontSize: 20,
-            maxFontSize: 20,
+          .labelStyle({ overflow: TextOverflow.Clip, // 设置文本溢出方式为截断
+            maxLines: 1, // 设置最大显示行数为1
+            minFontSize: 20, // 设置最小字号为20
+            maxFontSize: 20, // 设置最大字号为20
             font: {
               size: 20,
               weight: FontWeight.Bolder,
@@ -629,7 +629,7 @@ struct ButtonTestDemo {
 
 ### 示例4（设置不同尺寸按钮的重要程度）
 
-该示例通过配置controlSize、buttonStyle实现不同尺寸按钮的重要程度。
+该示例通过配置controlSize、buttonStyle展示不同尺寸和样式的按钮。
 
 ```ts
 // xxx.ets
@@ -640,9 +640,9 @@ struct ButtonExample {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('Normal size button').fontSize(9).fontColor(0xCCCCCC)
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Button('Emphasized', { buttonStyle: ButtonStyleMode.EMPHASIZED });
-        Button('Normal', { buttonStyle: ButtonStyleMode.NORMAL });
-        Button('Textual', { buttonStyle: ButtonStyleMode.TEXTUAL });
+        Button('Emphasized', { buttonStyle: ButtonStyleMode.EMPHASIZED }); // 创建强调按钮
+        Button('Normal', { buttonStyle: ButtonStyleMode.NORMAL }); // 创建普通按钮
+        Button('Textual', { buttonStyle: ButtonStyleMode.TEXTUAL }); // 创建文本按钮
       }
 
       Text('Small size button').fontSize(9).fontColor(0xCCCCCC)
@@ -667,7 +667,7 @@ struct ButtonExample {
 
 ### 示例5（设置按钮的角色）
 
-该示例通过配置role实现按钮的角色。
+该示例通过配置role设置按钮的角色。
 
 ```ts
 // xxx.ets
@@ -695,7 +695,7 @@ struct ButtonExample {
 ![buttonrole](figures/buttonrole.jpeg)
 
 ### 示例6（设置自定义样式按钮）
-该示例实现了自定义样式的功能，自定义样式实现了一个圆圈替换原本的按钮样式。如果按压，圆圈将变成红色，标题会显示按压字样；如果没有按压，圆圈将变成黑色，标题会显示非按压字样。
+该示例通过自定义样式用一个圆圈替换原本的按钮样式。如果按压，圆圈将变成红色，标题会显示按压字样；如果没有按压，圆圈将变成黑色，标题会显示非按压字样。
 ```ts
 class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
   x: number = 0;
@@ -735,8 +735,6 @@ struct ButtonExample {
   @State buttonEnabled: boolean = true;
   @State positionX: number = 0;
   @State positionY: number = 0;
-  @State state: boolean[] = [true, false];
-  @State index: number = 0;
 
   build() {
     Column() {
@@ -760,10 +758,10 @@ struct ButtonExample {
   }
 }
 ```
-![buttonrole](figures/buttonbuilder.gif)
+![buttonbuilder](figures/buttonbuilder.gif)
 
 ### 示例7（设置圆角矩形按钮）
-该示例通过配置ButtonType.ROUNDED_RECTANGLE创建圆角矩形按钮。
+该示例展示圆角矩形按钮的创建、圆角大小设置及长文本截断效果。
 ```ts
 @Entry
 @Component
@@ -773,7 +771,7 @@ struct ButtonExample {
       Text('Rounded rectangle button with rounded corners by default.').fontSize(9).fontColor(0xCCCCCC)
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Button('Rounded rectangle')
-          .type(ButtonType.ROUNDED_RECTANGLE)
+          .type(ButtonType.ROUNDED_RECTANGLE) // 设置按钮类型为圆角矩形
           .backgroundColor(0x317aff)
           .controlSize(ControlSize.NORMAL)
           .width(180)
@@ -814,7 +812,7 @@ struct Index {
       Button('helloWorld helloWorld helloWorld helloWorld helloWorld helloWorld')
         .width(200)
         .labelStyle({
-          textAlign: TextAlign.Center
+          textAlign: TextAlign.Center // 设置文本水平对齐方式为居中
         })
     }
     .width('100%')

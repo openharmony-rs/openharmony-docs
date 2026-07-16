@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供为当前页面设置旋转表冠事件监听器的能力，支持注册页面级的旋转表冠事件监听器。仅支持配备旋转表冠的设备。
+本模块提供为当前页面设置旋转表冠事件监听器的能力，支持注册页面级的旋转表冠事件监听器，适用于需要在页面级统一监听旋转表冠操作并控制事件分发的场景。仅支持配备旋转表冠的设备。
 
 > **说明：**
 >
@@ -34,23 +34,23 @@ setMonitorForCrownEvents(handler: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为(event)=>{ return false/true; }。<br/>返回true时，旋转表冠事件不再分发给获焦的组件。<br/>返回false时，旋转表冠事件会继续分发给获焦组件。当回调的返回值异常时，例如返回值为undefined或无返回值，默认取值为false。<br/>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
+| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为`(event)=>{ return false/true; }`。<br>返回true时，旋转表冠事件不再分发给获焦的组件。<br>返回false时，旋转表冠事件会继续分发给获焦组件。当回调返回undefined或无返回值时，默认取值为false。<br>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
 
 
 **表1** CrownEvent对象属性列表
 
 | 名称                   | 类型       | 只读    |  可选   |  说明                                 |
 | --------------------- | -------- | ------- |--------- |-------------------------------------- |
-| timestamp             | number   |  否     | 否    |时间戳。                                  |
-| angularVelocity       | number   |  否     | 否    |旋转角速度，表示每秒转的角度。<br/>逆时针旋转表冠时旋转角速度为正数，顺时针旋转表冠时旋转角速度为负数。<br/>单位：度/s      |
-| degree                | number   |  否     | 否    |相对旋转角度。<br/>逆时针旋转表冠时相对旋转角度为正数，顺时针旋转表冠时相对旋转角度为负数。<br/>单位：度。<br/>取值范围：[-360, 360]     |
+| timestamp | number | 否 | 否 | 时间戳，表示事件发生时距系统启动运行至今的时间。<br>单位：ms。 |
+| angularVelocity | number | 否 | 否 | 旋转角速度，表示每秒旋转的角度。<br>逆时针旋转表冠时旋转角速度为正数，顺时针旋转表冠时旋转角速度为负数。<br>单位：°/s |
+| degree | number | 否 | 否 | 相对旋转角度。<br>逆时针旋转表冠时相对旋转角度为正数，顺时针旋转表冠时相对旋转角度为负数。<br>单位：度。<br>取值范围：[-360, 360] |
 
 
 ## clearMonitorForCrownEvents
 
 clearMonitorForCrownEvents(): void
 
-清除当前页面的旋转表冠事件监听器。
+清除当前页面的旋转表冠事件监听器，适用于页面不再需要监听旋转表冠事件，或需要恢复获焦组件默认响应旋转表冠事件的场景。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +61,7 @@ clearMonitorForCrownEvents(): void
 
 ### 示例1（设置旋转表冠事件监听器）
 
-该示例介绍了，如何通过[setMonitorForCrownEvents](#setmonitorforcrownevents)为页面设置旋转表冠事件监听器，并通过监听器的回调返回值控制List组件是否响应旋转表冠事件。
+该示例介绍如何通过[setMonitorForCrownEvents](#setmonitorforcrownevents)为页面设置旋转表冠事件监听器，并通过监听器的回调返回值控制List组件是否响应旋转表冠事件。
 
 从API version 24开始，新增[setMonitorForCrownEvents](#setmonitorforcrownevents)接口和[clearMonitorForCrownEvents](#clearmonitorforcrownevents)接口。
 ```css
@@ -142,7 +142,7 @@ export default {
                 event.angularVelocity);
             console.info('rotate is: ', event.rotate);
             return this.flag;
-        })
+        });
     },
     flagChange() {
         this.flag = !this.flag;

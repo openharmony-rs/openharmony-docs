@@ -19,14 +19,14 @@
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
    
-   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
    
    ``` TypeScript
    // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
@@ -137,32 +137,31 @@
 
 4. 获取ImageRawData图片对象并打印像素值。
 
-   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->      
    
    ``` TypeScript
-   async  createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
+   async createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
      if (!imageSource) {
        console.error('imageSource is undefined.');
        return undefined;
      }
-     await imageSource.createImageRawData().then((data: image.ImageRawData) => {
-       let array: Uint16Array = new Uint16Array();
+     try {
+       const data = await imageSource.createImageRawData();
        if (data.bitsPerPixel == 16 && data.buffer) {
-         array = new Uint16Array(data.buffer);
+         let array: Uint16Array = new Uint16Array(data.buffer);
+         let length = array.byteLength.valueOf();
+         console.info(`uint16Array length: ${length}`);
+         let value: string = '';
+         for (let i = 0; i < array.length && i < 10; i++) {
+           value += array[i] + ', ';
+         }
+         console.info(`get dng rawdata is:${value}.`);
        }
-       let length = array.byteLength.valueOf();
-       console.info(`uint16Array length: ${length}`);
-       let value: string = '';
-       for (let i = 0; i < array.length && i < 10; i++) {
-         value += array[i] + ', ';
-       }
-       console.info(`get dng rawdata is:${value}.`);
-       return data
-     }).catch((err: BusinessError) => {
+       return data;
+     } catch (err) {
        console.error(`get dng rawdata failed.err: ${JSON.stringify(err)}`);
        return undefined;
-     })
-     return undefined;
+     }
    }
    ```
    
@@ -170,13 +169,24 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
    
    ``` TypeScript
-   async release(pixelMap: image.PixelMap | undefined, imageSource: image.ImageSource | undefined) {
-     pixelMap?.release();
-     pixelMap = undefined;
-     imageSource?.release();
-     imageSource = undefined;
+   async release() {
+     try {
+       await this.pixelMap?.release();
+     } catch (error) {
+       console.error(`Failed to release PixelMap: ${error}.`);
+     } finally {
+       this.pixelMap = undefined;
+     }
+   
+     try {
+       await this.imageSource?.release();
+     } catch (error) {
+       console.error(`Failed to release ImageSource: ${error}.`);
+     } finally {
+       this.imageSource = undefined;
+     }
    }
    ```

@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -142,7 +142,7 @@ The trace output level lower than the threshold does not take effect. The log ve
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
-| Level      | Value  | Description                                   |
+| Name      | Value  | Description                                   |
 | ---------- | ---- | --------------------------------------- |
 | DEBUG      | 0    | Level used only for debugging, which has the lowest priority.     |
 | INFO       | 1    | Level for the log version.                |

@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -183,4 +183,4 @@ export default {
 
 ```
 
-![zh-cn_image_0000001127284978](figures/zh-cn_image_0000001127284978.gif)
+![list-item-group](figures/list-item-group.gif)

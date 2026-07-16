@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供控制菜单关闭的能力。
+提供控制菜单关闭的能力。开发者可以通过此接口在特定场景下（如定时关闭、点击外部区域关闭等）主动关闭菜单。
 
 > **说明：**
 >
@@ -14,13 +14,17 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getContextMenuController()](./arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12)方法获取ContextMenuController实例，再通过此实例调用对应方法。
 
 ## close<sup>12+</sup>
 
 close(): void
 
-关闭菜单。
+关闭当前通过bindContextMenu展示的菜单。若当前无菜单展示，调用本方法无效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -52,21 +56,22 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button("启动定时器").onClick(()=>
-      {
+      Button('启动定时器').onClick(() => {
+        // 延时10秒后调用close方法关闭菜单
         setTimeout(() => {
           this.menu.close();
         }, 10000);
       })
 
       Column() {
-        Text("Test ContextMenu close")
+        Text('Test ContextMenu close')
           .fontSize(20)
           .width('100%')
           .height(500)
           .backgroundColor(0xAFEEEE)
           .textAlign(TextAlign.Center)
       }
+      // 绑定自定义菜单，长按触发
       .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
     }
     .width('100%')

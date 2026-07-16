@@ -17,6 +17,7 @@
     <!--DelEnd-->
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
+    - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
     - [@ohos.power (System Power Management)](js-apis-power.md)
     - [@ohos.runningLock (Running Lock)](js-apis-runninglock.md)
@@ -27,6 +28,7 @@
     - [@ohos.batteryInfo (Battery Information) (System API)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (Battery Statistics) (System API)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (Screen Brightness) (System API)](js-apis-brightness-sys.md)
+    - [@ohos.busManager.serial (Serial Port Management) (System API)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (Charging Type) (System API)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (Device Attestation) (System API)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (Power Management) (System API)](js-apis-power-sys.md)
@@ -103,7 +105,7 @@
     - [@system.request (Upload and Download)](js-apis-system-request.md)
     - [@ohos.screenLock (Screen Lock)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (Common Event) (System API)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (Common Event) (System API) (Deprecated)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB) (System API)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (System Parameter) (System API)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
@@ -156,6 +158,7 @@
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - Error Codes<!--basic-services-arkts-errcode-->
   - [USB Error Codes](errorcode-usb.md)
+  - [Serial Port Management Error Codes](errorcode-busmanager-serial.md)
   - [Running Lock Error Codes](errorcode-runninglock.md)
   - [zlib Error Codes](errorcode-zlib.md)
   <!--Del-->
@@ -187,3 +190,4 @@
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
   <!--DelEnd-->
+  - [deviceInfo Error Codes](errorcode-device-info.md)

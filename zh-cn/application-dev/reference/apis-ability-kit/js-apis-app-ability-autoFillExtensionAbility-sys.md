@@ -40,7 +40,7 @@ import { AutoFillExtensionAbility } from '@kit.AbilityKit';
 
 onCreate(): void
 
-AutoFillExtensionAbility创建时触发回调函数。
+AutoFillExtensionAbility创建时触发回调函数。在此方法中可进行初始化操作，如注册监听器、加载必要资源等。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -87,16 +87,19 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     hilog.info(0x0000, 'testTag', 'fill requestCallback: %{public}s', JSON.stringify(callback));
     hilog.info(0x0000, 'testTag', 'get request viewData: %{public}s', JSON.stringify(request.viewData));
     try {
+      // 定义本地存储数据
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.FillRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
         'message': 'AutoFill Page',
-        'fillCallback': callback,
+        'saveCallback': callback,
         'viewData': request.viewData,
         'context': this.context
       };
+      // 创建本地存储实例，用于在页面间传递数据
       let storage_fill = new LocalStorage(localStorageData);
       if (session) {
+        // 加载自动保存页面
         session.loadContent('pages/SelectorList', storage_fill);
       } else {
         hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
@@ -121,7 +124,7 @@ onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | session | [UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md)  | 是 | AutoFillExtensionAbility界面内容相关信息。 |
-| request | [SaveRequest](js-apis-inner-application-autoFillRequest-sys.md#saverequest)  | 是 | 保存请求数据。 |
+| request | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest)  | 是 | 保存请求数据。 |
 | callback | [SaveRequestCallback](js-apis-inner-application-autoFillRequest-sys.md#saverequestcallback)  | 是 | 保存请求回调。 |
 
 **示例：**
@@ -136,6 +139,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
                 callback : autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
     try {
+      // 定义本地存储数据
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.SaveRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
@@ -144,8 +148,10 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
         'viewData': request.viewData,
         'context': this.context,
       };
+      // 创建本地存储实例，用于在页面间传递数据
       let storage_save = new LocalStorage(localStorageData);
       if (session) {
+        // 加载自动保存页面
         session.loadContent('pages/SavePage', storage_save);
       } else {
         hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
@@ -161,7 +167,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onUpdateRequest(request: UpdateRequest): void
 
-当收到更新请求时触发此回调函数。
+当应用界面数据发生变化、需要更新已填充的内容时，系统触发此回调函数。request参数包含更新后的viewData等信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -189,7 +195,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onSessionDestroy(session: UIExtensionContentSession): void
 
-当AutoFillExtensionAbility界面内容对象销毁后调用。
+当AutoFillExtensionAbility的session销毁时触发此回调。session通常在用户取消填充操作或填充任务完成后销毁。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 

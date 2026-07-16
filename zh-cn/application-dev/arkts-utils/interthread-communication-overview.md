@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 线程间通信指并发多线程间的数据交换行为。由于ArkTS语言兼容TS/JS，其运行时实现与其它JS引擎一样，采用基于Actor内存隔离的并发模型。
 
@@ -22,4 +22,4 @@ ArkTS目前主要提供两种并发能力支持线程间通信：TaskPool和Work
 
 图1 序列化反序列化原理图
 
-![zh-cn_image_0000002017033808](figures/zh-cn_image_0000002017033808.png)
+![Serialization-and-deserialization-principles](figures/Serialization-and-deserialization-principles.png)

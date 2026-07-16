@@ -1,8 +1,8 @@
 # ToolBarItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@
 >
 >  - 本模块接口仅可在Stage模型下使用。
 >
->  该组件一般配合[toolbar](ts-universal-attributes-toolbar.md#toolbar)通用属性进行使用。
+>  - 该组件一般配合[toolbar](ts-universal-attributes-toolbar.md#toolbar)通用属性进行使用。
 
 
 ## 子组件

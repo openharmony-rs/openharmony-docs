@@ -11,11 +11,11 @@
 
 本文档主要介绍异步模式视频解码的实现流程，同步模式视频解码请参考[视频解码同步模式](synchronous-video-decoding.md)。根据解码后数据处理方式的不同，视频解码支持Surface模式和Buffer模式两种输出模式，适用于不同的应用场景。
 
-- Surface模式。
+- Surface模式
 
   解码后的图像帧通过[NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
 
-- Buffer模式。
+- Buffer模式
 
   解码后的原始YUV数据通过共享内存输出，开发者可直接访问和处理每一帧图像数据。适用于视频编辑、YUV原始数据保存等需要获取并处理原始数据的解码场景。
 
@@ -42,9 +42,9 @@ AVCodec支持的视频解码格式请参考[视频解码](avcodec-support-format
 4. 运行状态（Executing）。
    - Prepared状态下，调用OH_VideoDecoder_Start接口进入Executing状态。
    - Executing状态包含三个子状态：
-     - Running：调用OH_VideoDecoder_Start接口进入Running子状态。
-     - Flushed：调用OH_VideoDecoder_Flush接口进入Flushed子状态。
-     - End-of-Stream：解码器接收到输入buffer的flag为[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS时，进入End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出尾帧。
+     - 运行子状态（Running）：调用OH_VideoDecoder_Start接口进入Running子状态。
+     - 刷新子状态（Flushed）：调用OH_VideoDecoder_Flush接口进入Flushed子状态。
+     - 结束子状态（End-of-Stream）：解码器接收到输入buffer的flag为[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS时，进入End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出尾帧。
 5. 错误状态（Error）。
    - 极少数情况下，解码器异常时进入Error状态，接口会返回错误码或通过OH_AVCodecOnError回调抛出异常。
    - Error状态下，可以调用OH_VideoDecoder_Reset接口返回Initialized状态，或者调用OH_VideoDecoder_Destroy接口进入最后的Released状态。

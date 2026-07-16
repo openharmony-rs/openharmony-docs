@@ -1407,8 +1407,8 @@ Describes the USB endpoint from which data is sent or received. You can obtain t
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | No  | No|Endpoint address.        |
 | attributes    | number                                      | No  | No|Endpoint attributes.        |
-| interval      | number                                      | No  | No|Endpoint interval.        |
-| maxPacketSize | number                                      | No  | No|Maximum size of data packets on the endpoint.   |
+| interval      | number                                      | No  | No|Endpoint interval, in milliseconds.        |
+| maxPacketSize | number                                      | No  | No|Maximum size of data packets on the endpoint, in bytes.   |
 | direction     | [USBRequestDirection](#usbrequestdirection) | No  | No|Endpoint direction.       |
 | number        | number                                      | No  | No|Endpoint number.         |
 | type          | number                                      | No  | No|Endpoint type. For details, see [UsbEndpointTransferType](#usbendpointtransfertype18).        |

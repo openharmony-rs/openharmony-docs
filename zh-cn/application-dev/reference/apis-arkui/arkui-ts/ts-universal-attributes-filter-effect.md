@@ -1,8 +1,8 @@
 # 视效设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -120,7 +120,7 @@ compositingFilter(filter: Filter): T
 
 ## materialFilter<sup>23+</sup>
 
-materialFilter(filter: Filter | undefined): T
+materialFilter(filter: Filter \| undefined): T
 
 设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](#backgroundfilter)绘制，即位于backgroundFilter的更底层。
 
@@ -146,7 +146,7 @@ materialFilter(filter: Filter | undefined): T
 
 ## Filter
 
-type Filter = Filter
+type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter
 
 导入Filter类型对象。
 
@@ -156,11 +156,11 @@ type Filter = Filter
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | 用于将相应的效果添加到指定的组件上。 |
+| import('../api/@ohos.graphics.uiEffect').default.[Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | 用于将相应的效果添加到指定的组件上。 |
 
 ## VisualEffect
 
-type VisualEffect = VisualEffect
+type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect
 
 导入VisualEffect类型对象。
 
@@ -170,7 +170,7 @@ type VisualEffect = VisualEffect
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
+| import('../api/@ohos.graphics.uiEffect').default.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
 
 ## 示例
 

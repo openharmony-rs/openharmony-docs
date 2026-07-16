@@ -17,7 +17,7 @@ ArkUI with the JavaScript-compatible web-like development paradigm consists of t
 
 
 
-![en-us_image_0000001223127696](figures/en-us_image_0000001223127696.png)
+![Overall-Architecture](figures/Overall-Architecture.png)
 
 - **Application Layer**
 

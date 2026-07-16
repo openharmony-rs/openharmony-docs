@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-着色器。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画笔和画刷的透明度属性仍然生效。
+着色器，用于在绘图中填充颜色和渐变效果。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画刷和画笔的透明度属性仍然生效。着色器支持创建单色着色器、线性渐变、径向渐变、扇形渐变、锥形渐变、图片着色器及混合着色器等多种类型。
 
 > **说明：**
 >
@@ -39,13 +39,13 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | dstShaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 是   | 在混合模式中作为目标色的着色器。 |
 | srcShaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 是   | 在混合模式中作为源色的着色器。   |
-| blendMode  | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | 是   | 混合模式。 |
+| blendMode  | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | 是   | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回叠加后的着色器对象。 |
 
 **错误码：**
 
@@ -67,9 +67,9 @@ let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, draw
 
 ## createImageShader<sup>20+</sup>
 
-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode, samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect
+static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode, samplingOptions: SamplingOptions, matrix?: Matrix \| null): ShaderEffect
 
-基于图片创建一个着色器。此接口不建议用于录制类型的画布，会影响性能。
+基于图片创建一个着色器。此接口不建议用于录制类型的画布（即用于记录绘制指令而非直接渲染的Canvas对象），会影响性能。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -80,14 +80,14 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 | pixelmap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 进行采样的图片对象。 |
 | tileX   | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12)  | 是   | 水平方向的平铺模式。 |
 | tileY   | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12)  | 是   | 竖直方向的平铺模式。 |
-| samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | 是   | 图片采样参数。 |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 可选参数，对图片施加的矩阵变换，如果为空，则不施加任何变换。 |
+| samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | 是   | 图片采样参数，用于指定图像采样时的过滤模式。 |
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回基于图片的着色器对象。 |
 
 **错误码：**
 
@@ -100,7 +100,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -114,16 +114,16 @@ class DrawingRenderNode extends RenderNode {
     const colorData = new Uint8Array(color);
     for (let i = 0; i < colorData.length; i += 4) {
       colorData[i] = 255;
-      colorData[i+1] = 156;
-      colorData[i+2] = 0;
-      colorData[i+3] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
     }
 
-    let opts: image.InitializationOptions = {
+  let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
-    }
+    };
 
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     let matrix = new drawing.Matrix();
@@ -133,6 +133,7 @@ class DrawingRenderNode extends RenderNode {
         drawing.ShaderEffect.createImageShader(pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options,
           matrix);
     }
+    pixelMap.release();
   }
 }
 ```
@@ -163,7 +164,7 @@ static createColorShader(color: number): ShaderEffect
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -175,7 +176,7 @@ let shaderEffect = drawing.ShaderEffect.createColorShader(0xFFFF0000);
 
 ## createLinearGradient<sup>12+</sup>
 
-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array\<number>, mode: TileMode, pos?: Array\<number> | null, matrix?: Matrix | null): ShaderEffect
+static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array\<number>, mode: TileMode, pos?: Array\<number> \| null, matrix?: Matrix \| null): ShaderEffect
 
 创建着色器，在两个指定点之间生成线性渐变。
 
@@ -189,18 +190,18 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 | endPt   | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的终点。 |
 | colors | Array\<number> | 是   | 表示在两个点之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
-| pos | Array\<number> \|null| 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起点和终点之间。 |
+| pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起点和终点之间。 |
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
-![LinearGradient](figures/zh-ch_image_createLinearGradient.png)
+![LinearGradient](figures/createLinearGradient.png)
 
-如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.75和1.0后的显示效果。三角下标表示对应颜色的起始点和终点之间的相对位置，颜色之间使用渐变填充。
+如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.75和1.0后的显示效果。三角标记表示对应颜色的起始点和终点之间的相对位置，颜色之间使用渐变填充。
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回线性渐变着色器对象。 |
 
 **错误码：**
 
@@ -208,12 +209,12 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { common2D,drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 let startPt: common2D.Point = { x: 100, y: 100 };
 let endPt: common2D.Point = { x: 300, y: 300 };
@@ -222,7 +223,7 @@ let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, [0x
 
 ## createRadialGradient<sup>12+</sup>
 
-static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Array\<number>, mode: TileMode, pos?: Array\<number> | null, matrix?: Matrix | null): ShaderEffect
+static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Array\<number>, mode: TileMode, pos?: Array\<number> \| null, matrix?: Matrix \| null): ShaderEffect
 
 创建着色器，使用给定的圆心和半径生成径向渐变。径向渐变是指颜色从圆心逐渐向外扩散形成的渐变。
 
@@ -239,15 +240,15 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在圆心和圆边界之间。 |
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
-![RadialGradient](figures/zh-ch_image_createRadialGradient.png)
+![RadialGradient](figures/createRadialGradient.png)
 
-如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.75和1.0后的显示效果。三角下标表示对应颜色所在圆心和圆边界之间的相对位置，颜色之间使用渐变填充。
+如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.75和1.0后的显示效果。三角标记表示对应颜色所在圆心和圆边界之间的相对位置，颜色之间使用渐变填充。
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回径向渐变着色器对象。 |
 
 **错误码：**
 
@@ -255,12 +256,12 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { common2D,drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 let centerPt: common2D.Point = { x: 100, y: 100 };
 let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 100, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
@@ -268,9 +269,9 @@ let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, 100, [0xF
 
 ## createSweepGradient<sup>12+</sup>
 
-static createSweepGradient(centerPt: common2D.Point, colors: Array\<number>, mode: TileMode, startAngle: number, endAngle: number, pos?: Array\<number> | null, matrix?: Matrix | null): ShaderEffect
+static createSweepGradient(centerPt: common2D.Point, colors: Array\<number>, mode: TileMode, startAngle: number, endAngle: number, pos?: Array\<number> \| null, matrix?: Matrix \| null): ShaderEffect
 
-创建着色器。该着色器以给定中心点为圆心，在顺时针或逆时针方向上生成颜色扫描渐变。
+创建着色器。该着色器以给定中心点为圆心，在起始角度和结束角度之间沿顺时针或逆时针方向生成颜色扇形渐变。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -284,9 +285,9 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array\<number>, mod
 | startAngle | number | 是   | 表示扇形渐变的起始角度，单位为度。0度时为x轴正方向，正数往顺时针方向偏移，负数往逆时针方向偏移。该参数为浮点数。 |
 | endAngle | number | 是   | 表示扇形渐变的结束角度，单位为度。0度时为x轴正方向，正数往顺时针方向偏移，负数往逆时针方向偏移。小于起始角度时无效。该参数为浮点数。 |
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始角度和结束角度之间。 |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   |矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
-![SweepGradient](figures/zh-ch_image_createSweepGradient.png)
+![SweepGradient](figures/createSweepGradient.png)
 
 如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.75和1.0，起始角度设置为0度，结束角度设置为180度后的显示效果。0.0对应0度的位置，0.75对应135度的位置，1.0对应180度的位置，颜色之间使用渐变填充。
 
@@ -294,7 +295,7 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array\<number>, mod
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回扇形渐变着色器对象。 |
 
 **错误码：**
 
@@ -302,12 +303,12 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array\<number>, mod
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { common2D,drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 let centerPt: common2D.Point = { x: 100, y: 100 };
 let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT, 100, 200);
@@ -315,9 +316,9 @@ let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, [0xFF00FF0
 
 ## createConicalGradient<sup>12+</sup>
 
-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point, endRadius: number, colors: Array\<number>, mode: TileMode, pos?: Array\<number> | null, matrix?: Matrix | null): ShaderEffect
+static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point, endRadius: number, colors: Array\<number>, mode: TileMode, pos?: Array\<number> \| null, matrix?: Matrix \| null): ShaderEffect
 
-创建着色器，在给定两个圆之间生成径向渐变。
+创建着色器，在给定两个圆之间生成锥形渐变。锥形渐变是指颜色在起始圆和结束圆之间，按照一定比例进行插值过渡形成的渐变效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -325,24 +326,24 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   |表示渐变的起始圆的圆心。 |
+| startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的起始圆的圆心。 |
 | startRadius | number | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | endPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的结束圆的圆心。 |
 | endRadius | number | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | colors | Array\<number> | 是   | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
-| pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。|
+| pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。 |
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
-![ConicalGradient](figures/zh-ch_image_createConicalGradient.png)
+![ConicalGradient](figures/createConicalGradient.png)
 
-如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.5和1.0的绘制结果。左侧为起始圆不在结束圆内的绘制结果，右侧为起始圆在结束圆内的绘制结果。
+如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.5和1.0后的显示效果。左侧为起始圆不在结束圆内的显示效果，右侧为起始圆在结束圆内的显示效果。
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回锥形渐变着色器对象。 |
 
 **错误码：**
 
@@ -350,14 +351,14 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { common2D,drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 let startPt: common2D.Point = { x: 100, y: 100 };
-let endPt: common2D.Point = {x: 200, y: 200};
+let endPt: common2D.Point = { x: 200, y: 200 };
 let shaderEffect = drawing.ShaderEffect.createConicalGradient(startPt, 100, endPt, 50, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
 ```

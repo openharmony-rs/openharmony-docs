@@ -150,7 +150,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
    > 并非所有图片都包含辅助图。在获取辅助图前，应先调用`OH_PictureNative_GetAuxiliaryPicture`接口尝试获取。其他辅助图类型请参考[Image_AuxiliaryPictureType](../../reference/apis-image-kit/capi-picture-native-h.md#image_auxiliarypicturetype)。
 
 
-   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
    
    ``` C++
    // 释放ImageSource。
@@ -201,8 +201,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
        uint32_t length = 0;
        napi_get_array_length(env, args[0], &length);
        if (length <= 0) {
-           OH_LOG_ERROR(LOG_APP, "napi_get_array_length failed !");
-           return GetJsResult(env, IMAGE_UNKNOWN_ERROR);
+           OH_LOG_INFO(LOG_APP, "Desired auxiliary picture type list is empty.");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        Image_AuxiliaryPictureType typeList[length];
        for (int index = 0; index < length; index++) {
@@ -240,9 +240,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        
-       char filePath[MAX_SIZE];
-       size_t pathSize;
-       napi_get_value_string_utf8(env, args[0], filePath, MAX_SIZE, &pathSize);
+       char filePath[MAX_SIZE] = {0};
+       size_t pathSize = 0;
+       if (napi_get_value_string_utf8(env, args[0], filePath, sizeof(filePath), &pathSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "CreatePictureByImageSource napi_get_value_string_utf8 failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       filePath[MAX_SIZE - 1] = '\0';
    
        g_thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &g_thisPicture->source);
        if (g_thisPicture->errorCode != IMAGE_SUCCESS) {
@@ -265,8 +269,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            g_thisAuxiliaryPicture ->type, &g_thisAuxiliaryPicture ->auxiliaryPicture);
        if (g_thisAuxiliaryPicture ->errorCode == IMAGE_SUCCESS) {
            uint8_t* buff = new uint8_t[g_thisAuxiliaryPicture ->buffSize];
-           OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
+           Image_ErrorCode readCode = OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
                &g_thisAuxiliaryPicture ->buffSize);
+           if (readCode != IMAGE_SUCCESS) {
+               OH_LOG_ERROR(LOG_APP, "OH_AuxiliaryPictureNative_ReadPixels failed, errCode: %{public}d.", readCode);
+           }
            OH_AuxiliaryPictureNative_Release(g_thisAuxiliaryPicture ->auxiliaryPicture);
            g_thisAuxiliaryPicture ->auxiliaryPicture = nullptr;
            delete []buff;

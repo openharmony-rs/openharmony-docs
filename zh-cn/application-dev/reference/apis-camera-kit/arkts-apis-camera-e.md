@@ -222,7 +222,7 @@
 
 ## MetadataObjectType
 
-枚举，metadata流。
+枚举，metadata元数据检测类型。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -230,6 +230,30 @@
 | ------------------------- | ---- | ----------------- |
 | FACE_DETECTION            | 0    | 元数据的对象类型，用于人脸检测。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| CAT_FACE               | 2    | 用于检测猫脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| CAT_BODY                   | 3    | 用于检测猫的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| DOG_FACE                   | 4    | 用于检测狗脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| DOG_BODY                   | 5    | 用于检测狗的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| SALIENT_DETECTION          | 6    | 用于显著性检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BAR_CODE_DETECTION         | 7    | 用于二维码检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BASIC_FACE_DETECTION       | 8    | 用于基础人脸检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## Emotion
+
+枚举，人脸检测信息中的情绪类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明              |
+| -------------------------- | ---- | ----------------- |
+| NEUTRAL                    | 0    | 平静。 |
+| SADNESS                    | 1    | 悲伤。 |
+| SMILE                      | 2    | 微笑。 |
+| SURPRISE                   | 3    | 惊讶。 |
 
 ## FlashMode
 
@@ -512,3 +536,33 @@
 | ------------------------- | ---- | ------------    |
 | EXPOSURE_STATE_SCAN       | 0    | 曝光处于扫描状态。     |
 | EXPOSURE_STATE_CONVERGED  | 1    | 曝光已经收敛。     |
+
+## AutomotiveCameraPosition
+
+表示Car设备摄像头位置的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER       | 0    | Car设备外部其他位置摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT  | 1    | Car设备外部前侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR  | 2    | Car设备外部后侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT  | 3    | Car设备外部左侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT  | 4    | Car设备外部右侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER  | 5    | Car设备内部其他位置摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT  | 6    | Car设备内部第一排左侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER  | 7    | Car设备内部第一排中央摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT  | 8    | Car设备内部第一排右侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT  | 9    | Car设备内部第二排左侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER  | 10    | Car设备内部第二排中央摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT  | 11    | Car设备内部第二排右侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT  | 12    | Car设备内部第三排左侧摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER  | 13    | Car设备内部第三排中央摄像头。     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT  | 14    | Car设备内部第三排右侧摄像头。     |

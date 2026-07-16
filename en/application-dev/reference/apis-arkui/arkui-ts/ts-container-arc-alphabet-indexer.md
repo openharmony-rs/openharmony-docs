@@ -1,26 +1,27 @@
 # ArcAlphabetIndexer
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:27:01.371Z pushedAt=2026-07-02T08:59:42.873Z -->
 
-The **ArcAlphabetIndexer** component is an arc-shaped component designed for quick navigation through alphabetically sorted items. It can be integrated with container components to quickly locate items within the visible area.
+The **ArcAlphabetIndexer** is a component arranged in an arc that allows quick location by alphabetical order. It can be bound with container components to quickly locate the container display area based on logical structure, making it suitable for circular screen devices such as watches.
 
 >  **NOTE**
 >
 >  - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >  - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
-
 ## Modules to Import
 
-> **NOTE**
+>  **NOTE**
 >
-> - **ArcAlphabetIndexerAttribute** is essential for configuring the **ArcAlphabetIndexer** component. In API version 21 and earlier, you must manually import **ArcAlphabetIndexerAttribute** after importing the **ArcAlphabetIndexer** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcAlphabetIndexerAttribute** when it detects the **ArcAlphabetIndexer** component, so manual import is no longer necessary.
+> - **ArcAlphabetIndexerAttribute** is a key API for configuring the attributes of the **ArcAlphabetIndexer** component. In API version 21 and earlier versions, after importing the **ArcAlphabetIndexer** component, you need to manually import **ArcAlphabetIndexerAttribute**; otherwise, a compilation error will occur. Since API version 22, the compilation toolchain automatically imports **ArcAlphabetIndexerAttribute** when it detects the import of the **ArcAlphabetIndexer** component.
 >
-> - If you manually import **ArcAlphabetIndexerAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+> - If you manually import **ArcAlphabetIndexerAttribute**, DevEco Studio will display the import statement in a grayed-out state. For API version 21 and earlier, removing it will cause a compilation error; since API version 22, removing it has no impact on functionality.
 
 API version 21 and earlier:
 
@@ -34,17 +35,15 @@ API version 22 and later:
 import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
-
 ## Child Components
 
 Not supported
-
 
 ## APIs
 
 ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
-Creates an instance of the **ArcAlphabetIndexer** component with initialization parameters.
+Creates and initializes an **ArcAlphabetIndexer** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -55,7 +54,6 @@ Creates an instance of the **ArcAlphabetIndexer** component with initialization 
 | Name    | Type    | Mandatory    | Description    |
 | -------- | -------- | -------- | -------- |
 | info     | [ArcAlphabetIndexerInitInfo](#arcalphabetindexerinitinfo) | Yes| Initialization parameters for the **ArcAlphabetIndexer** component.|
-
 
 ## Attributes
 
@@ -197,7 +195,7 @@ Sets the font style of the pop-up window.
 
 font(font: Optional&lt;Font&gt;)
 
-Sets the default font style of the index items.
+Sets the default font style for the arc alphabet indexer.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -213,7 +211,7 @@ Sets the default font style of the index items.
 
 itemSize(size: Optional&lt;LengthMetrics&gt;)
 
-Sets the size of the index item area.
+Sets the size of the index item area for the arc alphabet indexer.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -223,7 +221,7 @@ Sets the size of the index item area.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes  | Size of the index item area. For the circular item area, this represents the diameter of the circle. Percentage values are not supported.<br>Default value: **24.0**<br>Unit: vp|
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes   | Size of the index item area on the arc alphabet indexer. The index item area is circular, so this value represents the diameter of the circle. Percentage value is not supported.<br/>Default value: 24.0 <br/>Unit: vp |
 
 ### selected
 
@@ -239,13 +237,13 @@ Sets the index of the selected item.
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | Optional&lt;number&gt; | Yes  | Index of the selected item.<br>Default value: **0**<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).|
+| index  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;number&gt; | Yes   | Index value of the selected item. If the value exceeds the valid index range, the default value **0** is used.<br/>Default value: **0**<br/>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).|
 
 ### autoCollapse
 
 autoCollapse(enable: Optional&lt;boolean&gt;)
 
-Sets whether to enable the adaptive collapse behavior for the indexer.
+Sets whether to use the adaptive collapse mode. When there are too many index items, the component automatically adjusts the display layout of the index items based on the available display space.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -275,7 +273,7 @@ Sets the background blur style of the pop-up window. If this API is not used, th
 
 | Name| Type                                        | Mandatory| Description                                                        |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | Yes  | Background blur style of the pop-up window.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | Yes   | Background blur style of the pop-up window.<br/>Default value: **BlurStyle.NONE**.<br/>With this attribute set, it is not recommended to set the [popupBackground](#popupbackground) attribute. |
 
 ## Events
 
@@ -295,8 +293,7 @@ Triggered when an index item is selected. The return value is the index of the s
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes  | Callback used to return the result.|
-
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes   | Callback used to handle the indexer selection event. |
 
 ## ArcAlphabetIndexerInitInfo
 
@@ -325,8 +322,7 @@ Defines the callback used in [onSelect](#onselect).
 
 | Name | Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
-| index  | number | Yes| Index of the selected item.|
-
+| index  | number | Yes | Index value of the selected item. |
 
 ## Example
 
@@ -369,7 +365,7 @@ struct ArcListAndIndexer {
     Column() {
       Row() {
         Stack() {
-          ArcList({ scroller : this.scrollerForList, initialIndex: 0 }) {
+          ArcList({ scroller: this.scrollerForList, initialIndex: 0 }) {
             ForEach(this.arrName, (itemName: string, index: number) => {
               ArcListItem() {
                 Text(itemName)
@@ -411,16 +407,16 @@ struct ArcListAndIndexer {
             .popupBackground(ColorMetrics.resourceColor(0xD8404040))
             .itemSize(LengthMetrics.px(this.itemSize))
             .selectedFont({
-              size:'11.0fp',
-              style:FontStyle.Normal,
-              weight:500,
-              family:'HarmonyOS Sans'
+              size: '11.0fp',
+              style: FontStyle.Normal,
+              weight: 500,
+              family: 'HarmonyOS Sans'
             })
             .font({
-              size:'11.0fp',
-              style:FontStyle.Normal,
-              weight:500,
-              family:'HarmonyOS Sans'
+              size: '11.0fp',
+              style: FontStyle.Normal,
+              weight: 500,
+              family: 'HarmonyOS Sans'
             })
 
         }.width('100%').height('100%')

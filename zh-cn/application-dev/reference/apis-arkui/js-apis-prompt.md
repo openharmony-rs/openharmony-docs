@@ -43,7 +43,7 @@ prompt.showToast({
 });
 ```
 
-![zh-cn_image_0001](figures/zh-cn_image_0001.gif)
+![zh-cn_image_0001](figures/showToast-example.gif)
 
 ## ShowToastOptions
 
@@ -61,7 +61,7 @@ prompt.showToast({
 
 showDialog(options: ShowDialogOptions): Promise&lt;ShowDialogSuccessResponse&gt;
 
-创建并显示对话框，对话框响应后同步返回结果。
+创建并显示对话框，使用Promise异步回调。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +103,7 @@ prompt.showDialog({
   })
 ```
 
-![zh-cn_image_0002](figures/zh-cn_image_0002.gif)
+![zh-cn_image_0002](figures/showDialog-example01.gif)
 
 ## prompt.showDialog
 
@@ -117,7 +117,7 @@ showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSucc
 
 | 参数名      | 类型                                       | 必填   | 说明           |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| options  | [ShowDialogOptions](#showdialogoptions)  | 是    | 页面显示对话框信息描述。 |
+| options  | [ShowDialogOptions](#showdialogoptions)  | 是    | 对话框选项。 |
 | callback | AsyncCallback&lt;[ShowDialogSuccessResponse](#showdialogsuccessresponse)&gt; | 是    | 对话框响应结果回调。   |
 
 **示例：**
@@ -146,7 +146,7 @@ prompt.showDialog({
 });
 ```
 
-![zh-cn_image_0004](figures/zh-cn_image_0004.gif)
+![zh-cn_image_0004](figures/showDialog-example02.gif)
 
 ## ShowDialogOptions
 
@@ -211,13 +211,13 @@ prompt.showActionMenu({
 })
 ```
 
-![zh-cn_image_0005](figures/zh-cn_image_0005.gif)
+![zh-cn_image_0005](figures/showActionMenu-example01.gif)
 
 ## prompt.showActionMenu
 
 showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;
 
-创建并显示操作菜单，菜单响应后同步返回结果。
+创建并显示操作菜单，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,7 +257,7 @@ prompt.showActionMenu({
     console.info('showActionMenu error: ' + err);
   })
 ```
-![zh-cn_image_0006](figures/zh-cn_image_0006.gif)
+![zh-cn_image_0006](figures/showActionMenu-example02.gif)
 
 ## ActionMenuOptions
 

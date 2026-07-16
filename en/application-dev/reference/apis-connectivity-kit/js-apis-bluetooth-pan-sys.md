@@ -6,6 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:48.497Z pushedAt=2026-06-25T06:57:19.562Z -->
 
 The **pan** module provides APIs for accessing the Bluetooth personal area network (PAN).
 
@@ -13,7 +14,6 @@ The **pan** module provides APIs for accessing the Bluetooth personal area netwo
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.bluetooth.pan (Bluetooth PAN Module)](js-apis-bluetooth-pan.md).
-
 
 ## Modules to Import
 
@@ -70,7 +70,6 @@ try {
 }
 ```
 
-
 ### setTethering
 
 setTethering(enable: boolean): void
@@ -116,7 +115,6 @@ try {
 }
 ```
 
-
 ### isTetheringOn
 
 isTetheringOn(): boolean
@@ -144,7 +142,6 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
 |801 | Capability not supported.          |
-
 
 **Example**
 

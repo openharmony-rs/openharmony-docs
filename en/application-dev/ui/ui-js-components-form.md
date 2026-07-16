@@ -33,7 +33,7 @@ Create a **\<form>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001267887873](figures/en-us_image_0000001267887873.png)
+![form-Component](figures/form-Component.png)
 
 
 ## Zooming In or Out on a Form
@@ -74,7 +74,7 @@ Add the **background-color** and **border** attributes.
 ```
 
 
-![en-us_image_0000001267607913](figures/en-us_image_0000001267607913.gif)
+![Form-Style](figures/Form-Style.gif)
 
 
 ## Adding Response Events
@@ -138,7 +138,7 @@ export default{
 ```
 
 
-![en-us_image_0000001267767885](figures/en-us_image_0000001267767885.gif)
+![Response-Events](figures/Response-Events.gif)
 
 
 ## Example Scenario
@@ -218,4 +218,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001222967788](figures/en-us_image_0000001222967788.gif)
+![Example-Scenario-2](figures/Example-Scenario-2.gif)

@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-The hdrCapability module provides enums related to the High Dynamic Range (HDR) capability.
+The hdrCapability module provides enums related to the High Dynamic Range (HDR) capability. The HDR technology significantly expands the dynamic range and color expressiveness of images. It is applicable to scenarios such as video playback and image display. It addresses the issues of overexposure in bright areas and loss of details in dark areas in traditional SDR in high-contrast scenarios, delivering a more authentic and richer visual experience.
 
 > **NOTE**
 >
@@ -35,4 +35,4 @@ Enumerates the HDR formats.
 | IMAGE_HDR_VIVID_SINGLE       | 5      | Images in HDR_VIVID format, stored in single HEIF format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | IMAGE_HDR_ISO_DUAL           | 6      | Images in HDR_ISO format, stored in dual JPEG format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | IMAGE_HDR_ISO_SINGLE         | 7      | Images in HDR_ISO format, stored in single HEIF format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| VIDEO_AIHDR<sup>24+</sup>     | 8      | Videos in AIHDR format.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| VIDEO_AIHDR<sup>24+</sup>     | 8      | Videos in AIHDR format.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model restriction**: This API can be used only in the stage model.|

@@ -1164,16 +1164,16 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
 });
 ```
 
-### GetMockHapticRingtonePlayer
+### getMockHapticRingtonePlayer
 
-GetMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt;RingtonePlayer | null&gt;
+getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt;RingtonePlayer | null&gt;
 
 获取模拟触觉铃声播放器，根据指定的触觉文件URI播放振动文件及其对应的模拟触觉声音文件。使用Promise异步回调。
 
 > **说明：**
 >
 > - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
-> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release11)方法释放播放器资源。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
@@ -1198,7 +1198,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1218,26 +1218,26 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
 let hapticUri = 'file://data/test.json'; // 需更改为目标触觉文件URI。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.GetMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
   if (value != null) {
-    console.info('Succeeded in doing GetMockHapticRingtonePlayer.');
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
     systemRingtonePlayer = value;
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to GetMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-### GetMockHapticRingtonePlayer
+### getMockHapticRingtonePlayer
 
-GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
+getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
 
 获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
 
 > **说明：**
 >
 > - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
-> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release11)方法释放播放器资源。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
@@ -1253,7 +1253,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 | -------- | --------------------------------| ---- | --------------------------- |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。            |
 | type     | [RingtoneType](#ringtonetype)   | 是   | 待获取播放器的铃声类型。 |
-| ringtoneUri     | string  | 是   | 铃音文件的URI, 需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+| ringtoneUri     | string  | 是   | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
 
 **返回值：**
 
@@ -1263,12 +1263,12 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
 | 202 |Caller is not a system application.|
-| 20700002 |Parameter verification failed. Possible causes: 1.The type exceeds the valid range, please use the RingtoneType enum for input. 2.The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
+| 20700002 |Parameter verification failed. Possible causes: 1. The type exceeds the valid range, please use the RingtoneType enum for input. 2. The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
 | 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
 
 **示例：**
@@ -1284,13 +1284,13 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
 let ringtoneUri = 'file://data/test.json'; // 需更改为目标铃音文件URI。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.GetMockHapticRingtonePlayer(context, type, ringtoneUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUri).then((value: systemSoundManager.RingtonePlayer | null) => {
   if (value != null) {
-    console.info('Succeeded in doing GetMockHapticRingtonePlayer.');
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
     systemRingtonePlayer = value;
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to GetMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

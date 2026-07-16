@@ -1,12 +1,18 @@
 # @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **StaticSubscriberExtensionAbility** module provides Extension abilities for static subscribers.
+This module provides extension abilities of Basic Services Kit for static subscribers, which can be used to subscribe to common events in static mode. Static subscription enables receiving common events without keeping the app running in the background. This ability is applicable to scenarios where system services or system apps need to perform background processing when specific common events occur.
+
+**StaticSubscriberExtensionAbility** provides the **onReceiveEvent** method and the **context** attribute. The **context** attribute is of the [StaticSubscriberExtensionContext](./js-apis-application-StaticSubscriberExtensionContext-sys.md) type, which is the running context of the extension ability. It is inherited from **ExtensionContext** and provides **startAbility** to start other abilities in the same app during event processing.
+
+**APIs used in combination**
+
+The typical process of this module is as follows: Inherit the base class, override **onReceiveEvent**, start a callback, read the event data, and start the target ability. Note that **context.startAbility** can start only the abilities that belong to the same app as the current **StaticSubscriberExtensionAbility**.
 
 > **NOTE**
 >
@@ -30,31 +36,33 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 | Name   | Type                                                        | Read Only| Optional| Description    |
 | ------- | ------------------------------------------------------------ | ---- | ---- | -------- |
-| context<sup>10+</sup> | [StaticSubscriberExtensionContext](js-apis-application-StaticSubscriberExtensionContext-sys.md) | No  | No  | Context of the ExtensionAbility.|
+| context<sup>10+</sup> | [StaticSubscriberExtensionContext](js-apis-application-StaticSubscriberExtensionContext-sys.md) | No  | No  | Context of the extension ability subscribed to in static mode.|
 
 ## StaticSubscriberExtensionAbility.onReceiveEvent
 
 onReceiveEvent(event: CommonEventData): void
 
-Represents a callback of the common event of a static subscriber.
+Defines a callback to be invoked when a common event is triggered in static mode.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**Model restriction:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event | [CommonEventData](./js-apis-inner-commonEvent-commonEventData.md) | Yes| Common event of a static subscriber.|
+| event | [CommonEventData](./js-apis-inner-commonEvent-commonEventData.md) | Yes| Common event data received through static subscription.|
 
 **Example**
   ```ts
   import { commonEventManager } from '@kit.BasicServicesKit';
 
-    class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-        onReceiveEvent(event: commonEventManager.CommonEventData) {
-            console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-        }
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
     }
+  }
   ```

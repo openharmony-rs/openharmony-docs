@@ -1,8 +1,8 @@
 # 点击回弹效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,7 +16,7 @@
 
 ## clickEffect
 
-clickEffect(value: ClickEffect | null): T
+clickEffect(value: ClickEffect \| null): T
 
 设置当前组件的点击回弹效果。
 
@@ -28,7 +28,7 @@ clickEffect(value: ClickEffect | null): T
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null | 是   | 设置当前组件点击回弹效果。<br/>**说明：**<br/>可通过null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| value  | [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null | 是   | 设置当前组件点击回弹效果。<br>**说明：**<br>可通过null取消点击回弹效果。<br>不建议在组件大小动态变化的场景中使用该功能。<br>当组件无法触发通用事件（如[点击事件](ts-universal-events-click.md)等事件）时，不支持该属性。<br>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -38,7 +38,7 @@ clickEffect(value: ClickEffect | null): T
 
 ## clickEffect<sup>18+</sup>
 
-clickEffect(effect: Optional\<ClickEffect | null>): T
+clickEffect(effect: Optional\<ClickEffect \| null>): T
 
 设置当前组件的点击回弹效果。与[clickEffect](#clickeffect)相比，新增了对undefined类型的支持。
 
@@ -60,7 +60,7 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 ## ClickEffect对象说明
 
-定义点击效果。
+定义点击回弹效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

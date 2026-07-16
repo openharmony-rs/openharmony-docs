@@ -47,7 +47,7 @@ static OH_Crypto_ErrCode CompareSecrets(Crypto_DataBlob secret1, Crypto_DataBlob
     return CRYPTO_OPERTION_ERROR;
 }
 
-static OH_Crypto_ErrCode CovertKeyPairByBlob(OH_CryptoAsymKeyGenerator *x25519Gen, OH_CryptoKeyPair **keyPair)
+static OH_Crypto_ErrCode ConvertKeyPairByBlob(OH_CryptoAsymKeyGenerator *x25519Gen, OH_CryptoKeyPair **keyPair)
 {
     uint8_t pubKeyArray[] = {48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145,
                              147, 101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251,
@@ -73,7 +73,7 @@ OH_Crypto_ErrCode doTestX25519KeyAgreement()
         return ret;
     }
 
-    ret = CovertKeyPairByBlob(x25519Gen, &keyPairA);
+    ret = ConvertKeyPairByBlob(x25519Gen, &keyPairA);
     if (ret != CRYPTO_SUCCESS) {
         goto goto_cleanup;
     }
@@ -113,7 +113,7 @@ goto_cleanup:
     OH_CryptoKeyPair_Destroy(keyPairA);
     OH_CryptoKeyPair_Destroy(keyPairB);
     OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-    return CRYPTO_SUCCESS;
+    return ret;
 }
 ```
 

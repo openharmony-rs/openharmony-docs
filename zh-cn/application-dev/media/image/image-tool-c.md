@@ -127,7 +127,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
    >
    > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
-   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
    
    ``` C++
    // 获取指定property的value值。
@@ -141,18 +141,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        // 修改指定属性键的值。
-       char key[MAX_STRING_LENGTH];
-       size_t keySize = MAX_STRING_LENGTH;
-       napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+       char key[MAX_STRING_LENGTH] = {0};
+       size_t keySize = 0;
+       if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       key[MAX_STRING_LENGTH - 1] = '\0';
        Image_String getKey;
        getKey.data = key;
        getKey.size = keySize;
-       Image_String getValue;
+       Image_String getValue = {nullptr, 0};
        OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageProperty key: %{public}s.", getKey.data);
        Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(g_thisImageSource->source,
                                                                                &getKey, &getValue);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
+           if (getValue.data != nullptr) {
+               free(getValue.data);
+               getValue.data = nullptr;
+           }
            return GetJsResult(env, errCode);
        }
        napi_value resultNapi = nullptr;
@@ -175,18 +183,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
        }
    
        // 获取要修改的key值。
-       char key[MAX_STRING_LENGTH];
-       size_t keySize = MAX_STRING_LENGTH;
-       napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+       char key[MAX_STRING_LENGTH] = {0};
+       size_t keySize = 0;
+       if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty key napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       key[MAX_STRING_LENGTH - 1] = '\0';
        Image_String setKey;
        setKey.data = key;
        setKey.size = keySize;
        OH_LOG_INFO(LOG_APP, "ModifyImageProperty key: %{public}s.", setKey.data);
        
        // 获取要修改的value值。
-       char value[MAX_STRING_LENGTH];
-       size_t valueSize;
-       napi_get_value_string_utf8(env, argValue[1], (char *)value, MAX_STRING_LENGTH, &valueSize);
+       char value[MAX_STRING_LENGTH] = {0};
+       size_t valueSize = 0;
+       if (napi_get_value_string_utf8(env, argValue[1], value, sizeof(value), &valueSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty value napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       value[MAX_STRING_LENGTH - 1] = '\0';
        Image_String setValue;
        setValue.data = value;
        setValue.size = valueSize;

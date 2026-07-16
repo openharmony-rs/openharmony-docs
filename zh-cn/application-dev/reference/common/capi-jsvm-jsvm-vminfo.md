@@ -1,10 +1,10 @@
 # JSVM_VMInfo
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ```c
 typedef struct {...} JSVM_VMInfo
@@ -13,6 +13,8 @@ typedef struct {...} JSVM_VMInfo
 ## 概述
 
 JavaScript虚拟机信息。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 

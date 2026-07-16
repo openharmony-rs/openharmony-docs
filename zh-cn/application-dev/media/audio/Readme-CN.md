@@ -9,8 +9,9 @@
 - [Audio Kit简介](audio-kit-intro.md)
 - [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
 - 音频焦点和音频会话管理<!--audio-session-->
+  - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)
-  - [音频会话管理](audio-session-management.md)
+  - [音频会话管理(ArkTS)](audio-session-management.md)
   - [使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)
 - 音频播放<!--audio-playback-->
   - [音频播放开发概述](audio-playback-overview.md)
@@ -21,8 +22,8 @@
   <!--DelEnd-->
   - [低时延音频播放(C/C++)](audio-fast-playback.md)
   - [低功耗音频播放](power-saving-for-playback.md)
-  - [使用AudioHaptic开发音振协同播放功能(ArkTs)](audio-haptic-player.md)
-  - [使用SoundPlayer开发系统音效播放功能](audio-sound-player.md)
+  - [使用AudioHaptic开发音振协同播放功能(ArkTS)](using-audiohaptic-for-playback.md)
+  - [使用SoundPlayer开发系统音效播放功能](using-soundplayer-for-playback.md)
   - [播放音量管理](volume-management.md)
   - [空间音频能力查询和状态订阅](public-audio-spatialization-management.md)
   <!--Del-->
@@ -60,7 +61,9 @@
 - 音频编创<!--audio-production-creation-->
   - [音频编创开发概述(C/C++)](audio-suite.md)
   - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
-  - [实时渲染(C/C++)](audio-suite-real-time-rendering.md)
+  - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
+  - [音频格式转换(C/C++)](audio-suite-format-converter.md)
+  - [空间渲染(C/C++)](audio-suite-space-render.md)
 - MIDI设备通信<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)

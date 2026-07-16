@@ -58,4 +58,3 @@ AMS (Ability Manager Service): Provides internal `ConnectExtensionAbility/Discon
 ## BMS
 
 BMS (Bundle Manager Service): Provides **OE SA** with the capability to query OE Extension information registered by installed applications, and supports dynamic addition, modification, and deletion of OE Extension information through event notifications.
-

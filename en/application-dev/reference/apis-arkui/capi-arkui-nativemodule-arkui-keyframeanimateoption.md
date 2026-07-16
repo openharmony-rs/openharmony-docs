@@ -1,8 +1,8 @@
 # ArkUI_KeyframeAnimateOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
 
 ## Overview
 
-Defines the keyframe animation parameter object.
+Defines a keyframe animation option object, which is used as the input parameter of keyframe animation-related APIs.
 
 **Since**: 12
 

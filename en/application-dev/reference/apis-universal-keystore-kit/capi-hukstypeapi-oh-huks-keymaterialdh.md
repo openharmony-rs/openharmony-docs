@@ -31,4 +31,4 @@ Defines the struct for a DH key.
 | uint32_t keySize | Length of the DH key.|
 | uint32_t pubKeySize | Length of the public key.|
 | uint32_t priKeySize | Length of the private key.|
-| uint32_t reserved | Reserved.|
+| uint32_t reserved | Reserved field.|

@@ -22,7 +22,9 @@ import {
   LayeredDrawableDescriptor,
   AnimatedDrawableDescriptor,
   AnimationOptions,
-  AnimationController
+  AnimationController,
+  PictureDrawableDescriptor,
+  HdrCompositionConfig
 } from '@kit.ArkUI';
 ```
 ## DrawableDescriptorLoadedResult<sup>21+</sup>
@@ -45,14 +47,35 @@ import {
 ```ts
 import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // 可以提前手动加载动图资源到内存中。
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
+@Entry
+@Component
+struct Index {
+  options: AnimationOptions = { duration: 2000, iterations: 1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State result: string = '';
+
+  aboutToAppear() {
+    // 在页面显示前提前加载资源到内存中，加快Image组件渲染速度。
+    // 使用loadSync同步加载：
+    // let loadResult: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    // 使用load异步加载：
+    this.drawable.load().then((loadResult: DrawableDescriptorLoadedResult) => {
+      this.result = `width: ${loadResult.imageWidth}, height: ${loadResult.imageHeight}`
+      console.info(`load result = ${JSON.stringify(loadResult)}`)
+    }).catch(() => {
+      console.error("load failed")
+    })
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+      Text(this.result)
+    }
+  }
 }
 ```
 ## DrawableDescriptor
@@ -116,19 +139,9 @@ loadSync(): DrawableDescriptorLoadedResult
 | 111001   | resource loading failed. |
 | 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
-```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
+**示例：**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // 可以提前手动加载动图资源到内存中
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
-}
-```
+示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
 ### load<sup>21+</sup>
 
@@ -157,22 +170,9 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 | 111001   | resource loading failed. |
 | 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
-```ts
-import {
-  AnimatedDrawableDescriptor,
-  DrawableDescriptor,
-  DrawableDescriptorLoadedResult,
-  AnimationOptions
-} from '@kit.ArkUI';
+**示例：**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-drawable.load().then((result: DrawableDescriptorLoadedResult) => {
-  console.info(`load result = ${JSON.stringify(result)}`)
-}).catch(() => {
-  console.info(`load failed`)
-})
-```
+示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
 ### release
 
@@ -237,6 +237,20 @@ isReleased(): boolean
 | ------- | ------------------------------- |
 | boolean | DrawableDescriptor是否已被释放。true表示已释放，false表示未释放。 |
 
+### invalidate
+
+invalidate(): void
+
+重新绘制DrawableDescriptor。当前仅支持[PictureDrawableDescriptor](#picturedrawabledescriptor)类型，其他DrawableDescriptor子类型触发后无效果。若DrawableDescriptor未绑定任何组件，则不会执行任何操作。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
 支持通过传入PixelMap创建PixelMapDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
@@ -277,7 +291,7 @@ PixelMapDrawableDescriptor的构造函数，通过PixelMap类型或者ResourceSt
 
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否 | PixelMap类型参数，存储PixelMap图片数据。支持应用资源、系统资源、沙箱路径（file://\<bundleName\>/\<sandboxPath\>）和Base64字符串用于创建PixelMapDrawableDescriptor。 |
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否 | 图片资源参数，支持传入PixelMap图片数据，或应用资源、系统资源、沙箱路径（file://\<bundleName\>/\<sandboxPath\>）和Base64字符串用于创建PixelMapDrawableDescriptor。 |
 
 **示例：**
 
@@ -285,7 +299,7 @@ PixelMapDrawableDescriptor的构造函数，通过PixelMap类型或者ResourceSt
 
 ```ts
 // xxx.ets
-import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -422,7 +436,7 @@ LayeredDrawableDescriptor的构造函数。
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | foreground | [DrawableDescriptor](#drawabledescriptor)  | 否   | 分层图标的前景图片选项。 |
 | background   | [DrawableDescriptor](#drawabledescriptor) | 否   | 分层图标的背景图片选项。  |
-| mask | [DrawableDescriptor](#drawabledescriptor) | 否 | 分层图标的遮罩选项。 |
+| mask | [DrawableDescriptor](#drawabledescriptor) | 否 | 分层图标的蒙版选项。 |
 
 ### getForeground
 getForeground(): DrawableDescriptor
@@ -686,7 +700,6 @@ setBlendMode(mode: drawing.BlendMode): void
 
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
 @Entry
@@ -759,7 +772,7 @@ struct Index {
 **示例：**
 
 ```ts
-import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+import { AnimationOptions, AnimatedDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry
@@ -830,7 +843,7 @@ AnimatedDrawableDescriptor的构造函数。
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | 是   | PixelMap 数组类型参数，存储 PixelMap 图片数据。 |
-| options   | [AnimationOptions](#animationoptions12) | 否   | 动画控制选项。                               |
+| options   | [AnimationOptions](#animationoptions12) | 否   | 动画播放参数。                               |
 
 ### constructor<sup>21+</sup>
 
@@ -849,7 +862,7 @@ AnimatedDrawableDescriptor的构造函数。
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
-| options   | [AnimationOptions](#animationoptions12) | 否   | 动画控制参数。 |
+| options   | [AnimationOptions](#animationoptions12) | 否   | 动画播放参数。 |
 
 **示例：**
 
@@ -1200,6 +1213,139 @@ struct Example {
           console.info(`animation status = ${this.statusToString(status)}`)
         })
     }
+  }
+}
+```
+
+## HdrCompositionConfig
+
+HDR合成配置选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| rect | [Rectangle](arkui-ts/ts-universal-attributes-touch-target.md#rectangle对象说明) | 否 | 否 | HDR合成的矩形区域。 |
+
+## PictureDrawableDescriptor
+
+支持通过传入Picture对象创建PictureDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### constructor
+
+constructor(src: image.Picture)
+
+PictureDrawableDescriptor的构造函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| src | image.[Picture](../apis-image-kit/arkts-apis-image-Picture.md) | 是 | 用于创建PictureDrawableDescriptor的Picture对象。 |
+
+### setHdrComposition
+
+setHdrComposition(config: HdrCompositionConfig): void
+
+设置HDR合成配置。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| config | [HdrCompositionConfig](#hdrcompositionconfig) | 是 | HDR合成配置。 |
+
+**示例：**
+
+```ts
+import { PictureDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+
+@Entry
+@Component
+struct PictureDrawableDescriptorInvalidateTest {
+  @State drawable: PictureDrawableDescriptor | undefined = undefined;
+
+  async createPictureDrawableDescriptor() {
+    let resMgr = this.getUIContext().getHostContext()?.resourceManager
+    if (resMgr) {
+      try {
+        // $r('app.media.heic')需要替换为开发者所需的图像资源文件。
+        let uint8buffer = resMgr.getMediaContentSync($r('app.media.heic').id)
+        let imageSource = image.createImageSource(uint8buffer.buffer)
+        // 配置解码选项，请求解码GAINMAP和LHDR_GAINMAP辅助图用于HDR合成。
+        let options: image.DecodingOptionsForPicture = {
+          desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP, image.AuxiliaryPictureType.LHDR_GAINMAP],
+          desiredPixelFormat: image.PixelMapFormat.NV12
+        }
+        let picture = await imageSource.createPicture(options)
+        let drawable = new PictureDrawableDescriptor(picture)
+        imageSource.release()
+        this.drawable = drawable
+      } catch (error) {
+        console.error(`get media content failed`)
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(300)
+        .height(225)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+
+      Button("创建PictureDrawableDescriptor对象").onClick((event: ClickEvent) => {
+        this.createPictureDrawableDescriptor()
+      })
+
+      Button("触发一次重建").onClick((event: ClickEvent) => {
+        // 设置HDR合成配置，指定合成矩形区域的位置和大小。
+        this.drawable?.setHdrComposition({
+          rect: {
+            x: 200,
+            y: 200,
+            width: 300,
+            height: 300
+          }
+        })
+        this.drawable?.invalidate()
+      })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```

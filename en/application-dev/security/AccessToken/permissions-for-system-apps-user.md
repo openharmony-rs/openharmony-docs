@@ -274,3 +274,39 @@ Allows an application to set and query the disposition status of specific applic
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_TOGGLE
+
+Allows an application to enable or disable Wi-Fi via CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_SCAN
+
+Allows an application to set Wi-Fi scanning via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_WIFI_CONNECT
+
+Allows an application to set Wi-Fi connections via CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Since**: 26.0.0
