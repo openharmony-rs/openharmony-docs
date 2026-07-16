@@ -200,10 +200,12 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 <!-- @[getSessionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
-let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
+import { audio } from '@kit.AudioKit';
+// ...
 
-let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioManager的方法创建AudioSessionManager实例。
+let audioManager = audio.getAudioManager();
+// ...
+let audioSessionManager = audioManager.getSessionManager();
 ```
 
 ### 设置本机默认音频输出设备
