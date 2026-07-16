@@ -24,7 +24,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@kit.ArkUI
 
 
 ## IPrefetcher
-Provides prefetching capabilities.
+Provides the prefetching capability. It works with **LazyForEach** to prefetch data items when users swipe through container components such as **List** and **Grid**, improving user browsing experience.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -62,7 +62,7 @@ class MyPrefetcher implements IPrefetcher {
 ### visibleAreaChanged
 visibleAreaChanged(minVisible: number, maxVisible: number): void;
 
-Called when the boundaries of the visible area change. This API works with the **List**, **Grid**, **WaterFlow**, and **Swiper** components.
+Called when the boundary of the visible area changes. It notifies **Prefetcher** of the current visible area range so that **Prefetcher** can determine whether to prefetch or cancel the prefetching of data items. Before calling this API, you need to set a data source using **setDataSource**. This API works with the **List**, **Grid**, **WaterFlow**, and **Swiper** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -72,8 +72,8 @@ Called when the boundaries of the visible area change. This API works with the *
 
 | Name       | Type    | Mandatory| Description       |
 |------------|--------|----|-----------|
-| minVisible | number | Yes | Upper bound of the visible area.|
-| maxVisible | number | Yes | Lower bound of the visible area.|
+| minVisible | number | Yes | Index of the first data item in the current visible area.|
+| maxVisible | number | Yes | Index of the last data item in the current visible area.|
 
 ```typescript
 class MyPrefetcher implements IPrefetcher {
@@ -101,7 +101,7 @@ class MyPrefetcher implements IPrefetcher {
 ### constructor
 constructor(dataSource?: IDataSourcePrefetching);
 
-A constructor used to create a prefetching-capable data source to bind to the **Prefetcher**.
+Passes the data source that supports prefetching and binds it to **Prefetcher** when an object is created. If no data source is passed during the creation, you can use **setDataSource** to set a data source after the creation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -111,7 +111,7 @@ A constructor used to create a prefetching-capable data source to bind to the **
 
 | Name       | Type                                               | Mandatory| Description        |
 |------------|---------------------------------------------------|----|------------|
-| dataSource | [IDataSourcePrefetching](#idatasourceprefetching) | No | Prefetching-capable data source.|
+| dataSource | [IDataSourcePrefetching](#idatasourceprefetching) | No | Prefetching-capable data source. If this parameter is not specified, the value is empty by default. You can set a data source using **setDataSource** later.|
 
 ### setDataSource
 setDataSource(dataSource: IDataSourcePrefetching): void;
@@ -131,7 +131,7 @@ Sets the prefetching-capable data source to bind to the **Prefetcher**.
 ### visibleAreaChanged
 visibleAreaChanged(minVisible: number, maxVisible: number): void;
 
-Called when the boundaries of the visible area change. This API works with the **List**, **Grid**, **WaterFlow**, and **Swiper** components.
+Called when the boundary of the visible area changes. It notifies **Prefetcher** of the current visible area range so that **Prefetcher** can determine whether to prefetch or cancel the prefetching of data items. Before calling this API, ensure that the data source has been set using the constructor or the **setDataSource** API. This API works with the **List**, **Grid**, **WaterFlow**, and **Swiper** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -141,21 +141,21 @@ Called when the boundaries of the visible area change. This API works with the *
 
 | Name       | Type    | Mandatory| Description       |
 |------------|--------|----|-----------|
-| minVisible | number | Yes | Upper bound of the visible area.|
-| maxVisible | number | Yes | Lower bound of the visible area.|
+| minVisible | number | Yes | Index of the first data item in the current visible area.|
+| maxVisible | number | Yes | Index of the last data item in the current visible area.|
 
 ## IDataSourcePrefetching
 
-Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource) API to add data prefetching capability to your data source.
+Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource) API to provide a data source that can be prefetched.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### prefetch
-prefetch(index: number): Promise\<void\> | void;
+prefetch(index: number): Promise\<void\> \| void;
 
-Prefetches a specified data item from the dataset. This API can be either synchronous or asynchronous.
+Prefetches a specified data item from the dataset. This API can be either synchronous or asynchronous. When the visible area changes, the prefetching algorithm calls this API if it determines that the data item about to enter the visible area needs to be prefetched.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -165,7 +165,7 @@ Prefetches a specified data item from the dataset. This API can be either synchr
 
 | Name  | Type    | Mandatory| Description      |
 |-------|--------|----|----------|
-| index | number | Yes | Index of the data item to prefetch.|
+| index | number | Yes | Index of the data item to be prefetched. The value range is [0, **totalCount()** – 1].|
 
 **Return value**
 
@@ -174,9 +174,9 @@ Prefetches a specified data item from the dataset. This API can be either synchr
 | Promise\<void\> \| void | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content.|
 
 ### cancel
-cancel?(index: number): Promise\<void\> | void;
+cancel?(index: number): Promise\<void\> \| void;
 
-Cancels the prefetching of a specified data item from the dataset. This API can be either synchronous or asynchronous.
+Cancels the prefetching of a specified data item from the dataset. This API can be either synchronous or asynchronous. This API is optional. If the data source does not implement this API, the prefetching cancellation operation will not be performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -186,7 +186,7 @@ Cancels the prefetching of a specified data item from the dataset. This API can 
 
 | Name  | Type    | Mandatory| Description        |
 |-------|--------|----|------------|
-| index | number | Yes | Index of the data item to cancel prefetching for.|
+| index | number | Yes | Index of the data item whose prefetching is to be canceled. The value range is [0, **totalCount()** – 1].|
 
 **Return value**
 
@@ -194,11 +194,11 @@ Cancels the prefetching of a specified data item from the dataset. This API can 
 | ----------------------- | -------- |
 | Promise\<void\> \| void | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content.|
 
-When list content moves off the screen (for example, during fast scrolling), the prefetching algorithm identifies which off-screen items can have their prefetching canceled. This API is then called to handle the cancellation. For example, if the HTTP framework supports request cancellation, this API can be used to terminate the network requests initiated by the **prefetch** API.
+This API is called when the list content is moved out of the screen (for example, in the scenario where the list is quickly flicked) and the prefetching algorithm determines that prefetching of data items outside the screen can be canceled. For example, if the HTTP framework supports request cancellation, this API can be used to terminate the network requests initiated by the **prefetch** API.
 
 ## Example
 
-This example demonstrates the prefetching capabilities of **Prefetcher**. It uses pagination with **LazyForEach** to achieve lazy loading effects and simulates the loading process with delays.
+The following example demonstrates the prefetching capability of **Prefetcher**. It uses pagination with **LazyForEach** to achieve lazy loading effects and simulates the loading process with delays.
 
 ```typescript
 import { BasicPrefetcher, IDataSourcePrefetching } from '@kit.ArkUI';
@@ -225,6 +225,7 @@ struct PrefetcherDemoComponent {
               .height(`${100 / ITEMS_ON_SCREEN}%`)
           }
           .onAppear(() => {
+            // When the list item index reaches the pagination trigger point, the data on the next page is loaded and the trigger point is updated to half of the total data volume. In this way, the loading is triggered again when the next page is close to the end of the list.
             if (index >= this.breakPoint) {
               this.dataSource.getHttpData(++this.page, this.pageSize);
               this.breakPoint = this.dataSource.totalCount() - this.pageSize / 2;
@@ -259,12 +260,10 @@ class PictureItem {
   readonly color: number;
   title: string;
   imagePixelMap: image.PixelMap | undefined;
-  key: string;
 
   constructor(color: number, title: string) {
     this.color = color;
     this.title = title;
-    this.key = title;
   }
 }
 
@@ -296,10 +295,11 @@ class MyDataSource implements IDataSourcePrefetching {
         const bitmap = create10x10Bitmap(item.color);
         const imageSource: image.ImageSource = image.createImageSource(bitmap);
         item.imagePixelMap = await imageSource.createPixelMap();
+        imageSource.release();
         resolve();
       }, this.fetchDelayMs);
 
-      this.fetches.set(index, timeoutId)
+      this.fetches.set(index, timeoutId);
     });
   }
 
@@ -312,7 +312,7 @@ class MyDataSource implements IDataSourcePrefetching {
   }
 
   // Simulate paginated data loading.
-  getHttpData(pageNum: number, pageSize:number): void {
+  getHttpData(pageNum: number, pageSize: number): void {
     const newItems: PictureItem[] = [];
     for (let i = (pageNum - 1) * pageSize; i < pageNum * pageSize; i++) {
       const item = new PictureItem(getRandomColor(), `Item ${i}`);
@@ -360,11 +360,11 @@ class MyDataSource implements IDataSourcePrefetching {
 
 function getRandomColor(): number {
   const maxColorCode = 256;
-  const r = Math.floor(Math.random() * maxColorCode);
-  const g = Math.floor(Math.random() * maxColorCode);
-  const b = Math.floor(Math.random() * maxColorCode);
+  const red = Math.floor(Math.random() * maxColorCode);
+  const green = Math.floor(Math.random() * maxColorCode);
+  const blue = Math.floor(Math.random() * maxColorCode);
 
-  return (r * 256 + g) * 256 + b;
+  return (red * 256 + green) * 256 + blue;
 }
 
 function create10x10Bitmap(color: number): ArrayBuffer {
@@ -396,16 +396,16 @@ function create10x10Bitmap(color: number): ArrayBuffer {
   view16[offset++] = 1;
   view16[offset++] = 24;
 
-  const b = color & 0xff;
-  const g = (color >> 8) & 0xff;
-  const r = color >> 16;
+  const blue = color & 0xff;
+  const green = (color >> 8) & 0xff;
+  const red = color >> 16;
   offset = headerLength;
   const view8 = new Uint8Array(buffer);
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      view8[offset++] = b;
-      view8[offset++] = g;
-      view8[offset++] = r;
+      view8[offset++] = blue;
+      view8[offset++] = green;
+      view8[offset++] = red;
     }
     offset += 2;
   }
@@ -420,4 +420,4 @@ The following figure illustrates the effects.
 
 ## Supplementary Notes
 
-You can also use the OpenHarmony third-party library [@netteam/prefetcher](https://ohpm.openharmony.cn/#/en/detail/@netteam%2Fprefetcher) to implement the prefetching functionality. This library provides additional APIs for more convenient and efficient data prefetching.
+You can also use the OpenHarmony third-party library [@netteam/prefetcher](https://ohpm.openharmony.cn/#/cn/detail/@netteam%2Fprefetcher) to implement the prefetching functionality. This library provides additional APIs for more convenient and efficient data prefetching.
