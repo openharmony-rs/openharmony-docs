@@ -55,7 +55,7 @@
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供将ArkTS侧的FrameNode转换为ArkUI_NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
 | [text.h](capi-text-h.md) | 定义Text相关的枚举和接口。 |
-| [text_common.h](capi-text-common-h.md) | 定义一组文本公共的枚举和接口。 |
+| [text_common.h](capi-text-common-h.md) | 定义文本类组件通用的枚举和接口。 |
 | [text_input.h](capi-text-input-h.md) | 定义TextInput相关的枚举和接口。 |
 | [text_area.h](capi-text-area-h.md) | 定义TextArea相关的枚举和接口。 |
 | [image_span.h](capi-image-span-h.md) | 定义ImageSpan相关的枚举和接口。 |
