@@ -60,7 +60,7 @@ ModularObjectDispatcher的调用流程分为以下几个阶段：
 
 <!-- @[modular_object_extension_dispatcher_createMainServiceInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance(g_remoteProxy, &g_ModObjDispatcher);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -79,7 +79,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 <!-- @[modular_object_extension_dispatcher_hasTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 uint32_t hasTypeDescriptor = 0;
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor(g_ModObjDispatcher, &hasTypeDescriptor);
@@ -96,7 +96,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR || hasTypeDescriptor == 0) {
 
 <!-- @[modular_object_extension_dispatcher_getTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 err = OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(g_ModObjDispatcher, &g_TypeDescriptor);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "GetTypeDescriptor err:%{public}d", err);
@@ -116,7 +116,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 <!-- @[modular_object_extension_dispatcher_getVersion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 char version[256];
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_TypeDescriptor_GetVersion(g_TypeDescriptor, version, sizeof(version));
@@ -133,7 +133,7 @@ OH_LOG_INFO(LOG_APP, "Version:%{public}s", version);
 
 <!-- @[modular_object_extension_dispatcher_getMainServiceInterfaceName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 char mainServiceInterfaceName[256];
 err = OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName(g_TypeDescriptor, mainServiceInterfaceName,
     sizeof(mainServiceInterfaceName));
@@ -150,7 +150,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 <!-- @[modular_object_extension_dispatcher_getInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 uint32_t interfaceCount = 0;
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount(g_TypeDescriptor, &interfaceCount);
@@ -218,7 +218,7 @@ static void QueryMethodMetadata(const char *interfaceName)
 
 <!-- @[modular_object_extension_dispatcher_getStructName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 uint32_t structCount = 0;
 AbilityRuntime_ErrorCode err = OH_AbilityRuntime_TypeDescriptor_GetStructCount(g_TypeDescriptor, &structCount);
 if (!CheckApiErr(err, "GetStructCount")) {
@@ -245,7 +245,7 @@ for (uint32_t structIndex = 0; structIndex < structCount; structIndex++) {
 
 <!-- @[modular_object_extension_dispatcher_getStructField](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 获取结构体的字段数量，逐个遍历字段名和字段类型
 uint32_t fieldCount = 0;
 err = OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount(g_TypeDescriptor, structName, &fieldCount);
@@ -280,7 +280,7 @@ for (uint32_t fieldIndex = 0; fieldIndex < fieldCount; fieldIndex++) {
 
 <!-- @[modular_object_extension_dispatcher_getEnumName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 uint32_t enumCount = 0;
 AbilityRuntime_ErrorCode err = OH_AbilityRuntime_TypeDescriptor_GetEnumCount(g_TypeDescriptor, &enumCount);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -308,7 +308,7 @@ for (uint32_t enumIndex = 0; enumIndex < enumCount; enumIndex++) {
 
 <!-- @[modular_object_extension_dispatcher_getEnumValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 遍历枚举的所有枚举值名称和对应的枚举值
 uint32_t valueCount = 0;
 err = OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount(g_TypeDescriptor, enumName, &valueCount);
@@ -446,7 +446,7 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 
 <!-- @[modular_object_extension_dispatcher_callMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 构造参数
 OH_AbilityRuntime_ModObjDispatcher_Variant params[2] = {
     {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = 10},
@@ -497,7 +497,7 @@ OH_LOG_INFO(LOG_APP, "addResult :%{public}d", addResult);
 
 <!-- @[modular_object_extension_dispatcher_callTypeArray_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t arrSize)
 {
     // 构造嵌套数组类型信息：内层 array<i32,size>，外层 array<inner,size>
@@ -540,7 +540,7 @@ static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t 
 
 <!-- @[modular_object_extension_dispatcher_callTypeArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 uint32_t arrSize = 5;
 OH_AbilityRuntime_ModObjDispatcher_ArrayHandle matrixArray = BuildMatrixArray(arrSize);
 if (matrixArray == NULL) {
@@ -601,7 +601,7 @@ static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 
 <!-- @[modular_object_extension_dispatcher_callTypeVector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 创建 vector<i32> 并添加元素
 OH_AbilityRuntime_ModObjDispatcher_TypeInfo elemType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
 OH_AbilityRuntime_ModObjDispatcher_VectorHandle vec = NULL;
@@ -656,7 +656,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 <!-- @[modular_object_extension_dispatcher_callTypeSet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 创建 set<i32> 并添加元素
 OH_AbilityRuntime_ModObjDispatcher_TypeInfo elemType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
 OH_AbilityRuntime_ModObjDispatcher_SetHandle set = NULL;
@@ -734,7 +734,7 @@ static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
 
 <!-- @[modular_object_extension_dispatcher_callTypeMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 创建 map<String,i32>，填充键值对后调用方法
 OH_AbilityRuntime_ModObjDispatcher_TypeInfo valType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
 OH_AbilityRuntime_ModObjDispatcher_MapHandle map = NULL;
@@ -816,7 +816,7 @@ static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t
 
 <!-- @[modular_object_extension_dispatcher_callTypeStruct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 // 创建 Point 结构体入参，组装参数后调用方法
 OH_AbilityRuntime_ModObjDispatcher_StructHandle structA = CreatePointStruct(10, 20);
 if (structA == NULL) {
