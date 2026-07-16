@@ -3422,7 +3422,7 @@ void  OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
-| uint32_t color  | 选中态拖拽文本预览样式的的背景，格式为RGBA。|
+| uint32_t color  | 选中态拖拽文本预览样式的背景，格式为RGBA。|
 
 ### OH_ArkUI_SelectedDragPreviewStyle_GetColor()
 
