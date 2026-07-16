@@ -22,8 +22,6 @@ AVSource模块提供用于构造媒体资源对象功能的函数。开发者通
 
 本模块通常作为媒体处理流程的入口，与AVDemuxer模块配合使用：先通过AVSource创建媒体源并获取轨道信息，再通过AVDemuxer进行解封装读取压缩数据。
 
-本模块包含头文件 `native_avsource.h`，提供结构体 `OH_AVSource`，以及创建、销毁、信息获取等函数。
-
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 10

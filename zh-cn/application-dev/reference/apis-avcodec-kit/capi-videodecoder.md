@@ -23,8 +23,6 @@ VideoDecoder模块提供用于视频解码的函数。
 
 适用场景包括：播放本地视频文件、网络视频流解码、视频通话、视频会议、视频录制回放、受DRM保护的视频内容解码等需要将压缩视频码流解码为原始帧数据的场景。
 
-本模块包含头文件 `native_avcodec_videodecoder.h`，提供结构体 `MediaKeySession`，以及创建、配置、控制、输入输出处理等函数。
-
 对应的开发指南及样例可参考[视频解码](../../media/avcodec/video-decoding.md)。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder

@@ -24,8 +24,6 @@ VideoEncoder模块提供用于视频编码的接口。
 
 适用场景包括：视频录制、视频直播推流、视频会议、视频通话、屏幕录制等需要将原始视频帧编码为压缩码流的场景。
 
-本模块包含头文件 `native_avcodec_videoencoder.h`，提供函数指针类型 `OH_VideoEncoder_OnNeedInputParameter`，枚举 `OH_VideoEncodeBitrateMode`，以及创建、配置、控制、输入输出处理等函数。
-
 开发者可根据实际的开发需求，参考对应的开发指南及样例：
 
 - [视频编码](../../media/avcodec/video-encoding.md)

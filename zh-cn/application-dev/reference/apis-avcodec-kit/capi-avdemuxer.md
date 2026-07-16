@@ -11,8 +11,6 @@
 
 AVDemuxer模块提供从媒体文件码流中提取[sample](../../media/avcodec/audio-video-demuxer.md)的接口。
 
-对应的开发指南及样例可参考[媒体数据解析](../../media/avcodec/audio-video-demuxer.md)。
-
 本模块提供的主要能力包括：
 
 - **解封装器创建与销毁**：通过媒体源（OH_AVSource）创建解封装器实例，销毁解封装器实例释放资源。
@@ -24,6 +22,8 @@ AVDemuxer模块提供从媒体文件码流中提取[sample](../../media/avcodec/
 适用场景包括：媒体播放器开发、视频编辑、音视频数据分析、媒体文件解析、受DRM保护的媒体内容解封装等需要从媒体文件中提取压缩数据的场景。
 
 本模块通常与AVSource模块配合使用，先通过AVSource创建媒体源，再通过AVDemuxer进行解封装。解封装后的压缩数据可送入视频/音频解码器进行解码。
+
+对应的开发指南及样例可参考[媒体数据解析](../../media/avcodec/audio-video-demuxer.md)。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
