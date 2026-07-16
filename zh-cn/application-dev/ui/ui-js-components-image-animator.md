@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-image-animator组件为图片帧动画播放器。具体用法请参考[image-animator](../reference/apis-arkui/arkui-js/js-components-basic-image-animator.md)。
+image-animator组件为图片帧动画播放器。具体用法请参考[image-animator/apis-arkui/arkui-js/js-components-basic-image-animator.md)。
 
 
 ## 创建image-animator组件

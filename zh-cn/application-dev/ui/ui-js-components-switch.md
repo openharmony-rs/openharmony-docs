@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-switch为开关选择器，切换开启或关闭状态。具体用法请参考[switch](../reference/apis-arkui/arkui-js/js-components-basic-switch.md)。
+switch为开关选择器，切换开启或关闭状态。具体用法请参考[switch/apis-arkui/arkui-js/js-components-basic-switch.md)。
 
 
 ## 创建switch组件

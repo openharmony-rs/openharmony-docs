@@ -17,7 +17,7 @@
 | Unicode与ASCII转换     | 支持中文域名与ASCII编码之间的相互转换           | API version 23  |
 | 获取主机名的所有IP地址 | 使用当前默认网络解析主机名，获取所有IP地址          | API version 23  |
 | 指定IP类型解析主机名   | 使用当前默认网络，指定IP类型（IPv4/IPv6）解析主机名 | API version 23  |
-| 指定网络连接解析主机名 | 使用特定网络连接[NetHandle](../reference/apis-network-kit/js-apis-net-connection.md#nethandle)解析主机名         | API version 23  |
+| 指定网络连接解析主机名 | 使用特定网络连接[NetHandle/apis-network-kit/js-apis-net-connection.md#nethandle)解析主机名         | API version 23  |
 
 ## DNS解析支持中文域名转码
 

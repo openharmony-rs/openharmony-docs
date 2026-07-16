@@ -17,18 +17,18 @@
 
 ## 开发步骤
 
-1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块/apis-device-certificate-kit/js-apis-cert.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. [cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
+2. [cert.createCertChainValidator/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
 
-3. 基于已有的证书数据，创建证书链数据对象[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
+3. 基于已有的证书数据，创建证书链数据对象[CertChainData/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
    
-   证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合证书链数据对象的数据结构定义[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
+   证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合证书链数据对象的数据结构定义[CertChainData/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
 
-4. 调用[CertChainValidator.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate)校验证书链数据。
+4. 调用[CertChainValidator.validate/apis-device-certificate-kit/js-apis-cert.md#validate)校验证书链数据。
 
 <!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) -->
 

@@ -13,9 +13,9 @@
 
 **指定密文参数，生成标准ASN.1密文**
 
-1. 构造[SM2CipherTextSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sm2ciphertextspec12)对象，用于指定SM2密文参数。如果开发者使用的不是国密标准的ASN.1格式密文，需自行提取所需要的参数。
+1. 构造[SM2CipherTextSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sm2ciphertextspec12)对象，用于指定SM2密文参数。如果开发者使用的不是国密标准的ASN.1格式密文，需自行提取所需要的参数。
 
-2. 调用[genCipherTextBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genciphertextbyspec12)，将SM2CipherTextSpec对象传入，生成符合国密标准的ASN.1格式的SM2密文。
+2. 调用[genCipherTextBySpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genciphertextbyspec12)，将SM2CipherTextSpec对象传入，生成符合国密标准的ASN.1格式的SM2密文。
 
 3. 生成的密文可直接使用cryptoFramework进行SM2解密。
 
@@ -44,7 +44,7 @@ function testGenCipherTextBySpec() {
 
 1. 准备符合国密标准的ASN.1格式的SM2密文。
 
-2. 调用[getCipherTextSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getciphertextspec12)，从标准密文中，获取具体的SM2密文参数。
+2. 调用[getCipherTextSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getciphertextspec12)，从标准密文中，获取具体的SM2密文参数。
 
 3. 根据业务需要，自行拼接SM2密文参数，形成其他格式的SM2密文。
 

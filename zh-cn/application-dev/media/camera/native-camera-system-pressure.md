@@ -12,11 +12,11 @@
 
 ## 状态监听
 
-可以通过注册[OH_CaptureSession_OnSystemPressureLevelChange](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_onsystempressurelevelchange)的回调函数获取系统压力的监听结果。
+可以通过注册[OH_CaptureSession_OnSystemPressureLevelChange/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_onsystempressurelevelchange)的回调函数获取系统压力的监听结果。
 
 当系统压力发生变化时，callback返回Camera_SystemPressureLevel参数。
 
-参数的具体内容可参考相机管理器回调接口实例[Camera_SystemPressureLevel](../../reference/apis-camera-kit/capi-camera-h.md#camera_systempressurelevel)。
+参数的具体内容可参考相机管理器回调接口实例[Camera_SystemPressureLevel/apis-camera-kit/capi-camera-h.md#camera_systempressurelevel)。
 
 <!-- @[system_pressure_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 

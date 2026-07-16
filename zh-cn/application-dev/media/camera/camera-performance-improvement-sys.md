@@ -26,12 +26,12 @@
 
 ### 接口说明
 
-详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
 | createDeferredPreviewOutput(profile: Profile): Promise\<PreviewOutput> | 创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。 |
-| addDeferredSurface(surfaceId: string): Promise\<void> | 配置延迟预览的Surface，可以在[session.commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)配流和[session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)启流之后运行。 |
+| addDeferredSurface(surfaceId: string): Promise\<void> | 配置延迟预览的Surface，可以在[session.commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)配流和[session.start/apis-camera-kit/arkts-apis-camera-Session.md#start11)启流之后运行。 |
 
 ### 开发示例
 
@@ -99,7 +99,7 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 ### 接口说明
 
-详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -109,8 +109,8 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 > **说明：**
 >
-> - [isQuickThumbnailSupported](../../reference/apis-camera-kit/js-apis-camera-sys.md#isquickthumbnailsupported)及[enableQuickThumbnail](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)接口的调用需要在[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)、[addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)后，[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前。
-> - on接口需要在[enableQuickThumbnail(true)](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)之后生效。
+> - [isQuickThumbnailSupported/apis-camera-kit/js-apis-camera-sys.md#isquickthumbnailsupported)及[enableQuickThumbnail/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)接口的调用需要在[addOutput/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)、[addInput/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)后，[commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前。
+> - on接口需要在[enableQuickThumbnail(true)/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)之后生效。
 
 ### 开发示例
 
@@ -200,7 +200,7 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 ### 接口说明
 
-详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |

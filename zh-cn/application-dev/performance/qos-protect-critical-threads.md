@@ -18,9 +18,9 @@
 
 在操作系统层面，QoS等级是一种用于区分不同线程优先级和服务质量的技术。通常系统会自动识别主线程，并在应用处于前台焦点情况下为其配置高于开放给应用开发者调用的QoS等级，以确保其优先执行。  
 
-与ArkTS端 [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md) 的优先级类似，QoS提供的优先级等级也都会相对应的映射到内核的优先级上。不过QoS提供的等级更多，自适应调度策略更强，它们属于两套不同的逻辑。
+与ArkTS端 [@ohos.taskpool (启动任务池)/apis-arkts/js-apis-taskpool.md) 的优先级类似，QoS提供的优先级等级也都会相对应的映射到内核的优先级上。不过QoS提供的等级更多，自适应调度策略更强，它们属于两套不同的逻辑。
 
-[type_def.h](../reference/apis-ffrt-kit/capi-type-def-h.md)的QoS提供了ffrt_qos_inherit（-1）到ffrt_qos_user_initiated（3）5个优先等级，它与当前的QoS接口有着同一套底层逻辑。差别在于当前开发所用的QoS接口是直接开放给应用线程的，而FFRT的QoS则是面向任务的优先级配置。关于线程编程模型和任务编程模型的对比详见 [FFRT 开发指导](../ffrt/ffrt-development-guideline.md)。
+[type_def.h/apis-ffrt-kit/capi-type-def-h.md)的QoS提供了ffrt_qos_inherit（-1）到ffrt_qos_user_initiated（3）5个优先等级，它与当前的QoS接口有着同一套底层逻辑。差别在于当前开发所用的QoS接口是直接开放给应用线程的，而FFRT的QoS则是面向任务的优先级配置。关于线程编程模型和任务编程模型的对比详见 [FFRT 开发指导](../ffrt/ffrt-development-guideline.md)。
 
 
 ## 场景示例

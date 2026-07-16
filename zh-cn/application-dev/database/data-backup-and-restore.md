@@ -16,7 +16,7 @@
 
 ## 键值型数据库备份、恢复与删除
 
-键值型数据库，通过backup接口实现数据库备份，通过restore接口实现数据库恢复，通过deletebackup接口删除数据库备份。具体接口及功能，可见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
+键值型数据库，通过backup接口实现数据库备份，通过restore接口实现数据库恢复，通过deletebackup接口删除数据库备份。具体接口及功能，可见[分布式键值数据库/apis-arkdata/js-apis-distributedKVStore.md)。
 
 1. 创建数据库。
 
@@ -271,7 +271,7 @@
 
 ### 手动备份
 
-手动备份：通过调用[backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口实现数据库手动备份。示例如下：
+手动备份：通过调用[backup/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口实现数据库手动备份。示例如下：
 
 <!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
@@ -326,7 +326,7 @@ try {
 
 ### 自动备份（仅系统应用可用）
 
-自动备份：可以通过在[StoreConfig](../reference/apis-arkdata/js-apis-data-relationalStore-sys.md#storeconfig)中配置haMode参数为MAIN_REPLICA实现数据库双写备份，仅支持系统应用。示例如下：
+自动备份：可以通过在[StoreConfig/apis-arkdata/js-apis-data-relationalStore-sys.md#storeconfig)中配置haMode参数为MAIN_REPLICA实现数据库双写备份，仅支持系统应用。示例如下：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -363,7 +363,7 @@ export default class EntryAbility extends UIAbility {
 
 在创建或使用关系型数据库的过程中，抛出14800011异常错误码说明数据库出现异常，可以删除数据库后恢复数据。
 
-需要通过在[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中配置allowRebuild参数为true以设置数据库在出现异常时自动删库。数据库重建成功后为空库，需要开发者重新建表并且使用提前备份好的数据进行数据恢复，备份操作可见[关系型数据库备份](#关系型数据库备份)，数据恢复可见[关系型数据库恢复](#关系型数据库数据恢复)。
+需要通过在[StoreConfig/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中配置allowRebuild参数为true以设置数据库在出现异常时自动删库。数据库重建成功后为空库，需要开发者重新建表并且使用提前备份好的数据进行数据恢复，备份操作可见[关系型数据库备份](#关系型数据库备份)，数据恢复可见[关系型数据库恢复](#关系型数据库数据恢复)。
 
 若数据库异常前已配置StoreConfig中的allowRebuild为true，则数据库出现异常时将自动删库。
 
@@ -507,7 +507,7 @@ try {
 
 ### 恢复自动备份数据（仅系统应用可用）
 
-关系型数据库，可以通过[restore](../reference/apis-arkdata/js-apis-data-relationalStore-sys.md#restore12)接口恢复[自动备份的数据](#自动备份仅系统应用可用)，仅支持系统应用。
+关系型数据库，可以通过[restore/apis-arkdata/js-apis-data-relationalStore-sys.md#restore12)接口恢复[自动备份的数据](#自动备份仅系统应用可用)，仅支持系统应用。
 
 关键示例代码片段如下，完整示例代码请结合关系型数据库的备份、重建等上下文进行实现。
 

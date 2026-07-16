@@ -24,8 +24,8 @@
 
 - 单个复用池可以为多个子组件提供服务，减少复用池的数量并提高复用率。
 - 开发者可以选择组件类的所有实例共享单个复用池（[shared](#复用池所有权模式)）还是每个实例拥有自己的池（[perInstance](#复用池所有权模式)）。
-- [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo)接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
-- [preRender](../../reference/apis-arkui/js-apis-stateManagement.md#prerender)接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
+- [IReusableInfo/apis-arkui/js-apis-stateManagement.md#ireusableinfo)接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
+- [preRender/apis-arkui/js-apis-stateManagement.md#prerender)接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
 - 复用组件在被回收或创建时，如果通过遍历父组件未找到匹配的全局复用池，则该组件会使用直接父组件中的默认复用池进行回收和复用。
 
 ### @Reusable/@ReusableV2默认复用池的局限性
@@ -162,7 +162,7 @@ struct ChildComponentB {
 | 预渲染 | 不支持 | `preRender`在首次使用前创建组件。 |
 | 内存管理 | 池生命周期与父实例绑定 | `shared`池持续存在直到所有拥有实例被销毁；`perInstance`池与单个实例绑定。 |
 | V1 与 V2 混合 | 不支持 | `poolAccepts`可同时包含@Reusable复用组件@ReusableV2复用组件。 |
-| 读取复用池状态 | 不支持 | [getReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#getreusableinfo)可获取当前自定义组件的全局复用池的信息。 |
+| 读取复用池状态 | 不支持 | [getReusableInfo/apis-arkui/js-apis-stateManagement.md#getreusableinfo)可获取当前自定义组件的全局复用池的信息。 |
 
 ## 装饰器说明
 
@@ -214,16 +214,16 @@ struct ChildComponentB {
 
 ## 接口说明
 
-有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[@ohos.arkui.StateManagement (状态管理)](../../reference/apis-arkui/js-apis-stateManagement.md)。
+有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[@ohos.arkui.StateManagement (状态管理)/apis-arkui/js-apis-stateManagement.md)。
 
 以下接口可用于全局复用池：
 
 | 接口 | 说明 |
 | --- | ----------- |
-| [UIUtils.getCustomComponentContext(this).getReusePool()](../../reference/apis-arkui/js-apis-stateManagement.md#getreusepool) | 获取当前组件的[IReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#ireusepool)。如果未配置全局复用池，则返回`undefined`。 |
-| [IReusePool.getReusableInfo(reusableComp, reuseId?)](../../reference/apis-arkui/js-apis-stateManagement.md#getreusableinfo) | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
-| [IReusePool.preRender(builder, n)](../../reference/apis-arkui/js-apis-stateManagement.md#prerender) | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
-| [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo).count` | 池中当前回收的组件数（只读）。 |
+| [UIUtils.getCustomComponentContext(this).getReusePool()/apis-arkui/js-apis-stateManagement.md#getreusepool) | 获取当前组件的[IReusePool/apis-arkui/js-apis-stateManagement.md#ireusepool)。如果未配置全局复用池，则返回`undefined`。 |
+| [IReusePool.getReusableInfo(reusableComp, reuseId?)/apis-arkui/js-apis-stateManagement.md#getreusableinfo) | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
+| [IReusePool.preRender(builder, n)/apis-arkui/js-apis-stateManagement.md#prerender) | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
+| [IReusableInfo/apis-arkui/js-apis-stateManagement.md#ireusableinfo).count` | 池中当前回收的组件数（只读）。 |
 | `IReusableInfo.maxCount` | 允许的最大回收组件数。设置此项可控制缓存大小。 |
 | `IReusableInfo.reuseId` | 与此池桶关联的reuseId（只读）。 |
 
@@ -239,7 +239,7 @@ struct ChildComponentB {
 
 - 使用`"shared"`所有权时，只要拥有组件类的任何实例存在，池就会持续存在。如果拥有组件在应用程序的多个部分中使用，回收的组件可能会累积。使用`maxCount`来控制内存使用。
 
-- 建议不要在[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
+- 建议不要在[aboutToRecycle/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
 
 - 由于ArkTS语法限制，`poolAccepts`参数配置的自定义组件，必须在`poolAccepts`上方的代码中有定义或者从其他文件导入。如果在poolAccepts传入的组件在下方定义，则会编译报错，报错消息是“Class '...' used before its declaration.”。
 

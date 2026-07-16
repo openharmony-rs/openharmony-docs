@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-提供搜索框组件，用于提供用户搜索内容的输入区域，具体用法请参考[search](../reference/apis-arkui/arkui-js/js-components-basic-search.md)。
+提供搜索框组件，用于提供用户搜索内容的输入区域，具体用法请参考[search/apis-arkui/arkui-js/js-components-basic-search.md)。
 
 
 ## 创建search组件

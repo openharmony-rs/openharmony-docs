@@ -46,11 +46,11 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so)
 #include <string>
 ```
 
-调用[OH_AVScreenCapture_SetCaptureArea()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)接口传入希望录制的矩形区域。
+调用[OH_AVScreenCapture_SetCaptureArea()/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)接口传入希望录制的矩形区域。
 
 示例中的变量说明如下：
 
-- capture：指向[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)实例的指针。
+- capture：指向[OH_AVScreenCapture/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)实例的指针。
 - displayId：需要捕获区域所在的屏幕Id。
 - area：需要捕获区域的坐标和宽高。类型为OH_Rect，包括成员变量x、y、width、height。
   - x、y分别为矩形区域起点的横坐标、纵坐标位置。

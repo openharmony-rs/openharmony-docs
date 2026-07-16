@@ -13,14 +13,14 @@ photoAccessHelper提供用户相册相关的接口，支持查询和重命名相
 > 在进行功能开发前，请查阅[开发准备](photoAccessHelper-preparation.md)，了解如何获取相册管理模块实例和申请相关权限。
 > 文档中使用到photoAccessHelper的地方默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。
 
-为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅[模块描述](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅[模块描述/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
 
 如无特别说明，文档中涉及的待获取资源均视为已预置，并且数据库中存在相应数据。如果按照示例代码执行后获取资源为空，请确认文件是否已预置，以及数据库中是否存在该文件的数据。
 
 <!--Del-->
 ## 创建用户相册（仅向系统应用开放）
 
-通过[MediaAlbumChangeRequest.createAlbumRequest](../../reference/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createalbumrequest11)和[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口创建用户相册。
+通过[MediaAlbumChangeRequest.createAlbumRequest/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#createalbumrequest11)和[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口创建用户相册。
 
 待创建的相册名参数规格为：
 
@@ -61,7 +61,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## 获取用户相册
 
-通过[PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums-2)接口获取用户相册。
+通过[PhotoAccessHelper.getAlbums/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getalbums-2)接口获取用户相册。
 
 **前提条件**
 
@@ -74,7 +74,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 1. 建立检索条件，用于获取用户相册。
 2. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
+3. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 
 <!-- @[get_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getuseralbumability/GetUserAlbumAbility.ets) -->
 
@@ -112,9 +112,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 重命名用户相册时，修改的是相册的Album.albumName属性。
 
-调用[MediaAlbumChangeRequest.setAlbumName](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#setalbumname11)重命名用户相册后再通过[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)更新到数据库中完成修改。
+调用[MediaAlbumChangeRequest.setAlbumName/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#setalbumname11)重命名用户相册后再通过[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)更新到数据库中完成修改。
 
-在重命名用户相册之前，需要先获取相册对象，可以通过[FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md)中的接口获取对应位置的用户相册。
+在重命名用户相册之前，需要先获取相册对象，可以通过[FetchResult/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md)中的接口获取对应位置的用户相册。
 
 重命名相册时，相册名的参数规格为：
 
@@ -134,7 +134,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 1. 建立检索条件，用于获取用户相册。
 2. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
+3. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 4. 调用MediaAlbumChangeRequest.setAlbumName接口设置新的相册名。
 5. 调用PhotoAccessHelper.applyChanges接口将修改的相册属性更新到数据库中完成修改。
 
@@ -178,7 +178,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## 添加图片和视频到用户相册中
 
-先[获取用户相册](#获取用户相册)对象和需要添加到用户相册中的图片或视频的对象数组，然后调用[MediaAlbumChangeRequest.addAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)和[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口往用户相册中添加图片或视频。
+先[获取用户相册](#获取用户相册)对象和需要添加到用户相册中的图片或视频的对象数组，然后调用[MediaAlbumChangeRequest.addAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11)和[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口往用户相册中添加图片或视频。
 
 **前提条件**
 
@@ -192,9 +192,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 1. 建立相册检索条件，用于获取用户相册。
 2. 建立图片检索条件，用于获取图片。
 3. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一个用户相册。
-5. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口获取图片资源。
-6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一张图片。
+4. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一个用户相册。
+5. 调用[PhotoAccessHelper.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口获取图片资源。
+6. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一张图片。
 7. 调用MediaAlbumChangeRequest.addAssets接口往用户相册中添加图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
@@ -247,7 +247,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## 获取用户相册中的图片和视频
 
-先[获取用户相册](#获取用户相册)对象，然后调用[Album.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取用户相册中的图片资源。
+先[获取用户相册](#获取用户相册)对象，然后调用[Album.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取用户相册中的图片资源。
 
 **前提条件**
 
@@ -261,9 +261,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 1. 建立相册检索条件，用于获取用户相册。
 2. 建立图片检索条件，用于获取图片。
 3. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
+4. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 5. 调用Album.getAssets接口获取用户相册中的图片资源。
-6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
+6. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 
 <!-- @[get_media_from_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getmediafromuseralbumability/GetMediaFromUserAlbumAbility.ets) -->
 
@@ -309,9 +309,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## 从用户相册中移除图片和视频
 
-先[获取用户相册](#获取用户相册)对象，然后调用[Album.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取用户相册中的资源。
+先[获取用户相册](#获取用户相册)对象，然后调用[Album.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取用户相册中的资源。
 
-选择其中要移除的资源，然后调用[MediaAlbumChangeRequest.removeAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11)和[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口移除。
+选择其中要移除的资源，然后调用[MediaAlbumChangeRequest.removeAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11)和[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口移除。
 
 **前提条件**
 
@@ -325,9 +325,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 1. 建立相册检索条件，用于获取用户相册。
 2. 建立图片检索条件，用于获取图片。
 3. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
+4. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 5. 调用Album.getAssets接口获取图片资源。
-6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
+6. 调用[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 7. 调用MediaAlbumChangeRequest.removeAssets接口从用户相册中移除图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
@@ -391,7 +391,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 <!--Del-->
 ## 删除用户相册（仅向系统应用开放）
 
-先[获取用户相册](#获取用户相册)对象，然后调用[MediaAlbumChangeRequest.deleteAlbums](../../reference/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deletealbums11)删除用户相册。
+先[获取用户相册](#获取用户相册)对象，然后调用[MediaAlbumChangeRequest.deleteAlbums/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#deletealbums11)删除用户相册。
 
 **前提条件**
 

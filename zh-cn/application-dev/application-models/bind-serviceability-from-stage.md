@@ -13,7 +13,7 @@
 
 ## UIAbility关联访问ServiceAbility
 
-[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)关联访问ServiceAbility和UIAbility关联访问[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的方式完全相同。
+[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)关联访问ServiceAbility和UIAbility关联访问[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的方式完全相同。
 
 
 ```ts
@@ -72,7 +72,7 @@ struct Page_StartFAModel {
 
 ## ExtensionAbility关联访问ServiceAbility
 
-下面以[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)为例来说明[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)关联访问ServiceAbility。ServiceExtensionAbility关联访问ServiceAbility和ServiceExtensionAbility关联访问ServiceExtensionAbility的方式完全相同。
+下面以[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)为例来说明[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)关联访问ServiceAbility。ServiceExtensionAbility关联访问ServiceAbility和ServiceExtensionAbility关联访问ServiceExtensionAbility的方式完全相同。
 
 
 ```ts

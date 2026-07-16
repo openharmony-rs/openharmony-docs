@@ -12,7 +12,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[Camera/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -21,13 +21,13 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 通过[isMacroSupported](../../reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md#ismacrosupported19)接口，查询当前设备是否支持微距能力。
+2. 通过[isMacroSupported/apis-camera-kit/arkts-apis-camera-MacroQuery.md#ismacrosupported19)接口，查询当前设备是否支持微距能力。
 
    ```ts
    let isSupported: boolean = photoSession.isMacroSupported();
    ```
     
-3. 通过[enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19)接口，开启或关闭微距能力。
+3. 通过[enableMacro/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19)接口，开启或关闭微距能力。
 
    ```ts
    function EnableMacro(photoSession: camera.PhotoSession): void {
@@ -43,7 +43,7 @@
 
 从API version 20开始，支持监听微距能力是否发生改变。
 
-注册macroStatusChanged事件监听微距能力变化，事件监听可参考[on('macroStatusChanged')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onmacrostatuschanged20)。
+注册macroStatusChanged事件监听微距能力变化，事件监听可参考[on('macroStatusChanged')/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onmacrostatuschanged20)。
    ```ts
    function callback(err: BusinessError, macroStatus: boolean): void {
       if (err !== undefined && err.code !== 0) {

@@ -9,13 +9,13 @@
 
 日历账户‌用于存储和管理个人或团队的日程，通过日历账户，用户可以方便地查看、编辑和共享日程信息。
 
-日历管理器[CalendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendarmanager)用于管理日历账户[Calendar](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendar)。日历账户主要包含账户信息[CalendarAccount](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendaraccount)和配置信息[CalendarConfig](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendarconfig)。
+日历管理器[CalendarManager/apis-calendar-kit/js-apis-calendarManager.md#calendarmanager)用于管理日历账户[Calendar/apis-calendar-kit/js-apis-calendarManager.md#calendar)。日历账户主要包含账户信息[CalendarAccount/apis-calendar-kit/js-apis-calendarManager.md#calendaraccount)和配置信息[CalendarConfig/apis-calendar-kit/js-apis-calendarManager.md#calendarconfig)。
 
-开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程[Event](../reference/apis-calendar-kit/js-apis-calendarManager.md#event)归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见[日程管理](calendarmanager-event-developer.md)。
+开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程[Event/apis-calendar-kit/js-apis-calendarManager.md#event)归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见[日程管理](calendarmanager-event-developer.md)。
 
 ## 接口说明
 
-以下是日历账户管理的相关接口，更多详细接口及使用请参考[@ohos.calendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md)。
+以下是日历账户管理的相关接口，更多详细接口及使用请参考[@ohos.calendarManager/apis-calendar-kit/js-apis-calendarManager.md)。
 
 | 接口名称                                                     | 描述                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |

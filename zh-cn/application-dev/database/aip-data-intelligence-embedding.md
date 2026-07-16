@@ -42,7 +42,7 @@
 
 ## 接口说明
 
-以下是智慧数据向量化功能的相关接口。更多接口及使用方式请见[智慧数据平台](../reference/apis-arkdata/js-apis-data-intelligence.md)。
+以下是智慧数据向量化功能的相关接口。更多接口及使用方式请见[智慧数据平台/apis-arkdata/js-apis-data-intelligence.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |

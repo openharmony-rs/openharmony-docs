@@ -27,7 +27,7 @@
 
 | **接口名**  | **描述** |**说明**|
 | -------- | -------- | -------- |
-| [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)(request: NotificationRequest): Promise\<void\>       | 发布通知。  |使用方法见对象[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)中**appMessageId**字段说明。|
+| [publish/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)(request: NotificationRequest): Promise\<void\>       | 发布通知。  |使用方法见对象[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)中**appMessageId**字段说明。|
 
 ## 开发步骤
 

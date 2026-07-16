@@ -22,7 +22,7 @@ inspector针对UI组件的布局或绘制送显完成，还提供了注册与取
 
 ## UIContext查询组件树和组件信息能力
 
-ArkUI提供@ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md))扩展能力，通过[getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)获取组件树及组件属性，通过[getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)获取指定的组件及其子组件的属性。支持设置过滤条件进行查询。
+ArkUI提供@ohos.arkui.UIContext([UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md))扩展能力，通过[getFilteredInspectorTree/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)获取组件树及组件属性，通过[getFilteredInspectorTreeById/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)获取指定的组件及其子组件的属性。支持设置过滤条件进行查询。
 
 下述示例，展示了getFilteredInspectorTree和getFilteredInspectorTreeById的基本用法。
 
@@ -90,7 +90,7 @@ struct ComponentPage {
 
 ## 布局回调
 
-通过[@ohos.arkui.inspector (布局回调)](../reference/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
+通过[@ohos.arkui.inspector (布局回调)/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
 
 下述示例，展示了布局回调的基本用法。
 
@@ -153,9 +153,9 @@ struct ImageExample {
 ## 组件标识属性的扩展能力
 
 通过getInspectorByKey、getInspectorTree、sendEventByKey提供组件标识属性扩展能力，具体如下：
-- [getInspectorByKey](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9)，获取指定id的组件的所有属性。
-- [getInspectorTree](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9)，获取组件树及组件属性。
-- [sendEventByKey](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#sendeventbykey9)，给指定id的组件发送事件。
+- [getInspectorByKey/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9)，获取指定id的组件的所有属性。
+- [getInspectorTree/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9)，获取组件树及组件属性。
+- [sendEventByKey/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#sendeventbykey9)，给指定id的组件发送事件。
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 

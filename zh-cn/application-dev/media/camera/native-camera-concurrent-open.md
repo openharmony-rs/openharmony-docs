@@ -22,7 +22,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[Camera/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -61,7 +61,7 @@
       librawfile.z.so)
    ```
 
-3. 通过[OH_CameraManager_GetCameraDevice](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevice)方法获取对应的前置相机和后置相机。如果接口返回值为CAMERA_SERVICE_FATAL_ERROR，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
+3. 通过[OH_CameraManager_GetCameraDevice/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevice)方法获取对应的前置相机和后置相机。如果接口返回值为CAMERA_SERVICE_FATAL_ERROR，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
 
    ```c++
    void GetSupportedCameras(Camera_Manager *cameraManager)
@@ -81,7 +81,7 @@
    }
    ```
 
-4. 获取对应的并发能力集。通过[OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos)方法，获取[Camera_ConcurrentInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-concurrentinfo.md)相机并发能力集对象数组，数组包含了前置和后置同时开启的相机在指定多摄同开模式下支持的相机模式和相机输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。
+4. 获取对应的并发能力集。通过[OH_CameraManager_GetCameraConcurrentInfos/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos)方法，获取[Camera_ConcurrentInfo/apis-camera-kit/capi-oh-camera-camera-concurrentinfo.md)相机并发能力集对象数组，数组包含了前置和后置同时开启的相机在指定多摄同开模式下支持的相机模式和相机输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。
 
    ```c++
    void GetSupportedOutputCapability(Camera_Manager *cameraManager, Camera_Device *cameras)
@@ -113,7 +113,7 @@
    }
    ```
 
-6. 打开相机。通过[OH_CameraInput_OpenConcurrentCameras](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras)以并发状态打开指定相机，在使用该接口前，请先查询接口是否支持并发能力集，并优先调用[OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos)方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用[OH_CameraInput_OpenConcurrentCameras](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras)，否则会导致打开相机失败。
+6. 打开相机。通过[OH_CameraInput_OpenConcurrentCameras/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras)以并发状态打开指定相机，在使用该接口前，请先查询接口是否支持并发能力集，并优先调用[OH_CameraManager_GetCameraConcurrentInfos/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos)方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用[OH_CameraInput_OpenConcurrentCameras/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras)，否则会导致打开相机失败。
 
    ```c++
    void CameraInputOpen(Camera_Manager *cameraManager, Camera_Device *cameras)
@@ -131,7 +131,7 @@
    }
    ```
 
-7. 会话流程。配置对应的相机输入流[Camera_Input](../../reference/apis-camera-kit/capi-oh-camera-camera-input.md)和需要的相机输出流，此处以预览输出流[Camera_PreviewOutput](../../reference/apis-camera-kit/capi-oh-camera-camera-previewoutput.md)为例 。
+7. 会话流程。配置对应的相机输入流[Camera_Input/apis-camera-kit/capi-oh-camera-camera-input.md)和需要的相机输出流，此处以预览输出流[Camera_PreviewOutput/apis-camera-kit/capi-oh-camera-camera-previewoutput.md)为例 。
 
    ```c++
    void SessionFlowFn(Camera_CaptureSession *captureSession, Camera_Input *cameraInput, Camera_PreviewOutput *previewOutput)

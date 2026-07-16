@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-图片编码指将[Picture](../../reference/apis-image-kit/arkts-apis-image-Picture.md)对象编码成不同格式的图片文件（当前仅支持编码为JPEG 和 HEIF 格式），用于后续处理，如保存、传输等。
+图片编码指将[Picture/apis-image-kit/arkts-apis-image-Picture.md)对象编码成不同格式的图片文件（当前仅支持编码为JPEG 和 HEIF 格式），用于后续处理，如保存、传输等。
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
+图片编码相关API的详细介绍请参见[ImagePacker/apis-image-kit/arkts-apis-image-ImagePacker.md)。
 
 1. 导入相关模块包。
    
@@ -25,7 +25,7 @@
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 设置编码选项[PackingOption](../../reference/apis-image-kit/arkts-apis-image-i.md#packingoption)。
+2. 设置编码选项[PackingOption/apis-image-kit/arkts-apis-image-i.md#packingoption)。
    
    > **说明：**
    >
@@ -41,7 +41,7 @@
    };
    ```
 
-3. 封装函数，传入picture，使用[packing](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)接口编码到ArrayBuffer，或使用[packToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)接口编码到文件。
+3. 封装函数，传入picture，使用[packing/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)接口编码到ArrayBuffer，或使用[packToFile/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)接口编码到文件。
    
    > **说明：**
    >

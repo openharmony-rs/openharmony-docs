@@ -11,9 +11,9 @@
 
 ## 开发步骤
 
-1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
+1. 通过证书管理系统能力提供的[openAuthorizeDialog/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
 
-2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)验证PIN码。
+2. 调用查询认证状态接口[getUkeyPinAuthState/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)验证PIN码。
 
 ## 开发案例
 

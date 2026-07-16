@@ -23,7 +23,7 @@
 
 ## 场景和功能介绍
 
-以下[Node-API](../reference/native-lib/napi.md#已从node-api组件标准库中导出的符号列表)接口主要用于与ArkTS交互时处理错误和异常情况。其使用场景如下：
+以下[Node-API/native-lib/napi.md#已从node-api组件标准库中导出的符号列表)接口主要用于与ArkTS交互时处理错误和异常情况。其使用场景如下：
 | 接口 | 描述 |
 | -------- | -------- |
 | napi_create_error、napi_create_type_error、napi_create_range_error | 在C/C++中需要创建一个错误对象时，可以使用这些函数。创建的错误对象可以使用napi_throw抛出到ArkTS。 |
@@ -311,7 +311,7 @@ try {
 
 ### napi_throw_business_error
 
-用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。[该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。](../reference/native-lib/napi.md#node-api组件扩展的接口)
+用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。[该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。/native-lib/napi.md#node-api组件扩展的接口)
 
 cpp部分代码
 

@@ -27,21 +27,21 @@
     * name取值为ohos.ability.window.left表示主窗口默认左边的位置。value表示配置格式，取值：对齐方式 +/- 偏移量。对齐方式包括center、left和right，默认值为left；当偏移量为0时可以省略。
     * name取值为ohos.ability.window.top表示主窗口顶部的位置。value表示配置格式，取值：对齐方式 +/- 偏移量。对齐方式包括center、top和bottom，默认值为top。如果对齐方式和偏移量同时省略，则按照系统默认的层叠规格处理。
 
-2. 使用metadata标签配置[removeStartingWindow](../reference/apis-arkui/arkts-apis-window-WindowStage.md#removestartingwindow14)接口的启用状态。配置项为：name取值enable.remove.starting.window，value取值true或false。true表示启用，false表示不启用。未配置时，默认为false。
+2. 使用metadata标签配置[removeStartingWindow/apis-arkui/arkts-apis-window-WindowStage.md#removestartingwindow14)接口的启用状态。配置项为：name取值enable.remove.starting.window，value取值true或false。true表示启用，false表示不启用。未配置时，默认为false。
 
 3. 使用metadata标签配置主窗口启动时是否以最大化状态显示。配置项为：name为ohos.ability.window.isMaximize，value取值为true或false，取值为true表示最大化启动、取值为false表示不以最大化状态启动，未配置时默认为false。主窗口最大化显示配置存在如下约束与限制：
 
     * 该配置项仅在PC/2in1设备上生效。
-    * 若使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，需要配置FULL_SCREEN选项，此时使用metadata标签配置主窗口最大化启动生效，否则不生效。
+    * 若使用[startOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，需要配置FULL_SCREEN选项，此时使用metadata标签配置主窗口最大化启动生效，否则不生效。
     * 若使用[module.json5](../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode属性，需要配置fullscreen选项，此时使用metadata标签配置主窗口最大化启动生效，否则不生效。
-    * 主窗显示设置优先级排序为：全屏显示 > 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)接口指定大小和位置 > 使用[setWindowRectAutoSave()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setwindowrectautosave14)方法开启窗口尺寸记忆 > 使用metadata标签配置最大化 > 使用metadata标签配置大小和位置。全屏显示配置方法包括如下三种：
-        1. 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的windowMode属性并将其配置为WINDOW_MODE_FULLSCREEN。
-        2. 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，且只配置FULL_SCREEN选项。
+    * 主窗显示设置优先级排序为：全屏显示 > 使用[startOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)接口指定大小和位置 > 使用[setWindowRectAutoSave()/apis-arkui/arkts-apis-window-WindowStage.md#setwindowrectautosave14)方法开启窗口尺寸记忆 > 使用metadata标签配置最大化 > 使用metadata标签配置大小和位置。全屏显示配置方法包括如下三种：
+        1. 使用[startOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)的windowMode属性并将其配置为WINDOW_MODE_FULLSCREEN。
+        2. 使用[startOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，且只配置FULL_SCREEN选项。
         3. 使用[module.json5](../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode属性，且只配置fullscreen选项。
 
 4. 使用metadata配置[自由多窗](https://developer.huawei.com/consumer/cn/doc/design-guides/pad-0000001823654157#section1768267204717)下的可支持窗口模式。配置项为：name为ohos.ability.window.supportWindowModeInFreeMultiWindow，value取值为：fullscreen（表示全屏模式）、split（表示分屏模式）、floating（表示自由悬浮窗口模式）。value取值为字符串，可以配置多种模式，每个模式之间用逗号分隔开，不区分顺序，不添加空格，例如：fullscreen,split。仅在支持并处于[自由窗口](window-terminology.md#自由窗口)状态的设备上生效；在支持但不处于[自由窗口](window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](window-terminology.md#自由窗口)状态的设备上配置不生效也不报错。
 
-   自由多窗下的可支持窗口模式可以采用多种方法进行配置，配置优先级为：通过[SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)接口配置 > 通过StartAbility配置[StartOption](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的SupportWindowMode > 使用metadata配置 > 配置module.json5中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的SupportWindowMode属性。
+   自由多窗下的可支持窗口模式可以采用多种方法进行配置，配置优先级为：通过[SetSupportedWindowModes/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)接口配置 > 通过StartAbility配置[StartOption/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的SupportWindowMode > 使用metadata配置 > 配置module.json5中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的SupportWindowMode属性。
 
    非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。<!--Del-->
 

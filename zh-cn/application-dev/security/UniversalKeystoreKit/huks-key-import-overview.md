@@ -48,7 +48,7 @@
 
 > **说明：**
 >
-> 1. 安全导入密钥时，协商算法支持ECDH和X25519，协商后的Shared_Key使用AES-GCM算法加密Caller_Kek。对应算法套件定义见[HuksUnwrapSuite](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9)。
+> 1. 安全导入密钥时，协商算法支持ECDH和X25519，协商后的Shared_Key使用AES-GCM算法加密Caller_Kek。对应算法套件定义见[HuksUnwrapSuite/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9)。
 > 2. 安全导入不支持X.509格式。
 > 3. <!--RP2-->轻量级设备<!--RP2End-->只支持明文导入，不支持安全导入。
 

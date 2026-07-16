@@ -9,11 +9,11 @@
 
 ## 概述
 
-从API version 24开始，支持系统应用可以通过agentManager中的[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法，连接其他应用已实现的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，并使用其提供的智能体服务。系统应用与智能体可以进行双向通信和双向安全认证。
+从API version 24开始，支持系统应用可以通过agentManager中的[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法，连接其他应用已实现的[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，并使用其提供的智能体服务。系统应用与智能体可以进行双向通信和双向安全认证。
 
 > **说明**
 >
-> 本文描述中称被连接的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)为服务端，称连接[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的组件为客户端。
+> 本文描述中称被连接的[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)为服务端，称连接[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的组件为客户端。
 
 ## 客户端与服务端交互机制概述
 
@@ -23,33 +23,33 @@
 
 1. 建立连接
 
-    客户端可以通过调用agentManager中的[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)（在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象中指定连接的目标服务）。
+    客户端可以通过调用agentManager中的[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端的[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)（在[Want/apis-ability-kit/js-apis-app-ability-want.md)对象中指定连接的目标服务）。
 
-    成功建立连接后会触发服务端的[onConnect()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onconnect)方法，并在该方法中接收到客户端传递过来的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象和客户端的[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象。
+    成功建立连接后会触发服务端的[onConnect()/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onconnect)方法，并在该方法中接收到客户端传递过来的[Want/apis-ability-kit/js-apis-app-ability-want.md)对象和客户端的[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象。
 
 2. 收发数据
 
-    客户端通过调用[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端并接收返回的[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象。客户端可以使用该[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象的[sendData()](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md#senddata)方法向服务端发送数据。
+    客户端通过调用[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端并接收返回的[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象。客户端可以使用该[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象的[sendData()/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md#senddata)方法向服务端发送数据。
 
-    服务端在[onData()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#ondata)方法中可以接收客户端发送的数据和[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[sendData()](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#senddata)方法向客户端发送数据。
+    服务端在[onData()/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#ondata)方法中可以接收客户端发送的数据和[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[sendData()/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#senddata)方法向客户端发送数据。
 
-    客户端通过[AgentExtensionConnectCallback](../reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)中的[onData()](../reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md#ondata)方法接收服务端发送的数据。
+    客户端通过[AgentExtensionConnectCallback/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)中的[onData()/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md#ondata)方法接收服务端发送的数据。
 
 3. 安全认证（可选）
 
-    客户端通过调用[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端并接收返回的[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象。客户端可以使用该[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象的[authorize()](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md#authorize)方法向服务端发送安全认证请求。
+    客户端通过调用[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端并接收返回的[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象。客户端可以使用该[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象的[authorize()/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md#authorize)方法向服务端发送安全认证请求。
 
-    服务端在[onAuth()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onauth)方法中可以接收客户端发送的安全认证请求以及[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[authorize()](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#authorize)方法向客户端发送安全认证请求。
+    服务端在[onAuth()/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onauth)方法中可以接收客户端发送的安全认证请求以及[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过[AgentHostProxy/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[authorize()/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#authorize)方法向客户端发送安全认证请求。
 
-    客户端通过[AgentExtensionConnectCallback](../reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)的[onAuth()](../reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md#onauth)方法接收服务端发送的安全认证请求。
+    客户端通过[AgentExtensionConnectCallback/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)的[onAuth()/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md#onauth)方法接收服务端发送的安全认证请求。
 
 4. 断开连接
 
-    客户端调用[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端时，可以保存服务端返回的[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象。客户端可以通过调用[disconnectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)方法利用保存的[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象来断开与服务端的连接。
+    客户端调用[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法连接服务端时，可以保存服务端返回的[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象。客户端可以通过调用[disconnectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)方法利用保存的[AgentProxy/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)对象来断开与服务端的连接。
 
 ## 连接和断连AgentExtensionAbility
 
-- 使用[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法建立与[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的连接。
+- 使用[connectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法建立与[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的连接。
 
     <!-- @[agent_manager_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
     
@@ -109,7 +109,7 @@
     }
     ```
 
-- 使用[disconnectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)方法断开与[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的连接。
+- 使用[disconnectAgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)方法断开与[AgentExtensionAbility/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的连接。
 
     <!-- @[agent_manager_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
     

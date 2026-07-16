@@ -12,7 +12,7 @@
 
 ## 文本显示
 
-主要用于显示静态文本。开发者可以使用Text组件配合Span组件创建文本节点，也可以使用属性字符串（[StyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#styledstring)/[MutableStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#mutablestyledstring)）节点生成文本信息并接入Text组件。参考[文本显示 (Text/Span)](arkts-common-components-text-display.md)章节。
+主要用于显示静态文本。开发者可以使用Text组件配合Span组件创建文本节点，也可以使用属性字符串（[StyledString/apis-arkui/arkui-ts/ts-universal-styled-string.md#styledstring)/[MutableStyledString/apis-arkui/arkui-ts/ts-universal-styled-string.md#mutablestyledstring)）节点生成文本信息并接入Text组件。参考[文本显示 (Text/Span)](arkts-common-components-text-display.md)章节。
 
 ## 文本输入
 
@@ -32,7 +32,7 @@
 
 ## 图文混排
 
-当需要图片和文字混排的场景，可以使用[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)实现。若需要样式多样的混排效果，可以选择属性字符串实现。参考[图文混排](arkts-text-image-layout.md)章节。
+当需要图片和文字混排的场景，可以使用[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)实现。若需要样式多样的混排效果，可以选择属性字符串实现。参考[图文混排](arkts-text-image-layout.md)章节。
 
 ## 管理软键盘
 

@@ -120,7 +120,7 @@ fileIo.copyFile(file.fd, 'dstPath', 0).then(() => {
    fs.writeSync(file.fd, JSON.stringify(obj));
    ```
 
-fs的具体使用可以参考：[@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md)
+fs的具体使用可以参考：[@ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md)
 
 ## 通过fileAccess模块获取的文件路径对应的实际路径是什么(API 9)
 
@@ -142,4 +142,4 @@ fs的具体使用可以参考：[@ohos.file.fs](../reference/apis-core-file-kit/
 
 **参考链接：**  
 
-[@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewatcher10)
+[@ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewatcher10)

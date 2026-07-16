@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
+为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
 
 在使用该接口前，建议开发者对状态管理框架有基本的了解。提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
@@ -44,13 +44,13 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 ## 对象可被观察场景
 
-可被观察对象调用canBeObserved接口，返回的[ObservedResult](../../reference/apis-arkui/js-apis-stateManagement.md#observedresult23)结果对象中`reason`的值包含以下情况：
+可被观察对象调用canBeObserved接口，返回的[ObservedResult/apis-arkui/js-apis-stateManagement.md#observedresult23)结果对象中`reason`的值包含以下情况：
 
 | reason值 | 说明 |
 | ---- | ---- |
-| The object data is decorated with @Observed or wrapped by makeV1Observed | 对象被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰或对象是使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)方法包装得到的，详见[V1组件对象可被观察场景](#v1组件对象可被观察场景) 。|
+| The object data is decorated with @Observed or wrapped by makeV1Observed | 对象被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰或对象是使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)方法包装得到的，详见[V1组件对象可被观察场景](#v1组件对象可被观察场景) 。|
 | The object data is decorated with V2 @ObservedV2 and @Trace | 对象和对象属性被[@ObservedV2和@Trace](./arkts-new-observedV2-and-trace.md)装饰器装饰，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。|
-| The object data is wrapped by V2's makeObserved | 对象是使用[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法包装得到的，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。|
+| The object data is wrapped by V2's makeObserved | 对象是使用[makeObserved/apis-arkui/js-apis-stateManagement.md#makeobserved)方法包装得到的，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。|
 | The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Array、Set、Map、Date类型数据对象被状态管理V2装饰器装饰或作为对象属性被[@Trace](./arkts-new-observedV2-and-trace.md)装饰器装饰，详见[V2组件对象可被观察场景](#v2组件对象可被观察场景) 。 |
 | The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | V1组件和V2组件混用时，对象是使用[enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法包装得到的，详见[V1组件和V2组件混用对象可被观察场景](#v1组件和v2组件混用对象可被观察场景) 。|
 
@@ -61,11 +61,11 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 在V1组件中，可被观察对象场景如下：
 - 组件内被状态管理V1装饰器装饰的对象（包括Array、Set、Map、Date类型数据对象）。
 - 被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰的对象。
-- 使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)方法包装的对象。
+- 使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)方法包装的对象。
 
 其中状态管理V1装饰器指的是：[@State](./arkts-state.md)、[@Prop](./arkts-prop.md)、[@Link](./arkts-link.md)、[@ObjectLink](./arkts-observed-and-objectlink.md)、[@StorageLink](./arkts-appstorage.md#storagelink)、[@StorageProp](./arkts-appstorage.md#storageprop)、[@LocalStorageLink](./arkts-localstorage.md#localstoragelink)、[@LocalStorageProp](./arkts-localstorage.md#localstorageprop)、[@Provide](./arkts-provide-and-consume.md)、[@Consume](./arkts-provide-and-consume.md)。
 
-被[@Observed](./arkts-observed-and-objectlink.md)装饰的对象和使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)包装的对象，如果在组件内没有状态管理V1装饰器装饰，调用canBeObserved接口返回结果如下：
+被[@Observed](./arkts-observed-and-objectlink.md)装饰的对象和使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)包装的对象，如果在组件内没有状态管理V1装饰器装饰，调用canBeObserved接口返回结果如下：
 
 ``` json5
 {
@@ -279,7 +279,7 @@ struct TrackChild {
 V2组件中，对象可被观察场景如下：
 - 被[@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰器装饰的对象。
 - 被状态管理V2装饰器装饰的Array、Set、Map、Date类型数据对象。
-- 使用[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法包装的对象。
+- 使用[makeObserved/apis-arkui/js-apis-stateManagement.md#makeobserved)方法包装的对象。
 
 其中状态管理V2装饰器指的是：[@Local](./arkts-new-local.md)、[@Param](./arkts-new-param.md)、[@Provider](./arkts-new-provider-and-consumer.md)、[@Consumer](./arkts-new-provider-and-consumer.md)。
 

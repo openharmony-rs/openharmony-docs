@@ -16,7 +16,7 @@
 
 ### CustomInput; 自定义输入框
 
-开发者自定义的文本输入控件，通过集成[InputMethodController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller)实现与输入法的绑定。
+开发者自定义的文本输入控件，通过集成[InputMethodController/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller)实现与输入法的绑定。
 
 ## D
 

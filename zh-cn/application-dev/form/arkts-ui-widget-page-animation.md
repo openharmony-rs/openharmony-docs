@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)、[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)、[组件内转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)能力。ArkTS卡片使用动画效果时具有以下限制：
+ArkTS卡片开放了使用动画效果的能力，支持[显式动画/apis-arkui/arkui-ts/ts-explicit-animation.md)、[属性动画/apis-arkui/arkui-ts/ts-animatorproperty.md)、[组件内转场/apis-arkui/arkui-ts/ts-transition-animation-component.md)能力。ArkTS卡片使用动画效果时具有以下限制：
 
 **表1** 动效参数限制
 
@@ -22,7 +22,7 @@ ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../refere
 >静态卡片不支持使用动效能力。
 
 ## 组件自身动效
-以下示例代码使用[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口实现了按钮旋转的动画效果。 
+以下示例代码使用[animation/apis-arkui/arkui-ts/ts-animatorproperty.md)接口实现了按钮旋转的动画效果。 
 
 ![WidgetAnimation](figures/WidgetAnimation.gif)
 
@@ -56,7 +56,7 @@ struct AnimationCard {
 }
 ```
 ## 组件转场动效
-以下示例代码使用[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口实现了在卡片内图片出现与消失的动画效果。
+以下示例代码使用[transition/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口实现了在卡片内图片出现与消失的动画效果。
 
 ![WidgetAnimation](figures/WidgetTransitionAnimation.gif)
 

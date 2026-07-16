@@ -17,7 +17,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 > **说明：**
 >
@@ -33,7 +33,7 @@
 
 2. 确定拍照输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
+   通过[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
 
    <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -179,7 +179,7 @@ async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: C
 
 从API version 23开始，相机提供HDR动态照片拍摄能力，即组成动态照片的静态图片与动态短视频均为高动态范围（HDR）内容，能够在高光与暗部细节、色彩层次和整体质感方面优于SDR成片效果。
 
-应用可以通过配置预览输出格式（Profile.format）和色彩空间（ColorSpace）灵活决定输出SDR/HDR动态照片。具体对应关系如下表所示，所有能力需先查后用，支持的预览输出格式通过接口[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)查询，支持的色彩空间通过接口[getSupportedColorSpaces](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)查询。
+应用可以通过配置预览输出格式（Profile.format）和色彩空间（ColorSpace）灵活决定输出SDR/HDR动态照片。具体对应关系如下表所示，所有能力需先查后用，支持的预览输出格式通过接口[getSupportedFullOutputCapability/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)查询，支持的色彩空间通过接口[getSupportedColorSpaces/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)查询。
 
 | 静图动态范围 | 短视频动态范围 | 预览输出格式 |色彩空间 |
 |----------------|------------|------------|------------|
@@ -188,5 +188,5 @@ async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: C
 | HDR       | HDR       | CAMERA_FORMAT_YCRCB_P010、<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 **HDR配置说明**
-- 在配置预览输出流时，需要先通过接口[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)查询当前镜头和模式支持的完整能力，选择的预览输出格式为P010（CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010）。
-- 在配置色彩空间时，需要先通过接口[getSupportedColorSpaces](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)获取当前设备所支持的色彩空间，再通过接口[setColorSpace](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md#setcolorspace12)设置色彩空间为BT2020_HLG。具体请参考[setColorSpace](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md#setcolorspace12)说明。
+- 在配置预览输出流时，需要先通过接口[getSupportedFullOutputCapability/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)查询当前镜头和模式支持的完整能力，选择的预览输出格式为P010（CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010）。
+- 在配置色彩空间时，需要先通过接口[getSupportedColorSpaces/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12)获取当前设备所支持的色彩空间，再通过接口[setColorSpace/apis-camera-kit/arkts-apis-camera-ColorManagement.md#setcolorspace12)设置色彩空间为BT2020_HLG。具体请参考[setColorSpace/apis-camera-kit/arkts-apis-camera-ColorManagement.md#setcolorspace12)说明。

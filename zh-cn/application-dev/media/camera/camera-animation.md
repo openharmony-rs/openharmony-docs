@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately23)接口触发显式动画功能，实现下方三种核心场景动效。
+在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[animateToImmediately/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately23)接口触发显式动画功能，实现下方三种核心场景动效。
 
 - 模式切换动效，使用预览流截图做模糊动效过渡。
   
@@ -136,7 +136,7 @@
 
 2. 获取预览流截图。
 
-   预览流截图通过图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口实现，surfaceId为当前预览流的surfaceId，size为当前预览流profile的宽高。创建截图工具类（ts文件），导入依赖，导出获取截图方法供页面使用，截图工具类实现参考：
+   预览流截图通过图形提供的[image.createPixelMapFromSurface/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口实现，surfaceId为当前预览流的surfaceId，size为当前预览流profile的宽高。创建截图工具类（ts文件），导入依赖，导出获取截图方法供页面使用，截图工具类实现参考：
 
    <!-- @[blur_animate_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/common/utils/BlurAnimateUtil.ts) -->
    
@@ -231,7 +231,7 @@
 
    > **注意：**
    >
-   > 由于图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口是通过截取surface内容获取[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，其内容和[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件绘制逻辑不同，需要根据**前后置**镜头做不同的**图片内容旋转补偿**和**组件旋转补偿**。
+   > 由于图形提供的[image.createPixelMapFromSurface/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口是通过截取surface内容获取[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)，其内容和[XComponent/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件绘制逻辑不同，需要根据**前后置**镜头做不同的**图片内容旋转补偿**和**组件旋转补偿**。
 
    <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -278,7 +278,7 @@
 
 5. 实现模糊消失动效。
 
-   模糊消失动效：由新模式预览流首帧回调[on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)触发，截图组件模糊到清晰，显示新预览流。
+   模糊消失动效：由新模式预览流首帧回调[on('frameStart')/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)触发，截图组件模糊到清晰，显示新预览流。
 
    <!-- @[hide_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -473,7 +473,7 @@
    }
    ```
 
-   模糊消失动效触发：监听预览流首帧回调[on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定frameStart的值，触发onFrameStart方法，开始动效。
+   模糊消失动效触发：监听预览流首帧回调[on('frameStart')/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定frameStart的值，触发onFrameStart方法，开始动效。
 
    <!-- @[on_frame_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
    

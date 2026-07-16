@@ -16,7 +16,7 @@
 target_link_libraries(entry PUBLIC libavimage_generator.so libace_napi.z.so)
 ```
 
-使用[OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)接口将nativePixelMap对象转换为PixelMapnapi对象、[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放OH_PixelmapNative对象资源，需引入如下头文件。
+使用[OH_PixelmapNative_ConvertPixelmapNativeToNapi()/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)接口将nativePixelMap对象转换为PixelMapnapi对象、[OH_PixelmapNative_Release()/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放OH_PixelmapNative对象资源，需引入如下头文件。
 ```c
 #include <multimedia/image_framework/image/pixelmap_native.h>
 ```
@@ -36,7 +36,7 @@ target_link_libraries(entry PUBLIC libpixelmap.so libpixelmap_ndk.z.so)
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
-（可选）开发者可以使用[OH_AVMetadataExtractor_FetchMetadata()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata)获取媒体资源时长信息[OH_AVMETADATA_EXTRACTOR_DURATION](../../reference/apis-media-kit/capi-avmetadata-extractor-base-h.md#变量)，进而选择获取视频帧的时间。使用需引入如下头文件。
+（可选）开发者可以使用[OH_AVMetadataExtractor_FetchMetadata()/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata)获取媒体资源时长信息[OH_AVMETADATA_EXTRACTOR_DURATION/apis-media-kit/capi-avmetadata-extractor-base-h.md#变量)，进而选择获取视频帧的时间。使用需引入如下头文件。
 ```c
 #include "multimedia/player_framework/avmetadata_extractor.h"
 #include "multimedia/player_framework/avmetadata_extractor_base.h"
@@ -47,18 +47,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_core.so)
 ```
 
-开发者通过引入[avimage_generator.h](../../reference/apis-media-kit/capi-avimage-generator-h.md)、[avimage_generator_base.h](../../reference/apis-media-kit/capi-avimage-generator-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用获取视频帧相关API。
+开发者通过引入[avimage_generator.h/apis-media-kit/capi-avimage-generator-h.md)、[avimage_generator_base.h/apis-media-kit/capi-avimage-generator-base-h.md)和[native_averrors.h/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用获取视频帧相关API。
 
-详细的API说明请参考[AVImageGenerator API参考](../../reference/apis-media-kit/capi-avimagegenerator.md)。
+详细的API说明请参考[AVImageGenerator API参考/apis-media-kit/capi-avimagegenerator.md)。
 
-1. 使用[OH_AVImageGenerator_Create()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_create)创建实例。
+1. 使用[OH_AVImageGenerator_Create()/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_create)创建实例。
    ```c
    #include <multimedia/player_framework/avimage_generator.h>
    // 创建OH_AVImageGenerator实例。
    OH_AVImageGenerator* generator = OH_AVImageGenerator_Create();
    ```
 
-2. 设置视频资源的文件描述符：调用[OH_AVImageGenerator_SetFDSource()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_setfdsource)。
+2. 设置视频资源的文件描述符：调用[OH_AVImageGenerator_SetFDSource()/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_setfdsource)。
    ```c
    #include "napi/native_api.h"
    #include <multimedia/player_framework/avimage_generator.h>
@@ -128,9 +128,9 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
    }
    ```
 
-4. 获取指定时间的视频帧：调用[OH_AVImageGenerator_FetchFrameByTime()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_fetchframebytime)，可以获取到一个OH_PixelmapNative对象，该对象可用于图片显示。
+4. 获取指定时间的视频帧：调用[OH_AVImageGenerator_FetchFrameByTime()/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_fetchframebytime)，可以获取到一个OH_PixelmapNative对象，该对象可用于图片显示。
 
-   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
+   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
    ```c
    #include "napi/native_api.h"
    #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -199,7 +199,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
        return pixelmapNapi;
    }
    ```
-5. 释放资源：调用[OH_AVImageGenerator_Release()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_release)销毁实例，释放资源。
+5. 释放资源：调用[OH_AVImageGenerator_Release()/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_release)销毁实例，释放资源。
    ```c
    // 释放OH_AVImageGenerator资源。
    OH_AVImageGenerator_Release(generator);

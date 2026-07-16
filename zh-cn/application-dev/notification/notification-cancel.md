@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-通知取消接口如下。接口详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
+通知取消接口如下。接口详情参见[@ohos.notificationManager (NotificationManager模块)/apis-notification-kit/js-apis-notificationManager.md)。
 
 | **接口名** | **描述** |
 | -------- | -------- |

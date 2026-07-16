@@ -6,15 +6,15 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可利用[clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)接口将组件裁剪为所需的形状。调用该接口后，可以保留该形状覆盖的组件部分，同时移除组件的其余部分。裁剪形状本身是不可见的。
+可利用[clipShape/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)接口将组件裁剪为所需的形状。调用该接口后，可以保留该形状覆盖的组件部分，同时移除组件的其余部分。裁剪形状本身是不可见的。
 
 > **说明：**  
 >
 > 不同的形状支持的属性范围不同，路径是一种形状，除此之外还有椭圆、矩形等形状。
 >
-> 路径的形状不支持设置宽度和高度，具体形状支持的属性参考具体[形状](../reference/apis-arkui/js-apis-arkui-shape.md)的文档。
+> 路径的形状不支持设置宽度和高度，具体形状支持的属性参考具体[形状/apis-arkui/js-apis-arkui-shape.md)的文档。
 >
-> 形状中的[fill](../reference/apis-arkui/js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
+> 形状中的[fill/apis-arkui/js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
 ## 裁剪圆形
 

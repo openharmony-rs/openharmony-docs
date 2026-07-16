@@ -29,7 +29,7 @@
 
 **表1** 申请能效资源主要接口
 
-以下是能效资源开发使用的相关接口，更多接口及使用方式请见[后台任务管理](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md)。
+以下是能效资源开发使用的相关接口，更多接口及使用方式请见[后台任务管理/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -45,7 +45,7 @@
 | isPersist | boolean | 否 | 是否为永久持有资源，默认为false<br/>- true表示永久持有<br/>- false表示有限时间内持有 |
 | isProcess | boolean | 否 | 进程或应用申请，默认为false<br/>- true表示进程申请<br/>- false表示应用申请 |
 | reason | string | 是 | 申请资源原因 |
-| cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
+| cpuLevel | [EfficiencyResourcesCpuLevel/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
 
 **表3** 能效资源类型
 | 参数名 | 值 | 描述 |

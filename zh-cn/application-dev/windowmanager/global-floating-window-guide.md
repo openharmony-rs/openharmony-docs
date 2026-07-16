@@ -15,7 +15,7 @@
 
 **全局悬浮窗和标准悬浮窗的对比：**
 
-- 共同点：全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
+- 共同点：全局悬浮窗和[标准悬浮窗/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
 
 - 区别：
 
@@ -54,7 +54,7 @@
 
 1. 创建全局悬浮窗。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
+   通过[window.createWindow()/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
    ```ts
    let float_windowClass: window.Window | undefined = undefined;
@@ -105,7 +105,7 @@
 
 3. 加载显示全局悬浮窗的具体内容。
 
-   通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载显示全局悬浮窗的具体内容。
+   通过[setUIContent()/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载显示全局悬浮窗的具体内容。
 
    ```ts
    float_windowClass.setUIContent("pages/FloatWindow", (err) => {
@@ -129,7 +129,7 @@
 
 4. 销毁全局悬浮窗。  
 
-   当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
+   当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
 
    ```ts
    float_windowClass.destroyWindow((err: BusinessError) => {

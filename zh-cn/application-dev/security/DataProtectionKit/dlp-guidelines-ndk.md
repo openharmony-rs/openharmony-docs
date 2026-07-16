@@ -14,7 +14,7 @@
 - 配置管理：设置、获取和清理沙箱应用配置信息。
       
 ## 接口说明
-数据防泄漏服务关键接口如下表所示。具体API说明详见[API参考](../../reference/apis-data-protection-kit/capi-dlp-permission-api-h.md)
+数据防泄漏服务关键接口如下表所示。具体API说明详见[API参考/apis-data-protection-kit/capi-dlp-permission-api-h.md)
 | 名称 | 描述 |
 | -------- | -------- |
 | DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess \*dlpFileAccess, uint32_t \*flags)| 查询当前DLP沙箱的权限信息。 |

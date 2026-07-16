@@ -27,9 +27,9 @@
 
 | 接口 | 功能 | 使用场景 |
 | -------- | -------- | -------- |
-| [isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22) | 查询当前窗口是否处于自由窗口状态 | 检测窗口是否处于自由窗口状态，以便根据实际情况调整布局或功能。 |
-| [on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22) | 开启自由窗口状态变化事件的监听 | 自由窗口状态发生变化时，通知应用，以便根据实际情况调整布局或功能。 |
-| [off('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offfreewindowmodechange22) | 关闭自由窗口状态变化事件的监听 | 应用退出前，关闭自由窗口状态变化事件的监听。 |
+| [isInFreeWindowMode()/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22) | 查询当前窗口是否处于自由窗口状态 | 检测窗口是否处于自由窗口状态，以便根据实际情况调整布局或功能。 |
+| [on('freeWindowModeChange')/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22) | 开启自由窗口状态变化事件的监听 | 自由窗口状态发生变化时，通知应用，以便根据实际情况调整布局或功能。 |
+| [off('freeWindowModeChange')/apis-arkui/arkts-apis-window-Window.md#offfreewindowmodechange22) | 关闭自由窗口状态变化事件的监听 | 应用退出前，关闭自由窗口状态变化事件的监听。 |
 
 ## 限制自由窗口尺寸
 
@@ -37,7 +37,7 @@
 
 不同设备或不同设备状态下，系统默认的自由窗口尺寸的调节范围可能不同。开发者可通过以下三种方式限制自由窗口的最大和最小尺寸。
 
-- 通过[setWindowLimits(windowLimits: WindowLimits)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)接口或[setWindowLimits(windowLimits: WindowLimits, isForcible: boolean)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits15)设置当前应用窗口的尺寸限制。  
+- 通过[setWindowLimits(windowLimits: WindowLimits)/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)接口或[setWindowLimits(windowLimits: WindowLimits, isForcible: boolean)/apis-arkui/arkts-apis-window-Window.md#setwindowlimits15)设置当前应用窗口的尺寸限制。  
 
   maxWidth：窗口的最大宽度，默认单位为px。
 
@@ -75,7 +75,7 @@
   }
   ```
 
-- 应用在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
+- 应用在使用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
 
   minWindowWidth：窗口的最小宽度，单位为vp。
 
@@ -313,15 +313,15 @@
 > 
 > - 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为：
 >
->   1. 应用通过[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)设置自由窗口尺寸限制。
+>   1. 应用通过[setWindowLimits()/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)设置自由窗口尺寸限制。
 >
->   2. 应用使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定自由窗口尺寸限制。
+>   2. 应用使用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时通过[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定自由窗口尺寸限制。
 >
 >   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
 >
 >   4. 默认系统限制（对于不同产品和窗口类型，windowLimits系统默认限制存在差异）。
 > 
-> - 自由窗口状态下，主窗口可通过[setAspectRatio(ratio: number)](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10)设置窗口内容布局的比例，如果先设置了[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码401；如果先设置了ratio，后设置的[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。
+> - 自由窗口状态下，主窗口可通过[setAspectRatio(ratio: number)/apis-arkui/arkts-apis-window-Window.md#setaspectratio10)设置窗口内容布局的比例，如果先设置了[WindowLimits/apis-arkui/arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码401；如果先设置了ratio，后设置的[WindowLimits/apis-arkui/arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。
 
 ## 调整布局避让标题栏和窗口三键
 
@@ -331,7 +331,7 @@
 
 **标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域。
 
-示意图中，windowRect为窗口尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；drawableRect为可绘制区域尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number；w为窗口宽度，类型为number，单位为px；h为窗口高度，类型为number，单位为px。
+示意图中，windowRect为窗口尺寸，类型为[Rect/apis-arkui/arkts-apis-window-i.md#rect7)；drawableRect为可绘制区域尺寸，类型为[Rect/apis-arkui/arkts-apis-window-i.md#rect7)；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number；w为窗口宽度，类型为number，单位为px；h为窗口高度，类型为number，单位为px。
 
 ![window](figures/window.png)
 
@@ -340,11 +340,11 @@
 如果应用页面底部是固定高度的功能按钮，在计算底部功能按钮位置时，若只用窗口高度减去底部功能按钮高度，则会导致底部功能按钮向下偏移一个标题栏高度的位置，从而出现显示不全的情况。
 
 有以下三种方式解决以上问题：
-- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11)获取，单位为vp。
+- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11)获取，单位为vp。
 
-- 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
+- 通过接口[getWindowProperties()/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
 
-- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
+- 通过接口[setWindowDecorVisible()/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
 
 **窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
 
@@ -356,9 +356,9 @@
 
 应用在页面顶部绘制与窗口三键并排的自定义工具栏或者是页签栏，可以按以下步骤进行适配。
 
-1. 通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏标题栏。
+1. 通过[setWindowDecorVisible()/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏标题栏。
 
-2. 通过[getTitleButtonRect()](../reference/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
+2. 通过[getTitleButtonRect()/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
 
    ```ts
     // EntryAbility.ets
@@ -496,16 +496,16 @@
 
 - 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏Dock栏、标题栏，实现全屏播放视频的效果。
 
-  可以在应用界面增加视频全屏按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口进入全屏显示。
+  可以在应用界面增加视频全屏按钮，在按钮的[onClick/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()/apis-arkui/arkts-apis-window-Window.md#maximize12)接口进入全屏显示。
 
 - 播放PPT时，页面需要隐藏并禁止hover Dock栏、标题栏，以免影响PPT演示效果。  
 
-  可以在应用界面增加PPT播放按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hover Dock栏、标题栏。
+  可以在应用界面增加PPT播放按钮，在按钮的[onClick/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hover Dock栏、标题栏。
 
 > **说明：**
 > 
 > 在进入全屏播放后，如果需要退出全屏播放，有以下两种方式：
 > 
-> - 调用[recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11)接口将窗口从全屏模式下还原为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING），并恢复到进入该模式之前的大小和位置。
+> - 调用[recover()/apis-arkui/arkts-apis-window-Window.md#recover11)接口将窗口从全屏模式下还原为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING），并恢复到进入该模式之前的大小和位置。
 > 
-> - 调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[EXIT_IMMERSIVE](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)，将窗口从全屏改变为最大化状态。
+> - 调用[maximize()/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[EXIT_IMMERSIVE/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)，将窗口从全屏改变为最大化状态。

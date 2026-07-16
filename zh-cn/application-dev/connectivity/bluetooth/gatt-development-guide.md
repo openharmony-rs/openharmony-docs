@@ -46,7 +46,7 @@ try {
 ```
 
 **2. 订阅连接状态变化事件**<br>
-通过订阅连接状态变化事件，可以获取实时的GATT连接状态。整个连接过程会涉及多种状态的跃迁，其中[STATE_CONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已连接，[STATE_DISCONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已断连。
+通过订阅连接状态变化事件，可以获取实时的GATT连接状态。整个连接过程会涉及多种状态的跃迁，其中[STATE_CONNECTED/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已连接，[STATE_DISCONNECTED/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已断连。
 ```ts
 // 此处是伪代码
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -103,7 +103,7 @@ try {
 **5.1 读取或写入特征值**<br>
 读取特征值操作，可以获取服务端特征值的数据内容。<br>
 写入特征值操作，可以更新服务端特征值的数据内容。<br>
-相关API请参考[readCharacteristicValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#readcharacteristicvalue)和[writeCharacteristicValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#writecharacteristicvalue)。
+相关API请参考[readCharacteristicValue/apis-connectivity-kit/js-apis-bluetooth-ble.md#readcharacteristicvalue)和[writeCharacteristicValue/apis-connectivity-kit/js-apis-bluetooth-ble.md#writecharacteristicvalue)。
 ```ts
 // 此处是伪代码
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -155,7 +155,7 @@ try {
 **5.2 读取或写入描述符**<br>
 读取描述符操作，可以获取服务端描述符的数据内容。<br>
 写入描述符操作，可以更新服务端描述符的数据内容。<br>
-相关API请参考[readDescriptorValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#readdescriptorvalue)和[writeDescriptorValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#writedescriptorvalue)。
+相关API请参考[readDescriptorValue/apis-connectivity-kit/js-apis-bluetooth-ble.md#readdescriptorvalue)和[writeDescriptorValue/apis-connectivity-kit/js-apis-bluetooth-ble.md#writedescriptorvalue)。
 ```ts
 // 此处是伪代码
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -196,8 +196,8 @@ try {
 
 客户端收到服务端通知时，不需要回复确认；客户端收到服务端指示时，需要回复确认，蓝牙子系统会实现该操作，应用无需关注。
 
-- 先订阅服务端特征值变化事件，详情请见[on('BLECharacteristicChange')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onblecharacteristicchange)。
-- 再使能服务端特征值变化通知或者指示能力，应用根据实际场景选择一种方式即可。相关API请参考[setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification)和[setCharacteristicChangeIndication](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication)。
+- 先订阅服务端特征值变化事件，详情请见[on('BLECharacteristicChange')/apis-connectivity-kit/js-apis-bluetooth-ble.md#onblecharacteristicchange)。
+- 再使能服务端特征值变化通知或者指示能力，应用根据实际场景选择一种方式即可。相关API请参考[setCharacteristicChangeNotification/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification)和[setCharacteristicChangeIndication/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication)。
 ```ts
 // 此处是伪代码
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -342,7 +342,7 @@ try {
 ```
 
 **3. 订阅连接状态变化事件**<br>
-通过订阅连接状态变化事件，可以获取实时的GATT连接状态以及客户端的设备地址。整个连接过程涉及多种状态的跃迁，其中[STATE_CONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已连接，[STATE_DISCONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已断连。
+通过订阅连接状态变化事件，可以获取实时的GATT连接状态以及客户端的设备地址。整个连接过程涉及多种状态的跃迁，其中[STATE_CONNECTED/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已连接，[STATE_DISCONNECTED/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate)表示已断连。
 ```ts
 function ServerConnectStateChanged(state: ble.BLEConnectionChangeState) {
   console.info('bluetooth connect state changed');
@@ -362,10 +362,10 @@ try {
 传输数据可以通过客户端读写特征值数据内容、读写描述符数据内容、主动发送特征值数据内容变化通知或指示实现。
 
 **4.1 订阅特征值读取或写入事件**<br>
-通过订阅特征值读取或写入事件，获取客户端的操作请求，相关API请参考[on('characteristicRead')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicread)和[on('characteristicWrite')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicwrite)。
+通过订阅特征值读取或写入事件，获取客户端的操作请求，相关API请参考[on('characteristicRead')/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicread)和[on('characteristicWrite')/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicwrite)。
 
-- 收到读取特征值请求时，需要调用[sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复对应特征值的数据内容。
-- 收到写入特征值请求时，可保存客户端写入的特征值数据内容。根据写入请求[CharacteristicWriteRequest](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#characteristicwriterequest)的needRsp判断是否需要调用[sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复。
+- 收到读取特征值请求时，需要调用[sendResponse/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复对应特征值的数据内容。
+- 收到写入特征值请求时，可保存客户端写入的特征值数据内容。根据写入请求[CharacteristicWriteRequest/apis-connectivity-kit/js-apis-bluetooth-ble.md#characteristicwriterequest)的needRsp判断是否需要调用[sendResponse/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复。
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
 let arrayBufferCCC = new ArrayBuffer(2);
@@ -429,10 +429,10 @@ gattServer.on('characteristicWrite', writeCharacteristicReq);
 ```
 
 **4.2 订阅描述符读取或写入事件**<br>
-通过订阅描述符读取或写入事件，获取客户端的操作请求，相关API请参考[on('descriptorRead')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorread)和[on('descriptorWrite')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorwrite)。
+通过订阅描述符读取或写入事件，获取客户端的操作请求，相关API请参考[on('descriptorRead')/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorread)和[on('descriptorWrite')/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorwrite)。
 
-- 收到读取描述符请求时，需要调用[sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复对应描述符的数据内容。
-- 收到写入描述符请求时，可保存客户端写入的描述符数据内容。根据写入请求[DescriptorWriteRequest](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#descriptorwriterequest)的needRsp判断是否需要调用[sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复。
+- 收到读取描述符请求时，需要调用[sendResponse/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复对应描述符的数据内容。
+- 收到写入描述符请求时，可保存客户端写入的描述符数据内容。根据写入请求[DescriptorWriteRequest/apis-connectivity-kit/js-apis-bluetooth-ble.md#descriptorwriterequest)的needRsp判断是否需要调用[sendResponse/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse)进行回复。
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
 
@@ -498,12 +498,12 @@ gattServer.on('descriptorWrite', writeDescriptorReq);
 ```
 
 **4.3 发送特征值变化通知或指示**<br>
-当服务端的特征值数据内容发生变化时，可以通过通知或者指示主动知会到客户端，相关API请参考[notifyCharacteristicChanged](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristicchanged)。
+当服务端的特征值数据内容发生变化时，可以通过通知或者指示主动知会到客户端，相关API请参考[notifyCharacteristicChanged/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristicchanged)。
 
-发送通知时，不需要客户端回复确认；发送指示时，需要客户端回复确认。应用根据[NotifyCharacteristic](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristic)的confirm参数决定发送哪种类型。
+发送通知时，不需要客户端回复确认；发送指示时，需要客户端回复确认。应用根据[NotifyCharacteristic/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristic)的confirm参数决定发送哪种类型。
 
 - 该特征值需包含蓝牙标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），才支持通知或者指示能力。
-- 使用通知或者指示能力需要使能。客户端可以通过[setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification)或[setCharacteristicChangeIndication](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication)使能该能力，应用根据实际场景选择一种方式即可。
+- 使用通知或者指示能力需要使能。客户端可以通过[setCharacteristicChangeNotification/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification)或[setCharacteristicChangeIndication/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication)使能该能力，应用根据实际场景选择一种方式即可。
 ```ts
 let device = 'XX:XX:XX:XX:XX:XX'; // 该设备地址表示客户端地址，可以通过连接状态变化事件中获取
 let arrayBufferC = new ArrayBuffer(2);

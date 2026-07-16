@@ -11,7 +11,7 @@
 
 随着应用功能的日益丰富与复杂化，数据加载效率成为了衡量应用性能的重要指标。不合理的加载策略往往导致用户面临长时间的等待，这不仅损害了用户体验，还可能引发用户流失。因此，合理运用缓存技术变得尤为重要。  
 
-系统提供了[Preferences](../database/data-persistence-by-preferences.md)、[数据库](../database/data-persistence-by-rdb-store.md)、[文件](../reference/apis-core-file-kit/js-apis-file-fs.md)、[AppStorage](../ui/state-management/arkts-appstorage.md)等缓存方式，开发者可以对应用数据先进行缓存，再次加载时优先展示缓存数据，减少加载时间，从而提升用户体验。  
+系统提供了[Preferences](../database/data-persistence-by-preferences.md)、[数据库](../database/data-persistence-by-rdb-store.md)、[文件/apis-core-file-kit/js-apis-file-fs.md)、[AppStorage](../ui/state-management/arkts-appstorage.md)等缓存方式，开发者可以对应用数据先进行缓存，再次加载时优先展示缓存数据，减少加载时间，从而提升用户体验。  
 
 本文将介绍以下内容，来帮助开发者通过缓存技术提升应用的冷启动速度、预下载网络图片减少Image白块时长，避免卡顿感：
 
@@ -215,7 +215,7 @@ struct Index {
 
 **使用场景**
 
-如果应用每次冷启动都先通过[getCurrentLocation](../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
+如果应用每次冷启动都先通过[getCurrentLocation/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
 
 针对上述问题，下面将通过使用缓存减少首次数据加载展示时间，优化应用启动性能，为开发者优化应用性能提供参考。
 
@@ -348,7 +348,7 @@ struct Index {
 
 **性能分析**
 
-下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取位置数据及使用缓存获取位置数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的[性能打点](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)，然后在使用本地缓存和使用getCurrentLocation获取数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
+下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取位置数据及使用缓存获取位置数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的[性能打点/apis-performance-analysis-kit/js-apis-hitracemeter.md)，然后在使用本地缓存和使用getCurrentLocation获取数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
 
 优化前未使用本地缓存（通过getCurrentLocation获取地址数据）的测试步骤：先打开示例页面，点击'clear cache'按钮（清除本地位置信息的缓存）后退出应用，再使用Launch抓取性能数据。
 

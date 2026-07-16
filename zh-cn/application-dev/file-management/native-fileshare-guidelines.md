@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-接口的详细介绍请参见[oh_file_uri.h](../reference/apis-core-file-kit/capi-oh-file-share-h.md)。
+接口的详细介绍请参见[oh_file_uri.h/apis-core-file-kit/capi-oh-file-share-h.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |

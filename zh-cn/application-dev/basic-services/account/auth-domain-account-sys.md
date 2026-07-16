@@ -20,7 +20,7 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
 ## 使用密码认证域账号
 
-用户可以使用密码认证域账号。开发者可以使用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth10)接口完成此操作。此外使用该接口，应用还需要申请ohos.permission.ACCESS_USER_AUTH_INTERNAL权限。
+用户可以使用密码认证域账号。开发者可以使用[auth/apis-basic-services-kit/js-apis-osAccount-sys.md#auth10)接口完成此操作。此外使用该接口，应用还需要申请ohos.permission.ACCESS_USER_AUTH_INTERNAL权限。
 
 具体开发实例如下：
 
@@ -49,7 +49,7 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
     };
    ```
 
-4. 调用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth10)接口进行密码认证。
+4. 调用[auth/apis-basic-services-kit/js-apis-osAccount-sys.md#auth10)接口进行密码认证。
 
   ``` ts
     try {
@@ -63,7 +63,7 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 
 ## 弹窗认证域账号
 
-在无法获取用户密码的情况下，需要认证域账号时，可以请求系统弹窗验证域账号用户。开发者可以使用[authWithPopup](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#authwithpopup10)完成此操作。
+在无法获取用户密码的情况下，需要认证域账号时，可以请求系统弹窗验证域账号用户。开发者可以使用[authWithPopup/apis-basic-services-kit/js-apis-osAccount-sys.md#authwithpopup10)完成此操作。
 
 具体开发实例如下：
 
@@ -79,7 +79,7 @@ import { osAccount, BusinessError } from '@kit.BasicServicesKit';
     }
    ```
 
-2. 调用[authWithPopup](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#authwithpopup10)接口弹窗认证当前域账号。
+2. 调用[authWithPopup/apis-basic-services-kit/js-apis-osAccount-sys.md#authwithpopup10)接口弹窗认证当前域账号。
 
    ``` ts
     try {

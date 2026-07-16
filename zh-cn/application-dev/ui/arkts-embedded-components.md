@@ -14,11 +14,11 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 ## 基本概念
 
-- [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)组件
+- [EmbeddedComponent/apis-arkui/arkui-ts/ts-container-embedded-component.md)组件
 
   EmbeddedComponent组件用于在当前页面嵌入本应用内其他EmbeddedUIExtensionAbility提供的UI。它允许开发者将应用的某些功能或界面嵌入另一个界面中，实现更灵活的用户界面设计，适用于需要进程隔离的模块化开发场景。
 
-- [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
+- [EmbeddedUIExtensionAbility/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
 
   提供方应用中定义使用，用于实现跨进程界面嵌入功能，仅能被同应用的UIAbility拉起，并需在多进程权限的场景下使用。
 
@@ -26,31 +26,31 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 设备要求
 
-  EmbeddedComponent组件仅可在支持[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)的设备上正常运行。
+  EmbeddedComponent组件仅可在支持[EmbeddedUIExtensionAbility/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)的设备上正常运行。
 
 - 应用范围
 
-  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
+  EmbeddedComponent组件只能在[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
 
 - 属性限制
 
-  EmbeddedComponent组件支持[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)，且宽高默认值和最小值均为10vp；
+  EmbeddedComponent组件支持[通用属性/apis-arkui/arkui-ts/ts-component-general-attributes.md)，且宽高默认值和最小值均为10vp；
   
   不支持如下与宽高相关的属性：
   
-  "[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)"、"[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)"、"[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)"、"[flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)"、"[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)"和"[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)"。
+  "[constraintSize/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)"、"[aspectRatio/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)"、"[layoutWeight/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)"、"[flexBasis/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)"、"[flexGrow/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)"和"[flexShrink/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)"。
 
 - 事件调用
 
   与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被拉起的EmbeddedUIExtensionAbility处理。
 
-  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。从API版本26.0.0开始，新增支持[onDrawReady](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#ondrawready)事件。
+  EmbeddedComponent组件不支持[点击/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。从API版本26.0.0开始，新增支持[onDrawReady/apis-arkui/arkui-ts/ts-container-embedded-component.md#ondrawready)事件。
 
 ## 获焦能力说明
 
 API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedUIExtensionAbility进程内焦点直接下发到第一个可获焦子节点。从API版本26.0.0开始，
 1. 如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点。
-2. 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
+2. 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
 
 ## 场景示例
 
@@ -110,7 +110,7 @@ export struct Embedded {
 
 - 异常处理
 
-  通过[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件处理加载或运行嵌入式能力时可能出现的错误，提升用户体验。
+  通过[onError/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件处理加载或运行嵌入式能力时可能出现的错误，提升用户体验。
 
 - 生命周期管理
 
@@ -169,23 +169,23 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 - 生命周期阶段
 
-  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：组件初始化到可见的完整流程；
+  [onCreate/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：组件初始化到可见的完整流程；
 
-  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → onForeground：前后台切换时的状态迁移；
+  [onBackground/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → onForeground：前后台切换时的状态迁移；
 
-  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：组件被宿主主动销毁时的资源回收点。
+  [onDestroy/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：组件被宿主主动销毁时的资源回收点。
 
 - 会话管理
 
-  [onSessionCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)：创建独立存储上下文并加载UI界面；
+  [onSessionCreate/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)：创建独立存储上下文并加载UI界面；
 
-  [onSessionDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessiondestroy)：处理会话结束时（如用户主动关闭）的清理操作。
+  [onSessionDestroy/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessiondestroy)：处理会话结束时（如用户主动关闭）的清理操作。
 
 - 上下文传递
 
-  通过[LocalStorage](../ui/state-management/arkts-localstorage.md)实现[UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)的跨组件传递；
+  通过[LocalStorage](../ui/state-management/arkts-localstorage.md)实现[UIExtensionContentSession/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)的跨组件传递；
 
-  使用[loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法绑定ArkTS页面与扩展能力上下文。
+  使用[loadContent/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法绑定ArkTS页面与扩展能力上下文。
 
 **入口页面** 
 

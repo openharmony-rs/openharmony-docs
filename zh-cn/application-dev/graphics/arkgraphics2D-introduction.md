@@ -11,21 +11,21 @@ ArkGraphics 2D（方舟2D图形服务 ）主要提供图形绘制与显示相关
 
 ## 能力范围
 
-- 提供图像处理的一些基本能力，包括对当前图像的亮度调节、模糊化、灰度调节、智能取色等。具体可见[@ohos.effectKit (图像效果)](../reference/apis-arkgraphics2d/js-apis-effectKit.md)。
+- 提供图像处理的一些基本能力，包括对当前图像的亮度调节、模糊化、灰度调节、智能取色等。具体可见[@ohos.effectKit (图像效果)/apis-arkgraphics2d/js-apis-effectKit.md)。
 
-- 提供管理抽象化色域对象的基础能力，包括色域的创建、色域基础属性的获取等。具体可见[@ohos.graphics.colorSpaceManager (色彩管理)](../reference/apis-arkgraphics2d/js-apis-colorSpaceManager.md)与[@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)](../reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)。
+- 提供管理抽象化色域对象的基础能力，包括色域的创建、色域基础属性的获取等。具体可见[@ohos.graphics.colorSpaceManager (色彩管理)/apis-arkgraphics2d/js-apis-colorSpaceManager.md)与[@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)。
 
 - 提供可针对不同形式的内容指定帧率的能力，可用于开发者自绘制内容。具体可见[可变帧率简介](displaysync-overview.md)。
 
-- 提供高动态显示的相关能力，具体可见[@ohos.graphics.hdrCapability (HDR能力)](../reference/apis-arkgraphics2d/js-apis-hdrCapability.md)。
+- 提供高动态显示的相关能力，具体可见[@ohos.graphics.hdrCapability (HDR能力)/apis-arkgraphics2d/js-apis-hdrCapability.md)。
 
-- 提供自绘制的相关能力，开发者可根据需要，自定义绘制实现UI效果，可自定义绘制基础形状、文本、图片等。具体可见[@ohos.graphics.drawing (绘制模块)](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)。
+- 提供自绘制的相关能力，开发者可根据需要，自定义绘制实现UI效果，可自定义绘制基础形状、文本、图片等。具体可见[@ohos.graphics.drawing (绘制模块)/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)。
 
-- 提供图形绘制与显示相关的Native能力，包括[NativeWindow](../reference/apis-arkgraphics2d/capi-nativewindow.md)、[NativeBuffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md)、[NativeImage](../reference/apis-arkgraphics2d/capi-oh-nativeimage.md)、[NativeVsync](../reference/apis-arkgraphics2d/capi-nativevsync.md)、[Drawing](../reference/apis-arkgraphics2d/capi-drawing.md)等模块。
+- 提供图形绘制与显示相关的Native能力，包括[NativeWindow/apis-arkgraphics2d/capi-nativewindow.md)、[NativeBuffer/apis-arkgraphics2d/capi-oh-nativebuffer.md)、[NativeImage/apis-arkgraphics2d/capi-oh-nativeimage.md)、[NativeVsync/apis-arkgraphics2d/capi-nativevsync.md)、[Drawing/apis-arkgraphics2d/capi-drawing.md)等模块。
 
 ## 使用场景
 
-- 图像效果处理：开发者可根据不同的UI效果需要，使用[@ohos.effectKit (图像效果)](../reference/apis-arkgraphics2d/js-apis-effectKit.md)实现图像的效果处理，以提升用户浏览体验。
+- 图像效果处理：开发者可根据不同的UI效果需要，使用[@ohos.effectKit (图像效果)/apis-arkgraphics2d/js-apis-effectKit.md)实现图像的效果处理，以提升用户浏览体验。
 
 - 设置图像色域：开发者可根据设计需求使用图像文件并设置色域信息，实现图像广色域效果的绘制和显示。
 

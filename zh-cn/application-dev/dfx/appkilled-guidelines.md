@@ -61,7 +61,7 @@
 
 应用可以通过两种方式感知到被异常终止。
 
-1. 从元能力的Ability的onCreate回调参数中获取终止原因。具体为LaunchParam启动参数中的LastExitReason字段，请参考[元能力LastExitReason章节](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitreason)。
+1. 从元能力的Ability的onCreate回调参数中获取终止原因。具体为LaunchParam启动参数中的LastExitReason字段，请参考[元能力LastExitReason章节/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitreason)。
 
 2. 通过HiAppEvent订阅APP_KILLED事件。订阅方式请参考[应用终止事件](hiappevent-watcher-app-killed-events.md)。
 

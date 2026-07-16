@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Canvas组件提供画布，用于自定义绘制图形。具体用法请参考[CanvasRenderingContext2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
+Canvas组件提供画布，用于自定义绘制图形。具体用法请参考[CanvasRenderingContext2D对象/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
 
 
 ## 创建Canvas组件
@@ -88,7 +88,7 @@ Canvas添加长按事件，长按后可获取Canvas组件的dataUrl值（toDataU
 
 > **说明：** 
 >
-> promptAction相关接口参考[弹窗](../reference/apis-arkui/js-apis-promptAction.md)。
+> promptAction相关接口参考[弹窗/apis-arkui/js-apis-promptAction.md)。
 
 
 ```html

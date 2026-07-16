@@ -8,11 +8,11 @@
 
 ## 场景介绍
 
-静态订阅者在未接收订阅的目标事件时，处于未拉起状态。当系统或应用发布了指定的公共事件后，静态订阅者将被拉起，并执行[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调。
+静态订阅者在未接收订阅的目标事件时，处于未拉起状态。当系统或应用发布了指定的公共事件后，静态订阅者将被拉起，并执行[`onReceiveEvent()`/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调。
 
-开发者可以通过在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中执行业务逻辑，实现当应用接收到特定公共事件时执行业务逻辑的目的。例如，应用希望在设备开机时执行一些初始化任务，那么该应用可以静态订阅开机事件，在收到开机事件后会拉起该应用，然后执行初始化任务。
+开发者可以通过在[`onReceiveEvent()`/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中执行业务逻辑，实现当应用接收到特定公共事件时执行业务逻辑的目的。例如，应用希望在设备开机时执行一些初始化任务，那么该应用可以静态订阅开机事件，在收到开机事件后会拉起该应用，然后执行初始化任务。
 
-静态订阅是通过配置文件声明和实现继承自[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)的类实现对公共事件的订阅。
+静态订阅是通过配置文件声明和实现继承自[StaticSubscriberExtensionAbility/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)的类实现对公共事件的订阅。
 
 > **说明：**
 >
@@ -20,15 +20,15 @@
 
 ## 生命周期
 
-[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)执行完`15秒`后销毁。
+[StaticSubscriberExtensionAbility/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)在[`onReceiveEvent()`/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)执行完`15秒`后销毁。
 
 ## 开发步骤
 
 1. 静态订阅者声明。
 
-   声明一个静态订阅者，首先需要在工程中新建一个ExtensionAbility，该ExtensionAbility从[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)派生。
+   声明一个静态订阅者，首先需要在工程中新建一个ExtensionAbility，该ExtensionAbility从[StaticSubscriberExtensionAbility/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)派生。
 
-   开发者可以在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中实现业务逻辑。
+   开发者可以在[`onReceiveEvent()`/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中实现业务逻辑。
 
    ```ts
    import { commonEventManager, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
@@ -137,7 +137,7 @@
    | **属性名称** | **含义**                                                     | **数据类型** | **是否可缺省**   |
    | ------------ | ------------------------------------------------------------ | ------------ | ---------------- |
    | event        | 标识静态订阅事件需要过滤的事件名，与事件列表进行匹配，否则配置无效。 | 字符串       | 该标签不可缺省。 |
-   | conditions   | 标识当前事件的过滤条件，从[发布者CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md)中进行过滤。 | 对象         | 该标签不可缺省。 |
+   | conditions   | 标识当前事件的过滤条件，从[发布者CommonEventPublishData/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md)中进行过滤。 | 对象         | 该标签不可缺省。 |
 
    conditions标签标识静态订阅过滤事件需要的条件配置，标签值为对象类型，包含code、data、parameters三个子标签。
 

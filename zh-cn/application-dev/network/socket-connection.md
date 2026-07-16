@@ -601,7 +601,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
    ```
 
-3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
    ```ts
    // 绑定本地IP地址和端口。
    let ipAddress : socket.NetAddress = {} as socket.NetAddress;
@@ -720,7 +720,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
    ```
 
-3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
    ```ts
    // 绑定本地IP地址和端口。
    let ipAddress : socket.NetAddress = {} as socket.NetAddress;

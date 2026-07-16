@@ -8,7 +8,7 @@
 
 ## 切换通话输出设备
 
-本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam（投播组件参数）](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考[实现音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
+本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam（投播组件参数）/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考[实现音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
 
 当前系统支持两种组件样式的显示方式：默认样式显示和自定义样式显示。
 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。
@@ -277,7 +277,7 @@
 
 ### 自定义样式实现
 
-自定义样式通过设置[CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)类型的参数[customPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)实现。
+自定义样式通过设置[CustomBuilder/apis-arkui/arkui-ts/ts-types.md#custombuilder8)类型的参数[customPicker/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)实现。
 
 实现自定义样式的步骤与实现默认样式基本相同，开发者可参考[默认样式实现](#默认样式实现)，完成创建AVSession、实现音频播放等步骤。
 
@@ -362,7 +362,7 @@
 
 ## 切换通话输入设备
 
-系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，并实现AVInputCastPicker组件，相关参数可参考[@ohos.multimedia.avInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
+系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，并实现AVInputCastPicker组件，相关参数可参考[@ohos.multimedia.avInputCastPicker/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam/apis-avsession-kit/js-apis-avCastPickerParam.md)。
 
 本文将主要介绍AVInputCastPicker组件接入，实现通话输入设备切换功能。
 
@@ -407,7 +407,7 @@
 
 ### 自定义实现方式
 
-自定义样式通过设置[AVInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md#avinputcastpicker)中的参数customPicker实现。
+自定义样式通过设置[AVInputCastPicker/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md#avinputcastpicker)中的参数customPicker实现。
 
 1. 创建自定义AVInputCastPicker，需要新增自定义参数。
 

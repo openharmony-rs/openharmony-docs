@@ -21,7 +21,7 @@
 \@ReusableV2用于装饰V2的自定义组件，表明该自定义组件具有被复用的能力：
 
 - \@ReusableV2仅能装饰V2的自定义组件，即\@ComponentV2装饰的自定义组件。并且仅能将\@ReusableV2装饰的自定义组件作为V2自定义组件的子组件使用。
-- \@ReusableV2同样提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)的生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse，但与\@Reusable不同的是，aboutToReuse没有入参。
+- \@ReusableV2同样提供了[aboutToRecycle/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)的生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse，但与\@Reusable不同的是，aboutToReuse没有入参。
 - 在回收阶段，会递归地调用所有子组件的aboutToRecycle回调（即使子组件未被标记可复用）；在复用阶段，会递归地调用所有子组件的aboutToReuse回调（即使子组件未被标记可复用）。
 - \@ReusableV2装饰的自定义组件会在被回收期间保持冻结状态，即无法触发UI刷新、无法触发[\@Monitor](./arkts-new-monitor.md)回调，与[freezeWhenInactive](./arkts-custom-components-freezeV2.md)标记位不同的是，在解除冻结状态后，不会触发延后的刷新。
 - \@ReusableV2装饰的自定义组件会在复用时自动重置组件内状态变量的值、重新计算组件内[\@Computed](./arkts-new-computed.md)以及与之相关的\@Monitor。不建议开发者在aboutToRecycle中更改组件内状态变量，详见[复用前的组件内状态变量重置](#复用前的组件内状态变量重置)。
@@ -53,7 +53,7 @@ struct ReusableV2Component {
 
 ## 接口说明
 
-reuse、ReuseOptions、ReuseIdCallback的接口说明参考API文档：[复用选项](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)。
+reuse、ReuseOptions、ReuseIdCallback的接口说明参考API文档：[复用选项/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)。
 
 <!-- @[ExamplePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ExamplePage.ets) -->
 
@@ -129,12 +129,12 @@ struct ReusableV2Component {
   | ------------ | :--------: | :--------: | :------------------------------------: | :--------------: |
   | V1普通组件   |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
   | V2普通组件   |    支持    |    支持    | 不支持，编译告警，实际使用子组件不创建 |       支持       |
-  | V1复用组件   |    支持    |    支持，需要使用API version 18及以上的SDK，否则会有运行时报错，从API version 23开始，将返回错误码[140113](../../reference/apis-arkui/errorcode-stateManagement.md#140113-复用componentv2自定义组件但工具链版本过低)     |                  支持                  | 不支持，编译报错 |
+  | V1复用组件   |    支持    |    支持，需要使用API version 18及以上的SDK，否则会有运行时报错，从API version 23开始，将返回错误码[140113/apis-arkui/errorcode-stateManagement.md#140113-复用componentv2自定义组件但工具链版本过低)     |                  支持                  | 不支持，编译报错 |
   | V2复用组件   |    支持    |    支持    |            不支持，编译报错            |       支持       |
 
   根据上表，仅支持12种可能的父子关系，不推荐开发者高度嵌套可复用组件，这会造成复用效率降低。
 
-- V2的复用组件当前不支持直接用于[Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)的template中，但是可以用在template中的V2自定义组件中。
+- V2的复用组件当前不支持直接用于[Repeat/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)的template中，但是可以用在template中的V2自定义组件中。
 
   <!-- @[RepeatTemplatePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatTemplatePage.ets) -->
   
@@ -712,7 +712,7 @@ struct ReusableV2Component {
 
 [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md)组件懒加载场景中，将会优先使用Repeat组件的缓存池，正常滑动场景、更新场景不涉及组件的回收与复用。当Repeat的缓存池需要扩充时将会向自定义组件要求新的子组件，此时如果复用池中有可复用的节点，将会进行复用。
 
-通过配置Repeat组件[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)的reusable属性为false，可以关闭Repeat组件自身的复用能力。此时，滑动场景、更新场景均会触发@ReusableV2的回收与复用。
+通过配置Repeat组件[VirtualScrollOptions/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)的reusable属性为false，可以关闭Repeat组件自身的复用能力。此时，滑动场景、更新场景均会触发@ReusableV2的回收与复用。
 
 下面的例子中，先点击`Change condition`会让3个节点进入复用池，而后向下滑动List组件时，可以观察到日志输出`ReusableV2Component aboutToReuse`，表明Repeat可以使用自定义组件的复用池填充自己的缓存池。
 
@@ -882,7 +882,7 @@ struct ReusableV2Component {
 
 >**说明：**
 >
->推荐开发者使用Repeat组件的非懒加载场景代替[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)组件。
+>推荐开发者使用Repeat组件的非懒加载场景代替[ForEach/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)组件。
 
 下面的例子中使用了ForEach组件渲染了数个可复用组件，由于每次点击`Click to change`按钮时key值都会发生变化，因此从第二次点击开始都会触发回收与复用（由于ForEach先判断有无可复用节点时复用池仍未初始化，因此第一次点击会创建新的节点，而后初始化复用池同时回收节点）。
 
@@ -947,7 +947,7 @@ struct ReusableV2Component {
 
 >**说明：**
 >
->推荐开发者使用Repeat组件的懒加载场景代替[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)组件。
+>推荐开发者使用Repeat组件的懒加载场景代替[LazyForEach/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)组件。
 
 下面的例子中使用了LazyForEach渲染了数个可复用组件，在滑动时可以先观察到组件创建，直到预加载节点全部创建完成之后，再滑动则触发复用和回收。
 

@@ -16,7 +16,7 @@ OAID会在以下场景中发生变化：
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [resetOAID()](../../reference/apis-ads-kit/js-apis-oaid-sys.md#identifierresetoaid):&nbsp;void | 重置OAID，此接口为系统接口。 |
+| [resetOAID()/apis-ads-kit/js-apis-oaid-sys.md#identifierresetoaid):&nbsp;void | 重置OAID，此接口为系统接口。 |
 
 
 ## 开发步骤

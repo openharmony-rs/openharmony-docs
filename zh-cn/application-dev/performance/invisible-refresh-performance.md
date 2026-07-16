@@ -35,11 +35,11 @@
 ## 解决思路
 
 ### 接入可见接口法
-下方展示了使用[ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)实现的动画组件，通过设置duration实现多个Pixelmap的循环播放。例如，当组件放置在Scroll容器中时，为避免组件划出屏幕导致的不可见空跑问题，可以通过监听组件移出屏幕的事件，修改动画播放状态，从而控制空跑。以下提供了几种接入可见性接口的实现方式，开发者可根据需要选择一种：
+下方展示了使用[ImageAnimator/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)实现的动画组件，通过设置duration实现多个Pixelmap的循环播放。例如，当组件放置在Scroll容器中时，为避免组件划出屏幕导致的不可见空跑问题，可以通过监听组件移出屏幕的事件，修改动画播放状态，从而控制空跑。以下提供了几种接入可见性接口的实现方式，开发者可根据需要选择一种：
 
-[onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)：可直接绑定到组件，当组件可见时每帧进行一次可见性计算，达到阈值时触发回调。
+[onVisibleAreaChange/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)：可直接绑定到组件，当组件可见时每帧进行一次可见性计算，达到阈值时触发回调。
 
-[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)是onVisibleAreaChange()的低频优化版本，可以通过参数设置可见性计算的周期。例如，可以将expectedUpdateInterval设置为500ms。
+[setOnVisibleAreaApproximateChange/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)是onVisibleAreaChange()的低频优化版本，可以通过参数设置可见性计算的周期。例如，可以将expectedUpdateInterval设置为500ms。
 
 由于onVisibleAreaChange()在可见时会每帧进行一次计算检测，当组件数量较多、节点层次较深且帧率较高时，使用setOnVisibleAreaApproximateChange()可以减少计算负载，从而显著提升性能和降低功耗。
 
@@ -233,13 +233,13 @@ struct RefreshExample {
 
 |组件名称|设计动画项|不可见不刷新|是否有启停接口|
 | -------- | -------- | -------- | -------- |
-|[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)|Gif、动图动画|已适配|Image不开放，DrawableDescriptor开放|
-|[ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)|动画跳帧|未适配|有，参考官方文档|
+|[Image/apis-arkui/arkui-ts/ts-basic-components-image.md)|Gif、动图动画|已适配|Image不开放，DrawableDescriptor开放|
+|[ImageAnimator/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)|动画跳帧|未适配|有，参考官方文档|
 |[Text](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-References/clouddb-text-0000001491435996)|跑马灯动画|已适配|overflow模式有启停方式|
-|[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)|自动轮播动画|已适配|-|
-|[LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md)|播放动画|已适配|enableLoading属性可以启停动画|
-|[Marquee](../reference/apis-arkui/arkui-ts//ts-basic-components-marquee.md)|跑马灯动画|已适配|用户设置轮播次数|
-|[Progress](../reference/apis-arkui/arkui-ts//ts-basic-components-progress.md)|流光动画|已适配|status等属性可以控制动画启停|
+|[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)|自动轮播动画|已适配|-|
+|[LoadingProgress/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md)|播放动画|已适配|enableLoading属性可以启停动画|
+|[Marquee/apis-arkui/arkui-ts//ts-basic-components-marquee.md)|跑马灯动画|已适配|用户设置轮播次数|
+|[Progress/apis-arkui/arkui-ts//ts-basic-components-progress.md)|流光动画|已适配|status等属性可以控制动画启停|
 |高级组件|当前无自动播放动画|-|-|
 
 > **限制：**

@@ -83,7 +83,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 ### 接口说明
 
-分布式扩展能力API的接口使用指导请参见[@ohos.application.DistributedExtensionAbility (协同Extension)](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)。
+分布式扩展能力API的接口使用指导请参见[@ohos.application.DistributedExtensionAbility (协同Extension)/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -95,7 +95,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 1. 在配置文件中注册 `Extension`组件。
    
-   在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
+   在应用配置文件 `module.json5`中新增 `"extensionAbilities"`字段，其中注册类型 `"type"`设置为 `"distributed"`，元数据信息["metadata"/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个 `"name"`为 `"ohos.extension.DistributedExtension"`的条目。
    
    DistributedExtensionAbility配置文件示例：
    

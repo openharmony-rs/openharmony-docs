@@ -24,7 +24,7 @@
 
 ### 账号完整信息
 
-系统账号的完整信息请参考[OsAccountInfo](../../reference/apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo)定义。
+系统账号的完整信息请参考[OsAccountInfo/apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo)定义。
 
 ## 开发准备
 
@@ -49,7 +49,7 @@
 
 具体开发实例如下：
 
-调用[createOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccount)接口，指定昵称和类型信息来创建系统账号。
+调用[createOsAccount/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccount)接口，指定昵称和类型信息来创建系统账号。
 
    ```ts
     let name: string = 'Bob';
@@ -71,7 +71,7 @@
 
 具体开发实例如下：
 
-调用[queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts)接口查询全量账号。  
+调用[queryAllCreatedOsAccounts/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts)接口查询全量账号。  
 
    ```ts
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
@@ -89,7 +89,7 @@
 
 具体开发实例如下：
 
-调用[queryOsAccountById](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryosaccountbyid)接口查询指定账号的详细信息。
+调用[queryOsAccountById/apis-basic-services-kit/js-apis-osAccount-sys.md#queryosaccountbyid)接口查询指定账号的详细信息。
 
    ```ts
     let localId: number = 100;
@@ -108,7 +108,7 @@
 
 具体开发实例如下：
 
-1. 调用[setOsAccountProfilePhoto](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountprofilephoto)接口修改系统账号头像。
+1. 调用[setOsAccountProfilePhoto/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountprofilephoto)接口修改系统账号头像。
 
    ```ts
     let localId: number = 100;
@@ -126,7 +126,7 @@
     });
    ```
 
-2. 调用[setOsAccountName](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname)接口修改系统账号名称。
+2. 调用[setOsAccountName/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname)接口修改系统账号名称。
 
    ```ts
     let localId: number = 100;
@@ -146,11 +146,11 @@
 
 ## 激活系统账号
 
-系统账号默认处于未激活状态，需要激活后才能使用。开发者可以使用[activateOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#activateosaccount)接口完成此操作。
+系统账号默认处于未激活状态，需要激活后才能使用。开发者可以使用[activateOsAccount/apis-basic-services-kit/js-apis-osAccount-sys.md#activateosaccount)接口完成此操作。
 
 具体开发实例如下：
 
-调用[activateOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#activateosaccount)接口激活指定系统账号。
+调用[activateOsAccount/apis-basic-services-kit/js-apis-osAccount-sys.md#activateosaccount)接口激活指定系统账号。
 
    ```ts
     let localId: number = 101;
@@ -173,7 +173,7 @@
 
 具体开发实例如下：
 
-调用[removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)接口删除指定的账号。
+调用[removeOsAccount/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)接口删除指定的账号。
 
    ```ts
     let localId: number = 101;

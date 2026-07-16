@@ -9,7 +9,7 @@
 
 ## 场景说明
 
-开发者可以使用[@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
+开发者可以使用[@ohos.ai.mindSporeLite/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
 
@@ -25,7 +25,7 @@
 
 ## 接口说明
 
-这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见[@ohos.ai.mindSporeLite (推理能力)](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)。
+这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见[@ohos.ai.mindSporeLite (推理能力)/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)。
 
 | 接口名                                                       | 描述             |
 | ------------------------------------------------------------ | ---------------- |
@@ -70,7 +70,7 @@
    }
    ```
 
-2. 调用[@ohos.ai.mindSporeLite](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)实现端侧推理。具体开发过程及细节如下：
+2. 调用[@ohos.ai.mindSporeLite/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)实现端侧推理。具体开发过程及细节如下：
 
    1. 创建上下文，设置线程数、设备类型等参数。本样例模型，不支持使用NNRt推理。
    2. 加载模型。本文从内存加载模型。
@@ -116,9 +116,9 @@
 
 ### 实现图像输入和预处理，并执行推理
 
-1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
+1. 此处以获取相册图片为例，调用[@ohos.file.picker/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
 
-2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
+2. 根据模型的输入尺寸，调用[@ohos.multimedia.image/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 
 3. 加载模型文件，调用推理函数，对相册选择的图片进行推理，并对推理结果进行处理。
 

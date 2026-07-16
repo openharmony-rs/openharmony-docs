@@ -147,7 +147,7 @@ struct Index {
 | 音视频通话（仅对系统应用开放） | 系统聊天类应用后台音频电话。     |
 | 计算任务（仅对特定设备开放）   | 杀毒软件。              |
 
-- 申请了数据传输的长时任务，系统仅会提升应用进程的优先级，降低系统终止应用进程的概率，但仍然会挂起对应的应用进程。对于上传下载对应的功能，需要调用系统[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统执行，可以参考[文件上传下载性能提升指导](./improve-file-upload-and-download-performance.md)。
+- 申请了数据传输的长时任务，系统仅会提升应用进程的优先级，降低系统终止应用进程的概率，但仍然会挂起对应的应用进程。对于上传下载对应的功能，需要调用系统[上传下载代理接口/apis-basic-services-kit/js-apis-request.md)托管给系统执行，可以参考[文件上传下载性能提升指导](./improve-file-upload-and-download-performance.md)。
 - 申请音视频播放长时任务必须使用[媒体会话服务](../media/avsession/avsession-overview.md)，否则无法在后台播放。
 - 申请录音类型长时任务，需要有显著的用户提示，必须通过动态授权弹框来提供用户授权界面，请求用户授权麦克风权限。
 

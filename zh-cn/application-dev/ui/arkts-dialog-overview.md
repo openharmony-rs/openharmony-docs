@@ -11,7 +11,7 @@
 
 ![image](figures/dialogLevelorder.png)
 
-对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router](../reference/apis-arkui/js-apis-router.md)的接口进行跳转。[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)和[Navdestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组成的页面可以通过[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)接口进行跳转。
+对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router/apis-arkui/js-apis-router.md)的接口进行跳转。[NavBar/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)和[Navdestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组成的页面可以通过[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)接口进行跳转。
 
 ![pageLevelMode1](figures/pageLevelMode1.png)
 
@@ -37,7 +37,7 @@
 
  - 弹窗显示在独立窗口内，窗口层级高于应用所在窗口。
 
-   在PC/2in1等设备上，开发者常期望弹窗的显示在应用窗口之外，此时需要借助子窗的能力。例如自定义弹窗可以通过[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的showInSubwindow属性控制是否使用子窗功能。基于子窗显示的弹窗效果如下图所示。
+   在PC/2in1等设备上，开发者常期望弹窗的显示在应用窗口之外，此时需要借助子窗的能力。例如自定义弹窗可以通过[CustomDialogControllerOptions/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的showInSubwindow属性控制是否使用子窗功能。基于子窗显示的弹窗效果如下图所示。
 
    ![pageLevelMode3](figures/pageLevelMode3.png)
 
@@ -54,13 +54,13 @@
 
 > **说明：** 
 >
-> 当前模态弹窗通过设置指定属性变成非模态，例如AlertDialog，可以设置[AlertDialogParam](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)中的isModal属性值为false变成非模态，其他弹窗详见API说明。
+> 当前模态弹窗通过设置指定属性变成非模态，例如AlertDialog，可以设置[AlertDialogParam//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)中的isModal属性值为false变成非模态，其他弹窗详见API说明。
 >
 > 不建议在非前台状态下，调用弹窗显示接口。
 >
 > 系统弹窗由系统弹出，出于安全考虑，不支持自定义样式。
 >
-> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction](../reference/apis-arkui/js-apis-promptAction.md)的[openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
+> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction/apis-arkui/js-apis-promptAction.md)的[openCustomDialog/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[CustomDialogController/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
 
 ## 使用场景
 

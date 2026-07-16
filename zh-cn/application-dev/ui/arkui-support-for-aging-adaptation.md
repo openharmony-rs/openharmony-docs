@@ -42,8 +42,8 @@
 
 | 触发方式             | 组件名称                                                     |
 | -------------------- | ------------------------------------------------------------ |
-| 长按组件触发         | [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)， [底部页签（tabBar）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar9)，[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)，[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)， [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) |
-| 设置系统字体默认放大 | [PickerDialog](arkts-fixes-style-dialog.md#选择器弹窗-pickerdialog)， [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)， [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)， [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md)， [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)，[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)，[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)，[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)，[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)，[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)，[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)，[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)， [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)， [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md) |
+| 长按组件触发         | [SideBarContainer/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)， [底部页签（tabBar）/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar9)，[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)，[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)， [Tabs/apis-arkui/arkui-ts/ts-container-tabs.md) |
+| 设置系统字体默认放大 | [PickerDialog](arkts-fixes-style-dialog.md#选择器弹窗-pickerdialog)， [Button/apis-arkui/arkui-ts/ts-basic-components-button.md)， [Menu/apis-arkui/arkui-ts/ts-basic-components-menu.md)， [Stepper/apis-arkui/arkui-ts/ts-basic-components-stepper.md)， [bindSheet/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)，[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)，[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)，[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)，[SelectionMenu/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)，[Chip/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)，[Dialog/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)，[Slider/apis-arkui/arkui-ts/ts-basic-components-slider.md)， [Progress/apis-arkui/arkui-ts/ts-basic-components-progress.md)， [Badge/apis-arkui/arkui-ts/ts-container-badge.md) |
 
 ## 示例
 
@@ -118,7 +118,7 @@ struct SideBarContainerExample {
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/aging_01_replace.png)          | ![](figures/aging_02_replace.png)            |
 
-[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
+[TextPickerDialog/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
 
 <!-- @[trigger_aging_friendly_by_set_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets) -->
 

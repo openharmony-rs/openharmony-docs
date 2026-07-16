@@ -8,7 +8,7 @@
 
 ## 点击事件（onClick）
 
-单击作为常用的手势，可以方便地使用[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)接口实现。尽管被称为事件，它实际上是基本手势类型，等同于将count配置为1的TapGesture，即单击手势。
+单击作为常用的手势，可以方便地使用[onClick/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)接口实现。尽管被称为事件，它实际上是基本手势类型，等同于将count配置为1的TapGesture，即单击手势。
 
 onClick与其他手势类型相同，也会参与命中测试、响应链收集等过程。可以使用[干预手势处理](./arkts-interaction-development-guide-support-gesture.md#干预手势处理)机制对onClick的响应进行动态决策。
 
@@ -78,7 +78,7 @@ export struct OnClickGesture {
 TapGesture(value?: TapGestureParameters)
 ```
 
-点击手势支持单次点击和多次点击，参数定义参考[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
+点击手势支持单次点击和多次点击，参数定义参考[TapGesture/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
 
 <!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->   
 
@@ -130,7 +130,7 @@ export struct Tap {
 LongPressGesture(value?:{fingers?:number, repeat?:boolean, duration?:number})
 ```
 
-长按手势用于触发长按手势事件，参数定义参考[LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md)。
+长按手势用于触发长按手势事件，参数定义参考[LongPressGesture/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md)。
 
 以在Text组件上绑定可以重复触发的长按手势为例：
 
@@ -190,7 +190,7 @@ export struct LongPress {
 PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions)
 ```
 
-滑动手势用于触发滑动手势事件，滑动达到最小滑动距离（默认值为5vp）时滑动手势识别成功，参数定义参考[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)。
+滑动手势用于触发滑动手势事件，滑动达到最小滑动距离（默认值为5vp）时滑动手势识别成功，参数定义参考[PanGesture/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)。
 
 以下以实现一个简单的音量控制为例，可以通过滑动手势的回调函数处理多种不同的输入情况下的音量值增减的逻辑。
 
@@ -304,7 +304,7 @@ export struct VolumeControlDemo {
 PinchGesture(value?: { fingers?: number; distance?: number })
 ```
 
-捏合手势用于触发捏合手势事件，参数定义参考[PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)。
+捏合手势用于触发捏合手势事件，参数定义参考[PinchGesture/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)。
 
 以在Column组件上绑定三指捏合手势为例，可以通过在捏合手势的函数回调中获取缩放比例，实现对组件的缩小或放大：
 
@@ -375,7 +375,7 @@ export struct Pinch {
 RotationGesture(value?: { fingers?: number; angle?: number })
 ```
 
-旋转手势用于触发旋转手势事件，参数定义参考[RotationGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-rotationgesture.md)。
+旋转手势用于触发旋转手势事件，参数定义参考[RotationGesture/apis-arkui/arkui-ts/ts-basic-gestures-rotationgesture.md)。
 
 以在Text组件上绑定旋转手势实现组件的旋转为例，可以通过在旋转手势的回调函数中获取旋转角度，从而实现组件的旋转：
 
@@ -445,7 +445,7 @@ export struct Rotation {
 SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: number })
 ```
 
-快滑手势用于触发快滑事件，当滑动速度大于100vp/s时可以识别成功，参数定义参考[SwipeGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-swipegesture.md)。
+快滑手势用于触发快滑事件，当滑动速度大于100vp/s时可以识别成功，参数定义参考[SwipeGesture/apis-arkui/arkui-ts/ts-basic-gestures-swipegesture.md)。
 
 以在Column组件上绑定快滑手势实现组件的旋转为例：
 

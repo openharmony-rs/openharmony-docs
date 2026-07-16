@@ -213,7 +213,7 @@ TaskPool的适用场景主要分为如下三类：
 
 使用步骤如下：
 
-1. 首先import引入TaskPool模块，TaskPool的API介绍可参见[@ohos.taskpool（启动TaskPool）](../reference/apis-arkts/js-apis-taskpool.md)。
+1. 首先import引入TaskPool模块，TaskPool的API介绍可参见[@ohos.taskpool（启动TaskPool）/apis-arkts/js-apis-taskpool.md)。
    
    ```typescript
    import { taskpool } from '@kit.ArkTS';

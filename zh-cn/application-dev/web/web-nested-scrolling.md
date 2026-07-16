@@ -6,17 +6,17 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)、[Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md)、[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的[NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。
+Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[List/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)、[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)、[Tabs/apis-arkui/arkui-ts/ts-container-tabs.md)、[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md)、[Refresh/apis-arkui/arkui-ts/ts-container-refresh.md)、[bindSheet/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的[NestedScrollMode/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。
 
 Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚动](#使用nestedscroll属性实现嵌套滚动)或[方案2：滚动偏移量由滚动父组件统一派发](#滚动偏移量由滚动父组件统一派发)两个方案实现，方案的选择应取决于应用嵌套滚动的具体业务场景。如果只是简单的Web组件与其他父组件联动滚动建议通过方案1实现；如果应用需要自定义控制Web组件和其他滚动组件滚动，以及一些复杂场景建议使用方案2。
 
 > **说明：**
 >
-> 如果Web组件用到了全量展开的场景（layoutMode为`WebLayoutMode.FIT_CONTENT`），需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)，详见[layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)。
+> 如果Web组件用到了全量展开的场景（layoutMode为`WebLayoutMode.FIT_CONTENT`），需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)，详见[layoutMode/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)。
 
 ## 使用nestedScroll属性实现嵌套滚动
 
-使用Web组件[nestedScroll](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nestedscroll11)属性来设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动，同时也允许在过程中动态改变嵌套滚动的模式。
+使用Web组件[nestedScroll/apis-arkweb/arkts-basic-components-web-attributes.md#nestedscroll11)属性来设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动，同时也允许在过程中动态改变嵌套滚动的模式。
 
 **完整代码**
 
@@ -128,11 +128,11 @@ struct NestedScroll {
 
 1. 如何禁用Web组件滚动手势。
 
-    (1) 首先调用Web组件滚动控制器方法，设置Web禁用触摸（[setScrollable](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setscrollable12)）的滚动。
+    (1) 首先调用Web组件滚动控制器方法，设置Web禁用触摸（[setScrollable/apis-arkweb/arkts-apis-webview-WebviewController.md#setscrollable12)）的滚动。
     ```ts
     this.webController.setScrollable(false, webview.ScrollType.EVENT);
     ```
-    (2) 再使用[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)方法，禁止Web组件自带的滚动手势触发。
+    (2) 再使用[onGestureRecognizerJudgeBegin/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)方法，禁止Web组件自带的滚动手势触发。
     ```ts
     .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
@@ -141,7 +141,7 @@ struct NestedScroll {
       return GestureJudgeResult.CONTINUE;
     })
     ```
-2. 如何禁用[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的手势。
+2. 如何禁用[List/apis-arkui/arkui-ts/ts-container-list.md)组件的手势。
     ```ts
     .enableScrollInteraction(false)
     ```
@@ -159,14 +159,14 @@ struct NestedScroll {
 
    (3) 判断Web组件是否滚动到底部：webController.getPageOffset().y + this.webHeight >= webController.getPageHeight();
 
-   (4) 获取Web组件自身高度：webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
+   (4) 获取Web组件自身高度：webController.[getPageHeight()/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
 
-   (5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
+   (5) 获取Web组件窗口高度：webController?.[runJavaScriptExt/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
 
-   (6) 获取Web组件的滚动偏移量：webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
+   (6) 获取Web组件的滚动偏移量：webController.[getPageOffset()/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. 如何让Scroll组件不滚动。
 
-   Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，Scroll组件就不滚动，也不会停止惯性滚动动画。
+   Scroll组件绑定[onScrollFrameBegin/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，Scroll组件就不滚动，也不会停止惯性滚动动画。
 6. 滚动偏移量如何派发给List组件。
     ```ts
     this.listScroller.scrollBy(0, offset)
@@ -175,7 +175,7 @@ struct NestedScroll {
     ```ts
     this.webController.scrollBy(0, offset)
     ```
-8. 设置Web组件[bypassVsyncCondition](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bypassvsynccondition20)为WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET，加快Web组件首帧滚动绘制。
+8. 设置Web组件[bypassVsyncCondition/apis-arkweb/arkts-basic-components-web-attributes.md#bypassvsynccondition20)为WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET，加快Web组件首帧滚动绘制。
     ```ts
     .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
     ```

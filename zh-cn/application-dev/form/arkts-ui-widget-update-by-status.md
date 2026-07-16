@@ -257,4 +257,4 @@
 
 > **说明：**
 >
-> 通过本地数据库进行卡片信息的持久化时，建议先在[**onAddForm**](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)生命周期进行卡片信息持久化；同时需要在卡片销毁(**[onRemoveForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)**)时删除当前卡片存储的持久化信息，避免反复添加删除卡片导致数据库文件持续变大。
+> 通过本地数据库进行卡片信息的持久化时，建议先在[**onAddForm**/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)生命周期进行卡片信息持久化；同时需要在卡片销毁(**[onRemoveForm/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)**)时删除当前卡片存储的持久化信息，避免反复添加删除卡片导致数据库文件持续变大。

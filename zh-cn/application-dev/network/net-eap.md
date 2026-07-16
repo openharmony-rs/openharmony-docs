@@ -54,17 +54,17 @@
    import { eap } from '@kit.NetworkKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-2. 调用[regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法，注册所需监听的EAP报文类型。
+2. 调用[regCustomEapHandler/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法，注册所需监听的EAP报文类型。
 
    在802.1X认证过程中，系统会将符合条件的EAP报文传递至callback函数（如示例代码中的eapData函数）中，供企业应用获取。报文传递至callback函数后，802.1X认证流程会阻塞等待，用户能够获取到完整的报文内容。
 
-    （1）若注册的是由服务器发送给客户端的报文类型（即eapCode=1），则此时可以从报文中看到由服务器加入的自定义内容。应用根据自定义内容，判断认证是否应该继续往后续步骤进行，并调用[replyCustomEapData](../reference/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata)方法通知系统。
+    （1）若注册的是由服务器发送给客户端的报文类型（即eapCode=1），则此时可以从报文中看到由服务器加入的自定义内容。应用根据自定义内容，判断认证是否应该继续往后续步骤进行，并调用[replyCustomEapData/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata)方法通知系统。
 
-    （2）若注册的报文类型是由客户端发给服务器的（即eapCode=2），则此时获取到的是原始的802.1X认证报文，应用需要在原始报文内容中加入自己的自定义内容，并将加入自定义内容后的报文内容调用[replyCustomEapData](../reference/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata)方法通知系统。
+    （2）若注册的报文类型是由客户端发给服务器的（即eapCode=2），则此时获取到的是原始的802.1X认证报文，应用需要在原始报文内容中加入自己的自定义内容，并将加入自定义内容后的报文内容调用[replyCustomEapData/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata)方法通知系统。
 
     （3）若注册的报文类型是服务器返回的成功（即eapCode=3）或失败（即eapCode=4）的结果，客户端可在接收到此结果之后做定制处理。
 
-    以下注册服务器发送给客户端的报文类型（即eapCode=1，eapType=25）为例，若需注册其他类型，修改eapCode值后再调用[regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法即可。
+    以下注册服务器发送给客户端的报文类型（即eapCode=1，eapType=25）为例，若需注册其他类型，修改eapCode值后再调用[regCustomEapHandler/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法即可。
 
     <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
     
@@ -101,7 +101,7 @@
       }
     }
     ```
-3. 若需取消定制化，可调用[unregCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler)方法。
+3. 若需取消定制化，可调用[unregCustomEapHandler/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler)方法。
 
    <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
    
@@ -144,7 +144,7 @@
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
-3. 当企业管理软件需要进行认证，调用[startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap)方法时，会发起802.1X认证流程。
+3. 当企业管理软件需要进行认证，调用[startEthEap/apis-network-kit/js-apis-net-eap.md#eapstartetheap)方法时，会发起802.1X认证流程。
 
    <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
    
@@ -179,7 +179,7 @@
      }
    ```
 
-4. 当企业管理软件需要退出认证状态，调用[logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap)方法，即会发起802.1X取消认证流程。
+4. 当企业管理软件需要退出认证状态，调用[logOffEthEap/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap)方法，即会发起802.1X取消认证流程。
 
    <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
    

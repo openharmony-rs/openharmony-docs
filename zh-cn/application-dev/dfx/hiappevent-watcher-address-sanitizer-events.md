@@ -32,15 +32,15 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置地址越界事件策略参数接口，支持开启地址越界事件的页面切换日志采集。 |
+| [configEventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置地址越界事件策略参数接口，支持开启地址越界事件的页面切换日志采集。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启地址越界事件的页面切换日志采集。
+开发者可以通过设置[EventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启地址越界事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| addressSanitizerPolicy | [AddressSanitizerPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。 |
+| addressSanitizerPolicy | [AddressSanitizerPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。 |
 
 
 参数配置示例：

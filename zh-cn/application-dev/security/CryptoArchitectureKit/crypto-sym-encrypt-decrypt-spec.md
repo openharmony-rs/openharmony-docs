@@ -13,7 +13,7 @@
 
 ## AES
 
-算法库当前提供了[AES](crypto-sym-key-generation-conversion-spec.md#aes)加解密常用的7种加密模式：ECB、CBC、OFB、CFB、CTR、GCM和CCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+算法库当前提供了[AES](crypto-sym-key-generation-conversion-spec.md#aes)加解密常用的7种加密模式：ECB、CBC、OFB、CFB、CTR、GCM和CCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 由于AES为分组加密算法，分组长度为128位。在实际应用中，最后一组明文可能不足128位（16字节），此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
@@ -52,7 +52,7 @@
 
 [DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程包含16轮相同的加密函数，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
 
-算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
@@ -82,7 +82,7 @@
 
 [3DES](crypto-sym-key-generation-conversion-spec.md#3des)算法的加解密过程分别是对明文/密文数据进行三次DES加密或解密，得到相应的密文或明文。
 
-算法库当前提供了3DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+算法库当前提供了3DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 由于DES为分组加密算法，分组长度为64位。在实际应用中，最后一组明文可能不足64位（8字节），此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
@@ -114,7 +114,7 @@
 
 ## SM4
 
-算法库当前提供了[SM4](crypto-sym-key-generation-conversion-spec.md#sm4)加解密常用的7种加密模式：ECB、CBC、CTR、OFB、CFB、CFB128和GCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+算法库当前提供了[SM4](crypto-sym-key-generation-conversion-spec.md#sm4)加解密常用的7种加密模式：ECB、CBC、CTR、OFB、CFB、CFB128和GCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 由于SM4为分组加密算法，分组长度为128位。在实际应用中，最后一组明文可能不足128位（16字节），此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
@@ -171,9 +171,9 @@
 
 从API version 22开始，算法库支持该算法。
 
-算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
-常用的加密模式：Poly1305。Poly1305模式适用的加解密参数为[Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22)。
+常用的加密模式：Poly1305。Poly1305模式适用的加解密参数为[Poly1305ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22)。
 
 由于ChaCha20是流算法，无需填充算法。
 
@@ -190,7 +190,7 @@
 
 从API版本26.0.0开始，支持分组密码算法[RC2](crypto-sym-key-generation-conversion-spec.md#rc2)，分组长度为64位，密钥长度支持8位～1024位。
 
-算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
@@ -198,7 +198,7 @@
 
 当前支持以字符串参数完成RC2加解密，具体的“字符串参数”由“对称密钥类型”、“分组模式”和“填充模式”使用符号“|”拼接而成。字符串参数为RC2。
 
-CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
 | 分组模式 | 字符串参数 | 填充模式 | API版本 | 
 | -------- | -------- | -------- | -------- |
@@ -227,7 +227,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 >
 > ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
 
-CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
 当前支持以字符串参数完成Blowfish加解密，字符串参数为Blowfish：
 
@@ -244,7 +244,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 [CAST](crypto-sym-key-generation-conversion-spec.md#cast)为分组密码算法，分组长度为64位，密钥长度支持40位～128位。
 
-算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
@@ -252,7 +252,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 当前支持以字符串参数完成CAST加解密，字符串参数为CAST：
 
-CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
  
 | 分组模式 | 字符串参数 | 填充模式 | API版本 | 
 | -------- | -------- | -------- | -------- |

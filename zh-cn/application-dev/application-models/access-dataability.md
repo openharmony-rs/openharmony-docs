@@ -45,7 +45,7 @@
     let predicates = new ohos_data_ability.DataAbilityPredicates();
     ```
 
-    注：关于DataAbilityPredicates的详细内容，请参考[DataAbility谓词](../reference/apis-arkdata/js-apis-data-ability.md)。
+    注：关于DataAbilityPredicates的详细内容，请参考[DataAbility谓词/apis-arkdata/js-apis-data-ability.md)。
    
 3. 调用insert方法向指定的DataAbility子模块插入数据。
    
@@ -784,4 +784,4 @@
     ```
 
 
-DataAbility的客户端的接口是由工具接口类对象DataAbilityHelper向外提供，相关接口可参考[DataAbilityHelper模块](../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md)。
+DataAbility的客户端的接口是由工具接口类对象DataAbilityHelper向外提供，相关接口可参考[DataAbilityHelper模块/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md)。

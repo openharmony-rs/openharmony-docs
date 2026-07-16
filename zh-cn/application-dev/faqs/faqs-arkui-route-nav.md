@@ -20,7 +20,7 @@
 
 **参考链接**
 
-[页面路由](../reference/apis-arkui/js-apis-router.md)
+[页面路由/apis-arkui/js-apis-router.md)
 
 
 ## router通过调用push方法进堆栈的page是否会被回收(API 9)
@@ -29,4 +29,4 @@
 
 **参考链接**
 
-[router.getParams](../reference/apis-arkui/js-apis-router.md#routergetparamsdeprecated)
+[router.getParams/apis-arkui/js-apis-router.md#routergetparamsdeprecated)

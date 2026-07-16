@@ -30,7 +30,7 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 ### ISendable
 
-在ArkTS语言基础库[@arkts.lang](../reference/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implement ISendable的语法糖。
+在ArkTS语言基础库[@arkts.lang/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implement ISendable的语法糖。
 
 ### Sendable class
 
@@ -74,13 +74,13 @@ Sendable interface需同时满足以下两个规则：
 
 - ArkTS数据类型：const enum（常量枚举）。
 
-- ArkTS语言标准库中定义的[容器类型数据](arkts-collections-introduction.md)（须显式引入[@arkts.collections](../reference/apis-arkts/arkts-apis-arkts-collections.md)）。
+- ArkTS语言标准库中定义的[容器类型数据](arkts-collections-introduction.md)（须显式引入[@arkts.collections/apis-arkts/arkts-apis-arkts-collections.md)）。
 
-- ArkTS语言标准库中定义的[异步锁对象](arkts-async-lock-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
+- ArkTS语言标准库中定义的[异步锁对象](arkts-async-lock-introduction.md)（须显式引入[@arkts.utils/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- ArkTS语言标准库中定义的[异步等待对象](arkts-condition-variable-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
+- ArkTS语言标准库中定义的[异步等待对象](arkts-condition-variable-introduction.md)（须显式引入[@arkts.utils/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- ArkTS语言标准库中定义的[SendableLruCache](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)对象（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
+- ArkTS语言标准库中定义的[SendableLruCache/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)对象（须显式引入[@arkts.utils/apis-arkts/arkts-apis-arkts-utils.md)）。
 
 - 继承了[ISendable](#isendable)的interface。
 
@@ -89,11 +89,11 @@ Sendable interface需同时满足以下两个规则：
 - 标注了[@Sendable装饰器](#sendable装饰器)的function。
 
 - 接入Sendable的系统对象：
-  - [共享用户首选项](../reference/apis-arkdata/js-apis-data-sendablePreferences.md)
-  - [可共享的色彩管理](../reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
-  - [基于Sendable对象的图片处理](../reference/apis-image-kit/js-apis-sendableImage.md)
-  - [资源管理](../reference/apis-localization-kit/js-apis-sendable-resource-manager.md)
-  - [Sendable上下文管理](../reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
+  - [共享用户首选项/apis-arkdata/js-apis-data-sendablePreferences.md)
+  - [可共享的色彩管理/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
+  - [基于Sendable对象的图片处理/apis-image-kit/js-apis-sendableImage.md)
+  - [资源管理/apis-localization-kit/js-apis-sendable-resource-manager.md)
+  - [Sendable上下文管理/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
 
 - 元素均为Sendable类型的union type数据。
 

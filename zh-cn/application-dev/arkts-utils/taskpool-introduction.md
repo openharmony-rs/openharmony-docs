@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-TaskPool为应用程序提供多线程环境，降低资源消耗并提高系统性能。无需管理线程生命周期。具体接口信息及使用方法，请参见[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)。
+TaskPool为应用程序提供多线程环境，降低资源消耗并提高系统性能。无需管理线程生命周期。具体接口信息及使用方法，请参见[TaskPool/apis-arkts/js-apis-taskpool.md)。
 
 ## TaskPool运作机制
 
@@ -22,13 +22,13 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 - 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用装饰器[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标注，且仅支持在.ets文件中使用。如果不考虑使用@Sendable装饰器标注，可以考虑worker方法，请参考[Worker同步调用宿主线程的接口](worker-invoke-mainthread-interface.md)。
 
-- 任务函数（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)除外）的CPU执行时长不能超过3分钟（通过Task的cpuDuration属性获取）。异步I/O等待时间不计入此限制，可通过ioDuration属性获取。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步执行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task](../reference/apis-arkts/js-apis-taskpool.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
+- 任务函数（[LongTask/apis-arkts/js-apis-taskpool.md#longtask12)除外）的CPU执行时长不能超过3分钟（通过Task的cpuDuration属性获取）。异步I/O等待时间不计入此限制，可通过ioDuration属性获取。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步执行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task/apis-arkts/js-apis-taskpool.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
 
 
 
 - 实现任务的函数入参需满足序列化支持的类型。详情请参见[线程间通信对象概述](serializable-overview.md)。目前不支持使用[@State装饰器](../ui/state-management/arkts-state.md)、[@Prop装饰器](../ui/state-management/arkts-prop.md)、[@Link装饰器](../ui/state-management/arkts-link.md)等装饰器修饰的复杂类型。
 
-- ArrayBuffer参数在TaskPool中默认转移，需要设置转移列表的话可通过接口[setTransferList()](../reference/apis-arkts/js-apis-taskpool.md#settransferlist10)设置。如果需要多次调用使用ArrayBuffer作为参数的task，则需要通过接口[setCloneList()](../reference/apis-arkts/js-apis-taskpool.md#setclonelist11)把ArrayBuffer在线程中的传输行为改成拷贝传递，避免对原有对象产生影响。
+- ArrayBuffer参数在TaskPool中默认转移，需要设置转移列表的话可通过接口[setTransferList()/apis-arkts/js-apis-taskpool.md#settransferlist10)设置。如果需要多次调用使用ArrayBuffer作为参数的task，则需要通过接口[setCloneList()/apis-arkts/js-apis-taskpool.md#setclonelist11)把ArrayBuffer在线程中的传输行为改成拷贝传递，避免对原有对象产生影响。
 
 除上述注意事项外，使用TaskPool时还需注意[并发注意事项](multi-thread-concurrency-overview.md#并发注意事项)。
 
@@ -57,11 +57,11 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
   }
   ```
 
-- 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的模块。例如，不能使用UI相关的非线程安全模块。TaskPool/Worker等工作线程不支持使用操作UI的模块、线程不安全的模块以及其他只支持在主线程中使用的模块。不支持UI模块是因为目前工作线程不支持操作UI，不支持线程不安全的模块是因为多线程使用该模块可能会导致多线程问题，只支持在主线程中使用的模块明确在文档中说明的有[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)等。线程安全的模块是指多线程同时使用该模块也不会引入多线程问题，如TaskPool/[Worker](./worker-introduction.md)/[hilog](../dfx/hilog.md)等。
+- 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的模块。例如，不能使用UI相关的非线程安全模块。TaskPool/Worker等工作线程不支持使用操作UI的模块、线程不安全的模块以及其他只支持在主线程中使用的模块。不支持UI模块是因为目前工作线程不支持操作UI，不支持线程不安全的模块是因为多线程使用该模块可能会导致多线程问题，只支持在主线程中使用的模块明确在文档中说明的有[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)等。线程安全的模块是指多线程同时使用该模块也不会引入多线程问题，如TaskPool/[Worker](./worker-introduction.md)/[hilog](../dfx/hilog.md)等。
 
 - 序列化传输的数据量限制为16MB。
 
-- [Priority](../reference/apis-arkts/js-apis-taskpool.md#priority)的IDLE优先级是用来标记需要在后台运行的耗时任务（例如数据同步、备份），它的优先级别是最低的。这种优先级的任务只在所有线程都空闲时触发执行，并且同一时间只会有一个IDLE优先级的任务执行。
+- [Priority/apis-arkts/js-apis-taskpool.md#priority)的IDLE优先级是用来标记需要在后台运行的耗时任务（例如数据同步、备份），它的优先级别是最低的。这种优先级的任务只在所有线程都空闲时触发执行，并且同一时间只会有一个IDLE优先级的任务执行。
 
 - Promise不支持跨线程传递。TaskPool返回pending或rejected状态的Promise时会失败，返回fulfilled状态的Promise时TaskPool会解析返回的结果，如果结果可以跨线程传递，则返回成功。
 
@@ -73,7 +73,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 ## \@Concurrent装饰器
 
-使用[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)时，执行的并发函数必须用该装饰器修饰，否则无法通过校验。
+使用[TaskPool/apis-arkts/js-apis-taskpool.md)时，执行的并发函数必须用该装饰器修饰，否则无法通过校验。
 
 > **说明：**
 >
@@ -459,9 +459,9 @@ struct Index {
 
 - 该线程空闲时长达到30s。
 
-- 该线程上未执行长时任务（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)）。
+- 该线程上未执行长时任务（[LongTask/apis-arkts/js-apis-taskpool.md#longtask12)）。
 
-- 该线程上没有业务申请且未释放的句柄，例如[Timer (定时器)](../reference/common/js-apis-timer.md)。
+- 该线程上没有业务申请且未释放的句柄，例如[Timer (定时器)/common/js-apis-timer.md)。
 
 - 该线程处于非调试调优阶段。
 

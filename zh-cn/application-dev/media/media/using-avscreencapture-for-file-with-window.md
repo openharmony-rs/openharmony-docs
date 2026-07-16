@@ -11,8 +11,8 @@
 
 本开发指导以指定窗口录制为例，介绍如何使用AVScreenCapture的C API实现精准窗口捕获。该方案聚焦特定窗口内容，避免全屏干扰，适用于教学演示、在线课程、会议记录及特定内容采集等场景。
 
-- 方式一：录制某个指定窗口，需要设置指定窗口ID。该场景下，启动录屏后，会弹出共享内容选择对话框。详细的API声明请参考[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)中的OH_CAPTURE_SPECIFIED_WINDOW模式。
-- 方式二（推荐）：使用系统Picker列表弹窗，选择期望录制的窗口。使用[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。从API version 20开始，支持在PC/2in1设备上设置弹出屏幕捕获Picker；从API version 23开始，支持在Phone/Tablet设备上设置弹出屏幕捕获Picker。
+- 方式一：录制某个指定窗口，需要设置指定窗口ID。该场景下，启动录屏后，会弹出共享内容选择对话框。详细的API声明请参考[OH_CaptureMode/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)中的OH_CAPTURE_SPECIFIED_WINDOW模式。
+- 方式二（推荐）：使用系统Picker列表弹窗，选择期望录制的窗口。使用[OH_AVScreenCapture_StrategyForPickerPopUp/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。从API version 20开始，支持在PC/2in1设备上设置弹出屏幕捕获Picker；从API version 23开始，支持在Phone/Tablet设备上设置弹出屏幕捕获Picker。
 
 ## 申请权限
 
@@ -45,7 +45,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    #include <string>
    ```
 
-2. 调用[OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)方法创建AVScreenCapture实例capture。
+2. 调用[OH_AVScreenCapture_Create/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)方法创建AVScreenCapture实例capture。
 
    <!-- @[screenCapture_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -53,7 +53,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    g_avCapture = OH_AVScreenCapture_Create();
    ```
 
-3. 调用[OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)方法配置屏幕录制参数。
+3. 调用[OH_AVScreenCapture_Init/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)方法配置屏幕录制参数。
 
    创建AVScreenCapture实例capture后，可以设置屏幕录制所需要的参数。
 
@@ -136,7 +136,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 
-4. 调用[OH_AVScreenCapture_StartScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)方法开始进行窗口级录制。
+4. 调用[OH_AVScreenCapture_StartScreenRecording/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)方法开始进行窗口级录制。
 
    <!-- @[screenCapture_startScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -144,7 +144,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
 
-5. 调用[OH_AVScreenCapture_StopScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_stopscreenrecording)方法停止录制。
+5. 调用[OH_AVScreenCapture_StopScreenRecording/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_stopscreenrecording)方法停止录制。
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -152,7 +152,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
 
-6. 调用[OH_AVScreenCapture_Release](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_release)方法销毁实例，释放资源。
+6. 调用[OH_AVScreenCapture_Release/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_release)方法销毁实例，释放资源。
 
    <!-- @[screenCapture_releaseScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    

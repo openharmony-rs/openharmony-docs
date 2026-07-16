@@ -10,14 +10,14 @@
 
 从API version 18开始，支持系统应用通过以下方式对分布式通知的协同设备进行管理：
 
-- 当应用的某个通知消息仅在当前设备发布时，需要将[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)参数中的**notDistributed**字段配置为true。
-- 当应用的某个通知消息需要按设备管控名单发布时，需要将[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)参数中的**notDistributed**字段配置为false，**forceDistributed**字段配置为true。
+- 当应用的某个通知消息仅在当前设备发布时，需要将[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)参数中的**notDistributed**字段配置为true。
+- 当应用的某个通知消息需要按设备管控名单发布时，需要将[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)参数中的**notDistributed**字段配置为false，**forceDistributed**字段配置为true。
 
 ## 接口说明
 
 | **接口名**  | **描述** | **说明** |
 | -------- | -------- |-------- |
-| [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request: NotificationRequest, callback: AsyncCallback\<void\>): void | 发布通知。 | 具体使用方法见入参对象[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)中**notDistributed**与**forceDistributed**字段说明。 |
+| [publish/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request: NotificationRequest, callback: AsyncCallback\<void\>): void | 发布通知。 | 具体使用方法见入参对象[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)中**notDistributed**与**forceDistributed**字段说明。 |
 
 ## 前提条件
 

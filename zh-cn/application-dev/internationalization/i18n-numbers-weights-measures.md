@@ -27,7 +27,7 @@
 
 ### 度量衡转换
 
-度量衡包括长度单位、面积单位、体积单位和容量单位等，通过[I18NUtil](../reference/apis-localization-kit/js-apis-i18n.md#i18nutil9)类的[unitConvert](../reference/apis-localization-kit/js-apis-i18n.md#unitconvert9)接口实现度量衡转换和格式化。
+度量衡包括长度单位、面积单位、体积单位和容量单位等，通过[I18NUtil/apis-localization-kit/js-apis-i18n.md#i18nutil9)类的[unitConvert/apis-localization-kit/js-apis-i18n.md#unitconvert9)接口实现度量衡转换和格式化。
 
 **格式化风格**
 

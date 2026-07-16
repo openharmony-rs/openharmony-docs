@@ -22,7 +22,7 @@
 | OH_HiCollie_SetFreezeCallback | 将冻屏回调设置进系统，系统将在冻屏事件发生时回调此函数。<br/>**说明**：从API version 24开始，支持该接口。 |
 | OH_HiCollie_AssociateProcessReport | 主动报告一个进程的冻屏事件。此时会生成[应用执行超时事件](hiappevent-watcher-apphicollie-events.md)事件。<br/>**说明**：从API version 24开始，支持该接口。 |
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie/apis-performance-analysis-kit/capi-hicollie-h.md)。
 
 ## 检测原理
 

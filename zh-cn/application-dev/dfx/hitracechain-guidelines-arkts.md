@@ -9,7 +9,7 @@
 
 ## 接口说明
 
-分布式跟踪接口由HiTraceChain模块提供，详细API请参考[@ohos.hiTraceChain (分布式跟踪)](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md)。
+分布式跟踪接口由HiTraceChain模块提供，详细API请参考[@ohos.hiTraceChain (分布式跟踪)/apis-performance-analysis-kit/js-apis-hitracechain.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。
 
@@ -71,7 +71,7 @@
    )
    ```
 
-3. 通过[OH_CaptureSession_IsMacroSupported()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_ismacrosupported)方法，检测当前设备是否支持微距能力。
+3. 通过[OH_CaptureSession_IsMacroSupported()/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_ismacrosupported)方法，检测当前设备是否支持微距能力。
 
    <!-- @[is_macro_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -97,7 +97,7 @@
    }
    ```
 
-4. 使用[OH_CaptureSession_EnableMacro()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_enablemacro)方法开启或关闭微距能力。
+4. 使用[OH_CaptureSession_EnableMacro()/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_enablemacro)方法开启或关闭微距能力。
 
    <!-- @[enable_macro](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -118,7 +118,7 @@
 
 从API version 20开始，支持监听微距能力是否发生改变。
 
-通过[OH_CaptureSession_RegisterMacroStatusChangeCallback()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_registermacrostatuschangecallback)函数注册回调，返回监听结果。
+通过[OH_CaptureSession_RegisterMacroStatusChangeCallback()/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_registermacrostatuschangecallback)函数注册回调，返回监听结果。
 
 <!-- @[macro_status_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 

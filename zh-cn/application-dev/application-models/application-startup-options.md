@@ -16,7 +16,7 @@
 
 对于用户而言，只有[UIAbility](./uiability-overview.md)组件是可见的，启动应用内的第一个UIAbility组件就代表启动应用。后面的章节中，启动应用就是指启动UIAbility。
 
-通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)，开发者可以在启动UIAbility时灵活控制其启动行为，包括窗口模式、窗口位置、启动动效、启动页样式、窗口尺寸限制等多个方面，从而满足不同设备形态和用户场景的需求。
+通过[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)，开发者可以在启动UIAbility时灵活控制其启动行为，包括窗口模式、窗口位置、启动动效、启动页样式、窗口尺寸限制等多个方面，从而满足不同设备形态和用户场景的需求。
 
 ## 指定窗口模式启动应用
 
@@ -30,7 +30,7 @@
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的windowMode，指定窗口模式。windowMode的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的windowMode，指定窗口模式。windowMode的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_windowMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/StartWithSpecifiedWindowMode/src/main/ets/pages/Index.ets) --> 
@@ -101,7 +101,7 @@ struct StartWithSpecifiedWindowModeAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的supportWindowModes，设置窗口显示模式。supportWindowModes的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的supportWindowModes，设置窗口显示模式。supportWindowModes的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_supportWindowModes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SupportWindowModes/src/main/ets/pages/Index.ets) --> 
@@ -165,7 +165,7 @@ struct SetWindowDisplayModeAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)和[SplitRatioPreference](../reference/apis-arkui/arkts-apis-window-e.md#splitratiopreference)。
+3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)和[SplitRatioPreference/apis-arkui/arkts-apis-window-e.md#splitratiopreference)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_setSplitRatioAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetSplitRatioAbility/src/main/ets/pages/Index.ets) --> 
@@ -230,7 +230,7 @@ struct SetSplitRatioAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的displayId，指定要显示的屏幕。displayId的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的displayId，指定要显示的屏幕。displayId的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_displayId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SpecifyDisplayScreen/src/main/ets/pages/Index.ets) -->
@@ -290,7 +290,7 @@ struct SpecifyDisplayScreen {
 **开发步骤如下：**
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的withAnimation，控制是否有启动动效。withAnimation的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的withAnimation，控制是否有启动动效。withAnimation的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_withAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/ControlStartupAnimation/src/main/ets/pages/Index.ets) --> 
@@ -355,7 +355,7 @@ struct ControlStartupAnimation {
 **开发步骤如下：**
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的windowLeft、windowTop、windowWidth、windowHeight属性，设置窗口位置和尺寸。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的windowLeft、windowTop、windowWidth、windowHeight属性，设置窗口位置和尺寸。相关属性的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_windowPosition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetWindowPosition/src/main/ets/pages/Index.ets) --> 
@@ -426,7 +426,7 @@ struct SetWindowPosition {
 **开发步骤如下：**
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_windowSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetWindowSizeConstraints/src/main/ets/pages/Index.ets) --> 
@@ -485,7 +485,7 @@ struct SetWindowSizeConstraintsAbility {
 
 > **说明：**
 > 
-> 可以通过[getWindowLimitsVP](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)获取当前窗口的尺寸限制。
+> 可以通过[getWindowLimitsVP/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)获取当前窗口的尺寸限制。
 
 ## 隐藏启动UIAbility
 
@@ -495,7 +495,7 @@ struct SetWindowSizeConstraintsAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的processMode和startupVisibility，设置进程模式和可见性。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的processMode和startupVisibility，设置进程模式和可见性。相关属性的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_startupVisibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/HideStartedUIAbility/src/main/ets/hidestarteduiabilityability/HideStartedUIAbilityAbility.ets) --> 
@@ -572,7 +572,7 @@ export default class HideStartedUIAbilityAbility extends UIAbility {
 **开发步骤如下：**
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的startWindowIcon和startWindowBackgroundColor，设置启动页图标和背景色。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的startWindowIcon和startWindowBackgroundColor，设置启动页图标和背景色。相关属性的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_bgColor_and_windowParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetBackgroundColor/src/main/ets/setbackgroundcolorability/SetBackgroundColorAbility.ets) --> 
@@ -659,7 +659,7 @@ export default class SetBackgroundColorAbility extends UIAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的completionHandler，设置启动结果回调。completionHandler的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的completionHandler，设置启动结果回调。completionHandler的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_completionHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/GetLaunchResult/src/main/ets/getlaunchresultability/GetLaunchResultAbility.ets) --> 
@@ -726,7 +726,7 @@ export default class GetLaunchResultAbility extends UIAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的hideStartWindow，设置隐藏启动页。属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+3. 配置StartOptions的hideStartWindow，设置隐藏启动页。属性的说明参见[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_hidesplash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/HideSplashScreen/src/main/ets/hidesplashscreenability/HideSplashScreenAbility.ets) -->
@@ -786,7 +786,7 @@ export default class HideSplashScreenAbility extends UIAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的windowCreateParams，设置窗口参数。窗口参数配置详见[WindowCreateParams](../reference/apis-arkui/arkts-apis-window-i.md#windowcreateparams20)。
+3. 配置StartOptions的windowCreateParams，设置窗口参数。窗口参数配置详见[WindowCreateParams/apis-arkui/arkts-apis-window-i.md#windowcreateparams20)。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_bgColor_and_windowParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetBackgroundColor/src/main/ets/setbackgroundcolorability/SetBackgroundColorAbility.ets) --> 

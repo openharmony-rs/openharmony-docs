@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-软键盘是用户交互的重要途径，提供文本输入功能。本文介绍在使用系统输入框组件（[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)）时，如何控制软键盘的弹出和收起。
+软键盘是用户交互的重要途径，提供文本输入功能。本文介绍在使用系统输入框组件（[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)、[RichEditor/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)）时，如何控制软键盘的弹出和收起。
 
 ## 弹出软键盘
 
@@ -16,11 +16,11 @@
 
 1. 人机交互获得焦点，例如：单击、双击、长按输入框。
 
-2. 通过代码设置焦点，例如：使用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)或[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)方法，将焦点转移到输入框。
+2. 通过代码设置焦点，例如：使用[requestFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)或[defaultFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)方法，将焦点转移到输入框。
 
 3. 使用外接键盘的按键走焦，例如：Tab键、Shift+Tab键、方向键，按下后可以转移焦点。外接键盘时输入框获焦，不会弹出系统软键盘，会显示物理键盘悬浮栏。
 
-软键盘分为系统软键盘和自定义键盘。输入框的[enableKeyboardOnFocus](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enablekeyboardonfocus10)属性会影响系统软键盘弹出。当enableKeyboardOnFocus属性设置为false时，只有通过点击、按键走焦才能弹出系统软键盘。enableKeyboardOnFocus属性对自定义键盘的弹出无影响。外接物理键盘会阻止弹出系统软键盘，对自定义键盘无影响。
+软键盘分为系统软键盘和自定义键盘。输入框的[enableKeyboardOnFocus/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enablekeyboardonfocus10)属性会影响系统软键盘弹出。当enableKeyboardOnFocus属性设置为false时，只有通过点击、按键走焦才能弹出系统软键盘。enableKeyboardOnFocus属性对自定义键盘的弹出无影响。外接物理键盘会阻止弹出系统软键盘，对自定义键盘无影响。
 
 ### 人机交互获得焦点
 
@@ -30,7 +30,7 @@
 
 ### 通过代码请求焦点
 
-可以通过代码控制将焦点转移到输入框，包括使用[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)和[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
+可以通过代码控制将焦点转移到输入框，包括使用[defaultFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)和[requestFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
 
 以下示例展示了点击按钮时，焦点转移到输入框并弹出软键盘的方法。
 
@@ -101,7 +101,7 @@ struct Index {
 
 4. 页面发生切换。
 
-5. 通过输入框的[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)退出编辑态。
+5. 通过输入框的[TextInputController/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)退出编辑态。
 
 6. 焦点从输入框转移到另一个不需要软键盘的组件。
 
@@ -266,9 +266,9 @@ struct demo_text_1 {
 
 ### 通过输入框的controller退出编辑态
 
-通过输入框的[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)调用[stopEditing](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#stopediting10)方法后，软键盘会自动收起。
+通过输入框的[TextInputController/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)调用[stopEditing/apis-arkui/arkui-ts/ts-basic-components-textinput.md#stopediting10)方法后，软键盘会自动收起。
 
-以下示例展示了如何通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)收起软键盘。
+以下示例展示了如何通过[TextInputController/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)收起软键盘。
 
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
 
@@ -300,11 +300,11 @@ struct textInputControllerCloseKeyboard {
 
 焦点转移到不需要软键盘的组件时，软键盘会自动收起。
 
-代码控制焦点转移的方法，包括[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)、[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
+代码控制焦点转移的方法，包括[requestFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)、[clearFocus/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
 
 与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
 
-以下示例展示了点击按钮时，调用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
+以下示例展示了点击按钮时，调用[requestFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
 
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
@@ -333,7 +333,7 @@ struct requestFocusCloseKeyBoard {
 
 ![changeFocus](figures/changeFocus.gif)
 
-以下示例展示了滚动容器在开始滚动时收起键盘的场景。[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)开始滚动时，调用[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)方法清理焦点，焦点转移到页面根容器节点，页面根容器节点不需要软键盘，从而收起软键盘。
+以下示例展示了滚动容器在开始滚动时收起键盘的场景。[List/apis-arkui/arkui-ts/ts-container-list.md)开始滚动时，调用[clearFocus/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)方法清理焦点，焦点转移到页面根容器节点，页面根容器节点不需要软键盘，从而收起软键盘。
 
 ```ts
 @Entry
@@ -382,7 +382,7 @@ struct Index {
 
 **原因分析**
 
-默认情况下，点击输入框后，输入框获得焦点，会自动弹出系统软键盘。通过[customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#customkeyboard10)设置自定义键盘之后，输入框获焦时不会弹出系统软键盘，改为弹出自定义键盘。
+默认情况下，点击输入框后，输入框获得焦点，会自动弹出系统软键盘。通过[customKeyboard/apis-arkui/arkui-ts/ts-basic-components-textinput.md#customkeyboard10)设置自定义键盘之后，输入框获焦时不会弹出系统软键盘，改为弹出自定义键盘。
 
 **解决措施**
 
@@ -426,11 +426,11 @@ struct demo {
 
 **原因分析**
 
-软键盘的[enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型，包括发送样式。按下发送按钮实际上是按下回车键，非TV设备按下回车键时，输入框默认会失焦并且收起键盘。
+软键盘的[enterKeyType/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型，包括发送样式。按下发送按钮实际上是按下回车键，非TV设备按下回车键时，输入框默认会失焦并且收起键盘。
 
 **解决措施**
 
-软键盘的[enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型。除EnterKeyType.NEW_LINE外，enterKeyType设置其他的枚举值时，按下软键盘输入法回车键都会触发[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#onsubmit14)事件。可以在TextArea的onSubmit回调中，通过调用[keepEditableState](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#keepeditablestate11)接口保持输入框编辑态，使得点击回车键后不收起键盘。
+软键盘的[enterKeyType/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型。除EnterKeyType.NEW_LINE外，enterKeyType设置其他的枚举值时，按下软键盘输入法回车键都会触发[onSubmit/apis-arkui/arkui-ts/ts-basic-components-textarea.md#onsubmit14)事件。可以在TextArea的onSubmit回调中，通过调用[keepEditableState/apis-arkui/arkui-ts/ts-basic-components-textinput.md#keepeditablestate11)接口保持输入框编辑态，使得点击回车键后不收起键盘。
 
 示例如下，软键盘的回车键显示为发送样式。按下发送之后，键盘不会收起。
 

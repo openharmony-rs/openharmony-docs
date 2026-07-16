@@ -9,16 +9,16 @@
 
 ## 场景介绍
 
-[OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
+[OH_ContentEmbed/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
 
-OE服务端应用使用[OE Extension框架](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md)提供的接口，向客户端应用提供特定格式文档的嵌入与编辑能力。
+OE服务端应用使用[OE Extension框架/apis-content-embed-kit/capi-content-embed-extension-h.md)提供的接口，向客户端应用提供特定格式文档的嵌入与编辑能力。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持](../reference/common/init.md#caniuse)。并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持/common/init.md#caniuse)。并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
-常用接口如下表所示。更多API说明请参考[OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)。
+常用接口如下表所示。更多API说明请参考[OH_ContentEmbed/apis-content-embed-kit/capi-contentembed.md)。
 
 **表1** 服务端主要接口
 
@@ -146,7 +146,7 @@ static ContentEmbed_ExtensionInstanceHandle g_instance = nullptr;
 
 ### 注册Extension回调函数
 
-当OE服务端应用的OE Extension被系统启动以响应OE客户端请求时，首先执行[OH_AbilityRuntime_OnNativeExtensionCreate](../reference/apis-ability-kit/capi-extension-ability-h.md#oh_abilityruntime_onnativeextensioncreate)函数，需在该函数中注册OE Extension回调，以响应客户端请求。
+当OE服务端应用的OE Extension被系统启动以响应OE客户端请求时，首先执行[OH_AbilityRuntime_OnNativeExtensionCreate/apis-ability-kit/capi-extension-ability-h.md#oh_abilityruntime_onnativeextensioncreate)函数，需在该函数中注册OE Extension回调，以响应客户端请求。
 
 ```cpp
 extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_ExtensionInstance *instance, const char *abilityName) {
@@ -207,9 +207,9 @@ static void NativeOnDestroy(ContentEmbed_ExtensionInstanceHandle instance)
 
 ### 实现服务端OE对象绑定和解绑的回调函数
 
-当OE客户端调用[OH_ContentEmbed_Proxy_StartWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)函数将客户端OE对象与服务端OE对象绑定时，系统会触发OE服务端的`RegisterOnObjectAttachFunc`回调。在此回调中，OE服务端需调用服务端OE对象的注册函数以响应OE客户端的请求。
+当OE客户端调用[OH_ContentEmbed_Proxy_StartWork/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)函数将客户端OE对象与服务端OE对象绑定时，系统会触发OE服务端的`RegisterOnObjectAttachFunc`回调。在此回调中，OE服务端需调用服务端OE对象的注册函数以响应OE客户端的请求。
 
-当OE客户端调用[OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork)函数将客户端OE对象与服务端OE对象解除绑定时，系统会触发OE服务端的`RegisterOnObjectDetachFunc`回调，在该回调后服务端OE对象将失效。
+当OE客户端调用[OH_ContentEmbed_Proxy_StopWork/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork)函数将客户端OE对象与服务端OE对象解除绑定时，系统会触发OE服务端的`RegisterOnObjectDetachFunc`回调，在该回调后服务端OE对象将失效。
 
 ```cpp
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
@@ -255,7 +255,7 @@ static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle inst
 
 ### 实现获取OE文档快照
 
-当OE客户端通过新建对象类型或已存在文件来嵌入OE对象时，OE对象在OE客户端界面中可能呈现为文档快照（Snapshot），当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot)获取文档快照，此时会触发OE服务端的`NativeOnGetSnapshot`回调，在该回调中OE服务端应用需调用[OH_ContentEmbed_Extension_SetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_setsnapshot)设置OE文档快照。
+当OE客户端通过新建对象类型或已存在文件来嵌入OE对象时，OE对象在OE客户端界面中可能呈现为文档快照（Snapshot），当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetSnapshot/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot)获取文档快照，此时会触发OE服务端的`NativeOnGetSnapshot`回调，在该回调中OE服务端应用需调用[OH_ContentEmbed_Extension_SetSnapshot/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_setsnapshot)设置OE文档快照。
 
 ```cpp
 static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
@@ -299,7 +299,7 @@ static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 
 ### 实现编辑OE文档
 
-当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_DoEdit](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit)通知OE服务端编辑OE文档，此时会触发OE服务端的`NativeOnDoEdit`回调，在该回调中OE服务端应用需调用[OH_ContentEmbed_Extension_ContextStartSelfUIAbility](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)或[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)启动OE服务端应用的UIAbility编辑文档。
+当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_DoEdit/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit)通知OE服务端编辑OE文档，此时会触发OE服务端的`NativeOnDoEdit`回调，在该回调中OE服务端应用需调用[OH_ContentEmbed_Extension_ContextStartSelfUIAbility/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)或[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)启动OE服务端应用的UIAbility编辑文档。
 
 ```cpp
 static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
@@ -392,7 +392,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
 
 ### 实现获取OE Extension能力
 
-当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetCapability](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability)获取OE服务端具备的能力，此时会触发OE服务端的`NativeOnGetCapability`回调，在该回调中OE服务端应用通过给`bitmask`属性赋值，通知OE客户端自身具备的能力。
+当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetCapability/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability)获取OE服务端具备的能力，此时会触发OE服务端的`NativeOnGetCapability`回调，在该回调中OE服务端应用通过给`bitmask`属性赋值，通知OE客户端自身具备的能力。
 
 ```cpp
 static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bitmask)
@@ -407,7 +407,7 @@ static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bi
 
 ### 实现查询OE文档编辑状态
 
-当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetEditStatus](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_geteditstatus)获取OE文档编辑状态，此时会触发OE服务端的`NativeOnGetEditStatusFunc`回调，在该回调中OE服务端应用通知OE客户端文档编辑状态。
+当OE Extension被启动后，OE客户端会通过[OH_ContentEmbed_Proxy_GetEditStatus/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_geteditstatus)获取OE文档编辑状态，此时会触发OE服务端的`NativeOnGetEditStatusFunc`回调，在该回调中OE服务端应用通知OE客户端文档编辑状态。
 
 ```cpp
 static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)

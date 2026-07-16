@@ -16,12 +16,12 @@
 
 ## 接口说明
 
-地理围栏所使用的接口如下，详细说明参见Location Kit：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+地理围栏所使用的接口如下，详细说明参见Location Kit：[@ohos.geoLocationManager (位置服务)/apis-location-kit/js-apis-geoLocationManager.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
-| [addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageraddgnssgeofence12) | 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。 | 
-| [removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerremovegnssgeofence12) | 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。 | 
+| [addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageraddgnssgeofence12) | 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。 | 
+| [removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerremovegnssgeofence12) | 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。 | 
 
 ## 开发步骤
 

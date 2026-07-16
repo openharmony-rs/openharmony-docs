@@ -46,13 +46,13 @@
 
 ## 开发步骤
 
-1. 调用[cryptoFramework.createRandom](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreaterandom)，生成随机数实例。
+1. 调用[cryptoFramework.createRandom/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreaterandom)，生成随机数实例。
 
-2. 调用[cryptoFramework.enableHardwareEntropy](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#enablehardwareentropy21)，开启硬件熵源。
+2. 调用[cryptoFramework.enableHardwareEntropy/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#enablehardwareentropy21)，开启硬件熵源。
 
-3. （可选）设置DataBlob数据，调用[Random.setSeed](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setseed)，为随机数生成器设置种子。
+3. （可选）设置DataBlob数据，调用[Random.setSeed/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setseed)，为随机数生成器设置种子。
 
-4. 设置指定字节长度，调用[Random.generateRandom](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generaterandom)或[Random.generateRandomSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generaterandomsync10)，生成安全随机数。
+4. 设置指定字节长度，调用[Random.generateRandom/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generaterandom)或[Random.generateRandomSync/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generaterandomsync10)，生成安全随机数。
 
    指定字节长度范围为1~INT_MAX。
 

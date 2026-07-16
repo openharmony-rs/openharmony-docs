@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还为一些组件提供了默认的动画效果。例如，[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)的滑动动效、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)的点击动效，是组件自带的默认动画效果。在组件默认动画效果的基础上，开发者还可以通过属性动画和转场动画对容器组件内的子组件动效进行定制。
+ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还为一些组件提供了默认的动画效果。例如，[List/apis-arkui/arkui-ts/ts-container-list.md)的滑动动效、[Button/apis-arkui/arkui-ts/ts-basic-components-button.md)的点击动效，是组件自带的默认动画效果。在组件默认动画效果的基础上，开发者还可以通过属性动画和转场动画对容器组件内的子组件动效进行定制。
 
 
 ## 使用组件默认动画
@@ -50,13 +50,13 @@ struct ComponentDemo {
 
 ## 打造组件定制化动效
 
-部分组件支持通过[属性动画](arkts-attribute-animation-overview.md)和[转场动画](arkts-transition-overview.md)自定义组件子Item的动效，实现定制化动画效果。例如，[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件中可对各个子组件在滑动时的动画效果进行定制。
+部分组件支持通过[属性动画](arkts-attribute-animation-overview.md)和[转场动画](arkts-transition-overview.md)自定义组件子Item的动效，实现定制化动画效果。例如，[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)组件中可对各个子组件在滑动时的动画效果进行定制。
 
 - 在滑动或者点击操作时通过改变各个Scroll子组件的仿射属性来实现各种效果。
 
-- 如果要在滑动过程中定制动效，可在滑动回调[onDidScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
+- 如果要在滑动过程中定制动效，可在滑动回调[onDidScroll/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
 
-- 在滑动回调[onScrollStop](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14)或手势结束回调中对滑动的最终位置进行微调。
+- 在滑动回调[onScrollStop/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14)或手势结束回调中对滑动的最终位置进行微调。
 
 定制Scroll组件滑动动效示例代码和效果如下。
 

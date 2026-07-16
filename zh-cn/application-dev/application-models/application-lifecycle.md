@@ -9,7 +9,7 @@
 
 ## 概述
 
-当用户在执行应用启动、应用前后台切换、应用退出等操作时，应用的整体生命周期状态会随之发生变化。理解应用的生命周期有助于开发者在合适的时机进行资源申请与释放、业务状态管理等操作。本章节主要介绍应用的生命周期状态、应用生命周期与应用进程及应用组件（[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)）的关系，以及如何监听应用生命周期状态的变化。
+当用户在执行应用启动、应用前后台切换、应用退出等操作时，应用的整体生命周期状态会随之发生变化。理解应用的生命周期有助于开发者在合适的时机进行资源申请与释放、业务状态管理等操作。本章节主要介绍应用的生命周期状态、应用生命周期与应用进程及应用组件（[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)、[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)）的关系，以及如何监听应用生命周期状态的变化。
 
 ## 应用生命周期状态
 
@@ -29,7 +29,7 @@
 
     [UIAbility组件生命周期](./uiability-lifecycle.md)的前后台回调与进程的前后台状态密切相关，但二者并非完全等同：
 
-    - UIAbility的[onForeground()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)回调表示该UIAbility实例切换至前台状态。
+    - UIAbility的[onForeground()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)回调表示该UIAbility实例切换至前台状态。
     - 进程状态的前后台表示整个进程的前后台状态。
     - 一个进程可能包含多个UIAbility，其中某个UIAbility的`onForeground()`不一定意味着进程状态发生改变（例如，进程可能已处于前台状态）。
 
@@ -47,7 +47,7 @@
 
 ### 应用生命周期状态变化
 
-- 应用启动：应用可以运行在一个或多个进程中，一个进程中也可以运行单个或多个[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件实例。三方应用开发者开发的应用，必须包含至少一个[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，否则没有界面对用户展示。应用启动机制详见[应用的启动](./application-startup-options.md)中的介绍。
+- 应用启动：应用可以运行在一个或多个进程中，一个进程中也可以运行单个或多个[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件实例。三方应用开发者开发的应用，必须包含至少一个[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，否则没有界面对用户展示。应用启动机制详见[应用的启动](./application-startup-options.md)中的介绍。
 - 应用退出：当进程中所有的应用组件都销毁，进程进入销毁流程；当应用中的所有进程都销毁，则应用退出。应用退出机制详见[应用退出](./app-stop.md)中的介绍。
 - 应用前后台切换：当应用中至少有一个进程处于前台则该应用为前台状态；如果应用中的所有进程都处于后台，则该应用处于后台状态。
     - 应用进程切换到前台的时机：
@@ -68,13 +68,13 @@
 
 ### 监听应用的启动和退出
     
-应用需要先申请[ohos.permission.RUNNING_STATE_OBSERVER](../security/AccessToken/permissions-for-enterprise-apps.md#ohospermissionrunning_state_observer)权限，然后使用[on('applicationState')](../reference/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法可以监听全部应用的状态；使用[on('applicationState')](../reference/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageronapplicationstate14-1)方法可以监听指定应用的状态。通过实现`ApplicationStateObserver`接口中的[onAppStarted()](../reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)方法，可以监听应用的启动。通过实现`ApplicationStateObserver`接口中的[onAppStopped()](../reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)方法，可以监听应用的退出。
+应用需要先申请[ohos.permission.RUNNING_STATE_OBSERVER](../security/AccessToken/permissions-for-enterprise-apps.md#ohospermissionrunning_state_observer)权限，然后使用[on('applicationState')/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法可以监听全部应用的状态；使用[on('applicationState')/apis-ability-kit/js-apis-app-ability-appManager.md#appmanageronapplicationstate14-1)方法可以监听指定应用的状态。通过实现`ApplicationStateObserver`接口中的[onAppStarted()/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)方法，可以监听应用的启动。通过实现`ApplicationStateObserver`接口中的[onAppStopped()/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)方法，可以监听应用的退出。
 
 ### 监听应用前后台变化
     
-应用使用`ApplicationContext`的[on('applicationStateChange')](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)方法可以监听应用的前后台状态变化，当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
+应用使用`ApplicationContext`的[on('applicationStateChange')/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)方法可以监听应用的前后台状态变化，当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
 
-以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
+以[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
 
 <!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
 

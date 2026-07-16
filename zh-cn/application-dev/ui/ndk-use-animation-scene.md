@@ -10,15 +10,15 @@
 
 ## 使用属性动画
 
-该示例主要演示了如何通过全局[animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto)接口添加属性动画。NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+该示例主要演示了如何通过全局[animateTo/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto)接口添加属性动画。NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
 > **说明：**
 >
-> - 需要执行的动画属性变化必须写在[ArkUI_ContextCallback](../reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md)中的callback中。
+> - 需要执行的动画属性变化必须写在[ArkUI_ContextCallback/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md)中的callback中。
 > 
 > - 需要执行的动画属性，必须在执行动画之前设置过。
 
-1. 在.ets文件中创建[NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md)，把NodeContent作为参数输出到Native方法中。
+1. 在.ets文件中创建[NodeContent/apis-arkui/js-apis-arkui-NodeContent.md)，把NodeContent作为参数输出到Native方法中。
 
    <!-- @[get_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/ets/pages/UseFrameAnimation.ets) -->
    
@@ -38,7 +38,7 @@
    }
    ```
 
-2. 解析NodeContent，转换为C中的[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)对象。
+2. 解析NodeContent，转换为C中的[ArkUI_NodeContentHandle/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)对象。
 
    <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
    
@@ -48,7 +48,7 @@
    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
    ```
 
-3. 获取[ArkUI_NativeAnimateAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md)对象。
+3. 获取[ArkUI_NativeAnimateAPI_1/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md)对象。
 
    <!-- @[get_Api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
    
@@ -58,7 +58,7 @@
    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
    ```
 
-4. 设置[ArkUI_AnimateOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md)参数，通过提供的C方法设置对应的参数。
+4. 设置[ArkUI_AnimateOption/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md)参数，通过提供的C方法设置对应的参数。
 
    <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
    
@@ -137,9 +137,9 @@
 
 ## 组件出现/消失转场
 
-该示例主要演示了如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION属性配置转场参数，并通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_TRANSITION动效的中心点坐标，实现组件的插入和删除时显示过渡动效。
+该示例主要演示了如何通过[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION，NODE_TRANSLATE_TRANSITION属性配置转场参数，并通过[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TRANSFORM_CENTER属性设置NODE_SCALE_TRANSITION和NODE_ROTATE_TRANSITION动效的中心点坐标，实现组件的插入和删除时显示过渡动效。
 
-1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中[ArkUI_NodeContentHandle/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md)类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
    <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -207,7 +207,7 @@
    }
    ```
 
-2. 创建一个设置了[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION属性的节点，当目标节点上下树时会播放转场动画。
+2. 创建一个设置了[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION属性的节点，当目标节点上下树时会播放转场动画。
 
    <!-- @[create_child_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -284,9 +284,9 @@
 
 ## 一镜到底转场
 
-该示例主要演示如何通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性来实现一镜到底转场，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+该示例主要演示如何通过[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性来实现一镜到底转场，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
-1. 创建一个设置了[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性的image节点，同时设置该节点的宽度、高度和位置，用于区别于另一个image节点，然后将当前image节点挂载到一个父节点，当前示例中父节点为stack。
+1. 创建一个设置了[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性的image节点，同时设置该节点的宽度、高度和位置，用于区别于另一个image节点，然后将当前image节点挂载到一个父节点，当前示例中父节点为stack。
 
    <!-- @[imageTransition_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -341,7 +341,7 @@
    }
    ```
 
-2. 再创建一个设置了[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性的image节点，属性值与第一个image节点相同，同时为该节点设置不同的宽度、高度和位置。
+2. 再创建一个设置了[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性的image节点，属性值与第一个image节点相同，同时为该节点设置不同的宽度、高度和位置。
 
    <!-- @[create_Image_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -384,7 +384,7 @@
    }
    ```
 
-3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性的值，并重新设置为原来的值。
+3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_GEOMETRY_TRANSITION属性的值，并重新设置为原来的值。
 
    <!-- @[imageTransition_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
    
@@ -440,7 +440,7 @@
 
 ## 使用关键帧动画
 
-该示例主要演示如何通过[keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto)来设置关键帧动画，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+该示例主要演示如何通过[keyframeAnimateTo/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto)来设置关键帧动画，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 
    <!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
    
@@ -557,7 +557,7 @@
 
 ## 使用帧动画
 
-该示例主要演示如何通过[createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator)来设置帧动画。
+该示例主要演示如何通过[createAnimator/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator)来设置帧动画。
 
    <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
    

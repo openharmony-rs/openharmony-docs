@@ -25,7 +25,7 @@
 
 ## 窗口模式WindowStatusType
 
-窗口模式通过[WindowStatusType](../reference/apis-arkui/arkts-apis-window-e.md#windowstatustype11)枚举来描述，该枚举定义了应用窗口在不同场景下的显示状态。开发者可以根据应用需求选择合适的窗口模式，或动态监听窗口模式变化以进行相应的适配处理。下文将详细介绍各个窗口模式的特点、窗口模式变化的感知以及窗口模式策略的配置方式。
+窗口模式通过[WindowStatusType/apis-arkui/arkts-apis-window-e.md#windowstatustype11)枚举来描述，该枚举定义了应用窗口在不同场景下的显示状态。开发者可以根据应用需求选择合适的窗口模式，或动态监听窗口模式变化以进行相应的适配处理。下文将详细介绍各个窗口模式的特点、窗口模式变化的感知以及窗口模式策略的配置方式。
 
 > **说明：**
 > 
@@ -53,9 +53,9 @@
 
 - [自由窗口](freeform-window-overview.md#自由窗口)状态下：
 
-  - 应用调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)时，配置[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的windowMode为AbilityConstant.WindowMode.WINDOW_MODE_FULLSCREEN。
+  - 应用调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)时，配置[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的windowMode为AbilityConstant.WindowMode.WINDOW_MODE_FULLSCREEN。
 
-  - 应用调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，使用window.MaximizePresentation.ENTER_IMMERSIVE或window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER枚举入参。
+  - 应用调用[maximize()/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，使用window.MaximizePresentation.ENTER_IMMERSIVE或window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER枚举入参。
 
   - 用户点击系统标题栏中的最大化按钮。
 
@@ -79,11 +79,11 @@
 
 - [自由窗口](freeform-window-overview.md#自由窗口)状态下，应用在module.json5文件的metadata中将"ohos.ability.window.isMaximize"字段配置为true，应用主窗口启动将以MAXIMIZE模式启动。
 
-- [自由窗口](freeform-window-overview.md#自由窗口)状态下，应用调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，使用window.MaximizePresentation.EXIT_IMMERSIVE枚举入参。
+- [自由窗口](freeform-window-overview.md#自由窗口)状态下，应用调用[maximize()/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，使用window.MaximizePresentation.EXIT_IMMERSIVE枚举入参。
 
 > **说明：**
 > 
-> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true；或者通过[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes)配置支持。
+> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true；或者通过[setSupportedWindowModes()/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes)配置支持。
 > 
 > - FULL_SCREEN与MAXIMIZE的主要差异：
 >
@@ -111,7 +111,7 @@
 
 **触发方式：**
 
-- 应用调用[minimize()](../reference/apis-arkui/arkts-apis-window-Window.md#minimize11)接口。
+- 应用调用[minimize()/apis-arkui/arkts-apis-window-Window.md#minimize11)接口。
 
 - 用户点击系统标题栏中的最小化按钮。
 
@@ -127,7 +127,7 @@
 
   **特点：**
 
-  - 应用可通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口改变自由悬浮窗口大小和位置。
+  - 应用可通过[resize()/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口改变自由悬浮窗口大小和位置。
 
   - 同一屏幕上可同时显示多个自由悬浮窗口。
 
@@ -145,7 +145,7 @@
 
   - [自由窗口](freeform-window-overview.md#自由窗口)状态下，窗口启动时默认进入FLOATING显示模式。
 
-  - 当窗口在全屏、分屏模式时，应用调用[recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11)接口。
+  - 当窗口在全屏、分屏模式时，应用调用[recover()/apis-arkui/arkts-apis-window-Window.md#recover11)接口。
   
   - 当窗口在全屏、分屏模式时，用户点击系统标题栏中的还原按钮。  
 
@@ -159,7 +159,7 @@
 
      - 应用主窗口仅在进入智慧多窗悬浮窗或全景多窗后，窗口处于自由悬浮窗口模式，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
 
-     - 不支持通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
+     - 不支持通过[resize()/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
 
      - 同一屏幕上存在自由悬浮窗口的最大个数限制，超出限制时，打开新的自由悬浮窗口会替换最久未操作的自由悬浮窗口。最大个数限制在不同产品上存在差异，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)的“悬浮窗”及“全局多窗”章节。
 
@@ -171,7 +171,7 @@
 
      - 固定以自由悬浮窗口模式显示，无法切换窗口模式。
 
-     - 支持通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
+     - 支持通过[resize()/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
 
      - 无同时显示的最大个数限制，但受窗口最大数量限制（系统限制，当前单个应用进程中的窗口最大数量限制为256）。
 
@@ -213,7 +213,7 @@
 
 **触发方式：**
 
-- 应用在前台调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)时，配置[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的windowMode为WINDOW_MODE_SPLIT_PRIMARY或WINDOW_MODE_SPLIT_SECONDARY（新拉起的应用主窗在[自由窗口](freeform-window-overview.md#自由窗口)下进入待分屏状态，在非[自由窗口](freeform-window-overview.md#自由窗口)下与调用方应用主窗形成分屏）。
+- 应用在前台调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)时，配置[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的windowMode为WINDOW_MODE_SPLIT_PRIMARY或WINDOW_MODE_SPLIT_SECONDARY（新拉起的应用主窗在[自由窗口](freeform-window-overview.md#自由窗口)下进入待分屏状态，在非[自由窗口](freeform-window-overview.md#自由窗口)下与调用方应用主窗形成分屏）。
 
 - 用户触发：[自由窗口](freeform-window-overview.md#自由窗口)状态下，可通过点击窗口系统标题栏三键区域、拖拽窗口到分屏热区的方式触发。非[自由窗口](freeform-window-overview.md#自由窗口)状态下，可通过分屏手势、点击顶部横条切换的方式触发。
 
@@ -225,9 +225,9 @@
 
 | 接口 | 功能描述 | 触发时机 | 适用场景 |
 | -------- | -------- | -------- | -------- |
-| [getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12) | 获取当前应用窗口的模式 | 应用主动调用 | 需要立即获取当前窗口模式进行判断的场景，如在执行某些窗口操作前，先判断当前窗口模式，避免在不支持的窗口模式下调用相关接口。 |
-| [on('windowStatusChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11) | 开启窗口模式变化的监听 | 窗口模式变化时立即触发（此时窗口属性可能还没有更新） | 需要快速响应窗口模式变化，不依赖窗口属性的场景。 |
-| [on('windowStatusDidChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatusdidchange20) | 开启窗口模式变化的监听 | 窗口模式变化且Rect属性更新完成后触发 | 需要在窗口模式变化后立即获取准确窗口大小和位置的场景。 |
+| [getWindowStatus()/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12) | 获取当前应用窗口的模式 | 应用主动调用 | 需要立即获取当前窗口模式进行判断的场景，如在执行某些窗口操作前，先判断当前窗口模式，避免在不支持的窗口模式下调用相关接口。 |
+| [on('windowStatusChange')/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11) | 开启窗口模式变化的监听 | 窗口模式变化时立即触发（此时窗口属性可能还没有更新） | 需要快速响应窗口模式变化，不依赖窗口属性的场景。 |
+| [on('windowStatusDidChange')/apis-arkui/arkts-apis-window-Window.md#onwindowstatusdidchange20) | 开启窗口模式变化的监听 | 窗口模式变化且Rect属性更新完成后触发 | 需要在窗口模式变化后立即获取准确窗口大小和位置的场景。 |
 
 ## 定制窗口模式支持策略
 
@@ -252,9 +252,9 @@
 
 ### 通过setSupportedWindowModes()接口配置
 
-- 通过调用WindowStage.[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用WindowStage.[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和grayOutMaximizeButton，可以在运行时动态修改当前主窗口支持的窗口模式。
+- 通过调用WindowStage.[setSupportedWindowModes()/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用WindowStage.[setSupportedWindowModes()/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和grayOutMaximizeButton，可以在运行时动态修改当前主窗口支持的窗口模式。
 
-- 通过调用Window.[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes)传入supportedWindowModes，可以在运行时动态修改当前主、子窗口支持的窗口模式。
+- 通过调用Window.[setSupportedWindowModes()/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes)传入supportedWindowModes，可以在运行时动态修改当前主、子窗口支持的窗口模式。
 
 支持配置的窗口模式如下所示：
 
@@ -272,9 +272,9 @@
 
 ### 通过startAbility()接口配置
 
-应用调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的supportWindowMode参数，指定启动时窗口支持的模式。
+应用调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)时可通过[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的supportWindowMode参数，指定启动时窗口支持的模式。
 
-**支持的模式值**（详见[bundleManager.SupportWindowMode](../reference/apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)）：
+**支持的模式值**（详见[bundleManager.SupportWindowMode/apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)）：
 
 | 配置值 | 模式 | 说明 |
 | -------- | -------- | -------- |

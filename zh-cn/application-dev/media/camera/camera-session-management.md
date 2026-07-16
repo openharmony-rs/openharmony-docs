@@ -12,9 +12,9 @@
 
 - 配置相机的输入流和输出流。相机在拍摄前，必须完成输入输出流的配置。
 
-  配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件上，拍照流的数据将通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)接口的能力保存到相册中。
+  配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在[XComponent/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件上，拍照流的数据将通过[ImageReceiver/apis-image-kit/arkts-apis-image-ImageReceiver.md)接口的能力保存到相册中。
 
-- 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+- 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 - 会话切换控制。应用可以通过移除和添加输出流的方式，切换相机模式。如当前会话的输出流为拍照流，应用可以将拍照流移除，然后添加视频流作为输出流，即完成了拍照到录像的切换。
 
@@ -28,7 +28,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 调用[cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11)方法创建一个会话。
+2. 调用[cameraManager/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createSession/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11)方法创建一个会话。
      
    ```ts
    // 此处以videoSession为例。
@@ -44,7 +44,7 @@
    }
    ```
 
-3. 调用[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
+3. 调用[VideoSession/apis-camera-kit/arkts-apis-camera-VideoSession.md)中的[beginConfig/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
      
    ```ts
    function beginConfig(videoSession: camera.VideoSession): void {
@@ -57,13 +57,13 @@
    }
    ```
 
-4. 使能。向会话中添加相机的输入流和输出流，调用[addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)添加相机的输入流；调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流。以下示例代码以添加预览流previewOutput和拍照流photoOutput为例，即当前模式支持拍照和预览。
+4. 使能。向会话中添加相机的输入流和输出流，调用[addInput/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)添加相机的输入流；调用[addOutput/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流。以下示例代码以添加预览流previewOutput和拍照流photoOutput为例，即当前模式支持拍照和预览。
 
-   调用VideoSession中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)和[start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法提交相关配置，并启动会话。
+   调用VideoSession中的[commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)和[start/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法提交相关配置，并启动会话。
 
    > **说明：**
    >
-   > 在调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流前，可通过[canAddOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11)判断当前相机输出流是否可以添加到session中。
+   > 在调用[addOutput/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流前，可通过[canAddOutput/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11)判断当前相机输出流是否可以添加到session中。
    > 相机输入流cameraInput创建流程请参考[设备输入](camera-device-input.md)，相机预览输出流previewOutput和拍照输出流photoOutput创建流程请分别参考[预览](camera-preview.md)和[拍照](camera-shooting.md)。
      
    ```ts
@@ -125,7 +125,7 @@
    }
    ```
 
-5. 会话控制。调用VideoSession中的[stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11)方法可以停止当前会话。调用[removeOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#removeoutput11)和[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)方法可以完成会话切换控制。以下示例代码以移除拍照流photoOutput，添加视频流videoOutput为例，完成了拍照到录像的切换。
+5. 会话控制。调用VideoSession中的[stop/apis-camera-kit/arkts-apis-camera-Session.md#stop11)方法可以停止当前会话。调用[removeOutput/apis-camera-kit/arkts-apis-camera-Session.md#removeoutput11)和[addOutput/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)方法可以完成会话切换控制。以下示例代码以移除拍照流photoOutput，添加视频流videoOutput为例，完成了拍照到录像的切换。
 
    ```ts
    async function switchOutput(videoSession: camera.VideoSession, videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput): Promise<void> {

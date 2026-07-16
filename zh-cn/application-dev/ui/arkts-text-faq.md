@@ -10,7 +10,7 @@
 
 ## 文本显示（Text/Span）常见问题
 
-以下内容介绍了使用[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)组件进行文本显示时可能遇到的常见问题，包括文本截断、添加标签、显示表情等场景的处理方法。
+以下内容介绍了使用[Text/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)组件进行文本显示时可能遇到的常见问题，包括文本截断、添加标签、显示表情等场景的处理方法。
 
 ### Text组件尾部省略号后为什么还有一段空白，没有占满组件宽度
 
@@ -26,7 +26,7 @@
 
 **解决措施**
 
-设置[wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
+设置[wordBreak/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
 
 示例代码如下：
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
@@ -70,7 +70,7 @@
 
 **解决措施**
 
-自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)的示例<!--RP1--><!--RP1End-->。
+自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考[getParagraphs/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)的示例<!--RP1--><!--RP1End-->。
 
 ### Text组件如何实现内容超长时自动显示省略样式吗？
 
@@ -80,7 +80,7 @@
 
 **解决措施**
 
-设置[heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#heightadaptivepolicy10)为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
+设置[heightAdaptivePolicy/apis-arkui/arkui-ts/ts-basic-components-text.md#heightadaptivepolicy10)为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
 
 示例代码如下：
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
@@ -132,11 +132,11 @@
 
 **问题现象**
 
-如何在文本的前后各添加一个标签，例如“专题”或“Top1”，且这些标签的[背景设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
+如何在文本的前后各添加一个标签，例如“专题”或“Top1”，且这些标签的[背景设置/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
 
 **解决措施一**
 
-如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)中放置标签和长文本，并为长文本设置[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性，以确保文本超长时能够自适应截断，显示在一行之内。
+如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row/apis-arkui/arkui-ts/ts-container-row.md)中放置标签和长文本，并为长文本设置[textOverflow/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性，以确保文本超长时能够自适应截断，显示在一行之内。
 
 实现步骤：
 
@@ -148,15 +148,15 @@
 
 **解决措施二**
 
-如果需在多行文本前后添加标签并且不截断文本，上述方案会导致三个Text中的文本不能对齐，因为多行文本会在Row的宽度内折行。此时，可以在[层叠布局 (Stack)](./arkts-layout-development-stack-layout.md)中放置标签和长文本，给中间多行文本设置首行文本缩进距离[textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10)。多行文本后面的标签则需要通过[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)属性调整位置。这种实现方式，可以让三个Text组件中的文字水平对齐。实现步骤如下：
+如果需在多行文本前后添加标签并且不截断文本，上述方案会导致三个Text中的文本不能对齐，因为多行文本会在Row的宽度内折行。此时，可以在[层叠布局 (Stack)](./arkts-layout-development-stack-layout.md)中放置标签和长文本，给中间多行文本设置首行文本缩进距离[textIndent/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10)。多行文本后面的标签则需要通过[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)属性调整位置。这种实现方式，可以让三个Text组件中的文字水平对齐。实现步骤如下：
 
 实现步骤：
 
 1.将标签和长文本放在Stack中。
 
-2.在组件显示之前的回调[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
+2.在组件显示之前的回调[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
 
-3.在组件显示之前的回调aboutToAppear中，通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
+3.在组件显示之前的回调aboutToAppear中，通过[getParagraphs/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
 
 4.设置后标签相对于Stack左上角的偏移量。
 
@@ -269,7 +269,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 
 **解决措施**
 
-使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)同时展示表情和文字。
+使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)同时展示表情和文字。
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
@@ -380,11 +380,11 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 
 **问题现象**
 
-Text组件中内容过多，超出父组件容器[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)的高度，会导致文本溢出容器边界，如何让文本显示在父组件容器的区域内？
+Text组件中内容过多，超出父组件容器[Column/apis-arkui/arkui-ts/ts-container-column.md)的高度，会导致文本溢出容器边界，如何让文本显示在父组件容器的区域内？
 
 **解决措施一**
 
-Text文本是自动折行的，当没有限制Text高度[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性来指定截断方式。
+Text文本是自动折行的，当没有限制Text高度[height/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性来指定截断方式。
 
 以下示例展示了限制Text组件不超过三行的场景。
 
@@ -422,7 +422,7 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 **解决措施二**
 
-上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)内，再通过手势滑动来浏览全部文本，具体示例如下：
+上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)内，再通过手势滑动来浏览全部文本，具体示例如下：
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
@@ -461,11 +461,11 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 **问题现象**
 
-在[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)自定义选择菜单中，可通过TextResponseType设置文本选择菜单的响应类型。通过[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)如何触发弹出自定义菜单并设置菜单字体大小。
+在[bindSelectionMenu/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)自定义选择菜单中，可通过TextResponseType设置文本选择菜单的响应类型。通过[selection/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)如何触发弹出自定义菜单并设置菜单字体大小。
 
 **解决措施**
 
-若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
+若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
 
 ```ts
 // xxx.ets
@@ -530,7 +530,7 @@ struct TextExample8 {
 
 **问题现象**
 
-配置[CopyOptions](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)将文本设置为可选择，此时长按文本会选择文字内容并弹出系统菜单，如何使长按手势不生效。
+配置[CopyOptions/apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)将文本设置为可选择，此时长按文本会选择文字内容并弹出系统菜单，如何使长按手势不生效。
 
 **解决措施**
 
@@ -564,7 +564,7 @@ struct TextExample8 {
 
 ## 文本输入（TextInput/TextArea/Search）常见问题
 
-以下内容介绍了使用[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)和[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)组件输入文本时可能遇到的问题。
+以下内容介绍了使用[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)和[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)组件输入文本时可能遇到的问题。
 
 ### TextInput被遮挡时光标仍然不消失
 
@@ -576,14 +576,14 @@ struct TextExample8 {
 
 当TextInput组件处于选中状态并显示操作手柄时，选中区域和操作手柄可能不在同一图层渲染。其中，选中区域与输入框在同一图层，而操作手柄则在更高的图层上。因此，当输入框被其他元素遮挡时，选中区域也会被遮挡，但操作手柄仍然可见。
 
-TextInput被遮挡时，如果通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括[selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)和[setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
+TextInput被遮挡时，如果通过[TextInputController/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括[selectAll/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)和[setTextSelection/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
 
 | 组件      | 接口              |
 |-----------|-------------------|
-| Search    | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#settextselection12)  |
-| TextArea  | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#settextselection10)  |
-| TextInput | [selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)         |
-| TextInput | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)  |
+| Search    | [setTextSelection/apis-arkui/arkui-ts/ts-basic-components-search.md#settextselection12)  |
+| TextArea  | [setTextSelection/apis-arkui/arkui-ts/ts-basic-components-textarea.md#settextselection10)  |
+| TextInput | [selectAll/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)         |
+| TextInput | [setTextSelection/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)  |
 
 以下示例展示了一个典型的问题场景，存在一个内容为“TextInput被遮挡不显示”的TextInput组件被隐藏，但点击按钮后，图片上会出现TextInput操作手柄。此时，开发者需要检查应用代码，确保在输入框被遮挡时没有设置选中区域。移除设置输入框选中区域的代码逻辑，即可解决操作手柄出现的问题。
 

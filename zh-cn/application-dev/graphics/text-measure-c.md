@@ -28,7 +28,7 @@
 
 ## 接口说明
 
-文本测量中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
+文本测量中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -129,7 +129,7 @@
 
 6. 从API version 24开始支持在限定宽高区域内排版文本，获取排版结果。
 
-   使用[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（OH_Drawing_RectSize）和适配的字符串范围。
+   使用[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（OH_Drawing_RectSize）和适配的字符串范围。
 
    <!-- @[c_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -159,7 +159,7 @@
 
 7. 从API version 24开始支持根据坐标获取字符位置信息。
 
-   使用[OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer)获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
+   使用[OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer)获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
 
    <!-- @[c_text_metrics_char_position_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -179,7 +179,7 @@
 
 8. 从API version 24开始支持字形范围与字符范围的相互转换。
 
-   使用[OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer)根据字形范围获取对应的字符范围。
+   使用[OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer)根据字形范围获取对应的字符范围。
 
    <!-- @[c_text_metrics_glyph_info_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -201,7 +201,7 @@
    }
    ```
 
-   使用[OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer)根据字符范围获取对应的字形范围。
+   使用[OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer)根据字符范围获取对应的字形范围。
 
    <!-- @[c_text_metrics_glyph_info_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 

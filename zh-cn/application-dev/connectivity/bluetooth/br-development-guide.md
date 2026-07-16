@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ### 订阅蓝牙开关状态变化事件
-通过订阅开关状态变化事件，可以获取实时的蓝牙开关状态。蓝牙开启或者关闭过程中，涉及多种蓝牙状态的跃迁。其中[STATE_OFF](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate)表示蓝牙已关闭，此状态下，应用不可以使用蓝牙其他功能；[STATE_ON](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate)表示蓝牙已打开，此状态下，应用可以使用蓝牙其他功能。
+通过订阅开关状态变化事件，可以获取实时的蓝牙开关状态。蓝牙开启或者关闭过程中，涉及多种蓝牙状态的跃迁。其中[STATE_OFF/apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate)表示蓝牙已关闭，此状态下，应用不可以使用蓝牙其他功能；[STATE_ON/apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate)表示蓝牙已打开，此状态下，应用可以使用蓝牙其他功能。
 ```ts
 // 定义蓝牙开关状态变化函数回调
 function onReceiveEvent(data: access.BluetoothState) {

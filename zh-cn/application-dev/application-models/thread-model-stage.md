@@ -19,9 +19,9 @@
   - 分发交互事件。
   - 处理应用代码的回调，包括事件处理和生命周期管理。
   - 接收TaskPool以及Worker线程发送的消息。
-- [TaskPool线程](../reference/apis-arkts/js-apis-taskpool.md)
+- [TaskPool线程/apis-arkts/js-apis-taskpool.md)
   - 用于执行耗时操作，支持设置调度优先级、负载均衡等功能，推荐使用。
-- [Worker线程](../reference/apis-arkts/js-apis-worker.md)
+- [Worker线程/apis-arkts/js-apis-worker.md)
   - 用于执行耗时操作，支持线程间通信。
 
     TaskPool与Worker的运作机制、通信手段和使用方法可以参考[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。
@@ -38,4 +38,4 @@
 
 ## 使用EventHub进行线程内通信
 
-[EventHub](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md)提供了线程内发送和处理事件的能力，包括对事件订阅、取消订阅、触发事件等。以UIAbility组件与UI之间的数据同步为例，具体使用方法可以参考[UIAbility组件与UI的数据同步](uiability-data-sync-with-ui.md#使用eventhub进行数据通信)。
+[EventHub/apis-ability-kit/js-apis-inner-application-eventHub.md)提供了线程内发送和处理事件的能力，包括对事件订阅、取消订阅、触发事件等。以UIAbility组件与UI之间的数据同步为例，具体使用方法可以参考[UIAbility组件与UI的数据同步](uiability-data-sync-with-ui.md#使用eventhub进行数据通信)。

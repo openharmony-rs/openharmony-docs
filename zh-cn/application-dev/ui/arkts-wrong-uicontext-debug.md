@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本指导主要介绍如何解决因使用无效的[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)导致文本显示异常的问题。当开发者使用了已失效的UIContext对象（通常是因为对应的UI实例已被销毁），可能导致后续UI操作无效。此类问题常见于多窗口场景。从API version 12开始，该问题也见于调用[setSupportedProcessCache](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetsupportedprocesscache12)打开进程缓存后快速启动的情形。
+本指导主要介绍如何解决因使用无效的[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)导致文本显示异常的问题。当开发者使用了已失效的UIContext对象（通常是因为对应的UI实例已被销毁），可能导致后续UI操作无效。此类问题常见于多窗口场景。从API version 12开始，该问题也见于调用[setSupportedProcessCache/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetsupportedprocesscache12)打开进程缓存后快速启动的情形。
 
 ## 定位UIContext错误问题
 
@@ -112,7 +112,7 @@
 
 | 描述                                                                                    | 说明                                                                                                                     |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| The instance is determined by the caller.                                               | 在调用过程中显式指定了实例ID。应用侧通常是通过[UIContext](../reference/apis-arkui/arkts-apis-uicontext.md)接口进行指定。 |
+| The instance is determined by the caller.                                               | 在调用过程中显式指定了实例ID。应用侧通常是通过[UIContext/apis-arkui/arkts-apis-uicontext.md)接口进行指定。 |
 | No specific instance was specified, so the most recently active instance was retrieved. | 未显式指定实例ID，系统返回最近活跃的实例。                                                                               |
 | No specific instance was specified, return the foreground instance.                     | 未显式指定实例ID，系统返回前台实例。                                                                                     |
 | No specific instance was specified, return the only remaining instance.                 | 未显式指定实例ID，系统返回唯一的实例（仅存在一个UI实例时）。                                                             |
@@ -124,11 +124,11 @@
 **问题现象**
 
 当发生以下问题时，可根据上文的关键日志或异常进行判断：
-1. 使用[setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12)方法设置字体大小时，字体大小未发生预期变化。
+1. 使用[setStyledString/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12)方法设置字体大小时，字体大小未发生预期变化。
 2. 使用UIContext成员方法时，界面没有响应或显示异常。
 
 **解决措施**
 
 重新获取有效的UIContext对象。可通过以下方式获取：
-- 使用自定义组件的[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法获取。
-- 通过窗口的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取。
+- 使用自定义组件的[getUIContext/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法获取。
+- 通过窗口的[getUIContext/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取。

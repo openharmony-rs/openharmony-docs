@@ -13,7 +13,7 @@
 
 ## 开发步骤
 
-接口具体使用方法和说明请参考[getAppPreferredLanguage](../reference/apis-localization-kit/js-apis-i18n.md#getapppreferredlanguage9)的API文档。示例代码如下：
+接口具体使用方法和说明请参考[getAppPreferredLanguage/apis-localization-kit/js-apis-i18n.md#getapppreferredlanguage9)的API文档。示例代码如下：
 
 1. 导入模块。
 

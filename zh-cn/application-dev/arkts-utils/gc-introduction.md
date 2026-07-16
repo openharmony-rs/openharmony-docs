@@ -235,7 +235,7 @@ Heap包含两种类型：LocalHeap和SharedHeap。LocalHeap是应用进程中每
 
 根据系统分配堆空间总大小64MB-128MB/128MB-256MB/大于256MB的三个范围，以下参数系统会设置不同的大小。如果表格内范围仅有一个值，则表示该参数值不随堆空间总大小变化。手机设备堆空间总大小默认为大于256MB。
 
-开发者可以查阅[hidebug接口文档](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
+开发者可以查阅[hidebug接口文档/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
 
 **堆大小相关参数**
 
@@ -324,7 +324,7 @@ Heap中生成两个SemiSpace，供复制使用。
 
 ### SharedHeap相关参数
 
-以下参数适用于手机等大内存设备，开发者可以通过[getAllVMHeapMemoryInfo](../reference/apis-arkts/js-apis-util.md#getallvmheapmemoryinfo24)获取Shared堆内存信息。
+以下参数适用于手机等大内存设备，开发者可以通过[getAllVMHeapMemoryInfo/apis-arkts/js-apis-util.md#getallvmheapmemoryinfo24)获取Shared堆内存信息。
 
 > **说明：**
 >

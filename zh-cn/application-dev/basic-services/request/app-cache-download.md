@@ -6,7 +6,7 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @fang-jinxu-->
 
-开发者可以使用缓存下载模块（[cacheDownload](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)）将网络资源文件下载并缓存到文件系统中。缓存下载功能支持配置重试策略和超时控制，从API version 26.0.0开始，开发者可以为单个任务配置重试和超时参数，也可以设置全局默认配置。
+开发者可以使用缓存下载模块（[cacheDownload/apis-basic-services-kit/js-apis-request-cacheDownload.md)）将网络资源文件下载并缓存到文件系统中。缓存下载功能支持配置重试策略和超时控制，从API version 26.0.0开始，开发者可以为单个任务配置重试和超时参数，也可以设置全局默认配置。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@
 
 ## 配置任务级重试策略
 
-从API version 26.0.0开始，开发者可以在创建缓存下载任务时通过[RetryOptions](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#retryoptions)配置任务的重试策略。当下载失败时，系统会根据配置自动进行重试。
+从API version 26.0.0开始，开发者可以在创建缓存下载任务时通过[RetryOptions/apis-basic-services-kit/js-apis-request-cacheDownload.md#retryoptions)配置任务的重试策略。当下载失败时，系统会根据配置自动进行重试。
 
 以下示例展示了如何为单个缓存下载任务配置重试参数：
 
@@ -61,7 +61,7 @@ startCacheDownloadWithRetry(): void {
 
 ## 配置任务级超时策略
 
-从API version 26.0.0开始，开发者可以在创建缓存下载任务时通过[TimeoutOptions](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#timeoutoptions)配置任务的超时策略。
+从API version 26.0.0开始，开发者可以在创建缓存下载任务时通过[TimeoutOptions/apis-basic-services-kit/js-apis-request-cacheDownload.md#timeoutoptions)配置任务的超时策略。
 
 以下示例展示了如何为单个缓存下载任务配置超时参数：
 
@@ -101,7 +101,7 @@ startCacheDownloadWithTimeout(): void {
 
 ## 设置全局重试配置
 
-从API version 26.0.0开始，开发者可以通过[setGlobalRetryOptions](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadsetglobalretryoptions)接口设置全局默认的重试配置。该配置适用于所有未指定任务级retry参数的缓存下载任务。
+从API version 26.0.0开始，开发者可以通过[setGlobalRetryOptions/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadsetglobalretryoptions)接口设置全局默认的重试配置。该配置适用于所有未指定任务级retry参数的缓存下载任务。
 
 以下示例展示了如何设置全局重试配置：
 
@@ -134,7 +134,7 @@ setGlobalRetryOptions(): void {
 
 ## 设置全局超时配置
 
-从API version 26.0.0开始，开发者可以通过[setGlobalTimeoutOptions](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadsetglobaltimeoutoptions)接口设置全局默认的超时配置。该配置适用于所有未指定任务级timeout参数的缓存下载任务。
+从API version 26.0.0开始，开发者可以通过[setGlobalTimeoutOptions/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadsetglobaltimeoutoptions)接口设置全局默认的超时配置。该配置适用于所有未指定任务级timeout参数的缓存下载任务。
 
 以下示例展示了如何设置全局超时配置：
 
@@ -169,7 +169,7 @@ setGlobalTimeoutOptions(): void {
 
 ## 注册下载回调监听
 
-从API version 23开始，开发者可以通过[onDownloadSuccess](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadondownloadsuccess23)和[onDownloadError](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadondownloaderror23)接口注册回调函数，监听下载成功和失败事件。
+从API version 23开始，开发者可以通过[onDownloadSuccess/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadondownloadsuccess23)和[onDownloadError/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadondownloaderror23)接口注册回调函数，监听下载成功和失败事件。
 
 > **说明：**
 >
@@ -177,7 +177,7 @@ setGlobalTimeoutOptions(): void {
 >
 > · 同一URL多次调用注册接口会注册多个回调，下载完成时所有回调都会被触发。
 >
-> · 需要在页面退出时调用[offDownloadSuccess](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoffdownloadsuccess23)和[offDownloadError](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoffdownloaderror23)注销回调，避免内存泄漏。
+> · 需要在页面退出时调用[offDownloadSuccess/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoffdownloadsuccess23)和[offDownloadError/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoffdownloaderror23)注销回调，避免内存泄漏。
 
 注册和注销回调的基本用法如下：
 
@@ -219,7 +219,7 @@ private unregisterCallbacks(): void {
 
 ## 取消缓存下载任务
 
-开发者可以通过[cancel](../../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadcancel)接口取消正在进行的缓存下载任务。
+开发者可以通过[cancel/apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadcancel)接口取消正在进行的缓存下载任务。
 
 <!-- @[cache_download_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadRetry.ets)-->
 

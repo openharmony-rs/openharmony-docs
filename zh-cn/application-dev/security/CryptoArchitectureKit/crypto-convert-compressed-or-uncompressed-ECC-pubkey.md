@@ -17,13 +17,13 @@ ECC的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-a
 
 ##  指定非压缩公钥数据转换为压缩公钥数据
 
-1. 将Uint8Array类型的ECC非压缩公钥数据封装成[DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob)对象。
+1. 将Uint8Array类型的ECC非压缩公钥数据封装成[DataBlob/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob)对象。
 
    公钥和私钥可只传入其中一个。此处示例传入非压缩公钥。
 
-2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'ECC_BrainPoolP256r1'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
-3. 调用[AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3)，传入封装后的DataBlob对象，生成非对称密钥对象（KeyPair）。
-4. 调用[PubKey.getEncodedDer](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedder12)，设置参数为'X509|COMPRESSED'，获取压缩公钥数据的字节流。
+2. 调用[cryptoFramework.createAsyKeyGenerator/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'ECC_BrainPoolP256r1'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
+3. 调用[AsyKeyGenerator.convertKey/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3)，传入封装后的DataBlob对象，生成非对称密钥对象（KeyPair）。
+4. 调用[PubKey.getEncodedDer/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedder12)，设置参数为'X509|COMPRESSED'，获取压缩公钥数据的字节流。
 
 <!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets) -->
 

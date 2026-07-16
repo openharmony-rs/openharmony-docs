@@ -35,7 +35,7 @@
 - 在继承类场景中，可以在父子组件中对同一个属性分别定义\@Monitor进行监听，当属性变化时，父子组件中定义的\@Monitor回调均会被调用。
 - 和[\@Watch装饰器](arkts-watch.md)类似，开发者需要自己定义回调函数，区别在于\@Watch装饰器将函数名作为参数，而\@Monitor直接装饰回调函数。\@Monitor与\@Watch的对比可以查看[\@Monitor与\@Watch的对比](#monitor与watch对比)。
 
-从API版本26.0.0开始，支持配置[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)来获得以下能力增强：
+从API版本26.0.0开始，支持配置[MonitorDecoratorOptions/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)来获得以下能力增强：
 
 - 支持在监听路径中设置通配符“*”，用于模糊监听对象内部变化，包括@ObservedV2中任意@Trace属性变化，内置类型（Array、Map、Date、Set）的API调用引起的变化等。详情见[监听包含通配符的路径](#监听包含通配符的路径)。
 - 对@Monitor部分能力进行修正，详情见[@Monitor使用配置项前后的对比](#monitor使用配置项前后的对比)。
@@ -102,8 +102,8 @@ struct Index {
 
 | \@Monitor属性装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数          | API版本26.0.0之前，参数为字符串类型的对象属性名。<br>从API版本26.0.0开始，第一个参数也可以为[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)配置项。<br>可同时监听多个对象属性，每个属性以逗号隔开，例如@Monitor('prop1', 'prop2')。可监听深层的属性变化，如多维数组中的某一个元素，嵌套对象或对象数组中的某一个属性。详见[监听变化](#监听变化)。 |
-| 装饰对象            | \@Monitor装饰成员方法。当监听的属性发生变化时，会触发该回调方法。该回调方法以[IMonitor类型](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。 |
+| 装饰器参数          | API版本26.0.0之前，参数为字符串类型的对象属性名。<br>从API版本26.0.0开始，第一个参数也可以为[MonitorDecoratorOptions/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)配置项。<br>可同时监听多个对象属性，每个属性以逗号隔开，例如@Monitor('prop1', 'prop2')。可监听深层的属性变化，如多维数组中的某一个元素，嵌套对象或对象数组中的某一个属性。详见[监听变化](#监听变化)。 |
+| 装饰对象            | \@Monitor装饰成员方法。当监听的属性发生变化时，会触发该回调方法。该回调方法以[IMonitor类型/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。 |
 
 ### 语法
 
@@ -145,7 +145,7 @@ onValueChange3(monitor: IMonitor) {
 
 ## 接口说明
 
-IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口说明参考API文档：[状态变量变化监听](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
+IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口说明参考API文档：[状态变量变化监听/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
 
 ## 监听变化
 

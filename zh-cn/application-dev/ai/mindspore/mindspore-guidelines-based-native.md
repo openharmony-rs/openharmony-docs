@@ -9,7 +9,7 @@
 
 ## 场景说明
 
-开发者可以使用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
+开发者可以使用[MindSpore/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
 
@@ -34,7 +34,7 @@
 
 ### 编写推理代码
 
-在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)实现端侧推理，推理代码流程如下。
+在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore/apis-mindspore-lite-kit/capi-mindspore.md)实现端侧推理，推理代码流程如下。
 
 1. 引用对应的头文件
 
@@ -349,8 +349,8 @@
 
 ### 实现图像输入和预处理，并执行推理
 
-1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
-2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
+1. 此处以获取相册图片为例，调用[@ohos.file.picker/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
+2. 根据模型的输入尺寸，调用[@ohos.multimedia.image/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 3. 在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
 
 <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->

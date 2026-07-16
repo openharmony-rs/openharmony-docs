@@ -12,14 +12,14 @@
 
 | 元数据类别 | MetadataType | 返回字段 | 起始API版本 | 典型信息 |
 | ---------- | ------------ | -------- | ----------- | -------- |
-| GIF | GIF_METADATA | [GifMetadata](../../reference/apis-image-kit/arkts-apis-image-GifMetadata.md) | 26.0.0 | 帧延迟时长、循环次数、画布尺寸等。 |
-| HEIFS | HEIFS_METADATA | [HeifsMetadata](../../reference/apis-image-kit/arkts-apis-image-HeifsMetadata.md) | 23 | 画布高度、画布宽度、未钳制延迟时长等。 |
-| DNG | DNG_METADATA | [DngMetadata](../../reference/apis-image-kit/arkts-apis-image-i.md#dngmetadata24) | 24 | DNG版本号、相机型号、CFA参数、黑白电平、色彩校正矩阵等。 |
-| WebP | WEBP_METADATA | [WebPMetadata](../../reference/apis-image-kit/arkts-apis-image-WebPMetadata.md) | 24 | 画布尺寸、帧延迟时长、循环次数等。 |
-| PNG | PNG_METADATA | [PngMetadata](../../reference/apis-image-kit/arkts-apis-image-PngMetadata.md) | 26.0.0 | 像素密度、描述、版权等。 |
-| JFIF | JFIF_METADATA | [JfifMetadata](../../reference/apis-image-kit/arkts-apis-image-JfifMetadata.md) | 26.0.0 | 像素密度、渐进编码等。 |
-| TIFF | TIFF_METADATA | [TiffMetadata](../../reference/apis-image-kit/arkts-apis-image-TiffMetadata.md) | 26.0.0 | 分辨率、色度坐标、压缩方式等。 |
-| AVIS | AVIS_METADATA | [AvisMetadata](../../reference/apis-image-kit/arkts-apis-image-AvisMetadata.md) | 26.0.0 | 帧延迟时长等。 |
+| GIF | GIF_METADATA | [GifMetadata/apis-image-kit/arkts-apis-image-GifMetadata.md) | 26.0.0 | 帧延迟时长、循环次数、画布尺寸等。 |
+| HEIFS | HEIFS_METADATA | [HeifsMetadata/apis-image-kit/arkts-apis-image-HeifsMetadata.md) | 23 | 画布高度、画布宽度、未钳制延迟时长等。 |
+| DNG | DNG_METADATA | [DngMetadata/apis-image-kit/arkts-apis-image-i.md#dngmetadata24) | 24 | DNG版本号、相机型号、CFA参数、黑白电平、色彩校正矩阵等。 |
+| WebP | WEBP_METADATA | [WebPMetadata/apis-image-kit/arkts-apis-image-WebPMetadata.md) | 24 | 画布尺寸、帧延迟时长、循环次数等。 |
+| PNG | PNG_METADATA | [PngMetadata/apis-image-kit/arkts-apis-image-PngMetadata.md) | 26.0.0 | 像素密度、描述、版权等。 |
+| JFIF | JFIF_METADATA | [JfifMetadata/apis-image-kit/arkts-apis-image-JfifMetadata.md) | 26.0.0 | 像素密度、渐进编码等。 |
+| TIFF | TIFF_METADATA | [TiffMetadata/apis-image-kit/arkts-apis-image-TiffMetadata.md) | 26.0.0 | 分辨率、色度坐标、压缩方式等。 |
+| AVIS | AVIS_METADATA | [AvisMetadata/apis-image-kit/arkts-apis-image-AvisMetadata.md) | 26.0.0 | 帧延迟时长等。 |
 
 > **注意：**
 >
@@ -29,12 +29,12 @@
 
 | 接口 | 说明 |
 | --- | --- |
-| [readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23) | 读取图像源的元数据，使用propertyKeys指定元数据字段。<br>从API version 23开始支持。 |
-| [readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24) | 读取图像源的元数据，使用metadataTypes指定元数据类型。<br>从API version 24开始支持。 |
+| [readImageMetadata/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23) | 读取图像源的元数据，使用propertyKeys指定元数据字段。<br>从API version 23开始支持。 |
+| [readImageMetadataByType/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24) | 读取图像源的元数据，使用metadataTypes指定元数据类型。<br>从API version 24开始支持。 |
 
 ## 开发步骤
 
-获取图片专有元数据相关API的详细介绍请参见[ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md)和[Metadata](../../reference/apis-image-kit/arkts-apis-image-Metadata.md)。
+获取图片专有元数据相关API的详细介绍请参见[ImageSource/apis-image-kit/arkts-apis-image-ImageSource.md)和[Metadata/apis-image-kit/arkts-apis-image-Metadata.md)。
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
 
@@ -53,7 +53,7 @@
 
 3. 读取专有元数据。
 
-   使用[readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23)接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
+   使用[readImageMetadata/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23)接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
 
    <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
@@ -79,7 +79,7 @@
    }
    ```
 
-   使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口，通过指定[MetadataType](../../reference/apis-image-kit/arkts-apis-image-e.md#metadatatype13)枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
+   使用[readImageMetadataByType/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口，通过指定[MetadataType/apis-image-kit/arkts-apis-image-e.md#metadatatype13)枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
 
    <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    

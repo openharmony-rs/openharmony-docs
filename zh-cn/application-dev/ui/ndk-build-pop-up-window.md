@@ -10,15 +10,15 @@
 可以通过创建弹窗控制器和创建自定义弹窗的内容对象两种方法显示自定义弹窗，设置其样式和内容。
 
 
-[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体中，定义了弹窗接口集合，用于实现各种弹窗控制。从API version 12开始支持，使用方式可以参考[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口。
+[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体中，定义了弹窗接口集合，用于实现各种弹窗控制。从API version 12开始支持，使用方式可以参考[openCustomDialogWithController/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口。
 
 
-[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下的弹窗接口在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中定义。从API version 19开始支持，使用方式可以参考[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口。
+[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下的弹窗接口在[native_dialog.h/apis-arkui/capi-native-dialog-h.md#函数)的函数中定义。从API version 19开始支持，使用方式可以参考[openCustomDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口。
 
 
 > **说明：**
 >
-> - [OH_ArkUI_QueryModuleInterfaceByName](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)用于获取指定类型的Native模块接口集合，可以通过其返回ArkUI_NativeDialogHandle类型的数据调用Native模块中的接口。
+> - [OH_ArkUI_QueryModuleInterfaceByName/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)用于获取指定类型的Native模块接口集合，可以通过其返回ArkUI_NativeDialogHandle类型的数据调用Native模块中的接口。
 
 ## 创建和销毁自定义弹窗
 
@@ -26,7 +26,7 @@
 
 - 创建弹窗控制器：
 
-  [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)表示指向弹窗控制器的指针，可以通过调用[ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md)的[create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create)接口创建一个弹窗控制器。
+  [ArkUI_NativeDialogHandle/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)表示指向弹窗控制器的指针，可以通过调用[ArkUI_NativeDialogAPI_x/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md)的[create/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create)接口创建一个弹窗控制器。
 
   该方法返回ArkUI_NativeDialogHandle类型的数据。
   <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
@@ -41,7 +41,7 @@
       }
   ```
 
-- 当不再需要弹窗操作时，需要主动调用[dispose](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#dispose)接口销毁弹窗控制器对象。
+- 当不再需要弹窗操作时，需要主动调用[dispose/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#dispose)接口销毁弹窗控制器对象。
   <!-- @[dialog_dispose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -55,7 +55,7 @@
 
 - 创建弹窗的内容对象：
 
-  [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md)自定义弹窗的内容对象，可以通过调用[OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions)接口创建一个自定义弹窗的内容对象。
+  [ArkUI_CustomDialogOptions/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md)自定义弹窗的内容对象，可以通过调用[OH_ArkUI_CustomDialog_CreateOptions/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions)接口创建一个自定义弹窗的内容对象。
 
   该方法返回ArkUI_CustomDialogOptions类型的指针。
   <!-- @[dialog_createOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
@@ -73,7 +73,7 @@
   > 
   > ArkUITextNode的声明方式可以查看[ArkUINode.h](../ui/ndk-access-the-arkts-page.md#示例)文件中的实现文本组件。
 
-- 当不再需要弹窗操作时，需要主动调用[OH_ArkUI_CustomDialog_DisposeOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_disposeoptions)接口销毁弹窗控制器对象。
+- 当不再需要弹窗操作时，需要主动调用[OH_ArkUI_CustomDialog_DisposeOptions/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_disposeoptions)接口销毁弹窗控制器对象。
   <!-- @[dialog_disposeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -127,7 +127,7 @@
    }
    ```
 
-2. 以下介绍两种控制弹窗样式的方式，弹窗接口请参考[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md)。
+2. 以下介绍两种控制弹窗样式的方式，弹窗接口请参考[native_dialog.h/apis-arkui/capi-native-dialog-h.md)。
 
    - 通过controller控制弹窗样式。
 
@@ -318,7 +318,7 @@
 
 ## 弹窗的生命周期
 
-从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：[registerOnWillAppear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwillappear)、[registerOnDidAppear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondidappear)、[registerOnWillDisappear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwilldisappear)、[registerOnDidDisappear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondiddisappear)。
+从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：[registerOnWillAppear/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwillappear)、[registerOnDidAppear/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondidappear)、[registerOnWillDisappear/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwilldisappear)、[registerOnDidDisappear/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondiddisappear)。
 
 这些生命周期方法需要在调用show方法之前调用，生命周期的时序如下：
 

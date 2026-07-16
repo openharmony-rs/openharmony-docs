@@ -12,20 +12,20 @@
 
 **问题现象**
 
-从API version 12开始，自定义节点的子节点在页面退出后未立即回调自定义组件的[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)方法。自定义组件的aboutToDisappear通常在其销毁的时候触发，页面销毁后未立即回调则说明该自定义组件在页面销毁后未立即销毁。
+从API version 12开始，自定义节点的子节点在页面退出后未立即回调自定义组件的[aboutToDisappear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)方法。自定义组件的aboutToDisappear通常在其销毁的时候触发，页面销毁后未立即回调则说明该自定义组件在页面销毁后未立即销毁。
 
 **可能原因**
 
 - 自定义组件存在父节点且父节点未销毁。
 - 自定义组件由[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建，该前端对象既未被回收，也未解除对后端自定义组件的引用。BuilderNode创建时，默认持有后端节点的强引用。
-- 通过调用[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)方法，可以获取BuilderNode或ComponentContent对象中的root节点，此操作会使后端节点的引用计数加一。
-- 在[NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md)中，通过[addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12)方法增加了对被添加的FrameNode对象节点的引用关系。然而，该NodeContent对象未被回收，且未通过[removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12)接口删除所增加的引用关系。
+- 通过调用[OH_ArkUI_GetNodeHandleFromNapiValue/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)方法，可以获取BuilderNode或ComponentContent对象中的root节点，此操作会使后端节点的引用计数加一。
+- 在[NodeContent/apis-arkui/js-apis-arkui-NodeContent.md)中，通过[addFrameNode/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12)方法增加了对被添加的FrameNode对象节点的引用关系。然而，该NodeContent对象未被回收，且未通过[removeFrameNode/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12)接口删除所增加的引用关系。
 
 **解决措施**
 
 - 将需要释放的自定义组件从父节点上移除，排除父节点对自定义组件生命周期的影响。
-- 自定义组件由[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建时，调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用。
-- 对于使用OH_ArkUI_GetNodeHandleFromNapiValue获取BuilderNode或ComponentContent对象的root节点，调用[disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)减少OH_ArkUI_GetNodeHandleFromNapiValue增加的引用计数。
+- 自定义组件由[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建时，调用[dispose/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用。
+- 对于使用OH_ArkUI_GetNodeHandleFromNapiValue获取BuilderNode或ComponentContent对象的root节点，调用[disposeNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)减少OH_ArkUI_GetNodeHandleFromNapiValue增加的引用计数。
 - 未调用dispose时，当前端的BuilderNode对象在[GC](../arkts-utils/gc-introduction.md)中被回收会释放对后端根节点的引用。调试阶段可使用[hidumper](../dfx/hidumper.md)指令触发GC或[查询堆内存](../dfx/hidumper.md#查询虚拟机堆内存)来分析引用关系。
 
 **示例代码**
@@ -34,7 +34,7 @@
 
 - 跳转至pageOneTmp页面后返回，通过指令触发GC，继续操作设备后可以看到aboutToDisappear回调。根节点相关的引用关系和解决方案：
   - NodeContent对根节点的引用关系：需要触发NodeContent对象的回收，或主动调用removeFrameNode接口。
-  - 全局对象对BuilderNode的引用关系：通过[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)的[clear](../reference/apis-arkts/js-apis-arraylist.md#clear)方法清除对BuilderNode的引用。
+  - 全局对象对BuilderNode的引用关系：通过[ArrayList/apis-arkts/js-apis-arraylist.md)的[clear/apis-arkts/js-apis-arraylist.md#clear)方法清除对BuilderNode的引用。
   - BuilderNode对象对根节点的引用关系：确保BuilderNode对象无其他引用关系，触发该对象的回收可以解除其对根节点的引用。
 
 - 跳转至pageTwoTmp页面后返回，可以直接看到aboutToDisappear回调。根节点相关的引用关系以及解决方案：
@@ -281,22 +281,22 @@ export struct pageThreeTmp {
 **可能原因**
 
 - 使用[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建自定义节点，创建的前端BuilderNode对象默认持有后端节点的强引用，而后端节点可能通过某些路径（如事件回调、全局缓存）反过来引用前端BuilderNode对象，因此形成了前后端循环引用，前端对象无法被回收，后端节点也因为被前端对象持有强引用而无法释放，导致内存泄漏。
-- BuilderNode会持有[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。从API version 24版本开始，该循环引用会被自动释放。
+- BuilderNode会持有[build/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。从API version 24版本开始，该循环引用会被自动释放。
 
 **解决措施**
 
-- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。从API version 24版本开始，步骤一可被省略。
-- 步骤二：当不再需要一个BuilderNode节点时，将此BuilderNode节点从组件树上移除，并调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用，解除前后端的引用关系。
+- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。从API version 24版本开始，步骤一可被省略。
+- 步骤二：当不再需要一个BuilderNode节点时，将此BuilderNode节点从组件树上移除，并调用[dispose/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用，解除前后端的引用关系。
 
 **示例代码**
 
 如下示例中，将BuilderNode前端对象作为参数传递给了自定义组件，构造了前后端循环引用的场景。
 
-下文中，[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)表示BuilderNode中构建的自定义组件（即TestComponent）析构时的回调。
+下文中，[aboutToDisappear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)表示BuilderNode中构建的自定义组件（即TestComponent）析构时的回调。
 
-- 不调用dispose接口的情况（点击示例中的"Destroy"按钮），由于前后端循环引用，导致自定义组件无法析构，体现为[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调未触发。
+- 不调用dispose接口的情况（点击示例中的"Destroy"按钮），由于前后端循环引用，导致自定义组件无法析构，体现为[aboutToDisappear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调未触发。
 
-- 调用dispose接口的情况（点击示例中的"Destroy with dispose"按钮），[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调能够触发。
+- 调用dispose接口的情况（点击示例中的"Destroy with dispose"按钮），[aboutToDisappear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调能够触发。
 
 ```ts
 import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';

@@ -8,15 +8,15 @@
 
 表冠事件从API version 18开始支持，是指通过旋转表冠触发的事件，通过硬件采样频率上报旋转角度的变化。
 
-表冠事件分发依赖于应用内组件焦点，只有拥有焦点的组件才能接收到该事件。因此，接收此事件的组件应正确管理其焦点状态，并通过[onFocus](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)和[onBlur](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)接口监听自身焦点状态变化。当正在接收表冠事件的组件失焦时，接下来的表冠事件都不会再发送给这个组件。
+表冠事件分发依赖于应用内组件焦点，只有拥有焦点的组件才能接收到该事件。因此，接收此事件的组件应正确管理其焦点状态，并通过[onFocus/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)和[onBlur/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)接口监听自身焦点状态变化。当正在接收表冠事件的组件失焦时，接下来的表冠事件都不会再发送给这个组件。
 
 目前，系统中一些组件已默认支持与表冠的交互，例如，旋转手表表冠后，滚动条会根据表冠的旋转方向滚动。
 
-当前，默认支持表冠事件的组件包括： [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)、 [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)、[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)、[Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md)和[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)。
+当前，默认支持表冠事件的组件包括： [Slider/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[DatePicker/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)、[TextPicker/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)、 [TimePicker/apis-arkui/arkui-ts/ts-basic-components-timepicker.md)、[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)、[List/apis-arkui/arkui-ts/ts-container-list.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md)、[ArcList/apis-arkui/arkui-ts/ts-container-arclist.md)、[Refresh/apis-arkui/arkui-ts/ts-container-refresh.md)和[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)。
 
-此外，应用也可以自行通过[onDigitalCrown](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown)接口感知表冠事件的上报。
+此外，应用也可以自行通过[onDigitalCrown/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown)接口感知表冠事件的上报。
 
-其中，event参数提供表冠事件的时间戳、旋转角速度、旋转角度和[表冠动作](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#crownaction18)信息。
+其中，event参数提供表冠事件的时间戳、旋转角速度、旋转角度和[表冠动作/apis-arkui/arkui-ts/ts-appendix-enums.md#crownaction18)信息。
 
 >  **说明：**
 >
@@ -28,7 +28,7 @@
 
 1. 组件获焦
 
-    确保接收事件的组件获焦，可以通过使用[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)等方法来实现。如需更详细的焦点控制信息，请参考[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)文档。
+    确保接收事件的组件获焦，可以通过使用[focusable/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[defaultFocus/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)等方法来实现。如需更详细的焦点控制信息，请参考[焦点控制/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)文档。
     
     <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
     
@@ -55,7 +55,7 @@
     ```
 3. 事件字段的含义
 
-    表冠事件提供了时间戳，旋转角速度，旋转角度和表冠动作。此外表冠事件会触发事件冒泡，可通过[stopPropagation](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#crownevent对象说明)阻止事件冒泡。
+    表冠事件提供了时间戳，旋转角速度，旋转角度和表冠动作。此外表冠事件会触发事件冒泡，可通过[stopPropagation/apis-arkui/arkui-ts/ts-universal-events-crown.md#crownevent对象说明)阻止事件冒泡。
 
     <!-- @[stopPropagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
     
@@ -108,4 +108,4 @@
  }
  ```
 
-![crown.gif](../reference/apis-arkui/arkui-ts/figures/crown.gif)
+![crown.gif/apis-arkui/arkui-ts/figures/crown.gif)

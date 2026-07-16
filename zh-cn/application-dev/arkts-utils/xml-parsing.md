@@ -13,7 +13,7 @@
 XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据的ArrayBuffer或DataView，输出为结构化的解析结果。
 
 
-  **表1** XML解析选项，其详细介绍请参见[ParseOptions](../reference/apis-arkts/js-apis-xml.md#parseoptions)。
+  **表1** XML解析选项，其详细介绍请参见[ParseOptions/apis-arkts/js-apis-xml.md#parseoptions)。
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |

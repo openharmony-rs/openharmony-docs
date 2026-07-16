@@ -13,7 +13,7 @@
 
 可能原因：录屏过程中，点击“不允许”、在通知栏停止录屏和通话打断录屏后，未释放资源。
 
-解决方法：在录屏过程中因为状态改变导致的录屏停止，需要在[OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)（状态回调）中，对录屏资源进行异步释放。
+解决方法：在录屏过程中因为状态改变导致的录屏停止，需要在[OH_AVScreenCapture_SetStateCallback()/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)（状态回调）中，对录屏资源进行异步释放。
 
 录屏会话限制策略：
 
@@ -23,5 +23,5 @@
 
 ## 通话中无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
 
-从API version 20开始，如需在通话中开启录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”状态。
+从API version 20开始，如需在通话中开启录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”状态。
 

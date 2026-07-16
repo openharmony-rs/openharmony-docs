@@ -26,7 +26,7 @@
 - 结果类型定义：统一的意图执行结果格式定义。
 
 ## 创建自定义意图
-当现有标准意图定义无法覆盖应用的功能时，开发者可以自定义意图。系统入口需要解析开发者定义的意图描述和参数规范，意图匹配用户语义后，触发意图执行。自定义意图的属性通过[IntentDecoratorInfo](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)及其子类定义，需要包含如下要素：
+当现有标准意图定义无法覆盖应用的功能时，开发者可以自定义意图。系统入口需要解析开发者定义的意图描述和参数规范，意图匹配用户语义后，触发意图执行。自定义意图的属性通过[IntentDecoratorInfo/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo)及其子类定义，需要包含如下要素：
 - 大语言模型描述：自然语言描述意图功能，供系统入口解析语义。该描述应尽可能的精确并全面，涵盖该意图提供的能力范围，包括功能定义、约束限制等。
 - 参数类型定义：自定义的意图参数格式定义，符合Json Schema规范。参数类型定义需要包含参数的功能描述、参数类型，定义参数的必选或可选。
 - 结果类型定义：自定义的意图执行结果格式定义，符合Json Schema规范。结果类型定义需要包含意图执行结果的类型。

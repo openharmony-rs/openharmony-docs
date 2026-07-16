@@ -78,7 +78,7 @@
 
 
 ## 软键盘自动弹出
-为提升用户体验，可以在页面完成加载后，输入框自动获焦并弹出软键盘。通过调用[showTextInput()](../reference/apis-ime-kit/js-apis-inputmethod.md#showtextinput10)设置软键盘自动弹出功能。
+为提升用户体验，可以在页面完成加载后，输入框自动获焦并弹出软键盘。通过调用[showTextInput()/apis-ime-kit/js-apis-inputmethod.md#showtextinput10)设置软键盘自动弹出功能。
 
 ```html
 <!-- index.html -->
@@ -122,7 +122,7 @@ struct WebComponent {
 
 在移动设备上，支持设置Web页面的软键盘避让模式。
 
-1. 在应用代码中设置[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的软键盘避让模式[setKeyboardAvoidMode()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#setkeyboardavoidmode11)。ArkWeb组件支持Resize和Offset两种模式。
+1. 在应用代码中设置[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)的软键盘避让模式[setKeyboardAvoidMode()/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#setkeyboardavoidmode11)。ArkWeb组件支持Resize和Offset两种模式。
 
 - Resize模式下，应用窗口高度可缩小避开软键盘，ArkWeb组件跟随ArkUI重新布局。
 - Offset模式下（以及默认模式），应用窗口高度不变，ArkWeb组件根据自身的避让模式进行避让。
@@ -195,7 +195,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
-2.在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
+2.在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
 - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
 - RESIZE_CONTENT：调整可视视口和布局视口的大小。
@@ -239,7 +239,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 
 ![web-keyboardavoid](figures/web-keyboardavoid.png)
 
-3.在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
+3.在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
 
   ```ts
   // xxx.ets
@@ -276,7 +276,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 
 ## 拦截系统软键盘与自定义软键盘输入
 
-应用可以通过监听[onInterceptKeyboardAttach](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyboardattach12)回调，在软键盘拉起前，控制软键盘的显示，包括系统默认软键盘、带有特定Enter键的软键盘，或完全自定义软键盘。借助这一功能，开发者能够实现对软键盘的灵活管理。
+应用可以通过监听[onInterceptKeyboardAttach/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyboardattach12)回调，在软键盘拉起前，控制软键盘的显示，包括系统默认软键盘、带有特定Enter键的软键盘，或完全自定义软键盘。借助这一功能，开发者能够实现对软键盘的灵活管理。
 
 - 使用系统默认软键盘
 - 使用带有定制Enter键的系统软键盘

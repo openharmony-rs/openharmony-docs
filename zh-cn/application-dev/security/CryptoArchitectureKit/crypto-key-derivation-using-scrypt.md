@@ -11,9 +11,9 @@
 
 ## 开发步骤
 
-1. 构造[ScryptSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#scryptspec18)对象，作为密钥派生参数进行密钥派生。
+1. 构造[ScryptSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#scryptspec18)对象，作为密钥派生参数进行密钥派生。
 
-   ScryptSpec是[KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11)的子类，需要指定：
+   ScryptSpec是[KdfSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11)的子类，需要指定：
 
    - algName：指定算法名为'SCRYPT'。
    - passphrase：用于生成派生密钥的原始密码。
@@ -27,9 +27,9 @@
    - maxMemory：最大内存限制参数，需要为正整数。
    - keySize：目标密钥的字节长度，需要为正整数。
 
-2. 调用[cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11)，指定字符串参数'SCRYPT'，创建密钥派生算法为SCRYPT的密钥派生函数对象（Kdf）。
+2. 调用[cryptoFramework.createKdf/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11)，指定字符串参数'SCRYPT'，创建密钥派生算法为SCRYPT的密钥派生函数对象（Kdf）。
 
-3. 输入SCRYPT对象，调用[Kdf.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11)进行密钥派生。
+3. 输入SCRYPT对象，调用[Kdf.generateSecret/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11)进行密钥派生。
 
    Kdf.generateSecret的多种调用形式如表所示。
 

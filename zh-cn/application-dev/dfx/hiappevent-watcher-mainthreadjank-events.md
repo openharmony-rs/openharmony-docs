@@ -37,7 +37,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void>](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventconfig15) | 设置主线程采样栈参数接口。 |
+| [setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void>/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventconfig15) | 设置主线程采样栈参数接口。 |
 
 ### setEventConfig接口参数设置说明
 
@@ -132,15 +132,15 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy(policy: EventPolicy): Promise&lt;void>](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
+| [configEventPolicy(policy: EventPolicy): Promise&lt;void>/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以使用上述hiappevent提供的接口，在[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 中配置采样栈接口的参数。
+开发者可以使用上述hiappevent提供的接口，在[EventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 中配置采样栈接口的参数。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
+| mainThreadJankPolicy | [MainThreadJankPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
 
 **参数设置示例**
 
@@ -210,14 +210,14 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config)](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig) | 设置主线程采样栈参数接口。 |
+| [int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config)/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig) | 设置主线程采样栈参数接口。 |
 
 ### OH_HiAppEvent_SetEventConfig接口参数设置说明
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | const char\* | 是 | 主线程超时事件名称，此处为预定义的宏EVENT_MAIN_THREAD_JANK或EVENT_MAIN_THREAD_JANK_V2。|
-| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
+| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用[OH_HiAppEvent_SetConfigItem/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
 
 **name为EVENT_MAIN_THREAD_JANK**
 

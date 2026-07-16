@@ -6,11 +6,11 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 22开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供音频编创的实时预览能力（API version 22只支持均衡器效果，API version 23及以后支持其他效果）。例如，可以使用均衡器中预置的音效，改变音乐的风格。
+从API version 22开始，[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供音频编创的实时预览能力（API version 22只支持均衡器效果，API version 23及以后支持其他效果）。例如，可以使用均衡器中预置的音效，改变音乐的风格。
 
 ## 开发基础配置
 
-开发者使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的实时预览能力，添加对应的头文件。
+开发者使用[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)提供的实时预览能力，添加对应的头文件。
 
 ### 在CMake脚本中链接动态库
 
@@ -19,7 +19,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 ```
 
 ### 添加头文件
-开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>、<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>、<[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)>和<[native_audiorenderer.h](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md)>使用音频编创和音频播放相关API。
+开发者通过引入头文件<[native_audio_suite_base.h/apis-audio-kit/capi-native-audio-suite-base-h.md)>、<[native_audio_suite_engine.h/apis-audio-kit/capi-native-audio-suite-engine-h.md)>、<[native_audiostreambuilder.h/apis-audio-kit/capi-native-audiostreambuilder-h.md)>和<[native_audiorenderer.h/apis-audio-kit/capi-native-audiorenderer-h.md)>使用音频编创和音频播放相关API。
 
 <!-- @[audioSuite_RealTimeRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
@@ -34,7 +34,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 ### 接口调用
 
-详细的API说明请参考[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)。
+详细的API说明请参考[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)。
 
 ### 均衡器效果
 
@@ -44,7 +44,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 开发者可以通过以下步骤来实现一个简单的均衡器效果节点实时预览功能。
 
-1. 在初始化时，创建[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)管线（包括输入节点、均衡器节点、输出节点）。
+1. 在初始化时，创建[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)管线（包括输入节点、均衡器节点、输出节点）。
   
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    
@@ -153,11 +153,11 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    > + 离线编辑：OH_AudioSuite_PipelineWorkMode::AUDIOSUITE_PIPELINE_EDIT_MODE
 
 
-2. 创建[OH_AudioRendererStruct](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md)实例，并在其`AudioRendererOnWriteData()`回调函数中调用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)管线的[OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口来处理数据。
+2. 创建[OH_AudioRendererStruct/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md)实例，并在其`AudioRendererOnWriteData()`回调函数中调用[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)管线的[OH_AudioSuiteEngine_RenderFrame()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口来处理数据。
 
    > **注意：**
    >
-   > [OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口的处理时长和管线中连接的效果节点数量有关，需要注意接口处理时长，以避免实时预览卡顿。
+   > [OH_AudioSuiteEngine_RenderFrame()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口的处理时长和管线中连接的效果节点数量有关，需要注意接口处理时长，以避免实时预览卡顿。
 
    请参考音频播放完成音频播放功能开发：[使用OHAudio开发音频播放功能(C/C++)](./using-ohaudio-for-playback.md)。
 
@@ -244,7 +244,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 - 音频实时预览过程中，不支持重新创建新的效果节点，只支持修改效果节点的参数。
 
-- 音频编创错误码具体报错信息请参考：[OH_AudioSuite_Result](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result)。
+- 音频编创错误码具体报错信息请参考：[OH_AudioSuite_Result/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result)。
 
 ## 完整示例代码
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)

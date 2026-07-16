@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-tabs是一种常见的界面导航结构。通过页签容器，用户可以快捷地访问应用的不同模块。具体用法请参考[tabs API](../reference/apis-arkui/arkui-js/js-components-container-tabs.md)。
+tabs是一种常见的界面导航结构。通过页签容器，用户可以快捷地访问应用的不同模块。具体用法请参考[tabs API/apis-arkui/arkui-js/js-components-container-tabs.md)。
 
 
 ## 创建tabs
@@ -151,7 +151,7 @@ export default {
 
 > **说明：**
 >
-> tabs子组件仅支持一个[\<tab-bar>](../reference/apis-arkui/arkui-js/js-components-container-tab-bar.md)和一个[\<tab-content>](../reference/apis-arkui/arkui-js/js-components-container-tab-content.md)。
+> tabs子组件仅支持一个[\<tab-bar>/apis-arkui/arkui-js/js-components-container-tab-bar.md)和一个[\<tab-content>/apis-arkui/arkui-js/js-components-container-tab-content.md)。
 
 
 ## 场景示例

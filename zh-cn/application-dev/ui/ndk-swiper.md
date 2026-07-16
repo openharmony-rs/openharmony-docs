@@ -14,7 +14,7 @@ ArkUI开发框架支持在NDK接口使用滑块视图容器Swiper，提供子组
 
 ## 创建Swiper
 
-本示例通过调用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)创建ARKUI_NODE_SWIPER类型的UI组件节点，用于后续设置属性等操作。并通过[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)在Swiper组件下挂载了多个Text文本组件，作为内容显示。
+本示例通过调用[createNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)创建ARKUI_NODE_SWIPER类型的UI组件节点，用于后续设置属性等操作。并通过[addChild/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)在Swiper组件下挂载了多个Text文本组件，作为内容显示。
 
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
@@ -29,7 +29,7 @@ AddChild(swiper, nodeApi);
 
 ## 设置常用属性
 
-本示例通过设置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的属性调整页面显示效果，常见的属性如下：
+本示例通过设置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的属性调整页面显示效果，常见的属性如下：
 
 | 枚举项 | 描述 |
 |---------|----------|
@@ -64,7 +64,7 @@ nodeApi->setAttribute(swiper, NODE_SWIPER_AUTO_PLAY, &item);
 
 ## 设置导航指示器
 
-本示例通过[OH_ArkUI_SwiperIndicator_Create](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_create)(ARKUI_SWIPER_INDICATOR_TYPE_DOT)创建圆点类型的导航指示器，并通过[OH_ArkUI_SwiperIndicator_SetEndPosition](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_setendposition)、[OH_ArkUI_SwiperIndicator_SetSelectedColor](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_setselectedcolor)接口分别设置导航指示器距离Swiper组件右边的距离和选中圆点的颜色。
+本示例通过[OH_ArkUI_SwiperIndicator_Create/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_create)(ARKUI_SWIPER_INDICATOR_TYPE_DOT)创建圆点类型的导航指示器，并通过[OH_ArkUI_SwiperIndicator_SetEndPosition/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_setendposition)、[OH_ArkUI_SwiperIndicator_SetSelectedColor/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_setselectedcolor)接口分别设置导航指示器距离Swiper组件右边的距离和选中圆点的颜色。
 
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
@@ -90,7 +90,7 @@ OH_ArkUI_SwiperIndicator_Dispose(swiperIndicatorStyle);
 
 ## 监听事件
 
-本示例通过[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册Swiper组件的对应支持的事件类型[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，开发者可以通过[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册的监听回调中，判断回调类型并解析对应的回调内容。涉及的回调如下：
+本示例通过[registerNodeEvent/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册Swiper组件的对应支持的事件类型[ArkUI_NodeEventType/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，开发者可以通过[registerNodeEventReceiver/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册的监听回调中，判断回调类型并解析对应的回调内容。涉及的回调如下：
 
 | 枚举项 | 描述 |
 |---------|----------|

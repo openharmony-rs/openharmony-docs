@@ -24,7 +24,7 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 ## 接口说明
 
-接口详细介绍请参考[API参考](../reference/apis-game-controller-kit/capi-game-controller.md)。
+接口详细介绍请参考[API参考/apis-game-controller-kit/capi-game-controller.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |

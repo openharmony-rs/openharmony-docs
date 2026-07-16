@@ -15,24 +15,24 @@
 当前支持的解码能力如下：
 | 视频解码类型       | 视频解码格式的MIME类型   |
 | --------------------- | ---------------- |
-| MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MJPEG<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AV1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| VP9<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP9](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| VP8<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP8](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| RV30<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV30](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| RV40<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV40](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| WVC1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WVC1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| Cinepak<sup>24+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MJPEG<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AV1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AV1/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| VP9<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP9/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| VP8<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP8/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| RV30<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV30/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| RV40<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV40/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WVC1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WVC1/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Cinepak<sup>24+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
@@ -47,8 +47,8 @@
 当前支持的编码能力如下：
 | 视频编码类型       | 视频编码格式的MIME类型    |
 | --------------------- | ---------------- |
-| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
 如果系统平台无对应编码能力，会创建编码器实例失败。
 
@@ -62,19 +62,19 @@
 当前支持的解码能力：
 | 音频解码类型         | 音频解码格式的MIME类型     |
 | --------------------- | ---------------- |
-| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| Vorbis | [OH_AVCODEC_MIMETYPE_AUDIO_VORBIS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AMR(amrnb、amrwb) | [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| APE | [OH_AVCODEC_MIMETYPE_AUDIO_APE](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| G711a<sup>20+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| ALAC<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_ALAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AC3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_AC3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| WMA<sup>22+</sup>(V1、V2、PRO) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| GSM<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_GSM](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| GSM_MS<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Vorbis | [OH_AVCODEC_MIMETYPE_AUDIO_VORBIS/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AMR(amrnb、amrwb) | [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| APE | [OH_AVCODEC_MIMETYPE_AUDIO_APE/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| G711a<sup>20+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_G711A/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| ALAC<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_ALAC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AC3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_AC3/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMA<sup>22+</sup>(V1、V2、PRO) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| GSM<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_GSM/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| GSM_MS<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP1--> <!--RP1End-->
 <!--RP2--> <!--RP2End-->
 
@@ -90,10 +90,10 @@
 当前支持的编码能力：
 | 音频编码类型         | 音频编码格式的MIME类型     |
 | --------------------- | ---------------- |
-| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP3--> <!--RP3End-->
 <!--RP13--> <!--RP13End-->
 <!--RP20--> <!--RP20End-->

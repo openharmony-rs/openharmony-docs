@@ -17,7 +17,7 @@
 
 ## 接口说明
 
-以下是系统字体相关的常用接口和结构体，详细接口说明请参考[Drawing](../reference/apis-arkgraphics2d/capi-drawing.md)。
+以下是系统字体相关的常用接口和结构体，详细接口说明请参考[Drawing/apis-arkgraphics2d/capi-drawing.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -51,7 +51,7 @@
    #include <hilog/log.h>
    ```
 
-3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码的包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
+3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码的包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
 
    <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
@@ -63,7 +63,7 @@
    }
    ```
 
-4. 系统字体的配置信息[OH_Drawing_FontConfigInfo](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md)包含以下几类信息：
+4. 系统字体的配置信息[OH_Drawing_FontConfigInfo/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md)包含以下几类信息：
 
    - 系统字体文件路径数量。
 
@@ -73,9 +73,9 @@
 
    - 系统字体文件路径列表。
 
-   - 通用字体集列表，具体信息可见[OH_Drawing_FontGenericInfo](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontgenericinfo.md)结构体。
+   - 通用字体集列表，具体信息可见[OH_Drawing_FontGenericInfo/apis-arkgraphics2d/capi-drawing-oh-drawing-fontgenericinfo.md)结构体。
 
-   - 备用字体集列表，具体信息可见[OH_Drawing_FontFallbackGroup](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackgroup.md)结构体。
+   - 备用字体集列表，具体信息可见[OH_Drawing_FontFallbackGroup/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackgroup.md)结构体。
 
    以下示例展示系统字体的一些具体配置信息的获取：
 

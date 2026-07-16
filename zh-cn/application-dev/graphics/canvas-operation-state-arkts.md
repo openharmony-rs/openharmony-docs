@@ -19,7 +19,7 @@
 
 - 状态保存与恢复。
 
-更多画布操作和具体接口参数使用，请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+更多画布操作和具体接口参数使用，请见[drawing.Canvas/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 
 ## 裁剪操作
@@ -39,7 +39,7 @@
 
 ### 接口说明
 
-裁剪操作常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+裁剪操作常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 
 | 接口 | 描述 |
@@ -52,14 +52,14 @@
 
 ### 开发示例
 
-此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing.Canvas/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 使用clipRect()接口裁剪矩形。有以下3个入参：
 
 
 - rect是要裁剪的矩形区域。
 
-- clipOp是裁剪方式，包括交集（INTERSECT）和差集（DIFFERENCE），具体可见[ClipOp](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#clipop12)。
+- clipOp是裁剪方式，包括交集（INTERSECT）和差集（DIFFERENCE），具体可见[ClipOp/apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#clipop12)。
 
 - doAntiAlias表示是否需要抗锯齿处理，如果为true则启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理，如果为false则不开启。
 
@@ -104,7 +104,7 @@ canvas.detachBrush();
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -216,7 +216,7 @@ canvas.detachBrush();
 
 ### 接口说明
 
-画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing.Canvas/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |

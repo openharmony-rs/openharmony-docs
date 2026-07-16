@@ -17,29 +17,29 @@
 
 **签名**
 
-1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，[打开资源](huks-open-close-resource-ndk.md#打开资源)后完成PIN码认证。
+1. 通过证书管理系统能力提供的[openAuthorizeDialog/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，[打开资源](huks-open-close-resource-ndk.md#打开资源)后完成PIN码认证。
 
 2. 指定待签名的明文数据。
 
-3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入明文数据，properties传入算法参数配置。
+3. 获取属性参数[HuksOptions/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入明文数据，properties传入算法参数配置。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+4. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取签名signature。
+5. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取签名signature。
 
 **验签**
 
-1. 通过证书管理系统能力提供的[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后[打开资源](huks-open-close-resource-ndk.md#打开资源)。
+1. 通过证书管理系统能力提供的[openAuthorizeDialog/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 获取待验证的签名。
 
-3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入签名signature，properties传入算法参数配置。
+3. 获取属性参数[HuksOptions/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入签名signature，properties传入算法参数配置。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+4. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新密钥会话。
+5. 调用[updateSession/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新密钥会话。
 
-6. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，验证签名。
+6. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，验证签名。
 
 ## 开发案例
 

@@ -8,7 +8,7 @@
 
 ## 通过 ArkTS 接口获取并访问公共目录
 
-目录环境能力接口（[ohos.file.environment](../reference/apis-core-file-kit/js-apis-file-environment.md)）提供获取公共目录路径的能力，支持三方应用在公共文件用户目录下进行文件访问操作。
+目录环境能力接口（[ohos.file.environment/apis-core-file-kit/js-apis-file-environment.md)）提供获取公共目录路径的能力，支持三方应用在公共文件用户目录下进行文件访问操作。
 
  **约束限制**
  - 使用此方式，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain，当前仅支持2in1设备。
@@ -130,7 +130,7 @@
 
 ## 通过 C/C++ 接口获取并使用公共目录
 
-除了通过ArkTS访问公共目录的方式，也可通过C/C++接口进行目录访问，具体可以参考 [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
+除了通过ArkTS访问公共目录的方式，也可通过C/C++接口进行目录访问，具体可以参考 [oh_environment.h/apis-core-file-kit/capi-oh-environment-h.md)。
 
  **约束限制**
  - 使用此接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain。
@@ -138,7 +138,7 @@
 
 ### 接口说明
 
-接口的详细说明，请参考[oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
+接口的详细说明，请参考[oh_environment.h/apis-core-file-kit/capi-oh-environment-h.md)。
 
 | 接口名称                                                                 | 描述                           |
 | ------------------------------------------------------------------------ | ------------------------------ |

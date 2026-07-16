@@ -7,11 +7,11 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-当页面信息较多时，为了让用户能够聚焦于当前显示的内容，需要对页面内容进行分类，提高页面空间利用率。[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)组件可以在一个页面内快速实现视图内容的切换，一方面提升查找信息的效率，另一方面精简用户单次获取到的信息量。
+当页面信息较多时，为了让用户能够聚焦于当前显示的内容，需要对页面内容进行分类，提高页面空间利用率。[Tabs/apis-arkui/arkui-ts/ts-container-tabs.md)组件可以在一个页面内快速实现视图内容的切换，一方面提升查找信息的效率，另一方面精简用户单次获取到的信息量。
 
 ## 基本布局
 
-  Tabs组件的页面组成包含两个部分，分别是[TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)和[TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar)。TabContent是内容页，TabBar是导航页签栏，页面结构如下图所示，根据不同的导航类型，布局会有区别，可以分为底部导航、顶部导航、侧边导航，其导航栏分别位于底部、顶部和侧边。
+  Tabs组件的页面组成包含两个部分，分别是[TabContent/apis-arkui/arkui-ts/ts-container-tabcontent.md)和[TabBar/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar)。TabContent是内容页，TabBar是导航页签栏，页面结构如下图所示，根据不同的导航类型，布局会有区别，可以分为底部导航、顶部导航、侧边导航，其导航栏分别位于底部、顶部和侧边。
 
   **图1** Tabs组件布局示意图  
 
@@ -98,7 +98,7 @@ Tabs() {
 ![底部导航](figures/底部导航.gif)
 
 
-导航栏位置使用Tabs的[barPosition](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabsoptions15)属性进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
+导航栏位置使用Tabs的[barPosition/apis-arkui/arkui-ts/ts-container-tabs.md#tabsoptions15)属性进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
 
 <!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
@@ -110,7 +110,7 @@ Tabs({ barPosition: BarPosition.End }) {
 }
 ```
 
-底部导航栏可通过设置TabContent的[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例8（设置底部页签使用symbol图标）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例8设置底部页签使用symbol图标)。
+底部导航栏可通过设置TabContent的[BottomTabBarStyle/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例8（设置底部页签使用symbol图标）/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例8设置底部页签使用symbol图标)。
 
 
 ## 顶部导航
@@ -142,7 +142,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![侧边导航](figures/侧边导航.png)
 
 
-实现侧边导航栏需要将Tabs的[vertical](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#vertical)属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
+实现侧边导航栏需要将Tabs的[vertical/apis-arkui/arkui-ts/ts-container-tabs.md#vertical)属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
 
 
 
@@ -162,9 +162,9 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 >**说明：**
 >
-> - vertical为false时，tabbar的宽度默认为撑满屏幕的宽度，需要设置[barWidth](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barwidth)为合适值。
+> - vertical为false时，tabbar的宽度默认为撑满屏幕的宽度，需要设置[barWidth/apis-arkui/arkui-ts/ts-container-tabs.md#barwidth)为合适值。
 >
-> - vertical为true时，tabbar的高度默认为实际内容的高度，需要设置[barHeight](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barheight)为合适值。
+> - vertical为true时，tabbar的高度默认为实际内容的高度，需要设置[barHeight/apis-arkui/arkui-ts/ts-container-tabs.md#barheight)为合适值。
 
 
 ## 限制导航栏的滑动切换
@@ -176,7 +176,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![限制导航](figures/限制导航.gif)
 
 
-控制滑动切换的属性为[scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable)，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
+控制滑动切换的属性为[scrollable/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable)，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
@@ -213,7 +213,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![固定导航](figures/固定导航.gif)
 
 
-Tabs的[barMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barmode10)属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
+Tabs的[barMode/apis-arkui/arkui-ts/ts-container-tabs.md#barmode10)属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
 
 <!-- @[fixed_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/FixedTabBar.ets) -->
 
@@ -312,7 +312,7 @@ TabContent() {
 
 ![内容页和页签不联动](figures/tabcontent_tabbar_not_sync.gif)
 
-从API version 18开始，支持使用Tabs提供的[onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
+从API version 18开始，支持使用Tabs提供的[onSelected/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
 
 <!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
 
@@ -382,7 +382,7 @@ export struct ContentPageNoAndTabLinkage {
 
 ![内容页和页签联动](figures/tabcontent_tabbar_sync.gif)
 
-若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用[TabsController](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscontroller)，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
+若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用[TabsController/apis-arkui/arkui-ts/ts-container-tabs.md#tabscontroller)，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
 <!-- @[switch_the_tab_specific_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
@@ -435,7 +435,7 @@ export struct ContentPageNoAndTabLinkage {
 
 ![切换指定页签](figures/TabsChange.gif)
 
-开发者可以通过Tabs组件的[onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12)接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
+开发者可以通过Tabs组件的[onContentWillChange/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12)接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
   
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
@@ -461,7 +461,7 @@ Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.
 
 >  **说明：** 
 >
-> 弹窗只适用于底部页签[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)。
+> 弹窗只适用于底部页签[BottomTabBarStyle/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)。
 
 **图14** 在适老化场景下通过长按底部页签显示适老化弹窗。
 
@@ -632,7 +632,7 @@ export struct AgeFriendlyTabs {
 
 ## 控制页面缓存数
 
-从API version 19开始，开发者可以通过[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)接口，设置子组件的最大缓存个数和缓存模式。默认情况下Tabs创建时会一次性预加载所有TabContent，而且已加载的页面不会释放，可能会带来性能内存问题。此时可以设置[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)属性控制缓存的页面数量，设置此属性后不会进行页面预加载，使用懒加载机制(仅切换到页面时才加载)，当切换页面时根据所设置的[TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19枚举说明)决定保留缓存或者释放页面。
+从API version 19开始，开发者可以通过[cachedMaxCount/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)接口，设置子组件的最大缓存个数和缓存模式。默认情况下Tabs创建时会一次性预加载所有TabContent，而且已加载的页面不会释放，可能会带来性能内存问题。此时可以设置[cachedMaxCount/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)属性控制缓存的页面数量，设置此属性后不会进行页面预加载，使用懒加载机制(仅切换到页面时才加载)，当切换页面时根据所设置的[TabsCacheMode/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19枚举说明)决定保留缓存或者释放页面。
 
 >  **说明：** 
 >

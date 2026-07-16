@@ -10,7 +10,7 @@
 
 ## 上传应用文件
 
-开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，`request.agent.create`接口增加了设置代理地址的参数，支持设置自定义代理地址。
+开发者可以使用上传下载模块（[ohos.request/apis-basic-services-kit/js-apis-request.md)）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，`request.agent.create`接口增加了设置代理地址的参数，支持设置自定义代理地址。
 
 > **说明：**
 >
@@ -143,7 +143,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 
 ## 下载网络资源文件至应用文件目录
 
-开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在api12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
+开发者可以使用上传下载模块（[ohos.request/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在api12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
 
 > **说明：**
 >
@@ -229,7 +229,7 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 ```
 
 ## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
+开发者可以使用[ohos.request/apis-basic-services-kit/js-apis-request.md)的[request.agent.create/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
 > **说明：**
 >
@@ -237,7 +237,7 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 
 ### 下载文档类文件
 
-开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+开发者可以通过调用[DocumentViewPicker/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
@@ -308,7 +308,7 @@ async docFileAgentTask(url: string, fileName: string, callback: (progress: numbe
 
 ### 下载音频类文件
 
-开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+开发者可以通过调用[AudioViewPicker/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 <!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
 
@@ -373,7 +373,7 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 
 ### 下载图片或视频类文件
 
-开发者可以通过调用PhotoAccessHelper[模块描述](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+开发者可以通过调用PhotoAccessHelper[模块描述/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[createAsset()/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 需要权限：[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
@@ -480,7 +480,7 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
 
 ## 添加任务速度限制与超时限制
 
-开发者可以使用[ohos.request (上传下载)](../../reference/apis-basic-services-kit/js-apis-request.md)模块中的接口上传本地文件或下载网络资源文件。为方便对任务速度及时长进行限制，分别在API version 18中增加了[setMaxSpeed](../../reference/apis-basic-services-kit/js-apis-request.md#setmaxspeed18)接口，支持用户设置任务的最高速度限制；在API version 20的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10-1)接口中增加了最低限速及超时参数，支持用户自定义最低速度限制以及超时时间。
+开发者可以使用[ohos.request (上传下载)/apis-basic-services-kit/js-apis-request.md)模块中的接口上传本地文件或下载网络资源文件。为方便对任务速度及时长进行限制，分别在API version 18中增加了[setMaxSpeed/apis-basic-services-kit/js-apis-request.md#setmaxspeed18)接口，支持用户设置任务的最高速度限制；在API version 20的[request.agent.create/apis-basic-services-kit/js-apis-request.md#requestagentcreate10-1)接口中增加了最低限速及超时参数，支持用户自定义最低速度限制以及超时时间。
 
 以下是对下载任务进行速度限制与超时限制的方式的示例代码演示：
 
@@ -593,11 +593,11 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ## 使用WantAgent实现通知栏跳转功能
 
-从API version 22开始，开发者可以使用[wantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)接口与上传下载模块结合，实现点击任务通知后跳转至应用指定页面的功能。
+从API version 22开始，开发者可以使用[wantAgent/apis-ability-kit/js-apis-app-ability-wantAgent.md)接口与上传下载模块结合，实现点击任务通知后跳转至应用指定页面的功能。
 
 ### 功能介绍
 
-通过在下载任务的配置[request.agent.Notification](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentnotification15)中设置wantAgent参数，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
+通过在下载任务的配置[request.agent.Notification/apis-basic-services-kit/js-apis-request.md#requestagentnotification15)中设置wantAgent参数，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
 
 ### 示例代码
 
