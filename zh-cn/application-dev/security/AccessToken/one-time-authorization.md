@@ -31,25 +31,23 @@
 - 模糊位置：["ohos.permission.APPROXIMATELY_LOCATION"](permissions-for-all-user.md#ohospermissionapproximately_location)
 - 位置：["ohos.permission.LOCATION"](permissions-for-all-user.md#ohospermissionlocation)
 - 后台位置：["ohos.permission.LOCATION_IN_BACKGROUND"](permissions-for-all-user.md#ohospermissionlocation_in_background)
-- 麦克风：["ohos.permission.MICROPHONE"](permissions-for-all-user.md#ohospermissionmicrophone)
-- 相机：["ohos.permission.CAMERA"](permissions-for-all-user.md#ohospermissioncamera)
 
 ## 使用限制
 
 - 当用户点击“允许本次使用”按钮后，应用将获得临时权限。
-  - **相机与麦克风权限：** 临时权限将一直保持，直到应用彻底退出（进程销毁）后才会收回。在此期间，应用切换至后台或前台均不影响权限状态。
 
-  - **其他权限（剪切板/位置/模糊位置/后台位置）：** 在应用处于以下状态时，应用的临时权限会持续保留：
+  - 当应用切换至前台、应用展开卡片且处于当前屏幕可见即[卡片可见](../../form/arkts-ui-widget-lifecycle.md)或者[设置后台长时任务](../../task-management/continuous-task.md)的时候（当前仅支持定位导航长时任务），应用的临时权限会一直保持。
 
-      - 应用处于前台活跃状态。
-      - 应用展开卡片，且[卡片处于当前屏幕可见](../../form/arkts-ui-widget-lifecycle.md)。
-      - 应用使用定位导航类[后台长时任务](../../task-management/continuous-task.md)，可保留位置/模糊位置/后台位置权限。
+     其他情况下启动计时器，十秒后取消临时权限。若需再次获取，必须重新授予。
 
-      除上述状态外，系统将启动 10 秒倒计时，计时结束后，系统将自动取消临时授权。临时授权被取消后，若需再次获取该权限，必须重新向用户弹窗申请授权。
+  - 当应用切换到后台，开始十秒计时，如果在计时期间，应用处于卡片可见状态或者设置了后台长时任务，计时停止。
+  
+      当卡片不再可见或长时任务结束时，再次启动十秒计时，计时结束后，取消临时授权。
 
-     <!--RP2-->
-     如下图样例所示，相机应用处于卡片可见状态：
+      <!--RP2-->
+      如下图样例所示，相机应用处于卡片可见状态：
 
-     ![alt text](figures/form_visible.png)
-     <!--RP2End-->
-- 当用户在位置的权限设置中选择“每次询问”时，应用将获得模糊位置和位置临时权限。取消临时授权的操作与此相同。
+      ![alt text](figures/form_visible.png)
+      <!--RP2End-->
+
+- 当用户在权限设置中选择“每次询问”时，应用将获得模糊位置和位置临时权限。取消临时授权的操作与此相同。
