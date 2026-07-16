@@ -4332,7 +4332,7 @@ ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined)
 
 | 参数名  | 类型   | 必填   | 说明 |
 | ---- | ------ | ---- | ---------------------|
-| config | ArkTS-Dyn: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12)<br/>ArkTS-Sta: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) \|  undefined | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean类型，是否开启该功能，默认为false），shouldOverlay（boolean类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为false）。<br>ArkTS-Dyn：传入 undefined 或 null 时为`{enable: false, shouldOverlay: false}`。<br>ArkTS-Sta：传入 undefined 时为`{enable: false, shouldOverlay: false}`。|
+| config | ArkTS-Dyn: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12)<br/>ArkTS-Sta: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) \|  undefined | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean 类型，是否开启该功能，默认为 false），shouldOverlay（boolean 类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为 false）。<br>ArkTS-Dyn：传入 undefined 或 null 时为`{enable: false, shouldOverlay: false}`。<br>ArkTS-Sta：传入 undefined 时为`{enable: false, shouldOverlay: false}`。|
 
   **示例：**
 
