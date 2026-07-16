@@ -65,14 +65,41 @@ let audioVolumeManager = audioManager.getVolumeManager();
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  // 获取指定流的音量。
-  let streamVolume = audioVolumeManager.getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  // ...
-  // 获取指定流的最小音量。
-  let minVolume = audioVolumeManager.getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
 
-  // 获取指定流的最大音量。
-  let maxVolume = audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  try {
+    // 获取指定音频流的音量。
+    let volume = audioVolumeManager.getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+    console.info(`Succeeded in getting volume by stream. Volume: ${volume}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get volume by stream. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+  // ...
+
+  try {
+    // 获取指定音频流的最小音量。
+    let volume = audioVolumeManager.getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+    console.info(`Succeeded in getting min volume by stream. Volume: ${volume}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get min volume by stream. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+  // ...
+
+  try {
+    // 获取指定音频流的最大音量。
+    let volume = audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+    console.info(`Succeeded in getting max volume by stream. Volume: ${volume}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get max volume by stream. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
 ```
 
 ### 监听系统音量变化
