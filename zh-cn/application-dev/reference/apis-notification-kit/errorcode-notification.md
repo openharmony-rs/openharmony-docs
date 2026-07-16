@@ -62,7 +62,7 @@ Failed to connect to the service.
 
 **处理步骤**
 
-重启系统。
+等待一段时间后重试，或检查通知服务运行状态，必要时重启通知服务。
 
 ## 1600004 通知开关关闭
 
@@ -98,9 +98,9 @@ Notification slot disabled.
 
 **处理步骤**
 
-1、通知设置里查看应用是否有该类型渠道，没有需要新增。
+1. 通知设置里查看应用是否有该类型渠道，没有需要新增。
 
-2、通知设置里查看应用该类型渠道状态，要保持开启状态。
+2. 通知设置里查看应用该类型渠道状态，要保持开启状态。
 
 <!--Del-->
 ## 1600006 通知删除失败
@@ -156,7 +156,7 @@ The user does not exist.
 
 **处理步骤**
 
-检查传入的用户信息。
+确认传入的用户信息是否正确。
 
 ## 1600009 通知发布频度超过限制
 
@@ -226,9 +226,9 @@ No memory space.
 
 **可能原因**
 
-内存空间不足。
+1. 内存空间不足。
 
-内存申请出现错误。
+2. 内存申请出现错误。
 
 **处理步骤**
 
@@ -431,7 +431,7 @@ The specified bundle is invalid.
 检查包信息是否正确。
 <!--DelEnd-->
 
-## 1600023 app NotificationSubscriberExtensionAbility未实现
+## 1600023 应用未实现NotificationSubscriberExtensionAbility
 
 **错误信息**
 
@@ -439,7 +439,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 **错误描述**
 
-应用未实现NotificationSubscriberExtensionAbility。
+应用未实现NotificationSubscriberExtensionAbility，将返回该错误码。
 
 **可能原因**
 
