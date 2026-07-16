@@ -23,21 +23,20 @@
 <!-- @[setBluetoothAndNearlinkPreferredRecordCategory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
-
-let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioManager的方法创建AudioSessionManager实例.
-
 // ...
-  audioSessionManager.setBluetoothAndNearlinkPreferredRecordCategory(audio.BluetoothAndNearlinkPreferredRecordCategory
-    .PREFERRED_LOW_LATENCY).then(() => {
+
+let audioManager = audio.getAudioManager();
+let audioSessionManager = audioManager.getSessionManager();
+// ...
+
+  audioSessionManager.setBluetoothAndNearlinkPreferredRecordCategory(audio.BluetoothAndNearlinkPreferredRecordCategory.
+    PREFERRED_DEFAULT).then(() => {
     console.info('Succeeded in setting bluetooth and nearlink preferred record category.');
     // ...
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set bluetooth and nearlink preferred record category. Code: ${err.code},
-      message: ${err.message}`);
+    console.error(`Failed to set bluetooth and nearlink preferred record category. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
 ```
