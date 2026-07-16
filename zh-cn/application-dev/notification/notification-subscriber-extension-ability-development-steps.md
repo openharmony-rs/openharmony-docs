@@ -69,7 +69,7 @@
    }
    ```
 6. 在应用的string.json文件中添加
-   ```json
+   ``` JSON5
      {
        "name": "NotificationSubscriberExtAbility_desc",
        "value": "description"
