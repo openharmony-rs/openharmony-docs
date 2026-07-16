@@ -300,7 +300,8 @@
          description: 'description'
        };
        let searchPlayInfo: avMusicTemplate.SearchPlayInfo = {
-         musicInfo: searchPlayMusicInfo
+         musicInfo: searchPlayMusicInfo,
+         videoInfo: undefined
        };
        try {
          let operResult: avMusicTemplate.OperResult | undefined =
