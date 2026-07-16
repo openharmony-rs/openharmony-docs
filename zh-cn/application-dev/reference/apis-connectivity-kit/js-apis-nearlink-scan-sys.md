@@ -1,5 +1,5 @@
 # @ohos.nearlink.scan (星闪扫描能力)(系统接口)
-<!--Kit: NearLink Kit-->
+<!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
@@ -14,7 +14,7 @@
 
 > **说明：**
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@hms.nearlink.scan(星闪扫描能力)](js-apis-nearlink-scan.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.scan(星闪扫描能力)](js-apis-nearlink-scan.md)。
 
 ## 导入模块
 
