@@ -612,7 +612,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br>默认返回字体颜色。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br>默认值：SuperscriptStyle.NORMAL。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 获取可变字体的属性数组。<br>默认值：undefined，表示未设置可变字体的属性。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 获取属性字符串的文本描边拐角样式。<br>默认值：StrokeJoinStyle.MITER_JOIN。<br>StrokeJoinStyle.MITER_JOIN表示尖角连接，拐角处为尖锐拐角；StrokeJoinStyle.ROUND_JOIN表示圆角连接，拐角处为圆滑过渡；StrokeJoinStyle.BEVEL_JOIN表示斜角连接，拐角处为斜切处理。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 获取属性字符串的文本描边拐角样式。<br>默认值：StrokeJoinStyle.MITER_JOIN。<br>StrokeJoinStyle.MITER_JOIN表示尖角连接，拐角处为尖锐拐角；StrokeJoinStyle.ROUND_JOIN表示圆角连接，拐角处为圆滑过渡；StrokeJoinStyle.BEVEL_JOIN表示斜角连接，拐角处为斜切处理。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 `fontWeight`参数与返回值的关系如下：
@@ -666,7 +666,7 @@ constructor(value?: TextStyleInterface)
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br>默认值为字体颜色，设置异常值时取字体颜色。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br>默认值：SuperscriptStyle.NORMAL<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 否 | 是 | 可变字体的属性。<br>默认值：undefined，表示未设置可变字体的属性。<br>fontVariations属性的优先级高于fontWeight。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。具体枚举及说明请参考StrokeJoinStyle。<br>默认值：StrokeJoinStyle.MITER_JOIN。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。具体枚举及说明请参考StrokeJoinStyle。<br>默认值：StrokeJoinStyle.MITER_JOIN。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## GestureStyle
 
@@ -1225,7 +1225,7 @@ invalidate(): void
 | textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br>一个段落下使用同一字号必须同时设置行高[lineHeight](ts-basic-components-text.md#lineheight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](#textstyle)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](ts-text-common.md#textverticalalign20)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  是  |  是  | 获取文本方向。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 获取文本着色器效果。<br>**说明：** 该接口与[TextStyleInterface](#textstyleinterface对象说明)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[TextStyleInterface](#textstyleinterface对象说明)中的fontColor。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 获取文本着色器效果。<br>**说明：** 该接口与[TextStyleInterface](#textstyleinterface对象说明)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[TextStyleInterface](#textstyleinterface对象说明)中的fontColor。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | tailIndents | Array\<number>   | 是    | 是    | 获取属性字符串文本段落的文本尾部缩进距离。<br>单位：[vp](ts-pixel-units.md#基本像素单位) <br>取值范围：[0, INT32_MAX]<br>值为0时不做尾部缩进。<br>**说明：** tailIndents数组在同一段落内的每一行按数组索引依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
@@ -1268,7 +1268,7 @@ constructor(value?: ParagraphStyleInterface)
 | textVerticalAlign<sup>20+</sup>   | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是  | 设置文本段落在垂直方向的对齐方式。<br>默认值：TextVerticalAlign.BASELINE<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 是    | 设置文本段落的自定义缩进。不支持百分比。<br>默认值：0<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br>默认值：TextDirection.DEFAULT<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br>**默认效果：** 不传入时不应用着色器效果，使用fontColor设置的颜色。<br>该接口与[TextStyleInterface](#textstyleinterface对象说明)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[TextStyleInterface](#textstyleinterface对象说明)中的fontColor。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br>**默认效果：** 不传入时不应用着色器效果，使用fontColor设置的颜色。<br>该接口与[TextStyleInterface](#textstyleinterface对象说明)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[TextStyleInterface](#textstyleinterface对象说明)中的fontColor。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | tailIndents | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;   | 否  | 是    | 设置文本段落的文本尾部缩进。不支持百分比。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。默认值：0<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## UserDataSpan
