@@ -288,7 +288,7 @@ async function fetchFramesByTimesDemo() {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
-        console.info(`fetchFramesByTimes callback failed, code: ${error.code} message: ${error.message}`);
+        console.info(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
