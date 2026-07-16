@@ -25,8 +25,8 @@
 | [goBack](#goback) | 后退 | [GoBackCommand](#gobackcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 返回上一个历史页面。 |
 | [goForward](#goforward) | 前进 | [GoForwardCommand](#goforwardcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 前进到下一个历史页面。 |
 | [navigate](#navigate) | 导航到指定URL | [NavigateCommand](#navigatecommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 打开指定URL。 |
-| [addPageAnnotation](#addpageannotation) | 添加页面标注 | [AddPageAnnotationCommand](#addpageannotationcommand) | [PageAnnotationResult](#pageannotationresult) | 根据节点标识在当前页面视口绘制标注框和数字标签。 |
-| [removePageAnnotation](#removepageannotation) | 取消页面标注 | [RemovePageAnnotationCommand](#removepageannotationcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 清理当前页面标注。 |
+| [addPageAnnotation](#addpageannotation) | 添加页面标注 | [AddPageAnnotationCommand](#addpageannotationcommand) | [PageAnnotationResult](#pageannotationresult) | 清理已有页面标注后，根据节点标识在顶层页面当前视口绘制标注框和数字标签。 |
+| [removePageAnnotation](#removepageannotation) | 清理页面标注 | [RemovePageAnnotationCommand](#removepageannotationcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 清理当前页面的标注层。 |
 | [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | JSON字符串 | 返回JSON字符串，图片数据为Base64编码。支持获取当前网页视口截图或视口内目标元素截图。 |
 | [getZoomLevel](#getzoomlevel) | 获取网页缩放比例 | [GetZoomLevelCommand](#getzoomlevelcommand) | [ZoomLevelResult](#zoomlevelresult) | 获取当前网页的缩放比例。 |
 
@@ -41,7 +41,9 @@
 
 ## 通用执行结果
 
-`getUrlHistory`、`goBack`、`goForward`和`navigate`返回[CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult)格式。成功且无额外结果时返回`{"code":10,"message":"success"}`；成功且需要返回结果时追加`result`字段；命令级失败时返回`{"code":错误码,"message":"错误描述"}`。
+`getUrlHistory`、`goBack`、`goForward`、`navigate`和`removePageAnnotation`返回[CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult)格式。`goBack`、`goForward`、`navigate`和`removePageAnnotation`成功时返回`{"code":10,"message":"success"}`；`getUrlHistory`成功时在此基础上追加`result`字段；命令级失败时返回`{"code":错误码,"message":"错误描述"}`。
+
+`addPageAnnotation`返回[PageAnnotationResult](#pageannotationresult)格式。
 
 ## getFullDom
 
@@ -477,11 +479,11 @@
 
 | 字段 | 子字段 | 类型 | 说明 |
 | ---- | ---- | ---- | ---- |
-| result | currentIndex | number | 当前历史项下标。 |
+| result | currentIndex | number | 当前历史项在URL历史列表中的索引。未找到当前历史项时为`-1`。 |
 | result | canGoBack | boolean | 当前页面是否可后退。 |
 | result | canGoForward | boolean | 当前页面是否可前进。 |
 | result | entries | Array\<Object> | 历史项列表。 |
-| result.entries | index | number | 历史项下标。 |
+| result.entries | index | number | 该历史项在URL历史列表中的索引。当前历史项的该字段值与`currentIndex`相同。 |
 | result.entries | url | string | 历史项URL。 |
 | result.entries | title | string | 历史项标题。 |
 
@@ -703,13 +705,13 @@ URL不合法时返回：
 
 ## addPageAnnotation
 
-根据节点标识在当前页面视口绘制标注框和数字标签。该命令会先清理已有页面标注，再根据`elementList`中的节点标识获取元素位置，并在top frame中绘制固定位置的overlay。
+清理已有页面标注后，根据`elementList`中的节点标识获取元素位置，并在顶层页面当前视口绘制固定定位的标注框和数字标签。
 
 > **说明：**
 >
 > - 节点标识可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取，格式为`frameToken|documentScopeToken|domNodeId`。
 > - 标注只反映调用时的当前视口位置。页面滚动后标注不会自动重新计算位置，如需更新位置，应重新获取节点标识并再次调用该命令。
-> - overlay使用固定定位，位于页面最上层，且不拦截页面输入事件。
+> - 标注层采用固定定位，显示在页面内容上方，且不拦截页面输入事件。
 
 ### AddPageAnnotationCommand
 
@@ -743,7 +745,7 @@ URL不合法时返回：
 | params | - | - | Object | 是 | 命令参数。缺失或不是Object时返回`{"code":110,"message":"params is invalid"}`。 |
 | params | - | elementList | Array\<string> | 是 | 需要标注的节点标识列表，必须为非空字符串数组。缺失时返回`{"code":391,"message":"missing elementList"}`；不是数组、为空数组、数组项不是字符串或为空字符串时返回`{"code":392,"message":"invalid elementList"}`。 |
 | params | - | style | Object | 否 | 标注样式。未传入或字段无效时使用默认值。 |
-| style | - | maxMarks | number | 否 | 最大标注rect数量，默认值为`350`，上限为`1000`。取值小于或等于`0`或不是number时使用默认值；取值大于或等于`1000`时按`1000`生效；正数小数向下取整，取整后小于`1`时按`1`生效。 |
+| style | - | maxMarks | number | 否 | 最大标注矩形数量，默认值为`350`，上限为`1000`。取值小于或等于`0`或不是number时使用默认值；取值大于或等于`1000`时按`1000`生效；正数小数向下取整，取整后小于`1`时按`1`生效。 |
 | style | border | color | string | 否 | 标注框颜色，支持`#RGB`、`#RRGGBB`、`#RRGGBBAA`格式，默认值为`#dc2626`。 |
 | style | border | width | number | 否 | 标注框线宽，默认值为`1`，取值范围为`1`到`8`。超出范围时裁剪到边界值，不是number时使用默认值。 |
 | style | label | fontSize | number | 否 | 数字标签字号，默认值为`11`，取值范围为`8`到`32`。超出范围时裁剪到边界值，不是number时使用默认值。 |
@@ -754,11 +756,11 @@ URL不合法时返回：
 ### 执行规则
 
 - 标注时会获取元素在当前视口中的一个或多个布局矩形；当元素没有正面积布局矩形时，会尝试使用元素边界矩形。
-- 命中检测使用rect水平中心点和高度`3/5`处的采样点。采样点命中的元素必须是目标元素或其后代，否则该rect不绘制。
-- iframe内元素会折算到top frame视口坐标后绘制。
-- rect会裁剪到当前视口；完全不在视口内、裁剪后总可见面积小于`20px²`、被遮挡、找不到元素或无法折算坐标时，该元素不绘制，并计入`missingElementIds`。
-- 一个元素可能对应多个rect，标注框按rect绘制；数字标签按元素绘制，文本为实际绘制顺序，从`1`开始。
-- `maxMarks`限制的是rect数量，不是元素数量。达到上限后返回`truncated`为`true`，未继续处理的元素不保证计入`missingElementIds`。
+- 命中检测使用矩形水平中心点和高度`3/5`处的采样点。采样点命中的元素必须是目标元素或其后代，否则该矩形不绘制。
+- 内嵌框架中的元素会折算到顶层页面视口坐标后绘制。
+- 矩形会裁剪到当前视口；完全不在视口内、裁剪后总可见面积小于`20px²`、被遮挡、找不到元素或无法折算坐标时，该元素不绘制，并计入`missingElementIds`。
+- 一个元素可能对应多个矩形，标注框按矩形绘制；数字标签按元素绘制，文本为实际绘制顺序，从`1`开始。
+- `maxMarks`限制的是矩形数量，不是元素数量。达到上限后返回`truncated`为`true`，未继续处理的元素不保证计入`missingElementIds`。
 
 ### PageAnnotationResult
 
@@ -779,7 +781,7 @@ URL不合法时返回：
 | ---- | ---- | ---- |
 | code | number | 执行结果码。`10`表示命令执行成功。其他取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
 | message | string | 执行结果描述。成功时为`"success"`。 |
-| renderedCount | number | 实际绘制出至少一个有效rect的元素数量。 |
+| renderedCount | number | 实际绘制出至少一个有效矩形的元素数量。 |
 | truncated | boolean | 是否因达到`maxMarks`限制而截断。 |
 | missingElementIds | Array\<string> | 格式正确但未绘制成功的节点标识列表。 |
 | invalidElementIds | Array\<string> | 格式非法的节点标识列表。 |
@@ -832,13 +834,13 @@ URL不合法时返回：
 | 11 | 标注命令执行失败。 |
 | 110 | `params`缺失或不是Object。 |
 | 130 | 标注命令执行超时。 |
-| 132 | browser、main frame或ArkWeb frame为空。 |
+| 132 | 浏览器、主页面框架或ArkWeb页面框架为空。 |
 | 391 | `elementList`缺失。 |
 | 392 | `elementList`不是数组、为空数组、数组项不是字符串或为空字符串。 |
 
 ## removePageAnnotation
 
-清理当前页面标注overlay。
+清理当前页面的标注层。
 
 ### RemovePageAnnotationCommand
 
@@ -869,9 +871,9 @@ URL不合法时返回：
 
 | 错误码 | 触发条件 |
 | ---- | ---- |
-| 11 | 当前页面不存在可清理的标注overlay，或取消标注命令执行失败。 |
-| 130 | 取消标注命令执行超时。 |
-| 132 | browser、main frame或ArkWeb frame为空。 |
+| 11 | 当前页面不存在可清理的标注层，或清理标注命令执行失败。 |
+| 130 | 清理标注命令执行超时。 |
+| 132 | 浏览器、主页面框架或ArkWeb页面框架为空。 |
 ## screenCapture
 
 获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。

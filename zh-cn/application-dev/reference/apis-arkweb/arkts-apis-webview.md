@@ -25,9 +25,9 @@ WebView模块是HarmonyOS ArkWeb框架提供的Web控制能力模块，用于在
 该模块提供以下Web控制相关的常用功能：
 
 - [AdsBlockManager](./arkts-apis-webview-AdsBlockManager.md)：广告过滤配置。
-- [AIPageCommand](./arkts-apis-webview-AIPageCommand.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持的DOM获取和页面导航JSON命令协议。
-- [AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持的页面操控JSON命令协议。
-- [AIPageResult](./arkts-apis-webview-AIPageResult.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)命令执行结果格式和结果码说明。
+- [AIPageCommand](./arkts-apis-webview-AIPageCommand.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持DOM获取和页面导航的JSON命令协议。
+- [AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持页面操控的JSON命令协议。
+- [AIPageResult](./arkts-apis-webview-AIPageResult.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)命令执行结果的格式和结果码说明。
 - [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md)：前进后退缓存配置。
 - [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md)：设置前进后退缓存配置所支持的特性。
 - [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)：地理位置权限配置。

@@ -29,7 +29,7 @@
 | [dispatchKeyEvent](#dispatchkeyevent) | 注入键盘事件 | [DispatchKeyEventCommand](#dispatchkeyeventcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 注入键盘事件。 |
 | [input](#input) | 设置输入框内容 | [InputCommand](#inputcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置指定`input`元素的值。 |
 | [scroll](#scroll命令) | 页面滚动 | [ScrollCommand](#scrollcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 根据坐标点或节点标识滚动页面。 |
-| [select](#select) | 选中下拉选项 | [SelectCommand](#selectcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 选中`<select>`标签的选项。 |
+| [select](#select) | 选中下拉选项 | [SelectCommand](#selectcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 选中指定的`<select>`元素选项。 |
 | [uploadFile](#uploadfile) | 文件上传 | [UploadFileCommand](#uploadfilecommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置`<input type='file'>`标签的文件列表。 |
 | [setZoomLevel](#setzoomlevel) | 设置网页缩放比例 | [SetZoomLevelCommand](#setzoomlevelcommand) | [CommandResult](./arkts-apis-webview-AIPageResult.md#commandresult) | 设置当前网页的缩放比例，等价于CTRL+Wheel缩放。 |
 
@@ -1068,7 +1068,7 @@
 
 ## select
 
-选中select元素的下拉选项。通过XPath或节点标识定位select元素，按索引或值选中option。
+选中指定的`<select>`元素选项。通过XPath或节点标识定位`<select>`元素，按索引或值选中`<option>`元素。
 
 ### SelectCommand
 
