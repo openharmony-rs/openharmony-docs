@@ -885,8 +885,6 @@ offLocationChange(callback?: Callback\<Location\>): void
 
 **起始版本：** 26.0.0
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -903,7 +901,6 @@ offLocationChange(callback?: Callback\<Location\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call ${geoLocationManager.offLocationChange} due to limited device capabilities. |
 | 3301000 | The location service is unavailable. |
@@ -3708,7 +3705,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION  
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -3771,8 +3768,6 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 **起始版本：** 26.0.0
   
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
-  
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
   
 **系统能力**：SystemCapability.Location.Location.Core
   
