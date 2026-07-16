@@ -4848,7 +4848,7 @@ offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback?: Callback<AudioSp
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和自适应空间音频渲染开关状态。不传入时，表示取消所有已注册的回调。 |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和自适应空间音频渲染开关状态。参数为空时，表示取消所有已注册的回调。 |
 
 **错误码：**
 
