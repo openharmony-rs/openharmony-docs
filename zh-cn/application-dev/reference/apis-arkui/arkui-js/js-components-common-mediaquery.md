@@ -25,7 +25,7 @@
 
 使用@media来引入查询语句，具体规则如下：
 
-```
+```ts
 @media [media-type] [and|not|only] [(media-feature)] {
   CSS-Code;
 }
@@ -44,13 +44,13 @@
 
 通过@import方式引入媒体查询，具体使用方法如下：
 
-```
+```ts
 @import url [media-type] [and|not|only] [(media-feature)];
 ```
 
 例如：
 
-```
+```ts
 @import '../common/style.css' screen and (min-width: 600) and (max-width: 1200);
 ```
 
