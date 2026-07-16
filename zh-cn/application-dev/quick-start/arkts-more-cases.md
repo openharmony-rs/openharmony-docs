@@ -1284,7 +1284,7 @@ foo.apply(obj);
 
 **建议改法1**
 
-使用类的方法实现,如果该方法被多个类使用，可以考虑采用继承的机制。
+使用类的方法实现，如果该方法被多个类使用，可以考虑采用继承的机制。
 
 <!-- @[no_standalone_this_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
