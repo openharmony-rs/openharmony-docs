@@ -297,21 +297,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-// 同一监听事件中,on方法和off方法传入callback参数一致,off方法取消对应on方法订阅的监听。
-let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
-  console.info(`reason of audioSessionStateChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
 
-  // 为UI收集信息
-  let callbackMsg = `reason of audioSessionStateChanged: ${currentOutputDeviceChangedEvent.changeReason} `;
-  if (globalCallbackUpdate) {
-    globalCallbackUpdate(callbackMsg);
-  }
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`Succeeded in using on or off function. CurrentOutputDeviceChangedEvent: ${JSON.stringify(currentOutputDeviceChangedEvent)}`);
+  // ...
 
   switch (currentOutputDeviceChangedEvent.changeReason) {
     case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
-      // 响应设备不可用事件,如果应用处于播放状态,应暂停播放,更新UX界面。
+      // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
       break;
     case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
       // 应用根据业务情况响应设备可用事件。
@@ -320,7 +316,7 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
       // 应用根据业务情况响应设备强选事件。
       break;
     case audio.AudioStreamDeviceChangeReason.REASON_SESSION_ACTIVATED:
-      // 应用根据业务情况响应audio session激活时的输出设备信息。
+      // 应用根据业务情况响应audioSession激活时的输出设备信息。
       break;
     case audio.AudioStreamDeviceChangeReason.REASON_STREAM_PRIORITY_CHANGED:
       // 应用根据业务情况响应其它更高优先级的音频流触发的设备变更事件。
@@ -331,12 +327,14 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
   }
 };
 // ...
-  audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
-  // ...
-  audioSessionManager.off('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
-  // ...
-  // 取消该事件的所有监听。
-  audioSessionManager.off('currentOutputDeviceChanged');
+
+  try {
+    audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
 ```
 
 <!--Del-->
