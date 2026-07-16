@@ -271,8 +271,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 <!-- @[getDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
-let deviceType = audioSessionManager.getDefaultOutputDevice();
-console.info(`getDefaultOutputDevice Success, deviceType: ${deviceType}`);
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+  try {
+    let deviceType = audioSessionManager.getDefaultOutputDevice();
+    console.info(`Succeeded in getting default output device. DeviceType: ${deviceType}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get default output device. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
 ```
 
 ### 监听输出设备变化
