@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
+formProvider模块提供了获取卡片信息、更新卡片、设置卡片刷新时间等能力。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定卡片的下一次更新时间，使用callback异步回调。
+设置指定卡片的下一次刷新时间，使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -33,7 +33,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。     |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -75,7 +75,7 @@ try {
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-设置指定卡片的下一次更新时间，使用Promise异步回调。
+设置指定卡片的下一次刷新时间，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +86,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | ArkTS-Dyn: number <br>ArkTS-Sta: int| 是   | 指定卡片多久之后刷新，取值范围：大于等于5，单位：min。     |
 
 **返回值：**
 

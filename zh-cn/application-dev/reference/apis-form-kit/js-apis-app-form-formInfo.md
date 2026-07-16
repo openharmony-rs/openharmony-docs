@@ -26,6 +26,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
+<<<<<<< HEAD
 | bundleName  | string               | 否    | 否     | 卡片所属包的Bundle名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | moduleName  | string               | 否    | 否     | 卡片所属模块的模块名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | abilityName | string               | 否    | 否     | 卡片所属的Ability名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
@@ -49,6 +50,31 @@ import { formInfo } from '@kit.FormKit';
 | isDynamic<sup>10+</sup>      | boolean               | 否    | 否     | 卡片是否为动态卡片。<br/>仅ArkTS卡片区分动静态卡片，JS卡片均为动态卡片。<br/>-&nbsp;true：为动态卡片。<br/>-&nbsp;false：为静态卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | transparencyEnabled<sup>11+</sup>      | boolean               | 否    | 否     | 卡片是否支持设置背景透明度。<br/>ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。<br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | supportedShapes<sup>12+</sup>    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** 1代表方形，2代表圆形。 |
+=======
+| bundleName  | string               | 否    | 否     | 卡片所属包的Bundle名称。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| moduleName  | string               | 否    | 否     | 卡片所属模块的模块名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName | string               | 否    | 否     | 卡片所属的Ability名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| name        | string               | 否    | 否     | 卡片名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| description | string               | 否    | 否     | 卡片描述。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| type        | [FormType](#formtype)             | 否    | 否     | 卡片类型。当前支持JS卡片、ArkTS卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| jsComponentName      | string               | 否    | 否     | JS卡片的组件名。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| colorMode<sup>(deprecated)</sup>  | [ColorMode](#colormodedeprecated) | 否    | 否     | 卡片颜色模式。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **说明：** <br> 从API version 9开始支持，从API version 20开始废弃。应用卡片需要支持深浅色两种显示模式，无替代接口。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 9 |
+| isDefault    | boolean      | 否    | 否     | 卡片是否是默认卡片。<br/>-&nbsp;true : 默认卡片。<br/>-&nbsp;false : 非默认卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| updateEnabled  | boolean               | 否    | 否     | 卡片是否使能更新。<br/>-&nbsp;true：表示支持周期性刷新。<br/>-&nbsp;false：表示不支持周期性刷新。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| formVisibleNotify  | boolean        | 否    | 否     | 卡片是否使能可见通知。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| scheduledUpdateTime        | string               | 否    | 否     | 卡片更新时间。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| formConfigAbility | string               | 否    | 否     | 卡片配置Ability。指定长按卡片弹出的选择框内，编辑选项所对应的Ability。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| updateDuration        | ArkTS-Dyn: number <br> ArkTS-Sta: int       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[0, 336]的整数。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultDimension  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否     | 卡片规格。具体可选规格参考[FormDimension](#formdimension)。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[1, 9]的整数，数值5从API version 9开始支持，从API version 20开始废弃。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| supportDimensions    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt;      | 否    | 否     | 卡片支持的规格。具体可选规格参考[FormDimension](#formdimension) <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的整数的数组，数值5从API version 9开始支持，从API version 20开始废弃。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| customizeData    | Record\<string, string>      | 否    | 否     | 卡片用户数据。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| descriptionId<sup>10+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否     | 卡片描述id。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| isDynamic<sup>10+</sup>      | boolean               | 否    | 否     | 卡片是否为动态卡片。<br/>仅ArkTS卡片区分动静态卡片，JS卡片均为动态卡片。<br/>-&nbsp;true：为动态卡片。<br/>-&nbsp;false：为静态卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| displayName<sup>11+</sup> | string               | 否    | 否     | 卡片展示名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| displayNameId<sup>11+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否     | 卡片预览时标识卡片名称的ID。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| transparencyEnabled<sup>11+</sup>      | boolean               | 否    | 否     | 卡片是否支持设置背景透明度。<br/>ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。<br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| supportedShapes<sup>12+</sup>    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+>>>>>>> 40c4935d0fb (fix: 修复FormKit文档术语一致性问题)
 
 ## FormType
 
@@ -116,6 +142,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
+<<<<<<< HEAD
 | IDENTITY_KEY     | 'ohos.extra.param.key.form_identity'    | 卡片标识。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | DIMENSION_KEY      | 'ohos.extra.param.key.form_dimension'  | 卡片规格，规格尺寸参考[FormDimension](#formdimension)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | NAME_KEY       | 'ohos.extra.param.key.form_name'   | 卡片名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -135,6 +162,27 @@ import { formInfo } from '@kit.FormKit';
 | ORIGINAL_FORM_KEY<sup>20+</sup> | 'ohos.extra.param.key.original_form_id' | 用groupId关联的一组卡片，在调整大小时，会先创建新尺寸的卡片，再删除旧尺寸的卡片。新尺寸卡片创建时want参数会通过该key传递旧尺寸卡片的卡片id。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | EDIT_FORM_KEY<sup>22+</sup> | 'ohos.extra.param.key.edit_form_id' | 在半模态页面的卡片编辑中，通过onAddForm回调函数传递该key表示被编辑的卡片id，用来确保预览卡片与被编辑卡片信息同步。如果卡片onAddForm回调函数中携带了该key，则说明当前卡片为半模态页面中的预览卡片，需要基于被编辑卡片来筛选预览卡片内容。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | UPDATE_FORM_REASON_KEY<sup>24+</sup> | 'ohos.extra.param.key.update_form_reason' | 卡片更新的原因，请参考[FormUpdateReason](#formupdatereason24)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+=======
+| IDENTITY_KEY     | 'ohos.extra.param.key.form_identity'    | 卡片标识。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| DIMENSION_KEY      | 'ohos.extra.param.key.form_dimension'  | 卡片规格，规格尺寸参考[FormDimension](#formdimension)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| NAME_KEY       | 'ohos.extra.param.key.form_name'   | 卡片名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| MODULE_NAME_KEY        | 'ohos.extra.param.key.module_name'   | 卡片所属模块名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| WIDTH_KEY        | 'ohos.extra.param.key.form_width'   | 卡片宽度。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| HEIGHT_KEY         | 'ohos.extra.param.key.form_height'   | 卡片高度。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| TEMPORARY_KEY          | 'ohos.extra.param.key.form_temporary'   | 临时卡片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| ABILITY_NAME_KEY   | 'ohos.extra.param.key.ability_name'   | Ability名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| BUNDLE_NAME_KEY    | 'ohos.extra.param.key.bundle_name'   | Bundle名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| LAUNCH_REASON_KEY<sup>10+</sup>    | 'ohos.extra.param.key.form_launch_reason'   | 卡片创建原因。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| PARAM_FORM_CUSTOMIZE_KEY<sup>10+</sup>    | 'ohos.extra.param.key.form_customize'   | 自定义数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| FORM_RENDERING_MODE_KEY<sup>11+</sup>    | 'ohos.extra.param.key.form_rendering_mode'   | 卡片渲染模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| HOST_BG_INVERSE_COLOR_KEY<sup>12+</sup>    | 'ohos.extra.param.key.host_bg_inverse_color'   | 卡片使用方的背景反色颜色值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| FORM_LOCATION_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_location'   | 卡片位置。 具体可选位置参考[FormLocation](#formlocation20)。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| FORM_PERMISSION_NAME_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_name' | 用户授权权限名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| FORM_PERMISSION_GRANTED_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_granted' | 用户是否授权。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| ORIGINAL_FORM_KEY<sup>20+</sup> | 'ohos.extra.param.key.original_form_id' | 用groupId关联的一组卡片，在调整大小时，会先创建新尺寸的卡片，再删除旧尺寸的卡片。新尺寸卡片创建时want参数会通过该key传递旧尺寸卡片的卡片id。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| EDIT_FORM_KEY<sup>22+</sup> | 'ohos.extra.param.key.edit_form_id' | 在半模态页面的卡片编辑中，通过onAddForm回调函数传递该key表示被编辑的卡片id，用来确保预览卡片与被编辑卡片信息同步。如果卡片onAddForm回调函数中携带了该key，则说明当前卡片为半模态页面中的预览卡片，需要基于被编辑卡片来筛选预览卡片内容。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23 |
+| UPDATE_FORM_REASON_KEY<sup>24+</sup> | 'ohos.extra.param.key.update_form_reason' | 卡片更新原因，请参考[FormUpdateReason](#formupdatereason24)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
+>>>>>>> 40c4935d0fb (fix: 修复FormKit文档术语一致性问题)
 
 ## FormDimension
 
