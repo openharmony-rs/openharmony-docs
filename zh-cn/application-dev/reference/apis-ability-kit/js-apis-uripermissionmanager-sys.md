@@ -507,11 +507,11 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
-  | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
-  | targetBundleName | string | 是 | 被撤销授权URI的应用包名。 | 
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示撤销成功，返回-1表示撤销失败。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
+| targetBundleName | string | 是 | 被撤销授权URI的应用包名。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示撤销成功，返回-1表示撤销失败。 |
 
 **错误码：**
 
@@ -757,11 +757,11 @@ ArkTS-Sta: revokeUriPermission(uri: string, targetBundleName: string, appCloneIn
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
-  | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
-  | targetBundleName | string | 是 | 被授权应用的应用包名。 |
-  | appCloneIndex | number | 是 | 被授权应用的分身索引，有效范围为[0, 1000]，取值为0时表示主应用。|
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 |
+| targetBundleName | string | 是 | 被授权应用的应用包名。 |
+| appCloneIndex | number | 是 | 被授权应用的分身索引，有效范围为[0, 1000]，取值为0时表示主应用。|
 
 **返回值：**
 
