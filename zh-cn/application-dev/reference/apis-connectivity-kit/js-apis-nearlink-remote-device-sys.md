@@ -656,7 +656,7 @@ onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-manager.md#pairingrequestparam)&gt; | 是 | 回调函数，返回配对请求字段。| 
+| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | 是 | 回调函数，返回配对请求字段。| 
 
 **错误码：**
 
@@ -702,7 +702,7 @@ offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-manager.md#pairingrequestparam)&gt; | 否 | 回调函数，返回配对请求字段。<br/>填写该参数则取消当前callback订阅。不填写该参数则取消该type对应的所有回调。| 
+| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | 否 | 回调函数，返回配对请求字段。<br/>填写该参数则取消当前callback订阅。不填写该参数则取消该type对应的所有回调。| 
 
 **错误码：**
 
