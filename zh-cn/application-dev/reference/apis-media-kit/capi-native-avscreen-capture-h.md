@@ -125,7 +125,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Init(struct OH_AVScreenCapture *c
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md) config | 录屏初始化相关参数。包含音频麦克风采用参数（可选）、音频内录采样参数、视频分辨率参数、视频编码参数、音频编码参数等。应用需根据使用场景正确设置各项参数，建议先将结构体所有内存字节设置为0后再设置合法参数。 |
+| [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md) config | 录屏初始化相关参数。<br>包含音频麦克风采用参数（可选）、音频内录采样参数、视频分辨率参数、视频编码参数、音频编码参数等。<br>应用需根据使用场景正确设置各项参数，建议先将结构体所有内存字节设置为0后再设置合法参数。 |
 
 **返回：**
 
@@ -813,9 +813,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ShowCursor(struct OH_AVScreenCapt
 
 **描述**
 
-设置光标显示开关。
-
-应在录屏启动之前被调用。
+设置光标显示开关。应在录屏启动之前被调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 

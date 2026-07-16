@@ -534,7 +534,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVBuffer](../apis-avcodec-kit/capi-core-oh-avbuffer.md) *buffer | 指向OH_AVBuffer缓冲区实例的指针，该回调方法执行结束返回后，数据缓冲区不再有效。 |
-| [OH_AVScreenCaptureBufferType](#oh_avscreencapturebuffertype) bufferType | 可用缓冲区的数据类型，指示当前可用缓冲区的数据类型。OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO表示视频数据缓冲区可用，OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER表示内录音频缓冲区可用，OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC表示麦克风音频缓冲区可用。开发者应根据bufferType类型对buffer数据进行相应处理。 |
+| [OH_AVScreenCaptureBufferType](#oh_avscreencapturebuffertype) bufferType | 可用缓冲区的数据类型，指示当前可用缓冲区的数据类型。<br>OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO表示视频数据缓冲区可用；OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER表示内录音频缓冲区可用；OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC表示麦克风音频缓冲区可用。<br>开发者应根据bufferType类型对buffer数据进行相应处理。 |
 |  int64_t timestamp | 时间戳，单位：纳秒（ns）。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
@@ -579,7 +579,7 @@ typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | 指向OH_AVScreenCapture实例的指针。 |
-| [OH_AVScreenCaptureContentChangedEvent](#oh_avscreencapturecontentchangedevent) event | 录屏内容变更事件，指示录屏内容的状态变化，OH_SCREEN_CAPTURE_CONTENT_HIDE表示录屏内容变为隐藏（如进入隐私界面），OH_SCREEN_CAPTURE_CONTENT_VISIBLE表示录屏内容从隐藏变为可见，OH_SCREEN_CAPTURE_CONTENT_UNAVAILABLE表示录屏内容不可用（如窗口关闭）。开发者应根据不同事件类型调整录屏状态。 |
+| [OH_AVScreenCaptureContentChangedEvent](#oh_avscreencapturecontentchangedevent) event | 录屏内容变更事件，指示录屏内容的状态变化。<br>OH_SCREEN_CAPTURE_CONTENT_HIDE表示录屏内容变为隐藏（如进入隐私界面）；OH_SCREEN_CAPTURE_CONTENT_VISIBLE表示录屏内容从隐藏变为可见；OH_SCREEN_CAPTURE_CONTENT_UNAVAILABLE表示录屏内容不可用（如窗口关闭）。<br>开发者应根据不同事件类型调整录屏状态。 |
 | [OH_Rect](capi-avscreencapture-oh-rect.md)* area | 录屏内容可见时，对应位置信息；录屏内容隐藏或不可见时，该参数无效。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
