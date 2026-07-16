@@ -24,19 +24,14 @@
 
 ## 运行机制
 
-ModularObjectDispatcher的动态调用流程分为以下几个阶段：
+ModularObjectDispatcher与ModularObjectExtensionAbility的关系如下图所示：
 
-1. **创建分发器**：客户端先连接ModularObjectExtensionAbility获取远端Proxy对象，再通过[OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)从Proxy创建绑定到主服务接口的分发器。
+![modular_object_dispatcher_architecture](figures/modular_object_dispatcher_architecture.png)
 
-2. **获取类型描述符**：建议先调用[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)确认远端服务支持元数据，再通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取TypeDescriptor句柄。该调用会触发类型库元数据通过IPC从远端拉取并缓存在本地，后续查询直接命中缓存。
-
-3. **查询接口元数据**：基于类型描述符，客户端可在运行时遍历服务端定义的全部接口与方法（并解析每个方法对应的MemberID）、结构体（含字段名与字段类型）、枚举（含枚举值名称与取值），以及类型库版本、主服务接口名等。
-
-4. **获取方法参数类型**：调用某个方法前，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)与[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)查询返回值与各入参的类型信息，以便严格按照类型构造Variant，避免类型不匹配错误。
-
-5. **构造参数并发起动态调用**：先用[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，再通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。分发器将参数序列化后经IPC发往远端，再将返回值反序列化到出参Variant。
-
-6. **释放资源**：分发器、类型描述符、各类容器句柄、Variant和TypeInfo对象均需按所有权规则调用对应的接口释放。
+1. **创建分发器**：客户端通过连接ModularObjectExtensionAbility获取远端Proxy对象后，使用[OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)接口从Proxy对象创建分发器实例。
+2. **延迟加载元数据**：分发器在首次调用元数据查询或方法调用接口时，通过IPC从远端服务获取类型库元数据并缓存在本地，后续调用直接使用缓存，无需重复加载。
+3. **查询接口信息**：通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取类型描述符，查询服务端定义的接口、方法、参数类型、枚举和结构体等元数据。
+4. **动态方法调用**：通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，再通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。参数通过Variant封装，返回值也通过Variant接收。
 
 与静态调用方式（编译期依赖服务端接口定义）相比，动态调用方式无需编译期绑定，适用于接口在运行时才能确定的场景，如通用调用框架、脚本引擎、动态测试工具等。
 
@@ -60,7 +55,7 @@ ModularObjectDispatcher的动态调用流程分为以下几个阶段：
 
 <!-- @[modular_object_extension_dispatcher_createMainServiceInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance(g_remoteProxy, &g_ModObjDispatcher);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -77,14 +72,15 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 <!-- @[modular_object_extension_dispatcher_hasTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 uint32_t hasTypeDescriptor = 0;
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor(g_ModObjDispatcher, &hasTypeDescriptor);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR || hasTypeDescriptor == 0) {
     // 查询失败处理
     // 服务端未提供类型库元数据，不支持动态接口
-    OH_LOG_ERROR(LOG_APP, "The type library metadata is not available from the remote service err:%{public}d", err);
+    OH_LOG_ERROR(LOG_APP, "The type library metadata is not available from the remote service err:%{public}d",
+        err);
     return nullptr;
 }
 ```
@@ -93,7 +89,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR || hasTypeDescriptor == 0) {
 
 <!-- @[modular_object_extension_dispatcher_getTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 err = OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(g_ModObjDispatcher, &g_TypeDescriptor);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "GetTypeDescriptor err:%{public}d", err);
@@ -101,17 +97,17 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 }
 ```
 
-### 查询接口元数据信息
+### 查询接口信息说明书
 
 通过分发器获取TypeDescriptor句柄，查询服务端定义的接口、方法、枚举和结构体等元数据信息。
 
-#### 查询类型库版本
+**查询类型库版本**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetVersion](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getversion)获取类型库版本号字符串。
 
 <!-- @[modular_object_extension_dispatcher_getVersion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 char version[256];
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_TypeDescriptor_GetVersion(g_TypeDescriptor, version, sizeof(version));
@@ -122,13 +118,13 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 OH_LOG_INFO(LOG_APP, "Version:%{public}s", version);
 ```
 
-#### 查询主服务接口名称
+**查询主服务接口名称**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmainserviceinterfacename)获取主服务接口名称。
 
 <!-- @[modular_object_extension_dispatcher_getMainServiceInterfaceName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 char mainServiceInterfaceName[256];
 err = OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName(g_TypeDescriptor, mainServiceInterfaceName,
     sizeof(mainServiceInterfaceName));
@@ -139,148 +135,152 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterfaceName);
 ```
 
-#### 查询所有接口名称
+**查询所有接口名称**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacecount)获取接口数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetInterfaceName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacename)逐个获取接口名称。
 
 <!-- @[modular_object_extension_dispatcher_getInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 uint32_t interfaceCount = 0;
 AbilityRuntime_ErrorCode err =
     OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount(g_TypeDescriptor, &interfaceCount);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "GetInterfaceCount err:%{public}d", err);
+if (!CheckApiErr(err, "GetInterfaceCount")) {
     return nullptr;
 }
 OH_LOG_INFO(LOG_APP, "InterfaceCount:%{public}d", interfaceCount);
 
-for (uint32_t interfaceIndex=0;interfaceIndex<interfaceCount;interfaceIndex++) {
+for (uint32_t interfaceIndex = 0; interfaceIndex < interfaceCount; interfaceIndex++) {
     char interfaceName[256];
-    err = OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(g_TypeDescriptor, interfaceIndex, interfaceName, sizeof(interfaceName));
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetInterfaceName err:%{public}d", err);
+    err = OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(g_TypeDescriptor, interfaceIndex, interfaceName,
+        sizeof(interfaceName));
+    if (!CheckApiErr(err, "GetInterfaceName")) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "InterfaceName:%{public}s", interfaceName);
+
     // ...
 }
 ```
 
-#### 遍历接口下的方法名称
+**遍历接口下的方法名称**
 
 针对每个接口，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodcount)获取方法数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetMethodName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodname)和[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)获取方法名称及其MemberID。
 
 <!-- @[modular_object_extension_dispatcher_getMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
-uint32_t methodCount = 0;
-err = OH_AbilityRuntime_TypeDescriptor_GetMethodCount(g_TypeDescriptor, interfaceName, &methodCount);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "GetMethodCount err:%{public}d", err);
-    return nullptr;
-}
-OH_LOG_INFO(LOG_APP, "MethodCount:%{public}d", methodCount);
-for (uint32_t methodIndex=0;methodIndex<methodCount;methodIndex++) {
-    char methodName[256];
-    err = OH_AbilityRuntime_TypeDescriptor_GetMethodName(g_TypeDescriptor, interfaceName, methodIndex, methodName, sizeof(methodName));
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetMethodName err:%{public}d", err);
-        return nullptr;
+``` C
+static void QueryMethodMetadata(const char *interfaceName)
+{
+    // 获取接口下的方法数量，逐个遍历方法名并解析对应的MemberID
+    uint32_t methodCount = 0;
+    AbilityRuntime_ErrorCode err =
+        OH_AbilityRuntime_TypeDescriptor_GetMethodCount(g_TypeDescriptor, interfaceName, &methodCount);
+    if (!CheckApiErr(err, "GetMethodCount")) {
+        return;
     }
-    OH_LOG_INFO(LOG_APP, "MethodName:%{public}s", methodName);
+    OH_LOG_INFO(LOG_APP, "MethodCount:%{public}d", methodCount);
+    // 遍历每个方法，获取方法名和MemberID
+    for (uint32_t methodIndex = 0; methodIndex < methodCount; methodIndex++) {
+        char methodName[256];
+        err = OH_AbilityRuntime_TypeDescriptor_GetMethodName(g_TypeDescriptor, interfaceName, methodIndex,
+            methodName, sizeof(methodName));
+        if (!CheckApiErr(err, "GetMethodName")) {
+            return;
+        }
+        OH_LOG_INFO(LOG_APP, "MethodName:%{public}s", methodName);
 
-    uint32_t memId = 0;
-    err = OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(g_TypeDescriptor, interfaceName, methodName, &memId);
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetMethodMemberId err:%{public}d", err);
-        return nullptr;
+        uint32_t memId = 0;
+        err = OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(g_TypeDescriptor, interfaceName, methodName,
+            &memId);
+        if (!CheckApiErr(err, "GetMethodMemberId")) {
+            return;
+        }
+        OH_LOG_INFO(LOG_APP, "MethodMemberId:%{public}d", memId);
+
+        // ...
     }
-    OH_LOG_INFO(LOG_APP, "MethodMemberId:%{public}d", memId);
-    // ...
 }
 ```
 
-#### 查询所有结构体名称
+**查询所有结构体名称**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetStructCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructcount)获取结构体数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetStructName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructname)逐个获取结构体名称。
 
 <!-- @[modular_object_extension_dispatcher_getStructName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 uint32_t structCount = 0;
-AbilityRuntime_ErrorCode err =
-    OH_AbilityRuntime_TypeDescriptor_GetStructCount(g_TypeDescriptor, &structCount);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "GetStructCount err:%{public}d", err);
+AbilityRuntime_ErrorCode err = OH_AbilityRuntime_TypeDescriptor_GetStructCount(g_TypeDescriptor, &structCount);
+if (!CheckApiErr(err, "GetStructCount")) {
     return nullptr;
 }
 OH_LOG_INFO(LOG_APP, "StructCount:%{public}d", structCount);
 
-for (uint32_t structIndex=0;structIndex<structCount;structIndex++) {
+for (uint32_t structIndex = 0; structIndex < structCount; structIndex++) {
     char structName[256];
-    err = OH_AbilityRuntime_TypeDescriptor_GetStructName(g_TypeDescriptor, structIndex, structName, sizeof(structName));
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetStructName err:%{public}d", err);
+    err = OH_AbilityRuntime_TypeDescriptor_GetStructName(g_TypeDescriptor, structIndex, structName,
+        sizeof(structName));
+    if (!CheckApiErr(err, "GetStructName")) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "StructName:%{public}s", structName);
+
     // ...
 }
 ```
 
-#### 遍历结构体的字段名称和类型
+**遍历结构体的字段名称和类型**
 
 针对每个结构体，通过[OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldcount)获取字段数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetStructFieldName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldname)和[OH_AbilityRuntime_TypeDescriptor_GetStructFieldType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldtype)逐个获取字段名称和类型。
 
 <!-- @[modular_object_extension_dispatcher_getStructField](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
+// 获取结构体的字段数量，逐个遍历字段名和字段类型
 uint32_t fieldCount = 0;
 err = OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount(g_TypeDescriptor, structName, &fieldCount);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "GetStructFieldCount err:%{public}d", err);
+if (!CheckApiErr(err, "GetStructFieldCount")) {
     return nullptr;
 }
 OH_LOG_INFO(LOG_APP, "FieldCount:%{public}d", fieldCount);
-for (uint32_t fieldIndex=0;fieldIndex<fieldCount;fieldIndex++) {
+// 遍历每个字段，获取字段名和字段类型
+for (uint32_t fieldIndex = 0; fieldIndex < fieldCount; fieldIndex++) {
     char fieldName[256];
-    err = OH_AbilityRuntime_TypeDescriptor_GetStructFieldName(g_TypeDescriptor, structName, fieldIndex, fieldName, sizeof(fieldName));
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetStructFieldName err:%{public}d", err);
+    err = OH_AbilityRuntime_TypeDescriptor_GetStructFieldName(g_TypeDescriptor, structName, fieldIndex,
+        fieldName, sizeof(fieldName));
+    if (!CheckApiErr(err, "GetStructFieldName")) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "FieldName:%{public}s", fieldName);
-
-    OH_AbilityRuntime_ModObjDispatcher_TypeInfo typeInfo = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-    err = OH_AbilityRuntime_TypeDescriptor_GetStructFieldType(g_TypeDescriptor, structName, fieldName, &typeInfo);
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetStructFieldType err:%{public}d", err);
+    OH_AbilityRuntime_ModObjDispatcher_TypeInfo typeInfo = {
+        .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+    err = OH_AbilityRuntime_TypeDescriptor_GetStructFieldType(g_TypeDescriptor, structName, fieldName,
+        &typeInfo);
+    if (!CheckApiErr(err, "GetStructFieldType")) {
         return nullptr;
     }
-
     //...
     OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&typeInfo);
 }
 ```
 
-#### 查询所有枚举名称
+**查询所有枚举名称**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetEnumCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumcount)获取枚举数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetEnumName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumname)逐个获取枚举名称。
 
 <!-- @[modular_object_extension_dispatcher_getEnumName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 uint32_t enumCount = 0;
-AbilityRuntime_ErrorCode err =
-    OH_AbilityRuntime_TypeDescriptor_GetEnumCount(g_TypeDescriptor, &enumCount);
+AbilityRuntime_ErrorCode err = OH_AbilityRuntime_TypeDescriptor_GetEnumCount(g_TypeDescriptor, &enumCount);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "GetEnumCount err:%{public}d", err);
     return nullptr;
 }
 OH_LOG_INFO(LOG_APP, "EnumCount:%{public}d", enumCount);
 
-for (uint32_t enumIndex=0;enumIndex<enumCount;enumIndex++) {
+for (uint32_t enumIndex = 0; enumIndex < enumCount; enumIndex++) {
     char enumName[256];
     err = OH_AbilityRuntime_TypeDescriptor_GetEnumName(g_TypeDescriptor, enumIndex, enumName, sizeof(enumName));
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -288,17 +288,19 @@ for (uint32_t enumIndex=0;enumIndex<enumCount;enumIndex++) {
         return nullptr;
     }
     OH_LOG_INFO(LOG_APP, "EnumName:%{public}s", enumName);
+
     // ...
 }
 ```
 
-#### 遍历所有枚举值名称和枚举值
+**遍历所有枚举值名称和枚举值**
 
 针对每个枚举，通过[OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluecount)获取枚举值数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetEnumValueName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluename)和[OH_AbilityRuntime_TypeDescriptor_GetEnumValue](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvalue)逐个获取枚举值名称和枚举值。
 
 <!-- @[modular_object_extension_dispatcher_getEnumValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
+// 遍历枚举的所有枚举值名称和对应的枚举值
 uint32_t valueCount = 0;
 err = OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount(g_TypeDescriptor, enumName, &valueCount);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
@@ -306,9 +308,10 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     return nullptr;
 }
 OH_LOG_INFO(LOG_APP, "valueCount:%{public}d", valueCount);
-for (uint32_t valueIndex=0;valueIndex<valueCount;valueIndex++) {
+for (uint32_t valueIndex = 0; valueIndex < valueCount; valueIndex++) {
     char valueName[256];
-    err = OH_AbilityRuntime_TypeDescriptor_GetEnumValueName(g_TypeDescriptor, enumName, valueIndex, valueName, sizeof(valueName));
+    err = OH_AbilityRuntime_TypeDescriptor_GetEnumValueName(g_TypeDescriptor, enumName, valueIndex, valueName,
+        sizeof(valueName));
     if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "GetEnumValueName err:%{public}d", err);
         return nullptr;
@@ -329,57 +332,67 @@ for (uint32_t valueIndex=0;valueIndex<valueCount;valueIndex++) {
 
 在动态调用前，需获取方法的返回值类型和参数类型，确保构造的Variant与期望类型匹配。
 
-#### 获取方法返回值类型
+**获取方法返回值类型**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)获取方法的返回值类型信息。TypeInfo中的`vt`字段标识数据类型。
 
 <!-- @[modular_object_extension_dispatcher_getMethodReturnType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
-OH_AbilityRuntime_ModObjDispatcher_TypeInfo returnTypeInfo = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-err = OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType(g_TypeDescriptor, interfaceName, methodName, &returnTypeInfo);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "GetMethodReturnType err:%{public}d", err);
-    return nullptr;
+``` C
+static void QueryMethodReturnType(const char *interfaceName, const char *methodName)
+{
+    OH_AbilityRuntime_ModObjDispatcher_TypeInfo returnTypeInfo = {
+        .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+    AbilityRuntime_ErrorCode err =
+        OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType(g_TypeDescriptor, interfaceName, methodName,
+            &returnTypeInfo);
+    if (!CheckApiErr(err, "GetMethodReturnType")) {
+        return;
+    }
+    //...
+    OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&returnTypeInfo);
 }
-
-//...
-OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&returnTypeInfo);
 ```
 
-#### 获取方法入参类型和名称
+**获取方法入参类型和名称**
 
 通过[OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamcount)获取方法参数数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetMethodParamName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamname)和[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)逐个获取参数名称和类型。
 
 <!-- @[modular_object_extension_dispatcher_getMethodParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
-uint32_t paramCount = 0;
-err = OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount(g_TypeDescriptor, interfaceName, methodName, &paramCount);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "GetMethodParamCount err:%{public}d", err);
-    return nullptr;
-}
-OH_LOG_INFO(LOG_APP, "MethodParamCount:%{public}d", paramCount);
-
-for (uint32_t paramIndex=0;paramIndex<paramCount;paramIndex++) {
-    char methodParamName[256];
-    err = OH_AbilityRuntime_TypeDescriptor_GetMethodParamName(g_TypeDescriptor, interfaceName, methodName, paramIndex, methodParamName, sizeof(methodParamName));
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetMethodParamName err:%{public}d", err);
-        return nullptr;
+``` C
+static void QueryMethodParamInfo(const char *interfaceName, const char *methodName)
+{
+    // 获取方法的参数数量，逐个遍历参数名和参数类型
+    uint32_t paramCount = 0;
+    AbilityRuntime_ErrorCode err =
+        OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount(g_TypeDescriptor, interfaceName, methodName,
+            &paramCount);
+    if (!CheckApiErr(err, "GetMethodParamCount")) {
+        return;
     }
-    OH_LOG_INFO(LOG_APP, "GetMethodParamName:%{public}s", methodParamName);
+    OH_LOG_INFO(LOG_APP, "MethodParamCount:%{public}d", paramCount);
 
-    OH_AbilityRuntime_ModObjDispatcher_TypeInfo paramTypeInfo = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-    err = OH_AbilityRuntime_TypeDescriptor_GetMethodParamType(g_TypeDescriptor, interfaceName, methodName, paramIndex, &paramTypeInfo);
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "GetMethodParamType err:%{public}d", err);
-        return nullptr;
+    // 遍历每个参数，获取参数名和参数类型
+    for (uint32_t paramIndex = 0; paramIndex < paramCount; paramIndex++) {
+        char methodParamName[256];
+        err = OH_AbilityRuntime_TypeDescriptor_GetMethodParamName(
+            g_TypeDescriptor, interfaceName, methodName, paramIndex, methodParamName, sizeof(methodParamName));
+        if (!CheckApiErr(err, "GetMethodParamName")) {
+            return;
+        }
+        OH_LOG_INFO(LOG_APP, "GetMethodParamName:%{public}s", methodParamName);
+
+        OH_AbilityRuntime_ModObjDispatcher_TypeInfo paramTypeInfo = {
+            .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+        err = OH_AbilityRuntime_TypeDescriptor_GetMethodParamType(g_TypeDescriptor, interfaceName, methodName,
+            paramIndex, &paramTypeInfo);
+        if (!CheckApiErr(err, "GetMethodParamType")) {
+            return;
+        }
+        //...
+        OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&paramTypeInfo);
     }
-
-    //...
-    OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&paramTypeInfo);
 }
 ```
 
@@ -387,19 +400,10 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 
 | vt值 | 类型 | 说明 |
 | --- | --- | --- |
-| VT_EMPTY | - | 空值，表示未初始化或无效 |
-| VT_VOID | void | 无返回值，用于方法返回类型 |
-| VT_BOOL | bool | 布尔值 |
-| VT_I8 | int8_t | 8位有符号整数 |
-| VT_I16 | int16_t | 16位有符号整数 |
 | VT_I32 | int32_t | 32位有符号整数 |
 | VT_I64 | int64_t | 64位有符号整数 |
-| VT_U8 | uint8_t | 8位无符号整数 |
-| VT_U16 | uint16_t | 16位无符号整数 |
-| VT_U32 | uint32_t | 32位无符号整数 |
-| VT_U64 | uint64_t | 64位无符号整数 |
-| VT_F32 | float | 32位浮点数（单精度） |
-| VT_F64 | double | 64位浮点数（双精度） |
+| VT_F64 | double | 64位浮点数 |
+| VT_BOOL | bool | 布尔值 |
 | VT_STRING | char* | UTF-8字符串 |
 | VT_ARRAY | Array | 定长数组 |
 | VT_VECTOR | Vector | 动态向量 |
@@ -407,36 +411,32 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 | VT_MAP | Map | 键值对映射 |
 | VT_STRUCT | Struct | 结构体 |
 | VT_ENUM | enum | 枚举值（存储为int32_t） |
-| VT_IPC_REMOTE_PROXY | OHIPCRemoteProxy* | 远端Proxy对象 |
-| VT_IPC_REMOTE_STUB | OHIPCRemoteStub* | 远端Stub对象 |
-
-完整的枚举定义及各类型的取值范围参见[OH_AbilityRuntime_ModObjDispatcher_ValueType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_valuetype)。
 
 ### 通过动态接口执行动态调用
 
 通过方法名解析MemberID，构造参数后发起动态调用。MemberID可通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)接口从TypeDescriptor查询，具体参见[遍历接口下的方法名称](#遍历接口下的方法名称)。
 
-#### 构造参数并调用
+**构造参数并调用**
 
 以调用`Add(int32_t a, int32_t b)`方法为例，将参数封装为Variant数组，通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。
 
 <!-- @[modular_object_extension_dispatcher_callMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
 // 构造参数
 OH_AbilityRuntime_ModObjDispatcher_Variant params[2] = {
     {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = 10},
     {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = 20},
 };
 
-OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg=params, .cArgs = 2};
+OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg = params, .cArgs = 2};
 
-// 调用方法，memberId 17 为 Add 方法对应的 MemberID，
-// 可通过 OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId 获取
+// 调用方法，memberId 17 为 Add 方法对应的 MemberID，可通过 OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId 获取
 OH_AbilityRuntime_ModObjDispatcher_Variant result = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
 int32_t methodErrCode = 0;
-AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(
-    g_ModObjDispatcher, 17, &inputParams, &result, &methodErrCode);
+uint32_t memID = 17;
+AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(g_ModObjDispatcher, memID,
+    &inputParams, &result, &methodErrCode);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     // 框架级错误：IPC通信失败、参数类型不匹配等
     OH_LOG_ERROR(LOG_APP, "add err:%{public}d", err);
@@ -463,107 +463,120 @@ OH_LOG_INFO(LOG_APP, "addResult :%{public}d", addResult);
 
 当方法参数包含容器类型（数组、向量、集合、映射）或结构体时，需先创建对应的容器实例并填充数据，再将容器句柄包装为Variant参数。
 
-#### 传递数组参数
+**传递数组参数**
 
-通过[OH_AbilityRuntime_ModObjDispatcher_ArrayCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraycreate)创建数组，使用[OH_AbilityRuntime_ModObjDispatcher_ArraySet](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayset)填充元素。下方示例以二维数组`array<array<i32,5>,5>`为例。
+通过[OH_AbilityRuntime_ModObjDispatcher_ArrayCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraycreate)创建数组，使用[OH_AbilityRuntime_ModObjDispatcher_ArraySet](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayset)填充元素。下方示例以二维数组`array<array<i32,5>,5>`为例，分为创建数组、调用方法、解析结果三步。
+
+创建并填充二维数组：先构造嵌套的TypeInfo（内层`array<i32,5>`，外层`array<inner,5>`），再用`ArrayCreate`创建外层数组，逐行创建内层数组并填充元素后设入外层。
+
+<!-- @[modular_object_extension_dispatcher_callTypeArray_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C
+static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t arrSize)
+{
+    // 构造嵌套数组类型信息：内层 array<i32,size>，外层 array<inner,size>
+    OH_AbilityRuntime_ModObjDispatcher_TypeInfo elemType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
+    OH_AbilityRuntime_ModObjDispatcher_TypeInfo innerType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
+    innerType.u.arrayType.pElementType = &elemType;
+    innerType.u.arrayType.size = arrSize;
+
+    // 创建外层数组，逐行创建内层数组、填充元素后设入外层
+    OH_AbilityRuntime_ModObjDispatcher_ArrayHandle matrixArray = NULL;
+    AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(&innerType, arrSize, &matrixArray);
+    if (!CheckApiErr(err, "ArrayCreate outer")) {
+        return NULL;
+    }
+    for (uint32_t i = 0; i < arrSize; i++) {
+        OH_AbilityRuntime_ModObjDispatcher_ArrayHandle rowArray = NULL;
+        err = OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(&elemType, arrSize, &rowArray);
+        if (!CheckApiErr(err, "ArrayCreate inner")) {
+            OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(&matrixArray);
+            return NULL;
+        }
+        for (uint32_t j = 0; j < arrSize; j++) {
+            // 填充内层数组元素
+            OH_AbilityRuntime_ModObjDispatcher_Variant cell = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
+            uint32_t multiply = 10;
+            cell.u.i32Val = static_cast<int32_t>(i * multiply + j);
+            OH_AbilityRuntime_ModObjDispatcher_ArraySet(rowArray, j, &cell);
+        }
+        // 将内层数组设入外层对应位置
+        OH_AbilityRuntime_ModObjDispatcher_Variant rowVar = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
+        rowVar.u.parrayVal = rowArray;
+        OH_AbilityRuntime_ModObjDispatcher_ArraySet(matrixArray, i, &rowVar);
+        OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(&rowArray);
+    }
+    return matrixArray;
+}
+```
+
+组装参数并调用方法：将数组句柄包装为Variant参数，通过`CallMethod`发起调用。
 
 <!-- @[modular_object_extension_dispatcher_callTypeArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
-// 构造嵌套数组类型信息：内层 array<i32,5>，外层 array<inner,5>
-OH_AbilityRuntime_ModObjDispatcher_TypeInfo elemType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
-OH_AbilityRuntime_ModObjDispatcher_TypeInfo innerType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
-innerType.u.arrayType.pElementType = &elemType;
-innerType.u.arrayType.size = 5;
-OH_AbilityRuntime_ModObjDispatcher_TypeInfo outerType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
-outerType.u.arrayType.pElementType = &innerType;
-outerType.u.arrayType.size = 5;
-
-// 创建外层数组（5 行）
-OH_AbilityRuntime_ModObjDispatcher_ArrayHandle matrixArray = NULL;
-AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(&innerType, 5, &matrixArray);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "ArrayCreate outer err:%{public}d", err);
+``` C
+uint32_t arrSize = 5;
+OH_AbilityRuntime_ModObjDispatcher_ArrayHandle matrixArray = BuildMatrixArray(arrSize);
+if (matrixArray == NULL) {
     return nullptr;
 }
-// 逐行构造内层数组并填入外层
-for (uint32_t i = 0; i < 5; i++) {
-    OH_AbilityRuntime_ModObjDispatcher_ArrayHandle rowArray = NULL;
-    err = OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(&elemType, 5, &rowArray);
-    if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "ArrayCreate inner err:%{public}d", err);
-        OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(&matrixArray);
-        return nullptr;
-    }
-    for (uint32_t j = 0; j < 5; j++) {
-        OH_AbilityRuntime_ModObjDispatcher_Variant cell = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
-        cell.u.i32Val = static_cast<int32_t>(i * 10 + j);
-        OH_AbilityRuntime_ModObjDispatcher_ArraySet(rowArray, j, &cell);
-    }
-    OH_AbilityRuntime_ModObjDispatcher_Variant rowVar = {
-        .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
-    rowVar.u.parrayVal = rowArray;
-    OH_AbilityRuntime_ModObjDispatcher_ArraySet(matrixArray, i, &rowVar);
-    OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(&rowArray);
-}
-
-// 组装输入参数并调用
-OH_AbilityRuntime_ModObjDispatcher_Variant param = {
-    .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
+OH_AbilityRuntime_ModObjDispatcher_Variant param = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY};
 param.u.parrayVal = matrixArray;
 OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg = &param, .cArgs = 1};
 OH_AbilityRuntime_ModObjDispatcher_Variant result = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
 int32_t methodErrCode = 0;
-err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(
-    g_ModObjDispatcher, 19, &inputParams, &result, &methodErrCode);
+uint32_t memID = 19;
+AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(g_ModObjDispatcher, memID,
+    &inputParams, &result, &methodErrCode);
 OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(&matrixArray);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Array err:%{public}d", err);
+if (!CheckCallResult(err, methodErrCode, "TestType_Array")) {
     return nullptr;
 }
-if (methodErrCode != 0) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Array methodErrCode:%{public}d", methodErrCode);
-    return nullptr;
-}
-// 解析返回的二维数组
-if (result.vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY || result.u.parrayVal == NULL) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Array result type unexpected");
-    return nullptr;
-}
-uint32_t rowCount = 0;
-OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(result.u.parrayVal, &rowCount);
-for (uint32_t i = 0; i < rowCount; i++) {
-    OH_AbilityRuntime_ModObjDispatcher_Variant rowVar = {
-        .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-    OH_AbilityRuntime_ModObjDispatcher_ArrayGet(result.u.parrayVal, i, &rowVar);
-    uint32_t colCount = 0;
-    if (rowVar.u.parrayVal != NULL) {
-        OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(rowVar.u.parrayVal, &colCount);
-        for (uint32_t j = 0; j < colCount; j++) {
-            OH_AbilityRuntime_ModObjDispatcher_Variant cell = {
-                .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-            OH_AbilityRuntime_ModObjDispatcher_ArrayGet(rowVar.u.parrayVal, j, &cell);
-            OH_LOG_INFO(LOG_APP, "array[%{public}u][%{public}u]=%{public}d", i, j, cell.u.i32Val);
-        }
-    }
-    OH_AbilityRuntime_ModObjDispatcher_VariantClear(&rowVar);
-}
+ParseArrayResult(&result);
 OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 ```
 
-> **说明**
->
-> 上例中的 `elemType`、`innerType`、`outerType` 均为栈上分配的 TypeInfo，相互之间通过指针引用栈地址。[OH_AbilityRuntime_ModObjDispatcher_ArrayCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraycreate) 会对传入的 TypeInfo 执行深拷贝，因此这些栈变量在数组创建完成后即可随作用域自动释放，**无需**调用 [OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_typeinfoclear)。
->
-> 注意：**禁止**对这些栈分配的 TypeInfo 调用 TypeInfoClear。TypeInfoClear 对 ARRAY 类型的清理逻辑会 `delete u.arrayType.pElementType`，而本例中 pElementType 指向栈地址，调用会触发未定义行为。仅在 TypeInfo 的子节点通过 `new` 在堆上分配时，才需要调用 TypeInfoClear 释放。
+解析返回的二维数组：通过`ArrayGetSize`获取行列数，用`ArrayGet`逐层读取元素。
 
-#### 传递向量参数
+<!-- @[modular_object_extension_dispatcher_callTypeArray_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C
+static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
+{
+    // 校验返回类型，嵌套遍历二维数组读取每个元素
+    if (result->vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_ARRAY || result->u.parrayVal == NULL) {
+        OH_LOG_ERROR(LOG_APP, "TestType_Array result type unexpected");
+        return;
+    }
+    // 逐行遍历，每行再逐列读取元素值
+    uint32_t rowCount = 0;
+    OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(result->u.parrayVal, &rowCount);
+    for (uint32_t i = 0; i < rowCount; i++) {
+        OH_AbilityRuntime_ModObjDispatcher_Variant rowVar = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+        OH_AbilityRuntime_ModObjDispatcher_ArrayGet(result->u.parrayVal, i, &rowVar);
+        uint32_t colCount = 0;
+        if (rowVar.u.parrayVal != NULL) {
+            OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(rowVar.u.parrayVal, &colCount);
+            for (uint32_t j = 0; j < colCount; j++) {
+                OH_AbilityRuntime_ModObjDispatcher_Variant cell = {
+                    .vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+                OH_AbilityRuntime_ModObjDispatcher_ArrayGet(rowVar.u.parrayVal, j, &cell);
+                OH_LOG_INFO(LOG_APP, "array[%{public}u][%{public}u]=%{public}d", i, j, cell.u.i32Val);
+            }
+        }
+        OH_AbilityRuntime_ModObjDispatcher_VariantClear(&rowVar);
+    }
+}
+```
+
+**传递向量参数**
 
 通过[OH_AbilityRuntime_ModObjDispatcher_VectorCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectorcreate)创建向量，使用[OH_AbilityRuntime_ModObjDispatcher_VectorAdd](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectoradd)添加元素。向量为动态长度容器。
 
 <!-- @[modular_object_extension_dispatcher_callTypeVector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
+// 创建 vector<i32> 并添加元素
 OH_AbilityRuntime_ModObjDispatcher_TypeInfo elemType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
 OH_AbilityRuntime_ModObjDispatcher_VectorHandle vec = NULL;
 AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_VectorCreate(&elemType, &vec);
@@ -571,18 +584,22 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "VectorCreate err:%{public}d", err);
     return nullptr;
 }
-for (int32_t i = 1; i <= 5; i++) {
+// 添加元素到向量
+int32_t arrSize = 5;
+for (int32_t i = 1; i <= arrSize; i++) {
     OH_AbilityRuntime_ModObjDispatcher_Variant v = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
     v.u.i32Val = i;
     OH_AbilityRuntime_ModObjDispatcher_VectorAdd(vec, &v);
 }
+// 组装参数并调用方法
 OH_AbilityRuntime_ModObjDispatcher_Variant param = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_VECTOR};
 param.u.pvectorVal = vec;
 OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg = &param, .cArgs = 1};
 OH_AbilityRuntime_ModObjDispatcher_Variant result = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
 int32_t methodErrCode = 0;
-err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(
-    g_ModObjDispatcher, 21, &inputParams, &result, &methodErrCode);
+uint32_t memID = 21;
+err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(g_ModObjDispatcher, memID, &inputParams, &result,
+    &methodErrCode);
 OH_AbilityRuntime_ModObjDispatcher_VectorRelease(&vec);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "TestType_Vector err:%{public}d", err);
@@ -607,13 +624,14 @@ for (uint32_t i = 0; i < size; i++) {
 OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 ```
 
-#### 传递集合参数
+**传递集合参数**
 
 通过[OH_AbilityRuntime_ModObjDispatcher_SetCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setcreate)创建集合，使用[OH_AbilityRuntime_ModObjDispatcher_SetAdd](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setadd)添加元素。集合中的元素不重复。
 
 <!-- @[modular_object_extension_dispatcher_callTypeSet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
+// 创建 set<i32> 并添加元素
 OH_AbilityRuntime_ModObjDispatcher_TypeInfo elemType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
 OH_AbilityRuntime_ModObjDispatcher_SetHandle set = NULL;
 AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_SetCreate(&elemType, &set);
@@ -621,19 +639,22 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "SetCreate err:%{public}d", err);
     return nullptr;
 }
+// 添加元素到集合
 int32_t values[] = {11, 22, 33};
 for (int32_t v : values) {
     OH_AbilityRuntime_ModObjDispatcher_Variant item = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
     item.u.i32Val = v;
     OH_AbilityRuntime_ModObjDispatcher_SetAdd(set, &item);
 }
+// 组装参数并调用方法
 OH_AbilityRuntime_ModObjDispatcher_Variant param = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_SET};
 param.u.psetVal = set;
 OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg = &param, .cArgs = 1};
 OH_AbilityRuntime_ModObjDispatcher_Variant result = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
 int32_t methodErrCode = 0;
-err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(
-    g_ModObjDispatcher, 23, &inputParams, &result, &methodErrCode);
+uint32_t memID = 23;
+err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(g_ModObjDispatcher, memID, &inputParams, &result,
+    &methodErrCode);
 OH_AbilityRuntime_ModObjDispatcher_SetRelease(&set);
 if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     OH_LOG_ERROR(LOG_APP, "TestType_Set err:%{public}d", err);
@@ -658,131 +679,172 @@ for (uint32_t i = 0; i < size; i++) {
 OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 ```
 
-#### 传递映射参数
+**传递映射参数**
 
 通过[OH_AbilityRuntime_ModObjDispatcher_MapCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapcreate)创建映射，使用[OH_AbilityRuntime_ModObjDispatcher_MapPut](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapput)添加键值对。
 
+创建映射并填充键值对：通过`MapCreate`指定键值类型后，构造key和value的Variant调用`MapPut`逐条添加。
+
+<!-- @[modular_object_extension_dispatcher_callTypeMap_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C
+static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
+{
+    const char *keys[] = {"cn", "us", "jp"};
+    int32_t values[] = {86, 1, 81};
+    const int32_t length = sizeof(values) / sizeof(values[0]);
+    for (int32_t i = 0; i < length; i++) {
+        OH_AbilityRuntime_ModObjDispatcher_Variant key = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING};
+        key.u.bstrVal = strdup(keys[i]);
+        OH_AbilityRuntime_ModObjDispatcher_Variant val = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
+        val.u.i32Val = values[i];
+        OH_AbilityRuntime_ModObjDispatcher_MapPut(map, &key, &val);
+        free(key.u.bstrVal);
+    }
+}
+```
+
+组装参数并调用方法：将映射句柄包装为Variant参数，通过`CallMethod`发起调用。
+
 <!-- @[modular_object_extension_dispatcher_callTypeMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
+``` C
+// 创建 map<String,i32>，填充键值对后调用方法
 OH_AbilityRuntime_ModObjDispatcher_TypeInfo valType = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
 OH_AbilityRuntime_ModObjDispatcher_MapHandle map = NULL;
-AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_MapCreate(
-    OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING, &valType, &map);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "MapCreate err:%{public}d", err);
+AbilityRuntime_ErrorCode err =
+    OH_AbilityRuntime_ModObjDispatcher_MapCreate(OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING, &valType, &map);
+if (!CheckApiErr(err, "MapCreate")) {
     return nullptr;
 }
-const char* keys[] = {"cn", "us", "jp"};
-int32_t values[] = {86, 1, 81};
-for (int i = 0; i < 3; i++) {
-    OH_AbilityRuntime_ModObjDispatcher_Variant key = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRING};
-    key.u.bstrVal = strdup(keys[i]); // bstrVal 需指向堆分配的字符串
-    OH_AbilityRuntime_ModObjDispatcher_Variant val = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
-    val.u.i32Val = values[i];
-    OH_AbilityRuntime_ModObjDispatcher_MapPut(map, &key, &val);
-    // MapPut 执行深拷贝，调用方保留原始变体的所有权，需自行释放字符串内存
-    free(key.u.bstrVal);
-}
+FillMapEntries(map);
+// 组装参数并调用方法
 OH_AbilityRuntime_ModObjDispatcher_Variant param = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP};
 param.u.pmapVal = map;
 OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg = &param, .cArgs = 1};
 OH_AbilityRuntime_ModObjDispatcher_Variant result = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
 int32_t methodErrCode = 0;
-err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(
-    g_ModObjDispatcher, 25, &inputParams, &result, &methodErrCode);
+uint32_t memID = 25;
+err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(g_ModObjDispatcher, memID, &inputParams, &result,
+    &methodErrCode);
 OH_AbilityRuntime_ModObjDispatcher_MapRelease(&map);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Map err:%{public}d", err);
+if (!CheckCallResult(err, methodErrCode, "TestType_Map")) {
     return nullptr;
 }
-if (methodErrCode != 0) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Map methodErrCode:%{public}d", methodErrCode);
-    return nullptr;
-}
-// 解析返回的 map
-if (result.vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP || result.u.pmapVal == NULL) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Map result type unexpected");
-    return nullptr;
-}
-uint32_t size = 0;
-OH_AbilityRuntime_ModObjDispatcher_MapGetSize(result.u.pmapVal, &size);
-OH_LOG_INFO(LOG_APP, "result map size:%{public}u", size);
-for (uint32_t i = 0; i < size; i++) {
-    OH_AbilityRuntime_ModObjDispatcher_Variant k = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-    OH_AbilityRuntime_ModObjDispatcher_Variant v = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-    OH_AbilityRuntime_ModObjDispatcher_MapGetKeyAt(result.u.pmapVal, i, &k);
-    OH_AbilityRuntime_ModObjDispatcher_MapGetValueAt(result.u.pmapVal, i, &v);
-    OH_LOG_INFO(LOG_APP, "map[%{public}s]=%{public}d",
-        (k.u.bstrVal != NULL) ? k.u.bstrVal : "(null)", v.u.i32Val);
-    OH_AbilityRuntime_ModObjDispatcher_VariantClear(&k);
-}
+ParseMapResult(&result);
 OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 ```
 
-#### 传递结构体参数
+解析返回的映射：通过`MapGetSize`获取元素数量，用`MapGetKeyAt`和`MapGetValueAt`逐条读取键值。
+
+<!-- @[modular_object_extension_dispatcher_callTypeMap_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C
+static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
+{
+    if (result->vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_MAP || result->u.pmapVal == NULL) {
+        OH_LOG_ERROR(LOG_APP, "TestType_Map result type unexpected");
+        return;
+    }
+    uint32_t size = 0;
+    OH_AbilityRuntime_ModObjDispatcher_MapGetSize(result->u.pmapVal, &size);
+    OH_LOG_INFO(LOG_APP, "result map size:%{public}u", size);
+    for (uint32_t i = 0; i < size; i++) {
+        OH_AbilityRuntime_ModObjDispatcher_Variant k = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+        OH_AbilityRuntime_ModObjDispatcher_Variant v = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+        OH_AbilityRuntime_ModObjDispatcher_MapGetKeyAt(result->u.pmapVal, i, &k);
+        OH_AbilityRuntime_ModObjDispatcher_MapGetValueAt(result->u.pmapVal, i, &v);
+        OH_LOG_INFO(LOG_APP, "map[%{public}s]=%{public}d", (k.u.bstrVal != NULL) ? k.u.bstrVal : "(null)", v.u.i32Val);
+        OH_AbilityRuntime_ModObjDispatcher_VariantClear(&k);
+    }
+}
+```
+
+**传递结构体参数**
 
 通过[OH_AbilityRuntime_ModObjDispatcher_StructCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structcreate)按结构体名称创建实例，使用[OH_AbilityRuntime_ModObjDispatcher_StructSetField](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structsetfield)填充字段值。
 
+创建结构体并设置字段：通过`StructCreate`按名称创建实例，再用`StructSetField`逐个设置字段值。
+
+<!-- @[modular_object_extension_dispatcher_callTypeStruct_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C
+static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t x, int32_t y)
+{
+    OH_AbilityRuntime_ModObjDispatcher_StructHandle handle = NULL;
+    AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_StructCreate("Point", &handle);
+    if (!CheckApiErr(err, "StructCreate")) {
+        return NULL;
+    }
+    OH_AbilityRuntime_ModObjDispatcher_Variant vx = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
+    vx.u.i32Val = x;
+    OH_AbilityRuntime_ModObjDispatcher_Variant vy = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
+    vy.u.i32Val = y;
+    OH_AbilityRuntime_ModObjDispatcher_StructSetField(handle, "x", &vx);
+    OH_AbilityRuntime_ModObjDispatcher_StructSetField(handle, "y", &vy);
+    return handle;
+}
+```
+
+组装参数并调用方法：将结构体句柄包装为Variant参数，通过`CallMethod`发起调用。
+
 <!-- @[modular_object_extension_dispatcher_callTypeStruct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` cpp
-// 构造入参 Point 结构体 a：x=10, y=20
-OH_AbilityRuntime_ModObjDispatcher_StructHandle structA = NULL;
-AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_StructCreate("Point", &structA);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "StructCreate a err:%{public}d", err);
+``` C
+// 创建 Point 结构体入参，组装参数后调用方法
+OH_AbilityRuntime_ModObjDispatcher_StructHandle structA = CreatePointStruct(10, 20);
+if (structA == NULL) {
     return nullptr;
 }
-OH_AbilityRuntime_ModObjDispatcher_Variant ax = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
-ax.u.i32Val = 10;
-OH_AbilityRuntime_ModObjDispatcher_Variant ay = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32};
-ay.u.i32Val = 20;
-OH_AbilityRuntime_ModObjDispatcher_StructSetField(structA, "x", &ax);
-OH_AbilityRuntime_ModObjDispatcher_StructSetField(structA, "y", &ay);
-
-// 组装 3 个入参：a(struct), idx(i32), idy(i32)
+int32_t idx = 5;
+int32_t idy = 8;
+// 组装入参：结构体 a、idx、idy
 OH_AbilityRuntime_ModObjDispatcher_Variant params[3] = {
     {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT, .u.pstructVal = structA},
-    {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = 5},
-    {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = 8},
+    {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = idx},
+    {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_I32, .u.i32Val = idy},
 };
 
 OH_AbilityRuntime_ModObjDispatcher_InputParams inputParams = {.rgvarg = params, .cArgs = 3};
 OH_AbilityRuntime_ModObjDispatcher_Variant result = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
 int32_t methodErrCode = 0;
-err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(
-    g_ModObjDispatcher, 29, &inputParams, &result, &methodErrCode);
+uint32_t memID = 29;
+AbilityRuntime_ErrorCode err = OH_AbilityRuntime_ModObjDispatcher_CallMethod(g_ModObjDispatcher, memID,
+    &inputParams, &result, &methodErrCode);
 OH_AbilityRuntime_ModObjDispatcher_StructRelease(&structA);
-if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Struct err:%{public}d", err);
+if (!CheckCallResult(err, methodErrCode, "TestType_Struct")) {
     return nullptr;
 }
-if (methodErrCode != 0) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Struct methodErrCode:%{public}d", methodErrCode);
-    return nullptr;
-}
-// 返回值为 Point 结构体（出参 b），读取其 x、y 字段
-if (result.vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT || result.u.pstructVal == NULL) {
-    OH_LOG_ERROR(LOG_APP, "TestType_Struct result type unexpected, vt:%{public}d", result.vt);
-    OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
-    return nullptr;
-}
-OH_AbilityRuntime_ModObjDispatcher_Variant outX = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-OH_AbilityRuntime_ModObjDispatcher_Variant outY = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
-OH_AbilityRuntime_ModObjDispatcher_StructGetField(result.u.pstructVal, "x", &outX);
-OH_AbilityRuntime_ModObjDispatcher_StructGetField(result.u.pstructVal, "y", &outY);
-OH_LOG_INFO(LOG_APP, "Point b: x=%{public}d, y=%{public}d", outX.u.i32Val, outY.u.i32Val);
-OH_AbilityRuntime_ModObjDispatcher_VariantClear(&outX);
-OH_AbilityRuntime_ModObjDispatcher_VariantClear(&outY);
+ParseStructResult(&result);
 OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
+```
+
+解析返回的结构体：通过`StructGetField`按字段名读取返回结构体中的字段值。
+
+<!-- @[modular_object_extension_dispatcher_callTypeStruct_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C
+static void ParseStructResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
+{
+    if (result->vt != OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_STRUCT || result->u.pstructVal == NULL) {
+        OH_LOG_ERROR(LOG_APP, "TestType_Struct result type unexpected, vt:%{public}d", result->vt);
+        return;
+    }
+    OH_AbilityRuntime_ModObjDispatcher_Variant outX = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+    OH_AbilityRuntime_ModObjDispatcher_Variant outY = {.vt = OH_ABILITY_RUNTIME_MOD_OBJ_DISPATCHER_VT_EMPTY};
+    OH_AbilityRuntime_ModObjDispatcher_StructGetField(result->u.pstructVal, "x", &outX);
+    OH_AbilityRuntime_ModObjDispatcher_StructGetField(result->u.pstructVal, "y", &outY);
+    OH_LOG_INFO(LOG_APP, "Point b: x=%{public}d, y=%{public}d", outX.u.i32Val, outY.u.i32Val);
+    OH_AbilityRuntime_ModObjDispatcher_VariantClear(&outX);
+    OH_AbilityRuntime_ModObjDispatcher_VariantClear(&outY);
+}
 ```
 
 ### 资源释放
 
-分发器、类型描述符、各类容器句柄、Variant和TypeInfo对象均需按所有权规则调用对应的接口释放。
+所有通过Create接口获取的句柄和通过Get接口返回的Variant/TypeInfo均需在不再使用时释放，避免内存泄漏。
 
-``` cpp
+``` C
 // 释放TypeDescriptor
 if (g_TypeDescriptor != NULL) {
     OH_AbilityRuntime_TypeDescriptor_Release(&g_TypeDescriptor);
