@@ -7,9 +7,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰\@ComponentV2装饰的自定义组件，达成组件复用的效果，适用于列表滚动、频繁切换组件显示/隐藏等需要反复创建和销毁组件的场景，支持通过参数配置内存优化策略。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./ts-custom-component-decorator-componentv2.md#componentv2)装饰的自定义组件，达成组件复用的效果，适用于列表滚动、频繁切换组件显示/隐藏等需要反复创建和销毁组件的场景，支持通过参数配置内存优化策略。
 
 开发指南参考：[\@ReusableV2装饰器：组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。
+
+组件复用的原理与适用场景参考：[组件复用最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
 
 > **说明：**
 >
@@ -31,7 +33,7 @@ const ReusableV2: ClassDecorator & ((options: ReusableOptions) => ClassDecorator
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| options  | [ReusableOptions](./ts-custom-component-parameter.md#reusableoptions) | 否    | 可复用自定义组件的配置参数，用于配置内存优化策略，在复用组件数量较多（例如同一页面中复用组件实例达到数十个以上）或对内存占用敏感的场景下可配置此参数进行优化；缺省时无内存优化策略。<br>**起始版本：** 26.0.0               |
+| options  | [ReusableOptions](./ts-custom-component-parameter.md#reusableoptions) | 否    | 可复用自定义组件的配置参数，用于配置内存优化策略，在复用组件数量较多（例如同一页面中复用组件实例达到数十个以上）或设备内存有限、应用内存占用较高的场景下可配置此参数进行优化；缺省时无内存优化策略。<br>**起始版本：** 26.0.0               |
 
 **返回值：**
 

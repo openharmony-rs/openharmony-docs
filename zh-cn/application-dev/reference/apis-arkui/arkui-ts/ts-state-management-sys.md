@@ -44,7 +44,7 @@ protected subscribers_: Set\<number\>
 
 private id_
 
-私有成员变量id_。
+订阅属性的唯一标识ID，用于在订阅关系管理中区分不同的订阅属性实例。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ private id_
 
 private info_?
 
-变量信息。
+变量信息，用于标识该订阅关系。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +60,7 @@ private info_?
 
 constructor(subscribeMe?: IPropertySubscriber,info?: string)
 
-构造函数。
+构造函数。若传入了subscribeMe参数建立了订阅关系，订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取）。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +89,7 @@ id(): number
 
 createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay\<T\>
 
-创建双向同步属性。数据变更在数据源与订阅者之间双向传播。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取），或由返回的[SyncedPropertyTwoWay](#syncedpropertytwowayt)对象的[aboutToBeDeleted()](#abouttobedeleted-1)方法处理取消订阅。
+创建双向同步属性。数据变更在数据源与订阅者之间双向传播。与[createOneWaySync](#createonewaysync)相比，该方法支持数据源与订阅者之间的双向同步，适用于订阅者也需要反向修改数据源的场景；若仅需数据源向订阅者单向同步，请使用[createOneWaySync](#createonewaysync)。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取），或由返回的[SyncedPropertyTwoWay](#syncedpropertytwowayt)对象的[aboutToBeDeleted()](#abouttobedeleted-1)方法处理取消订阅。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +104,7 @@ createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 |类型   |说明       |
 |-----------|--------------|
-|[SyncedPropertyTwoWay\<T\>](#syncedpropertytwowayt)  |返回双向同步属性。 |
+|[SyncedPropertyTwoWay\<T\>](#syncedpropertytwowayt)  |返回创建的双向同步属性对象，用于在数据源与订阅者之间进行双向数据同步和读写操作。 |
 
 ### createOneWaySync
 
@@ -125,13 +125,13 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 |类型   |说明       |
 |-----------|--------------|
-|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |返回单向同步属性。 |
+|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |返回创建的单向同步属性对象，用于接收父组件状态值的单向同步，当父组件状态变化时更新自身值。 |
 
 ### unlinkSuscriber
 
 unlinkSuscriber(subscriberId: number): void
 
-变量解除订阅时调用。
+根据订阅者ID解除订阅时调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +139,7 @@ unlinkSuscriber(subscriberId: number): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|subscriberId   |number   |是   |要解除订阅的订阅者ID，通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)方法获取。    |
+|subscriberId   |number   |是   |要解除订阅的订阅者ID，需为已通过[createTwoWaySync](#createtwowaysync)或[createOneWaySync](#createonewaysync)建立订阅关系的订阅者ID，通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)方法获取。    |
 
 ### notifyHasChanged
 
@@ -229,7 +229,7 @@ private source_
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string)
 
-构造函数。
+构造函数。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取），或调用本对象的[aboutToBeDeleted()](#abouttobedeleted-1)方法处理取消订阅。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,7 +253,7 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |被取消的订阅者；不传入则取消所有订阅者。    |
+|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |被取消的订阅者，需为已订阅的订阅者；不传入则取消所有订阅者。    |
 
 ### hasChanged
 
@@ -323,7 +323,7 @@ private source_
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string)
 
-构造函数。
+构造函数。订阅关系不再需要时，应调用[unlinkSuscriber()](#unlinksuscriber)解除订阅（订阅者ID通过[IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)获取），或调用本对象的[aboutToBeDeleted()](#abouttobedeleted-2)方法处理取消订阅。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -347,7 +347,7 @@ aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |被取消的订阅者；不传入则取消所有订阅者。    |
+|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |被取消的订阅者，需为已订阅的订阅者；不传入则取消所有订阅者。    |
 
 ### hasChanged
 
@@ -451,7 +451,7 @@ protected notifyPropertyHasChanged(propName: string, newValue: any): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|propName   |string   |是   |属性名称。    |
+|propName   |string   |是   |要通知变更的属性名称。    |
 |newValue   |any   |是   |更改后的新值。   |
 
 ### addOwningProperty
@@ -480,7 +480,7 @@ public removeOwningProperty(property: IPropertySubscriber): void
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|property   |[IPropertySubscriber](#ipropertysubscriber)   |是   |要删除的属性，需为已通过[addOwningProperty](#addowningproperty)添加的属性。    |
+|property   |[IPropertySubscriber](#ipropertysubscriber)   |是   |要删除的订阅者，需为已通过[addOwningProperty](#addowningproperty)添加的订阅者。    |
 
 ### removeOwningPropertyById
 
