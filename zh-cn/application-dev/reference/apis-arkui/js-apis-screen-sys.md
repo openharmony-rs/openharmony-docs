@@ -1643,7 +1643,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
 | densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| screenType | [ScreenType](#screenType)         | 是   | 是   | 屏幕的类型。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| screenType | [ScreenType](#screenType)         | 是   | 是   | 屏幕的类型，默认值为BUILT_IN。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
@@ -2155,11 +2155,15 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 ```
 ## ScreenType
 
-屏幕类型枚举。
+屏幕类型的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此字段仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 | 名称               | 值   | 说明                             |
 | ------------------ | ---- | -------------------------------- |
