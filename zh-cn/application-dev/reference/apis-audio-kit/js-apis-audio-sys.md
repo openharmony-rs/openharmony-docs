@@ -4749,7 +4749,7 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 目标设备描述符，用于设置是否开启自适应空间音频渲染。 |
-| enabled     | boolean     | 是   | 是否开启自适应空间音频渲染。true表示开启，false表示关闭。 |
+| enabled     | boolean     | 是   | 是否开启自适应空间音频渲染。true表示开启；false表示关闭。 |
 
 **返回值：**
 
