@@ -641,7 +641,7 @@ struct WebComponent {
       }
       Web({ src: this.main_url, controller: this.controller })
         .onControllerAttached(()=>{
-          this.controller.enableAdsBlock(true)
+          this.controller.enableAdsBlock(true);
         })
     }
   }
