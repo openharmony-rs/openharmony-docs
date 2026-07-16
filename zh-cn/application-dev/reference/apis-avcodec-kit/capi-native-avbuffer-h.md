@@ -83,7 +83,7 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 **描述**
 
-释放OH_AVBuffer实例指针的资源，适用于媒体数据缓冲区使用完成后回收资源的场景，同一个buffer不允许重复销毁。
+释放OH_AVBuffer实例指针的资源，同一个buffer不允许重复销毁。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -193,7 +193,7 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 
 **描述**
 
-设置除基础属性外的其他参数。
+设置除基础属性外的其他参数，信息在OH_AVFormat中承载。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
