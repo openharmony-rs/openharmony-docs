@@ -953,7 +953,7 @@ Represents the parameters of a serial port.
 
 ## BaudRates
 
-Enumerates the baud rates.
+Enumerates the baud rates, in bits/s.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -992,7 +992,7 @@ Enumerates the baud rates.
 
 ## DataBits
 
-Enumerates the number of data bits.
+Enumerates the number of data bits, in bits/s.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -1019,11 +1019,11 @@ Enumerates the parity check modes.
 
 ## StopBits
 
-Enumerates of the number of stop bits.
+Enumerates the number of stop bits, in bits/s.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| STOPBIT_1 | 0 | The number of stop bits is 1.|
-| STOPBIT_2 | 1 | The number of stop bits is 2.|
+| STOPBIT_1 | 0 | The number of valid packet stop bits is 1.|
+| STOPBIT_2 | 1 | The number of valid packet stop bits is 2.|
