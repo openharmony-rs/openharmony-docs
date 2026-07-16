@@ -150,7 +150,6 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
     
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
@@ -302,7 +301,6 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   let sessionId = 100;
   abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
@@ -892,7 +890,6 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { util } from '@kit.ArkTS';
  
   let textEncoder = util.TextEncoder.create("utf-8");
