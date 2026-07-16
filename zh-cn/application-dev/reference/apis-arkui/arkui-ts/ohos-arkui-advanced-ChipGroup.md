@@ -50,7 +50,7 @@ ChipGroup({
 | 名称            | 类型                                            | 必填 | 装饰器类型 | 说明                                                                                     |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | @Require &nbsp;@Prop | 每个Chip的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br>若为undefined时，ChipGroup默认为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色、大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedIndexes | Array&lt;number&gt;                             | 否   | @Prop | 被选中Chip的索引。<br>取值范围：索引值为非负整数，且不能超过items数组长度减1。<br>传入负数、超出数组范围的索引值或非整数时，该索引值不生效。<br>默认值：[0]<br>若multiple=false，selectedIndexes为空数组时默认选中第1个；selectedIndexes包含多个元素时仅第一个索引生效。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -135,7 +135,7 @@ ChipGroupSpaceOptions定义了ChipGroup左右内边距，以及Chip与Chip之间
 
 | 名称       | 类型            | 只读 | 可选 | 说明                                             |
 | ---------- | -------------- | ---- | ------------------------------------------------ | ------------------------------------------------ |
-| itemSpace | string \| number  | 否  | 是  | Chip与Chip之间的间距（不支持百分比）。<br>取值范围：<br>number类型：大于等于0的数值（如：0、8、16、24.5）。<br>string类型：单位为fp\|vp\|px\|lpx且数值部分 大于等于0的字符串（如："8vp"、"16fp"、"12px"、"10lpx"）。<br>**说明**：传入负数、百分比或无效字符串格式时，使用默认值。 <br>默认值：8<br>单位：vp<br>值为undefined时，按默认值处理。 |
+| itemSpace | string \| number  | 否  | 是  | Chip与Chip之间的间距（不支持百分比）。<br>取值范围：<br>number类型：大于等于0的数值（如：0、8、16、24.5）。<br>string类型：单位为fp \| vp \| px \| lpx且数值部分大于等于0的字符串（如："8vp"、"16fp"、"12px"、"10lpx"）。<br>**说明**：传入负数、百分比或无效字符串格式时，使用默认值。 <br>默认值：8<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | startSpace | [Length](ts-types.md#length)         | 否  | 是  | 左侧内边距（不支持百分比）。<br>传入负数、百分比或无效字符串格式时，使用默认值。<br>默认值：16<br>单位：vp<br>值为undefined时，按默认值处理。           |
 | endSpace   | [Length](ts-types.md#length)         | 否  | 是  | 右侧内边距（不支持百分比）。<br>传入负数、百分比或无效字符串格式时，使用默认值。<br>默认值：16<br>单位：vp<br>值为undefined时，按默认值处理。 |
 
@@ -588,7 +588,7 @@ struct SectionItem {
 @Component
 export struct ChipGroupExample2 {
   @LocalBuilder
-  Suffix() {
+  suffixBuilder() {
     IconGroupSuffix({
       items: [
         {
@@ -693,7 +693,7 @@ export struct ChipGroupExample2 {
                   { label: { text: '选项8' } },
                   { label: { text: '选项9' } },
                 ],
-                suffix: this.Suffix,
+                suffix: this.suffixBuilder,
               })
             }
           }
@@ -771,7 +771,7 @@ struct SectionItem {
 @Component
 export struct ChipGroupExample2 {
   @LocalBuilder
-  Suffix() {
+  suffixBuilder() {
     IconGroupSuffix({
       items: [
         {
@@ -844,7 +844,7 @@ export struct ChipGroupExample2 {
                   { label: { text: '选项8' } },
                   { label: { text: '选项9' } },
                 ],
-                suffix: this.Suffix,
+                suffix: this.suffixBuilder,
                 multiple: true,
               })
             }
@@ -879,7 +879,7 @@ struct ChipGroupMaterialExample {
   @State selectedIndexes: Array<number> = [0];
 
   @LocalBuilder
-  suffix() {
+  suffixBuilder() {
     IconGroupSuffix({
       items: [new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
       // 将fontColor设置为特殊系统资源值，启用自动反色能力。
@@ -920,7 +920,7 @@ struct ChipGroupMaterialExample {
           this.selectedIndexes = activatedChipsIndex;
         },
         suffix: () => {
-          this.suffix()
+          this.suffixBuilder()
         }
       })
     }
