@@ -1,4 +1,4 @@
- # 屏幕亮度错误码
+# 屏幕亮度错误码
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: PowerManager-->

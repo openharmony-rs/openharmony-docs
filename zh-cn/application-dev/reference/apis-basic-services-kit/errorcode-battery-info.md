@@ -1,4 +1,4 @@
- # 电量信息错误码
+# 电量信息错误码
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: PowerManager-->

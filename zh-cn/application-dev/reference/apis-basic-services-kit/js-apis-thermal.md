@@ -1,4 +1,4 @@
- # @ohos.thermal (热管理)
+# @ohos.thermal (热管理)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: PowerManager-->

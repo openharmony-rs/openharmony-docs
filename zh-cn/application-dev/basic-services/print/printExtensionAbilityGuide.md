@@ -81,6 +81,7 @@
    * type标签设置为"print"；
    
    * srcEntry标签设置为当前ExtensionAbility组件所对应的代码路径。
+   
    示例如下：
    ```ts
    {
