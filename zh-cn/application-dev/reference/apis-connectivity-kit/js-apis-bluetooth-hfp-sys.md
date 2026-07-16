@@ -36,7 +36,7 @@ import { hfp } from '@kit.ConnectivityKit';
 
 connect(deviceId: string): void
 
-连接设备的hfp服务。
+连接设备的HFP服务。
 
 **系统接口**：此接口为系统接口。
 
@@ -82,7 +82,7 @@ try {
 
 disconnect(deviceId: string): void
 
-断开连接设备的hfp服务。
+断开连接设备的HFP服务。
 
 **系统接口**：此接口为系统接口。
 
@@ -142,9 +142,9 @@ try {
 
 connect(deviceId: string): void
 
-连接设备的hfp服务。
+连接设备的HFP服务。
 
-需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的hfp Profile的连接状态变化。
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
 
 **起始版本**： 26.0.0
 
@@ -192,9 +192,9 @@ try {
 
 disconnect(deviceId: string): void
 
-断开连接设备的hfp服务。
+断开连接设备的HFP服务。
 
-需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的hfp Profile的连接状态变化。
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
 
 **起始版本**： 26.0.0
 
