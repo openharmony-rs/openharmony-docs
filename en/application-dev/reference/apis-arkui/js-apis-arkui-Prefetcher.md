@@ -420,4 +420,4 @@ The following figure illustrates the effects.
 
 ## Supplementary Notes
 
-You can also use the OpenHarmony third-party library [@netteam/prefetcher](https://ohpm.openharmony.cn/#/cn/detail/@netteam%2Fprefetcher) to implement the prefetching functionality. This library provides additional APIs for more convenient and efficient data prefetching.
+You can also use the OpenHarmony third-party library [@netteam/prefetcher](https://ohpm.openharmony.cn/#/en/detail/@netteam%2Fprefetcher) to implement the prefetching functionality. This library provides additional APIs for more convenient and efficient data prefetching.
