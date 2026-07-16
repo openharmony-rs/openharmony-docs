@@ -1,5 +1,5 @@
 # @ohos.nearlink.scan (星闪扫描能力)(系统接口)
-<!--Kit: NearLink Kit-->
+<!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
