@@ -492,7 +492,7 @@ struct ArticleCardChangeChild {
           .margin({ bottom: 8 })
 
         Row() {
-          // 'app.media.iconLiked' and 'app.media.iconUnLiked' are only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+          // 'app.media.iconLiked' and 'app.media.iconUnLiked' are only an example. Replace them with the actual ones in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
           Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
             .width(24)
             .height(24)
@@ -681,7 +681,7 @@ struct ReducedRenderingPerformance {
       }
       .onClick(() => {
         this.simpleList.splice(1, 0, 'new item');
-        hilog.info(DOMAIN, 'testTag', '[onClick]: simpleList is [${this.simpleList.join(', ')}]');
+        hilog.info(DOMAIN, 'testTag', `[onClick]: simpleList is [${this.simpleList.join(', ')}]`);
       })
 
       ForEach(this.simpleList, (item: string) => {
@@ -700,7 +700,7 @@ struct ReducedChildItem {
   @Prop item: string;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, '[aboutToAppear]: item is ${this.item}');
+    hilog.info(DOMAIN, TAG, `[aboutToAppear]: item is ${this.item}`);
   }
 
   build() {
