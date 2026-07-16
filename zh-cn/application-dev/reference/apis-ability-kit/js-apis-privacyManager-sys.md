@@ -708,9 +708,9 @@ pid需要与startUsingPermission传入的pid相同。
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|	 
- | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|	 
- | pid            | number | 否   | 与startUsingPermission传入的pid相同，默认-1。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
+| permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
+| pid            | number | 否   | 与startUsingPermission传入的pid相同，默认-1。|
 
 **返回值：**
 
