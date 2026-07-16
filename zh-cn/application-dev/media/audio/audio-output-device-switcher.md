@@ -39,7 +39,8 @@
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
-       // 设置默认输出设备为本机扬声器。
+   
+       // 设置默认输出设备为扬声器。
        audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
          console.info('Succeeded in setting default output device.');
          // ...
@@ -48,8 +49,9 @@
          // ...
        });
        // ...
-       // 设置默认输出设备为系统默认输出设备,即取消应用设置的默认设备,交由系统选择设备。
-       audioRenderer.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+   
+       // 设置默认输出设备为听筒。
+       audioRenderer.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
          console.info('Succeeded in setting default output device.');
          // ...
        }).catch((err: BusinessError) => {
