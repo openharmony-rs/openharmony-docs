@@ -1693,7 +1693,7 @@ onEditChanged(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 > **说明：**
 >
-> 从 API version 7开始支持，从API version 8开始废弃。建议使用[onEditChange](#oneditchange8)替代。
+> 从API version 7开始支持，从API version 8开始废弃。建议使用[onEditChange](#oneditchange8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
