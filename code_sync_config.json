@@ -49640,22 +49640,22 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets",
 				"functions":[
 					{
-						"end_line":1377,
+						"end_line":775,
 						"name":"manager_create_template",
 						"start_line":16
 					},
 					{
-						"end_line":1378,
+						"end_line":776,
 						"name":"template_register_listener",
 						"start_line":17
 					},
 					{
-						"end_line":1379,
+						"end_line":777,
 						"name":"set_user_info",
 						"start_line":18
 					},
 					{
-						"end_line":1380,
+						"end_line":778,
 						"name":"unregister_listener",
 						"start_line":19
 					}
