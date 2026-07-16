@@ -290,7 +290,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t *fence | 用于同步的显示相关参数信息，用于视频帧的同步控制。通过该参数获取视频帧的同步fence信息，确保视频帧在显示前完成渲染处理，避免画面撕裂等问题。 |
+| int32_t *fence | 用于同步的显示相关参数信息和视频帧的同步控制。通过该参数获取视频帧的同步fence信息，确保视频帧在显示前完成渲染处理，避免画面撕裂等问题。 |
 | int64_t *timestamp | 视频帧的时间戳。单位为纳秒（ns）。 |
 | [struct OH_Rect](capi-avscreencapture-oh-rect.md) *region | 指向视频显示相关的坐标信息的指针。包含视频帧的显示信息（x、y坐标）和显示尺寸（宽度和高度），用于确定视频帧在屏幕上的显示区域和范围。 |
 
