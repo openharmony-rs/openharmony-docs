@@ -61,7 +61,7 @@
 
     目前跨用户访问仅支持主空间和隐私空间之间的访问，且需要数据访问方配有跨用户访问权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS才可成功访问。
 
-  - "accountId"仅支持设置为整型，表示系统账号子身份资料标识符。accountId的定义及获取参照[getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getosaccountforegroundsubprofileid)。accountId不填写时，默认为调用方所属系统账号的前台子身份资料标识符。例如访问方需要访问数据提供方中特定子身份资料下的数据时，可通过URI中指定accountId访问，格式为：`datashareproxy://{bundleName}/{dataPath}?accountId={accountId}`。<br>在HarmonyOS 7.0.0之前，不支持该参数，URI中传递该参数也不生效；从HarmonyOS 7.0.0开始，URI支持该参数生效。
+  - "accountId"仅支持设置为整型，表示系统账号子身份资料标识符。accountId的定义及获取参照[getOsAccountForegroundSubProfileId](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getosaccountforegroundsubprofileid)。accountId不填写时，默认为调用方所属系统账号的前台子身份资料标识符。例如访问方需要访问数据提供方中特定子身份资料下的数据时，可通过在URI中指定accountId访问，格式为：`datashareproxy://{bundleName}/{dataPath}?accountId={accountId}`。<br>搭载OpenHarmony 7.0.0及以上版本的设备，可正常配置使用此参数。仅支持Car设备。<br>针对低于该版本的设备，此参数配置不生效。
 
 ## 约束与限制
 
@@ -71,7 +71,6 @@
 - 持久化数据不支持代理创建数据库，如果需要创建数据库，需要拉起数据提供方。
 - 数据提供方如果是normal级别签名的应用，配置的数据读写权限必须为system_basic及以上权限。
 - 调用静默访问接口（insert、delete、update或者query）时需遵循流量控制机制：每30秒为一个流控周期，若在该流控周期内调用对应接口的次数大于等于3000次，则该流控周期剩余时间内调用该接口均返回失败，到下一个流控周期重新开始计数，接口恢复正常。建议避免短时间高频调用接口，合理控制接口调用频率。
-- URI中的accountId参数以及my_config.json中的accountIsolation字段目前仅支持车机产品形态。
 
 
 ## 接口说明
@@ -155,7 +154,7 @@
    | type  | 标识数据库类型，目前支持配置为rdb，表示关系型数据库。             | 是    |
    | scope | 数据库所在范围。<br>1.module表示数据库位于本模块下。<br>2.application表示数据库位于本应用下。 | 否    |
    | allowLists          | 包括appIdentifier和onlyMain。<br>allowLists中配置被允许访问的应用列表，最多配置256个授权信息。在跨应用数据访问时通过该配置校验数据访问方是否在数据提供方配置的列表内，若不在则拒绝访问。若无allowLists配置则不做白名单校验。不管是否配置allowLists，在[表1](#数据提供方应用的开发)中的读写权限依然会被正常校验。<br>**-appIdentifier：** 字符串，应用的唯一标识，由云端统一分配。数据提供方自行向访问方获取。<br>appIdentifier信息可参考[SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)。 <br>**-onlyMain：** 布尔值，控制是否仅支持主应用。true: 只允许主应用访问，分身应用不可访问。false: 主应用和分身应用均可访问。该功能仅支持静默访问。 | 否   |
-   | accountIsolation          | 表示数据是否区分账号。布尔值，true表示数据区分账号，即不同账号访问不同数据；false表示数据不区分账号，即不同账号访问相同数据。不配置时默认为false。<br>在HarmonyOS 7.0.0之前，不支持该属性，配置了也不生效；从HarmonyOS 7.0.0开始，支持该属性。 | 否   |
+   | accountIsolation          | 表示数据是否区分账号。布尔值，true表示数据区分账号，即不同账号访问不同数据；false表示数据不区分账号，即不同账号访问相同数据。不配置时默认为false。<br>搭载OpenHarmony 7.0.0及以上版本的设备，可正常配置使用此参数。仅支持Car设备。<br>针对低于该版本的设备，此参数配置不生效。 | 否   |
 
    **my_config.json配置样例**
 
