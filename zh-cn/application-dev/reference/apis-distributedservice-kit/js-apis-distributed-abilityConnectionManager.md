@@ -235,8 +235,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-    
+   
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
@@ -264,16 +263,16 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
-          hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
-        } catch (error) {
-          hilog.error(0x0000, 'testTag', error);
-        }
-        return sessionId;
-      }
-    }
-    ```
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+       } catch (error) {
+         hilog.error(0x0000, 'testTag', error);
+       }
+       return sessionId;
+     }
+   }
+   ```
 
-    ArkTS-Sta示例：
+   ArkTS-Sta示例：
    ```ts
    import Ability from '@ohos.app.ability.UIAbility';
    import hilog from '@ohos.hilog';
@@ -473,7 +472,6 @@ ArkTS-Dyn示例：
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 100;
 abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
@@ -588,15 +586,71 @@ export default class EntryAbility extends UIAbility {
     try {
       sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
       AppStorage.setOrCreate('sessionId', sessionId);
-       hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
-     } catch (error) {
-       hilog.error(0x0000, 'testTag', error);
-     }
-     return sessionId;
-   }
- }
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
+    return sessionId;
+  }
+}
+```
 
- ## abilityConnectionManager.disconnect
+ArkTS-Sta示例：
+
+```ts
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { UIAbility, Want } from '@kit.AbilityKit';
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+    this.onCollab(param);
+    return AbilityConstant.CollaborateResult.ACCEPT;
+  }
+
+  onCollab(collabParam: Record<string, Object>): void {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+      return;
+    }
+    const collabToken = collabParam["ohos.dms.collabToken"] as string;
+    abilityConnectionManager.acceptConnect(sessionId as Int, collabToken).then(() => {
+      hilog.info(0x0000, 'testTag', 'acceptConnect success');
+    }).catch(() => {
+      hilog.error(0x0000, 'testTag', 'failed');
+    })
+  }
+
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
+      return sessionId;
+    }
+
+    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+      AppStorage.setOrCreate('sessionId', sessionId);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error.message);
+    }
+    return sessionId;
+  }
+}
+```
+
+## abilityConnectionManager.disconnect
 
 disconnect(sessionId:&nbsp;number):&nbsp;void
 
@@ -1503,7 +1557,6 @@ ArkTS-Dyn示例：
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
 let textEncoder = util.TextEncoder.create("utf-8");
