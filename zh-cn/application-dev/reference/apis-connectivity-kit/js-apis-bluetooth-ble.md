@@ -1928,7 +1928,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
@@ -1978,7 +1978,7 @@ disconnect(deviceId: string): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|801     | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
