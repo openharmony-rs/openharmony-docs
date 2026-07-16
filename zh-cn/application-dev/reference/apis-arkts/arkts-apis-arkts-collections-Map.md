@@ -5,7 +5,7 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-一种基于键值对存储的非线性数据结构。能够高效地通过唯一键来存取对应的值。
+一种基于键值对存储的非线性数据结构，能够高效地通过唯一键来存取对应的值。
 
 > **说明：**
 >
@@ -99,7 +99,7 @@ const myMap2: collections.Map<number, Object> = new collections.Map<number, Obje
 
 constructor(iterable: Iterable\<readonly \[K, V]>)
 
-创建ArkTS Map对象的构造函数。
+构造函数，用于通过可迭代对象创建ArkTS Map对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -188,7 +188,7 @@ const myMap: collections.Map<number, string> = new collections.Map<number, strin
 const entriesIter: IterableIterator<[number, string]> = myMap.entries();
 // 遍历entriesIter迭代器对象。
 for (const entry of entriesIter) {
-  if (entry[1].startsWith('t')) {
+  if (entry[1].startsWith("t")) {
     myMap.delete(entry[0]);
   }
 }
@@ -239,7 +239,7 @@ console.info(iterator.next().value);
 ## values
 values(): IterableIterator\<V>
 
-返回一个Map迭代器对象，该对象包含此Map中每个元素的值。
+返回一个Map迭代器对象，该对象包含了此Map中每个元素的值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -313,7 +313,7 @@ console.info("size:" + myMap.size);
 ## delete
 delete(key: K): boolean
 
-删除该Map中指定元素。
+删除该Map中指定键对应的元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -362,7 +362,7 @@ console.info("result:" + myMap.delete("hello"));
 ## forEach
 forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 
-按插入顺序对该Map中的每个键/值对执行一次回调函数。
+按插入顺序对该Map中的每个键值对执行一次回调函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -372,7 +372,7 @@ forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 
 | 参数名     | 类型                                       | 必填 | 说明       |
 | ---------- | ------------------------------------------ | ---- | ---------- |
-| callbackFn | (value: V, key: K, map: Map<K, V>) => void | 是   | 回调函数。回调执行期间不应修改当前Map对象，否则会触发并发修改错误。 |
+| callbackFn | (value: V, key: K, map: Map<K, V>) => void | 是   | 回调函数。回调执行期间不能修改当前Map对象，否则会触发并发修改错误。 |
 
 callbackFn的参数说明：
 | 参数名 | 类型            | 必填 | 说明                         |
@@ -396,9 +396,9 @@ callbackFn的参数说明：
 // 正例：
 // 遍历Map中每个元素
 new collections.Map<string, number>([
-  ['foo', 0],
-  ['bar', 1],
-  ['baz', 2],
+  ["foo", 0],
+  ["bar", 1],
+  ["baz", 2],
 ]).forEach((value, key, map) => {
   console.info(`m[${key}] = ${value}`);
 });
@@ -408,9 +408,9 @@ new collections.Map<string, number>([
 ```ts
 // 反例：
 new collections.Map<string, number>([
-  ['foo', 0],
-  ['bar', 1],
-  ['baz', 2],
+  ["foo", 0],
+  ["bar", 1],
+  ["baz", 2],
 ]).forEach((value, key, map) => {
   // Throw exception `Concurrent modification error.`
   map.delete(key);
@@ -478,7 +478,7 @@ has(key: K): boolean
 
 | 类型    | 说明                                          |
 | ------- | --------------------------------------------- |
-| boolean | 如果存在指定元素，则返回true，否则返回false。 |
+| boolean | 如果Map中存在指定键，则返回true，否则返回false。 |
 
 **错误码：**
 
@@ -496,7 +496,7 @@ has(key: K): boolean
 const myMap = new collections.Map<string, string>([
   ["hello", "world"],
 ]);
-// 判断Map中是否存在指定元素
+// 判断Map中是否存在指定键
 // Expected output: true
 console.info("result:" + myMap.has("hello"));
 // Expected output: false
@@ -582,17 +582,17 @@ myMap.set("foo", obj);
 **示例：**
 
 ```ts
-let map = new collections.Map<number, string>([
+let myMap = new collections.Map<number, string>([
     [0, "one"],
     [1, "two"],
     [2, "three"],
     [3, "four"]
 ]);
 // 通过Array.from和keys()获取所有键的数组
-let keys = Array.from(map.keys());
+let keys = Array.from(myMap.keys());
 // 遍历每个键，通过get()方法获取对应的值
 for (let key of keys) {
   console.info("key:" + key);
-  console.info("value:" + map.get(key));
+  console.info("value:" + myMap.get(key));
 }
 ```

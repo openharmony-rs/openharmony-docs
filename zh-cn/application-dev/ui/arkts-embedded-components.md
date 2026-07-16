@@ -89,7 +89,7 @@ export struct Embedded {
               this.message = `Error: code = ${error.code}`;
             })
             .onDrawReady(() => {
-              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调
             })
         }
         .width('100%')
@@ -150,17 +150,17 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG , '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, TAG, '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
     let param: Record<string, UIExtensionContentSession> = {
       'session': session
     };
     let storage: LocalStorage = new LocalStorage(param);
-    // 加载 Extension.ets 页面内容
+    // 加载Extension.ets页面内容
     session.loadContent('pages/EmbeddedComponent/Extension', storage);
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG , '%{public}s',  `onSessionDestroy`);
+    hilog.info(0x0000, TAG, '%{public}s', `onSessionDestroy`);
   }
 }
 ```

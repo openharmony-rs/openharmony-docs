@@ -48,7 +48,7 @@ struct rotation {
 
 透明度变化的旋转屏动画在屏幕显示方向变化时启用，当窗口进行旋转动画时，为旋转过程中新增或删除的组件添加默认透明度转场，以实现组件的优雅出现和消失。此功能通过监听窗口旋转事件，在事件中切换组件的视图效果，如果消失视图的根节点和新出现视图的根节点未设置转场效果，会为其自动添加默认透明度转场（即[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明).OPACITY），展现出透明度的渐隐和渐显效果。
 
-<!-- @[rotation_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets) -->
+<!-- @[rotation_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets) -->  
 
 ``` TypeScript
 import { display } from '@kit.ArkUI';
@@ -57,7 +57,7 @@ import { display } from '@kit.ArkUI';
 @Component
 struct rotation {
 
-  // 获取通过监听窗口的windowsSizeChange事件得到的屏幕显示方向
+  // 获取通过监听窗口的windowSizeChange事件得到的屏幕显示方向
   @StorageLink('orientation') myOrientation: display.Orientation = display.Orientation.PORTRAIT;
 
   build() {
@@ -90,7 +90,7 @@ struct rotation {
 ```
 
 监听窗口旋转的同步事件windowSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
-<!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 import { display, window } from '@kit.ArkUI';
@@ -107,7 +107,7 @@ const TAG: string = 'EntryAbility';
       mainWindow = windowStage.getMainWindowSync();
       let displayClass: display.Display = display.getDefaultDisplaySync();
       AppStorage.setOrCreate('orientation', displayClass.orientation);
-      // 监听窗口的windowsSizeChange事件，旋转屏时会触发该事件
+      // 监听窗口的windowSizeChange事件，旋转屏时会触发该事件
       mainWindow.on('windowSizeChange', (data) => {
         hilog.info(DOMAIN, TAG, 'Succeeded in enabling the listener for window size changes. Data: ' + data);
         let displayClass: display.Display | null = null;

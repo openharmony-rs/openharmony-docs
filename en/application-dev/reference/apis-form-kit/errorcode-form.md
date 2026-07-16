@@ -335,12 +335,12 @@ An internal error occurs when the system executes the current request.
 **Possible Causes**
 
 1. The system is busy.
-2. The internal data of the system is abnormal.
+2. The internal data of the system is abnormal currently.
 
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293766 Requested Bundle Name Not Exist
 
@@ -359,7 +359,7 @@ An error occurs when the bundle management module obtains the bundle name of the
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293767 Invalid Parameter
 
@@ -401,7 +401,7 @@ An internal service execution exception occurs.
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293798 Failed to Obtain the Widget Manager Service
 
@@ -420,7 +420,7 @@ An internal service execution exception occurs.
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293802 Failed to Obtain the System Manager Service
 
@@ -439,5 +439,4 @@ An internal service execution exception occurs.
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
-<!--no_check-->
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.

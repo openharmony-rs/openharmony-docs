@@ -1445,7 +1445,6 @@ function GetImageInfoSync(pixelMap: image.PixelMap) {
   try {
     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
     console.info(`Succeeded in obtaining pixelMap information ${imageInfo.size}.`);
-    return imageInfo;
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to obtain pixelMap information. Code is ${error.code}, message is ${error.message}`);
@@ -1993,7 +1992,6 @@ function CreateAlphaPixelmapSync(pixelMap: image.PixelMap) {
   try {
     let pixelmap: image.PixelMap = pixelMap.createAlphaPixelmapSync();
     console.info('Succeeded in creating alpha PixelMap.');
-    return pixelmap;
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create alpha PixelMap. Code is ${error.code}, message is ${error.message}`);

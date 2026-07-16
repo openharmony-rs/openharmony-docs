@@ -109,7 +109,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 **描述**
 
-使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。
+使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。创建的对象使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
 
 **起始版本：** 12
 
@@ -133,7 +133,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* image
 
 **描述**
 
-销毁帧图片对象指针。
+销毁帧图片对象指针。用于释放由[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString](#oh_arkui_imageanimatorframeinfo_createfromstring)和[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor)创建的对象，避免内存泄漏。
 
 **起始版本：** 12
 
@@ -356,4 +356,4 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 图片的播放时长，单位为毫秒，imageInfo为空指针时返回0。 |
+| int32_t | 图片的播放时长，单位为ms，imageInfo为空指针时返回0。 |

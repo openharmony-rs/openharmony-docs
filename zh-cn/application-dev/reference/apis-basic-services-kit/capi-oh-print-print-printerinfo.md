@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_PrinterInfo;
+typedef struct {...} Print_PrinterInfo
 ```
 
 ## 概述

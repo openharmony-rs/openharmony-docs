@@ -19,6 +19,7 @@
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## pointer.setPointerSpeed
@@ -35,10 +36,10 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | number                    | 是    | 鼠标移动速度，范围1-20，默认为10。   |
+| speed    | number                    | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功，err为undefined，否则为错误对象。|
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -62,7 +63,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置鼠标指针速度
+            // 设置鼠标光标速度
             pointer.setPointerSpeed(5, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -73,7 +74,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -93,7 +94,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | number | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **返回值**：
 
@@ -204,7 +205,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度，取值范围[1, 20]；否则为错误对象。 |
 
 **错误码**：
 
@@ -230,7 +231,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取鼠标指针速度
+            // 获取鼠标光标速度
             pointer.getPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1071,7 +1072,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板滚动开关
+            // 设置触控板滚动开关
             pointer.setTouchpadScrollSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1187,7 +1188,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板滚动开关
+            // 获取触控板滚动开关
             pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1298,7 +1299,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板滚动方向
+            // 设置触控板滚动方向
             pointer.setTouchpadScrollDirection(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1361,7 +1362,7 @@ struct Index {
         .onClick(() => {
           try {
             // 设置触摸板滚动方向
-            pointer.setTouchpadScrollDirection (false).then(() => {
+            pointer.setTouchpadScrollDirection(false).then(() => {
               console.info(`Succeeded in setting touchpad scroll direction.`);
             }).catch((error: BusinessError) => {
               console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1414,8 +1415,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板滚动方向
-            pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
+            // 获取触控板滚动方向
+            pointer.getTouchpadScrollDirection((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -1525,7 +1526,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板点击开关
+            // 设置触控板点击开关
             pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1542,7 +1543,7 @@ struct Index {
 }
 ```
 
-## pointer.setTouchpadTapSwitch <sup>10+</sup>
+## pointer.setTouchpadTapSwitch<sup>10+</sup>
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
@@ -1640,7 +1641,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板点击开关
+            // 获取触控板点击开关
             pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1751,7 +1752,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板指针速度
+            // 设置触控板光标速度
             pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1867,7 +1868,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板指针速度
+            // 获取触控板光标速度
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1978,7 +1979,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板捏合开关
+            // 设置触控板捏合开关
             pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2094,7 +2095,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板捏合开关
+            // 获取触控板捏合开关
             pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2205,7 +2206,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板滑动开关
+            // 设置触控板滑动开关
             pointer.setTouchpadSwipeSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2321,7 +2322,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板滑动开关
+            // 获取触控板滑动开关
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2432,8 +2433,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板右键点击类型
-            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: BusinessError) => {
+            // 设置触控板右键点击类型
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -2548,7 +2549,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板右键点击类型
+            // 获取触控板右键点击类型
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
               if (error) {
                 console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2659,7 +2660,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置鼠标指针大小
+            // 设置鼠标光标大小
             pointer.setPointerSize(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2826,7 +2827,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取鼠标指针大小
+            // 获取鼠标光标大小
             pointer.getPointerSize((error: BusinessError, size: number) => {
               if (error) {
                 console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2991,7 +2992,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置鼠标指针颜色
+            // 设置鼠标光标颜色
             pointer.setPointerColor(0xF6C800, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3166,7 +3167,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取鼠标指针颜色
+            // 获取鼠标光标颜色
             pointer.getPointerColor((error: BusinessError, color: number) => {
               if (error) {
                 console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3327,7 +3328,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 设置触摸板双击拖拽状态
+            // 设置触控板双击拖拽状态
             pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3443,7 +3444,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // 获取触摸板双击拖拽状态
+            // 获取触控板双击拖拽状态
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3558,7 +3559,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("setMouseScrollDirection")
+      Button('setMouseScrollDirection')
         .onClick(() => {
           try {
             // 设置鼠标滚动方向
@@ -3615,7 +3616,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Button("getMouseScrollDirection")
+      Button('getMouseScrollDirection')
         .onClick(() => {
           try {
             // 获取鼠标滚动方向

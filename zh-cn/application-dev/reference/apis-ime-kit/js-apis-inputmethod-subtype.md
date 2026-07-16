@@ -74,7 +74,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 | -------- | -------- | -------- | -------- | -------- |
 | label | string | 是 | 是 | 输入法子类型的标签。用于在UI界面展示子类型的名称，如"中文（简体）"、"English"等。 |
 | labelId<sup>10+</sup> | number | 是 | 是 | 输入法子类型的标签资源号。用于通过资源ID加载标签文本，支持多语言场景下的标签国际化显示。 |
-| name< | string | 是 | 否 | 输入法子类型所属应用的包名。与输入法应用在module.json5中配置的bundleName保持一致，用于标识该子类型属于哪个输入法应用。 |
+| name | string | 是 | 否 | 输入法子类型所属应用的包名。与输入法应用在module.json5中配置的bundleName保持一致，用于标识该子类型属于哪个输入法应用。 |
 | id | string | 是 | 否 | 输入法子类型的id。与输入法应用在module.json5中配置的subtype id保持一致，用于在同输入法应用内唯一标识一个子类型。 |
 | mode | 'upper' \| 'lower' | 是 | 是 | 输入法子类型的模式，包括upper（大写）和lower（小写）。用于描述键盘的大小写状态模式。 |
 | locale | string | 是 | 否 | 输入法子类型的区域。遵循ICU Locale格式，如'zh-CN'表示中文（简体，中国）、'en-US'表示英文（美国）。用于标识子类型的语言和地区。 |

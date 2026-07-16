@@ -12,7 +12,7 @@ typedef struct Hid_EventProperties {...} Hid_EventProperties
 
 ## 概述
 
-设备关注事件属性。
+设备事件属性。用于定义和配置HID设备的事件属性，包括事件类型、键值、绝对坐标、相对坐标等各类事件属性编码及取值范围，适用于需要精细化管理HID设备输入事件的场景。
 
 **起始版本：** 11
 
@@ -30,10 +30,10 @@ typedef struct Hid_EventProperties {...} Hid_EventProperties
 | struct [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md) hidKeys | 键值属性编码数组 |
 | struct [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md) hidAbs | 绝对坐标属性编码数组 |
 | struct [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md) hidRelBits | 相对坐标属性编码数组 |
-| struct [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md) hidMiscellaneous | 其它特殊事件属性编码数组 |
+| struct [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md) hidMiscellaneous | 其他特殊事件属性编码数组 |
 | int32_t hidAbsMax[64] | 绝对坐标属性最大值 |
 | int32_t hidAbsMin[64] | 绝对坐标属性最小值 |
 | int32_t hidAbsFuzz[64] | 绝对坐标属性模糊值 |
-| int32_t hidAbsFlat[64] | 绝对坐标属性固定值 |
+| int32_t hidAbsFlat[64] | 绝对坐标属性平坦值 |
 
 

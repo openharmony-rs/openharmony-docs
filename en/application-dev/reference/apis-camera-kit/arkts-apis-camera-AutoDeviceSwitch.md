@@ -44,7 +44,7 @@ Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupp
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                                                                                                                                      |
+| ID  | Error Message                                                                                                                                      |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed.<br>Applicable versions: 19+|
 | 7400102 | Operation not allowed.                                                                                                                         |

@@ -26,7 +26,7 @@ ArkWeb_JavaScriptBridgeData是JavaScript桥接数据定义结构体，用于在N
 
 | 名称 | 描述 |
 | -- | -- |
-| const uint8_t* buffer | 指向传输数据的指针。仅支持前端传入String和ArrayBuffer类型，其余类型会被json序列化后，以String类型传递。 |
+| const uint8_t* buffer | 指向传输数据的指针。仅支持前端传入String和ArrayBuffer类型，其余类型会被JSON序列化后，以String类型传递。 |
 | size_t size | 传输数据的长度。 |
 
 

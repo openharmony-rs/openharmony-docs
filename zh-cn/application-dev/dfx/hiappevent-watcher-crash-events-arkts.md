@@ -41,7 +41,7 @@
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和崩溃日志[自定义规格设置](hiappevent-watcher-crash-events.md#自定义规格设置)，示例代码如下：
 
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
     
     ``` TypeScript
     // 构建崩溃事件的自定义参数
@@ -71,14 +71,14 @@
     }
     
     if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
-      // 配置页面切换日志
-      let switchLogPolicy : hiAppEvent.EventPolicy = {
-        "appCrashPolicy": {
-          "pageSwitchLogEnable": true
+      let crashEventPolicy : hiAppEvent.EventPolicy = {
+        "appCrashPolicy": { // 崩溃事件配置策略
+          "pageSwitchLogEnable": true, // 使能页面切换日志
+          "collectMinidump": true // native崩溃场景，使能minidump
         }
       };
-      // 开发者可以设置崩溃日志配置参数
-      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+      // 开发者可以设置崩溃事件配置策略
+      hiAppEvent.configEventPolicy(crashEventPolicy).then(() => {
         hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
       }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
@@ -284,7 +284,7 @@ HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty
 HiAppEvent eventInfo.params.hilog.size=100
 HiAppEvent eventInfo.params.process_life_time=25
 HiAppEvent eventInfo.params.memory={"rss":181964,"sys_avail_mem":1230456,"sys_free_mem":676940,"sys_total_mem":2001932}
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log"]
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log","/data/storage/el2/log/hiappevent/APP_CRASH_1503045716409_2610.dmp"]
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.page_switch_log=["/data/storage/el2/log/page_switch/snapshot/page_switch.20260420-134923-267.1.log"]
 HiAppEvent eventInfo.params.test_data=100
@@ -318,7 +318,7 @@ HiAppEvent eventInfo.params.test_data=100
 | reason | external_log文件内容中的Reason字段 | 无 |
 | summary | external_log文件内容中的一部分 | CPP_CRASH的summary对应external_log文件内容中的Fault thread info字段；JS_CRASH的summary对应external_log文件内容中的Error name、Error message、 Stacktrace、HybridStack字段。 |
 
-[FaultLogger.query(使用callback回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和[FaultLogger.query(使用Promise回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
+使用callback回调的[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和使用Promise回调的[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
 
 查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到崩溃事件](#验证观察者是否订阅到崩溃事件)，了解使用hiAppEvent订阅崩溃事件（ArkTS）的具体步骤。
 <!--RP1-->

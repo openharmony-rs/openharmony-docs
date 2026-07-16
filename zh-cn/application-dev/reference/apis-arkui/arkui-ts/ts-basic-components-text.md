@@ -458,9 +458,9 @@ enableHapticFeedback(isEnabled: boolean)
 
 ```json
 "requestPermissions": [
- {
-    "name": "ohos.permission.VIBRATE",
- }
+  {
+    "name": "ohos.permission.VIBRATE"
+  }
 ]
 ```
 
@@ -1478,7 +1478,7 @@ textIndent(value: Length)
 
 ### tailIndents
 
-tailIndents(value: Optional\<LengthMetrics> | Array\<LengthMetrics>)
+tailIndents(value: Optional<LengthMetrics | Array\<LengthMetrics>>)
 
 设置文本尾部缩进。未通过该接口设置时，文本尾部缩进为0fp。
 
@@ -1494,7 +1494,7 @@ tailIndents(value: Optional\<LengthMetrics> | Array\<LengthMetrics>)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>取值范围：大于等于0。设置负数时，按默认值处理。|
+| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;&gt; | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>取值范围：大于等于0。设置负数时，按默认值处理。|
 
 ### textOverflow
 

@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_PrintDocCallback;
+typedef struct {...} Print_PrintDocCallback
 ```
 
 ## 概述

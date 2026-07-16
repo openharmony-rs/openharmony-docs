@@ -1992,7 +1992,7 @@ setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&l
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100023 | The specified userId is inconsistent with the current userId. |
-| 19100024 | The specified userId belongs to a personal space user and cannot be controlled. |
+| 19100024 | The specified userId belongs to a personal space user and cannot be managed. |
 
 **示例：**
 

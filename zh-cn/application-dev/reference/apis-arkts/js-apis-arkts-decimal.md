@@ -1,4 +1,4 @@
-# @arkts.math.Decimal (高精度数学库Decimal)
+# @arkts.math.Decimal (任意精度数学库Decimal)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong; @lijin1039-->
@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Decimal用于提供高精度数学运算的能力，支持高精度浮点计算。
+Decimal用于提供任意精度数学运算的能力，支持任意精度浮点计算。
 
 > **说明：**
 >
@@ -26,7 +26,7 @@ type Value = string | number | Decimal
 
 表示用于构建Decimal的参数类型。
 
-取值类型为下列类型中的并集。
+取值可以是下列类型中的任意一种。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -34,8 +34,8 @@ type Value = string | number | Decimal
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
-| string              | 表示值类型为字符串，可取任意值。 |
-| number              | 表示值类型为数字，可取任意值。 |
+| string              | 表示值类型为字符串，用于构造Decimal时可接受数字格式的字符串。 |
+| number              | 表示值类型为数字，用于构造Decimal时可接受有限数字值。 |
 | [Decimal](#decimal) | 表示值类型为Decimal类型。      |
 
 ## Rounding
@@ -44,7 +44,7 @@ type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 
 表示可设置的舍入类型。
 
-取值类型为下列类型中的并集。
+取值可以是下列类型中的任意一种。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -68,7 +68,7 @@ type Modulo = Rounding | 9
 
 表示可设置的取模方法舍入类型。
 
-取值类型为下列类型中的并集。
+取值可以是下列类型中的任意一种。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -90,13 +90,13 @@ type Modulo = Rounding | 9
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                         |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
 | precision | number                 | 否   | 是   | 运算结果的最大有效位数，取值范围为[1, 1e9]，默认值为20。     |
-| rounding  | [Rounding](#rounding) | 否   | 是   | 舍入模式，取值范围为0到8的整数，默认值为4。                  |
+| rounding  | [Rounding](#rounding) | 否   | 是   | 舍入模式，取值范围为[0, 8]的整数，默认值为4。                  |
 | toExpNeg  | number                 | 否   | 是   | 指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[-9e15, 0]，默认值为-7。 |
 | toExpPos  | number                 | 否   | 是   | 指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[0, 9e15]，默认值为21。 |
 | minE      | number                 | 否   | 是   | 负指数极限，若Decimal的指数值小于该值，会下溢到零，取值范围为[-9e15, 0]，默认值为-9e15。 |
 | maxE      | number                 | 否   | 是   | 正指数极限，若Decimal的指数值大于该值，会溢出至无穷大，取值范围为[0, 9e15]，默认值为9e15。 |
 | crypto    | boolean                | 否   | 是   | 确定是否使用加密安全伪随机数生成的值，true表示使用加密安全伪随机数，false表示不使用，默认值为false。该能力不支持使用，报错的错误码为：10200061。  |
-| modulo    | [Modulo](#modulo)      | 否   | 是   | 模计算时使用的舍入模式，取值范围为0到9的整数，默认值为1。    |
+| modulo    | [Modulo](#modulo)      | 否   | 是   | 模计算时使用的舍入模式，取值范围为[0, 9]的整数，默认值为1。    |
 | defaults  | boolean                | 否   | 是   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为false。 |
 
 ## Decimal
@@ -310,7 +310,6 @@ add(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值加上n。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -349,7 +348,6 @@ sub(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值减去n。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -388,7 +386,6 @@ mul(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值乘以n。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -427,7 +424,6 @@ div(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值除以n。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +462,6 @@ mod(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是将此Decimal的值除以n后的模。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -505,7 +500,6 @@ sqrt(): Decimal
 
 返回一个新的Decimal对象，其值是当前Decimal的平方根。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -530,7 +524,6 @@ cbrt(): Decimal
 
 返回一个新的Decimal对象，其值是当前Decimal对象的立方根。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -555,7 +548,6 @@ pow(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是这个Decimal值的n次幂。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -595,7 +587,6 @@ exp(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的自然指数。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -628,7 +619,6 @@ log(n: Value): Decimal
 
 返回一个对数运算后的Decimal对象，其值是以n为底的对数值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -668,7 +658,6 @@ ln(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal值的自然对数。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -701,6 +690,7 @@ cos(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的余弦值。
 
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -723,6 +713,7 @@ console.info("test Decimal cos:" + data.toString()); // 'test Decimal cos:0.9689
 sin(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的正弦值。
+
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -747,6 +738,7 @@ tan(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的正切值。
 
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -769,6 +761,7 @@ console.info("test Decimal tan:" + data.toString()); // 'test Decimal tan:0.9315
 cosh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的双曲余弦值。
+
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -793,6 +786,7 @@ sinh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的双曲正弦值。
 
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -816,6 +810,7 @@ tanh(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的双曲正切值。
 
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -838,6 +833,7 @@ console.info("test Decimal tanh:" + data.toString()); // 'test Decimal tanh:0.46
 acos(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的反余弦值。
+
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -870,6 +866,7 @@ asin(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的反正弦值。
 
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -901,6 +898,7 @@ atan(): Decimal
 
 返回一个新的Decimal对象，其值是此Decimal的反正切值。
 
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
@@ -930,7 +928,8 @@ console.info("test Decimal atan:" + data.toString()); // 'test Decimal atan:0.64
 
 acosh(): Decimal
 
-返回一个新的Decimal对象，其值是此Decimal值的双曲余弦的倒数。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲余弦。
+
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -940,7 +939,7 @@ acosh(): Decimal
 
 | 类型                | 说明                                        |
 | ------------------- | ------------------------------------------- |
-| [Decimal](#decimal) | 返回计算双曲余弦的倒数值的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回计算反双曲余弦值的Decimal对象实例。 |
 
 **错误码**：
 
@@ -961,7 +960,8 @@ console.info("test Decimal acosh:" + data.toString()); // 'test Decimal acosh:4.
 
 asinh(): Decimal
 
-返回一个新的Decimal对象，其值是此Decimal值的双曲正弦的倒数。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲正弦。
+
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -971,7 +971,7 @@ asinh(): Decimal
 
 | 类型                | 说明                                        |
 | ------------------- | ------------------------------------------- |
-| [Decimal](#decimal) | 返回计算双曲正弦的倒数值的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回计算反双曲正弦值的Decimal对象实例。 |
 
 **错误码**：
 
@@ -992,7 +992,8 @@ console.info("test Decimal asinh:" + data.toString()); // 'test Decimal asinh:4.
 
 atanh(): Decimal
 
-返回一个新的Decimal对象，其值是此Decimal值的双曲正切的倒数。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲正切。
+
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1002,7 +1003,7 @@ atanh(): Decimal
 
 | 类型                | 说明                                        |
 | ------------------- | ------------------------------------------- |
-| [Decimal](#decimal) | 返回计算双曲正切的倒数值的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回计算反双曲正切值的Decimal对象实例。 |
 
 **错误码**：
 
@@ -1039,7 +1040,7 @@ Decimal的比较方法。
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 返回该Decimal与n的比较结果：<br>1:该Decimal大于比较值。<br/>-1:该Decimal小于比较值。<br/>0:该Decimal等于比较值。<br/>NaN:该Decimal与比较值有一个值为NaN。 |
+| number | 返回该Decimal与n的比较结果。<br>1:该Decimal大于比较值。<br>-1:该Decimal小于比较值。<br>0:该Decimal等于比较值。<br>NaN:该Decimal与比较值有一个值为NaN。 |
 
 **错误码**：
 
@@ -1081,7 +1082,7 @@ equals(n: Value): boolean
 
 | 类型    | 说明                                             |
 | ------- | ------------------------------------------------ |
-| boolean | true表示该Decimal与比较值相等，其余情况为false。 |
+| boolean | true表示该Decimal与比较值相等，false表示该Decimal与比较值不相等。 |
 
 **错误码**：
 
@@ -1119,7 +1120,7 @@ greaterThan(n: Value): boolean
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| boolean | true表示该Decimal大于比较值，其余情况为false。 |
+| boolean | true表示该Decimal大于比较值，false表示该Decimal小于等于比较值。 |
 
 **错误码**：
 
@@ -1157,7 +1158,7 @@ greaterThanOrEqualTo(n: Value): boolean
 
 | 类型    | 说明                                               |
 | ------- | -------------------------------------------------- |
-| boolean | true表示该Decimal大于等于比较值，其余情况为false。 |
+| boolean | true表示该Decimal大于等于比较值，false表示该Decimal小于比较值。 |
 
 **错误码**：
 
@@ -1195,7 +1196,7 @@ lessThan(n: Value): boolean
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| boolean | true表示该Decimal小于比较值，其余情况为false。 |
+| boolean | true表示该Decimal小于比较值，false表示该Decimal大于等于比较值。 |
 
 **错误码**：
 
@@ -1233,7 +1234,7 @@ lessThanOrEqualTo(n: Value): boolean
 
 | 类型    | 说明                                               |
 | ------- | -------------------------------------------------- |
-| boolean | true表示该Decimal小于等于比较值，其余情况为false。 |
+| boolean | true表示该Decimal小于等于比较值，false表示该Decimal大于比较值。 |
 
 **错误码**：
 
@@ -1265,7 +1266,7 @@ isFinite(): boolean
 
 | 类型    | 说明                                         |
 | ------- | -------------------------------------------- |
-| boolean | true表示该Decimal为有限值，其余情况为false。 |
+| boolean | true表示该Decimal为有限值，false表示该Decimal不是有限值（如Infinity或NaN）。 |
 
 **示例：**
 
@@ -1289,7 +1290,7 @@ isInteger(): boolean
 
 | 类型    | 说明                                       |
 | ------- | ------------------------------------------ |
-| boolean | true表示该Decimal为整数，其余情况为false。 |
+| boolean | true表示该Decimal为整数，false表示该Decimal不为整数。 |
 
 **示例：**
 
@@ -1313,7 +1314,7 @@ isNaN(): boolean
 
 | 类型    | 说明                                      |
 | ------- | ----------------------------------------- |
-| boolean | true表示该Decimal为NaN，其余情况为false。 |
+| boolean | true表示该Decimal为NaN，false表示该Decimal不为NaN。 |
 
 **示例：**
 
@@ -1337,7 +1338,7 @@ isNegative(): boolean
 
 | 类型    | 说明                                       |
 | ------- | ------------------------------------------ |
-| boolean | true表示该Decimal为负数，其余情况为false。 |
+| boolean | true表示该Decimal为负数，false表示该Decimal不为负数。 |
 
 **示例：**
 
@@ -1365,7 +1366,7 @@ isPositive(): boolean
 
 | 类型    | 说明                                       |
 | ------- | ------------------------------------------ |
-| boolean | true表示该Decimal为正数，其余情况为false。 |
+| boolean | true表示该Decimal为正数，false表示该Decimal不为正数。 |
 
 **示例：**
 
@@ -1393,7 +1394,7 @@ isZero(): boolean
 
 | 类型    | 说明                                          |
 | ------- | --------------------------------------------- |
-| boolean | true表示该Decimal为0或是-0，其余情况为false。 |
+| boolean | true表示该Decimal为0或是-0，false表示该Decimal不为0且不为-0。 |
 
 **示例：**
 
@@ -1409,7 +1410,6 @@ dividedToIntegerBy(n: Value): Decimal
 
 返回该Decimal除以n后获得的整数部分。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1474,7 +1474,6 @@ toBinary(): string
 
 将Decimal转换为二进制表示的字符串。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1579,7 +1578,6 @@ toOctal(): string
 
 转换为八进制表示的字符串。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1684,7 +1682,6 @@ toHexadecimal(): string
 
 转换为十六进制表示的字符串。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2020,7 +2017,7 @@ console.info("test Decimal toFixed:" + data1); // 'test Decimal toFixed:3.456'
 
 toFixed(decimalPlaces: number): string
 
-将数组转换为十进制定点模式表示的字符串，可按照decimalPlaces设置小数位数。
+将数值转换为十进制定点模式表示的字符串，可按照decimalPlaces设置小数位数。
 
 使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
@@ -2247,7 +2244,6 @@ toPrecision(): string
 
 将Decimal对象转换为字符串。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2281,9 +2277,9 @@ toPrecision(significantDigits: number): string
 
 **参数：**
 
-| 参数名            | 类型   | 必填 | 说明                   |
-| ----------------- | ------ | ---- | ---------------------- |
-| significantDigits | number | 是   | 转换时保留的有效数字。 |
+| 参数名            | 类型   | 必填 | 说明                                |
+| ----------------- | ------ | ---- | ----------------------------------- |
+| significantDigits | number | 是   | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -2353,7 +2349,6 @@ toSignificantDigits(): Decimal
 
 返回一个按照保留有效数字的转换的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2387,9 +2382,9 @@ toSignificantDigits(significantDigits: number): Decimal
 
 **参数：**
 
-| 参数名            | 类型   | 必填 | 说明                   |
-| ----------------- | ------ | ---- | ---------------------- |
-| significantDigits | number | 是   | 转换时保留的有效数字。 |
+| 参数名            | 类型   | 必填 | 说明                                |
+| ----------------- | ------ | ---- | ----------------------------------- |
+| significantDigits | number | 是   | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
@@ -2814,7 +2809,6 @@ static add(x: Value, y: Value): Decimal
 
 返回一个值为x加y的和的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2854,7 +2848,6 @@ static sum(...n: Value[]): Decimal
 
 返回一个值为数组元素和的Decimal对象。该接口用于对参数求和，当无入参时会抛出运行时异常。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2893,7 +2886,6 @@ static sub(x: Value, y: Value): Decimal
 
 返回一个值为x减y的差的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2933,7 +2925,6 @@ static mul(x: Value, y: Value): Decimal
 
 返回一个值为x乘以y的积的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2973,7 +2964,6 @@ static div(x: Value, y: Value): Decimal
 
 返回一个值为x除以y的商的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3014,7 +3004,6 @@ static mod(x: Value, y: Value): Decimal
 
 返回一个新的Decimal对象，其值是x除以y的模。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3054,7 +3043,6 @@ static sqrt(n: Value): Decimal
 
 返回一个值为n的平方根的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3093,7 +3081,6 @@ static cbrt(n: Value): Decimal
 
 返回一个值为n的立方根的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3171,7 +3158,6 @@ static exp(n: Value): Decimal
 
 返回一个值为n的自然指数的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3211,7 +3197,6 @@ static log(n: Value, base: Value): Decimal
 
 返回一个以base为底n的对数的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3252,7 +3237,6 @@ static ln(n: Value): Decimal
 
 返回一个值为n的自然对数的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3292,7 +3276,6 @@ static log2(n: Value): Decimal
 
 返回一个以2为底n的对数的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3332,7 +3315,6 @@ static log10(n: Value): Decimal
 
 返回一个以10为底n的对数的Decimal对象。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3372,7 +3354,6 @@ static cos(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的余弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3411,7 +3392,6 @@ static sin(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的正弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3450,7 +3430,6 @@ static tan(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的正切值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3489,7 +3468,6 @@ static cosh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲余弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3528,7 +3506,6 @@ static sinh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲正弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3567,7 +3544,6 @@ static tanh(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的双曲正切值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3606,7 +3582,6 @@ static acos(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反余弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3646,7 +3621,6 @@ static asin(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反正弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3686,7 +3660,6 @@ static atan(n: Value): Decimal
 
 返回一个新的Decimal对象，其值是n的反正切值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3724,9 +3697,8 @@ console.info("test Decimal atan:" + data.toString()); // 'test Decimal atan:0.64
 
 static acosh(n: Value): Decimal
 
-返回一个新的Decimal对象，其值是n的双曲余弦值的倒数。
+返回一个新的Decimal对象，其值是n的反双曲余弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3736,13 +3708,13 @@ static acosh(n: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明                       |
 | ------ | --------------- | ---- | -------------------------- |
-| n      | [Value](#value) | 是   | 需要求的双曲余弦的倒数的值。 |
+| n      | [Value](#value) | 是   | 需要求反双曲余弦值的值。 |
 
 **返回值：**
 
 | 类型                | 说明                                           |
 | ------------------- | ---------------------------------------------- |
-| [Decimal](#decimal) | 返回n的双曲余弦的倒数对应的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回n的反双曲余弦值对应的Decimal对象实例。 |
 
 **错误码**：
 
@@ -3764,9 +3736,8 @@ console.info("test Decimal acosh:" + data.toString()); // 'test Decimal acosh:4.
 
 static asinh(n: Value): Decimal
 
-返回一个新的Decimal对象，其值是n的双曲正弦值的倒数。
+返回一个新的Decimal对象，其值是n的反双曲正弦值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3776,13 +3747,13 @@ static asinh(n: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明                       |
 | ------ | --------------- | ---- | -------------------------- |
-| n      | [Value](#value) | 是   | 需要求双曲正弦的倒数的值。 |
+| n      | [Value](#value) | 是   | 需要求反双曲正弦值的值。 |
 
 **返回值：**
 
 | 类型                | 说明                                           |
 | ------------------- | ---------------------------------------------- |
-| [Decimal](#decimal) | 返回n的双曲正弦的倒数对应的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回n的反双曲正弦值对应的Decimal对象实例。 |
 
 **错误码**：
 
@@ -3804,9 +3775,8 @@ console.info("test Decimal asinh:" + data.toString()); // 'test Decimal asinh:4.
 
 static atanh(n: Value): Decimal
 
-返回一个新的Decimal对象，其值是n的双曲正切值的倒数。
+返回一个新的Decimal对象，其值是n的反双曲正切值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3816,13 +3786,13 @@ static atanh(n: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明                       |
 | ------ | --------------- | ---- | -------------------------- |
-| n      | [Value](#value) | 是   | 需要求双曲正切的倒数的值。 |
+| n      | [Value](#value) | 是   | 需要求反双曲正切值的值。 |
 
 **返回值：**
 
 | 类型                | 说明                                           |
 | ------------------- | ---------------------------------------------- |
-| [Decimal](#decimal) | 返回n的双曲正切的倒数对应的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回n的反双曲正切值对应的Decimal对象实例。 |
 
 **错误码**：
 
@@ -3846,7 +3816,6 @@ static atan2(y: Value, x: Value): Decimal
 
 返回一个新的Decimal对象，其值是为-π到π范围内的y/x反正切值。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3887,7 +3856,6 @@ static hypot(...n: Value[]): Decimal
 
 返回一个新的Decimal对象，其值是参数平方和的平方根。无入参时默认返回0。
 
-使用[DecimalConfig.precision](#decimalconfig)的值进行有效数字的保留，使用[DecimalConfig.rounding](#decimalconfig)的值设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -4081,7 +4049,7 @@ static sign(n: Value): number
 
 | 类型   | 说明                               |
 | ------ | ---------------------------------- |
-| number | 根据参数的值进行判断返回对应的值。 |
+| number | 返回参数的符号判断结果。<br>1：参数为正数。<br>-1：参数为负数。<br>0：参数为0。<br>NaN：参数为NaN。 |
 
 **错误码：**
 

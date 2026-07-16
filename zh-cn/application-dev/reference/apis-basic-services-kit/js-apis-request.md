@@ -334,7 +334,7 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) =&gt; v
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -368,7 +368,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -403,7 +403,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -446,7 +446,7 @@ off(type:  'progress',  callback?: (uploadedSize: number, totalSize: number) =&g
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -488,7 +488,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -529,7 +529,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -1048,7 +1048,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; v
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -1097,7 +1097,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) =&gt;
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -1153,7 +1153,7 @@ on(type: 'complete'|'pause'|'remove', callback: () =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -1211,7 +1211,7 @@ off(type: 'complete'|'pause'|'remove', callback?: () =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -1293,7 +1293,7 @@ on(type: 'fail', callback: (err: number) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -1341,7 +1341,7 @@ off(type: 'fail', callback?: (err: number) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -2762,6 +2762,7 @@ on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -2840,6 +2841,7 @@ on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10))
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -2918,6 +2920,7 @@ on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -3475,6 +3478,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -3562,6 +3566,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -3648,6 +3653,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -3899,7 +3905,7 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
   <!--code_no_check-->
@@ -4393,6 +4399,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -4465,6 +4472,7 @@ pause(): Promise&lt;void&gt;
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -4538,6 +4546,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -4618,6 +4627,7 @@ resume(): Promise&lt;void&gt;
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**

@@ -285,7 +285,7 @@ Enumerates the intentions corresponding to key events.
 | ARKUI_KEY_INTENSION_PAGE_DOWN = 12 | Next.|
 | ARKUI_KEY_INTENSION_ZOOM_OUT = 13 | Zoom out.|
 | ARKUI_KEY_INTENSION_ZOOM_IN = 14 | Zoom in.|
-| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play.|
+| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play/Pause.|
 | ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101 | Fast-forward.|
 | ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103 | Fast playback.|
 | ARKUI_KEY_INTENTION_MEDIA_NEXT = 104 | Play the next media asset.|
@@ -543,7 +543,7 @@ Obtains the state of the NumLock key when the specified key event occurs.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyEvent_IsCapsLockOn()
 
@@ -570,7 +570,7 @@ Obtains the state of the CapsLock key when the specified key event occurs.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_KeyEvent_IsScrollLockOn()
 
@@ -597,4 +597,4 @@ Obtains the state of the ScrollLock key when the specified key event occurs.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|

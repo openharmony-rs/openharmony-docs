@@ -39,12 +39,12 @@ static JSVM_Value JsonParseNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 设置要解析的JSON数字
     std::string strNumber = "10.555";
-    JSVM_Value jsonString;
+    JSVM_Value jsonString = nullptr;
     JSVM_CALL(OH_JSVM_CreateStringUtf8(env, strNumber.c_str(), strNumber.size(), &jsonString));
-    JSVM_Value jsonObject;
+    JSVM_Value jsonObject = nullptr;
     // 调用OH_JSVM_JsonParse函数解析JSON数字，并将结果存储在JSON对象中
     JSVM_CALL(OH_JSVM_JsonParse(env, jsonString, &jsonObject));
-    double number;
+    double number = 0.0f;
     JSVM_CALL(OH_JSVM_GetValueDouble(env, jsonObject, &number));
     OH_LOG_INFO(LOG_APP, "Test JSVM jsonParseNumber: %{public}f", number);
     return nullptr;
@@ -55,12 +55,12 @@ static JSVM_Value JsonParseObject(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 设置要解析的JSON对象字符串
     std::string strObject = "{\"first\": \"one\", \"second\": \"two\", \"third\": \"three\"}";
-    JSVM_Value strJson;
+    JSVM_Value strJson = nullptr;
     JSVM_CALL(OH_JSVM_CreateStringUtf8(env, strObject.c_str(), strObject.size(), &strJson));
-    JSVM_Value jsonObject;
+    JSVM_Value jsonObject = nullptr;
     // 调用OH_JSVM_JsonParse函数解析JSON对象字符串，并将结果存储在JSON对象中
     JSVM_CALL(OH_JSVM_JsonParse(env, strJson, &jsonObject));
-    JSVM_Value jsonString;
+    JSVM_Value jsonString = nullptr;
     // 调用OH_JSVM_JsonStringify函数将对象转换为字符串格式，并将结果存储在JSVM字符串对象中
     JSVM_CALL(OH_JSVM_JsonStringify(env, jsonObject, &jsonString));
     size_t totalLen = 0;
@@ -68,7 +68,7 @@ static JSVM_Value JsonParseObject(JSVM_Env env, JSVM_CallbackInfo info)
     size_t needLen = totalLen + 1;
     char* buff = new char[needLen];
     JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, jsonString, buff, needLen, &totalLen));
-    OH_LOG_INFO(LOG_APP, "Test JSVM jsonParseNumber: %{public}s", buff);
+    OH_LOG_INFO(LOG_APP, "Test JSVM jsonParseObject: %{public}s", buff);
     delete[] buff;
     return nullptr;
 }

@@ -1223,3 +1223,4 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   }
 }
 ```
+<!--no_check-->

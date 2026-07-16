@@ -127,7 +127,9 @@ onSuccess: OnFillSuccessFn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**模型约束**：此接口仅可在Stage模型下使用。**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
@@ -149,7 +151,9 @@ onFailure: OnFillFailureFn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**模型约束**：此接口仅可在Stage模型下使用。**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
 
 | 类型                                | 说明                            |
 | ----------------------------------- | ------------------------------- |
@@ -612,4 +616,4 @@ type FillFailureResult = _FillFailureResult
 
 | 类型                                                                                                 | 说明                  |
 | ---------------------------------------------------------------------------------------------------- | --------------------- |
-| [_AutoFillRequest.FillFailureResult](js-apis-inner-application-autoFillRequest.md#fillfailureresult) | 表示自动填充失败结果。 |
+| [_FillFailureResult](js-apis-inner-application-autoFillRequest.md#fillfailureresult) | 表示自动填充失败结果。 |

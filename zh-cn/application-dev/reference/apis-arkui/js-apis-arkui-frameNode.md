@@ -266,7 +266,7 @@ appendChild(node: FrameNode): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -298,7 +298,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -572,7 +572,7 @@ getChildrenCount(): number
 
 ### getChildrenCount
 
-getChildrenCount(countMode?: ChildrenCountMode): int
+getChildrenCount(countMode?: ChildrenCountMode): number
 
 根据指定的计数模式获取当前FrameNode的子节点数量。
 
@@ -592,7 +592,7 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 **返回值：**
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| int | 根据计数模式返回的，当前FrameNode的子节点数量。 |
+| number | 根据计数模式返回的，当前FrameNode的子节点数量。 |
 
 **示例：**
 
@@ -851,7 +851,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>适用版本：22+ |
 
 **示例：**
 
@@ -5358,7 +5358,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable.<br>适用版本：15-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>适用版本：15-24 |
 
 **示例：**
 
@@ -6233,7 +6233,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：**
 
@@ -6938,7 +6938,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24]|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -7553,7 +7553,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 

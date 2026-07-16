@@ -37,7 +37,7 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划手势处理。true表示启用，false表示关闭。 |
+| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划操作。true表示启用，false表示关闭。 |
 
 **示例：** 
 
@@ -67,6 +67,9 @@ struct SmartGestureControllerExample {
           .borderRadius(10)
           .borderWidth(1)
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+          .onClick(() => {
+            console.info('smartGesture click is triggered');
+          })
       }.width('100%')
     }
     .layoutWeight(1)
@@ -1141,7 +1144,7 @@ constructor(node: FrameNode, distance: number)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| distance | number | 否 | 否 | 智慧手势滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
+| distance | number | 否 | 是 | 智慧手势滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
 
 **示例：** 
 
@@ -1194,6 +1197,9 @@ struct SmartGestureControllerExample {
                   .borderRadius(10)
                   .borderWidth(1)
                   .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+                  .onClick(() => {
+                    console.info('smartGesture click is triggered');
+                  })
               }
               .width('100%')
             }
@@ -1353,6 +1359,9 @@ struct SmartGestureControllerExample {
           .borderRadius(10)
           .borderWidth(1)
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+          .onClick(() => {
+            console.info('smartGesture click is triggered');
+          })
 
         // 目标节点：按钮
         Button(`按钮组件 / 点击=${this.clickCount}`)

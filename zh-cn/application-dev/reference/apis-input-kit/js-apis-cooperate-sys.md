@@ -11,7 +11,7 @@
 
 > **说明**
 >
->- 本模块接口从API Version 10开始不再维护，从API version 23开始废弃，推荐使用新接口[@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (键鼠穿越)。
+>- 本模块接口从API version 10开始不再维护，从API version 23开始废弃，推荐使用新接口[@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (键鼠穿越)。
 > 
 >- 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -33,7 +33,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 >从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11)、[cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11)替代。
 
-**系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
+**系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
 **参数**：
 
@@ -185,7 +185,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          const sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = 'descriptor';
           let srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
@@ -214,7 +214,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 >
 >从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11-1)替代。
 
-**系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
+**系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
 **参数**：
 
@@ -256,7 +256,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          const sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = 'descriptor';
           const srcInputDeviceId = 0;
           inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
             console.info(`Succeeded in starting keyboard mouse crossing.`);
@@ -421,7 +421,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let deviceDescriptor = "descriptor";
+          let deviceDescriptor = 'descriptor';
           try {
             inputDeviceCooperate.getState(deviceDescriptor, (error: BusinessError, data: object) => {
               if (error) {
@@ -487,7 +487,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let deviceDescriptor = "descriptor";
+          let deviceDescriptor = 'descriptor';
           inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
             console.info(`Succeeded in getting the status, data: ${JSON.stringify(data)}.`);
           }).catch((error: BusinessError) => {
@@ -542,10 +542,13 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let callback = (msg: object) => {
-            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
-            return false;
-          }
+          let callback = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
           try {
             inputDeviceCooperate.on('cooperation', callback);
           } catch (error) {
@@ -601,10 +604,13 @@ struct Index {
       Text()
         .onClick(() => {
           // 取消注册单个回调函数
-          let callbackOn = (msg: object) => {
-            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
-            return false;
-          }
+          let callbackOn = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
             inputDeviceCooperate.off('cooperation', callbackOn);
@@ -628,10 +634,13 @@ struct Index {
       Text()
         .onClick(() => {
           // 取消注册所有回调函数
-          let callback = (msg: object) => {
-            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
-            return false;
-          }
+          let callback = (error: BusinessError | undefined, data: { deviceDescriptor: string, eventMsg: EventMsg }) => {
+            if (error) {
+              console.error(`Failed to monitor cooperation, Code: ${error.code}, message: ${error.message}.`);
+              return;
+            }
+            console.info(`Succeeded in monitoring cooperation, data: ${JSON.stringify(data)}.`);
+          };
           try {
             inputDeviceCooperate.on('cooperation', callback);
             inputDeviceCooperate.off('cooperation');

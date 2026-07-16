@@ -6,7 +6,7 @@
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-**DataShare**用于应用管理其自身数据，同时支持同个设备上不同应用间的数据共享。
+**DataShare**用于应用管理其自身数据，同时支持同一个设备上不同应用间的数据共享。
 
 > **说明：** 
 >
@@ -509,7 +509,7 @@ putValue(uri: string, key: number, value: ValueType, config: DataProxyConfig): P
 
 若传入的key不存在，则添加新的值；若传入的key已存在，则更新该key对应的值。
 
-默认情况下，单条数据（即URI）在单个应用中最多可添加10个值，每个值最大长度为4096字节。同时，单条数据（即一个URI）在单次应用中所有值总长度受限于数据[publish](#publish20)时指定的maxValueLength参数值。
+默认情况下，单条数据（即URI）在单个应用中最多可添加10个值，每个值最大长度为4096字节。同时，单条数据（即一个URI）在单个应用中所有值总长度受限于数据[publish](#publish20)时指定的maxValueLength参数值。
 
 **起始版本：** 26.0.0
 

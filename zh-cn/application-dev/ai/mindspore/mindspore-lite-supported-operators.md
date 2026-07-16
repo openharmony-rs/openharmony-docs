@@ -16,10 +16,10 @@
 | MindSpore Lite算子名称 | 算子功能                                                     | 对应ONNX算子名称                                             | 算子规格                                                     |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Abs                    | 逐元素计算绝对值                                             | Abs                                                          | 不支持uint8类型。不支持输入张量量化参数为空。                |
-| Activation             | 激活函数                                                     | Celu<br/>Clip<br/>Elu<br/>Gelu<br/>HSigmoid<br/>LeakyRelu<br/>PRelu<br/>Relu<br/>Sigmoid<br/>SoftMax<br/>SoftPlus<br/>Tanh | -                                                            |
+| Activation             | 激活函数                                                     | Celu<br>Clip<br>Elu<br>Gelu<br>HSigmoid<br>LeakyRelu<br>PRelu<br>Relu<br>Sigmoid<br>SoftMax<br>SoftPlus<br>Tanh | -                                                            |
 | AddFusion              | 逐元素计算加法                                               | Add                                                          | -                                                            |
 | ArgMaxFusion           | 求某一维度最大值                                             | ArgMax                                                       | 不支持uint8类型。不支持输入张量量化参数为空。                |
-| AvgPoolFusion          | 平均池化                                                     | AveragePool<br/>GlobalAveragePool<br/>GlobalMaxPool<br/>MaxPool | -                                                            |
+| AvgPoolFusion          | 平均池化                                                     | AveragePool<br>GlobalAveragePool<br>GlobalMaxPool<br>MaxPool | -                                                            |
 | BatchNorm              | 批量归一化                                                   | BatchNormalization                                           | -                                                            |
 | BroadcastTo            | 扩维                                                         | Expand                                                       | -                                                            |
 | Cast                   | 数据类型转换                                                 | Cast                                                         | 不支持以下数值类型转换：fp32转int8、fp32转uint32、int32转int8、int32转uint32、int32转uint8、int8转bool、int8转uint8。 |
@@ -46,9 +46,9 @@
 | LogicalNot             | 元素级逻辑非                                                 | Not                                                          | -                                                            |
 | LogSoftmax             | 对输入向量进行softmax操作，然后再对softmax结果取对数         | LogSoftmax                                                   | 不支持inf输入。                                              |
 | LRN                    | 局部响应标准化，用于防止数据过度拟合                         | LRN                                                          | -                                                            |
-| MatMulFusion           | 对2个输入做矩阵乘法运算；使用输入张量、一组学习的权重计算内积，并添加偏差 | Gemm<br/>MatMul                                              | -                                                            |
+| MatMulFusion           | 对2个输入做矩阵乘法运算；使用输入张量、一组学习的权重计算内积，并添加偏差 | Gemm<br>MatMul                                              | -                                                            |
 | Maximum                | 取元素级最大值                                               | Max                                                          | -                                                            |
-| MaxPoolFusion          | 最大池化                                                     | GlobalMaxPool<br/>MaxPool                                    | -                                                            |
+| MaxPoolFusion          | 最大池化                                                     | GlobalMaxPool<br>MaxPool                                    | -                                                            |
 | Minimum                | 取元素级最小值                                               | Min                                                          | -                                                            |
 | Mod                    | 返回除法元素的余数                                           | Mod                                                          | -                                                            |
 | MulFusion              | 逐元素乘法                                                   | Mul                                                          | -                                                            |
@@ -58,7 +58,7 @@
 | PReLUFusion            | PRelu激活函数                                                | PRelu                                                        | -                                                            |
 | Range                  | 生成某个区间内的元素                                         | Range                                                        | -                                                            |
 | Reciprocal             | 返回倒数                                                     | Reciprocal                                                   | -                                                            |
-| Reduce                 | 对指定维度进行聚合计算来减少张量维度 |  ReduceSum<br/>ReduceMean<br/>ReduceMax<br/>ReduceMin<br/>ReduceProd<br/>ReduceLogSum<br>ReduceLogSumExp<br/>ReduceSumSquare<br/>ReduceL1<br>ReduceL2               | 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始支持空shape推理。                             |
+| Reduce                 | 对指定维度进行聚合计算来减少张量维度 |  ReduceSum<br>ReduceMean<br>ReduceMax<br>ReduceMin<br>ReduceProd<br>ReduceLogSum<br>ReduceLogSumExp<br>ReduceSumSquare<br>ReduceL1<br>ReduceL2               | 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始支持空shape推理。                             |
 | Reshape                | 改变张量形状，总元素个数不变                                 | Reshape                                                      | -                                                            |
 | Round                  | 四舍五入到最接近的整数数值                                   | Round                                                        | -                                                            |
 | ScatterNdUpdate        | 使用给定值以及输入索引更新输入数据的值                       | ScatterND                                                    | -                                                            |

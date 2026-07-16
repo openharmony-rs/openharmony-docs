@@ -299,7 +299,7 @@ The following is the sample code for creating a **PixelMapDrawableDescriptor** o
 
 ```ts
 // xxx.ets
-import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -700,7 +700,6 @@ Sets the blend mode of **LayeredDrawableDescriptor**. If this API is called for 
 
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
 @Entry
@@ -773,7 +772,7 @@ Provides the configuration options for animation playback, including the playbac
 **Example**
 
 ```ts
-import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+import { AnimationOptions, AnimatedDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry
@@ -1289,7 +1288,7 @@ Sets HDR composition.
 **Example**
 
 ```ts
-import { PictureDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+import { PictureDrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 

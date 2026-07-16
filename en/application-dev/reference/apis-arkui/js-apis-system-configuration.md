@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 > **NOTE**
-> - The APIs of this module are deprecated since API version 7. You are advised to use [@ohos.i18n](../apis-localization-kit/js-apis-i18n.md) and [@ohos.intl](../apis-localization-kit/js-apis-intl.md) instead.
+> - The APIs of this module are no longer maintained since API version 7. You are advised to use [@ohos.i18n](../apis-localization-kit/js-apis-i18n.md) and [@ohos.intl](../apis-localization-kit/js-apis-intl.md) instead.
 >
 > 
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -38,10 +38,10 @@ Obtains the current locale of the application, which is the same as the system l
 **Example**
 
 ArkTS example:
-  ```
+  ```js
   export default {    
     getLocale() {        
-      const localeInfo = configuration.getLocale();        
+      const localeInfo = Configuration.getLocale();        
       console.info(localeInfo.language);    
     }
   }

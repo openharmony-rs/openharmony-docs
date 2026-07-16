@@ -1,17 +1,18 @@
 # SegmentButton
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **SegmentButton** is a versatile component that organizes related options into visually grouped buttons. It supports three variants: tab-style, capsule-style single-select, and capsule-style multi-select.
 
 >**NOTE**
 >
->This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -33,7 +34,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 
 ## SegmentButton
 
-SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
+SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked?: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 **Decorator**: @Component
 
@@ -53,7 +54,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | selectedIndexes | number[]                                      | Yes  | @Link       | Indexes of selected items of the **SegmentButton**. The index is zero-based and increments by 1.<br>**NOTE**<br>**selectedIndexes** is decorated with [@Link](../../../ui/state-management/arkts-link.md) to implement parent-child two-way synchronization. If no items are selected, an empty array **[]** can be passed in. <br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onItemClicked<sup>13+</sup> | Callback\<number\> | No| - | Callback function triggered when a segment button option is tapped. The subscript of the tapped option is passed as a parameter. If this parameter is not passed, no callback is triggered when the option is tapped.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| @Prop | Maximum font scale for the text in the **SegmentButton**.<br>Value range: [1, 2]<br>Values less than 1 are treated as 1, and values greater than 2 are treated as 2.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| enableStateAnimation<sup>24+</sup>       | boolean   | No| @Prop| Whether to enable property animation for the segment button when the **selectedIndex** value is modified via a variable.<br>**true**: Property animation is enabled. **false**: Property animation is disabled and the original animation is used.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
+| enableStateAnimation<sup>24+</sup>       | boolean   | No| @Prop| Whether to enable property animation for the segmented button when the **selectedIndexes** value is modified via a variable.<br>**true**: Property animation is enabled. **false**: Property animation is disabled and the original animation is used.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## SegmentButtonOptions
 
@@ -95,6 +96,11 @@ Provides initial data and custom properties for the **SegmentButton** component.
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | No| Yes| Border radius mode, used to control the border radius calculation method.<br>Default value: **BorderRadiusMode.DEFAULT**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Container border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_container_shape')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Individual button border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute only affects end items.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_selected_background_shape')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No| Yes| System material for the background of the segmented button component. Different system materials have different properties that affect the effect. After the material is passed, the animation effect of **SegmentButton** changes.<br>This API does not take effect for capsule-style multi-select buttons (that is, **type** is **capsule** and **multiply** is **true**).<br>Default value: no material effect<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+
+> **NOTE**
+>
+> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a system material with automatic color inversion, **fontColor** and **selectedFontColor** adopt special system resources that support color inversion to automatically match the inverse color of the material background. This rule does not apply to capsule-style multi-select buttons (that is, **type** is **capsule** and **multiply** is **true**).
 
 ### constructor
 
@@ -210,6 +216,7 @@ Defines the customizable attributes of a segment button component.
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | No| Yes| Border radius mode, used to control the border radius calculation method.<br>Default value: **BorderRadiusMode.DEFAULT**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Container border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_container_shape')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Individual button border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute only affects end items.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_selected_background_shape')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | No| Yes| System material for the background of the **SegmentButton** component. Different system materials have different properties that affect the effect. After the material is passed, the animation effect of **SegmentButton** changes.<br>This API does not take effect for capsule-style multi-select buttons (that is, **type** is **capsule** and **multiply** is **true**).<br>Default value: no material effect<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -1114,7 +1121,7 @@ struct Index {
         accessibilityDescription: 'SegmentButtonIconTextItem usage hints' // Accessibility description.
       },
       {
-        text: 'Icon 1',
+        text: 'Icon 2',
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'Unselected icon accessibility text', // Accessibility text for the unselected button icon.
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
@@ -1123,7 +1130,7 @@ struct Index {
         accessibilityDescription: 'SegmentButtonIconTextItem usage hints' // Accessibility description.
       },
       {
-        text: 'Icon 1',
+        text: 'Icon 3',
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'Unselected icon accessibility text', // Accessibility text for the unselected button icon.
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
@@ -1132,7 +1139,7 @@ struct Index {
         accessibilityDescription: 'SegmentButtonIconTextItem usage hints' // Accessibility description.
       },
       {
-        text: 'Icon 1',
+        text: 'Icon 4',
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'Unselected icon accessibility text', // Accessibility text for the unselected button icon.
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
@@ -1163,7 +1170,7 @@ struct Index {
             options: this.iconTextCapsuleOptions,
             selectedIndexes: $multiplySelectIconTextCapsuleSelectedIndexes
           })
-          Button('Replace Items 2 and 3 with splice1 and splice2')
+          Button('Replace Items 2&3')
             .onClick(() => {
               this.iconTextCapsuleOptions.buttons.splice(1, 2, new SegmentButtonItemOptions({
                 text: 'splice1', accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonItemOptions usage hints'
@@ -1304,3 +1311,123 @@ struct Index12 {
 ```
 
 ![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
+
+### Example 8: Setting the Background Material
+This example demonstrates how to set a transparent background material for the segmented button, enable automatic color inversion and interactive deformation effects, and customize the color of the feedback light effect using the **backgroundSystemMaterial** attribute.
+
+Since API version 26.0.0, the **backgroundSystemMaterial** attribute is added to [SegmentButtonOptions](#segmentbuttonoptions) and [CommonSegmentButtonOptions](#commonsegmentbuttonoptions).
+
+```ts
+import {
+  ItemRestriction,
+  SegmentButton,
+  SegmentButtonOptions,
+  SegmentButtonTextItem,
+  uiMaterial
+} from '@kit.ArkUI';
+
+
+@Entry
+@Component
+struct IndexCl {
+  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
+    buttons: [{ text: 'Tab 1' }, { text: 'Tab 2' }, {
+      text: 'Tab 3'
+    }] as ItemRestriction<SegmentButtonTextItem>,
+    backgroundColor: Color.Transparent,
+    // Set fontColor to a special system resource value to enable automatic color inversion.
+    fontColor: $r('sys.color.font_primary'),
+    // Set the system material style to ULTRA_THIN, enable automatic color inversion and interactive deformation, and customize the feedback light effect color.
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true,
+      interactive: true,
+      lightEffect: { color: undefined }
+    })
+  });
+  @State tabSelectedIndexes: number[] = [0];
+
+  build() {
+    Column({ space: 20 }) {
+      SegmentButton({
+        options: this.tabOptions,
+        selectedIndexes: $tabSelectedIndexes
+      })
+    }
+    .width('100%')
+    .height('20%')
+    .padding(20)
+    .linearGradient({
+      angle: 90, // Gradient angle; 90 degrees creates a top-to-bottom gradient.
+      colors: [
+        ['#FF9A9E', 0.0], // Start color and position (0.0 indicates the start point).
+        ['#FECFEF', 0.1], // Middle color and position.
+        ['#3B324C', 1.0] // End color and position (1.0 indicates the end point).
+      ]
+    })
+  }
+}
+```
+
+### Example 9: Listening to Changes in Inner Properties of SegmentButtonOptions
+
+[SegmentButtonOptions](#segmentbuttonoptions) is decorated with the @Observed decorator, and the **SegmentButton** component receives this object via @ObjectLink. For top-level primitive-type properties of **SegmentButtonOptions** (such as **fontColor** and **backgroundColor**), combined @Observed and @ObjectLink can detect property changes and trigger UI updates without extra processing. However, inner properties of object-type properties within **SegmentButtonOptions** (e.g., the **width** and **height** fields of **imageSize**, **buttonPadding**, etc.) are deeply nested properties. @State only monitors reassignment of top-level properties and cannot detect modifications to deep inner properties. As a result, the UI will not refresh automatically when inner fields of object-type properties are updated. Wrapping object-type properties (e.g., **imageSize**) with the [makeObserved](../js-apis-stateManagement.md#makeobserved) API adds deep observation capabilities to their inner properties. This allows the framework to detect changes to inner properties like **width** and **height** and trigger corresponding UI refreshes. For details about the **makeObserved** API, see [makeObserved API: Changing Unobservable Data to Observable Data](../../../ui/state-management/arkts-new-makeObserved.md).
+
+The following example compares two scenarios:<br>- Click the **Modify FontColor** button to modify the **fontColor** property of **iconTextCapsuleOptions**. As a top-level primitive-type property, **fontColor** supports change observation via @Observed and @ObjectLink, so the UI refreshes automatically.<br>- Click the **Modify Icon Size** button to modify the **width** and **height** properties of **iconTextCapsuleOptions.imageSize**. These inner properties of the **imageSize** object can only be observed after **imageSize** is wrapped with **UIUtils.makeObserved**, and the UI also refreshes automatically in this case.
+
+```ts
+import {
+  SegmentButton,
+  SegmentButtonOptions,
+  SegmentButtonItemTuple,
+  UIUtils
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct IndexCl {
+  @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [
+      { text: 'Icon 1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: 'Icon 2', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: 'Icon 3', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: 'Icon 4', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: 'Icon 5', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
+    ] as SegmentButtonItemTuple,
+    multiply: false,
+    // Use UIUtils.makeObserved to wrap imageSize so that the inner width and height can be observed.
+    imageSize: UIUtils.makeObserved({ width: 30, height: 30 })
+  });
+  @State selectedIndexes: number[] = [0];
+  @State currentFontColor: ResourceColor = Color.Blue;
+
+  build() {
+    Column({ space: 20 }) {
+      SegmentButton({
+        options: this.iconTextCapsuleOptions,
+        selectedIndexes: $selectedIndexes
+      })
+      // Top-level primitive-type property. It supports change observation via @Observed and @ObjectLink, so the UI refreshes automatically.
+      Button('Modify fontColor')
+        .onClick(() => {
+          if (this.currentFontColor === Color.Blue) {
+            this.currentFontColor = Color.Red;
+          } else {
+            this.currentFontColor = Color.Blue;
+          }
+          this.iconTextCapsuleOptions.fontColor = this.currentFontColor;
+        })
+      // Modify inner properties of imageSize. The UI refreshes automatically because imageSize is wrapped via makeObserved.
+      Button('Modify Icon Size')
+        .onClick(() => {
+          this.iconTextCapsuleOptions.imageSize.width = 10;
+          this.iconTextCapsuleOptions.imageSize.height = 10;
+        })
+    }
+    .width('100%')
+    .height('50%')
+    .padding({ top: 20 })
+  }
+}
+```
+

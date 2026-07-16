@@ -7,7 +7,7 @@
  <!--Adviser: @fang-jinxu-->
 
 ```cpp
-typedef struct {...} Print_Resolution;
+typedef struct {...} Print_Resolution
 ```
 
 ## 概述

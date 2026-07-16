@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -30,7 +30,11 @@
 
 Panel(show: boolean)
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+滑动面板组件。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[bindSheet](./ts-universal-attributes-sheet-transition.md#bindsheet)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -52,7 +56,9 @@ type(value: PanelType)
 
 可滑动面板的类型。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的preferType替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -70,7 +76,9 @@ mode(value: PanelMode)
 
 可滑动面板的初始状态。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的preferType替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +96,9 @@ dragBar(value: boolean)
 
 设置是否存在控制条。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的dragBar替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -106,7 +116,9 @@ customHeight(value: Dimension | PanelHeight)
 
 指定PanelType.CUSTOM状态下的高度。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 10开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的height替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -124,7 +136,9 @@ fullHeight(value: number | string)
 
 指定PanelType.Full状态下的高度。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的height替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -142,7 +156,9 @@ halfHeight(value: number | string)
 
 指定PanelMode.Half状态下的高度。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的height替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -160,7 +176,9 @@ miniHeight(value: number | string)
 
 指定PanelMode.Mini状态下的高度。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的height替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -178,7 +196,9 @@ show(value: boolean)
 
 当滑动面板弹出时调用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#bindsheet)中的isShow替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -196,7 +216,9 @@ backgroundMask(color: ResourceColor)
 
 指定Panel的背景蒙层。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的maskColor替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -214,7 +236,9 @@ showCloseIcon(value: boolean)
 
 设置是否显示关闭图标。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 10开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的showClose替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -228,22 +252,26 @@ showCloseIcon(value: boolean)
 
 ## PanelType枚举说明
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetSize](./ts-universal-attributes-sheet-transition.md#sheetsize枚举说明)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Minibar | 提供minibar和类全屏展示切换效果。 |
-| Foldable | 内容永久展示类，提供大（类全屏）、中（类半屏）、小三种尺寸展示切换效果。 |
-| Temporary | 内容临时展示区，提供大（类全屏）、中（类半屏）两种尺寸展示切换效果。 |
-| CUSTOM<sup>10+</sup> | 配置自适应内容高度，不支持尺寸切换效果。 |
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| Minibar | 0 | 提供minibar和类全屏展示切换效果。 |
+| Foldable | 1 | 内容永久展示类，提供大（类全屏）、中（类半屏）、小三种尺寸展示切换效果。 |
+| Temporary | 2 | 内容临时展示区，提供大（类全屏）、中（类半屏）两种尺寸展示切换效果。 |
+| CUSTOM<sup>10+</sup> | 3 | 配置自适应内容高度，不支持尺寸切换效果。 |
 
 ## PanelMode枚举说明
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -257,15 +285,18 @@ showCloseIcon(value: boolean)
 
 ## PanelHeight<sup>10+</sup>枚举说明
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 10开始支持，从API version 12开始废弃。建议使用[SheetSize](./ts-universal-attributes-sheet-transition.md#sheetsize枚举说明)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| WRAP_CONTENT | 类型为CUSTOM时，自适应内容高度。 |
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WRAP_CONTENT | 'wrapContent' | [PanelType](#paneltype枚举说明)的类型为CUSTOM时，自适应内容高度。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -276,7 +307,9 @@ onChange(event:&nbsp;(width:&nbsp;number,&nbsp;height:&nbsp;number,&nbsp;mode:&n
 
 当可滑动面板发生状态变化时触发。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的onTypeDidChange替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -296,7 +329,9 @@ onHeightChange(callback: (value: number) => void)
 
 当可滑动面板发生高度变化时触发。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 12开始废弃。建议使用[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)中的onHeightDidChange替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。有关源码混淆工具的说明，请参考[ArkGuard源码混淆工具概述](../../arkts-utils/source-obfuscation-overview.md)。
 
 ## 10804001 混淆规则配置文件缺失
 
@@ -24,11 +24,11 @@ Failed to open obfuscation config file from {path}.
 
 **可能原因**
 
-本模块`build-profile.json5`文件中的`arkOptions.obfuscation.ruleOptions`字段中对应的混淆规则配置文件不存在或者路径有误。
+本模块`build-profile.json5`文件中的`arkOptions.obfuscation.ruleOptions`字段所指定的混淆规则配置文件不存在或者路径有误。
 
 **处理步骤**
 
-检查{path}是否存在，路径是否有误。具体可以参考[混淆配置规则文件示例](../../arkts-utils/source-obfuscation-guide.md#开启源码混淆步骤)。
+检查{path}是否存在，路径是否有误。具体可以参考[混淆规则配置文件示例](../../arkts-utils/source-obfuscation-guide.md#开启源码混淆步骤)。
 
 ## 10804002 nameCache.json文件内容格式错误
 

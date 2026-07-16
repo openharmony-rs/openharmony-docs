@@ -3,14 +3,14 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @Q-haosu-->
-<!--Tester:@Q-haosu-->
+<!--Designer: @baozewei-->
+<!--Tester:@baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块为扫描框架的 js-api 接口文档，提供发现、添加、删除扫描仪以及获取已添加扫描仪列表的能力，同时支持监听扫描仪设备的添加和删除事件，适用于需要在应用内集成扫描仪设备管理并实时感知设备状态变化的场景。扫描框架通过发现模式发现扫描仪设备，添加设备后可通过事件监听设备的添加和删除状态，完成扫描任务后可删除设备，帮助开发者便捷地完成扫描仪的接入与生命周期管理。
 
 > **说明：**  
-> 本模块首批接口从API version 20开始支持。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.scan (扫描)](./js-apis-scan.md)。
 
 ## 导入模块
@@ -34,7 +34,7 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| uniqueId | string | 是 | 扫描仪的唯一ID。 |
+| uniqueId | string | 是 | 扫描仪的唯一ID，可通过getAddedScanners()获取或从scan.on('scanDeviceAdd')事件回调中获得。 |
 | discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式，不同模式适用于不同的扫描仪发现场景。 |
 
 **返回值：**
@@ -58,7 +58,8 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uniqueId: string = 'unique_scanner_001'; // uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
+// uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
+let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.addScanner(uniqueId, discoveryMode).then(() => {
     console.info('add scanner success');
@@ -71,7 +72,7 @@ scan.addScanner(uniqueId, discoveryMode).then(() => {
 
 deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;void&gt;
 
-删除扫描仪（系统接口）。适用于扫描仪设备离线或不再需要时移除设备的场景。使用Promise异步回调。
+删除扫描仪（系统接口）。适用于扫描仪设备离线或不再需要时移除设备的场景，删除成功后将触发scanDeviceDel事件通知，可通过on('scanDeviceDel')监听设备删除事件。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -83,8 +84,8 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| uniqueId | string | 是 | 扫描仪的唯一ID。 |
-| discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式，不同模式适用于不同的扫描仪发现场景。 |
+| uniqueId | string | 是 | 扫描仪的唯一ID，可通过getAddedScanners()获取或从scan.on('scanDeviceAdd')事件回调中获得。 |
+| discoveryMode | [ScannerDiscoveryMode](./js-apis-scan.md#scannerdiscoverymode) | 是 | 扫描仪的发现模式，需与添加该扫描仪时使用的发现模式保持一致。 |
 
 **返回值：**
 
@@ -107,7 +108,8 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uniqueId: string = 'unique_scanner_001'; // uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
+// uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
+let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.deleteScanner(uniqueId, discoveryMode).then(() => {
     console.info('delete scanner success');
@@ -198,7 +200,7 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 
-取消注册扫描仪设备添加事件回调（系统接口）。使用callback异步回调。
+取消注册扫描仪设备添加事件回调（系统接口）。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -277,7 +279,7 @@ scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceDel', callback?: Callback&lt;ScannerDevice&gt;): void
 
-取消注册扫描仪设备删除事件回调（系统接口）。使用callback异步回调。
+取消注册扫描仪设备删除事件回调（系统接口）。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 

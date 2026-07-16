@@ -22,8 +22,9 @@
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
 | [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
+| [getZoomLevel](#getzoomlevel) | 获取网页缩放比例 | [GetZoomLevelCommand](#getzoomlevelcommand) | [ZoomLevelResult](#zoomlevelresult) | 获取当前网页的缩放比例。 |
 
-交互类命令（click、focus、cursor_position、type、send_keys）请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
+交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
 
 ## 通用命令格式
 
@@ -586,3 +587,84 @@ struct Index {
   }
 }
 ```
+
+
+## getZoomLevel
+
+获取当前网页的缩放比例。该命令为纯查询操作，不受[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)限制。
+
+### GetZoomLevelCommand
+
+```json
+{
+  "method": "getZoomLevel",
+  "params": {}
+}
+```
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`getZoomLevel`。 |
+| params | - | - | Object | 否 | 命令参数。本命令不读取`params`内容，可传入空对象或不传入。 |
+
+> **说明：**
+>
+> - 返回的`zoomLevel`字段为当前网页的缩放比例（1.0=100%），与[setZoomLevel](./arkts-apis-webview-AIPageInteraction.md#setzoomlevel)传入的语义一致。
+> - [setZoomLevel](./arkts-apis-webview-AIPageInteraction.md#setzoomlevel)设置任意合法值后通过本命令读取，返回值误差不超过0.001。
+> - 用户先通过CTRL+Wheel缩放，再调用本命令，返回用户当前缩放比例。
+
+### ZoomLevelResult
+
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| code | number | 执行结果码。取值请参见[命令执行结果码说明](./arkts-apis-webview-AIPageResult.md#命令执行结果码说明)。 |
+| message | string | 执行结果描述。成功时为`"success"`。 |
+| zoomLevel | number | 当前网页缩放比例。成功时返回。 |
+
+### 测试页面
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Zoom Level Demo</h1>
+    <p>当前缩放比例可通过getZoomLevel查询，通过setZoomLevel（详见AIPageInteraction）修改。</p>
+  </body>
+</html>
+```
+
+### 请求示例
+
+```json
+{
+  "method": "getZoomLevel",
+  "params": {}
+}
+```
+
+### 返回示例
+
+成功时（页面当前缩放比例为1.5）：
+
+```json
+{
+  "code": 10,
+  "message": "success",
+  "zoomLevel": 1.5
+}
+```
+
+失败：
+
+`132`（browser或host为空，通常表示Web实例不可用）：
+
+```json
+{
+  "code": 132,
+  "message": "browser or host is null"
+}
+```
+

@@ -10,7 +10,7 @@
 
 Defines the enumerations and APIs of the **Swiper** component.
 
-**File to include:** <arkui/swiper.h>
+**File to include:** <arkui/node_attributes/swiper.h>
 
 **Library:** libace_ndk.z.so
 
@@ -784,7 +784,7 @@ Sets the maximum number of dots for a dot-style navigation indicator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if **maxDisplayCount** is set to an invalid value.|
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the value range of **maxDisplayCount** is incorrect.|
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 

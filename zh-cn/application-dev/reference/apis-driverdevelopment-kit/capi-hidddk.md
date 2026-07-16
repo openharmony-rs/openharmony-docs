@@ -19,4 +19,4 @@
 | 名称 | 描述 |
 | -- | -- |
 | [hid_ddk_api.h](capi-hid-ddk-api-h.md) | 声明主机侧访问输入设备的HID DDK接口。 |
-| [hid_ddk_types.h](capi-hid-ddk-types-h.md) | 提供HID DDK中的枚举变量与结构体定义。 |
+| [hid_ddk_types.h](capi-hid-ddk-types-h.md) | 提供HID DDK中的枚举变量与结构体定义，支持开发者在驱动开发中定义和操作HID设备，适用于需要与HID设备进行交互的场景，包括鼠标、键盘、触摸屏等输入设备，提供了设备特性、事件类型、键值编码、坐标轴等完整定义，帮助开发者快速实现HID设备的驱动开发。 |

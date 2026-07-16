@@ -7,12 +7,12 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioRendererStruct OH_AudioRenderer
+typedef struct OH_AudioRendererStruct OH_AudioRenderer;
 ```
 
 ## 概述
 
-声明输出音频流。输出音频流的实例被用来播放音频数据。
+声明输出音频渲染器。输出音频渲染器的实例被用来播放音频数据。
 
 **起始版本：** 10
 

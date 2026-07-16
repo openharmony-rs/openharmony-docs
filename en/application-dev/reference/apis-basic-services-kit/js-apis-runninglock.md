@@ -43,7 +43,7 @@ Checks whether a specified type of **RunningLock** is supported.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
@@ -80,7 +80,7 @@ Creates a **RunningLock** object. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
@@ -125,7 +125,7 @@ Creates a **RunningLock** object. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
@@ -299,7 +299,7 @@ Locks and holds a **RunningLock** object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message    |
+| ID  | Error Message    |
 |---------|----------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 201     | If the permission is denied.|
@@ -349,7 +349,7 @@ Releases a **RunningLock** object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message    |
+| ID  | Error Message    |
 |---------|----------|
 | 201     | If the permission is denied.|
 

@@ -16,7 +16,7 @@
 
 应用要使用OHAudio提供的音频会话管理（AudioSessionManager）能力，需要添加对应的头文件。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC?_fb=blob)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -45,12 +45,12 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 OH_AudioSessionManager *audioSessionManager;
 // ...
     OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
-                                                                                      AudioSessionStateChangedCallback);
     if (resultManager == 0) {
         OH_LOG_Print(LOG_APP, LOG_INFO, g_audioSessionVariable->globalResmgr, SESSION_TAG,
                      " OH_AudioManager_GetAudioSessionManager success! ");
     }
+    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
+                                                                                      AudioSessionStateChangedCallback);    
 ```
 
 ## 激活音频会话
@@ -286,6 +286,12 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
           // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
             break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+          // 此分支表示系统已将音频静音。
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+          // 此分支表示系统已将音频解除静音。
+            break;            
         default:
             break;
     }

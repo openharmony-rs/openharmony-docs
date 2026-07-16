@@ -76,4 +76,5 @@
   - [使用crashpad收集Web组件崩溃信息](web-crashpad.md)
   - [定位JS代码阻塞导致的页面卡死问题](web-js-freeze-debugging.md)
   - [定位与解决Web白屏问题](web-white-screen.md)<!--RP1--><!--RP1End-->
+  - [定位网页加载问题](web-page-loading.md)
 - [ArkWeb术语](arkweb-glossary.md)

@@ -50,7 +50,7 @@
 | static const char * OH_AVMETADATA_EXTRACTOR_GENRE = "genre" | 获取媒体资源类型或体裁的关键字，对应值类型为const char*。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_HAS_AUDIO = "hasAudio" | 获取媒体资源是否包含音频的关键字，对应值类型为int32_t。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_HAS_VIDEO = "hasVideo" | 获取媒体资源是否包含视频的关键字，对应值类型为int32_t。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
-| static const char * OH_AVMETADATA_EXTRACTOR_MIME_TYPE = "mimeType" | 获取媒体资源mime类型的关键字，对应值类型为const char*，例如：“video/mp4”、“audio/mp4”和“audio/amr wb”。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
+| static const char * OH_AVMETADATA_EXTRACTOR_MIME_TYPE = "mimeType" | 获取媒体资源mime类型的关键字，对应值类型为const char*，例如：“video/mp4”、“audio/mp4”和“audio/amr-wb”。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_TRACK_COUNT = "trackCount" | 获取媒体资源轨道数量的关键字，对应值类型为int32_t。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_SAMPLE_RATE = "sampleRate" | 获取音频采样率的关键字，对应值类型为int32_t，单位为赫兹（Hz）。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_TITLE = "title" | 获取媒体资源标题的关键字，对应值类型为const char*。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |

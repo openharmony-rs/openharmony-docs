@@ -41,6 +41,7 @@
     <!--DelEnd-->
   - 数据文件处理<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
     - [@ohos.pasteboard (剪贴板)](js-apis-pasteboard.md)
     - [@ohos.print (打印)](js-apis-print.md)
     - [@ohos.scan (扫描)](js-apis-scan.md)

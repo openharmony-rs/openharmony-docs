@@ -360,7 +360,7 @@ struct Index {
 
     try {
       this.getUIContext().getHostContext()!.resourceManager.getMediaContent($r('app.media.startIcon').id,
-        (error, value: ArrayBuffer) => {
+        (error, value: Uint8Array) => {
           let opts: image.InitializationOptions = {
             editable: true,
             pixelFormat: 3,

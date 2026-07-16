@@ -54,7 +54,7 @@ keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?
 | 无论组件是否获焦                               | 只要窗口获焦，快捷键就会响应                      | 无                                        |
 | 使用单个`FunctionKey`触发快捷键 | 单个`FunctionKey`，没有`ModifierKey`，可以绑定为快捷键 | Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
 | `keyboardShortcut`的入参`value`为空 | 取消绑定的快捷键。<br />绑定了多个快捷键的不能解除绑定快捷键| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('',[]) |
-| keyboardShortcut接口中的keys命令中Ctrl、Shift、Alt | 不区分左右键都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
+| keyboardShortcut接口中的keys参数中Ctrl、Shift、Alt | 不区分左右键都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
 | keyboardShortcut接口中的value单个字符            | 不区分大小写都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
 | 快捷键的响应                                   | `keys`键处于按下状态且`value`键触发down事件（长按会连续响应）              | 无                                        |
 | 隐藏组件<br />                               | 响应快捷键                              | 无                                        |

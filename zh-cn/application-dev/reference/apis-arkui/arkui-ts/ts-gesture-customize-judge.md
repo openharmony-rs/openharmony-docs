@@ -69,7 +69,7 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 
 getModifierKeyState?(keys: Array\<string>): boolean
 
-获取功能键按压状态。报错信息请参考以下错误码。支持功能键'Ctrl'\|'Alt'\|'Shift'。
+获取修饰键按压状态。报错信息请参考以下错误码。支持修饰键'Ctrl'\|'Alt'\|'Shift'。
 
 >  **说明：**
 >
@@ -85,13 +85,13 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| keys  | Array&lt;string&gt; | 是   | 功能键列表。 |
+| keys  | Array&lt;string&gt; | 是   | 修饰键列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回功能键按压状态。当功能键均处于按压状态时返回true，否则返回false。 |
+| boolean | 返回修饰键按压状态。当修饰键均处于按压状态时返回true，否则返回false。 |
 
 **错误码：**
 
@@ -105,7 +105,7 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑和滑动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
+该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
 
 ```ts
 // xxx.ets
@@ -219,7 +219,7 @@ struct Index {
         Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽")
           .width('100%')
           .fontSize(20)
-          .fontColor('0xffdd00')
+          .fontColor('#ffdd00')
           .backgroundColor(0xeeddaa00)
         Stack({ alignContent: Alignment.Center }) {
           Column() {
@@ -249,7 +249,7 @@ struct Index {
             console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
             console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
             console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
-              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
+              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourceTool ${event.sourceTool.toString()}`);
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
               if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {

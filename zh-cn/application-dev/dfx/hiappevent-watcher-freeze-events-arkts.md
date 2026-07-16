@@ -126,6 +126,9 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_callback_log=${eventInfo.params['external_callback_log']}`);
             // 开发者可以获取到应用冻屏事件的页面切换日志
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
+            // 开发者可以获取到应用冻屏事件的gc、io信息
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.application_gc_info=${JSON.stringify(eventInfo.params['application_gc_info'])}`);
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.application_io_info=${JSON.stringify(eventInfo.params['application_io_info'])}`);
           }
         }
       }
@@ -172,12 +175,14 @@
    HiAppEvent eventInfo.params.event_handler_size_6s=6
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1361464,"sys_free_mem":796232,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1361464,"sys_free_mem":796232,"sys_total_mem":1992340,vm_heap_shared_size":"322984","vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1711440899240_3197.log"]
    HiAppEvent eventInfo.params.log_over_limit=false
    HiAppEvent eventInfo.params.test_data=100
    HiAppEvent eventInfo.params.process_life_time=18
    HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
+   HiAppEvent eventInfo.params.application_gc_info={"averagePause":48.4983,"count":3,"lastEndTime":1711440881768,"lastStartTime":1711440881708,"lastType":Local GC,"maxPause":"10.733","minPause":"2.832"}
+   HiAppEvent eventInfo.params.application_io_info={"cancelled_write_bytes":4096,"rchar":14557921,"read_bytes":0,"syscr":6934,"syscw":118,"wchar":909,"write_bytes":"4096"}
    ```
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
@@ -204,7 +209,7 @@
 | reason | external_log文件内容中的Reason字段 | 无。 |
 | summary | external_log文件内容中特定段落 | APP_FREEZE的summary对应external_log文件中从appfreeze:进程名所在行到DisplayPowerInfo:所在行的这一段内容。 |
 
-[FaultLogger.query(使用callback回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和[FaultLogger.query(使用Promise回调)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
+[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)(使用callback回调)和[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)(使用Promise回调)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
 
 查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到应用冻屏事件](#验证观察者是否订阅到应用冻屏事件)，了解使用hiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。
 

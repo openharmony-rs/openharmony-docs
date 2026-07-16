@@ -10,7 +10,7 @@
 
 Defines **Slider** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/slider.h>
+**File to include:** <arkui/node_attributes/slider.h>
 
 **Library:** libace_ndk.z.so
 

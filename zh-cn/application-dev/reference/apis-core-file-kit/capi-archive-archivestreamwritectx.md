@@ -12,7 +12,7 @@ typedef struct ArchiveStreamWriteCtx *OH_Archive_StreamWrite_Ctx
 
 ## 概述
 
-流式压缩器的上下文结构体。
+流式压缩器的上下文结构体指针。
 
 **起始版本：** 26.0.0
 

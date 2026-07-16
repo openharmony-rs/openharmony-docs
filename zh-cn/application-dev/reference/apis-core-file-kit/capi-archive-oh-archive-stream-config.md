@@ -12,7 +12,7 @@ typedef struct {...} OH_Archive_Stream_Config
 
 ## 概述
 
-流压缩配置结构体。
+流式压缩配置结构体。
 
 **起始版本：** 26.0.0
 
@@ -27,8 +27,8 @@ typedef struct {...} OH_Archive_Stream_Config
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t blockSize | 内存块大小，单位为bytes。当[OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod)设置为OH_ARCHIVE_COMPRESS_DEFLATE时，blockSize需不小于32768bytes。<br>**起始版本：** 26.0.0 |
-| int32_t threadNum | 线程数。<br>**起始版本：** 26.0.0 |
-| [OH_Archive_StreamChecksumAlg](capi-oh-archive-h.md#oh_archive_streamchecksumalg) checksum | 用于校验和的哈希算法。<br>**起始版本：** 26.0.0 |
-| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩方法。<br>**起始版本：** 26.0.0 |
+| int32_t threadNum | 线程数，取值为正整数，如果大于设备核数，则使用设备核数。<br>**起始版本：** 26.0.0 |
+| [OH_Archive_StreamChecksumAlg](capi-oh-archive-h.md#oh_archive_streamchecksumalg) checksum | 用于计算校验和的哈希算法。<br>**起始版本：** 26.0.0 |
+| [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | 压缩算法。流式压缩和流式解压缩只支持OH_ARCHIVE_COMPRESS_DEFLATE。<br>**起始版本：** 26.0.0 |
 
 

@@ -10,7 +10,7 @@
 
 定义TextArea相关的枚举和接口。
 
-**引用文件：** <arkui/text_area.h>
+**引用文件：** <arkui/node_attributes/text_area.h>
 
 **库：** libace_ndk.z.so
 

@@ -1403,10 +1403,10 @@ Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_Pixel
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：srcPixelmap或dstPixelmap有误。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：像素格式不支持。<br>         IMAGE_TOO_LARGE：源Pixelmap的尺寸过大。<br>         IMAGE_INIT_FAILED：目标Pixelmap初始化失败。<br>         IMAGE_ALLOC_FAILED：内存申请或数据复制失败。 |
 
-### OH_PixelmapNative_CreateCroppedAndScaledPixelmap()
+### OH_PixelmapNative_CreateCroppedAndScaledPixelMap()
 
 ```c
-Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelmap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)
+Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)
 ```
 
 **描述**

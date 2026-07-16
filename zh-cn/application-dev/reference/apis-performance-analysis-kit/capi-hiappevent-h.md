@@ -800,7 +800,7 @@ int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int 
 | -- | -- |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)* watcher | 指向监听器的指针（即OH_HiAppEvent_CreateWatcher接口返回的指针）。 |
 | int row | 当输入值大于0，且新接收事件的数量大于等于该值时，将调用设置的onTrigger回调函数；<br> 当输入值小于等于0时，不再以接收数量多少为维度来触发onTrigger回调。 |
-| int size | 当输入值大于0，且新接收事件的大小(单个事件大小计算方式为，将事件转换为JSON字符串后，字符串的长度)大于等于该值时，将调用设置的onTrigger回调函数；<br> 当输入值小于等于0时，不再以新接收事件大小为维度触发onTrigger回调。 |
+| int size | 当输入值大于0，且新接收事件的大小（单个事件大小计算方式为，将事件转换为JSON字符串后，字符串的长度）大于等于该值时，将调用设置的onTrigger回调函数；<br> 当输入值小于等于0时，不再以新接收事件大小为维度触发onTrigger回调。 |
 | int timeOut | 单位为秒，实际生效值为timeOut×30秒。timeOut>0时，每timeOut×30秒检查新事件，有则触发onTrigger，触发后重新计时；timeOut≤0时不启用超时触发。|
 
 **返回：**
@@ -1080,7 +1080,7 @@ int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* do
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即OH_HiAppEvent_CreateProcessor接口返回的指针）。 |
 | const char* domain | 上报事件的领域。事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。 |
 | const char* name | 上报事件的名称。首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。 |
-| bool isRealTime | 是否实时上报。配置为true表示实时上报，false表示不实时上报 |
+| bool isRealTime | 是否实时上报。配置为true表示实时上报，false表示不实时上报。 |
 
 **返回：**
 
@@ -1122,7 +1122,7 @@ int OH_HiAppEvent_SetConfigId(HiAppEvent_Processor* processor, int configId)
 
 **描述**
 
-设置处理者配置id的接口。
+设置处理者配置ID的接口。
 
 **起始版本：** 18
 

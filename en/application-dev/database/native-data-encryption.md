@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:40:46.245Z pushedAt=2026-06-22T12:45:35.444Z -->
+<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:14:13.247Z pushedAt=2026-07-07T03:55:18.699Z -->
 
 ## When to Use
 
@@ -75,7 +75,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
 
       If custom configuration is not required, you can use the default encryption configuration.
 
-      <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
 
       ``` C++
       OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
@@ -94,7 +94,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
       // Use the specified key to open the encrypted database. If no key is specified, the database generates and saves the key and uses the generated key.
       const int32_t length = 6;
       OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
-      // Clear the key information after it is used.
+      // Clear the key information after use.
       for (size_t i = 0; i < sizeof(key); i++) {
           key[i] = 0;
       }

@@ -203,7 +203,7 @@ static JSVM_Value CoerceToString(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value str = nullptr;
     JSVM_Status status = OH_JSVM_CoerceToString(env, args[0], &str);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString failed");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_CoerceToString success");
@@ -261,11 +261,11 @@ static JSVM_Value GetBoolean(JSVM_Env env, JSVM_CallbackInfo info)
     }
     JSVM_Status status = OH_JSVM_GetBoolean(env, type, &returnValue);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToNumber fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean failed");
     } else {
         bool result = false;
         OH_JSVM_GetValueBool(env, returnValue, &result);
-        OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_CoerceToNumber success:%{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetBoolean success:%{public}d", result);
     }
     // 返回结果
     return returnValue;
@@ -279,6 +279,9 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getBoolean", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(getBoolean(1, 2);
+                                   getBoolean(1, 1);)JS";
 ```
 
 预期结果：
@@ -330,6 +333,10 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueBool", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(getValueBool("abc");
+                                   getValueBool(true);
+                                   getValueBool(false);)JS";
 ```
 
 预期结果：
@@ -422,6 +429,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getNull", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(getNull())JS";
 ```
 
 预期结果:
@@ -469,6 +478,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getUndefined", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+// 样例测试js
+const char *SRC_CALL_NATIVE = R"JS(getUndefined())JS";
 ```
 
 预期结果:

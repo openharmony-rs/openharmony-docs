@@ -7,7 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@State用于状态管理V1中，将自定义组件内的普通变量转变为状态变量，管理组件内UI刷新。开发指南参考：[@State装饰器：组件内状态](../../../ui/state-management/arkts-state.md)。
+@State用于状态管理V1，将自定义组件内的普通变量转变为状态变量，当状态变量变化时，触发组件内UI重新渲染。适用于需要在组件内管理可变状态的场景。
+
+开发指南参考：[@State装饰器：组件内状态](../../../ui/state-management/arkts-state.md)。
 
 > **说明：**
 >
@@ -30,6 +32,7 @@ const State: PropertyDecorator
 @Component
 struct StateExample {
   @State count: number = 0; // 状态变量
+
   build() {
     Column() {
       Text(`${this.count}`)

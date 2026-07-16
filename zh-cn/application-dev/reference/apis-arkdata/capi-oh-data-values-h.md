@@ -32,7 +32,7 @@
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Values *OH_Values_Create(void)](#oh_values_create)  | 创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于储存多条键值对数据。 |
+| [OH_Data_Values *OH_Values_Create(void)](#oh_values_create)  | 创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于存储多个数据值。 |
 | [int OH_Values_Destroy(OH_Data_Values *values)](#oh_values_destroy) | 销毁[OH_Data_Values](capi-rdb-oh-data-values.md)对象。           |
 | [int OH_Values_Put(OH_Data_Values *values, const OH_Data_Value *val)](#oh_values_put) | 添加OH_Data_Value类型数据给OH_Data_Values对象。              |
 | [int OH_Values_PutNull(OH_Data_Values *values)](#oh_values_putnull) | 添加空数据给OH_Data_Values对象。                             |
@@ -70,7 +70,7 @@ OH_Data_Values *OH_Values_Create(void)
 
 **描述**
 
-创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于储存多条键值对数据。
+创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于存储多个数据值。
 
 **起始版本：** 18
 
@@ -715,7 +715,7 @@ int OH_Values_GetFloatVector(OH_Data_Values *values, int index, float *val, size
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
 | int index                                        | 表示values中目标数据的从零开始的索引。                       |
 | float *val                                       | 表示指向float数组的指针。<br>需要申请数据内存。<br>此函数仅填充数据，否则执行失败。 |
-| size_t inLen                                     | 表示val的大小。可以通过[OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount)获取。 |
+| size_t inLen                                     | 表示val的大小。可以通过[OH_Values_GetFloatVectorCount](#oh_values_getfloatvectorcount)获取。 |
 | size_t *outLen                                   | 一个输出参数，表示实际获取的数据大小。                       |
 
 **返回：**

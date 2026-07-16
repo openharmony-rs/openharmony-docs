@@ -42,7 +42,7 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
 
 3. 创建异步队列并执行采集任务。
 
-   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->
+   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) --> 
    
    ``` TypeScript
    // TaskpoolAsyncLevel.ets
@@ -61,13 +61,13 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
              .fontWeight(FontWeight.Bold)
              .onClick(async () => {
                // 创建并发度为5的异步队列，等待队列个数为5，当加入的任务数量超过5时，等待列表中处于队头的任务会被丢弃
-               let asyncRunner:taskpool.AsyncRunner = new taskpool.AsyncRunner('async', 5, 5);
+               let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner('async', 5, 5);
                // 触发采集任务
                for (let i = 0; i < 20; i++) {
-                 let task:taskpool.Task = new taskpool.Task(`async${i}`,collectFrame);
+                 let task: taskpool.Task = new taskpool.Task(`async${i}`, collectFrame);
                  asyncRunner.execute(task).then(() => {
                    console.info('the current task name is ' + task.name);
-                 }).catch((e:BusinessError) => {
+                 }).catch((e: BusinessError) => {
                    console.error('async: error is ' + e);
                  });
                }
