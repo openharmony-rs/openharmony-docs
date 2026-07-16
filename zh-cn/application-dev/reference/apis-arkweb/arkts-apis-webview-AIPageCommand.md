@@ -274,9 +274,9 @@
 | params | rules | tags | Array\<string> | 否 | 按HTML标签名称筛选节点。当需要筛选特定类型的HTML元素时使用（如只获取按钮或链接），不传此条件时不按标签筛选。 |
 | params | rules | attributes | Array\<string> \| Object | 否 | 按HTML属性筛选节点。传入Array时，判断节点是否包含指定属性；传入Object时，key表示属性名，value为非空字符串时表示属性值需要包含该字符串。 |
 | params | rules | roles | Array\<string> | 否 | 按节点语义角色筛选节点。 |
-| params | rules | clickable | boolean | 否 | 按节点是否可点击筛选。 |
-| params | rules | scrollable | boolean | 否 | 按节点是否可滚动筛选。 |
-| params | rules | isInViewport | boolean | 否 | 按节点是否在当前视口内筛选。 |
+| params | rules | clickable | boolean | 否 | 按节点是否可点击筛选。true表示筛选可点击的节点，false表示筛选不可点击的节点。 |
+| params | rules | scrollable | boolean | 否 | 按节点是否可滚动筛选。true表示筛选可滚动的节点，false表示筛选不可滚动的节点。 |
+| params | rules | isInViewport | boolean | 否 | 按节点是否在当前视口内筛选。true表示筛选在当前视口内的节点，false表示筛选不在当前视口内的节点。 |
 | params | wants | - | Array\<string \| Object> | 否 | 指定需要在节点中追加返回的字段。`getLiteDom`会默认请求`tag`、`text`和`xpath`。 |
 | params | wants | - | string | 否 | 数组项为string时，表示需要追加返回的节点信息字段，取值请参见[getLiteDom的params.wants字段取值说明](#getlitedom的paramswants字段取值说明)。 |
 | params | wants | attributes | Array\<string> | 否 | 数组项为Object且包含`attributes`时，指定需要返回的HTML属性。 |
