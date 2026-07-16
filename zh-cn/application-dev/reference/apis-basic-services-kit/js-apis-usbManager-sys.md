@@ -389,8 +389,8 @@ let tokenId: string = '';
     }).catch((err : BusinessError) => {
       console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
     });
-  } catch (err) {
-    console.error('testTag failed');
+  } catch (err : BusinessError) {
+    console.error(`testTag failed. Code: ${err.code}, message: ${err.message}`);
   }
 ```
 
@@ -817,7 +817,6 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 async function addAccessoryRightExample() {

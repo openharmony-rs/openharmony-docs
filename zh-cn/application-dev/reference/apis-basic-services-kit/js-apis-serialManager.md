@@ -61,7 +61,6 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 31400001 | Serial port management exception. Possible causes: 1. Failed to configure serial port; 2. Invalid serial port state; 3. System resource conflict. |
 
 **示例：**
 
