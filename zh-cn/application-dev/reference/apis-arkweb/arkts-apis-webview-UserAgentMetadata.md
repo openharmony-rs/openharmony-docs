@@ -52,7 +52,7 @@ getBrandVersionList(): Array\<UserAgentBrandVersion>
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,7 +76,7 @@ setArchitecture(arch: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,7 +100,7 @@ getArchitecture(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -124,7 +124,7 @@ setBitness(bitness: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -148,7 +148,7 @@ getBitness(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -172,7 +172,7 @@ setFormFactors(formFactors: Array\<UserAgentFormFactor>): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,7 +196,7 @@ getFormFactors(): Array\<UserAgentFormFactor>
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,7 +220,7 @@ setFullVersion(fullVersion: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,7 +244,7 @@ getFullVersion(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -268,7 +268,7 @@ setMobile(isMobile: boolean): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,7 +292,7 @@ getMobile(): boolean
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -316,7 +316,7 @@ setModel(model: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -340,7 +340,7 @@ getModel(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -364,7 +364,7 @@ setPlatform(platform: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -388,7 +388,7 @@ getPlatform(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -412,7 +412,7 @@ setPlatformVersion(platformVersion: string): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -436,7 +436,7 @@ getPlatformVersion(): string
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -460,7 +460,7 @@ setWow64(isWow64: boolean): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -484,7 +484,7 @@ getWow64(): boolean
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -51,9 +51,9 @@ ConsoleMessage的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS-Sta起始版本：** 23
 
 ## getLineNumber
 
