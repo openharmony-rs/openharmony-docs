@@ -95,8 +95,8 @@ try {
     }
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -149,8 +149,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -209,8 +209,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -272,8 +272,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -322,14 +322,14 @@ try {
         console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-    console.info(`Succeeded in stopping timer.`);
+      console.info(`Succeeded in stopping timer.`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -387,8 +387,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -410,7 +410,6 @@ destroyTimer(timer: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                   | 必填 | 说明         |
 | -------- | ---------------------- | ---- | ------------ |
 | timer    | number                 | 是   | 定时器的ID。 |
-
 | callback | AsyncCallback&lt;void> | 是   | 回调函数，用于接收定时器销毁结果。回调参数为err（错误对象，销毁成功时为undefined）。   |
 
 **错误码：**
@@ -443,14 +442,14 @@ try {
         console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-    console.info(`Succeeded in destroying timer.`);
+      console.info(`Succeeded in destroying timer.`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -509,8 +508,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
