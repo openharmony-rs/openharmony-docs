@@ -6535,6 +6535,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.CAMERA_EVS
+
+允许应用使用车载相机。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.SAMBA_CLIENT_ACCESS
 
 允许应用连接网络邻居客户端，管理网络邻居文件。
