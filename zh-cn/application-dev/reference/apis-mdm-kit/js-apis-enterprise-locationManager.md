@@ -78,7 +78,7 @@ let wantTemp: Want = {
 
 try {
   locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
-  console.info(`Succeeded in setting location patch tag.`);
+  console.info(`Succeeded in setting location policy.`);
 } catch(err) {
   console.error(`Failed to set location policy. Code: ${err.code}, message: ${err.message}`);
 }

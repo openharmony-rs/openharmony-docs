@@ -962,7 +962,7 @@ let wantTemp: Want = {
 let domainFilterRule: Array<networkManager.DomainFilterRule>;
 try {
   domainFilterRule = networkManager.getDomainFilterRules(wantTemp);
-  console.info('Succeeded in getting  domain filter rules');
+  console.info('Succeeded in getting domain filter rules');
 } catch (err) {
   console.error(`Failed to get domain filter rules. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1143,7 +1143,7 @@ deleteApn(admin: Want, apnId: string): void
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnId  | string | 是   | 需要删除的APN ID。设置后系统将移除该APN配置，对应的接入点将不再可用。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
+| apnId  | string | 是   | 需要删除的APN ID。设置后系统将移除该APN配置，对应的接入点将不再可用。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备APN信息。 |
 
 **错误码**：
 
@@ -1195,7 +1195,7 @@ updateApn(admin: Want, apnInfo: Record\<string, string>, apnId: string): void
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | apnInfo  | Record\<string, string> | 是   | 需要更新的APN参数信息。设置后系统将使用更新后的参数修改对应APN配置，影响网络连接方式和数据传输路径。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>- mnc：2-3位数字的移动网络代码，可选。<br/>- APN：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- password：APN身份验证的密码，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
-| apnId  | string | 是   | 需要更新的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
+| apnId  | string | 是   | 需要更新的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备APN信息。 |
 
 **错误码**：
 
@@ -1253,7 +1253,7 @@ setPreferredApn(admin: Want, apnId: string): void
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| apnId  | string | 是   | 需要设置成优选的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备信息。 |
+| apnId  | string | 是   | 需要设置成优选的APN ID。可以通过[networkManager.queryApn](#networkmanagerqueryapn20)获取设备APN信息。 |
 
 **错误码**：
 
@@ -1419,7 +1419,7 @@ setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface  | string | 是   | 要设置的网络接口名。 |
 | config  | [InterfaceConfig](#interfaceconfig23) | 是   | 要设置的网络接口配置信息。 |
 
