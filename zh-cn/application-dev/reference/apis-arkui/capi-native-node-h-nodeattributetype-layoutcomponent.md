@@ -189,7 +189,7 @@ NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX = 1008000
 
 设置Flex属性，支持属性设置，属性重置和属性获取接口。适用于在Flex容器中需要灵活配置子组件排列方向、换行方式、对齐方式时使用，如响应式布局、自适应布局等复杂布局场景，解决Flex容器需要统一配置多个布局参数的问题，提供一次调用即可设置Flex容器的多个布局参数，简化开发流程，提高代码可维护性。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为5。<br>
 
 **起始版本：** 12
 
@@ -221,7 +221,7 @@ NODE_FLEX_SPACE = 1008001
 
 设置Flex容器内子组件的间距，支持属性设置，属性重置和属性获取接口。适用于在Flex容器中需要分别控制主轴和交叉轴方向的子组件间距时使用，如网格布局中行间距和列间距需要分别设置，解决Flex容器内子组件在主轴和交叉轴方向需要不同间距的问题，提供灵活的双向间距控制能力，实现更精细的布局效果，避免为每个子组件单独设置margin。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为2。<br>
 
 **起始版本：** 23
 

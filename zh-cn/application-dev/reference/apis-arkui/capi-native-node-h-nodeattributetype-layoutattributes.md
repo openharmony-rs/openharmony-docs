@@ -74,7 +74,7 @@ NODE_PADDING = 4
 
 内边距属性，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -114,7 +114,7 @@ NODE_MARGIN = 7
 
 外边距属性，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -177,7 +177,7 @@ NODE_BORDER_WIDTH = 17
 
 边框宽度属性，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -216,7 +216,7 @@ NODE_BORDER_RADIUS = 18
 
 边框圆角属性，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -256,7 +256,7 @@ NODE_BORDER_COLOR = 19
 
 边框颜色属性，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -296,7 +296,7 @@ NODE_BORDER_STYLE = 20
 
 边框线条样式属性，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -336,7 +336,7 @@ NODE_POSITION = 27
 
 元素左上角相对于父容器左上角偏移位置，支持属性设置（通过[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)）、属性重置（通过[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)）和属性获取（通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)）接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为2。<br>
 
 **起始版本：** 12
 
@@ -385,7 +385,7 @@ NODE_CONSTRAINT_SIZE = 48
 
 约束尺寸属性，组件布局时，进行尺寸范围限制，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -725,7 +725,7 @@ NODE_PADDING_PERCENT = 73
 
 内边距属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -765,7 +765,7 @@ NODE_MARGIN_PERCENT = 74
 
 外边距属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -830,7 +830,7 @@ NODE_SIZE = 79
 
 设置高宽尺寸，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为2。<br>
 
 **起始版本：** 12
 
@@ -885,7 +885,7 @@ NODE_BORDER_WIDTH_PERCENT = 85
 
 边框宽度属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -925,7 +925,7 @@ NODE_BORDER_RADIUS_PERCENT = 86
 
 边框圆角属性，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 12
 
@@ -1034,7 +1034,7 @@ NODE_CHAIN_WEIGHT = 118
 
 仅当父组件为RelativeContainer时生效。设置已形成链的组件的布局位置。用于控制链中各个组件沿链方向占据的空间比例，常用于实现同一链中组件按权重比例分配剩余空间的场景。支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为2。<br>
 
 **起始版本：** 23
 
@@ -1060,7 +1060,7 @@ NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 
 设置扩展组件布局时的安全区域，使组件可以延伸到系统状态栏、导航条等系统UI区域。常用于沉浸式视频播放、全屏游戏、图片查看器等需要全屏显示的场景。支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为2。<br>
 
 **起始版本：** 23
 
@@ -1086,7 +1086,7 @@ NODE_DASH_WIDTH = 120
 
 当边框样式设置为虚线（ArkUI_BorderStyle为ARKUI_BORDER_STYLE_DASHED）时，用于设置边框虚线的长度。默认值：NODE_BORDER_WIDTH属性的边框宽度值。仅当边框样式为虚线时生效。支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 23
 
@@ -1116,7 +1116,7 @@ NODE_DASH_GAP = 121
 
 当边框样式设置为虚线（ArkUI_BorderStyle为ARKUI_BORDER_STYLE_DASHED）时，用于设置边框虚线的间隙。默认值：NODE_BORDER_WIDTH属性的边框宽度值。仅当边框样式为虚线时生效。支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
-属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值，实际返回的value数组长度恒为4。<br>
 
 **起始版本：** 23
 
