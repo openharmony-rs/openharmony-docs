@@ -8804,7 +8804,7 @@ ArkTS-Dyn: onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallba
 
 ArkTS-Sta: onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback | undefined)
 
-通知应用当前网页的摄像头状态，摄像头有三个状态：无状态、捕获中、暂停中。使用callback异步回调。
+通知应用当前网页的摄像头状态，摄像头有三个状态：无状态、捕获中、暂停中。使用 callback 异步回调。
 
 可以通过startCamera，stopCamera，closeCamera这三个接口来切换摄像头的状态。这三个接口分别对应开启，暂停，停止摄像头功能。示例使用场景详见[startCamera](arkts-apis-webview-WebviewController.md#startcamera12)。
 
@@ -9036,7 +9036,7 @@ ArkTS-Dyn: onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChan
 
 ArkTS-Sta: onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback | undefined)
 
-通知应用当前网页中麦克风状态，麦克风有三个状态：未工作、捕获中、暂停中。使用callback异步回调。
+通知应用当前网页中麦克风状态，麦克风有三个状态：未工作、捕获中、暂停中。使用 callback 异步回调。
 
 可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[resumeMicrophone<sup>23+</sup>](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
 
