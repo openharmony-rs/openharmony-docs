@@ -195,11 +195,11 @@
 | [ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()](#oh_arkui_rendernodeutils_createblurstyleoption) | - | 创建一个模糊样式对象。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_disposeblurstyleoption) | - | 销毁一个模糊样式对象。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)](#oh_arkui_rendernodeutils_setblurstyleoptionradius) | - | 为目标模糊样式设置模糊半径。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setbackgroundbluroption) | - | 为渲染节点设置背景模糊样式。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setbackgroundbluroption) | - | 为渲染节点设置背景模糊样式，适用于模糊节点背后内容的场景。|
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetbackgroundbluroption) | - | 为渲染节点重置背景模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setforegroundbluroption) | - | 为渲染节点设置前景模糊样式。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setforegroundbluroption) | - | 为渲染节点设置前景模糊样式，适用于模糊节点前景层的场景。|
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetforegroundbluroption) | - | 为渲染节点重置前景模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setcontentbluroption) | - | 为渲染节点设置内容模糊样式。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setcontentbluroption) | - | 为渲染节点设置内容模糊样式，适用于模糊节点自身绘制内容的场景。|
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetcontentbluroption) | - | 为渲染节点重置内容模糊样式。|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | 在父自定义节点下的指定位置插入子渲染节点。|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | 获取父自定义节点在混合挂载顺序中的全部子节点数量。|
@@ -2869,7 +2869,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape()
 
@@ -2892,7 +2892,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape()
 
@@ -2915,7 +2915,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape()
 
@@ -2938,7 +2938,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath()
 
@@ -2961,7 +2961,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption()
 
@@ -3298,7 +3298,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle 
 
 **描述：**
 
-为渲染节点设置背景模糊样式。
+为渲染节点设置背景模糊样式，适用于模糊节点背后内容的场景。
 
 **起始版本：** 26.0.0
 
@@ -3349,7 +3349,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle 
 
 **描述：**
 
-为渲染节点设置前景模糊样式。
+为渲染节点设置前景模糊样式，适用于模糊节点前景层的场景。
 
 **起始版本：** 26.0.0
 
@@ -3400,7 +3400,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle nod
 
 **描述：**
 
-为渲染节点设置内容模糊样式。
+为渲染节点设置内容模糊样式，适用于模糊节点自身绘制内容的场景。
 
 **起始版本：** 26.0.0
 
