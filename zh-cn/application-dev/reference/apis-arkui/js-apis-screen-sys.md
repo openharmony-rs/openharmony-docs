@@ -1628,21 +1628,19 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | number                                         | 是   | 否   | 屏幕的ID，该参数为整数。                           |
+| id                | number                                         | 是   | 否   | 屏幕的ID，该参数为整数。  <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                         |
 | rsId<sup>21+</sup> |number | 是 | 否 | 屏幕端口的ID，该参数为整数。|
-| parent            | number                                         | 是   | 否   | 屏幕所属群组的ID，该参数为整数。             |
-| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。   |
-| activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 |
-| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
-| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
-| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| parent            | number                                         | 是   | 否   | 屏幕所属群组的ID，该参数为整数。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core             |
+| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。  <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core  |
+| activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
+| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。     <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core   |
+| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。  <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core    |
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core  |
+| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | screenType | [ScreenType](#screenType)         | 是   | 是   | 屏幕的类型，默认值为BUILT_IN。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
