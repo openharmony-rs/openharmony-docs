@@ -74,16 +74,18 @@
    // ...
    
    let audioManager = audio.getAudioManager();
-   // 创建音频会话管理器。
-   let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+   let audioSessionManager = audioManager.getSessionManager();
    // ...
    
-     // 设置音频并发模式。
+     // 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
+     audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_VOICE_COMMUNICATION);
+   
+     // 设置音频会话策略。
      let strategy: audio.AudioSessionStrategy = {
        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
      };
    
-     // 激活音频会话。
+     // 激活AudioSession。
      audioSessionManager.activateAudioSession(strategy).then(() => {
        console.info('Succeeded in activating audio session.');
        // ...
@@ -91,10 +93,10 @@
        console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
-   
      // ...
-     // 设置默认输出设备为听筒。
-     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
+   
+     // 设置默认输出设备为扬声器。
+     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
        console.info('Succeeded in setting default output device.');
        // ...
      }).catch((err: BusinessError) => {
@@ -103,10 +105,12 @@
      });
      // ...
    
-     // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
-     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+     // 设置默认输出设备为听筒。
+     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
        console.info('Succeeded in setting default output device.');
+       // ...
      }).catch((err: BusinessError) => {
        console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
      });
    ```
