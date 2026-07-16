@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-状态管理模块提供了应用的数据存储能力、持久化数据管理能力、UIAbility（包含用户界面的应用组件）数据存储能力和应用需要的环境状态、工具。
+状态管理模块具备应用数据存储、持久化管理以及UIAbility（包含用户界面的应用组件）数据存储能力，同时覆盖环境状态、工具和UI状态同步等场景，从而帮助开发者简化状态管理逻辑，提升应用的响应能力和数据一致性。
 
 >**说明：**
 >
@@ -42,7 +42,7 @@ static&nbsp;connect\<T extends object\>( <br>
   &nbsp;&nbsp;&nbsp;&nbsp;defaultCreator?:&nbsp;StorageDefaultCreator\<T\> <br>
 ):&nbsp;T&nbsp;|&nbsp;undefined
 
-将键值对数据储存在应用内存中。如果给定的key已经存在于[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，并返回。
+将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，并返回。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -66,7 +66,7 @@ static&nbsp;connect\<T extends object\>( <br>
 >
 >3、同一个key，connect不同类型的数据会导致应用异常，应用需要确保类型匹配。
 >
->4、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
+>4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255个字符，使用非法字符或空字符的行为是未定义的。
 
 **返回值：**
 
@@ -160,13 +160,13 @@ const keys: Array<string> = AppStorageV2.keys();
 
 ## PersistenceV2
 
-继承自[AppStorageV2](#appstoragev2)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要跨会话保留UI状态数据的场景。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
+继承自[AppStorageV2](#appstoragev2)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要保留UI状态数据的场景。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management/arkts-new-persistencev2.md)。
 
 ### globalConnect<sup>18+</sup>
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
 
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果通过globalConnect链接的对象是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用[PersistenceV2.save](#save)接口手动存储。
+将键值对数据存储在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果通过globalConnect连接的对象是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会自动持久化，如需持久化非\@Trace属性的变化，可调用[PersistenceV2.save](#save)接口手动存储。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -192,7 +192,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 >
 > 3、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
 >
-> 4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+> 4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255个字符，使用非法字符或空字符的行为是未定义的。
 >
 > 5、关联[\@Observed](../../ui/state-management/arkts-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
 >
@@ -254,7 +254,7 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( <br>
   &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> <br>
 ): T | undefined
 
-将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+将键值对数据存储在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -426,7 +426,7 @@ globalConnect参数类型。
 |type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |否   |否   |指定的类型。         |
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
-|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密级别数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -1711,7 +1711,7 @@ new(...args: any): T
 
 | 类型 | 说明                                             |
 | ---- | ------------------------------------------------ |
-| T    | 通过new方法创建的T类型实例。 |
+| T    | 通过new方法创建的T类型实例。默认不传入任何构造参数。 |
 
 **示例：**
 
@@ -1763,7 +1763,7 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 | key | string    | 是   | 出错的键值。   |
 |reason| 'quota' \| 'serialization' \| 'unknown'    | 是   | 出错的原因类型。取值包括：'quota'表示存储配额超限；'serialization'表示序列化或反序列化失败；'unknown'表示未知错误。 |
 | message | string    | 是   | 出错的更多消息。   |
-| oldValue | string    | 否   | 反序列化失败时，返回的旧的存储于磁盘的序列化数据。<br> **起始版本：** 26.0.0。   |
+| oldValue | string    | 否   | 反序列化失败时，返回旧的存储于磁盘的序列化数据；非反序列化失败场景下该参数默认值为undefined。<br> **起始版本：** 26.0.0。   |
 
 **示例：**
 
