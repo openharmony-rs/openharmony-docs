@@ -80,7 +80,7 @@
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
-4. 调用排版接口并设置段落排版宽度，对段落进行塑型排版。
+4. 调用排版接口并设置段落排版宽度，对段落进行塑形排版。
 
    <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
