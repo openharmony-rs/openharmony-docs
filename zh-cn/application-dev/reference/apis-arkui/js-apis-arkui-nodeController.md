@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-NodeController用于实现自定义节点的创建、显示、更新等操作的管理，并负责将自定义节点挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上。
+NodeController用于管理自定义节点的创建、显示、更新等操作，并负责将自定义节点挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，适用于需要在页面中动态创建、更新、复用自定义节点的场景。
 
 > **说明：**
 >
@@ -21,12 +21,12 @@ NodeController用于实现自定义节点的创建、显示、更新等操作的
 ## 导入模块
 
 ```ts
-import {  NodeController  } from '@kit.ArkUI';
+import { NodeController } from '@kit.ArkUI';
 ```
 
 ## NodeController
 
-通常搭配[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行使用。用于创建控制器管理绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件。一个NodeController只允许与一个[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行绑定。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+通常搭配[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)使用。用于创建控制器，管理绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件。一个NodeController只允许与一个[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)进行绑定。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -42,13 +42,13 @@ import {  NodeController  } from '@kit.ArkUI';
 
 abstract makeNode(uiContext : UIContext): FrameNode | null
 
-当实例绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)创建的时候进行回调。回调方法将返回一个节点，将该节点挂载至[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)。
+当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)创建时触发此回调。回调方法将返回一个节点，该节点将被挂载至[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)。
 
-或者可以通过NodeController的rebuild()方法进行回调的触发。
+或者可以通过NodeController的rebuild()方法触发回调。
 
 > **说明：**
 >
-> [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)不支持跨实例复用。如果出现跨实例复用[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)，传入[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的[NodeController](#nodecontroller-1)触发[makeNode](#makenode)回调方法时，入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象可能为undefined，此时需要开发者判断入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
+> [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)不支持跨实例复用。如果出现跨实例复用[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)，传入[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的[NodeController](#nodecontroller-1)触发[makeNode](#makenode)回调方法时，入参中的[UIContext](./arkts-apis-uicontext-uicontext.md)对象可能为undefined，此时需要开发者判断该对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -64,13 +64,13 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 回调该方法的时候，绑定[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的UI上下文。 |
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 回调该方法时，绑定[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的UI上下文。跨实例复用[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)时，该参数可能为undefined，需要开发者自行判断。 |
 
 **返回值：**
 
 | 类型             | 说明                                                                                                                                                                                                                                                        |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [FrameNode](./js-apis-arkui-frameNode.md)\| null | 一个FrameNode对象，返回的节点将被挂载至[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的占位节点上。若返回null对象，将清空对应[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的子节点。 |
+| [FrameNode](./js-apis-arkui-frameNode.md) \| null | 一个FrameNode对象，返回的节点将被挂载至[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的占位节点上。若返回null对象，将清空对应[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的子节点。 |
 
 ### aboutToAppear
 
@@ -122,7 +122,7 @@ ArkTS-Dyn: onAttach?(): void
 
 ArkTS-Sta: onAttach(): void
 
-当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载至主节点树时触发此回调。
+当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载至主节点树时触发此回调。与[aboutToAppear](#abouttoappear)不同，aboutToAppear在NodeContainer挂载显示后触发，onAttach在NodeContainer挂载至主节点树时触发，两者触发时机可能不同。
 
 > **说明：**
 >
@@ -144,7 +144,7 @@ ArkTS-Dyn: onDetach?(): void
 
 ArkTS-Sta: onDetach(): void
 
-当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)从主节点树卸载时触发此回调。
+当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)从主节点树卸载时触发此回调。与[aboutToDisappear](#abouttodisappear)不同，aboutToDisappear在NodeContainer销毁时触发，onDetach在NodeContainer从主节点树卸载时触发，两者触发时机可能不同。
 
 > **说明：**
 >
@@ -166,7 +166,7 @@ ArkTS-Dyn: onWillBind?(containerId: number): void
 
 ArkTS-Sta: onWillBind(containerId: long): void
 
-当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定前触发此回调。
+当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定前触发此回调。该回调先于[onBind](#onbind18)触发，两者均为可选回调，可根据需要在绑定前或绑定后执行相应逻辑。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -182,7 +182,7 @@ ArkTS-Sta: onWillBind(containerId: long): void
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，即将与NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的标识。|
 
 ### onWillUnbind<sup>18+</sup>
 
@@ -190,7 +190,7 @@ ArkTS-Dyn: onWillUnbind?(containerId: number): void
 
 ArkTS-Sta: onWillUnbind(containerId: long): void
 
-当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑前触发此回调。
+当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑前触发此回调。该回调先于[onUnbind](#onunbind18)触发，两者均为可选回调，可根据需要在解绑前或解绑后执行相应逻辑。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -206,7 +206,7 @@ ArkTS-Sta: onWillUnbind(containerId: long): void
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，即将与NodeController解绑的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的标识。|
 
 ### onBind<sup>18+</sup>
 
@@ -214,7 +214,7 @@ ArkTS-Dyn: onBind?(containerId: number): void
 
 ArkTS-Sta: onBind(containerId: long): void
 
-当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定后触发此回调。
+当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定后触发此回调。该回调后于[onWillBind](#onwillbind18)触发，两者均为可选回调，可根据需要在绑定前或绑定后执行相应逻辑。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -230,7 +230,7 @@ ArkTS-Sta: onBind(containerId: long): void
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定完成。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，已完成与NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的标识。|
 
 ### onUnbind<sup>18+</sup>
 
@@ -238,7 +238,7 @@ ArkTS-Dyn: onUnbind?(containerId: number): void
 
 ArkTS-Sta: onUnbind(containerId: long): void
 
-当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑后触发此回调。
+当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑后触发此回调。该回调后于[onWillUnbind](#onwillunbind18)触发，两者均为可选回调，可根据需要在解绑前或解绑后执行相应逻辑。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -254,7 +254,7 @@ ArkTS-Sta: onUnbind(containerId: long): void
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑完成。|
+| containerId | number | 是   | 回调该方法时，已完成与NodeController解绑的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)的标识。|
 
 ### aboutToResize
 
@@ -262,7 +262,7 @@ ArkTS-Dyn: aboutToResize?(size: Size): void
 
 ArkTS-Sta: aboutToResize(size: Size): void
 
-当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)布局的时候触发此回调。
+当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)布局时触发此回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -278,7 +278,7 @@ ArkTS-Sta: aboutToResize(size: Size): void
 
 | 参数名 | 类型                                     | 必填 | 说明                                     |
 | ------ | ---------------------------------------- | ---- | ---------------------------------------- |
-| size   | [Size](./js-apis-arkui-graphics.md#size) | 是   | 用于返回组件布局大小的宽和高，单位为vp。 |
+| size   | [Size](./js-apis-arkui-graphics.md#size) | 是   | 组件布局大小的宽和高，单位为vp。 |
 
 ### onTouchEvent
 
@@ -286,7 +286,7 @@ ArkTS-Dyn: onTouchEvent?(event: TouchEvent): void
 
 ArkTS-Sta: onTouchEvent(event: TouchEvent): void
 
-当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)收到Touch事件时触发此回调。
+当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)收到触摸事件时触发此回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -302,13 +302,13 @@ ArkTS-Sta: onTouchEvent(event: TouchEvent): void
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
-| event  | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 是   | 触摸事件。 |
+| event  | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 是   | 触摸事件，包含触摸点的坐标、触摸动作类型等信息，具体结构详见TouchEvent。 |
 
 ### rebuild
 
 rebuild(): void
 
-调用此接口通知[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件重新回调[makeNode](#makenode)方法，更改子节点。
+调用此接口通知[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件重新回调[makeNode](#makenode)方法，更改子节点。例如，当NodeContainer展示的内容数据发生变化、需要更新显示的子节点时，可调用此方法触发重新构建。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -321,25 +321,26 @@ rebuild(): void
 **ArkTS-Sta起始版本：** 23
 
 > **说明：**
-> 由于rebuild方法为应用主动调用的方法，且该操作与UI相关。需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。
+>
+> 由于rebuild方法为应用主动调用的方法，且该操作与UI相关，需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。
 >
 > 监听回调等[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)时，可以通过[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)方法明确调用时的UI上下文。
 
 ## 示例
 
-### 示例1（添加节点布局、Touch、挂载和卸载时的生命周期回调）
+### 示例1（添加节点布局、Touch、挂载和销毁时的生命周期回调）
 
 该示例通过aboutToResize、onTouchEvent，实现了NodeContainer节点布局、收到Touch事件时的生命周期回调功能。
 
-并通过aboutToAppear、aboutToDisappear接口，实现了NodeContainer节点挂载、卸载时的生命周期回调功能。
+并通过aboutToAppear、aboutToDisappear接口，实现了NodeContainer节点挂载、销毁时的生命周期回调功能。
 
-通过NodeController挂载BuilderNode节点。
+该示例还通过NodeController挂载BuilderNode节点。
 
 ```ts
 import { NodeController, BuilderNode, Size, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text"
+  text: string = 'this is a text';
 }
 
 @Builder
@@ -360,25 +361,25 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode {
     if (this.buttonNode == null) {
       this.buttonNode = new BuilderNode(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button" })
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button' });
     }
     return this.buttonNode!.getFrameNode()!;
   }
 
   aboutToResize(size: Size) {
-    console.info(`aboutToResize width : ${size.width} height : ${size.height}`)
+    console.info(`aboutToResize width : ${size.width} height : ${size.height}`);
   }
 
   aboutToAppear() {
-    console.info("aboutToAppear")
+    console.info('aboutToAppear');
   }
 
   aboutToDisappear() {
-    console.info("aboutToDisappear");
+    console.info('aboutToDisappear');
   }
 
   onTouchEvent(event: TouchEvent) {
-    console.info("onTouchEvent");
+    console.info('onTouchEvent');
   }
 }
 
@@ -392,12 +393,12 @@ struct Index {
       NodeContainer(this.myNodeController)
     }
     .padding({ left: 35, right: 35, top: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
-![patternlock](figures/node_controller.jpg)
+![nodecontroller](figures/node_controller.jpg)
 
 ### 示例2（添加节点上下树和绑定解绑前后的生命周期回调）
 
@@ -409,7 +410,7 @@ struct Index {
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text"
+  text: string = 'this is a text';
 }
 
 @Builder
@@ -430,17 +431,17 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode {
     if (this.buttonNode == null) {
       this.buttonNode = new BuilderNode(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button" })
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button' });
     }
     return this.buttonNode!.getFrameNode()!;
   }
 
   onAttach(): void {
-    console.info("myButton on attach");
+    console.info('myButton on attach');
   }
 
   onDetach(): void {
-    console.info("myButton on detach");
+    console.info('myButton on detach');
   }
 
   onWillBind(containerId: number): void {
@@ -463,22 +464,22 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State buttonShow: boolean = true
-  @State buttonIndex: number = 0
+  @State buttonShow: boolean = true;
+  @State buttonIndex: number = 0;
   private buttonController: MyNodeController = new MyNodeController();
   private buttonNull: null = null;
-  private buttonControllerArray: Array<MyNodeController | null> = [this.buttonController, this.buttonNull]
+  private buttonControllerArray: Array<MyNodeController | null> = [this.buttonController, this.buttonNull];
 
   build() {
     Column() {
       Row() {
-        Button("Bind/Unbind")
+        Button('Bind/Unbind')
           .onClick(() => {
             this.buttonIndex++;
           }).margin(5)
-        Button("onAttach/onDetach")
+        Button('onAttach/onDetach')
           .onClick(() => {
-            this.buttonShow = !this.buttonShow
+            this.buttonShow = !this.buttonShow;
           }).margin(5)
       }
 
@@ -487,10 +488,10 @@ struct Index {
       }
     }
     .padding({ left: 35, right: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
 
-![patternlock2](figures/node_controller2.jpg)
+![nodecontroller2](figures/node_controller2.jpg)
