@@ -380,7 +380,7 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
 
 ## 查询指定设备的自适应空间音频渲染效果开关状态
 
-从API version 24开始，系统应用开发者可以通过[isAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isadaptivespatialrenderingenabled24)接口查询指定设备的自适应空间音频渲染效果开关状态。
+从API版本24开始，系统应用开发者可以通过[isAdaptiveSpatialRenderingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#isadaptivespatialrenderingenabled24)接口查询指定设备的自适应空间音频渲染效果开关状态。
 
 入参需要使用AudioDeviceDescriptor来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
 
