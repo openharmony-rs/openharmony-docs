@@ -151,7 +151,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
     console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
     let sessionId = -1;
     const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-    if (collaborationValues == undefined) {
+    if (!collaborationValues) {
+      console.error('Failed to get collaborationValues.');
       return sessionId;
     }
     console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
@@ -173,7 +174,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
     console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
     let sessionId: AbilityConstant.CollaborateResult = AbilityConstant.CollaborateResult.REJECT;
     const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-    if (collaborationValues == undefined) {
+    if (!collaborationValues) {
+      console.error('Failed to get collaborationValues.');
       return sessionId;
     }
     console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);

@@ -14,7 +14,7 @@
 
 ## ComponentOptions
 
-自定义组件参数，用于配置是否支持组件冻结和全局复用池。
+自定义组件参数，用于配置是否支持组件冻结和全局复用池，适用于需要优化自定义组件性能表现和提升组件复用效率的场景。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +28,7 @@
 
 ## ReusableOptions
 
-可复用自定义组件的参数，用于配置内存优化策略。
+可复用自定义组件的参数，用于配置内存优化策略，适用于需要降低可复用自定义组件内存使用量的场景。
 
 **起始版本：** 26.0.0
 
@@ -38,7 +38,7 @@
 
 | 名称 | 类型 | 只读 | 可选     | 说明   |
 | ------ | ---- | ---- | ------------ | ------------ |
-| memoryOptimizationStrategy | [ReusableMemOptStrategy](#reusablememoptstrategy) | 否   | 是   | 可复用自定义组件的内存优化策略。该参数在创建可复用自定义组件时设定，不支持动态修改。<br>默认值：[DEFAULT](#reusablememoptstrategy) |
+| memoryOptimizationStrategy | [ReusableMemOptStrategy](#reusablememoptstrategy) | 否   | 是   | 可复用自定义组件的内存优化策略。该参数在创建可复用自定义组件时设定，不支持动态修改。传入[ENABLE_AUTO_CACHE_OPTIMIZATION](#reusablememoptstrategy)时可启用自动内存优化，在应用退后台、组件不可见或整机低内存等场景下自动释放复用池中的组件；不传入时使用默认值[DEFAULT](#reusablememoptstrategy)（无内存优化策略）。 |
 
 ## ReusableMemOptStrategy
 

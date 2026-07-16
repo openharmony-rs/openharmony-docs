@@ -212,6 +212,7 @@ notificationManager.publish(notificationRequest).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知Request对象
 let notificationRequest: notificationManager.NotificationRequest = {
@@ -360,6 +361,7 @@ notificationManager.cancel(0).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.cancel(0).then(() => {
   console.info(`Succeeded in canceling notification.`);
@@ -546,6 +548,7 @@ notificationManager.cancelAll().then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.cancelAll().then(() => {
   console.info(`Succeeded in canceling all notification.`);
@@ -673,6 +676,7 @@ notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).t
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
   console.info(`Succeeded in adding slot.`);
@@ -703,7 +707,7 @@ ArkTS-Sta: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot
 | 参数名     | 类型                              | 必填 | 说明                                                        |
 | -------- | --------------------------------- | ---- | ----------------------------------------------------------- |
 | slotType | [SlotType](#slottype)                          | 是   | 通知渠道类型，例如社交通讯、服务提醒、内容咨询等类型。 |
-| callback | AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | 是   | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的`NotificationSlot`，否则为错误对象。                                        |
+| callback | ArkTS-Dyn: AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\><br/>ArkTS-Sta: AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\|null\> | 是   | 回调函数。当获取通知渠道成功，err为undefined，data为获取到的`NotificationSlot`，否则为错误对象。                                        |
 
 **错误码：**
 
@@ -779,7 +783,7 @@ ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | Promise对象，返回通知渠道对象。 |
+| ArkTS-Dyn: Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\><br/>ArkTS-Sta: Promise\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\|null\> | Promise对象，返回通知渠道对象。 |
 
 **错误码：**
 
@@ -808,6 +812,7 @@ notificationManager.getSlot(slotType).then((data: notificationManager.Notificati
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot | null) => {
@@ -927,6 +932,7 @@ notificationManager.getSlots().then((data: Array<notificationManager.Notificatio
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
   console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
@@ -1054,6 +1060,7 @@ notificationManager.removeSlot(slotType).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType).then(() => {
@@ -1170,6 +1177,7 @@ notificationManager.removeAllSlots().then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.removeAllSlots().then(() => {
   console.info(`Succeeded in removing all slots.`);
@@ -1295,6 +1303,7 @@ notificationManager.isNotificationEnabled().then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isNotificationEnabled().then((data: boolean) => {
   console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -1400,6 +1409,7 @@ notificationManager.setBadgeNumber(badgeNumber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let badgeNumber: int = 10;
 notificationManager.setBadgeNumber(badgeNumber).then(() => {
@@ -1527,6 +1537,7 @@ notificationManager.getBadgeNumber().then((badgeNumber: number) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getBadgeNumber().then((badgeNumber: long) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
@@ -1648,6 +1659,7 @@ notificationManager.getActiveNotificationCount().then((data: number) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getActiveNotificationCount().then((data: long) => {
   console.info(`Succeeded in getting active notification count, data is ${JSON.stringify(data)}`);
@@ -1763,6 +1775,7 @@ notificationManager.getActiveNotifications().then((data: Array<notificationManag
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
   console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
@@ -1829,6 +1842,7 @@ notificationManager.getNotificationParameters(id, label).then((data: notificatio
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: int = 0;
 let label: string = "";
@@ -1957,6 +1971,7 @@ notificationManager.cancelGroup(groupName).then(() => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupName: string = "GroupName";
 notificationManager.cancelGroup(groupName).then(() => {
@@ -2080,6 +2095,7 @@ notificationManager.isSupportTemplate(templateName).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let templateName: string = 'downloadTemplate';
 notificationManager.isSupportTemplate(templateName).then((data: boolean) => {
@@ -2257,6 +2273,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import common from '@ohos.app.ability.common';
 import { AppStorage } from '@ohos.arkui.stateManagement'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
     await notificationManager.requestEnableNotification(testAbilityContext).then(() => {
@@ -2369,6 +2386,10 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
@@ -2431,6 +2452,10 @@ notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2714,6 +2739,7 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getNotificationSetting().then((data: notificationManager.NotificationSetting) => {
     console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);

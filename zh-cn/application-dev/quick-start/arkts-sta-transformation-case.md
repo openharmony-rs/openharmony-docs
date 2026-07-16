@@ -539,6 +539,62 @@ export function processRecordValue(value: string): void {
 }
 ```
 
+## 入参类型为联合类型的静态函数传入动态如何使用
+
+传入动态的静态函数的入参不支持包含非动态数值类型（如`int`、`long`等）的联合类型（例如`int|string`、`long|string`等）。对于包含数值的联合类型，只支持使用`number`以及`double`作为其数值成员。
+
+若需要实现数值联合类型的函数入参，推荐以下两种解决方案：
+- 调整联合类型成员：将数值类型定义为`number|string`或`double|string`。
+- 使用函数重载：通过声明多个同名函数重载来实现类似联合类型的效果。
+
+```ts
+// ========== 静态文件 StaticModule.ets ==========
+'use static'
+
+export function unionInt(para: int|string): void {} // 不支持：使用了非动态数值类型int的联合类型
+export function unionNumber(para: double|string): double|string {
+  return para; // 支持：使用double作为联合类型的数值成员
+}
+
+// 使用函数重载替代联合类型
+export function foo(para: int): void {} 
+export function foo(para: string): void {}
+
+// ========== 动态文件 DynamicModule.ets ==========
+import { unionInt, unionNumber, foo } from 'StaticModule' // 从对应StaticModule路径内导入
+
+let num = 1;
+let res1 = unionNumber(num); // 正常运行
+let res2 = foo(num);        // 正常运行
+let res3 = unionInt(num);   // 会产生运行时报错
+```
+
+## 入参类型为非动态数值类型的静态Lambda对象传入动态如何使用
+
+对于在动态环境中不支持的数值类型（如`int`、`long`等），不支持将其作为静态Lambda对象的入参类型，且无法通过对应的Lambda表达式进行赋值或传参。开发者应避免在Lambda对象中使用此类非动态数值类型。在定义Lambda对象的签名时，必须严格使用`number`或`double`类型。
+
+```ts
+// ========== 静态文件 StaticModule.ets ==========
+'use static'
+
+// 不支持：Lambda表达式入参使用了非动态数值类型int
+export let funcA: (para: int) => int = (para: int) => int {
+  return para;
+}; 
+
+// 支持：Lambda表达式入参严格使用double类型
+export let funcB: (para: double) => double = (para: double) => double {
+  return para;
+};
+
+// ========== 动态文件 DynamicModule.ets ==========
+import { funcA, funcB } from 'StaticModule' // 从对应StaticModule路径内导入
+
+let num = 1;
+let resA = funcA(num); // 会产生运行时报错
+let resB = funcB(num); // 正常运行
+```
+
 ## JSON序列化和反序列化操作，动静态对比
 
 - 动态语法，JSON序列化和反序列化如下：

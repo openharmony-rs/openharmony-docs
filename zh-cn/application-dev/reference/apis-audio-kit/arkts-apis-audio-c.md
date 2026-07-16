@@ -17,8 +17,8 @@
 
 | 名称                                    | 类型      | 只读 | 说明               |
 | --------------------------------------- | ----------|---| ------------------ |
-| DEFAULT_VOLUME_GROUP_ID<sup>9+</sup>    | number    | 是 | 默认音量组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Volume       |
-| DEFAULT_INTERRUPT_GROUP_ID<sup>9+</sup> | number    | 是 | 默认音频中断组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Interrupt       |
+| DEFAULT_VOLUME_GROUP_ID<sup>9+</sup>    | number    | 是 | 默认音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Volume       |
+| DEFAULT_INTERRUPT_GROUP_ID<sup>9+</sup> | number    | 是 | 默认音频中断组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Interrupt       |
 
 **示例：**
 

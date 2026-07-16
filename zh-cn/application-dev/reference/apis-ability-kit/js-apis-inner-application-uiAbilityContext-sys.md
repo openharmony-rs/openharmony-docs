@@ -267,7 +267,7 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options?
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -1403,7 +1403,7 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -1861,7 +1861,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动UIAbility的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -2236,7 +2236,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动UIAbility的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 

@@ -66,7 +66,7 @@ NN_QuantParam *OH_NNQuantParam_Create()
 
 创建一个[NN_QuantParam](capi-neuralnetworkruntime-nn-quantparam.md)量化参数实例。
 
-创建[NN_QuantParam](capi-neuralnetworkruntime-nn-quantparam.md)量化参数实例后，调用[OH_NNQuantParam_SetScales](capi-neural-network-runtime-h.md#oh_nnquantparam_setscales)、[OH_NNQuantParam_SetZeroPoints](capi-neural-network-runtime-h.md#oh_nnquantparam_setzeropoints)或[OH_NNQuantParam_SetNumBits](capi-neural-network-runtime-h.md#oh_nnquantparam_setnumbits)设置它的属性值，并调用[OH_NNModel_SetTensorQuantParams](capi-neural-network-runtime-h.md#oh_nnmodel_settensorquantparams)将它设置到[NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md)中。最后再调用[OH_NNQuantParam_Destroy](capi-neural-network-runtime-h.md#oh_nnquantparam_destroy)销毁它，以避免内存泄露。
+创建[NN_QuantParam](capi-neuralnetworkruntime-nn-quantparam.md)量化参数实例后，调用[OH_NNQuantParam_SetScales](capi-neural-network-runtime-h.md#oh_nnquantparam_setscales)、[OH_NNQuantParam_SetZeroPoints](capi-neural-network-runtime-h.md#oh_nnquantparam_setzeropoints)或[OH_NNQuantParam_SetNumBits](capi-neural-network-runtime-h.md#oh_nnquantparam_setnumbits)设置它的属性值，并调用[OH_NNModel_SetTensorQuantParams](capi-neural-network-runtime-h.md#oh_nnmodel_settensorquantparams)将它设置到[NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md)中。最后再调用[OH_NNQuantParam_Destroy](capi-neural-network-runtime-h.md#oh_nnquantparam_destroy)销毁它，以避免内存泄漏。
 
 **起始版本：** 11
 

@@ -43,11 +43,11 @@
 | [float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetheight) | 用于获取矩形对象的高度，计算方式为设置的矩形的右下角纵坐标减去左上角纵坐标。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)](#oh_drawing_rectgetwidth) | 用于获取矩形对象的宽度，计算方式为设置的矩形的右下角横坐标减去左上角横坐标。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_rectcopy) | 用于将源矩形对象复制到目标矩形对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)](#oh_drawing_rectdestroy) | 用于销毁矩形对象并回收该对象占有的内存。 |
+| [void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)](#oh_drawing_rectdestroy) | 用于销毁矩形对象并回收该对象占用的内存。 |
 | [OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)](#oh_drawing_rectcreatearray) | 用于创建一个矩形数组对象，以存储多个矩形对象。不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray)接口释放该对象的指针。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | 用于获取矩形数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的大小。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray, size_t index,OH_Drawing_Rect** rect)](#oh_drawing_rectgetarrayelement) | 用于获取矩形数组对象中指定索引的矩形对象。 |
-| [OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)](#oh_drawing_rectdestroyarray) | 用于销毁矩形数组对象并回收该对象占有的内存。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)](#oh_drawing_rectdestroyarray) | 用于销毁矩形数组对象并回收该对象占用的内存。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)](#oh_drawing_rectcontains) | 用于判断一个矩形是否完全包含另一个矩形。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, float top, float right, float bottom)](#oh_drawing_rectinset) | 将指定的值分别添加到矩形的左、上、右、下边界坐标，调整矩形的大小和位置。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectIsEmpty(const OH_Drawing_Rect* rect, bool* isEmpty)](#oh_drawing_rectisempty) | 用于判断矩形是否为空，即矩形的宽度或高度是否小于等于0。 |
@@ -425,7 +425,7 @@ void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 
 **描述**
 
-用于销毁矩形对象并回收该对象占有的内存。
+用于销毁矩形对象并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -530,7 +530,7 @@ OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 
 **描述**
 
-用于销毁矩形数组对象并回收该对象占有的内存。
+用于销毁矩形数组对象并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

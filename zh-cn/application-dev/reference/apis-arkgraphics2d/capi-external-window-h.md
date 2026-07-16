@@ -55,7 +55,7 @@
 | [OHNativeWindow* OH_NativeWindow_CreateNativeWindow(void* pSurface)](#oh_nativewindow_createnativewindow) | 创建OHNativeWindow实例，每次调用都会产生一个新的OHNativeWindow实例。<br>说明：此接口不可用，可通过OH_NativeImage_AcquireNativeWindow创建，或通过XComponent创建。 |
 | [void OH_NativeWindow_DestroyNativeWindow(OHNativeWindow* window)](#oh_nativewindow_destroynativewindow) | 将OHNativeWindow对象的引用计数减1，当引用计数为0的时候，该OHNativeWindow对象会被析构掉。<br>本接口为非线程安全类型接口。 |
 | [OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(void* pSurfaceBuffer)](#oh_nativewindow_createnativewindowbufferfromsurfacebuffer) | 创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。<br>说明：此接口不可用，使用OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer替代。 |
-| [OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer(OH_NativeBuffer* nativeBuffer)](#oh_nativewindow_createnativewindowbufferfromnativebuffer) | 创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindowBuffer](#oh_nativewindow_destroynativewindowbuffer)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
+| [OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer(OH_NativeBuffer* nativeBuffer)](#oh_nativewindow_createnativewindowbufferfromnativebuffer) | 创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindowBuffer](#oh_nativewindow_destroynativewindowbuffer)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [void OH_NativeWindow_DestroyNativeWindowBuffer(OHNativeWindowBuffer* buffer)](#oh_nativewindow_destroynativewindowbuffer) | 将OHNativeWindowBuffer对象的引用计数减1，当引用计数为0的时候，该OHNativeWindowBuffer对象会被析构掉。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_NativeWindowRequestBuffer(OHNativeWindow *window, OHNativeWindowBuffer **buffer, int *fenceFd)](#oh_nativewindow_nativewindowrequestbuffer) | 通过OHNativeWindow对象申请一块OHNativeWindowBuffer，用以内容生产。<br>在调用本接口前，需要通过[SET_BUFFER_GEOMETRY](#nativewindowoperation)对OHNativeWindow设置宽高。<br>本接口需要与[OH_NativeWindow_NativeWindowFlushBuffer](#oh_nativewindow_nativewindowflushbuffer)接口配合使用，否则内存会耗尽。<br>当fenceFd使用完，用户需要将其close。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_NativeWindowFlushBuffer(OHNativeWindow *window, OHNativeWindowBuffer *buffer,int fenceFd, Region region)](#oh_nativewindow_nativewindowflushbuffer) | 通过OHNativeWindow将生产好内容的OHNativeWindowBuffer放回到Buffer队列中，用以内容消费。<br>系统会将fenceFd关闭，无需用户close。<br>本接口为非线程安全类型接口。 |
@@ -63,7 +63,7 @@
 | [int32_t OH_NativeWindow_NativeWindowAbortBuffer(OHNativeWindow *window, OHNativeWindowBuffer *buffer)](#oh_nativewindow_nativewindowabortbuffer) | 通过OHNativeWindow将之前申请出来的OHNativeWindowBuffer返还到Buffer队列中，供下次再申请。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_NativeWindowHandleOpt(OHNativeWindow *window, int code, ...)](#oh_nativewindow_nativewindowhandleopt) | 设置/获取OHNativeWindow的属性，包括设置/获取宽高、内容格式等。<br>本接口为非线程安全类型接口。 |
 | [BufferHandle *OH_NativeWindow_GetBufferHandleFromNative(OHNativeWindowBuffer *buffer)](#oh_nativewindow_getbufferhandlefromnative) | 通过OHNativeWindowBuffer获取该buffer的BufferHandle指针。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeWindow_NativeObjectReference(void *obj)](#oh_nativewindow_nativeobjectreference) | 增加一个NativeObject的引用计数。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeWindow_NativeObjectReference(void *obj)](#oh_nativewindow_nativeobjectreference) | 增加一个NativeObject的引用计数。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_NativeObjectUnreference(void *obj)](#oh_nativewindow_nativeobjectunreference) | 减少一个NativeObject的引用计数，当引用计数减少为0时，该NativeObject将被析构掉。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_GetNativeObjectMagic(void *obj)](#oh_nativewindow_getnativeobjectmagic) | 获取NativeObject的MagicId。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_NativeWindowSetScalingMode(OHNativeWindow *window, uint32_t sequence,OHScalingMode scalingMode)](#oh_nativewindow_nativewindowsetscalingmode) | 设置OHNativeWindow的ScalingMode。 |
@@ -73,9 +73,9 @@
 | [int32_t OH_NativeWindow_NativeWindowAttachBuffer(OHNativeWindow *window, OHNativeWindowBuffer *buffer)](#oh_nativewindow_nativewindowattachbuffer) | 将OHNativeWindowBuffer添加进OHNativeWindow中。<br>本接口需要与[OH_NativeWindow_NativeWindowDetachBuffer](#oh_nativewindow_nativewindowdetachbuffer)接口配合使用，否则会存在内存管理混乱问题。<br>本接口为非线程安全类型接口。<br> |
 | [int32_t OH_NativeWindow_NativeWindowDetachBuffer(OHNativeWindow *window, OHNativeWindowBuffer *buffer)](#oh_nativewindow_nativewindowdetachbuffer) | 将OHNativeWindowBuffer从OHNativeWindow中分离。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_GetSurfaceId(OHNativeWindow *window, uint64_t *surfaceId)](#oh_nativewindow_getsurfaceid) | 通过OHNativeWindow获取对应的surfaceId。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeWindow_CreateNativeWindowFromSurfaceId(uint64_t surfaceId, OHNativeWindow **window)](#oh_nativewindow_createnativewindowfromsurfaceid) | 通过surfaceId创建对应的OHNativeWindow。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄露。<br>如果存在并发释放OHNativeWindow的情况，需要通过[OH_NativeWindow_NativeObjectReference](#oh_nativewindow_nativeobjectreference)和[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)对OHNativeWindow进行引用计数加一和减一。<br>通过surfaceId获取的surface需要是在本进程中创建的，不能跨进程获取surface。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeWindow_CreateNativeWindowFromSurfaceId(uint64_t surfaceId, OHNativeWindow **window)](#oh_nativewindow_createnativewindowfromsurfaceid) | 通过surfaceId创建对应的OHNativeWindow。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄漏。<br>如果存在并发释放OHNativeWindow的情况，需要通过[OH_NativeWindow_NativeObjectReference](#oh_nativewindow_nativeobjectreference)和[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)对OHNativeWindow进行引用计数加一和减一。<br>通过surfaceId获取的surface需要是在本进程中创建的，不能跨进程获取surface。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_NativeWindowSetScalingModeV2(OHNativeWindow* window, OHScalingModeV2 scalingMode)](#oh_nativewindow_nativewindowsetscalingmodev2) | 设置OHNativeWindow的渲染缩放模式。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeWindowBuffer **buffer,int *fenceFd, float matrix[16])](#oh_nativewindow_getlastflushedbufferv2) | 从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer,与OH_NativeWindow_GetLastFlushedBuffer的差异在于matrix不同。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeWindowBuffer **buffer,int *fenceFd, float matrix[16])](#oh_nativewindow_getlastflushedbufferv2) | 从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer,与OH_NativeWindow_GetLastFlushedBuffer的差异在于matrix不同。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
 | [void OH_NativeWindow_SetBufferHold(OHNativeWindow *window)](#oh_nativewindow_setbufferhold) | 启用单帧缓存机制，通过提前缓存一帧buffer并延迟显示，用于平滑帧率波动。 |
 | [int32_t OH_NativeWindow_WriteToParcel(OHNativeWindow *window, OHIPCParcel *parcel)](#oh_nativewindow_writetoparcel) | 将窗口对象写入IPC序列化对象中。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **window)](#oh_nativewindow_readfromparcel) | 从IPC序列化对象中读取窗口对象。<br>本接口将会创建一个OHNativeWindow，当窗口对象使用完，开发者需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
@@ -325,7 +325,7 @@ OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer(O
 
 **描述**
 
-创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindowBuffer](#oh_nativewindow_destroynativewindowbuffer)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。
+创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindowBuffer](#oh_nativewindow_destroynativewindowbuffer)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -550,7 +550,7 @@ int32_t OH_NativeWindow_NativeObjectReference(void *obj)
 
 **描述**
 
-增加一个NativeObject的引用计数。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。
+增加一个NativeObject的引用计数。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -843,7 +843,7 @@ int32_t OH_NativeWindow_CreateNativeWindowFromSurfaceId(uint64_t surfaceId, OHNa
 
 **描述**
 
-通过surfaceId创建对应的OHNativeWindow。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄露。<br>如果存在并发释放OHNativeWindow的情况，需要通过[OH_NativeWindow_NativeObjectReference](#oh_nativewindow_nativeobjectreference)和[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)对OHNativeWindow进行引用计数加一和减一。<br>通过surfaceId获取的surface需要是在本进程中创建的，不能跨进程获取surface。<br>本接口为非线程安全类型接口。
+通过surfaceId创建对应的OHNativeWindow。<br>本接口需要与[OH_NativeWindow_DestroyNativeWindow](#oh_nativewindow_destroynativewindow)接口配合使用，否则会存在内存泄漏。<br>如果存在并发释放OHNativeWindow的情况，需要通过[OH_NativeWindow_NativeObjectReference](#oh_nativewindow_nativeobjectreference)和[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)对OHNativeWindow进行引用计数加一和减一。<br>通过surfaceId获取的surface需要是在本进程中创建的，不能跨进程获取surface。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -899,7 +899,7 @@ int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeW
 
 **描述**
 
-从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer,与OH_NativeWindow_GetLastFlushedBuffer的差异在于matrix不同。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。
+从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer,与OH_NativeWindow_GetLastFlushedBuffer的差异在于matrix不同。<br>本接口需要与[OH_NativeWindow_NativeObjectUnreference](#oh_nativewindow_nativeobjectunreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 

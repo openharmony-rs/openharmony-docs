@@ -18,7 +18,7 @@
 
 此处提供了一个传递普通对象的示例，具体实现如下：
 
-<!-- @[define_test_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/Test.ets) -->
+<!-- @[define_test_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/Test.ets) -->
 
 ``` TypeScript
 // 自定义class TestA
@@ -30,7 +30,7 @@ export class TestA {
 }
 ```
 
-<!-- @[example_normal_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/NormalObject.ets) -->
+<!-- @[example_normal_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/NormalObject.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';

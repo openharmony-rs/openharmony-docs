@@ -469,7 +469,7 @@ struct GetFontDescriptorsFromPathTest {
   build() {
     Column({ space: 10 }) {
       Button("get fontDescriptors")
-        .onClick(async () => {
+        .onClick(() => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
             for (let index = 0; index < fontFullDescriptors.length; index++) {
@@ -572,7 +572,7 @@ struct GetFontUnicodeSetTest {
   build() {
     Column({ space: 10 }) {
       Button("get fontUnicode")
-        .onClick(async () => {
+        .onClick(() => {
           let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
           promise.then((unicodeSet) => {
             for (let index = 0; index < unicodeSet.length; index++) {
@@ -1191,7 +1191,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 ## TextShadow
 
-字体阴影。
+文本阴影。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1203,8 +1203,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 | 名称          | 类型                                                 | 只读 | 可选 | 说明                               |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
-| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
-| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零，单位为物理像素px，默认为common2D.Point(0, 0)。    |
+| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 文本阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
+| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 文本阴影基于当前文本的偏移位置，横、纵坐标要大于等于零，单位为物理像素px，默认为common2D.Point(0, 0)。    |
 | blurRadius    | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  是   | 模糊半径，浮点数，默认为0.0px。       |
 
 ## RectStyle

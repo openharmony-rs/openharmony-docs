@@ -596,7 +596,7 @@
     - [组件双向绑定 (ArkTS-Sta)](js-apis-twoWayBinding-static.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
     <!--Del-->
-    - [内置环境变量说明（系统接口）](arkui-ts/ts-state-management-environment-variables-sys.md)
+    - [Storage（系统接口）](arkui-ts/ts-state-management-storage-sys.md)
     <!--DelEnd-->
     - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
     - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)

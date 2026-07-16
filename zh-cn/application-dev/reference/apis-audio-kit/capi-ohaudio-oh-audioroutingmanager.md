@@ -12,7 +12,7 @@ typedef struct OH_AudioRoutingManager OH_AudioRoutingManager
 
 ## 概述
 
-声明音频路由管理器，用于路由和设备相关功能的音频路由管理器的句柄。
+声明音频路由管理器。该结构体用于管理音频路由及设备相关功能。
 
 **起始版本：** 12
 

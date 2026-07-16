@@ -34,7 +34,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
->- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时，可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
 >- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
@@ -79,8 +79,9 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
 
-  let targetBundleName = 'com.example.test_case1'
+  let targetBundleName = 'com.example.test_case1';
   let path = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
+  // 创建目录
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -89,6 +90,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   });
   console.info(`mkdir success.`);
   let uri = fileUri.getUriFromPath(path);
+  // 授权URI给指定应用
   uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName,
     (error) => {
       if (error && error.code !== 0) {
@@ -234,6 +236,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   let targetBundleName = 'com.example.test_case1'
   let path = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
 
+  // 创建目录
   fileIo.mkdir(path, (err) => {
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -241,6 +244,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
     }
     console.info(`mkdir success.`);
     let uri = fileUri.getUriFromPath(path);
+    // 授权URI给指定应用
     uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
       .then((data) => {
         console.info(`grantUriPermission succeeded, data: ${JSON.stringify(data)}.`);
@@ -531,12 +535,13 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
   let targetBundleName = 'com.example.test_case2';
   let uri = "file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir";
 
+  // 撤销指定应用的URI权限
   uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
     if (error && error.code !== 0) {
-      console.error("revokeUriPermission failed, error.code = " + error.code);
+      console.error(`revokeUriPermission failed. Code: ${error.code}, message: ${error.message}.`);
       return;
     }
-    console.info("revokeUriPermission success");
+    console.info('revokeUriPermission success');
   });
   ```
 
@@ -655,6 +660,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
   let targetBundleName = 'com.example.test_case2';
   let uri = 'file://com.example.test_case1/data/storage/el2/base/haps/entry_test/files/newDir';
 
+  // 撤销指定应用的URI权限
   uriPermissionManager.revokeUriPermission(uri, targetBundleName)
     .then((data) => {
       console.info(`Verification success, data: ${JSON.stringify(data)}.`);

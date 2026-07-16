@@ -12,7 +12,7 @@
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块从API version 9废弃，替换模块为[@ohos.app.ability.Configuration (Configuration)](js-apis-app-ability-configuration.md)。
+> 本模块从API version 9废弃，替换模块为[@ohos.app.ability.Configuration (环境变量)](js-apis-app-ability-configuration.md)。
 
 ## 导入模块
 
@@ -68,7 +68,7 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent('pages/index', (err, data) => {
       if (err.code) {
-        console.error(`failed to load the content, error: ${JSON.stringify(err)}`);
+        console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`Succeeded in loading the content, data: ${JSON.stringify(data)}`);

@@ -33,7 +33,7 @@
 
 | 名称                      | 类型   | 只读  | 可选  | 说明       |
 | ------------------------- | ------ | ---- |  ---- | --------- |
-| appCloneIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 分身应用的索引。 |
+| appCloneIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 分身应用的索引。取值从0开始，0表示主应用实例，1及以上表示分身实例。 |
 | uid | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 表示应用程序的UID。 |
 | pids | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;int> | 否  | 否  | 应用的进程ID集合。 |
 
@@ -50,10 +50,10 @@ try {
     hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
   }).catch((error: Error) => {
     let err = error as BusinessError;
-    hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+    hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg: ${err.message}`);
   })
 } catch (error) {
   let err = error as BusinessError;
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg: ${err.message}`);
 }
 ```

@@ -25,6 +25,10 @@ ExtensionAbility功能与约束：
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+## 约束限制
+
+CryptoExtensionAbility作为密钥管理扩展能力，为减少安全攻击面，保障CryptoExtensionAbility合理实现，系统对网络、蓝牙、位置等能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```ts
@@ -862,3 +866,145 @@ export default class CryptoExtension extends CryptoExtensionAbility {
   }
 }
 ```
+
+## 附录
+
+CryptoExtensionAbility不支持以下模块的引用。
+<!--RP1-->
+| Kit | 模块 |
+| ------ | ------ |
+| Ability Kit | [@ohos.distributedBundle (分布式包管理)(系统接口)](../../reference/apis-ability-kit/js-apis-Bundle-distributedBundle-sys.md) |
+| Ability Kit | [@ohos.distributedMissionManager (分布式任务管理)(系统接口)](../../reference/apis-ability-kit/js-apis-distributedMissionManager-sys.md) |
+| Ability Kit | [@ohos.wantAgent (WantAgent模块)](../../reference/apis-ability-kit/js-apis-wantAgent.md) |
+| Ads Kit | [@ohos.advertising.AdComponent (广告展示组件)](../../reference/apis-ads-kit/js-apis-adcomponent.md) |
+| Ads Kit | [@ohos.advertising.AdsServiceExtensionAbility (广告扩展服务)](../../reference/apis-ads-kit/js-apis-adsserviceextensionability.md) |
+| Ads Kit | [@ohos.advertising.AutoAdComponent (轮播广告展示组件)](../../reference/apis-ads-kit/js-apis-autoadcomponent.md) |
+| Ads Kit | [@ohos.advertising (广告服务框架)](../../reference/apis-ads-kit/js-apis-advertising.md) |
+| ArkUI | [@ohos.atomicservice.AtomicServiceNavigation (AtomicServiceNavigation)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md) |
+| ArkUI | [@ohos.atomicservice.AtomicServiceSearch (AtomicServiceSearch)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceSearch.md) |
+| ArkUI | [@ohos.atomicservice.AtomicServiceTabs (AtomicServiceTabs)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceTabs.md) |
+| ArkUI | [@ohos.atomicservice.AtomicServiceWeb (AtomicServiceWeb)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceWeb.md) |
+| ArkUI | [@ohos.atomicservice.HalfScreenLaunchComponent (HalfScreenLaunchComponent)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md) |
+| ArkUI | [@ohos.atomicservice.InterstitialDialogAction (InterstitialDialogAction)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-InterstitialDialogAction.md) |
+| ArkUI | [@ohos.atomicservice.NavPushPathHelper (NavPushPathHelper)](../../reference/apis-arkui/arkui-ts/ohos-atomicservice-NavPushPathHelper.md) |
+| ArkUI | [@ohos.mediaquery (媒体查询)](../../reference/apis-arkui/js-apis-mediaquery.md) |
+| ArkUI | [@ohos.PiPWindow (画中画窗口)](../../reference/apis-arkui/js-apis-pipWindow.md) |
+| ArkUI | [@ohos.screenshot (屏幕截图)](../../reference/apis-arkui/js-apis-screenshot.md) |
+| ArkWeb | [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../../reference/apis-arkweb/arkts-apis-netErrorList.md) |
+| ArkWeb | [@ohos.web.WebNativeMessagingExtensionAbility (Web Native Messaging Extension Ability)](../../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) |
+| ArkWeb | [@ohos.web.WebNativeMessagingExtensionContext (Web Native Messaging Extension Context)](../../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md) |
+| ArkWeb | [@ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)](../../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md) |
+| ArkWeb | [@ohos.web.webview](../../reference/apis-arkweb/arkts-apis-webview.md) |
+| Audio Kit | [@ohos.multimedia.audio (音频管理)(系统接口)](../../reference/apis-audio-kit/js-apis-audio-sys.md) |
+| Audio Kit | [@ohos.multimedia.audioHaptic (音振协同)](../../reference/apis-audio-kit/js-apis-audioHaptic.md) |
+| Audio Kit | [@ohos.multimedia.avVolumePanel (音量面板)](../../reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md) |
+| Audio Kit | [@ohos.multimedia.systemSoundManager (系统声音管理)](../../reference/apis-audio-kit/js-apis-systemSoundManager.md) |
+| AVSession Kit | [@ohos.multimedia.avCastPicker (投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) |
+| AVSession Kit | [@ohos.multimedia.avCastPickerParam (投播组件参数)](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md) |
+| AVSession Kit | [@ohos.multimedia.avInputCastPicker (录音设备选择组件)](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) |
+| AVSession Kit | [@ohos.multimedia.avsession (媒体会话管理)(系统接口)](../../reference/apis-avsession-kit/js-apis-avsession-sys.md) |
+| Basic Service Kit | [@ohos.ai.intelligentVoice (智能语音)(系统接口)](../../reference/apis-basic-services-kit/js-apis-intelligentVoice-sys.md) |
+| Basic Service Kit | [@ohos.pasteboard (剪贴板)](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) |
+| Basic Service Kit | [@ohos.scan (扫描)](../../reference/apis-basic-services-kit/js-apis-scan.md) |
+| Basic Service Kit | [@ohos.screenLock (锁屏管理)](../../reference/apis-basic-services-kit/js-apis-screen-lock.md) |
+| Basic Service Kit | [@ohos.settings (设置数据项名称)](../../reference/apis-basic-services-kit/js-apis-settings.md) |
+| Basic Service Kit | [@ohos.wallpaper (壁纸)](../../reference/apis-basic-services-kit/js-apis-wallpaper.md) |
+| Basic Service Kit | [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](../../reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md) |
+| Calendar Kit | [@ohos.calendarManager (日程管理能力)](../../reference/apis-calendar-kit/js-apis-calendarManager.md) |
+| Camera Kit | [@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/js-apis-camera-sys.md) |
+| Camera Kit | [@ohos.multimedia.cameraPicker (相机选择器)](../../reference/apis-camera-kit/js-apis-cameraPicker.md) |
+| Connectivity Kit | [@ohos.bluetooth.a2dp (蓝牙a2dp模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md) |
+| Connectivity Kit | [@ohos.bluetooth.access (蓝牙access模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md) |
+| Connectivity Kit | [@ohos.bluetooth.baseProfile (蓝牙baseProfile模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md) |
+| Connectivity Kit | [@ohos.bluetooth.ble (蓝牙ble模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md) |
+| Connectivity Kit | [@ohos.bluetooth.common (蓝牙common模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md) |
+| Connectivity Kit | [@ohos.bluetooth.connection (蓝牙connection模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md) |
+| Connectivity Kit | [@ohos.bluetooth.constant (蓝牙constant模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md) |
+| Connectivity Kit | [@ohos.bluetooth (蓝牙)](../../reference/apis-connectivity-kit/js-apis-bluetooth.md) |
+| Connectivity Kit | [@ohos.bluetooth.hfp (蓝牙hfp模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md) |
+| Connectivity Kit | [@ohos.bluetooth.hid (蓝牙hid模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md) |
+| Connectivity Kit | [@ohos.bluetoothManager (蓝牙)](../../reference/apis-connectivity-kit/js-apis-bluetoothManager.md) |
+| Connectivity Kit | [@ohos.bluetooth.map (蓝牙map模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-map.md) |
+| Connectivity Kit | [@ohos.bluetooth.opp (蓝牙opp模块)(系统接口)](../../reference/apis-connectivity-kit/js-apis-bluetooth-opp-sys.md) |
+| Connectivity Kit | [@ohos.bluetooth.pan (蓝牙pan模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-pan.md) |
+| Connectivity Kit | [@ohos.bluetooth.pbap (蓝牙pbap模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md) |
+| Connectivity Kit | [@ohos.bluetooth.socket (蓝牙socket模块)](../../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md) |
+| Connectivity Kit | [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)(系统接口)](../../reference/apis-connectivity-kit/js-apis-bluetooth-wearDetection-sys.md) |
+| Connectivity Kit | [@ohos.connectedTag (有源标签)](../../reference/apis-connectivity-kit/js-apis-connectedTag.md) |
+| Connectivity Kit | [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md) |
+| Connectivity Kit | [@ohos.nfc.controller (标准NFC)](../../reference/apis-connectivity-kit/js-apis-nfcController.md) |
+| Connectivity Kit | [@ohos.nfc.tag (标准NFC-Tag)](../../reference/apis-connectivity-kit/js-apis-nfcTag.md) |
+| Connectivity Kit | [@ohos.wifi (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifi.md) |
+| Connectivity Kit | [@ohos.wifiext (WLAN扩展接口)](../../reference/apis-connectivity-kit/js-apis-wifiext.md) |
+| Connectivity Kit | [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md) |
+| Connectivity Kit | [@ohos.wifiManagerExt (WLAN扩展接口)](../../reference/apis-connectivity-kit/js-apis-wifiManagerExt.md) |
+| Contacts Kit | [@ohos.contact (联系人)](../../reference/apis-contacts-kit/js-apis-contact.md) |
+| Data Protection Kit | [@ohos.dlpPermission (数据防泄漏)](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) |
+| Distributed Service Kit | [@ohos.distributedDeviceManager (设备管理)](../../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md) |
+| Distributed Service Kit | [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)](../../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md) |
+| Distributed Service Kit | [@ohos.distributedHardware.hardwareManager (分布式硬件管理)(系统接口)](../../reference/apis-distributedservice-kit/js-apis-distributedHardwareManager-sys.md) |
+| Distributed Service Kit | [@ohos.distributedsched.abilityConnectionManager (应用多端协同管理)](../../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md) |
+| Distributed Service Kit | [@ohos.distributedsched.linkEnhance (增强连接)](../../reference/apis-distributedservice-kit/js-apis-link-enhance.md) |
+| Distributed Service Kit | [@ohos.distributedsched.proxyChannelManager (代理通道管理)](../../reference/apis-distributedservice-kit/js-apis-proxyChannelManager.md) |
+| DRM Kit | [@ohos.multimedia.drm](../../reference/apis-drm-kit/arkts-apis-drm.md) |
+| Form Kit | [@ohos.app.form.formAgent (FormAgent)(系统接口)](../../reference/apis-form-kit/js-apis-app-form-formAgent-sys.md) |
+| Form Kit | [@ohos.app.form.formBindingData (卡片数据绑定类)](../../reference/apis-form-kit/js-apis-app-form-formBindingData.md) |
+| Form Kit | [@ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)](../../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) |
+| Form Kit | [@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](../../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) |
+| Form Kit | [@ohos.app.form.formHost (formHost)(系统接口)](../../reference/apis-form-kit/js-apis-app-form-formHost-sys.md) |
+| Form Kit | [@ohos.app.form.formInfo (formInfo)](../../reference/apis-form-kit/js-apis-app-form-formInfo.md) |
+| Form Kit | [@ohos.app.form.formObserver (formObserver)(系统接口)](../../reference/apis-form-kit/js-apis-app-form-formObserver-sys.md) |
+| Form Kit | [@ohos.app.form.formProvider (formProvider)](../../reference/apis-form-kit/js-apis-app-form-formProvider.md) |
+| Form Kit | [@ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)](../../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) |
+| Image Kit | [@ohos.multimedia.image (图片处理)(系统接口)](../../reference/apis-image-kit/js-apis-image-sys.md) |
+| Image Kit | [@ohos.multimedia.sendableImage (基于Sendable对象的图片处理)](../../reference/apis-image-kit/js-apis-sendableImage.md) |
+| Image Kit | [@ohos.multimedia.videoProcessingEngine (视频处理引擎)](../../reference/apis-image-kit/js-apis-videoProcessingEngine.md) |
+| Location Kit | [@ohos.geolocation (位置服务)](../../reference/apis-location-kit/js-apis-geolocation.md) |
+| Location Kit | [@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md) |
+| MDM Kit | [@ohos.enterprise.accountManager（账号管理）](../../reference/apis-mdm-kit/js-apis-enterprise-accountManager.md) |
+| MDM Kit | [@ohos.enterprise.adminManager（admin权限管理）](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md) |
+| MDM Kit | [@ohos.enterprise.applicationManager（应用管理）](../../reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md) |
+| MDM Kit | [@ohos.enterprise.bluetoothManager（蓝牙管理）](../../reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md) |
+| MDM Kit | [@ohos.enterprise.browser（浏览器管理）](../../reference/apis-mdm-kit/js-apis-enterprise-browser.md) |
+| MDM Kit | [@ohos.enterprise.bundleManager（包管理）](../../reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md) |
+| MDM Kit | [@ohos.enterprise.common（Enterprise公共模块）](../../reference/apis-mdm-kit/js-apis-enterprise-common.md) |
+| MDM Kit | [@ohos.enterprise.dateTimeManager （系统时间管理）(系统接口)](../../reference/apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| MDM Kit | [@ohos.enterprise.deviceControl（设备控制管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md) |
+| MDM Kit | [@ohos.enterprise.deviceInfo（设备信息管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md) |
+| MDM Kit | [@ohos.enterprise.deviceSettings （设备设置管理）](../../reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md) |
+| MDM Kit | [@ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）](../../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md) |
+| MDM Kit | [@ohos.enterprise.locationManager（位置服务管理）](../../reference/apis-mdm-kit/js-apis-enterprise-locationManager.md) |
+| MDM Kit | [@ohos.enterprise.networkManager（网络管理）](../../reference/apis-mdm-kit/js-apis-enterprise-networkManager.md) |
+| MDM Kit | [@ohos.enterprise.restrictions （限制类策略）](../../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md) |
+| MDM Kit | [@ohos.enterprise.securityManager（安全管理）](../../reference/apis-mdm-kit/js-apis-enterprise-securityManager.md) |
+| MDM Kit | [@ohos.enterprise.systemManager （系统管理）](../../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md) |
+| MDM Kit | [@ohos.enterprise.telephonyManager（通话管理）](../../reference/apis-mdm-kit/js-apis-enterprise-telephonyManager.md) |
+| MDM Kit | [@ohos.enterprise.usbManager（USB管理）](../../reference/apis-mdm-kit/js-apis-enterprise-usbManager.md) |
+| MDM Kit | [@ohos.enterprise.wifiManager（Wi-Fi管理）](../../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md) |
+| Mechanic Kit | [@ohos.distributedHardware.mechanicManager (机械体控制模块)](../../reference/apis-mechanic-kit/js-apis-mechanicManager.md) |
+| Media Kit | [@ohos.multimedia.media (媒体服务)(系统接口)](../../reference/apis-media-kit/js-apis-media-sys.md) |
+| Media Library Kit | [@ohos.multimedia.movingphotoview (动态照片)](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md) |
+| MindSpore Lite Kit | [@ohos.ai.mindSporeLite (端侧AI框架)](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md) |
+| Network Kit | [@ohos.net.connection (网络连接管理)](../../reference/apis-network-kit/js-apis-net-connection.md) |
+| Network Kit | [@ohos.net.eap (扩展认证)](../../reference/apis-network-kit/js-apis-net-eap.md) |
+| Network Kit | [@ohos.net.ethernet (以太网连接管理)](../../reference/apis-network-kit/js-apis-net-ethernet.md) |
+| Network Kit | [@ohos.net.http (数据请求)](../../reference/apis-network-kit/js-apis-http.md) |
+| Network Kit | [@ohos.net.mdns (MDNS管理)](../../reference/apis-network-kit/js-apis-net-mdns.md) |
+| Network Kit | [@ohos.net.netFirewall (网络防火墙)](../../reference/apis-network-kit/js-apis-net-netfirewall.md) |
+| Network Kit | [@ohos.net.networkSecurity (网络安全校验)](../../reference/apis-network-kit/js-apis-networkSecurity.md) |
+| Network Kit | [@ohos.net.policy (网络策略管理)](../../reference/apis-network-kit/js-apis-net-policy.md) |
+| Network Kit | [@ohos.net.sharing (网络共享管理)](../../reference/apis-network-kit/js-apis-net-sharing.md) |
+| Network Kit | [@ohos.net.socket (Socket连接)](../../reference/apis-network-kit/js-apis-socket.md) |
+| Network Kit | [@ohos.net.statistics (流量管理)](../../reference/apis-network-kit/js-apis-net-statistics.md) |
+| Network Kit | [@ohos.net.vpn (VPN管理)](../../reference/apis-network-kit/js-apis-net-vpn.md) |
+| Network Kit | [@ohos.net.vpnExtension (VPN增强管理)](../../reference/apis-network-kit/js-apis-net-vpnExtension.md) |
+| Network Kit | [@ohos.net.webSocket (WebSocket连接)](../../reference/apis-network-kit/js-apis-webSocket.md) |
+| Telephony Kit | [@ohos.telephony.call (拨打电话)](../../reference/apis-telephony-kit/js-apis-call.md) |
+| Telephony Kit | [@ohos.telephony.data (蜂窝数据)](../../reference/apis-telephony-kit/js-apis-telephony-data.md) |
+| Telephony Kit | [@ohos.telephony.esim (eSIM卡管理)](../../reference/apis-telephony-kit/js-apis-esim.md) |
+| Telephony Kit | [@ohos.telephony.observer (observer)](../../reference/apis-telephony-kit/js-apis-observer.md) |
+| Telephony Kit | [@ohos.telephony.radio (网络搜索)](../../reference/apis-telephony-kit/js-apis-radio.md) |
+| Telephony Kit | [@ohos.telephony.sim (SIM卡管理)](../../reference/apis-telephony-kit/js-apis-sim.md) |
+| Telephony Kit | [@ohos.telephony.sms (短信服务)](../../reference/apis-telephony-kit/js-apis-sms.md) |
+| Telephony Kit | [@ohos.telephony.vcard (VCard模块)](../../reference/apis-telephony-kit/js-apis-vcard.md) |
+<!--RP1End-->

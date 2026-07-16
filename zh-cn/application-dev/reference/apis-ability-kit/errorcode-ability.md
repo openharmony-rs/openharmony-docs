@@ -32,7 +32,7 @@ The specified ability does not exist.
     ```bash
     hdc shell bm dump -a
     ```
-3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的hap和ability，说明ability所属的hap未被安装。
+3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若查询结果中没有包含ability所属的HAP，说明该HAP未被安装。
     ```bash
     hdc shell bm dump -n 包名
     ```
@@ -2976,3 +2976,41 @@ The current process still has another UIAbility, and this API cannot be called.
 **处理步骤**
 
 调用方保证当前进程中只有一个UIAbility且处于退出状态。
+
+## 16000163 文件类型错误
+
+**错误信息**
+
+The file type is incorrect.
+
+**错误描述**
+
+文件类型错误。
+
+**可能原因**
+
+1. 调用appMemoryOptimizer.evictFilePages接口时，传入的fileNames数组里的文件名未以`.so`、`.hap`或`.hsp`结尾。
+2. 调用appMemoryOptimizer.evictModuleFilePages接口时，`memory_optimizer.json`配置文件中`evictFilePages`数组里的文件名未以`.so`、`.hap`或`.hsp`结尾。
+
+**处理步骤**
+
+1. 若调用appMemoryOptimizer.evictFilePages接口，检查传入的fileNames数组，确保所有文件名均以`.so`、`.hap`或`.hsp`结尾。
+2. 若调用appMemoryOptimizer.evictModuleFilePages接口，检查对应模块的`memory_optimizer.json`配置文件，确保`evictFilePages`数组中所有文件名均以`.so`、`.hap`或`.hsp`结尾。
+
+## 16000164 解析配置文件失败
+
+**错误信息**
+
+Failed to parse the configuration file.
+
+**错误描述**
+
+解析配置文件失败。
+
+**可能原因**
+
+调用appMemoryOptimizer.evictModuleFilePages接口时，`memory_optimizer.json`配置文件不存在、路径错误或内容格式错误。
+
+**处理步骤**
+
+检查对应模块目录下`src/main/resources/rawfile/memory_optimizer.json`配置文件是否存在，并确认其内容格式是否正确。

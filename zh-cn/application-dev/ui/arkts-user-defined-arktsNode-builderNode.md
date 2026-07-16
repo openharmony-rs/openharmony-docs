@@ -205,8 +205,6 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[Render
 
 ## 更新组件树
 
-通过BuilderNode对象的build创建组件树。依照传入的WrappedBuilder对象创建组件树，并持有组件树的根节点。
-
 自定义组件的更新遵循[状态管理](../ui/state-management/arkts-state-management-overview.md)的更新机制。WrappedBuilder中直接使用的自定义组件其父组件为BuilderNode对象。因此，更新子组件即WrappedBuilder中定义的自定义组件，需要遵循状态管理的定义将相关的状态变量定义为[\@Prop](../ui/state-management/arkts-prop.md)或者[\@ObjectLink](../ui/state-management/arkts-observed-and-objectlink.md)。装饰器的选择请参照状态管理的装饰器规格结合应用开发需求进行选择。
 
 
@@ -1045,7 +1043,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
 
     makeNode(context: UIContext): FrameNode | null {
-      return this.textNode?.getFrameNode() ? this.textNode?.getFrameNode() : null;
+      return this.textNode?.getFrameNode() ?? null;
     }
 
     createNode(context: UIContext) {
@@ -2295,7 +2293,7 @@ export struct RepeatVirtualScrollFreeze {
 @ComponentV2({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   storage: Params = Params.instance();
-  @Param @Require message: string ;
+  @Param @Require message: string;
   @Param @Require bgColor: Color;
   @Monitor('storage.bgColor')
   onBgColorChange(monitor: IMonitor) {
@@ -2313,10 +2311,10 @@ struct BuildNodeChild {
   storage: Params = Params.instance();
   @Param message: string = '';
 
-  // 使用@Monitor装饰器监听storage.message的变化。
+  // 使用@Monitor装饰器监听storage.bgColor的变化。
   @Monitor('storage.bgColor')
-  onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+  onBgColorChange(monitor: IMonitor) {
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode buildNodeChild bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -2471,11 +2469,11 @@ struct FreezeBuildNode {
 
 在上面的示例中：
 
-1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
+3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 

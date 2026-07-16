@@ -107,7 +107,7 @@ Sendable interface需同时满足以下两个规则：
 
 **Sendable支持const enum类型使用示例：**
 
-<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
+<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
 
 ``` TypeScript
 export const enum ModelState {
@@ -115,7 +115,7 @@ export const enum ModelState {
   INACTIVE
 }
 ```
-<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
+<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -200,7 +200,7 @@ struct enumusage {
 | 适用场景 | 1. 在TaskPool或Worker中使用类方法或Sendable函数。<br/>2. 传输对象数据量较大的场景。序列化耗时会随着数据量增大而增大，使用Sendable对数据进行改造后，传输100KB数据效率提升约20倍，传输1MB数据效率提升约100倍。 |
 
 **装饰器修饰Class使用示例：**
-<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/class/Index.ets) --> 
+<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/class/Index.ets) --> 
 
 ``` TypeScript
 export { MainPage } from './src/main/ets/components/MainPage';
@@ -222,7 +222,7 @@ export { object }
 ```
 
 **装饰器修饰Function使用示例：**
-<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
+<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
 
 ``` TypeScript
 @Sendable

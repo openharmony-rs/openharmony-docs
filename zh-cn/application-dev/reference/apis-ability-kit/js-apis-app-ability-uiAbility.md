@@ -692,7 +692,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
   export default class MyUIAbility extends UIAbility {
     onContinue(wantParam: Record<string, Object>) {
       console.info('onContinue');
-      wantParams['myData'] = 'my1234567'; // 保存待迁移的业务数据
+      wantParam['myData'] = 'my1234567'; // 保存待迁移的业务数据
       return AbilityConstant.OnContinueResult.AGREE;
     }
   }

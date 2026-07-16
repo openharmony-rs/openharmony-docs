@@ -7,7 +7,9 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供划词扩展能力，支持开发者通过继承SelectionExtensionAbility实现自定义的划词扩展服务（如监听划词事件、创建划词面板、显示划词面板等）。适用于需要在用户通过鼠标、触控板选中文本后提供搜索、翻译等扩展交互的场景，帮助开发者快速接入划词扩展能力，为用户提供更丰富的文本交互体验。
+本模块提供划词扩展能力，支持开发者通过继承SelectionExtensionAbility实现自定义的划词扩展服务，适用于在用户通过鼠标、触控板选中文本后提供搜索、翻译等扩展交互的场景。具体能力包括：
+- 生命周期管理：通过[onConnect](#onconnect)和[onDisconnect](#ondisconnect)回调处理连接与断开逻辑。
+- 提供context属性：开发者可通过context调用[startAbility](js-apis-selectionInput-selectionExtensionContext.md#startability)拉起同应用内的目标Ability，或将context作为[createPanel](js-apis-selectionInput-selectionManager.md#createpanel)的入参创建划词面板。
 
 > **说明：**
 >
@@ -32,7 +34,7 @@ import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAb
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [SelectionExtensionContext](./js-apis-selectionInput-selectionExtensionContext.md) | 否 | 否 | SelectionExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
+| context | [SelectionExtensionContext](./js-apis-selectionInput-selectionExtensionContext.md) | 否 | 否 | SelectionExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。开发者可通过context调用[startAbility](js-apis-selectionInput-selectionExtensionContext.md#startability)拉起同应用内的目标Ability，或将context作为[createPanel](js-apis-selectionInput-selectionManager.md#createpanel)的入参创建划词面板。 |
 
 ### onConnect
 
@@ -98,7 +100,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 
 onDisconnect(): void
 
-当客户端断开与SelectionExtensionAbility的连接（例如用户关闭划词开关或切换划词应用）时，系统触发该回调。开发者可以在该回调中执行与连接断开相关的清理操作。
+当客户端断开与SelectionExtensionAbility的连接（例如用户关闭划词开关或切换划词应用）时，系统会触发该回调。开发者可在该回调中执行与onConnect对应的清理操作，如调用[destroyPanel](js-apis-selectionInput-selectionManager.md#destroypanel)销毁已创建的面板、调用[off('selectionCompleted')](js-apis-selectionInput-selectionManager.md#selectionmanageroffselectioncompleted)取消订阅的划词完成事件等。
 
 仅当SelectionExtensionAbility正常断开连接时会触发该回调，异常断开场景（例如低内存终止进程）不会触发该回调。
 

@@ -35,7 +35,7 @@
        try {
          let context = this.getUIContext().getHostContext() as Context;
          // 通话开始时创建voice_call类型的avsession。
-         this.session = await avSession.createAVSession(context, 'voiptest', 'voice_call');
+         this.session = await avSession.createAVSession(context, 'SESSION_NAME', 'voice_call');
        } catch (err) {
          console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
        }
@@ -66,7 +66,6 @@
            AVCastPicker({
              normalColor: this.normalColor,
              activeColor: this.activeColor,
-             customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
            })
              .size({ width: '50%', height: '20%' })
              .id('AVCastPicker')
@@ -78,16 +77,6 @@
        .alignItems(VerticalAlign.Center)
        .width('100%')
        .height('100%')
-     }
-   
-     // 自定义内容。
-     @Builder
-     ImageBuilder() {
-       Text($r('app.string.switch_OutputDevice'))
-       Image(this.pickerImage)
-         .size({ width: '100%', height: '100%' })
-         .backgroundColor('#00000000')
-         .fillColor(Color.Black)
      }
    }
    ```
@@ -169,7 +158,7 @@
        if (this.audioRenderer !== undefined) {
          return;
        }
-       this.getStageFileDescriptor(this.audioSource).then((res) => {
+       await this.getStageFileDescriptor(this.audioSource).then((res) => {
          this.fileDescriptor = res;
        });
        if (!this.fileDescriptor) {
@@ -436,7 +425,7 @@
          Column() {
            AVInputCastPicker(
              {
-               customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
+               customPicker: (): void => this.ImageBuilder(), // 新增自定义参数。
                onStateChange: this.onStateChange
              }
            )

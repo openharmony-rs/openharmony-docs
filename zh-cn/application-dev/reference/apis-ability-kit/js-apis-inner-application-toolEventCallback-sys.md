@@ -45,6 +45,7 @@ CLI工具会话事件的回调接口。
 ```ts
 import { common } from '@kit.AbilityKit';
 
+// 定义CLI工具会话事件的回调对象
 let callback: common.ToolEventCallback = {
   onEvent: (event: common.CliToolEvent) => {
     console.info('tool event type: ' + event.toolEventType + ', data: ' + event.data);

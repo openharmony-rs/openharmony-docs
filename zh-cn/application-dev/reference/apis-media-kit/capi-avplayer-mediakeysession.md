@@ -12,7 +12,7 @@ typedef struct MediaKeySession MediaKeySession
 
 ## 概述
 
-MediaKeySession类型。
+MediaKeySession结构体类型。
 
 **起始版本：** 12
 

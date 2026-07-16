@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Watch装饰器用于状态管理V1中，监听状态变量的变化，并在变量变化时触发指定回调函数。
+@Watch装饰器用于状态管理V1中，监听状态变量的变化，并在变量变化时触发指定回调函数。适用于状态变量变化时需要自动执行联动逻辑、数据同步或计算衍生值的场景。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Watch装饰器：状态变量更改通知（ArkTS-Dyn）](../../../ui/state-management/arkts-watch.md)。
 

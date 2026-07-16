@@ -8,7 +8,7 @@
 
 DynamicComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）提供的UI，展示的内容在Worker线程中运行。
 
-通常用于动态加载Abc页面的模块化开发场景。
+通常用于动态加载Abc页面的模块化开发场景。通过Worker线程隔离运行Abc UI，避免阻塞主线程，提升应用流畅度。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@ DynamicComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）
 >
 > - 本模块接口仅可在Stage模型下使用。
 
- **起始版本：** 26.0.0
+**起始版本：** 26.0.0
 
 ## 子组件
 
@@ -94,15 +94,15 @@ type ErrorCallback = ErrorCallback
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| entryPoint | string | 否 | 否 | 要加载的Abc页面入口。 |
-| worker | ArkTS-Dyn: [Worker](#worker)<br/>ArkTS-Sta: EAWorker \| undefined | 否 | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是 | 运行Abc的Worker。<br/>ArkTS-Sta模式下，undefined回拉起一个空的DynamicComponent。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false <br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false <br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| allowOccupied | boolean | 否 | 是 | 是否允许DynamicComponent占用键盘避让区域。<br/>true：允许占用键盘避让区域；false：不允许占用键盘避让区域。<br/>默认值：false<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Sta<br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| entryPoint | string | 否 | 否 | 要加载的Abc页面入口，取值格式为'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。 |
+| worker | ArkTS-Dyn: [Worker](#worker)<br>ArkTS-Sta: EAWorker \| undefined | 否 | ArkTS-Dyn: 否<br>ArkTS-Sta: 是 | 运行Abc的Worker。<br>ArkTS-Sta模式下，undefined回拉起一个空的DynamicComponent。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br>true：启用背景透明；false：不启用背景透明。<br>默认值：false <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br>默认值：false <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| allowOccupied | boolean | 否 | 是 | 是否允许DynamicComponent占用键盘避让区域。<br>true：允许占用键盘避让区域；false：不允许占用键盘避让区域。<br>默认值：false<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)。
+支持[通用属性](./ts-component-general-attributes.md)。
 
 ## 事件
 
@@ -151,14 +151,14 @@ struct Index {
   @State errorMessage: string = '';
   private worker?: worker.ThreadWorker = new worker.ThreadWorker(
     'entry/ets/workers/Worker.ets', { name: 'dc-worker' }
-  )
+  );
 
   build() {
     Column() {
       Text('DynamicComponent示例').fontSize(20).margin(10)
 
       if (this.errorMessage) {
-        Text('错误信息: ' + this.errorMessage).fontSize(14).fontColor(Color.Red).margin(10)
+        Text('错误信息：' + this.errorMessage).fontSize(14).fontColor(Color.Red).margin(10)
       }
 
       DynamicComponent({
@@ -171,7 +171,7 @@ struct Index {
         .height('60%')
         .onError((error: BusinessError) => {
           this.errorMessage = `code: ${error.code}, message: ${error.message}`;
-          hilog.error(0x0000, 'DynamicComponentDemo', 'onError: ' + this.errorMessage);
+          hilog.error(0x0000, 'DynamicComponentDemo', `onError: ${this.errorMessage}`);
         })
         .borderWidth(10)
         .borderColor(Color.Red)

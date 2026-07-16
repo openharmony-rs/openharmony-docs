@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接断连Service等。
+FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接/断连Service等。
 
 > **说明：**
 >
@@ -58,6 +58,7 @@ startAbility(parameter: StartAbilityParameter, callback: AsyncCallback\<number>)
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// 启动新的Ability
 featureAbility.startAbility(
   {
     want:
@@ -121,6 +122,7 @@ startAbility(parameter: StartAbilityParameter): Promise\<number>
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// 启动新的Ability
 featureAbility.startAbility(
   {
     want:
@@ -177,6 +179,7 @@ acquireDataAbilityHelper(uri: string): DataAbilityHelper
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 获取dataAbilityHelper对象
 let dataAbilityHelper = featureAbility.acquireDataAbilityHelper(
   'dataability:///com.example.DataAbility'
 );
@@ -188,8 +191,8 @@ startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback\
 
 启动一个Ability。使用callback异步回调。启动Ability后，存在如下几种情况：
  - 正常情况下可通过调用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口使之终止并且返回结果给调用方。
- - 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。
- - 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+ - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。
+ - 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](#featureabilityterminateselfwithresult7)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：**
 >
@@ -216,6 +219,7 @@ startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback\
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// 启动一个Ability并获取返回结果
 featureAbility.startAbilityForResult(
   {
     want:
@@ -278,6 +282,7 @@ startAbilityForResult(parameter: StartAbilityParameter): Promise\<AbilityResult>
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// 启动一个Ability并获取返回结果
 featureAbility.startAbilityForResult(
   {
     want:
@@ -334,6 +339,7 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback\<void>
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// 停止当前的Ability并返回结果
 featureAbility.terminateSelfWithResult(
   {
     resultCode: 1,
@@ -396,6 +402,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise\<void>
 ```ts
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
+// 停止当前的Ability并返回结果
 featureAbility.terminateSelfWithResult(
   {
     resultCode: 1,
@@ -451,6 +458,7 @@ hasWindowFocus(callback: AsyncCallback\<boolean>): void
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 检查Ability的主窗口是否具有窗口焦点
 featureAbility.hasWindowFocus((error, data) => {
   if (error && error.code !== 0) {
     console.error(`hasWindowFocus fail, error: ${JSON.stringify(error)}`);
@@ -484,6 +492,7 @@ hasWindowFocus(): Promise\<boolean>
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 检查Ability的主窗口是否具有窗口焦点
 featureAbility.hasWindowFocus().then((data) => {
   console.info(`hasWindowFocus data: ${JSON.stringify(data)}`);
 });
@@ -513,6 +522,7 @@ getWant(callback: AsyncCallback\<Want>): void
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 获取要拉起的Ability对应的Want
 featureAbility.getWant((error, data) => {
   if (error && error.code !== 0) {
     console.error(`getWant fail, error: ${JSON.stringify(error)}`);
@@ -546,6 +556,7 @@ getWant(): Promise\<Want>
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 获取要拉起的Ability对应的Want
 featureAbility.getWant().then((data) => {
   console.info(`getWant data: ${JSON.stringify(data)}`);
 });
@@ -575,6 +586,7 @@ getContext(): Context
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 获取应用上下文
 let context = featureAbility.getContext();
 context.getBundleName((error, data) => {
   if (error && error.code !== 0) {
@@ -613,6 +625,7 @@ terminateSelf(callback: AsyncCallback\<void>): void
 ```ts
 import { featureAbility } from '@kit.AbilityKit';
 
+// 停止当前的Ability
 featureAbility.terminateSelf(
   (error) => {
     console.error(`error: ${JSON.stringify(error)}`);
@@ -645,6 +658,7 @@ terminateSelf(): Promise\<void>
 import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 停止当前的Ability
 featureAbility.terminateSelf().then(() => {
   console.info('==========================>terminateSelf=======================>');
 }).catch((error: BusinessError) => {
@@ -689,6 +703,7 @@ connectAbility(request: Want, options:ConnectOptions): number
 import { featureAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 
+// 连接ServiceAbility
 let connectId = featureAbility.connectAbility(
   {
     deviceId: '',
@@ -753,11 +768,12 @@ let connectId = featureAbility.connectAbility(
   },
 );
 
+// 断开与ServiceAbility的连接
 featureAbility.disconnectAbility(connectId, (error) => {
   if (error && error.code !== 0) {
     console.error(`disconnectAbility fail, connectId: ${connectId}, error: ${JSON.stringify(error)}`);
   } else {
-    console.info(`disconnectAbility success， connectId: ${connectId}`);
+    console.info(`disconnectAbility success, connectId: ${connectId}`);
   }
 });
 ```
@@ -812,6 +828,7 @@ let connectId = featureAbility.connectAbility(
   },
 );
 
+// 断开与ServiceAbility的连接
 featureAbility.disconnectAbility(connectId).then(() => {
   console.info('disconnectAbility success');
 }).catch((error: BusinessError)=>{
@@ -846,6 +863,7 @@ import { featureAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取当前Ability对应的窗口
 featureAbility.getWindow((error: BusinessError, data: window.Window) => {
   if (error && error.code !== 0) {
     console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
@@ -881,6 +899,7 @@ import { featureAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取当前Ability对应的窗口
 featureAbility.getWindow().then((data: window.Window) => {
   console.info(`getWindow success, data: ${typeof(data)}`);
 }).catch((error: BusinessError)=>{
