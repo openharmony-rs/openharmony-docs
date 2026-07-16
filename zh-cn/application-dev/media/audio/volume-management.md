@@ -48,6 +48,7 @@ OpenHarmony通过系统音量，应用音量和音频流音量协同的方式实
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 // ...
+
 let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
 ```
