@@ -110,12 +110,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC,
-    (streamVolumeEvent: audio.StreamVolumeEvent) => {
-    console.info(`Succeeded in using on function. StreamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}`);
+
+  try {
+    audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
+      console.info(`Succeeded in using on function. StreamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}`);
+      // ...
+    });
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
     // ...
-  });
+  }
 ```
 
 <!--Del-->
