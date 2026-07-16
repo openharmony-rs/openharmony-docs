@@ -22,10 +22,11 @@
 <!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { audio } from '@kit.AudioKit';
 // ...
-let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
-let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioManager的方法创建AudioRoutingManager实例。
+
+let audioManager = audio.getAudioManager();
+let audioRoutingManager = audioManager.getRoutingManager();
 ```
 
 ### 支持的音频输出设备类型
