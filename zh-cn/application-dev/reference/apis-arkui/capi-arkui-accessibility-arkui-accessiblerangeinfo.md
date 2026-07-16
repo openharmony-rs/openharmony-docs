@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AccessibleRangeInfo
 
 ## 概述
 
-用于为特定组件（如[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)组件）设置和获取其当前值、最大值和最小值。
+用于表示特定组件（如[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)）的范围值信息，包含当前值、最大值和最小值，供无障碍服务读取并向障碍用户播报。
 
 **起始版本：** 13
 
