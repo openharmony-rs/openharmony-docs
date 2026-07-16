@@ -612,7 +612,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br>默认返回字体颜色。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br>默认值：SuperscriptStyle.NORMAL。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 获取可变字体的属性数组。<br>默认值：undefined，表示未设置可变字体的属性。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 获取属性字符串的文本描边拐角样式。<br>默认值：StrokeJoinStyle.MITER_JOIN。<br>StrokeJoinStyle.MITER_JOIN表示尖角连接，拐角处为尖锐拐角；StrokeJoinStyle.ROUND_JOIN表示圆角连接，拐角处为圆滑过渡；StrokeJoinStyle.BEVEL_JOIN表示斜角连接，拐角处为斜切处理。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 获取属性字符串的文本描边拐角样式。具体枚举值及其说明请参考StrokeJoinStyle。<br>默认值：StrokeJoinStyle.MITER_JOIN，表示尖角连接，拐角处为尖锐拐角。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 `fontWeight`参数与返回值的关系如下：
@@ -666,7 +666,7 @@ constructor(value?: TextStyleInterface)
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br>默认值为字体颜色，设置异常值时取字体颜色。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br>默认值：SuperscriptStyle.NORMAL<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 否 | 是 | 可变字体的属性。<br>默认值：undefined，表示未设置可变字体的属性。<br>fontVariations属性的优先级高于fontWeight。<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。具体枚举及说明请参考StrokeJoinStyle。<br>默认值：StrokeJoinStyle.MITER_JOIN。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。具体枚举值及其说明请参考StrokeJoinStyle。<br>默认值：StrokeJoinStyle.MITER_JOIN，表示尖角连接，拐角处为尖锐拐角。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## GestureStyle
 
