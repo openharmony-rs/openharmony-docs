@@ -6745,6 +6745,34 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
+
+允许应用创建内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.APPEND_SIGN_CONTENT_TRUST
+
+允许应用追加内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
 允许应用设置蜂窝网络相关信息。
@@ -6832,6 +6860,20 @@
 ## ohos.permission.vehicle.AUTO_OTA_PROXY
 
 允许系统应用发送OTA相关的车辆控制及域控制命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CAMERA_EVS
+
+允许应用使用车载相机。
 
 **权限级别**：system_basic
 

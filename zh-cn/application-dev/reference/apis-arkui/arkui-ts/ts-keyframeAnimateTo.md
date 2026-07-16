@@ -96,7 +96,7 @@ struct KeyframeDemo {
               iterations: 3,
               delay: 200,
               onFinish: () => {
-                console.info("keyframe animate finish");
+                console.info('keyframe animate finish');
               },
               expectedFrameRateRange: {
                 min: 10,

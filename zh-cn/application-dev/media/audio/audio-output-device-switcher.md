@@ -6,27 +6,55 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-当应用进行音频输出时，系统会根据音频流类型选择对应的输出设备（[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)：扬声器发声；[STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)：听筒发声）。如果系统提供的默认输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。
+当应用进行音频输出时，系统将依据音频流类型自动匹配对应的输出设备。如果系统输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
+## 使用场景
 
-## 媒体类应用实现输出设备路由切换
+1. 若应用需要为用户提供可视化、可交互的音频输出设备切换入口时，可以使用`AVCastPicker`组件，开发者只需在布局中放置该组件，系统会自动检测当前可用的音频输出设备列表，用户点击后即可完成路由切换。
+2. 应用在不同场景下对默认输出设备存在不同要求。例如，语音消息流通常默认从扬声器播放，以便用户直接收听；但在某些私密场景下，应用可能希望将语音消息设置为默认从听筒播放，以保护用户隐私。此时，开发者可使用`setDefaultOutputDevice`接口，灵活更改语音消息的默认输出设备，满足特定业务需求。
 
-应用可使用[AVCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)投播组件进行媒体类应用输出设备路由切换。
+## 实现媒体流输出设备路由切换
 
-## 通话类应用实现输出设备路由切换
+应用可以通过使用[AVCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)组件为用户提供选择设备的入口。
 
-### 外接设备路由切换
+该组件集成了设备发现、连接、认证等能力，可嵌入应用界面。用户点击后，系统自动识别并展示当前可切换的设备列表，支持在扬声器、耳机、智能音箱等输出设备间自由切换。
 
-应用可[使用通话设备切换组件](../avsession/using-switch-call-devices.md)进行通话类应用外接输出设备路由切换。
+## 实现通话流输出设备路由切换
 
-### 内置听筒和扬声器路由切换
+`AVCastPicker`组件也适用于通话场景，应用可使用[通话设备切换组件](../avsession/using-switch-call-devices.md)为用户提供听筒、扬声器、耳机等通话设备的切换入口，方便用户在通话过程中灵活调整音频输出设备。
 
-如果未连接外设，语音通话场景系统默认听筒发声，其他场景系统默认扬声器发声；如果连接了外设，系统默认通过外接设备发声。
+## 设置默认输出设备
 
-调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
+如果系统未连接外设（如蓝牙耳机），语音通话场景音频默认听筒播放，其他场景音频默认扬声器播放；外设接入后，系统优先从外设播放。应用可通过`setDefaultOutputDevice`更改默认输出设备，但仅对以下三种[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)生效：
 
-1. 从API version 12开始，应用可使用AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)设置听筒和扬声器路由切换，调用前需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| STREAM_USAGE_VOICE_MESSAGE | 5 | 语音消息 |
+| STREAM_USAGE_VOICE_COMMUNICATION | 2 | VoIP 语音通话 |
+| STREAM_USAGE_VIDEO_COMMUNICATION | 17 | VoIP 视频通话 |
+
+支持的设备类型:
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| EARPIECE | 1 | 听筒 |
+| SPEAKER | 2 | 扬声器 |
+| DEFAULT | 1000 | 跟随系统 |
+
+调用此接口后，系统会记录指定的默认输出设备。当无外接设备连接时，音频流将路由至指定默认输出设备播放；当外设接入时，系统优先从外设播放，外设断开后自动切换至设置的默认输出设备。
+
+### 开发步骤
+
+`AudioRenderer`和`AudioSessionManager`都提供了`setDefaultOutputDevice`接口，用于设置通话或语音的默认输出设备。
+
+- 音频流级：`AudioRenderer`接口生效范围为单流级别，仅对当前`AudioRenderer`实例对应的音频流生效。
+- 应用级：`AudioSessionManager`接口对当前应用内所有语音和通话音频流生效，不限于单个`AudioRenderer`实例。
+
+应用级接口优先级高于音频流级，如果同时调用了两个接口，`AudioSessionManager`的设置会覆盖`AudioRenderer`，`AudioRenderer`的设置将不再生效。
+
+**音频流级设置接口**
+
+从API version 12开始，应用可使用AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)设置默认设备为听筒和扬声器，调用前需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例，设置默认设备的生命周期跟随音频流。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
@@ -60,7 +88,9 @@
        });
    ```
 
-2. 从API version 20开始，应用可使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置听筒和扬声器路由切换。
+**应用级设置接口**
+
+从API version 20开始，应用激活[AudioSession](../audio/audio-session-management.md)后，可使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置默认输出设备，并通过`AudioSessionManager.getDefaultOutputDevice`查看默认设备是否设置成功，设置默认设备的生命周期跟随`AudioSession`。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
@@ -114,3 +144,5 @@
        // ...
      });
    ```
+
+以上为各功能实现的代码片段，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。

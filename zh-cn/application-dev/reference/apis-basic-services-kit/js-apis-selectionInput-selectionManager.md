@@ -14,7 +14,8 @@
 4. 调用[setUiContent](#setuicontent)加载页面内容。
 5. 调用[moveToGlobalDisplay](#movetoglobaldisplay)移动面板到指定位置。
 6. 调用[show](#show)显示面板。
-7. 在不需要时调用[destroyPanel](#destroypanel)销毁面板，以及取消各种类型的监听。
+7. 调用[destroyPanel](#destroypanel)销毁面板。
+8. 调用[off('selectionCompleted')](#selectionmanageroffselectioncompleted)取消订阅划词完成事件。
 
 > **说明：**
 >
@@ -49,11 +50,11 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。 |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回[SelectionInfo](#selectioninfo)。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回划词事件信息[SelectionInfo](#selectioninfo)。该回调仅在用户通过鼠标或触控板选中文本（左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -78,7 +79,7 @@ try {
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
-取消订阅划词完成事件。使用callback异步回调。
+取消订阅划词完成事件，与[on('selectionCompleted')](#selectionmanageronselectioncompleted)搭配使用。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -89,7 +90,7 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 取消订阅的事件类型，固定取值为'selectionCompleted'。               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回划词事件信息[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -128,7 +129,7 @@ getSelectionContent(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -173,7 +174,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息，需使用SelectionExtensionAbility提供的上下文。 |
-| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板的配置信息，用于指定面板类型、位置和尺寸等属性。单个划词应用仅允许创建一个MENU_PANEL和一个MAIN_PANEL。 |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板的配置信息，用于指定面板类型、位置和宽高。单个划词应用仅允许创建一个MENU_PANEL和一个MAIN_PANEL。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -182,7 +183,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -239,7 +240,7 @@ export default ServiceExtAbility;
 
 destroyPanel(panel: Panel): Promise\<void>
 
-销毁划词面板。与[createPanel](#createpanel)配对使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。
+销毁划词面板。与[createPanel](#createpanel)搭配使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -258,7 +259,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -332,7 +333,7 @@ export default ServiceExtAbility;
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 划词事件的触发方式类型。 |
+| selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 划词方式枚举值。 |
 | startDisplayX |number| 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
 | startDisplayY |number| 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
 | endDisplayX   |number| 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
@@ -379,7 +380,7 @@ setUiContent(path: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -407,7 +408,7 @@ try {
 
 show(): Promise\<void>
 
-显示划词面板。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。如不主动调用[hide](#hide)，面板在失焦时会自动隐藏。
+显示划词面板，与[hide](#hide)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -421,7 +422,7 @@ show(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -445,7 +446,7 @@ selectionPanel.show().then(() => {
 
 hide(): Promise\<void>
 
-隐藏当前划词面板，与[show](#show)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。
+隐藏当前划词面板，与[show](#show)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。如不主动调用，面板在失焦时会自动隐藏。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -459,7 +460,7 @@ hide(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -483,7 +484,7 @@ selectionPanel.hide().then(() => {
 
 startMoving(): Promise\<void>
 
-设置划词面板可随鼠标拖动移动位置。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。该接口需在onTouch的回调函数中调用，并且事件类型为TouchType.Down。
+设置划词面板可随鼠标、触控板或触屏拖动移动位置，指针释放后自动停止移动。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用Promise异步回调。该接口需在onTouch的回调函数中调用，并且事件类型为TouchType.Down。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -497,7 +498,7 @@ startMoving(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -518,7 +519,7 @@ RelativeContainer() {
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      // 使划词面板可随鼠标拖动位置。selectionPanel为createPanel创建出的panel实例
+      // 使划词面板可随鼠标、触控板或触屏拖动移动位置。selectionPanel为createPanel创建出的panel实例
       selectionPanel.startMoving().then(() => {
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
@@ -559,7 +560,7 @@ moveTo(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -609,7 +610,7 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
@@ -637,7 +638,7 @@ try {
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
-订阅划词面板销毁事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
+订阅划词面板销毁事件，与[off('destroyed')](#offdestroyed)搭配使用。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -695,7 +696,7 @@ try {
 
 on(type: 'hidden', callback: Callback\<void>): void
 
-订阅划词面板隐藏事件，面板调用[hide](#hide)隐藏或失焦自动隐藏时触发该事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
+订阅划词面板隐藏事件，与[off('hidden')](#offhidden)搭配使用。面板调用[hide](#hide)隐藏或失焦自动隐藏时触发该事件。需通过[createPanel](#createpanel)获取到Panel实例后调用。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -751,7 +752,7 @@ try {
 
 ## SelectionType
 
-定义触发划词的类型枚举。
+定义划词方式枚举值。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 

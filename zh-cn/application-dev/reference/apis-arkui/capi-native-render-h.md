@@ -37,7 +37,7 @@
 | [ArkUI_Vector2AnimatableProperty*](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)               | ArkUI_Vector2AnimatablePropertyHandle                                | 可动画的二维向量属性指针。       |
 | [ArkUI_ColorAnimatableProperty*](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md)               | ArkUI_ColorAnimatablePropertyHandle                                | 可动画的颜色属性指针。       |
 | [ArkUI_RectShape](./capi-arkui-nativemodule-arkui-rectshapeoption.md)               | ArkUI_RectShapeOption                                | 定义矩形形状配置项，用于在ArkUI渲染节点中描述矩形或椭圆形的形状范围，可作为创建遮罩或裁剪配置项的输入。       |
-| [ArkUI_NodeBorderStyle](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)               | ArkUI_NodeBorderStyleOption                                | 定义边框样式配置项，用于为渲染节点的各边设置边框样式。       |
+| [ArkUI_NodeBorderStyle](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)               | ArkUI_NodeBorderStyleOption                                | 定义边框样式配置项，用于设置节点边框的样式类型，支持实线、虚线、点线等多种样式。       |
 | [ArkUI_NodeBorderWidth](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)               | ArkUI_NodeBorderWidthOption                                | 边框宽度配置项。       |
 | [ArkUI_NodeBorderColor](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)               | ArkUI_NodeBorderColorOption                                | 边框颜色配置项。       |
 | [ArkUI_NodeBorderRadius](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)               | ArkUI_NodeBorderRadiusOption                                | 边框半径配置项。       |
