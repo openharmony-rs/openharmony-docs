@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型，是接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb内核通过该接口类的实例对象控制应用创建的用于接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器接管网页中的媒体内容播放，同时，该接口还支持播放器的挂起和恢复机制。
+NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型，是接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb 内核通过该接口类的实例对象控制应用创建的用于接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器接管网页中的媒体内容播放，同时，该接口还支持播放器的挂起和恢复机制。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webvie
 
 updateRect(x: number, y: number, width: number, height: number): void
 
-向应用通知surface位置信息。当网页布局变化、页面滚动或播放区域发生改变时由ArkWeb内核回调此方法，应用需据此更新原生播放器渲染表面的位置和大小。
+向应用通知 surface 位置信息。当网页布局变化、页面滚动或播放区域发生改变时由 ArkWeb 内核回调此方法，应用需据此更新原生播放器渲染表面的位置和大小。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -238,7 +238,7 @@ exitFullscreen(): void
 
 resumePlayer?(): void
 
-通知应用重建播放器，并恢复播放器的状态信息。在suspendPlayer挂起后，当需要恢复媒体播放时由ArkWeb内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。在 suspendPlayer 挂起后，当需要恢复媒体播放时由 ArkWeb 内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -254,7 +254,7 @@ resumePlayer?(): void
 
 suspendPlayer?(type: SuspendType): void
 
-通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由ArkWeb内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由 ArkWeb 内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -321,7 +321,7 @@ type OneParamFn<T,V=void> = (param: T) => V
 
 type ResumePlayerFn = () => void
 
-通知应用重建播放器，并恢复播放器的状态信息。在suspendPlayer挂起后，当需要恢复媒体播放时由ArkWeb内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。在 suspendPlayer 挂起后，当需要恢复媒体播放时由 ArkWeb 内核触发，应用应依据已保存的状态信息重建播放器并恢复到挂起前的播放状态。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -333,7 +333,7 @@ type ResumePlayerFn = () => void
 
 type SuspendPlayerFn = (type: SuspendType) => void
 
-通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由ArkWeb内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。当系统资源需要释放或媒体播放需要临时挂起时由 ArkWeb 内核触发，应用应保存当前播放状态（如播放位置、音量等）以便后续恢复。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
