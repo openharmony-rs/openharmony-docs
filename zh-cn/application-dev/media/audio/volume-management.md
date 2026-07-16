@@ -244,25 +244,28 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 <!-- @[setVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 ``` TypeScript
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-    // 设置音频流音量。
-    audioRenderer.setVolume(0.5).then(() => {  // 音量范围为[0.0-1.0]。
+
+    // 设置音频流音量，音量范围为[0.0-1.0]。
+    audioRenderer.setVolume(0.1).then(() => {
       console.info('Succeeded in setting volume.');
       // ...
     }).catch((err: BusinessError) => {
       console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
       // ...
     });
+    // ...
 
-    // 获取音频流音量。
     try {
-      let value: number = audioRenderer.getVolume();
-      console.info(`Succeeded in getting volume, volume is ${value}.`);
+      // 获取音频流音量。
+      let volume: number = audioRenderer.getVolume();
+      console.info(`Succeeded in getting volume. Volume: ${volume}`);
       // ...
     } catch (err) {
       let error = err as BusinessError;
-      console.error(`Failed to get volume. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to get volume. Code: ${error.code}, message: ${error.message}`);
       // ...
     }
 ```
