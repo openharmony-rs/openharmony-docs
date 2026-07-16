@@ -43,7 +43,7 @@ createPanProfile(): PanProfile
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -58,7 +58,7 @@ createPanProfile(): PanProfile
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 try {
@@ -89,7 +89,7 @@ isPanSupported(): boolean
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
+**返回值**：
 
 | 类型      | 说明                  |
 | --------------------- | --------------------------------- |
@@ -103,7 +103,7 @@ isPanSupported(): boolean
 | -------- | ---------------------------- |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {
@@ -128,7 +128,7 @@ isTetheringOn(): boolean
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
+**返回值**：
 
 | 类型      | 说明                  |
 | --------------------- | --------------------------------- |
@@ -144,7 +144,7 @@ isTetheringOn(): boolean
 |801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
 
 
-**示例：**
+**示例**：
 
 ```js
 try {

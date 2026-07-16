@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ProcessInformation提供运行进程的详细信息，包括进程ID、UID、进程名称、运行状态及进程中运行的Bundle名称等，可通过appManager的[getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)获取。
+该模块表示运行进程信息，开发者可以通过appManager的[getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)来获取运行进程信息。
 
 > **说明：**
 >

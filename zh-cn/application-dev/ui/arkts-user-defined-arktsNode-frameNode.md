@@ -172,7 +172,7 @@ class MyNodeController extends NodeController {
           frameNode?.clearChildren();
           hilog.info(0x0000, `${TEST_TAG} clearChildren success `, 'success');
         } catch (err) {
-          hilog.error(0x0000, `${TEST_TAG} clearChildren fail: (err as BusinessError).code:
+          hilog.error(0x0000, `${TEST_TAG} clearChildren fail: ${(err as BusinessError).code}:
           ${(err as BusinessError).message}`, 'clearChildren error');
         }
       }, 4000)
@@ -952,7 +952,7 @@ struct Index {
         Button('modify ArkTS-FrameNode')
           .onClick(() => {
             // 获取到的是当前页面中的开发者创建的FrameNode对象，该节点可修改。即节点大小与位置。
-            hilog.info(0x0000, `Check the weather the node can be modified ${this.myNodeController?.frameNode
+            hilog.info(0x0000, `Check the whether the node can be modified ${this.myNodeController?.frameNode
             ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.frameNode, { width: 150, height: 100 }, {
               x: 100,
@@ -962,7 +962,7 @@ struct Index {
         Button('modify FrameNode get by BuilderNode')
           .onClick(() => {
             // 获取到的是当前页面中的BuilderNode的根节点，该节点不可修改。即节点大小与位置未发生改变。
-            hilog.info(0x0000, `Check the weather the node can be modified
+            hilog.info(0x0000, `Check the whether the node can be modified
             ${this.myNodeController?.buttonNode?.getFrameNode()
             ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.buttonNode?.getFrameNode(), {
@@ -974,7 +974,7 @@ struct Index {
           .onClick(() => {
             // rootNode调用getParent()获取到的是当前页面中的NodeContainer节点，该节点不可修改。即节点大小与位置未发生改变。
             hilog.info(0x0000,
-              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              `Check the whether the node can be modified ${this.myNodeController?.rootNode?.getParent()
               ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.rootNode?.getParent(), {
               width: 500,
@@ -998,9 +998,9 @@ struct Index {
         Button('add click event to ArkTS-FrameNode')
           .onClick(() => {
             // 获取到的是当前页面中的开发者创建的FrameNode对象，该节点可增加点击事件。
-            // 增加的点击事件参与事件竞争，即点击事件会在该节点被消费且不不再向父组件冒泡。
+            // 增加的点击事件参与事件竞争，即点击事件会在该节点被消费且不再向父组件冒泡。
             hilog.info(0x0000,
-              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              `Check the whether the node can be modified ${this.myNodeController?.rootNode?.getParent()
               ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.frameNode);
           })
@@ -1008,7 +1008,7 @@ struct Index {
           .onClick(() => {
             // 获取到的是当前页面中的BuilderNode的根节点，该类节点可增加点击事件。
             // 点击的时候优先回调通过系统组件接口设置的click事件回调，然后回调通过commonEvent增加的click监听。
-            hilog.info(0x0000, `Check the weather the node can be modified
+            hilog.info(0x0000, `Check the whether the node can be modified
             ${this.myNodeController?.buttonNode?.getFrameNode()
             ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.buttonNode?.getFrameNode());
@@ -1017,7 +1017,7 @@ struct Index {
           .onClick(() => {
             // rootNode调用getParent()获取到的是当前页面中的NodeContainer节点，该类节点可增加点击事件。
             hilog.info(0x0000,
-              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              `Check the whether the node can be modified ${this.myNodeController?.rootNode?.getParent()
               ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.rootNode?.getParent());
           })
@@ -3057,7 +3057,7 @@ class MyNodeAdapter extends NodeAdapter {
   // 刷新数据
   refreshData(): void {
     let items = this.getAllAvailableItems()
-    hilog.info(0x0000, `TEST_TAG ' get All items:' + ${items.length}`, 'isCLicked');
+    hilog.info(0x0000, `${TEST_TAG} get All items: ${items.length}`, 'isClicked');
     this.totalNodeCount -= 1;
     this.reloadAllItems();
   }
@@ -3127,7 +3127,7 @@ class MyNodeAdapter extends NodeAdapter {
   }
 
   onCreateChild(index: number): FrameNode {
-    hilog.info(0x0000, `TEST_TAG + ' onCreateChild:' + ${index}`, 'onCreateChild');
+    hilog.info(0x0000, `${TEST_TAG} onCreateChild: ${index}`, 'onCreateChild');
     // 缓存池有可用节点时，优先复用
     if (this.cachePool.length > 0) {
       let cacheNode = this.cachePool.pop();
@@ -3680,7 +3680,7 @@ class MyNodeController extends NodeController {
 
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
-    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): childNode!.getId()`, 'getId');
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): ${childNode!.getId()}`, 'getId');
     if (childNode!.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: success.`, 'success');
     } else {
@@ -3690,7 +3690,7 @@ class MyNodeController extends NodeController {
 
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
-    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): childNode!.getId()`, 'getId');
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): ${childNode!.getId()}`, 'getId');
     if (childNode!.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`, 'success');
     } else {
@@ -4620,7 +4620,7 @@ struct Index {
     if (isOnRenderTree) {
       hilog.info(1, 'frameNode', 'is on render tree');
     } else {
-      hilog.info(1, 'frameNode', 'is not no render tree');
+      hilog.info(1, 'frameNode', 'is not on render tree');
     }
   }
 
@@ -4654,7 +4654,7 @@ struct Index {
         let textNode1 = this.getUIContext().getFrameNodeById('hello1');
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : this.message = 'is not on render tree';
+          this.message = isOnRenderTree ? 'is on render tree' : 'is not on render tree';
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })

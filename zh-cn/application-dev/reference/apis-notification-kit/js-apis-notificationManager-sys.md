@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知渠道，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
+本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布代理通知、取消代理通知，创建、获取、移除通知渠道，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理分布式通知协同，管理通知发布权限管控，获取活动通知信息，设置通知提醒方式，订阅系统实况窗，注册通知校验回调，管理通知优先级策略，以及设置地理围栏、铃声信息、静默提醒等高级功能。
 
 > **说明：**
 >
@@ -55,26 +55,26 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801  | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801  | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
+| 1600007  | The notification does not exist.<br> 适用版本：11+                       |
 | 1600008  | The user does not exist.                               |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
-| 2300007  | Network unreachable.                              |
+| 1600014  | No permission.<br> 适用版本：11+                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11+ |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11+ |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：18+ |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
+| 2300007  | Network unreachable.<br> 适用版本：11+                              |
 
 **示例：**
 
@@ -175,26 +175,26 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801  | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801  | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                           |
 | 1600004  | Notification disabled.                         |
 | 1600005  | Notification slot disabled.                    |
-| 1600007  | The notification does not exist.                       |
+| 1600007  | The notification does not exist.<br> 适用版本：11+                       |
 | 1600008  | The user does not exist.                               |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
-| 2300007  | Network unreachable.                              |
+| 1600014  | No permission.<br> 适用版本：11+                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11+ |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11+ |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：18+ |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
+| 2300007  | Network unreachable.<br> 适用版本：11+                              |
 
 **示例：**
 
@@ -281,7 +281,7 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -363,7 +363,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -432,7 +432,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -523,7 +523,7 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -602,7 +602,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -682,7 +682,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -889,7 +889,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -972,7 +972,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1042,7 +1042,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int, callback: AsyncCallback\<boolean\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1124,7 +1124,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1194,8 +1194,8 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1277,8 +1277,8 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1348,8 +1348,8 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1430,8 +1430,8 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1511,8 +1511,8 @@ ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1591,8 +1591,8 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1682,8 +1682,8 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1770,8 +1770,8 @@ ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1841,8 +1841,8 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1923,8 +1923,8 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1998,8 +1998,8 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2086,8 +2086,8 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2156,7 +2156,7 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2283,7 +2283,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600007  | The notification does not exist.           |
 | 17700001 | The specified bundle name was not found. |
 
@@ -2383,7 +2383,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600007  | The notification does not exist.         |
 | 17700001 | The specified bundle name was not found. |
 
@@ -2472,7 +2472,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2553,7 +2553,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2624,8 +2624,8 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2714,8 +2714,8 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2791,8 +2791,8 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: As
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2890,8 +2890,8 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<vo
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2972,8 +2972,8 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3043,7 +3043,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3097,8 +3097,8 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 
 | 参数名     | 类型                              | 必填 | 说明                   |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate)\> | 是   | 查询免打扰时间回调函数。 |
 | userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 用户ID。 |
+| callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate)\> | 是   | 查询免打扰时间回调函数。 |
 
 **错误码：**
 
@@ -3108,8 +3108,8 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3194,8 +3194,8 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int): Promise\<DoNotDisturbDate\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3264,7 +3264,7 @@ isSupportDoNotDisturbMode(callback: AsyncCallback\<boolean\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -3398,8 +3398,8 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3477,8 +3477,8 @@ setDistributedEnable(enable: boolean): Promise\<void>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3546,8 +3546,8 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3634,8 +3634,8 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3710,8 +3710,8 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3795,8 +3795,8 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -3866,8 +3866,8 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3934,7 +3934,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -3998,8 +3998,8 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4013,10 +4013,10 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4124,8 +4124,8 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4139,10 +4139,10 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4239,8 +4239,8 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801     | The device does not support geofencing. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801     | The device does not support geofencing.<br> 适用版本：23+ |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4254,10 +4254,10 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 1600025  | Geofencing disabled. |
-| 1600026  | The location switch is off. |
-| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
-| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. |
+| 1600025  | Geofencing disabled.<br> 适用版本：23+ |
+| 1600026  | The location switch is off.<br> 适用版本：23+ |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off.<br> 适用版本：23+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template. <br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -4351,7 +4351,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, ca
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4438,7 +4438,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): P
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4518,7 +4518,7 @@ ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\
 | -------- | ----------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -4596,7 +4596,7 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4672,12 +4672,12 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600012  | No memory space.<br> 适用版本：11+                         |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4757,8 +4757,8 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4849,12 +4849,12 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600012  | No memory space.                         |
+| 1600012  | No memory space.<br> 适用版本：11+                         |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -4918,8 +4918,8 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5004,8 +5004,8 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5159,8 +5159,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5243,8 +5243,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5315,7 +5315,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：26.0.0+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5395,7 +5396,8 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：26.0.0+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5465,7 +5467,7 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -5528,7 +5530,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5757,10 +5759,9 @@ offCheckNotification(callback?: (checkInfo: NotificationCheckInfo) => Notificati
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | Not system application. |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error. |
+| 202      | Not system application to call the interface.                                      |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 1600001  | Internal error.                     |
 
 **示例：**
 
@@ -5817,8 +5818,8 @@ ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, butt
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5906,8 +5907,8 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -5989,8 +5990,8 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6175,8 +6176,8 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6258,8 +6259,8 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6333,8 +6334,8 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6408,8 +6409,8 @@ ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promi
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6495,8 +6496,8 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -6578,8 +6579,8 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6800,8 +6801,8 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -6971,8 +6972,8 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -7041,8 +7042,8 @@ ArkTS-Sta: getDoNotDisturbProfile(id: long): Promise\<DoNotDisturbProfile\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |
 | 202      | Not system application to call the interface.                                      |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -7191,7 +7192,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
@@ -7269,7 +7270,7 @@ ArkTS-Sta: disableNotificationFeature(disabled: boolean, bundleList: Array\<stri
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 1600001      | Internal error.                     |
 | 1600002      | Marshalling or unmarshalling error. |
@@ -7348,7 +7349,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -7412,7 +7413,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -7484,7 +7485,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -8691,7 +8692,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 
@@ -8755,7 +8756,7 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8824,7 +8825,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8891,7 +8892,7 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -8960,7 +8961,7 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
@@ -9025,7 +9026,7 @@ isPriorityIntelligentEnabled(): Promise\<boolean\>
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 
 **示例：**
 
@@ -9091,7 +9092,7 @@ setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 
 **示例：**
 
@@ -9157,7 +9158,7 @@ getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bundl
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9232,7 +9233,7 @@ setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<vo
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9305,7 +9306,7 @@ ArkTS-Sta: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9382,7 +9383,7 @@ ArkTS-Sta: setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): 
 | 202 | Not system application to call the interface. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space |
+| 1600012 | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -9745,6 +9746,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbDate
 
+免打扰时间选项。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -9760,6 +9763,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | end   | Date                                  | 否   |  否  | 免打扰设置的终点时间。 |
 
 ## DoNotDisturbType
+
+免打扰设置的时间类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9779,6 +9784,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DeviceRemindType
 
+通知提醒方式。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -9797,6 +9804,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SourceType
 
+通知来源类型。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -9812,6 +9821,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | TYPE_TIMER           | 2   | 计划通知。            |
 
 ## NotificationCheckInfo<sup>10+</sup>
+
+通知校验参数。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9834,6 +9845,8 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationCheckResult<sup>10+</sup>
+
+通知校验结果。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10040,7 +10053,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
+| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
@@ -10058,8 +10071,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
-| recentCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
+| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。<br>数据格式：时间戳。<br>单位：毫秒。 |
+| recentCount |  ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 

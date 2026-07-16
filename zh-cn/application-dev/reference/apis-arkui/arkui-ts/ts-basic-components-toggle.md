@@ -80,7 +80,7 @@ Toggle的样式。
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |
-| Checkbox | 0    | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
+| Checkbox | 0    | 提供勾选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
 | Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
 | Button   | 2    | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
 
@@ -250,7 +250,7 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 | 名称  | 类型    |    只读    |    可选    |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | isOn   | boolean| 否  | 否 | 开关是否打开。<br/>true：开关打开；false：开关关闭。<br/>默认值：false <br/>**ArkTS-Sta起始版本：** 23 |
-| triggerChange |Callback\<boolean\>| 否 | 否 |触发switch选中状态变化。<br/>true：状态从关切换为开；false：状态从开切换为关。<br/>**ArkTS-Sta起始版本：** 23 |
+| triggerChange |Callback\<boolean\>| 否 | 否 |触发开关选中状态变化。<br/>true：状态从关切换为开；false：状态从开切换为关。<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 

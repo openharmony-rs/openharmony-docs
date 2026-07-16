@@ -45,7 +45,7 @@
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-描述普通实况通知。
+描述普通实况通知。继承自[NotificationBasicContent](#notificationbasiccontent)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -63,7 +63,9 @@
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
-描述系统实况窗通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
+描述系统实况窗通知内容。继承自[NotificationBasicContent](#notificationbasiccontent)。
+
+不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -89,7 +91,7 @@
 | 名称                  |  类型                         | 只读 | 可选 | 说明                              |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
 | content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。默认为空。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                   |
-| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长（单位：秒）。默认值为0。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
+| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长。默认值为0。<br>单位：秒。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
 | capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。默认为空。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23      |
 
 ## LiveViewStatus<sup>11+</sup>
@@ -123,9 +125,9 @@
 
 | 名称          | 类型                    | 只读 | 可选 | 说明                                      |
 | ------------ | ----------------------- | ---- | ---- | ---------------------------------------- |
-| name         | string                  | 否   |  否  | 按钮标识，用于区分同一通知的多个不同按钮。   |
+| name         | string                  | 否   |  否  | 按钮标识，用于区分同一通知的多个不同按钮。字符串长度不超过202字节，超出部分会被截断。不可为空字符串。   |
 | iconResource | [IconType](#icontype18) | 否   |  否  | 按钮的背景图。                             |
-| text         | string                  | 否   |  是  | 按钮展示的信息。默认为空。                           |
+| text         | string                  | 否   |  是  | 按钮展示的信息。默认为空。字符串长度不超过202字节，超出部分会被截断。             |
 | hidePanel    | boolean                 | 否   |  是  | 点击按钮时，是否隐藏通知中心。默认为false。<br> - true：是。<br> - false：否。   |
 
 ## IconType<sup>18+</sup>
@@ -166,6 +168,8 @@ type IconType = Resource | image.PixelMap
 | LIVE_VIEW_LONG_TERM          | 2  | 长时任务类系统实况 |
 
 ## NotificationMultiLineContent
+
+描述多行文本通知。继承自[NotificationBasicContent](#notificationbasiccontent)。
 
 **系统能力**：SystemCapability.Notification.Notification
 

@@ -367,11 +367,11 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 | 参数名    | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| isChecked | boolean | 是   | 单选框的状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| isChecked | boolean | 是   | 单选框的选中状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 ## RadioStyle<sup>10+</sup>对象说明
 
-单选框的颜色。
+单选框的样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 

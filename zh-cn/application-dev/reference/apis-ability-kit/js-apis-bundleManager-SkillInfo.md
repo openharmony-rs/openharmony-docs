@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 技能（Skill）是系统为AI代理提供的能力封装单元。技能通过[module.json5配置文件](../../quick-start/module-configuration-file.md#skillprofiles标签)中的skillProfiles标签声明能力。应用可以通过[skillManager](js-apis-skillManager.md)中提供的接口查询已安装的技能信息，发现并调用设备上的AI代理能力。

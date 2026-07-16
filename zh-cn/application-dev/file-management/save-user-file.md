@@ -59,7 +59,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 根据实际业务需求配置[文件保存选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅例举各选项的配置参考。
+2. 根据实际业务需求配置文件保存选项[DocumentSaveOptions](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅列举各选项的配置参考。
 
    ArkTS-Dyn示例：
 
@@ -88,7 +88,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    };
    ```
 
-3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
 
    ArkTS-Dyn示例：
 
@@ -126,7 +126,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **注意**：
    >
-   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   > - Picker会默认预置空文件并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
    > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
@@ -243,12 +243,12 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **注意**：
    >
-   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   > - Picker会默认预置空文件并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
    > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+3. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    <!--@[document_open_sync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/UserFile/SavingUserFiles-sta/entry/src/main/ets/pages/Index.ets)-->
    
@@ -260,7 +260,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
        console.info('file fd: ' + file.fd);
    ```
 
-5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+4. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ArkTS-Dyn示例：
 
