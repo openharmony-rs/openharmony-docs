@@ -4335,9 +4335,9 @@
 						"start_line":1096
 					},
 					{
-						"end_line":1113,
+						"end_line":1120,
 						"name":"complex_text_c_independent_shaping_text_step2",
-						"start_line":1108
+						"start_line":1116
 					},
 					{
 						"end_line":1123,
@@ -4345,9 +4345,9 @@
 						"start_line":1115
 					},
 					{
-						"end_line":1168,
+						"end_line":1176,
 						"name":"complex_text_c_independent_shaping_text_step4",
-						"start_line":1124
+						"start_line":1131
 					},
 					{
 						"end_line":1179,
@@ -4458,9 +4458,9 @@
 						"start_line":332
 					},
 					{
-						"end_line":358,
+						"end_line":350,
 						"name":"custom_font_c_disable_system_font_text_step1",
-						"start_line":337
+						"start_line":336
 					},
 					{
 						"end_line":383,
@@ -4546,9 +4546,9 @@
 						"start_line":194
 					},
 					{
-						"end_line":238,
+						"end_line":237,
 						"name":"c_text_metrics_get_all_case",
-						"start_line":206
+						"start_line":205
 					},
 					{
 						"end_line":292,
@@ -4595,9 +4595,9 @@
 						"start_line":366
 					},
 					{
-						"end_line":483,
+						"end_line":487,
 						"name":"complex_text_c_font_feature_text",
-						"start_line":427
+						"start_line":431
 					},
 					{
 						"end_line":546,
@@ -4620,9 +4620,9 @@
 						"start_line":685
 					},
 					{
-						"end_line":786,
+						"end_line":792,
 						"name":"complex_text_c_gradient_text",
-						"start_line":746
+						"start_line":750
 					},
 					{
 						"end_line":820,
@@ -4655,9 +4655,9 @@
 						"start_line":1065
 					},
 					{
-						"end_line":998,
+						"end_line":1001,
 						"name":"complex_text_c_style_copy_text",
-						"start_line":911
+						"start_line":913
 					},
 					{
 						"end_line":1232,
@@ -52263,7 +52263,7 @@
 						"start_line":171
 					},
 					{
-						"end_line":180,
+						"end_line":179,
 						"name":"custom_font_c_custom_font_text_step3",
 						"start_line":177
 					},
