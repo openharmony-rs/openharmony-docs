@@ -71,13 +71,13 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    OH_AVMetadataBuilder_SetComposer(builder, "Anonymous composer");
    OH_AVMetadataBuilder_SetDuration(builder, DURATION_TIME); // DURATION_TIME = 3600
    // MediaImageUri只支持网络地址。
-   OH_AVMetadataBuilder_SetMediaImageUri(builder, "https://xxx.xxx.xx");
+   OH_AVMetadataBuilder_SetMediaImageUri(builder, "https://example.com/images/cover.jpg");
    OH_AVMetadataBuilder_SetSubtitle(builder, "Anonymous subtitle");
    OH_AVMetadataBuilder_SetDescription(builder, "For somebody");
    // Lyric只支持媒体歌词内容（应用需将歌词内容拼接为一个字符串传入）。
    OH_AVMetadataBuilder_SetLyric(builder, "balabala");
    OH_AVMetadataBuilder_SetAssetId(builder, "000");
-   OH_AVMetadataBuilder_SetSkipIntervals(builder, SECONDS_30);
+   OH_AVMetadataBuilder_SetSkipIntervals(builder, SECONDS_15);
    OH_AVMetadataBuilder_SetDisplayTags(builder,  AVSESSION_DISPLAYTAG_AUDIO_VIVID);
    
    /**
@@ -119,6 +119,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    playbackPosition->elapsedTime = ELAPSED_TIME; // ELAPSED_TIME = 1000
    playbackPosition->updateTime = UPDATE_TIME; // UPDATE_TIME = 16111150
    ret = OH_AVSession_SetPlaybackPosition(avsession, playbackPosition);
+   delete playbackPosition;
    ```
 
 4. 注册播控命令事件监听，便于响应用户通过媒体会话控制方，例如播控中心下发的播控命令。
