@@ -12,7 +12,7 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 ## 概述
 
-键值属性数组，用于存储HID设备支持的键值编码信息。
+键值编码数组，用于存储HID设备支持的键值编码信息。
 
 **起始版本：** 11
 
