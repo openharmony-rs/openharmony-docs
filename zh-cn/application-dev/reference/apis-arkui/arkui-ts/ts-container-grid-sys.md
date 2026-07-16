@@ -201,7 +201,7 @@ struct Index {
           totalOffset: (index / this.crossCount) * (this.itemHeight) * 2 - offset,
           totalLength: this.itemHeight * 2 * this.childrenCount / this.crossCount
         };
-      }) // 该计算方式依赖当前示例中的数据量、列数和不规则节点规则，修改数据源时需要同步调整。
+      }) // totalOffset和totalLength的计算方式依赖当前示例中的数据量、列数和不规则节点规则，修改数据源时需要同步调整。
     }.width('100%').margin({ top: 5 })
   }
 }

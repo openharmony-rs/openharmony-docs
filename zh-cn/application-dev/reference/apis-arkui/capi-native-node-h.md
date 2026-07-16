@@ -28,17 +28,17 @@
 
 | 名称 | typedef关键字 | 描述                                                                           |
 | -- | -- |------------------------------------------------------------------------------|
-| [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) | ArkUI_AttributeItem | 定义[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)函数通用入参结构。 |
+| [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) | ArkUI_AttributeItem | 定义[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)函数的通用入参结构。 |
 | [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) | ArkUI_NodeComponentEvent | 定义组件回调事件的参数类型。                                                               |
-| [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | 定义组件回调事件使用字符串参数的类型。                                                          |
-| [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | 定义组件事件的混合类型数据。                                                               |
+| [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent | 定义组件回调事件使用字符串参数的类型，用于在组件异步事件回调中传递字符串数据，适用于组件回调事件需要携带文本信息的场景。 |
+| [ArkUI_TextChangeEvent](capi-arkui-nativemodule-arkui-textchangeevent.md) | ArkUI_TextChangeEvent | 定义文本变化事件的数据结构，用于在文本输入场景中监听和处理文本变更事件。该结构体包含文本内容、扩展信息和数值参数，支持开发者实时获取文本变更数据，适用于输入框内容监听、实时搜索、字数统计等场景。 |
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在主线程上调用。                               |
 | [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | 定义TextEditor组件文本内容变化事件的结构体。 |
 | [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) | ArkUI_NodeEvent | 定义组件事件的通用结构类型。                                                               |
 | [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | 定义自定义组件事件的通用结构类型。                                                            |
-| [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | 定义组件适配器对象，用于滚动类组件的元素懒加载。                                                     |
+| [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md) | ArkUI_NodeAdapterHandle | 定义组件适配器对象，用于滚动类组件的元素懒加载，适用于需要按需加载大量滚动内容的场景，可避免一次性创建全部元素，降低内存占用并提升滑动性能。                                                     |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | 定义适配器事件对象。                                                                   |
-| [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | 定义NodeContent事件的通用结构类型。                                                      |
+| [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | 定义NodeContent事件的通用结构类型，作为NodeContent事件回调的事件参数，用于获取事件类型和触发事件的NodeContent对象。                                                      |
 
 ### 枚举
 
@@ -117,7 +117,7 @@
 | [void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* name)](#oh_arkui_nodeutils_removecustomproperty) | - | 移除组件已设置的自定义属性。 |
 | [int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* name, ArkUI_CustomProperty** handle)](#oh_arkui_nodeutils_getcustomproperty) | - | 获取组件的自定义属性的值。 |
 | [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getparentinpagetree) | - | 获取父节点，可获取由ArkTs创建的组件节点。 |
-| [int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)](#oh_arkui_nodeutils_getactivechildreninfo) | - | 获取某个节点所有活跃的子节点。Span将不会被计入子节点的统计中。 |
+| [int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)](#oh_arkui_nodeutils_getactivechildreninfo) | - | 获取内部活跃状态为`true`的FrameNode子节点，并生成ArkUI_ActiveChildrenInfo实例。Span不会被计入子节点统计。获取成功后，可查询子节点数量并按下标读取子节点；实例使用完毕后必须调用OH_ArkUI_ActiveChildrenInfo_Destroy销毁。 |
 | [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getcurrentpagerootnode) | - | 获取当前页面的根节点。 |
 | [bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_iscreatedbyndk) | - | 获取组件是否由C-API创建的标签。 |
 | [int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getnodetype) | - | 获取节点的类型。 |
@@ -227,6 +227,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_XCOMPONENT_TEXTURE = 20 | TEXTURE类型XComponent。<br>**起始版本：** 18 |
 | ARKUI_NODE_CHECKBOX_GROUP = 21 | 复选框组。<br>**起始版本：** 15                |
 | ARKUI_NODE_TEXT_EDITOR = 22 | 文本编辑器。<br>**起始版本：** 24 |
+| ARKUI_NODE_ARC_ALPHABET_INDEXER = 23 | 弧形字母索引组件。 <br>**起始版本：** 26.1.0 |
 | ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | 堆叠容器。                                |
 | ARKUI_NODE_SWIPER = 1001 | 翻页容器。                                |
 | ARKUI_NODE_SCROLL = 1002 | 滚动容器。                                |
@@ -249,6 +250,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_ARC_LIST = 1019 | 弧形列表。<br>**起始版本：** 26.0.0 |
 | ARKUI_NODE_ARC_LIST_ITEM = 1020 | 弧形列表项。 <br>**起始版本：** 26.0.0 |
 | ARKUI_NODE_ARC_SCROLL_BAR = 1021 | 弧形滚动条。 <br>**起始版本：** 26.0.0 |
+| ARKUI_NODE_ARC_SWIPER = 1022 | 弧形翻页容器。 <br>**起始版本：** 26.1.0 |
 
 ### ArkUI_NodeAttributeType
 
@@ -275,11 +277,11 @@ enum ArkUI_NodeAttributeType
 | [表单类组件相关属性](./capi-native-node-h-nodeattributetype-form.md) | 定义ArkUI在Native侧可以设置的表单类组件相关属性样式集合，包含Toggle、Button、CheckBox、CheckBoxGroup、Slider、Radio等组件属性设置。 |
 | [滚动容器类组件相关属性](./capi-native-node-h-nodeattributetype-scrollablecontainer.md) | 定义ArkUI在Native侧可以设置的滚动容器类组件相关属性样式集合，包含Scroll、List、ListItem、ListItemGroup、Refresh、WaterFlow、Grid、GridItem等组件属性设置。 |
 | [导航类组件相关属性](./capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md) | 定义ArkUI在Native侧可以设置的导航类组件相关属性样式集合，包含Swiper组件属性设置。 |
-| [信息展示类组件相关属性](./capi-native-node-h-nodeattributetype-informationdisplay.md) | 定义ArkUI在Native侧可以设置信息展示类组件相关属性样式集合，包含LoadingProgress、Progress等组件属性设置。 |
+| [信息展示类组件相关属性](./capi-native-node-h-nodeattributetype-informationdisplay.md) | 定义ArkUI在Native侧用于设置信息展示类组件的属性样式，支持LoadingProgress、Progress等组件的颜色、动画、进度值、类型等属性配置，适用于需要在Native层精细控制信息展示组件外观和行为的场景。通过统一的属性集合接口，开发者可以便捷地实现加载动画控制、进度可视化、样式自定义等功能。 |
 | [信息选择类组件相关属性](./capi-native-node-h-nodeattributetype-informationselection.md) | 定义ArkUI在Native侧可以设置信息选择类组件相关属性样式集合，包含DatePicker、TimePicker、TextPicker、CalendarPicker等组件属性设置。 |
 | [无障碍相关属性](./capi-native-node-h-nodeattributetype-accessibility.md) | 定义ArkUI在Native侧可以设置的无障碍相关属性集合，包含无障碍文本、说明、模式、状态、信息等属性设置。 |
-| [文本显示类组件相关属性](./capi-native-node-h-nodeattributetype-text.md) | 定义ArkUI在Native侧可以设置的文本类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。 |
-| [文本输入类组件相关属性](./capi-native-node-h-nodeattributetype-textinputcategory.md) | 定义ArkUI在Native侧可以设置的文本输入类组件相关属性样式集合，包含TextInput组件属性设置。 |
+| [文本显示类组件相关属性](./capi-native-node-h-nodeattributetype-text.md) | 定义ArkUI在Native侧可以设置的文本显示类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。用于在Native开发场景中通过属性设置、属性获取接口配置文本组件的样式属性，如字体大小、颜色、行高、装饰线等，实现对文本显示效果的精细化控制和自定义。 |
+| [文本输入类组件相关属性](./capi-native-node-h-nodeattributetype-textinputcategory.md) | 定义ArkUI在Native侧可以设置的文本输入类组件相关属性样式集合，包含TextInput、TextArea组件属性设置。该属性集合支持光标样式、占位文本、输入过滤、自动填充、文本选中、计数器等多种样式与交互配置，适用于表单输入、搜索框、密码输入、多行文本编辑等场景，便于开发者统一管理文本输入组件的外观与行为。 |
 | [富文本类组件相关属性](./capi-native-node-h-nodeattributetype-richeditor.md) | 定义ArkUI在Native侧可以设置的富文本类组件相关属性样式集合，包含TextEditor组件属性设置。 |
 | [图类组件相关属性](./capi-native-node-h-nodeattributetype-image.md) | 定义ArkUI在Native侧可以设置的图类组件相关属性样式集合，包含Image和ImageAnimator组件属性设置。 |
 | [XComponent组件相关属性](./capi-native-node-h-nodeattributetype-xcomponent.md) | 定义ArkUI在Native侧可以设置的XComponent组件相关属性集合。 |
@@ -467,7 +469,11 @@ enum ArkUI_NodeEventType
 | NODE_ARC_LIST_ON_SCROLL_STOP = 1019004 | 定义ArcList组件的滚动停止事件枚举值。触发该事件的条件：<br> 1. ArcList组件触发滚动后停止。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。  <br>**起始版本：** 26.0.0 |
 | NODE_ARC_LIST_ON_WILL_SCROLL = 1019005 | 定义ArcList组件滚动前触发事件枚举值。触发该事件的条件：<br> 1. ArcList组件触发滚动时触发。<br> 2. 通过滚动控制器API接口调用。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含3个参数：<br> ArkUI_NodeComponentEvent.data[0].f32：本次滚动的距离，内容向上滚动时偏移量为正，向下滚动时偏移量为负，单位vp。 <br> ArkUI_NodeComponentEvent.data[1].f32：当前滚动状态，数据类型[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 <br> ArkUI_NodeComponentEvent.data[2].i32：当前滚动的来源，参数类型[ArkUI_ScrollSource](capi-scroll-h.md#arkui_scrollsource)。 <br>**起始版本：** 26.0.0 |
 | NODE_ARC_LIST_ON_DID_SCROLL = 1019006 | 定义ArcList组件滚动时触发事件枚举值。触发该事件的条件：<br> 1. ArcList组件触发滚动时触发。<br> 2. 通过滚动控制器API接口调用。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> ArkUI_NodeComponentEvent.data[0].f32：本帧滚动的距离，内容向上滚动时偏移量为正，向下滚动时偏移量为负，单位vp。 <br> ArkUI_NodeComponentEvent.data[1].f32：当前滚动状态，数据类型[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 <br>**起始版本：** 26.0.0  |
-
+| NODE_ARC_ALPHABET_INDEXER_EVENT_ON_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_ALPHABET_INDEXER = 23000 | 定义ARKUI_NODE_ARC_ALPHABET_INDEXER当前显示元素的索引变化时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>**起始版本：** 26.1.0 |
+| NODE_ARC_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）当前显示元素的索引变化时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>**起始版本：** 26.1.0 |
+| NODE_ARC_SWIPER_EVENT_ON_ANIMATION_START = 1022001 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）切换动画开始时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含5个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>ArkUI_NodeComponentEvent.data[1].i32：表示切换动画目标元素的索引。<br>ArkUI_NodeComponentEvent.data[2].f32：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br>ArkUI_NodeComponentEvent.data[3].f32：表示主轴方向上目标元素相对Swiper起始位置的位移。<br>ArkUI_NodeComponentEvent.data[4].f32：表示离手速度。<br>**起始版本：** 26.1.0 |
+| NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END = 1022002 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）切换动画结束时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>ArkUI_NodeComponentEvent.data[1].f32：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br>**起始版本：** 26.1.0 |
+| NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE = 1022003 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）在页面跟手滑动过程中，逐帧触发该事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>ArkUI_NodeComponentEvent.data[1].f32：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br>**起始版本：** 26.1.0 |
 ### ArkUI_NodeDirtyFlag
 
 ```c
@@ -2132,7 +2138,9 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 **描述：**
 
 
-获取某个节点所有活跃的子节点。Span将不会被计入子节点的统计中。在LazyForEach场景中，推荐使用[OH_ArkUI_NodeUtils_GetChildWithExpandMode](#oh_arkui_nodeutils_getchildwithexpandmode)接口进行遍历。
+获取内部活跃状态为`true`的FrameNode子节点，并生成[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。Span不会被计入子节点统计。
+
+获取成功后，可调用[OH_ArkUI_ActiveChildrenInfo_GetCount](capi-native-type-h.md#oh_arkui_activechildreninfo_getcount)获取子节点数量，并调用[OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex](capi-native-type-h.md#oh_arkui_activechildreninfo_getnodebyindex)按下标读取子节点；实例使用完毕后必须调用[OH_ArkUI_ActiveChildrenInfo_Destroy](capi-native-type-h.md#oh_arkui_activechildreninfo_destroy)销毁。在LazyForEach场景中，推荐使用[OH_ArkUI_NodeUtils_GetChildWithExpandMode](#oh_arkui_nodeutils_getchildwithexpandmode)接口进行遍历。
 
 **起始版本：** 14
 

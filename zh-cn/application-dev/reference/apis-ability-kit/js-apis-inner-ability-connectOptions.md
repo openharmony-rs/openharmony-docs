@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-在连接指定的后台服务时作为入参，用于接收连接过程中的状态变化，如作为[connectServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)的入参，连接指定的ServiceExtensionAbility。
+在连接指定的后台服务时作为入参，用于接收连接过程中的状态变化，接收连接成功、连接中断和连接失败等状态变化，包含onConnect、onDisconnect、onFailed三个回调。如作为[connectServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)的入参，连接指定的ServiceExtensionAbility。
 
 > **说明：**
 > 
@@ -24,7 +24,7 @@ import { common } from '@kit.AbilityKit';
 
 onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 
-建立连接时的回调函数。
+建立连接时的回调函数。通过remote参数获取的IRemoteObject实例可用于与目标Ability进行跨进程IPC通信。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

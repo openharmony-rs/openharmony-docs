@@ -17,6 +17,8 @@
 > WaterFlow组件支持展示瀑布流布局，不支持编辑模式和子元素拖动功能。
 >
 > 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
+>
+> 更多WaterFlow开发说明请参考[创建瀑布流（WaterFlow）](../../../ui/arkts-layout-development-create-waterflow.md)，NDK开发请参考[使用瀑布流](../../../ui/ndk-waterflow.md)，C API接口请参考[ArkUI_NodeAttributeType（滚动容器类组件相关属性）](../capi-native-node-h-nodeattributetype-scrollablecontainer.md)和[ArkUI_WaterFlowSectionOption](../capi-arkui-nativemodule-arkui-waterflowsectionoption.md)。
 ## 子组件
 
 
@@ -31,6 +33,10 @@
 >
 > 纵向布局时，WaterFlow会计算每一列中已放置子组件的累计高度，并将新子组件放入累计高度最小的那一列，以保持整体布局紧凑。
 >
+> 当FlowItem的主轴大小在显示后发生变化时，WaterFlow会清理受影响的布局信息，并根据当前[layoutMode](#waterflowlayoutmode12枚举说明)从变化位置或当前窗口起始位置重新计算相关FlowItem的布局位置。由于瀑布流会将重新参与布局的FlowItem放入当前累计主轴大小最小的列或行，这些FlowItem所在列或行及偏移可能发生变化，表现为位置跳动。为减少位置跳动，建议保持FlowItem主轴大小稳定；图片等异步内容建议预先设置固定宽高或占位大小，使用分组混合布局时也可以通过[GetItemMainSizeByIndex](#getitemmainsizebyindex12)回调提供稳定的主轴大小。
+>
+> 使用[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)动态生成FlowItem时，如果影响FlowItem主轴大小的数据发生变化，应同时通知框架数据已变化：LazyForEach场景请调用[DataChangeListener](ts-rendering-control-lazyforeach.md#datachangelistener)对应方法（如[onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8)、[onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded)或[onDatasetChange](ts-rendering-control-lazyforeach.md#ondatasetchange12)）；Repeat场景应按[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的数据更新规则修改状态数组。否则可能复用旧节点或旧缓存，导致显示内容、布局结果与数据不一致。
+>
 > 若多个列的高度相同，优先放入最左边的列。在RTL模式下，优先放入最右边的列。
 >
 > 从API version 21开始，WaterFlow单个子组件的宽高最大为16777216px；API version 20及之前，WaterFlow单个子组件的宽高最大为1000000px。子组件超出该大小可能导致滚动或显示异常。
@@ -38,7 +44,7 @@
 
 ## 接口
 
-WaterFlow(options?:  WaterFlowOptions)
+WaterFlow(options?: WaterFlowOptions)
 
 创建瀑布流容器。
 
@@ -65,7 +71,7 @@ WaterFlow(options?:  WaterFlowOptions)
 | footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准；未设置footerContent时，footer参数仍可设置尾部组件。使用分组混合布局时不支持单独设置尾部组件，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器，与可滚动组件绑定。不设置时不绑定外部控制器，组件自行管理滚动行为。<br/>**说明：** <br/>1. 不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>2. 使用[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)布局模式时，scroller的[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)接口返回的总偏移量在触发跳转或数据更新后不准确，回滑到顶部时会重新校准。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
-| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。ALWAYS_TOP_DOWN适用于固定列数、简单瀑布流场景；SLIDING_WINDOW适用于动态列数、大数据量、屏幕旋转等场景。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。ALWAYS_TOP_DOWN适用于固定列数场景；SLIDING_WINDOW适用于动态列数、大数据量、屏幕旋转等场景。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## WaterFlowSections<sup>12+</sup>
@@ -217,7 +223,7 @@ FlowItem分组配置信息。
 | columnsGap | [Dimension](ts-types.md#dimension10) | 否 | 是 | 该分组的列间距，不设置该参数时默认使用瀑布流的[columnsGap](#columnsgap)，设置非法值时使用0vp。 |
 | rowsGap | [Dimension](ts-types.md#dimension10) | 否 | 是 | 该分组的行间距，不设置该参数时默认使用瀑布流的[rowsGap](#rowsgap)，设置非法值时使用0vp。 |
 | margin | [Margin](ts-types.md#margin) \| [Dimension](ts-types.md#dimension10) | 否 | 是 | 该分组的外边距参数为Length类型时，四个方向外边距同时生效。<br>默认值：0<br>单位：vp<br>margin设置百分比时，上下左右外边距均以瀑布流的width作为基础值。 |
-| onGetItemMainSizeByIndex | [GetItemMainSizeByIndex](#getitemmainsizebyindex12) | 否 | 是 | 瀑布流组件布局过程中获取指定index的FlowItem的主轴大小，纵向瀑布流时为高度，横向瀑布流时为宽度，单位vp。不设置时，瀑布流按FlowItem的常规测量结果确定主轴大小。<br/>**说明：** <br/>1. 同时使用onGetItemMainSizeByIndex和FlowItem的宽高属性时，主轴大小以onGetItemMainSizeByIndex返回结果为准，onGetItemMainSizeByIndex会覆盖FlowItem的主轴长度。<br/>2. 使用onGetItemMainSizeByIndex可以提高瀑布流跳转到指定位置或index时的效率，避免混用设置onGetItemMainSizeByIndex和未设置的分组，否则会导致布局异常。<br/>3. onGetItemMainSizeByIndex返回负数时FlowItem高度为0。 |
+| onGetItemMainSizeByIndex | [GetItemMainSizeByIndex](#getitemmainsizebyindex12) | 否 | 是 | 瀑布流组件布局过程中获取指定index的FlowItem的主轴大小，纵向瀑布流时为高度，横向瀑布流时为宽度，单位vp。不设置时，瀑布流按FlowItem的常规测量结果确定主轴大小。<br/>**说明：** <br/>1. 同时使用onGetItemMainSizeByIndex和FlowItem的宽高属性时，主轴大小以onGetItemMainSizeByIndex返回结果为准，onGetItemMainSizeByIndex会覆盖FlowItem的主轴长度。<br/>2. 使用onGetItemMainSizeByIndex可以提高瀑布流跳转到指定位置或index时的效率，避免混用设置onGetItemMainSizeByIndex和未设置的分组，否则会导致布局异常。<br/>3. onGetItemMainSizeByIndex返回负数时，FlowItem主轴大小为0。<br/>4. 如果FlowItem主轴大小会随数据动态变化，应保证onGetItemMainSizeByIndex返回值与数据源保持一致。使用[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据变化后应调用[onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8)、[onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded)或[onDatasetChange](ts-rendering-control-lazyforeach.md#ondatasetchange12)等方法通知框架数据已变化；使用[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)时，应按Repeat的数据更新规则修改状态数组。 |
 
 
 ## GetItemMainSizeByIndex<sup>12+</sup>
@@ -257,11 +263,11 @@ type GetItemMainSizeByIndex = (index: number) => number
 | 名称 | 值 | 说明 |
 | ------ | ------ | -------------------- |
 | ALWAYS_TOP_DOWN | 0 | 默认的从上到下的布局模式。视窗内的FlowItem依赖视窗上方所有FlowItem的布局信息。因此跳转或切换列数时，需要计算出上方所有的FlowItem的布局信息。 |
-| SLIDING_WINDOW | 1 | 移动窗口式的布局模式。只考虑视窗内的布局信息，对视窗上方的FlowItem没有依赖关系，因此向后跳转或切换列数时只需要布局视窗内的FlowItem。建议优先采用该模式，尤其在应用需要支持屏幕旋转或动态切换列数的场景下。 <br/>**说明：** <br/>1. 无动画跳转到较远的位置时，会以目标位置为基准，向前或向后布局FlowItem。这之后如果滑回跳转前的位置，内容的布局效果可能和之前不一致。 这个效果会导致跳转后回滑到顶部时，顶部节点可能不对齐。所以该布局模式下会在滑动到顶部后自动调整布局，保证顶部对齐。在有多个分组的情况下，会在滑动结束时调整在视窗内的分组。<br/> 2. [scroller](#waterflowoptions对象说明)的[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)接口返回的总偏移量在触发跳转或数据更新后不准确，在回滑到顶部时会重新校准，从API version 23开始，新增offset接口。 <br/> 3. 如果在同一帧内调用跳转（如无动画的[scrollToIndex](ts-container-scroll.md#scrolltoindex)、[scrollEdge](ts-container-scroll.md#scrolledge)）和输入偏移量（如滑动手势或滚动动画），两者都会生效。 <br/> 4. 调用无动画的[scrollToIndex](ts-container-scroll.md#scrolltoindex)进行跳转，如果跳转到较远位置（超过视窗内的FlowItem数量的位置）时，移动窗口模式对总偏移量进行估算。 <br/> 5. 仅在API version 18及以上版本中支持滚动条[scrollBar](ts-container-scrollable-common.md#scrollbar11)显示。低于此版本时，设置滚动条将不显示。|
+| SLIDING_WINDOW | 1 | 移动窗口式的布局模式。只考虑视窗内的布局信息，对视窗上方的FlowItem没有依赖关系，因此向后跳转或切换列数时只需要布局视窗内的FlowItem。建议优先采用该模式，尤其在应用需要支持屏幕旋转或动态切换列数的场景下。 <br/>**说明：** <br/>1. 无动画跳转到较远的位置时，会以目标位置为基准，向前或向后布局FlowItem。这之后如果滑回跳转前的位置，内容的布局效果可能和之前不一致。这个效果会导致跳转后回滑到顶部时，顶部节点可能不对齐。<br/> 2. 使用SLIDING_WINDOW布局模式并设置[WaterFlowSections](#waterflowsections12)分组时，滚动动画结束后，若视窗内包含分组起始位置，且检测到该分组在视窗内的列或行起始位置未对齐，或分组起始FlowItem与分组起始索引不一致，WaterFlow会重新计算布局以校正分组内容位置。<br/> 3. 使用SLIDING_WINDOW布局模式调用[backToTop](ts-container-scrollable-common.md#backtotop15)回到顶部操作时，若回顶动画结束后仍未到达顶部，WaterFlow会执行一次无动画的顶部校正，使内容重新对齐到起始位置。<br/> 4. [scroller](#waterflowoptions对象说明)的[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)接口返回的总偏移量在触发跳转或数据更新后不准确，在回滑到顶部时会重新校准，从API version 23开始，新增offset接口。 <br/> 5. 如果在同一帧内调用跳转（如无动画的[scrollToIndex](ts-container-scroll.md#scrolltoindex)、[scrollEdge](ts-container-scroll.md#scrolledge)）和输入偏移量（如滑动手势或滚动动画），两者都会生效。 <br/> 6. 调用无动画的[scrollToIndex](ts-container-scroll.md#scrolltoindex)进行跳转，如果跳转到较远位置（超过视窗内的FlowItem数量的位置）时，移动窗口模式对总偏移量进行估算。 <br/> 7. 仅在API version 18及以上版本中支持滚动条[scrollBar](ts-container-scrollable-common.md#scrollbar11)显示。低于此版本时，设置滚动条将不显示。|
 
 | 对比维度 | ALWAYS_TOP_DOWN (默认) | SLIDING_WINDOW |
 |---------|------------------------|----------------|
-| 适用场景 | 固定列数、简单瀑布流 | 动态列数、大数据量、屏幕旋转 |
+| 适用场景 | 固定列数 | 动态列数、大数据量、屏幕旋转 |
 | 布局策略 | 从顶部开始完整布局 | 滑动窗口式布局 |
 | 性能特点 | 依赖上方所有 FlowItem | 只考虑视窗内布局 |
 | 跳转效率 | 需要计算上方所有布局 | 快速跳转，无需完整计算 |
@@ -277,7 +283,7 @@ type GetItemMainSizeByIndex = (index: number) => number
 >
 > WaterFlow组件使用通用属性[clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12)和通用属性[clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18)时默认值都为true。
 >
-> WaterFlow组件内容裁剪模式[ContentClipMode<sup>14+</sup>枚举说明](ts-container-scrollable-common.md#contentclipmode14枚举说明)为ContentClipMode.CONTENT_ONLY，padding区域会被裁剪不显示。
+> WaterFlow组件的[内容裁剪模式](ts-container-scrollable-common.md#contentclipmode14枚举说明)为ContentClipMode.CONTENT_ONLY，padding区域会被裁剪不显示。
 
 ### columnsTemplate
 
@@ -303,13 +309,13 @@ columnsTemplate(value: string)
 
 columnsTemplate(value: string | ItemFillPolicy)
 
-设置当前瀑布流组件布局列的数量，不设置时默认1列。
+设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](#waterflowoptions对象说明)分组混合布局时，此属性会被忽略。
 
 当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
 
 当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
-例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
+例如，将ItemFillPolicy的fillType属性设置为PresetFillType.BREAKPOINT_DEFAULT时，在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -606,7 +612,7 @@ onReachEnd(event: () => void)
 
 onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
-该接口回调时，事件参数传入即将发生的滑动量。事件处理函数可根据应用场景计算实际需要的滑动量，并将其作为返回值返回。瀑布流将按照返回的实际滑动量进行滑动。适用于需要自定义滚动行为的场景，例如按比例调整单帧滑动量，或在特定条件下阻止本帧滑动。
+该接口回调时，事件参数传入即将发生的滑动量。事件处理函数可根据应用场景计算实际需要的滑动量，并返回该值。瀑布流将按照返回的实际滑动量进行滑动。适用于需要自定义滚动行为的场景，例如按比例调整单帧滑动量，或在特定条件下阻止本帧滑动。
 
 满足以下任一条件时触发该事件：
 
@@ -760,7 +766,9 @@ WaterFlow组件可见区域item变化事件的回调类型。
 ### 示例1（使用基本瀑布流）
 该示例展示了WaterFlow组件数据加载处理、属性设置和事件回调等基本使用场景。
 
-WaterFlowDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给WaterFlow提供子组件。
+WaterFlowDataSource实现了[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给WaterFlow提供子组件。
+
+当[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)数据中影响FlowItem宽高的字段发生变化时，需要在修改数据后通知[DataChangeListener](ts-rendering-control-lazyforeach.md#datachangelistener)，例如调用[onDataChange](ts-rendering-control-lazyforeach.md#ondatachange8)或[onDataReloaded](ts-rendering-control-lazyforeach.md#ondatareloaded)。只修改数据内容但不触发数据变化通知时，LazyForEach可能不会刷新对应FlowItem。
 
 <!--code_no_check-->
 ```ts
@@ -1125,7 +1133,7 @@ struct WaterFlowDemo {
 
 
 ### 示例3（使用分组）
-该示例展示了分组的初始化以及splice、push、update、values、length等接口的不同效果。
+该示例展示了分组的初始化以及splice、update、values、length等接口的不同效果。
 
 如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 

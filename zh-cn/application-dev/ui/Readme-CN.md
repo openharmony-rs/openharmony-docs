@@ -157,7 +157,7 @@
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
-    - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
+    - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）<!--RP14--><!--RP14End-->
   - 按钮与选择<!--arkts-form-selection-->
     - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
@@ -238,9 +238,10 @@
       - [弹簧曲线](arkts-spring-curve.md)
     - [动画衔接](arkts-animation-smoothing.md)
     - 动画效果<!--arkts-animation-effects-->
-      - [模糊](arkts-blur-effect.md)
       - [阴影](arkts-shadow-effect.md)
       - [色彩](arkts-color-effect.md)
+      - 模糊<!--arkts-blur-->
+        - [动态模糊](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
@@ -300,6 +301,7 @@
   - 媒体展示<!--arkts-build-media-ndk-->
     - [显示图片（Image）](ndk-image-component.md)
     - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
+    - [使用弧形滑块视图容器 (ArcSwiper)](ndk-arc-swiper.md)
   - [构建表单组件](ndk-build-form-components.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - 使用动画<!--arkts-use-animation-ndk-->

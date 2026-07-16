@@ -581,7 +581,7 @@
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
     <!--Del-->
-    - [内置环境变量说明（系统接口）](arkui-ts/ts-state-management-environment-variables-sys.md)
+    - [Storage（系统接口）](arkui-ts/ts-state-management-storage-sys.md)
     <!--DelEnd-->
     - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
     - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
@@ -776,10 +776,10 @@
     - [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)
     - [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)
     - [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)
-    - [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
-    - [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)
-    - [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)
-    - [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)
+    - [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
+    - [ArkUI_TouchRecognizerHandleArray](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)
+    - [ArkUI_GestureRecognizerHandle](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)
+    - [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)
     - [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)
     - [ArkUI_AccessibleRect](capi-arkui-accessibility-arkui-accessiblerect.md)
     - [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)

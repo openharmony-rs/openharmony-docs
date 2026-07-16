@@ -869,7 +869,7 @@ audioCapturer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续采集（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复采集）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused capturer or ignore');
         // 若选择继续采集，需在此处主动执行开始采集的若干操作。
         break;
       default:
@@ -1123,7 +1123,7 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
 监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
-如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1615,4 +1615,129 @@ let strategy: audio.AudioSessionStrategy = {
 };
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioCapturer.setIndependentAudioSessionStrategy(strategy, behavior);
+```
+
+## setNoiseReductionMode
+
+setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
+
+设置当前录音流的降噪模式。建议先调用[getSupportedNoiseReductionModes](#getsupportednoisereductionmodes)获取当前录音流支持的降噪模式后，再通过本接口进行设置。
+
+> **说明：**
+>
+> - 当前仅支持使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流进行降噪模式设置，其他录音流默认仅支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+> - 降噪效果受设备平台、音频设备和录音并发情况影响。存在多个录音流同时运行时，设置的降噪模式可能不生效。
+> - 该接口仅可在录音流创建后未开始录音，或停止录音后调用；录音流处于运行态或已释放时调用将抛出异常。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| noiseReductionMode | [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode) | 是 | 要设置的降噪模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Illegal state, audio capturer is in running or released state. |
+| 6800104 | The set mode is not supported. |
+| 6800301 | Audio server process died. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supportedModes: Array<audio.NoiseReductionMode> = audioCapturer.getSupportedNoiseReductionModes();
+  if (supportedModes.includes(audio.NoiseReductionMode.PURE_VOCALS)) {
+    audioCapturer.setNoiseReductionMode(audio.NoiseReductionMode.PURE_VOCALS);
+  } else {
+    audioCapturer.setNoiseReductionMode(audio.NoiseReductionMode.FIDELITY);
+  }
+  console.info(`setNoiseReductionMode success: ${audioCapturer.getNoiseReductionMode()}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setNoiseReductionMode failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## getNoiseReductionMode
+
+getNoiseReductionMode(): NoiseReductionMode
+
+获取当前录音流的降噪模式。返回结果仅反映当前录音流的降噪模式。默认值为[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型 | 说明 |
+| :--- | :--- |
+| [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode) | 当前录音流的降噪模式。 |
+
+**示例：**
+
+```ts
+let noiseReductionMode: audio.NoiseReductionMode = audioCapturer.getNoiseReductionMode();
+console.info(`getNoiseReductionMode success: ${noiseReductionMode}`);
+```
+
+## getSupportedNoiseReductionModes
+
+getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
+
+获取当前设备支持的录音降噪模式。
+
+> **说明：**
+>
+> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅返回[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+> - 返回结果仅考虑音频格式和设备平台，不考虑当前输入设备和录音并发情况。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型 | 说明 |
+| :--- | :--- |
+| Array&lt;[NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode)&gt; | 支持的录音降噪模式数组，默认支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800301 | Audio server process died. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supportedModes: Array<audio.NoiseReductionMode> = audioCapturer.getSupportedNoiseReductionModes();
+  console.info(`getSupportedNoiseReductionModes success: ${supportedModes}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getSupportedNoiseReductionModes failed. Code: ${error.code}, message: ${error.message}`);
+}
 ```

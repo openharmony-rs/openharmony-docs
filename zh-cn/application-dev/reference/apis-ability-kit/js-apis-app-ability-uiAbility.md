@@ -114,7 +114,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | WindowStage实例对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | WindowStage实例对象。开发者可通过该对象调用loadContent()加载应用页面，或注册窗口事件监听器，管理窗口的生命周期和交互。 |
 
 **示例：**
 
@@ -143,6 +143,8 @@ export default class MyUIAbility extends UIAbility {
 onWindowStageWillDestroy(windowStage: window.WindowStage): void
 
 当WindowStage即将销毁时，系统触发该回调。开发者可以在该生命周期中取消windowStage事件的监听。
+
+仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -422,7 +424,7 @@ export default class MyUIAbility extends UIAbility {
       "int_data": 100,
       "str_data": "strValue",
     };
-    // 打点应用故障信息
+    // 写入打点应用故障信息
     hiAppEvent.write({
       domain: "test_domain",
       name: "test_event",
@@ -493,7 +495,7 @@ export default class MyUIAbility extends UIAbility {
   // ...
   onForeground(): void {
     let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率，单位：Hz。
       channels: audio.AudioChannel.CHANNEL_2, // 通道。
       sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
@@ -565,9 +567,9 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
   export default class MyUIAbility extends UIAbility {
-    onContinue(wantParams: Record<string, Object>) {
+    onContinue(wantParam: Record<string, Object>) {
       console.info('onContinue');
-      wantParams['myData'] = 'my1234567';
+      wantParam['myData'] = 'my1234567'; // 保存待迁移的业务数据
       return AbilityConstant.OnContinueResult.AGREE;
     }
   }
@@ -589,6 +591,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
   
     async onContinue(wantParams: Record<string, Object>) {
       console.info('onContinue');
+      // 异步保存待迁移数据
       return this.setWant(wantParams).then(() => {
         return AbilityConstant.OnContinueResult.AGREE;
       });
@@ -700,7 +703,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyUIAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     console.info('onSaveState');
-    wantParam['myData'] = 'my1234567';
+    wantParam['myData'] = 'my1234567'; // 保存UIAbility的状态数据，用于故障恢复
     return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
   }
 }
@@ -735,7 +738,7 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record&lt;stri
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
-  async onSaveStateAsync(reason: AbilityConstant.StateType,
+  async onSaveStateAsync(stateType: AbilityConstant.StateType,
     wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
@@ -819,8 +822,8 @@ export default class EntryAbility extends UIAbility {
       .then((result) => {
         // 获取ability处理结果，当返回结果的resultCode为0关闭当前UIAbility
         console.info('startAbilityForResult success, resultCode is ' + result.resultCode);
-        if (result.resultCode === 0) {
-          this.context.terminateSelf();
+        if (result && result.resultCode === 0) {
+          this.context.terminateSelf(); // 关闭当前UIAbility
         }
       }).catch((err: BusinessError) => {
       // 异常处理
@@ -1030,6 +1033,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       let msg = new MyMessageAble('msg', 'world'); // 参考Parcelable数据定义
+      // 向Callee发送消息
       caller.call(method, msg)
         .then(() => {
           console.info('Caller call() called');
@@ -1085,7 +1089,7 @@ import { window } from '@kit.ArkUI';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyMessageAble implements rpc.Parcelable {
+class MyMessageable implements rpc.Parcelable {
   name: string
   str: string
   num: number = 1
@@ -1122,11 +1126,12 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       caller = obj;
       let msg = new MyMessageAble('msg', 'world');
+      // 向Callee发送消息并获取返回结果
       caller.callWithResult(method, msg)
         .then((data) => {
           console.info('Caller callWithResult() called');
           let retMsg = new MyMessageAble('msg', 'world');
-          data.readParcelable(retMsg);
+          data.readParcelable(retMsg); // 读取Callee返回的Parcelable数据
         })
         .catch((callErr: BusinessError) => {
           console.error(`Caller.callWithResult catch error, error.code: ${callErr.code}, error.message: ${callErr.message}`);
@@ -1174,6 +1179,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       caller = obj;
       try {
+        // 释放Caller与Callee的连接
         caller.release();
       } catch (releaseErr) {
         console.error(`Caller.release catch error, error.code: ${releaseErr.code}, error.message: ${releaseErr.message}`);
@@ -1224,6 +1230,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 注册与Callee UIAbility连接断开监听
         caller.onRelease((str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         });
@@ -1277,14 +1284,17 @@ export default class MainAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 注册协同场景下跨设备组件状态变化监听
         caller.onRemoteStateChange((str) => {
           console.info('Remote state changed ' + str);
         });
       } catch (error) {
-        console.error(`Caller.onRemoteStateChange catch error, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
+        let code = (error as BusinessError).code;
+        let msg = (error as BusinessError).message; 
+        console.error(`Caller.onRemoteStateChange catch error, error.code: ${code}, error.message: ${msg}.`);
       }
     }).catch((err: BusinessError) => {
-      console.error(`Caller GetCaller error, error.code: ${JSON.stringify(err.code)}, error.message: ${JSON.stringify(err.message)}`);
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
 }
@@ -1331,6 +1341,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 注册release事件监听
         caller.on('release', (str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         });
@@ -1383,11 +1394,12 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 定义断开连接的回调函数
         let onReleaseCallBack: OnReleaseCallback = (str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         };
-        caller.on('release', onReleaseCallBack);
-        caller.off('release', onReleaseCallBack);
+        caller.on('release', onReleaseCallBack); // 注册断开连接的监听
+        caller.off('release', onReleaseCallBack); // 取消注册断开连接的监听
       } catch (error) {
         console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
       }
@@ -1442,7 +1454,7 @@ export default class MainUIAbility extends UIAbility {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         };
         caller.on('release', onReleaseCallBack);
-        caller.off('release');
+        caller.off('release'); // 取消注册所有断开连接的监听
       } catch (error) {
         console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
       }
@@ -1515,9 +1527,11 @@ class MyMessageAble implements rpc.Parcelable {
 
 let method = 'call_Function';
 
+// 定义Callee端的消息处理回调函数
 function funcCallBack(pdata: rpc.MessageSequence) {
   let msg = new MyMessageAble('test', '');
   pdata.readParcelable(msg);
+  // 返回处理结果给Caller
   return new MyMessageAble('test1', 'Callee test');
 }
 
@@ -1525,6 +1539,7 @@ export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');
     try {
+      // 注册消息监听，当Caller发送指定方法名时会触发回调
       this.callee.on(method, funcCallBack);
     } catch (error) {
       console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
@@ -1568,6 +1583,7 @@ export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');
     try {
+      // 取消注册消息监听
       this.callee.off(method);
     } catch (error) {
       console.error(`Callee.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
@@ -1606,7 +1622,7 @@ export default class MainUIAbility extends UIAbility {
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | ----- | --- | -------- |
-| msg | string | 是 | 用于传递释放消息。 |
+| msg | string | 是 | 用于传递组件状态变化消息。 |
 
 ## CalleeCallback
 

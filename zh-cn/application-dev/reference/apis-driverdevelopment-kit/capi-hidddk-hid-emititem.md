@@ -26,8 +26,8 @@ typedef struct Hid_EmitItem {...} Hid_EmitItem
 
 | 名称 | 描述 |
 | -- | -- |
-| uint16_t type | 事件类型 |
-| uint16_t code | 事件编码 |
-| uint32_t value | 事件值 |
+| uint16_t type | 事件类型。 |
+| uint16_t code | 事件编码。 |
+| uint32_t value | 事件值。 |
 
 

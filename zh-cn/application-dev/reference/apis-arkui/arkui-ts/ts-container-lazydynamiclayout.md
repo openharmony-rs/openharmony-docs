@@ -17,7 +17,7 @@
 >
 > - 该组件在不同父组件下的懒加载支持条件如下：
 >   1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段场景下使用时支持懒加载。
->   2. 在List组件下，当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，该组件的懒加载功能会失效。
+>   2. 在List组件下，当[lanes](ts-container-list.md#lanes9)大于1、[chainAnimation](ts-container-list.md#chainanimation)设置为true或[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)设置为ScrollSnapAlign.NONE以外的值时，List不使用嵌套懒加载测量流程，该组件按普通子项测量，懒加载功能失效。
 >   3. 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。
 > - 当通过FlowItem、LazyColumnLayout、自定义组件或NodeContainer封装使用时，框架会沿父组件链向上查找符合该组件布局方向的Scroll、List或WaterFlow组件，懒加载支持条件按查找到的上层滚动组件判断。
 
@@ -53,7 +53,7 @@ LazyDynamicLayout(algorithm: LazyLayoutAlgorithm)
 
 > **说明：**
 >
-> 当布局算法为[LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)时，LazyDynamicLayout组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框设置](ts-universal-attributes-border.md)属性，子组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure](../js-apis-arkui-frameNode.md#measure12)和[layout](../js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。
+> 当布局算法为[LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)时，LazyDynamicLayout组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框设置](ts-universal-attributes-border.md)属性，子组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure](../js-apis-arkui-frameNode.md#measure12)和[layout](../js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。自定义算法完成测量或布局后，框架不再执行默认测量或布局流程，而是采用自定义算法设置的尺寸和位置。
 
 
 ## 事件
@@ -86,7 +86,7 @@ onVisibleIndexesChange(callback: [Callback](ts-types.md#callback12)&lt;number[]&
 
 通过[List](ts-container-list.md)和LazyDynamicLayout组件实现自定义的懒加载列表布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时回调索引。
 
-LazyListLayout实现了一个自定义懒加载列表布局算法，布局算法中通过[setAdjustedOffset](../js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset)接口，实现了LazyDynamicLayout下子组件布局间隔变化后，LazyDynamicLayout在可视区域第一个子组件位置不变的效果。
+LazyListLayout实现了一个自定义懒加载列表布局算法，布局算法中通过[setAdjustedOffset](../js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset)接口，确保子组件布局间隔变化时可视区域内第一个子组件的位置不变。
 
 MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyDynamicLayout提供子组件。
 
@@ -136,7 +136,7 @@ struct MyLazyListLayout {
 }
 
 // 定义分组数据接口
-interface groupData {
+interface GroupData {
   title: string;
   data: MyDataSource<string>;
 }
@@ -145,7 +145,7 @@ interface groupData {
 @Entry
 @Component
 struct CustomListLayoutTest {
-  @State groupArr: groupData[] = []; // 分组数据数组
+  @State groupArr: GroupData[] = []; // 分组数据数组
   @State space: number = 5; // 列表项间隔大小
 
   aboutToAppear(): void {
@@ -161,7 +161,7 @@ struct CustomListLayoutTest {
   build() {
     Stack({ alignContent: Alignment.Bottom }) {
       List() {
-        ForEach(this.groupArr, (item: groupData) => {
+        ForEach(this.groupArr, (item: GroupData) => {
           ListItem() {
             Text(item.title).margin({ top: 20, bottom: 8 })
           }

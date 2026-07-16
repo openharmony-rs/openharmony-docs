@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从 API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -66,7 +66,7 @@ unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
-| callback | Callback&lt;void&gt; | 否   | 回调函数，用来执行取消热挡位变化回调后的资源回收等操作，无返回值。|
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用来执行取消热档位变化回调后的资源回收等操作，无返回值。|
 
 **错误码：**
 
@@ -119,7 +119,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
+> 从 API version 8开始支持，从 API version 9开始废弃。建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -149,7 +149,7 @@ unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
+> 从 API version 8开始支持，从 API version 9开始废弃。建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -157,7 +157,7 @@ unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
 | 参数名   | 类型                      | 必填 | 说明                                           |
 | -------- | ------------------------- | ---- | ---------------------------------------------- |
-| callback | AsyncCallback&lt;void&gt; | 否   | 回调函数，用来执行取消热挡位变化回调后的资源回收等操作，无返回值。 |
+| callback | AsyncCallback&lt;void&gt; | 否   | 回调函数，用来执行取消热档位变化回调后的资源回收等操作，无返回值。 |
 
 **示例：**
 
@@ -175,7 +175,7 @@ getThermalLevel(): ThermalLevel
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[thermal.getLevel](#thermalgetlevel9)替代。
+> 从 API version 8开始支持，从 API version 9开始废弃。建议使用[thermal.getLevel](#thermalgetlevel9)替代。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -209,4 +209,4 @@ console.info('thermal level is: ' + level);
 | OVERHEATED | 4    | 表明设备发热严重，无感知业务与非关键业务应停止，前台关键业务应降低规格及负载。 |
 | WARNING    | 5    | 表明设备过热即将进入紧急状态，整机资源供给大幅降低，停止所有非关键业务，前台关键业务应降低至最低规格。 |
 | EMERGENCY  | 6    | 表明设备已经进入过热紧急状态，整机资源供给降至最低，设备功能受限，仅保留基础功能可用。 |
-| ESCAPE<sup>11+</sup>     | 7    | 表明设备即将进入热逃生状态，所有业务将被强制停止，业务需做好逃生措施，例如保存重要数据等。 <br>**说明**: 从API version 11开始支持。|
+| ESCAPE<sup>11+</sup>     | 7    | 表明设备即将进入热逃生状态，所有业务将被强制停止，业务需做好逃生措施，例如保存重要数据等。 <br>**说明**: 从 API version 11开始支持。|
