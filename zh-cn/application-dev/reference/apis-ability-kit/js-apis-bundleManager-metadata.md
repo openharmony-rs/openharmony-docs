@@ -25,7 +25,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: SystemCapability.BundleManager.BundleFramework.Core
+**系统能力**：SystemCapability.BundleManager.BundleFramework.Core
 | 名称     | 类型   | 只读 | 可选 | 说明       |
 | -------- | ------ | ---- | ---- | ---------- |
 | name     | string | 否   | 否   | 元数据名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |

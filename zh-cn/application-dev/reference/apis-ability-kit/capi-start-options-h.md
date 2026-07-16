@@ -1832,7 +1832,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundC
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| const char *startWindowBackgroundColor | 启动Ability时的窗口背景颜色。固定为ARGB格式, 如：`#E5FFFFFF`。 |
+| const char *startWindowBackgroundColor | 启动Ability时的窗口背景颜色。固定为ARGB格式，如：`#E5FFFFFF`。 |
 
 **返回：**
 
@@ -1886,7 +1886,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | AbilityRuntime_StartOptions对象。 |
-| char **startWindowBackgroundColor | 用于获取启动Ability时的窗口背景颜色。固定为ARGB格式, 如：`#E5FFFFFF`。 |
+| char **startWindowBackgroundColor | 用于获取启动Ability时的窗口背景颜色。固定为ARGB格式，如：`#E5FFFFFF`。 |
 | size_t &size | 获取到的窗口背景颜色的大小。 |
 
 **返回：**
