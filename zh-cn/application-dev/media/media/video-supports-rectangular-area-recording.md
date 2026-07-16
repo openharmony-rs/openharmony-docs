@@ -63,7 +63,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
   - x、y分别为矩形区域起点的横坐标、纵坐标位置。
   - width、height分别为矩形区域的宽度和高度。
   - 多个参数之间通过";"连接，所有参数均为整数。
-  - 使用前请确保传入参数有效，坐标和宽高为负数。
+  - 使用前请确保传入参数有效，避免坐标和宽高为负数。
 
 > **注意**
 > 
