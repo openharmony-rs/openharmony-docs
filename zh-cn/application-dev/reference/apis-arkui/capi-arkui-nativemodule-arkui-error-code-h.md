@@ -69,7 +69,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  被接纳的节点已有父节点。错误码的详细介绍请参见[106207 被接纳的附属节点已有父节点](errorcode-adopt.md#106207-被接纳的附属节点已有父节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  节点无法被接纳为附属节点。错误码的详细介绍请参见[106208 节点无法被接纳为附属节点](errorcode-adopt.md#106208-节点无法被接纳为附属节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  节点无法接纳其他节点。错误码的详细介绍请参见[106209 节点无法接纳其他节点](errorcode-adopt.md#106209-节点无法接纳其他节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见[106210 节点不是被父节点接纳的附属节点](errorcode-adopt.md#106210-节点不是被父节点接纳的附属节点。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见[106210 节点不是被父节点接纳的附属节点](errorcode-adopt.md#106210-节点不是被父节点接纳的附属节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
