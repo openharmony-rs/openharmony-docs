@@ -1,7 +1,7 @@
 # @ohos.advertising.AutoAdComponent (轮播广告展示组件)
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
