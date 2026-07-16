@@ -6,7 +6,7 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-**@ohos.InputMethodExtensionContext**模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，为输入法扩展能力提供上下文级别的操作接口。
+@ohos.InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，为输入法扩展能力提供上下文级别的操作接口。
 
 本模块是输入法ExtensionAbility的上下文类，继承自`ExtensionContext`，作为`InputMethodExtensionAbility`实例的`context`属性提供。它承载了输入法扩展应用在其生命周期内可使用的上下文能力，包括销毁自身和拉起其他应用。
 
@@ -20,22 +20,14 @@
 > 本模块接口仅可在Stage模型下使用。
 
 模块内的核心API按功能分为两类：
-1. **生命周期管理**：`destroy()`用于销毁输入法ExtensionAbility自身，终止输入法应用运行。
-2. **Ability交互**：`startAbility()`用于从输入法应用拉起目标Ability（如设置页面等），拓展输入法应用与其他应用的交互能力。
+1. 生命周期管理：`destroy()`用于销毁输入法ExtensionAbility自身，终止输入法应用运行。
+2. Ability交互：`startAbility()`用于从输入法应用拉起目标Ability（如设置页面等），拓展输入法应用与其他应用的交互能力。
 
 典型使用流程：在`InputMethodExtensionAbility`的`onCreate`回调中获取`this.context` → 在需要终止输入法时调用`context.destroy()` → 在需要拉起其他应用时调用`context.startAbility(want)`。
 
-> **说明：**
->
-> 本模块中以下接口自API version 10起已废弃，不建议使用：
-> - `terminateSelf`：废弃替代为`destroy()`。
-> - `startAbilityWithAccount`：废弃替代为`startAbility()`。
-> - `connectAbility`、`connectAbilityWithAccount`、`connectServiceExtensionAbility`：废弃后无新的替代接口，输入法应用不建议主动连接ServiceExtensionAbility。
-> - `disconnectAbility`、`disconnectServiceExtensionAbility`：废弃后无新的替代接口。
-
 | Class | 说明 |
 |---|---|
-| **InputMethodExtensionContext** | 输入法扩展上下文类，继承自`ExtensionContext`，为`InputMethodExtensionAbility`提供上下文操作能力。关键方法包括：`destroy()`销毁输入法自身（支持callback和Promise两种异步方式）、`startAbility(want)`拉起目标应用（Promise方式，API 12+新增）。 |
+| InputMethodExtensionContext | 输入法扩展上下文类，继承自`ExtensionContext`，为`InputMethodExtensionAbility`提供上下文操作能力。关键方法包括：`destroy()`销毁输入法自身（支持callback和Promise两种异步方式）、`startAbility(want)`拉起目标应用（Promise方式，API 12+新增）。 |
 
 > **说明：**
 > 
@@ -100,9 +92,9 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 
 销毁输入法应用。使用callback异步回调。
 
-- **含义/功能**：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
-- **使用场景**：当输入法应用需要主动终止自身运行时使用。例如：输入法应用在处理完特定任务后主动退出、或在`onDestroy`回调中配合销毁以确保资源释放。
-- **使用后效果**：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。调用后再进行其他上下文操作将不起效。
+- 含义/功能：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
+- 使用场景：当输入法应用需要主动终止自身运行时使用。例如：输入法应用在处理完特定任务后主动退出、或在`onDestroy`回调中配合销毁以确保资源释放。
+- 使用后效果：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。调用后再进行其他上下文操作将不起效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -144,9 +136,9 @@ destroy(): Promise&lt;void&gt;
 
 销毁输入法应用。使用Promise异步回调。
 
-- **含义/功能**：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
-- **使用场景**：当输入法应用需要主动终止自身运行时使用。与callback形式功能相同，适合需要使用Promise链式调用的场景。
-- **使用后效果**：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。
+- 含义/功能：销毁当前的InputMethodExtensionAbility，终止输入法应用的运行。调用后系统将触发`InputMethodExtensionAbility.onDestroy()`生命周期回调。
+- 使用场景：当输入法应用需要主动终止自身运行时使用。与callback形式功能相同，适合需要使用Promise链式调用的场景。
+- 使用后效果：调用成功后，当前的InputMethodExtensionAbility将被销毁，系统触发`onDestroy()`生命周期回调，输入法应用进程终止。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,7 +148,7 @@ destroy(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。Promise回调成功时表示销毁成功，失败时返回错误对象。 |
+| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -186,9 +178,9 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 拉起目标应用。使用Promise异步回调。
 
-- **含义/功能**：从输入法应用启动指定的Ability，使输入法应用能够与其他应用交互。通过Want参数指定目标应用的Ability名称和Bundle名称。
-- **使用场景**：当输入法应用需要拉起其他应用时使用。例如：输入法应用拉起系统设置页面供用户配置输入法、拉起浏览器打开帮助文档等。
-- **使用后效果**：调用成功后，目标Ability被启动并显示在前台。输入法应用自身不会受到影响，继续正常运行。
+- 含义/功能：从输入法应用启动指定的Ability，使输入法应用能够与其他应用交互。通过Want参数指定目标应用的Ability名称和Bundle名称。
+- 使用场景：当输入法应用需要拉起其他应用时使用。例如：输入法应用拉起系统设置页面供用户配置输入法、拉起浏览器打开帮助文档等。
+- 使用后效果：调用成功后，目标Ability被启动并显示在前台。输入法应用自身不会受到影响，继续正常运行。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,12 +192,12 @@ startAbility(want: Want): Promise&lt;void&gt;
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标应用的Want类型信息，包括ability名称、bundle名称等。 |
 
-**want参数使用建议：**
+want参数使用建议：
 
-- **含义/功能**：Want类型信息，描述要启动的目标Ability。
-- **必填属性**：`bundleName`（目标应用包名）和`abilityName`（目标Ability名称）为必填项，否则无法定位目标Ability。
-- **取值范围**：Want对象的属性值均为string类型，需与目标应用在module.json5中配置的bundleName和abilityName保持一致。
-- **注意事项**：want中的bundleName和abilityName必须与目标应用的配置严格一致（包括大小写），否则将返回16000001错误（指定的Ability不存在）。开发者可通过查看目标应用的module.json5配置文件或使用AppGallery获取正确的包名和Ability名。
+- 含义/功能：Want类型信息，描述要启动的目标Ability。
+- 必填属性：`bundleName`（目标应用包名）和`abilityName`（目标Ability名称）为必填项，否则无法定位目标Ability。
+- 取值范围：Want对象的属性值均为string类型，需与目标应用在module.json5中配置的bundleName和abilityName保持一致。
+- 注意事项：want中的bundleName和abilityName必须与目标应用的配置严格一致（包括大小写），否则将返回16000001错误（指定的Ability不存在）。开发者可通过查看目标应用的module.json5配置文件或使用AppGallery获取正确的包名和Ability名。
 
 **返回值：**
 
@@ -268,441 +260,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
     }).catch((err: BusinessError) => {
       console.error(`Failed to destroy context, err code = ${err.code}`);
     });
-  }
+}
 }
 ```
-
-### terminateSelf<sup>(deprecated)</sup>
-
-terminateSelf(callback: AsyncCallback&lt;void&gt;): void
-
-销毁输入法ExtensionAbility。使用callback异步回调。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[InputMethodExtensionContext.destroy(callback: AsyncCallback\<void>)](#destroy9)替代。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt;  | 是   | 回调函数。当销毁输入法应用成功时，err为undefined；否则为错误对象。 |
-
-### terminateSelf<sup>(deprecated)</sup>
-
-terminateSelf(): Promise&lt;void&gt;
-
-销毁输入法ExtensionAbility。使用Promise异步回调。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[InputMethodExtensionContext.destroy()](#destroy9)替代。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
-
-### startAbilityWithAccount<sup>(deprecated)</sup>
-
-startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback&lt;void&gt;): void
-
-以指定账户拉起目标应用。使用callback异步回调。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[startAbility(want: Want)](#startability12)替代。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标应用的Want类型信息。 |
-| accountId | number | 是   | 目标系统账户的ID。 |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt;  | 是   | 回调函数。当拉起目标应用成功时，err为undefined；否则为错误对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | not system application. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist.                   |
-| 16000002 | Incorrect ability type.                                 |
-| 16000004 | Cannot start an invisible component.                    |
-| 16000005 | The specified process does not have the permission.     |
-| 16000006 | Cross-user operations are not allowed.                  |
-| 16000008 | The crowdtesting application expires.                   |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
-| 16000011 | The context does not exist.                             |
-| 16000012 | The application is controlled.                          |
-| 16000013 | The application is controlled by EDM.                   |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                         |
-| 16000053 | The ability is not on the top of the UI.                |
-| 16000055 | Installation-free timed out.                            |
-| 16200001 | The caller has been released.                           |
-
-### startAbilityWithAccount<sup>(deprecated)</sup>
-
-startAbilityWithAccount(want: Want, accountId: number): Promise&lt;void&gt;
-
-以指定账户拉起目标应用。使用Promise异步回调。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[startAbility(want: Want)](#startability12)替代。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标应用的Want类型信息。 |
-| accountId | number | 是   | 目标系统账户的ID。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | not system application. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist.                   |
-| 16000002 | Incorrect ability type.                                 |
-| 16000004 | Cannot start an invisible component.                    |
-| 16000005 | The specified process does not have the permission.     |
-| 16000006 | Cross-user operations are not allowed.                  |
-| 16000008 | The crowdtesting application expires.                   |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
-| 16000011 | The context does not exist.                             |
-| 16000012 | The application is controlled.                          |
-| 16000013 | The application is controlled by EDM.                   |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module                                         |
-| 16000053 | The ability is not on the top of the UI.                |
-| 16000055 | Installation-free timed out.                            |
-| 16200001 | The caller has been released.                           |
-
-### connectAbility<sup>(deprecated)</sup>
-
-connectAbility(want: Want, options: ConnectOptions): number
-
-将当前Ability连接到ServiceExtensionAbility。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。无替代接口。输入法应用不建议主动连接ServiceExtensionAbility，如需与系统组件通信建议使用[sendPrivateCommand](js-apis-inputmethodengine.md#sendprivatecommand12)或[on('privateCommand')](js-apis-inputmethodengine.md#onprivatecommand12)私有命令通道。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标ServiceExtensionAbility的Want类型信息。 |
-| options | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | 是   | 连接回调，用于返回连接成功、中断或失败的信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| number | 连接的数字标识，用于后续断开连接时传入。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist.                   |
-| 16000002 | Incorrect ability type. [since 10]                                 |
-| 16000004 | Cannot start an invisible component. [since 10]                    |
-| 16000005 | The specified process does not have the permission.     |
-| 16000006 | Cross-user operations are not allowed. [since 10]                  |
-| 16000008 | The crowdtesting application expires. [since 10]                   |
-| 16000011 | The context does not exist.                             |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                         |
-| 16000053 | The ability is not on the top of the UI. [since 10]                |
-| 16000055 | Installation-free timed out. [since 10]                           |
-
-### connectAbilityWithAccount<sup>(deprecated)</sup>
-
-connectAbilityWithAccount(want: Want, accountId: number): number
-
-以指定账户连接ServiceExtensionAbility。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。无替代接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标ServiceExtensionAbility的Want类型信息。 |
-| accountId | number | 是   | 目标系统账户的ID。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| number | 连接的数字标识，用于后续断开连接时传入。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | not system application. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist.                   |
-| 16000002 | Incorrect ability type. [since 10]                                 |
-| 16000004 | Cannot start an invisible component.                    |
-| 16000005 | The specified process does not have the permission.     |
-| 16000006 | Cross-user operations are not allowed. [since 10]                  |
-| 16000008 | The crowdtesting application expires. [since 10]                   |
-| 16000011 | The context does not exist.                             |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                         |
-| 16000053 | The ability is not on the top of the UI.                |
-| 16000055 | Installation-free timed out.                            |
-
-### connectServiceExtensionAbility<sup>(deprecated)</sup>
-
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
-
-将当前Ability连接到ServiceExtensionAbility。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。无替代接口。输入法应用不建议主动连接ServiceExtensionAbility，如需与系统组件通信建议使用[sendPrivateCommand](js-apis-inputmethodengine.md#sendprivatecommand12)或[on('privateCommand')](js-apis-inputmethodengine.md#onprivatecommand12)私有命令通道。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标ServiceExtensionAbility的Want类型信息。 |
-| options | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | 是   | 连接回调，用于返回连接成功、中断或失败的信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| number | 连接的数字标识，用于后续断开连接时传入。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist.                   |
-| 16000002 | Incorrect ability type. [since 10]                                 |
-| 16000004 | Cannot start an invisible component. [since 10]                    |
-| 16000005 | The specified process does not have the permission.     |
-| 16000006 | Cross-user operations are not allowed.                  |
-| 16000008 | The crowdtesting application expires. [since 10]                   |
-| 16000011 | The context does not exist.                             |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                         |
-| 16000053 | The ability is not on the top of the UI. [since 10]               |
-| 16000055 | Installation-free timed out. [since 10]                            |
-
-### disconnectAbility<sup>(deprecated)</sup>
-
-disconnectAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
-
-断开与ServiceExtensionAbility的连接。使用callback异步回调。
-
-> **说明：**
->
-> 从 API version 9开始支持，从API version 10开始废弃。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| connection | number | 是   | 连接的数字标识，由connectAbility/connectServiceExtensionAbility返回。 |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt;  | 是   | 回调函数。当断开连接成功时，err为undefined；否则为错误对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist.                             |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                         |
-
-### disconnectAbility<sup>(deprecated)</sup>
-
-disconnectAbility(connection: number): Promise&lt;void&gt;
-
-断开与ServiceExtensionAbility的连接。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| connection | number | 是   | 连接的数字标识，由connectAbility/connectServiceExtensionAbility返回。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist.                             |
-| 16000050 | Internal error.                                         |
-
-### disconnectServiceExtensionAbility<sup>(deprecated)</sup>
-
-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
-
-断开与ServiceExtensionAbility的连接。使用callback异步回调。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。无替代接口。配合connectServiceExtensionAbility使用，两者均已废弃，不建议使用连接/断开ServiceExtensionAbility的模式。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| connection | number | 是   | 连接的数字标识，由connectServiceExtensionAbility返回。 |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt;  | 是   | 回调函数。当断开连接成功时，err为undefined；否则为错误对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist.                             |
-| 16000050 | IInternal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                        |
-
-### disconnectServiceExtensionAbility<sup>(deprecated)</sup>
-
-disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
-
-断开与ServiceExtensionAbility的连接。使用Promise异步回调。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 10开始废弃。无替代接口。配合connectServiceExtensionAbility使用，两者均已废弃，不建议使用连接/断开ServiceExtensionAbility的模式。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                 | 必填 | 说明                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| connection | number | 是   | 连接的数字标识，由connectServiceExtensionAbility返回。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist.                             |
-| 16000050 | IInternal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.                                        |
 

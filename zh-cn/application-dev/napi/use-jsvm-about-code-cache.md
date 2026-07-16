@@ -1,10 +1,10 @@
 # 使用code cache加速编译
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ##code cache简介
 
@@ -112,6 +112,9 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"UseCodeCache", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+// 样例测试JS
+const char *SRC_CALL_NATIVE = R"JS(UseCodeCache();)JS";
 ```
 
 预期的输出结果如下：

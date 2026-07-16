@@ -2,13 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
-定义Navigation或Router组件的枚举和接口。
+定义Navigation和Router组件的相关枚举。
 
 **引用文件：** <arkui/node_attributes/navigation_router.h>
 

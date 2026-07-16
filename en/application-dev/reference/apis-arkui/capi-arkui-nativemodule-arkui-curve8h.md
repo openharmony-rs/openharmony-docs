@@ -12,7 +12,7 @@ typedef struct ArkUI_Curve* ArkUI_CurveHandle
 
 ## Overview
 
-Defines the pointer to an interpolation curve.
+Defines the pointer to the interpolation object of the curve.
 
 **Since**: 12
 

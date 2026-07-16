@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 在传统JS引擎中，要优化对象的并发通信开销，唯一的方法是将实现下沉到Native侧，通过[Transferable对象](transferabled-object.md)的转移或共享来降低开销。然而，开发者仍有大量对象并发通信的需求，这个问题在业界JS引擎中尚未解决。
@@ -107,7 +107,7 @@ Sendable interface需同时满足以下两个规则：
 
 **Sendable支持const enum类型使用示例：**
 
-<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
+<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
 
 ``` TypeScript
 export const enum ModelState {
@@ -115,7 +115,7 @@ export const enum ModelState {
   INACTIVE
 }
 ```
-<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
+<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -200,7 +200,7 @@ struct enumusage {
 | 适用场景 | 1. 在TaskPool或Worker中使用类方法或Sendable函数。<br/>2. 传输对象数据量较大的场景。序列化耗时会随着数据量增大而增大，使用Sendable对数据进行改造后，传输100KB数据效率提升约20倍，传输1MB数据效率提升约100倍。 |
 
 **装饰器修饰Class使用示例：**
-<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/class/Index.ets) --> 
+<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/class/Index.ets) --> 
 
 ``` TypeScript
 export { MainPage } from './src/main/ets/components/MainPage';
@@ -222,31 +222,32 @@ export { object }
 ```
 
 **装饰器修饰Function使用示例：**
-<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) -->
+<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
 
-```ts
+``` TypeScript
 @Sendable
 type SendableFuncType = () => void;
 
 @Sendable
 class TopLevelSendableClass {
   num: number = 1;
+
   PrintNum() {
-    console.info("Top level sendable class");
+    console.info('Top level sendable class');
   }
 }
 
 @Sendable
-function TopLevelSendableFunction() {
-  console.info("Top level sendable function");
+function topLevelSendableFunction() {
+  console.info('Top level sendable function');
 }
 
 @Sendable
-function SendableTestFunction() {
+function sendableTestFunction() {
   const topClass = new TopLevelSendableClass(); // 顶层sendable class
   topClass.PrintNum();
-  TopLevelSendableFunction(); // 顶层sendable function
-  console.info("Sendable test function");
+  topLevelSendableFunction(); // 顶层sendable function
+  console.info('Sendable test function');
 }
 
 @Sendable
@@ -254,14 +255,11 @@ class SendableTestClass {
   constructor(func: SendableFuncType) {
     this.callback = func;
   }
+
   callback: SendableFuncType; // 顶层sendable function
 
   CallSendableFunc() {
-    SendableTestFunction(); // 顶层sendable function
+    sendableTestFunction(); // 顶层sendable function
   }
 }
-
-let sendableClass = new SendableTestClass(SendableTestFunction);
-sendableClass.callback();
-sendableClass.CallSendableFunc();
 ```

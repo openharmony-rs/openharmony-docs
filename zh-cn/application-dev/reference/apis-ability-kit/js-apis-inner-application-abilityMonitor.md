@@ -54,14 +54,14 @@ function onAbilityCreateCallback(data: UIAbility) {
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
   abilityName: 'abilityname',
-  moduleName: "moduleName",
+  moduleName: 'moduleName',
   onAbilityCreate: onAbilityCreateCallback
 }
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   if (error) {
-    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`Failed to add ability monitor. Code: ${error.code}, message: ${error.message}`);
   }
 });
 ```

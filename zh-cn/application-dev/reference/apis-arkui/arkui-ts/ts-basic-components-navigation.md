@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tsj_20201-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -64,7 +64,7 @@ Navigation(pathInfos: NavPathStack)
 
 Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
-绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16（Navigation使用NavDestination作为导航页）](#示例16navigation使用navdestination作为导航页)。
+绑定路由栈到Navigation组件，指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16（Navigation使用NavDestination作为导航页）](#示例16navigation使用navdestination作为导航页)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -116,7 +116,7 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 
 menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
-设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](#navigationmenuitem)&gt;写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -467,7 +467,7 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 >   
 > - 若组件扩展到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
 >
-> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](ts-basic-components-navigation.md#barstyle12枚举说明)模式。
+> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](ts-basic-components-navigation.md#barstyle12枚举说明)模式，否则无法扩展到非安全区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -915,10 +915,6 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 将info指定的NavDestination页面信息入栈，使用Promise异步回调返回接口调用结果。
 
-> **说明：**
->
-> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -954,10 +950,6 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void&gt;
 
 将info指定的NavDestination页面信息入栈，使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，来实现不同的行为。
-
-> **说明：**
->
-> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -995,10 +987,6 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 将name指定的NavDestination页面信息入栈，传递的数据为param，使用Promise异步回调返回接口调用结果。
 
-> **说明：**
->
-> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1035,10 +1023,6 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.base').Callback\<PopInfo>, animated?: boolean): Promise&lt;void&gt;
 
 将name指定的NavDestination页面信息入栈，传递的数据为param，并且添加用于页面出栈时处理返回结果的onPop回调，使用Promise异步回调返回接口调用结果。
-
-> **说明：**
->
-> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1315,7 +1299,7 @@ pop(result: Object, animated?: boolean): NavPathInfo | undefined
 
 popToName(name: string, animated?: boolean): number
 
-回退路由栈到由栈底开始第一个名为name的NavDestination页面。
+回退路由栈到栈底第一个名为name的NavDestination页面。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1479,7 +1463,7 @@ getAllPathName(): Array<string\>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Array<string\> | 返回栈中所有NavDestination页面的名称。 |
+| Array<string\> | 返回栈中所有NavDestination页面的名称数组，数组元素按页面在栈中的索引从0开始顺序排列。 |
 
 ### getParamByIndex<sup>10+</sup>
 
@@ -1527,7 +1511,7 @@ getParamByName(name: string): Array<unknown\>
 
 | 类型              | 说明                                |
 | --------------- | --------------------------------- |
-| Array<unknown\> | 返回全部名为name的NavDestination页面的参数信息，unknown可以是用户自定义的类型。 |
+| Array<unknown\> | 返回全部名为name的NavDestination页面的参数信息数组，数组元素按页面索引从小到大排序，每个元素为对应页面的参数信息，具体内容由开发者自定义。 |
 
 ### getIndexByName<sup>10+</sup>
 
@@ -1623,7 +1607,7 @@ setInterception(interception: NavigationInterception): void
 
 | 参数名    | 类型     | 必填   | 说明                     |
 | ---- | ---- | --- | ---|
-|interception| [NavigationInterception](#navigationinterception12)| 是 | 设置Navigation跳转拦截对象。|
+|interception| [NavigationInterception](#navigationinterception12)| 是 | 设置Navigation跳转拦截对象。设置后，可在页面跳转前/后执行自定义回调，允许操作栈或拦截跳转。|
 
 ### getPathStack<sup>19+</sup>
 
@@ -1665,7 +1649,7 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 
 | 参数名    | 类型     | 必填   | 说明                     |
 | ---- | ---- | --- | ---|
-|pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| 是 | 设置当前路由栈中的路由页面信息数组。<br/>**说明：**<br/>数组长度无限制。|
+|pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| 是 | 设置当前路由栈中的路由页面信息数组。设置后，将当前路由栈更新为指定内容，并实现路由转场。开发者可在原有栈的基础上批量添加或删除页面。<br/>**说明：**<br/>数组长度无限制。|
 |animated| boolean | 否 | 是否开启转场动画。<br/>true：开启转场动画；false：不开启转场动画。<br /> 默认值：true|
 
 ## NavPathInfo<sup>10+</sup>
@@ -1813,10 +1797,6 @@ updateTransition?(progress: number): void;
 
 更新交互转场动画进度(不可交互动画不支持动画进度设置)。
 
-> **说明：**
->
-> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1827,7 +1807,7 @@ updateTransition?(progress: number): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|-----|
-| progress | number | 是 | 设置交互转场动画进度百分比。取值范围：[0, 1] |
+| progress | number | 是 | 设置交互转场动画进度值。取值范围：[0, 1] |
 
 ## NavigationInterception<sup>12+</sup>
 
@@ -1931,8 +1911,8 @@ Navigation首页名字。
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
-| value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 否    | API version 9：显示菜单栏单个选项的文本。<br> 从API version 10开始，不显示菜单栏单个选项的文本。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| value  | string \| [Resource<sup>14+</sup>](ts-types.md#resource)       | 否    | 否    | API version 9：显示菜单栏单个选项的文本。<br> 从API version 10开始，不显示菜单栏单个选项的文本。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon   | string \| [Resource<sup>14+</sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | action | () =&gt; void | 否    | 是    | 当前选项被选中的事件回调。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -1997,8 +1977,8 @@ Navigation通用标题。
 
 | 名称   | 类型     | 只读 | 可选 | 说明     |
 | ---- | ------ | ---- | ---- | ------ |
-| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | 否    | 否    | 设置主标题。 |
-| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | 否    | 否    | 设置副标题。 |
+| main | string \| [Resource<sup>14+</sup>](ts-types.md#resource) | 否    | 否    | 设置主标题。 |
+| sub  | string \| [Resource<sup>14+</sup>](ts-types.md#resource) | 否    | 否    | 设置副标题。 |
 
 ## NavigationCustomTitle<sup>9+</sup>
 
@@ -2137,8 +2117,8 @@ Navigation分割线颜色及上下边距。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | scrollEffectType | [ScrollEffectType](#scrolleffecttype) | 否 | 是 | 标题栏滚动模糊效果类型。<br/>默认值：ScrollEffectType.COMMON_BLUR |
-| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最小滑动距离。<br/>默认值：0vp |
-| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最大滑动距离。<br/>默认值：8vp |
+| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。当用户滑动距离超过该值时，开始应用模糊效果。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最小滑动距离。<br/>默认值：0vp |
+| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。当用户滑动距离达到该值时，模糊效果达到最终状态。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最大滑动距离。<br/>默认值：8vp |
 
 ## NavigationTitleOptions<sup>11+</sup>
 
@@ -2151,8 +2131,8 @@ Navigation分割线颜色及上下边距。
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | 否    | 是    | 标题栏背景颜色，不设置时为系统默认颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | 否    | 是    | 标题栏背景模糊样式，不设置时关闭背景模糊效果。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | 否    | 是    | 标题栏背景颜色，设置后，标题栏背景将显示为指定颜色；不设置时为系统默认颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | 否    | 是    | 标题栏背景模糊样式，设置后，标题栏将应用指定的模糊样式；不设置时关闭背景模糊效果。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)        | 否    | 是    | 标题栏背景模糊选项。<br/>**说明：** <br/>只在设置了backgroundBlurStyle时生效。<br/>不建议与backgroundEffect同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | 否    | 是    | 设置标题栏背景属性包括：模糊半径，亮度，饱和度，颜色等。<br/>**说明：** <br/>不建议与backgroundBlurStyleOptions同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | barStyle<sup>12+</sup>   | [BarStyle](#barstyle12枚举说明)        | 否    | 是    | 设置标题栏布局方式。<br/>默认值：BarStyle.STANDARD<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -2185,8 +2165,8 @@ Navigation分割线颜色及上下边距。
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | 否    | 是    | 工具栏背景颜色，不设置时为系统默认颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | 否    | 是    | 工具栏背景模糊样式，不设置时关闭背景模糊效果。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | 否    | 是    | 工具栏背景颜色，设置后，工具栏背景将显示为指定颜色；不设置时为系统默认颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | 否    | 是    | 工具栏背景模糊样式，设置后，工具栏将应用指定的模糊样式；不设置时关闭背景模糊效果。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)        | 否    | 是    | 工具栏背景模糊选项。<br/>**说明：** <br/>只在设置了backgroundBlurStyle时生效。<br/>不建议与backgroundEffect同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | 否    | 是    | 设置工具栏背景属性包括：模糊半径，亮度，饱和度，颜色等。<br/>**说明：** <br/>不建议与backgroundBlurStyleOptions同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | barStyle<sup>14+</sup>   | [BarStyle](#barstyle12枚举说明)        | 否    | 是    | 设置工具栏布局方式。<br/>默认值：BarStyle.STANDARD<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -2205,7 +2185,7 @@ Navigation分割线颜色及上下边距。
 
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
-| moreButtonOptions   | [MoreButtonOptions](#morebuttonoptions19)        | 否    | 是    | 更多图标的菜单选项。  |
+| moreButtonOptions   | [MoreButtonOptions](#morebuttonoptions19)        | 否    | 是    | 更多图标的菜单选项。设置后，可自定义更多按钮的背景模糊样式、背景效果等。  |
 
 ## LaunchMode<sup>12+</sup>枚举说明
 
@@ -2267,7 +2247,7 @@ Navigation配置项。
 
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | 否    | 是    | 更多图标的菜单背景模糊样式，不设置时关闭背景模糊效果。 |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | 否    | 是    | 更多图标的菜单背景模糊样式，设置后，更多图标的菜单将应用指定的模糊样式；不设置时关闭背景模糊效果。 |
 | backgroundBlurStyleOptions   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)        | 否    | 是    | 更多图标的菜单背景模糊选项。<br/>**说明：** <br/>只在设置了backgroundBlurStyle时生效。<br/>不建议与backgroundEffect同时使用。 |
 | backgroundEffect   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | 否    | 是    | 设置更多图标的菜单背景属性包括：模糊半径，亮度，饱和度，颜色等。<br/>**说明：** <br/>不建议与backgroundBlurStyleOptions同时使用。 |
 
@@ -3274,7 +3254,7 @@ export struct PageOne {
             }).catch((error: BusinessError) => {
               console.error(`[pushDestination]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.error('[pushDestination]success.');
+              console.info('[pushDestination]success.');
             });
           })
 
@@ -3291,7 +3271,7 @@ export struct PageOne {
             }).catch((error: BusinessError) => {
               console.error(`[pushDestinationByName]failed, error code = ${error.code}, error.message = ${error.message}.`);
             }).then(() => {
-              console.error('[pushDestinationByName]success.');
+              console.info('[pushDestinationByName]success.');
             });
           })
 
@@ -3323,7 +3303,7 @@ export struct PageOne {
               .catch((error: BusinessError) => {
                 console.error(`[pushDestinationWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
               }).then(() => {
-              console.error('[pushDestinationWithoutOnPop]success.');
+              console.info('[pushDestinationWithoutOnPop]success.');
             });
           })
 
@@ -3338,7 +3318,7 @@ export struct PageOne {
               .catch((error: BusinessError) => {
                 console.error(`[pushDestinationByNameWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
               }).then(() => {
-              console.error('[pushDestinationByNameWithoutOnPop]success.');
+              console.info('[pushDestinationByNameWithoutOnPop]success.');
             });
           })
 
@@ -3362,7 +3342,7 @@ export struct PageOne {
 ```
 ```ts
 // PageTwo.ets
-class resultClass {
+class ResultClass {
   constructor(count: number) {
     this.count = count;
   }
@@ -3387,7 +3367,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pop(new resultClass(1)); // 回退到上一个页面，将处理结果传入push的onPop回调中。
+            this.pathStack.pop(new ResultClass(1)); // 回退到上一个页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popToName', { stateEffect: true, type: ButtonType.Capsule })
@@ -3396,7 +3376,7 @@ export struct PageTwo {
           .margin(20)
           .onClick(() => {
             this.pathStack.popToName('pageOne',
-              new resultClass(11)); // 回退路由栈到第一个名为name的NavDestination页面，将处理结果传入push的onPop回调中。
+              new ResultClass(11)); // 回退路由栈到第一个名为name的NavDestination页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
@@ -3404,7 +3384,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.popToIndex(0, new resultClass(111)); // 回退路由栈到index指定的NavDestination页面，将处理结果传入push的onPop回调中。
+            this.pathStack.popToIndex(0, new ResultClass(111)); // 回退路由栈到index指定的NavDestination页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popWithoutResult', { stateEffect: true, type: ButtonType.Capsule })
@@ -3433,7 +3413,7 @@ export struct PageTwo {
       }.width('100%').height('100%')
     }.title('pageTwo')
     .onBackPressed(() => {
-      this.pathStack.pop(new resultClass(0)); // 回退到上一个页面，将处理结果传入push的onPop回调。
+      this.pathStack.pop(new ResultClass(0)); // 回退到上一个页面，将处理结果传入push的onPop回调。
       return true;
     }).onReady((context: NavDestinationContext) => {
       this.pathStack = context.pathStack;

@@ -434,7 +434,7 @@ PhotoPickerComponent产生错误时的回调。
 
 ## PhotoBrowserZoomCallback 
 
-export type PhotoBrowserZoomCallback = (scale: double) => void
+export type PhotoBrowserZoomCallback = (scale: number) => void
 
 PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 
@@ -450,7 +450,7 @@ PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
-| scale  | double | 是 | 图片相比原图放大缩小的比例。 |
+| scale  | number | 是 | 图片相比原图放大缩小的比例。 |
 
 ## PickerController
 
@@ -483,7 +483,7 @@ setData(dataType: DataType, data: Object): void
 
 addData(dataType: DataType, data: Object): void
 
-应用可通过该接口向picker组件发送增加配置数据。通过[DataType](#datatype)来区分具体发送的数据类型，该方法仅支持SET_BADGE_CONFIGS类型。
+应用可通过该接口向picker组件发送增加配置数据。通过[DataType](#datatype)来区分具体发送的数据类型。在API version 23之前，该方法仅支持SET_BADGE_CONFIGS类型。
 
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -688,7 +688,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | Scene parameters validate failed, possible causes: 1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLE and MOVING_PHOTO_DISABLE are supported for configuration | 
+| 23800151 | Scene parameters validate failed, possible causes: 1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration | 
 | 23800202 | Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.     |   
 
 **返回值：**

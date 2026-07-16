@@ -34,7 +34,7 @@
    <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 获取文本样式
+   // 初始化文本样式
    let myTextStyle: text.TextStyle = {
      // 文本颜色
      color: {
@@ -66,11 +66,11 @@
    
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
-   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    // 更新文本样式
-   ParagraphGraphBuilder.pushStyle(myTextStyle);
+   paragraphBuilder.pushStyle(myTextStyle);
    // 添加文本
-   ParagraphGraphBuilder.addText("Hello World");
+   paragraphBuilder.addText("Hello World");
    ```
    <!-- -->
 
@@ -80,7 +80,7 @@
    
    ``` TypeScript
    // 生成段落
-   let paragraph = ParagraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    // 布局
    paragraph.layoutSync(1250);
    // 绘制文本

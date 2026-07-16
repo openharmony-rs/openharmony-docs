@@ -271,10 +271,10 @@ Enumerates the asymmetric key data types.
 | ML_KEM_PRIVATE_RAW | 4 | Raw data of the ML-KEM private key.|
 | ML_KEM_PUBLIC_RAW | 5 | Raw data of the ML-KEM public key.|
 | EC_PRIVATE_K | 6 | Private key **K** on the elliptic curve (EC).|
-| EC_PRIVATE_04_X_Y_K | 7 | Private key **04||X||Y||K** on the EC.|
-| EC_PUBLIC_X_Y | 8 | Public key **X||Y** on the EC.|
-| EC_PUBLIC_04_X_Y | 9 | Public key **04||X||Y** on the EC.|
-| EC_PUBLIC_COMPRESS_X | 10 | Public key **02||X** or **03||X** on the EC.|
+| EC_PRIVATE_04_X_Y_K | 7 | Private key **04\|\|X\|\|Y\|\|K** on the EC.|
+| EC_PUBLIC_X_Y | 8 | Public key **X\|\|Y** on the EC.|
+| EC_PUBLIC_04_X_Y | 9 | Public key **04\|\|X\|\|Y** on the EC.|
+| EC_PUBLIC_COMPRESS_X | 10 | Public key **02\|\|X** or **03\|\|X** on the EC.|
 
 ## AsyKeySpecType<sup>10+</sup>
 
@@ -794,7 +794,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for HKDF key
 >
 > For example, if the mode is **EXTRACT_AND_EXPAND**, all parameter values must be passed in. If the mode is **EXTRACT_ONLY**, **info** can be empty. When **HKDFSpec** is constructed, pass in **null** to **info**.
 >
-> The default mode is **EXTRACT_AND_EXPAND**. The value **HKDF|SHA256|EXTRACT_AND_EXPAND** is equivalent to **HKDF|SHA256**.
+> The default mode is **EXTRACT_AND_EXPAND**. The value **HKDF\|SHA256\|EXTRACT_AND_EXPAND** is equivalent to **HKDF\|SHA256**.
 
 ## ScryptSpec<sup>18+</sup>
 
@@ -1180,7 +1180,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Format of the key.<br>In API versions 12 to 24, the value can only be **X509|COMPRESSED** or **X509|UNCOMPRESSED**.<br>Since API version 26.0.0, the RSA public key can be in PKCS #1 or X.509 format.|
+| format  | string | Yes  | Format of the key.<br>In API versions 12 to 24, the value can only be **X509\|COMPRESSED** or **X509\|UNCOMPRESSED**.<br>Since API version 26.0.0, the RSA public key can be in PKCS #1 or X.509 format.|
 
 **Return value**
 
@@ -2056,7 +2056,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 > **NOTE**
 >
-> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC|SHA256**) is specified when the symmetric key generator is created, a binary key matching the hash length (for example, a 256-bit key) will be randomly generated. If no hash algorithm is specified, for example, only **HMAC** is specified, random symmetric key generation is not supported. You can generate symmetric key data using [convertKey](#convertkey).
+> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC\|SHA256**) is specified when the symmetric key generator is created, a binary key matching the hash length (for example, a 256-bit key) will be randomly generated. If no hash algorithm is specified, for example, only **HMAC** is specified, random symmetric key generation is not supported. You can generate symmetric key data using [convertKey](#convertkey).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2148,7 +2148,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 > **NOTE**
 >
-> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC|SHA256**) is specified when the symmetric key generator is created, a binary key matching the hash length (for example, a 256-bit key) will be randomly generated.<br>If no hash algorithm is specified, for example, only **HMAC** is specified, random symmetric key generation is not supported. You can generate symmetric key data using [convertKeySync](#convertkeysync12).
+> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC\|SHA256**) is specified when the symmetric key generator is created, a binary key matching the hash length (for example, a 256-bit key) will be randomly generated.<br>If no hash algorithm is specified, for example, only **HMAC** is specified, random symmetric key generation is not supported. You can generate symmetric key data using [convertKeySync](#convertkeysync12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2194,7 +2194,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 > **NOTE**
 >
-> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC|SHA256**) is specified when the symmetric key generator is created, the binary key data passed in must match the hash length (for example, a 256-bit key for SHA256).<br>If no hash algorithm is specified when the symmetric key generator is created (for example, only **HMAC** is specified), any binary key data with a length of 1 to 4,096 bytes is supported.
+> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC\|SHA256**) is specified when the symmetric key generator is created, the binary key data passed in must match the hash length (for example, a 256-bit key for SHA256).<br>If no hash algorithm is specified when the symmetric key generator is created (for example, only **HMAC** is specified), any binary key data with a length of 1 to 4,096 bytes is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2314,7 +2314,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 > **NOTE**
 >
-> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC|SHA256**) is specified when the symmetric key generator is created, the binary key data passed in must match the hash length (for example, a 256-bit key for SHA256). If no hash algorithm is specified when the symmetric key generator is created (for example, only **HMAC** is specified), any binary key data with a length of 1 to 4,096 bytes is supported.
+> For symmetric keys used in the HMAC algorithm, if a hash algorithm (for example, **HMAC\|SHA256**) is specified when the symmetric key generator is created, the binary key data passed in must match the hash length (for example, a 256-bit key for SHA256). If no hash algorithm is specified when the symmetric key generator is created (for example, only **HMAC** is specified), any binary key data with a length of 1 to 4,096 bytes is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -8143,7 +8143,7 @@ Creates a key derivation function instance.
 
 | Name | Type  | Mandatory| Description                             |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2|SHA256**, **HKDF|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
+| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**, **HKDF\|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
 
 **Return value**
 

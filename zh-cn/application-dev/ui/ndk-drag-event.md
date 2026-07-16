@@ -277,7 +277,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
    在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用[udmf_meta.h](../reference/apis-arkdata/capi-udmf-meta-h.md)头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
 
-   <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
+   <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) --> 
    
    ``` C
    void GetDragData(ArkUI_DragEvent* dragEvent)
@@ -303,7 +303,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                returnStatus = OH_UdmfRecord_GetFileUri(records[i], imageValue);
                const char *fileUri = OH_UdsFileUri_GetFileUri(imageValue);
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
-                   "dragTest OH_UdmfRecord_GetPlainText "
+                   "dragTest OH_UdsFileUri_GetFileUri "
                    "returnStatus= %{public}d "
                    "fileUri= %{public}s",
                    returnStatus, fileUri);

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -46,9 +46,9 @@ struct Frame {
       Text('跟手' + JSON.stringify(this.GESTURE))
       Row() {
         Swiper() {
-          Text("one")
-          Text("two")
-          Text("three")
+          Text('one')
+          Text('two')
+          Text('three')
         }
         .width('100%')
         .height('300vp')
@@ -65,14 +65,14 @@ struct Frame {
 
       Button('set frame')
         .onClick(() => {
-          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+          this.scenes.forEach((scene: SwiperDynamicSyncScene) => {
 
-            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
-              scenes.setFrameRateRange(this.ANIMATION);
+            if (scene.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scene.setFrameRateRange(this.ANIMATION);
             }
 
-            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
-              scenes.setFrameRateRange(this.GESTURE);
+            if (scene.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scene.setFrameRateRange(this.GESTURE);
             }
           });
         })

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供全局animateTo显式动画接口来指定由于闭包代码导致的状态变化插入过渡动效。同属性动画，对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，例如文字或[Canvas](ts-components-canvas-canvas.md)中的内容。如果希望内容跟随宽高变化，可以使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性进行配置。
+提供全局animateTo显式动画接口来指定由于闭包代码导致的状态变化插入过渡动效。与属性动画相同，对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，例如文字或[Canvas](ts-components-canvas-canvas.md)中的内容。如果希望内容跟随宽高变化，可以使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性进行配置。
 
 >  **说明：**
 >
@@ -29,7 +29,7 @@
 | delay      | number         | 否 | 是 | 动画延迟播放时间，单位为ms(毫秒)，默认不延时播放。<br/>默认值：0<br/>取值范围：(-∞, +∞)<br/>**说明**：1.delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。<br/>2.&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | iterations | number         | 否 | 是 | 动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。<br/>默认值：1 <br/>取值范围：[-1, +∞)<br/>**说明**：设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
 | playMode   | [PlayMode](ts-appendix-enums.md#playmode)|否 | 是 | 动画播放模式，默认播放完成后从头开始播放。<br/>默认值：PlayMode.Normal<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>相关使用约束请参考PlayMode说明。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| onFinish   | ()&nbsp;=&gt;&nbsp;void      | 否 | 是 | 动画播放完成回调。UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，触发播放完成回调。<br/>在设置的开发者选项中关闭过渡动画，以及tempo设置为+∞时，动画播放完成回调会立即执行。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>|
+| onFinish   | ()&nbsp;=&gt;&nbsp;void      | 否 | 是 | 动画播放完成回调，回调触发时机受finishCallbackType参数影响，详见finishCallbackType说明。UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，触发播放完成回调。<br/>在设置的开发者选项中关闭过渡动画，以及tempo设置为+∞时，动画播放完成回调会立即执行。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>|
 | finishCallbackType<sup>11+</sup>   | [FinishCallbackType](#finishcallbacktype11)| 否 | 是| 在动画中定义onFinish回调的类型。<br/>默认值：FinishCallbackType.REMOVED<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | expectedFrameRateRange<sup>11+</sup>   | [ExpectedFrameRateRange](#expectedframeraterange11) | 否 | 是 | 设置动画的期望帧率。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
@@ -65,7 +65,7 @@ interpolate(fraction:&nbsp;number): number
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 返回归一化time时间点对应的曲线插值。 |
+| number | 返回归一化时间点对应的曲线插值。 |
 
 ## FinishCallbackType<sup>11+</sup>
 
@@ -96,8 +96,8 @@ interpolate(fraction:&nbsp;number): number
 
 | 名称  | 类型     |  只读 | 可选    | 说明      |
 |-----|--------|---------|------- |---------|
-| min | number | 否 | 否 | 期望的最小帧率，单位为帧/秒（fps）。<br/>取值范围为[0, 设备最大帧率]。 |
-| max | number | 否 | 否 | 期望的最大帧率，单位为帧/秒（fps）。<br/>取值范围为[min, 设备最大帧率]。设备最大帧率取决于设备屏幕的刷新率，例如60Hz屏幕的设备最大帧率为60fps，120Hz屏幕的设备最大帧率为120fps。 |
+| min | number | 否 | 否 | 期望的最小帧率，单位为帧/秒（fps）。<br>取值范围为[0, 设备最大帧率]。 |
+| max | number | 否 | 否 | 期望的最大帧率，单位为帧/秒（fps）。<br>取值范围为[min, 设备最大帧率]。设备最大帧率取决于设备屏幕的刷新率，例如60Hz屏幕的设备最大帧率为60fps，120Hz屏幕的设备最大帧率为120fps。 |
 | expected | number | 否 | 否 | 期望的最优帧率，单位为帧/秒（fps）。<br/>取值范围为[min, max]。设置为0时，将跟随应用的帧率。 |
 
 ## animateTo<sup>(deprecated)</sup>
@@ -110,7 +110,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 从API version 7开始支持，从API version 18开始废弃，建议使用[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)替代。
 > - 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)来明确UI的执行上下文。
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
-> - 如果在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中调用动画，自定义组件内的build还未执行，内部组件还未创建，动画时机过早，动画属性没有初值无法对组件产生动画。
+> - 如果在[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)中调用动画，由于自定义组件内的build还未执行、内部组件还未创建，动画时机过早。此时动画属性没有初值，无法对组件产生动画。
 > - 执行[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)时，组件即将销毁，不能在aboutToDisappear里面做动画。
 > - 在组件出现和消失时，可以通过[组件内转场](./ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[示例2](#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
@@ -126,7 +126,7 @@ animateTo(value: AnimateParam, event: () => void): void
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
 | value | [AnimateParam](#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
-| event | () => void                        | 是    | 指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| event | () => void                        | 是    | 指定动效的闭包函数，闭包函数内引起的状态变化，系统会自动插入过渡动画。 |
 
 ## 示例
 

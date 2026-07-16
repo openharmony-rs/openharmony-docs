@@ -262,7 +262,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -1375,6 +1375,20 @@ Allows an application to install and load self-distributed plug-ins.
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+Allows an application to register audio accessories with the system.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
 ## ohos.permission.ALLOW_USE_BM
 
 Allows an application to call BM tools in developer mode.
@@ -1419,6 +1433,20 @@ Allows an application to record downlink data of cellular calls.
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_SANDBOX_BUNDLE
+
+Allows an application to manage sandbox applications.
+
+<!--RP97--><!--RP97End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
 ## ohos.permission.DETECT_DEVICE
 
 Allows an application to invoke the smart diagnosis service to obtain data.
@@ -1430,5 +1458,19 @@ Allows an application to invoke the smart diagnosis service to obtain data.
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_SE_KEY
+
+Allows an application to generate, use, and delete secure element keys.
+
+<!--RP100--><!--RP100End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-单选框，提供相应的用户交互选择项。
+单选框，提供单选类型的用户交互选择项。
 
 >  **说明：**
 >
@@ -49,9 +49,9 @@ Radio(options: RadioOptions)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | value | string | 否 | 否 | 当前单选框的值。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的单选框只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 是 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件以中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## RadioIndicatorType<sup>12+</sup>枚举说明
 
@@ -113,7 +113,7 @@ checked(isChecked: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -233,11 +233,11 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 | 参数名    | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| isChecked | boolean | 是   | 单选框的状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| isChecked | boolean | 是   | 单选框状态变化后的新选中状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 ## RadioStyle<sup>10+</sup>对象说明
 
-单选框的颜色。
+单选框的样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -265,12 +265,12 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 | ------ | ------ |-------------------------------- |-------------------------------- |-------------------------------- |
 | value | string | 否 | 否 |当前单选框的值。 |
 | checked | boolean| 否 | 否 | 设置单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
-| triggerChange |Callback\<boolean>|否|否|触发单选框选中状态变化。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| triggerChange |Callback\<boolean>|否|否|用于触发单选框选中状态变化的回调函数。<br/>调用时传入true将单选框设置为选中状态，传入false设置为未选中状态。 |
 
 
 ## 示例
 ### 示例1 （设置底板颜色）
-该示例通过配置checkedBackgroundColor实现自定义单选框的底板颜色。
+该示例通过配置checkedBackgroundColor以自定义单选框的底板颜色。
 ```ts
 // xxx.ets
 @Entry
@@ -320,7 +320,7 @@ struct RadioExample {
 ```
 ![radio](figures/radio.gif)
 ### 示例2 （设置选中样式）
-该示例通过配置indicatorType、indicatorBuilder实现自定义选中样式。
+该示例通过配置indicatorType和indicatorBuilder以自定义选中样式。
 ```ts
 // xxx.ets
 @Entry
@@ -329,7 +329,7 @@ struct RadioExample {
   @Builder 
   indicatorBuilder() {
     // $r('app.media.star')需要替换为开发者所需的图像资源文件。
-    Image($r("app.media.star"))
+    Image($r('app.media.star'))
   }
   build() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -401,9 +401,9 @@ function buildRadio(config: RadioConfiguration) {
       .backgroundColor('#2787D9')
       .onClick(() => {
         if (config.checked) {
-          config.triggerChange(false);
+          config.triggerChange(false); // 触发单选框选中状态变化，设置为未选中
         } else {
-          config.triggerChange(true);
+          config.triggerChange(true); // 触发单选框选中状态变化，设置为选中
         }
       })
   }
@@ -411,7 +411,7 @@ function buildRadio(config: RadioConfiguration) {
 
 @Entry
 @Component
-struct refreshExample {
+struct RadioExample {
   build() {
     Column({ space: 50 }) {
       Row() {

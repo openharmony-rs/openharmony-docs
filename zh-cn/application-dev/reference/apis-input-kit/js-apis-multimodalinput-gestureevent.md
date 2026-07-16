@@ -27,7 +27,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
+| type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型，包括手势取消、手势开始、手势更新、手势结束。                                   |
 | scale        | number      | 否    | 否    | 捏合度，取值范围大于等于0。                             |
 
 ## Rotate<sup>11+</sup>

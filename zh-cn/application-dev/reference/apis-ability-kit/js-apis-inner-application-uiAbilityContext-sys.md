@@ -245,7 +245,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -970,7 +970,7 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 连接ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 与ServiceExtensionAbility建立连接后回调函数的实例。 |
 
@@ -1049,6 +1049,8 @@ export default class EntryAbility extends UIAbility {
 startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void\>): void
 
 根据want和accountId启动UIAbility。使用callback异步回调。仅支持在主线程调用。
+
+与[startAbilityForResultWithAccount](#startabilityforresultwithaccount)的区别在于，此方法不返回被拉起方退出时的结果信息，适用于不需要获取结果码的场景。
 
 > **说明：**
 >
@@ -1162,7 +1164,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
@@ -1261,7 +1263,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -1695,7 +1697,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动UIAbility的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -1875,7 +1877,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startAbilityAsCaller<sup>10+<sup>
+### startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
@@ -1954,7 +1956,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startAbilityAsCaller<sup>10+<sup>
+### startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
@@ -1984,7 +1986,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | ------- | -------------------------------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | The application is not system-app, can not use system-api. |
-| 401 | 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
@@ -2035,7 +2037,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### startAbilityAsCaller<sup>10+<sup>
+### startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
@@ -2054,7 +2056,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动UIAbility的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数，用于指定目标UIAbility启动时的选项，如窗口模式等。不传此参数时使用系统默认启动配置。 |
 
 **返回值：**
 
@@ -2124,7 +2126,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### requestModalUIExtension<sup>11+<sup>
+### requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
@@ -2208,7 +2210,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### requestModalUIExtension<sup>11+<sup>
+### requestModalUIExtension<sup>11+</sup>
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 请求在指定的前台应用上拉起对应类型的UIExtensionAbility。使用callback异步回调。仅支持在主线程调用。
@@ -2399,7 +2401,7 @@ connectAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 连接ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 与ServiceExtensionAbility建立连接后回调函数的实例。 |
 

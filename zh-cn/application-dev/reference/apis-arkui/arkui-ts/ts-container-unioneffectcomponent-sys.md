@@ -16,7 +16,7 @@
 >
 > - 本模块为系统接口。
 > 
-> - 形状融合过程可以添加动画。
+> - 形状融合过程中，开发者可通过动画接口为融合形变添加过渡动画效果。
 
 ## 子组件
 
@@ -36,11 +36,11 @@ UnionEffectContainer(options?: UnionEffectContainerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数:**
+**参数：**
 
 | 参数名            | 类型        | 必填   | 说明                                     |
 | -------------- | ---------------------------------------- | ---- |  ---------------------------------------- |
-| options      | [UnionEffectContainerOptions](#unioneffectcontaineroptions对象说明) | 否    |  UnionEffectContainer构造参数，用于决定收集到的后代组件形状的融合程度。<br/>默认值：{spacing:0}               |
+| options      | [UnionEffectContainerOptions](#unioneffectcontaineroptions对象说明) | 否    |  UnionEffectContainer构造参数，用于决定收集到的后代组件形状的融合形变程度。<br>默认值：{spacing:0}               |
 
 ## UnionEffectContainerOptions对象说明
 
@@ -54,7 +54,7 @@ UnionEffectContainer(options?: UnionEffectContainerOptions)
 
 | 名称        | 类型                                    | 只读 | 可选 | 说明                                                     |
 | ----------- | --------------------------------------- | ---- | ---------- | ---------------------------------------------- |
-| spacing | number | 否 | 是  | spacing表示后代组件发生融合形变的程度。它不代表实际的间距，只有设置了使用祖先组件UnionEffectContainer融合效果的后代组件且后代组件靠近到一定程度时才会发生融合。<br/>**说明：**<br/>设置的spacing大于0，且设置了祖先组件UnionEffectContainer融合效果的后代组件彼此靠近到一定程度，这些后代组件会开始相互融合形变，且随着距离的变近融合形变的效果越强。该值越大，后代组件彼此靠近时，它们的融合会越早开始，越容易发生融合形变。<br/>默认值：0，此时子组件形状会融合在一起，但不会有形变效果。<br/>取值范围：[0, +∞)。小于0时按0处理。 |
+| spacing | number | 否 | 是  | spacing表示后代组件发生融合形变的程度。它不代表实际的间距，只有设置了使用祖先组件UnionEffectContainer融合效果的后代组件且后代组件靠近到一定程度时才会发生融合。<br/>**说明：**<br/>设置的spacing大于0，且设置了祖先组件UnionEffectContainer融合效果的后代组件彼此靠近到一定程度，这些后代组件会开始相互融合形变，且随着距离的变近融合形变的效果越强。该值越大，后代组件彼此靠近时，它们的融合会越早开始，越容易发生融合形变。<br/>默认值：0，此时后代组件形状会融合在一起，但不会有形变效果。<br/>取值范围：[0, +∞)。小于0时按0处理。 |
 
 ## 事件
 
@@ -86,7 +86,7 @@ pointLight(value: PointLightStyle)
 
 | 参数名 | 类型                                                         | 必填 | 说明         |
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
-| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 是   | 点光源样式。 |
+| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 是   | 点光源样式，用于设置UnionEffectContainer融合形状上的点光源效果。 |
 
 ### unionMode
 
@@ -122,8 +122,8 @@ unionMode(mode: UnionMode)
 
 | 名称           | 值  | 说明                         |
 | -------------- | --- |---------------------------- |
-| SMOOTH_UNION       | 0   | 平滑的融合形变效果。            |
-| GRAVITY_UNION      | 1   | 引力作用下的融合形变效果。<br/>**说明：**<br/>设置该类型时，需要结合[useUnionEffect](./ts-universal-attributes-use-union-effect-sys.md#useunioneffect-1)并设置[GravityCenterOptions](./ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions)的gravityCenter为true才能生效。            |
+| SMOOTH_UNION       | 0   | 平滑的融合形变效果，适用于需要平滑过渡和自然连接的融合场景。            |
+| GRAVITY_UNION      | 1   | 引力作用下的融合形变效果，适用于需要模拟引力吸引效果的融合场景，如元素间存在吸引和靠近趋势的视觉表现。<br/>**说明：**<br/>设置该类型时，需要结合[useUnionEffect](ts-universal-attributes-use-union-effect-sys.md#useunioneffect-1)并设置[GravityCenterOptions](ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions)的gravityCenter为true才能生效。            |
 
 ## 示例
 
@@ -132,7 +132,7 @@ unionMode(mode: UnionMode)
 该示例主要演示如何使用[UnionEffectContainer](#unioneffectcontainer)组件，通过改变spacing值或后代组件的距离，产生融合形变效果。
 
 ```ts
-//UnionEffectContainerPage.ets
+// UnionEffectContainerPage.ets
 @Entry
 @Component
 struct UnionEffectContainerPage {
@@ -149,7 +149,7 @@ struct UnionEffectContainerPage {
               .height(100)
               .margin({ top: 10 })
               .borderRadius(50)
-              .useUnionEffect(true)//设置useUnionEffect属性，使用融合效果
+              .useUnionEffect(true) // 设置useUnionEffect属性，使用融合效果
               .translate({ y: this.translateY })
 
             Column()
@@ -161,10 +161,10 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('80%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
 
         Row({ space: 30 }) {
-          Text("translate:")
+          Text('translate:')
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
@@ -193,7 +193,7 @@ struct UnionEffectContainerPage {
               .height(100)
               .margin({ top: 10 })
               .borderRadius(50)
-              .useUnionEffect(true) //设置useUnionEffect属性，使用融合效果
+              .useUnionEffect(true) // 设置useUnionEffect属性，使用融合效果
 
             Column()
               .width(200)
@@ -204,10 +204,10 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('80%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
 
         Row({ space: 30 }) {
-          Text("spacing:")
+          Text('spacing:')
           Button('+20')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
@@ -258,7 +258,7 @@ struct UnionEffectContainerPage {
   build() {
     Column() {
       Column() {
-        Text("UnionMode.SMOOTH_UNION")
+        Text('UnionMode.SMOOTH_UNION')
         UnionEffectContainer({ spacing: 10 }) {
           Column({ space: 50 }) {
             Column()
@@ -266,7 +266,7 @@ struct UnionEffectContainerPage {
               .height(100)
               .margin({ top: 10 })
               .borderRadius(50)
-              .useUnionEffect(true)// 设置useUnionEffect属性，使用融合效果
+              .useUnionEffect(true) // 设置useUnionEffect属性，使用融合效果
               .translate({ y: this.translateY1 })
 
             Column()
@@ -278,11 +278,11 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('75%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
         .unionMode(UnionMode.SMOOTH_UNION)
 
         Row({ space: 30 }) {
-          Text("translate:")
+          Text('translate:')
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
@@ -304,7 +304,7 @@ struct UnionEffectContainerPage {
       .margin({ top: 10 })
 
       Column() {
-        Text("UnionMode.GRAVITY_UNION")
+        Text('UnionMode.GRAVITY_UNION')
         UnionEffectContainer({ spacing: 1000 }) {
           Column({ space: 50 }) {
             Column()
@@ -312,7 +312,7 @@ struct UnionEffectContainerPage {
               .height(40)
               .margin({ top: 10 })
               .borderRadius(20)
-              .useUnionEffect(true, {gravityCenter: true, gravityIntensity: 60})// 设置useUnionEffect属性，使用融合效果
+              .useUnionEffect(true, {gravityCenter: true, gravityIntensity: 60}) // 设置useUnionEffect属性，使用融合效果
               .translate({ y: this.translateY2 })
 
             Column()
@@ -324,11 +324,11 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('75%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
         .unionMode(UnionMode.GRAVITY_UNION)
 
         Row({ space: 30 }) {
-          Text("translate:")
+          Text('translate:')
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {

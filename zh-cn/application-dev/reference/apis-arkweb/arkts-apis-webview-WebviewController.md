@@ -4833,6 +4833,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 > - prefetchPage对302重定向页面同样正常预取。
 >
 > - 先执行prefetchPage再加载页面时，已预取的资源将直接从缓存中加载。
+>
+> - prefetchPage会缓存所有资源，但具有Cache-Control: no-store标头的资源除外。如果存在Vary响应标头、Cache-Control: no-store标头，或者下载的页面资源已超过五分钟，则在使用之前会重新验证资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4902,6 +4904,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 > - 连续prefetchPage多个URL只有第一个生效。
 >
 > - prefetchPage有时间限制，500ms内不能多次预取。
+>
+> - prefetchPage会缓存所有资源，但具有Cache-Control: no-store标头的资源除外。如果存在Vary响应标头、Cache-Control: no-store标头，或者下载的页面资源已超过五分钟，则在使用之前会重新验证资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4992,7 +4996,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
     webview.WebviewController.prefetchResource(
       {
         url: "https://www.example1.com/post?e=f&g=h",
@@ -5039,7 +5043,7 @@ struct WebComponent {
     Column() {
       Web({ src: "https://www.example.com/", controller: this.controller })
         .onAppear(() => {
-          // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+          // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
           webview.WebviewController.prefetchResource(
             {
               url: "https://www.example1.com/post?e=f&g=h",
@@ -5098,7 +5102,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // 预连接时，需要將'https://www.example.com'替换成一个真实的网站地址。
+    // 预连接时，需要将'https://www.example.com'替换成一个真实的网站地址。
     webview.WebviewController.prepareForPageLoad("https://www.example.com", true, 2);
     AppStorage.setOrCreate("abilityWant", want);
     console.info("EntryAbility onCreate done");
@@ -6326,7 +6330,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 返回打印文档的适配器。 |
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 打印文档的适配器，用于控制打印行为和打印任务，可通过打印服务打印当前网页内容。 |
 
 **错误码：**
 
@@ -8959,6 +8963,10 @@ struct Index {
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
                 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                if (error) {
+                  console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
@@ -8996,7 +9004,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页数据流。 |
+| Promise<[PdfData](./arkts-apis-webview-PdfData.md)> | Promise实例，返回网页PDF数据流（PdfData对象，包含ArrayBuffer表示的PDF二进制数据）。 |
 
 **错误码：**
 
@@ -9860,6 +9868,10 @@ static enablePrivateNetworkAccess(enable: boolean): void
 
 启用后，Web组件将对私有网络请求（如访问本地服务器或内网资源）进行CORS预检。它会先发送OPTIONS预检请求，获取目标服务器的显式授权，然后传输实际数据。禁用此功能将跳过安全检查。
 
+> **说明：**
+>
+> 当前私有网络访问检查功能主要针对Web Worker场景生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -9895,6 +9907,10 @@ struct WebComponent {
 static isPrivateNetworkAccessEnabled(): boolean
 
 获取Web组件是否启用了私有网络访问检查功能。
+
+> **说明：**
+>
+> 当前私有网络访问检查功能主要针对Web Worker场景生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

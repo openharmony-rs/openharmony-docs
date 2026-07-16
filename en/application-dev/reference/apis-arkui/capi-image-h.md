@@ -8,9 +8,9 @@
 
 ## Overview
 
-Defines **Image** node types for **NativeNode** APIs.
+Defines **Image** node types for **NativeNode** APIs, which are used to create and configure **Image** components in native applications, including image repetition patterns, width and height styles, filling effects, interpolation optimization, dynamic ranges, rotation directions, and render modes.
 
-**File to include:** <arkui/image.h>
+**File to include:** <arkui/node_attributes/image.h>
 
 **Library:** libace_ndk.z.so
 
@@ -32,7 +32,7 @@ Defines **Image** node types for **NativeNode** APIs.
 | [ArkUI_ImageSize](#arkui_imagesize) | ArkUI_ImageSize | Enumerates the image sizes.|
 | [ArkUI_ObjectFit](#arkui_objectfit) | ArkUI_ObjectFit | Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components-image.md) component.|
 | [ArkUI_ImageInterpolation](#arkui_imageinterpolation) | ArkUI_ImageInterpolation | Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.|
-| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode) | ArkUI_DynamicRangeMode | Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.|
+| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode) | ArkUI_DynamicRangeMode | Enumerates the dynamic range modes (for example, SDR/HDR).|
 | [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation) | ArkUI_ImageRotateOrientation | Enumerates image rotation directions.|
 | [ArkUI_ImageRenderMode](#arkui_imagerendermode) | ArkUI_ImageRenderMode | Enumerates the image rendering modes.|
 
@@ -46,7 +46,7 @@ enum ArkUI_ImageRepeat
 
 **Description**
 
-Enumerates the image repeat patterns.
+Enumerates the image repeat patterns. This enumeration is used to control how an image is repeatedly drawn in scenarios such as backgrounds and patterns. For example, a small pattern can be used to fill the entire background in a wallpaper application.
 
 **Since:** 12
 
@@ -65,14 +65,14 @@ enum ArkUI_ImageSize
 
 **Description**
 
-Enumerates the image sizes.
+Enumerates the image sizes. This enumeration is used to control how an image is scaled in a display area: **ARKUI_IMAGE_SIZE_AUTO** retains the original image aspect ratio. **ARKUI_IMAGE_SIZE_COVER** is suitable for scenarios where the image needs to fully occupy the container (such as album thumbnails). **ARKUI_IMAGE_SIZE_CONTAIN** is used in scenarios where the image needs to be displayed completely (such as preview on a details page).
 
 **Since:** 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_IMAGE_SIZE_AUTO = 0 | The original image aspect ratio is retained.|
-| ARKUI_IMAGE_SIZE_COVER = 1 | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
+| ARKUI_IMAGE_SIZE_COVER = 1 | The image is scaled with its aspect ratio retained for the width and height to be greater than or equal to the display boundaries (the part that exceeds the boundaries may be clipped).|
 | ARKUI_IMAGE_SIZE_CONTAIN = 2 | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
 
 ### ArkUI_ObjectFit
@@ -83,18 +83,18 @@ enum ArkUI_ObjectFit
 
 **Description**
 
-Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components-image.md) component.
+Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components-image.md) component. **ARKUI_OBJECT_FIT_CONTAIN** is applicable to scenarios where the image needs to be displayed completely. **ARKUI_OBJECT_FIT_COVER** is applicable to scenarios where the image needs to fully occupy the container. **ARKUI_OBJECT_FIT_SCALE_DOWN** is applicable to scenarios where the image needs to be scaled down when it is too large.
 
 **Since:** 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
-| ARKUI_OBJECT_FIT_COVER = 1 | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
-| ARKUI_OBJECT_FIT_AUTO = 2 | The image is scaled automatically to fit the display area.|
+| ARKUI_OBJECT_FIT_COVER = 1 | The image is scaled with its aspect ratio retained for the width and height to be greater than or equal to the display boundaries (the part that exceeds the boundaries may be clipped).|
+| ARKUI_OBJECT_FIT_AUTO = 2 | The image is displayed in an appropriate fill mode that is automatically selected based on the sizes of the image and container.|
 | ARKUI_OBJECT_FIT_FILL = 3 | The image is scaled to fill the display area, and its aspect ratio is not retained.|
-| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | The image is displayed with its aspect ratio retained, in a size smaller than or equal to the original size.|
-| ARKUI_OBJECT_FIT_NONE = 5 | The original size is retained.|
+| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | The image is displayed with its aspect ratio retained, in a size less than or equal to the original size.|
+| ARKUI_OBJECT_FIT_NONE = 5 | The image size remains unchanged.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | Not resized, the image is aligned with the start edge of the top of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | Not resized, the image is horizontally centered at the top of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | Not resized, the image is aligned with the end edge at the top of the container.|
@@ -104,7 +104,7 @@ Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | Not resized, the image is aligned with the start edge at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | Not resized, the image is horizontally centered at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | Not resized, the image is aligned with the end edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The image maintains its original size. Must be used with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype).<br>**Since:** 21|
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The original image size is retained. This value must be used together with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) in the **Image** component to control the image display effect (such as scaling, rotation, and translation) through matrix transformation. If this value is not used together with **NODE_IMAGE_IMAGE_MATRIX**, it will not take effect.<br>**Since:** 21|
 
 ### ArkUI_ImageInterpolation
 
@@ -114,16 +114,16 @@ enum ArkUI_ImageInterpolation
 
 **Description**
 
-Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.
+Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images. **ARKUI_IMAGE_INTERPOLATION_LOW** is suitable for performance-sensitive scenarios with low image quality requirements (such as quick scrolling of list thumbnails). **ARKUI_IMAGE_INTERPOLATION_MEDIUM** is suitable for most common scenarios. **ARKUI_IMAGE_INTERPOLATION_HIGH** is suitable for scenarios with high image quality requirements (such as image viewers).
 
 **Since:** 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_IMAGE_INTERPOLATION_NONE = 0 | No image interpolation.|
-| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | Low quality interpolation.|
-| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | Medium quality interpolation.|
-| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | High quality interpolation. This mode produces scaled images of the highest possible quality.|
+| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | Low-quality image interpolation. It provides low computing workload and fast rendering speed, which is suitable for scenarios that do not require high image quality or need to quickly render a large number of images.|
+| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | Medium-quality image interpolation. It strikes a balance between computing workload and image quality, which is suitable for most common display scenarios.|
+| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | High-quality image interpolation. This mode produces scaled images of the highest possible quality. It involves a large amount of computing workload and high resource consumption, which is suitable for display scenarios that require high image quality.|
 
 ### ArkUI_DynamicRangeMode
 
@@ -133,13 +133,13 @@ enum ArkUI_DynamicRangeMode
 
 **Description**
 
-Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.
+Enumerates the dynamic range modes (for example, SDR/HDR). **ARKUI_DYNAMIC_RANGE_MODE_HIGH** is applicable to high-end devices that support HDR display and HDR content. **ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT** is applicable to transition scenarios where SDR needs to be compatible with. **ARKUI_DYNAMIC_RANGE_MODE_STANDARD** is applicable to common display devices.
 
 **Since:** 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image (typically, the maximum brightness may be greater than 1,000 nits). A wider range makes image brightness closer to a perception range of human eyes in real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
 | ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
 | ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed.|
 
@@ -151,13 +151,13 @@ enum ArkUI_ImageRotateOrientation
 
 **Description**
 
-Enumerates image rotation directions.
+Enumerates image rotation directions. It is used to adjust the display orientation of an image based on its Exif metadata or a manually specified value, which is suitable for processing the orientation of photos taken by users or correcting the display of photos.
 
 **Since:** 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 | Use Exif metadata for display orientation, with support for rotation and mirroring. Exif is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos.|
+| ARKUI_ORIENTATION_AUTO = 0 | Use Exif metadata for display orientation, with support for rotation and mirroring.|
 | ARKUI_ORIENTATION_UP = 1 | Display original pixel data without transformation.|
 | ARKUI_ORIENTATION_RIGHT = 2 | Display the image after rotating it 90 degrees clockwise.|
 | ARKUI_ORIENTATION_DOWN = 3 | Display the image after rotating it 180 degrees clockwise.|
@@ -175,7 +175,7 @@ enum ArkUI_ImageRenderMode
 
 **Description**
 
-Enumerates the image rendering modes.
+Enumerates the image rendering modes. **ARKUI_IMAGE_RENDER_MODE_ORIGINAL** is applicable to scenarios where the original image color needs to be retained. **ARKUI_IMAGE_RENDER_MODE_TEMPLATE** is applicable to scenarios where a monochrome or black-and-white display is required (such as selected icons and colored icons).
 
 **Since:** 12
 

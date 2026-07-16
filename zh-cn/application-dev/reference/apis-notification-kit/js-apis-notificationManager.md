@@ -71,6 +71,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 | 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11+       |
 | 1600016  | The notification version for this update is too low.<br> 适用版本：11+                             |
 | 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.<br> 适用版本：11+                                                             |
 
 **示例：**
@@ -142,6 +143,7 @@ publish(request: NotificationRequest): Promise\<void\>
 | 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11+       |
 | 1600016  | The notification version for this update is too low.<br> 适用版本：11+                             |
 | 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12+ |
+| 1600029  | The system failed to find the ExtensionAbility instance for the custom Live View widget template.<br> 适用版本：26.0.0+ |
 | 2300007  | Network unreachable.<br> 适用版本：11+                                                             |
 
 **示例：**
@@ -849,8 +851,6 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.<br> 适用版本：9-10                                     |
-| 202      | Not system application to call the interface.<br> 适用版本：9-10                                     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -896,8 +896,6 @@ isNotificationEnabled(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.<br> 适用版本：9-10                                     |
-| 202      | Not system application to call the interface.<br> 适用版本：9-10                                     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.        |
@@ -1696,9 +1694,9 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1742,9 +1740,9 @@ isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃<!--Del-->，建议使用有deviceType入参的[isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20)替代<!--DelEnd-->。
 
 **系统能力**：SystemCapability.Notification.Notification
 

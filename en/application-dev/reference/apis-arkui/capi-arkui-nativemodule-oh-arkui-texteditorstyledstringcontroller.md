@@ -12,10 +12,10 @@ typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyl
 
 ## Overview
 
-Defines the attribute string controller of the text editor.
+Defines the styled string controller of the text editor.
 
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [rich_editor.h](capi-rich-editor-h.md)

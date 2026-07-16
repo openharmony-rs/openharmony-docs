@@ -22,11 +22,11 @@ This error code is reported when the operation is attempted on a node that is no
 
 **Possible Causes**
 
-The provided **ArkUI_NodeHandle** pointer references a node that is not of type ARKUI_NODE_CUSTOM.
+The provided **ArkUI_NodeHandle** pointer references a node that is not of type **ARKUI_NODE_CUSTOM**.
 
 **Solution**
 
-When integrating a render node, ensure that you create an NDK node of type ARKUI_NODE_CUSTOM as the root node for the render node.
+When integrating a render node process, create an NDK node of the **ARKUI_NODE_CUSTOM** type as the root node of the render node.
 
 ## 106402 Current Node Already Has Child Nodes
 
@@ -62,7 +62,7 @@ The provided **ArkUI_RenderNodeHandle** pointer references a node that is alread
 
 **Solution**
 
-When integrating a render node, verify whether the render node designated as the root is already mounted under another component.
+When integrating a render node, check whether the RenderNode designated as the root node is already mounted under another component.
 
 ## 106404 Corresponding Render Child Node Not Found
 
@@ -80,7 +80,7 @@ The render node referenced by the provided **ArkUI_RenderNodeHandle** pointer do
 
 **Solution**
 
-Verify whether the provided index exceeds the node's range, or whether the render node referenced by the pointer contains any child nodes.
+Check whether the provided index exceeds the node's range, or whether the render node referenced by the pointer contains any child nodes.
 
 ## 106405 Parameter Value Out of Range
 
@@ -108,7 +108,7 @@ The RenderNode is obtained from a FrameNode.
 
 **Description**
 
-This error code is reported when an attempt is made to perform unsupported operations on a RenderNode obtained from a FrameNode.
+This error code is reported when the operation is attempted on the RenderNode that is obtained from a FrameNode.
 
 **Possible Causes**
 
@@ -126,11 +126,11 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 
 **Description**
 
-This error code is reported when the RenderNode is obtained from a FrameNode and its corresponding FrameNode has been unadopted or destroyed.
+This error code is reported when the FrameNode from which the RenderNode is obtained has been disposed or is no longer adopted.
 
 **Possible Causes**
 
-The FrameNode from which the RenderNode is obtained has been unadopted or destroyed.
+After the RenderNode is obtained from the adopted FrameNode, the FrameNode is no longer adopted or is destructed.
 
 **Solution**
 
@@ -144,7 +144,7 @@ The node is not adopted.
 
 **Description**
 
-This error code is reported when an attempt is made to obtain a RenderNode from a node that is not in the adopted state.
+This error code is reported when the node is not adopted, making its RenderNode inaccessible.
 
 **Possible Causes**
 

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-PopupV2用于显示特定样式的气泡。
+PopupV2用于显示特定样式的气泡，适用于提示信息、操作确认或信息通知等需要用户关注或响应的场景。
 
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制显示特定样式的气泡，实现更高效的用户界面刷新。
 
@@ -34,8 +34,6 @@ PopupV2(options: PopupV2InitInfo): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **参数：**
 
 | 参数名  | 类型                          | 必填 | 说明                  |
@@ -52,21 +50,19 @@ PopupV2(options: PopupV2InitInfo): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 | 名称        | 类型       | 只读      | 可选      | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
 | icon      | [ResourceStr](ts-types.md#resourcestr)                 | 否   | 是 | 设置PopupV2图标。<br/>**说明：** 默认值：''，不显示图标。  |
 | title     | [ResourceStr](ts-types.md#resourcestr)                        | 否   | 是  | 设置PopupV2标题文本。<br/>**说明：** 默认值：''，不显示标题文本。 |
-| message   | [ResourceStr](ts-types.md#resourcestr)                       | 是  | 否  | 设置PopupV2内容文本。<br/>**说明：** 默认值：''，不显示内容文本。|
+| message   | [ResourceStr](ts-types.md#resourcestr)                       | 否  | 否  | 设置PopupV2内容文本。<br/>**说明：** 默认值：''，不显示内容文本。|
 | titleModifier      | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                | 否   | 是 | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，使用系统标题文本属性。|
 | iconModifier     | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                        | 否   | 是  | 设置图标属性，如图标颜色、大小、边框等。<br/>默认值：undefined，使用系统图标属性。|
 | messageModifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                       | 否  | 是  | 设置内容文本属性，如设置内容文本颜色、字体大小、字重等。<br/>默认值：undefined，使用系统内容文本属性。|
 | showClose | boolean \| [Resource](ts-types.md#resource)                | 否   | 是  | 设置PopupV2关闭按钮。true：显示关闭按钮；false：不显示关闭按钮。Resource类型：显示对应的图标。<br/>默认值：true|
 | onClose   | Callback\<void\>                                                   | 否   | 是  | 设置PopupV2关闭按钮回调函数。<br/>默认不设置关闭按钮回调函数。|
-| buttons   | [[PopupV2Button](#popupv2button)?,[PopupV2Button](#popupv2button)?] | 否   | 是  | 设置PopupV2操作按钮，按钮最多设置两个。默认不显示按钮。<br/>默认值：[{ text: '' }, { text: '' }] | 
-| direction | [Direction](ts-appendix-enums.md#direction)                                             | 否                                | 是                               | 布局方向。<br/>默认值：Direction.Auto |
-| maxWidth  | [Dimension](ts-types.md#dimension10)                                             | 否                                | 是                               |  设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。<br/>默认值：400vp<br/>**说明：** <br/>1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。<br/>2. maxWidth是数字类型，支持float和整型，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。<br/>3. 当类型为Resource时，如果未设置单位，默认单位为px。 |
+| buttons   | [[PopupV2Button](#popupv2button)?,[PopupV2Button](#popupv2button)?] | 否   | 是  | 设置PopupV2操作按钮，按钮最多设置两个。默认不显示按钮。<br/>默认值：[{ text: '' }, { text: '' }] |
+| direction | [Direction](ts-appendix-enums.md#direction) | 否   | 是  | 设置PopupV2的布局方向，用于控制文本排列与对齐方式，适用于国际化场景下的RTL（从右到左）布局。具体枚举值含义见[Direction](ts-appendix-enums.md#direction)。<br/>默认值：Direction.Auto |
+| maxWidth  | [Dimension](ts-types.md#dimension10)                                             | 否                                | 是                               |  设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。<br/>默认值：400vp<br/>**说明：** <br/>1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。<br/>2. maxWidth为[Dimension](ts-types.md#dimension10)类型，支持数字、百分比或带单位的字符串（如400、'50%'、'400vp'）。在使用引用资源类型时，资源类型支持float和整型，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。<br/>3. 当类型为Resource时，如果未设置单位，默认单位为px。 |
 
 
 ## PopupV2Button
@@ -78,8 +74,6 @@ PopupV2Button定义按钮的相关属性和事件。
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                 |
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |
@@ -132,7 +126,7 @@ struct PopupExample {
               console.info('cancel button click');
             },
             buttonTextModifier: new TextModifier().fontSize(15).fontColor(Color.Black)
-          }] as [PopupV2Button| undefined, PopupV2Button|undefined]
+          }] as [PopupV2Button | undefined, PopupV2Button | undefined]
       })
     }
     .width(300)
@@ -145,9 +139,9 @@ struct PopupExample {
 
 ![](figures/popupv2_1.png)
 
-### 示例2（设置镜像效果）
+### 示例2（设置布局方向）
 
-该示例通过配置[direction](#popupv2initinfo)实现镜像布局效果。
+该示例通过配置[direction](#popupv2initinfo)实现镜像布局效果，适用于国际化场景下的RTL（从右到左）布局需求。
 
 从API版本26.0.0开始，新增direction参数。
 
@@ -189,7 +183,7 @@ struct PopupExample {
               console.info('cancel button click');
             },
             buttonTextModifier: new TextModifier().fontSize(15).fontColor(Color.Black)
-          }] as [PopupV2Button| undefined, PopupV2Button|undefined]
+          }] as [PopupV2Button | undefined, PopupV2Button | undefined]
       })
     }
     .width('100%')
@@ -203,7 +197,7 @@ struct PopupExample {
 
 ### 示例3（设置自定义宽度）
 
-该示例通过配置[maxWidth](#popupv2initinfo)实现自定义宽度效果。
+该示例通过配置[maxWidth](#popupv2initinfo)实现自定义宽度效果，适用于内容较长的消息通知等需要调整显示宽度的场景。
 
 从API版本26.0.0开始，新增maxWidth参数。
 
@@ -245,7 +239,7 @@ struct PopupExample {
               console.info('cancel button click');
             },
             buttonTextModifier: new TextModifier().fontSize(15).fontColor(Color.Black)
-          }] as [PopupV2Button| undefined, PopupV2Button|undefined]
+          }] as [PopupV2Button | undefined, PopupV2Button | undefined]
       })
     }
     .width(400)

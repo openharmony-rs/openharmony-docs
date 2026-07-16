@@ -65,9 +65,9 @@ enum ColorSpaceName
 | -- | -- |
 | NONE = 0 | 表示未知的色彩空间。 |
 | ADOBE_RGB = 1 | 表示基于Adobe RGB的色彩空间。 |
-| DCI_P3 = 2 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1：1999的色彩空间。 |
-| DISPLAY_P3 = 3 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1：1999的色彩空间。 |
-| SRGB = 4 | 表示基于IEC 61966-2.1：1999的标准红绿蓝（SRGB）色彩空间。 |
+| DCI_P3 = 2 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。 |
+| DISPLAY_P3 = 3 | 表示基于SMPTE RP 431-2-2007和IEC 61966-2.1:1999的色彩空间。 |
+| SRGB = 4 | 表示基于IEC 61966-2.1:1999的标准红绿蓝（SRGB）色彩空间。 |
 | BT709 = 6 | 表示基于ITU-R BT.709的色彩空间。 |
 | BT601_EBU = 7 | 表示基于ITU-R BT.601的色彩空间。 |
 | BT601_SMPTE_C = 8 | 表示基于ITU-R BT.601的色彩空间。 |
@@ -93,6 +93,8 @@ enum ColorSpaceName
 | DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
+| BT2020_LOG_FULL = 27 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Full的色彩空间。<br/>**起始版本：** 26.0.0 |
+| BT2020_LOG_LIMIT = 28 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为LIMIT的色彩空间。<br/>**起始版本：** 26.0.0 |
 | CUSTOM = 5 | 表示自定义色彩空间。 |
 
 
@@ -199,7 +201,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。 |
+| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
@@ -226,7 +228,7 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 
 | 类型 | 说明 |
 | -- | -- |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | 返回值为float数组，返回值为<0.0, 0.0>表示接口操作失败，其余返回值表示操作成功。 |
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | 返回值为float数组，返回值为<0.0, 0.0>表示接口操作失败，其余返回值表示操作成功。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
@@ -253,6 +255,6 @@ float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColo
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回值为float类型，返回值为0.0表示接口操作失败，其余返回值表示操作成功。 |
+| float | 返回值为float类型，返回值为0.0表示接口操作失败，其余返回值表示操作成功。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：检查参数是否为有效指针。 |
 
 

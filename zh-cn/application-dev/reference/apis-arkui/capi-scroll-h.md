@@ -8,9 +8,9 @@
 
 ## 概述
 
-定义Scroll组件相关的枚举。
+提供滚动方向、边缘效果、滚动条状态、内容裁剪、嵌套滚动、滚动状态和滚动来源等枚举，用于配置和监听Scroll组件及相关可滚动组件的行为。
 
-**引用文件：** <arkui/scroll.h>
+**引用文件：** <arkui/node_attributes/scroll.h>
 
 **库：** libace_ndk.z.so
 
@@ -29,7 +29,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_EdgeEffect](#arkui_edgeeffect) | ArkUI_EdgeEffect | 定义边缘滑动效果枚举值。 |
-| [ArkUI_BarState](#arkui_barstate) | ArkUI_BarState | 定义文本控制滚动条状态枚举值。 |
+| [ArkUI_BarState](#arkui_barstate) | ArkUI_BarState | 定义TextArea和TextEditor组件的滚动条状态枚举值。 |
 | [ArkUI_EffectEdge](#arkui_effectedge) | ArkUI_EffectEdge | 定义边缘效果生效边缘的方向枚举值。 |
 | [ArkUI_ScrollDirection](#arkui_scrolldirection) | ArkUI_ScrollDirection | 定义[Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md)组件排列方向枚举值。 |
 | [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign) | ArkUI_ScrollSnapAlign | 定义列表项滚动结束对齐效果枚举值。 |
@@ -72,7 +72,7 @@ enum ArkUI_BarState
 **描述：**
 
 
-定义文本控制滚动条状态枚举值。
+定义TextArea和TextEditor组件的滚动条状态枚举值。
 
 **起始版本：** 22
 
@@ -118,7 +118,7 @@ enum ArkUI_ScrollDirection
 | ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | 仅支持竖直方向滚动。 |
 | ARKUI_SCROLL_DIRECTION_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
 | ARKUI_SCROLL_DIRECTION_NONE = 3 | 禁止滚动。 |
-| ARKUI_SCROLL_DIRECTION_FREE = 4 | 自由滚动。<br>**起始版本：** 20 |
+| ARKUI_SCROLL_DIRECTION_FREE = 4 | 自由滚动，支持竖直和水平方向滚动，仅在Scroll组件中可用。<br>**起始版本：** 20 |
 
 ### ArkUI_ScrollSnapAlign
 
