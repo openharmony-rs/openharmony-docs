@@ -29,7 +29,7 @@
 
 > **说明：**
 >
-> 仅应用需要克隆、备份或同步用户公共目录的图片、视频类文件时，可申请ohos.permission.READ_IMAGEVIDEO、ohos.permission.WRITE_IMAGEVIDEO权限来读写音频文件，申请方式请参考<!--RP1-->[申请受控权限](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->。
+> 仅应用需要克隆、备份或同步用户公共目录的图片、视频类文件时，可申请ohos.permission.READ_IMAGEVIDEO、ohos.permission.WRITE_IMAGEVIDEO权限来读写图片、视频文件，申请方式请参考<!--RP1-->[申请受控权限](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->。
 
 
 ## 开发步骤及注意事项
@@ -63,8 +63,8 @@
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
    | 事件类型 | 说明 |
    | -------- | -------- |
-   | stateChange | 必要事件，监听AVRecorder的state属性改变。 |
-   | error | 必要事件，监听AVRecorder的错误信息。 |
+   | stateChange | 必要事件，监听录制器的state属性改变。 |
+   | error | 必要事件，监听录制器的错误信息。 |
 
    ArkTS-Dyn示例：
 
@@ -145,6 +145,7 @@
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+       await this.closeFd();
      }
    }
    ```
@@ -284,6 +285,7 @@
    
    ``` TypeScript
    await this.avRecorder?.stop();
+   await this.closeFd();
    ```
 
    ArkTS-Sta示例：
@@ -407,6 +409,7 @@ export default class AVRecorderService {
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 
@@ -458,10 +461,12 @@ export default class AVRecorderService {
     try {
       if (this.avRecorder?.state === 'started' || this.avRecorder?.state === 'paused') {
         await this.avRecorder?.stop();
+        await this.closeFd();
       }
     } catch (error) {
       let err = error as BusinessError;
       console.error(`Failed to stop avRecorder, error code: ${err.code}, message: ${err.message}`);
+      await this.closeFd();
     }
   }
 
