@@ -556,7 +556,7 @@ ArkTS-Sta: onlineImageAccess(onlineImageAccess: boolean | undefined)
 
 | 参数名               | 类型    | 必填   | 说明             |
 | ----------------- | ------- | ---- | ---------------- |
-| onlineImageAccess | boolean | 是    | 设置是否允许从网络加载图片资源。<br>true 表示允许，false 表示不允许。<br>传入 undefined 或 null 时为 false。 |
+| onlineImageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许从网络加载图片资源。<br>true 表示允许，false 表示不允许。<br>ArkTS-Dyn：传入 undefined 或 null 时为 false。<br>ArkTS-Sta：传入 undefined 时为 false。 |
 
 **示例：**
 
@@ -874,7 +874,7 @@ ArkTS-Sta: mediaPlayGestureAccess(access: boolean | undefined)
 
 | 参数名    | 类型    | 必填   | 说明                |
 | ------ | ------- | ---- | ------------------- |
-| access | boolean | 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示需要用户手动点击，false表示不需要，能自动播放。<br>传入undefined或null时为false。 |
+| access | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置有声视频的自动播放是否需要用户手动点击。<br>true表示需要用户手动点击，false表示不需要，能自动播放。<br>ArkTS-Dyn：传入 undefined 或 null 时为 false。<br>ArkTS-Sta：传入 undefined 时为 false。|
 
 **示例：**
 
@@ -4332,7 +4332,7 @@ ArkTS-Sta: enableNativeMediaPlayer(config: NativeMediaPlayerConfig | undefined)
 
 | 参数名  | 类型   | 必填   | 说明 |
 | ---- | ------ | ---- | ---------------------|
-| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean类型，是否开启该功能，默认为false），shouldOverlay（boolean类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为false）。<br>传入undefined或null时为`{enable: false, shouldOverlay: false}`。|
+| config | ArkTS-Dyn: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12)<br/>ArkTS-Sta: [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) \|  undefined | 是    | 应用接管网页媒体播放功能的配置对象。包含以下属性：enable（boolean类型，是否开启该功能，默认为false），shouldOverlay（boolean类型，当功能开启后，应用接管网页视频的播放器画面是否覆盖网页内容，默认为false）。<br>ArkTS-Dyn：传入 undefined 或 null 时为`{enable: false, shouldOverlay: false}`。<br>ArkTS-Sta：传入 undefined 时为`{enable: false, shouldOverlay: false}`。|
 
   **示例：**
 
@@ -7532,7 +7532,7 @@ ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | boolean  | 是   | 设置Web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。<br>传入undefined或null时为false。 |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置 Web 组件是否开启覆盖式全屏播放功能。<br>true 表示开启该功能。<br>false 表示不开启。<br>传入 undefined 或 null 时为 false。 |
 
 **示例：**
 
