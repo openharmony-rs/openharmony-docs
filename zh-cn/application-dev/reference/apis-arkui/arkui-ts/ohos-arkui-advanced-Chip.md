@@ -62,7 +62,7 @@ ChipOptions定义Chip的样式及具体样式参数。
 | label           | [LabelOptions](#labeloptions)                                | 否  | 否  | 设置Chip组件显示的文本内容及样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
 | suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | 否  | 是  | 设置Chip组件的后缀图标，显示在组件右侧。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br> suffixIcon和suffixSymbol同时设置时，显示suffixSymbol的效果，suffixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 后缀图标属性，symbol类型。常用于需要系统标准图标、动态图标效果的场景。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br> suffixIcon和suffixSymbol同时设置时，显示suffixSymbol的效果，suffixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性及点击事件回调等。<br>默认值：不设置对应属性。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标的无障碍朗读功能属性及点击事件回调等。<br>默认值：不设置对应属性。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否  | 是  | Chip背景颜色。<br>默认值：$r('sys.color.ohos_id_color_button_normal')。<br>值为undefined时，按默认值处理。赋值为非法值时，背景颜色透明。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | 否  | 是  | Chip激活态的背景颜色。<br>默认值：$r('sys.color.ohos_id_color_emphasize')。<br>值为undefined时，按默认值处理。赋值为非法值时，背景颜色透明。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**说明**：当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突；当backgroundSystemMaterial为undefined时，backgroundColor属性生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
@@ -169,8 +169,8 @@ SuffixIconOptions定义后缀图标的属性。
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
 | action | () => void | 否  | 是  | 后缀图标点击事件回调。<br>值为undefined时，不设定后缀图标事件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标无障碍文本属性。当后缀图标不包含文本属性时，屏幕朗读选中后缀图标时不播报，使用者无法清楚地知道当前是否选中了后缀图标。为了解决此场景，开发人员可为不包含文字信息的后缀图标设置无障碍文本，当屏幕朗读选中后缀图标时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己是否选中了后缀图标。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标的无障碍描述。此描述用于向用户详细解释后缀图标，开发人员应为后缀图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从后缀图标的属性和无障碍文本中直接获知时。如果后缀图标同时具备文本属性和无障碍说明属性，当后缀图标被选中时，系统将首先播报后缀图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标无障碍文本属性。当后缀图标不包含文本属性时，屏幕朗读选中后缀图标时不播报，使用者无法清楚地知道当前是否选中了后缀图标。开发人员可为此类图标设置无障碍文本，屏幕朗读选中时播报该文本内容。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标的无障碍描述。此描述用于向用户详细解释后缀图标，开发人员应提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果，特别是当这些后果无法仅从后缀图标的属性和无障碍文本中直接获知时。如果后缀图标同时具备文本属性和无障碍说明属性，当后缀图标被选中时，系统将首先播报后缀图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>14+</sup> | string | 否 | 是 | 后缀图标的无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务识别。<br>支持的值为：<br>"auto"：当前组件存在action时转化为"yes"，不存在action时，转化为"no"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## AccessibilityOptions<sup>14+</sup>
@@ -191,7 +191,7 @@ SuffixIconOptions定义后缀图标的属性。
 
 ## ChipSuffixSymbolGlyphOptions<sup>14+</sup>
 
-symbol类型后缀图标的无障碍朗读功能属性。
+symbol类型后缀图标的无障碍朗读功能属性及点击事件回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
