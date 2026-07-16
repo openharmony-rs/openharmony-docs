@@ -20,6 +20,8 @@ CanvasRenderingContext2D是Canvas组件的2D绘图上下文对象，用于在Can
 >
 > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降，此时推荐使用[自定义渲染节点 (RenderNode)](../../../ui/arkts-user-defined-arktsNode-renderNode.md)。
 >
+> * 图形变换接口([rotate](./ts-components-canvas-common-method.md#rotate)、[scale](./ts-components-canvas-common-method.md#scale)、[transform](./ts-components-canvas-common-method.md#transform)、[setTransform](./ts-components-canvas-common-method.md#settransform)、[translate](./ts-components-canvas-common-method.md#translate))与[getPixelMap](./ts-components-canvas-common-method.md#getpixelmap)/[getImageData](./ts-components-canvas-common-method.md#getimagedata)/[toDataURL](#todataurl)接口在不同帧执行时，后者创建出来的内容没有图形变换效果。
+>
 > * 支持使用[画布绘制通用方法](./ts-components-canvas-common-method.md)和设置[画布绘制通用属性](./ts-components-canvas-common-property.md)。
 
 ## constructor
