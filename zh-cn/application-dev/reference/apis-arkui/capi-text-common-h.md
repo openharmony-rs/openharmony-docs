@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义一组文本公共的枚举和接口。
+定义文本类组件通用的枚举和接口。
 
 **引用文件：** <arkui/node_attributes/text_common.h>
 
