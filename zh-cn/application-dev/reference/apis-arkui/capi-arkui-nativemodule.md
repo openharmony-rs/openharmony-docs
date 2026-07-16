@@ -10,15 +10,17 @@
 
 提供ArkUI在Native侧接入和管理页面交互的能力，适用于使用NDK构建UI、处理输入事件、绑定手势、执行动画和管理节点树等场景。
 
-提供ArkUI在Native侧的通用拖拽及主动发起拖拽能力。详细介绍请参考[绑定拖拽事件](../../ui/ndk-drag-event.md)。
+提供ArkUI在Native侧的基础输入事件能力。更多详细介绍请参考[绑定基础输入事件](../../ui/ndk-bind-input-events.md)。
 
-提供ArkUI在Native侧的通用按键事件能力。
+提供ArkUI在Native侧的通用拖拽及主动发起拖拽能力。更多详细介绍请参考[绑定拖拽事件](../../ui/ndk-drag-event.md)。
 
 提供ArkUI在Native侧注册手势回调的能力。详细介绍请参考[绑定手势事件](../../ui/ndk-bind-gesture-events.md)。
 
 提供ArkUI在Native侧使用动画回调的能力。详细介绍请参考[使用动画](../../ui/ndk-use-animation.md)。
 
 提供ArkUI在Native侧的UI能力，如UI组件创建、销毁、树节点操作、属性设置、事件监听等。详细介绍请参考[接入ArkTS页面](../../ui/ndk-access-the-arkts-page.md)。
+
+上述能力适用于Native侧接入ArkTS页面并处理输入事件、拖拽、手势、动画和UI节点管理的场景，可帮助开发者在Native模块中完成ArkUI页面交互处理和组件树管理。
 
 **起始版本：** 12
 
