@@ -418,7 +418,7 @@ let myParagraphStyle: text.ParagraphStyle = {
            },
            // 装饰线样式，支持波浪，虚线，直线等
            decorationStyle:text.TextDecorationStyle.SOLID,
-           // 装饰线的高度
+           // 装饰线粗细缩放比例
            decorationThicknessScale: 1
          };
    
