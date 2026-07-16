@@ -14,6 +14,7 @@
   <!--Del-->
   - [@ohos.inputMethod (输入法框架)(系统接口)](js-apis-inputmethod-sys.md)
   - [@ohos.inputMethodEngine (输入法服务)(系统接口)](js-apis-inputmethodengine-sys.md)
+  - [@ohos.InputMethodExtensionContext (InputMethodExtensionContext)(系统接口)](js-apis-inputmethod-extension-context-sys.md)
   - [@ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)](js-apis-inputmethod-system-panel-manager-sys.md)
   <!--DelEnd-->
   - [@ohos.inputMethod (输入法框架)](js-apis-inputmethod.md)

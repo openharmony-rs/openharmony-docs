@@ -90,21 +90,21 @@ enum ArkUI_ObjectFit
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
-| ARKUI_OBJECT_FIT_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_OBJECT_FIT_AUTO = 2 | 自适应显示。 |
+| ARKUI_OBJECT_FIT_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片的宽度和高度都大于或等于显示边界的宽度和高度（可能超出边界部分被裁剪）。 |
+| ARKUI_OBJECT_FIT_AUTO = 2 | 自适应显示，根据图片和容器尺寸自动选择合适的填充方式。 |
 | ARKUI_OBJECT_FIT_FILL = 3 | 不保持宽高比进行放大缩小，使得图片充满显示边界。 |
 | ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | 保持宽高比显示，图片缩小或者保持不变。 |
-| ARKUI_OBJECT_FIT_NONE = 5 | 保持原有尺寸显示。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | 图片大小不变，在image组件中顶部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | 图片大小不变，在image组件中顶部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | 图片大小不变，在image组件中顶部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | 图片大小不变，在image组件中起始端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | 图片大小不变，在image组件中横向和纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | 图片大小不变，在image组件中尾端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在image组件中底部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在image组件中底部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在image组件中底部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
+| ARKUI_OBJECT_FIT_NONE = 5 | 图片大小不变。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | 图片大小不变，在Image组件中顶部起始端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | 图片大小不变，在Image组件中顶部横向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | 图片大小不变，在Image组件中顶部尾端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | 图片大小不变，在Image组件中起始端纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | 图片大小不变，在Image组件中横向和纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | 图片大小不变，在Image组件中尾端纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在Image组件中底部起始端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在Image组件中底部横向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在Image组件中底部尾端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，在Image组件中需要配合[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_IMAGE_MATRIX使用，通过矩阵变换控制图像的显示效果（如缩放、旋转、平移等）。若不配合NODE_IMAGE_IMAGE_MATRIX使用，该枚举值将无法生效。<br/>**起始版本：** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -139,7 +139,7 @@ enum ArkUI_DynamicRangeMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下不会产生过暗的效果（一片黑）。 |
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（纯白），太暗的环境下不会产生过暗的效果（纯黑）。 |
 | ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | 受限的高动态范围，包含比SDR更丰富的亮度和色彩，但不是完整的HDR，一般用于需要兼容SDR的情况。 |
 | ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | 标准动态范围（Standard Dynamic Range，简称SDR），表示亮度范围有限，一般在0~100尼特（亮度单位）左右，明暗对比度较小，暗部容易糊成黑，亮部容易过曝。 |
 

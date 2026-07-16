@@ -432,8 +432,8 @@ struct UIContextCompare {
             const available: boolean = ctx.isAvailable();
             this.result1 = `可用状态: ${available} UI实例有效 `;
             console.info('getUIContext测试:', available);
-          } catch (e) {
-            this.result1 = '错误: ' + (e instanceof Error ? e.message : String(e));
+          } catch (error) {
+            this.result1 = '错误: ' + (error instanceof Error ? error.message : String(error));
           }
         })
 
@@ -447,8 +447,8 @@ struct UIContextCompare {
             const available: boolean = ctx.isAvailable();
             this.result2 = `可用状态: ${available} UI实例无效`;
             console.info('new UIContext测试:', available);
-          } catch (e) {
-            this.result2 = '错误: ' + (e instanceof Error ? e.message : String(e));
+          } catch (error) {
+            this.result2 = '错误: ' + (error instanceof Error ? error.message : String(error));
           }
         })
     }
@@ -684,7 +684,7 @@ getOverlayManager(): OverlayManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -704,7 +704,7 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -730,7 +730,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -1123,7 +1123,7 @@ struct MyComponent {
 
 getFrameNodeByUniqueId(id: number): FrameNode | null
 
-提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
+通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
 2. 当uniqueId对应的是自定义组件时：
    - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
@@ -1172,7 +1172,7 @@ struct MyComponent {
 
 getPageInfoByUniqueId(id: number): PageInfo
 
-提供getPageInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
+通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
 1. 当uniqueId对应的节点在Page节点中，routerPageInfo属性为其对应的Router信息；
 2. 当uniqueId对应的节点在NavDestination节点中，navDestinationInfo属性为其对应的NavDestination信息；
 3. 当uniqueId对应的节点无对应的Router或NavDestination信息时，对应的属性为undefined；
@@ -1768,7 +1768,7 @@ export default class EntryAbility extends UIAbility {
 
 runScopedTask(callback: () => void): void
 
-在当前UI上下文执行传入的回调函数。
+在当前UIContext对应的UI实例作用域内执行传入的回调函数，适用于[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)但需要将业务行为绑定到指定UI实例的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1778,7 +1778,7 @@ runScopedTask(callback: () => void): void
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| callback | () => void | 是    | 需要在当前UI上下文中执行的回调函数。 |
+| callback | () => void | 是    | 需要在当前UIContext对应的UI实例作用域内执行的回调函数。 |
 
 **示例：**
 
@@ -1786,20 +1786,18 @@ runScopedTask(callback: () => void): void
 @Entry
 @Component
 struct Index {
-  uiContext = this.getUIContext();
+  private selectedDate: Date = new Date('2025-10-01');
 
   build() {
-    Row() {
-      Column() {
-        Button("run task").onClick(() => {
-          this.uiContext.runScopedTask(() => {
-            // do something
-          })
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
+    Button('Show CalendarPicker Dialog')
+      .onClick(() => {
+        const uiContext = this.getUIContext();
+        uiContext.runScopedTask(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate
+          });
+        });
+      });
   }
 }
 ```
@@ -2340,7 +2338,7 @@ vp2px(value : number) : number
 
 > **说明：**
 >
-> 1. getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2352,13 +2350,13 @@ vp2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2398,7 +2396,7 @@ px2vp(value : number) : number
 
 > **说明：**
 >
-> 1. getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2410,13 +2408,13 @@ px2vp(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2458,7 +2456,7 @@ fp2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2468,13 +2466,13 @@ fp2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2516,7 +2514,7 @@ px2fp(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2526,13 +2524,13 @@ px2fp(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2570,7 +2568,7 @@ lpx2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2580,13 +2578,13 @@ lpx2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2624,7 +2622,7 @@ px2lpx(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2634,13 +2632,13 @@ px2lpx(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2907,7 +2905,7 @@ struct Index {
     Row() {
       Button('点击触发postFrameCallback')
         .onClick(() => {
-          this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+          this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
         })
     }
   }
@@ -2956,7 +2954,7 @@ struct Index {
     Row() {
       Button('点击触发postDelayedFrameCallback')
         .onClick(() => {
-          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
         })
     }
   }
@@ -4273,7 +4271,7 @@ getPageRootNode(): FrameNode | null
 @Entry
 @Component
 struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
   private arr: number[] = [1, 2, 3];
   @State pageRootNode: FrameNode | null = null;
 
@@ -4292,7 +4290,7 @@ struct NavigationExample {
     setTimeout(() => {
       this.pageRootNode = this.getUIContext()?.getPageRootNode();
       console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
-    })
+    });
   }
 
   build() {
@@ -4337,7 +4335,7 @@ export struct PageOne {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   aboutToDisappear(): void {
-    console.info('PageOne', 'aboutToDisappear')
+    console.info('PageOne', 'aboutToDisappear');
   }
 
   build() {

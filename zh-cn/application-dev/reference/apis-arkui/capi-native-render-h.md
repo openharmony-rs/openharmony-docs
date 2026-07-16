@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供NativeRender接口的类型定义。更多详细介绍请参考[构建渲染节点](../../ui/ndk-embed-render-components.md)。
+提供NativeRender接口的类型定义，支持创建和管理渲染节点、设置渲染属性、自定义绘制内容，以及配置遮罩、裁剪和模糊效果，适用于在Native侧构建和管理自定义渲染节点树、扩展自定义绘制效果的场景。更多详细介绍请参考[构建渲染节点](../../ui/ndk-embed-render-components.md)。
 
 **引用文件：** <arkui/native_render.h>
 
@@ -37,7 +37,7 @@
 | [ArkUI_Vector2AnimatableProperty*](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)               | ArkUI_Vector2AnimatablePropertyHandle                                | 可动画的二维向量属性指针。       |
 | [ArkUI_ColorAnimatableProperty*](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md)               | ArkUI_ColorAnimatablePropertyHandle                                | 可动画的颜色属性指针。       |
 | [ArkUI_RectShape](./capi-arkui-nativemodule-arkui-rectshapeoption.md)               | ArkUI_RectShapeOption                                | 定义矩形形状配置项，用于在ArkUI渲染节点中描述矩形或椭圆形的形状范围，可作为创建遮罩或裁剪配置项的输入。       |
-| [ArkUI_NodeBorderStyle](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)               | ArkUI_NodeBorderStyleOption                                | 边框样式配置项。       |
+| [ArkUI_NodeBorderStyle](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)               | ArkUI_NodeBorderStyleOption                                | 定义边框样式配置项，用于设置节点边框的样式类型，支持实线、虚线、点线等多种样式。       |
 | [ArkUI_NodeBorderWidth](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)               | ArkUI_NodeBorderWidthOption                                | 边框宽度配置项。       |
 | [ArkUI_NodeBorderColor](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)               | ArkUI_NodeBorderColorOption                                | 边框颜色配置项。       |
 | [ArkUI_NodeBorderRadius](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)               | ArkUI_NodeBorderRadiusOption                                | 边框半径配置项。       |
@@ -71,10 +71,10 @@
 | [int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getchildrencount) | - | 获取指定渲染节点的子渲染节点数量。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t color)](#oh_arkui_rendernodeutils_setbackgroundcolor) | - | 为渲染节点设置背景颜色。|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t* color)](#oh_arkui_rendernodeutils_getbackgroundcolor) | - | 获取渲染节点的背景颜色。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)](#oh_arkui_rendernodeutils_setcliptoframe) | - | 设置是否对当前渲染节点裁剪。|
-| [int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)](#oh_arkui_rendernodeutils_getcliptoframe) | - | 获取是否对当前渲染节点裁剪。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)](#oh_arkui_rendernodeutils_setcliptobounds) | - | 设置是否对当前渲染节点边界裁剪。|
-| [int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)](#oh_arkui_rendernodeutils_getcliptobounds) | - | 获取是否对当前渲染节点边界裁剪。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)](#oh_arkui_rendernodeutils_setcliptoframe) | - | 设置是否按当前渲染节点的frame区域裁剪。|
+| [int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)](#oh_arkui_rendernodeutils_getcliptoframe) | - | 获取是否按当前渲染节点的frame区域裁剪。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)](#oh_arkui_rendernodeutils_setcliptobounds) | - | 设置是否按当前渲染节点的边界裁剪。|
+| [int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)](#oh_arkui_rendernodeutils_getcliptobounds) | - | 获取是否按当前渲染节点的边界裁剪。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float opacity)](#oh_arkui_rendernodeutils_setopacity) | - | 为渲染节点设置不透明度值。|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* opacity)](#oh_arkui_rendernodeutils_getopacity) | - | 获取渲染节点的不透明度值。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t width, int32_t height)](#oh_arkui_rendernodeutils_setsize) | - | 为渲染节点设置尺寸。|
@@ -110,7 +110,7 @@
 | [int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)](#oh_arkui_rendernodeutils_getborderradius) | - | 获取渲染节点的边框角半径。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)](#oh_arkui_rendernodeutils_setmask) | - | 使用遮罩配置为渲染节点应用遮罩。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)](#oh_arkui_rendernodeutils_setclip) | - | 使用裁剪配置为渲染节点应用裁剪。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)](#oh_arkui_rendernodeutils_setmarknodegroup) | - | 标记是否优先绘制该节点及其子节点。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)](#oh_arkui_rendernodeutils_setmarknodegroup) | - | 设置是否将目标节点及其子树组成节点组。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)](#oh_arkui_rendernodeutils_setbounds) | - | 为渲染节点设置边界。|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)](#oh_arkui_rendernodeutils_getbounds) | - | 获取渲染节点的边界。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, float x, float y, float w, float h)](#oh_arkui_rendernodeutils_setdrawregion) | - | 为渲染节点设置绘制区域。|
@@ -147,31 +147,31 @@
 | [int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)](#oh_arkui_rendernodeutils_setcoloranimatablepropertyvalue) | - | 设置可动画的颜色属性的值。|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)](#oh_arkui_rendernodeutils_getcoloranimatablepropertyvalue) | - | 获取可动画的颜色属性的值。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)](#oh_arkui_rendernodeutils_disposecoloranimatableproperty) | - | 释放可动画的颜色属性。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext\* context, void* userData))](#oh_arkui_rendernodeutils_setcontentmodifierondraw) | - | 设置内容修改器的onDraw函数。|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext\* context, void* userData))](#oh_arkui_rendernodeutils_setcontentmodifierondraw) | - | 设置内容修改器的onDraw回调。|
 | [ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()](#oh_arkui_rendernodeutils_createrectshapeoption) | - | 创建矩形形状。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)](#oh_arkui_rendernodeutils_disposerectshapeoption) | - | 释放矩形形状。|
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setrectshapeoptionedgevalue) | - | 设置矩形形状的边缘值。|
 | [ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()](#oh_arkui_rendernodeutils_createnodeborderstyleoption) | - | 创建节点边框样式。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)](#oh_arkui_rendernodeutils_disposenodeborderstyleoption) | - | 释放节点边框样式。|
-| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodeborderstyleoptionedgestyle) | - | 设置节点边框样式的边缘值。|
+| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodeborderstyleoptionedgestyle) | - | 设置节点边框的边缘样式。|
 | [ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()](#oh_arkui_rendernodeutils_createnodeborderwidthoption) | - | 创建节点边框宽度。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)](#oh_arkui_rendernodeutils_disposenodeborderwidthoption) | - | 释放节点边框宽度。|
-| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodeborderwidthoptionedgewidth) | - | 设置节点边框宽度的边缘值。|
+| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodeborderwidthoptionedgewidth) | - | 设置节点边框的边缘宽度。|
 | [ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()](#oh_arkui_rendernodeutils_createnodebordercoloroption) | - | 创建节点边框颜色。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColorOption* option)](#oh_arkui_rendernodeutils_disposenodebordercoloroption) | - | 释放节点边框颜色。|
-| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodebordercoloroptionedgecolor) | - | 设置节点边框颜色的边缘值。|
+| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodebordercoloroptionedgecolor) | - | 设置节点边框的边缘颜色。|
 | [ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()](#oh_arkui_rendernodeutils_createnodeborderradiusoption) | - | 创建节点边框半径。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadiusOption* option)](#oh_arkui_rendernodeutils_disposenodeborderradiusoption) | - | 释放节点边框半径。|
-| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)](#oh_arkui_rendernodeutils_setnodeborderradiusoptioncornerradius) | - | 设置节点边框半径的边缘值。|
+| [void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)](#oh_arkui_rendernodeutils_setnodeborderradiusoptioncornerradius) | - | 设置节点指定角的边框半径。|
 | [ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()](#oh_arkui_rendernodeutils_createcircleshapeoption) | - | 创建圆形形状。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* option)](#oh_arkui_rendernodeutils_disposecircleshapeoption) | - | 释放圆形形状。|
-| [void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)](#oh_arkui_rendernodeutils_setcircleshapeoptioncenterx) | - | 设置圆形形状的圆心x轴坐标值。|
-| [void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)](#oh_arkui_rendernodeutils_setcircleshapeoptioncentery) | - | 设置圆形形状的圆心y轴坐标值。|
+| [void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)](#oh_arkui_rendernodeutils_setcircleshapeoptioncenterx) | - | 设置圆形形状的圆心X轴坐标值。|
+| [void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)](#oh_arkui_rendernodeutils_setcircleshapeoptioncentery) | - | 设置圆形形状的圆心Y轴坐标值。|
 | [void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)](#oh_arkui_rendernodeutils_setcircleshapeoptionradius) | - | 设置圆形形状的半径值。|
 | [ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()](#oh_arkui_rendernodeutils_createroundrectshapeoption) | - | 创建圆角矩形形状。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)](#oh_arkui_rendernodeutils_disposeroundrectshapeoption) | - | 释放圆角矩形形状。|
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setroundrectshapeoptionedgevalue) | - | 设置圆角矩形形状的边缘值。|
-| [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)](#oh_arkui_rendernodeutils_setroundrectshapeoptioncornerxy) | - | 设置目标角的坐标值。|
+| [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)](#oh_arkui_rendernodeutils_setroundrectshapeoptioncornerxy) | - | 设置指定角的X轴和Y轴圆角半径。|
 | [ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()](#oh_arkui_rendernodeutils_createcommandpathoption) | - | 创建自定义绘制路径。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)](#oh_arkui_rendernodeutils_disposecommandpathoption) | - | 释放自定义绘制路径。|
 | [void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOption* option, char* commands)](#oh_arkui_rendernodeutils_setcommandpathoptioncommands) | - | 设置自定义绘制路径的命令值。|
@@ -201,9 +201,9 @@
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetforegroundbluroption) | - | 为渲染节点重置前景模糊样式。|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setcontentbluroption) | - | 为渲染节点设置内容模糊样式。|
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetcontentbluroption) | - | 为渲染节点重置内容模糊样式。|
-| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | 在父节点下的指定位置插入子渲染节点。|
-| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | 获取指定父节点的子渲染节点数量。|
-| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | 获取父节点下指定位置的子渲染节点。|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | 在父自定义节点下的指定位置插入子渲染节点。|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | 获取父自定义节点在混合挂载顺序中的全部子节点数量。|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | 获取父自定义节点在混合挂载顺序中指定位置子节点对应的渲染节点句柄。|
 
 ## 函数说明
 
@@ -216,7 +216,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **描述：**
 向父自定义节点添加子渲染节点。
 
-父节点仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点，每个自定义节点只能挂载一个ArkUI_RenderNodeHandle，customNode无法挂载其他ArkUI_NodeHandle。 
+父节点仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。默认使用[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy)挂载策略时，自定义节点只能挂载一个子渲染节点，且不能同时挂载其他类型的子节点。从API版本26.0.0开始，可通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)将挂载策略设置为OH_ARKUI_NODE_MOUNT_POLICY_MIXED，以支持混合挂载多个子节点。
 
 **起始版本：** 20
 
@@ -231,7 +231,7 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>         [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。<br>         [ARKUI_ERROR_CODE_CHILD_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点已存在子节点。<br>         [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标渲染节点存在父节点。<br>         [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API version 22开始支持。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>         [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。<br>         [ARKUI_ERROR_CODE_CHILD_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 使用非OH_ARKUI_NODE_MOUNT_POLICY_MIXED挂载策略时，父节点已有子节点。<br>         [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标渲染节点存在父节点。<br>         [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API version 22开始支持。 |
 
 ### OH_ArkUI_RenderNodeUtils_RemoveRenderNode()
 
@@ -241,6 +241,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 
 **描述：**
 从父节点移除指定的子渲染节点。
+
+父节点仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。
 
 **起始版本：** 20
 
@@ -265,6 +267,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 
 **描述：**
 清除父节点内的子渲染节点。
+
+父节点仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。
 
 **起始版本：** 20
 
@@ -311,6 +315,8 @@ ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()
 
 **描述：**
 创建渲染节点。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeNode](#oh_arkui_rendernodeutils_disposenode)销毁并释放资源。
 
 **起始版本：** 20
 
@@ -450,7 +456,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t i
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标父渲染节点。 |
-| int32_t index | 子节点的从零开始的索引。 |
+| int32_t index | 子节点索引，取值范围为[0, 子节点数量-1]。index小于0时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；index大于等于子节点数量时返回[ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* child | 用于接收子节点的渲染节点指针。|
 
 **返回：**
@@ -531,7 +537,9 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_
 ```
 
 **描述：**
-获取父渲染节点的所有子渲染节点，调用者负责释放返回的子节点数组。
+获取父渲染节点的所有子渲染节点。
+
+调用者负责释放返回的子节点数组。
 
 **起始版本：** 20
 
@@ -620,7 +628,9 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 ```
 
 **描述：**
-设置是否对当前渲染节点裁剪。
+设置是否按当前渲染节点的frame区域裁剪。
+
+frame区域由节点大小和位置确定。与[OH_ArkUI_RenderNodeUtils_SetClipToBounds](#oh_arkui_rendernodeutils_setcliptobounds)按节点边界裁剪（配置圆角时使用圆角边界）不同，本接口始终使用frame矩形；如需按自定义形状裁剪，请使用[OH_ArkUI_RenderNodeUtils_SetClip](#oh_arkui_rendernodeutils_setclip)。设置为1时，超出裁剪区域的内容会被截断。
 
 **起始版本：** 20
 
@@ -628,7 +638,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t clipToFrame | 整数（1 = 裁剪到框架，0 = 不裁剪）。<br/>默认值：0。 |
+| int32_t clipToFrame | 是否按frame区域裁剪。<br/>1：裁剪；0：不裁剪。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -642,7 +652,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 ```
 
 **描述：**
-获取是否对当前渲染节点裁剪。
+获取是否按当前渲染节点的frame区域裁剪。
 
 **起始版本：** 20
 
@@ -650,7 +660,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t* clipToFrame | 用于接收裁剪状态（1 或 0）的整数指针。<br/>默认值：0。 |
+| int32_t* clipToFrame | 用于接收是否按frame区域裁剪的状态值。<br/>1：裁剪；0：不裁剪。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -664,7 +674,9 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 ```
 
 **描述：**
-设置是否对当前渲染节点边界裁剪。
+设置是否按当前渲染节点的边界裁剪。
+
+节点配置圆角时，使用圆角边界；设置为1时，超出裁剪区域的内容会被截断。
 
 **起始版本：** 20
 
@@ -672,7 +684,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t clipToBounds | 裁剪标志（1：裁剪到边界，0：不裁剪）。<br/>默认值：0。 |
+| int32_t clipToBounds | 是否按节点边界裁剪。<br/>1：裁剪；0：不裁剪。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -686,7 +698,9 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 ```
 
 **描述：**
-获取是否对当前渲染节点边界裁剪。
+获取是否按当前渲染节点的边界裁剪。
+
+节点配置圆角时，使用圆角边界。
 
 **起始版本：** 20
 
@@ -694,7 +708,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t* clipToBounds | 整数指针（1 = 根据边界裁剪，0 = 不裁剪）。<br/>默认值：0。 |
+| int32_t* clipToBounds | 用于接收是否按节点边界裁剪的状态值。<br/>1：裁剪；0：不裁剪。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -760,8 +774,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t width | 宽度值（以像素为单位）。<br/>默认值：0，单位：px。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
-| int32_t height | 高度值（以像素为单位）。<br/>默认值：0，单位：px。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| int32_t width | 宽度值，单位：px。<br/>默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| int32_t height | 高度值，单位：px。<br/>默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -783,8 +797,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| int32_t* width | 用于接收宽度值（以像素为单位）的指针。<br/>默认值：0，单位：px。 |
-| int32_t* height | 用于接收高度值（以像素为单位）的指针。<br/>默认值：0，单位：px。 |
+| int32_t* width | 用于接收宽度值的指针，单位：px，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0。 |
+| int32_t* height | 用于接收高度值的指针，单位：px，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -853,8 +867,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float x | 中心点的X坐标（标准取值范围：0.0-1.0）。<br/>默认值：0.5。 |
-| float y | 中心点的Y坐标（标准取值范围：0.0-1.0）。<br/>默认值：0.5。 |
+| float x | 中心点归一化X坐标，标准取值范围为[0.0, 1.0]。接口不校验该范围，超出范围时仍按传入值设置。<br/>默认值：0.5。 |
+| float y | 中心点归一化Y坐标，标准取值范围为[0.0, 1.0]。接口不校验该范围，超出范围时仍按传入值设置。<br/>默认值：0.5。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -968,8 +982,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, flo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* x | 用于接收水平平移量的指针。<br/>默认值：0。 |
-| float* y | 用于接收垂直平移量的指针。<br/>默认值：0。 |
+| float* x | 用于接收水平平移量的指针，单位：px。<br/>默认值：0。 |
+| float* y | 用于接收垂直平移量的指针，单位：px。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1032,6 +1046,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float
 
 **描述：**
 为渲染节点设置变换矩阵。
+
+该接口用于通过一个4x4矩阵统一控制渲染节点的缩放、旋转、平移、倾斜和透视投影效果。
 
 **起始版本：** 20
 
@@ -1113,7 +1129,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| uint32_t* color | 用于存储获取到的ARGB颜色值的整数指针。<br/>默认值：0xFF000000。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
+| uint32_t* color | 用于接收ARGB颜色值的整数指针。未设置阴影颜色时，接收值为0x00000000（完全透明）。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1181,7 +1197,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float alpha | 阴影 Alpha 值（0.0-1.0）。<br/>默认值：0。 |
+| float alpha | 阴影Alpha值，取值范围为[0.0, 1.0]。传入范围外的值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1203,7 +1219,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* alpha | 用于接收阴影 Alpha 值的指针。<br/>默认值：1。 |
+| float* alpha | 用于接收阴影Alpha值的指针。未设置阴影相关属性时，接收值为-1.0，表示未配置；设置阴影相关属性后，接收值的取值范围为[0.0, 1.0]。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1225,7 +1241,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float elevation | 高度值。<br/>默认值：0。 |
+| float elevation | 阴影高度值，单位：px。取值范围为[0, +∞)，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1247,7 +1263,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* elevation | 用于接收高度值的指针。<br/>默认值：0。 |
+| float* elevation | 用于接收阴影高度值的指针，单位：px，接收值的取值范围为[0, +∞)。未设置阴影高度时，接收值为0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1269,7 +1285,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float radius | 半径值。<br/>默认值：0。取值大于等于0，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| float radius | 阴影半径，单位：px。取值范围为[0, +∞)，传入负值时返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1291,7 +1307,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float* radius | 用于接收半径值的指针。<br/>默认值：0。 |
+| float* radius | 用于接收阴影半径值的指针，单位：px。设置阴影半径后，接收值的取值范围为[0, +∞)；未设置阴影半径时，API版本26.0.0之前接收值为0，从API版本26.0.0开始接收值为-1。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1349,7 +1365,9 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 ```
 
 **描述：**
-为渲染节点设置边框宽度，边框宽度需小于节点尺寸。
+为渲染节点设置边框宽度。
+
+边框宽度需小于节点尺寸。
 
 **起始版本：** 20
 
@@ -1445,7 +1463,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)* borderRadius | 边框半径的指针。<br/>结构体指针内默认值：0。 |
+| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)* borderRadius | 边框半径的指针。<br/>各角半径默认值均为0，单位：px。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1467,7 +1485,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)** borderRadius | 用于接收边框半径的指针。<br/>结构体指针内默认值：0。 |
+| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)** borderRadius | 用于接收边框半径的指针。<br/>各角半径默认值均为0，单位：px。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1482,6 +1500,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 
 **描述：**
 使用遮罩配置为渲染节点应用遮罩。
+
+遮罩图层范围由节点边界确定，遮罩形状超出节点边界的部分不显示。调用[OH_ArkUI_RenderNodeUtils_SetDrawRegion](#oh_arkui_rendernodeutils_setdrawregion)不会扩大遮罩图层范围。
 
 遮罩创建方式如下：
 1. 给遮罩图层增加亮度和线性颜色滤镜。
@@ -1510,6 +1530,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_Rend
 **描述：**
 使用裁剪配置为渲染节点应用裁剪。
 
+裁剪形状可超出节点边界；如需显示节点边界外的绘制内容，应调用[OH_ArkUI_RenderNodeUtils_SetDrawRegion](#oh_arkui_rendernodeutils_setdrawregion)设置覆盖该内容的绘制区域，最终显示仍受其他裁剪条件影响。
+
 **起始版本：** 20
 
 **参数：**
@@ -1530,7 +1552,9 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 ```
 
 **描述：**
-标记是否优先绘制该节点及其子节点。
+设置是否将目标节点及其子树组成节点组。
+
+设置为true时，系统会生成包含该节点及其子树的离屏缓存，以复用绘制结果，适用于子树内容固定、仅对整体应用动效的场景。与截屏、模糊、亮度调节或混合操作同时使用时，可能出现显示异常或性能下降。
 
 **起始版本：** 20
 
@@ -1538,7 +1562,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| bool markNodeGroup | 布尔值，是否优先绘制该节点及其子节点。<br/>true：优先绘制节点及其子节点；false：不优先绘制节点及其子节点。 |
+| bool markNodeGroup | 是否将目标节点及其子树组成节点组。<br/>true：组成节点组并进行离屏渲染；false：不组成节点组。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1587,8 +1611,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t*
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
 | int32_t* x | 用于接收边界左上角X坐标（以像素为单位）的指针。<br/>默认值：0。 |
 | int32_t* y | 用于接收边界左上角Y坐标（以像素为单位）的指针。<br/>默认值：0。 |
-| int32_t* width | 用于接收边界宽度（以像素为单位）的指针。<br/>默认值：0。 |
-| int32_t* height | 用于接收边界高度（以像素为单位）的指针。<br/>默认值：0。 |
+| int32_t* width | 用于接收边界宽度（以像素为单位）的指针，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0。 |
+| int32_t* height | 用于接收边界高度（以像素为单位）的指针，接收值的取值范围为[0, INT_MAX]。<br/>默认值：0。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1602,7 +1626,9 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 ```
 
 **描述：**
-为渲染节点设置绘制区域，该绘制区域主要用于超出边界导致的绘制问题，建议根据实际绘制范围设置大小。
+为渲染节点设置绘制区域。
+
+该绘制区域由节点局部坐标系中的x、y、w、h定义。该区域与节点自身范围合并，参与节点绘制范围和脏区计算；绘制内容超出节点边界时，应使该区域覆盖全部超出部分。该接口不改变节点边界，也不扩大遮罩图层范围。
 
 **起始版本：** 20
 
@@ -1610,10 +1636,10 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| float x | 边界左上角的X坐标（以像素为单位）。 |
-| float y | 边界左上角的Y坐标（以像素为单位）。 |
-| float w | 边界的宽度（以像素为单位）。 |
-| float h | 边界的高度（以像素为单位）。 |
+| float x | 绘制区域左上角相对节点局部坐标系原点的X坐标，单位：px。 |
+| float y | 绘制区域左上角相对节点局部坐标系原点的Y坐标，单位：px。 |
+| float w | 绘制区域的宽度，单位：px。 |
+| float h | 绘制区域的高度，单位：px。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1628,6 +1654,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle no
 
 **描述：**
 为渲染节点添加内容修改器。
+
+该接口用于通过onDraw回调扩展节点的自定义绘制内容。
 
 **起始版本：** 20
 
@@ -1650,6 +1678,8 @@ ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier
 
 **描述：**
 创建内容修改器。
+
+该接口用于保存绘制属性并设置onDraw回调，再附加到渲染节点。使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeContentModifier](#oh_arkui_rendernodeutils_disposecontentmodifier)释放。
 
 **起始版本：** 20
 
@@ -1683,12 +1713,14 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifier
 **描述：**
 为目标内容修改器附加浮点属性。
 
+该接口用于在绘制回调中传递或更新浮点型绘制参数。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 为目标内容修改器设置浮点属性。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 待附加属性的目标内容修改器。 |
 | [ArkUI_FloatPropertyHandle](./capi-arkui-nativemodule-arkui-floatpropertyhandle.md) property | 浮点属性。 |
 
 **返回：**
@@ -1705,12 +1737,14 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifi
 **描述：**
 为目标内容修改器附加二维向量属性。
 
+该接口用于在绘制回调中传递或更新二维坐标、偏移等绘制参数。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 为目标内容修改器设置二维向量属性。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 待附加属性的目标内容修改器。 |
 | [ArkUI_Vector2PropertyHandle](./capi-arkui-nativemodule-arkui-vector2propertyhandle.md) property | 二维向量属性。 |
 
 **返回：**
@@ -1727,12 +1761,14 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifier
 **描述：**
 为目标内容修改器附加颜色属性。
 
+该接口用于在绘制回调中传递或更新颜色绘制参数。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 为目标内容修改器设置颜色属性。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 待附加属性的目标内容修改器。 |
 | [ArkUI_ColorPropertyHandle](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md) property | 颜色属性。 |
 
 **返回：**
@@ -1749,12 +1785,14 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderConte
 **描述：**
 为目标内容修改器附加可动画的浮点属性。
 
+该接口用于在绘制回调中配置随动画变化的浮点型绘制参数。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 为目标内容修改器设置可动画的浮点属性。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 待附加属性的目标内容修改器。 |
 | [ArkUI_FloatAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md) property | 可动画的浮点属性。 |
 
 **返回：**
@@ -1771,12 +1809,14 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderCon
 **描述：**
 为目标内容修改器附加可动画的二维向量属性。
 
+该接口用于在绘制回调中配置随动画变化的二维坐标、偏移等绘制参数。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 为目标内容修改器设置可动画的二维向量属性。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 待附加属性的目标内容修改器。 |
 | [ArkUI_Vector2AnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md) property | 可动画的二维向量属性。 |
 
 **返回：**
@@ -1793,12 +1833,14 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderConte
 **描述：**
 为目标内容修改器附加可动画的颜色属性。
 
+该接口用于在绘制回调中配置随动画变化的颜色绘制参数。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 为目标内容修改器设置可动画的颜色属性。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 待附加属性的目标内容修改器。 |
 | [ArkUI_ColorAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md) property | 可动画的颜色属性。 |
 
 **返回：**
@@ -1814,6 +1856,8 @@ ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float val
 
 **描述：**
 创建浮点属性。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeFloatProperty](#oh_arkui_rendernodeutils_disposefloatproperty)释放。
 
 **起始版本：** 20
 
@@ -1895,6 +1939,8 @@ ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float
 
 **描述：**
 创建二维向量属性。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeVector2Property](#oh_arkui_rendernodeutils_disposevector2property)释放。
 
 **起始版本：** 20
 
@@ -1980,12 +2026,14 @@ ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t 
 **描述：**
 创建颜色属性。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeColorProperty](#oh_arkui_rendernodeutils_disposecolorproperty)释放。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t value | 属性值。 |
+| uint32_t value | 用于初始化颜色属性的ARGB颜色值，格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2007,7 +2055,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ColorPropertyHandle](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md) property | 颜色属性。 |
-| uint32_t value | 属性值。 |
+| uint32_t value | 要设置的ARGB颜色值，格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2029,7 +2077,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ColorPropertyHandle](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md) property | 颜色属性。 |
-| uint32_t* value | 用于接收属性值的指针。 |
+| uint32_t* value | 用于接收ARGB颜色值的指针。颜色值格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2060,6 +2108,8 @@ ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatab
 
 **描述：**
 创建可动画的浮点属性。
+
+该接口用于保存可随动画变化的浮点型绘制参数。使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty](#oh_arkui_rendernodeutils_disposefloatanimatableproperty)释放。
 
 **起始版本：** 20
 
@@ -2141,6 +2191,8 @@ ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Anim
 
 **描述：**
 创建可动画的二维向量属性。
+
+该接口用于保存可随动画变化的二维坐标、偏移等绘制参数。使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty](#oh_arkui_rendernodeutils_disposevector2animatableproperty)释放。
 
 **起始版本：** 20
 
@@ -2226,12 +2278,14 @@ ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatab
 **描述：**
 创建可动画的颜色属性。
 
+该接口用于保存可随动画变化的颜色绘制参数。使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty](#oh_arkui_rendernodeutils_disposecoloranimatableproperty)释放。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t value | 属性值。 |
+| uint32_t value | 用于初始化可动画颜色属性的ARGB颜色值，格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2253,7 +2307,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnim
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ColorAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md) property | 可动画的颜色属性。 |
-| uint32_t value | 属性值。 |
+| uint32_t value | 要设置的ARGB颜色值，格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2275,7 +2329,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnim
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ColorAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md) property | 可动画的颜色属性。 |
-| uint32_t* value | 用于接收属性值的指针。 |
+| uint32_t* value | 用于接收ARGB颜色值的指针。颜色值格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2305,7 +2359,9 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 ```
 
 **描述：**
-设置内容修改器的onDraw函数。
+设置内容修改器的onDraw回调。
+
+该回调用于在内容修改器绘制阶段执行自定义绘制逻辑。
 
 **起始版本：** 20
 
@@ -2314,7 +2370,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 | -- | -- |
 | [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 目标内容修改器。 |
 | void* userData | 要传递给回调的自定义数据。 |
-| void (callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) context, void* userData) | 绘制事件接收回调。 |
+| void (\*callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)\* context, void\* userData) | 绘制事件接收回调。context表示绘制上下文；userData表示调用本接口时传入的自定义数据。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2329,6 +2385,8 @@ ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 
 **描述：**
 创建矩形形状。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption](#oh_arkui_rendernodeutils_disposerectshapeoption)释放。
 
 **起始版本：** 20
 
@@ -2360,7 +2418,9 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption*
 ```
 
 **描述：**
-设置矩形形状的边缘值。当设置左边界和上边界为负数时，因显示涉及到图层叠加效果，会导致部分超出节点内容部分无法绘制。
+设置矩形形状的边缘值。
+
+左边缘或上边缘可取负值，负值表示对应边缘位于节点原点左侧或上方。形状用于遮罩时，超出节点边界的部分不显示；用于裁剪且需显示节点边界外内容时，应通过[OH_ArkUI_RenderNodeUtils_SetDrawRegion](#oh_arkui_rendernodeutils_setdrawregion)设置覆盖该内容的绘制区域。
 
 **起始版本：** 20
 
@@ -2368,7 +2428,7 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md)* option | 指向矩形形状的指针。 |
-| float edgeValue | 矩形形状的边缘值。 |
+| float edgeValue | 矩形形状的边缘值，单位：px。 |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | 要设置边缘值的矩形方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()
@@ -2379,6 +2439,8 @@ ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOptio
 
 **描述：**
 创建节点边框样式。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption](#oh_arkui_rendernodeutils_disposenodeborderstyleoption)释放。
 
 **起始版本：** 20
 
@@ -2410,7 +2472,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorder
 ```
 
 **描述：**
-设置节点边框样式的边缘值。
+设置节点边框的边缘样式。
 
 **起始版本：** 20
 
@@ -2418,7 +2480,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorder
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeBorderStyleOption](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)* option | 指向节点边框样式的指针。 |
-| [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle) edgeStyle | 节点边框样式的边缘边框样式值。 |
+| [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle) edgeStyle | 节点边框的边缘样式值。 |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | 边缘的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()
@@ -2429,6 +2491,8 @@ ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOptio
 
 **描述：**
 创建节点边框宽度。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption](#oh_arkui_rendernodeutils_disposenodeborderwidthoption)释放。
 
 **起始版本：** 20
 
@@ -2460,7 +2524,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 ```
 
 **描述：**
-设置节点边框宽度的边缘值。
+设置节点边框的边缘宽度。
 
 **起始版本：** 20
 
@@ -2468,7 +2532,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeBorderWidthOption](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)* option | 指向节点边框宽度的指针。 |
-| float edgeWidth | 节点边框宽度的边缘宽度值。<br>取值范围：[0, +∞) |
+| float edgeWidth | 节点边框的边缘宽度值，单位：px。取值范围为[0, +∞)；传入负值时，对应边缘的宽度保持不变。 |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | 边缘的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()
@@ -2479,6 +2543,8 @@ ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOptio
 
 **描述：**
 创建节点边框颜色。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption](#oh_arkui_rendernodeutils_disposenodebordercoloroption)释放。
 
 **起始版本：** 20
 
@@ -2510,7 +2576,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorder
 ```
 
 **描述：**
-设置节点边框颜色的边缘值。
+设置节点边框的边缘颜色。
 
 **起始版本：** 20
 
@@ -2518,7 +2584,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorder
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeBorderColorOption](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)* option | 指向节点边框颜色的指针。 |
-| uint32_t edgeColor | 节点边框颜色的边缘颜色值。 |
+| uint32_t edgeColor | 节点边框的边缘颜色值，ARGB格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | 边缘的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()
@@ -2529,6 +2595,8 @@ ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOpt
 
 **描述：**
 创建节点边框半径。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption](#oh_arkui_rendernodeutils_disposenodeborderradiusoption)释放。
 
 **起始版本：** 20
 
@@ -2560,7 +2628,7 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBo
 ```
 
 **描述：**
-设置节点边框半径的边缘值。请注意，入参cornerRadius为uint32_t，仅支持传入正整数。
+设置节点指定角的边框半径。
 
 **起始版本：** 20
 
@@ -2568,8 +2636,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)* option | 指向节点边框半径的指针。 |
-| uint32_t cornerRadius | 节点边框半径的边缘半径值。 |
-| [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | 边缘的方向。 |
+| uint32_t cornerRadius | 节点指定角的边框半径，单位：px，取值为非负整数。 |
+| [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | 角的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
@@ -2579,6 +2647,8 @@ ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
 **描述：**
 创建圆形形状。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption](#oh_arkui_rendernodeutils_disposecircleshapeoption)释放。
 
 **起始版本：** 20
 
@@ -2610,7 +2680,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOptio
 ```
 
 **描述：**
-设置圆形形状的圆心x轴坐标值。
+设置圆形形状的圆心X轴坐标值。
 
 **起始版本：** 20
 
@@ -2618,7 +2688,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOptio
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md)* option | 指向圆形形状的指针。 |
-| float centerX | 圆心x轴坐标值。 |
+| float centerX | 圆心X轴坐标值，单位：px。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY()
 
@@ -2627,7 +2697,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOptio
 ```
 
 **描述：**
-设置圆形形状的圆心y轴坐标值。
+设置圆形形状的圆心Y轴坐标值。
 
 **起始版本：** 20
 
@@ -2635,7 +2705,7 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOptio
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md)* option | 指向圆形形状的指针。 |
-| float centerY | 圆心y轴坐标值。 |
+| float centerY | 圆心Y轴坐标值，单位：px。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius()
 
@@ -2662,6 +2732,8 @@ ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption(
 
 **描述：**
 创建圆角矩形形状。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption](#oh_arkui_rendernodeutils_disposeroundrectshapeoption)释放。
 
 **起始版本：** 20
 
@@ -2695,13 +2767,15 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectSh
 **描述：**
 设置圆角矩形形状的边缘值。
 
+左边缘或上边缘可取负值，负值表示对应边缘位于节点原点左侧或上方。形状用于遮罩时，超出节点边界的部分不显示；用于裁剪且需显示节点边界外内容时，应通过[OH_ArkUI_RenderNodeUtils_SetDrawRegion](#oh_arkui_rendernodeutils_setdrawregion)设置覆盖该内容的绘制区域。
+
 **起始版本：** 20
 
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | 指向圆角矩形形状的指针。 |
-| float edgeValue | 圆角矩形形状的边缘值。 |
+| float edgeValue | 圆角矩形形状的边缘值，单位：px。 |
 | [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | 要设置边缘值的矩形方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY()
@@ -2711,7 +2785,7 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 ```
 
 **描述：**
-设置目标角的坐标值。
+设置指定角的X轴和Y轴圆角半径。
 
 **起始版本：** 20
 
@@ -2719,8 +2793,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | 指向圆角矩形形状的指针。 |
-| float x | 目标角的X坐标（以像素为单位）。 |
-| float y | 目标角的Y坐标（以像素为单位）。 |
+| float x | 指定角的X轴圆角半径，单位：px。 |
+| float y | 指定角的Y轴圆角半径，单位：px。 |
 | [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | 角的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
@@ -2731,6 +2805,8 @@ ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
 **描述：**
 创建自定义绘制路径。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption](#oh_arkui_rendernodeutils_disposecommandpathoption)释放。
 
 **起始版本：** 20
 
@@ -2781,6 +2857,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 从矩形形状创建遮罩。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](#oh_arkui_rendernodeutils_disposerendernodemaskoption)释放。
+
 **起始版本：** 20
 
 **参数：**
@@ -2801,6 +2879,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 **描述：**
 从圆角矩形形状创建遮罩。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](#oh_arkui_rendernodeutils_disposerendernodemaskoption)释放。
 
 **起始版本：** 20
 
@@ -2823,6 +2903,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 从圆形形状创建遮罩。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](#oh_arkui_rendernodeutils_disposerendernodemaskoption)释放。
+
 **起始版本：** 20
 
 **参数：**
@@ -2844,6 +2926,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 从椭圆形形状创建遮罩。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](#oh_arkui_rendernodeutils_disposerendernodemaskoption)释放。
+
 **起始版本：** 20
 
 **参数：**
@@ -2864,6 +2948,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 **描述：**
 从自定义绘制路径创建遮罩。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](#oh_arkui_rendernodeutils_disposerendernodemaskoption)释放。
 
 **起始版本：** 20
 
@@ -2908,7 +2994,7 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeM
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | 指向渲染节点遮罩的指针。 |
-| uint32_t fillColor | 遮罩的填充颜色。 |
+| uint32_t fillColor | 遮罩的填充颜色，ARGB格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor()
 
@@ -2925,7 +3011,7 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNod
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | 指向渲染节点遮罩的指针。 |
-| uint32_t strokeColor | 遮罩的描边颜色。 |
+| uint32_t strokeColor | 遮罩的描边颜色，ARGB格式为0xAARRGGBB，其中A、R、G、B分别表示Alpha、红、绿、蓝通道。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth()
 
@@ -2934,7 +3020,9 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 ```
 
 **描述：**
-设置渲染节点遮罩的描边宽度。以边框路径为中心进行相应宽度的绘制。
+设置渲染节点遮罩的描边宽度。
+
+以边框路径为中心进行相应宽度的绘制。
 
 **起始版本：** 20
 
@@ -2942,7 +3030,7 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | 指向渲染节点遮罩的指针。 |
-| float strokeWidth | 遮罩的描边宽度。<br>取值范围：(0, +∞)，当取值为负数或0时，绘制时会被设定成1像素。 |
+| float strokeWidth | 遮罩的描边宽度，单位：px。取值大于0时按设定宽度绘制；取值为0或负数时，按设备空间1px宽的细线绘制。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape()
 
@@ -2952,6 +3040,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 **描述：**
 从矩形形状创建裁剪。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](#oh_arkui_rendernodeutils_disposerendernodeclipoption)释放。
 
 **起始版本：** 20
 
@@ -2974,6 +3064,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 从圆角矩形形状创建裁剪。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](#oh_arkui_rendernodeutils_disposerendernodeclipoption)释放。
+
 **起始版本：** 20
 
 **参数：**
@@ -2994,6 +3086,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 **描述：**
 从圆形形状创建裁剪。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](#oh_arkui_rendernodeutils_disposerendernodeclipoption)释放。
 
 **起始版本：** 20
 
@@ -3016,6 +3110,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 从椭圆形形状创建裁剪。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](#oh_arkui_rendernodeutils_disposerendernodeclipoption)释放。
+
 **起始版本：** 20
 
 **参数：**
@@ -3036,6 +3132,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 **描述：**
 从自定义绘制路径创建裁剪。
+
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](#oh_arkui_rendernodeutils_disposerendernodeclipoption)释放。
 
 **起始版本：** 20
 
@@ -3137,6 +3235,8 @@ ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
 
 创建一个模糊样式对象。
 
+使用完毕后调用[OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption](#oh_arkui_rendernodeutils_disposeblurstyleoption)销毁并释放资源。
+
 **起始版本：** 26.0.0
 
 **返回：**
@@ -3173,6 +3273,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 
 为目标模糊样式设置模糊半径。
 
+模糊半径用于控制模糊的密度，半径越大，模糊处理的密度越大；设置为0时不进行模糊处理。对于背景模糊处理，半径达到80px时可实现良好的磨砂玻璃效果；应避免使用超过200px的模糊半径，否则将导致性能下降。
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -3180,7 +3282,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，要设置模糊半径的目标模糊样式的指针。 |
-| float radius | 要设置的模糊半径。取值范围：[0, +∞)。单位：px。模糊半径用于控制模糊的密度，即半径越大，模糊处理的密度越大。设置0即表示不进行模糊处理。对于背景模糊处理，半径达到80，即可实现良好的磨砂玻璃效果。应避免使用超过200像素的模糊半径，否则将导致性能下降。 |
+| float radius | 要设置的模糊半径。<br/>取值范围：[0, +∞)。<br/>单位：px。<br/>传入负值时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -3221,7 +3323,9 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandl
 
 **描述：**
 
-为渲染节点重置背景模糊样式。重置后无背景模糊样式。
+为渲染节点重置背景模糊样式。
+
+重置后无背景模糊样式。
 
 **起始版本：** 26.0.0
 
@@ -3270,7 +3374,9 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandl
 
 **描述：**
 
-为渲染节点重置前景模糊样式。重置后无前景模糊样式。
+为渲染节点重置前景模糊样式。
+
+重置后无前景模糊样式。
 
 **起始版本：** 26.0.0
 
@@ -3319,7 +3425,9 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle n
 
 **描述：**
 
-为渲染节点重置内容模糊样式。重置后无内容模糊样式。
+为渲染节点重置内容模糊样式。
+
+重置后无内容模糊样式。
 
 **起始版本：** 26.0.0
 
@@ -3343,7 +3451,9 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 
 **描述：**
 
-在父节点下的指定位置插入子渲染节点。
+在父自定义节点下的指定位置插入子渲染节点。
+
+默认使用[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy)挂载策略，待插入的子渲染节点必须是父节点的唯一子节点；可通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)将挂载策略设置为OH_ARKUI_NODE_MOUNT_POLICY_MIXED，以混合挂载多个子节点。
 
 **起始版本：** 26.0.0
 
@@ -3351,16 +3461,16 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标父节点。只支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型的节点。|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标父节点，仅支持[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)中的ARKUI_NODE_CUSTOM类型。|
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | 将要插入的子渲染节点。|
-| int32_t position | 插入子渲染节点的索引。     <br>索引范围必须处于[0, 当前子节点数量]。     <br>如果索引等于当前子节点数量，那么等同于添加操作。|
+| int32_t position | 插入子渲染节点的索引，取值范围为[0, 当前子节点数量]；等于当前子节点数量时等同于添加操作。|
 
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>         [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。<br>         [ARKUI_ERROR_CODE_CHILD_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 父节点已有子节点。<br>         [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标渲染节点存在父节点。<br>         [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>         [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点非自定义节点。<br>         [ARKUI_ERROR_CODE_CHILD_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 使用非OH_ARKUI_NODE_MOUNT_POLICY_MIXED挂载策略时，父节点已有子节点。<br>         [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标渲染节点存在父节点。<br>         [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。 |
 
 ### OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount()
 
@@ -3370,7 +3480,9 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHa
 
 **描述：**
 
-获取指定父节点的子渲染节点数量。
+获取父自定义节点在混合挂载顺序中的全部子节点数量。
+
+计数包含普通节点和渲染节点。父节点需为ARKUI_NODE_CUSTOM类型，并已通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)设置OH_ARKUI_NODE_MOUNT_POLICY_MIXED策略；否则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
 
 **起始版本：** 26.0.0
 
@@ -3379,13 +3491,13 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHa
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 待查询的父节点。|
-| int32_t* count | 子渲染节点的数量。|
+| int32_t* count | 用于接收子节点数量的指针。|
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。|
 
 ### OH_ArkUI_RenderNodeUtils_GetRenderNodeAt()
 
@@ -3395,7 +3507,9 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, 
 
 **描述：**
 
-获取父节点下指定位置的子渲染节点。
+获取父自定义节点在混合挂载顺序中指定位置子节点对应的渲染节点句柄。
+
+父节点需为ARKUI_NODE_CUSTOM类型，并已通过[OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy)设置OH_ARKUI_NODE_MOUNT_POLICY_MIXED策略；否则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
 
 **起始版本：** 26.0.0
 
@@ -3404,12 +3518,12 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标父节点。|
-| int32_t position | 子渲染节点的索引。索引范围必须处于[0, 当前子节点数量-1]。|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* child | 接收子渲染节点的函数出参。不可为空指针。|
+| int32_t position | 子节点的索引，取值范围为[0, 当前子节点数量-1]。|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* child | 用于接收指定位置子节点对应的渲染节点句柄的指针，不可为空。|
 
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。|
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。|

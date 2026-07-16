@@ -2199,7 +2199,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgOid() : string
 
-表示获取X.509证书签名算法的对象标志符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
+表示获取X.509证书签名算法的对象标识符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2209,7 +2209,7 @@ getSignatureAlgOid() : string
 
 | 类型   | 说明                              |
 | ------ | --------------------------------- |
-| string | 表示X.509证书签名算法对象标志符OID。若OID长度超过127字节，则会被截断。 |
+| string | 表示X.509证书签名算法对象标识符OID。若OID长度超过127字节，则会被截断。 |
 
 **错误码：**
 
@@ -8441,8 +8441,8 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 证书链构建过程遵循以下规则：
 1. 可信锚点源：始终使用可信任证书列表（trustedCerts）作为信任锚点源。仅当trustSystemCa设置为true时，预配置的证书才会被用作信任锚源。
 2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
-3. 信任锚锁定：一旦在信任锚源中找到发行者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
-4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到发行者时，构建即完成。
+3. 信任锚锁定：一旦在信任锚源中找到颁发者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
+4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
 5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
 
 **起始版本**：26.0.0
@@ -12728,7 +12728,7 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | 是 |使用斜杠'/'分割可分辨名称字符串格式，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
+| nameStr | string | 是 |使用斜杠'/'分隔可分辨名称字符串格式，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
 
 **返回值：**
 

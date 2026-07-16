@@ -6,11 +6,11 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上绘制，绘制对象可以是形状、文本、图片等。
+CanvasRenderingContext2D是Canvas组件的2D绘图上下文对象，用于在Canvas组件上进行自定义绘图。支持绘制形状（矩形、圆形、椭圆、路径等）、文本、图片、渐变、阴影等多种绘制类型，适用于数据可视化、游戏开发、图像编辑、自定义UI绘制等场景。通过该对象，开发者可以灵活控制绘制过程，实现复杂的2D图形效果。
 
 > **说明：**
 >
-> * 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> * 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > * 建议使用时将CanvasRenderingContext2D对象与Canvas组件封装到同一个自定义组件中，保证两者一一对应且生命周期保持一致。
 >
@@ -28,6 +28,10 @@ constructor(settings?: RenderingContextSettings)
 
 构造Canvas画布对象，支持配置CanvasRenderingContext2D对象的参数。
 
+> **说明：**
+>
+> 建议使用时将CanvasRenderingContext2D对象与Canvas组件封装到同一个自定义组件中，保证两者一一对应且生命周期保持一致。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -38,13 +42,17 @@ constructor(settings?: RenderingContextSettings)
 
 | 参数名      | 类型  | 必填   | 说明    |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用来配置CanvasRenderingContext2D对象的参数，见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
+| settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用于配置CanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，不传入时使用默认配置（不开启抗锯齿）。见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
 
 ## constructor<sup>12+</sup>
 
 constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 构造Canvas画布对象，支持配置CanvasRenderingContext2D对象的参数和单位模式。
+
+> **说明：**
+>
+> 建议使用时将CanvasRenderingContext2D对象与Canvas组件封装到同一个自定义组件中，保证两者一一对应且生命周期保持一致。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,9 +66,9 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 | 参数名      | 类型  | 必填   | 说明    |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用来配置CanvasRenderingContext2D对象的参数，见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用来配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
+| settings | [RenderingContextSettings](#renderingcontextsettings) | 否    | 用于配置CanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，不传入时使用默认配置（不开启抗锯齿）。见[RenderingContextSettings](#renderingcontextsettings)。<br>异常值undefined和null按[RenderingContextSettings](#renderingcontextsettings)的默认值处理。 |
 
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用于配置CanvasRenderingContext2D对象的单位模式，配置后无法更改。DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 **示例：**
 
 以下示例展示了配置CanvasRenderingContext2D对象的单位模式，默认单位模式为LengthMetricsUnit.DEFAULT，对应默认单位vp，配置后无法动态更改。详细说明见[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)。
@@ -83,6 +91,7 @@ struct LengthMetricsUnitDemo {
         .height(150)
         .backgroundColor('#ffff00')
         .onReady(() => {
+          // 使用px单位模式绘制图形
           this.contextPX.fillRect(10, 10, 100, 100)
           this.contextPX.clearRect(10, 10, 50, 50)
         })
@@ -110,9 +119,9 @@ struct LengthMetricsUnitDemo {
 
 | 名称     | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ----- | -------- | --------------------------- |
-| width | number | 是 | 否 | CanvasRenderingContext2D的组件宽度。<br/>默认单位：vp <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height | number | 是 | 否 | CanvasRenderingContext2D的组件高度。<br/>默认单位：vp <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| canvas<sup>13+</sup> | [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | 是 | 否 | 获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例，可用于监听关联的Canvas组件的可见状态。<br/>默认值：null <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
+| width | number | 是 | 否 | CanvasRenderingContext2D的组件宽度。<br>默认单位：vp <br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height | number | 是 | 否 | CanvasRenderingContext2D的组件高度。<br>默认单位：vp <br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| canvas<sup>13+</sup> | [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | 是 | 否 | 获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例，可用于监听关联的Canvas组件的可见状态。<br>默认值：null <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## toDataURL
 
@@ -130,8 +139,8 @@ toDataURL(type?: string, quality?: any): string
 
 | 参数名     | 类型   | 必填  | 说明  |
 | ------- | ------ | ---- | ---------------------------------------- |
-| type    | string | 否  | 用于指定图像格式。<br/>可选参数为："image/png"，"image/jpeg"，"image/webp"。<br>异常值undefined或null按默认值处理。<br>默认值：image/png            |
-| quality | any | 否  | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量。如果超出取值范围，将会使用默认值0.92。<br>异常值undefined、null、NaN和Infinity按默认值处理。<br>默认值：0.92 |
+| type    | string | 否  | 用于指定图像格式。<br>可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。<br>异常值undefined或null按默认值处理。<br>默认值：image/png            |
+| quality | any | 否  | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1.0适合高质量需求。如果超出取值范围，将会使用默认值0.92。<br>异常值undefined、null、NaN和Infinity按默认值处理。<br>默认值：0.92 |
 
 **返回值：** 
 
@@ -141,34 +150,35 @@ toDataURL(type?: string, quality?: any): string
 
 **示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct CanvasExample {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    @State toDataURL: string = ""
+```ts
+// xxx.ets
+@Entry
+@Component
+struct CanvasExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true)
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  @State toDataURL: string = ""
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width(100)
-          .height(100)
-          .onReady(() =>{
-            this.context.fillStyle = "#00ff00"
-            this.context.fillRect(0,0,100,100)
-            this.toDataURL = this.context.toDataURL("image/png", 0.92)
-          })
-        Text(this.toDataURL)
-      }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#ffff00')
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width(100)
+        .height(100)
+        .onReady(() =>{
+          this.context.fillStyle = "#00ff00"
+          this.context.fillRect(0,0,100,100)
+          // 生成PNG格式的图像URL
+          this.toDataURL = this.context.toDataURL("image/png", 0.92)
+        })
+      Text(this.toDataURL)
     }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#ffff00')
   }
-  ```
-  ![toDataURL](figures/toDataURL.png)  
+}
+```
+![toDataURL](figures/toDataURL.png)
 
 ## on('onAttach')<sup>13+</sup>
 
@@ -199,12 +209,12 @@ on(type: 'onAttach', callback: Callback\<void>): void
 
 > **说明：**
 >
-> CanvasRenderingContext2D对象在同一时间只能与一个Canvas组件绑定。</br>
-> 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调，表示可以获取到[canvas](#属性)。</br>
-> 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经'[onReady](ts-components-canvas-canvas.md#onready)'再进行绘制。</br>
-> 触发'onAttach'回调的一般场景：</br>
-> 1、Canvas组件创建时绑定CanvasRenderingContext2D对象;</br>
-> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。</br>
+> CanvasRenderingContext2D对象在同一时间只能与一个Canvas组件绑定。<br>
+> 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调，表示可以获取到[canvas](#属性)。<br>
+> 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经'[onReady](ts-components-canvas-canvas.md#onready)'再进行绘制。<br>
+> 触发'onAttach'回调的一般场景：<br>
+> 1、Canvas组件创建时绑定CanvasRenderingContext2D对象;<br>
+> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。<br>
   
 ## on('onDetach')<sup>13+</sup>
 
@@ -235,10 +245,10 @@ on(type: 'onDetach', callback: Callback\<void>): void
 
 > **说明：**
 >
-> 当CanvasRenderingContext2D对象和Canvas组件解除绑定时，会触发'onDetach'回调，表示应停止绘制行为。</br>
-> 触发'onDetach'回调的一般场景：</br>
-> 1、Canvas组件销毁时解除绑定CanvasRenderingContext2D对象;</br>
-> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。</br>
+> 当CanvasRenderingContext2D对象和Canvas组件解除绑定时，会触发'onDetach'回调，表示应停止绘制行为。<br>
+> 触发'onDetach'回调的一般场景：<br>
+> 1、Canvas组件销毁时解除绑定CanvasRenderingContext2D对象;<br>
+> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。<br>
 
 ## off('onAttach')<sup>13+</sup>
 
@@ -403,13 +413,15 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| config   | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | 是   | 执行AI分析所需要的入参，用于配置AI分析功能。<br>异常值undefined或null按无效值处理。 |
+| config   | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | 是   | 执行AI分析所需要的入参，用于配置AI分析的类型（如主体识别、文字识别等）。详见[ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12)。<br>异常值undefined或null按无效值处理。 |
 
 **返回值：**
 
@@ -475,7 +487,7 @@ struct ImageAnalyzerExample {
         .onClick(() => {
           this.context.startImageAnalyzer(this.config)
             .then(() => {
-              console.info("analysis complete")
+              console.info('analysis complete');
             })
             .catch((error: BusinessError) => {
               let e: BusinessError = error as BusinessError
@@ -534,8 +546,8 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 | 参数名         | 类型                                                         | 必填 | 说明                                    |
 | -------------- | ------------------------------------------------------------ | ---- | --------------------------------------- |
-| drawingContext | [DrawingRenderingContext](ts-drawingrenderingcontext.md) | 是   | 一个DrawingRenderingContext类型的对象。 |
-| options        | [RenderingContextOptions](#renderingcontextoptions23) | 否   | 渲染上下文的配置选项。<br/>默认值：{ antialias: false }|
+| drawingContext | [DrawingRenderingContext](ts-drawingrenderingcontext.md) | 是   | 一个DrawingRenderingContext类型的对象。<br>异常值undefined或null按无效值处理。 |
+| options        | [RenderingContextOptions](#renderingcontextoptions23) | 否   | 渲染上下文的配置选项。<br>异常值undefined或null按默认值处理。<br>默认值：{ antialias: false }|
 
 **返回值：**
 
@@ -593,17 +605,17 @@ struct CanvasExample {
 
 | 名称      | 类型    | 只读 | 可选 | 说明                                                         |
 | --------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| antialias | boolean | 否   | 是   | 表明RenderingContext是否需要开启抗锯齿。<br/>取值为undefined时按默认值处理。<br/>true：开启抗锯齿；false：不开启抗锯齿。<br/>默认值：false |
+| antialias | boolean | 否   | 是   | 表明RenderingContext是否需要开启抗锯齿。<br>异常值undefined或null按默认值处理。<br>true：开启抗锯齿；false：不开启抗锯齿。<br>默认值：false |
 
 ## RenderingContextSettings
 
-用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
+用于配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
 
 ### constructor
 
 constructor(antialias?: boolean)
 
-构造CanvasRenderingContext2D对象，支持配置开启抗锯齿。
+构造RenderingContextSettings对象，支持配置开启抗锯齿。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -615,7 +627,7 @@ constructor(antialias?: boolean)
 
 | 参数名       | 类型    | 必填   | 说明                          |
 | --------- | ------- | ---- | ----------------------------- |
-| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](./ts-components-canvas-common-property.md#antialias24)接口。 |
+| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined或null按默认值处理。<br>true：表示开启抗锯齿，false：表示不开启抗锯齿功能。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](./ts-components-canvas-common-property.md#antialias24)接口。 |
 
 ### 属性
 
@@ -627,7 +639,7 @@ constructor(antialias?: boolean)
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](./ts-components-canvas-common-property.md#antialias24)接口。 |
+| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>异常值undefined或null按默认值处理。<br>true：表示开启抗锯齿，false：表示不开启抗锯齿功能。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](./ts-components-canvas-common-property.md#antialias24)接口。 |
 
 ## 示例
 

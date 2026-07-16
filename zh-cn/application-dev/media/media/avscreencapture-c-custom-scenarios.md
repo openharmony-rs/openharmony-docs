@@ -140,7 +140,7 @@ region->x = 0;
 region->y = 0;
 region->width = CAPTURE_REGION_SIZE;
 region->height = CAPTURE_REGION_SIZE;
-uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕Id。
+uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕ID。
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 delete region;
 region = nullptr;
