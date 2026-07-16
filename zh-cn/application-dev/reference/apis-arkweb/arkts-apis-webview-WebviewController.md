@@ -11302,7 +11302,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
 设置是否启用mainframe错误页功能，并可控制是否同时启用subframe错误页功能。
 
-当enable设置为true时，mainframe加载发生错误将展示错误页：若设置了[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，则展示用户自定义的错误页；若未设置，则展示ArkWeb内核提供的默认错误页。当enable和includeSubframe同时设置为true时，subframe加载发生错误也会展示错误页，onOverrideErrorPage回调对subframe同样生效。
+当enable设置为true时，mainframe加载发生错误将展示错误页：若设置了[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，则展示用户自定义的错误页；若未设置，则展示ArkWeb提供的默认错误页。当enable和includeSubframe同时设置为true时，subframe加载发生错误也会展示错误页，onOverrideErrorPage回调对subframe同样生效。
 
 > **说明：**
 >
