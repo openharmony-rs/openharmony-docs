@@ -59,7 +59,7 @@ Take the active widget refresh scenario as an example: The widget displays a tit
 
 The widget entry component uses `@Entry(storage)` to pass in LocalStorage, and receives the refresh data through `@LocalStorageProp('title')` and `@LocalStorageProp('detail')`, with matching based on the decorator's input key value.
 
-<!-- @[CardMigrationV1](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCardV1.ets) -->
+<!-- @[CardMigrationV1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCardV1.ets) -->
 
 ``` TypeScript
 let storage = new LocalStorage();
@@ -105,7 +105,7 @@ struct WidgetCardV1 {
 
 The entry component is migrated to `@Entry @ComponentV2`, and the creation and passing of the LocalStorage instance are removed. @LocalStorageProp is migrated to @Local, with the variable names `title` and `detail` kept consistent with the keys of the data pushed by updateForm. Based on this, the system directly notifies the corresponding decorators of the refresh data.
 
-<!-- @[CardMigrationV2](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+<!-- @[CardMigrationV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
 
 ``` TypeScript
 // After migration to V2, the entry component uses @ComponentV2 and no longer requires passing in a LocalStorage instance.
@@ -147,7 +147,7 @@ struct WidgetCard {
 
 The implementation of the widget provider FormExtensionAbility does not need to be modified. The data keys pushed by **updateForm** only need to be consistent with the variable names in the V2 widget for the mechanism to take effect.
 
-<!-- @[CardMigrationFormAbility](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+<!-- @[CardMigrationFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
 
 ``` TypeScript
 onFormEvent(formId: string, message: string) {
@@ -181,7 +181,7 @@ In the following example, the `detail` variable needs to be shared across compon
 
 Both the entry component and child components read the same data in **LocalStorage** through @LocalStorageProp to achieve sharing.
 
-<!-- @[CardMigrationShareV1](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCardV1.ets) -->
+<!-- @[CardMigrationShareV1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCardV1.ets) -->
 
 ``` TypeScript
 let storage = new LocalStorage();
@@ -240,7 +240,7 @@ struct ChildComp1 {
 
 Remove **LocalStorage** from the entry component. Migrate `title`, which is used only within the component, to @Local. Migrate `detail`, which needs to be shared across components, to @Provider, and have the child component synchronize data via @Consumer. The key for data pushed by **updateForm** is `detail`, which matches the variable name of @Provider. After data is updated, it is automatically synchronized to the child component via [@Provider](./arkts-new-provider-and-consumer.md)/[@Consumer](./arkts-new-provider-and-consumer.md).
 
-<!-- @[CardMigrationShareV2](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCard.ets) -->
+<!-- @[CardMigrationShareV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCard.ets) -->
 
 ``` TypeScript
 // After V2 migration, the entry component uses @ComponentV2 and no longer needs to pass in a LocalStorage instance.

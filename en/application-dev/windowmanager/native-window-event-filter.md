@@ -1,10 +1,11 @@
 # Using WindowManager to Manage Multimodal Input Events (C/C++)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
+<!--Owner: @fei_1007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:47:02.276Z pushedAt=2026-07-16T08:57:16.363Z -->
 
 ## When to Use
 
@@ -17,11 +18,13 @@ Currently, WindowManager supports filtering multimodal input events and injectin
 You can use the capability provided by the WindowManager module to intercept key events so that they are not distributed to internal components of your application.
 
 ### Linking the Dynamic Library in the CMake Script
-```
+
+```txt
 target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 ```
 
 ### Adding Header Files
+
 ```c++
 #include "multimodalinput/oh_input_manager.h"
 #include "multimodalinput/oh_key_code.h"
@@ -116,7 +119,7 @@ You can use the capability provided by the WindowManager module to inject touch 
 
 ### Linking the Dynamic Library in the CMake Script
 
-```
+```txt
 target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 ```
 

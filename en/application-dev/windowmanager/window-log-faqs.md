@@ -74,7 +74,7 @@ Field description:
 | DisplayId | Display device ID. | **0** indicates the primary screen. In multi‑screen scenarios, you can use [**getAllDisplays()**](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9) to query the **DisplayId** of all screens. |
 | Pid | ID of the process that creates the window. | Example: **18299** |
 | WinId | Window unique ID. | Example: **13** |
-| Type | Window type. | This value is an internal system identifier and does not directly correspond to the [**WindowType**](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7) values.<br>App windows: **1** indicates the main window; **2** indicates a child window.<br>System windows: The value is **2000+**. |
+| Type | Window type. | This value is an internal system identifier and does not directly correspond to the [**WindowType**](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7) values. App windows: **1** indicates the main window; **2** indicates a child window. System windows: The value is **2000+**. |
 | Mode | Window mode. | **1** indicates full‑screen mode. This value is an internal system identifier and does not fully correspond to the [**WindowMode**](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12) values. |
 | Flag | Status flag. | Reserved. |
 | ZOrd | Window level (z-order). | A larger value indicates a higher level (e.g., **4** is higher than **2**). **-1** indicates a hidden level. |
@@ -360,9 +360,9 @@ Field description:
 
 An anomaly is triggered when the window size meets any of the following conditions:
 
-1. The size exceeds the maximum: `curWidth > maxFloatingWindowSize` or `curHeight > maxFloatingWindowSize`.
+1. The size exceeds the maximum: `curWidth &gt; maxFloatingWindowSize` or `curHeight &gt; maxFloatingWindowSize`.
 
-2. The size is below the minimum limit and smaller than the screen size (non-system window types): `curWidth < minWidth` and `curWidth < screenWidthVp`, or `curHeight < minHeight` and `curHeight < screenHeightVp`.
+2. The size is below the minimum limit and smaller than the screen size (non-system window types): `curWidth &lt; minWidth` and `curWidth &lt; screenWidthVp`, or `curHeight &lt; minHeight` and `curHeight &lt; screenHeightVp`.
 
 > **NOTE**
 >
@@ -370,7 +370,7 @@ An anomaly is triggered when the window size meets any of the following conditio
 >
 > A WINDOW_RECT_CHECK exception indicates that the window size is outside the system-specified range. You should compare the **curWidth** and **curHeight** values in the fault log against the system limits and adjust the size parameters when calling [resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9). **maxFloatingWindowSize** is the maximum size threshold specified by the system. Both the maximum width and maximum height of the window are limited to this value, meaning the window width must be within [minWidth, maxFloatingWindowSize] and the window height must be within [minHeight, maxFloatingWindowSize].
 >
-> Condition 2 requires both "smaller than the minimum limit" and "smaller than the screen size" to be met simultaneously. The reason is as follows: when the window size is smaller than the minimum limit but has already reached the screen size (for example, `curWidth < minWidth` but `curWidth >= screenWidthVp`), the screen size itself is small and the window already fills the screen and cannot be enlarged further. This is a device limitation rather than a configuration issue, so the system does not report a RectCheck error. Only when the window size is both smaller than the minimum limit and smaller than the screen size does it indicate that the window size is set too small, requiring a larger size and adjustment.
+> Condition 2 requires both "smaller than the minimum limit" and "smaller than the screen size" to be met simultaneously. The reason is as follows: when the window size is smaller than the minimum limit but has already reached the screen size (for example, `curWidth &lt; minWidth` but `curWidth &gt;= screenWidthVp`), the screen size itself is small and the window already fills the screen and cannot be enlarged further. This is a device limitation rather than a configuration issue, so the system does not report a RectCheck error. Only when the window size is both smaller than the minimum limit and smaller than the screen size does it indicate that the window size is set too small, requiring a larger size and adjustment.
 
 **Analysis, Location, and Resolution**
 
@@ -392,11 +392,11 @@ An anomaly is triggered when the window size meets any of the following conditio
 
 3. Determine the anomaly type. Based on the comparison of **curWidth** and **curHeight** with the limit values and screen size:
 
-   - If `curWidth > maxFloatingWindowSize` or `curHeight > maxFloatingWindowSize`: The window size exceeds the maximum limit.
+   - If `curWidth &gt; maxFloatingWindowSize` or `curHeight &gt; maxFloatingWindowSize`: The window size exceeds the maximum limit.
 
-   - If `curWidth < minWidth` and `curWidth < screenWidthVp`: The window width is too small and less than the screen width.
+   - If `curWidth &lt; minWidth` and `curWidth &lt; screenWidthVp`: The window width is too small and less than the screen width.
 
-   - If `curHeight < minHeight` and `curHeight < screenHeightVp`: The window height is too small and less than the screen height.
+   - If `curHeight &lt; minHeight` and `curHeight &lt; screenHeightVp`: The window height is too small and less than the screen height.
 
 4. Check the size parameters at the [resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9) call location in the code.
 
@@ -527,7 +527,7 @@ Key information:
 
 **Analysis and Location and Resolution**
 
-Check whether <code>decorEnabled</code> is set to <code>true</code> in <b>SubwindowOptions</b> when creating the subwindow.
+Check whether **decorEnabled** is set to **true** in **SubwindowOptions** when creating the subwindow.
 
 For the subwindow that calls this API, ensure that the window title bar is enabled.
 
