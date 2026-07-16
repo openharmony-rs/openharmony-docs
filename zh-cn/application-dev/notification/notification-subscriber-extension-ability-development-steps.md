@@ -69,16 +69,19 @@
    }
    ```
 6. 在应用的string.json文件中添加
-   ``` JSON5
-     {
-       "name": "NotificationSubscriberExtAbility_desc",
-       "value": "description"
-     },
-     {
-       "name": "NotificationSubscriberExtAbility_label",
-       "value": "ThirdPartyWearableApp"
-     }
-   ```
+
+    ```json
+    [
+      {
+        "name": "NotificationSubscriberExtAbility_desc",
+        "value": "description"
+      },
+      {
+        "name": "NotificationSubscriberExtAbility_label",
+        "value": "ThirdPartyWearableApp"
+      }
+    ]
+    ```
 
 7. 示例仅为传统蓝牙连接示例，开发者也可选用低功耗蓝牙连接方式。
 

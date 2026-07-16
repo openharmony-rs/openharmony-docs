@@ -7061,7 +7061,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 通知渠道类型。
 
-不同类型对应不同的[SlotLevel](#slotlevel)，决定通知的提醒行为。
+不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
 
 **系统能力**：SystemCapability.Notification.Notification
 
