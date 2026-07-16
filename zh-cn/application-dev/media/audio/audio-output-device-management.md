@@ -219,33 +219,43 @@ let audioSessionManager = audioManager.getSessionManager();
 <!-- @[setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
 
 ``` TypeScript
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
+
+  // 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
+  audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_VOICE_COMMUNICATION);
+
+  // 设置音频会话策略。
   let strategy: audio.AudioSessionStrategy = {
-    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
   };
-  await audioSessionManager.activateAudioSession(strategy);
-  // 设置默认输出设备为本机扬声器。
-  audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
-    console.info('setDefaultOutputDevice Success!');
+
+  // 激活AudioSession。
+  audioSessionManager.activateAudioSession(strategy).then(() => {
+    console.info('Succeeded in activating audio session.');
     // ...
   }).catch((err: BusinessError) => {
-    console.error(`setDefaultOutputDevice Fail: ${err}`);
+    console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
   // ...
-  let strategy: audio.AudioSessionStrategy = {
-    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
-  };
-  await audioSessionManager.activateAudioSession(strategy);
-  // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
-  audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
-    console.info('setDefaultOutputDevice Success!');
+
+  // 设置默认输出设备为扬声器。
+  audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+    console.info('Succeeded in setting default output device.');
     // ...
   }).catch((err: BusinessError) => {
-    console.error(`setDefaultOutputDevice Fail: ${err}`);
-    // [Exclude setting_DefaultOutputDevice]
+    console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+  // ...
 
+  // 设置默认输出设备为听筒。
+  audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
+    console.info('Succeeded in setting default output device.');
+    // ...
+  }).catch((err: BusinessError) => {
     console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
