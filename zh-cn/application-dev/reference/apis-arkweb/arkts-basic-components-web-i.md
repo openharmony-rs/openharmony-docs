@@ -37,9 +37,9 @@
 
 | 名称             | 类型      | 只读 | 可选  | 说明                                       |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
-| resumeInterval | number  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br/>默认值：0。|
-| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示不独占。<br>默认值：true。                       |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)中的STREAM_USAGE_MUSIC。用于改变组件音频类型与系统音频类型映射关系，影响ArkWeb音频焦点策略。|
+| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>默认值：0。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
+| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示不独占。<br>默认值：true。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)中的STREAM_USAGE_MUSIC。用于改变组件音频类型与系统音频类型映射关系，影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23<br>|
 
 ## ScriptItem<sup>11+</sup>
 
