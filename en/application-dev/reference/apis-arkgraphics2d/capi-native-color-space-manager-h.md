@@ -1,10 +1,12 @@
 # native_color_space_manager.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
 <!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T06:36:44.189Z pushedAt=2026-07-16T07:42:26.679Z -->
 
 ## Overview
 
@@ -97,7 +99,6 @@ Defines an enum for the color space names.
 | BT2020_LOG_LIMIT = 28 | Color space with the color primaries of BT2020, the transfer characteristics of PRIV_LOG, and the color range of LIMIT.<br>**Since**: 26.0.0|
 | CUSTOM = 5 | Custom color space.|
 
-
 ## Function Description
 
 ### OH_NativeColorSpaceManager_CreateFromName()
@@ -113,7 +114,6 @@ Creates an **OH_NativeColorSpaceManager** instance based on a color space name.<
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -140,7 +140,6 @@ Creates an **OH_NativeColorSpaceManager** instance based on the color primaries 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -169,7 +168,6 @@ Destroys an **OH_NativeColorSpaceManager** instance. When the OH_NativeColorSpac
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -190,7 +188,6 @@ Obtains the color space name.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -201,7 +198,7 @@ Obtains the color space name.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the color space name, which is defined in [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename). The return value **0** means that the function call fails.|
+| int | Value corresponding to the color space enum [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename). A return value of 0 indicates that the API operation failed. Possible failure cause: the nativeColorSpaceManager parameter is a null pointer. Suggestion: check whether the parameter is a valid pointer. |
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
@@ -217,7 +214,6 @@ Obtains the white points.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -228,7 +224,7 @@ Obtains the white points.
 
 | Type| Description|
 | -- | -- |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | Returns a float array of white points. The value **<0.0, 0.0>** means that the function call fails.|
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | Return value is a float array. Return value <0.0, 0.0> indicates that the API operation failed, and other return values indicate that the operation is successful. Possible failure cause: The nativeColorSpaceManager parameter is a null pointer. Suggestion: Check whether the parameter is a valid pointer. |
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
@@ -244,7 +240,6 @@ Obtains the gamma value.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -255,4 +250,4 @@ Obtains the gamma value.
 
 | Type| Description|
 | -- | -- |
-| float | Returns a float value. The value **0.0** means that the function call fails.|
+| float | Value of the float type. 0.0 indicates that the API operation failed, and other return values indicate success. Possible failure cause: The nativeColorSpaceManager parameter is a null pointer. Suggestion: Check whether the parameter is a valid pointer. |
