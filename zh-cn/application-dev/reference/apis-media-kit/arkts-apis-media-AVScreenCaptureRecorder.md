@@ -237,7 +237,7 @@ pauseRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not permitted. Return by promise. |
+| 5400102  | Operation not be permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
 | 5400105  | Service died. Return by promise. |
 
@@ -297,7 +297,7 @@ resumeRecording(): Promise\<void>
 
 | 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
-| 5400102  | Operation not permitted. Return by promise. |
+| 5400102  | Operation not be permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
 | 5400105  | Service died. Return by promise. |
 
@@ -357,8 +357,8 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像。支持透明度。图像格式和尺寸要求请参考[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。 |
-| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像，取值原则：PixelMap对象不能为空。支持透明度设置。图像格式和尺寸要求请参考[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。 |
+| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。 |
 
 **返回值：**
 
@@ -494,8 +494,8 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 > **说明：**
 >
-> 在需要录制或静音麦克风音频时调用此接口，例如用户需要临时关闭麦克风或重新开启麦克风录制。
-> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
+> - 在需要录制或静音麦克风音频时调用此接口，例如用户需要临时关闭麦克风或重新开启麦克风录制。
+> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
