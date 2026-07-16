@@ -135,4 +135,4 @@ cache rejected: 0
 -code cache校验成功
 - 内存中存在编译缓存，code cache没有被校验
 
-对于第一种情况，这个参数会被设置为true，而后两种情况都是false，因此需要注意即使reject为false，也不能说明code cache被接收了。
+对于第一种情况，这个参数会被设置为true，而后两种情况都是false，因此需要注意即使reject为false，也不能说明code cache被接受了。

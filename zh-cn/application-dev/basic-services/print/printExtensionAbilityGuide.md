@@ -79,7 +79,9 @@
 
 4. 在工程entry Module目录下的module.json5配置文件中(./entry/src/main/module.json5)注册PrintExtensionAbility并设置如下标签：
    * type标签设置为"print"；
+
    * srcEntry标签设置为当前ExtensionAbility组件所对应的代码路径。
+   
    示例如下：
    ```ts
    {
