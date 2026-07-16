@@ -711,8 +711,8 @@ struct DepthComponentInstanceExample {
           zNear: 0.1,
           zFar: 100,
           cameraBufferCrop: {
-            bufferWidth: 1262,       // 背景图 background 宽度
-            bufferHeight: 2560,      // 背景图 background 高度
+            bufferWidth: 1262,       // 基准图宽度
+            bufferHeight: 2560,      // 基准图高度
             cropOffset: { x: 100.0, y: 100.0 },
             cropScale: 0.65
           }
