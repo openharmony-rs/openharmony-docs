@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  * 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  * 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  * OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 >
@@ -36,9 +36,9 @@ constructor(width: number, height: number, settings?: RenderingContextSettings)
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
 | width    | number                                   | 是    | 离屏画布的宽度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
 | height   | number                                   | 是    | 离屏画布的高度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
+| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
 
-## constructor<sup>12+<sup>
+## constructor<sup>12+</sup>
 
 constructor(width: number, height: number, settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
@@ -58,14 +58,14 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
 | width    | number                                   | 是    | 离屏画布的宽度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
 | height   | number                                   | 是    | 离屏画布的高度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
+| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
 
 ## toDataURL
 
 toDataURL(type?: string, quality?: any): string
 
-生成一个包含图片展示的URL，该接口存在内存拷贝行为，高耗时，应避免频繁使用。
+生成一个包含图片展示的Data URL，该接口存在内存拷贝行为，高耗时，应避免频繁使用。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -77,8 +77,8 @@ toDataURL(type?: string, quality?: any): string
 
 | 参数名     | 类型   | 必填   | 说明                                       |
 | ------- | ------ | ---- | ---------------------------------------- |
-| type    | string | 否  | 用于指定图像格式。<br/>可选参数为："image/png"，"image/jpeg"，"image/webp"。<br>异常值undefined或null按默认值处理。<br>默认值：image/png |
-| quality | any | 否  | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量。如果超出取值范围，将会使用默认值0.92。<br>异常值undefined、null、NaN和Infinity按默认值处理。<br>默认值：0.92 |
+| type    | string | 否  | 用于指定图像格式。<br>可选参数为："image/png"，"image/jpeg"，"image/webp"。<br>异常值undefined或null按默认值处理。<br>默认值：image/png |
+| quality | any | 否  | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，取值范围[0, 1]。如果超出取值范围，将会使用默认值0.92。<br>异常值undefined、null、NaN和Infinity按默认值处理。<br>默认值：0.92 |
 
 **返回值：** 
 
