@@ -398,7 +398,7 @@ struct Extension {
   "name": "ExampleEmbeddedAbility",
   "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
   "type": "embeddedUI"
-},
+}
 ```
 
 **预期效果**
