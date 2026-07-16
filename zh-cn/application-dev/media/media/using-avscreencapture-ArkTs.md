@@ -122,7 +122,7 @@
 
    ​参数videoBitrate、audioSampleRate、audioChannelCount、audioBitrate、preset、displayId为可选参数，若不设置则可按默认值进行设置，如下示例中提供了可选参数的默认值。麦克风和系统音的音频流共用一套音频参数，分别是音频采样率、音频通道数和音频比特率，对应audioSampleRate、audioChannelCount和audioBitrate参数。
 
-   参数fd可以参考应用文件访问与管理的开发实例[新建并读写一个文件fd](../../file-management/app-file-access.md)。本示例中提供的getFileFd()仅作为参考。
+   参数fd可以参考应用文件访问与管理的开发实例[新建并读写一个文件fd](../../file-management/app-file-access.md)。本示例中提供的openFile()仅作为参考。
 
    2in1设备配置displayId为扩展屏Id，可拉起录屏窗口选择界面，用户在界面上选择录屏内容，最终录屏内容以用户在弹窗界面上的选择为准。
    
@@ -219,7 +219,7 @@
 
 以下是通过AVScreenCaptureRecorder实现录屏存文件的完整代码示例。
 
-<!-- @[screenCapture_arkts_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
+<!-- @[screenCapture_arkts_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->  
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -368,7 +368,7 @@ export class AVScreenCaptureDemo {
     // 调用release()方法销毁实例，释放资源。
     await this.screenCapture?.release();
 
-    // 最后需要关闭创建的录屏文件;
+    // 最后需要关闭创建的录屏文件。
     this.closeFile();
   }
 }
