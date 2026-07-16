@@ -58,12 +58,12 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 示例中的变量说明如下：
 
 - g_avCapture：指向[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)实例的指针。
-- regionDisplayId：需要捕获区域所在的屏幕Id。
+- regionDisplayId：需要捕获区域所在的屏幕ID。
 - region：需要捕获区域的坐标和宽高。类型为OH_Rect，包括成员变量x、y、width、height。
   - x、y分别为矩形区域起点的横坐标、纵坐标位置。
   - width、height分别为矩形区域的宽度和高度。
   - 多个参数之间通过";"连接，所有参数均为整数。
-  - 使用前请确保传入参数有效，并避免坐标和宽高为负数。
+  - 使用前请确保传入参数有效，坐标和宽高为负数。
 
 > **注意**
 > 
