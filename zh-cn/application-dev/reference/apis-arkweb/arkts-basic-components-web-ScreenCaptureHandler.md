@@ -37,7 +37,7 @@ deny(): void
 拒绝网页所请求的屏幕捕获操作。
 
 **调用约束：**
-- 与grant()方法互斥，对同一个ScreenCaptureHandler实例的同一请求只能调用其中一个。
+- 与 grant() 方法互斥，对同一个 ScreenCaptureHandler 实例的同一请求只能调用其中一个。
 - 调用后不应再对同一请求调用另一个方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -69,10 +69,6 @@ getOrigin(): string
 grant(config: ScreenCaptureConfig): void
 
 对网页访问的屏幕捕获操作进行授权。该方法会根据提供的配置参数授予屏幕捕获权限，授权后网页可以按照配置的参数进行屏幕捕获。配置参数会被验证，确保符合系统安全要求。用于用户同意网页的屏幕捕获请求后调用，或根据业务策略自动授权可信网页时使用。
-
-> **说明：**
->
-> - 需要配置权限：ohos.permission.MICROPHONE。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
