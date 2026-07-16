@@ -301,8 +301,15 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
    import { BusinessError } from '@kit.BasicServicesKit';
 
    async function  sendCommandToSessionByController() {
-     // 假设我们已经有了一个对应session的controller，如何创建controller可以参考之前的案例。
-     let controller = await AVSessionManager.createController("");
+     // 获取当前系统中所有session的描述符。
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // 取目标session的sessionId创建controller。
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      // 获取这个session支持的命令种类。
      let validCommandTypeArray = await controller.getValidCommands();
      console.info(`get validCommandArray by controller : length : ${validCommandTypeArray.length}`);
@@ -310,22 +317,22 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
      // 如果可用命令包含播放，则下发播放命令，正常session都应该提供并实现播放功能。
      if (validCommandTypeArray.indexOf('play') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'play'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发暂停命令。
      if (validCommandTypeArray.indexOf('pause') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'pause'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发上一首命令。
      if (validCommandTypeArray.indexOf('playPrevious') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'playPrevious'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发下一首命令。
      if (validCommandTypeArray.indexOf('playNext') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'playNext'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发自定义控制命令。
      let commandName = 'custom command';
