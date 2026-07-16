@@ -49,7 +49,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
   | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 | 
   | targetBundleName | string | 是 | 被授权URI的应用包名。 | 
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
 
 **错误码：**
 
