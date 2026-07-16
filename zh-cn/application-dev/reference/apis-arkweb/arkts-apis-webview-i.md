@@ -180,8 +180,8 @@ WebViewController与Web组件的绑定状态。
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| errCode | [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20) | 否   | 否   | 无白屏加载的异常错误码，见[WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20)定义。 |
-| similarity | number | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为[0, 1.0]，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似度将在下次加载时才可反映。建议应用根据自身业务需求确定相似度阈值，当相似度低于该阈值时不启用无白屏加载插帧方案。 |
+| errCode | [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20) | 否   | 否   | 无白屏加载的错误码，见[WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20)定义。 |
+| similarity | number | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为[0, 1.0]，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似度将在下次加载时才可反映。建议当相似度低于具体阈值（如0.33）时，应用不启用无白屏加载插帧方案。 |
 | loadingTime | number | 否   | 否   | 根据历史加载首屏耗时预测本次加载耗时，单位ms，取值范围：大于0。 |
 
 ## BlanklessFrameInterpolationInfo<sup>23+</sup>
@@ -201,7 +201,7 @@ WebViewController与Web组件的绑定状态。
 
 ## BlanklessLoadingParam<sup>23+</sup>
 
-白屏插帧加载参数。
+无白屏加载插帧方案的加载参数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -209,7 +209,7 @@ WebViewController与Web组件的绑定状态。
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| enable | boolean | 否   | 否   | 是否启用白屏插帧。<br>true表示启用，false表示不启用。 |
+| enable | boolean | 否   | 否   | 是否启用无白屏加载插帧方案。<br>true表示启用，false表示不启用。 |
 | duration | number | 否   | 是   | 插帧持续时间。<br>取值范围：[200, 2000] ∪ {0}，其中0表示不指定持续时间，由系统自动设置合适的持续时间。<br>单位：ms。 |
 | expirationTime | number | 否   | 是   | 历史帧失效时间，UTC时间。<br>用T表示当前UTC时间，同时已知30天为2592000000ms，取值范围：(T, T + 2592000000] ∪ {0}，其中0表示不指定失效时间，采用系统默认失效时间（7天）。<br>单位：ms。 |
 | callback | Callback<[BlanklessFrameInterpolationInfo](#blanklessframeinterpolationinfo23)> | 否   | 是   | 插帧成功、失败或移除后执行的回调。<br>只有在enable为true时生效。可选，不设置则不进行任何操作。 |

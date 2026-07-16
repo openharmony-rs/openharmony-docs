@@ -342,7 +342,7 @@
 | nodes | - | aria-description | string | 节点`aria-description`属性值。 |
 | nodes | - | rect | Object | 节点矩形信息。 |
 | nodes | rect | x | number | 节点矩形左上角x坐标。单位：px。 |
-| nodes | rect | y | number | 节点矩形左上角y坐标。单位：px。 |
+| nodes | rect | y | number | 节点矩形左上角y坐标，相对于当前节点所属frame的视口左上角。单位：px。 |
 | nodes | rect | width | number | 节点矩形宽度。单位：px。 |
 | nodes | rect | height | number | 节点矩形高度。单位：px。 |
 | nodes | - | bounds | Object | 节点矩形信息。 |
