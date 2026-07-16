@@ -226,7 +226,7 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 | NODE_SCROLL_EVENT_ON_REACH_START | 网格组件到达起始位置回调。 | 12 |
 | NODE_SCROLL_EVENT_ON_REACH_END | 网格组件到达末尾位置回调。 | 12 |
 | NODE_SCROLL_EVENT_ON_WILL_STOP_DRAGGING | 网格组件拖划即将离手回调。 | 20 |
-| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | 网格组件拖划结束回调。 | 21 |
+| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | 网格组件拖划开始回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_DRAGGING | 网格组件拖划结束回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_WILL_START_FLING | 网格组件滑动动画即将开始回调。 | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_FLING | 网格组件滑动动画结束回调。 | 21 |
@@ -244,5 +244,5 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 ## 完整示例
 
 <!--RP2-->
-[使用网格](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample)
+[使用网格](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKGridSample)
 <!--RP2End-->

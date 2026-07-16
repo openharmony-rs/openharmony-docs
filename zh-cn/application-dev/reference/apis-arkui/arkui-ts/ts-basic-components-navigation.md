@@ -106,7 +106,7 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。<br/>字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。 |
-| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | 否   | 标题栏选项。包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏滚动模糊效果选项、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
+| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | 否   | 标题栏选项。包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
 
 ### menus
 
@@ -819,7 +819,7 @@ pushPathByName(name: string, param: unknown, animated?: boolean): void
 
 ### pushPathByName<sup>11+</sup>
 
-pushPathByName(name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): void
+pushPathByName(name: string, param: Object, onPop: import('../api/@ohos.base').Callback\<PopInfo>, animated?: boolean): void
 
 将name指定的NavDestination页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理。
 
@@ -833,7 +833,7 @@ pushPathByName(name: string, param: Object, onPop: Callback\<PopInfo>, animated?
 |------|------|------|------|
 | name  | string  | 是    | NavDestination页面名称。   |
 | param | Object | 是    | 开发者设置的NavDestination页面详细参数。 |
-| onPop | Callback\<[PopInfo](#popinfo11)> | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback\<[PopInfo](#popinfo11)> | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
 | animated | boolean | 否    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true |
 
 ### pushDestination<sup>11+</sup>
@@ -861,7 +861,7 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异步返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -899,7 +899,7 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -938,7 +938,7 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -953,7 +953,7 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 ### pushDestinationByName<sup>11+</sup>
 
-pushDestinationByName(name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): Promise&lt;void&gt;
+pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.base').Callback\<PopInfo>, animated?: boolean): Promise&lt;void&gt;
 
 将name指定的NavDestination页面信息入栈，传递的数据为param，并且添加用于页面出栈时处理返回结果的onPop回调，使用Promise异步回调返回接口调用结果。
 
@@ -971,14 +971,14 @@ pushDestinationByName(name: string, param: Object, onPop: Callback\<PopInfo>, an
 | ----- | ------- | ---- | --------------------- |
 | name  | string  | 是    | NavDestination页面名称。   |
 | param | Object | 是    | 开发者设置的NavDestination页面详细参数。 |
-| onPop | Callback\<[PopInfo](#popinfo11)> | 是    | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback\<[PopInfo](#popinfo11)> | 是    | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
 | animated | boolean | 否    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true |
 
 **返回值：**
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1064,7 +1064,7 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;v
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1541,7 +1541,7 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 
 ### constructor
 
-constructor(name: string, param: unknown, onPop?: Callback\<PopInfo>, isEntry?: boolean)
+constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Callback\<PopInfo>, isEntry?: boolean)
 
 创建NavPathInfo对象。
 
@@ -1556,7 +1556,7 @@ constructor(name: string, param: unknown, onPop?: Callback\<PopInfo>, isEntry?: 
 | ----- | ------- | ---- | --------------------- |
 | name  | string  | 是    | NavDestination页面名称。该名称匹配开发者设置的路由表中的name，包括以下两种：<br/>1. 自定义路由表，开发者通过[navDestination](#navdestination10)方法传递。<br/>2. 系统路由表，通过routerMap中的name设置，可参考[示例2](#示例2使用导航控制器方法)。|
 | param | unknown | 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
-| onPop<sup>11+</sup> | Callback\<[PopInfo](#popinfo11)> | 否 | NavDestination页面触发[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)时返回的回调。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
+| onPop<sup>11+</sup> | import('../api/@ohos.base').Callback\<[PopInfo](#popinfo11)> | 否 | NavDestination页面触发[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)时返回的回调。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
 | isEntry<sup>12+</sup> | boolean | 否 | 标记NavDestination是否为入口页面。<br/>true：NavDestination是入口页面；false：NavDestination不是入口页面。<br/>默认值：false <br/>标记清理时机：1. 在当前navDestination页面触发一次全局返回事件。2. 应用退至后台。<br/>**说明：**<br/>入口NavDestination不响应应用内的全局back事件，直接触发应用间的全局back事件。 |
 
 ### 属性
@@ -1771,7 +1771,7 @@ Navigation首页名字。
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
 | value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 否    | API version 9：显示菜单栏单个选项的文本。<br> 从API version 10开始，不显示菜单栏单个选项的文本。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | action | () =&gt; void | 否    | 是    | 当前选项被选中的事件回调。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -1786,7 +1786,7 @@ Navigation首页名字。
 | 名称         | 类型                                       | 只读 | 可选 | 说明                                       |
 | ---------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | value      | ResourceStr                              | 否    | 否    | 工具栏单个选项的显示文本。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
-| icon       | ResourceStr                              | 否    | 是    | 工具栏单个选项的图标资源路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
+| icon       | ResourceStr                              | 否    | 是    | 工具栏单个选项的图标资源路径。<br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
 | action     | () =&gt; void                            | 否    | 是    | 当前选项被选中的事件回调。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
 | status     | [ToolbarItemStatus](#toolbaritemstatus10枚举说明) | 否    | 是    | 工具栏单个选项的状态。<br/>默认值：ToolbarItemStatus.NORMAL<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | activeIcon | ResourceStr                              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的图标资源路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                |
@@ -1846,7 +1846,7 @@ Navigation自定义标题。
 | 名称      | 类型                                       | 只读 | 可选 | 说明      |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 否    | 设置标题栏内容。 |
-| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否    | 设置标题栏高度。 |
+| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否    | 设置标题栏高度。<br/>取值范围：[0, +∞)<br/>单位参考[Length](ts-types.md#length)类型的说明。  |
 
 ## NavigationDividerStyle<sup>23+</sup>
 
@@ -1859,8 +1859,8 @@ Navigation分割线颜色及上下边距。
 | 名称      | 类型                                       | 只读 | 可选 | 说明      |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33000000，灰色。  |
-| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
-| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
+| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位参考[Length](ts-types.md#length)类型的说明。<br/>取值范围：[0, +∞) |
+| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位参考[Length](ts-types.md#length)类型的说明。<br/>取值范围：[0, +∞) |
 
 ## NavBarPosition<sup>9+</sup>枚举说明
 
@@ -1870,10 +1870,10 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 说明                             |
-| ----- | -------------------------------- |
-| Start | 双栏显示时，主列在主轴方向首部。 |
-| End   | 双栏显示时，主列在主轴方向尾部。 |
+| 名称  | 值 |说明                             |
+| ----- | ---- |-------------------------------- |
+| Start | 0 | 双栏显示时，主列在主轴方向首部。 |
+| End   | 1 | 双栏显示时，主列在主轴方向尾部。 |
 
 ## NavigationMode<sup>9+</sup>枚举说明
 
@@ -1930,41 +1930,6 @@ Navigation分割线颜色及上下边距。
 |STACK | 1 | 指定该模式的标题栏或工具栏与内容区采用层叠布局，标题栏或工具栏布局在内容区上层。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 |SAFE_AREA_PADDING<sup>14+</sup> | 2 | 将指定该模式的标题栏或工具栏设置为[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 
-## ScrollEffectType
-
-标题栏滚动模糊效果类型。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 值 | 说明 |
-| --- | --- | --- |
-| COMMON_BLUR | 0 | 普通模糊样式，对背景做均匀模糊，模糊背景随透明渐变显隐。 |
-| GRADUAL_BLUR | 1 | 渐进模糊样式，对标题背景做均匀模糊且边界清晰，标题栏内容颜色或状态在滚动前后切换，并在滚动过程中随手势线性变化。 |
-
-## ScrollEffectOptions
-
-标题栏滚动模糊效果选项。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| --- | --- | --- | --- | --- |
-| scrollEffectType | [ScrollEffectType](#scrolleffecttype) | 否 | 是 | 标题栏滚动模糊效果类型。<br/>默认值：ScrollEffectType.COMMON_BLUR |
-| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。<br/>默认值：0vp |
-| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。<br/>默认值：8vp |
-
 ## NavigationTitleOptions<sup>11+</sup>
 
 标题栏选项。
@@ -1984,7 +1949,6 @@ Navigation分割线颜色及上下边距。
 | mainTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 主标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置；<br/>3. [Free](#navigationtitlemode枚举说明)模式下设置字体大小时，原有滑动改变标题大小的效果失效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | subTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 子标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>13+</sup>   | boolean | 否    | 是    | 是否响应悬停态。<br/>使用规则：<br/>1. 需满足Navigation为全屏大小；<br/>2. 标题栏显示模式为[Free](#navigationtitlemode枚举说明)时或者标题栏布局方式为[STANDARD](#barstyle12枚举说明)时，此接口设置无效。<br/>true：响应悬停态；false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| scrollEffectOptions | [ScrollEffectOptions](#scrolleffectoptions) | 否 | 是 | 标题栏滚动模糊效果选项。默认值undefined，不启用标题栏的滚动模糊。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## NavigationToolbarOptions<sup>11+</sup>
 
@@ -2059,7 +2023,7 @@ Navigation分割线颜色及上下边距。
 
 ## SystemBarStyle<sup>12+</sup>
 
-type SystemBarStyle = SystemBarStyle
+type SystemBarStyle = import('../api/@ohos.window').default.SystemBarStyle
 
 状态栏的属性。在设置页面级状态栏属性时使用。
 
@@ -2069,7 +2033,7 @@ type SystemBarStyle = SystemBarStyle
 
 | 类型     | 说明               |
 | -------- | ------------------ |
-| [SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
+| import('../api/@ohos.window').default.[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
 
 ## HomePathInfo<sup>20+</sup>
 
@@ -3082,7 +3046,7 @@ export struct PageOne {
           .margin(10)
           .onClick(() => {
             let tmp = new TmpClass();
-            // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
+            // 将name指定的NavDestination页面信息入栈，传递的数据为param。
             this.pageInfo.pushDestination({ name: 'pageTwo', param: new ParamWithOp() })
               .catch((error: BusinessError) => {
                 console.error(`[pushDestinationWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
@@ -3160,7 +3124,7 @@ export struct PageTwo {
           .margin(20)
           .onClick(() => {
             this.pathStack.popToName('pageOne',
-              new resultClass(11)); // 将第一个名为name的NavDestination页面移到栈顶，将处理结果传入push的onPop回调中。
+              new resultClass(11)); // 回退路由栈到第一个名为name的NavDestination页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
@@ -3168,7 +3132,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.popToIndex(0, new resultClass(111)); // 将index指定的NavDestination页面移到栈顶，将处理结果传入push的onPop回调中。
+            this.pathStack.popToIndex(0, new resultClass(111)); // 回退路由栈到index指定的NavDestination页面，将处理结果传入push的onPop回调中。
           })
 
         Button('popWithoutResult', { stateEffect: true, type: ButtonType.Capsule })
@@ -5411,73 +5375,3 @@ export struct NavigationMenu {
 > 5. 点击应用重新进入，可发现页面依然是点击跳转按钮后的页面。
 
 ![navigation_recoverable.gif](figures/navigation_recoverable.gif)
-
-### 示例19（设置ScrollEffectOptions开启标题栏滚动模糊）
-
-该示例演示如何使用[scrollEffectOptions](#scrolleffectoptions)配置项，开启标题栏滚动模糊效果。
-
-从API版本26.0.0开始，[title](#title)接口的参数options，新增了[scrollEffectOptions](#scrolleffectoptions)属性。
-
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
-
-@Entry
-@Component
-struct NavigationExample {
-  private arr: number[] = [];
-
-  aboutToAppear(): void {
-    for (let i = 0; i < 50; i++) {
-      this.arr.push(i)
-    }
-  }
-
-  build() {
-    Column() {
-      Navigation() {
-        Column() {
-          List({ space: 12, initialIndex: 0 }) {
-            ListItem() {
-              Column() {
-                Blank()
-                  .width('100%')
-                  .height(128)
-              }
-            }
-            ForEach(this.arr, (item: number) => {
-              ListItem() {
-                Text('' + item)
-                  .width('90%')
-                  .height(72)
-                  .backgroundColor($r('sys.color.brand'))
-                  .borderRadius(24)
-                  .fontSize(16)
-                  .fontWeight(500)
-                  .textAlign(TextAlign.Center)
-              }
-            }, (item: number) => item.toString())
-          }
-          .height("100%")
-          .width('100%')
-        }
-        .width('100%')
-        .height('100%')
-      }
-      .title({ main: "Main Title", sub: "Sub Title" }, {
-        barStyle: BarStyle.STACK,
-        scrollEffectOptions: {
-          scrollEffectType: ScrollEffectType.COMMON_BLUR,
-          blurEffectiveStartOffset: LengthMetrics.vp(8),
-          blurEffectiveEndOffset: LengthMetrics.vp(56)
-        }
-      })
-      .titleMode(NavigationTitleMode.Full)
-      .hideTitleBar(false)
-      .hideToolBar(false)
-    }.width('100%').height('100%').backgroundColor('#F1F3F5')
-  }
-}
-```
-
-![scrollEffect.gif](figures/scrollEffect.gif)

@@ -193,13 +193,15 @@ export class SendableData  {
 }
 ```
 
-<!-- @[function threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->
+<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->  
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { SendableData } from '../Model/modelView';
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Concurrent
 function threadGetData(param: string): SendableData {
@@ -230,10 +232,14 @@ struct Page3 {
 
       Button('task').onClick(() => {
         // 将待执行的函数放入taskpool内部任务队列等待，等待分发到工作线程执行。
-        taskpool.execute(threadGetData, this.send.name).then(val => {
-          // 和@Local一起使用，可以观察this.send的变化
-          this.send = UIUtils.makeObserved(val as SendableData);
-        })
+        taskpool.execute(threadGetData, this.send.name)
+          .catch((err: Error) => {
+            hilog.error(DOMAIN, 'testTag', `taskpool execute fail. code is ${err.name}, message is ${err.message}`);
+          })
+          .then(val => {
+            // 和@Local一起使用，可以观察this.send的变化
+            this.send = UIUtils.makeObserved(val as SendableData);
+          });
       })
     }
   }
@@ -251,7 +257,7 @@ makeObserved可以在ArkUI中导入可观察的collections容器，但makeObserv
 
 collections.Array可以触发UI刷新的API有：
 - 改变数组长度：push、pop、shift、unshift、splice、shrinkTo、extendTo
-- 改变数组项本身：sort、fill
+- 改变数组项本身：sort、fill、reverse
 
 其他API不会改变原始数组，所以不会触发UI刷新。
 <!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
@@ -749,8 +755,8 @@ struct Page10 {
         .id('textobservedObj1')
         .fontSize(50)
         .onClick(() => {
-          // 通过getTarget获取其原始对象，将this.observedObj赋值为不可观察的数据
-          let rawObj: Info= UIUtils.getTarget(this.observedObj);
+          // 通过getTarget获取this.observedObj的原始对象，原始对象为不可观察的数据
+          let rawObj: Info = UIUtils.getTarget(this.observedObj);
           // 不会触发UI刷新，但数据会正常赋值
           rawObj.id = 20;
         })

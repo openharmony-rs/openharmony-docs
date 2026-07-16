@@ -20,6 +20,22 @@
 import { image } from '@kit.ImageKit';
 ```
 
+## GainmapParams
+
+Gainmap（增益图）参数设置选项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称               | 类型              | 只读 | 可选 | 说明             |
+| ------------------ | ----------------- | ---- | ---- | ---------------- |
+| isFullSizeGainmap| boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
+
 ## DecodingOptions<sup>7+</sup>
 
 图像解码设置选项。
@@ -102,6 +118,85 @@ async function CreatePictureTest(context: Context) {
   let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap);
   if (picture != null) {
     console.info('Create picture succeeded');
+  } else {
+    console.error('Create picture failed');
+  }
+  const imagePackerObj = image.createImagePacker();
+  let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
+  packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+  const path: string = context.filesDir + "/hdr-test.jpg";
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
+  }).catch((error : BusinessError) => {
+    console.error('Failed to pack the image. And the error is: ' + error);
+  })
+}
+```
+
+## image.createPictureByHdrAndSdrPixelMap
+
+createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, params: GainmapParams): Promise\<Picture>
+
+根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个Gainmap（增益图），返回的Picture对象将包含SDR PixelMap和生成的Gainmap PixelMap，像素格式为RGBA8888。Gainmap PixelMap的尺寸可以通过设置params进行选择。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
+| sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA_8888/NV21，色彩空间是P3。 |
+| params | [GainmapParams](#gainmapparams) | 是   | Gainmap Params，增益图参数设置选项，决定是否使用全尺寸增益图。|
+
+**返回值：**
+
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA_8888。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
+|  202      | Non-system applications are not allowed to use system APIs. |
+
+ **示例：**
+
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function CreatePictureTest(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片。
+  let imageSource: image.ImageSource = image.createImageSource(rawFile);
+  let decodingOptionsForSDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.SDR,
+  }
+  let decodingOptionsForHDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.HDR, // 通过AIHDR将SDR解码为HDR。
+  }
+  let sdrPixelMap = await imageSource.createPixelMap(decodingOptionsForSDR);
+  let hdrPixelMap = await imageSource.createPixelMap(decodingOptionsForHDR);
+  let params : image.GainmapParams = {
+    isFullSizeGainmap: true
+  }
+
+  // 获取计算生成的gainmap并编码。
+  let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
+  if (picture != null) {
+    console.info('Succeeded in creating picture');
   } else {
     console.error('Create picture failed');
   }

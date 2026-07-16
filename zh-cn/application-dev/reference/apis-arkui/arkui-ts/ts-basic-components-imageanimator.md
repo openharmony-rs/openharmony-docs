@@ -39,7 +39,7 @@ ImageAnimator()
 
 images(value: Array&lt;ImageFrameInfo&gt;)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，动态更新可能会导致不可预期的行为。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -75,7 +75,7 @@ state(value: AnimationStatus)
 
 duration(value: number)
 
-设置播放时长。当Images中任意一帧图片设置了单独的duration后，该属性设置无效。
+设置播放时长。当[images](#images)中任意一帧图片设置了单独的duration后，该属性设置无效。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -141,7 +141,7 @@ preDecode(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前页时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
+| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前帧时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
 
 ### fillMode
 
@@ -184,6 +184,8 @@ monitorInvisibleArea(monitorInvisibleArea: boolean)
 设置组件是否通过系统[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的可见性判定，控制组件的暂停和播放。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

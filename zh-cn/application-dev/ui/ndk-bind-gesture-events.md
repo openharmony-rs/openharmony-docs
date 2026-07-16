@@ -323,7 +323,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 
 **完整示例：**
 
-完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
+完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
 
 ### 并行识别
 
@@ -481,7 +481,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 
 **完整示例：**
 
-完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
+完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
 
 ### 互斥识别
 
@@ -582,7 +582,8 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
                      "NdkAddInteractionEvent_GestureSampleLog, addChildGesture panGesture");
     }
     // 创建捏合手势
-    auto pinchGesture = gestureApi->createPinchGesture(0, 0);
+    // NUMBER_2 = 2，NUMBER_10 = 10
+    auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(pinchGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
@@ -639,7 +640,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 **完整示例：**
 
-完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
+完整示例请参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)。
 
 ### 自定义手势判定
 

@@ -1,7 +1,7 @@
 # 系统字体的信息获取和使用（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -135,7 +135,7 @@
    #include <hilog/log.h>
    ```
 
-3. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
+3. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    > **说明：**
    >
@@ -222,7 +222,7 @@
    #include <hilog/log.h>
    ```
 
-4. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
+4. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
    <!-- @[custom_font_c_disable_system_font_text_step_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    

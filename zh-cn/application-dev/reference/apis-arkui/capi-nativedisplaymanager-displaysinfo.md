@@ -26,7 +26,7 @@ typedef struct {...} NativeDisplayManager_DisplaysInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t displaysLength | 多显示设备Display对象的长度。 |
+| uint32_t displaysLength | 多显示设备Display对象的数组长度。 |
 | [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md)* displaysInfo | 多显示设备Display对象的属性。 |
 
 

@@ -94,7 +94,7 @@ Allows an application to modify the audio files in a user directory.
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-Allows an application to access the images/videos in a user directory.
+Allows an application to read image or video files from users' local public directories.
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ Allows an application to access the images/videos in a user directory.
 **Authorization mode**: user_grant
 
 **Since**: 9
+
+**Changelog**: In API versions 9 to 24, this permission allows an application to access images or videos stored on the cloud or locally. From API version 26.0.0, this permission allows an application to read only images or videos in users' local public directories.
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -195,6 +197,8 @@ Allows an application to read **Pasteboard** data.
 **Permission level**: system_basic
 
 **Authorization mode**: user_grant
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **Since**: 11
 
@@ -364,6 +368,8 @@ Allows an application to set or remove the pasteable range of pasteboard data.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **Since**: 14
 
 ## ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
@@ -400,7 +406,11 @@ Allows an application to preload files to improve the file opening speed.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: PCs/2-in-1 devices | tablets
+
 **Since**: 15
+
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets.
 
 ## ohos.permission.SET_PAC_URL
 
@@ -625,6 +635,20 @@ Allows an application to set the sandbox type to dynamic sandbox.
 **Authorization mode**: system_grant
 
 **Since**: 18
+
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+Allows a mini game of the atomic service type to manage its storage space.
+
+<!--RP96--><!--RP96End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
 
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 

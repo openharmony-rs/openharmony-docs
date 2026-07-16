@@ -34,7 +34,7 @@
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
+    new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
   ```
    
    如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
@@ -325,7 +325,7 @@
     private promptActionClass: PromptActionClass = new PromptActionClass();
     private targetId: number = ID;
     private contentNode: ComponentContent<Object> =
-      new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
+      new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
     private options: PopupCommonOptions = { enableArrow: true };
   
   

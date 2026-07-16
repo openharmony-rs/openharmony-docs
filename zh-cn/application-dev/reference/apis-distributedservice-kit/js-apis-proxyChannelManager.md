@@ -1,8 +1,8 @@
 # @ohos.distributedsched.proxyChannelManager (代理通道管理)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @huangkai71-->
-<!--Designer: @lee_jet520-->
+<!--Owner: @jzy_123-->
+<!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -46,6 +46,8 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390101，不支持分布式业务的Wearable设备中会返回错误码801。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -67,7 +69,7 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
+| 801      | Capability not supported.<br>适用版本：26.0.0+|
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
 | 32390006 | Parameter error.|
@@ -125,6 +127,8 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -140,7 +144,7 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
+| 801      | Capability not supported.<br>适用版本：26.0.0+|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -185,6 +189,8 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -207,7 +213,7 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
+| 801      | Capability not supported.<br>适用版本：26.0.0+|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -257,6 +263,8 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -319,6 +327,8 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -377,6 +387,8 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -438,6 +450,8 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 

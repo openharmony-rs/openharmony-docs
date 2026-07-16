@@ -16,7 +16,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 子组件
@@ -169,7 +171,7 @@ onChange(event: Callback\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示元素的索引变化时触发的回调。|
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的选中导航点索引变化时触发的回调。|
 
 ## IndicatorComponentController
 
@@ -227,7 +229,7 @@ changeIndex(index: number, useAnimation?: boolean): void
 
 | 参数名      | 类型       | 必填  | 说明     |
 | -------- | ---------- | ---- | -------- |
-| index| number | 是    | 指定导航点在Swiper中的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。 |
+| index| number | 是    | 指定导航点的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。 |
 | useAnimation| boolean | 否    | 设置翻至指定导航点时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。 |
 
 ## 示例
@@ -250,14 +252,14 @@ struct DotIndicatorDemo {
   build() {
     Column() {
       Swiper(this.swiperController) {
-        ForEach(this.list, (item: string) => {
+        ForEach(this.list, (item: number) => {
           Text(item.toString())
             .width('100%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(0)
@@ -314,14 +316,14 @@ struct DigitIndicatorDemo {
   build() {
     Column() {
       Swiper(this.swiperController) {
-        ForEach(this.list, (item: string) => {
+        ForEach(this.list, (item: number) => {
           Text(item.toString())
             .width('100%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(0)

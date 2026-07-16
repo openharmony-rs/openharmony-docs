@@ -10,8 +10,9 @@
 
 > **说明：**
 >
+> - 从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 从API version 24开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## enableClickSoundEffect
 
@@ -40,7 +41,7 @@ enableClickSoundEffect(enabled: boolean | undefined): T
 | T | 返回当前组件。 |
 
 ## 示例
-### 示例1（启用默认点击音效）
+### 示例1（禁用默认点击音效）
 
 该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义发音。自定义发音可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
 

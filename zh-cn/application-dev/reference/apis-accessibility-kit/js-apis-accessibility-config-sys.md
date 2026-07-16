@@ -46,7 +46,7 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。                                             |
 
-## enableAbility
+## config.enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
@@ -99,11 +99,11 @@ config.enableAbility(name, capability).then(() => {
 });
 ```
 
-## enableAbility
+## config.enableAbility
 
-enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt;, callback: AsyncCallback&lt;void&gt;): void
+enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-启用辅助扩展，使用callback异步回调。
+启用辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -149,7 +149,7 @@ config.enableAbility(name, capability, (err: BusinessError) => {
 });
 ```
 
-## enableAbilityWithCallback<sup>23+</sup>
+## config.enableAbilityWithCallback<sup>23+</sup>
 
 enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
 
@@ -209,7 +209,7 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
 });
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string): Promise&lt;void&gt;
 
@@ -259,11 +259,11 @@ config.disableAbility(name).then(() => {
 })
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-关闭辅助扩展，使用callback异步回调。
+关闭辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -306,11 +306,11 @@ config.disableAbility(name, (err: BusinessError) => {
 });
 ```
 
-## on('enabledAccessibilityExtensionListChange')
+## config.on('enabledAccessibilityExtensionListChange')
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
-添加启用的辅助扩展的列表变化监听，使用callback异步回调。
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -345,11 +345,11 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## off('enabledAccessibilityExtensionListChange')
+## config.off('enabledAccessibilityExtensionListChange')
 
 off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
 
-取消启用的辅助扩展的列表变化监听，使用callback异步回调。
+取消启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -384,11 +384,11 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## on('installedAccessibilityListChange')<sup>12+</sup>
+## config.on('installedAccessibilityListChange')<sup>12+</sup>
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
-添加已安装的辅助扩展的列表变化监听，使用callback异步回调。
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -423,11 +423,11 @@ config.on('installedAccessibilityListChange', () => {
 });
 ```
 
-## off('installedAccessibilityListChange')<sup>12+</sup>
+## config.off('installedAccessibilityListChange')<sup>12+</sup>
 
 off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): void
 
-取消已安装的辅助扩展的列表变化监听，使用callback异步回调。
+取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -461,7 +461,7 @@ config.off('installedAccessibilityListChange', () => {
   console.info('Unsubscribe installed accessibility extension list change state success');
 });
 ```
-## setMagnificationState<sup>20+</sup>
+## config.setMagnificationState<sup>20+</sup>
 
 setMagnificationState(state: boolean): void
 
@@ -559,7 +559,7 @@ config.highContrastText.set(value).then(() => {
 
 set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
-设置属性，使用callback异步回调。
+设置属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -643,7 +643,7 @@ config.highContrastText.get().then((data: boolean) => {
 
 get(callback: AsyncCallback&lt;T&gt;): void
 
-获取属性，使用callback异步回调。
+获取属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -682,7 +682,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
 
 on(callback: Callback&lt;T&gt;): void
 
-添加属性变化监听，使用callback异步回调。
+添加属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -720,7 +720,7 @@ config.highContrastText.on((data: boolean) => {
 
 off(callback?: Callback&lt;T&gt;): void
 
-取消属性变化监听，使用callback异步回调。
+取消属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -755,7 +755,7 @@ config.highContrastText.off((data: boolean) => {
 
 ## ConnectCallback<sup>23+</sup>
 
-通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+通过[config.enableAbilityWithCallback](#configenableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -787,7 +787,7 @@ type OnDisconnectCallback = () => void
 
 用于不同弱视类型的校正颜色滤镜。  
 
-颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型<sup>11+</sup>。
+颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型。
 
 **系统接口**：此接口为系统接口。
 

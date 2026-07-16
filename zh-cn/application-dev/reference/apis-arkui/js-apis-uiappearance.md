@@ -156,7 +156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let fontWeightScale = uiAppearance.getFontWeightScale();
-  console.info('Get fontScale ' + fontWeightScale);
+  console.info('Get fontWeightScale ' + fontWeightScale);
 } catch (error) {
   let message = (error as BusinessError).message;
   console.error('Get fontWeightScale failed, ' + message);

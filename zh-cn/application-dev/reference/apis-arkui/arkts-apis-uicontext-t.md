@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## CustomBuilderWithId<sup>18+</sup>
 
@@ -17,6 +17,8 @@ type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
 组件属性、方法参数可使用CustomBuilderWithId类型来自定义UI描述，并且可以指定组件ID生成用户自定义组件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,6 +36,8 @@ type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -50,6 +54,8 @@ type PanListenerCallback = (event: GestureEvent, current: GestureRecognizer, nod
 Pan手势事件监听函数类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => v
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,6 +94,8 @@ type NodeIdentity = string | number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型              | 说明                                |
@@ -100,6 +110,8 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 定义了用于在UIObserver中监控某个特定节点渲染状态的回调类型。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,6 +129,8 @@ type GestureListenerCallback = (info: GestureTriggerInfo) => void
 定义了用于在UIObserver中监控特定手势触发信息的回调类型。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

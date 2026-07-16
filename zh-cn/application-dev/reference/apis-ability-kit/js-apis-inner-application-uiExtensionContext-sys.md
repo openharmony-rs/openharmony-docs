@@ -70,14 +70,14 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise&lt;Ab
 | 16000050 | Internal error.                                         |
 | 16000069 | The extension cannot start the third party application. |
 | 16000070 | The extension cannot start the service. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
 | 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 
 **示例：**
 
@@ -431,6 +431,8 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
@@ -506,7 +508,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 
 connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): number
 
-将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
+将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
 
 > **说明：**
 >
@@ -537,7 +539,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. Possible cause: target service extension ability is in cross-device and needed designated permission to be started, but call ability do not have this permission. |
 | 202 | Not system application |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |

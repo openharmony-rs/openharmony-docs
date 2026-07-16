@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType（文本输入类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6; @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -344,8 +344,8 @@ NODE_TEXT_INPUT_SHOW_PASSWORD_ICON = 7012
 NODE_TEXT_INPUT_EDITING = 7013
 ```
 
-控制单行文本输入框编辑态属性，支持属性设置。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+控制单行文本输入框编辑态属性，支持属性设置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -354,7 +354,12 @@ NODE_TEXT_INPUT_EDITING = 7013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_INPUT_CANCEL_BUTTON
@@ -1381,13 +1386,13 @@ NODE_TEXT_AREA_CARET_COLOR = 8005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式。 |
 
 ## NODE_TEXT_AREA_EDITING
 
@@ -1396,7 +1401,7 @@ NODE_TEXT_AREA_EDITING = 8006
 ```
 
 控制多行文本输入框编辑态属性，支持属性设置，属性获取接口。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -1405,7 +1410,12 @@ NODE_TEXT_AREA_EDITING = 8006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_AREA_TYPE

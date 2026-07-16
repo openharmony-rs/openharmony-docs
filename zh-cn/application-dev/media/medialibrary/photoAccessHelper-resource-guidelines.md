@@ -1,7 +1,7 @@
 # 媒体资源使用指导
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
+<!--Owner: @zhaochang14-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -22,7 +22,7 @@
 应用通过调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)获取媒体资源，并传入[FetchOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions)对象指定检索条件。如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
 
 > **注意：**
-> 使用[PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys).URI做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)的方式。
+> 使用[PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys).URI做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto)的方式。
 
 如果只想获取某个位置的对象（如第一个、最后一个、指定索引等），可以通过[FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md)中的接口获取。
 
@@ -165,7 +165,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-应用还可以调用MediaAssetChangeRequest.addResource接口指定媒体资源内容的数据来源，具体包括[应用沙箱](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11)，[ArrayBuffer](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)和[PhotoProxy](../../reference/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#addresource11)。
+应用还可以调用[MediaAssetChangeRequest.addResource](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11)接口指定媒体资源内容的数据来源。
 <!--DelEnd-->
 
 ## 重命名媒体资源

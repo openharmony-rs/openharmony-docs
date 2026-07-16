@@ -45,6 +45,8 @@
 
 cpp部分代码：
 
+<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
+
 ```cpp
 // OH_JSVM_GetPropertyNames的样例方法
 static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
@@ -80,7 +82,6 @@ const char *srcCallNative = R"JS(
     let script = getPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -92,6 +93,8 @@ JSVM OH_JSVM_GetPropertyNames success
 将给定的属性与值设置入给定的Object。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_SetProperty的样例方法
@@ -132,7 +135,6 @@ const char *srcCallNative = R"JS(
     setProperty(obj, "code", "hi")
 )JS";
 ```
-<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -144,6 +146,8 @@ JSVM OH_JSVM_SetProperty success
 获取给定Object的给定属性对应的值。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_GetProperty的样例方法
@@ -180,7 +184,6 @@ const char *srcCallNative = R"JS(
     getProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -192,6 +195,8 @@ JSVM OH_JSVM_GetProperty success
 检查对象中是否存在指定的属性，可以避免访问不存在属性导致的异常或错误。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_HasProperty的样例方法
@@ -232,7 +237,6 @@ const char *srcCallNative = R"JS(
     hasProperty(obj, 0)
 )JS";
 ```
-<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -249,6 +253,8 @@ JSVM OH_JSVM_HasProperty success:0
 如果对象是一个不可扩展的对象，或者属性是不可配置的，则可能无法删除该属性。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_DeleteProperty的样例方法
@@ -294,7 +300,6 @@ const char *srcCallNative = R"JS(
     deleteProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -306,6 +311,8 @@ JSVM OH_JSVM_DeleteProperty success:1
 用于检查传入的Object是否具有自己的命名属性，不包括从原型链上继承的属性。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_HasOwnProperty的样例方法
@@ -360,7 +367,6 @@ const char *srcCallNative = R"JS(
     hasOwnProperty(obj, "__defineGetter__")
 )JS";
 ```
-<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -376,6 +382,8 @@ JSVM OH_JSVM_HasOwnProperty success:0
 用于在传入的Javascript对象上设置一个命名属性。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_SetNamedProperty的样例方法
@@ -422,7 +430,6 @@ const char *srcCallNative = R"JS(
     setNamedProperty("message")
 )JS";
 ```
-<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -434,6 +441,8 @@ JSVM OH_JSVM_SetNamedProperty success
 用于从Javascript对象中获取命名属性的值。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_GetNamedProperty的样例方法
@@ -474,7 +483,6 @@ const char *srcCallNative = R"JS(
     getNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -486,6 +494,8 @@ JSVM OH_JSVM_GetNamedProperty success
 用于检查Javascript对象中是否包含指定的命名属性。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_HasNamedProperty的样例方法
@@ -529,7 +539,6 @@ const char *srcCallNative = R"JS(
     hasNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -541,6 +550,8 @@ JSVM OH_JSVM_HasNamedProperty success:1
 用于定义对象的自定义属性，可一次性为对象设置若干个属性。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
 
 ```cpp
 #include <fstream>
@@ -670,7 +681,6 @@ const char *srcCallNative = R"JS(
     defineProperties(obj)
 )JS";
 ```
-<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts
@@ -684,6 +694,8 @@ JSVM getterCallback success:Hello world!
 获取给定对象的所有可枚举属性名称，结果变量将存储一个包含这些属性名称的JavaScript数组。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // OH_JSVM_GetAllPropertyNames的样例方法
@@ -723,7 +735,6 @@ const char *srcCallNative = R"JS(
     let script = getAllPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
 
 预期输出结果：
 ```ts

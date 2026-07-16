@@ -46,7 +46,7 @@
 
 1. 在删除组件之前，将调用其\@ComponentDisappear装饰的生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[同步源](arkts-state-management-glossary.md#数据源同步源data-source)上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
 ## 限制条件
 
@@ -202,7 +202,7 @@ Parent myBuilt
 Child myAppear
 Child myBuilt
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
@@ -308,7 +308,6 @@ struct Child {
 struct GrandChild {
   @State message: Message = new Message('GrandChild');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'GrandChild myInit');
@@ -363,7 +362,7 @@ GrandChild myAppear
 GrandChild myBuilt
 ```
 
-- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
+- 点击Button按钮，更改switch为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
 
 ```text
 Child myRecycle
@@ -778,9 +777,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {
@@ -913,38 +910,38 @@ export struct SwiperExample {
   }
 }
 ```
-启动程序后，先按start按钮，此时只有swipe缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
+启动程序后，先按start按钮，此时只有Swiper缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 
 日志输出信息如下：
 
 ```text
-SwiperPage:aboutToAppear 0
-SwiperPage:myAppear 0
-SwiperPage:aboutToAppear 11
-SwiperPage:myAppear 11
-SwiperPage:aboutToAppear 1
-SwiperPage:myAppear 1
-SwiperPage:aboutToAppear 10
-SwiperPage:myAppear 10
-SwiperPage:aboutToAppear 2
-SwiperPage:myAppear 2
+SwiperPage aboutToAppear 0
+SwiperPage myAppear 0
+SwiperPage aboutToAppear 11
+SwiperPage myAppear 11
+SwiperPage aboutToAppear 1
+SwiperPage myAppear 1
+SwiperPage aboutToAppear 10
+SwiperPage myAppear 10
+SwiperPage aboutToAppear 2
+SwiperPage myAppear 2
 ```
 
 此时关闭程序，缓存的五个节点正常触发aboutToDisappear，但是非缓存的节点触发aboutToDisappear前，会强制触发aboutToAppear。无论是否是缓存节点，myDisappear不会误触发myAppear。
 
 ```text
-SwiperPage:myDisappear 0
-SwiperPage:aboutToDisappear 0
-SwiperPage:myDisappear 1
-SwiperPage:aboutToDisappear 1
-SwiperPage:myDisappear 2
-SwiperPage:aboutToDisappear 2
-SwiperPage:aboutToAppear 3
-SwiperPage:myDisappear 3
-SwiperPage:aboutToDisappear 3
-SwiperPage:aboutToAppear 4
-SwiperPage:myDisappear 4
-SwiperPage:aboutToDisappear 4
+SwiperPage myDisappear 0
+SwiperPage aboutToDisappear 0
+SwiperPage myDisappear 1
+SwiperPage aboutToDisappear 1
+SwiperPage myDisappear 2
+SwiperPage aboutToDisappear 2
+SwiperPage aboutToAppear 3
+SwiperPage myDisappear 3
+SwiperPage aboutToDisappear 3
+SwiperPage aboutToAppear 4
+SwiperPage myDisappear 4
+SwiperPage aboutToDisappear 4
 ...
 ```
 

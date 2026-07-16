@@ -114,7 +114,7 @@ enum NativeDisplayManager_ErrorCode
 | DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | 操作的显示设备无效。 |
 | DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | 当前操作对象无操作权限。 |
 | DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | 系统服务工作异常。 |
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 |  非法参数。<br>**起始版本：** 20 |
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | 非法参数。<br>**起始版本：** 20 |
 
 ### NativeDisplayManager_FoldDisplayMode
 

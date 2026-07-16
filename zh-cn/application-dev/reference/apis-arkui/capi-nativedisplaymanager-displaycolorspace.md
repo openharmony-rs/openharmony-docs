@@ -26,7 +26,7 @@ typedef struct {...} NativeDisplayManager_DisplayColorSpace
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t colorSpaceLength | 显示设备的色域长度。 |
-| uint32_t* colorSpaces | 显示设备的色域数据。 |
+| uint32_t colorSpaceLength | 显示设备支持的色域类型数量。 |
+| uint32_t* colorSpaces | 显示设备支持的色域类型数据。 |
 
 

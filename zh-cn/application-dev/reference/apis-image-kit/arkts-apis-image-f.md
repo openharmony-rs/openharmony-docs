@@ -190,7 +190,7 @@ createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Pro
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600206 | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
 | 7600207 | Unsupported pixel format. |
@@ -270,7 +270,7 @@ createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions):
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600206 | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
 | 7600207 | Unsupported pixel format. |
@@ -647,7 +647,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 **示例：**
 
 ```ts
-async function Demo(surfaceId: string) {
+async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
   return pixelMap;
@@ -923,7 +923,7 @@ createEmptyPixelMap(param: InitializationOptions): PixelMap
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600206 | Invalid parameter. |
 | 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |

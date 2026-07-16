@@ -1,9 +1,9 @@
 # @ohos.distributedHardware.mechanicManager (机械体控制模块)(系统接口)
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @peter__1024-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块提供与机械体设备交互的能力，包括设备连接管理、控制和监控功能。
@@ -748,7 +748,7 @@ mechanicManager.searchTarget(targetInfo,
 
 **系统接口**：该接口为系统接口。
 
-  | 名称 | 类型 | 值  | 说明|
+| 名称 | 类型 | 值 | 说明 |
 | ----------- | ------|---- | --------------- |
 | HUMAN_FACE | int | 0 | 目标人脸信息。 |
 
@@ -761,11 +761,11 @@ mechanicManager.searchTarget(targetInfo,
 
 **系统接口**：该接口为系统接口。
 
-  | 名称 | 类型 | 值  | 说明|
+| 名称 | 类型 | 值 | 说明 |
 | ----------- | ------|---- | --------------- |
 | DEFAULT | int | 0 | 系统默认方向  |
-  | LEFTWARD | int | 1 | 左向，即顺时针方向。 |
-  | RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
+| LEFTWARD | int | 1 | 左向，即顺时针方向。 |
+| RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
   
  ## TargetInfo<sup>21+<sup>
 

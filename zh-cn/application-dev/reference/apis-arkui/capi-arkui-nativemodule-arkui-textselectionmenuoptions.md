@@ -12,7 +12,7 @@ typedef struct ArkUI_TextSelectionMenuOptions ArkUI_TextSelectionMenuOptions
 
 ## 概述
 
-定义自定义文本选择菜单结构体。
+定义自定义文本选择菜单选项结构体。
 
 **起始版本：** 22
 

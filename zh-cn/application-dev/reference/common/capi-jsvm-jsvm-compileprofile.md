@@ -14,6 +14,10 @@ typedef const struct {...} JSVM_CompileProfile
 
 与JSVM_COMPILE_COMPILE_PROFILE一起传递的编译采样文件。
 
+**使用场景：** 用于应用二次启动时的预编译优化，可提升应用启动速度和运行性能。适用于需要优化启动性能的应用场景。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

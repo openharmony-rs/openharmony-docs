@@ -153,9 +153,9 @@
     }
     ```
 
-- EntryFormAbility：将卡片的状态存储在本地数据库中，在刷新事件回调触发时，通过formId获取当前卡片的状态，然后根据卡片的状态选择不同的刷新内容。
+- UpdateByStatusFormAbility：将卡片的状态存储在本地数据库中，在刷新事件回调触发时，通过formId获取当前卡片的状态，然后根据卡片的状态选择不同的刷新内容。
 
-    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) --> 
+    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts
@@ -179,8 +179,8 @@
             await storeDB.put('A' + formId, 'false');
             await storeDB.put('B' + formId, 'false');
             await storeDB.flush();
-          }).catch((err: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+          }).catch((error: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
           });
         }
         let formData: Record<string, Object | string> = {};
@@ -194,8 +194,8 @@
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
           await storeDB.delete('A' + formId);
           await storeDB.delete('B' + formId);
-        }).catch((err: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
       }
     
@@ -226,8 +226,8 @@
             await formProvider.updateForm(formId, formInfo);
           }
           hilog.info(DOMAIN_NUMBER, TAG, `Update form success stateA:${stateA} stateB:${stateB}.`);
-        }).catch((err: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
       }
     
@@ -247,13 +247,13 @@
             await storeDB.put('B' + formId, msg.selectB);
           }
           await storeDB.flush();
-        }).catch((err: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
       }
     }
     ```
-
+    
 
 > **说明：**
 >

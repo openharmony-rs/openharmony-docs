@@ -42,7 +42,7 @@ isPiPEnabled(): boolean
 
 ```ts
 let enable: boolean = PiPWindow.isPiPEnabled();
-console.info('isPipEnabled:' + enable);
+console.info('isPiPEnabled: ' + enable);
 ```
 
 ## PiPWindow.create
@@ -74,7 +74,7 @@ create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 
 **示例：**
 
@@ -209,7 +209,7 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 
 **示例：**
 
@@ -280,7 +280,7 @@ struct Index {
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 自定义UI控制器，用于实现在画中画界面的自定义UI功能。此参数不填时，默认不使用自定义UI功能<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                          |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。                                                                          |
 | defaultWindowSizeType<sup>19+</sup>| number                                                                     | 否   | 是  |  当前应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上个应用的画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                 |
-| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。当开启画中画四角吸附功能后，屏幕将被划分为四个热区：以屏幕的上下中线和左右中线为界，形成左上、右上、左下、右下四个区域。画中画拉起时会根据上次画中画消失的位置出现在屏幕四角，用户拖动窗口时可自由移动，松手后则会自动吸附在屏幕边缘。<br/>true：表示开启画中画四角吸附功能。<br/>false：表示关闭画中画四角吸附功能。<br/>不传值则为默认值true。<br/>**设备行为差异：** 该接口在Phone、Tablet设备上可正常调用，在其他设备上不生效。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                                                 |
+| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。当开启画中画四角吸附功能后，屏幕将被划分为四个热区：以屏幕的上下中线和左右中线为界，形成左上、右上、左下、右下四个区域。画中画拉起时会根据上次画中画消失的位置出现在屏幕对应的角落，用户拖动窗口时可自由移动，松手后则会自动吸附在屏幕边缘。<br/>true：表示开启画中画四角吸附功能。<br/>false：表示关闭画中画四角吸附功能。<br/>不传值则为默认值true。<br/>**设备行为差异：** 该接口在Phone、Tablet设备上可正常调用，在其他设备上不生效。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                                                 |
 
 ## PiPWindowSize<sup>15+</sup>
 
@@ -566,7 +566,7 @@ type ControlPanelActionEventCallback = (event: PiPActionEventType, status?: numb
 | 名称                       | 类型           | 只读  | 可选   | 说明                                                                                                                                |
 |--------------------------|--------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
 | controlType       |  [PiPControlType](#pipcontroltype12)      | 否  | 否| 回调画中画控制面板控件动作事件类型。应用依据控件类型做相应处理，如视频模板中暂停/播放控件被点击时，需要开始或停止视频。                                                                      |
-| status | [PiPControlStatus](#pipcontrolstatus12) | 否  | 是| 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为PiPControlStatus.PLAY，关闭为PiPControlStatus.PAUSE。如不具备开/关和播放/暂停状态的挂断控件默认返回值为-1。 |
+| status | [PiPControlStatus](#pipcontrolstatus12) | 否  | 是| 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为PiPControlStatus.OPEN，关闭为PiPControlStatus.CLOSE。如不具备开/关和播放/暂停状态的挂断控件默认返回值为-1。 |
 
 ## PiPController
 
@@ -657,7 +657,7 @@ promise.then(() => {
 
 setAutoStartEnabled(enable: boolean): void
 
-设置是否在返回桌面时自动启动画中画，默认不自动拉起。
+设置拉起画中画的应用主窗退后台时是否自动启动画中画，默认不自动拉起。
 
 在使用XComponent方案实现画中画功能并结合Navigation进行路由管理时，首次调用setAutoStartEnabled(true)方法，系统会缓存当前应用传入的NavigationId的栈顶信息。
 
@@ -669,7 +669,7 @@ setAutoStartEnabled(enable: boolean): void
 
 | 参数名      | 类型        | 必填    | 说明                              |
 |----------|-----------|-------|---------------------------------|
-| enable   | boolean   | 是     | 如返回桌面时需自动启动画中画，则该参数配置为true，否则为false。若设置-系统-智慧多窗-自动启动画中画开关为关闭状态，就算该参数配置为true，应用返回桌面时也不会自动启动画中画窗口。  |
+| enable   | boolean   | 是     | 如应用主窗退后台时需自动启动画中画，则该参数配置为true，否则为false。若设置-系统-智慧多窗-自动启动画中画开关为关闭状态，就算该参数配置为true，应用主窗退后台时也不会自动启动画中画窗口。  |
 
 **示例：**
 
@@ -771,7 +771,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 | 1300014    | PiP internal error.                                    |
 
 **示例：**
@@ -959,7 +959,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 | 参数名        | 类型        | 必填   | 说明                                                                                                |
 |------------|-----------|------|---------------------------------------------------------------------------------------------------|
 | type       | string    | 是    | 事件类型，固定为'stateChange'，即画中画生命周期状态变化事件。                                                             |
-| callback   | function  | 是    | 回调生命周期状态变化事件以及原因。<br/>state：[PiPState](#pipstate)，表示当前画中画生命周期状态。<br/>reason：string，表示当前生命周期的切换原因。<br/>在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。<br/>从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因：<br/>"requestStart"：应用调用startPip接口；<br/>"autoStart"：应用退后台触发画中画自动启动；<br/>"requestDelete"：应用调用stopPip接口；<br/>"panelActionDelete"：用户点击画中画窗口的关闭按钮；<br/>"dragDelete"：用户将画中画窗口拖入垃圾桶；<br/>"panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原；<br/>"other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
+| callback   | function  | 是    | 回调生命周期状态变化事件以及原因。<br/>state：[PiPState](#pipstate)，表示当前画中画生命周期状态。<br/>reason：string，表示当前生命周期的切换原因。<br/>在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，reason始终为“0”，无需关注。<br/>从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，reason为当前生命周期的切换原因：<br/>"requestStart"：应用调用startPiP接口；<br/>"autoStart"：应用退后台触发画中画自动启动；<br/>"requestDelete"：应用调用stopPiP接口；<br/>"panelActionDelete"：用户点击画中画窗口的关闭按钮；<br/>"dragDelete"：用户将画中画窗口拖入垃圾桶；<br/>"panelActionRestore"：用户点击画中画窗口的还原按钮（无还原按钮时可点击画中画窗口）触发还原；<br/>"other"：其他原因，如新的画中画窗口拉起导致当前窗口被关闭、应用主窗口被关闭等场景。 |
 
 **示例：**
 
@@ -1182,7 +1182,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: Callback is already registered. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 | 1300014    | PiP internal error.                                    |
 
 **示例：**
@@ -1221,7 +1221,7 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
+| 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
 
 **示例：**
 

@@ -39,7 +39,7 @@ submitMetadata(metadata: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Set Meta data to screenshot app fail. |
+| 32100001 | Internal handling failed. |
 
 **示例**：
 
@@ -77,7 +77,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Service exception. |
+| 32100001 | Internal handling failed. |
 | 32100004 | Subscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality; 3. Algorithm loading exception. |
 
 **示例：**  
@@ -112,7 +112,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 |type|string|是|事件类型，type为“operationSubmitMetadata”，表示系统应用获取编码内容。|
 |bundleName|string|是|应用包名，标识注册应用的包名。|
-|callback|Callback&lt;number&gt;|否|回调函数，返回编码内容。|
+|callback|Callback&lt;number&gt;|否|回调函数，返回编码内容。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。|
 
 **错误码**：  
 
@@ -120,7 +120,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Service exception. |
+| 32100001 | Internal handling failed. |
 | 32100005 | Unsubscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality. |
 
 **示例**：

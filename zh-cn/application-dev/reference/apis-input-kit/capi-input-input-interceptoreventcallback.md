@@ -13,7 +13,7 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 ## 概述
 
-拦截回调事件结构体，拦截鼠标事件、触屏输入事件和轴事件。
+拦截回调事件结构体，用于定义输入事件拦截所需的回调函数类型，支持拦截鼠标事件、触屏输入事件、按键事件和轴事件。
 
 **起始版本：** 12
 
@@ -27,6 +27,7 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 | 名称 | 描述 |
 | -- | -- |
+| [Input_KeyEventCallback](#input_keyeventcallback) keycallback | 按键事件的回调函数。 |
 | [Input_MouseEventCallback](#input_mouseeventcallback) mouseCallback | 鼠标事件的回调函数。 |
 | [Input_TouchEventCallback](#input_toucheventcallback) touchCallback | 触屏输入事件的回调函数。 |
 | [Input_AxisEventCallback](#input_axiseventcallback) axisCallback | 轴事件的回调函数。 |

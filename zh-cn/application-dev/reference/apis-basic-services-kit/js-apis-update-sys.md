@@ -10,9 +10,9 @@
 
 升级类型：SD卡升级、在线升级、恢复出厂升级。
 
-- SD卡升级依赖升级包和SD卡安装。
+- SD卡升级依赖升级包和SD卡安装。详见[术语](../../basic-services/update/update-kit-term.md)。
 
-- 在线升级依赖设备厂商部署的用于管理升级包的服务器。服务器由设备厂商部署，IP由调用者传入，请求的request接口是固定的，由设备厂商开发。
+- 在线升级依赖设备厂商部署的用于管理升级包的服务器。服务器由设备厂商部署，IP由调用者传入，请求的request接口是固定的，由设备厂商开发。详见[术语](../../basic-services/update/update-kit-term.md)。
 
 - 恢复出厂升级对象提供恢复出厂相关接口。
 
@@ -1900,7 +1900,7 @@ try {
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-清除用户数据分区。使用callback异步回调。
+恢复出厂设置。详见[术语](../../basic-services/update/update-kit-term.md)。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1941,7 +1941,7 @@ try {
 
 factoryReset(): Promise\<void>
 
-清除用户数据分区。使用Promise异步回调。
+恢复出厂设置。详见[术语](../../basic-services/update/update-kit-term.md)。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1985,7 +1985,7 @@ try {
 
 forceFactoryReset(): Promise\<void>
 
-清除用户数据分区，同步清除文件秘钥。使用Promise异步回调。
+强制恢复出厂设置，详见[术语](../../basic-services/update/update-kit-term.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2029,7 +2029,7 @@ try {
 
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
-通过覆写等方式，深度清除用户数据分区、操作系统分区。使用 Promise 异步回调。
+深度恢复出厂设置，详见[术语](../../basic-services/update/update-kit-term.md)。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
 
@@ -2840,7 +2840,7 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称      | 值  | 说明   |
 | -------- | ---- | ---- |
-| FIRMWARE | 1    | 固件。   |
+| FIRMWARE | 1    | 固件。详见[术语](../../basic-services/update/update-kit-term.md)。 |
 
 ## ComponentType
 
@@ -2864,8 +2864,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称      | 值        | 说明   |
 | -------- | ---------- | ---- |
-| UPGRADE  | "upgrade"  | 差分包。  |
-| RECOVERY | "recovery" | 修复包。  |
+| UPGRADE  | "upgrade"  | 差分包。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| RECOVERY | "recovery" | 修复包。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## EffectiveMode
 
@@ -2877,9 +2877,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
-| COLD          | 1    | 冷升级。  |
-| LIVE          | 2    | 热升级。  |
-| LIVE_AND_COLD | 3    | 融合升级。 |
+| COLD          | 1    | 冷升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| LIVE          | 2    | 热升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| LIVE_AND_COLD | 3    | 融合升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## OtaMode<sup>20+</sup>
 
@@ -2892,9 +2892,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
 | REGULAR_OTA   | 0    | 正常升级。|
-| STREAM_OTA    | 1    | 流式升级。|
-| AB_REGULAR_OTA | 2    | AB正常升级。 |
-| AB_STREAM_OTA  | 3    | AB流式升级。 |
+| STREAM_OTA    | 1    | 流式升级。详见[术语](../../basic-services/update/update-kit-term.md)。 |
+| AB_REGULAR_OTA | 2    | AB正常升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| AB_STREAM_OTA  | 3    | AB流式升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## DescriptionType
 

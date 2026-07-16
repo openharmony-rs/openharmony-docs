@@ -16,7 +16,7 @@
 >
 > - 以下API需先使用UIContext中的[getMeasureUtils()](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取MeasureUtils实例，再通过此实例调用对应方法。
 >
-> - 如需更多测算文本参数，建议使用图形对应测算接口[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)接口。
+> - 如需更多测算文本参数，比如[includeFontPadding](./arkui-ts/ts-basic-components-text.md#includefontpadding23)和[fallbackLineSpacing](./arkui-ts/ts-basic-components-text.md#fallbacklinespacing23)，建议使用图形对应测算接口[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)接口。
 >
 > - 调用文本计算接口时，不推荐同时用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
 >
@@ -33,6 +33,8 @@ measureText(options: MeasureOptions): number
 > measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](#measuretextsize12)方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,9 +84,11 @@ struct Index {
 
 measureTextSize(options: MeasureOptions): SizeOptions
 
-计算指定文本单行布局下的宽度和高度。
+计算指定文本的宽度和高度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,9 +142,7 @@ struct Index {
 @Entry
 @Component
 struct TextDemo {
-  @State isExpanded: boolean = false;
   @State displayedText: string = '';
-  @State defaultFontSize: number = 16;
   @State textWidth: number = 150;
   @State numLength: number = 0;
   @State numUnicode: number = 0;
@@ -169,7 +171,7 @@ struct TextDemo {
     return codePoints;
   }
 
-  lastUnicodeLength(str: string) { // 获得字符串最后一个字符的unicode长度
+  lastUnicodeLength(str: string): number { // 获得字符串最后一个字符的unicode长度
     if (!str || str.length < 1) {
       return 0;
     }
@@ -177,14 +179,14 @@ struct TextDemo {
       return 1;
     }
     let lastCodePoint = str.codePointAt(str.length - 2);
-    if (lastCodePoint == undefined) {
+    if (lastCodePoint === undefined) {
       return 1;
     }
     let lastStr = String.fromCodePoint(lastCodePoint);
     return lastStr.length;
   }
 
-  calculateText(maxLines: number, fullText: string) { // 计算文本是否需要截断
+  calculateText(maxLines: number, fullText: string): void { // 计算文本是否需要截断
     const noMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
       textContent: fullText,
       constraintWidth: this.textWidth
@@ -195,7 +197,7 @@ struct TextDemo {
       maxLines: this.maxLines
     });
 
-    this.displayedText = this.displayedText = this.fullText;
+    this.displayedText = this.fullText;
     if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // 存在截断
       while (this.displayedText.length > 0) {
         this.displayedText =
@@ -224,7 +226,7 @@ struct TextDemo {
       Text(this.fullText)
         .borderWidth(1)
 
-      Text('下面是设置了maxLines和texOverflow')
+      Text('下面是设置了maxLines和textOverflow')
       Text(this.fullText)
         .maxLines(this.maxLines)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -248,6 +250,8 @@ struct TextDemo {
 getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<Paragraph\>
 
 将属性字符串根据文本布局选项转换成对应的[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

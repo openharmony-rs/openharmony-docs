@@ -4,16 +4,23 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-该组件用于实现支持懒加载的瀑布流布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)、[FlowItem](ts-container-flowitem.md)或[LazyColumnLayout](ts-container-lazycolumnlayout.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
+该组件用于实现支持懒加载的瀑布流布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)或[FlowItem](ts-container-flowitem.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
 该组件仅在[List](ts-container-list.md)组件、[Scroll](ts-container-scroll.md)组件、[WaterFlow](ts-container-waterflow.md)组件的单列模式或分段布局中的单列分段并且布局方向为FlexDirection.Column的情况下支持懒加载。在[WaterFlow](ts-container-waterflow.md)的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的[WaterFlow](ts-container-waterflow.md)组件下使用该组件会导致显示异常。当懒加载功能生效时，该组件仅加载显示区域内的子组件，并在帧间空闲间隙预加载显示区域上方和下方各半屏的内容。
 
 > **说明：**
 >
-> LazyVWaterFlowLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
+> - LazyVWaterFlowLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](ts-universal-attributes-size.md#height)、[size](ts-universal-attributes-size.md#size)中的height、[constraintSize](ts-universal-attributes-size.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)、[layoutWeight](ts-universal-attributes-size.md#layoutweight)，以及[height](ts-universal-attributes-size.md#height15)取[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15)值的场景。
+> - 当父组件设置主轴方向尺寸时，LazyVWaterFlowLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyVWaterFlowLayout会被内容撑开，导致所有子组件都会被加载布局。
+> - 该组件在不同父组件下的懒加载支持条件如下：
+>   1. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](ts-container-list.md#listdirection)属性设置为Axis.Vertical），在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](ts-container-list.md#lanes9)、[chainAnimation](ts-container-list.md#chainanimation)、[scrollSnapAlign](ts-container-list.md#scrollsnapalign10)属性中的任意一个或多个时，该组件的懒加载功能会失效。
+>   2. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](ts-container-scroll.md#scrollable)属性设置为ScrollDirection.Vertical），在非竖直方向的Scroll中使用该组件会导致应用崩溃。
+>   3. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向为FlexDirection.Column时支持懒加载。当WaterFlow为多列模式或布局方向为FlexDirection.Row、FlexDirection.RowReverse时，该组件的懒加载功能会失效。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
+> - 当懒加载功能生效时，该组件仅加载父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容。
+> - 此处的父组件指最靠近当前组件的上层滚动组件，其他文档下的具体含义请参考对应内容。
 
 **起始版本：** 26.0.0
 
@@ -49,7 +56,7 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 当value设置为string类型时，可以使用columnsTemplate('1fr 1fr 2fr')将LazyVWaterFlowLayout分为3列，LazyVWaterFlowLayout宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
 
-可使用columnsTemplate('repeat(auto-fill, track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。
+可使用columnsTemplate('repeat(auto-fill, track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%，默认单位为vp。也可以设置没有单位的有效数字。
 
 当value设置为ItemFillPolicy类型时，将根据LazyVWaterFlowLayout组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
@@ -68,12 +75,6 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | 当前瀑布流布局列的数量或最小列宽值。<br/>方法入参为undefined时，恢复为默认值（1列）。 |
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| T | 返回当前组件。 |
 
 ### columnsGap
 
@@ -133,7 +134,7 @@ rowsGap(value: LengthMetrics | undefined): T
 
 ### onVisibleIndexesChange
 
-onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 当前瀑布流显示的起始位置或终止位置的子组件发生变化时触发。瀑布流初始化时会触发一次。
 
@@ -149,7 +150,7 @@ onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| callback  | [onVisibleIndexesChangeCallback](#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
+| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
 
 **返回值：**
 
@@ -157,35 +158,7 @@ onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
 | --- | -------------- |
 | T | 返回当前组件。 |
 
-## onVisibleIndexesChangeCallback
-
-type onVisibleIndexesChangeCallback = (start: number, end: number) => void
-
-当前瀑布流显示的子组件索引发生变化时的回调类型。
-
-> **说明：**
->
-> - 当LazyVWaterFlowLayout没有子组件时，start和end都返回-1。
-> - 当LazyVWaterFlowLayout完全在显示区域内无可见子组件时，start和end都返回-1。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                  |
-| ------ | ------ | ---- | ------------------------------------- |
-| start  | number | 是   | 可见区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| end    | number | 是   | 可见区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-
 ## 示例
-
-### 示例1（实现懒加载瀑布流布局）
 
 通过[Scroll](ts-container-scroll.md)和LazyVWaterFlowLayout组件实现懒加载瀑布流布局。
 

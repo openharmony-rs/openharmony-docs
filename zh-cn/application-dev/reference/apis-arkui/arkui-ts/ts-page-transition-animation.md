@@ -1,8 +1,8 @@
 # 页面间转场 (pageTransition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -112,7 +112,7 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 | 名称     | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。    |
+| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。<br/>**说明：**<br/>当pageTransition函数中配置了多个[PageTransitionEnter](#pagetransitionenter)或[PageTransitionExit](#pagetransitionexit)时，按照RouteType匹配规则生效：系统会根据当前路由操作类型（Push或Pop）从所有配置的PageTransitionEnter/PageTransitionExit中选择最后一个匹配的组件生效。如果存在多个匹配相同RouteType的PageTransitionEnter，则最后配置的生效；如果存在多个匹配相同RouteType的PageTransitionExit，则最后配置的生效。RouteType.None与所有路由类型均匹配。    |
 | duration | number                                                       | 否   | 是   | 动画的时长。<br/>单位：毫秒<br/>默认值：1000<br/>取值范围：[0, +∞)                 |
 | curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | 否   | 是   | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
 | delay    | number                                                       | 否   | 是   | 动画延迟时长。<br/>单位：毫秒<br/>默认值：0<br/>**说明：** <br/>没有匹配时使用系统默认的页面转场效果(根据设备可能会有差异)，如需禁用系统默认页面转场效果，可以指定duration为0。 |
@@ -231,6 +231,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数名  | 类型    | 必填 | 说明              |
@@ -266,8 +268,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 | Right               | 2 | 设置到入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Top                 | 3 | 设置到入场时表示从上边滑入，出场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Bottom              | 4 | 设置到入场时表示从下边滑入，出场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 示例
 

@@ -78,7 +78,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | ---- |
-| action | [InputEventInterceptAction](ts-appendix-enums.md#inputeventinterceptaction) | 否 | 否 | 输入事件拦截动作。<br/>CONTINUE：允许事件继续传递到UI框架。<br/>BLOCK：阻止事件传递到UI框架。 |
+| action | [InputEventInterceptAction](ts-appendix-enums.md#inputeventinterceptaction) | 否 | 否 | 输入事件拦截动作。 |
 
 ## RawInputEventWrapper
 
@@ -92,7 +92,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 > **说明：**
 >
-> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标[(x,y)](ts-universal-mouse-key.md#mouseevent对象说明)、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#touchevent对象说明)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#touchevent对象说明)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#keyevent对象说明)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
+> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标[x](ts-universal-mouse-key.md#属性)和[y](ts-universal-mouse-key.md#属性)、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#touchevent对象说明)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#touchevent对象说明)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#keyevent对象说明)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
 
 **示例：**
 

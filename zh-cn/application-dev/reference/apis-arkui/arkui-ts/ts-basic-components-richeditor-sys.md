@@ -19,7 +19,7 @@
 
 添加builder的偏移位置和builder样式信息。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,9 +30,9 @@
 
 ## RichEditorGesture<sup>11+</sup>
 
-用户行为回调。
+手势回调。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +42,9 @@
 
 ## RichEditorChangeValue<sup>12+</sup>
 
-**系统能力：** 此接口为系统接口。
+图文变化信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

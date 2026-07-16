@@ -1,8 +1,8 @@
 # @ohos.arkui.uiMaterial (系统材质)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -49,7 +49,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 ## Material
 
-UI侧的系统材质对象。
+系统材质对象基类。
 
 ### constructor
 

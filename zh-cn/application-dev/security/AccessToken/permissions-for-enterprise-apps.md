@@ -7,7 +7,8 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限面向<!--Del-->系统应用和<!--DelEnd-->企业类应用开放。
+<!--RP1-->
+以下权限面向系统应用和企业类应用开放。
 
 企业类应用包括企业普通应用和MDM（Mobile Device Management）设备管理应用。
 
@@ -15,7 +16,7 @@
 
 - 仅在企业定制设备上运行，不会在普通消费者设备上运行。
 - 分发类型分别为enterprise_normal（企业普通应用）和enterprise_mdm（MDM应用）。
-<!--RP1--><!--RP1End-->
+<!--RP1End-->
 
 企业类应用可参考[声明权限](declare-permissions.md)，申请以下权限。
 

@@ -56,6 +56,7 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 **示例**：
 
 ```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';  
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
@@ -103,6 +104,7 @@ resetAllEfficiencyResources(): void
 **示例**：
 
 ```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';  
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -350,7 +352,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -363,7 +365,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 }
 
 try {
-    backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    backgroundTaskManager.subscribeContinuousTaskState(backgroundTaskSubscriber);
     console.info('Operation subscribeContinuousTaskState succeeded');
 } catch (error) {
     console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -407,7 +409,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -420,7 +422,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 }
 
 try {
-    backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    backgroundTaskManager.unsubscribeContinuousTaskState(backgroundTaskSubscriber);
     console.info('Operation unsubscribeContinuousTaskState succeeded');
 } catch (error) {
     console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -570,7 +572,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -606,7 +608,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -642,7 +644,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },

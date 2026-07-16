@@ -580,7 +580,7 @@ When any of the following information changes, the event notification service is
 
 Indicates that the battery level is low.
 
-When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
+When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -725,7 +725,7 @@ When the system power saving mode changes, the event notification service is tri
 
 Indicates that the device's thermal level has changed.
 
-When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
+When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -783,48 +783,6 @@ When the device exits the hibernation mode, the event notification service is tr
 **Required permissions**: none
 
 **Value**: usual.event.EXIT_HIBERNATE
-
-### COMMON_EVENT_VOLUME_DECRYPTED
-
-Indicates that specific volumes on the device have been decrypted.
-
-When specific volumes on the device have been decrypted, the event notification service is triggered to publish this event.
-
-**Since**: 26.0.0
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: none
-
-**Value**: "usual.event.VOLUME_DECRYPTED"
-
-### COMMON_EVENT_VOLUME_ENCRYPTED
-
-Indicates that specific volumes on the device have been encrypted.
-
-When specific volumes on the device have been encrypted, the event notification service is triggered to publish this event.
-
-**Since**: 26.0.0
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: none
-
-**Value**: "usual.event.VOLUME_ENCRYPTED"
-
-### COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET
-
-Indicates that specific volumes on the device have had their encryption policy set.
-
-When specific volumes on the device have had their encryption policy set, the event notification service is triggered to publish this event.
-
-**Since**: 26.0.0
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
-
-**Value**: "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
 
 
 ## Connectivity Kit

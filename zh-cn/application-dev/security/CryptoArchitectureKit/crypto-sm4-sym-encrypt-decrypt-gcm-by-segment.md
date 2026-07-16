@@ -15,7 +15,7 @@
    
    如何生成SM4对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：SM4](crypto-sym-key-generation-conversion-spec.md#sm4)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM|PKCS7'，创建对称密钥类型为SM4_128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成加密操作。
 
 3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
 
@@ -39,7 +39,7 @@
 
 **解密**
 
-1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM|PKCS7'，创建对称密钥类型为SM4_128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成解密操作。
+1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM4_128|GCM'，创建对称密钥类型为SM4_128、分组模式为GCM的Cipher实例，用于完成解密操作。
 
 2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
 
@@ -70,7 +70,7 @@
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; // The GCM authTag is obtained by doFinal() in encryption and passed in params of init() in decryption.
+    };
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
@@ -84,7 +84,7 @@
   
   // 分段加密消息
   async function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
+    let cipher = cryptoFramework.createCipher('SM4_128|GCM');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let cipherText = new Uint8Array();
@@ -107,7 +107,7 @@
   
   // 分段解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
+    let decoder = cryptoFramework.createCipher('SM4_128|GCM');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let decryptText = new Uint8Array();
@@ -178,7 +178,7 @@
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; // The GCM authTag is obtained by doFinal() in encryption and passed in params of init() in decryption.
+    };
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
@@ -192,7 +192,7 @@
   
   // 分段加密消息
   function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
+    let cipher = cryptoFramework.createCipher('SM4_128|GCM');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let cipherText = new Uint8Array();
@@ -215,7 +215,7 @@
   
   // 分段解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
+    let decoder = cryptoFramework.createCipher('SM4_128|GCM');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let decryptText = new Uint8Array();

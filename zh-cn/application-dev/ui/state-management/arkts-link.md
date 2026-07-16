@@ -173,35 +173,31 @@
     }
     ```
 
-4. \@Link装饰的变量仅能被状态变量初始化，不能使用常规变量初始化，否则编译期会给出告警，并在运行时崩溃。
+    ![arkts-link-0](figures/arkts-link-0.png)
+
+4. \@Link装饰的变量仅能被状态变量初始化，不能使用常规变量初始化，否则会编译报错。
 
     【反例】
   
-    ```ts
-    class Info {
-      info: string = 'Hello';
-    }
-
+    ``` TypeScript
     @Component
     struct Child {
-      @Link msg: string;
-      @Link info: string;
-
+      @Link message: string;
+    
       build() {
-        Text(this.msg + this.info)
+        Text(`${this.message}`).margin('20%')
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample {
-      @State message: string = 'Hello';
-      @State info: Info = new Info();
-
+      message: string = 'Hello';
+    
       build() {
         Column() {
           // 错误写法，常规变量不能初始化@Link
-          Child({msg: 'World', info: this.info.info})
+          Child({ message: this.message })
         }
       }
     }
@@ -212,17 +208,12 @@
     <!-- @[link_usage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets) -->
     
     ``` TypeScript
-    class LinkInfo2 {
-      public info: string = 'Hello';
-    }
-    
     @Component
     struct LinkChild2 {
-      @Link msg: string;
-      @Link info: LinkInfo2;
+      @Link message: string;
     
       build() {
-        Text(this.msg + this.info.info)
+        Text(`${this.message}`).margin('20%')
       }
     }
     
@@ -230,17 +221,17 @@
     @Component
     struct LinkExample2 {
       @State message: string = 'Hello';
-      @State info: LinkInfo2 = new LinkInfo2();
     
       build() {
         Column() {
           // 正确写法
-          LinkChild2({msg: this.message, info: this.info})
+          LinkChild2({ message: this.message })
         }
       }
     }
     ```
 
+    ![arkts-link-0](figures/arkts-link-0.png)
 
 5. \@Link不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
 从API version 23开始，添加对\@Link装饰Function类型变量的校验，编译期会报错。
@@ -397,7 +388,7 @@ struct ArrayTypes {
             .backgroundColor('#11a2a2a2')
             .fontColor('#e6000000')
         },
-        (item: ForEachInterface) => item.toString()
+        (item: number) => item.toString()
       )
     }
   }
@@ -591,7 +582,7 @@ struct ParentComponent {
 
 通过[\@Watch](./arkts-watch.md)可以在双向同步时更改本地变量。
 
-以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步。但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
+以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步，但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
 
 <!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) --> 
 
@@ -605,7 +596,6 @@ struct ChangeVariables {
     Column() {
       Text(`sourceNumber of the parent component:` + this.sourceNumber)
       ChangeVariablesChild({ sourceNumber: this.sourceNumber })
-      // sourceNumber的修改不会影响到父组件中的变量改变
       Button('Change sourceNumber in Parent Component')
         .onClick(() => {
           this.sourceNumber++;
@@ -622,6 +612,7 @@ struct ChangeVariablesChild {
   @Link @Watch('onSourceChange') sourceNumber: number;
 
   onSourceChange() {
+    // memberMessage在子组件中本地修改不会影响到父组件中的变量改变
     this.memberMessage = this.sourceNumber.toString();
   }
 

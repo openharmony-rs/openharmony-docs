@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI开发框架在NDK接口提供了列表组件，使用列表可以轻松高效地显示结构化、可滚动的信息。列表组件支持控制滚动位置、支持分组显示内容、支持使用[NodeAdapter](#nodeadapter介绍)实现懒加载以提升列表创建性能。
@@ -497,8 +497,8 @@ private:
        void ScrollTo(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}, {.f32 = 0}};
-           ArkUI_AttributeItem Item = {.value = value, .size = 3};
-           nativeModule_->setAttribute(handle_, NODE_SCROLL_OFFSET, &Item);
+           ArkUI_AttributeItem item = {.value = value, .size = 3};
+           nativeModule_->setAttribute(handle_, NODE_SCROLL_OFFSET, &item);
        }
        // ...
    };
@@ -516,8 +516,8 @@ private:
        void ScrollToIndex(int32_t index)
        {
            ArkUI_NumberValue value[] = {{.i32 = index}};
-           ArkUI_AttributeItem Item = {.value = value, .size = 1};
-           nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &Item);
+           ArkUI_AttributeItem item = {.value = value, .size = 1};
+           nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &item);
        }
        // ...
    };
@@ -536,8 +536,8 @@ private:
        void ScrollBy(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}};
-           ArkUI_AttributeItem Item = {.value = value, .size = 2};
-           nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &Item);
+           ArkUI_AttributeItem item = {.value = value, .size = 2};
+           nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &item);
        }
        // ...
    };

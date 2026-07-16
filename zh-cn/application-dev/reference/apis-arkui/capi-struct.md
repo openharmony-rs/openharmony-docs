@@ -1,8 +1,8 @@
 # OH_PixelmapNative
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,7 @@ typedef struct OH_PixelmapNative
 
 ## 概述
 
-定义像素图片信息。
+定义像素图信息。
 
 **起始版本：** 15
 

@@ -94,7 +94,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-允许读取用户公共目录的图片或视频文件。
+允许读取用户本地公共目录的图片或视频文件。
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：用户授权（user_grant）
 
 **起始版本**：9
+
+**变更信息**：在API版本9-24，申请该权限可访问云上和本地图片或视频文件；从API版本26.0.0开始，申请该权限仅能读取用户本地公共目录的图片或视频文件。
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -197,6 +199,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：11
 
@@ -372,6 +376,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：14
 
 ## ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
@@ -408,7 +414,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：PC/2in1 | Tablet
+
 **起始版本**：15
+
+**变更信息**：从API版本26.0.0开始，增加支持在平板上申请。
 
 ## ohos.permission.SET_PAC_URL
 
@@ -638,6 +648,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+允许原子化服务小游戏进行存储空间大小的管理。
+
+<!--RP96--><!--RP96End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 允许应用调用屏幕时间守护相关接口，进行屏幕使用限制、应用访问控制、管控使用时间等操作。
@@ -696,7 +720,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.USE_FLOAT_BALL
 
-允许应用使用全局闪控球的能力。
+允许应用使用闪控球的能力。
 
 <!--RP46--><!--RP46End-->
 
@@ -710,7 +734,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用全局闪控球的自动恢复到应用主窗口的能力。
+允许应用使用闪控球的自动恢复到应用主窗口的能力。
 
 **申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
 
@@ -1210,7 +1234,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用应用浮窗。
+允许应用使用闪控窗。
 
 <!--RP78--><!--RP78End-->
 

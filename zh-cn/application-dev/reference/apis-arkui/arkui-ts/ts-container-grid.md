@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
@@ -59,13 +59,15 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 | 参数名   | 类型                                    | 必填 | 说明                                                     |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| layoutOptions<sup>10+</sup> | [GridLayoutOptions](#gridlayoutoptions10对象说明) | 否 | Grid布局选项。 |
+| layoutOptions<sup>10+</sup> | [GridLayoutOptions](#gridlayoutoptions10对象说明) | 否 | Grid布局选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## GridLayoutOptions<sup>10+</sup>对象说明
 
 Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见[示例3](#示例3可滚动grid设置跨行跨列节点)；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见[示例1](#示例1固定行列grid)。
 
 为提高Grid在跳转、列数变化等场景的性能，应该尽量使用GridLayoutOptions。即使Grid中没有任何特殊的跨行跨列节点，也可以通过使用'Grid(this.scroller, {regularSize: [1, 1]})'的方式提高跳转性能。参考<!--RP1-->[使用GridLayoutOptions提升Grid性能](../../../performance/grid_optimization.md#使用gridlayoutoptions提升grid性能)<!--RP1End-->。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,6 +134,8 @@ columnsTemplate(value: string | ItemFillPolicy)
 例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,6 +278,8 @@ scrollBarColor(color: Color | number | string | Resource)
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -351,6 +357,8 @@ cachedCount(count: number, show: boolean)
 设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -500,6 +508,8 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -516,6 +526,8 @@ enableScrollInteraction(value: boolean)
 设置是否支持滚动手势。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -537,6 +549,8 @@ nestedScroll(value: NestedScrollOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -552,6 +566,8 @@ friction(value: number | Resource)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -569,6 +585,8 @@ alignItems(alignment: Optional\<GridItemAlignment\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -585,6 +603,8 @@ focusWrapMode(mode: Optional\<FocusWrapMode\>)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -600,6 +620,8 @@ syncLoad(enable: boolean)
 设置是否同步加载Grid区域内所有子组件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -635,6 +657,8 @@ editModeOptions(options?: EditModeOptions)
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -648,6 +672,8 @@ editModeOptions(options?: EditModeOptions)
 GridItem的对齐方式枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -698,21 +724,21 @@ onScrollIndex(event: (first: number, last: number) => void)
 | 参数名             | 类型   | 必填 | 说明                             |
 | ------------------ | ------ | ---- | -------------------------------- |
 | first              | number | 是   | 当前显示的网格起始位置的索引值。 |
-| last<sup>10+</sup> | number | 是   | 当前显示的网格终止位置的索引值。 |
+| last<sup>10+</sup> | number | 是   | 当前显示的网格终止位置的索引值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### onItemDragStart<sup>8+</sup>
 
 onItemDragStart(event: OnItemDragStartCallback)
 
-开始拖拽网格元素时触发。
+开始拖拽GridItem时触发。
 
 手指长按GridItem时触发该事件。
 
 由于拖拽检测也需要长按，且事件处理机制优先触发子组件事件，GridItem上绑定[LongPressGesture](ts-basic-gestures-longpressgesture.md#longpressgesture-1)时无法触发拖拽。如有长按和拖拽同时使用的需求可以使用通用拖拽事件。
 
-拖拽浮起的网格元素可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
+拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
-不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现griditem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例21（使用OnMove进行拖拽）](#示例21使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -722,13 +748,13 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | 网格元素拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | GridItem拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
 
 ### onItemDragEnter<sup>8+</sup>
 
 onItemDragEnter(event: (event: ItemDragInfo) => void)
 
-拖拽进入网格元素范围内时触发。
+拖拽进入GridItem范围内时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -744,7 +770,7 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 
 onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void)
 
-拖拽在网格元素范围内移动时触发。
+拖拽在GridItem范围内移动时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -762,7 +788,7 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 
 onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 
-拖拽离开网格元素时触发。
+拖拽离开GridItem时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -773,15 +799,15 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 | 参数名    | 类型                                  | 必填 | 说明                       |
 | --------- | ------------------------------------- | ---- | -------------------------- |
 | event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。             |
-| itemIndex | number                                | 是   | 拖拽离开的网格元素索引值。 |
+| itemIndex | number                                | 是   | 拖拽离开的GridItem索引值。 |
 
 ### onItemDrop<sup>8+</sup>
 
 onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void)
 
-绑定该事件的网格元素可作为拖拽释放目标，当GridItem停止拖拽时触发。
+绑定该事件的GridItem可作为拖拽释放目标，当GridItem停止拖拽时触发。
 
-当拖拽释放位置在网格元素之内时，isSuccess会返回true；在网格元素之外时，isSuccess会返回false。
+当拖拽释放位置在GridItem之内时，isSuccess会返回true；在GridItem之外时，isSuccess会返回false。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -794,7 +820,7 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
 | itemIndex   | number                                | 是   | 拖拽起始位置。 |
 | insertIndex | number                                | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的网格元素之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的网格元素之内；false：表示拖拽释放位置在设置了onItemDrop的网格元素之外。  |
+| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的GridItem之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的GridItem之内；false：表示拖拽释放位置在设置了onItemDrop的GridItem之外。  |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -805,6 +831,8 @@ onScrollBarUpdate(event: (index: number, offset: number) => ComputedBarAttribute
 该接口只用作设置Grid的滚动条位置，不建议开发者在此接口中做业务逻辑处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -831,6 +859,8 @@ Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Gri
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -848,6 +878,8 @@ onReachEnd(event: () => void)
 Grid边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -877,6 +909,8 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -893,6 +927,8 @@ onScrollStart(event: () => void)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -908,6 +944,8 @@ onScrollStop(event: () => void)
 网格滑动停止时触发。手指拖动网格或网格的滚动条触发的滑动，手指离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -928,6 +966,8 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -942,6 +982,8 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 滚动条位置和长度对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -965,6 +1007,8 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -982,6 +1026,8 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1001,6 +1047,8 @@ setOnScrollIndex(callback: OnGridScrollIndexCallback | undefined): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1015,6 +1063,8 @@ type OnGridScrollIndexCallback = (first: number, last: number) => void
 Grid组件可见区域item变化事件的回调类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3074,7 +3124,7 @@ struct GridExample {
 
 ### 示例20（设置多选聚拢动画）
 
-该示例通过打开Grid多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在GridItem上长按弹出菜单时聚拢显示范围内被选中的GridItem。
+该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)聚拢显示范围内被选中的GridItem的效果。
 
 从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
@@ -3176,3 +3226,216 @@ struct GridExample {
 ```
 
 ![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)
+
+### 示例21（使用OnMove进行拖拽）
+
+从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
+
+```ts
+// RectGridDataSource.ets
+export class Rects {
+  id: number = 0
+  // rectSize表示该GridItem占用的[行, 列]数，默认[1, 1]为规则节点
+  rectSize: [number, number] = [1, 1]
+  constructor(id_: number) {
+    this.id = id_
+  }
+}
+
+// LazyForEach的数据源，实现IDataSource接口，负责管理数据及通知UI刷新
+export class RectGridDataSource implements IDataSource {
+  private list: Array<Rects> = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(list: Rects[]) {
+    this.list = list;
+  }
+
+  // 返回数据总数
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  // 根据索引获取对应的数据项
+  getData(index: number): Rects {
+    return this.list[index];
+  }
+
+  // 注册数据变更监听器
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  // 注销数据变更监听器
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据位置变化
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  // 重新加载所有数据
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 将from位置的元素移动到to位置，并通知UI全部重载刷新
+  public moveItem(from: number, to: number): void {
+    let tmp = this.list.splice(from, 1);  // 先移除被拖拽项
+    this.list.splice(to, 0, tmp[0]);      // 将被拖拽项插入到目标位置
+    this.notifyDataReload()
+  }
+}
+```
+
+```ts
+// xxx.ets
+import { RectGridDataSource, Rects } from './RectGridDataSource';
+
+@Entry
+@Component
+struct GridOnMoveExample {
+  numbers: RectGridDataSource = new RectGridDataSource([]);
+
+  // 网格布局选项（实际生效），声明不规则节点的索引及各自占用的行列数
+  @State layoutOptions: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],   // 设置哪些索引对应的GridItem为不规则节点
+    onGetIrregularSizeByIndex: (index: number) => {
+      return this.numbers.getData(index).rectSize
+    }
+  };
+
+  // 布局选项（备份），用于拖拽时通过整体赋值触发layoutOptions刷新
+  layoutOptions_back: GridLayoutOptions = {
+    regularSize: [1, 1],
+    irregularIndexes: [4, 5, 6, 7, 8, 13],
+    onGetIrregularSizeByIndex: (index: number) => {
+      return this.numbers.getData(index).rectSize
+    }
+  };
+
+  build() {
+    Row() {
+      Grid(undefined, this.layoutOptions) {
+        LazyForEach(this.numbers, (item: Rects) => {
+          GridItem() {
+            Text(item.id.toString())
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              // 设置高度，跨行GridItem需额外增加外边距(规则GridItem的间距为2*10)用于界面对齐
+              .size({ height: 100 * item.rectSize[0] + (item.rectSize[0] - 1) * 20, width: '100%'})
+          }.margin(10)
+          .borderRadius(10)
+          .backgroundColor(0xF9CF93)
+        }, (index: Rects) => index.id.toString())
+          // 当拖拽松手时，被拖拽项落位位置与拖拽前不同时触发，from为起始索引，to为目标索引
+          .onMove((from:number, to:number) => {
+            console.info("Grid onMove from " + from + " to " + to)
+            // 更新数据源
+            this.numbers.moveItem(from, to)
+            if (from < to) {  // 被拖拽项索引小于目标位置索引
+              // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+              let from_idx = -1
+              if (this.layoutOptions.irregularIndexes?.includes(from)) {
+                from_idx = this.layoutOptions.irregularIndexes.indexOf(from)
+              }
+
+              // 被拖拽项与目标位置之间的元素整体前移一位（索引-1）
+              if (this.layoutOptions.irregularIndexes != undefined) {
+                let len = this.layoutOptions.irregularIndexes.length
+                for (let i = len - 1; i >= 0; i --) {
+                  let irregularIndex = this.layoutOptions.irregularIndexes[i]
+                  if (irregularIndex > from && irregularIndex <= to) {
+                    this.layoutOptions.irregularIndexes[i] --
+                  }
+                }
+              }
+
+              // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+              if (from_idx != -1 && this.layoutOptions.irregularIndexes != undefined) {
+                this.layoutOptions.irregularIndexes[from_idx] = to
+              }
+            } else {  // 被拖拽项索引大于等于目标位置索引
+              // 先保存被拖拽项在irregularIndexes数组中的位置，避免后续循环更新产生重复值后indexOf定位错误
+              let from_idx = -1
+              if (this.layoutOptions.irregularIndexes?.includes(from)) {
+                from_idx = this.layoutOptions.irregularIndexes.indexOf(from)
+              }
+
+              // 目标位置至被拖拽项之间的元素整体后移一位（索引+1）
+              if (this.layoutOptions.irregularIndexes != undefined) {
+                let len = this.layoutOptions.irregularIndexes.length
+                for (let i = 0; i < len; i ++) {
+                  let irregularIndex = this.layoutOptions.irregularIndexes[i]
+                  if (irregularIndex >= to && irregularIndex < from) {
+                    this.layoutOptions.irregularIndexes[i] ++
+                  }
+                }
+              }
+
+              // 若被拖拽项本身为不规则节点，更新其索引到目标位置
+              if (from_idx != -1 && this.layoutOptions.irregularIndexes != undefined) {
+                this.layoutOptions.irregularIndexes[from_idx] = to
+              }
+            }
+            // 通过备份对象整体赋值，强制layoutOptions刷新生效
+            this.layoutOptions_back.irregularIndexes = this.layoutOptions.irregularIndexes
+            this.layoutOptions = this.layoutOptions_back
+            console.info("Grid this.layoutOptions.irregularIndexes " + this.layoutOptions.irregularIndexes)
+          },
+            {
+              onLongPress: (index: number) => {
+                // GridItem长按浮起时触发
+                console.info('Grid onLongPress: ' + index);
+              },
+              onDrop: (index: number) => {
+                // 拖拽的GridItem松手时触发
+                console.info('Grid onDrop: ' + index);
+              },
+              onDragStart: (index: number) => {
+                // GridItem长按浮起并开始拖拽时触发
+                console.info('Grid onDragStart: ' + index);
+              },
+              onMoveThrough: (from: number, to: number) => {
+                // GridItem拖拽过程中持续触发
+                console.info('Grid onMoveThrough From: ' + from + ' to: ' + to);
+              }
+            })
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr')   // 四列等宽布局
+      .width('100%')
+      .height('100%')
+      .backgroundColor(0xFAEEE0)
+    }
+  }
+
+  aboutToAppear(): void {
+    // 初始化100个矩形数据并设置各不规则节点的跨占尺寸
+    let list: Rects[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(new Rects(i));
+    }
+    list[4].rectSize = [2, 2] // 2行2列
+    list[5].rectSize = [1, 2] // 1行2列
+    list[6].rectSize = [1, 2] // 1行2列
+    list[7].rectSize = [2, 1] // 2行1列
+    list[8].rectSize = [2, 1] // 2行1列
+    list[13].rectSize = [1, 4]  // 1行4列
+    this.numbers = new RectGridDataSource(list);
+  }
+}
+```
+
+![grid-onmove-drag](figures/grid-onmove-drag.gif)

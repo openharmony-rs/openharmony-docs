@@ -87,16 +87,16 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 - 以下使用分段传入数据，获取摘要计算结果为例：
 
   <!-- @[message_digest_sha256_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha256/segmentation.cpp) -->
-
+  
   ``` C++
-
+  
   #include <cstdlib>
   #include "CryptoArchitectureKit/crypto_common.h"
   #include "CryptoArchitectureKit/crypto_digest.h"
   #define OH_CRYPTO_DIGEST_DATA_MAX (1024 * 1024 * 100)
-
+  
   static constexpr int INT_640 = 640;
-
+  
   OH_Crypto_ErrCode doLoopSha256Md()
   {
       OH_Crypto_ErrCode ret;
@@ -109,9 +109,10 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
       int mdLen = 0;
       int isBlockSize = 20;
       int offset = 0;
-
+  
       ret = OH_CryptoDigest_Create("SHA256", &ctx);
       if (ret != CRYPTO_SUCCESS) {
+          free(testData);
           return ret;
       }
       do {
@@ -131,6 +132,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
           }
           mdLen = OH_CryptoDigest_GetLength(ctx);
       } while (0);
+      free(testData);
       OH_Crypto_FreeDataBlob(&out);
       OH_DigestCrypto_Destroy(ctx);
       return ret;

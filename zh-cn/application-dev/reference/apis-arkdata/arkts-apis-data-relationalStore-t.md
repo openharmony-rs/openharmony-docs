@@ -71,7 +71,7 @@ type PRIKeyType = number | string
 
 type UTCTime = Date
 
-用于表示UTC类型时间的数据类型。
+用于表示UTC时间的数据类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -89,7 +89,7 @@ type ModifyTime = Map<PRIKeyType, UTCTime>
 
 | 类型                                                    | 说明                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | 键表示是数据库表某一行的主键，值表示该行的最后修改时间，用UTC格式表示。 |
+| Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | 键是数据库表某一行的主键，值表示该行的最后修改时间，用UTC格式表示。 |
 
 ## RowData<sup>23+</sup>
 

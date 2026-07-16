@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HitraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
+hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HiTraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
 
 
 ## 环境要求
@@ -264,7 +264,7 @@ $ hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
 
 ### 捕获指定时长二进制格式trace
 
-命令带--raw参数时可捕获二进制格式trace，捕获二进制格式trace时不支持指定路径，固定保存在路径/data/log/hitrace下。采集结束后，采集结束后生成文件的绝对路径会显示在命令行窗口。
+命令带--raw参数时可捕获二进制格式trace，捕获二进制格式trace时不支持指定路径，固定保存在路径/data/log/hitrace下。采集结束后生成文件的绝对路径会显示在命令行窗口。
 
 ```shell
 hitrace -t 10 -b 204800 app --raw

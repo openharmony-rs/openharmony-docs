@@ -55,5 +55,5 @@ if (ArkTSUtils.isSendable(sendableFunc)) {
 } else {
   console.info("sendableFunc is not Sendable");
 }
-// 期望输出: 'SendableFunc is Sendable'
+// 期望输出: 'sendableFunc is Sendable'
 ```

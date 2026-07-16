@@ -33,7 +33,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 | UPLOAD_FAILED |  1 | 上行同步失败。 |
 | DOWNLOADING |  2 | 下行同步中。 |
 | DOWNLOAD_FAILED |  3 | 下行同步失败。 |
-| COMPLETED |  4 | 同步成功。 |
+| COMPLETED |  4 | 同步成功或首次注册同步状态回调成功均返回。 |
 | STOPPED |  5 | 同步已停止。 |
 
 ## ErrorType<sup>12+</sup>
@@ -134,6 +134,8 @@ let fileSync = new cloudSync.FileSync()
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 云盘同步对象添加同步过程事件监听。
+
+当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

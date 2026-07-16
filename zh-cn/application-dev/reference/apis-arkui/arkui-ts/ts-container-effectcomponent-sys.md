@@ -1,4 +1,10 @@
 # EffectComponent (系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 特效合并容器组件，用于子节点特效绘制的合并，实现特效的绘制性能优化。
 
@@ -7,6 +13,8 @@
 > - 该组件从API Version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本模块为系统接口。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 目前该组件仅支持子组件背景模糊效果的绘制合并优化。
 >
@@ -39,7 +47,7 @@ EffectComponent(options?: EffectComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数:**
+**参数：**
 
 | 参数名            | 类型        | 必填   | 说明                                     |
 | -------------- | ---------------------------------------- | ---- |  ---------------------------------------- |
@@ -61,9 +69,9 @@ EffectComponent(options?: EffectComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                    | 必填 | 说明                                                     |
-| ----------- | --------------------------------------- | ---- | -------------------------------------------------------- |
-| effectLayer | [EffectLayer](#effectlayer20枚举说明) | 否   | EffectComponent的渲染层级。<br/>默认值：EffectLayer.NONE |
+| 名称        | 类型                                    | 只读 | 可选 | 说明                                                     |
+| ----------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| effectLayer | [EffectLayer](#effectlayer20枚举说明) | 否   | 否   | EffectComponent的渲染层级。<br/>默认值：EffectLayer.NONE |
 
 ## EffectLayer<sup>20+</sup>枚举说明
 

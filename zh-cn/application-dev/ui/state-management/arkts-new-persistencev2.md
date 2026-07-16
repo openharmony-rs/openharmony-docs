@@ -61,90 +61,101 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    如下是新增接口globalConnect支持collections.Array的示例代码:
     
-     <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
+    <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
      
-     ``` TypeScript
-     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-     import { collections } from '@kit.ArkTS';
-     
-     @Entry
-     @ComponentV2
-     struct Page1 {
-       // 支持直接持久化collections.Array的类型
-       @Local array: collections.Array<number> = PersistenceV2.globalConnect({
-         // 定义持久化的数据类型
-         type: collections.Array<number>,
-         // 定义默认构造器，返回时需要调用makeObserved，才能实现自动持久化
-         defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(1,2))
-       })!;
-       // 基于collections.Array构建Repeat的数据源
-       toArray<T>(array: collections.Array<T>): Array<T> {
-         const result = new Array<T>();
-         array.forEach((item: T) => result.push(item));
-         return result;
-       }
-     
-       build() {
-         Column({ space: 10 }) {
-           Column({ space: 0 }) {
-             Repeat(this.toArray(this.array))
-               .each(ri => {
-                 Row() {
-                   Text(`Item: `)
-                   Text(`${ri.item}`)
-                 }
-               })
-               .key((item: number, index: number) => `${index} - ${item}`)
-           }
-           Divider().width('100%')
-           // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
-           Button('array.push(0)')
-             .onClick(() => {
-               this.array.push(Math.round(0));
-             })
-             .fontSize(24)
-           // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
-           Button('array.pop()')
-             .onClick(() => {
-               this.array.pop();
-             })
-             .fontSize(24)
-           // 点击'array.splice(0)'，重启应用，Repeat数组项为空
-           Button('array.splice(0)')
-             .onClick(() => {
-               this.array.splice(0);
-             })
-             .fontSize(24)
-           // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
-           Button('array.splice(1, 0, random)')
-             .onClick(() => {
-               this.array.splice(1, 0, Math.round(100*Math.random()));
-             })
-             .fontSize(24)
-           // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
-           // 重启应用：Repeat组件再次显示数组项
-           Button('array.splice(0, 2, random, random)')
-             .onClick(() => {
-               this.array.splice(2, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
-             })
-             .fontSize(24)
-           // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
-           Button('array.sort')
-             .onClick(() => {
-               this.array.sort((a, b) => a -b);
-             })
-             .fontSize(24)
-           // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
-           Button('array.reverse')
-             .onClick(() => {
-               this.array.reverse();
-             })
-             .fontSize(24)
-         }
-         .width('100%')
-       }
-     }
-     ```
+    ``` TypeScript
+    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+    import { collections } from '@kit.ArkTS';
+
+    @Entry
+    @ComponentV2
+    struct Page1 {
+      // 支持直接持久化collections.Array的类型
+      @Local array: collections.Array<number> = PersistenceV2.globalConnect({
+        // 定义持久化的数据类型
+        type: collections.Array<number>,
+        // 定义默认构造器，返回时需要调用makeObserved，才能实现自动持久化
+        defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(1,2))
+      })!;
+      // 基于collections.Array构建Repeat的数据源
+      toArray<T>(array: collections.Array<T>): Array<T> {
+        const result = new Array<T>();
+        array.forEach((item: T) => result.push(item));
+        return result;
+      }
+
+      build() {
+        Column({ space: 10 }) {
+          Column({ space: 0 }) {
+            Repeat(this.toArray(this.array))
+              .each(ri => {
+                Row() {
+                  Text(`Item: `)
+                    .fontSize(20)
+                    .margin(10)
+                  Text(`${ri.item}`)
+                    .fontSize(20)
+                    .margin(10)
+                }
+              })
+              .key((item: number, index: number) => `${index} - ${item}`)
+          }
+          Divider().width('100%')
+          // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
+          Button('array.push(0)')
+            .onClick(() => {
+              this.array.push(Math.round(0));
+            })
+            .width(300)
+            .margin(10)
+          // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
+          Button('array.pop()')
+            .onClick(() => {
+              this.array.pop();
+            })
+            .width(300)
+            .margin(10)
+          // 点击'array.splice(0)'，重启应用，Repeat数组项为空
+          Button('array.splice(0)')
+            .onClick(() => {
+              this.array.splice(0);
+            })
+            .width(300)
+            .margin(10)
+          // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
+          Button('array.splice(1, 0, random)')
+            .onClick(() => {
+              this.array.splice(1, 0, Math.round(100*Math.random()));
+            })
+            .width(300)
+            .margin(10)
+          // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
+          // 重启应用：Repeat组件再次显示数组项
+          Button('array.splice(0, 2, random, random)')
+            .onClick(() => {
+              this.array.splice(0, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
+            })
+            .width(300)
+            .margin(10)
+          // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
+          Button('array.sort')
+            .onClick(() => {
+              this.array.sort((a, b) => a -b);
+            })
+            .width(300)
+            .margin(10)
+          // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
+          Button('array.reverse')
+            .onClick(() => {
+              this.array.reverse();
+            })
+            .width(300)
+            .margin(10)
+        }
+        .width('100%')
+      }
+    }
+    ```
 
 - globalConnect在持久化多个相同[集合类型](#globalconnect支持集合的类型)时，需要提供不同的`key`来区分持久化数据。
 
@@ -182,55 +193,63 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
-   <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
+    <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
    
-   ``` TypeScript
-   import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-   
-   @ObservedV2
-   class ClassA {
-     @Trace public propA: string = '';
-     @Trace public propB: string = '';
-   
-     public report(): string {
-       return `${this.propA} - ${this.propB}`;
-     }
-   }
-   
-   @Entry
-   @ComponentV2
-   struct Comp {
-     // 持久化顶层数据类型为Array<ClassA>的数据
-     @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
-       type: Array<ClassA>,
-       defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-       // 添加defaultSubCreator，通知状态管理框架如何创建数组项
-       // 另外持久化的数据需要加上makeObserved，因为JSON对象本身没有观察能力，自动持久化会失败
-       defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
-     })!;
-   
-     build() {
-       Column() {
-         Repeat(this.arr)
-           .each(ri => {
-             Row() {
-               Text(`propA '${ri.item.propA}'`)
-               Text(`propB '${ri.item.propB}'`)
-               Text(`report?.() '${ri.item.report?.()}'`)
-             }
-           })
-         // 点击'add item',显示`propA 'a' propB 'b'report?.'a' - 'b'`, 杀掉应用，再次进入，会显示上次的结果
-         Button('add item')
-           .onClick(() => {
-             let temp: ClassA = new ClassA();
-             temp.propA = 'a';
-             temp.propB = 'b';
-             this.arr.push(temp);
-           })
-       }
-     }
-   }
-   ```
+    ``` TypeScript
+    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+
+    @ObservedV2
+    class ClassA {
+      @Trace public propA: string = '';
+      @Trace public propB: string = '';
+
+      public report(): string {
+        return `${this.propA} - ${this.propB}`;
+      }
+    }
+
+    @Entry
+    @ComponentV2
+    struct Comp {
+      // 持久化顶层数据类型为Array<ClassA>的数据
+      @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+        type: Array<ClassA>,
+        defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+        // 添加defaultSubCreator，通知状态管理框架如何创建数组项
+        // 另外持久化的数据需要加上makeObserved，因为JSON对象本身没有观察能力，自动持久化会失败
+        defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+      })!;
+
+      build() {
+        Column() {
+          Repeat(this.arr)
+            .each(ri => {
+              Row() {
+                Text(`propA '${ri.item.propA}'`)
+                  .fontSize(20)
+                  .margin(10)
+                Text(`propB '${ri.item.propB}'`)
+                  .fontSize(20)
+                  .margin(10)
+                Text(`report?.() '${ri.item.report?.()}'`)
+                  .fontSize(20)
+                  .margin(10)
+              }
+            })
+          // 点击'add item',显示`propA 'a' propB 'b'report?.()'a - b'`, 杀掉应用，再次进入，会显示上次的结果
+          Button('add item')
+            .width(300)
+            .margin(10)
+            .onClick(() => {
+              let temp: ClassA = new ClassA();
+              temp.propA = 'a';
+              temp.propB = 'b';
+              this.arr.push(temp);
+            })
+        }
+      }
+    }
+    ```
 
    如下为globalConnect支持Date类型的持久化示例：
 
@@ -485,7 +504,7 @@ class PersistClass {
 
 集合类型是指`Array<V>`、`Map<K, V>`、`Set<V>`、`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`。
 
-其中，`Map<K, V>`和`collections.Map<k, V>`中的key值类型（`K`）是指`string`或`number`类型。
+其中，`Map<K, V>`和`collections.Map<K, V>`中的key值类型（`K`）是指`string`或`number`类型。
 
 `Array<V>`、`Map<K, V>`和 `Set<V>`中，`V`的类型包括：`boolean`、`number`、`string`、`Date`、`Number`、`Boolean`、`String`、interface类型和class类型。
 
@@ -493,99 +512,116 @@ class PersistClass {
 
 如下展示`globalConnect`持久化`Array<ClassA>`的示例：
 
- <!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
+<!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
  
- ``` TypeScript
- import { PersistenceV2,  UIUtils } from '@kit.ArkUI';
- 
- class ClassA {
-   public propA: number = 0;
-   public classAToString() : string {
-     return this.propA.toString()
-   }
- }
- 
- @Entry
- @ComponentV2
- struct Page1 {
-   @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
-     type: Array<ClassA>,
-     defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-     // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
-     // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
-     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
-   })!;
- 
-   build() {
-     Column({ space: 10 }) {
-       Column({ space: 0 }) {
-         Repeat(this.arr)
-           .each(ri => {
-             Row() {
-               Text(`Item: `)
-               Text(ri.item.classAToString ? ri.item.classAToString(): `classAToString() missing from object, propA: ${ri.item.propA}`)
-             }
-           })
-           .key((item: ClassA, index: number) => `${index} - ${item.propA}`)
-       }
- 
-       Divider().width('100%')
-       // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
-       Button('array.push(0)')
-         .onClick(() => {
-           let temp = new ClassA();
-           temp.propA = 0;
-           this.arr.push(UIUtils.makeObserved(temp));
-         })
-         .fontSize(24)
-       // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
-       Button('array.pop()')
-         .onClick(() => {
-           this.arr.pop();
-         })
-         .fontSize(24)
-       // 点击'array.splice(0)'，重启应用，Repeat数组项为空
-       Button('array.splice(0)')
-         .onClick(() => {
-           this.arr.splice(0);
-         })
-         .fontSize(24)
-       // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
-       Button('array.splice(1, 0, random)')
-         .onClick(() => {
-           let temp = new ClassA();
-           temp.propA = Math.round(100 * Math.random());
-           this.arr.splice(1, 0, UIUtils.makeObserved(temp));
-         })
-         .fontSize(24)
-       // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
-       // 重启应用：Repeat组件再次显示数组项
-       Button('array.splice(0, 2, random, random)')
-         .onClick(() => {
-           let tempA = new ClassA();
-           tempA.propA = Math.round(100 * Math.random());
-           this.arr.splice(2, 2,
-             UIUtils.makeObserved(tempA),
-             UIUtils.makeObserved(tempA));
-         })
-         .fontSize(24)
-       // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
-       Button('array.sort')
-         .onClick(() => {
-           this.arr.sort((tempA, tempB)=> tempA.propA - tempB.propA);
-         })
-         .fontSize(24)
-       // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
-       Button('array.reverse')
-         .onClick(() => {
-           this.arr.reverse();
-         })
-         .fontSize(24)
-     }
-     .width('100%')
-   }
- }
- ```
+``` TypeScript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+
+class ClassA {
+  public propA: number = 0;
+  public classAToString() : string {
+    return this.propA?.toString()
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page1 {
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
+    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!;
+
+  build() {
+    Column({ space: 10 }) {
+      Column({ space: 0 }) {
+        Repeat(this.arr)
+          .each(ri => {
+            Row() {
+              Text(`Item: `)
+                .fontSize(20)
+                .margin(10)
+              Text(ri.item?.classAToString ? ri.item?.classAToString(): `classAToString() missing from object, propA: ${ri.item?.propA}`)
+                .fontSize(20)
+                .margin(10)
+            }
+          })
+          .key((item: ClassA, index: number) => `${index} - ${item?.propA}`)
+      }
+      .width('100%')
+
+      Divider().width('100%')
+      // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
+      Button('array.push(0)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let temp = new ClassA();
+          temp.propA = 0;
+          this.arr.push(UIUtils.makeObserved(temp));
+        })
+        .fontSize(24)
+      // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
+      Button('array.pop()')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.pop();
+        })
+        .fontSize(24)
+      // 点击'array.splice(0)'，重启应用，Repeat数组项为空
+      Button('array.splice(0)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.splice(0);
+        })
+        .fontSize(24)
+      // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
+      Button('array.splice(1, 0, random)')
+        .margin(10)
+        .onClick(() => {
+          let temp = new ClassA();
+          temp.propA = Math.round(100 * Math.random());
+          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
+        })
+        .fontSize(24)
+      // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
+      // 重启应用：Repeat组件再次显示数组项
+      Button('array.splice(0, 2, random, random)')
+        .margin(10)
+        .onClick(() => {
+          let tempA = new ClassA();
+          tempA.propA = Math.round(100 * Math.random());
+          this.arr.splice(0, 2,
+            UIUtils.makeObserved(tempA),
+            UIUtils.makeObserved(tempA));
+        })
+        .fontSize(18)
+      // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
+      Button('array.sort')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.sort((tempA, tempB)=> tempA?.propA - tempB?.propA);
+        })
+        .fontSize(24)
+      // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
+      Button('array.reverse')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.reverse();
+        })
+        .fontSize(24)
+    }
+    .width('100%')
+  }
+}
+```
 
 ## 使用场景
 

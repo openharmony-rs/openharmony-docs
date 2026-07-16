@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -117,7 +117,7 @@ OH_Drawing_PenSetWidth(pen, 20);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形对象，左上坐标为（100，200）右下坐标为（500，300）
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 200, 500, 300);
-// 基于矩形对象绘制圆弧，其实角度10°，扫描角度200°
+// 基于矩形对象绘制圆弧，起始角度10°，扫描角度200°
 OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
 // 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);

@@ -1,8 +1,8 @@
 # OffscreenCanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -160,7 +160,7 @@ export default {
 
 isPointInStroke(path?: Path2D, x: number, y: number): boolean
 
-判断指定点是否在路径的边缘线上。
+判断指定点是否位于路径描边区域内。
 
 **参数：** 
 | 参数名  | 参数类型   | 必填   | 描述                            |
@@ -172,7 +172,7 @@ isPointInStroke(path?: Path2D, x: number, y: number): boolean
 **返回值：** 
 | 类型      | 说明            |
 | ------- | ------------- |
-| boolean | 指定点是否在路径的区域内。 |
+| boolean | 指定点是否位于路径描边区域内。返回true时，指定点在路径描边区域内。返回false时，指定点不在路径描边区域内。 |
 
 **示例：** 
 ```html
@@ -233,6 +233,8 @@ export default {
 ### resetTransform
 
 resetTransform(): void
+
+重置当前变换矩阵为单位矩阵。
 
 **示例：** 
 ```html

@@ -265,7 +265,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -356,7 +356,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -448,7 +448,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -521,6 +521,7 @@ export default class EntryAbility extends UIAbility {
       // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
+          // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
           let list: Array<string> = ["dataTransfer"];
           // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
@@ -539,7 +540,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // 应用更新进度
+  // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
   updateProcess(process: number) {
     // 定义通知类型，更新进度时的通知类型必须为实况窗
     let downLoadTemplate: notificationManager.NotificationTemplate = {
@@ -555,7 +556,7 @@ export default class EntryAbility extends UIAbility {
         // 系统实况类型，保持不变
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW,
         systemLiveView: {
-          typeCode: 8, // 上传下载类型需要填写 8，当前仅支持此类型。保持不变
+          typeCode: 8, // 数据传输(dataTransfer)类型需要填写 8，当前仅支持此类型。保持不变
           title: "test", // 应用自定义
           text: "test", // 应用自定义
         }
@@ -1566,7 +1567,7 @@ export default class EntryAbility extends UIAbility {
 | continuousTaskId | number | 否    | 否    | 被暂停的长时任务 Id。|
 | suspendState | boolean | 否    | 否    | 长时任务状态，false表示激活，true表示暂停。|
 | suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因。|
-| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 否    | 长时任务暂停信息。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 是    | 长时任务暂停信息。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## SuspendMessage
 
@@ -1719,7 +1720,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会弹出用户授权弹框，建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送带提示音的用户授权横幅通知。用户授权“本次允许”或“始终允许”后，再次请求授权时将直接回调上次授权结果，不再弹出横幅通知。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -21,7 +21,7 @@
 
 - 以使用await方式，完成密钥协商为例：
 
-  <!-- @[use_ecdh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/EDCHAsync.ets) -->
+  <!-- @[use_ecdh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHAsync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -59,7 +59,7 @@
 
 - 同步方法示例：
 
-  <!-- @[use_ecdh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/EDCHSync.ets) -->
+  <!-- @[use_ecdh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHSync.ets) -->
   
   ``` TypeScript
   

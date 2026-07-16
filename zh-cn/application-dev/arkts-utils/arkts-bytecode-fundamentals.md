@@ -571,7 +571,7 @@ function foo3(a: number, b: number): void {}
 |  0xa2 |  IMM16    |  jnstricteqnull +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa3 |  IMM16    |  jequndefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa4 |  IMM16    |  jneundefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa5 |  IMM16    |  jstrictequndefined +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算a`cc === undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
+|  0xa5 |  IMM16    |  jstrictequndefined +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa6 |  IMM16    |  jnstrictequndefined +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa7 |  V8_IMM16 |  jeq vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc == A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
 |  0xa8 |  V8_IMM16 |  jne vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc != A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
@@ -616,7 +616,7 @@ function foo3(a: number, b: number): void {}
 |  0xcf |  IMM8 |  copyrestargs +AA |  A：形参列表中[剩余参数](https://262.ecma-international.org/12.0/#prod-FunctionRestParameter)所在的位次   |  复制剩余参数，并将复制出的参数数组副本存放到acc中。   |
 |  0xd0 |  IMM8_ID16_V8 |  stsuperbyname RR, @AAAA, vBB |  默认入参：acc：值<br>R：方舟运行时内部使用的8位保留数字<br>A：string id<br>B：对象   |  在当前函数中，将acc中的值存放到`super`的键值为索引A对应的字符串的属性上。<br>若该属性为访问器属性，则将B中的对象作为调用该属性setter函数时的`this`参数。   |
 |  0xd1 |  IMM16_ID16_V8    |  stsuperbyname RRRR, @AAAA, vBB   |  默认入参：acc：值<br>R：方舟运行时内部使用的16位保留数字<br>A：string id<br>B：对象  |  在当前函数中，将acc中的值存放到`super`的键值为索引A对应的字符串的属性上。<br>若该属性为访问器属性，则将B中的对象作为调用该属性setter函数时的`this`参数。   |
-|  0xd2 |  IMM16_V8_V8  |  stownbyvaluewithnameset RRRR, vAA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的8位保留数字<br>A：对象<br>B：属性键值  |  将acc中的值存放到对象A的键值为B的属性上，并将函数的名称设置为B。   |
+|  0xd2 |  IMM16_V8_V8  |  stownbyvaluewithnameset RRRR, vAA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的16位保留数字<br>A：对象<br>B：属性键值  |  将acc中的值存放到对象A的键值为B的属性上，并将函数的名称设置为B。   |
 |  0xd3 |  ID16 |  ldbigint @AAAA   |  A：string id |  基于索引A对应的字符串，创建**BigInt**类型的值，并将其存放到acc中。   |
 |  0xd4 |  IMM16_ID16_V8    |  stownbynamewithnameset RRRR, @AAAA, vBB  |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的16位保留数字<br>A：string id<br>B：对象    |  将acc中的函数对象存放到对象B的键值为索引A对应的字符串的属性上，并将函数的名称设置为索引A对应的字符串。   |
 |  0xd5 |  NONE |  nop  | - |  无操作。   |
@@ -629,7 +629,7 @@ function foo3(a: number, b: number): void {}
 |  0xdc |  IMM8_ID16_V8 |  definepropertybyname RR, @AAAA, vBB  |  默认入参：acc：值<br>A：string id<br>B：对象 |  为对象B定义一个键值为A的属性，并将acc中的值存放到其中。   |
 |  0xfb |  PREF_NONE    |  callruntime.notifyconcurrentresult   |  默认入参：acc：并发函数的返回值  |  将并发函数的返回值通知运行时。<br>此指令仅出现在并发函数中。   |
 |  0xfc |  (deprecated)  | - | - | （弃用的操作码） |
-|  0xfd |  PREF_IMM16_V8_V8 |  wide.createobjectwithexcludedkeys +AAAA, vBB, vCC    |  A：范围寄存器数量<br>B：对象<br>C, ..., C + A：属性键值  |  基于对象B，创建一个排除了键值C, ..., C + A的对象，并将其存放到acc中。<br>这个指令用例支持使用析构和扩展语法创建对象。   |
+|  0xfd |  PREF_IMM16_V8_V8 |  wide.createobjectwithexcludedkeys +AAAA, vBB, vCC    |  A：范围寄存器数量<br>B：对象<br>C, ..., C + A：属性键值  |  基于对象B，创建一个排除了键值C, ..., C + A的对象，并将其存放到acc中。<br>这个指令用于支持使用析构和扩展语法创建对象。   |
 |  0xfe |  PREF_NONE    |  throw    |  默认入参：acc：异常  |  抛出acc中存放的异常。   |
 |  0x01fb   |  PREF_IMM8_V8_V8  |  callruntime.definefieldbyvalue RR, vAA, vBB  |  默认入参：acc：值<br>A：属性键值<br>B：对象  |  为对象B定义一个键值为A的属性，并将acc中的值存放到其中。   |
 |  0x01fc   |  (deprecated)  | - | - | （弃用的操作码） |

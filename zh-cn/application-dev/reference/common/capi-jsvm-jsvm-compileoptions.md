@@ -14,6 +14,10 @@ typedef struct {...} JSVM_CompileOptions
 
 配合[OH_JSVM_CompileScriptWithOptions](capi-jsvm-h.md#oh_jsvm_compilescriptwithoptions)接口使用，是其参数中options数组的元素类型。
 
+**使用场景：** 当需要对JS脚本进行自定义编译配置时使用，例如设置编译优化级别、启用调试信息、配置模块解析策略等场景。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

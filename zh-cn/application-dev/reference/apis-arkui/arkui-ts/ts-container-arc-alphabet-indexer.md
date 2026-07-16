@@ -325,7 +325,7 @@ type OnSelectCallback =  (index: number) => void
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| index  | number | 是 | 选中项序号。 |
+| index  | number | 是 | 选中项索引值。 |
 
 
 ## 示例

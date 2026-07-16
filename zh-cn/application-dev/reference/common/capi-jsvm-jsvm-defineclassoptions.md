@@ -14,6 +14,8 @@ typedef struct {...} JSVM_DefineClassOptions
 
 定义Class的选项。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 **相关模块：** [JSVM](capi-jsvm.md)

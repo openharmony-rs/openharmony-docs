@@ -238,7 +238,7 @@ struct Parent {
 
 ### 重复定义wrapBuilder失效
 
-在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(MyBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(MyBuilderSecond)`将不会生效。
+在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(myBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(myBuilderSecond)`将不会生效。
 
 <!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) -->
 

@@ -1221,7 +1221,7 @@ struct ReusableChildComponent {
 
 - 在Swiper滑动场景中，条目中的子组件频繁创建和销毁。可以将这些子组件封装成自定义组件，并使用\@Reusable装饰器修饰，以实现组件复用。
 
-  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) -->
+  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1286,7 +1286,6 @@ struct ReusableChildComponent {
           })
           
         Image(this.itemData?.image)
-          .width('100%')
           .borderRadius(12)
           .objectFit(ImageFit.Contain)
           .margin({

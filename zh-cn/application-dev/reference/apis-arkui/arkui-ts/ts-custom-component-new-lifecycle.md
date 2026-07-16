@@ -10,7 +10,9 @@
 
 >**说明：**
 >
->- 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## \@ComponentInit
 
@@ -486,7 +488,6 @@ struct Index {
 struct Child {
   @State message: Message = new Message('Child');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     // 自定义组件创建完毕后，触发myInit方法
@@ -509,7 +510,6 @@ struct Child {
   }
   @ComponentDisappear
   myDisappear() {
-    this.label = 'myDisappear'
     hilog.info(0x0000, 'testTag', 'Child myDisappear');
   }
   @ComponentReuse
@@ -544,7 +544,6 @@ import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @State changeChild: boolean = false;
 
   build() {

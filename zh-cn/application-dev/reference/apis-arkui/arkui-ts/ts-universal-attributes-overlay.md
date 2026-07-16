@@ -57,6 +57,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                  | 类型                                       | 只读 | 可选  | 说明                                                |
@@ -78,6 +80,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
@@ -87,17 +91,19 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 ## ComponentContent<sup>12+</sup>
 
-type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').ComponentContent\<T\>
 
 组件内容的实体封装。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 

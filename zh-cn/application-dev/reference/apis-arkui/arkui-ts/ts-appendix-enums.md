@@ -15,6 +15,8 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 值 | 说明                                                         |
@@ -52,6 +54,8 @@
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    |  值   | 说明                   |
@@ -84,6 +88,8 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     |值| 说明                            |
@@ -98,6 +104,8 @@
 气泡箭头的位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +136,8 @@
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
@@ -141,6 +151,8 @@
 ## AxisModel<sup>15+</sup>
 
 定义焦点轴事件的轴类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +183,8 @@
 定义轴事件的轴类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,6 +249,8 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 说明               | 动效参数                          | 默认缩放比                     |
@@ -274,6 +290,8 @@
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    |  值   | 说明                   |
@@ -284,6 +302,8 @@
 ## ColoringStrategy<sup>10+</sup>
 
 智能取色枚举类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,7 +324,7 @@
 | None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
+| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CheckBoxShape<sup>11+</sup>
 
@@ -313,6 +333,8 @@
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,6 +349,8 @@
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 |名称                | 值 | 说明                                   |
@@ -340,6 +364,8 @@
 旋转表冠灵敏度。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -381,29 +407,14 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 值   | 说明                              |
 | --------- | ---- | --------------------------------- |
-| DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
+| DEFAULT   | 0    | 白底蓝字（深色主题下为黑底蓝字）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
-
-## DialogDisplayMode
-
-弹窗在子窗口中的显示模式。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称         | 值   | 说明                 |
-| ------------ | ---- | -------------------- |
-| SCREEN_BASED | 0    | 弹窗在屏幕居中显示。 |
-| WINDOW_BASED | 1    | 弹窗在应用窗口居中显示。 |
 
 ## Direction
 
@@ -426,6 +437,8 @@
 分割线模式。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -470,6 +483,8 @@
 
 省略的位置。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
@@ -485,6 +500,8 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                  | 值 | 说明                                                |
@@ -497,6 +514,8 @@
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -506,6 +525,8 @@
 ## FunctionKey<sup>10+</sup>
 
 输入法功能键类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -579,8 +600,8 @@
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
-| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| Column        | 1 | 主轴与列方向一致作为布局模式。  |
+| RowReverse    | 2 | 与Row方向相反方向进行布局。  |
 | ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
@@ -650,6 +671,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                      |值| 说明         |
@@ -667,6 +690,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 值  | 说明                                      |
@@ -679,6 +704,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 交叉轴方向键走焦模式枚举。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -697,17 +724,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明    |
-| ----------- | ----- |
-| Left        | 从右向左。 |
-| Top         | 从下向上。 |
-| Right       | 从左向右。 |
-| Bottom      | 从上向下。 |
-| LeftTop     | 从左上向右下。   |
-| LeftBottom  | 从左下向右上。   |
-| RightTop    | 从右上向左下。   |
-| RightBottom | 从右下向左上。   |
-| None        | 无。    |
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| Left        | 0 | 从右向左。 |
+| Top         | 1 | 从下向上。 |
+| Right       | 2 | 从左向右。 |
+| Bottom      | 3 | 从上向下。 |
+| LeftTop     | 4 | 从左上向右下。   |
+| LeftBottom  | 5 | 从左下向右上。   |
+| RightTop    | 6 | 从右上向左下。   |
+| RightBottom | 7 | 从右下向左上。   |
+| None        | 8 | 无。    |
 
 ## GestureCollectIntervention
 
@@ -776,14 +803,16 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Block       | 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Transparent | 2 | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HeightBreakpoint<sup>13+</sup>
 
 表示窗口不同高宽比阈值下对应的高度断点枚举值。通过[getWindowHeightBreakpoint](../arkts-apis-uicontext-uicontext.md#getwindowheightbreakpoint13)返回。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -809,16 +838,16 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Auto      | 3  | 图片或视频会根据其自身尺寸和组件的尺寸进行适当缩放，以在保持比例的同时填充视图，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples03](figures/image_fit_auto.png) |
 | None      | 5  | 保持原有尺寸进行显示，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples06](figures/image_fit_none.png) |
 | ScaleDown | 6  | 保持宽高比进行显示，图片或视频缩小或者保持不变，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples05](figures/image_fit_scaleDown.png) |
-| TOP_START<sup>12+</sup> | 7  | 图片或视频显示在组件的顶部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples07](figures/image_fit_top_start.png) |
-| TOP<sup>12+</sup>       | 8  | 图片或视频显示在组件的顶部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples08](figures/image_fit_top.png)  |
-| TOP_END<sup>12+</sup>   | 9  | 图片或视频显示在组件的顶部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples09](figures/image_fit_top_end.png) |
-| START<sup>12+</sup>     | 10  | 图片或视频显示在组件的起始端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples10](figures/image_fit_start.png) |
-| CENTER<sup>12+</sup>    | 11  | 图片或视频显示在组件的横向和纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples11](figures/image_fit_center.png) |
-| END<sup>12+</sup>       | 12  | 图片或视频显示在组件的尾端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples12](figures/image_fit_end.png) |
-| BOTTOM_START<sup>12+</sup> | 13  | 图片或视频显示在组件的底部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples13](figures/image_fit_bottom_start.png) |
-| BOTTOM<sup>12+</sup>    | 14  | 图片或视频显示在组件的底部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples14](figures/image_fit_bottom.png) |
-| BOTTOM_END<sup>12+</sup>| 15  | 图片或视频显示在组件的底部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples15](figures/image_fit_bottom_end.png) |
-| MATRIX<sup>15+</sup>| 16  | 配合[imageMatrix](ts-basic-components-image.md#imagematrix15)使用，使图像在Image组件自定义位置显示，且保持原有尺寸。不支持svg图源。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| TOP_START<sup>12+</sup> | 7  | 图片或视频显示在组件的顶部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples07](figures/image_fit_top_start.png) |
+| TOP<sup>12+</sup>       | 8  | 图片或视频显示在组件的顶部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples08](figures/image_fit_top.png)  |
+| TOP_END<sup>12+</sup>   | 9  | 图片或视频显示在组件的顶部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples09](figures/image_fit_top_end.png) |
+| START<sup>12+</sup>     | 10  | 图片或视频显示在组件的起始端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples10](figures/image_fit_start.png) |
+| CENTER<sup>12+</sup>    | 11  | 图片或视频显示在组件的横向和纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples11](figures/image_fit_center.png) |
+| END<sup>12+</sup>       | 12  | 图片或视频显示在组件的尾端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples12](figures/image_fit_end.png) |
+| BOTTOM_START<sup>12+</sup> | 13  | 图片或视频显示在组件的底部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples13](figures/image_fit_bottom_start.png) |
+| BOTTOM<sup>12+</sup>    | 14  | 图片或视频显示在组件的底部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples14](figures/image_fit_bottom.png) |
+| BOTTOM_END<sup>12+</sup>| 15  | 图片或视频显示在组件的底部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>![ImageFit-Examples15](figures/image_fit_bottom_end.png) |
+| MATRIX<sup>15+</sup>| 16  | 配合[imageMatrix](ts-basic-components-image.md#imagematrix15)使用，使图像在Image组件自定义位置显示，且保持原有尺寸。不支持svg图源。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ItemAlign
 
@@ -867,11 +896,13 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Cover   | 1  | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Contain | 2  | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br /> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | Auto    | 0  | 保持原图的比例不变。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br /> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                         |
-| FILL<sup>12+</sup> | 3  | 不保持宽高比进行放大缩小，使得图片充满显示边界。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| FILL<sup>12+</sup> | 3  | 不保持宽高比进行放大缩小，使得图片充满显示边界。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ImageSpanAlignment<sup>10+</sup>
 
 图片基于行高的对齐方式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -888,6 +919,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 定义事件是由左手点击触发还是右手点击触发。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -909,7 +942,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | -------- | ---------- | ---------- |
 | Unknown  | 0 | 输入设备类型未知。  |
 | Keyboard | 4 | 输入设备类型为键盘。 |
-| JOYSTICK<sup>15+</sup> | 5 | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| JOYSTICK<sup>15+</sup> | 5 | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## KeyType
 
@@ -947,6 +980,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 值            | 说明       |
@@ -982,6 +1017,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 折行规则。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1030,6 +1067,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值 | 说明           |
@@ -1044,6 +1083,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 值      | 说明                     |
@@ -1056,6 +1097,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 定义嵌套滚动组件中的嵌套模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1074,6 +1117,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明                       |
@@ -1087,6 +1132,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称        | 值 | 说明                     |
@@ -1098,6 +1145,8 @@ type Nullable\<T> = T | undefined
 下拉菜单的宽度模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1154,6 +1203,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     |值| 说明                            |
@@ -1170,6 +1221,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值   | 说明                   |
@@ -1185,6 +1238,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    |  值   | 说明                   |
@@ -1197,6 +1252,8 @@ type Nullable\<T> = T | undefined
 为不同响应式[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1224,6 +1281,8 @@ type Nullable\<T> = T | undefined
 触摸热区适用的输入工具类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1254,6 +1313,8 @@ type Nullable\<T> = T | undefined
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -1290,6 +1351,8 @@ type Nullable\<T> = T | undefined
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                                 | 值 | 说明                                       |
@@ -1302,6 +1365,8 @@ type Nullable\<T> = T | undefined
 滑动操作的来源。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1341,10 +1406,10 @@ type Nullable\<T> = T | undefined
 | Up     | 1    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Move   | 2    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.<!--RP2--><!--RP2End-->手指触摸过程中存在手写笔操作，手指的触摸操作会收到Cancel事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
-| HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
-| HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
-| HOVER_CANCEL<sup>20+</sup> | 12    | 无障碍模式下，取消当前触发的事件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
+| HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
+| HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
+| HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
+| HOVER_CANCEL<sup>20+</sup> | 12    | 无障碍模式下，取消当前触发的事件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。        |
 
 ## TitleHeight<sup>9+</sup>
 
@@ -1401,9 +1466,9 @@ type Nullable\<T> = T | undefined
 | Start                     |  0  | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## TextOverflow
 
@@ -1418,7 +1483,7 @@ type Nullable\<T> = T | undefined
 | None                  | 0 | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | Clip                  | 1 | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | Ellipsis              | 2 | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| MARQUEE<sup>10+</sup> | 3 | 文本超长时以跑马灯的方式展示。 |
+| MARQUEE<sup>10+</sup> | 3 | 文本超长时以跑马灯的方式展示。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## TextDecorationType
 
@@ -1459,6 +1524,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                      | 值 | 说明                       |
@@ -1473,6 +1540,8 @@ type Nullable\<T> = T | undefined
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值 | 说明                                                         |
@@ -1485,6 +1554,8 @@ type Nullable\<T> = T | undefined
 文本可选择、可获焦状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1499,6 +1570,8 @@ type Nullable\<T> = T | undefined
 装饰线样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1515,6 +1588,8 @@ type Nullable\<T> = T | undefined
 指定Tips跟随类型。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1561,21 +1636,23 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明   |
-| ---- | ---- |
-| Mon  | 星期一。  |
-| Tue  | 星期二。  |
-| Wed  | 星期三。  |
-| Thur | 星期四。  |
-| Fri  | 星期五。  |
-| Sat  | 星期六。  |
-| Sun  | 星期日。  |
+| 名称   | 值 | 说明   |
+| ---- | - | ---- |
+| Mon  | 0 | 星期一。  |
+| Tue  | 1 | 星期二。  |
+| Wed  | 2 | 星期三。  |
+| Thur | 3 | 星期四。  |
+| Fri  | 4 | 星期五。  |
+| Sat  | 5 | 星期六。  |
+| Sun  | 6 | 星期日。  |
 
 ## WidthBreakpoint<sup>13+</sup>
 
 表示窗口不同宽度阈值下对应的宽度断点枚举值。通过[getWindowWidthBreakpoint](../arkts-apis-uicontext-uicontext.md#getwindowwidthbreakpoint13)返回。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -1593,6 +1670,8 @@ type Nullable\<T> = T | undefined
 
 断行规则。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
@@ -1603,6 +1682,8 @@ type Nullable\<T> = T | undefined
 | HYPHENATION<sup>18+</sup> | 3 | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟BREAK_WORD保持一致。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## XComponentType<sup>10+</sup>
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

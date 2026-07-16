@@ -528,11 +528,10 @@ enableMirror(enabled: boolean): void
 
 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
-| 错误码ID    | 错误信息                                           |
+| 错误码ID    | 错误信息                                     |
 | -------- |------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
 | 7400103  | Session not config.                    |
-
 
 **示例：**
 
@@ -584,6 +583,7 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22    |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**

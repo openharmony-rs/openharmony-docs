@@ -2,7 +2,7 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->

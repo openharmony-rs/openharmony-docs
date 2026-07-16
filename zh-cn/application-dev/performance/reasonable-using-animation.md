@@ -1,5 +1,12 @@
 # 合理使用动画
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 本文列举了部分用于优化动画时延的正反案例，帮助开发者在遇到相似场景时进行优化，解决构建页面动画时遇到动画时延较长的问题。
 
 ## 减少动画丢帧
@@ -173,6 +180,7 @@ Tabs组件在不为BottomTabBarStyle样式时，切换页面时默认加载300ms
 struct TabsExample {
   // ...
   private controller: TabsController = new TabsController();
+  @State currentIndex: number = 0;
 
   build() {
     Column() {
@@ -200,6 +208,7 @@ struct TabsExample {
 struct TabsExample {
   // ...
   private controller: TabsController = new TabsController();
+  @State currentIndex: number = 0;
 
   build() {
     Column() {

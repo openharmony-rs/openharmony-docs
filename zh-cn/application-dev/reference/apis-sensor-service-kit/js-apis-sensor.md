@@ -5119,7 +5119,7 @@ try {
 
 getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&gt;
 
-同步获取指定设备和类型的传感器信息。
+同步获取指定设备和类型的传感器信息。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7628,7 +7628,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 
 ## sensor.once('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
-once(type: ,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 
 监听线性加速度传感器数据变化一次。
 
@@ -7636,7 +7636,7 @@ once(type: ,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.LINEAR_ACCELEROMETER](#sensoroncesensoridlinear_accelerometer9)替代。
 
-**需要权限**：ohos.permission.ACCELERATION
+**需要权限**：ohos.permission.ACCELEROMETER
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8249,7 +8249,7 @@ off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;Accele
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ACCELEROMETER<sup>9+</sup>](#sensoroffsensoridaccelerometer9)替代。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ACCELEROMETER](#sensoroffsensoridaccelerometer9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 

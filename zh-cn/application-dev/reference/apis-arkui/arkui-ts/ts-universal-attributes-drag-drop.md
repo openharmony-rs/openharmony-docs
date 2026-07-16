@@ -209,7 +209,7 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 ## UniformDataType
 
-type UniformDataType = UniformDataType
+type UniformDataType = import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType
 
 标准化数据类型。
 
@@ -219,11 +219,11 @@ type UniformDataType = UniformDataType
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | 标准化数据类型。|
+| import('../api/@ohos.data.uniformTypeDescriptor').default.[UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | 标准化数据类型。|
 
 ## ImageModifier<sup>12+</sup>
 
-type ImageModifier = ImageModifier
+type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier
 
 图片组件modifier对象。
 
@@ -233,7 +233,7 @@ type ImageModifier = ImageModifier
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
+| import('../api/arkui/ImageModifier').[ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
 
 ## 示例
 ### 示例1（允许拖拽和落入）

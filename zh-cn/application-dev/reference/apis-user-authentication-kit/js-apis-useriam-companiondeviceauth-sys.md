@@ -463,7 +463,8 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 **示例：**
 
 ```ts
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const localUserId = 100;
 try {
@@ -471,7 +472,7 @@ try {
   const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
     templateId: new Uint8Array([])
   };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: osAccount.AuthTrustLevel): void => {
+  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
     console.info('continuous auth changed');
     console.info(`isAuthPassed: ${isAuthPassed}`);
     if (authTrustLevel !== undefined) {
@@ -517,7 +518,8 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 **示例：**
 
 ```ts
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const localUserId = 100;
 try {
@@ -525,7 +527,7 @@ try {
   const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
     templateId: new Uint8Array([])
   };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: osAccount.AuthTrustLevel): void => {
+  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
     console.info('continuous auth changed');
     console.info(`isAuthPassed: ${isAuthPassed}`);
     if (authTrustLevel !== undefined) {
@@ -581,7 +583,8 @@ getStatusMonitor(localUserId: number): StatusMonitor
 **示例：**
 
 ```ts
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const localUserId = 100;
 try {
@@ -589,7 +592,7 @@ try {
   const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
     templateId: new Uint8Array([])
   };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: osAccount.AuthTrustLevel): void => {
+  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
     console.info('continuous auth changed');
     console.info(`isAuthPassed: ${isAuthPassed}`);
     if (authTrustLevel !== undefined) {

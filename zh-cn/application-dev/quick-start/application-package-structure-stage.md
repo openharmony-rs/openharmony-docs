@@ -1,4 +1,4 @@
-# Stage模型应用程序包结构
+# 应用程序包结构
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->

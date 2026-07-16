@@ -61,7 +61,7 @@ Component3D组件配置选项。
 
 ## Scene<sup>12+</sup>
 
-type Scene = Scene
+type Scene = import('../api/@ohos.graphics.scene').Scene
 
 设置3D场景。
 
@@ -71,7 +71,7 @@ type Scene = Scene
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
+| import('../api/@ohos.graphics.scene').[Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
 
 ## 属性
 

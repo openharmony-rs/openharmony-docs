@@ -26,34 +26,34 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId,OH_PixelmapNative **pixelMap)](#oh_nativedisplaymanager_capturescreenpixelmap) | 获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。 |
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId, OH_PixelmapNative **pixelMap)](#oh_nativedisplaymanager_capturescreenpixelmap) |获取屏幕全屏截图，可通过设置不同的屏幕ID截取指定屏幕。 |
 
 ## 函数说明
 
 ### OH_NativeDisplayManager_CaptureScreenPixelmap()
 
 ```c
-NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId,OH_PixelmapNative **pixelMap)
+NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId, OH_PixelmapNative **pixelMap)
 ```
 
 **描述**
 
-获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。
+获取屏幕全屏截图，可通过设置不同的屏幕ID截取指定屏幕。
 
 **需要权限：**
-- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING
+- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE或ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **起始版本：** 14
 
-**设备行为差异：** 在API version 21之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在API version 21之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t displayId | 需要截屏的屏幕id号，该值为非负整数。 |
-| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) **pixelMap | 创建指定屏幕id的OH_PixelmapNative对象，此处作为出参返回。 |
+| uint32_t displayId | 需要截屏的屏幕ID，该值为非负整数。 |
+| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) **pixelMap | 创建指定屏幕ID的OH_PixelmapNative对象，此处作为出参返回。使用完成需要调用[OH_PixelmapNative_Release](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)手动释放OH_PixelmapNative对象资源。 |
 
 **返回：**
 

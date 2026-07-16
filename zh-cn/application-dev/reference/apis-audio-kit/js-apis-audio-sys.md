@@ -842,54 +842,6 @@ audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
 });
 ```
 
-## forceVolumeKeyControlType<sup>20+</sup>
-
-forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
-
-设置音量键调节类型。
-
-**需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**参数：**
-
-| 参数名   | 类型                                   | 必填 | 说明                                                         |
-| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音频音量类型。 |
-| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间，单位为秒。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
-
-**错误码：**
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 201 | Permission denied. |
-| 202 | Not system App. |
-| 6800101 | Parameter verification failed. |
-| 6800301  | Crash or blocking occurs in system process. |
-
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-let audioManager = audio.getAudioManager();
-let audioVolumeManager = audioManager.getVolumeManager();
-
-// 设置音量保持类型为响铃模式。
-let volumeType = audio.AudioVolumeType.RINGTONE;
-let duration = 10;
-audioVolumeManager.forceVolumeKeyControlType(volumeType, duration);
-
-// 取消音量保持类型，恢复默认音量控制。
-let volumeTypeDefault = audio.AudioVolumeType.MEDIA;
-let durationToCancel = -1;
-audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel);
-```
-
 ## AudioVolumeManager<sup>9+</sup>
 
 音量管理。在使用AudioVolumeManager的接口前，需要使用[getVolumeManager](arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
@@ -1087,7 +1039,56 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 });
 ```
 
-## setSystemVolumePercentage<sup>23+</sup>
+### forceVolumeKeyControlType<sup>20+</sup>
+
+forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
+
+设置音量键调节类型。
+
+**需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音频音量类型。 |
+| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间，单位为秒（s）。<br>当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。<br>如果持续时间设置为-1，则取消该设置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301  | Crash or blocking occurs in system process. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioManager = audio.getAudioManager();
+let audioVolumeManager = audioManager.getVolumeManager();
+
+// 设置音量保持类型为响铃模式。
+let volumeType = audio.AudioVolumeType.RINGTONE;
+let duration = 10;
+audioVolumeManager.forceVolumeKeyControlType(volumeType, duration);
+
+// 取消音量保持类型，恢复默认音量控制。
+let volumeTypeDefault = audio.AudioVolumeType.MEDIA;
+let durationToCancel = -1;
+audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel);
+```
+
+### setSystemVolumePercentage<sup>23+</sup>
 
 setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Promise&lt;void&gt;
 
@@ -1139,7 +1140,7 @@ audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).th
 });
 ```
 
-## getSystemVolumePercentage<sup>23+</sup>
+### getSystemVolumePercentage<sup>23+</sup>
 
 getSystemVolumePercentage(volumeType: AudioVolumeType): number
 
@@ -1182,7 +1183,7 @@ try {
 }
 ```
 
-## getMinSystemVolumePercentage<sup>23+</sup>
+### getMinSystemVolumePercentage<sup>23+</sup>
 
 getMinSystemVolumePercentage(volumeType: AudioVolumeType): number
 
@@ -3281,7 +3282,64 @@ async function getExcludedDevices(){
 }
 ```
 
-## getActiveOutputDeviceDescriptors
+### restoreOutputDeviceByFilter
+
+restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise&lt;void&gt;
+
+根据指定的音频渲染过滤条件恢复音频输出设备。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名                       | 类型                                                         | 必填 | 说明                      |
+| --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
+| filter          | [AudioRendererFilter](#audiorendererfilter9)          | 是   | 过滤条件。               |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(() => {
+  console.info('Succeeded in restoring output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to restore output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getActiveOutputDeviceDescriptors
 
 getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 

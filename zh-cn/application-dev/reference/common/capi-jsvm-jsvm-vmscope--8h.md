@@ -14,6 +14,8 @@ typedef struct JSVM_VMScope__* JSVM_VMScope
 
 表示JavaScript虚拟机作用域。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

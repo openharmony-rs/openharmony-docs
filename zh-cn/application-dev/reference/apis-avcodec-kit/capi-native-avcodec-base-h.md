@@ -72,6 +72,7 @@
 | [OH_WMV3Level](#oh_wmv3level) | OH_WMV3Level | WMV3级别。 |
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | 时域图片组参考模式。 |
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | 编码器的比特率模式。 |
+| [OH_FrameRetentionMode](#oh_frameretentionmode) | OH_FrameRetentionMode | 视频解码帧保留模式。 |
 
 ### 函数
 
@@ -212,8 +213,8 @@
 | const char * OH_MD_KEY_VIDEO_CROP_RIGHT | 描述裁剪矩形右坐标(x)值的键，值类型为int32_t。<br> 包含裁剪框最右边的列，列索引从0开始。<br> 该键只用于视频解码。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_STRIDE | 描述视频帧宽跨距的键，值类型为int32_t。<br> 宽跨距表示内存中相邻两行数据起始位置之间的字节距离。由于硬件对齐要求，stride通常大于或等于图像有效宽度。当stride等于width，表示无水平填充。应始终通过OH_VideoEncoder_GetInputDescription（编码）、OH_VideoDecoder_GetOutputDescription（解码）或OH_AVCodecOnStreamChanged回调中的OH_AVFormat参数获取实际跨距值，而非假设固定值。<br> 使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或者[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_SLICE_HEIGHT | 描述视频帧高跨距的键，值类型为int32_t。<br>高跨距表示内存中为单个平面分配的总行数。由于硬件对齐要求，sliceHeight通常大于或等于图像有效高度。U平面的起始地址相对于Y平面原点的偏移量为（sliceHeight * stride）。应始终通过OH_VideoEncoder_GetInputDescription（编码）、OH_VideoDecoder_GetOutputDescription（解码）或 OH_AVCodecOnStreamChanged回调中的OH_AVFormat参数获取实际高跨距值，而非假设固定值。<br>使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_PIC_WIDTH | 描述解码后视频帧实际有效宽度的键名。值类型为int32_t。该键为只读，仅用于视频解码。<br>调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)时，或通过[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)回调检测到解码输出流变化时，可从返回的OH_AVFormat实例中获取该值。该值表示剪裁后的可见宽度，与Configure阶段设置的OH_MD_KEY_WIDTH不同，后者是用于预分配缓冲区的配置提示。当存在剪裁时，应使用该值（而非stride）作为显示或保存图像的实际宽度。<br>图像排布和使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_PIC_HEIGHT | 描述解码后视频帧实际有效高度的键名。值类型为int32_t。该键为只读，仅用于视频解码。<br>调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)时，或通过[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)回调检测到解码输出码流变化时，可从返回的OH_AVFormat实例中获取该值。该值表示剪裁后的可见高度，与Configure阶段设置的OH_MD_KEY_HEIGHT不同，后者是用于预分配缓冲区的配置提示。当存在剪裁时，应使用该值（而非sliceHeight）作为显示或保存图像的实际高度。<br>图像排布和使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_PIC_WIDTH | 描述解码后视频帧实际有效宽度的键名。值类型为int32_t。该键为只读，仅用于视频解码。<br>调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)时，或通过[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)回调检测到解码输出流变化时，可从返回的OH_AVFormat实例中获取该值。该值表示图像有效宽度，与Configure阶段设置的OH_MD_KEY_WIDTH不同，后者是用于预分配缓冲区的配置提示。当需要获取显示或保存图像的实际宽度时，读取该值。<br>图像排布和使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_PIC_HEIGHT | 描述解码后视频帧实际有效高度的键名。值类型为int32_t。该键为只读，仅用于视频解码。<br>调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)时，或通过[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)回调检测到解码输出码流变化时，可从返回的OH_AVFormat实例中获取该值。该值表示图像有效高度，与Configure阶段设置的OH_MD_KEY_HEIGHT不同，后者是用于预分配缓冲区的配置提示。当需要获取显示或保存图像的实际高度时，读取该值。<br>图像排布和使用示例详见[视频编码](../../media/avcodec/video-encoding.md#buffer模式)Buffer模式的步骤8或[视频解码](../../media/avcodec/video-decoding.md#buffer模式)Buffer模式的步骤11。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY | 使能低时延视频解码的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br> 该键是可选的，在Configure阶段使用。<br> 如果使能，则视频解码器持有的输入和输出数据不会超过解码器标准所要求的数量。<br> 可以通过能力查询接口[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)来查询特定解码器是否支持低时延。若解码器支持，使能此接口时，视频解码器将按照解码序输出帧。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_QP_MAX | 描述视频编码器允许的最大量化参数的键，值类型为int32_t。<br> 在Configure/SetParameter阶段使用，或随帧立即生效。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_QP_MIN | 描述视频编码器允许的最小量化参数的键，值类型为int32_t。<br> 在Configure/SetParameter阶段使用，或随帧立即生效。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -250,6 +251,16 @@
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_LAYOUT | 设置音频声床的通道布局的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 具体取值请参见[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_BITRATE | 设置音频声床编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_OBJECT_BITRATE | 设置音频对象编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH  | 视频编码前处理降采样目标宽度的键，值类型为int32_t。该键是可选的，降采样功能默认关闭。该键与OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT必须同时配置，当都设置为0时则关闭降采样功能，可以通过[OH_AVCapability_IsVideoSizeSupported](capi-native-avcapability-h.md#oh_avcapability_isvideosizesupported)查询支持的降采样宽高范围。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0  |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT | 视频编码前处理降采样目标高度的键，值类型为int32_t。该键是可选的，降采样功能默认关闭。该键与OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH必须同时配置，当都设置为0时则关闭降采样功能，可以通过[OH_AVCapability_IsVideoSizeSupported](capi-native-avcapability-h.md#oh_avcapability_isvideosizesupported)查询支持的降采样宽高范围。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT         | 视频编码前处理裁剪区域左边坐标（x）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP          | 视频编码前处理裁剪区域顶部坐标（y）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT        | 视频编码前处理裁剪区域右边坐标（x）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM       | 视频编码前处理裁剪区域底部坐标（y）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE | 视频编码前处理丢帧目标帧率的键，值类型为double，数值精度保留2位小数。该键是可选的，丢帧功能默认关闭。当设置0.00时则关闭丢帧功能，配置值时自动四舍五入保留两位小数。可独立使用，也可与降采样或裁剪组合使用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE | 设置视频解码帧保留模式的键。取值类型为int32_t。该值表示在[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)中定义的帧保留模式。每种模式的详细说明及其行为请参考枚举定义OH_FrameRetentionMode。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO | 设置视频解码帧保留比例的键。取值类型为double。当OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE设置为OH_FRAME_RETENTION_MODE_UNIFORM时，或者未配置保留模式（隐式默认采用均匀逻辑）时，该参数生效。<br> 仅当保留模式显式设置为OH_FRAME_RETENTION_MODE_ADAPTIVE或OH_FRAME_RETENTION_MODE_FULL时，此配置才会被忽略。<br> 有效范围是[0.01, 1.0]（其中1.0表示保留所有帧，0.01为最小限制），任何超出此范围的值都将被视为无效并被忽略。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。每种模式的详细说明及其行为请参考枚举定义[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_SPEED | 配置视频解码器播放倍速的键。取值类型为double。该键用于指定视频的目标播放倍速。主要推荐与OH_FRAME_RETENTION_MODE_ADAPTIVE模式结合使用，以辅助感知自适应算法准确评估丢帧对视觉感知的影响。<br> 取值必须严格大于0.0，推荐的标准值包括0.5、0.75、1.0（正常速度）、1.25、1.5、2.0 和 3.0，任何小于或等于0.0的值都会被视为无效。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。每种模式的详细说明及其行为请参考枚举定义[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)。<br>**起始版本：** 26.0.0 |
 
 ## 枚举类型说明
 
@@ -560,6 +571,7 @@ enum OH_AVOutputFormat
 | AV_OUTPUT_FORMAT_AAC = 11 | 输出文件格式为AAC格式。<br>**起始版本：** 18 |
 | AV_OUTPUT_FORMAT_FLAC = 12 | 输出文件格式为FLAC格式。<br>**起始版本：** 20 |
 | AV_OUTPUT_FORMAT_OGG = 13 | 输出文件格式为OGG格式。<br>**起始版本：** 23 |
+| AV_OUTPUT_FORMAT_FLV = 14 | 输出文件格式为FLV格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_AVSeekMode
 
@@ -1071,6 +1083,24 @@ enum OH_BitrateMode
 | BITRATE_MODE_CQ = 2 | 恒定质量模式。 |
 | BITRATE_MODE_SQR = 3 | 质量稳定模式，仅支持H265（HEVC）。<br>**起始版本：** 20 |
 | BITRATE_MODE_CBR_HIGH_QUALITY = 4 | 高质量恒定比特率模式，仅支持H265（HEVC）。<br>**起始版本：** 26.0.0 |
+
+### OH_FrameRetentionMode
+
+```c
+enum OH_FrameRetentionMode
+```
+
+**描述**
+
+视频解码帧保留模式。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_FRAME_RETENTION_MODE_FULL = 0 | 全量保留模式。<br>解码器工作在透明直通状态，100%保留所有输入帧，实质上禁用了抽帧功能。所有底层的视觉感知算法将被完全跳过，实现零算法开销。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_ADAPTIVE = 1 | 感知自适应保留模式。<br>解码器动态分析视频特征，优先丢弃对视觉感知影响最小的帧，在最小化播放体验损失的同时保持视觉平滑度。为了获得最佳的算法准确性，强烈建议通过OH_MD_KEY_VIDEO_DECODER_SPEED[变量](capi-native-avcodec-base-h.md#变量)显式配置当前的播放倍速。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_UNIFORM = 2 | 平滑定比保留模式。<br>根据用户配置的保留比例（通过OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO[变量](capi-native-avcodec-base-h.md#变量)配置）均匀地保留视频帧。如果没有显式配置保留比例，解码器默认将输出限制在最高30fps。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

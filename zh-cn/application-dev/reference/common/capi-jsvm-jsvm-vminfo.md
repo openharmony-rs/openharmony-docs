@@ -14,6 +14,8 @@ typedef struct {...} JSVM_VMInfo
 
 JavaScript虚拟机信息。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

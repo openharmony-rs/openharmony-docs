@@ -1,8 +1,8 @@
 # 全屏模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,11 +10,13 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  不支持横竖屏切换。
+> - 本模块接口仅可在Stage模型下使用。
 >
->  不支持路由跳转。
+> - 不支持横竖屏切换。
+>
+> - 不支持路由跳转。
 
 ## bindContentCover
 
@@ -35,7 +37,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。builder里面的根节点需要唯一。                           |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                           |
 | type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。                                 |
 
 **返回值：**

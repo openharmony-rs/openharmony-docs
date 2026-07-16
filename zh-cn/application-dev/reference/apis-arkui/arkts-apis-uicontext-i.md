@@ -1,14 +1,16 @@
 # Interfaces (其他)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
+<!--Owner: @yihao-lin; @liyi0903; @huangxiaolinabc-->
 <!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## TargetInfo<sup>18+</sup>
 

@@ -336,7 +336,7 @@ int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetBool()
 
@@ -361,7 +361,7 @@ int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetString()
 
@@ -386,7 +386,7 @@ int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetInt64()
 
@@ -411,7 +411,7 @@ int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t valu
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetInt64()
 
@@ -436,7 +436,7 @@ int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *val
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetDouble()
 
@@ -461,7 +461,7 @@ int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double valu
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetDouble()
 
@@ -486,7 +486,7 @@ int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *val
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetIntArray()
 
@@ -506,13 +506,13 @@ int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const int *value | 需要设置的整型数组值。 |
-| uint32_t count | 指向需要设置的数组大小的指针。 |
+| uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetIntArray()
 
@@ -538,7 +538,7 @@ int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **val
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetBoolArray()
 
@@ -558,13 +558,13 @@ int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bo
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const bool *value | 需要设置的布尔数组值。 |
-| uint32_t count | 指向需要设置的数组大小的指针。 |
+| uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetBoolArray()
 
@@ -590,7 +590,7 @@ int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **v
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetStringArray()
 
@@ -610,13 +610,13 @@ int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const 
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const char **value | 需要设置的字符串数组值。 |
-| uint32_t count | 指向需要设置的数组大小的指针。 |
+| uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetStringArray()
 
@@ -635,14 +635,14 @@ int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char *
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
-| char ***value | 指向获取到的字符串数组值的二级指针。 |
+| char ***value | 指向获取到的字符串数组值的三级指针。 |
 | uint32_t *count | 指向获取到的数组大小的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetInt64Array()
 
@@ -662,13 +662,13 @@ int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const i
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const int64_t *value | 需要设置的int64数组值。 |
-| uint32_t count | 指向需要设置的数组大小的指针。 |
+| uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetInt64Array()
 
@@ -694,7 +694,7 @@ int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetDoubleArray()
 
@@ -714,13 +714,13 @@ int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const 
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const double *value | 需要设置的double数组值。 |
-| uint32_t count | 指向需要设置的数组大小的指针。 |
+| uint32_t count | 需要设置的数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetDoubleArray()
 
@@ -746,7 +746,7 @@ int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_SetBlob()
 
@@ -766,13 +766,13 @@ int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const uint8_t *value | 需要设置的二进制值。 |
-| uint32_t count | 指向需要设置的二进制大小的指针。 |
+| uint32_t count | 指向需要设置的二进制数据大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 ### OH_PreferencesValue_GetBlob()
 
@@ -798,4 +798,4 @@ int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **val
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>若错误码PREFERENCES_OK表示操作成功。<br>若错误码PREFERENCES_ERROR_INVALID_PARAM表示参数不合法。<br>若错误码PREFERENCES_ERROR_STORAGE表示存储异常。<br>若错误码PREFERENCES_ERROR_MALLOC表示内存分配失败。 |
+| int | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
