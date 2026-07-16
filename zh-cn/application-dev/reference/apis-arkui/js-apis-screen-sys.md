@@ -1643,6 +1643,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
 | densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| screenType | [ScreenType](#screenType)         | 是   | 是   | 屏幕的类型。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
@@ -2152,6 +2153,19 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+## ScreenType
+
+屏幕类型枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+| 名称               | 值   | 说明                             |
+| ------------------ | ---- | -------------------------------- |
+| BUILT_IN           | 0    | 表示物理集成到设备中的内置屏幕。 |
+| EXTERNAL           | 1    | 表示通过有线接口连接的外部物理显示屏。         |
+| VIRTUAL            | 2    | 表示由软件创建的虚拟显示屏，通常用于投屏、屏幕录制或多屏协作。         |
 
 ## Orientation
 
