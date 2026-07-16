@@ -24,14 +24,19 @@
 
 ## 运行机制
 
-ModularObjectDispatcher与ModularObjectExtensionAbility的关系如下图所示：
+ModularObjectDispatcher的动态调用流程分为以下几个阶段：	 
+ 
+1. **创建分发器**：客户端先连接ModularObjectExtensionAbility获取远端Proxy对象，再通过[OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)从Proxy创建绑定到主服务接口的分发器。	 
+ 
+2. **获取类型描述符**：建议先调用[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)确认远端服务支持元数据，再通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取TypeDescriptor句柄。该调用会触发类型库元数据通过IPC从远端拉取并缓存在本地，后续查询直接命中缓存。	 
+ 
+3. **查询接口元数据**：基于类型描述符，客户端可在运行时遍历服务端定义的全部接口与方法（并解析每个方法对应的MemberID）、结构体（含字段名与字段类型）、枚举（含枚举值名称与取值），以及类型库版本、主服务接口名等。	 
+ 
+4. **获取方法参数类型**：调用某个方法前，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)与[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)查询返回值与各入参的类型信息，以便严格按照类型构造Variant，避免类型不匹配错误。 
+ 
+5. **构造参数并发起动态调用**：先用[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，再通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。分发器将参数序列化后经IPC发往远端，再将返回值反序列化到出参Variant。 
 
-![modular_object_dispatcher_architecture](figures/modular_object_dispatcher_architecture.png)
-
-1. **创建分发器**：客户端通过连接ModularObjectExtensionAbility获取远端Proxy对象后，使用[OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)接口从Proxy对象创建分发器实例。
-2. **延迟加载元数据**：分发器在首次调用元数据查询或方法调用接口时，通过IPC从远端服务获取类型库元数据并缓存在本地，后续调用直接使用缓存，无需重复加载。
-3. **查询接口信息**：通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取类型描述符，查询服务端定义的接口、方法、参数类型、枚举和结构体等元数据。
-4. **动态方法调用**：通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，再通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。参数通过Variant封装，返回值也通过Variant接收。
+6. **释放资源**：分发器、类型描述符、各类容器句柄、Variant和TypeInfo对象均需按所有权规则调用对应的接口释放。
 
 与静态调用方式（编译期依赖服务端接口定义）相比，动态调用方式无需编译期绑定，适用于接口在运行时才能确定的场景，如通用调用框架、脚本引擎、动态测试工具等。
 
@@ -400,17 +405,30 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 
 | vt值 | 类型 | 说明 |
 | --- | --- | --- |
-| VT_I32 | int32_t | 32位有符号整数 |
-| VT_I64 | int64_t | 64位有符号整数 |
-| VT_F64 | double | 64位浮点数 |
-| VT_BOOL | bool | 布尔值 |
-| VT_STRING | char* | UTF-8字符串 |
-| VT_ARRAY | Array | 定长数组 |
-| VT_VECTOR | Vector | 动态向量 |
-| VT_SET | Set | 不重复元素集合 |
-| VT_MAP | Map | 键值对映射 |
-| VT_STRUCT | Struct | 结构体 |
-| VT_ENUM | enum | 枚举值（存储为int32_t） |
+| VT_EMPTY | - | 空值，表示未初始化或无效 | 
+| VT_VOID | void | 无返回值，用于方法返回类型 | 
+| VT_BOOL | bool | 布尔值 | 
+| VT_I8 | int8_t | 8位有符号整数 | 
+| VT_I16 | int16_t | 16位有符号整数 | 
+| VT_I32 | int32_t | 32位有符号整数 |	 
+| VT_I64 | int64_t | 64位有符号整数 |	 
+| VT_U8 | uint8_t | 8位无符号整数 |	 
+| VT_U16 | uint16_t | 16位无符号整数 |	 
+| VT_U32 | uint32_t | 32位无符号整数 | 
+| VT_U64 | uint64_t | 64位无符号整数 | 
+| VT_F32 | float | 32位浮点数（单精度） | 
+| VT_F64 | double | 64位浮点数（双精度） | 
+| VT_STRING | char* | UTF-8字符串 |	 
+| VT_ARRAY | Array | 定长数组 |	 
+| VT_VECTOR | Vector | 动态向量 |	 
+| VT_SET | Set | 不重复元素集合 |	 
+| VT_MAP | Map | 键值对映射 |	 
+| VT_STRUCT | Struct | 结构体 |	 
+| VT_ENUM | enum | 枚举值（存储为int32_t） |	 
+| VT_IPC_REMOTE_PROXY | OHIPCRemoteProxy* | 远端Proxy对象 | 
+| VT_IPC_REMOTE_STUB | OHIPCRemoteStub* | 远端Stub对象 | 
+
+完整的枚举定义及各类型的取值范围参见[OH_AbilityRuntime_ModObjDispatcher_ValueType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_valuetype)。
 
 ### 通过动态接口执行动态调用
 
