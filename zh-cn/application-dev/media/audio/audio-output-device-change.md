@@ -189,7 +189,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
-
+  
   let audioRenderer: audio.AudioRenderer | undefined = undefined;
   let audioStreamInfo: audio.AudioStreamInfo = {
     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
@@ -205,10 +205,10 @@ let audioRendererOptions: audio.AudioRendererOptions = {
     streamInfo: audioStreamInfo,
     rendererInfo: audioRendererInfo
   };
-
+  
   let audioSessionManager = audio.getAudioManager().getSessionManager();
   // ...
-
+  
     // 创建AudioRenderer实例。
     audio.createAudioRenderer(audioRendererOptions, (err, renderer) => {
       if (!err) {
@@ -222,12 +222,12 @@ let audioRendererOptions: audio.AudioRendererOptions = {
       }
     });
     // ...
-
+  
     // 设置音频会话策略。
     let strategy: audio.AudioSessionStrategy = {
       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
     };
-
+  
     // 激活AudioSession。
     audioSessionManager.activateAudioSession(strategy).then(() => {
       console.info('Succeeded in activating audio session.');
@@ -237,7 +237,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
       // ...
     });
     // ...
-
+  
     try {
       // 订阅监听音频流输出设备变化及原因。
       audioSessionManager.on('currentOutputDeviceChanged', async (deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
