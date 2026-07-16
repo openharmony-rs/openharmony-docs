@@ -64,23 +64,24 @@ import { BusinessError } from '@kit.BasicServicesKit';
 <!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->  
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  // 监听音频设备状态变化。
-  audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG,
-    (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('device change type : ' + deviceChanged.type);  // 设备连接状态变化,0为连接,1为断开连接。
-    console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);  // 设备角色。
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);  // 设备类型。
 
-    // ...
-  });
+let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
   // ...
-  // 取消监听音频设备状态变化。
-  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('Should be no callback.');
-  });
+}
+// ...
+
+  try {
+    // 监听音频设备状态变化。
+    audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG, deviceChangeCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
 ```
 
 <!--Del-->
