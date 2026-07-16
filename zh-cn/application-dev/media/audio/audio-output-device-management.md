@@ -167,25 +167,26 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 <!-- @[onPreferOutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-let rendererInfo: audio.AudioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,// 音频流使用类型:音乐。根据业务场景配置,参考StreamUsage。
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：语音通话。根据业务场景配置，参考StreamUsage。
   rendererFlags: 0 // 音频渲染器标志。
 };
 // ...
-  // 监听最高优先级输出设备变化。
-  audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, (desc: audio.AudioDeviceDescriptors) => {
-    console.info(`device change descriptor : ${desc[0].deviceRole}`);  // 设备角色。
-    console.info(`device change descriptor : ${desc[0].deviceType}`);  // 设备类型。
 
+  try {
+    audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', audioRendererInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+      console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(audioDeviceDescriptors)}`);
+      // ...
+    });
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
     // ...
-  });
-  // ...
-  // 取消监听最高优先级输出设备变化。
-  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', (desc: audio.AudioDeviceDescriptors) => {
-    console.info('Should be no callback.');
-  });
+  }
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
