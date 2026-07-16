@@ -149,29 +149,46 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
+
 let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
+
+let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
+  // ...
+};
 // ...
+
+  try {
+    // 监听应用音量变化。
+    audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+  // ...
+
   // 设置应用的音量（范围为0到100）。
   audioVolumeManager.setAppVolumePercentage(20).then(() => {
     console.info('Succeeded in setting app volume percentage.');
     // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set app volume percentage. Code: ${err.code}, message: ${err.message}`);
+    // ...
   });
+  // ...
 
   // 查询应用音量。
-  audioVolumeManager.getAppVolumePercentage().then((value: number) => {
-    console.info(`Succeeded in getting app volume percentage, app volume is ${value}.`);
+  audioVolumeManager.getAppVolumePercentage().then((volume: number) => {
+    console.info(`Succeeded in getting app volume percentage. Volume: ${volume}`);
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get app volume percentage. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
-
-  // 监听应用音量变化，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-  let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-    console.info(`Succeeded in using on or off function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
-    // ...
-  };
-  audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
-  audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
 ```
 
 <!--Del-->
