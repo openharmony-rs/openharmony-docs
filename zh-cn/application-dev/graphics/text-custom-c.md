@@ -86,12 +86,12 @@
    ``` C++
    // 设置文本内容，并将文本添加到 handler 中
    OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-   const char *text = "Hello World";
-   OH_Drawing_TypographyHandlerAddText(handler, text);
+   OH_Drawing_TypographyHandlerAddText(handler, "Hello World");
    ```
 
-5. 创建行对象。获取行中所有文字的塑形结果。  
-使用OH_Drawing_LineTypographyCreateLine()方法创建一个单行对象，通过行对象OH_Drawing_TextLineGetGlyphRuns()方法获取相同样式的文字单元。
+5. 创建行对象。获取行中所有文字的塑形结果。
+
+   使用OH_Drawing_LineTypographyCreateLine()方法创建一个单行对象，通过行对象OH_Drawing_TextLineGetGlyphRuns()方法获取相同样式的文字单元。
 
    <!-- @[complex_text_c_independent_shaping_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
@@ -105,8 +105,9 @@
    OH_Drawing_Array *runs = OH_Drawing_TextLineGetGlyphRuns(textLine);
    ```
 
-6. 该步骤是文本塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
-从 API version 20 开始，新增的OH_Drawing_GetRunGlyphAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
+6. 该步骤是文本塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。
+
+   从 API version 20 开始，新增的OH_Drawing_GetRunGlyphAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
    <!-- @[complex_text_c_independent_shaping_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
    ``` C++
@@ -138,8 +139,7 @@
            float pos = 0;
            OH_Drawing_PointGetX(advance, &pos);
            x += pos + 10; // 每个字形间水平间隔10px
-           OH_Drawing_PointGetY(advance, &pos);
-           y += pos + 30; // 每个字形间垂直间隔30px
+           y += 30; // 每个字形间垂直间隔30px
        }
    
        // 自定义绘制一串具有相同属性的一系列连续字形
@@ -152,6 +152,8 @@
        OH_Drawing_FontDestroy(font);
        OH_Drawing_DestroyRunGlyphAdvances(advances);
        OH_Drawing_DestroyRunGlyphs(glyphs);
+       OH_Drawing_TextBlobBuilderDestroy(builder);
+       OH_Drawing_RectDestroy(rect);
    }
    ```
 
@@ -170,5 +172,6 @@
    ```
 
 
-效果展示：  
+效果展示：
+
 ![ndk_independent_shaping.png](figures/ndk_independent_shaping.png)

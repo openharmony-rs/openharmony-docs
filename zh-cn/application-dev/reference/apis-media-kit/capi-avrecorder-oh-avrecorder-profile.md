@@ -12,9 +12,9 @@ typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
 
 ## 概述
 
-定义音视频录制的详细参数。
+定义音视频录制的详细参数。通过配置音频比特率、采样率、视频帧率、分辨率等参数，可以灵活控制录制质量和视频文件大小，满足不同场景下的录制需求。
 
-通过参数设置可以选择只录制音频或只录制视频：
+通过参数设置可以选择仅录制音频或视频，或者同时录制音视频：
 
 1. 当 audioBitrate 或 audioChannels 为 0 时，不录制音频。
 2. 当 videoFrameWidth 或 videoFrameHeight 为 0 时，不录制视频。

@@ -18,7 +18,7 @@ The lazy loading adapter is not bound to the component.
 
 **错误描述**
 
-组件未设置NodeAdapter。
+组件未绑定NodeAdapter。
 
 **可能原因**
 
@@ -126,7 +126,7 @@ The event type is not supported.
 
 **错误描述**
 
-注册通用事件时传入的事件类型错误。
+注册通用事件时传入的事件类型不被支持。
 
 **可能原因**
 
