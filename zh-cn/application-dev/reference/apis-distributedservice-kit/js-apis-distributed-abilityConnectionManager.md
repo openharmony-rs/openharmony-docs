@@ -62,7 +62,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。 |
+| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。取值范围是大于100的整数。 |
 
 **错误码：**
 
@@ -127,7 +127,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          serviceName: 'collabTest'
        };
        const myRecord: Record<string, string> = {
-         "newKey1": "value1",
+         'newKey1': 'value1',
        };
  
        // 定义连接选项
@@ -235,7 +235,8 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-   
+   import { BusinessError } from '@kit.BasicServicesKit';
+    
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
@@ -263,16 +264,16 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
-         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-       } catch (error) {
-         hilog.error(0x0000, 'testTag', error);
-       }
-       return sessionId;
-     }
-   }
-   ```
+          hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
+        } catch (error) {
+          hilog.error(0x0000, 'testTag', error);
+        }
+        return sessionId;
+      }
+    }
+    ```
 
-   ArkTS-Sta示例：
+    ArkTS-Sta示例：
    ```ts
    import Ability from '@ohos.app.ability.UIAbility';
    import hilog from '@ohos.hilog';
@@ -338,7 +339,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明                              |
 | --------- | ---------------------------------------- | ---- |---------------------------------|
-| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。 |
+| sessionId | number | 是 | 待销毁的协同会话ID。<br />取值范围是不小于100的整数。传入小于100的值或不存在的协同会话ID时返回错误码401。|
 
 **示例：**
 
@@ -472,6 +473,7 @@ ArkTS-Dyn示例：
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 100;
 abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
@@ -586,71 +588,15 @@ export default class EntryAbility extends UIAbility {
     try {
       sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
       AppStorage.setOrCreate('sessionId', sessionId);
-      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', error);
-    }
-    return sessionId;
-  }
-}
-```
+       hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
+     } catch (error) {
+       hilog.error(0x0000, 'testTag', error);
+     }
+     return sessionId;
+   }
+ }
 
-ArkTS-Sta示例：
-
-```ts
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import { UIAbility, Want } from '@kit.AbilityKit';
-import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
-import hilog from '@ohos.hilog';
-import { AppStorage } from '@ohos.arkui.stateManagement';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
-
-  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-    this.onCollab(param);
-    return AbilityConstant.CollaborateResult.ACCEPT;
-  }
-
-  onCollab(collabParam: Record<string, Object>): void {
-    const sessionId = this.createSessionFromWant(collabParam);
-    if (sessionId == -1) {
-      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-      return;
-    }
-    const collabToken = collabParam["ohos.dms.collabToken"] as string;
-    abilityConnectionManager.acceptConnect(sessionId as Int, collabToken).then(() => {
-      hilog.info(0x0000, 'testTag', 'acceptConnect success');
-    }).catch(() => {
-      hilog.error(0x0000, 'testTag', 'failed');
-    })
-  }
-
-  createSessionFromWant(collabParam: Record<string, Object>): number {
-    let sessionId = -1;
-    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
-    if (peerInfo == undefined) {
-      return sessionId;
-    }
-
-    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
-    try {
-      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
-      AppStorage.setOrCreate('sessionId', sessionId);
-      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', error.message);
-    }
-    return sessionId;
-  }
-}
-```
-
-## abilityConnectionManager.disconnect
+ ## abilityConnectionManager.disconnect
 
 disconnect(sessionId:&nbsp;number):&nbsp;void
 
@@ -1495,7 +1441,7 @@ let sessionId = 100;
 abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
   hilog.info(0x0000, 'testTag', "sendMessage success");
 }).catch(() => {
-  hilog.error(0x0000, 'testTag', "connect failed");
+  hilog.error(0x0000, 'testTag', "sendMessage failed");
 })
 ```
 
@@ -1557,6 +1503,7 @@ ArkTS-Dyn示例：
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
 let textEncoder = util.TextEncoder.create("utf-8");
@@ -1609,7 +1556,7 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 | bundleName        | string | 否   |否    | 对端应用的包名，用于唯一标识要连接的应用。需与对端应用的bundleName保持一致。 |
 | moduleName        | string | 否   |否    | 对端应用的模块名，用于标识要连接的应用模块。通常为'entry'或其他自定义模块名。 |
 | abilityName       | string | 否   |否     | 对端应用的组件名，用于标识要连接的UIAbility组件。需与对端应用的abilityName保持一致。 |
-| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。 |
+| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。不设置此值时，使用默认服务名称。 |
 
 ## ConnectOptions
 
