@@ -3,17 +3,17 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct OH_Filter OH_Filter
+typedef struct OH_Filter OH_Filter;
 ```
 
 ## 概述
 
-滤镜结构体，用来生成滤镜位图。
+滤镜结构体，用于配合effectKit模块相关接口实现滤镜效果处理。
 
 **起始版本：** 12
 

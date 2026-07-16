@@ -10,7 +10,7 @@
 
 Matrix2D的使用场景包括：
 
-1. [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)中调用[getTransform](ts-canvasrenderingcontext2d.md#gettransform)接口获取画布的图形变换矩阵Matrix2D对象，调用[setTransform](ts-canvasrenderingcontext2d.md#settransform-1)接口对后续绘制内容进行Matrix2D对象对应的图形变换。
+1. [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)中调用[getTransform](ts-components-canvas-common-method.md#gettransform)接口获取画布的图形变换矩阵Matrix2D对象，调用[setTransform](ts-components-canvas-common-method.md#settransform-1)接口对后续绘制内容进行Matrix2D对象对应的图形变换。
 
 2. [CanvasPattern](ts-components-canvas-canvaspattern.md)中调用[setTransform](ts-components-canvas-canvaspattern.md#settransform)接口对[CanvasPattern](ts-components-canvas-canvaspattern.md)对象进行Matrix2D对象对应的图形变换。
 
@@ -20,9 +20,7 @@ Matrix2D的使用场景包括：
 > 
 > 从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-## 接口
-
-### constructor<sup>10+</sup>
+## constructor<sup>10+</sup>
 
 constructor()
 
@@ -36,7 +34,7 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### constructor<sup>12+</sup>
+## constructor<sup>12+</sup>
 
 constructor(unit: LengthMetricsUnit)
 
@@ -114,10 +112,7 @@ struct Parameter {
 
 ![matrix-parameters.png](figures/matrix-parameters.png)
 
-
-## 方法
-
-### identity
+## identity
 
 identity(): Matrix2D
 
@@ -167,8 +162,7 @@ struct Identity {
 
 ![matrix-identity.png](figures/matrix-identity.png)
 
-
-### invert
+## invert
 
 invert(): Matrix2D
 
@@ -224,8 +218,7 @@ struct Invert {
 
 ![matrix-invert.png](figures/matrix-invert.png)
 
-
-### multiply<sup>(deprecated)</sup>
+## multiply<sup>(deprecated)</sup>
 
 multiply(other?: Matrix2D): Matrix2D
 
@@ -247,7 +240,7 @@ multiply(other?: Matrix2D): Matrix2D
 | --------------------- | -------------- |
 | Matrix2D | 相乘结果矩阵。 |
 
-### rotate<sup>(deprecated)</sup>
+## rotate<sup>(deprecated)</sup>
 
 rotate(rx?: number, ry?: number): Matrix2D
 
@@ -308,8 +301,7 @@ struct Rotate {
 
 ![matrix-rotate.png](figures/matrix-rotate.png)
 
-
-### rotate<sup>10+</sup>
+## rotate<sup>10+</sup>
 
 rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
@@ -373,8 +365,7 @@ struct Rotate {
 
 ![matrix-rotate10+.png](figures/matrix-rotate10+.png)
 
-
-### translate
+## translate
 
 translate(tx?: number, ty?: number): Matrix2D
 
@@ -437,8 +428,7 @@ struct Translate {
 
 ![matrix-translate.png](figures/matrix-translate.png)
 
-
-### scale
+## scale
 
 scale(sx?: number, sy?: number): Matrix2D
 

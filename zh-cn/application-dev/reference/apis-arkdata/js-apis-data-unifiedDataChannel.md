@@ -537,7 +537,7 @@ constructor(type: string, value: ValueType)
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -1594,11 +1594,11 @@ try {
     } else {
       console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
     }
-  }
-  catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
-  }
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
+}
 ```
 
 ## unifiedDataChannel.insertData
@@ -1697,7 +1697,7 @@ let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'This is a plain text example',
   abstract: 'This is abstract'
-}
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 let options: unifiedDataChannel.Options = {
@@ -1709,7 +1709,7 @@ try {
     let updateOptions: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
-    }
+    };
     let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
       textContent: 'This is plainText textContent for update',
@@ -1780,13 +1780,9 @@ let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'This is a plain text example',
   abstract: 'This is abstract'
-}
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
-let options: unifiedDataChannel.Options = {
-  intention: unifiedDataChannel.Intention.DATA_HUB
-}
-
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
 };
@@ -1797,12 +1793,12 @@ try {
     let updateOptions: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
-    }
+    };
     let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
       textContent: 'This is plainText textContent for update',
       abstract: 'This is abstract for update'
-    }
+    };
     let textUpdate =
       new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
@@ -2063,7 +2059,7 @@ try {
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
+  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2073,7 +2069,7 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 设置应用内拖拽通道数据可使用的范围[ShareOptions](#shareoptions12)，目前仅支持DRAG类型数据通道的管控设置。调用成功后，应用内拖拽通道数据的使用范围被设置为指定的ShareOptions值。
 
-**需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2114,7 +2110,7 @@ removeAppShareOptions(intention: Intention): void
 
 清除[setAppShareOptions](#unifieddatachannelsetappshareoptions14)设置的管控信息。调用成功后，setAppShareOptions设置的管控信息被清除，应用内拖拽通道数据恢复到默认使用范围。
 
-**需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2154,7 +2150,7 @@ convertRecordsToEntries(data: UnifiedData): void
 本接口用于将传入的data转换成多样式数据结构。若原data使用多个record去承载同一份数据的不同数据格式，则可以使用此接口将原data转换为多样式数据结构。
 
 当满足以下规则时进行转换，传入的data经转换后变为多样式数据结构：
-1. data中的record数量大于1;
+1. data中的record数量大于1；
 2. data中的properties中的tag值为"records_to_entries_data_format"。
 
 否则不会产生任何行为。

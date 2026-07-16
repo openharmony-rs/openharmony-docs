@@ -1,10 +1,12 @@
 # Unified Data Definition Overview
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:54.532Z pushedAt=2026-06-25T10:20:25.130Z -->
 
 Efficient data interaction is critical for interaction between devices and applications. The Unified Data Management Framework (UDMF) provides unified data definitions for different applications and devices to reduce the costs in application and service data interaction.
 
@@ -22,8 +24,13 @@ A uniform data struct defines the data of a certain type (UTD). Uniform data str
 
 ### Multi-Entry Struct
 
-A single interaction between devices or applications may involve multiple records, each of which can have different representations. This leads to the multi-entry struct, which allows the same data to be presented in multiple formats in a unified data struct. During the interaction process, the data provider offers records in various formats, and the data consumer retrieves and uses data in a specific format based on service requirements.
+During interactions between devices and applications, a single interaction may contain multiple records, and each record may have different representations (entries). To address this scenario, the concept of multi-entry struct is introduced. During an interaction, the data provider supplies different data entries for a record. After obtaining the data, the data consumer can retrieve the required entry from the record based on service requirements.
 
 ![multi-entry-structure](figures/multi-entry-structrue.PNG)
 
 As shown in the preceding figure, **UnifiedRecord** identifies different records, which contain different data. In each **UnifiedRecord**, the same data is stored in different formats.
+
+
+
+
+

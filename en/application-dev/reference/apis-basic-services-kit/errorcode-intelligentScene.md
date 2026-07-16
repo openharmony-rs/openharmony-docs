@@ -4,7 +4,7 @@
 <!--Owner: @chenzhe123-->
 <!--Designer: @wangchun-->
 <!--Tester: @RayShih-->
-<!--Adviser: @fang-jinxu -->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >

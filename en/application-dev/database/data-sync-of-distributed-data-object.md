@@ -6,7 +6,7 @@
 <!--Designer: @hollokin; @yuchaozhng-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:40:12.822Z pushedAt=2026-06-22T09:26:37.883Z -->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:01.687Z pushedAt=2026-06-25T07:20:59.837Z -->
 
 ## When to Use
 
@@ -16,7 +16,7 @@ The device status, message sending progress, and data transmitted are variables.
 
 The distributed data object (**distributedDataObject**) module implements global access to variables. It provides basic data object management capabilities, including creating, querying, deleting, and modifying in-memory objects and subscribing to data or status changes. It also provides distributed capabilities. OpenHarmony provides easy-to-use JS APIs for distributed application scenarios. With these APIs, you can easily implement data collaboration for an application across devices and listening for status and data changes between devices. The **distributedDataObject** module implements data object collaboration for the same application across multiple devices that form a Super Device. It greatly reduces the development workloads compared with the traditional implementation.
 
-Currently, distributed data objects can be used only in [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration through cross-device call](../application-models/uiability-cross-device-interaction.md) scenarios.
+Currently<!--RP2--> distributed data objects can be used only in [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration through cross-device call](../application-models/uiability-cross-device-interaction.md) scenarios.<!--RP2End-->
 
 ## Basic Concepts
 
@@ -52,7 +52,7 @@ The distributed data objects are encapsulated JS objects in distributed in-memor
 
 | Distributed Data Object Instance | Object Instance | Property Name | Property Value | 
 | -------- | -------- | -------- | -------- |
-| Distributed in-memory database | Database identified by **sessionId** | Key of a database record | Value of a database record | 
+| Distributed in-memory database | Database identified by **sessionId** | Key of a database record | Value of a database record |
 
 ### Cross-Device Sync and Data Change Notification
 
@@ -84,7 +84,7 @@ The object properties support basic types (number, Boolean, and string) and comp
 
 ```ts
 dataObject['parents'] = {mom: "amy"}; // Supported modifications
-dataObject['parents']['mom'] = "amy"; // Unsupported modifications
+dataObject['parents']['mom'] = "amy"; // Unsupported modification
 ```
 
 **Figure 3** Sync of distributed data objects 
@@ -103,11 +103,11 @@ Persistent objects extend the capabilities of distributed data objects and are i
 
 ### Asset Sync Mechanism
 
-In a distributed data object, [asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset) is used to describe a local entity asset file. When the distributed data object is synced across devices, the file is also synced to other devices with it.
+In a distributed data object, the [Asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset) type is used to describe a local entity asset file. When the distributed data object syncs across devices, the file is synced to other devices alongside the data.
 
-In versions earlier than API version 20, only asset is supported, and [assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets) are not supported. To synchronize multiple assets, use each asset as a root property of the distributed data object.
+Prior to API version 20, only the **Asset** type is supported; the asset array type [Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets) is not. To sync multiple assets, you can set each asset as a root property of the distributed data object.
 
-Since API version 20, synchronization of [assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets) is supported.
+Starting from API version 20, asset arrays ([Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)) can be synced.
 
 ## Constraints
 
@@ -133,7 +133,7 @@ Since API version 20, synchronization of [assets](../reference/apis-arkdata/js-a
 
 - For complex data types, only root-level properties can be modified. Modifying nested properties is not supported. In the [asset sync mechanism](#asset-sync-mechanism), nested properties one level below the root are supported for asset-type data.
 
-- Currently, interoperability is supported only among JavaScript APIs. Cross-language interoperability is not supported.
+- Currently, interoperability is supported only among JavaScript APIs.
 
 ## Available APIs
 
@@ -184,7 +184,9 @@ The following are APIs for cross-device data sync of distributed data objects. F
 > - During cross-device migration, after **setSessionId()** is called on the source device to set **sessionId**, you should call **save()** to save data to the target device. However, data can only be synced to the target device upon the first call of the **save()** API. This is because the migration task is completed immediately after data is obtained from the source device for the first time; subsequent data shall be subject to the target device and no further sync is required.
 > - When an application is launched as a result of a migration, the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, rather than [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate), is triggered following **onCreate()** or **onNewWant()**. This sequence occurs for both cold and hot starts. If you have performed some necessary initialization operations during application launch in `onWindowStageCreate()`, you must perform the same initialization operations in `onWindowStageRestore()` after the migration to avoid application exceptions.
 >
+
 <!--RP1-->
+
 > - The `continuable` tag must be set for cross-device migration. For details, see [cross-device migration development procedure](../application-models/hop-cross-device-migration.md#how-to-develop).<!--RP1End-->
 >
 > - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
@@ -397,7 +399,7 @@ export default class EntryAbility extends UIAbility {
 >
 > - Multi-device collaboration implemented through cross-device calls requires the `ohos.permission.DISTRIBUTED_DATASYNC` permission and the configuration of a singleton launch tag. For details, see [Multi-Device Collaboration Through Cross-Device Call Invocation](../application-models/uiability-cross-device-interaction.md).
 >
-> - The "sessionId" field in wantParam may be occupied by other services. You are advised to customize a key to store and retrieve the sessionId.
+> - The **sessionId** field in **wantParam** may be occupied by other services. You are advised to customize a key to store and retrieve the session ID.
 >
 > - For details about how to use distributed device management to obtain the peer device's networkId, see [Querying Device Information](../distributedservice/devicemanager-guidelines.md#querying-device-information).
 
@@ -458,7 +460,7 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'EntryAbility',
       deviceId: deviceId,
       parameters: {
-        'ohos.aafwk.param.callAbilityToForeground': true, // Foreground launch (optional).
+        'ohos.aafwk.param.callAbilityToForeground': true, // Foreground launch, not required
         'distributedSessionId': sessionId
       }
     }
@@ -530,10 +532,3 @@ function getRemoteDeviceId() {
   return deviceId;
 }
 ```
-
-
-
-
-
-
-

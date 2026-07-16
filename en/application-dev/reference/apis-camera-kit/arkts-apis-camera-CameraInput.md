@@ -375,7 +375,7 @@ Obtains the physical camera orientation in the current fold state of the device.
 
 | Type       | Description                                        |
 | ---------- | -------------------------------------------- |
-| number    | Physical camera orientation.|
+| number    | Physical camera orientation.<br>The value ranges from 0 to 360, in degrees.|
 
 **Example**
 

@@ -15,13 +15,13 @@
 
 算法库当前提供了[AES](crypto-sym-key-generation-conversion-spec.md#aes)加解密常用的7种加密模式：ECB、CBC、OFB、CFB、CTR、GCM和CCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
-由于AES为分组加密算法，分组长度为128位。在实际应用中，最后一组明文可能不足128位（16字节），此时可以通过不同的[填充模式](#填充模式)进行数据填充。
+由于AES为分组加密算法，分组长度为16字节。在实际应用中，最后一组明文可能不足16字节，此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即AES加密填充至16字节。
 
 > **说明：**
 >
-> ECB、CBC加密模式，明文长度不是128位整数倍，必须使用填充方法补足。
+> ECB、CBC加密模式，明文长度不是16字节整数倍，必须使用填充方法补足。
 > CCM加密模式，必须指定附加验证数据aad且其长度必须大于等于1字节且小于等于2048字节。
 
 当前支持以字符串参数完成AES加解密，具体的“字符串参数”由“对称密钥类型（加解密算法+密钥长度）”、“分组模式”和“填充模式”使用符号“|”拼接而成，用于在创建对称加解密实例时，指定算法规格。
@@ -84,13 +84,13 @@
 
 算法库当前提供了3DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
-由于DES为分组加密算法，分组长度为64位。在实际应用中，最后一组明文可能不足64位（8字节），此时可以通过不同的[填充模式](#填充模式)进行数据填充。
+由于DES为分组加密算法，分组长度为8字节。在实际应用中，最后一组明文可能不足8字节，此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即3DES加密填充至8字节。
 
 > **说明：**
 >
-> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+> ECB、CBC加密模式，明文长度不是8字节整数倍，必须使用填充方法补足。
 
 当前支持以字符串参数完成3DES加解密，具体的“字符串参数”由“对称密钥类型（加解密算法+密钥长度）”、“分组模式”和“填充模式”使用符号“|”拼接而成，用于在创建对称加解密实例时，指定算法规格。
 
@@ -116,13 +116,13 @@
 
 算法库当前提供了[SM4](crypto-sym-key-generation-conversion-spec.md#sm4)加解密常用的7种加密模式：ECB、CBC、CTR、OFB、CFB、CFB128和GCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
-由于SM4为分组加密算法，分组长度为128位。在实际应用中，最后一组明文可能不足128位（16字节），此时可以通过不同的[填充模式](#填充模式)进行数据填充。
+由于SM4为分组加密算法，分组长度为16字节。在实际应用中，最后一组明文可能不足16字节，此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即SM4加密填充至16字节。
 
 > **说明：**
 >
-> ECB、CBC加密模式，明文长度不是128位整数倍，必须使用填充方法补足。
+> ECB、CBC加密模式，明文长度不是16字节整数倍，必须使用填充方法补足。
 
 当前支持以字符串参数完成SM4加解密，具体的“字符串参数”由“对称密钥类型（加解密算法+密钥长度）”、“分组模式”和“填充模式”使用符号“|”拼接而成，用于在创建对称加解密实例时，指定算法规格。
 
@@ -188,13 +188,13 @@
 
 ## RC2
 
-从API版本26.0.0开始，支持分组密码算法[RC2](crypto-sym-key-generation-conversion-spec.md#rc2)，分组长度为64位，密钥长度支持8位～1024位。
+从API版本26.0.0开始，支持分组密码算法[RC2](crypto-sym-key-generation-conversion-spec.md#rc2)，分组长度为8字节，密钥长度支持8位～1024位，且该值须为8的倍数。
 
 算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
-> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+> ECB、CBC加密模式，明文长度不是8字节整数倍，必须使用填充方法补足。
 
 当前支持以字符串参数完成RC2加解密，具体的“字符串参数”由“对称密钥类型”、“分组模式”和“填充模式”使用符号“|”拼接而成。字符串参数为RC2。
 
@@ -209,7 +209,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## RC4
 
-从API版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位。
+从API版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位，且该值须为8的倍数。
 
 算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式和填充模式。
 
@@ -221,11 +221,11 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## Blowfish（BF）
 
-从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，密钥长度支持32位～448位。
+从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为8字节，密钥长度支持32位～448位，且该值须为8的倍数。
 
 > **说明：**
 >
-> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+> ECB、CBC加密模式，明文长度不是8字节整数倍，必须使用填充方法补足。
 
 CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
@@ -240,15 +240,15 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## CAST
 
-从API版本26.0.0开始，支持分组密码算法[CAST](crypto-sym-key-generation-conversion-spec.md#cast)，分组长度为64位，密钥长度支持40位～128位。
+从API版本26.0.0开始，支持分组密码算法[CAST](crypto-sym-key-generation-conversion-spec.md#cast)，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
 
-[CAST](crypto-sym-key-generation-conversion-spec.md#cast)为分组密码算法，分组长度为64位，密钥长度支持40位～128位。
+[CAST](crypto-sym-key-generation-conversion-spec.md#cast)为分组密码算法，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
 
 算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
-> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+> ECB、CBC加密模式，明文长度不是8字节整数倍，必须使用填充方法补足。
 
 当前支持以字符串参数完成CAST加解密，字符串参数为CAST：
 

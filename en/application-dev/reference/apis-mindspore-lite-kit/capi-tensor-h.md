@@ -6,6 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:12.837Z pushedAt=2026-06-25T01:35:11.420Z -->
 
 ## Overview
 
@@ -64,10 +65,9 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType
 
 **Description**
 
-Creates a tensor object.
+Creates a tensor object. This API needs to be used together with [OH_AI_TensorDestroy](#oh_ai_tensordestroy).
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -98,7 +98,6 @@ Destroys a tensor object.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -116,7 +115,6 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 Clones a tensor.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -142,7 +140,6 @@ Sets the tensor name.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -161,7 +158,6 @@ OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 Obtains the tensor name.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -187,7 +183,6 @@ Sets the data type of a tensor.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -206,7 +201,6 @@ OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor
 Obtains the tensor type.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -232,7 +226,6 @@ Sets the tensor shape.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -252,7 +245,6 @@ OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, s
 Obtains the tensor shape.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -279,7 +271,6 @@ Sets the tensor data format.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -298,7 +289,6 @@ OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 Obtains the tensor data format.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -324,7 +314,6 @@ Sets the tensor data.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -343,7 +332,6 @@ OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 Obtains the pointer to tensor data.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -369,7 +357,6 @@ Obtains the pointer to variable tensor data. If the data is empty, memory will b
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -393,7 +380,6 @@ OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 Obtains the number of tensor elements.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -419,7 +405,6 @@ Obtains the number of bytes of the tensor data.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -443,7 +428,6 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *
 Sets the tensor as the user data. This function allows you to reuse user data as the model input, which helps to reduce data copy by one time.<br>> **NOTE**<br>The user data is type of external data for the tensor and is not automatically released when the tensor is destroyed. The caller needs to release the data separately. In addition, the caller must ensure that the user data is valid during use of the tensor.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -471,7 +455,6 @@ Obtains a memory allocator. The allocator is responsible for allocating memory f
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -495,7 +478,6 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI
 Sets the memory allocator. The allocator is responsible for allocating memory for tensors.
 
 **Since**: 12
-
 
 **Parameters**
 

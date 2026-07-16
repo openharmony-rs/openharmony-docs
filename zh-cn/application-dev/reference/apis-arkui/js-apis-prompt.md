@@ -61,7 +61,7 @@ prompt.showToast({
 
 showDialog(options: ShowDialogOptions): Promise&lt;ShowDialogSuccessResponse&gt;
 
-创建并显示对话框，对话框响应后同步返回结果。
+创建并显示对话框，使用Promise异步回调。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +117,7 @@ showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSucc
 
 | 参数名      | 类型                                       | 必填   | 说明           |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| options  | [ShowDialogOptions](#showdialogoptions)  | 是    | 页面显示对话框信息描述。 |
+| options  | [ShowDialogOptions](#showdialogoptions)  | 是    | 对话框选项。 |
 | callback | AsyncCallback&lt;[ShowDialogSuccessResponse](#showdialogsuccessresponse)&gt; | 是    | 对话框响应结果回调。   |
 
 **示例：**
@@ -217,7 +217,7 @@ prompt.showActionMenu({
 
 showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;
 
-创建并显示操作菜单，菜单响应后同步返回结果。
+创建并显示操作菜单，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

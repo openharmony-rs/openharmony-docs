@@ -215,7 +215,7 @@ classDiagram
 
 > **注意**
 >
-> 1. 上图中只展示了部分关键Enum/Interface及其关系，完整的Response绥承体系包含所有22种传感器数据Response接口，均继承自Response。
+> 1. 上图中只展示了部分关键Enum/Interface及其关系，完整的Response继承体系包含所有22种传感器数据Response接口，均继承自Response。
 > 2. SensorId用于标识传感器类型，在on/once/off函数以及getSingleSensor/getSensorList中作为参数传入；SensorAccuracy用于标识数据精度等级，在Response中作为accuracy字段；SensorFrequency用于标识数据上报频率模式，在Options中作为 interval字段。所有传感器数据Response接口均继承自Response，包含timestamp和accuracy字段。
 
 ## 导入模块
@@ -1147,7 +1147,7 @@ on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, option
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).PROXIMITY                        | 是   | 传感器类型，该值固定为SensorId.PROXIMITY。                   |
 | callback | Callback&lt;[ProximityResponse](#proximityresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为ProximityResponse。      |
-| options  | [Options](#options)                                     | 否   | 可选参数列表，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
+| options  | [Options](#options)                                     | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。当接近光事件被触发的很频繁时，该参数用于限定事件上报的频率。 |
 
 **错误码**：
 
@@ -1330,7 +1330,7 @@ on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | string         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
+| type     | string         | 是   | 固定传入'sensorStatusChange', 状态监听固定参数。             |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 是   | 回调函数，异步上报的传感器事件数据SensorStatusEvent。 |
 
 **错误码**：
@@ -3903,7 +3903,7 @@ off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerome
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELERATION。         |
+| type     | [SensorId](#sensorid9).LINEAR_ACCELEROMETER                  | 是   | 传感器类型，该值固定为SensorId.LINEAR_ACCELEROMETER。         |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
@@ -5048,7 +5048,7 @@ off(type: SensorId.SIGNIFICANT_MOTION, sensorInfoParam?: SensorInfoParam, callba
 
 取消订阅有效运动传感器数据。当不再需要接收有效运动传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。
 
-**系统能力**:SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **参数**：
 
@@ -5362,7 +5362,7 @@ try {
 
 getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&gt;
 
-同步获取指定设备和类型的传感器信息。
+同步获取指定设备和类型的传感器信息。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6120,7 +6120,7 @@ getQuaternion(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;number&g
 
 | 类型                               | 说明         |
 | ---------------------------------- | ------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise，使用异步方式对象返归一化回四元数。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回归一化四元数。 |
 
 **错误码**：
 
@@ -6518,7 +6518,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                  |
 
 **示例**：
 
@@ -6577,7 +6577,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -6697,8 +6697,6 @@ try {
 设备状态变化事件数据，用于描述传感器上下线事件的信息。
 
 **系统能力**：SystemCapability.Sensors.Sensor
-
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
 
 | 名称           | 类型     | 只读 | 可选 | 说明                          |
 |----------------|---------|-----|-----|-----------------------------|
@@ -7209,7 +7207,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER_UNCALIBRATED](#sensoronsensoridaccelerometer_uncalibrated9)<sup>9+</sup>替代。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER_UNCALIBRATED](#sensoronsensoridaccelerometer_uncalibrated9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -8355,7 +8353,7 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightR
 import { sensor } from '@kit.SensorServiceKit';
 
 sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightResponse) => {
-  console.info('Succeeded in invoking once. invoking once. Illumination: ' + data.intensity);
+  console.info('Succeeded in invoking once. Illumination: ' + data.intensity);
 });
 ```
 
@@ -9790,7 +9788,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const promise = sensor.getDirection([1, 0, 0, 0, 1, 0, 0, 0, 1]);
 promise.then((data: Array<number>) => {
-  console.info('Succeeded in getting sensor_getAltitude_Promise', data);
+  console.info('Succeeded in getting sensor_getDirection_Promise', data);
   for (let i = 1; i < data.length; i++) {
     console.info("Succeeded in getting sensor_getDirection_promise" + data[i]);
   }

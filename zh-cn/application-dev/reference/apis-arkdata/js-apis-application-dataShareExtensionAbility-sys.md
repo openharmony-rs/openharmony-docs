@@ -186,7 +186,7 @@ let TBL_NAME = 'TBL00';
 let rdbStore: relationalStore.RdbStore;
 
 export default class DataShareExtAbility extends DataShareExtensionAbility {
-  batchUpdate(operations:Record<string, Array<dataShare.UpdateOperation>>, callback:Function) {
+  batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
     let a = Object.entries(recordOps);
@@ -199,7 +199,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
           console.info('Update row count is ' + rows);
           result.push(rows);
         }).catch((err:BusinessError) => {
-          console.info('Update failed, err is ' + JSON.stringify(err));
+          console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
         })
       }
@@ -395,8 +395,8 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       name: key,
       message: key
     };
-      let ret = `denormalize ${uri}`;
-      callback(err, ret);
+    let ret = `denormalize ${uri}`;
+    callback(err, ret);
   }
 };
 ```

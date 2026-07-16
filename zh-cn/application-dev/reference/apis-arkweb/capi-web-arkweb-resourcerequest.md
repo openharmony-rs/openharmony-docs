@@ -12,11 +12,10 @@ typedef struct ArkWeb_ResourceRequest_ ArkWeb_ResourceRequest
 
 ## 概述
 
-对应内核的一个请求，可以通过OH_ArkWebResourceRequest_系列接口获取请求的URL、method、post data以及其他信息。如通过[OH_ArkWebResourceRequest_GetUrl](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_geturl)获取请求的URL。
+ArkWeb_ResourceRequest是被拦截的Scheme请求的详细信息结构体，包含请求的URL、HTTP方法、请求头等元数据。该结构体在ArkWeb_SchemeHandler的onRequestStart回调中作为参数传入，开发者通过它获取被拦截请求的完整信息，据此决定是否拦截以及如何构建自定义响应。
 
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)
 
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
-

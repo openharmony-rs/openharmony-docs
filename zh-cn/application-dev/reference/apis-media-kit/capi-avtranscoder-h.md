@@ -1,8 +1,8 @@
 # avtranscoder.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -38,17 +38,17 @@
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)](#oh_avtranscoderconfig_setdstaudiobitrate) | 设置用于转码的输出音频的码率。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)](#oh_avtranscoderconfig_setdstvideobitrate) | 设置用于转码的输出视频的码率。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config *config, int32_t width, int32_t height)](#oh_avtranscoderconfig_setdstvideoresolution) | 设置用于转码的输出视频的分辨率，单位为像素（px），其中width为输出视频帧的宽，height为输出视频帧的高。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
-| [OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)](#oh_avtranscoderconfig_enablebframe) | 转码设置输出视频B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 |
+| [OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)](#oh_avtranscoderconfig_enablebframe) | 设置转码输出视频是否使能B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 |
 | [OH_AVTranscoder *OH_AVTranscoder_Create(void)](#oh_avtranscoder_create) | 创建转码实例。 |
 | [OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscoder_Config *config)](#oh_avtranscoder_prepare) | 进行视频转码的参数设置，准备转码。<br> 此函数必须在[OH_AVTranscoder_Start](#oh_avtranscoder_start)之前调用，调用成功之后进入AVTRANSCODER_PREPARED状态。 |
 | [OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)](#oh_avtranscoder_start) | 开始转码。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)成功调用之后调用，调用成功之后进入AVTRANSCODER_STARTED状态。 |
 | [OH_AVErrCode OH_AVTranscoder_Pause(OH_AVTranscoder *transcoder)](#oh_avtranscoder_pause) | 暂停转码。<br> 此函数必须在转码实例处于AVTRANSCODER_STARTED状态时调用，调用成功之后进入AVTRANSCODER_PAUSED状态。 |
 | [OH_AVErrCode OH_AVTranscoder_Resume(OH_AVTranscoder *transcoder)](#oh_avtranscoder_resume) | 恢复转码。<br> 此函数必须在转码实例处于AVTRANSCODER_PAUSED状态时调用，调用成功之后重新进入AVTRANSCODER_STARTED状态。 |
-| [OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)](#oh_avtranscoder_cancel) | 取消转码。<br> 此函数须在转码实例处于AVTRANSCODER_STARTED和AVTRANSCODER_PAUSED状态时调用，调用成功之后进入AVTRANSCODER_CANCELLED状态。 |
+| [OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)](#oh_avtranscoder_cancel) | 取消转码。<br> 此函数必须在转码实例处于AVTRANSCODER_STARTED或AVTRANSCODER_PAUSED状态时调用，调用成功之后进入AVTRANSCODER_CANCELLED状态。 |
 | [OH_AVErrCode OH_AVTranscoder_Release(OH_AVTranscoder *transcoder)](#oh_avtranscoder_release) | 释放转码实例资源。 |
 | [OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnStateChange callback, void *userData)](#oh_avtranscoder_setstatecallback) | 注册触发转码状态修改事件的回调方法。<br> 当触发状态修改事件时，通过注册的回调方法通知开发者。<br> 开发者只能注册一个状态修改事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。<br> 若开发者需监听转码状态修改，须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前注册转码状态回调。 |
 | [OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnError callback, void *userData)](#oh_avtranscoder_seterrorcallback) | 注册触发转码错误事件的回调方法。<br> 当触发错误事件时，通过注册的回调方法通知开发者。<br> 如果AVTranscoder上报error事件，开发者需要通过[OH_AVTranscoder_Release](#oh_avtranscoder_release)操作退出转码操作。<br> 开发者只能注册一个错误事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。<br> 若开发者需监听转码错误事件，须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前注册转码错误事件。 |
-| [OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnProgressUpdate callback, void *userData)](#oh_avtranscoder_setprogressupdatecallback) | 注册触发转码进度更新事件的回调方法。<br> 当触发转码进度更新事件时，通过注册的回调方法通知开发者。<br> 开发者只能注册一个错误事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。<br> 若开发者需监听转码处理进度，则须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前注册该事件。 |
+| [OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnProgressUpdate callback, void *userData)](#oh_avtranscoder_setprogressupdatecallback) | 注册触发转码进度更新事件的回调方法。<br> 当触发转码进度更新事件时，通过注册的回调方法通知开发者。<br> 开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。<br> 若开发者需监听转码处理进度，则须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前注册该事件。 |
 
 ## 函数说明
 
@@ -261,7 +261,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *co
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| int32_t bitrate | 输出音频的码率，单位为比特率（bps）。支持范围[1-500000]，默认设置为48Kbps。 |
+| int32_t bitrate | 输出音频的码率，单位为比特率（bps）。支持范围[1, 500000]，默认设置为48Kbps。 |
 
 **返回：**
 
@@ -289,7 +289,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *co
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| int32_t bitrate | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置。<br> [240P,480P]默认码率值为1Mbps。<br> (480P,720P]默认码率值为2Mbps。<br> (240P,1080P]默认码率值为4Mbps。<br> 1080P及以上默认码率值为8Mbps。 |
+| int32_t bitrate | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置。<br> [240P,480P]默认码率值为1Mbps。<br> (480P,720P]默认码率值为2Mbps。<br> (720P,1080P]默认码率值为4Mbps。<br> 1080P及以上默认码率值为8Mbps。 |
 
 **返回：**
 
@@ -317,8 +317,8 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| int32_t width | 输出视频帧的宽，支持范围[240-3840]，默认设置为源视频帧的宽。 |
-| int32_t height | 输出视频帧的高，支持范围[240-2160]，默认设置为源视频帧的高。 |
+| int32_t width | 输出视频帧的宽，支持范围[240, 3840]，默认设置为源视频帧的宽。 |
+| int32_t height | 输出视频帧的高，支持范围[240, 2160]，默认设置为源视频帧的高。 |
 
 **返回：**
 
@@ -334,7 +334,7 @@ OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, 
 
 **描述**
 
-转码设置输出视频B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。
+设置转码输出视频是否使能B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -491,7 +491,7 @@ OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)
 
 **描述**
 
-取消转码。<br> 此函数须在转码实例处于AVTRANSCODER_STARTED和AVTRANSCODER_PAUSED状态时调用，调用成功之后进入AVTRANSCODER_CANCELLED状态。
+取消转码。<br> 此函数必须在转码实例处于AVTRANSCODER_STARTED或AVTRANSCODER_PAUSED状态时调用，调用成功之后进入AVTRANSCODER_CANCELLED状态。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -603,7 +603,7 @@ OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcod
 
 **描述**
 
-注册触发转码进度更新事件的回调方法。<br> 当触发转码进度更新事件时，通过注册的回调方法通知开发者。<br> 开发者只能注册一个错误事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。<br> 若开发者需监听转码处理进度，则须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前注册该事件。
+注册触发转码进度更新事件的回调方法。<br> 当触发转码进度更新事件时，通过注册的回调方法通知开发者。<br> 开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。<br> 若开发者需监听转码处理进度，则须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前注册该事件。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 

@@ -1,13 +1,12 @@
 # @ohos.commonEvent (Common Event) (System API) (Deprecated)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
+This module provides APIs to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data. It is applicable to scenarios where system services or apps communicate with each other through common events. This module helps you publish and subscribe to events across apps, improving collaboration efficiency between apps.
 
 > **NOTE**
 >
@@ -23,7 +22,7 @@ import commonEvent from '@ohos.commonEvent';
 
 ## Support
 
-A system common event is an event that is published by a system service or system application and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
+System common events refer to events released by system services or system apps. Subscribing to these events requires specific permissions. To publish or subscribe to this type of event, you must follow the event-specific definitions.
 
 For details about the definitions of all system common events, see [System Common Events](./common_event/commonEvent-definitions.md).
 
@@ -46,8 +45,8 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 | Name    | Type                | Mandatory| Description                              |
 | -------- | -------------------- | ---- | ---------------------------------- |
 | event    | string               | Yes  | Name of the common event to publish.            |
-| userId   | number               | Yes  | User ID.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.            |
+| userId   | number               | Yes  | ID of the user to whom the common event is published.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the common event publication result.            |
 
 **Example**
 
@@ -55,19 +54,19 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 import Base from '@ohos.base';
 
 // Callback for common event publication
-function publishCB(err:Base.BusinessError) {
+let publishCallBack = (err:Base.BusinessError) => {
     if (err.code) {
-        console.error(`publishAsUser failed, code is ${err.code}`);
+        console.error(`Failed to publishAsUser. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.info("publishAsUser");
+        console.info('publishAsUser');
     }
 }
 
 // Specify the user to whom the common event will be published.
-let userId = 100;
+const userId = 100;
 
 // Publish a common event.
-commonEvent.publishAsUser("event", userId, publishCB);
+commonEvent.publishAsUser('event', userId, publishCallBack);
 ```
 
 ## commonEvent.publishAsUser<sup>(deprecated)</sup>
@@ -77,6 +76,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 Publishes a common event with given properties to a specific user. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -88,9 +88,9 @@ Publishes a common event with given properties to a specific user. This API uses
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. |
-| userId   | number | Yes| User ID.|
+| userId   | number | Yes| ID of the user to whom the common event is published.|
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
-| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. |
+| callback | AsyncCallback\<void>   | Yes  | Callback used to return the common event publication result. |
 
 **Example**
 
@@ -101,16 +101,16 @@ import CommonEventManager from '@ohos.commonEventManager';
 
 // Information of a common event.
 let options:CommonEventManager.CommonEventPublishData = {
-    code: 0,             // Initial code of the common event.
-    data: "initial data",// Initial data of the common event.
-}
+    code: 0,              // Initial code of the common event.
+    data: 'initial data', // Initial data of the common event.
+};
 
 // Callback for common event publication
-function publishCB(err:Base.BusinessError) {
+let publishCallBack = (err:Base.BusinessError) => {
     if (err.code) {
-        console.error(`publishAsUser failed, code is ${err.code}`);
+        console.error(`Failed to publishAsUser. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.info("publishAsUser");
+        console.info('publishAsUser');
     }
 }
 
@@ -118,5 +118,5 @@ function publishCB(err:Base.BusinessError) {
 let userId = 100;
 
 // Publish a common event.
-commonEvent.publishAsUser("event", userId, options, publishCB);
+commonEvent.publishAsUser('event', userId, options, publishCallBack);
 ```

@@ -96,10 +96,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   request.agent.query("123456", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
-      console.error(`Failed to query a upload task, Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to query an upload task, Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`Succeeded in querying a upload task. result: ${taskInfo.uid}`);
+    console.info(`Succeeded in querying an upload task. result: ${taskInfo.uid}`);
   });
   ```
 
@@ -146,8 +146,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
 
   request.agent.query("123456").then((taskInfo: request.agent.TaskInfo) => {
-    console.info(`Succeeded in querying a upload task. result: ${taskInfo.uid}`);
+    console.info(`Succeeded in querying an upload task. result: ${taskInfo.uid}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query a upload task, Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to query an upload task, Code: ${err.code}, message: ${err.message}`);
   });
   ```

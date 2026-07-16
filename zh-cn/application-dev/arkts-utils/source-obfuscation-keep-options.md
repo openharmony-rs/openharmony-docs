@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 从API version 10开始，开启混淆后代码中的方法、属性或路径将被混淆。但在运行时，如果访问是未被混淆的原始方法、属性或路径，可能会导致功能失效。因此需要根据不同的场景配置相应的保留选项。
 
@@ -452,7 +452,7 @@ Human
 
 模块级`oh_modules`和工程级`oh_modules`在`DevEco Studio`中的目录结构如下图所示：
 
-![oh_modules](./figures/oh_modules.png)
+![oh_modules](./figures/oh-modules.png)
 
 **使用该选项时，需要注意以下事项：**
 

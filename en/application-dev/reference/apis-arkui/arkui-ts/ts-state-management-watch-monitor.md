@@ -71,11 +71,33 @@ The @Monitor decorator is used to listen for state variable changes in state man
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+## MonitorDecoratorOptions
+
+Configuration options of the @Monitor decorator.
+
+### Properties
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name          | Type   | Read-Only| Optional| Description                                                        |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableWildcard | boolean | No  | Yes  | Whether the wildcard capability is enabled. **true**: The wildcard capability is enabled. **false**: The wildcard capability is disabled. The default value is **true**, indicating that the wildcard capability is enabled by default.|
 
 ## MonitorDecorator<sup>12+</sup>
 
-type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
+type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: string[]) => MethodDecorator
 
 Represents the actual type of the @Monitor decorator.
 
@@ -83,13 +105,15 @@ Represents the actual type of the @Monitor decorator.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                                                        |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| value  | string   | Yes  | Variable path name used for listening, specified by you. When only one string is passed, this is the parameter type.|
+| value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | Yes  | In versions earlier than API 26.0.0, this parameter indicates the path of the monitored variable. The content is specified by you. The input value is of the string type when only a string is passed. Since API version 26.0.0, this parameter can also be an object of the MonitorDecoratorOptions type, which is used to configure the wildcard capability.|
 | ...args   | string[] | No  | Array of variable path names used for listening, specified by you. When multiple strings are passed, this is the parameter type.|
 
 **Return value**
@@ -153,6 +177,8 @@ When the monitored variable changes, the state management framework will call th
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name               | Type           | Read-Only| Optional| Description            |
@@ -169,6 +195,8 @@ Obtains the change information for the specified path.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -181,7 +209,7 @@ Obtains the change information for the specified path.
 
 | Type                                                 | Description                                                        |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| [IMonitorValue\<T\>](#imonitorvaluet12)  \| undefined | Path and change information for the monitored variable.<br>**T** is the type of the monitored variable.<br>If the monitored path does not exist, **undefined** is returned.<br>If no path is specified, the information corresponding to the first path in the **dirty** array is returned by default.|
+| [IMonitorValue\<T\>](#imonitorvaluet12)  \| undefined | Path and change information for the monitored variable.<br>**T** is the type of the monitored variable.<br>If the monitored path does not exist, **undefined** is returned.<br>Prior to API version 26.0.0, if no path is specified, this parameter returns information corresponding to the first path in the dirty array of changed paths by default.<br>Since API version 26.0.0, if no path is specified, this parameter returns the first non-wildcard path in the dirty array of changed paths by default.<br>If the specified path is a wildcard path, **undefined** is returned.<br>If no path is specified and all paths in the dirty array are wildcard paths, **undefined** is returned.|
 
 **Example**
 
@@ -192,7 +220,7 @@ class Info {
   @Trace age: number = 25;
   @Trace height: number = 175;
 
-  //Listen for one variable.
+  // Listen for one variable.
   @Monitor('name')
   onNameChange(monitor: IMonitor) {
     // If no path is specified for value, the first path in the dirty array is used by default.
@@ -239,6 +267,8 @@ Provides the specific change information for the monitored variable, obtained th
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,11 +319,11 @@ The @SyncMonitor decorator is used to listen for state variable changes in state
 
 | Name       | Type            | Description                          |
 | ----------- | ---------------- | ------------------------------ |
-| SyncMonitor | [MonitorDecorator](#monitordecorator12) | Attribute decorator, which listens for the changes of state variables.|
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | Method decorator for monitoring modifications to state variables.|
 
 **Error codes**:
 
-For details about the error codes, see [State Management Error Codes](../errorcode-stateManagement.md#130001-invalid-path-for-addmonitorclearmonitor).
+For details about the error codes, see [State Management Error Codes](../errorcode-stateManagement.md).
 
 | ID| Error Message            |
 | -------- | -------------------- |
@@ -310,7 +340,7 @@ class Info {
   @Trace age: number = 25;
   @Trace height: number = 175;
 
-  //Listen for one variable.
+  // Listen for one variable.
   @SyncMonitor('name')
   onNameChange() {
     hilog.info(0xFF00, 'testTag', '%{public}s', `name change to ${this.name}`);

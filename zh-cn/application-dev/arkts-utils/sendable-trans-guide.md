@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -362,7 +362,7 @@ runTests() {
 
 ``` TypeScript
 runTestsPb() {
-  taskpool.execute(observeProtobuf).then((res: test_pb) => {
+  taskpool.execute(observeProtobuf).then((res) => {
     this.pb = UIUtils.makeObserved(res)
   })
 }

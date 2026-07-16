@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_WaterfallDisplayAreaRects
 
 ## Overview
 
-The struct describes the curved area on a waterfall display.
+Describes the unavailable rectangles of a curved area on a waterfall display.
 
 **Since**: 12
 
@@ -26,7 +26,7 @@ The struct describes the curved area on a waterfall display.
 
 | Name| Description|
 | -- | -- |
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) left | Rectangle of the curved area on the left of the waterfall display.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) top | Rectangle of the curved area on the top of the waterfall display.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) right | Rectangle of the curved area on the right of the waterfall display.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) bottom | Rectangle of the curved area at the bottom of the waterfall display.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) left | Unavailable rectangle of the curved area on the left of the waterfall display.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) top | Unavailable rectangle of the curved area on the top of the waterfall display.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) right | Unavailable rectangle of the curved area on the right of the waterfall display.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) bottom | Unavailable rectangle of the curved area at the bottom of the waterfall display.|

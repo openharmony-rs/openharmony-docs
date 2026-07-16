@@ -19,5 +19,5 @@ Guideline参数，用于定义Guideline（RelativeContainer容器内的辅助线
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [layout.h](capi-layout-h.md)
 

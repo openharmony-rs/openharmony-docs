@@ -12,13 +12,13 @@
 
 以下代码示范了同时使用AudioRenderer和AudioCapturer实现音频通话功能的基本过程，其中未包含音频通话数据的传输过程，实际开发中，需要将网络传输来的对端通话数据解码播放，此处仅以读取音频文件的数据代替；同时需要将本端录制的通话数据编码打包，通过网络发送给对端，此处仅以将数据写入音频文件代替。
 
-示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS)。
+示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS)。
 
 ## 使用AudioRenderer播放对端的通话声音
 
 该过程与[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -76,15 +76,17 @@ async function initArguments(context: common.UIAbilityContext) {
           view.setUint8(i, 0);
         }
       }
-      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
-      // 如果开发者不希望播放某段buffer,返回audio.AudioDataCallbackResult.INVALID即可。
-      return audio.AudioDataCallbackResult.VALID;
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
-      }
+      // ...
       // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
@@ -168,7 +170,6 @@ async function stop() {
         console.error('Renderer stop failed.');
         // ...
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
         // ...
       }
@@ -195,6 +196,7 @@ async function release() {
         // ...
       }
     });
+    fs.close(file.fd);
   }
 }
 ```

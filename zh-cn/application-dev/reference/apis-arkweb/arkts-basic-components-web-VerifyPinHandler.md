@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的PIN码认证用户处理功能对象。示例代码参考[onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22)。
+VerifyPinHandler是Web组件中处理PIN码验证请求的类。当需要用户PIN码认证时，该处理器通过onVerifyPin事件回调提供给应用，允许应用响应PIN码验证结果。示例代码参考[onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22)。
 
 > **说明：**
 >

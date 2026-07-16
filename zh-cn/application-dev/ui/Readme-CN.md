@@ -93,6 +93,7 @@
         - [组件复用迁移](state-management/arkts-v1-v2-migration-reusable.md)
         - [循环渲染迁移](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [内置对象的迁移](state-management/arkts-v1-v2-migration-inner-object.md)
+        - [卡片状态变量迁移](state-management/arkts-v1-v2-migration-card.md)
         - [AnimateTo使用迁移](state-management/arkts-v1-v2-migration-animateTo.md)
       - 状态管理V1和V2混用场景<!--v1v2-mixing-->
         - [状态管理V1和V2混用指导（API version 19前）](state-management/arkts-v1-v2-mixusage-before-api-version.md)
@@ -139,9 +140,10 @@
     - [列表与网格概述](arkts-list-grid-development-overview.md)
     - [创建列表 (List)](arkts-layout-development-create-list.md)
     - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
-    - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
-    - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
+    - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)<!--RP11--><!--RP11End-->
+    - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)<!--RP12--><!--RP12End-->
     - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)<!--RP4--><!--RP4End-->
+    - [创建懒加载自定义布局 (LazyDynamicLayout)](arkts-layout-development-create-lazy-custom-layout.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
@@ -226,7 +228,7 @@
       - [出现/消失转场](arkts-enter-exit-transition.md)
       - [模态转场](arkts-modal-transition.md)
       - [共享元素转场 (一镜到底)](arkts-shared-element-transition.md)
-      - [旋转屏动画](arkts-rotation-transition-animation.md)    
+      - [旋转屏动画](arkts-rotation-transition-animation.md)
       - [页面转场动画 (不推荐)](arkts-page-transition-animation.md)
     - [粒子动画](arkts-particle-animation.md)
     - [组件动画](arkts-component-animation.md)
@@ -239,7 +241,7 @@
       - [模糊](arkts-blur-effect.md)
       - [阴影](arkts-shadow-effect.md)
       - [色彩](arkts-color-effect.md)
-    - [帧动画（ohos.animator）](arkts-animator.md)
+    - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)
@@ -298,6 +300,7 @@
   - 媒体展示<!--arkts-build-media-ndk-->
     - [显示图片（Image）](ndk-image-component.md)
     - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
+    - [使用弧形滑块视图容器 (ArcSwiper)](ndk-arc-swiper.md)
   - [构建表单组件](ndk-build-form-components.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - 使用动画<!--arkts-use-animation-ndk-->

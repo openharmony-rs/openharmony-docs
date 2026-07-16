@@ -71,3 +71,7 @@
   - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)
+- Audio Kit常见问题<!--audio-issues-->
+  - [使用音频快照获取问题定位信息](audio-runtime-debugging-info.md)
+  - [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)
+- [Audio Kit术语](audio-glossary.md)

@@ -1321,7 +1321,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) --> 
- 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
@@ -1383,5 +1383,5 @@ export default class TestAbility extends UIAbility {
 3. 检查用例代码逻辑，确保断言通过。
 ## 完整示例
 <!--RP3-->
-[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit)
+[测试框架](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/jsunit)
 <!--RP3End-->
