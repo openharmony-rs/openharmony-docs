@@ -1,7 +1,7 @@
 # @ohos.advertising.AdsServiceExtensionAbility (广告扩展服务)
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
