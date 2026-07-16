@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 106104 NodeAdapter未绑定
+## 106104 适配器未绑定
 
 **错误信息**
 
@@ -28,7 +28,7 @@ The lazy loading adapter is not bound to the component.
 
 为组件设置NodeAdapter。
 
-## 106105 NodeAdapter已存在
+## 106105 适配器已存在
 
 **错误信息**
 
