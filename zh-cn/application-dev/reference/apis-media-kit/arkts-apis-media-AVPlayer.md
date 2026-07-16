@@ -10,7 +10,7 @@
 
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](#onerror9)：监听错误事件。
 
-应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
+应用需要控制AVPlayer实例数量，播放结束后应及时调用release()释放资源。建议同时持有的AVPlayer实例数量不超过合理范围，避免内存消耗过大触发系统保护机制终止应用。
 
 音视频播放开发指导请参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 
@@ -35,7 +35,7 @@ import { media } from '@kit.MediaKit';
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认值为空（表示未设置窗口）。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 视频循环播放属性，动态属性。true表示循环播放，false表示不循环播放，默认值为false。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式，默认VIDEO_SCALE_TYPE_FIT，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型，默认SHARE_MODE，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | 否   | 是   | 设置音频渲染信息。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。若默认usage不满足需求，则须主动配置[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)。<br/>只允许在**initialized**状态下设置。<br/>在第一次调用[prepare()](#prepare9)之前设置，以便音频渲染器信息在之后生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -562,6 +562,8 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function test() {
   let player = await media.createAVPlayer();
   let selectionFilter: media.TrackSelectionFilter = {
@@ -1128,7 +1130,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
   avPlayer.prepare((err: BusinessError) => {
     if (err) {
-      console.error('Failed to prepare,error message is :' + err.message);
+      console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in preparing');
     }
@@ -1178,7 +1180,7 @@ async function  test(){
   avPlayer.prepare().then(() => {
     console.info('Succeeded in preparing');
   }, (err: BusinessError) => {
-    console.error('Failed to prepare,error message is :' + err.message);
+    console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1233,7 +1235,7 @@ async function  test(){
     console.info('Succeeded in preparing');
     avPlayer.setMediaMuted(media.MediaType.MEDIA_TYPE_AUD, true);
   }, (err: BusinessError) => {
-    console.error('Failed to prepare,error message is :' + err.message);
+    console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1276,7 +1278,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/paused/completed状态后才能调用。
   avPlayer.play((err: BusinessError) => {
     if (err) {
-      console.error('Failed to play,error message is :' + err.message);
+      console.error(`Failed to play.Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in playing');
     }
@@ -1323,7 +1325,7 @@ async function  test(){
   avPlayer.play().then(() => {
     console.info('Succeeded in playing');
   }, (err: BusinessError) => {
-    console.error('Failed to play,error message is :' + err.message);
+    console.error(`Failed to play.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1366,7 +1368,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至playing状态后才能调用。
   avPlayer.pause((err: BusinessError) => {
     if (err) {
-      console.error('Failed to pause,error message is :' + err.message);
+      console.error(`Failed to pause.Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in pausing');
     }
@@ -1413,7 +1415,7 @@ async function  test(){
   avPlayer.pause().then(() => {
     console.info('Succeeded in pausing');
   }, (err: BusinessError) => {
-    console.error('Failed to pause,error message is :' + err.message);
+    console.error(`Failed to pause.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1456,7 +1458,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
   avPlayer.stop((err: BusinessError) => {
     if (err) {
-      console.error('Failed to stop,error message is :' + err.message);
+      console.error(`Failed to stop.Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in stopping');
     }
@@ -1503,7 +1505,7 @@ async function  test(){
   avPlayer.stop().then(() => {
     console.info('Succeeded in stopping');
   }, (err: BusinessError) => {
-    console.error('Failed to stop,error message is :' + err.message);
+    console.error(`Failed to stop.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1546,7 +1548,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped/error状态后才能调用。
   avPlayer.reset((err: BusinessError) => {
     if (err) {
-      console.error('Failed to reset,error message is :' + err.message);
+      console.error(`Failed to reset.Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in resetting');
     }
@@ -1593,7 +1595,7 @@ async function  test(){
   avPlayer.reset().then(() => {
     console.info('Succeeded in resetting');
   }, (err: BusinessError) => {
-    console.error('Failed to reset,error message is :' + err.message);
+    console.error(`Failed to reset.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1636,7 +1638,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发除released以外的状态才能调用。
   avPlayer.release((err: BusinessError) => {
     if (err) {
-      console.error('Failed to release,error message is :' + err.message);
+      console.error(`Failed to release.Code:${err.code},message:${err.message}`);
     } else {
       console.info('Succeeded in releasing');
     }
@@ -1683,7 +1685,7 @@ async function  test(){
   avPlayer.release().then(() => {
     console.info('Succeeded in releasing');
   }, (err: BusinessError) => {
-    console.error('Failed to release,error message is :' + err.message);
+    console.error(`Failed to release.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1773,7 +1775,7 @@ async function  test(){
   avPlayer.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
     console.info('Succeeded in getting TrackDescription');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get TrackDescription, error:${error}`);
+    console.error(`Failed to get TrackDescription.Code:${error.code},message:${error.message}`);
   });
 }
 ```
@@ -1819,7 +1821,7 @@ async function  test(){
   avPlayer.getSelectedTracks().then((arrList: Array<number>) => {
     console.info('Succeeded in getting SelectedTracks');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get SelectedTracks, error:${error}`);
+    console.error(`Failed to get SelectedTracks.Code:${error.code},message:${error.message}`);
   });
 }
 ```
@@ -1850,7 +1852,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avPlayer: media.AVPlayer | undefined;
 let playbackInfo: media.PlaybackInfo | undefined;
 media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
-  if (player != null) {
+  if (player) {
     avPlayer = player;
     console.info(`Succeeded in creating AVPlayer`);
     if (avPlayer) {
@@ -1910,7 +1912,7 @@ async function  test(){
     let playbackPosition: number = avPlayer.getPlaybackPosition();
     console.info(`AVPlayer getPlaybackPosition== ${playbackPosition}`);
   }, (err: BusinessError) => {
-    console.error('Failed to prepare,error message is :' + err.message);
+    console.error(`Failed to prepare.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -1956,7 +1958,7 @@ async function  test(){
     let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
     console.info(`AVPlayer getCurrentPresentationTimestamp== ${currentPresentation}`);
   }, (err: BusinessError) => {
-    console.error('Failed to prepare,error message is :' + err.message);
+    console.error(`Failed to play.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -2011,7 +2013,8 @@ async function  test(){
   let avPlayer: media.AVPlayer = await media.createAVPlayer();
   let audioTrackIndex: Object = 0;
   avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-    if (arrList != null) {
+    if (arrList) {
+      // 遍历轨道描述列表，提取非首个轨道的索引用于音频轨道选择
       for (let i = 0; i < arrList.length; i++) {
         if (i != 0) {
           // 获取音频轨道列表。
@@ -2019,7 +2022,7 @@ async function  test(){
         }
       }
     } else {
-      console.error(`Failed to get TrackDescription, error:${error}`);
+      console.error(`Failed to get TrackDescription.Code:${error.code},message:${error.message}`);
     }
   });
 
@@ -2074,7 +2077,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avPlayer: media.AVPlayer = await media.createAVPlayer();
 let audioTrackIndex: Object = 0;
 avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-  if (arrList != null) {
+  if (arrList) {
+    // 遍历轨道描述列表，提取非首个轨道的索引用于音频轨道选择
     for (let i = 0; i < arrList.length; i++) {
       if (i != 0) {
         // 获取音频轨道列表。
@@ -2082,7 +2086,7 @@ avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDe
       }
     }
   } else {
-    console.error(`Failed to get TrackDescription, error:${error}`);
+    console.error(`Failed to get TrackDescription.Code:${error.code},message:${error.message}`);
   }
 });
 
@@ -2096,7 +2100,7 @@ avPlayer.deselectTrack(parseInt(audioTrackIndex.toString()));
 
 setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boolean): void
 
-设置解密配置。当收到[on('mediaKeySystemInfoUpdate')](#onmediakeysysteminfoupdate11)事件时，需根据事件上报的信息创建相关配置并设置解密配置，否则无法播放。
+设置解密配置。当收到[on('mediaKeySystemInfoUpdate')](#onmediakeysysteminfoupdate11)事件时，需根据事件上报的MediaKeySystemInfo信息创建MediaKeySystem和MediaKeySession对象，并调用setDecryptionConfig设置解密配置，否则无法播放。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2770,7 +2774,7 @@ async function test(){
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
     console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
+    console.error(`Failed to getLoadedTimeRanges.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -2810,7 +2814,7 @@ async function test(){
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
     console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
+    console.error(`Failed to getSeekableTimeRanges.Code:${err.code},message:${err.message}`);
   });
 }
 ```
@@ -2840,13 +2844,15 @@ seekToDefaultPosition(): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function test(){
   let avPlayer = await media.createAVPlayer();
   try {
     avPlayer.seekToDefaultPosition()
     console.info('Succeeded in calling seekToDefaultPosition.');
   } catch (err) {
-    console.error('Failed to seekToDefaultPosition, error message is: ' + err.message);
+    console.error(`Failed to seekToDefaultPosition.Code:${err.code},message:${err.message}`);
   }
 }
 ```
@@ -4896,7 +4902,7 @@ import { util } from '@kit.ArkTS';
 async function test(){
   let avPlayer = await media.createAVPlayer();
 
-  // 监听后，开始接收seiMessageReceived事件回调。
+  // 监听后，开始接收seiMessageReceived事件回调。订阅payloadType为5的SEI消息，并解码payload（去除前16字节头部）为UTF-8字符串
   avPlayer.on('seiMessageReceived', [5], (messages: Array<media.SeiMessage>, playbackPosition?: number) =>
   {
     console.info('seiMessageReceived playbackPosition ' + playbackPosition);
@@ -5664,7 +5670,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avPlayer: media.AVPlayer | undefined;
 let playbackMetrics: media.PlaybackMetrics | undefined;
 media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
-  if (player != null) {
+  if (player) {
     avPlayer = player;
     console.info(`Succeeded in creating AVPlayer`);
     if (avPlayer) {
@@ -5857,7 +5863,7 @@ async function test(){
     console.info('Succeeded in getting CurrentTrack');
     myTrackId = trackId;
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get CurrentTrack, error: ${error}`);
+    console.error(`Failed to get CurrentTrack.Code:${error.code},message:${error.message}`);
   });
 }
 ```
