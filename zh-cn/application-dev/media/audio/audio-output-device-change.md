@@ -270,11 +270,11 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   ArkTS-Sta示例：
 
   <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
-
+  
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
   // ...
-
+  
   let audioRenderer: audio.AudioRenderer | null = null;
   let audioStreamInfo: audio.AudioStreamInfo = {
     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
@@ -291,7 +291,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
     rendererInfo: audioRendererInfo
   };
   // ...
-
+  
     audio.createAudioRenderer(audioRendererOptions).then((data) => {
       audioRenderer = data as audio.AudioRenderer;
       // ...
@@ -300,7 +300,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
       // ...
     });
     // ...
-
+  
     let audioSessionManager = audio.getAudioManager().getSessionManager();
     audioSessionManager.activateAudioSession({ concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS });
     // 订阅监听音频流输出设备变化及原因。
