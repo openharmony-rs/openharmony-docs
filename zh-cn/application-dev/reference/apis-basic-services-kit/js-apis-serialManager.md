@@ -55,7 +55,6 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 31400001 | Serial port management exception. |
 
 **示例：**
 
