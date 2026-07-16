@@ -7,24 +7,25 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，系统提供ModularObjectDispatcher（[modular_object_dispatcher.h](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md)）组件，支持客户端在运行时动态查询服务端的接口元数据，并通过成员ID（MemberID）动态调用远端方法，无需在编译期依赖服务端的接口定义。
+ModularObjectDispatcher是模块化对象模型的客户端动态调用引擎，从API版本26.0.0起支持。服务端通过Taihe工具定义接口并生成类型库元数据，客户端连接ModularObjectExtensionAbility获取Proxy对象后创建分发器，即可在运行时查询类型库元数据并通过方法名动态发起IPC调用，无需在编译期依赖服务端接口定义，适用于通用调用框架、脚本引擎、自动化测试框架等需要在运行时确定调用目标的场景。
 
 > **说明**
 >
 > - 有关模块化对象的介绍、基本概念和运行机制，请参考[模块化对象模型概述 (C/C++)](./modular-object-extension-overview.md)。
 > - 有关ModularObjectExtensionAbility服务端和客户端的基础开发流程（连接、Proxy通信、断开），请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)。
 > - 有关Taihe工具自动生成服务侧的Proxy/Stub代码及类型库文件，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信](modular-object-extension-ability-taihe.md)。
+
 ## 基本概念
 
-- [ModularObjectDispatcher（分发器）](../reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher8h.md)：客户端侧的动态调用引擎，基于远端Proxy对象创建，提供类型库元数据查询和动态方法调用能力。
-- [TypeDescriptor（类型描述符）](../reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-typedescriptor8h.md)：通过分发器获取的元数据访问句柄，用于查询远端服务定义的接口、方法、枚举和结构体等信息。
-- 类型库元数据（Type Library Metadata）：服务端通过[Taihe工具](modular-object-extension-ability-taihe.md#基本概念)生成的类型描述文件（`.typelib.json`），定义了接口、方法签名、参数类型、枚举值和结构体字段。分发器在首次访问时从远端延迟加载该文件。
-- [Variant（变体）](../reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md)：一种能够存储多种不同类型值的通用数据容器，通过类型标签（vt字段）区分实际存储的数据类型，用于方法调用的参数传递和返回值接收。
+- ModularObjectDispatcher（分发器）：客户端侧的动态调用引擎，基于远端Proxy对象创建，提供类型库元数据查询和动态方法调用能力。
+- TypeDescriptor（类型描述符）：通过分发器获取的元数据访问句柄，用于查询远端服务定义的接口、方法、枚举和结构体等信息。
+- 类型库元数据（Type Library Metadata）：服务端通过Taihe工具生成的类型描述信息，定义了接口、方法签名、参数类型、枚举值和结构体字段。分发器在首次访问时从远端延迟加载该信息。
+- Variant（变体）：一种能够存储多种不同类型值的通用数据容器，通过类型标签区分实际存储的数据类型，用于方法调用的参数传递和返回值接收。
 - MemberID（成员ID）：方法在类型库中的唯一标识，客户端通过方法名解析出MemberID后，即可使用该ID发起动态调用。
 
 ## 运行机制
 
-ModularObjectDispatcher的动态调用流程分为以下几个阶段：	 
+ModularObjectDispatcher的调用流程分为以下几个阶段：
  
 1. **创建分发器**：客户端先连接ModularObjectExtensionAbility获取远端Proxy对象，再通过[OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)从Proxy创建绑定到主服务接口的分发器。	 
  
@@ -38,25 +39,24 @@ ModularObjectDispatcher的动态调用流程分为以下几个阶段：
 
 6. **释放资源**：分发器、类型描述符、各类容器句柄、Variant和TypeInfo对象均需按所有权规则调用对应的接口释放。
 
-与静态调用方式（编译期依赖服务端接口定义）相比，动态调用方式无需编译期绑定，适用于接口在运行时才能确定的场景，如通用调用框架、脚本引擎、动态测试工具等。
-
 ## 约束与限制
 
 - 使用ModularObjectDispatcher前，需确保客户端已与ModularObjectExtensionAbility建立连接，连接相关约束与限制请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md#约束与限制)。
-- 使用动态调用前，需确保服务端的ModularObjectExtensionAbility已通过Taihe工具生成类型库元数据文件，否则动态调用将不可用。
+- 服务端的Stub必须通过[Taihe工具](modular-object-extension-ability-taihe.md)生成。ModularObjectDispacherDispatcher依赖类型库元数据完成动态调用，只有Taihe工具生成的Stub才会嵌入类型库元数据，手动编写的Stub无法支持动态调用。
 - 方法的参数和返回值类型由服务端定义，客户端须通过元数据查询获取后，严格按照类型构造Variant，否则将返回类型不匹配错误。
+- 主动断开连接或者对端死亡的时候，ModularObjectDispatcher将不再可用。
 
 ## 开发步骤
 
 ### 前提条件
 
-已完成客户端连接ModularObjectExtensionAbility并获取Proxy对象，请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)中的"连接ModularObjectExtensionAbility"和"通过Proxy与服务端通信"章节。
+- 已完成客户端连接ModularObjectExtensionAbility并获取Proxy对象，请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)中的"连接ModularObjectExtensionAbility"和"通过Proxy与服务端通信"章节。
 
 以下步骤假设已通过连接回调获取到类型为`OHIPCRemoteProxy*`的`g_remoteProxy`对象，以及保存分发器、类型描述符的全局变量`g_ModObjDispatcher`、`g_TypeDescriptor`。
 
 ### 创建分发器实例
 
-通过Proxy对象创建主服务接口的分发器实例。类型库元数据将在首次需要时从远端延迟加载。
+分发器是客户端动态调用的入口。创建分发器后，客户端即可在运行时查询服务端接口元数据并按方法名发起调用。本节介绍如何基于已连接的Proxy对象创建绑定到主服务接口的分发器实例，类型库元数据将在首次需要时从远端延迟加载。
 
 <!-- @[modular_object_extension_dispatcher_createMainServiceInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -72,6 +72,8 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 如果服务端定义了多个非主服务接口，可通过[OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createsubinstance)创建子实例分发器。子实例共享主服务分发器的类型库元数据，但使用独立的IPC代理发送请求。
 
 ### 获取类型描述符
+
+类型描述符是查询服务端接口元数据的访问句柄。获取类型描述符后，客户端可以遍历服务端定义的全部接口、方法、参数、结构体和枚举等信息，为后续按方法名动态调用做准备。本节介绍如何判断远端服务是否提供类型库元数据，并获取类型描述符句柄。
 
 通过[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)接口判断远端服务是否提供了类型库元数据。只有支持动态接口的服务端才能进行后续的元数据查询和动态调用。
 
@@ -103,6 +105,8 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 ```
 
 ### 查询接口信息说明书
+
+此场景相当于获取服务端的"接口说明书"。客户端可以在运行时自动发现服务端提供的全部接口、方法签名、结构体字段和枚举取值等信息。本节介绍如何基于类型描述符查询各类元数据。
 
 通过分发器获取TypeDescriptor句柄，查询服务端定义的接口、方法、枚举和结构体等元数据信息。
 
@@ -335,7 +339,7 @@ for (uint32_t valueIndex = 0; valueIndex < valueCount; valueIndex++) {
 
 ### 获取方法的参数类型
 
-在动态调用前，需获取方法的返回值类型和参数类型，确保构造的Variant与期望类型匹配。
+动态调用方法前，客户端必须严格按照服务端定义的类型构造参数，否则将返回类型不匹配错误。此场景用于在调用前获取方法的返回值类型和每个入参的类型与名称，确保传入的Variant与期望类型完全匹配，适用于需要构造合规参数以发起调用的场景。
 
 **获取方法返回值类型**
 
@@ -432,6 +436,8 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 
 ### 通过动态接口执行动态调用
 
+此场景是动态调用的核心环节。客户端只需提供方法对应的MemberID和构造好的参数，即可在运行时发起IPC调用并获取返回值，整个过程无需编译期绑定服务端接口，适用于接口在运行时才能确定的通用调用框架、脚本引擎、动态测试工具等场景。
+
 通过方法名解析MemberID，构造参数后发起动态调用。MemberID可通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)接口从TypeDescriptor查询，具体参见[遍历接口下的方法名称](#遍历接口下的方法名称)。
 
 **构造参数并调用**
@@ -478,6 +484,8 @@ OH_LOG_INFO(LOG_APP, "addResult :%{public}d", addResult);
 > - **方法级错误**（pMethodErrCode输出参数）：远端方法执行返回的业务错误码，0表示方法执行成功。
 
 ### 传递复杂类型参数
+
+当服务端方法涉及数组、向量、集合、映射等容器类型或结构体参数时，简单的标量Variant无法满足需求。此场景用于在动态调用中构造和传递复杂类型数据，使客户端能够调用服务端定义的任意签名的接口，适用于需要传递批量数据、键值对或复合结构体的场景。
 
 当方法参数包含容器类型（数组、向量、集合、映射）或结构体时，需先创建对应的容器实例并填充数据，再将容器句柄包装为Variant参数。
 
