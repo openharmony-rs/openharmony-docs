@@ -1596,6 +1596,61 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 });
 ```
 
+
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                           |
+| --------- | ------- | ---- | ----------------------------- |
+| hashCode  | string  | 是   | 通知的唯一标识。                |
+
+**返回值：**
+
+| 类型                                                        | 说明                                                         |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取通知信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.                  |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.|
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600007  | The notification does not exist.    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
 getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
