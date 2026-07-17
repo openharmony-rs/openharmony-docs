@@ -14,7 +14,7 @@ Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
-> - 本模块接口仅适用于通过[setAllowedKioskApps接口](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
+> - 本模块接口仅适用于通过[applicationManager.setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
 
 ## 导入模块
 
