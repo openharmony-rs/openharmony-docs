@@ -6,7 +6,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=1b37f75d465392a2b5313139510e8515d4fddd3d translatedAt=2026-07-17T07:47:09.146Z pushedAt=2026-07-17T08:15:33.986Z -->
+<!-- md-trans-meta sourceCommit=1b37f75d465392a2b5313139510e8515d4fddd3d translatedAt=2026-07-17T07:47:09.146Z pushedAt=2026-07-17T09:31:28.409Z -->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization. DLP protects sensitive files through encryption and generates encrypted files in .dlp format. When opening a DLP file, the system automatically creates an isolated DLP sandbox environment to ensure that the file content is not leaked to unauthorized environments. Fine-grained permission control is supported for enterprise DLP files, including management of permissions to view, edit, copy, print, and screen-record files.
 
@@ -487,7 +487,7 @@ dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
     console.error('isInSandbox error', err.code, err.message);
   } else {
-    console.info('isInSandbox：', JSON.stringify(isInSandbox));
+    console.info('isInSandbox:', JSON.stringify(isInSandbox));
   }
 }); // Whether the app is in the sandbox.
 ```
@@ -654,7 +654,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // Check whether in the sandbo
         console.error('setRetentionState error,', err.code, err.message);
       } else {
         console.info('setRetentionState success');
-        console.info('retentionState：', JSON.stringify(retentionState));
+        console.info('retentionState:', JSON.stringify(retentionState));
       }
     }); // Set sandbox retention.
   }
@@ -1060,7 +1060,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.setSandboxAppConfig('configInfo').then((configInfo) => { // Set the sandbox application configuration information.
-  console.info('configInfo：', configInfo);
+  console.info('configInfo:', configInfo);
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1099,7 +1099,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.cleanSandboxAppConfig().then((configInfo) => { // Clean the sandbox application configuration information.
-  console.info('configInfo：', configInfo);
+  console.info('configInfo:', configInfo);
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1995,7 +1995,7 @@ Sets the list of apps controlled by enterprise DLP. This API uses a promise to r
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| appLists | Array&lt;string&gt; | Yes | List of appIdentifiers of the apps to be controlled.<br>The maximum length of the array is 100. If the maximum length is exceeded, error code 19100001 is returned.<br>Each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an app. For details about how to obtain the appIdentifier, see [Obtaining the appIdentifier of an App](../../quick-start/common-problem-of-application.md#how-to-obtain-the-appidentifier-in-app-information). The maximum length of a single appIdentifier is 4096 bytes. If the maximum length is exceeded, error code 19100001 is returned.|
+| appLists | Array&lt;string&gt; | Yes | List of appIdentifiers of the apps to be controlled.<br>The maximum length of the array is 100. If the maximum length is exceeded, error code 19100001 is returned.<br>Each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an app. For details about how to obtain the appIdentifier, see [How Do I Obtain appIdentifier from Application Information?](../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). The maximum length of a single appIdentifier is 4096 bytes. If the maximum length is exceeded, error code 19100001 is returned.|
 | userId | number | No | ID of the user for whom the controlled app list is configured.<br>If this parameter is not specified, the current user is used by default.|
 
 **Return value**
