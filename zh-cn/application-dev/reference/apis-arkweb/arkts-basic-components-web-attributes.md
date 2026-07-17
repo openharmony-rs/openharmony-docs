@@ -7201,7 +7201,7 @@ ArkTS-Sta: enableDrag(value: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------- | ---- | --------------------------------- |
-| value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用网页拖拽功能，true表示启用，false表示不启用。传入undefined或null时为true，保持默认值，即启用网页拖拽功能。 |
+| value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用网页拖拽功能，true表示启用，false表示不启用。传入undefined或null时为true。 |
  **示例：**
 
   ArkTS-Dyn示例：
@@ -7283,7 +7283,7 @@ ArkTS-Sta: aiSessionOptions(aiSessions: Array&lt;AISessionEvent&gt; | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| aiSessions |  ArkTS-Dyn: Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt;<br/>ArkTS-Sta: Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt; \|  undefined | 是 | 前端AI会话配置对象数组。AISessionEvent对象包含以下属性：aiSessionType（AISessionType类型，AI会话类型，如SUMMARIZER等），onCreateAISession（函数类型，创建AI会话的回调，签名：(id: string, params: string, result: OnAISessionCallback) => boolean），onExecuteAIAction（函数类型，执行AI动作的回调，签名：(id: string, params: string, result: OnAISessionCallback) => void），onDestroyAISession（函数类型，销毁AI会话的回调，签名：(id: string) => void）。当前仅支持[AISessionType](./arkts-basic-components-web-e.md#aisessiontype)中包含的模型。传入undefined或null时不启用自定义AI会话。 |
+| aiSessions |  ArkTS-Dyn: Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt;<br/>ArkTS-Sta: Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt; \|  undefined | 是 | 前端AI会话配置对象数组，每个对象包含AI会话类型及对应的生命周期回调方法。当前仅支持[AISessionType](./arkts-basic-components-web-e.md#aisessiontype)中包含的模型。 |
 
 **示例：**
 
