@@ -116,6 +116,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    创建输入数据回调函数`RequestDataCallback`，函数类型为[OH_AudioConverter_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback)，调用[OH_AudioConverter_SetInputCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback)接口设置回调函数。
 
    输入数据回调函数。
+   
    <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
@@ -147,6 +148,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    ```
 
    设置输入数据回调。
+   
    <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
