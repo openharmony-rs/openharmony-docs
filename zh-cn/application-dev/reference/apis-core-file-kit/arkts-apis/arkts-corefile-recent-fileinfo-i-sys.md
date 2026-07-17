@@ -6,11 +6,17 @@
 
 **废弃版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-recent-interface FileInfo--><!--Device-recent-interface FileInfo-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { recent } from '@kit.CoreFileKit';
+```
 
 ## ctime
 
@@ -27,6 +33,8 @@ readonly ctime: number
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileInfo-readonly ctime: number--><!--Device-FileInfo-readonly ctime: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -48,6 +56,8 @@ readonly fileName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FileInfo-readonly fileName: string--><!--Device-FileInfo-readonly fileName: string-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -58,7 +68,7 @@ readonly fileName: string
 readonly mode: number
 ```
 
-[文件权限信息](arkts-corefile-stat-i.md#Stat)。
+[文件权限信息](arkts-corefile-file-fs-stat-i.md)。
 
 **类型：** number
 
@@ -67,6 +77,8 @@ readonly mode: number
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileInfo-readonly mode: number--><!--Device-FileInfo-readonly mode: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -88,6 +100,8 @@ readonly mtime: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FileInfo-readonly mtime: number--><!--Device-FileInfo-readonly mtime: number-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -107,6 +121,8 @@ readonly size: number
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileInfo-readonly size: number--><!--Device-FileInfo-readonly size: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -128,6 +144,8 @@ readonly srcPath: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FileInfo-readonly srcPath: string--><!--Device-FileInfo-readonly srcPath: string-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -147,6 +165,8 @@ readonly uri: string
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileInfo-readonly uri: string--><!--Device-FileInfo-readonly uri: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 

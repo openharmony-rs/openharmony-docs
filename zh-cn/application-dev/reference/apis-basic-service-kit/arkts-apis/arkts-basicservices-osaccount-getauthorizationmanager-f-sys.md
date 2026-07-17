@@ -1,5 +1,11 @@
 # getAuthorizationManager（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
+
 ## getAuthorizationManager
 
 ```TypeScript
@@ -12,6 +18,8 @@ function getAuthorizationManager(): AuthorizationManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-osAccount-function getAuthorizationManager(): AuthorizationManager--><!--Device-osAccount-function getAuthorizationManager(): AuthorizationManager-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -20,13 +28,13 @@ function getAuthorizationManager(): AuthorizationManager
 
 | 类型 | 说明 |
 | --- | --- |
-| AuthorizationManager | 返回系统账号授权管理的实例对象。 |
+| [AuthorizationManager](arkts-basicservices-osaccount-authorizationmanager-i-sys.md) | 返回系统账号授权管理的实例对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
 **示例：**
 

@@ -1,16 +1,24 @@
 # setPortRoleTypes（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## setPortRoleTypes
 
 ```TypeScript
 function setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>
 ```
 
-����ָ���Ķ˿�֧�ֵĽ�ɫģʽ����������ɫ�����ݴ����ɫ��ʹ��Promise�첽�ص���
+设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
+
+<!--Device-usbManager-function setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>--><!--Device-usbManager-function setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -20,23 +28,23 @@ function setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: Da
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | �˿ںš� |
-| powerRole | PowerRoleType | 是 | ���Ľ�ɫ�� |
-| dataRole | DataRoleType | 是 | ���ݴ���Ľ�ɫ�� |
+| portId | number | 是 | 端口号。 |
+| powerRole | [PowerRoleType](arkts-basicservices-usbmanager-powerroletype-e-sys.md) | 是 | 充电的角色。 |
+| dataRole | [DataRoleType](arkts-basicservices-usbmanager-dataroletype-e-sys.md) | 是 | 数据传输的角色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise���� |
+| Promise<void> | Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission required to<br/>call the API.&lt;br&gt;**适用版本：** 18+ |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied. Normal application do not have permission to use system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
-| [14400003](../../errorcode-universal.md#14400003-Unsupported) | Unsupported operation. The current device does not support port role switching. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 18+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Normal application do not have permission to use system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1.Mandatory parameters are left unspecified.* <br>2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [14400003](../../apis-basic-services-kit/errorcode-usb.md#14400003-不支持的端口角色切换) | Unsupported operation. The current device does not support port role switching. |
 

@@ -1,5 +1,11 @@
 # getTimezone
 
+## 导入模块
+
+```TypeScript
+import { systemTime } from '@kit.BasicServicesKit';
+```
+
 ## getTimezone
 
 ```TypeScript
@@ -14,19 +20,21 @@ function getTimezone(callback: AsyncCallback<string>): void
 
 **替代接口：** getTimezone(callback:
 
+<!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void--><!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回系统时区。具体可见<br/>[支持的系统时区](../../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，返回系统时区。具体可见[支持的系统时区](../../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [-1](../../errorcode-universal.md#-1) |  |
+| -1 |  |
 
 **示例：**
 
@@ -41,8 +49,8 @@ try {
     }
     console.info(`Succeeded in getting timezone : ${data}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 
@@ -61,7 +69,9 @@ function getTimezone(): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [getTimezone()](arkts-basicservices-systemdatetime-gettimezone-f.md#getTimezone-2)
+**替代接口：** [getTimezone()](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone-2)
+
+<!--Device-systemTime-function getTimezone(): Promise<string>--><!--Device-systemTime-function getTimezone(): Promise<string>-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -69,13 +79,13 @@ function getTimezone(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回系统时区。具体可见<br/>[支持的系统时区](../../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
+| Promise<string> | Promise对象，返回系统时区。具体可见[支持的系统时区](../../../../reference/apis-basic-services-kit/js-apis-system-time.md#支持的系统时区) 。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [-1](../../errorcode-universal.md#-1) |  |
+| -1 |  |
 
 **示例：**
 
@@ -88,8 +98,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 

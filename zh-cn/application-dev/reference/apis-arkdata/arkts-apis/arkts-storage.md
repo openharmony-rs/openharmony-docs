@@ -6,14 +6,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Storage](arkts-arkdata-storage-c.md) |  |
+| [Storage](arkts-arkdata-storage-storage-c.md) |  |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ClearStorageOptions](arkts-arkdata-clearstorageoptions-i.md) |  |
-| [DeleteStorageOptions](arkts-arkdata-deletestorageoptions-i.md) |  |
-| [GetStorageOptions](arkts-arkdata-getstorageoptions-i.md) |  |
-| [SetStorageOptions](arkts-arkdata-setstorageoptions-i.md) |  |
+| [ClearStorageOptions](arkts-arkdata-storage-clearstorageoptions-i.md) |  |
+| [DeleteStorageOptions](arkts-arkdata-storage-deletestorageoptions-i.md) |  |
+| [GetStorageOptions](arkts-arkdata-storage-getstorageoptions-i.md) |  |
+| [SetStorageOptions](arkts-arkdata-storage-setstorageoptions-i.md) |  |
 

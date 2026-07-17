@@ -4,9 +4,11 @@
 export type BundleResourceInfo = _BundleResourceInfo
 ```
 
-Ӧ�����õ�ͼ���������Ϣ��
+应用配置的图标和名称信息。
 
 **起始版本：** 11
+
+<!--Device-bundleResourceManager-export type BundleResourceInfo = _BundleResourceInfo--><!--Device-bundleResourceManager-export type BundleResourceInfo = _BundleResourceInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 

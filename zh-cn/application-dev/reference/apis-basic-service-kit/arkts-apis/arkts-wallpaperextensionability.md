@@ -1,5 +1,11 @@
 # @ohos.WallpaperExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
+```
+
 ## 汇总
 
 <!--Del-->

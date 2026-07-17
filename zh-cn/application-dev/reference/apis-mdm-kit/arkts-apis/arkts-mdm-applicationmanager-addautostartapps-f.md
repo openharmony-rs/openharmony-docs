@@ -1,14 +1,18 @@
 # addAutoStartApps
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## addAutoStartApps
 
 ```TypeScript
 function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void
 ```
 
-Ϊ��ǰ�û����ӿ���������Ӧ��������ͨ�����ӿ�������������������Ӧ�ã���ֹ�û����豸���ֶ�ȡ��Ӧ��������<!--RP4--><!--RP4End-->������ͨ��
-[removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md#removeAutoStartApps-1)�ӿڽ�Ӧ�ô���
-�����������Ƴ���
+为当前用户添加开机自启动应用名单。通过本接口添加至自启动名单的应用，禁止用户在设备上手动取消应用自启动<!--RP4--><!--RP4End-->，但可通过[removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md#removeautostartapps-1)接口将应用从自启动名单中移除。
 
 **起始版本：** 12
 
@@ -16,23 +20,25 @@ function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void--><!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| autoStartApps | Array&lt;Want&gt; | 是 | ����������Ӧ�����顣���鳤������Ϊ10�����磺�������������5��Ӧ�ã��������ͨ�����ӿ�����5����Want�б������bundleName��<br/>abilityName��Ability֧��UIAbility��ServiceExtensionAbility����<br/>[abilities](../../../../quick-start/module-configuration-file.md#abilities��ǩ)��ǩ��exported����ֵΪfalseʱ����֧������Ability����<br/>API version 24��ʼ������֧��ͨ��Want��parameters�����е�isHiddenStart�ֶ�����Ӧ�ÿ��������Ƿ�����UI���棬true��ʾ���أ�false��ʾ�����ء�Ĭ��ֵ��false���ò�������Ϊ<br/>trueʱ��Ӧ�ñ�������״̬����������������ʧ�ܣ�����ǰ������һ��Ӧ������ʱ����UI���棬��Ӧ��δ����״̬�������׳�401�쳣�������ö��Ӧ�ã���һ�����óɹ������سɹ���������<br/>�ɹ���Ӧ����������ʾUI���棬����״̬����ʾ��UI���̴��ڡ�����UI������������PC/2in1��Tablet��PCģʽ�п�����ʹ�á� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| autoStartApps | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Want> | 是 | 开机自启动应用数组。数组长度上限为10。例如：如果名单中已有5个应用，则最多再通过本接口设置5个。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24开始，新增支持通过Want的parameters属性中的isHiddenStart字段配置应用开机自启是否隐藏UI界面，true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须&lt;!--RP8--&gt;接入状态栏&lt;!--RP8End--&gt;，否则自启设置失败（若当前仅设置一个应用自启时隐藏UI界面，该应用未接入状态栏，则抛出401异常；若设置多个应用，有一个设置成功，返回成功）。设置成功后，应用自启后不显示UI界面，仅在状态栏显示，UI进程存在。隐藏UI界面能力仅在PC/2in1和Tablet的PC模式中可正常使用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -74,10 +80,9 @@ try {
 function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: number, disallowModify: boolean): void
 ```
 
-Ϊָ���û����ӿ���������Ӧ���������������Ƿ��ֹ���û��ֶ�ȡ��Ӧ��������<!--RP4--><!--RP4End-->��
+为指定用户添加开机自启动应用名单，并设置是否禁止该用户手动取消应用自启动<!--RP4--><!--RP4End-->。
 
-ͨ�����ӿڡ�[addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md#addAutoStartApps-1)�ӿھ������ӿ�
-��������Ӧ�������������ӿڵ����ÿ�ͬʱ��Ч��ͬһ�û��£�����������Ӧ���������֧�ְ���10��Ӧ�á����磺����ǰ����������3��Ӧ�ã�����໹��ͨ�����ӿ�Ϊ��ǰ�û�����7��Ӧ�á�
+通过本接口、[addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md#addautostartapps-1)接口均可添加开机自启动应用名单，两个接口的设置可同时生效。同一用户下，开机自启动应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。
 
 **起始版本：** 20
 
@@ -85,24 +90,26 @@ function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: nu
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: number, disallowModify: boolean): void--><!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: number, disallowModify: boolean): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| autoStartApps | Array&lt;Want&gt; | 是 | ����������Ӧ���������飬�����ܳ��Ȳ�����10��Want�б������bundleName��abilityName��Ability֧��UIAbility��<br/>ServiceExtensionAbility����[abilities](../../../../quick-start/module-configuration-file.md#abilities��ǩ)��ǩ��exported<br/>����ֵΪfalseʱ����֧������Ability����API version 24��ʼ������֧��ͨ��Want��parameters�����е�isHiddenStart�ֶ�����Ӧ�ÿ��������Ƿ�����UI���棬true��ʾ���أ�<br/>false��ʾ�����ء�Ĭ��ֵ��false���ò�������Ϊtrueʱ��Ӧ�ñ�������״̬����������������ʧ�ܣ�����ǰ������һ��Ӧ������ʱ����UI���棬��Ӧ��δ����״̬�������׳�401<br/>�쳣�������ö��Ӧ�ã���һ�����óɹ������سɹ��������óɹ���Ӧ����������ʾUI���棬����״̬����ʾ��UI���̴��ڡ�����UI������������PC/2in1��Tablet��PCģʽ�п�����ʹ�á� |
-| accountId | number | 是 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ�� |
-| disallowModify | boolean | 是 | �Ƿ��ֹ�û��ֶ�ȡ��Ӧ����������true��ʾ��ֹ��false��ʾ������ |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| autoStartApps | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Want> | 是 | 开机自启动应用名单数组，数组总长度不超过10。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24开始，新增支持通过Want的parameters属性中的isHiddenStart字段配置应用开机自启是否隐藏UI界面，true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须&lt;!--RP8--&gt;接入状态栏&lt;!--RP8End--&gt;，否则自启设置失败（若当前仅设置一个应用自启时隐藏UI界面，该应用未接入状态栏，则抛出401异常；若设置多个应用，有一个设置成功，返回成功）。设置成功后，应用自启后不显示UI界面，仅在状态栏显示，UI进程存在。隐藏UI界面能力仅在PC/2in1和Tablet的PC模式中可正常使用。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。 |
+| disallowModify | boolean | 是 | 是否禁止用户手动取消应用自启动，true表示禁止，false表示允许。&lt;!--RP1--&gt;&lt;!--RP1End--&gt; |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 
 **示例：**
 

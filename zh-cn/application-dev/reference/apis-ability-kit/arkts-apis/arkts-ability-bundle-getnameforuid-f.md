@@ -1,5 +1,11 @@
 # getNameForUid
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## getNameForUid
 
 ```TypeScript
@@ -12,14 +18,16 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 **替代接口：** getBundleNameByUid
 
+<!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void--><!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | @param { AsyncCallback } callback |
-| callback | AsyncCallback&lt;string&gt; | 是 |  |
+| uid | number | 是 | @param { AsyncCallback&lt;string&gt; } callback |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 |  |
 
 
 ## getNameForUid
@@ -28,7 +36,7 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 function getNameForUid(uid: number): Promise<string>
 ```
 
-ͨ��uid��ȡ��Ӧ��Bundle���ƣ�ʹ��Promise�첽�ص���
+通过uid获取对应的Bundle名称，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -36,17 +44,19 @@ function getNameForUid(uid: number): Promise<string>
 
 **替代接口：** [null]
 
+<!--Device-bundle-function getNameForUid(uid: number): Promise<string>--><!--Device-bundle-function getNameForUid(uid: number): Promise<string>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | Ҫ��ѯ��uid�� |
+| uid | number | 是 | 要查询的uid。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Returns the bundle name. |
+| Promise<string> | Returns the bundle name. |
 

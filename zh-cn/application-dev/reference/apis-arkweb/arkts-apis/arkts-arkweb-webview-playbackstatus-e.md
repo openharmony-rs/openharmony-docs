@@ -1,13 +1,10 @@
 # PlaybackStatus
 
-```TypeScript
-enum PlaybackStatus
-```
-
-[handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handleStatusChanged-1) 接口参数， 用于表示播放器的播
-放状态。
+[handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged-1) 接口参数， 用于表示播放器的播放状态。
 
 **起始版本：** 12
+
+<!--Device-webview-enum PlaybackStatus--><!--Device-webview-enum PlaybackStatus-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -21,7 +18,9 @@ PAUSED = 0
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaybackStatus-PAUSED = 0--><!--Device-PlaybackStatus-PAUSED = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -35,7 +34,9 @@ PLAYING = 1
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaybackStatus-PLAYING = 1--><!--Device-PlaybackStatus-PLAYING = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

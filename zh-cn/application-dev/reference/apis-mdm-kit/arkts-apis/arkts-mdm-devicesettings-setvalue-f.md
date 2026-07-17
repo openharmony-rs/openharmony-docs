@@ -1,12 +1,18 @@
 # setValue
 
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
+
 ## setValue
 
 ```TypeScript
 function setValue(admin: Want, item: string, value: string): void
 ```
 
-�����豸���ԡ�
+设置设备策略。
 
 **起始版本：** 12
 
@@ -14,24 +20,26 @@ function setValue(admin: Want, item: string, value: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-deviceSettings-function setValue(admin: Want, item: string, value: string): void--><!--Device-deviceSettings-function setValue(admin: Want, item: string, value: string): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| item | string | 是 | �豸���ò������͡�<br/>- screenOff���豸Ϣ�����ԡ�����PC/2in1�豸��֧�����õ�غ͵�Դ�����µ��豸Ϣ�����ԡ�<br/>- dateTime������ϵͳʱ�䡣- powerPolicy���豸��Դ���ԡ���������֧��PC/2in1�豸����������֮��ˢ�����á���Դ�͵��ҳ�棬���ֻ�ƽ���豸���ú���Ч��<br/>����PC/2in1�豸����֧�����õ�ع����µ��豸��Դ���ԡ���<br/>���豸��ʱ����ʱ˯���ӳٲ��ԣ�˯�߶�����Ҫ�����á���Դ�͵��ҳ����ʾ��˯��ʱ��֮��ȴ����õ�delayTime�Ż���Ч��<br/>- eyeComfort����API version 23��ʼ֧�֣����û���ģʽ����״̬����֧<br/>��ȫ�쿪���͹رջ���ģʽ��<br/>- defaultInputMethod����API version 23��ʼ֧�֣�����Ĭ�����뷨�� |
-| value | string | 是 | �豸���ò������͡�<br/>- screenOff���豸Ϣ�����ԡ�����PC/2in1�豸��֧�����õ�غ͵�Դ�����µ��豸Ϣ�����ԡ�<br/>- dateTime������ϵͳʱ�䡣- powerPolicy���豸��Դ���ԡ���������֧��PC/2in1�豸����������֮��ˢ�����á���Դ�͵��ҳ�棬���ֻ�ƽ���豸���ú���Ч��<br/>����PC/2in1�豸����֧�����õ�ع����µ��豸��Դ���ԡ���<br/>���豸��ʱ����ʱ˯���ӳٲ��ԣ�˯�߶�����Ҫ�����á���Դ�͵��ҳ����ʾ��˯��ʱ��֮��ȴ����õ�delayTime�Ż���Ч��<br/>- eyeComfort����API version 23��ʼ֧�֣����û���ģʽ����״̬����֧<br/>��ȫ�쿪���͹رջ���ģʽ��<br/>- defaultInputMethod����API version 23��ʼ֧�֣�����Ĭ�����뷨�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| item | string | 是 | 设备设置策略类型。<br/>- screenOff：设备息屏策略。对于PC/2in1设备，支持设置电池和电源供电下的设备息屏策略。<br/>- dateTime：设置系统时间。<br/>- powerPolicy：设备电源策略。该能力仅支持PC/2in1设备，策略设置之后不刷新设置—电源和电池页面，在手机平板设备设置后不生效。<br/>对于PC/2in1设备，仅支持设置电池供电下的设备电源策略。设置设备超时灭屏时睡眠延迟策略，睡眠动作需要在设置—电源和电池页面显示的睡眠时间之后等待设置的delayTime才会生效。<br/>- eyeComfort：从API version 23开始支持，设置护眼模式开关状态，仅支持全天开启和关闭护眼模式。<br/>- defaultInputMethod：从API version 23开始支持，设置默认输入法。 |
+| value | string | 是 | 设备设置策略类型。<br/>- screenOff：设备息屏策略。对于PC/2in1设备，支持设置电池和电源供电下的设备息屏策略。<br/>- dateTime：设置系统时间。<br/>- powerPolicy：设备电源策略。该能力仅支持PC/2in1设备，策略设置之后不刷新设置—电源和电池页面，在手机平板设备设置后不生效。<br/>对于PC/2in1设备，仅支持设置电池供电下的设备电源策略。设置设备超时灭屏时睡眠延迟策略，睡眠动作需要在设置—电源和电池页面显示的睡眠时间之后等待设置的delayTime才会生效。<br/>- eyeComfort：从API version 23开始支持，设置护眼模式开关状态，仅支持全天开启和关闭护眼模式。<br/>- defaultInputMethod：从API version 23开始支持，设置默认输入法。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

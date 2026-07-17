@@ -1,12 +1,10 @@
 # BusinessVendor（系统接口）
 
-```TypeScript
-export enum BusinessVendor
-```
-
 设备厂家。
 
 **起始版本：** 9
+
+<!--Device-update-export enum BusinessVendor--><!--Device-update-export enum BusinessVendor-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -21,6 +19,8 @@ PUBLIC = 'public'
 开源。
 
 **起始版本：** 9
+
+<!--Device-BusinessVendor-PUBLIC = 'public'--><!--Device-BusinessVendor-PUBLIC = 'public'-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

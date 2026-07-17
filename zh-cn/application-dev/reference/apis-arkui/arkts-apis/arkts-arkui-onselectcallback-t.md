@@ -4,11 +4,13 @@
 declare type OnSelectCallback =  (index: number) => void
 ```
 
-定义[onSelect](arkts-arkui-arcalphabetindexerattribute-c.md#onselect-1)中使用的回调类型。
+定义[onSelect](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md#onselect-1)中使用的回调类型。
 
 **起始版本：** 18
 
-**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type OnSelectCallback =  (index: number) => void--><!--Device-unnamed-declare type OnSelectCallback =  (index: number) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

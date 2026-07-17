@@ -1,20 +1,31 @@
 # setDisallowedPolicy
 
+## 导入模块
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+```
+
 ## setDisallowedPolicy
 
 ```TypeScript
 function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 ```
 
-���ý���/����ĳ���ԡ�
+设置禁用/启用某特性。
 
 **起始版本：** 12
 
 **废弃版本：** 26.0.0
 
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS, ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS, ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
+**需要权限：** 
+- API版本20+：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
+- API版本15 - 19：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+- API版本12 - 14：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void--><!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -22,18 +33,18 @@ function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| feature | string | 是 | ֧�����õ������嵥�ο���1��<br/>**˵����** ��API version 15��ʼ��Ӧ������Ȩ��<br/>ohos.permission.PERSONAL_MANAGE_RESTRICTIONS��ͨ��<br/>[startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startAdminProvision-1)����Ϊ<br/>[BDA](../../../../mdm/mdm-kit-term.md#bda)������ʹ�ô˽ӿ������������ԣ�bluetooth��hdc��microphone��usb��wifi��tethering��camera����API�汾26.0.0��ʼ������֧��ʹ�ô˽ӿ�����mtpServer���ԡ� |
-| disallow | boolean | 是 | true��ʾ��ֹʹ�ã�false��ʾ����ʹ�á� |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| feature | string | 是 | 支持设置的特性清单参考表1。<br/> **说明：** 从API version 15开始，应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1)激活为[BDA](../../../../mdm/mdm-kit-term.md#bda)，可以使用此接口设置以下特性：bluetooth、hdc、microphone、usb、wifi、tethering、camera&lt;!--RP3--&gt;&lt;!--RP3End--&gt;，从API版本26.0.0开始，新增支持使用此接口设置mtpServer特性。 |
+| disallow | boolean | 是 | true表示禁止使用，false表示允许使用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [9200013](../../errorcode-universal.md#9200013-The) | The enterprise management policy has been successfully set,<br/>but the function has not taken effect in real time.&lt;br&gt;**适用版本：** 21+ |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [9200013](../errorcode-enterpriseDeviceManager.md#9200013-管控未实时生效) | The enterprise management policy has been successfully set,but the function has not taken effect in real time.<br>**适用版本：** 21+ |
 
 **示例：**
 
@@ -64,7 +75,7 @@ try {
 function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): void
 ```
 
-���ý���/����ָ���豸���ԣ����ú�����豸�����޷���ʹ�á�
+设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。
 
 **起始版本：** 24
 
@@ -72,26 +83,28 @@ function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: b
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): void--><!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| feature | FeatureForDevice | 是 | ָ��Ҫ���û��������豸���ԡ�<br/>**˵����** Ӧ������Ȩ��<br/>ohos.permission.PERSONAL_MANAGE_RESTRICTIONS��ͨ��<br/>[startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startAdminProvision-1)����Ϊ<br/>[BDA](../../../../mdm/mdm-kit-term.md#bda)������ʹ�ô˽ӿ������������ԣ�<br/>[FeatureForDevice.WIFI_P2P](arkts-mdm-restrictions-featurefordevice-e.md#FeatureForDevice)�� |
-| disallow | boolean | 是 | true��ʾ��ֹʹ�ã�false��ʾ����ʹ�á� |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| feature | [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md) | 是 | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1)激活为[BDA](../../../../mdm/mdm-kit-term.md#bda)，可以使用此接口设置以下特性：[FeatureForDevice.WIFI_P2P](arkts-mdm-restrictions-featurefordevice-e.md)。 |
+| disallow | boolean | 是 | true表示禁止使用，false表示允许使用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200010](../../errorcode-universal.md#9200010-A) | A conflict policy has been configured. |
-| [9200013](../../errorcode-universal.md#9200013-The) | The enterprise management policy has been successfully set,<br/>but the function has not taken effect in real time. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
+| [9200013](../errorcode-enterpriseDeviceManager.md#9200013-管控未实时生效) | The enterprise management policy has been successfully set,but the function has not taken effect in real time. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

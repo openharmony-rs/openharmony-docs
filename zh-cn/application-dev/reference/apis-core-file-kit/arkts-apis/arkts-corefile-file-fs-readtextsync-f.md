@@ -1,5 +1,11 @@
 # readTextSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## readTextSync
 
 ```TypeScript
@@ -13,7 +19,15 @@ declare function readTextSync(
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function readTextSync(
+  filePath: string,
+  options?: ReadTextOptions
+): string--><!--Device-unnamed-declare function readTextSync(
+  filePath: string,
+  options?: ReadTextOptions
+): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -22,7 +36,7 @@ declare function readTextSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| options | ReadTextOptions | 否 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>- length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8'。<br>**起始版本：** 11 |
+| options | [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>- length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 

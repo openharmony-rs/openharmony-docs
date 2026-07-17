@@ -4,9 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-floatView-interface FloatViewProperties--><!--Device-floatView-interface FloatViewProperties-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatView } from '@kit.ArkUI';
+```
 
 ## avoidArea
 
@@ -18,15 +24,15 @@ avoidArea: window.AvoidArea
 
 **注意：**
 
-通过[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setUIContext-1)或
-[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setUIContextByName-1)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件
-的组件时，请注意避让这些区域。
+通过[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext-1)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname-1)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。
 
 **类型：** window.AvoidArea
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-avoidArea: window.AvoidArea--><!--Device-FloatViewProperties-avoidArea: window.AvoidArea-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,14 +42,15 @@ avoidArea: window.AvoidArea
 displayId: number
 ```
 
-标准悬浮窗所在屏幕ID。
-取值限定为整数。
+标准悬浮窗所在屏幕ID。取值限定为整数。
 
 **类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-displayId: int--><!--Device-FloatViewProperties-displayId: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -61,6 +68,8 @@ inSidebar: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-inSidebar: boolean--><!--Device-FloatViewProperties-inSidebar: boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## templateType
@@ -77,6 +86,8 @@ templateType: FloatViewTemplateType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-templateType: FloatViewTemplateType--><!--Device-FloatViewProperties-templateType: FloatViewTemplateType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowId
@@ -85,14 +96,15 @@ templateType: FloatViewTemplateType
 windowId: number
 ```
 
-标准悬浮窗窗口ID。
-取值限定为整数。
+标准悬浮窗窗口ID。取值限定为整数。
 
 **类型：** number
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-windowId: int--><!--Device-FloatViewProperties-windowId: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -110,6 +122,8 @@ windowRect: window.Rect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-windowRect: window.Rect--><!--Device-FloatViewProperties-windowRect: window.Rect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowScale
@@ -125,6 +139,8 @@ windowScale: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-windowScale: double--><!--Device-FloatViewProperties-windowScale: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

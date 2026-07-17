@@ -1,16 +1,24 @@
 # isSuperAdmin（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## isSuperAdmin
 
 ```TypeScript
 function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): void
 ```
 
-����bundleName��ѯ���û���u100���µĳ����豸����Ӧ���Ƿ񱻼��ʹ��callback�첽�ص���
+根据bundleName查询首用户（u100）下的超级设备管理应用是否被激活。使用callback异步回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-adminManager-function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): void--><!--Device-adminManager-function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,15 +28,15 @@ function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | String | 是 | �����豸����Ӧ�á� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | �ص����������ӿڵ��óɹ���errΪnull��dataΪboolean����ֵ��true��ʾ��ǰ�û���ָ�����豸����Ӧ�ñ����false��ʾ��<br/>ǰ�û���ָ�����豸����Ӧ��δ�������errΪ������� |
+| bundleName | String | 是 | 超级设备管理应用。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，当接口调用成功，err为null，data为boolean类型值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 
 **示例：**
 
@@ -56,11 +64,13 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 function isSuperAdmin(bundleName: String): Promise<boolean>
 ```
 
-����bundleName��ѯ���û���u100���µĳ����豸����Ӧ���Ƿ񱻼��ʹ��Promise�첽�ص���
+根据bundleName查询首用户（u100）下的超级设备管理应用是否被激活。使用Promise异步回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-adminManager-function isSuperAdmin(bundleName: String): Promise<boolean>--><!--Device-adminManager-function isSuperAdmin(bundleName: String): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -70,20 +80,20 @@ function isSuperAdmin(bundleName: String): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | String | 是 | �����豸����Ӧ�á� |
+| bundleName | String | 是 | 超级设备管理应用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise����, ����true��ʾָ���ĳ����豸����Ӧ�ñ��������false��ʾָ���ĳ����豸����Ӧ��δ��� |
+| Promise<boolean> | Promise对象, 返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 
 **示例：**
 

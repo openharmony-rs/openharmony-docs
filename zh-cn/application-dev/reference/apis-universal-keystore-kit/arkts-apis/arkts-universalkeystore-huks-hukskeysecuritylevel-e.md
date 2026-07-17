@@ -1,14 +1,10 @@
 # HuksKeySecurityLevel
 
-```TypeScript
-export enum HuksKeySecurityLevel
-```
-
-��ʾ��Կ��ȫ�����ö�١�
+表示密钥安全级别的枚举。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-huks-export enum HuksKeySecurityLevel--><!--Device-huks-export enum HuksKeySecurityLevel-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -18,13 +14,13 @@ export enum HuksKeySecurityLevel
 HUKS_KEY_SECURITY_LEVEL_TEE = 0
 ```
 
-��Կ�ڿ���ִ�л��������ɲ�ʹ�á�
+密钥在可信执行环境中生成并使用。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -34,13 +30,15 @@ HUKS_KEY_SECURITY_LEVEL_TEE = 0
 HUKS_KEY_SECURITY_LEVEL_SE = 1
 ```
 
-��Կ�ڰ�ȫ���������ɲ�ʹ�á�
+密钥在安全环境中生成并使用。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**需要权限：** ohos.permission.ACCESS_SE_KEY
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 

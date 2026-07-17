@@ -2,17 +2,25 @@
 
 区域对象，用于描述所绘制图形的区域信息。
 
-> **说明：**
->
-> - 本Class首批接口从API version 12开始支持。
->
-> - 本模块使用屏幕物理像素单位px。
->
+> **说明：**  
+>  
+> - 本Class首批接口从API version 12开始支持。  
+>  
+> - 本模块使用屏幕物理像素单位px。  
+>  
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **起始版本：** 12
 
+<!--Device-drawing-class Region--><!--Device-drawing-class Region-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## constructor
 
@@ -23,6 +31,8 @@ constructor()
 构造一个区域对象。
 
 **起始版本：** 20
+
+<!--Device-Region-constructor()--><!--Device-Region-constructor()-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -36,13 +46,15 @@ constructor(region: Region)
 
 **起始版本：** 20
 
+<!--Device-Region-constructor(region: Region)--><!--Device-Region-constructor(region: Region)-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| region | Region | 是 | 用于拷贝的区域。 |
+| region | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 用于拷贝的区域。 |
 
 ## constructor
 
@@ -53,6 +65,8 @@ constructor(left: number, top: number, right: number, bottom: number)
 构造矩形区域。
 
 **起始版本：** 20
+
+<!--Device-Region-constructor(left: int, top: int, right: int, bottom: int)--><!--Device-Region-constructor(left: int, top: int, right: int, bottom: int)-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -75,13 +89,15 @@ getBoundaryPath(): Path
 
 **起始版本：** 20
 
+<!--Device-Region-getBoundaryPath(): Path--><!--Device-Region-getBoundaryPath(): Path-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Path | 返回当前区域边界的路径。 |
+| [Path](arkts-arkgraphics2d-drawing-path-c.md) | 返回当前区域边界的路径。 |
 
 ## getBounds
 
@@ -92,6 +108,8 @@ getBounds(): common2D.Rect
 获取区域的边界。
 
 **起始版本：** 20
+
+<!--Device-Region-getBounds(): common2D.Rect--><!--Device-Region-getBounds(): common2D.Rect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -111,6 +129,8 @@ isComplex(): boolean
 
 **起始版本：** 20
 
+<!--Device-Region-isComplex(): boolean--><!--Device-Region-isComplex(): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -128,6 +148,8 @@ isEmpty(): boolean
 判断当前区域是否为空。
 
 **起始版本：** 20
+
+<!--Device-Region-isEmpty(): boolean--><!--Device-Region-isEmpty(): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -147,13 +169,15 @@ isEqual(other: Region): boolean
 
 **起始版本：** 20
 
+<!--Device-Region-isEqual(other: Region): boolean--><!--Device-Region-isEqual(other: Region): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| other | Region | 是 | 区域对象。 |
+| other | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 区域对象。 |
 
 **返回值：**
 
@@ -170,6 +194,8 @@ isPointContained(x: number, y:number): boolean
 判断测试点是否在区域内。
 
 **起始版本：** 12
+
+<!--Device-Region-isPointContained(x: int, y:int): boolean--><!--Device-Region-isPointContained(x: int, y:int): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -190,7 +216,7 @@ isPointContained(x: number, y:number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## isRect
 
@@ -203,6 +229,8 @@ isRect(): boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Region-isRect(): boolean--><!--Device-Region-isRect(): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -222,13 +250,15 @@ isRegionContained(other: Region): boolean
 
 **起始版本：** 12
 
+<!--Device-Region-isRegionContained(other: Region): boolean--><!--Device-Region-isRegionContained(other: Region): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| other | Region | 是 | 区域对象。 |
+| other | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 区域对象。 |
 
 **返回值：**
 
@@ -240,7 +270,7 @@ isRegionContained(other: Region): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## offset
 
@@ -251,6 +281,8 @@ offset(dx: number, dy: number): void
 对区域进行平移。
 
 **起始版本：** 20
+
+<!--Device-Region-offset(dx: int, dy: int): void--><!--Device-Region-offset(dx: int, dy: int): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -271,14 +303,16 @@ op(region: Region, regionOp: RegionOp): boolean
 
 **起始版本：** 12
 
+<!--Device-Region-op(region: Region, regionOp: RegionOp): boolean--><!--Device-Region-op(region: Region, regionOp: RegionOp): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| region | Region | 是 | 区域对象。 |
-| regionOp | RegionOp | 是 | 区域合并操作类型。 |
+| region | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 区域对象。 |
+| regionOp | [RegionOp](arkts-arkgraphics2d-drawing-regionop-e.md) | 是 | 区域合并操作类型。 |
 
 **返回值：**
 
@@ -290,7 +324,7 @@ op(region: Region, regionOp: RegionOp): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## quickContains
 
@@ -303,6 +337,8 @@ quickContains(left: number, top: number, right: number, bottom: number): boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Region-quickContains(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-quickContains(left: int, top: int, right: int, bottom: int): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -331,6 +367,8 @@ quickReject(left: number, top: number, right: number, bottom: number): boolean
 
 **起始版本：** 12
 
+<!--Device-Region-quickReject(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-quickReject(left: int, top: int, right: int, bottom: int): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -352,7 +390,7 @@ quickReject(left: number, top: number, right: number, bottom: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## quickRejectRegion
 
@@ -364,13 +402,15 @@ quickRejectRegion(region: Region): boolean
 
 **起始版本：** 20
 
+<!--Device-Region-quickRejectRegion(region: Region): boolean--><!--Device-Region-quickRejectRegion(region: Region): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| region | Region | 是 | 指定的区域对象。 |
+| region | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 指定的区域对象。 |
 
 **返回值：**
 
@@ -388,6 +428,8 @@ setEmpty(): void
 
 **起始版本：** 20
 
+<!--Device-Region-setEmpty(): void--><!--Device-Region-setEmpty(): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## setPath
@@ -400,14 +442,16 @@ setPath(path: Path, clip: Region): boolean
 
 **起始版本：** 12
 
+<!--Device-Region-setPath(path: Path, clip: Region): boolean--><!--Device-Region-setPath(path: Path, clip: Region): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | Path | 是 | 路径对象。 |
-| clip | Region | 是 | 区域对象。 |
+| path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 路径对象。 |
+| clip | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 区域对象。 |
 
 **返回值：**
 
@@ -419,7 +463,7 @@ setPath(path: Path, clip: Region): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setRect
 
@@ -430,6 +474,8 @@ setRect(left: number, top: number, right: number, bottom: number): boolean
 设置一个矩形区域。
 
 **起始版本：** 12
+
+<!--Device-Region-setRect(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-setRect(left: int, top: int, right: int, bottom: int): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -452,7 +498,7 @@ setRect(left: number, top: number, right: number, bottom: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setRegion
 
@@ -464,11 +510,13 @@ setRegion(region: Region): void
 
 **起始版本：** 20
 
+<!--Device-Region-setRegion(region: Region): void--><!--Device-Region-setRegion(region: Region): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| region | Region | 是 | 用于赋值的区域。 |
+| region | [Region](../../apis-image-kit/arkts-apis/arkts-image-image-region-i.md) | 是 | 用于赋值的区域。 |
 

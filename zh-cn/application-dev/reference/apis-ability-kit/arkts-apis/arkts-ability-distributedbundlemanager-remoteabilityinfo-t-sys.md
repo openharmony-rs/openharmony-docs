@@ -4,9 +4,11 @@
 export type RemoteAbilityInfo = _RemoteAbilityInfo
 ```
 
-����Զ�̵�ability��Ϣ��
+包含远程的ability信息。
 
 **起始版本：** 9
+
+<!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo--><!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 

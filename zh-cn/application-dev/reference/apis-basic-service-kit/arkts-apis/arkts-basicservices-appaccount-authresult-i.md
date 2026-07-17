@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-appAccount-interface AuthResult--><!--Device-appAccount-interface AuthResult-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+## 导入模块
+
+```TypeScript
+import { appAccount } from '@kit.BasicServicesKit';
+```
 
 ## account
 
@@ -17,6 +25,8 @@ account?: AppAccountInfo
 **类型：** AppAccountInfo
 
 **起始版本：** 9
+
+<!--Device-AuthResult-account?: AppAccountInfo--><!--Device-AuthResult-account?: AppAccountInfo-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -31,6 +41,8 @@ tokenInfo?: AuthTokenInfo
 **类型：** AuthTokenInfo
 
 **起始版本：** 9
+
+<!--Device-AuthResult-tokenInfo?: AuthTokenInfo--><!--Device-AuthResult-tokenInfo?: AuthTokenInfo-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 

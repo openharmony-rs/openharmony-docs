@@ -1,16 +1,13 @@
 # Array
 
-一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。
-推荐使用引用传递以提升传递性能。
+一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。推荐使用引用传递以提升传递性能。
 
-> **说明**
->
-> - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> **说明**  
+>  
+> - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
 > 本节使用以下标识来表示泛型的使用：
 
-- T：Type，支持
-[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。
-**装饰器**：\@Sendable
+- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable
 
 **继承/实现关系：** Array implements [ConcatArray<T>](ConcatArray<T>)
 
@@ -18,7 +15,15 @@
 
 **装饰器类型：** @Sendable
 
+<!--Device-collections-class Array<T> implements ConcatArray<T>--><!--Device-collections-class Array<T> implements ConcatArray<T>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { collections } from '@kit.ArkTS';
+```
 
 ## [Symbol.iterator]
 
@@ -30,7 +35,9 @@
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-[Symbol.iterator](): IterableIterator<T>--><!--Device-Array-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -38,13 +45,13 @@
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;T&gt; | 迭代器对象。 |
+| IterableIterator<T> | 迭代器对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The Symbol.iterator method cannot be bound. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
 ## at
 
@@ -56,7 +63,9 @@ at(index: number): T | undefined
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-at(index: number): T | undefined--><!--Device-Array-at(index: number): T | undefined-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -64,20 +73,20 @@ at(index: number): T | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。负数索引从<br/>Array末尾开始计数，如果传入负数，则指代**index + array.length**位置的下标。 |
+| index | number | 是 | 要返回的Array元素的索引（从零开始），取值为整数。负数索引从Array末尾开始计数，如果传入负数，则指代**index + array.length**位置的下标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回指定索引处的元素；如果索引超出范围或无效，<br/>则返回**undefined**。 |
+| T | 返回指定索引处的元素；如果索引超出范围或无效，则返回**undefined**。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The at method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## concat
 
@@ -89,7 +98,9 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>--><!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -97,20 +108,20 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | ConcatArray&lt;T&gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组。 |
+| items | [ConcatArray](arkts-arkts-collections-concatarray-i.md)<T>[] | 是 | 用于拼接ArkTS Array的一个或多个数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 拼接后生成的新Array。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 拼接后生成的新Array。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The concat method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The concat method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## constructor
 
@@ -122,7 +133,9 @@ constructor()
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-constructor()--><!--Device-Array-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -130,7 +143,7 @@ constructor()
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The Array's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
 ## constructor
 
@@ -142,7 +155,9 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-constructor(first: T, ...left: T[])--><!--Device-Array-constructor(first: T, ...left: T[])-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -157,7 +172,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The Array's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
 ## constructor
 
@@ -169,7 +184,9 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-constructor(...items: T[])--><!--Device-Array-constructor(...items: T[])-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -183,7 +200,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200012](../../errorcode-universal.md#10200012-The) | The Array's constructor cannot be directly invoked. |
+| [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
 ## copyWithin
 
@@ -195,7 +212,9 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>--><!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -203,22 +222,22 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | number | 是 | 目标起始位置的下标。如果传入负数，则指代<br/>`target + array.length`位置的下标。 |
-| start | number | 是 | 源起始位置下标。如果传入负数，则指代<br/>**start + array.length**位置的下标。 |
-| end | number | 否 | 源终止位置下标。如果传入负数，则指代 `end<br/>+ array.length`位置的下标。默认值为ArkTS Array的长度。 |
+| target | number | 是 | 目标起始位置的下标。如果传入负数，则指代`target + array.length`位置的下标。 |
+| start | number | 是 | 源起始位置下标。如果传入负数，则指代**start + array.length**位置的下标。 |
+| end | number | 否 | 源终止位置下标。如果传入负数，则指代 `end+ array.length`位置的下标。默认值为ArkTS Array的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 修改后的ArkTS Array。可能的原因：<br/>1. 必填参数未指定。<br/>2. 参数类型不正确。<br/>3. 参数校验失败。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 修改后的ArkTS Array。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The copyWithin method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The copyWithin method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## create
 
@@ -230,7 +249,9 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static create<T>(arrayLength: number, initialValue: T): Array<T>--><!--Device-Array-static create<T>(arrayLength: number, initialValue: T): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -245,13 +266,13 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The create method cannot be bound.&lt;br&gt;**适用版本：** 12 - 17 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The create method cannot be bound.<br>**适用版本：** 12 - 17 |
 
 ## entries
 
@@ -263,7 +284,9 @@ entries(): IterableIterator<[number, T]>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-entries(): IterableIterator<[number, T]>--><!--Device-Array-entries(): IterableIterator<[number, T]>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -271,14 +294,14 @@ entries(): IterableIterator<[number, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, T]&gt; | 包含Array中每个元素的键值对的<br/>迭代器对象。 |
+| IterableIterator<[number, T]> | 包含Array中每个元素的键值对的迭代器对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The entries method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## every
 
@@ -290,7 +313,9 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -298,20 +323,20 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | ArrayPredicateFn&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
+| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)<T, Array<T>> | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果所有元素都满足指定条件，则返回**true**；<br/>否则返回**false**。 |
+| boolean | 检查结果。如果所有元素都满足指定条件，则返回**true**；否则返回**false**。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The every method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The every method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## extendTo
 
@@ -323,7 +348,9 @@ extendTo(arrayLength: number, initialValue: T): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-extendTo(arrayLength: number, initialValue: T): void--><!--Device-Array-extendTo(arrayLength: number, initialValue: T): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -331,15 +358,15 @@ extendTo(arrayLength: number, initialValue: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLength | number | 是 | Array的新长度。如果传入的值小于或等于当前Array<br/>的长度，Array不发生变化。 |
+| arrayLength | number | 是 | Array的新长度。如果传入的值小于或等于当前Array的长度，Array不发生变化。 |
 | initialValue | T | 是 | 新增元素的初始值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The extendTo method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The extendTo method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## fill
 
@@ -351,7 +378,9 @@ fill(value: T, start?: number, end?: number): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>--><!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -361,20 +390,20 @@ fill(value: T, start?: number, end?: number): Array<T>
 | --- | --- | --- | --- |
 | value | T | 是 | 要填充的值。 |
 | start | number | 否 | 开始填充的索引。默认值为**0**。 |
-| end | number | 否 | 结束填充的索引（不包括该元素）。如果未传入，<br/>则指代数组的最后一个元素。 |
+| end | number | 否 | 结束填充的索引（不包括该元素）。如果未传入，则指代数组的最后一个元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 填充后的Array。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 填充后的Array。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The fill method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The fill method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## filter
 
@@ -386,7 +415,9 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>--><!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -394,20 +425,20 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, array: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为<br/>**true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过<br/>测试，应被排除在新数组外。 |
+| predicate | (value: T, index: number, array: Array<T>) => boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过测试，应被排除在新数组外。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 包含通过测试的元素的新Array。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 包含通过测试的元素的新Array。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The filter method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The filter method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## find
 
@@ -419,7 +450,9 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined--><!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -427,20 +460,20 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为<br/>**true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为<br/>**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历<br/>完整个数组。 |
+| predicate | (value: T, index: number, obj: Array<T>) => boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 第一个满足条件的元素的值；如果所有元素都不满足条件<br/>，则返回**undefined**。 |
+| T | 第一个满足条件的元素的值；如果所有元素都不满足条件，则返回**undefined**。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The find method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The find method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## findIndex
 
@@ -452,7 +485,9 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number--><!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -460,20 +495,20 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为<br/>**true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false**<br/>表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个<br/>数组。 |
+| predicate | (value: T, index: number, obj: Array<T>) => boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 第一个满足条件的元素的索引；如果所有元素都不满足条件，<br/>则返回**-1**。 |
+| number | 第一个满足条件的元素的索引；如果所有元素都不满足条件，则返回**-1**。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The findIndex method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The findIndex method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## forEach
 
@@ -485,7 +520,9 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void--><!--Device-Array-forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -493,14 +530,14 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index: number, array: Array&lt;T&gt;) =&gt; void | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index: number, array: Array<T>) => void | 是 | 用于对每个元素执行的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The forEach method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## from
 
@@ -512,7 +549,9 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -520,19 +559,19 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| arrayLike | ArrayLike<T> | 是 | 用于构造ArkTS Array的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The from method cannot be bound.&lt;br&gt;**适用版本：** 12 - 17 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
 ## from
 
@@ -544,7 +583,9 @@ static from<T>(iterable: Iterable<T>): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static from<T>(iterable: Iterable<T>): Array<T>--><!--Device-Array-static from<T>(iterable: Iterable<T>): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -552,19 +593,19 @@ static from<T>(iterable: Iterable<T>): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| iterable | Iterable<T> | 是 | 用于构造ArkTS Array的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The from method cannot be bound.&lt;br&gt;**适用版本：** 12 - 17 |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
 ## from
 
@@ -576,7 +617,9 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -584,14 +627,14 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike&lt;T&gt; \| Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
-| mapFn | ArrayFromMapFn&lt;T, T&gt; | 是 | 用于处理数组元素的函数。 |
+| arrayLike | ArrayLike<T> \| Iterable<T> | 是 | 用于构造ArkTS Array的对象。 |
+| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)<T, T> | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
 
 ## from
 
@@ -599,12 +642,13 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>
 ```
 
-从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并使用自定义函数处理每个数组元素。
-ArrayLike接口对象的元素类型可以和数组元素的类型不一样。
+从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并使用自定义函数处理每个数组元素。ArrayLike接口对象的元素类型可以和数组元素的类型不一样。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>--><!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -612,14 +656,14 @@ ArrayLike接口对象的元素类型可以和数组元素的类型不一样。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike&lt;U&gt; \| Iterable&lt;U&gt; | 是 | 用于构造ArkTS Array的对象。 |
-| mapFn | ArrayFromMapFn&lt;U, T&gt; | 是 | 用于处理数组元素的函数。 |
+| arrayLike | ArrayLike<U> \| Iterable<U> | 是 | 用于构造ArkTS Array的对象。 |
+| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)<U, T> | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
 
 ## includes
 
@@ -631,7 +675,9 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean--><!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -646,14 +692,14 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果Array包含指定的元素，则返回**true**；否则返回<br/>**false**。 |
+| boolean | 检查结果。如果Array包含指定的元素，则返回**true**；否则返回**false**。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The includes method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The includes method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## indexOf
 
@@ -665,7 +711,9 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-indexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-indexOf(searchElement: T, fromIndex?: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -686,8 +734,8 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The indexOf method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The indexOf method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## isArray
 
@@ -699,7 +747,9 @@ static isArray(value: Object | undefined | null): boolean
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static isArray(value: Object | undefined | null): boolean--><!--Device-Array-static isArray(value: Object | undefined | null): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -713,7 +763,7 @@ static isArray(value: Object | undefined | null): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**；<br/>否则返回**false**。可能的原因：<br/>1. 必填参数未指定。<br/>2. 参数类型不正确。<br/>3. 参数校验失败。 |
+| boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**；否则返回**false**。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
 ## join
 
@@ -725,7 +775,9 @@ join(separator?: string): string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-join(separator?: string): string--><!--Device-Array-join(separator?: string): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -733,7 +785,7 @@ join(separator?: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| separator | string | 否 | 用于分隔Array元素的字符串。如果未传入，则使用逗号（,）作为<br/>分隔符。 |
+| separator | string | 否 | 用于分隔Array元素的字符串。如果未传入，则使用逗号（,）作为分隔符。 |
 
 **返回值：**
 
@@ -745,8 +797,8 @@ join(separator?: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The join method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The join method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## keys
 
@@ -758,7 +810,9 @@ keys(): IterableIterator<number>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-keys(): IterableIterator<number>--><!--Device-Array-keys(): IterableIterator<number>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -766,14 +820,14 @@ keys(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 包含Array中每个元素的索引的迭代器对象。 |
+| IterableIterator<number> | 包含Array中每个元素的索引的迭代器对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The keys method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## lastIndexOf
 
@@ -785,7 +839,9 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -794,7 +850,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | T | 是 | 要搜索的值。 |
-| fromIndex | number | 否 | 开始搜索的索引。默认值为**0**。如果索引大于或等于<br/>ArkTS Array的长度，则返回**-1**。如果传入负数，则指代<br/>**fromIndex + array.length**位置的下标。 |
+| fromIndex | number | 否 | 开始搜索的索引。默认值为**0**。如果索引大于或等于ArkTS Array的长度，则返回**-1**。如果传入负数，则指代**fromIndex + array.length**位置的下标。 |
 
 **返回值：**
 
@@ -806,8 +862,8 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The lastIndexOf method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The lastIndexOf method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## map
 
@@ -815,12 +871,13 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 ```
 
-对ArkTS Array中的每个元素执行提供的回调函数，并返回一个新的Array，该Array包含
-回调函数的结果。
+对ArkTS Array中的每个元素执行提供的回调函数，并返回一个新的Array，该Array包含回调函数的结果。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>--><!--Device-Array-map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -828,20 +885,20 @@ map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index: number, array: Array&lt;T&gt;) =&gt; U | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index: number, array: Array<T>) => U | 是 | 用于对每个元素执行的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;U&gt; | 包含回调函数结果的新Array。 |
+| [Array](arkts-arkts-collections-array-c.md)<U> | 包含回调函数结果的新Array。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The map method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The map method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## of
 
@@ -853,7 +910,9 @@ static of<T>(...items: T[]): Array<T>
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-static of<T>(...items: T[]): Array<T>--><!--Device-Array-static of<T>(...items: T[]): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -861,13 +920,13 @@ static of<T>(...items: T[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | T[] | 是 | 用于创建数组的元素集合，参数个数可以是0个、1个<br/>或多个。 |
+| items | T[] | 是 | 用于创建数组的元素集合，参数个数可以是0个、1个或多个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因：<br/>1. 必填参数未指定。<br/>2. 参数类型不正确。<br/>3. 参数校验失败。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
 ## pop
 
@@ -875,12 +934,13 @@ static of<T>(...items: T[]): Array<T>
 pop(): T | undefined
 ```
 
-从ArkTS Array中移除并返回最后一个元素。如果Array为空，则返回**undefined**，
-且Array不发生变化。
+从ArkTS Array中移除并返回最后一个元素。如果Array为空，则返回**undefined**，且Array不发生变化。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-pop(): T | undefined--><!--Device-Array-pop(): T | undefined-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -894,8 +954,8 @@ pop(): T | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The pop method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## push
 
@@ -907,7 +967,9 @@ push(...items: T[]): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-push(...items: T[]): number--><!--Device-Array-push(...items: T[]): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -927,8 +989,8 @@ push(...items: T[]): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The push method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## reduce
 
@@ -936,12 +998,13 @@ push(...items: T[]): number
 reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T
 ```
 
-对ArkTS Array中的每个元素执行回调函数，将上一次的返回值作为累加值，
-并返回最终的结果。
+对ArkTS Array中的每个元素执行回调函数，将上一次的返回值作为累加值，并返回最终的结果。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T--><!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -949,7 +1012,7 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将<br/>结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
@@ -961,8 +1024,8 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The reduce method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## reduce
 
@@ -973,12 +1036,19 @@ reduce<U>(
     ): U
 ```
 
-与前一个API类似，此API接受一个初始值作为第二个参数，用于在Array遍历开始前
-初始化累加器。
+与前一个API类似，此API接受一个初始值作为第二个参数，用于在Array遍历开始前初始化累加器。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-reduce<U>(
+      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,
+      initialValue: U
+    ): U--><!--Device-Array-reduce<U>(
+      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,
+      initialValue: U
+    ): U-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -986,7 +1056,7 @@ reduce<U>(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将<br/>结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
@@ -999,8 +1069,8 @@ reduce<U>(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The reduce method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## reduceRight
 
@@ -1008,13 +1078,13 @@ reduce<U>(
 reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U
 ```
 
-此API与
-[reduceRight](arkts-arkts-collections-array-c.md#reduceRight-2)方法类似，
-但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
+此API与[reduceRight](arkts-arkts-collections-array-c.md#reduceright-2)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U--><!--Device-Array-reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1022,21 +1092,21 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | ArrayReduceCallback&lt;U, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对<br/>每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)<U, T, Array<T>> | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| U | 回调函数执行后的最终结果。可能的原因：<br/>1.必填参数未指定。<br/>2.参数类型不正确。 |
+| U | 回调函数执行后的最终结果。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The reduceRight method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## reduceRight
 
@@ -1044,12 +1114,13 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 ```
 
-对ArkTS Array中的每个元素按照从右到左顺序执行回调函数，将其结果作为累加值，
-并返回最终的值。
+对ArkTS Array中的每个元素按照从右到左顺序执行回调函数，将其结果作为累加值，并返回最终的值。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T--><!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1057,20 +1128,20 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | ArrayReduceCallback&lt;T, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对<br/>每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)<T, T, Array<T>> | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 回调函数执行后的最终结果。可能的原因：<br/>1.必填参数未指定。<br/>2.参数类型不正确。 |
+| T | 回调函数执行后的最终结果。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The reduceRight method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## reverse
 
@@ -1082,7 +1153,9 @@ reverse(): Array<T>
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-reverse(): Array<T>--><!--Device-Array-reverse(): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1090,14 +1163,14 @@ reverse(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 反转后的ArkTS Array对象。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 反转后的ArkTS Array对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The reverse method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reverse method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## shift
 
@@ -1105,12 +1178,13 @@ reverse(): Array<T>
 shift(): T | undefined
 ```
 
-从ArkTS Array中移除并返回第一个元素。如果Array为空，则返回**undefined**，
-且Array不发生变化。
+从ArkTS Array中移除并返回第一个元素。如果Array为空，则返回**undefined**，且Array不发生变化。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-shift(): T | undefined--><!--Device-Array-shift(): T | undefined-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1124,8 +1198,8 @@ shift(): T | undefined
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The shift method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The shift method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## shrinkTo
 
@@ -1137,7 +1211,9 @@ shrinkTo(arrayLength: number): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-shrinkTo(arrayLength: number): void--><!--Device-Array-shrinkTo(arrayLength: number): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1145,14 +1221,14 @@ shrinkTo(arrayLength: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLength | number | 是 | Array的新长度。如果传入的值大于或等于当前Array<br/>的长度，Array不发生变化。 |
+| arrayLength | number | 是 | Array的新长度。如果传入的值大于或等于当前Array的长度，Array不发生变化。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The shrinkTo method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The shrinkTo method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## slice
 
@@ -1164,7 +1240,9 @@ slice(start?: number, end?: number): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-slice(start?: number, end?: number): Array<T>--><!--Device-Array-slice(start?: number, end?: number): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1172,21 +1250,21 @@ slice(start?: number, end?: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 否 | 开始索引。如果传入负数，则指代<br/>start + array.length位置的下标。默认值为0。 |
-| end | number | 否 | 结束索引（不包括该元素）。如果传入负数，则指代<br/>end + array.length位置的下标。默认值为ArkTS Array的长度。 |
+| start | number | 否 | 开始索引。如果传入负数，则指代start + array.length位置的下标。默认值为0。 |
+| end | number | 否 | 结束索引（不包括该元素）。如果传入负数，则指代end + array.length位置的下标。默认值为ArkTS Array的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 包含选取元素的新Array。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 包含选取元素的新Array。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The slice method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The slice method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## some
 
@@ -1198,7 +1276,9 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1206,20 +1286,20 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | ArrayPredicateFn&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
+| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)<T, Array<T>> | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果存在满足指定条件的元素，则返回**true**；<br/>否则返回**false**。 |
+| boolean | 检查结果。如果存在满足指定条件的元素，则返回**true**；否则返回**false**。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The some method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The some method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## sort
 
@@ -1231,7 +1311,9 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-sort(compareFn?: (a: T, b: T) => number): Array<T>--><!--Device-Array-sort(compareFn?: (a: T, b: T) => number): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1239,20 +1321,20 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compareFn | (a: T, b: T) =&gt; number | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
+| compareFn | (a: T, b: T) => number | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; | 排序后的Array。 |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 排序后的Array。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The sort method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## splice
 
@@ -1264,7 +1346,9 @@ splice(start: number): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-splice(start: number): Array<T>--><!--Device-Array-splice(start: number): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1272,20 +1356,20 @@ splice(start: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 开始索引。如果`-array.length = } 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，<br/>返回一个空的**Array**对象。可能的原因：<br/>1.必填参数未指定。<br/>2.参数类型不正确。 |
+| start | number | 是 | 开始索引。如果`-array.length =&lt; start &lt; 0`，则从`start + array.length`开始删除。如果`start &lt; -array.length`，则从0开始删除。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; |  |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The splice method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## splice
 
@@ -1297,7 +1381,9 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>--><!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1305,22 +1391,22 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 开始索引。如果`-array.length = } 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，<br/>返回一个空的**Array**对象。可能的原因：<br/>1.必填参数未指定。<br/>2.参数类型不正确。 |
-| deleteCount | number | 是 |  |
-| items | T[] | 是 |  |
+| start | number | 是 | 开始索引。如果`-array.length =&lt; start &lt; 0`，则从`start + array.length`开始删除。如果`start &lt; -array.length`，则从0开始删除。 |
+| deleteCount | number | 是 | 删除元素的个数。 |
+| items | T[] | 是 | 从start位置开始插入的新元素。如果未传入，则仅删除Array内的元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;T&gt; |  |
+| [Array](arkts-arkts-collections-array-c.md)<T> | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The splice method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## toLocaleString
 
@@ -1328,12 +1414,13 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 toLocaleString(): string
 ```
 
-根据当前应用所在的系统地区获取符合当前文化习惯的字符串表示形式。让每个元素通过自身的
-**toLocaleString**方法转换为字符串，然后使用逗号（,）将这些字符串按顺序拼接。
+根据当前应用所在的系统地区获取符合当前文化习惯的字符串表示形式。让每个元素通过自身的**toLocaleString**方法转换为字符串，然后使用逗号（,）将这些字符串按顺序拼接。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-toLocaleString(): string--><!--Device-Array-toLocaleString(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1347,8 +1434,8 @@ toLocaleString(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The toLocaleString method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toLocaleString method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## toString
 
@@ -1360,7 +1447,9 @@ toString(): string
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-toString(): string--><!--Device-Array-toString(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1374,8 +1463,8 @@ toString(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The toString method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## unshift
 
@@ -1387,7 +1476,9 @@ unshift(...items: T[]): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-unshift(...items: T[]): number--><!--Device-Array-unshift(...items: T[]): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1407,8 +1498,8 @@ unshift(...items: T[]): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The unshift method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The unshift method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## values
 
@@ -1420,7 +1511,9 @@ values(): IterableIterator<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-values(): IterableIterator<T>--><!--Device-Array-values(): IterableIterator<T>-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1428,14 +1521,14 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;T&gt; | 包含Array中每个元素的值的迭代器对象。 |
+| IterableIterator<T> | 包含Array中每个元素的值的迭代器对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200011](../../errorcode-universal.md#10200011-The) | The values method cannot be bound. |
-| [10200201](../../errorcode-universal.md#10200201-Concurrent) | Concurrent modification error. |
+| [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
+| [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
 ## index
 
@@ -1449,7 +1542,9 @@ values(): IterableIterator<T>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-[index: number]: T--><!--Device-Array-[index: number]: T-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1465,7 +1560,9 @@ ArkTS Array的元素个数。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Array-readonly length: number--><!--Device-Array-readonly length: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

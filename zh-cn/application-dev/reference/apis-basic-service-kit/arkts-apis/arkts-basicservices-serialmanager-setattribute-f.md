@@ -1,14 +1,22 @@
 # setAttribute
 
+## 导入模块
+
+```TypeScript
+import { serialManager } from '@kit.BasicServicesKit';
+```
+
 ## setAttribute
 
 ```TypeScript
 function setAttribute(portId: number, attribute: SerialAttribute): void
 ```
 
-���ô��ڵ����ò��������δ���ø÷�����ʹ��Ĭ�����ò����������ʣ�9600bps������λ��8��У��λ��0��ֹͣλ��1����
+设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；数据位：8；校验位：0；停止位：1）。
 
 **起始版本：** 19
+
+<!--Device-serialManager-function setAttribute(portId: int, attribute: SerialAttribute): void--><!--Device-serialManager-function setAttribute(portId: int, attribute: SerialAttribute): void-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -16,17 +24,17 @@ function setAttribute(portId: number, attribute: SerialAttribute): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | Ŀ���豸�Ķ˿ںţ�����[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getPortList-1)��ȡ�Ĵ��ڲ���SerialPort�� |
-| attribute | SerialAttribute | 是 | ���ڲ����� |
+| portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist-1)获取的串口参数SerialPort。 |
+| attribute | [SerialAttribute](arkts-basicservices-serialmanager-serialattribute-i.md) | 是 | 串口参数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401) |  |
-| [31400001](../../errorcode-universal.md#31400001) |  |
-| [31400003](../../errorcode-universal.md#31400003) |  |
-| [31400005](../../errorcode-universal.md#31400005) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
+| [31400001](../../apis-basic-services-kit/errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400003](../../apis-basic-services-kit/errorcode-usb.md#31400003-端口号不存在) |  |
+| [31400005](../../apis-basic-services-kit/errorcode-usb.md#31400005-设备未打开) |  |
 
 **示例：**
 
@@ -35,9 +43,10 @@ function setAttribute(portId: number, attribute: SerialAttribute): void
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function setAttribute() {
+async function setAttributeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -48,15 +57,14 @@ function setAttribute() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -64,8 +72,8 @@ function setAttribute() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
-    return;
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 设置串口配置
@@ -79,7 +87,17 @@ function setAttribute() {
     serialManager.setAttribute(portId, attribute);
     console.info('setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
   } catch (error) {
-    console.error('setAttribute usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to set attribute. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 

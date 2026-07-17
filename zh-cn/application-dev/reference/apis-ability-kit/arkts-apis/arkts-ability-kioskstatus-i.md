@@ -4,6 +4,8 @@
 
 **起始版本：** 20
 
+<!--Device-unnamed-export interface KioskStatus--><!--Device-unnamed-export interface KioskStatus-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## isKioskMode
@@ -19,6 +21,8 @@ isKioskMode: boolean
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KioskStatus-isKioskMode: boolean--><!--Device-KioskStatus-isKioskMode: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,6 +40,8 @@ kioskBundleName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-KioskStatus-kioskBundleName: string--><!--Device-KioskStatus-kioskBundleName: string-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## kioskBundleUid
@@ -51,6 +57,8 @@ kioskBundleUid: number
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KioskStatus-kioskBundleUid: int--><!--Device-KioskStatus-kioskBundleUid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

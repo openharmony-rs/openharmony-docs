@@ -1,14 +1,22 @@
 # isAbilityEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## isAbilityEnabled
 
 ```TypeScript
 function isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise<boolean>
 ```
 
-��ȡӦ�û�ָ������Ӧ������Ľ��û�ʹ��״̬��ʹ��Promise�첽�ص���
+获取应用或指定分身应用组件的禁用或使能状态。使用Promise异步回调。
 
 **起始版本：** 12
+
+<!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, appIndex: int): Promise<boolean>--><!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, appIndex: int): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,24 +26,24 @@ function isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��ʾ���ڼ��ability����Ϣ�� |
-| appIndex | number | 是 | ��ʾ����Ӧ�õ�������<br/>appIndexΪ0ʱ����ʾ��ȡ��Ӧ������Ľ��û�ʹ��״̬��appIndex����0ʱ����ʾ��ȡָ������Ӧ������Ľ��û�ʹ��״̬�� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 表示关于检查ability的信息。 |
+| appIndex | number | 是 | 表示分身应用的索引。 <br> appIndex为0时，表示获取主应用组件的禁用或使能状态。appIndex大于0时，表示获取指定分身应用组件的禁用或使能状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󣬷���true��ʾ��ǰӦ�����Ϊʹ��״̬������false��ʾ��ǰӦ�����Ϊ����״̬�� |
+| Promise<boolean> | Promise对象，返回true表示当前应用组件为使能状态，返回false表示当前应用组件为禁用状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityName is not found. |
-| [17700061](../../errorcode-universal.md#17700061-AppIndex) | AppIndex not in valid range. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
 **示例：**
 
@@ -79,9 +87,11 @@ try {
 function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void
 ```
 
-��ȡָ������Ľ��û�ʹ��״̬��ʹ��callback�첽�ص���
+获取指定组件的禁用或使能状态。使用callback异步回调。
 
 **起始版本：** 9
+
+<!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void--><!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -91,17 +101,17 @@ function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��ʾ���ڼ��ability����Ϣ�� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)������true��ʾ��ǰӦ�����Ϊʹ��״̬������<br/>false��ʾӦ�����Ϊ����״̬�� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 表示关于检查ability的信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，返回true表示当前应用组件为使能状态，返回false表示应用组件为禁用状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityName is not found. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not found. |
 
 **示例：**
 
@@ -147,9 +157,11 @@ try {
 function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 ```
 
-��ȡָ������Ľ��û�ʹ��״̬��ʹ��Promise�첽�ص���
+获取指定组件的禁用或使能状态。使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo): Promise<boolean>--><!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -159,22 +171,22 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��ʾ���ڼ��ability����Ϣ�� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 表示关于检查ability的信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󣬷���true��ʾ��ǰӦ�����Ϊʹ��״̬������false��ʾ��ǰӦ�����Ϊ����״̬�� |
+| Promise<boolean> | Promise对象，返回true表示当前应用组件为使能状态，返回false表示当前应用组件为禁用状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityName is not found. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not found. |
 
 **示例：**
 

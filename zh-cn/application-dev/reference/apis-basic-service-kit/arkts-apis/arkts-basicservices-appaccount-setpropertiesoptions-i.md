@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-appAccount-interface SetPropertiesOptions--><!--Device-appAccount-interface SetPropertiesOptions-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+## 导入模块
+
+```TypeScript
+import { appAccount } from '@kit.BasicServicesKit';
+```
 
 ## parameters
 
@@ -17,6 +25,8 @@ parameters?: Record<string, Object>
 **类型：** Record<string, Object>
 
 **起始版本：** 9
+
+<!--Device-SetPropertiesOptions-parameters?: Record<string, Object>--><!--Device-SetPropertiesOptions-parameters?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -31,6 +41,8 @@ properties?: Record<string, Object>
 **类型：** Record<string, Object>
 
 **起始版本：** 9
+
+<!--Device-SetPropertiesOptions-properties?: Record<string, Object>--><!--Device-SetPropertiesOptions-properties?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 

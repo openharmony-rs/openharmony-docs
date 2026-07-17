@@ -4,9 +4,11 @@
 export type Rect = _Rect
 ```
 
-表示矩形区域，请参考[Rect](arkts-accessibility-rect-i.md)。
+表示矩形区域，请参考[Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)。
 
 **起始版本：** 10
+
+<!--Device-unnamed-export type Rect = _Rect--><!--Device-unnamed-export type Rect = _Rect-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -1,16 +1,24 @@
 # getAppCloneIdentity
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAppCloneIdentity
 
 ```TypeScript
 function getAppCloneIdentity(uid: number): Promise<AppCloneIdentity>
 ```
 
-����uid��ѯ����Ӧ�õİ����ͷ���������ʹ��Promise�첽�ص���
+根据uid查询分身应用的包名和分身索引。使用Promise异步回调。
 
 **起始版本：** 14
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-bundleManager-function getAppCloneIdentity(uid: int): Promise<AppCloneIdentity>--><!--Device-bundleManager-function getAppCloneIdentity(uid: int): Promise<AppCloneIdentity>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,21 +26,21 @@ function getAppCloneIdentity(uid: number): Promise<AppCloneIdentity>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | ��ʾӦ�ó����UID�� |
+| uid | number | 是 | 表示应用程序的UID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AppCloneIdentity&gt; | Promise���󣬷����� |
+| Promise<AppCloneIdentity> | Promise对象，返回&lt;AppCloneIdentity&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700021](../../errorcode-universal.md#17700021-The) | The uid is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700021](../errorcode-bundle.md#17700021-指定的uid无效) | The uid is not found. |
 
 **示例：**
 

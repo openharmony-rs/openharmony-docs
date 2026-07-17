@@ -103,7 +103,7 @@
 | UDMF_META_TAR_ARCHIVE "general.tar-archive"                  | TAR存档文件类型，归属类型为ARCHIVE。<br>**起始版本：** 12    |
 | UDMF_META_ZIP_ARCHIVE "general.zip-archive"                  | ZIP存档文件类型，归属类型为ARCHIVE。<br>**起始版本：** 12    |
 | UDMF_META_JAVA_ARCHIVE "com.sun.java-archive"                | JAVA存档文件类型，归属类型为ARCHIVE和EXECUTABLE。<br>**起始版本：** 12 |
-| UDMF_META_GNU_TAR_ARCHIVE "org.gnu.gnu-tar-archive"          | GUN存档文件类型，归属类型为ARCHIVE。<br>**起始版本：** 12    |
+| UDMF_META_GNU_TAR_ARCHIVE "org.gnu.gnu-tar-archive"          | GNU存档文件类型，归属类型为ARCHIVE。<br>**起始版本：** 12    |
 | UDMF_META_GNU_ZIP_ARCHIVE "org.gnu.gnu-zip-archive"          | GZIP存档文件类型，归属类型为ARCHIVE。<br>**起始版本：** 12   |
 | UDMF_META_GNU_ZIP_TAR_ARCHIVE "org.gnu.gnu-zip-tar-archive"  | GZIP TAR存档文件类型，归属类型为ARCHIVE。<br>**起始版本：** 12 |
 | UDMF_META_CALENDAR "general.calendar"                        | 所有日程类数据的基类型，归属类型为OBJECT。<br>**起始版本：** 12 |

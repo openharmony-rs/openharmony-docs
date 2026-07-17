@@ -1,12 +1,18 @@
 # SerialPort
 
-���ڶ����ṩ�����豸��Ϣ��ͨ���������
+串口对象，提供串口设备信息和通信相关能力
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-serial-interface SerialPort--><!--Device-serial-interface SerialPort-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
+
+## 导入模块
+
+```TypeScript
+import { serial } from '@kit.BasicServicesKit';
+```
 
 ## close
 
@@ -14,11 +20,13 @@
 close(): Promise<void>
 ```
 
-�رմ��ڡ�ʹ��Promise�첽�ص���
+关闭串口。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-close(): Promise<void>--><!--Device-SerialPort-close(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -26,14 +34,14 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise�����޷��ؽ�� |
+| Promise<void> | - Promise对象，无返回结果 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## drain
 
@@ -41,11 +49,13 @@ close(): Promise<void>
 drain(): Promise<void>
 ```
 
-�ȴ�����д��������ɡ�ʹ��Promise�첽�ص���
+等待所有写入请求完成。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-drain(): Promise<void>--><!--Device-SerialPort-drain(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -53,15 +63,15 @@ drain(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise�����޷��ؽ�� |
+| Promise<void> | - Promise对象，无返回结果 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## flush
 
@@ -69,11 +79,13 @@ drain(): Promise<void>
 flush(): Promise<void>
 ```
 
-flush���ڻ�������ʹ��Promise�첽�ص���
+flush串口缓冲区。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-flush(): Promise<void>--><!--Device-SerialPort-flush(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -81,15 +93,15 @@ flush���ڻ�������ʹ��Promise�첽�ص���
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise�����޷��ؽ�� |
+| Promise<void> | - Promise对象，无返回结果 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## getCts
 
@@ -97,11 +109,13 @@ flush���ڻ�������ʹ��Promise�첽�ص���
 getCts(): Promise<boolean>
 ```
 
-��ȡcts�ź�״̬��ʹ��Promise�첽�ص���
+获取cts信号状态。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-getCts(): Promise<boolean>--><!--Device-SerialPort-getCts(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -109,15 +123,15 @@ getCts(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | - Promise���󣬷���CTS�ź�״̬����ʾ�Ƿ������������� |
+| Promise<boolean> | - Promise对象，返回CTS信号状态，表示是否允许发送数据 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## getDsr
 
@@ -125,11 +139,13 @@ getCts(): Promise<boolean>
 getDsr(): Promise<boolean>
 ```
 
-��ȡDSR�ź�״̬��ʹ��Promise�첽����
+获取DSR信号状态，使用Promise异步返回
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-getDsr(): Promise<boolean>--><!--Device-SerialPort-getDsr(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -137,15 +153,15 @@ getDsr(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | DSR�ź�״̬��true��ʾ�Զ��Ѿ�����false��ʾ�Զ�δ���� |
+| Promise<boolean> | DSR信号状态，true表示对端已就绪，false表示对端未就绪 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## offDataRead
 
@@ -153,11 +169,13 @@ getDsr(): Promise<boolean>
 offDataRead(callback?: Callback<Uint8Array>): void
 ```
 
-ȡ���������ڶ˿ڽ��������¼���
+取消监听串口端口接收数据事件。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-offDataRead(callback?: Callback<Uint8Array>): void--><!--Device-SerialPort-offDataRead(callback?: Callback<Uint8Array>): void-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -165,14 +183,14 @@ offDataRead(callback?: Callback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;Uint8Array&gt; | 否 | �ص����������ش��ڶ˿ڽ��յ�������<br/><br/>Ĭ��ֵ:ȱʡ��Ϊ��������ڶ˿ڽ��������¼������м����� |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Uint8Array> | 否 | 回调函数，返回串口端口接收到的数据<br>默认值:缺省行为：清除串口端口接收数据事件的所有监听。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## offDisconnect
 
@@ -180,11 +198,13 @@ offDataRead(callback?: Callback<Uint8Array>): void
 offDisconnect(callback?: Callback<void>): void
 ```
 
-ȡ������USB���⴮�ڶϿ��¼���
+取消监听USB虚拟串口断开事件。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-offDisconnect(callback?: Callback<void>): void--><!--Device-SerialPort-offDisconnect(callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -192,14 +212,14 @@ offDisconnect(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;void&gt; | 否 | USB���⴮�ڶϿ��Ļص�������<br/><br/>Ĭ��ֵ���������USB���⴮�ڶϿ��¼��Ļص������� |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | USB虚拟串口断开的回调函数。<br>默认值：清除所有USB虚拟串口断开事件的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## onDataRead
 
@@ -207,12 +227,13 @@ offDisconnect(callback?: Callback<void>): void
 onDataRead(callback: Callback<Uint8Array>): void
 ```
 
-�������ڶ˿ڽ��յ������ݡ�ʹ��Callback�첽�ص���
-����{@link close}�ӿ�ʱ��������ȫ���ص�
+监听串口端口接收到的数据。使用Callback异步回调。调用{@link close}接口时，会清理全部回调
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-onDataRead(callback: Callback<Uint8Array>): void--><!--Device-SerialPort-onDataRead(callback: Callback<Uint8Array>): void-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -220,15 +241,15 @@ onDataRead(callback: Callback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;Uint8Array&gt; | 是 | �ص����������ش��ڶ˿ڽ��յ������� |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Uint8Array> | 是 | 回调函数，返回串口端口接收到的数据 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## onDisconnect
 
@@ -236,12 +257,13 @@ onDataRead(callback: Callback<Uint8Array>): void
 onDisconnect(callback: Callback<void>): void
 ```
 
-����USB���⴮�ڶϿ��¼���ʹ��Callback�첽�ص���
-����{@link close}�ӿ�ʱ��������ȫ���ص�
+监听USB虚拟串口断开事件。使用Callback异步回调。调用{@link close}接口时，会清理全部回调
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-onDisconnect(callback: Callback<void>): void--><!--Device-SerialPort-onDisconnect(callback: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -249,14 +271,14 @@ onDisconnect(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;void&gt; | 是 | USB���⴮�ڶϿ��¼��Ļص������� |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | USB虚拟串口断开事件的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## open
 
@@ -264,11 +286,13 @@ onDisconnect(callback: Callback<void>): void
 open(config?: SerialConfigs): Promise<void>
 ```
 
-�򿪶˿ڡ�ʹ��Promise�첽�ص���
+打开端口。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-open(config?: SerialConfigs): Promise<void>--><!--Device-SerialPort-open(config?: SerialConfigs): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -276,23 +300,23 @@ open(config?: SerialConfigs): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | SerialConfigs | 否 | ����ͨ�Ų���<br/><br/>Ĭ��ֵ:Ĭ��ֵ���ο�SerialConfigs��Ĭ��ֵ��<br/><br/>Default value: Refer to the default value of SerialConfigs.. |
+| config | [SerialConfigs](arkts-basicservices-serial-serialconfigs-i.md) | 否 | 串口通信参数<br>默认值:默认值：参考SerialConfigs的默认值。<br>Default value: Refer to the default value of SerialConfigs.. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise�����޷��ؽ�� |
+| Promise<void> | - Promise对象，无返回结果 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700002](../../errorcode-universal.md#35700002-Invalid) | Invalid parameter. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700004](../../errorcode-universal.md#35700004-Port) | Port already in use. |
-| [35700007](../../errorcode-universal.md#35700007-User) | User authorization required. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700002](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700004](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700004-端口已被占用) | Port already in use. |
+| [35700007](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700007-需要用户授权) | User authorization required. |
 
 ## sendBrk
 
@@ -300,11 +324,13 @@ open(config?: SerialConfigs): Promise<void>
 sendBrk(): Promise<void>
 ```
 
-����brk�źš�ʹ��Promise�첽�ص���
+发送brk信号。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-sendBrk(): Promise<void>--><!--Device-SerialPort-sendBrk(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -312,15 +338,15 @@ sendBrk(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise�����޷��ؽ�� |
+| Promise<void> | - Promise对象，无返回结果 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## setDtr
 
@@ -328,11 +354,13 @@ sendBrk(): Promise<void>
 setDtr(enable: boolean): Promise<void>
 ```
 
-����DTR�ź�״̬��ʹ��Promise�첽����
+设置DTR信号状态，使用Promise异步返回
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-setDtr(enable: boolean): Promise<void>--><!--Device-SerialPort-setDtr(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -340,21 +368,21 @@ setDtr(enable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | DTR�ź�״̬����ʾ�����Ƿ������ |
+| enable | boolean | 是 | DTR信号状态，表示本端是否就绪。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - �������κ�ֵ��Promise�� |
+| Promise<void> | - 不返回任何值的Promise。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## setRts
 
@@ -362,11 +390,13 @@ setDtr(enable: boolean): Promise<void>
 setRts(enable: boolean): Promise<void>
 ```
 
-����rts�źš�ʹ��Promise�첽�ص���
+设置rts信号。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-setRts(enable: boolean): Promise<void>--><!--Device-SerialPort-setRts(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -374,21 +404,21 @@ setRts(enable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | RTS�ź�״̬����ʾ�Ƿ������͡� |
+| enable | boolean | 是 | RTS信号状态，表示是否请求发送。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Promise�����޷��ؽ�� |
+| Promise<void> | - Promise对象，无返回结果 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
 ## write
 
@@ -396,11 +426,13 @@ setRts(enable: boolean): Promise<void>
 write(data: Uint8Array, timeout?: number): Promise<number>
 ```
 
-�������ݡ�ʹ��Promise�첽�ص���
+发送数据。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-write(data: Uint8Array, timeout?: int): Promise<int>--><!--Device-SerialPort-write(data: Uint8Array, timeout?: int): Promise<int>-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -408,24 +440,24 @@ write(data: Uint8Array, timeout?: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Uint8Array | 是 | Ҫ���͵�����<br/><br/>���ȷ�Χ:(0,4096]�� |
-| timeout | number | 否 | ��ʱʱ��<br/><br/>���ȷ�Χ:[0,300000]��ȡֵ�޶�Ϊ��������λ:���롣Ĭ��ֵ:0��<br/><br/>��ʾ�˿��޷�д������ʱ���ȴ���ֱ�ӷ��ء� |
+| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 要发送的数据<br>长度范围:(0,4096]。 |
+| timeout | number | 否 | 超时时间<br>长度范围:[0,300000]。取值限定为整数。单位:毫秒。默认值:0。<br>表示端口无法写入数据时不等待，直接返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | - Promise���󣬷��سɹ�д��ĳ��� |
+| Promise<number> | - Promise对象，返回成功写入的长度 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [35700001](../../errorcode-universal.md#35700001-Service) | Service error. |
-| [35700002](../../errorcode-universal.md#35700002-Invalid) | Invalid parameter. |
-| [35700003](../../errorcode-universal.md#35700003-Virtual) | Virtual serial port disconnected. |
-| [35700005](../../errorcode-universal.md#35700005-Port) | Port not open. |
-| [35700006](../../errorcode-universal.md#35700006-Transmission) | Transmission timeout. |
+| [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700002](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
+| [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+| [35700006](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700006-传输超时) | Transmission timeout. |
 
 ## portInfo
 
@@ -433,13 +465,15 @@ write(data: Uint8Array, timeout?: number): Promise<number>
 readonly portInfo: SerialPortInfo
 ```
 
-���ڶ˿���Ϣ
+串口端口信息
 
 **类型：** SerialPortInfo
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-readonly portInfo: SerialPortInfo--><!--Device-SerialPort-readonly portInfo: SerialPortInfo-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 

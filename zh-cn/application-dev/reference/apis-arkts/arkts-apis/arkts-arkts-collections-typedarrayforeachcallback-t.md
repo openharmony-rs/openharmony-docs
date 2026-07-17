@@ -9,7 +9,11 @@ ArkTS TypedArray遍历函数类型。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-collections-type TypedArrayForEachCallback<ElementType, ArrayType> =
+    (value: ElementType, index: number, array: ArrayType) => void--><!--Device-collections-type TypedArrayForEachCallback<ElementType, ArrayType> =
+    (value: ElementType, index: number, array: ArrayType) => void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

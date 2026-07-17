@@ -4,6 +4,8 @@
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface PluginBundleInfo--><!--Device-unnamed-export interface PluginBundleInfo-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -19,6 +21,8 @@ readonly icon: string
 **类型：** string
 
 **起始版本：** 26.0.0
+
+<!--Device-PluginBundleInfo-readonly icon: string--><!--Device-PluginBundleInfo-readonly icon: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,6 +40,8 @@ readonly iconId: number
 
 **起始版本：** 26.0.0
 
+<!--Device-PluginBundleInfo-readonly iconId: long--><!--Device-PluginBundleInfo-readonly iconId: long-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +57,8 @@ readonly label: string
 **类型：** string
 
 **起始版本：** 26.0.0
+
+<!--Device-PluginBundleInfo-readonly label: string--><!--Device-PluginBundleInfo-readonly label: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -68,6 +76,8 @@ readonly labelId: number
 
 **起始版本：** 26.0.0
 
+<!--Device-PluginBundleInfo-readonly labelId: long--><!--Device-PluginBundleInfo-readonly labelId: long-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +93,8 @@ readonly pluginBundleName: string
 **类型：** string
 
 **起始版本：** 26.0.0
+
+<!--Device-PluginBundleInfo-readonly pluginBundleName: string--><!--Device-PluginBundleInfo-readonly pluginBundleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -100,6 +112,8 @@ readonly pluginModuleInfos: Array<PluginModuleInfo>
 
 **起始版本：** 26.0.0
 
+<!--Device-PluginBundleInfo-readonly pluginModuleInfos: Array<PluginModuleInfo>--><!--Device-PluginBundleInfo-readonly pluginModuleInfos: Array<PluginModuleInfo>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -116,6 +130,8 @@ readonly versionCode: number
 
 **起始版本：** 26.0.0
 
+<!--Device-PluginBundleInfo-readonly versionCode: long--><!--Device-PluginBundleInfo-readonly versionCode: long-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -131,6 +147,8 @@ readonly versionName: string
 **类型：** string
 
 **起始版本：** 26.0.0
+
+<!--Device-PluginBundleInfo-readonly versionName: string--><!--Device-PluginBundleInfo-readonly versionName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

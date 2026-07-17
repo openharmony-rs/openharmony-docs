@@ -1,22 +1,30 @@
 # removeDisallowedRunningBundles（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## removeDisallowedRunningBundles
 
 ```TypeScript
 function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-�Ƴ���Ӧ�����н�ֹ�����е�Ӧ�ã��ڽ�ֹ�������ڵ�����£���Ӧ�����н�ֹ�����е�Ӧ�ò������ڵ�ǰ�û������С�ʹ��callback�첽�ص���
+移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在当前用户下运行。使用callback异步回调。
 
 **起始版本：** 10
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removeDisallowedRunningBundlesSync-1)
+**替代接口：** [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removedisallowedrunningbundlessync-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -26,19 +34,19 @@ function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, call
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| appIds | Array&lt;string&gt; | 是 | Ӧ��ID���飬ָ������Ӧ�á�<br/>**˵����** ��API version 21�汾��ʼ�������е�Ԫ��֧��ʹ��<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)��<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)�����Ƴ������<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)����<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)���������Ƴ�ͬһӦ�õ�<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)����<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)����API version 20��֮ǰ�汾�������е�Ԫ��ֻ֧��ʹ��<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص����������ӿڵ��óɹ���errΪnull������Ϊ������� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| appIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -71,17 +79,19 @@ applicationManager.removeDisallowedRunningBundles(wantTemp, appIds, (err) => {
 function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void
 ```
 
-�Ƴ���Ӧ�����н�ֹ�����е�Ӧ�ã��ڽ�ֹ�������ڵ�����£���Ӧ�����н�ֹ�����е�Ӧ�ò�������ָ���û���ͨ��userIdָ���������С�ʹ��callback�첽�ص���
+移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在指定用户（通过userId指定）下运行。使用callback异步回调。
 
 **起始版本：** 10
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removeDisallowedRunningBundlesSync-1)
+**替代接口：** [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removedisallowedrunningbundlessync-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void--><!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -91,20 +101,20 @@ function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, user
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| appIds | Array&lt;string&gt; | 是 | Ӧ��ID���飬ָ������Ӧ�á�<br/>**˵����** ��API version 21�汾��ʼ�������е�Ԫ��֧��ʹ��<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)��<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)�����Ƴ������<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)����<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)���������Ƴ�ͬһӦ�õ�<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)����<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)����API version 20��֮ǰ�汾�������е�Ԫ��ֻ֧��ʹ��<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)�� |
-| userId | number | 是 | �û�ID��ָ�������û���ȡֵ��Χ�����ڵ���0�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص����������ӿڵ��óɹ���errΪnull������Ϊ������� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| appIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| userId | number | 是 | 用户ID，指定具体用户。取值范围：大于等于0。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -137,17 +147,19 @@ applicationManager.removeDisallowedRunningBundles(wantTemp, appIds, 100, (err) =
 function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>
 ```
 
-�Ƴ���ǰ/ָ���û���Ӧ�����н�ֹ�����е�Ӧ�ã�ʹ��Promise�첽�ص���
+移除当前/指定用户在应用运行禁止名单中的应用，使用Promise异步回调。
 
 **起始版本：** 10
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removeDisallowedRunningBundlesSync-1)
+**替代接口：** [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md#removedisallowedrunningbundlessync-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>--><!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -157,25 +169,25 @@ function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, user
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| appIds | Array&lt;string&gt; | 是 | Ӧ��ID���飬ָ������Ӧ�á�<br/>**˵����** ��API version 21�汾��ʼ�������е�Ԫ��֧��ʹ��<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)��<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)�����Ƴ������<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)����<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)���������Ƴ�ͬһӦ�õ�<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)����<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)����API version 20��֮ǰ�汾�������е�Ԫ��ֻ֧��ʹ��<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)�� |
-| userId | number | 否 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>- ���ýӿ�ʱ��������userId����ʾָ���û���<br/>- ���ýӿ�ʱ����δ����userId����ʾ��ǰ�û��� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| appIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| userId | number | 否 | 用户ID，取值范围：大于等于0。<br> - 调用接口时，若传入userId，表示指定用户。<br> - 调用接口时，若未传入userId，表示当前用户。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | �޷��ؽ����Promise���󡣵��Ƴ�Ӧ�����н�ֹ����ʧ��ʱ�����׳�������� |
+| Promise<void> | 无返回结果的Promise对象。当移除应用运行禁止名单失败时，会抛出错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

@@ -8,6 +8,8 @@ type SoundPool = _SoundPool
 
 **起始版本：** 10
 
+<!--Device-media-type SoundPool = _SoundPool--><!--Device-media-type SoundPool = _SoundPool-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **属性类型：** _SoundPool

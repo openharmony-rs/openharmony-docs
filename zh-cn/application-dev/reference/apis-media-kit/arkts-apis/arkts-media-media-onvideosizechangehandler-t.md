@@ -8,7 +8,9 @@ type OnVideoSizeChangeHandler = (width: number, height: number) => void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-media-type OnVideoSizeChangeHandler = (width: int, height: int) => void--><!--Device-media-type OnVideoSizeChangeHandler = (width: int, height: int) => void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

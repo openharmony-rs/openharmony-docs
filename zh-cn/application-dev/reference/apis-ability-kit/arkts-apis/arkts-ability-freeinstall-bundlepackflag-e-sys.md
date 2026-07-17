@@ -1,12 +1,10 @@
 # BundlePackFlag（系统接口）
 
-```TypeScript
-export enum BundlePackFlag
-```
-
-Ҫ��ѯ��Ӧ�ð���־
+要查询的应用包标志
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export enum BundlePackFlag--><!--Device-freeInstall-export enum BundlePackFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -18,9 +16,11 @@ export enum BundlePackFlag
 GET_PACK_INFO_ALL = 0x00000000
 ```
 
-��ȡӦ�ð�pack.info��������Ϣ��
+获取应用包pack.info的所有信息。
 
 **起始版本：** 9
+
+<!--Device-BundlePackFlag-GET_PACK_INFO_ALL = 0x00000000--><!--Device-BundlePackFlag-GET_PACK_INFO_ALL = 0x00000000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -32,9 +32,11 @@ GET_PACK_INFO_ALL = 0x00000000
 GET_PACKAGES = 0x00000001
 ```
 
-��ȡӦ�ð�pack.info��package��Ϣ��
+获取应用包pack.info的package信息。
 
 **起始版本：** 9
+
+<!--Device-BundlePackFlag-GET_PACKAGES = 0x00000001--><!--Device-BundlePackFlag-GET_PACKAGES = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -46,9 +48,11 @@ GET_PACKAGES = 0x00000001
 GET_BUNDLE_SUMMARY = 0x00000002
 ```
 
-��ȡӦ�ð�pack.info��bundleժҪ��Ϣ��
+获取应用包pack.info的bundle摘要信息。
 
 **起始版本：** 9
+
+<!--Device-BundlePackFlag-GET_BUNDLE_SUMMARY = 0x00000002--><!--Device-BundlePackFlag-GET_BUNDLE_SUMMARY = 0x00000002-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -60,9 +64,11 @@ GET_BUNDLE_SUMMARY = 0x00000002
 GET_MODULE_SUMMARY = 0x00000004
 ```
 
-��ȡӦ�ð�pack.info��moduleժҪ��Ϣ��
+获取应用包pack.info的module摘要信息。
 
 **起始版本：** 9
+
+<!--Device-BundlePackFlag-GET_MODULE_SUMMARY = 0x00000004--><!--Device-BundlePackFlag-GET_MODULE_SUMMARY = 0x00000004-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

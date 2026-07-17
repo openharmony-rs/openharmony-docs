@@ -14,6 +14,8 @@ declare function openSync(path: string, flags?: number, mode?: number): number
 
 **替代接口：** [fs:openSync](arkts-corefile-file-fs-opensync-f.md#opensync-1)
 
+<!--Device-unnamed-declare function openSync(path: string, flags?: number, mode?: number): number--><!--Device-unnamed-declare function openSync(path: string, flags?: number, mode?: number): number-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**

@@ -1,5 +1,11 @@
 # getxattr
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## getxattr
 
 ```TypeScript
@@ -9,6 +15,8 @@ declare function getxattr(path: string, key: string): Promise<string>
 获取文件或目录的扩展属性。使用promise异步回调。
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare function getxattr(path: string, key: string): Promise<string>--><!--Device-unnamed-declare function getxattr(path: string, key: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -23,7 +31,7 @@ declare function getxattr(path: string, key: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回扩展属性的value。 |
+| Promise<string> | Promise对象。返回扩展属性的value。 |
 
 **错误码：**
 

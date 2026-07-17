@@ -1,12 +1,10 @@
 # AppDistributionType（系统接口）
 
-```TypeScript
-export enum AppDistributionType
-```
-
-��ʶӦ��[HarmonyAppProvision�����ļ�˵��](../../../../security/app-provision-structure.md)��
+标识应用[HarmonyAppProvision配置文件说明](../../../../security/app-provision-structure.md)。
 
 **起始版本：** 12
+
+<!--Device-bundleManager-export enum AppDistributionType--><!--Device-bundleManager-export enum AppDistributionType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,9 +16,11 @@ export enum AppDistributionType
 APP_GALLERY = 1
 ```
 
-Ӧ���г���װ��Ӧ�á�
+应用市场安装的应用。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-APP_GALLERY = 1--><!--Device-AppDistributionType-APP_GALLERY = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,9 +32,11 @@ APP_GALLERY = 1
 ENTERPRISE = 2
 ```
 
-��ҵӦ�ã����԰�װ�������豸�ϡ�
+企业应用，可以安装到个人设备上。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,9 +48,11 @@ ENTERPRISE = 2
 ENTERPRISE_NORMAL = 3
 ```
 
-��ͨ��ҵӦ�ã�ֻ��ͨ����ҵMDMӦ�ð�װ����ҵ�豸�ϡ�
+普通企业应用，只能通过企业MDM应用安装在企业设备上。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,11 +64,11 @@ ENTERPRISE_NORMAL = 3
 ENTERPRISE_MDM = 4
 ```
 
-��ҵMDMӦ�ã�ֻ�ܰ�װ����ҵ�豸�ϡ���Ҫ������
-[adminManager.enableAdmin](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableAdmin-1)
-�󣬲��ܰ�װ��ͨ��ҵӦ�á�
+企业MDM应用，只能安装在企业设备上。需要被激活[adminManager.enableAdmin](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin-1)后，才能安装普通企业应用。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -76,9 +80,11 @@ ENTERPRISE_MDM = 4
 OS_INTEGRATION = 5
 ```
 
-ϵͳԤ��Ӧ�á�
+系统预置应用。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-OS_INTEGRATION = 5--><!--Device-AppDistributionType-OS_INTEGRATION = 5-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -90,9 +96,11 @@ OS_INTEGRATION = 5
 CROWDTESTING = 6
 ```
 
-�ڰ�����Ӧ�ã�����Ӧ���г��ַ��������û�����һ������Ч�ڵ��ض�Ӧ�ã�ϵͳ��⵽Ӧ�õ���Ч�ڵ��ں󣬻�֪ͨ�û���Ӧ���г�����release�汾��Ӧ�á�
+众包测试应用，是由应用市场分发给部分用户，有一定的有效期的特定应用，系统检测到应用的有效期到期后，会通知用户到应用市场更新release版本的应用。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -104,9 +112,11 @@ CROWDTESTING = 6
 NONE = 7
 ```
 
-������
+其他。
 
 **起始版本：** 12
+
+<!--Device-AppDistributionType-NONE = 7--><!--Device-AppDistributionType-NONE = 7-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

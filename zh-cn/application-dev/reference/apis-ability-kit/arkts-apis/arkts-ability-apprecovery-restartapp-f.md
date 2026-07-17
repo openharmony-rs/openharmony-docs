@@ -1,5 +1,11 @@
 # restartApp
 
+## 导入模块
+
+```TypeScript
+import { appRecovery } from '@kit.AbilityKit';
+```
+
 ## restartApp
 
 ```TypeScript
@@ -8,7 +14,7 @@ function restartApp(): void
 
 重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的onCreate生命周期回调的want参数中作为wantParam属性传入。
 
-API10时将启动由[setRestartWant](arkts-ability-apprecovery-setrestartwant-f.md#setRestartWant-1)指定的Ability。如果没有指定则按以下规则启动：
+API10时将启动由[setRestartWant](arkts-ability-apprecovery-setrestartwant-f.md#setrestartwant-1)指定的Ability。如果没有指定则按以下规则启动：
 
 如果当前应用前台的Ability支持恢复，则重新拉起该Ability。
 
@@ -16,14 +22,15 @@ API10时将启动由[setRestartWant](arkts-ability-apprecovery-setrestartwant-f.
 
 如果没有Ability处于前台，则不拉起。
 
-可以配合[errorManager](arkts-app-ability-errormanager.md#errorManager)相关接口使用。两次重启的间隔应大于一分钟，一分钟之内重复调用此接口只会退出应用不会重启应用。
-自动重启的行为与主动重启一致。
+可以配合[errorManager](arkts-app-ability-errormanager.md)相关接口使用。两次重启的间隔应大于一分钟，一分钟之内重复调用此接口只会退出应用不会重启应用。自动重启的行为与主动重启一致。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-appRecovery-function restartApp(): void--><!--Device-appRecovery-function restartApp(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

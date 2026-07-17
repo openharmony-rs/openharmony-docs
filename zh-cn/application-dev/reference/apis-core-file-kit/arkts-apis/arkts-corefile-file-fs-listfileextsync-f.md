@@ -1,5 +1,11 @@
 # listFileExtSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## listFileExtSync
 
 ```TypeScript
@@ -9,12 +15,19 @@ declare function listFileExtSync(
 ): string[]
 ```
 
-以同步方法列出目录下所有文件名，支持通过自定义过滤函数对文件名进行过滤。
-可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+以同步方法列出目录下所有文件名，支持通过自定义过滤函数对文件名进行过滤。可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-declare function listFileExtSync(
+  path: string,
+  options?: ListFileExtOptions
+): string[]--><!--Device-unnamed-declare function listFileExtSync(
+  path: string,
+  options?: ListFileExtOptions
+): string[]-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -23,7 +36,7 @@ declare function listFileExtSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | ListFileExtOptions | 否 | 文件过滤选项。默认不进行过滤。 |
+| options | [ListFileExtOptions](arkts-corefile-file-fs-listfileextoptions-i.md) | 否 | 文件过滤选项。默认不进行过滤。 |
 
 **返回值：**
 

@@ -1,5 +1,11 @@
 # getMissionInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## getMissionInfo
 
 ```TypeScript
@@ -12,6 +18,8 @@ function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCall
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: int, callback: AsyncCallback<MissionInfo>): void--><!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: int, callback: AsyncCallback<MissionInfo>): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -22,15 +30,15 @@ function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCall
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | AsyncCallback&lt;MissionInfo&gt; | 是 | 执行结果回调函数，返回任务信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<MissionInfo> | 是 | 执行结果回调函数，返回任务信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -40,6 +48,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let testMissionId = 1;
 
+// 获取所有任务信息
 missionManager.getMissionInfos('', 10)
   .then((allMissions: Array<missionManager.MissionInfo>) => {
     try {
@@ -66,7 +75,7 @@ missionManager.getMissionInfos('', 10)
     }
   })
   .catch((error: BusinessError) => {
-    console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
+    console.error(`getMissionInfos failed, Code: ${error.code}, message: ${error.message}.`);
   });
 
 ```
@@ -84,6 +93,8 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: int): Promise<MissionInfo>--><!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: int): Promise<MissionInfo>-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -99,15 +110,15 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;MissionInfo&gt; | Promise对象，返回任务信息。 |
+| Promise<MissionInfo> | Promise对象，返回任务信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -123,11 +134,11 @@ try {
       console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
     })
     .catch((error: BusinessError) => {
-      console.error(`getMissionInfo failed. Cause: ${error.message}`);
+      console.error(`getMissionInfo failed. Code: ${error.code}, message: ${error.message}`);
     });
 } catch (error) {
   let err: BusinessError = error as BusinessError;
-  console.error(`getMissionInfo failed. Cause: ${err.message}`);
+  console.error(`getMissionInfo failed. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```

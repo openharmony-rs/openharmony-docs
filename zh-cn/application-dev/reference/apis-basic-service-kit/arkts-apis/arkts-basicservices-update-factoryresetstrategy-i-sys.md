@@ -4,11 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-update-export interface FactoryResetStrategy--><!--Device-update-export interface FactoryResetStrategy-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { update } from '@kit.BasicServicesKit';
+```
 
 ## scope
 
@@ -28,6 +34,8 @@ scope: FactoryResetScope
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FactoryResetStrategy-scope: FactoryResetScope--><!--Device-FactoryResetStrategy-scope: FactoryResetScope-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -38,14 +46,15 @@ scope: FactoryResetScope
 strategy: string
 ```
 
-重置范围描述，此字段是对scope范围的补充描述。
-要求填写有效内容，匹配上述擦除场景。若为空，当发生异常时，日志将缺乏有效信息，增加排查难度。
+重置范围描述，此字段是对scope范围的补充描述。要求填写有效内容，匹配上述擦除场景。若为空，当发生异常时，日志将缺乏有效信息，增加排查难度。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FactoryResetStrategy-strategy: string--><!--Device-FactoryResetStrategy-strategy: string-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

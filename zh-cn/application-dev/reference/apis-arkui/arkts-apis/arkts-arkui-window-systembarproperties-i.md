@@ -4,7 +4,15 @@
 
 **起始版本：** 6
 
+<!--Device-window-interface SystemBarProperties--><!--Device-window-interface SystemBarProperties-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## enableNavigationBarAnimation
 
@@ -20,7 +28,9 @@ enableNavigationBarAnimation?: boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemBarProperties-enableNavigationBarAnimation?: boolean--><!--Device-SystemBarProperties-enableNavigationBarAnimation?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,7 +46,9 @@ enableStatusBarAnimation?: boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemBarProperties-enableStatusBarAnimation?: boolean--><!--Device-SystemBarProperties-enableStatusBarAnimation?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,6 +68,8 @@ isNavigationBarLightIcon?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SystemBarProperties-isNavigationBarLightIcon?: boolean--><!--Device-SystemBarProperties-isNavigationBarLightIcon?: boolean-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## isStatusBarLightIcon
@@ -72,6 +86,8 @@ isStatusBarLightIcon?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SystemBarProperties-isStatusBarLightIcon?: boolean--><!--Device-SystemBarProperties-isStatusBarLightIcon?: boolean-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## navigationBarColor
@@ -80,8 +96,7 @@ isStatusBarLightIcon?: boolean
 navigationBarColor?: string
 ```
 
-三键导航栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'；
-作为返回值时格式固定为ARGB颜色，如'#FF00FF00'，默认值为系统配置的颜色。
+三键导航栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'；作为返回值时格式固定为ARGB颜色，如'#FF00FF00'，默认值为系统配置的颜色。
 
 <!--RP13--><!--RP13End-->
 
@@ -90,6 +105,8 @@ navigationBarColor?: string
 **起始版本：** 6
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemBarProperties-navigationBarColor?: string--><!--Device-SystemBarProperties-navigationBarColor?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -109,6 +126,8 @@ navigationBarContentColor?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SystemBarProperties-navigationBarContentColor?: string--><!--Device-SystemBarProperties-navigationBarContentColor?: string-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## statusBarColor
@@ -117,14 +136,15 @@ navigationBarContentColor?: string
 statusBarColor?: string
 ```
 
-状态栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'；
-作为返回值时格式固定为ARGB颜色，如'#FF00FF00'，默认值为系统配置的颜色。
+状态栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'；作为返回值时格式固定为ARGB颜色，如'#FF00FF00'，默认值为系统配置的颜色。
 
 **类型：** string
 
 **起始版本：** 6
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemBarProperties-statusBarColor?: string--><!--Device-SystemBarProperties-statusBarColor?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -141,6 +161,8 @@ statusBarContentColor?: string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemBarProperties-statusBarContentColor?: string--><!--Device-SystemBarProperties-statusBarContentColor?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

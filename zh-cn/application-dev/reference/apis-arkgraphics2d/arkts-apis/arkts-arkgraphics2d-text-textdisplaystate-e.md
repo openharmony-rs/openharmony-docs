@@ -1,14 +1,10 @@
 # TextDisplayState
 
-```TypeScript
-enum TextDisplayState
-```
-
 文本显示状态的枚举。表示文本排版后的原生结果，与外部画布裁切、溢出屏幕等外部显示因素无关。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-text-enum TextDisplayState--><!--Device-text-enum TextDisplayState-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -24,7 +20,9 @@ UNKNOWN = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDisplayState-UNKNOWN = 0--><!--Device-TextDisplayState-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -40,7 +38,9 @@ ALL = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDisplayState-ALL = 1--><!--Device-TextDisplayState-ALL = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -56,7 +56,9 @@ CLIP = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDisplayState-CLIP = 2--><!--Device-TextDisplayState-CLIP = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -72,7 +74,9 @@ OMITTED = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDisplayState-OMITTED = 3--><!--Device-TextDisplayState-OMITTED = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -1,14 +1,12 @@
 # WindowLayoutMode（系统接口）
 
-```TypeScript
-enum WindowLayoutMode
-```
-
 窗口布局模式枚举。
 
 **起始版本：** 9
 
 **废弃版本：** 26.0.0
+
+<!--Device-window-enum WindowLayoutMode--><!--Device-window-enum WindowLayoutMode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -26,6 +24,8 @@ WINDOW_LAYOUT_MODE_CASCADE = 0
 
 **废弃版本：** 26.0.0
 
+<!--Device-WindowLayoutMode-WINDOW_LAYOUT_MODE_CASCADE = 0--><!--Device-WindowLayoutMode-WINDOW_LAYOUT_MODE_CASCADE = 0-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +41,8 @@ WINDOW_LAYOUT_MODE_TILE = 1
 **起始版本：** 9
 
 **废弃版本：** 26.0.0
+
+<!--Device-WindowLayoutMode-WINDOW_LAYOUT_MODE_TILE = 1--><!--Device-WindowLayoutMode-WINDOW_LAYOUT_MODE_TILE = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

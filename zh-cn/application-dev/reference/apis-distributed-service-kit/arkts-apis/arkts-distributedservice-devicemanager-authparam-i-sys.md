@@ -6,9 +6,17 @@
 
 **废弃版本：** 11
 
+<!--Device-deviceManager-interface AuthParam--><!--Device-deviceManager-interface AuthParam-End-->
+
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## authType
 
@@ -23,6 +31,8 @@ authType: number
 **起始版本：** 7
 
 **废弃版本：** 11
+
+<!--Device-AuthParam-authType: number--><!--Device-AuthParam-authType: number-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -41,6 +51,8 @@ extraInfo: { [key: string]: any }
 **起始版本：** 7
 
 **废弃版本：** 11
+
+<!--Device-AuthParam-extraInfo: { [key: string]: any }--><!--Device-AuthParam-extraInfo: { [key: string]: any }-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 

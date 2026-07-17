@@ -14,6 +14,8 @@ declare function rmdirSync(path: string): void
 
 **替代接口：** [fs:rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md#rmdirsync-1)
 
+<!--Device-unnamed-declare function rmdirSync(path: string): void--><!--Device-unnamed-declare function rmdirSync(path: string): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**

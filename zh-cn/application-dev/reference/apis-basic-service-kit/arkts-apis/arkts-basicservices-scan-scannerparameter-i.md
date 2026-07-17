@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-scan-interface ScannerParameter--><!--Device-scan-interface ScannerParameter-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+```
 
 ## optionConstraintInt
 
@@ -17,6 +25,8 @@ optionConstraintInt?: number[]
 **类型：** number[]
 
 **起始版本：** 20
+
+<!--Device-ScannerParameter-optionConstraintInt?: int[]--><!--Device-ScannerParameter-optionConstraintInt?: int[]-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ optionConstraintRange?: Range
 
 **起始版本：** 20
 
+<!--Device-ScannerParameter-optionConstraintRange?: Range--><!--Device-ScannerParameter-optionConstraintRange?: Range-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## optionConstraintString
@@ -45,6 +57,8 @@ optionConstraintString?: string[]
 **类型：** string[]
 
 **起始版本：** 20
+
+<!--Device-ScannerParameter-optionConstraintString?: string[]--><!--Device-ScannerParameter-optionConstraintString?: string[]-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -60,6 +74,8 @@ optionConstraintType: ConstraintType
 
 **起始版本：** 20
 
+<!--Device-ScannerParameter-optionConstraintType: ConstraintType--><!--Device-ScannerParameter-optionConstraintType: ConstraintType-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## optionDesc
@@ -73,6 +89,8 @@ optionDesc: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ScannerParameter-optionDesc: string--><!--Device-ScannerParameter-optionDesc: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -88,6 +106,8 @@ optionIndex: number
 
 **起始版本：** 20
 
+<!--Device-ScannerParameter-optionIndex: int--><!--Device-ScannerParameter-optionIndex: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## optionName
@@ -101,6 +121,8 @@ optionName: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ScannerParameter-optionName: string--><!--Device-ScannerParameter-optionName: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -116,6 +138,8 @@ optionTitle: string
 
 **起始版本：** 20
 
+<!--Device-ScannerParameter-optionTitle: string--><!--Device-ScannerParameter-optionTitle: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## optionType
@@ -130,6 +154,8 @@ optionType: OptionValueType
 
 **起始版本：** 20
 
+<!--Device-ScannerParameter-optionType: OptionValueType--><!--Device-ScannerParameter-optionType: OptionValueType-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## optionUnit
@@ -143,6 +169,8 @@ optionUnit: PhysicalUnit
 **类型：** PhysicalUnit
 
 **起始版本：** 20
+
+<!--Device-ScannerParameter-optionUnit: PhysicalUnit--><!--Device-ScannerParameter-optionUnit: PhysicalUnit-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

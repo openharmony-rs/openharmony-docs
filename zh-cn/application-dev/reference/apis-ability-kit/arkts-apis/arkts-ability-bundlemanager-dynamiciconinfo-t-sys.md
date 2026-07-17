@@ -4,9 +4,11 @@
 export type DynamicIconInfo = _BundleInfo.DynamicIconInfo
 ```
 
-Ӧ�õĶ�̬ͼ����Ϣ��
+应用的动态图标信息。
 
 **起始版本：** 20
+
+<!--Device-bundleManager-export type DynamicIconInfo = _BundleInfo.DynamicIconInfo--><!--Device-bundleManager-export type DynamicIconInfo = _BundleInfo.DynamicIconInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

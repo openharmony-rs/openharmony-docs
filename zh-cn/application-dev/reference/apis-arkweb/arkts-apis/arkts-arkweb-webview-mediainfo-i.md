@@ -1,11 +1,18 @@
 # MediaInfo
 
-[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md#CreateNativeMediaPlayerCallback)回调函数的一个参数。包含了网页中媒
-体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
+[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
 
 **起始版本：** 12
 
+<!--Device-webview-interface MediaInfo--><!--Device-webview-interface MediaInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## attributes
 
@@ -18,6 +25,8 @@ Attributes in **<video>** or **<audio>**.
 **类型：** Record<string, string>
 
 **起始版本：** 12
+
+<!--Device-MediaInfo-attributes: Record<string, string>--><!--Device-MediaInfo-attributes: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -33,7 +42,9 @@ Value of the **controlslist** attribute in **<video>** or **<audio>**.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-controlList: string[]--><!--Device-MediaInfo-controlList: string[]-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -45,14 +56,15 @@ controlsShown: boolean
 
 Whether the **controls** attribute exists in **<video>** or **<audio>**.
 
-The value **true** means that the **controls** attribute exists in **<video>** or **<audio>**, and **false**
-means the opposite.
+The value **true** means that the **controls** attribute exists in **<video>** or **<audio>**, and **false** means the opposite.
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-controlsShown: boolean--><!--Device-MediaInfo-controlsShown: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,6 +80,8 @@ ID of **<video>** or **<audio>** on the web page.
 
 **起始版本：** 12
 
+<!--Device-MediaInfo-embedID: string--><!--Device-MediaInfo-embedID: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## headers
@@ -81,6 +95,8 @@ HTTP headers that need to be included in the player's request for media resource
 **类型：** Record<string, string>
 
 **起始版本：** 12
+
+<!--Device-MediaInfo-headers: Record<string, string>--><!--Device-MediaInfo-headers: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -96,7 +112,9 @@ Source of the media. There may be multiple sources. The application needs to sel
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-mediaSrcList: MediaSourceInfo[]--><!--Device-MediaInfo-mediaSrcList: MediaSourceInfo[]-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -112,7 +130,9 @@ Type of the media.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-mediaType: MediaType--><!--Device-MediaInfo-mediaType: MediaType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -130,7 +150,9 @@ The value **true** means to mute the player, and **false** means the opposite.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-muted: boolean--><!--Device-MediaInfo-muted: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -146,7 +168,9 @@ URL of a poster.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-posterUrl: string--><!--Device-MediaInfo-posterUrl: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -162,7 +186,9 @@ Whether preloading is required.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-preload: Preload--><!--Device-MediaInfo-preload: Preload-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -178,7 +204,9 @@ Surface information used for same-layer rendering.
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaInfo-surfaceInfo: NativeMediaPlayerSurfaceInfo--><!--Device-MediaInfo-surfaceInfo: NativeMediaPlayerSurfaceInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

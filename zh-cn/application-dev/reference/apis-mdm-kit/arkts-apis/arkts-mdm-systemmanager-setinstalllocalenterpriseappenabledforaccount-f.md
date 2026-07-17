@@ -1,18 +1,24 @@
 # setInstallLocalEnterpriseAppEnabledForAccount
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## setInstallLocalEnterpriseAppEnabledForAccount
 
 ```TypeScript
 function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void
 ```
 
-����ָ���û����Ƿ�֧�ֱ��ذ�װ��ҵӦ�á��ھ߱����ذ�װ������PC/2in1��ҵ�豸���·�֧�ֱ�����ҵӦ�ò��Ժ��û���������������ļ�������ֱ��˫����ҵӦ�ð�װ��������ֱ�Ӱ�װ��ҵӦ�á�
+设置指定用户下是否支持本地安装企业应用。在具备本地安装能力的PC/2in1企业设备上下发支持本地企业应用策略后，用户可以在桌面或者文件管理器直接双击企业应用安装包，即可直接安装企业应用。
 
-��֧��enterprise_normal��enterprise_mdmǩ�����͵���ҵӦ�á�
+仅支持enterprise_normal或enterprise_mdm签名类型的企业应用。
 
-> **˵����**
->
-> ������������������PC/2in1��ҵ�豸�ڵ�ǰ�û��¼�֧�ֱ��ذ�װ��ҵӦ�ã�
+> **说明：**  
+>  
+> 满足以下任意条件，PC/2in1企业设备在当前用户下即支持本地安装企业应用：  
 >
 
 <!--RP7--><!--RP7End-->
@@ -23,25 +29,27 @@ function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: bo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-systemManager-function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void--><!--Device-systemManager-function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| isEnable | boolean | 是 | �Ƿ�֧�ֱ��ذ�װ��ҵӦ�á�true��ʾ֧�֣�false��ʾ��֧�֡� |
-| accountId | number | 是 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��<br/>[getOsAccountLocalId](@ohos.account.osAccount:osAccount.AccountManager.getOsAccountLocalId(callback:<br/>AsyncCallback))<br/>�Ƚӿ�����ȡ<br/><br/>ȡֵӦΪ��0�������� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| isEnable | boolean | 是 | 是否支持本地安装企业应用。true表示支持，false表示不支持。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取<br>取值应为≥0的整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

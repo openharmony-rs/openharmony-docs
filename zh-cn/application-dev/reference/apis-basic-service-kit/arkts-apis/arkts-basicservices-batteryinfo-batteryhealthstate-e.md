@@ -1,12 +1,10 @@
 # BatteryHealthState
 
-```TypeScript
-export enum BatteryHealthState
-```
-
 表示电池健康状态的枚举。
 
 **起始版本：** 6
+
+<!--Device-batteryInfo-export enum BatteryHealthState--><!--Device-batteryInfo-export enum BatteryHealthState-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -20,6 +18,8 @@ UNKNOWN
 
 **起始版本：** 6
 
+<!--Device-BatteryHealthState-UNKNOWN--><!--Device-BatteryHealthState-UNKNOWN-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 ## GOOD
@@ -31,6 +31,8 @@ GOOD
 表示电池健康状态为正常。
 
 **起始版本：** 6
+
+<!--Device-BatteryHealthState-GOOD--><!--Device-BatteryHealthState-GOOD-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -44,6 +46,8 @@ OVERHEAT
 
 **起始版本：** 6
 
+<!--Device-BatteryHealthState-OVERHEAT--><!--Device-BatteryHealthState-OVERHEAT-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 ## OVERVOLTAGE
@@ -55,6 +59,8 @@ OVERVOLTAGE
 表示电池健康状态为过压。
 
 **起始版本：** 6
+
+<!--Device-BatteryHealthState-OVERVOLTAGE--><!--Device-BatteryHealthState-OVERVOLTAGE-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -68,6 +74,8 @@ COLD
 
 **起始版本：** 6
 
+<!--Device-BatteryHealthState-COLD--><!--Device-BatteryHealthState-COLD-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 ## DEAD
@@ -79,6 +87,8 @@ DEAD
 表示电池健康状态为僵死状态。
 
 **起始版本：** 6
+
+<!--Device-BatteryHealthState-DEAD--><!--Device-BatteryHealthState-DEAD-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 

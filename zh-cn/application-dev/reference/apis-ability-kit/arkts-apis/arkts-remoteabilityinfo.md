@@ -7,6 +7,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md) | remoteAbility信息。@link remoteAbilityInfo:RemoteAbilityInfo}替代。&gt;&gt; 本模块为系统接口。 |
+| [RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md) | remoteAbility信息。 |
 <!--DelEnd-->
 

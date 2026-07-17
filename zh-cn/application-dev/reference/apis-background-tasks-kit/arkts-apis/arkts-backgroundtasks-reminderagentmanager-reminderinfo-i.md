@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-reminderAgentManager-interface ReminderInfo--><!--Device-reminderAgentManager-interface ReminderInfo-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## reminderId
 
@@ -17,6 +25,8 @@ reminderId: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-ReminderInfo-reminderId: int--><!--Device-ReminderInfo-reminderId: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -31,6 +41,8 @@ reminderReq: ReminderRequest
 **类型：** ReminderRequest
 
 **起始版本：** 12
+
+<!--Device-ReminderInfo-reminderReq: ReminderRequest--><!--Device-ReminderInfo-reminderReq: ReminderRequest-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 

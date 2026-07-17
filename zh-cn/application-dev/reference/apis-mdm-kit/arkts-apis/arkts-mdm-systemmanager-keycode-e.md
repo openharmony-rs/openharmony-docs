@@ -1,17 +1,10 @@
 # KeyCode
 
-```TypeScript
-enum KeyCode
-```
-
-�������롣[���Ӱ����¼�����](arkts-mdm-systemmanager-addkeyeventpolicies-f.md#addKeyEventPolicies-1)��[ɾ�������¼�����](arkts-mdm-systemmanager-removekeyeventpolicies-f.md#removeKeyEventPolicies-1)��
-[��ȡ�����¼�����](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getKeyEventPolicies-1)��
-[�����¼��ص�](arkts-mdm-enterpriseadminextensionability-c.md#onKeyEvent-1)�ӿ�ͨ����������
-ӳ�䵽�豸��Ӧʵ�ʰ�����
+按键编码。[添加按键事件策略](arkts-mdm-systemmanager-addkeyeventpolicies-f.md#addkeyeventpolicies-1)、[删除按键事件策略](arkts-mdm-systemmanager-removekeyeventpolicies-f.md#removekeyeventpolicies-1)、[获取按键事件策略](arkts-mdm-systemmanager-getkeyeventpolicies-f.md#getkeyeventpolicies-1)和[按键事件回调](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent-1)接口通过按键编码映射到设备对应实际按键。
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-systemManager-enum KeyCode--><!--Device-systemManager-enum KeyCode-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -21,11 +14,13 @@ enum KeyCode
 POWER = 0
 ```
 
-��Դ����
+电源键。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCode-POWER = 0--><!--Device-KeyCode-POWER = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -35,11 +30,13 @@ POWER = 0
 VOLUME_UP = 1
 ```
 
-�����ӡ�
+音量加。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCode-VOLUME_UP = 1--><!--Device-KeyCode-VOLUME_UP = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -49,11 +46,13 @@ VOLUME_UP = 1
 VOLUME_DOWN = 2
 ```
 
-��������
+音量减。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCode-VOLUME_DOWN = 2--><!--Device-KeyCode-VOLUME_DOWN = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -63,11 +62,13 @@ VOLUME_DOWN = 2
 BACK = 3
 ```
 
-������-���ˡ�
+导航键-回退。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCode-BACK = 3--><!--Device-KeyCode-BACK = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -77,11 +78,13 @@ BACK = 3
 HOME = 4
 ```
 
-������-��ҳ��
+导航键-主页。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCode-HOME = 4--><!--Device-KeyCode-HOME = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -91,11 +94,13 @@ HOME = 4
 RECENT = 5
 ```
 
-������-����򿪡�
+导航键-最近打开。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyCode-RECENT = 5--><!--Device-KeyCode-RECENT = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

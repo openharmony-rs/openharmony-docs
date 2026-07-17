@@ -7,6 +7,9 @@
 > - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper]{@link swiper}替代。详细示例请参考
 > [示例2](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md#示例2使用swiper替代stepper)。
 
+## 子组件
+
+仅能包含子组件[StepperItem]{@link stepper_item}。
 
 ## Stepper
 
@@ -22,7 +25,9 @@ Called when the stepper component is used.
 
 **替代接口：** <!--SUBSTITUTE_API-->Swiper.SwiperAttribute#index<!--/SUBSTITUTE_API-->
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute--><!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

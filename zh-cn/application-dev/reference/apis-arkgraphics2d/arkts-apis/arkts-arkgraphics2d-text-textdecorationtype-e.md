@@ -1,12 +1,10 @@
 # TextDecorationType
 
-```TypeScript
-enum TextDecorationType
-```
-
 装饰线类型枚举。
 
 **起始版本：** 12
+
+<!--Device-text-enum TextDecorationType--><!--Device-text-enum TextDecorationType-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ NONE = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-TextDecorationType-NONE = 0--><!--Device-TextDecorationType-NONE = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## UNDERLINE
@@ -35,6 +35,8 @@ UNDERLINE = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDecorationType-UNDERLINE = 1--><!--Device-TextDecorationType-UNDERLINE = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,12 +52,14 @@ OVERLINE = 2
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-TextDecorationType-OVERLINE = 2--><!--Device-TextDecorationType-OVERLINE = 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## LINE_THROUGH
 
 ```TypeScript
-LINE_THROUGH = 3
+LINE_THROUGH = 4
 ```
 
 删除线。
@@ -63,6 +67,8 @@ LINE_THROUGH = 3
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDecorationType-LINE_THROUGH = 4--><!--Device-TextDecorationType-LINE_THROUGH = 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

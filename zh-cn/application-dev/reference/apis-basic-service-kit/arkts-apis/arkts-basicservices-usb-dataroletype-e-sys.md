@@ -1,16 +1,14 @@
 # DataRoleType（系统接口）
 
-```TypeScript
-export enum DataRoleType
-```
-
 数据角色类型。
 
 **起始版本：** 9
 
 **废弃版本：** 9
 
-**替代接口：** [DataRoleType](arkts-basicservices-usbmanager-dataroletype-e-sys.md#DataRoleType)
+**替代接口：** [DataRoleType](arkts-basicservices-usbmanager-dataroletype-e-sys.md)
+
+<!--Device-usb-export enum DataRoleType--><!--Device-usb-export enum DataRoleType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -28,7 +26,9 @@ NONE = 0
 
 **废弃版本：** 9
 
-**替代接口：** [NONE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#NONE)
+**替代接口：** [NONE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#none)
+
+<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -46,7 +46,9 @@ HOST = 1
 
 **废弃版本：** 9
 
-**替代接口：** [HOST](arkts-basicservices-usbmanager-dataroletype-e-sys.md#HOST)
+**替代接口：** [HOST](arkts-basicservices-usbmanager-dataroletype-e-sys.md#host)
+
+<!--Device-DataRoleType-HOST = 1--><!--Device-DataRoleType-HOST = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -64,7 +66,9 @@ DEVICE = 2
 
 **废弃版本：** 9
 
-**替代接口：** [DEVICE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#DEVICE)
+**替代接口：** [DEVICE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#device)
+
+<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

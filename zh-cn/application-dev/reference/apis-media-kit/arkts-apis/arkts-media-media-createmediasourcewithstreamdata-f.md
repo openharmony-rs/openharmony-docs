@@ -1,5 +1,11 @@
 # createMediaSourceWithStreamData
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## createMediaSourceWithStreamData
 
 ```TypeScript
@@ -10,7 +16,9 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 
 **起始版本：** 19
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+
+<!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource--><!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -18,13 +26,13 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| streams | Array&lt;MediaStream&gt; | 是 | 可设置MediaStream数组，支持的流媒体格式：HTTP-FLV。 |
+| streams | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<MediaStream> | 是 | 可设置MediaStream数组，支持的流媒体格式：HTTP-FLV。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| MediaSource | 返回MediaSource，用于媒体资源设置。 |
+| [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
 
 **示例：**
 

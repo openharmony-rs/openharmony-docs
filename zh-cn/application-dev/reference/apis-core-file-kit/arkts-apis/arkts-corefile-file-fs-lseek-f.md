@@ -1,5 +1,11 @@
 # lseek
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## lseek
 
 ```TypeScript
@@ -10,6 +16,8 @@ declare function lseek(fd: number, offset: number, whence?: WhenceType): number
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare function lseek(fd: number, offset: number, whence?: WhenceType): number--><!--Device-unnamed-declare function lseek(fd: number, offset: number, whence?: WhenceType): number-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -18,7 +26,7 @@ declare function lseek(fd: number, offset: number, whence?: WhenceType): number
 | --- | --- | --- | --- |
 | fd | number | 是 | 文件描述符。 |
 | offset | number | 是 | 相对偏移位置，单位为Byte。 |
-| whence | WhenceType | 否 | 偏移指针相对位置类型。不指定则默认为文件起始位置处。 |
+| whence | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | 否 | 偏移指针相对位置类型。不指定则默认为文件起始位置处。 |
 
 **返回值：**
 

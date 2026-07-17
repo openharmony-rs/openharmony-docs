@@ -14,6 +14,8 @@ declare function unlinkSync(path: string): void
 
 **替代接口：** [fs:unlinkSync](arkts-corefile-file-fs-unlinksync-f.md#unlinksync-1)
 
+<!--Device-unnamed-declare function unlinkSync(path: string): void--><!--Device-unnamed-declare function unlinkSync(path: string): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**

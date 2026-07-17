@@ -1,5 +1,11 @@
 # createParallelSoundPool（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## createParallelSoundPool
 
 ```TypeScript
@@ -8,11 +14,11 @@ function createParallelSoundPool(maxStreams: number, audioRenderInfo: audio.Audi
 
 Creates a **SoundPool** instance. This API uses a promise to return the result.
 
-If a **SoundPool** instance created using [createSoundPool](#createSoundPool) is used to play the same sound
-again, it stops the current audio and restarts the audio. However, if the instance is created using
-**createParallelSoundPool**, it keeps playing the first audio and starts the new one alongside it.
+If a **SoundPool** instance created using [createSoundPool](#createSoundPool) is used to play the same sound again, it stops the current audio and restarts the audio. However, if the instance is created using **createParallelSoundPool**, it keeps playing the first audio and starts the new one alongside it.
 
 **起始版本：** 20
+
+<!--Device-media-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>--><!--Device-media-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -22,21 +28,21 @@ again, it stops the current audio and restarts the audio. However, if the instan
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| maxStreams | number | 是 | Maximum number of streams that can be played by the **SoundPool** instance.<br/>The value is an integer ranging from 1 to 32. |
+| maxStreams | number | 是 | Maximum number of streams that can be played by the **SoundPool** instance.The value is an integer ranging from 1 to 32. |
 | audioRenderInfo | audio.AudioRendererInfo | 是 | Audio renderer parameters. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;SoundPool&gt; | Promise used to return the result. If the operation is successful, a **SoundPool**<br/>instance is returned; otherwise, **null** is returned. The instance is used for loading and playback. |
+| Promise<SoundPool> | Promise used to return the result. If the operation is successful, a **SoundPool** instance is returned; otherwise, **null** is returned. The instance is used for loading and playback. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400101](../../errorcode-universal.md#5400101-No) | No memory. Return by promise. |
-| [202](../../errorcode-universal.md#202-System) | System API error. Return by promise. |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API error. Return by promise. |
 
 **示例：**
 

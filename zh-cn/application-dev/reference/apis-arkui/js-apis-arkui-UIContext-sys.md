@@ -6,7 +6,9 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在Stage模型中，WindowStage/Window可以通过loadContent接口加载页面并创建UI的实例，并将页面内容渲染到关联的窗口中，所以UI实例和窗口是一一关联的。一些全局的UI接口是和具体UI实例的执行上下文相关的，在当前接口调用时，通过追溯调用链跟踪到UI的上下文，来确定具体的UI实例。若在非UI页面中或者一些异步回调中调用这类接口，可能无法跟踪到当前UI的上下文，导致接口执行失败。
+在Stage模型中，WindowStage/Window可以通过[loadContent](arkts-apis-window-Window.md#loadcontent9)接口加载页面并创建UI实例，并将页面内容渲染到关联窗口中，因此UI实例和窗口一一关联。与具体UI实例执行上下文相关的全局UI接口，在调用时会通过追溯调用链跟踪UI上下文，确定具体的UI实例。若在非UI页面中或者未绑定当前UI上下文的异步回调中调用这类接口，可能无法跟踪到当前UI上下文，导致接口执行失败。
+
+UIContext用于获取与具体UI实例关联的上下文，使开发者可在对应UI实例上调用上下文相关的UI接口。本模块提供组件压暗和冻结、键盘样式配置、资源缓存清理、背景亮度取色、不可见Image组件图像内存回收以及组件截图等系统能力。
 
 > **说明：**
 >
@@ -73,7 +75,9 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -84,7 +88,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
 | id | string | 是 | 组件的id。|
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
+| isFrozen | boolean | 是 | 是否冻结组件。<br>true表示冻结组件，false表示不冻结组件。<br>默认值为false，传入`undefined`时按false处理。|
 
 **错误码：**
 
@@ -149,7 +153,7 @@ struct Index {
             this.getUIContext().freezeUINode('tab1', false);
             // 通过状态变量更新tab1内部Column节点的宽度，设置this.columnWidth1为'20%'。
             this.columnWidth1 = '20%';
-          }, 5000)
+          }, 5000);
         })
 
          TabContent() {
@@ -193,7 +197,9 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -204,7 +210,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | 组件的uniqueId。|
-| isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
+| isFrozen | boolean | 是 | 是否冻结组件。<br>true表示冻结组件，false表示不冻结组件。<br>默认值为false，传入`undefined`时按false处理。|
 
 **错误码：**
 
@@ -240,16 +246,20 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
-          this.getUIContext().freezeUINode(uniqueId, false)
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
         TabContent() {
@@ -263,25 +273,29 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab2');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab2的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab2的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab2的TabContent显示的时候，通过uniqueId设置id为tab1的节点的冻结状态为true。
-          // 通过状态变量改变id为tab1的节点内部Column节点的宽度。由于id为tab1的节点冻结状态为true，标脏至该TabContent时会终止标记，并且不会从该节点开始触发布局。
-          this.getUIContext().freezeUINode(uniqueId, true);
-          this.columnWidth1 = '50%';
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab2的TabContent显示的时候，通过uniqueId设置id为tab1的节点的冻结状态为true。
+            // 通过状态变量改变id为tab1的节点内部Column节点的宽度。由于id为tab1的节点冻结状态为true，标脏至该TabContent时会终止标记，并且不会从该节点开始触发布局。
+            this.getUIContext().freezeUINode(uniqueId, true);
+            this.columnWidth1 = '50%';
 
-          // 设置延时任务。
-          setTimeout(() => {
-            // 将id为tab1的节点的冻结状态设置为false，以重新触发标记和布局。
-            this.getUIContext().freezeUINode(uniqueId, false);
-            this.columnWidth1 = '20%';
-          }, 5000)
+            // 设置延时任务。
+            setTimeout(() => {
+              // 将id为tab1的节点的冻结状态设置为false，以重新触发标记和布局。
+              this.getUIContext().freezeUINode(uniqueId, false);
+              this.columnWidth1 = '20%';
+            }, 5000);
+          }
         })
 
          TabContent() {
@@ -295,16 +309,20 @@ struct Index {
         .onWillHide(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab3的TabContent隐藏时，通过uniqueId将该节点的冻结状态设置为true。
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab3的TabContent隐藏时，通过uniqueId将该节点的冻结状态设置为true。
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // 通过id查询以获取对应节点的uniqueId。
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // 当id为tab3的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
-          this.getUIContext().freezeUINode(uniqueId, false);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // 当id为tab3的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
       }
@@ -610,4 +628,3 @@ struct SnapshotExample {
 ```
 
 ![zh-cn_image_getWithRange](figures/image-getWithRange.gif)
-

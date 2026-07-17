@@ -4,9 +4,11 @@
 export type SharedBundleInfo = _SharedBundleInfo
 ```
 
-��������Ϣ��
+共享包信息。
 
 **起始版本：** 10
+
+<!--Device-bundleManager-export type SharedBundleInfo = _SharedBundleInfo--><!--Device-bundleManager-export type SharedBundleInfo = _SharedBundleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

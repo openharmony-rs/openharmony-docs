@@ -4,9 +4,15 @@ Holds User-Agent metadata information and uses to generate User-Agent client hin
 
 **起始版本：** 24
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-webview-class UserAgentMetadata--><!--Device-webview-class UserAgentMetadata-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## getArchitecture
 
@@ -19,6 +25,8 @@ Gets the value for sec-ch-ua-architecture.
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-getArchitecture(): string--><!--Device-UserAgentMetadata-getArchitecture(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -40,6 +48,8 @@ Gets the value for the sec-ch-ua-bitness.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentMetadata-getBitness(): string--><!--Device-UserAgentMetadata-getBitness(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -54,12 +64,13 @@ Gets the value for the sec-ch-ua-bitness.
 getBrandVersionList(): Array<UserAgentBrandVersion>
 ```
 
-Returns the current list of UserAgentBrandVersion which are used to generate the User-Agent client hints
-sec-ch-ua and sec-ch-ua-full-version-list.
+Returns the current list of UserAgentBrandVersion which are used to generate the User-Agent client hints sec-ch-ua and sec-ch-ua-full-version-list.
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>--><!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -67,7 +78,7 @@ sec-ch-ua and sec-ch-ua-full-version-list.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;UserAgentBrandVersion&gt; | - Returns the current list of UserAgentBrandVersion. |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UserAgentBrandVersion> | - Returns the current list of UserAgentBrandVersion. |
 
 ## getFormFactors
 
@@ -81,13 +92,15 @@ Gets the value for the sec-ch-ua-form-factors.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>--><!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;UserAgentFormFactor&gt; | - Returns the form factors. |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UserAgentFormFactor> | - Returns the form factors. |
 
 ## getFullVersion
 
@@ -100,6 +113,8 @@ Gets the value for the sec-ch-ua-full-version.
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-getFullVersion(): string--><!--Device-UserAgentMetadata-getFullVersion(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -121,6 +136,8 @@ Gets the value for the sec-ch-ua-mobile.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentMetadata-getMobile(): boolean--><!--Device-UserAgentMetadata-getMobile(): boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -140,6 +157,8 @@ Gets the value for the sec-ch-ua-model.
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-getModel(): string--><!--Device-UserAgentMetadata-getModel(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -161,6 +180,8 @@ Gets the value for the sec-ch-ua-platform.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentMetadata-getPlatform(): string--><!--Device-UserAgentMetadata-getPlatform(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -180,6 +201,8 @@ Gets the value for the sec-ch-ua-platform-version.
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-getPlatformVersion(): string--><!--Device-UserAgentMetadata-getPlatformVersion(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -201,6 +224,8 @@ Gets the value for the sec-ch-ua-wow64.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentMetadata-getWow64(): boolean--><!--Device-UserAgentMetadata-getWow64(): boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -217,13 +242,13 @@ setArchitecture(arch: string): void
 
 Sets User-Agent metadata architecture.
 
-<p><strong>API Note</strong>:<br>
-The default value is empty string which means the system default value will be used.
-</p>
+<p><strong>API Note</strong>:<br>The default value is empty string which means the system default value will be used.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setArchitecture(arch: string): void--><!--Device-UserAgentMetadata-setArchitecture(arch: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -245,6 +270,8 @@ Sets User-Agent metadata bitness default is "".
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentMetadata-setBitness(bitness: string): void--><!--Device-UserAgentMetadata-setBitness(bitness: string): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -261,14 +288,13 @@ setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void
 
 Sets User-Agent metadata brands and their versions.
 
-<p><strong>API Note</strong>:<br>
-The default value is an empty list which means the system default User-Agent metadata brands and versions will be
-used to generate the User-Agent client hints.
-</p>
+<p><strong>API Note</strong>:<br>The default value is an empty list which means the system default User-Agent metadata brands and versions will be used to generate the User-Agent client hints.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void--><!--Device-UserAgentMetadata-setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -276,7 +302,7 @@ used to generate the User-Agent client hints.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| brandVersionList | Array&lt;UserAgentBrandVersion&gt; | 是 | The brandVersionList is used to generate User-Agent<br/>client hints sec-ch-ua-full-version-list. |
+| brandVersionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UserAgentBrandVersion> | 是 | The brandVersionList is used to generate User-Agent client hints sec-ch-ua-full-version-list. |
 
 ## setFormFactors
 
@@ -286,14 +312,13 @@ setFormFactors(formFactors: Array<UserAgentFormFactor>): void
 
 Sets User-Agent metadata form factors.
 
-<p><strong>API Note</strong>:<br>
-The default value is empty list which means the system default value will be used.
-Form factor value should be one or more of DESKTOP, AUTOMOTIVE, MOBILE, TABLET, XR, EINK, WATCH.
-</p>
+<p><strong>API Note</strong>:<br>The default value is empty list which means the system default value will be used.Form factor value should be one or more of DESKTOP, AUTOMOTIVE, MOBILE, TABLET, XR, EINK, WATCH.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setFormFactors(formFactors: Array<UserAgentFormFactor>): void--><!--Device-UserAgentMetadata-setFormFactors(formFactors: Array<UserAgentFormFactor>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -301,7 +326,7 @@ Form factor value should be one or more of DESKTOP, AUTOMOTIVE, MOBILE, TABLET, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| formFactors | Array&lt;UserAgentFormFactor&gt; | 是 | The formFactors is used to generate User-Agent client hints<br/>sec-ch-ua-form-factors. |
+| formFactors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UserAgentFormFactor> | 是 | The formFactors is used to generate User-Agent client hints sec-ch-ua-form-factors. |
 
 ## setFullVersion
 
@@ -311,13 +336,13 @@ setFullVersion(fullVersion: string): void
 
 Sets User-Agent metadata full version.
 
-<p><strong>API Note</strong>:<br>
-The default value is empty string which means the system default value will be used.
-</p>
+<p><strong>API Note</strong>:<br>The default value is empty string which means the system default value will be used.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setFullVersion(fullVersion: string): void--><!--Device-UserAgentMetadata-setFullVersion(fullVersion: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -325,7 +350,7 @@ The default value is empty string which means the system default value will be u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullVersion | string | 是 | The fullVersion is used to generate User-Agent client hints<br/>sec-ch-ua-full-version. |
+| fullVersion | string | 是 | The fullVersion is used to generate User-Agent client hints sec-ch-ua-full-version. |
 
 ## setMobile
 
@@ -338,6 +363,8 @@ Sets User-Agent metadata mobile, default is true.
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void--><!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -355,13 +382,13 @@ setModel(model: string): void
 
 Sets User-Agent metadata model.
 
-<p><strong>API Note</strong>:<br>
-The default value is empty string which means the system default value will be used.
-</p>
+<p><strong>API Note</strong>:<br>The default value is empty string which means the system default value will be used.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setModel(model: string): void--><!--Device-UserAgentMetadata-setModel(model: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -379,13 +406,13 @@ setPlatform(platform: string): void
 
 Sets User-Agent metadata platform.
 
-<p><strong>API Note</strong>:<br>
-The default value is empty string which means the system default value will be used.
-</p>
+<p><strong>API Note</strong>:<br>The default value is empty string which means the system default value will be used.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setPlatform(platform: string): void--><!--Device-UserAgentMetadata-setPlatform(platform: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -403,13 +430,13 @@ setPlatformVersion(platformVersion: string): void
 
 Sets User-Agent metadata platform version.
 
-<p><strong>API Note</strong>:<br>
-The default value is empty string which means the system default value will be used.
-</p>
+<p><strong>API Note</strong>:<br>The default value is empty string which means the system default value will be used.</p>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setPlatformVersion(platformVersion: string): void--><!--Device-UserAgentMetadata-setPlatformVersion(platformVersion: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -417,7 +444,7 @@ The default value is empty string which means the system default value will be u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| platformVersion | string | 是 | The platformVersion is used to generate User-Agent client hints<br/>sec-ch-ua-platform-version. |
+| platformVersion | string | 是 | The platformVersion is used to generate User-Agent client hints sec-ch-ua-platform-version. |
 
 ## setWow64
 
@@ -430,6 +457,8 @@ Sets User-Agent metadata wow64, default is false.
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentMetadata-setWow64(isWow64: boolean): void--><!--Device-UserAgentMetadata-setWow64(isWow64: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

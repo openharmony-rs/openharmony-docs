@@ -14,6 +14,8 @@
 
 **替代接口：** [backgroundTaskManager:backgroundTaskManager](arkts-resourceschedule-backgroundtaskmanager.md)
 
+<!--Device-unnamed-declare namespace backgroundTaskManager--><!--Device-unnamed-declare namespace backgroundTaskManager-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 ## 汇总
@@ -22,32 +24,32 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancelSuspendDelay](arkts-backgroundtasks-cancelsuspenddelay-depr-f.md#cancelsuspenddelay-1) | 取消延迟挂起。 |
-| [getRemainingDelayTime](arkts-backgroundtasks-getremainingdelaytime-depr-f.md#getremainingdelaytime-1) | 获取本次短时任务的剩余时间，使用callback异步回调。 |
-| [getRemainingDelayTime](arkts-backgroundtasks-getremainingdelaytime-depr-f.md#getremainingdelaytime-2) | 获取本次短时任务的剩余时间，使用Promise异步回调。 |
-| [requestSuspendDelay](arkts-backgroundtasks-requestsuspenddelay-depr-f.md#requestsuspenddelay-1) | 后台应用申请延迟挂起。延迟挂起时间一般情况下默认值为3分钟，低电量（依据系统低电量广播）时默认值为1分钟。 |
-| [startBackgroundRunning](arkts-backgroundtasks-startbackgroundrunning-depr-f.md#startbackgroundrunning-1) | 向系统申请长时任务，使用callback异步回调。 |
-| [startBackgroundRunning](arkts-backgroundtasks-startbackgroundrunning-depr-f.md#startbackgroundrunning-2) | 向系统申请长时任务，使用promise异步回调。 |
-| [stopBackgroundRunning](arkts-backgroundtasks-stopbackgroundrunning-depr-f.md#stopbackgroundrunning-1) | 向系统申请取消长时任务，使用callback异步回调。 |
-| [stopBackgroundRunning](arkts-backgroundtasks-stopbackgroundrunning-depr-f.md#stopbackgroundrunning-2) | 向系统申请取消长时任务，使用promise异步回调。 |
+| [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md#cancelsuspenddelay-1) | 取消延迟挂起。 |
+| [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime-1) | 获取本次短时任务的剩余时间，使用callback异步回调。 |
+| [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime-2) | 获取本次短时任务的剩余时间，使用Promise异步回调。 |
+| [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay-1) | 后台应用申请延迟挂起。延迟挂起时间一般情况下默认值为3分钟，低电量（依据系统低电量广播）时默认值为1分钟。 |
+| [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning-1) | 向系统申请长时任务，使用callback异步回调。 |
+| [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning-2) | 向系统申请长时任务，使用promise异步回调。 |
+| [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning-1) | 向系统申请取消长时任务，使用callback异步回调。 |
+| [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning-2) | 向系统申请取消长时任务，使用promise异步回调。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [DelaySuspendInfo](arkts-backgroundtasks-delaysuspendinfo-depr-i.md) | 延迟挂起信息。 |
+| [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-depr-i.md) | 延迟挂起信息。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [BackgroundMode](arkts-backgroundtasks-backgroundmode-depr-e.md) | 长时任务类型。 |
+| [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e.md) | 长时任务类型。 |
 
 <!--Del-->
 ### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [BackgroundMode](arkts-backgroundtasks-backgroundmode-depr-e-sys.md) | 长时任务类型。 |
+| [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e-sys.md) | 长时任务类型。 |
 <!--DelEnd-->
 

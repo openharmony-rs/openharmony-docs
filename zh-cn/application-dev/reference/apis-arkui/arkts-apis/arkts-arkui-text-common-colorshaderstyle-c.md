@@ -1,12 +1,12 @@
 # ColorShaderStyle
 
-显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-text-common-shaderstyle-c.md#ShaderStyle)。
+显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-text-common-shaderstyle-c.md)。
 
-**继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-text-common-shaderstyle-c.md#ShaderStyle)
+**继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-text-common-shaderstyle-c.md)
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare class ColorShaderStyle extends ShaderStyle--><!--Device-unnamed-declare class ColorShaderStyle extends ShaderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +22,9 @@ constructor(color: ResourceColor)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ColorShaderStyle-constructor(color: ResourceColor)--><!--Device-ColorShaderStyle-constructor(color: ResourceColor)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +32,7 @@ constructor(color: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | ResourceColor | 是 | 显示为纯色效果。 |
+| color | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 显示为纯色效果。 |
 
 ## color
 
@@ -46,7 +48,9 @@ color: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ColorShaderStyle-color: ResourceColor--><!--Device-ColorShaderStyle-color: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

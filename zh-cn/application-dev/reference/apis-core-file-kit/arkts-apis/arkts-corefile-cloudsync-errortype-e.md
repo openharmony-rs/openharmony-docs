@@ -1,17 +1,15 @@
 # ErrorType
 
-```TypeScript
-enum ErrorType
-```
+端云同步失败类型，为枚举类型。
 
-����ͬ��ʧ�����ͣ�Ϊö�����͡�
-
-- ��ǰ�׶Σ�ͬ�������У�������������ʹ���ƶ��������磬�ƶ����������WIFI��������ʱ���Ż᷵��NETWORK_UNAVAILABLE������������ʹ���ƶ��������磬����һ������������ã���������ͬ����
-- ͬ�������У��ǳ�糡���£���������10%����ɵ�ǰ������ͬ����ֹͣͬ�������ص͵�����
-- ����ͬ��ʱ���ǳ�糡���£�����������10%��������ͬ��
-- ����ʱ�����ƶ˿ռ䲻�㣬���ļ�����ʧ�ܣ��ƶ��޸��ļ���¼��
+- 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。  
+- 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；  
+- 触发同步时，非充电场景下，若电量低于10%，则不允许同步  
+- 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。
 
 **起始版本：** 12
+
+<!--Device-cloudSync-enum ErrorType--><!--Device-cloudSync-enum ErrorType-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -21,9 +19,11 @@ enum ErrorType
 NO_ERROR = 0
 ```
 
-û�д���
+没有错误。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-NO_ERROR = 0--><!--Device-ErrorType-NO_ERROR = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -33,9 +33,11 @@ NO_ERROR = 0
 NETWORK_UNAVAILABLE = 1
 ```
 
-�������粻���á�
+所有网络不可用。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-NETWORK_UNAVAILABLE = 1--><!--Device-ErrorType-NETWORK_UNAVAILABLE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -45,9 +47,11 @@ NETWORK_UNAVAILABLE = 1
 WIFI_UNAVAILABLE = 2
 ```
 
-WIFI�����á�
+WIFI不可用。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-WIFI_UNAVAILABLE = 2--><!--Device-ErrorType-WIFI_UNAVAILABLE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -57,9 +61,11 @@ WIFI�����á�
 BATTERY_LEVEL_LOW = 3
 ```
 
-�͵���������10%����
+低电量（低于10%）。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-BATTERY_LEVEL_LOW = 3--><!--Device-ErrorType-BATTERY_LEVEL_LOW = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -69,9 +75,11 @@ BATTERY_LEVEL_LOW = 3
 BATTERY_LEVEL_WARNING = 4
 ```
 
-�澯����������15%����
+告警电量（低于15%）。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-BATTERY_LEVEL_WARNING = 4--><!--Device-ErrorType-BATTERY_LEVEL_WARNING = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -81,9 +89,11 @@ BATTERY_LEVEL_WARNING = 4
 CLOUD_STORAGE_FULL = 5
 ```
 
-�ƶ˿ռ䲻�㡣
+云端空间不足。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-CLOUD_STORAGE_FULL = 5--><!--Device-ErrorType-CLOUD_STORAGE_FULL = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -93,9 +103,11 @@ CLOUD_STORAGE_FULL = 5
 LOCAL_STORAGE_FULL = 6
 ```
 
-���ؿռ䲻�㡣
+本地空间不足。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-LOCAL_STORAGE_FULL = 6--><!--Device-ErrorType-LOCAL_STORAGE_FULL = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -105,9 +117,11 @@ LOCAL_STORAGE_FULL = 6
 DEVICE_TEMPERATURE_TOO_HIGH = 7
 ```
 
-�豸�¶ȹ��ߡ�
+设备温度过高。
 
 **起始版本：** 12
+
+<!--Device-ErrorType-DEVICE_TEMPERATURE_TOO_HIGH = 7--><!--Device-ErrorType-DEVICE_TEMPERATURE_TOO_HIGH = 7-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -117,9 +131,11 @@ DEVICE_TEMPERATURE_TOO_HIGH = 7
 REMOTE_SERVER_ABNORMAL = 8
 ```
 
-Զ�˷��񲻿��á�
+远端服务不可用。
 
 **起始版本：** 20
+
+<!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8--><!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

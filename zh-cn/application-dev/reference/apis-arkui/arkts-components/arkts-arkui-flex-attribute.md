@@ -8,5 +8,7 @@
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class FlexAttribute extends CommonMethod<FlexAttribute>--><!--Device-unnamed-declare class FlexAttribute extends CommonMethod<FlexAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

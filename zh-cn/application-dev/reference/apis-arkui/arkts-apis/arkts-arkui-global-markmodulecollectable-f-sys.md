@@ -12,6 +12,8 @@ Mark moduleNamespace which loaded by dynamic-import is collectable.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-unnamed-export declare function markModuleCollectable(namespace: Object): void--><!--Device-unnamed-export declare function markModuleCollectable(namespace: Object): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。

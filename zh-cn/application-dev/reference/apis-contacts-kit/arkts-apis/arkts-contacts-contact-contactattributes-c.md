@@ -1,11 +1,18 @@
 # ContactAttributes
 
-��ϵ�������б���һ����Ϊ���������ʶϣ����ѯ����ϵ�����ԡ�
-������Ϊnullʱ��Ĭ�ϲ�ѯȫ�����ԡ�
+联系人属性列表，一般作为入参用来标识希望查询的联系人属性。当传入为null时，默认查询全部属性。
 
 **起始版本：** 7
 
+<!--Device-contact-class ContactAttributes--><!--Device-contact-class ContactAttributes-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## attributes
 
@@ -13,13 +20,15 @@
 attributes: Attribute[]
 ```
 
-��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ���
+联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。
 
 **类型：** Attribute[]
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContactAttributes-attributes: Attribute[]--><!--Device-ContactAttributes-attributes: Attribute[]-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 

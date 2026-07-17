@@ -1,12 +1,10 @@
 # HuksKeySize
 
-```TypeScript
-export enum HuksKeySize
-```
-
-��ʾ��Կ���ȡ�
+表示密钥长度。
 
 **起始版本：** 8
+
+<!--Device-huks-export enum HuksKeySize--><!--Device-huks-export enum HuksKeySize-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -16,13 +14,17 @@ export enum HuksKeySize
 HUKS_RSA_KEY_SIZE_512 = 512
 ```
 
-��ʾʹ��RSA�㷨����Կ����Ϊ512bit��
+表示使用RSA算法的密钥长度为512bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_512 = 512-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_RSA_KEY_SIZE_768
 
@@ -30,13 +32,17 @@ HUKS_RSA_KEY_SIZE_512 = 512
 HUKS_RSA_KEY_SIZE_768 = 768
 ```
 
-��ʾʹ��RSA�㷨����Կ����Ϊ768bit��
+表示使用RSA算法的密钥长度为768bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_RSA_KEY_SIZE_1024
 
@@ -44,13 +50,17 @@ HUKS_RSA_KEY_SIZE_768 = 768
 HUKS_RSA_KEY_SIZE_1024 = 1024
 ```
 
-��ʾʹ��RSA�㷨����Կ����Ϊ1024bit��
+表示使用RSA算法的密钥长度为1024bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_1024 = 1024--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_1024 = 1024-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_RSA_KEY_SIZE_2048
 
@@ -58,13 +68,17 @@ HUKS_RSA_KEY_SIZE_1024 = 1024
 HUKS_RSA_KEY_SIZE_2048 = 2048
 ```
 
-��ʾʹ��RSA�㷨����Կ����Ϊ2048bit��
+表示使用RSA算法的密钥长度为2048bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_RSA_KEY_SIZE_3072
 
@@ -72,13 +86,17 @@ HUKS_RSA_KEY_SIZE_2048 = 2048
 HUKS_RSA_KEY_SIZE_3072 = 3072
 ```
 
-��ʾʹ��RSA�㷨����Կ����Ϊ3072bit��
+表示使用RSA算法的密钥长度为3072bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_3072 = 3072--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_3072 = 3072-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_RSA_KEY_SIZE_4096
 
@@ -86,13 +104,17 @@ HUKS_RSA_KEY_SIZE_3072 = 3072
 HUKS_RSA_KEY_SIZE_4096 = 4096
 ```
 
-��ʾʹ��RSA�㷨����Կ����Ϊ4096bit��
+表示使用RSA算法的密钥长度为4096bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_ECC_KEY_SIZE_224
 
@@ -100,13 +122,17 @@ HUKS_RSA_KEY_SIZE_4096 = 4096
 HUKS_ECC_KEY_SIZE_224 = 224
 ```
 
-��ʾʹ��ECC�㷨����Կ����Ϊ224bit��
+表示使用ECC算法的密钥长度为224bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_224 = 224--><!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_224 = 224-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_ECC_KEY_SIZE_256
 
@@ -114,13 +140,17 @@ HUKS_ECC_KEY_SIZE_224 = 224
 HUKS_ECC_KEY_SIZE_256 = 256
 ```
 
-��ʾʹ��ECC�㷨����Կ����Ϊ256bit��
+表示使用ECC算法的密钥长度为256bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_256 = 256-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_ECC_KEY_SIZE_384
 
@@ -128,13 +158,17 @@ HUKS_ECC_KEY_SIZE_256 = 256
 HUKS_ECC_KEY_SIZE_384 = 384
 ```
 
-��ʾʹ��ECC�㷨����Կ����Ϊ384bit��
+表示使用ECC算法的密钥长度为384bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_384 = 384--><!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_384 = 384-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_ECC_KEY_SIZE_521
 
@@ -142,13 +176,17 @@ HUKS_ECC_KEY_SIZE_384 = 384
 HUKS_ECC_KEY_SIZE_521 = 521
 ```
 
-��ʾʹ��ECC�㷨����Կ����Ϊ521bit��
+表示使用ECC算法的密钥长度为521bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_521 = 521--><!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_521 = 521-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_AES_KEY_SIZE_128
 
@@ -156,11 +194,13 @@ HUKS_ECC_KEY_SIZE_521 = 521
 HUKS_AES_KEY_SIZE_128 = 128
 ```
 
-��ʾʹ��AES�㷨����Կ����Ϊ128bit��
+表示使用AES算法的密钥长度为128bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -170,11 +210,13 @@ HUKS_AES_KEY_SIZE_128 = 128
 HUKS_AES_KEY_SIZE_192 = 192
 ```
 
-��ʾʹ��AES�㷨����Կ����Ϊ192bit��
+表示使用AES算法的密钥长度为192bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_192 = 192-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -184,11 +226,13 @@ HUKS_AES_KEY_SIZE_192 = 192
 HUKS_AES_KEY_SIZE_256 = 256
 ```
 
-��ʾʹ��AES�㷨����Կ����Ϊ256bit��
+表示使用AES算法的密钥长度为256bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -198,13 +242,15 @@ HUKS_AES_KEY_SIZE_256 = 256
 HUKS_AES_KEY_SIZE_512 = 512
 ```
 
-��ʾʹ��AES�㷨����Կ����Ϊ512bit��
+表示使用AES算法的密钥长度为512bit。
 
-**˵����** ��API version 8��ʼ֧�֣���API version 11��ʼ������
+**说明：** 从API version 8开始支持，从API version 11开始废弃。
 
 **起始版本：** 8
 
 **废弃版本：** 11
+
+<!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -214,13 +260,17 @@ HUKS_AES_KEY_SIZE_512 = 512
 HUKS_CURVE25519_KEY_SIZE_256 = 256
 ```
 
-��ʾʹ��CURVE25519�㷨����Կ����Ϊ256bit��
+表示使用CURVE25519算法的密钥长度为256bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_CURVE25519_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_CURVE25519_KEY_SIZE_256 = 256-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DH_KEY_SIZE_2048
 
@@ -228,13 +278,17 @@ HUKS_CURVE25519_KEY_SIZE_256 = 256
 HUKS_DH_KEY_SIZE_2048 = 2048
 ```
 
-��ʾʹ��DH�㷨����Կ����Ϊ2048bit��
+表示使用DH算法的密钥长度为2048bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DH_KEY_SIZE_3072
 
@@ -242,13 +296,17 @@ HUKS_DH_KEY_SIZE_2048 = 2048
 HUKS_DH_KEY_SIZE_3072 = 3072
 ```
 
-��ʾʹ��DH�㷨����Կ����Ϊ3072bit��
+表示使用DH算法的密钥长度为3072bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_3072 = 3072--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_3072 = 3072-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DH_KEY_SIZE_4096
 
@@ -256,13 +314,17 @@ HUKS_DH_KEY_SIZE_3072 = 3072
 HUKS_DH_KEY_SIZE_4096 = 4096
 ```
 
-��ʾʹ��DH�㷨����Կ����Ϊ4096bit��
+表示使用DH算法的密钥长度为4096bit。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_SM2_KEY_SIZE_256
 
@@ -270,13 +332,17 @@ HUKS_DH_KEY_SIZE_4096 = 4096
 HUKS_SM2_KEY_SIZE_256 = 256
 ```
 
-��ʾSM2�㷨����Կ����Ϊ256bit��
+表示SM2算法的密钥长度为256bit。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_SM2_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_SM2_KEY_SIZE_256 = 256-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本9-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_SM4_KEY_SIZE_128
 
@@ -284,13 +350,17 @@ HUKS_SM2_KEY_SIZE_256 = 256
 HUKS_SM4_KEY_SIZE_128 = 128
 ```
 
-��ʾSM4�㷨����Կ����Ϊ128bit��
+表示SM4算法的密钥长度为128bit。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本9-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DES_KEY_SIZE_64
 
@@ -298,11 +368,13 @@ HUKS_SM4_KEY_SIZE_128 = 128
 HUKS_DES_KEY_SIZE_64 = 64
 ```
 
-��ʾDES�㷨����Կ����Ϊ64bit��
+表示DES算法的密钥长度为64bit。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64--><!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -312,11 +384,13 @@ HUKS_DES_KEY_SIZE_64 = 64
 HUKS_3DES_KEY_SIZE_128 = 128
 ```
 
-��ʾ3DES�㷨����Կ����Ϊ128bit��
+表示3DES算法的密钥长度为128bit。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_128 = 128-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -326,11 +400,13 @@ HUKS_3DES_KEY_SIZE_128 = 128
 HUKS_3DES_KEY_SIZE_192 = 192
 ```
 
-��ʾ3DES�㷨����Կ����Ϊ192bit��
+表示3DES算法的密钥长度为192bit。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -340,13 +416,13 @@ HUKS_3DES_KEY_SIZE_192 = 192
 HUKS_ML_DSA_KEY_PARAM_SET_44 = 44
 ```
 
-ML-DSA-44��������
+ML-DSA-44参数集。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_44 = 44--><!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_44 = 44-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -356,13 +432,13 @@ ML-DSA-44��������
 HUKS_ML_DSA_KEY_PARAM_SET_65 = 65
 ```
 
-ML-DSA-65��������
+ML-DSA-65参数集。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_65 = 65--><!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_65 = 65-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -372,13 +448,13 @@ ML-DSA-65��������
 HUKS_ML_DSA_KEY_PARAM_SET_87 = 87
 ```
 
-ML-DSA-87��������
+ML-DSA-87参数集。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_87 = 87--><!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_87 = 87-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -388,13 +464,13 @@ ML-DSA-87��������
 HUKS_ML_KEM_KEY_PARAM_SET_768 = 768
 ```
 
-ML-KEM-768��������
+ML-KEM-768参数集。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_768 = 768--><!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_768 = 768-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -404,13 +480,13 @@ ML-KEM-768��������
 HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024
 ```
 
-ML-KEM-1024��������
+ML-KEM-1024参数集。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024--><!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 

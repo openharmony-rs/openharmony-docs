@@ -1,12 +1,10 @@
 # AbilityFlag（系统接口）
 
-```TypeScript
-enum AbilityFlag
-```
-
-Ability�����Ϣ��־��ָʾ��Ҫ��ȡ��Ability�����Ϣ�����ݡ�
+Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **起始版本：** 20
+
+<!--Device-bundleManager-enum AbilityFlag--><!--Device-bundleManager-enum AbilityFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,16 +16,13 @@ Ability�����Ϣ��־��ָʾ��Ҫ��ȡ��Ability���
 GET_ABILITY_INFO_DEFAULT = 0x00000000
 ```
 
-��ȡĬ��[AbilityInfo](bundleManager/AbilityInfo)����ȡ��AbilityInfo������permissions��metadata��������Ability��Ӧ��
-AbilityInfo��<!--Del-->ͨ��
-[setAbilityEnabled�ӿ�](arkts-ability-bundlemanager-setabilityenabled-f-sys.md#setAbilityEnabled-2)
-������Ability����״̬��ͨ��
-[isAbilityEnabled�ӿ�](arkts-ability-bundlemanager-isabilityenabled-f-sys.md#isAbilityEnabled-3)�ɻ�ȡ
-Ability����״̬��<!--DelEnd-->
+获取默认[AbilityInfo](bundleManager/AbilityInfo)，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled接口](arkts-ability-bundlemanager-setabilityenabled-f-sys.md#setabilityenabled-2)可设置Ability禁用状态、通过[isAbilityEnabled接口](arkts-ability-bundlemanager-isabilityenabled-f-sys.md#isabilityenabled-3)可获取Ability禁用状态。<!--DelEnd-->
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_DEFAULT = 0x00000000--><!--Device-AbilityFlag-GET_ABILITY_INFO_DEFAULT = 0x00000000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -39,11 +34,13 @@ Ability����״̬��<!--DelEnd-->
 GET_ABILITY_INFO_WITH_PERMISSION = 0x00000001
 ```
 
-��ȡ����permissions��AbilityInfo��
+获取包含permissions的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -55,11 +52,13 @@ GET_ABILITY_INFO_WITH_PERMISSION = 0x00000001
 GET_ABILITY_INFO_WITH_APPLICATION = 0x00000002
 ```
 
-��ȡ����applicationInfo��AbilityInfo��
+获取包含applicationInfo的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_APPLICATION = 0x00000002--><!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_APPLICATION = 0x00000002-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -71,11 +70,13 @@ GET_ABILITY_INFO_WITH_APPLICATION = 0x00000002
 GET_ABILITY_INFO_WITH_METADATA = 0x00000004
 ```
 
-��ȡ����metadata��AbilityInfo��
+获取包含metadata的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_METADATA = 0x00000004--><!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_METADATA = 0x00000004-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -87,11 +88,13 @@ GET_ABILITY_INFO_WITH_METADATA = 0x00000004
 GET_ABILITY_INFO_WITH_DISABLE = 0x00000008
 ```
 
-��ȡ������Ability��Ӧ��AbilityInfo��
+获取被禁用Ability对应的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_DISABLE = 0x00000008--><!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_DISABLE = 0x00000008-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -103,11 +106,13 @@ GET_ABILITY_INFO_WITH_DISABLE = 0x00000008
 GET_ABILITY_INFO_ONLY_SYSTEM_APP = 0x00000010
 ```
 
-��ȡϵͳӦ�ö�Ӧ��AbilityInfo��
+获取系统应用对应的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_ONLY_SYSTEM_APP = 0x00000010--><!--Device-AbilityFlag-GET_ABILITY_INFO_ONLY_SYSTEM_APP = 0x00000010-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -119,11 +124,13 @@ GET_ABILITY_INFO_ONLY_SYSTEM_APP = 0x00000010
 GET_ABILITY_INFO_WITH_APP_LINKING = 0x00000040
 ```
 
-��ȡͨ��<!--RP3-->[����У��](../../../../application-models/app-linking-startup.md#ʵ��ԭ��)<!--RP3End-->ɸѡ��AbilityInfo��
+获取通过<!--RP3-->[域名校验](../../../../application-models/app-linking-startup.md#实现原理)<!--RP3End-->筛选的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_APP_LINKING = 0x00000040--><!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_APP_LINKING = 0x00000040-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -135,11 +142,13 @@ GET_ABILITY_INFO_WITH_APP_LINKING = 0x00000040
 GET_ABILITY_INFO_WITH_SKILL = 0x00000080
 ```
 
-��ȡ����skills��AbilityInfo��
+获取包含skills的AbilityInfo。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_SKILL = 0x00000080--><!--Device-AbilityFlag-GET_ABILITY_INFO_WITH_SKILL = 0x00000080-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -1,12 +1,10 @@
 # Support
 
-```TypeScript
-export enum Support
-```
-
 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限、使用相应的值。
 
 **起始版本：** 9
+
+<!--Device-commonEventManager-export enum Support--><!--Device-commonEventManager-export enum Support-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -21,6 +19,8 @@ COMMON_EVENT_USER_LOCKING = 'usual.event.USER_LOCKING'
 锁定用户前将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
 **起始版本：** 20
+
+<!--Device-Support-COMMON_EVENT_USER_LOCKING = 'usual.event.USER_LOCKING'--><!--Device-Support-COMMON_EVENT_USER_LOCKING = 'usual.event.USER_LOCKING'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -37,6 +37,8 @@ COMMON_EVENT_USER_LOCKED = 'usual.event.USER_LOCKED'
 完成锁定用户将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
 **起始版本：** 20
+
+<!--Device-Support-COMMON_EVENT_USER_LOCKED = 'usual.event.USER_LOCKED'--><!--Device-Support-COMMON_EVENT_USER_LOCKED = 'usual.event.USER_LOCKED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -56,6 +58,8 @@ COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED = 'usual.event.OS_ACCOUNT_SUB_PROFIL
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +77,8 @@ COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED = 'usual.event.OS_ACCOUNT_SUB_PROFIL
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -92,6 +98,8 @@ COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING = 'usual.event.OS_ACCOUNT_SUB_PROF
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -109,6 +117,8 @@ COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED = 'usual.event.OS_ACCOUNT_SUB_PROFI
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -128,6 +138,8 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND = 'usual.event.DISTRIBUTED_ACCOUNT_BOUND'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND = 'usual.event.DISTRIBUTED_ACCOUNT_BOUND'--><!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND = 'usual.event.DISTRIBUTED_ACCOUNT_BOUND'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -146,6 +158,8 @@ COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND = 'usual.event.DISTRIBUTED_ACCOUNT_UNBO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND = 'usual.event.DISTRIBUTED_ACCOUNT_UNBOUND'--><!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND = 'usual.event.DISTRIBUTED_ACCOUNT_UNBOUND'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -161,6 +175,8 @@ COMMON_EVENT_CHARGE_TYPE_CHANGED = 'usual.event.CHARGE_TYPE_CHANGED'
 当系统充电类型改变时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_CHARGE_TYPE_CHANGED = 'usual.event.CHARGE_TYPE_CHANGED'--><!--Device-Support-COMMON_EVENT_CHARGE_TYPE_CHANGED = 'usual.event.CHARGE_TYPE_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -182,6 +198,30 @@ COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED = 'usual.event.DEVICE_IDLE_EXEMP
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED = 'usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED'--><!--Device-Support-COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED = 'usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED'-End-->
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**系统接口：** 此接口为系统接口。
+
+## COMMON_EVENT_DISK_VOLUME_STATE_CHANGE
+
+```TypeScript
+COMMON_EVENT_DISK_VOLUME_STATE_CHANGE = 'usual.event.data.DISK_VOLUME_STATE_CHANGE'
+```
+
+表示系统数据盘卷状态发生变化的公共事件。
+
+当系统数据盘卷在格式化或修复等操作过程中状态发生变化（如操作开始、成功或失败）时，会发送此公共事件。
+
+要订阅此事件，您的应用必须具备ohos.permission.STORAGE_MANAGER权限（该权限仅系统应用可申请）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Support-COMMON_EVENT_DISK_VOLUME_STATE_CHANGE = 'usual.event.data.DISK_VOLUME_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_DISK_VOLUME_STATE_CHANGE = 'usual.event.data.DISK_VOLUME_STATE_CHANGE'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -202,6 +242,8 @@ COMMON_EVENT_APP_FIRST_LAUNCH = 'usual.event.APP_FIRST_LAUNCH'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Support-COMMON_EVENT_APP_FIRST_LAUNCH = 'usual.event.APP_FIRST_LAUNCH'--><!--Device-Support-COMMON_EVENT_APP_FIRST_LAUNCH = 'usual.event.APP_FIRST_LAUNCH'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -219,6 +261,8 @@ COMMON_EVENT_SMS_RECEIVE_COMPLETED = 'usual.event.SMS_RECEIVE_COMPLETED'
 要订阅此事件，您的应用必须具备ohos.permission.RECEIVE_SMS权限（该权限仅系统应用可申请）
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_SMS_RECEIVE_COMPLETED = 'usual.event.SMS_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_RECEIVE_COMPLETED = 'usual.event.SMS_RECEIVE_COMPLETED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -238,6 +282,8 @@ COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED = 'usual.event.SMS_EMERGENCY_CB_
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED = 'usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED = 'usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -256,6 +302,8 @@ COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED = 'usual.event.SMS_CB_RECEIVE_COMPLETED'
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED = 'usual.event.SMS_CB_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED = 'usual.event.SMS_CB_RECEIVE_COMPLETED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -271,6 +319,8 @@ COMMON_EVENT_STK_COMMAND = 'usual.event.STK_COMMAND'
 在发送STK命令时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_STK_COMMAND = 'usual.event.STK_COMMAND'--><!--Device-Support-COMMON_EVENT_STK_COMMAND = 'usual.event.STK_COMMAND'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -288,6 +338,8 @@ COMMON_EVENT_STK_SESSION_END = 'usual.event.STK_SESSION_END'
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_STK_SESSION_END = 'usual.event.STK_SESSION_END'--><!--Device-Support-COMMON_EVENT_STK_SESSION_END = 'usual.event.STK_SESSION_END'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -304,6 +356,8 @@ COMMON_EVENT_STK_CARD_STATE_CHANGED = 'usual.event.STK_CARD_STATE_CHANGED'
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_STK_CARD_STATE_CHANGED = 'usual.event.STK_CARD_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_STK_CARD_STATE_CHANGED = 'usual.event.STK_CARD_STATE_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -319,6 +373,8 @@ COMMON_EVENT_STK_ALPHA_IDENTIFIER = 'usual.event.STK_ALPHA_IDENTIFIER'
 在发送STK ALPHA标识符时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_STK_ALPHA_IDENTIFIER = 'usual.event.STK_ALPHA_IDENTIFIER'--><!--Device-Support-COMMON_EVENT_STK_ALPHA_IDENTIFIER = 'usual.event.STK_ALPHA_IDENTIFIER'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -338,6 +394,8 @@ COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED = 'usual.event.SMS_WAPPUSH_RECEIVE_CO
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED = 'usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED = 'usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -353,6 +411,8 @@ COMMON_EVENT_OPERATOR_CONFIG_CHANGED = 'usual.event.OPERATOR_CONFIG_CHANGED'
 在设备运营商配置更新时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_OPERATOR_CONFIG_CHANGED = 'usual.event.OPERATOR_CONFIG_CHANGED'--><!--Device-Support-COMMON_EVENT_OPERATOR_CONFIG_CHANGED = 'usual.event.OPERATOR_CONFIG_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -370,6 +430,8 @@ COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAUL
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -385,6 +447,8 @@ COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAU
 在设备SIM卡默认数据主卡更新时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -402,6 +466,8 @@ COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAU
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -417,6 +483,8 @@ COMMON_EVENT_SET_PRIMARY_SLOT_STATUS = 'usual.event.SET_PRIMARY_SLOT_STATUS'
 在设备上设置SIM卡默认主卡时，当执行状态发生变化（比如状态更新到执行中或已完成），将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 11
+
+<!--Device-Support-COMMON_EVENT_SET_PRIMARY_SLOT_STATUS = 'usual.event.SET_PRIMARY_SLOT_STATUS'--><!--Device-Support-COMMON_EVENT_SET_PRIMARY_SLOT_STATUS = 'usual.event.SET_PRIMARY_SLOT_STATUS'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -434,6 +502,8 @@ COMMON_EVENT_PRIMARY_SLOT_ROAMING = 'usual.event.PRIMARY_SLOT_ROAMING'
 
 **起始版本：** 11
 
+<!--Device-Support-COMMON_EVENT_PRIMARY_SLOT_ROAMING = 'usual.event.PRIMARY_SLOT_ROAMING'--><!--Device-Support-COMMON_EVENT_PRIMARY_SLOT_ROAMING = 'usual.event.PRIMARY_SLOT_ROAMING'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -450,6 +520,8 @@ COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFA
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -465,6 +537,8 @@ COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED = 'usual.event.CELLULAR_DATA_STATE_CHAN
 在设备蜂窝数据状态更新时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED = 'usual.event.CELLULAR_DATA_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED = 'usual.event.CELLULAR_DATA_STATE_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -484,6 +558,8 @@ COMMON_EVENT_INCOMING_CALL_MISSED = 'usual.event.INCOMING_CALL_MISSED'
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_INCOMING_CALL_MISSED = 'usual.event.INCOMING_CALL_MISSED'--><!--Device-Support-COMMON_EVENT_INCOMING_CALL_MISSED = 'usual.event.INCOMING_CALL_MISSED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -500,6 +576,8 @@ COMMON_EVENT_RADIO_STATE_CHANGE = 'usual.event.RADIO_STATE_CHANGE'
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_RADIO_STATE_CHANGE = 'usual.event.RADIO_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_RADIO_STATE_CHANGE = 'usual.event.RADIO_STATE_CHANGE'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -514,12 +592,13 @@ COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED = 'usual.event.DOMAIN_ACCOUNT_STATUS_
 
 域账号认证、删除、令牌更新、令牌失效将会触发事件通知服务发布该系统公共事件，事件携带域账号名、域名、域账号状态等信息。
 
-与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看
-[@ohos.account.osAccount](../../../../reference/js-apis-osAccount.md)。
+与这个公共事件相关的接口：removeOsAccount、DomainAccountManager.auth、updateAccountToken, 这些为系统API，具体参看[@ohos.account.osAccount](../../../../reference/js-apis-osAccount.md)。
 
 要订阅此事件，您的应用必须具备ohos.permission.GET_LOCAL_ACCOUNTS权限（该权限仅系统应用可申请）
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED = 'usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED'--><!--Device-Support-COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED = 'usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -537,6 +616,8 @@ COMMON_EVENT_SPECIAL_CODE = 'common.event.SPECIAL_CODE'
 
 **起始版本：** 10
 
+<!--Device-Support-COMMON_EVENT_SPECIAL_CODE = 'common.event.SPECIAL_CODE'--><!--Device-Support-COMMON_EVENT_SPECIAL_CODE = 'common.event.SPECIAL_CODE'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -552,6 +633,8 @@ COMMON_EVENT_AUDIO_QUALITY_CHANGE = 'usual.event.AUDIO_QUALITY_CHANGE'
 在设备音频质量发送变化时，将会触发事件通知服务发布该系统公共事件。
 
 **起始版本：** 10
+
+<!--Device-Support-COMMON_EVENT_AUDIO_QUALITY_CHANGE = 'usual.event.AUDIO_QUALITY_CHANGE'--><!--Device-Support-COMMON_EVENT_AUDIO_QUALITY_CHANGE = 'usual.event.AUDIO_QUALITY_CHANGE'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -569,6 +652,8 @@ COMMON_EVENT_PRIVACY_STATE_CHANGED = 'usual.event.PRIVACY_STATE_CHANGED'
 
 **起始版本：** 11
 
+<!--Device-Support-COMMON_EVENT_PRIVACY_STATE_CHANGED = 'usual.event.PRIVACY_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_PRIVACY_STATE_CHANGED = 'usual.event.PRIVACY_STATE_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -585,6 +670,8 @@ COMMON_EVENT_PACKAGE_INSTALLATION_STARTED = 'usual.event.PACKAGE_INSTALLATION_ST
 
 **起始版本：** 12
 
+<!--Device-Support-COMMON_EVENT_PACKAGE_INSTALLATION_STARTED = 'usual.event.PACKAGE_INSTALLATION_STARTED'--><!--Device-Support-COMMON_EVENT_PACKAGE_INSTALLATION_STARTED = 'usual.event.PACKAGE_INSTALLATION_STARTED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -600,6 +687,8 @@ COMMON_EVENT_DYNAMIC_ICON_CHANGED = 'usual.event.DYNAMIC_ICON_CHANGED'
 在应用的动态图标发生变更时，会发送此公共事件。
 
 **起始版本：** 12
+
+<!--Device-Support-COMMON_EVENT_DYNAMIC_ICON_CHANGED = 'usual.event.DYNAMIC_ICON_CHANGED'--><!--Device-Support-COMMON_EVENT_DYNAMIC_ICON_CHANGED = 'usual.event.DYNAMIC_ICON_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -619,6 +708,8 @@ COMMON_EVENT_BUNDLE_RESOURCES_CHANGED = 'usual.event.BUNDLE_RESOURCES_CHANGED'
 
 **起始版本：** 15
 
+<!--Device-Support-COMMON_EVENT_BUNDLE_RESOURCES_CHANGED = 'usual.event.BUNDLE_RESOURCES_CHANGED'--><!--Device-Support-COMMON_EVENT_BUNDLE_RESOURCES_CHANGED = 'usual.event.BUNDLE_RESOURCES_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -634,6 +725,8 @@ COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED = 'usual.event.VPN_CONNECTION_STATUS_
 当VPN连接或者断开时会发送此公共事件。
 
 **起始版本：** 12
+
+<!--Device-Support-COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED = 'usual.event.VPN_CONNECTION_STATUS_CHANGED'--><!--Device-Support-COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED = 'usual.event.VPN_CONNECTION_STATUS_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -653,6 +746,8 @@ COMMON_EVENT_RESTORE_START = 'usual.event.RESTORE_START'
 
 **起始版本：** 13
 
+<!--Device-Support-COMMON_EVENT_RESTORE_START = 'usual.event.RESTORE_START'--><!--Device-Support-COMMON_EVENT_RESTORE_START = 'usual.event.RESTORE_START'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -671,6 +766,8 @@ COMMON_EVENT_DEFAULT_APPLICATION_CHANGED = 'usual.event.DEFAULT_APPLICATION_CHAN
 
 **起始版本：** 19
 
+<!--Device-Support-COMMON_EVENT_DEFAULT_APPLICATION_CHANGED = 'usual.event.DEFAULT_APPLICATION_CHANGED'--><!--Device-Support-COMMON_EVENT_DEFAULT_APPLICATION_CHANGED = 'usual.event.DEFAULT_APPLICATION_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -683,13 +780,13 @@ COMMON_EVENT_SHORTCUT_CHANGED = 'usual.event.SHORTCUT_CHANGED'
 
 表示应用快捷方式发生变化的公共事件。
 
-在应用快捷方式的更改设置完成时（例如调用shortcutManager模块的
-[setShortcutVisibleForSelf](../../../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself)
-成功时），会发送此公共事件。
+在应用快捷方式的更改设置完成时（例如调用shortcutManager模块的[setShortcutVisibleForSelf](../../../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself)成功时），会发送此公共事件。
 
 要订阅此事件，您的应用必须具备ohos.permission.MANAGE_SHORTCUTS权限
 
 **起始版本：** 20
+
+<!--Device-Support-COMMON_EVENT_SHORTCUT_CHANGED = 'usual.event.SHORTCUT_CHANGED'--><!--Device-Support-COMMON_EVENT_SHORTCUT_CHANGED = 'usual.event.SHORTCUT_CHANGED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -707,6 +804,8 @@ COMMON_EVENT_CUSTOM_CONFIG_POLICY_UPDATED = 'usual.event.CUSTOM_CONFIG_POLICY_UP
 
 **起始版本：** 20
 
+<!--Device-Support-COMMON_EVENT_CUSTOM_CONFIG_POLICY_UPDATED = 'usual.event.CUSTOM_CONFIG_POLICY_UPDATED'--><!--Device-Support-COMMON_EVENT_CUSTOM_CONFIG_POLICY_UPDATED = 'usual.event.CUSTOM_CONFIG_POLICY_UPDATED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -722,6 +821,8 @@ COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED = 'usual.event.CUSTOM_ROAMING_REGION_
 在设备注入网络、驻留网络、GPS定位等属性变化时，系统服务会进行漫游区域识别。当识别到漫游区域发生变化，则会更新设备漫游区域参数，在更新完成后会发送此公共事件。
 
 **起始版本：** 20
+
+<!--Device-Support-COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED = 'usual.event.CUSTOM_ROAMING_REGION_UPDATED'--><!--Device-Support-COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED = 'usual.event.CUSTOM_ROAMING_REGION_UPDATED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -741,6 +842,8 @@ COMMON_EVENT_SCREEN_SHARE = 'usual.event.SCREEN_SHARE'
 
 **起始版本：** 20
 
+<!--Device-Support-COMMON_EVENT_SCREEN_SHARE = 'usual.event.SCREEN_SHARE'--><!--Device-Support-COMMON_EVENT_SCREEN_SHARE = 'usual.event.SCREEN_SHARE'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -758,6 +861,8 @@ COMMON_EVENT_RESTORE_END = 'usual.event.RESTORE_END'
 要订阅此事件，您的应用必须具备ohos.permission.RESTORE_END_NOTIFICATION权限（该权限仅系统应用可申请）
 
 **起始版本：** 23
+
+<!--Device-Support-COMMON_EVENT_RESTORE_END = 'usual.event.RESTORE_END'--><!--Device-Support-COMMON_EVENT_RESTORE_END = 'usual.event.RESTORE_END'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -777,6 +882,8 @@ COMMON_EVENT_CLOUD_DISK_STATE_CHANGED = 'usual.event.CLOUD_DISK_STATE_CHANGED'
 
 **起始版本：** 21
 
+<!--Device-Support-COMMON_EVENT_CLOUD_DISK_STATE_CHANGED = 'usual.event.CLOUD_DISK_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_CLOUD_DISK_STATE_CHANGED = 'usual.event.CLOUD_DISK_STATE_CHANGED'-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -792,6 +899,44 @@ COMMON_EVENT_SCREEN_LOCK_EXITING = 'usual.event.SCREEN_LOCK_EXITING'
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Support-COMMON_EVENT_SCREEN_LOCK_EXITING = 'usual.event.SCREEN_LOCK_EXITING'--><!--Device-Support-COMMON_EVENT_SCREEN_LOCK_EXITING = 'usual.event.SCREEN_LOCK_EXITING'-End-->
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**系统接口：** 此接口为系统接口。
+
+## COMMON_EVENT_SANDBOX_BUNDLE_ADDED
+
+```TypeScript
+COMMON_EVENT_SANDBOX_BUNDLE_ADDED = 'usual.event.SANDBOX_BUNDLE_ADDED'
+```
+
+表示设备上已安装新的沙箱应用的公共事件.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_ADDED = 'usual.event.SANDBOX_BUNDLE_ADDED'--><!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_ADDED = 'usual.event.SANDBOX_BUNDLE_ADDED'-End-->
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**系统接口：** 此接口为系统接口。
+
+## COMMON_EVENT_SANDBOX_BUNDLE_REMOVED
+
+```TypeScript
+COMMON_EVENT_SANDBOX_BUNDLE_REMOVED = 'usual.event.SANDBOX_BUNDLE_REMOVED'
+```
+
+表示设备上安装的沙箱应用被卸载的公共事件.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_REMOVED = 'usual.event.SANDBOX_BUNDLE_REMOVED'--><!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_REMOVED = 'usual.event.SANDBOX_BUNDLE_REMOVED'-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

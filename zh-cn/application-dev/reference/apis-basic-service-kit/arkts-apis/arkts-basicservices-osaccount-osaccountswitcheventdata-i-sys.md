@@ -4,9 +4,17 @@
 
 **起始版本：** 12
 
+<!--Device-osAccount-interface OsAccountSwitchEventData--><!--Device-osAccount-interface OsAccountSwitchEventData-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## displayId
 
@@ -19,6 +27,8 @@ displayId?: number
 **类型：** number
 
 **起始版本：** 23
+
+<!--Device-OsAccountSwitchEventData-displayId?: long--><!--Device-OsAccountSwitchEventData-displayId?: long-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ fromAccountId: number
 
 **起始版本：** 12
 
+<!--Device-OsAccountSwitchEventData-fromAccountId: int--><!--Device-OsAccountSwitchEventData-fromAccountId: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ toAccountId: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-OsAccountSwitchEventData-toAccountId: int--><!--Device-OsAccountSwitchEventData-toAccountId: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

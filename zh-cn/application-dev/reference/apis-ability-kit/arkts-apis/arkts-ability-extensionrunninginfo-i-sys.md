@@ -1,10 +1,10 @@
 # ExtensionRunningInfo（系统接口）
 
-ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过
-[getExtensionRunningInfos接口](arkts-ability-getextensionrunninginfos-f-sys.md#getextensionrunninginfos-2)
-获取。
+ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过[getExtensionRunningInfos接口](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md#getextensionrunninginfos-2)获取。
 
 **起始版本：** 9
+
+<!--Device-unnamed-export interface ExtensionRunningInfo--><!--Device-unnamed-export interface ExtensionRunningInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,6 +24,8 @@ clientPackage: Array<String>
 
 **起始版本：** 9
 
+<!--Device-ExtensionRunningInfo-clientPackage: Array<String>--><!--Device-ExtensionRunningInfo-clientPackage: Array<String>-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +43,8 @@ Extension信息。
 **默认值：** Indicates the extension of the extension info
 
 **起始版本：** 9
+
+<!--Device-ExtensionRunningInfo-extension: ElementName--><!--Device-ExtensionRunningInfo-extension: ElementName-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,6 +64,8 @@ pid: number
 
 **起始版本：** 9
 
+<!--Device-ExtensionRunningInfo-pid: int--><!--Device-ExtensionRunningInfo-pid: int-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +83,8 @@ processName: string
 **默认值：** the name of the process
 
 **起始版本：** 9
+
+<!--Device-ExtensionRunningInfo-processName: string--><!--Device-ExtensionRunningInfo-processName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -96,6 +104,8 @@ Extension被启动时的时间戳。
 
 **起始版本：** 9
 
+<!--Device-ExtensionRunningInfo-startTime: long--><!--Device-ExtensionRunningInfo-startTime: long-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -114,6 +124,8 @@ Extension类型。
 
 **起始版本：** 9
 
+<!--Device-ExtensionRunningInfo-type: bundle.ExtensionAbilityType--><!--Device-ExtensionRunningInfo-type: bundle.ExtensionAbilityType-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -131,6 +143,8 @@ uid: number
 **默认值：** user id
 
 **起始版本：** 9
+
+<!--Device-ExtensionRunningInfo-uid: int--><!--Device-ExtensionRunningInfo-uid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

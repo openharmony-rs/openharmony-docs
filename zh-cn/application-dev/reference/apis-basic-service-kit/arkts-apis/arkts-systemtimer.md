@@ -4,9 +4,17 @@
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare namespace systemTimer--><!--Device-unnamed-declare namespace systemTimer-End-->
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { systemTimer } from '@kit.BasicServicesKit';
+```
 
 ## 汇总
 
@@ -15,14 +23,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createTimer](arkts-basicservices-createtimer-f-sys.md#createtimer-1) | 创建定时器，使用callback异步回调。&gt; **注意：**&gt;&gt; 需与[systemTimer.destroyTimer](arkts-basicservices-destroytimer-f-sys.md#destroytimer-1)结合使用，否则会造&gt; 成内存泄漏 |
-| [createTimer](arkts-basicservices-createtimer-f-sys.md#createtimer-2) | 创建定时器，使用Promise异步回调返回定时器的ID。&gt; **注意：**&gt;&gt; 需与[systemTimer.destroyTimer](arkts-basicservices-destroytimer-f-sys.md#destroytimer-1)结合使用，否则会造&gt; 成内存泄漏 |
-| [destroyTimer](arkts-basicservices-destroytimer-f-sys.md#destroytimer-1) | 销毁定时器，使用callback异步回调。 |
-| [destroyTimer](arkts-basicservices-destroytimer-f-sys.md#destroytimer-2) | 销毁定时器，使用Promise进行异步回调。 |
-| [startTimer](arkts-basicservices-starttimer-f-sys.md#starttimer-1) | 开启定时器，使用callback异步回调。 |
-| [startTimer](arkts-basicservices-starttimer-f-sys.md#starttimer-2) | 开启定时器，使用Promise进行异步回调。 |
-| [stopTimer](arkts-basicservices-stoptimer-f-sys.md#stoptimer-1) | 该方法停止定时器，并使用callback进行异步回调。 |
-| [stopTimer](arkts-basicservices-stoptimer-f-sys.md#stoptimer-2) | 此方法用于停止定时器，并使用Promise异步回调。 |
+| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer-1) | 创建定时器，使用callback异步回调。&gt; **注意：** &gt; &gt; 需与[systemTimer.destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1)结合使用，否则会造 &gt; 成内存泄漏 |
+| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer-2) | 创建定时器，使用Promise异步回调返回定时器的ID。&gt; **注意：** &gt; &gt; 需与[systemTimer.destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1)结合使用，否则会造 &gt; 成内存泄漏 |
+| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1) | 销毁定时器，使用callback异步回调。 |
+| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-2) | 销毁定时器，使用Promise进行异步回调。 |
+| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-1) | 开启定时器，使用callback异步回调。 |
+| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-2) | 开启定时器，使用Promise进行异步回调。 |
+| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer-1) | 该方法停止定时器，并使用callback进行异步回调。 |
+| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer-2) | 此方法用于停止定时器，并使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -30,7 +38,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [TimerOptions](arkts-basicservices-timeroptions-i-sys.md) | 创建系统定时器的初始化选项。 |
+| [TimerOptions](arkts-basicservices-systemtimer-timeroptions-i-sys.md) | 创建系统定时器的初始化选项。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -1,12 +1,10 @@
 # OffsetReferencePoint
 
-```TypeScript
-export enum OffsetReferencePoint
-```
-
 偏移参考点。
 
 **起始版本：** 12
+
+<!--Device-zlib-export enum OffsetReferencePoint--><!--Device-zlib-export enum OffsetReferencePoint-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -20,7 +18,9 @@ SEEK_SET = 0
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OffsetReferencePoint-SEEK_SET = 0--><!--Device-OffsetReferencePoint-SEEK_SET = 0-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -34,7 +34,9 @@ SEEK_CUR = 1
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OffsetReferencePoint-SEEK_CUR = 1--><!--Device-OffsetReferencePoint-SEEK_CUR = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 

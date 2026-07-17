@@ -1,12 +1,18 @@
 # selectContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## selectContact
 
 ```TypeScript
 function selectContact(callback: AsyncCallback<Array<Contact>>): void
 ```
 
-����ѡ����ϵ�˽ӿڣ���ѡ����ϵ��UI���档ʹ��callback�첽�ص���
+调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -14,13 +20,15 @@ function selectContact(callback: AsyncCallback<Array<Contact>>): void
 
 **替代接口：** selectContacts(callback:
 
+<!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void-End-->
+
 **系统能力：** SystemCapability.Applications.Contacts
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;Contact&gt;&gt; | 是 | �ص��������ɹ�����ѡ�����ϵ�˶������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Contact>> | 是 | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -46,13 +54,15 @@ contact.selectContact((err: BusinessError, data) => {
 function selectContact(): Promise<Array<Contact>>
 ```
 
-����ѡ����ϵ�˽ӿڣ���ѡ����ϵ��UI���档ʹ��Promise�첽�ص���
+调用选择联系人接口，打开选择联系人UI界面。使用Promise异步回调。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [selectContacts()](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)
+**替代接口：** [selectContacts()](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)
+
+<!--Device-contact-function selectContact(): Promise<Array<Contact>>--><!--Device-contact-function selectContact(): Promise<Array<Contact>>-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -60,7 +70,7 @@ function selectContact(): Promise<Array<Contact>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Contact&gt;&gt; | Promise���󡣷���ѡ�����ϵ��������� |
+| Promise<Array<Contact>> | Promise对象。返回选择的联系人数组对象。 |
 
 **示例：**
 

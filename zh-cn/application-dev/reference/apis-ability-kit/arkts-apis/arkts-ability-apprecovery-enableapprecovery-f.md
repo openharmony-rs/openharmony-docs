@@ -1,5 +1,11 @@
 # enableAppRecovery
 
+## 导入模块
+
+```TypeScript
+import { appRecovery } from '@kit.AbilityKit';
+```
+
 ## enableAppRecovery
 
 ```TypeScript
@@ -14,13 +20,15 @@ function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFla
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-appRecovery-function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFlag, saveMode?: SaveModeFlag) : void--><!--Device-appRecovery-function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFlag, saveMode?: SaveModeFlag) : void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| restart | RestartFlag | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。 |
-| saveOccasion | SaveOccasionFlag | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
-| saveMode | SaveModeFlag | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
+| restart | [RestartFlag](arkts-ability-apprecovery-restartflag-e.md) | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。 |
+| saveOccasion | [SaveOccasionFlag](arkts-ability-apprecovery-saveoccasionflag-e.md) | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
+| saveMode | [SaveModeFlag](arkts-ability-apprecovery-savemodeflag-e.md) | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
 

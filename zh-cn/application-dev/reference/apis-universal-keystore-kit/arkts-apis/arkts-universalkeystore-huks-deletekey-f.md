@@ -1,18 +1,24 @@
 # deleteKey
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
 ## deleteKey
 
 ```TypeScript
 function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-ɾ����Կ��ʹ��callback�첽�ص���
+删除密钥。使用callback异步回调。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deleteKeyItem-1)
-> �����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)  
+> 替代。
 
 **起始版本：** 8
 
@@ -20,15 +26,17 @@ function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 
 **替代接口：** deleteKeyItem(keyAlias:
 
+<!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ��Կ������ӦΪ����keyʱ����ı����� |
-| options | HuksOptions | 是 | ����ɾ��ʱָ����Կ������TAG�� |
-| callback | AsyncCallback&lt;HuksResult&gt; | 是 | �ص���������ɾ����Կ�ɹ�ʱ��errΪundefined��dataΪ��ȡ����HuksResult������Ϊ������� |
+| keyAlias | string | 是 | 密钥别名，应为生成key时传入的别名。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于删除时指定密钥的属性TAG。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<HuksResult> | 是 | 回调函数。当删除密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 
@@ -52,12 +60,12 @@ huks.deleteKey(keyAlias, emptyOptions, (err, data) => {
 function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 ```
 
-ɾ����Կ��ʹ��Promise�첽�ص���
+删除密钥。使用Promise异步回调。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deleteKeyItem-2)�����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [huks.deleteKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-2)替代。
 
 **起始版本：** 8
 
@@ -65,26 +73,28 @@ function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 
 **替代接口：** deleteKeyItem(keyAlias:
 
+<!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ��Կ������ӦΪ����keyʱ����ı����� |
-| options | HuksOptions | 是 | ����ɾ��ʱָ����Կ������TAG�� |
+| keyAlias | string | 是 | 密钥别名，应为生成key时传入的别名。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于删除时指定密钥的属性TAG。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksResult&gt; | Promise���󣬷���HuksResult�� |
+| Promise<HuksResult> | Promise对象，返回HuksResult。 |
 
 **示例：**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 此处options选择emptyOptions传空 */
 let keyAlias = 'keyAlias';

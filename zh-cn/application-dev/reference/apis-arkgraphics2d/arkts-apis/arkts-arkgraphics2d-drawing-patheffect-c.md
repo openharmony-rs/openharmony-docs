@@ -2,17 +2,25 @@
 
 路径效果对象。
 
-> **说明：**
->
-> - 本Class首批接口从API version 12开始支持。
->
-> - 本模块使用屏幕物理像素单位px。
->
+> **说明：**  
+>  
+> - 本Class首批接口从API version 12开始支持。  
+>  
+> - 本模块使用屏幕物理像素单位px。  
+>  
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **起始版本：** 12
 
+<!--Device-drawing-class PathEffect--><!--Device-drawing-class PathEffect-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## createComposePathEffect
 
@@ -24,20 +32,22 @@ static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect
 
 **起始版本：** 18
 
+<!--Device-PathEffect-static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect--><!--Device-PathEffect-static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outer | PathEffect | 是 | 组合路径效果中外部路径效果。 |
-| inner | PathEffect | 是 | 组合路径效果中内部路径效果。 |
+| outer | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 是 | 组合路径效果中外部路径效果。 |
+| inner | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 是 | 组合路径效果中内部路径效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| PathEffect | 返回创建的路径效果对象。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
 ## createCornerPathEffect
 
@@ -48,6 +58,8 @@ static createCornerPathEffect(radius: number): PathEffect
 创建将路径的夹角变成指定半径的圆角的路径效果对象。
 
 **起始版本：** 12
+
+<!--Device-PathEffect-static createCornerPathEffect(radius: number): PathEffect--><!--Device-PathEffect-static createCornerPathEffect(radius: number): PathEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -61,13 +73,13 @@ static createCornerPathEffect(radius: number): PathEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| PathEffect | 返回创建的路径效果对象。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createDashPathEffect
 
@@ -79,26 +91,28 @@ static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect
 
 **起始版本：** 12
 
+<!--Device-PathEffect-static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect--><!--Device-PathEffect-static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| intervals | Array&lt;number&gt; | 是 | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组个数必须是偶数，且&gt;=2，该参数为正整数。 |
+| intervals | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组个数必须是偶数，且&gt;=2，该参数为正整数。 |
 | phase | number | 是 | 绘制时的偏移量，该参数为浮点数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| PathEffect | 返回创建的路径效果对象。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createDiscretePathEffect
 
@@ -109,6 +123,8 @@ static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: num
 创建一种将路径打散，并且在路径上产生不规则分布的效果。
 
 **起始版本：** 18
+
+<!--Device-PathEffect-static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: number): PathEffect--><!--Device-PathEffect-static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: number): PathEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -124,7 +140,7 @@ static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: num
 
 | 类型 | 说明 |
 | --- | --- |
-| PathEffect | 返回创建的路径效果对象。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
 ## createPathDashEffect
 
@@ -136,28 +152,30 @@ static createPathDashEffect(path: Path, advance: number, phase: number, style: P
 
 **起始版本：** 18
 
+<!--Device-PathEffect-static createPathDashEffect(path: Path, advance: number, phase: number, style: PathDashStyle): PathEffect--><!--Device-PathEffect-static createPathDashEffect(path: Path, advance: number, phase: number, style: PathDashStyle): PathEffect-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | Path | 是 | 通过该路径生成一个图形，用来填充每个虚线段。 |
+| path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 通过该路径生成一个图形，用来填充每个虚线段。 |
 | advance | number | 是 | 虚线段的步长，该参数为大于0的浮点数，否则会抛错误码。 |
 | phase | number | 是 | 表示虚线段内图形在虚线步长范围内的偏移量，该参数为浮点数，效果为先对偏移量取绝对值，然后对步长取模。 |
-| style | PathDashStyle | 是 | 指定虚线效果的样式。 |
+| style | [PathDashStyle](arkts-arkgraphics2d-drawing-pathdashstyle-e.md) | 是 | 指定虚线效果的样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| PathEffect | 返回创建的路径效果对象。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## createSumPathEffect
 
@@ -169,18 +187,20 @@ static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEf
 
 **起始版本：** 18
 
+<!--Device-PathEffect-static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect--><!--Device-PathEffect-static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| firstPathEffect | PathEffect | 是 | 表示第一个路径效果。 |
-| secondPathEffect | PathEffect | 是 | 表示第二个路径效果。 |
+| firstPathEffect | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 是 | 表示第一个路径效果。 |
+| secondPathEffect | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 是 | 表示第二个路径效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| PathEffect | 返回创建的路径效果对象。 |
+| [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 返回创建的路径效果对象。 |
 

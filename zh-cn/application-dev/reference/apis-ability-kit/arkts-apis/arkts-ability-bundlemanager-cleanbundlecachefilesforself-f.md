@@ -1,16 +1,24 @@
 # cleanBundleCacheFilesForSelf
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## cleanBundleCacheFilesForSelf
 
 ```TypeScript
 function cleanBundleCacheFilesForSelf(): Promise<void>
 ```
 
-����Ӧ�������Ļ��档ʹ��Promise�첽�ص���
+清理应用自身的缓存。使用Promise异步回调。
 
 **起始版本：** 21
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+
+<!--Device-bundleManager-function cleanBundleCacheFilesForSelf(): Promise<void>--><!--Device-bundleManager-function cleanBundleCacheFilesForSelf(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,7 +26,7 @@ function cleanBundleCacheFilesForSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **示例：**
 

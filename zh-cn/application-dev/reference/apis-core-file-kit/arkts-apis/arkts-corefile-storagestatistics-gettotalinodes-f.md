@@ -1,5 +1,11 @@
 # getTotalInodes
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getTotalInodes
 
 ```TypeScript
@@ -12,20 +18,22 @@ function getTotalInodes(): Promise<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-storageStatistics-function getTotalInodes(): Promise<long>--><!--Device-storageStatistics-function getTotalInodes(): Promise<long>-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回文件系统inode资源总量。 |
+| Promise<number> | Promise对象，返回文件系统inode资源总量。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13600016](../../errorcode-universal.md#13600016-Failed) | Failed to query the inode information of the data partition. |
+| 13600001 | IPC error. |
+| 13600016 | Failed to query the inode information of the data partition. |
 
 **示例：**
 
@@ -33,9 +41,9 @@ function getTotalInodes(): Promise<number>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getTotalInodes().then((totalInodes: number) => {
-  console.info("getTotalInodes successfully: " + totalInodes);
+  console.info('getTotalInodes successfully:' + totalInodes);
 }).catch((err: BusinessError) => {
-  console.error(`getTotalInodes failed. Code: ${err.code}, Message: ${err.message}`);
+  console.error(`getTotalInodes failed. Code: ${err.code}, message: ${err.message}`);
 });
 
 ```

@@ -1,16 +1,24 @@
 # getBundleNameByUidSync
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getBundleNameByUidSync
 
 ```TypeScript
 function getBundleNameByUidSync(uid: number): string
 ```
 
-��ͬ���������ݸ�����uid��ȡ��ӦӦ�õ�bundleName��
+以同步方法根据给定的uid获取对应应用的bundleName。
 
 **起始版本：** 14
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-bundleManager-function getBundleNameByUidSync(uid: int): string--><!--Device-bundleManager-function getBundleNameByUidSync(uid: int): string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,21 +26,21 @@ function getBundleNameByUidSync(uid: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | ��ʾӦ�ó����UID�� |
+| uid | number | 是 | 表示应用程序的UID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | ���ػ�ȡ����bundleName�� |
+| string | 返回获取到的bundleName。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700021](../../errorcode-universal.md#17700021-The) | The uid is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700021](../errorcode-bundle.md#17700021-指定的uid无效) | The uid is not found. |
 
 **示例：**
 

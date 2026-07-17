@@ -12,13 +12,15 @@ declare const ArcAlphabetIndexer: ArcAlphabetIndexerInterface
 
 > - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
 
-###### 子组件
+### 子组件
 
 无
 
 **起始版本：** 18
 
-**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare const ArcAlphabetIndexer: ArcAlphabetIndexerInterface--><!--Device-unnamed-declare const ArcAlphabetIndexer: ArcAlphabetIndexerInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -32,7 +34,9 @@ Defines ArcAlphabetIndexer Component instance.
 
 **起始版本：** 18
 
-**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare const ArcAlphabetIndexerInstance: ArcAlphabetIndexerAttribute--><!--Device-unnamed-declare const ArcAlphabetIndexerInstance: ArcAlphabetIndexerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

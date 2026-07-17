@@ -1,5 +1,11 @@
 # requestRight
 
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
+
 ## requestRight
 
 ```TypeScript
@@ -12,7 +18,9 @@ function requestRight(deviceName: string): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestRight-1)
+**替代接口：** [requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright-1)
+
+<!--Device-usb-function requestRight(deviceName: string): Promise<boolean>--><!--Device-usb-function requestRight(deviceName: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -26,7 +34,7 @@ function requestRight(deviceName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回临时权限的申请结果。返回true表示临时权限申请成功；返回false则表示临时权限申请失败。 |
+| Promise<boolean> | Promise对象，返回临时权限的申请结果。返回true表示临时权限申请成功；返回false则表示临时权限申请失败。 |
 
 **示例：**
 

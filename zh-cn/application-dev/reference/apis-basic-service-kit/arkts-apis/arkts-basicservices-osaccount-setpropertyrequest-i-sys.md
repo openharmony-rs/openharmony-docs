@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-interface SetPropertyRequest--><!--Device-osAccount-interface SetPropertyRequest-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## authType
 
@@ -19,6 +27,8 @@ authType: AuthType
 **类型：** AuthType
 
 **起始版本：** 8
+
+<!--Device-SetPropertyRequest-authType: AuthType--><!--Device-SetPropertyRequest-authType: AuthType-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ key: SetPropertyType
 
 **起始版本：** 8
 
+<!--Device-SetPropertyRequest-key: SetPropertyType--><!--Device-SetPropertyRequest-key: SetPropertyType-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ setInfo: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 8
+
+<!--Device-SetPropertyRequest-setInfo: Uint8Array--><!--Device-SetPropertyRequest-setInfo: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

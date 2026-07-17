@@ -4,7 +4,15 @@
 
 **起始版本：** 24
 
+<!--Device-text-interface FontVariationInstance--><!--Device-text-interface FontVariationInstance-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## coordinates
 
@@ -18,7 +26,9 @@ coordinates: Array<FontVariation>
 
 **起始版本：** 24
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontVariationInstance-coordinates: Array<FontVariation>--><!--Device-FontVariationInstance-coordinates: Array<FontVariation>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -34,7 +44,9 @@ localName: string
 
 **起始版本：** 24
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontVariationInstance-localName: string--><!--Device-FontVariationInstance-localName: string-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,7 +62,9 @@ name: string
 
 **起始版本：** 24
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontVariationInstance-name: string--><!--Device-FontVariationInstance-name: string-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

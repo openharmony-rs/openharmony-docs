@@ -1,16 +1,24 @@
 # getDynamicIconInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getDynamicIconInfo
 
 ```TypeScript
 function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>
 ```
 
-����ָ����bundleName��ȡ�����û������з����µĶ�̬ͼ����Ϣ��ʹ��Promise�첽�ص���
+根据指定的bundleName获取所有用户和所有分身下的动态图标信息。使用Promise异步回调。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+<!--Device-bundleManager-function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>--><!--Device-bundleManager-function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,22 +28,22 @@ function getDynamicIconInfo(bundleName: string): Promise<Array<DynamicIconInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��̬ͼ���Ӧ�ð����� |
+| bundleName | string | 是 | 要查询动态图标的应用包名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DynamicIconInfo&gt;&gt; | Promise���󣬷��ز�ѯ���Ķ�̬ͼ����Ϣ�� |
+| Promise<Array<DynamicIconInfo>> | Promise对象，返回查询到的动态图标信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700306](../../errorcode-universal.md#17700306-Failed) | Failed to obtain the dynamic icon. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700306](../errorcode-bundle.md#17700306-动态图标查询失败) | Failed to obtain the dynamic icon. |
 
 **示例：**
 

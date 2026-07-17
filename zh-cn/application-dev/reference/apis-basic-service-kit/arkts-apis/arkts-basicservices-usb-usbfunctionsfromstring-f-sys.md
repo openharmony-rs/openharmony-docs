@@ -1,5 +1,11 @@
 # usbFunctionsFromString（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
+
 ## usbFunctionsFromString
 
 ```TypeScript
@@ -12,7 +18,9 @@ function usbFunctionsFromString(funcs: string): number
 
 **废弃版本：** 9
 
-**替代接口：** [usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md#usbFunctionsFromString-1)
+**替代接口：** [usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring-1)
+
+<!--Device-usb-function usbFunctionsFromString(funcs: string): number--><!--Device-usb-function usbFunctionsFromString(funcs: string): number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

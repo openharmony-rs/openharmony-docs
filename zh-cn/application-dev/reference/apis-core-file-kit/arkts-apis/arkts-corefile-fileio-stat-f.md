@@ -14,6 +14,8 @@ declare function stat(path: string): Promise<Stat>
 
 **替代接口：** [fs:stat](arkts-corefile-file-fs-stat-f.md#stat-1)
 
+<!--Device-unnamed-declare function stat(path: string): Promise<Stat>--><!--Device-unnamed-declare function stat(path: string): Promise<Stat>-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -26,7 +28,7 @@ declare function stat(path: string): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Stat&gt; | Promise对象。返回文件的具体信息。 |
+| Promise<Stat> | Promise对象。返回文件的具体信息。 |
 
 
 ## stat
@@ -43,6 +45,8 @@ declare function stat(path: string, callback: AsyncCallback<Stat>): void
 
 **替代接口：** [fs:stat](arkts-corefile-file-fs-stat-f.md#stat-1)
 
+<!--Device-unnamed-declare function stat(path: string, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function stat(path: string, callback: AsyncCallback<Stat>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -50,5 +54,5 @@ declare function stat(path: string, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待获取文件的应用沙箱路径。 |
-| callback | AsyncCallback&lt;Stat&gt; | 是 | 异步获取文件的信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Stat> | 是 | 异步获取文件的信息之后的回调。 |
 

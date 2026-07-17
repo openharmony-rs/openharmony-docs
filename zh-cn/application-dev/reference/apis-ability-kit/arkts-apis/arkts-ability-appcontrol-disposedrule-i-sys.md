@@ -1,12 +1,20 @@
 # DisposedRule（系统接口）
 
-��ʶ���ع���
+标识拦截规则。
 
 **起始版本：** 11
+
+<!--Device-appControl-export interface DisposedRule--><!--Device-appControl-export interface DisposedRule-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
 
 ## componentType
 
@@ -14,11 +22,13 @@
 componentType: ComponentType
 ```
 
-����ʱ�����������������͡�
+拦截时将提升的能力的类型。
 
 **类型：** ComponentType
 
 **起始版本：** 11
+
+<!--Device-DisposedRule-componentType: ComponentType--><!--Device-DisposedRule-componentType: ComponentType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -30,11 +40,13 @@ componentType: ComponentType
 controlType: ControlType
 ```
 
-����ָ��Ӧ�ó���Ĳ�ͬ���ԡ�
+拦截指定应用程序的不同策略。
 
 **类型：** ControlType
 
 **起始版本：** 11
+
+<!--Device-DisposedRule-controlType: ControlType--><!--Device-DisposedRule-controlType: ControlType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -46,11 +58,13 @@ controlType: ControlType
 disposedType: DisposedType
 ```
 
-��Ӧ�õ����ع���
+对应用的拦截规则。
 
 **类型：** DisposedType
 
 **起始版本：** 11
+
+<!--Device-DisposedRule-disposedType: DisposedType--><!--Device-DisposedRule-disposedType: DisposedType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -62,11 +76,13 @@ disposedType: DisposedType
 elementList: Array<ElementName>
 ```
 
-����ָ��Ӧ�ó����������б���
+拦截指定应用程序能力的列表。
 
 **类型：** Array<ElementName>
 
 **起始版本：** 11
+
+<!--Device-DisposedRule-elementList: Array<ElementName>--><!--Device-DisposedRule-elementList: Array<ElementName>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -78,11 +94,13 @@ elementList: Array<ElementName>
 priority: number
 ```
 
-���ع�������ȼ������ڹ����б���ѯ�������ȡֵΪ��������ֵԽС�����ȼ�Խ�ߣ�����Խ��ǰ��
+拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。
 
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-DisposedRule-priority: int--><!--Device-DisposedRule-priority: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -94,11 +112,13 @@ priority: number
 want: Want
 ```
 
-ָ��Ӧ�ñ�����ʱ����ת����ҳ�档
+指定应用被拦截时，跳转到的页面。
 
 **类型：** Want
 
 **起始版本：** 11
+
+<!--Device-DisposedRule-want: Want--><!--Device-DisposedRule-want: Want-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 

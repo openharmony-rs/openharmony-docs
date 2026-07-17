@@ -4,7 +4,15 @@
 
 **起始版本：** 7
 
+<!--Device-osAccount-interface OsAccountInfo--><!--Device-osAccount-interface OsAccountInfo-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## constraints
 
@@ -17,6 +25,8 @@ constraints: Array<string>
 **类型：** Array<string>
 
 **起始版本：** 7
+
+<!--Device-OsAccountInfo-constraints: Array<string>--><!--Device-OsAccountInfo-constraints: Array<string>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -32,6 +42,8 @@ createTime: number
 
 **起始版本：** 8
 
+<!--Device-OsAccountInfo-createTime: long--><!--Device-OsAccountInfo-createTime: long-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## distributedInfo
@@ -45,6 +57,8 @@ distributedInfo: distributedAccount.DistributedInfo
 **类型：** distributedAccount.DistributedInfo
 
 **起始版本：** 7
+
+<!--Device-OsAccountInfo-distributedInfo: distributedAccount.DistributedInfo--><!--Device-OsAccountInfo-distributedInfo: distributedAccount.DistributedInfo-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -60,6 +74,8 @@ domainInfo: DomainAccountInfo
 
 **起始版本：** 8
 
+<!--Device-OsAccountInfo-domainInfo: DomainAccountInfo--><!--Device-OsAccountInfo-domainInfo: DomainAccountInfo-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## isActivated
@@ -73,6 +89,8 @@ isActivated: boolean
 **类型：** boolean
 
 **起始版本：** 11
+
+<!--Device-OsAccountInfo-isActivated: boolean--><!--Device-OsAccountInfo-isActivated: boolean-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -92,7 +110,9 @@ isActived: boolean
 
 **废弃版本：** 11
 
-**替代接口：** [isActivated](arkts-basicservices-osaccount-osaccountinfo-i.md#isActivated)
+**替代接口：** [isActivated](arkts-basicservices-osaccount-osaccountinfo-i.md#isactivated)
+
+<!--Device-OsAccountInfo-isActived: boolean--><!--Device-OsAccountInfo-isActived: boolean-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -108,6 +128,8 @@ isCreateCompleted: boolean
 
 **起始版本：** 8
 
+<!--Device-OsAccountInfo-isCreateCompleted: boolean--><!--Device-OsAccountInfo-isCreateCompleted: boolean-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## isUnlocked
@@ -121,6 +143,8 @@ isUnlocked: boolean
 **类型：** boolean
 
 **起始版本：** 11
+
+<!--Device-OsAccountInfo-isUnlocked: boolean--><!--Device-OsAccountInfo-isUnlocked: boolean-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -140,7 +164,9 @@ isVerified: boolean
 
 **废弃版本：** 11
 
-**替代接口：** [isUnlocked](arkts-basicservices-osaccount-osaccountinfo-i.md#isUnlocked)
+**替代接口：** [isUnlocked](arkts-basicservices-osaccount-osaccountinfo-i.md#isunlocked)
+
+<!--Device-OsAccountInfo-isVerified: boolean--><!--Device-OsAccountInfo-isVerified: boolean-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -156,6 +182,8 @@ lastLoginTime: number
 
 **起始版本：** 8
 
+<!--Device-OsAccountInfo-lastLoginTime: long--><!--Device-OsAccountInfo-lastLoginTime: long-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## localId
@@ -169,6 +197,8 @@ localId: number
 **类型：** number
 
 **起始版本：** 7
+
+<!--Device-OsAccountInfo-localId: int--><!--Device-OsAccountInfo-localId: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -184,6 +214,8 @@ localName: string
 
 **起始版本：** 7
 
+<!--Device-OsAccountInfo-localName: string--><!--Device-OsAccountInfo-localName: string-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## photo
@@ -197,6 +229,8 @@ photo: string
 **类型：** string
 
 **起始版本：** 8
+
+<!--Device-OsAccountInfo-photo: string--><!--Device-OsAccountInfo-photo: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -212,6 +246,8 @@ serialNumber: number
 
 **起始版本：** 8
 
+<!--Device-OsAccountInfo-serialNumber: long--><!--Device-OsAccountInfo-serialNumber: long-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 ## type
@@ -225,6 +261,8 @@ type: OsAccountType
 **类型：** OsAccountType
 
 **起始版本：** 7
+
+<!--Device-OsAccountInfo-type: OsAccountType--><!--Device-OsAccountInfo-type: OsAccountType-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

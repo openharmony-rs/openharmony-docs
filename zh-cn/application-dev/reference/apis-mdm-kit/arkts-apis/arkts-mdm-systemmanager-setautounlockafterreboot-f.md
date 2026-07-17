@@ -1,12 +1,18 @@
 # setAutoUnlockAfterReboot
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## setAutoUnlockAfterReboot
 
 ```TypeScript
 function setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 ```
 
-�����豸�����Զ�����������������������豸��Ч��
+设置设备重启自动解锁，仅针对无锁屏密码设备生效。
 
 **起始版本：** 20
 
@@ -14,23 +20,25 @@ function setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-systemManager-function setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void--><!--Device-systemManager-function setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| isAllowed | boolean | 是 | true��ʾ�豸�������Զ�������false��ʾ�豸�������Զ������� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| isAllowed | boolean | 是 | true表示设备重启后自动解锁，false表示设备重启后不自动解锁。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. Failed to call the API due to limited device<br/>capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-webview-interface WebStorageOrigin--><!--Device-webview-interface WebStorageOrigin-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## origin
 
@@ -19,6 +27,8 @@ origin: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebStorageOrigin-origin: string--><!--Device-WebStorageOrigin-origin: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -38,6 +48,8 @@ quota: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WebStorageOrigin-quota: number--><!--Device-WebStorageOrigin-quota: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## usage
@@ -55,6 +67,8 @@ usage: number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebStorageOrigin-usage: number--><!--Device-WebStorageOrigin-usage: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

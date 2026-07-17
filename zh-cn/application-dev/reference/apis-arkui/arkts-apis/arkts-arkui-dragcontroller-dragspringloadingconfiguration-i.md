@@ -1,13 +1,18 @@
 # DragSpringLoadingConfiguration
 
-定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](arkts-arkui-commonmethod-c.md#onDragSpringLoading-1)时指定配置，或者通过在
-BEGIN状态期间使用[updateConfiguration](arkts-arkui-dragcontroller-springloadingcontext-c.md#updateConfiguration-1)方法动态修改的方式以自定义该配置参数。
+定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](../arkts-components/arkts-arkui-common-commonmethod-c.md#ondragspringloading-1)时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](arkts-arkui-dragcontroller-springloadingcontext-c.md#updateconfiguration-1)方法动态修改的方式以自定义该配置参数。
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-dragController-interface DragSpringLoadingConfiguration--><!--Device-dragController-interface DragSpringLoadingConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { dragController } from '@kit.ArkUI';
+```
 
 ## stillTimeLimit
 
@@ -23,7 +28,9 @@ stillTimeLimit?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DragSpringLoadingConfiguration-stillTimeLimit?: number--><!--Device-DragSpringLoadingConfiguration-stillTimeLimit?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,7 +48,9 @@ updateInterval?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DragSpringLoadingConfiguration-updateInterval?: number--><!--Device-DragSpringLoadingConfiguration-updateInterval?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +68,9 @@ updateNotifyCount?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DragSpringLoadingConfiguration-updateNotifyCount?: number--><!--Device-DragSpringLoadingConfiguration-updateNotifyCount?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,7 +88,9 @@ updateToFinishInterval?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DragSpringLoadingConfiguration-updateToFinishInterval?: number--><!--Device-DragSpringLoadingConfiguration-updateToFinishInterval?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

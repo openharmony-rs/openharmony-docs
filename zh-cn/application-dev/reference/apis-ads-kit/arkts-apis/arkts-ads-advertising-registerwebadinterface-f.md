@@ -1,5 +1,11 @@
 # registerWebAdInterface
 
+## 导入模块
+
+```TypeScript
+import { advertising } from '@kit.AdsKit';
+```
+
 ## registerWebAdInterface
 
 ```TypeScript
@@ -10,7 +16,9 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext): void--><!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext): void-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -25,8 +33,8 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left<br/>unspecified. |
-| [21800001](../../errorcode-universal.md#21800001-System) | System internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例：**
 
@@ -70,7 +78,11 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 **起始版本：** 16
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本16开始，该接口支持在原子化服务API中使用。
+
+<!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext, 
+    needRefresh: boolean): void--><!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext, 
+    needRefresh: boolean): void-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
 
@@ -86,8 +98,8 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid input parameter. Possible causes: Mandatory parameters are left<br/>unspecified. |
-| [21800001](../../errorcode-universal.md#21800001-System) | System internal error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
+| [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
 **示例：**
 

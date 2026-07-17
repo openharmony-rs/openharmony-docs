@@ -1,12 +1,20 @@
 # VirtualScreenOption（系统接口）
 
-����������Ļ�Ĳ�����
+创建虚拟屏幕的参数。
 
 **起始版本：** 9
+
+<!--Device-screen-interface VirtualScreenOption--><!--Device-screen-interface VirtualScreenOption-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+```
 
 ## density
 
@@ -14,11 +22,13 @@
 density: number
 ```
 
-ָ��������Ļ���ܶȣ��ò���Ϊ��������
+指定虚拟屏幕的密度，该参数为浮点数。
 
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-density: double--><!--Device-VirtualScreenOption-density: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -30,11 +40,13 @@ density: number
 height: number
 ```
 
-ָ��������Ļ�ĸ߶ȣ���λΪpx���ò���ӦΪ������
+指定虚拟屏幕的高度，单位为px，该参数应为整数。
 
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-height: long--><!--Device-VirtualScreenOption-height: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -46,11 +58,13 @@ height: number
 name: string
 ```
 
-ָ��������Ļ�����ơ�
+指定虚拟屏幕的名称。
 
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-name: string--><!--Device-VirtualScreenOption-name: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,11 +76,13 @@ name: string
 supportsFocus?: boolean
 ```
 
-ָ��������Ļ�Ƿ�ɻ�ý��㡣true��ʾ�ɻ񽹣�false��ʾ���ɻ񽹣�Ĭ��ֵΪtrue��
+指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。
 
 **类型：** boolean
 
 **起始版本：** 22
+
+<!--Device-VirtualScreenOption-supportsFocus?: boolean--><!--Device-VirtualScreenOption-supportsFocus?: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -78,11 +94,13 @@ supportsFocus?: boolean
 surfaceId: string
 ```
 
-ָ��������Ļ��surfaceId��
+指定虚拟屏幕的surfaceId。
 
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-surfaceId: string--><!--Device-VirtualScreenOption-surfaceId: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -94,13 +112,15 @@ surfaceId: string
 userId?: number
 ```
 
-ָ��������Ļ���û�ID���ò���Ϊ������Ĭ��ֵΪ-1��
+指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。
 
 **类型：** number
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-VirtualScreenOption-userId?: int--><!--Device-VirtualScreenOption-userId?: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -112,11 +132,13 @@ userId?: number
 width: number
 ```
 
-ָ��������Ļ�Ŀ��ȣ���λΪpx���ò���ӦΪ������
+指定虚拟屏幕的宽度，单位为px，该参数应为整数。
 
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-width: long--><!--Device-VirtualScreenOption-width: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

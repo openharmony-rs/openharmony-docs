@@ -1,5 +1,11 @@
 # rebootDevice
 
+## 导入模块
+
+```TypeScript
+import { power } from '@kit.BasicServicesKit';
+```
+
 ## rebootDevice
 
 ```TypeScript
@@ -15,6 +21,8 @@ function rebootDevice(reason: string): void
 **替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-1)
 
 **需要权限：** ohos.permission.REBOOT
+
+<!--Device-power-function rebootDevice(reason: string): void--><!--Device-power-function rebootDevice(reason: string): void-End-->
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 

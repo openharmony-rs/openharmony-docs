@@ -1,14 +1,10 @@
 # StopBits
 
-```TypeScript
-enum StopBits
-```
-
-����ͨ���е�ֹͣλ
+串口通信中的停止位
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-serial-enum StopBits--><!--Device-serial-enum StopBits-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -18,11 +14,13 @@ enum StopBits
 ONE = 1
 ```
 
-1λֹͣλ
+1位停止位
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StopBits-ONE = 1--><!--Device-StopBits-ONE = 1-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -32,11 +30,13 @@ ONE = 1
 TWO = 2
 ```
 
-2λֹͣλ
+2位停止位
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StopBits-TWO = 2--><!--Device-StopBits-TWO = 2-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 

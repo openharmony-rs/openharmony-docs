@@ -1,14 +1,10 @@
 # DragStartRequestStatus
 
-```TypeScript
-const enum DragStartRequestStatus
-```
-
-定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](arkts-arkui-commonmethod-c.md#onDragStart-1)调用时有效。
+定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](../arkts-components/arkts-arkui-common-commonmethod-c.md#ondragstart-1)调用时有效。
 
 **起始版本：** 18
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-dragController-const enum DragStartRequestStatus--><!--Device-dragController-const enum DragStartRequestStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +20,9 @@ WAITING = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DragStartRequestStatus-WAITING = 0--><!--Device-DragStartRequestStatus-WAITING = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +38,9 @@ READY = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DragStartRequestStatus-READY = 1--><!--Device-DragStartRequestStatus-READY = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

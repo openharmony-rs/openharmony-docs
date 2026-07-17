@@ -1,16 +1,24 @@
 # pick
 
+## 导入模块
+
+```TypeScript
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## pick
 
 ```TypeScript
 function pick(): Promise<PickInfo>
 ```
 
-��ȡ��Ļ��ͼ����ǰ��֧�ֻ�ȡdisplayIdΪ0����Ļ��ͼ�������Ҫ����չ����ͼ������ͨ��[capture](arkts-arkui-screenshot-capture-f.md#capture-1)�ӿ�ʵ�֣���ʹ��Promise�첽�ص���
+获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md#capture-1)接口实现），使用Promise异步回调。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-screenshot-function pick(): Promise<PickInfo>--><!--Device-screenshot-function pick(): Promise<PickInfo>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -18,14 +26,14 @@ function pick(): Promise<PickInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PickInfo&gt; | Promise���󡣷���һ��PickInfo���� |
+| Promise<PickInfo> | Promise对象。返回一个PickInfo对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported on this device. |
-| [1400003](../../errorcode-universal.md#1400003-This) | This display manager service works abnormally. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported on this device. |
+| [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例：**
 
@@ -33,17 +41,18 @@ function pick(): Promise<PickInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 调用pick接口获取屏幕截图
   let promise = screenshot.pick();
   promise.then((pickInfo: screenshot.PickInfo) => {
-    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-    console.info('pick Rect: ' + pickInfo.pickRect);
+    console.info(`pick Pixel bytes number: ${pickInfo.pixelMap.getPixelBytesNumber()}`);
+    console.info(`pick Rect: ${pickInfo.pickRect}`);
     pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
-    console.error(`Failed to pick. Code: ' + Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to pick. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to pick Code: ' + Code: ${exception.code}, message: ${exception.message}`);
-};
+  console.error(`Failed to pick. Code: ${exception.code}, message: ${exception.message}`);
+}
 
 ```
 

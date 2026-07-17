@@ -1,12 +1,10 @@
 # PowerScene（系统接口）
 
-```TypeScript
-enum PowerScene
-```
-
-ִ�е�Դ���Եĳ�����
+执行电源策略的场景。
 
 **起始版本：** 11
+
+<!--Device-deviceSettings-enum PowerScene--><!--Device-deviceSettings-enum PowerScene-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +16,13 @@ enum PowerScene
 TIME_OUT = 0
 ```
 
-��ʱ������
+超时场景。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PowerScene-TIME_OUT = 0--><!--Device-PowerScene-TIME_OUT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -1,5 +1,11 @@
 # getVisibleWindowInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
+
 ## getVisibleWindowInfo
 
 ```TypeScript
@@ -10,7 +16,10 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 
 **起始版本：** 18
 
-**需要权限：** ohos.permission.VISIBLE_WINDOW_INFO
+**需要权限：** 
+- API版本18+：ohos.permission.VISIBLE_WINDOW_INFO
+
+<!--Device-window-function getVisibleWindowInfo(): Promise<Array<WindowInfo>>--><!--Device-window-function getVisibleWindowInfo(): Promise<Array<WindowInfo>>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -20,16 +29,16 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;WindowInfo&gt;&gt; | Promise对象，返回当前可见窗口的相关信息。 |
+| Promise<Array<WindowInfo>> | Promise对象，返回当前可见窗口的相关信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API.<br/>Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.&lt;br&gt;**适用版本：** 18+ |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, non-system application uses system<br/>API.&lt;br&gt;**适用版本：** 12 - 17 |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
-| [1300003](../../errorcode-universal.md#1300003-This) | This window manager service works abnormally.<br/>Possible cause: Internal task error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API.Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.<br>**适用版本：** 18+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API.<br>**适用版本：** 12 - 17 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally.Possible cause: Internal task error. |
 
 **示例：**
 

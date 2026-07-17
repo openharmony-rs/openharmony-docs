@@ -12,6 +12,8 @@ export type BundleStatusCallback = _BundleStatusCallback
 
 **替代接口：** BundleChangedInfo
 
+<!--Device-unnamed-export type BundleStatusCallback = _BundleStatusCallback--><!--Device-unnamed-export type BundleStatusCallback = _BundleStatusCallback-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。

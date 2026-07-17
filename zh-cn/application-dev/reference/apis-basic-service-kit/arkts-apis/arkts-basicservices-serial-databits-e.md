@@ -1,14 +1,10 @@
 # DataBits
 
-```TypeScript
-enum DataBits
-```
-
-����ͨ���е�����λ
+串口通信中的数据位
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-serial-enum DataBits--><!--Device-serial-enum DataBits-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -18,11 +14,13 @@ enum DataBits
 FIVE = 5
 ```
 
-5λ����λ
+5位数据位
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DataBits-FIVE = 5--><!--Device-DataBits-FIVE = 5-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -32,11 +30,13 @@ FIVE = 5
 SIX = 6
 ```
 
-6λ����λ
+6位数据位
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DataBits-SIX = 6--><!--Device-DataBits-SIX = 6-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -46,11 +46,13 @@ SIX = 6
 SEVEN = 7
 ```
 
-7λ����λ
+7位数据位
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DataBits-SEVEN = 7--><!--Device-DataBits-SEVEN = 7-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 
@@ -60,11 +62,13 @@ SEVEN = 7
 EIGHT = 8
 ```
 
-8λ����λ
+8位数据位
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DataBits-EIGHT = 8--><!--Device-DataBits-EIGHT = 8-End-->
 
 **系统能力：** SystemCapability.BusManager.Serial
 

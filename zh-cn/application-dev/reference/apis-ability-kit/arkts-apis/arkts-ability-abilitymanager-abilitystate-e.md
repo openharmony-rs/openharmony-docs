@@ -1,12 +1,10 @@
 # AbilityState
 
-```TypeScript
-export enum AbilityState
-```
-
-Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md#AbilityRunningInfo)返回Ability的状态。
+Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)返回Ability的状态。
 
 **起始版本：** 14
+
+<!--Device-abilityManager-export enum AbilityState--><!--Device-abilityManager-export enum AbilityState-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,6 +18,8 @@ INITIAL = 0
 
 **起始版本：** 14
 
+<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## FOCUS
@@ -31,6 +31,8 @@ FOCUS = 2
 表示ability为获焦状态。
 
 **起始版本：** 14
+
+<!--Device-AbilityState-FOCUS = 2--><!--Device-AbilityState-FOCUS = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,6 +46,8 @@ FOREGROUND = 9
 
 **起始版本：** 14
 
+<!--Device-AbilityState-FOREGROUND = 9--><!--Device-AbilityState-FOREGROUND = 9-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## BACKGROUND
@@ -55,6 +59,8 @@ BACKGROUND = 10
 表示ability为后台状态。
 
 **起始版本：** 14
+
+<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +74,8 @@ FOREGROUNDING = 11
 
 **起始版本：** 14
 
+<!--Device-AbilityState-FOREGROUNDING = 11--><!--Device-AbilityState-FOREGROUNDING = 11-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## BACKGROUNDING
@@ -79,6 +87,8 @@ BACKGROUNDING = 12
 表示ability为后台调度中状态。
 
 **起始版本：** 14
+
+<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

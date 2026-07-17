@@ -6,13 +6,13 @@ typedef struct ARKUI_TextPickerCascadeRangeContent {...} ARKUI_TextPickerCascade
 
 ## 概述
 
-Defines the input structure of the interconnected multi-column text picker.
+定义多列联动滑动数据选择器的结构体。
 
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [picker.h](capi-picker-h.md)
 
 ## 汇总
 
@@ -20,8 +20,8 @@ Defines the input structure of the interconnected multi-column text picker.
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* text | Text information. |
-| const [ARKUI_TextPickerRangeContent*](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) children | Interconnected data. |
-| int32_t size | Size of the interconnected data array. |
+| const char* text |  |
+| const [ARKUI_TextPickerRangeContent*](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) children |  |
+| int32_t size |  |
 
 

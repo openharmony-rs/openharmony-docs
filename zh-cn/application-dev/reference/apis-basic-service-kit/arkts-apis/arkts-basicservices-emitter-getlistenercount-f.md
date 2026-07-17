@@ -1,5 +1,11 @@
 # getListenerCount
 
+## 导入模块
+
+```TypeScript
+import { emitter } from '@kit.BasicServicesKit';
+```
+
 ## getListenerCount
 
 ```TypeScript
@@ -10,7 +16,9 @@ function getListenerCount(eventId: number | string): number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-emitter-function getListenerCount(eventId: long | string): long--><!--Device-emitter-function getListenerCount(eventId: long | string): long-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -29,7 +37,7 @@ function getListenerCount(eventId: number | string): number
 **示例：**
 
 ```TypeScript
-let count: number = emitter.getListenerCount("eventId");
+let count: number = emitter.getListenerCount('eventId');
 
 ```
 

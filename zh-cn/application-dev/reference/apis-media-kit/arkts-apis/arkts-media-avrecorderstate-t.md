@@ -8,17 +8,19 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 
 **起始版本：** 9
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 'released' | 'error'--><!--Device-unnamed-type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 'released' | 'error'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 | 类型 | 说明 |
 | --- | --- |
-| 'idle' | The AVRecorder enters this state after it is just created or the[AVRecorder.reset()]{ |
-| 'prepared' | The AVRecorder enters this state when the parameters are set. In this state, you cancall [AVRecorder.start()]{ |
-| 'started' | The AVRecorder enters this state when the recording starts. In this state, you can call[AVRecorder.pause()]{ |
-| 'paused' | The AVRecorder enters this state when the recording is paused. In this state, you cancall [AVRecorder.resume()]{ |
-| 'stopped' | The AVRecorder enters this state when the recording stops. In this state, you can call[AVRecorder.prepare()]{ |
-| 'released' | The AVRecorder enters this state when the recording resources are released. In thisstate, no operation can be performed. In any other state, you can call[AVRecorder.release()]{ |
-| 'error' | The AVRecorder enters this state when an irreversible error occurs in the AVRecorderinstance. In this state, the[AVRecorder.on('error') event]{ |
+| 'idle' | 闲置状态。此时可以调用[AVRecorder.prepare()]{ |
+| 'prepared' | 参数设置完成。此时可以调用[AVRecorder.start()]{ |
+| 'started' | 正在录制。此时可以调用[AVRecorder.pause()]{ |
+| 'paused' | 录制暂停。此时可以调用[AVRecorder.resume()]{ |
+| 'stopped' | 录制停止。此时可以调用[AVRecorder.prepare()]{ |
+| 'released' | 录制资源释放。此时不能再进行任何操作。在任何其他状态下，均可以通过调用[AVRecorder.release()]{ |
+| 'error' | 错误状态。当AVRecorder实例发生不可逆错误，会转换至当前状态。切换至error状态时会伴随[AVRecorder.on('error')事件]{ |
 

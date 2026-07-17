@@ -4,7 +4,15 @@
 
 **起始版本：** 14
 
+<!--Device-print-interface PrinterCapabilities--><!--Device-print-interface PrinterCapabilities-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## options
 
@@ -17,6 +25,8 @@ options?: string
 **类型：** string
 
 **起始版本：** 14
+
+<!--Device-PrinterCapabilities-options?: string--><!--Device-PrinterCapabilities-options?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ supportedColorModes: Array<PrintColorMode>
 
 **起始版本：** 14
 
+<!--Device-PrinterCapabilities-supportedColorModes: Array<PrintColorMode>--><!--Device-PrinterCapabilities-supportedColorModes: Array<PrintColorMode>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## supportedDuplexModes
@@ -45,6 +57,8 @@ supportedDuplexModes: Array<PrintDuplexMode>
 **类型：** Array<PrintDuplexMode>
 
 **起始版本：** 14
+
+<!--Device-PrinterCapabilities-supportedDuplexModes: Array<PrintDuplexMode>--><!--Device-PrinterCapabilities-supportedDuplexModes: Array<PrintDuplexMode>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -60,6 +74,8 @@ supportedMediaTypes?: Array<string>
 
 **起始版本：** 14
 
+<!--Device-PrinterCapabilities-supportedMediaTypes?: Array<string>--><!--Device-PrinterCapabilities-supportedMediaTypes?: Array<string>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## supportedOrientations
@@ -73,6 +89,8 @@ supportedOrientations?: Array<PrintOrientationMode>
 **类型：** Array<PrintOrientationMode>
 
 **起始版本：** 14
+
+<!--Device-PrinterCapabilities-supportedOrientations?: Array<PrintOrientationMode>--><!--Device-PrinterCapabilities-supportedOrientations?: Array<PrintOrientationMode>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -88,6 +106,8 @@ supportedPageSizes: Array<PrintPageSize>
 
 **起始版本：** 14
 
+<!--Device-PrinterCapabilities-supportedPageSizes: Array<PrintPageSize>--><!--Device-PrinterCapabilities-supportedPageSizes: Array<PrintPageSize>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## supportedQualities
@@ -101,6 +121,8 @@ supportedQualities?: Array<PrintQuality>
 **类型：** Array<PrintQuality>
 
 **起始版本：** 14
+
+<!--Device-PrinterCapabilities-supportedQualities?: Array<PrintQuality>--><!--Device-PrinterCapabilities-supportedQualities?: Array<PrintQuality>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

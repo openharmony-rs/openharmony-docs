@@ -1,12 +1,20 @@
 # GallerySync（系统接口）
 
-��ͼͬ����������֧��ͼ��Ӧ��ý����Դ����ͬ�����̡���ʹ��ǰ����Ҫ�ȴ���GallerySyncʵ����
+云图同步对象，用来支撑图库应用媒体资源端云同步流程。在使用前，需要先创建GallerySync实例。
 
 **起始版本：** 10
+
+<!--Device-cloudSync-class GallerySync--><!--Device-cloudSync-class GallerySync-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -14,9 +22,11 @@
 constructor()
 ```
 
-����ͬ�����̵Ĺ��캯�������ڻ�ȡGallerySync���ʵ����
+端云同步流程的构造函数，用于获取GallerySync类的实例。
 
 **起始版本：** 10
+
+<!--Device-GallerySync-constructor()--><!--Device-GallerySync-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -35,11 +45,13 @@ let gallerySync = new cloudSync.GallerySync()
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 ```
 
-��ͼͬ�������Ƴ�'progress'������ָ����callback�ص���
+云图同步对象移除'progress'类型中指定的callback回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-off(evt: 'progress', callback: (pg: SyncProgress) => void): void--><!--Device-GallerySync-off(evt: 'progress', callback: (pg: SyncProgress) => void): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -49,17 +61,17 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| evt | 'progress' | 是 | ȡ�����ĵ��¼����ͣ�ȡֵΪ'progress'��ͬ�������¼����� |
-| callback | (pg: SyncProgress) =&gt; void | 是 | �ص�������ͬ�������¼������Ϊ[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md#SyncProgress)����<br/>��ֵΪvoid�� |
+| evt | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
+| callback | (pg: SyncProgress) => void | 是 | 回调函数。同步过程事件，入参为[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
@@ -82,11 +94,13 @@ gallerySync.off('progress', callback);
 off(evt: 'progress'): void
 ```
 
-��ͼͬ�������Ƴ�'progress'���͵����лص���
+云图同步对象移除'progress'类型的所有回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-off(evt: 'progress'): void--><!--Device-GallerySync-off(evt: 'progress'): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -96,16 +110,16 @@ off(evt: 'progress'): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| evt | 'progress' | 是 | ȡ�����ĵ��¼����ͣ�ȡֵΪ'progress'��ͬ�������¼����� |
+| evt | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
@@ -126,11 +140,13 @@ gallerySync.off('progress');
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 ```
 
-��ͼͬ����������ͬ�������¼�������
+云图同步对象添加同步过程事件监听。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-on(evt: 'progress', callback: (pg: SyncProgress) => void): void--><!--Device-GallerySync-on(evt: 'progress', callback: (pg: SyncProgress) => void): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -140,17 +156,17 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| evt | 'progress' | 是 | ���ĵ��¼����ͣ�ȡֵΪ'progress'��ͬ�������¼����� |
-| callback | (pg: SyncProgress) =&gt; void | 是 | �ص�������ͬ�������¼������Ϊ[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md#SyncProgress)����<br/>��ֵΪvoid�� |
+| evt | 'progress' | 是 | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
+| callback | (pg: SyncProgress) => void | 是 | 回调函数。同步过程事件，入参为[SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
@@ -169,11 +185,13 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 start(): Promise<void>
 ```
 
-��������ͬ����ʹ��Promise�첽�ص���
+启动端云同步。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-start(): Promise<void>--><!--Device-GallerySync-start(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -183,18 +201,18 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
-| [22400001](../../errorcode-universal.md#22400001-Cloud) | Cloud status not ready. |
-| [22400002](../../errorcode-universal.md#22400002-Network) | Network unavailable. |
-| [22400003](../../errorcode-universal.md#22400003-Low) | Low battery level. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
 
 **示例：**
 
@@ -210,7 +228,7 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 gallerySync.start().then(() => {
   console.info("start sync successfully");
 }).catch((err: BusinessError) => {
-  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`start sync failed with error message: ${err.message}, error code: ${err.code}`);
 });
 
 ```
@@ -221,11 +239,13 @@ gallerySync.start().then(() => {
 start(callback: AsyncCallback<void>): void
 ```
 
-�첽������������ͬ����ʹ��callback�첽�ص���
+异步方法启动端云同步。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-start(callback: AsyncCallback<void>): void--><!--Device-GallerySync-start(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -235,18 +255,18 @@ start(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������첽��������ͬ���� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [22400001](../../errorcode-universal.md#22400001-Cloud) | Cloud status not ready. |
-| [22400002](../../errorcode-universal.md#22400002-Network) | Network unavailable. |
-| [22400003](../../errorcode-universal.md#22400003-Low) | Low battery level. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
 
 **示例：**
 
@@ -257,7 +277,7 @@ let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.start((err: BusinessError) => {
   if (err) {
-    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`start sync failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("start sync successfully");
   }
@@ -271,15 +291,17 @@ gallerySync.start((err: BusinessError) => {
 stop(): Promise<void>
 ```
 
-�첽����ֹͣ����ͬ����ʹ��Promise�첽�ص���
+异步方法停止端云同步。使用Promise异步回调。
 
-> **˵����**
->
-> ����stop�ӿڣ�ͬ�����̻�ֹͣ���ٴε���[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start-1)�ӿڻ����ͬ����
+> **说明：**  
+>  
+> 调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start-1)接口会继续同步。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-stop(): Promise<void>--><!--Device-GallerySync-stop(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -289,15 +311,15 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
 
 **示例：**
 
@@ -320,15 +342,17 @@ gallerySync.stop().then(() => {
 stop(callback: AsyncCallback<void>): void
 ```
 
-�첽����ֹͣ����ͬ����ʹ��callback�첽�ص���
+异步方法停止端云同步。使用callback异步回调。
 
-> **˵����**
->
-> ����stop�ӿڣ�ͬ�����̻�ֹͣ���ٴε���[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start-1)�ӿڻ����ͬ����
+> **说明：**  
+>  
+> 调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-gallerysync-c-sys.md#start-1)接口会继续同步。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-stop(callback: AsyncCallback<void>): void--><!--Device-GallerySync-stop(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -338,15 +362,15 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������첽ֹͣ����ͬ���� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例：**
 
@@ -357,7 +381,7 @@ let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.stop((err: BusinessError) => {
   if (err) {
-    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+    console.error(`stop sync failed with error message: ${err.message}, error code: ${err.code}`);
   } else {
     console.info("stop sync successfully");
   }

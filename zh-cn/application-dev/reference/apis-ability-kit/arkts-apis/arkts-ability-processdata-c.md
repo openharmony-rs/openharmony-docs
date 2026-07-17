@@ -1,12 +1,10 @@
 # ProcessData
 
-进程数据的对象定义。使用接口
-[appManager.on('applicationState')](arkts-ability-on-f.md#on-1)
-注册生命周期变化监听后，当应用或组件的生命周期变化时，系统通过[ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md)的
-[onProcessCreated](../../../../reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)
-等方法回调给开发者。
+进程数据的对象定义。使用接口[appManager.on('applicationState')](arkts-ability-appmanager-on-f.md#on-1)注册生命周期变化监听后，当应用或组件的生命周期变化时，系统通过[ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md)的[onProcessCreated](../../../../reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)等方法回调给开发者。
 
 **起始版本：** 14
+
+<!--Device-unnamed-declare class ProcessData--><!--Device-unnamed-declare class ProcessData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -22,6 +20,8 @@ bundleName: string
 
 **起始版本：** 14
 
+<!--Device-ProcessData-bundleName: string--><!--Device-ProcessData-bundleName: string-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## isContinuousTask
@@ -35,6 +35,8 @@ isContinuousTask: boolean
 **类型：** boolean
 
 **起始版本：** 14
+
+<!--Device-ProcessData-isContinuousTask: boolean--><!--Device-ProcessData-isContinuousTask: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,6 +52,8 @@ isKeepAlive: boolean
 
 **起始版本：** 14
 
+<!--Device-ProcessData-isKeepAlive: boolean--><!--Device-ProcessData-isKeepAlive: boolean-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## pid
@@ -63,6 +67,8 @@ pid: number
 **类型：** number
 
 **起始版本：** 14
+
+<!--Device-ProcessData-pid: int--><!--Device-ProcessData-pid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -88,6 +94,8 @@ state: number
 
 **起始版本：** 14
 
+<!--Device-ProcessData-state: int--><!--Device-ProcessData-state: int-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## uid
@@ -101,6 +109,8 @@ uid: number
 **类型：** number
 
 **起始版本：** 14
+
+<!--Device-ProcessData-uid: int--><!--Device-ProcessData-uid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

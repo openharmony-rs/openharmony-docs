@@ -6,7 +6,15 @@
 
 **起始版本：** 9
 
+<!--Device-process-export class ProcessManager--><!--Device-process-export class ProcessManager-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
 
 ## exit
 
@@ -22,6 +30,8 @@ exit(code: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ProcessManager-exit(code: number): void--><!--Device-ProcessManager-exit(code: number): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -33,8 +43,8 @@ exit(code: number): void
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
-pro.exit(0);
+let processManager = new process.ProcessManager();
+processManager.exit(0);
 
 ```
 
@@ -46,13 +56,15 @@ getEnvironmentVar(name: string): string
 
 获取环境变量对应的值。
 
-> **说明**
->
+> **说明**  
+>  
 > 获取环境变量的值。如果环境变量不存在，返回 **undefined**。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ProcessManager-getEnvironmentVar(name: string): string--><!--Device-ProcessManager-getEnvironmentVar(name: string): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -71,8 +83,10 @@ getEnvironmentVar(name: string): string
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
-let pres = pro.getEnvironmentVar("PATH");
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取PATH环境变量的值
+let pres = processManager.getEnvironmentVar("PATH");
 
 ```
 
@@ -87,6 +101,8 @@ getSystemConfig(name: number): number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ProcessManager-getSystemConfig(name: number): number--><!--Device-ProcessManager-getSystemConfig(name: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -105,9 +121,12 @@ getSystemConfig(name: number): number
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 定义系统配置参数
 let _SC_ARG_MAX = 0;
-let pres = pro.getSystemConfig(_SC_ARG_MAX);
+// 获取系统配置信息
+let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 
 ```
 
@@ -122,6 +141,8 @@ getThreadPriority(v: number): number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ProcessManager-getThreadPriority(v: number): number--><!--Device-ProcessManager-getThreadPriority(v: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -140,9 +161,12 @@ getThreadPriority(v: number): number
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取当前线程tid
 let tid = process.tid;
-let pres = pro.getThreadPriority(tid);
+// 根据tid获取线程优先级
+let pres = processManager.getThreadPriority(tid);
 
 ```
 
@@ -157,6 +181,8 @@ getUidForName(v: string): number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ProcessManager-getUidForName(v: string): number--><!--Device-ProcessManager-getUidForName(v: string): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -175,8 +201,10 @@ getUidForName(v: string): number
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
-let pres = pro.getUidForName("tool");
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 根据用户名获取uid
+let pres = processManager.getUidForName("tool");
 
 ```
 
@@ -192,6 +220,8 @@ isAppUid(v: number): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ProcessManager-isAppUid(v: number): boolean--><!--Device-ProcessManager-isAppUid(v: number): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -204,16 +234,18 @@ isAppUid(v: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true；<br/>否则返回 false。 |
+| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true；否则返回 false。 |
 
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
 // uid通过process.uid获取
 let pres = process.uid;
-let result = pro.isAppUid(pres);
-console.info("result: " + result); // result: true
+// 判断uid是否属于当前应用程序
+let result = processManager.isAppUid(pres);
+console.info("result:", result); // result: true
 
 ```
 
@@ -229,6 +261,8 @@ kill(signal: number, pid: number): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ProcessManager-kill(signal: number, pid: number): boolean--><!--Device-ProcessManager-kill(signal: number, pid: number): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -242,14 +276,17 @@ kill(signal: number, pid: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 信号是否发送成功。如果信号发送成功则返回 true；<br/>否则返回 false。 |
+| boolean | 信号是否发送成功。如果信号发送成功则返回 true；否则返回 false。 |
 
 **示例：**
 
 ```TypeScript
-let pro = new process.ProcessManager();
+// 创建ProcessManager实例
+let processManager = new process.ProcessManager();
+// 获取当前进程pid
 let pres = process.pid;
-let result = pro.kill(28, pres);
+// 发送信号28结束当前进程
+let result = processManager.kill(28, pres);
 
 ```
 

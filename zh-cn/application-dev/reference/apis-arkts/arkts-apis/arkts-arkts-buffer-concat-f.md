@@ -1,5 +1,11 @@
 # concat
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## concat
 
 ```TypeScript
@@ -11,6 +17,8 @@ function concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-buffer-function concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer--><!--Device-buffer-function concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -25,13 +33,13 @@ function concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 返回新的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of "length" is out of range. It must be &gt;= 0 and &lt;= uint32 max.<br/>Received value is: [length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "length" is out of range. It must be &gt;= 0 and &lt;= uint32 max.Received value is: [length] |
 
 **示例：**
 

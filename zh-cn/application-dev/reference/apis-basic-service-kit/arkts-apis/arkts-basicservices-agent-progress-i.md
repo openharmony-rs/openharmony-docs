@@ -4,7 +4,15 @@
 
 **起始版本：** 10
 
+<!--Device-agent-interface Progress--><!--Device-agent-interface Progress-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
+
+## 导入模块
+
+```TypeScript
+import { request } from '@kit.BasicServicesKit';
+```
 
 ## extras
 
@@ -19,6 +27,8 @@ readonly extras?: object
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Progress-readonly extras?: object--><!--Device-Progress-readonly extras?: object-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -36,6 +46,8 @@ readonly index: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Progress-readonly index: int--><!--Device-Progress-readonly index: int-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## processed
@@ -51,6 +63,8 @@ readonly processed: number
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Progress-readonly processed: long--><!--Device-Progress-readonly processed: long-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -68,6 +82,8 @@ readonly sizes: Array<number>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Progress-readonly sizes: Array<long>--><!--Device-Progress-readonly sizes: Array<long>-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## state
@@ -83,6 +99,8 @@ readonly state: State
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Progress-readonly state: State--><!--Device-Progress-readonly state: State-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 

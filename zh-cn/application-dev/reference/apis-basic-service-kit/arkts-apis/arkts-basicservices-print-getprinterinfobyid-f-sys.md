@@ -1,5 +1,11 @@
 # getPrinterInfoById（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## getPrinterInfoById
 
 ```TypeScript
@@ -11,6 +17,8 @@ function getPrinterInfoById(printerId: string): Promise<PrinterInfo>
 **起始版本：** 12
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function getPrinterInfoById(printerId: string): Promise<PrinterInfo>--><!--Device-print-function getPrinterInfoById(printerId: string): Promise<PrinterInfo>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -26,15 +34,15 @@ function getPrinterInfoById(printerId: string): Promise<PrinterInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PrinterInfo&gt; | Promise对象，返回查询到的打印机信息。 |
+| Promise<PrinterInfo> | Promise对象，返回查询到的打印机信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-not) | not system application |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 

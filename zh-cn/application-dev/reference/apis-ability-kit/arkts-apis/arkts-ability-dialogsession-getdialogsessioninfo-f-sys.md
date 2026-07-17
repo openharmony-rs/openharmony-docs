@@ -1,5 +1,11 @@
 # getDialogSessionInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dialogSession } from '@kit.AbilityKit';
+```
+
 ## getDialogSessionInfo
 
 ```TypeScript
@@ -11,6 +17,8 @@ function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-dialogSession-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo--><!--Device-dialogSession-function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,15 +34,15 @@ function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| DialogSessionInfo | 同步返回会话信息。 |
+| [DialogSessionInfo](arkts-ability-dialogsession-dialogsessioninfo-i-sys.md) | 同步返回会话信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-The) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000005](../../errorcode-universal.md#16000005-The) | The specified process does not have the permission. |
-| [16000006](../../errorcode-universal.md#16000006-Crossuser) | Cross-user operations are not allowed. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
+| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 

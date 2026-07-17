@@ -1,5 +1,11 @@
 # unregisterThermalLevelCallback
 
+## 导入模块
+
+```TypeScript
+import { thermal } from '@kit.BasicServicesKit';
+```
+
 ## unregisterThermalLevelCallback
 
 ```TypeScript
@@ -10,19 +16,21 @@ function unregisterThermalLevelCallback(callback?: Callback<void>): void
 
 **起始版本：** 9
 
+<!--Device-thermal-function unregisterThermalLevelCallback(callback?: Callback<void>): void--><!--Device-thermal-function unregisterThermalLevelCallback(callback?: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;void&gt; | 否 | 可选参数，回调函数，无返回值。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 可选参数，回调函数，无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Incorrect parameter types; |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types; |
 
 **示例：**
 
@@ -32,8 +40,8 @@ try {
         console.info('unsubscribe thermal level success.');
     });
     console.info('unregister thermal level callback success.');
-} catch(err) {
-    console.error('unregister thermal level callback failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to unregister thermal level callback. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```

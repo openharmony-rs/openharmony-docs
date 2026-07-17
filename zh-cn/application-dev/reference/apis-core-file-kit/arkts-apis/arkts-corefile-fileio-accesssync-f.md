@@ -14,6 +14,8 @@ declare function accessSync(path: string, mode?: number): void
 
 **替代接口：** [fs:accessSync](arkts-corefile-file-fs-accesssync-f.md#accesssync-1)
 
+<!--Device-unnamed-declare function accessSync(path: string, mode?: number): void--><!--Device-unnamed-declare function accessSync(path: string, mode?: number): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**

@@ -10,6 +10,8 @@
 
 **替代接口：** NavPathStack
 
+<!--Device-unnamed-declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>--><!--Device-unnamed-declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -28,7 +30,9 @@ mode(mode: NavRouteMode)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavRouterAttribute-mode(mode: NavRouteMode): NavRouterAttribute--><!--Device-NavRouterAttribute-mode(mode: NavRouteMode): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,7 @@ mode(mode: NavRouteMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | NavRouteMode | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
+| mode | [NavRouteMode](arkts-arkui-nav-router-navroutemode-e.md) | 是 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
 
 ## onStateChange
 
@@ -44,8 +48,7 @@ mode(mode: NavRouteMode)
 onStateChange(callback: (isActivated: boolean) => void)
 ```
 
-组件激活状态切换时触发该回调。开发者点击激活NavRouter，加载对应的NavDestination子组件时，回调onStateChange(true)。NavRouter对应的NavDestination子组件不再显示时，回调
-onStateChange(false)。
+组件激活状态切换时触发该回调。开发者点击激活NavRouter，加载对应的NavDestination子组件时，回调onStateChange(true)。NavRouter对应的NavDestination子组件不再显示时，回调onStateChange(false)。
 
 **起始版本：** 9
 
@@ -53,7 +56,9 @@ onStateChange(false)。
 
 **替代接口：** onShown
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavRouterAttribute-onStateChange(callback: (isActivated: boolean) => void): NavRouterAttribute--><!--Device-NavRouterAttribute-onStateChange(callback: (isActivated: boolean) => void): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,5 +66,5 @@ onStateChange(false)。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (isActivated: boolean) =&gt; void | 是 | isActivated为true时表示激活，为false时表示未激活。 |
+| callback | (isActivated: boolean) => void | 是 | isActivated为true时表示激活，为false时表示未激活。 |
 

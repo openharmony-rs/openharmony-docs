@@ -1,14 +1,12 @@
 # ExchangeFreq（系统接口）
 
-```TypeScript
-enum ExchangeFreq
-```
-
 表示发现频率的枚举。
 
 **起始版本：** 7
 
 **废弃版本：** 11
+
+<!--Device-deviceManager-enum ExchangeFreq--><!--Device-deviceManager-enum ExchangeFreq-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -26,6 +24,8 @@ LOW = 0
 
 **废弃版本：** 11
 
+<!--Device-ExchangeFreq-LOW = 0--><!--Device-ExchangeFreq-LOW = 0-End-->
+
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +41,8 @@ MID = 1
 **起始版本：** 7
 
 **废弃版本：** 11
+
+<!--Device-ExchangeFreq-MID = 1--><!--Device-ExchangeFreq-MID = 1-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -58,6 +60,8 @@ HIGH = 2
 
 **废弃版本：** 11
 
+<!--Device-ExchangeFreq-HIGH = 2--><!--Device-ExchangeFreq-HIGH = 2-End-->
+
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +77,8 @@ SUPER_HIGH = 3
 **起始版本：** 7
 
 **废弃版本：** 11
+
+<!--Device-ExchangeFreq-SUPER_HIGH = 3--><!--Device-ExchangeFreq-SUPER_HIGH = 3-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 

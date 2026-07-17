@@ -1,14 +1,16 @@
 # ApplicationContext
 
-ApplicationContext作为应用上下文，继承自[Context](arkts-ability-context-depr-i.md)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
+ApplicationContext作为应用上下文，继承自[Context](arkts-ability-context-context-depr-i.md)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 本模块接口仅可在Stage模型下使用。
 
 **继承/实现关系：** ApplicationContext extends [Context](arkts-ability-context-t.md)
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class ApplicationContext extends Context--><!--Device-unnamed-declare class ApplicationContext extends Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,6 +28,8 @@ Preload UIExtensionAbility.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ApplicationContext-preloadUIExtensionAbility(want: Want): Promise<void>--><!--Device-ApplicationContext-preloadUIExtensionAbility(want: Want): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -34,13 +38,13 @@ Preload UIExtensionAbility.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | Indicates the want of target UIExtensionAbility. |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | Indicates the want of target UIExtensionAbility. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise<void> | The promise returned by the function. |
 
 **错误码：**
 

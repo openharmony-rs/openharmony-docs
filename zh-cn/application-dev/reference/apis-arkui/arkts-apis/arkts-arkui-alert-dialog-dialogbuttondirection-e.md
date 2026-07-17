@@ -1,14 +1,10 @@
 # DialogButtonDirection
 
-```TypeScript
-declare enum DialogButtonDirection
-```
-
 警告弹窗中按钮的对齐方式。
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare enum DialogButtonDirection--><!--Device-unnamed-declare enum DialogButtonDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +22,8 @@ AUTO = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogButtonDirection-AUTO = 0--><!--Device-DialogButtonDirection-AUTO = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HORIZONTAL
@@ -42,6 +40,8 @@ HORIZONTAL = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogButtonDirection-HORIZONTAL = 1--><!--Device-DialogButtonDirection-HORIZONTAL = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## VERTICAL
@@ -57,6 +57,8 @@ VERTICAL = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DialogButtonDirection-VERTICAL = 2--><!--Device-DialogButtonDirection-VERTICAL = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

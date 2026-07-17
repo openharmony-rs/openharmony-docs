@@ -1,5 +1,11 @@
 # setTextUndefinedGlyphDisplay
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## setTextUndefinedGlyphDisplay
 
 ```TypeScript
@@ -12,12 +18,14 @@ function setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): v
 
 此配置会影响显示字体中未定义字符的方式：
 
-- 默认行为遵循字体的内部.notdef字形设计。
+- 默认行为遵循字体的内部.notdef字形设计。  
 - 开启后将强制使缺失字形的字符以豆腐块形式显示。
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-text-function setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void--><!--Device-text-function setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -25,7 +33,7 @@ function setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| noGlyphShow | TextUndefinedGlyphDisplay | 是 | 无法塑形字符的显示方式。 |
+| noGlyphShow | [TextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-textundefinedglyphdisplay-e.md) | 是 | 无法塑形字符的显示方式。 |
 
 **示例：**
 

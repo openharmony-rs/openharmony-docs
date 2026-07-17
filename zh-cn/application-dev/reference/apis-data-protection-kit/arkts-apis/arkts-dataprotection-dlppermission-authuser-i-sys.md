@@ -4,9 +4,17 @@
 
 **起始版本：** 21
 
+<!--Device-dlpPermission-export interface AuthUser--><!--Device-dlpPermission-export interface AuthUser-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
 
 ## authAccount
 
@@ -14,11 +22,13 @@
 authAccount: string
 ```
 
-表示被授权用户账号。不超过255字节，超出此范围抛出错误码19100001。
+表示被授权用户账号。不超过255字节，超出此范围抛出错误码401。
 
 **类型：** string
 
 **起始版本：** 21
+
+<!--Device-AuthUser-authAccount: string--><!--Device-AuthUser-authAccount: string-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -36,6 +46,8 @@ authAccountType: AccountType
 
 **起始版本：** 21
 
+<!--Device-AuthUser-authAccountType: AccountType--><!--Device-AuthUser-authAccountType: AccountType-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
@@ -52,6 +64,8 @@ dlpFileAccess: DLPFileAccess
 
 **起始版本：** 21
 
+<!--Device-AuthUser-dlpFileAccess: DLPFileAccess--><!--Device-AuthUser-dlpFileAccess: DLPFileAccess-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
@@ -62,11 +76,13 @@ dlpFileAccess: DLPFileAccess
 permExpiryTime: number
 ```
 
-表示授权到期时间。取值范围大于等于0，超出此范围抛出错误码19100001。单位：s。
+表示授权到期时间。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。
 
 **类型：** number
 
 **起始版本：** 21
+
+<!--Device-AuthUser-permExpiryTime: number--><!--Device-AuthUser-permExpiryTime: number-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 

@@ -1,5 +1,11 @@
 # from
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## from
 
 ```TypeScript
@@ -11,6 +17,8 @@ function from(array: number[]): Buffer
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-buffer-function from(array: double[]): Buffer--><!--Device-buffer-function from(array: double[]): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,7 +32,7 @@ function from(array: number[]): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 新的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 新的Buffer对象。 |
 
 **示例：**
 
@@ -50,6 +58,8 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-buffer-function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer--><!--Device-buffer-function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -64,13 +74,13 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 返回一个Buffer对象，该对象与入参对象arrayBuffer共享相同的内存区域。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回一个Buffer对象，该对象与入参对象arrayBuffer共享相同的内存区域。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of "[byteOffset/length]" is out of range.<br/>It must be &gt;= [left range] and &lt;= [right range]. Received value is: [byteOffset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range.It must be &gt;= [left range] and &lt;= [right range]. Received value is: [byteOffset/length] |
 
 **示例：**
 
@@ -90,12 +100,13 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 function from(buffer: Buffer | Uint8Array): Buffer
 ```
 
-当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。
-当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的Buffer对象并返回，保持数据的内存关联。
+当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的Buffer对象并返回，保持数据的内存关联。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-buffer-function from(buffer: Buffer | Uint8Array): Buffer--><!--Device-buffer-function from(buffer: Buffer | Uint8Array): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -109,7 +120,7 @@ function from(buffer: Buffer | Uint8Array): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 新的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 新的Buffer对象。 |
 
 **示例：**
 
@@ -142,6 +153,8 @@ function from(object: Object, offsetOrEncoding: number | string, length: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-buffer-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer--><!--Device-buffer-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -150,13 +163,13 @@ function from(object: Object, offsetOrEncoding: number | string, length: number)
 | --- | --- | --- | --- |
 | object | Object | 是 | 支持Symbol.toPrimitive或valueOf()的对象。 |
 | offsetOrEncoding | number \| string | 是 | 字节偏移量或编码格式。 |
-| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，<br/>取值范围：0 &lt;= length &lt;= ArrayBuffer.byteLength，超出范围时报错: 10200001）。<br/>其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
+| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 &lt;= length &lt;= ArrayBuffer.byteLength，超出范围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 新的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 新的Buffer对象。 |
 
 **示例：**
 
@@ -181,6 +194,8 @@ function from(string: String, encoding?: BufferEncoding): Buffer
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-buffer-function from(string: String, encoding?: BufferEncoding): Buffer--><!--Device-buffer-function from(string: String, encoding?: BufferEncoding): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -188,13 +203,13 @@ function from(string: String, encoding?: BufferEncoding): Buffer
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | string | String | 是 | 字符串。 |
-| encoding | BufferEncoding | 否 | 编码格式。默认值：'utf8'。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 编码格式。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 新的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 新的Buffer对象。 |
 
 **示例：**
 

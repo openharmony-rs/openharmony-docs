@@ -1,14 +1,10 @@
 # WindowState
 
-```TypeScript
-enum WindowState
-```
-
-����״̬
+窗口状态
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-applicationManager-enum WindowState--><!--Device-applicationManager-enum WindowState-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum WindowState
 DISCONNECT = 0
 ```
 
-�Ͽ�����״̬
+断开连接状态
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ DISCONNECT = 0
 CONNECT = 1
 ```
 
-����״̬
+连接状态
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-CONNECT = 1--><!--Device-WindowState-CONNECT = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ CONNECT = 1
 FOREGROUND = 2
 ```
 
-ǰ̨״̬
+前台状态
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-FOREGROUND = 2--><!--Device-WindowState-FOREGROUND = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -60,11 +62,13 @@ FOREGROUND = 2
 ACTIVE = 3
 ```
 
-����״̬
+激活状态
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -74,11 +78,13 @@ ACTIVE = 3
 INACTIVE = 4
 ```
 
-δ����״̬
+未激活状态
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-INACTIVE = 4--><!--Device-WindowState-INACTIVE = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -88,11 +94,13 @@ INACTIVE = 4
 BACKGROUND = 5
 ```
 
-����չʾ
+窗口展示
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -1,5 +1,11 @@
 # getDate
 
+## 导入模块
+
+```TypeScript
+import { systemTime } from '@kit.BasicServicesKit';
+```
+
 ## getDate
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getDate(callback: AsyncCallback<Date>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getDate-1)
+**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate-1)
+
+<!--Device-systemTime-function getDate(callback: AsyncCallback<Date>): void--><!--Device-systemTime-function getDate(callback: AsyncCallback<Date>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -20,13 +28,13 @@ function getDate(callback: AsyncCallback<Date>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Date> | 是 | 回调函数，返回当前系统日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [-1](../../errorcode-universal.md#-1) |  |
+| -1 |  |
 
 **示例：**
 
@@ -41,8 +49,8 @@ try {
     }
     console.info(`Succeeded in getting date : ${date}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 
@@ -61,7 +69,9 @@ function getDate(): Promise<Date>
 
 **废弃版本：** 9
 
-**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getDate-1)
+**替代接口：** [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate-1)
+
+<!--Device-systemTime-function getDate(): Promise<Date>--><!--Device-systemTime-function getDate(): Promise<Date>-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -69,13 +79,13 @@ function getDate(): Promise<Date>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Date&gt; | Promise对象，返回当前系统日期。 |
+| Promise<Date> | Promise对象，返回当前系统日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [-1](../../errorcode-universal.md#-1) |  |
+| -1 |  |
 
 **示例：**
 
@@ -88,8 +98,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 

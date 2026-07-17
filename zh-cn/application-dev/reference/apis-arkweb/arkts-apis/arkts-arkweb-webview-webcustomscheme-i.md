@@ -4,7 +4,15 @@ Defines the configuration of web custom scheme, related to {@link customizeSchem
 
 **起始版本：** 9
 
+<!--Device-webview-interface WebCustomScheme--><!--Device-webview-interface WebCustomScheme-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## isCodeCacheSupported
 
@@ -18,6 +26,8 @@ If isCodeCacheSupported is true, then the js of this scheme can generate code ca
 
 **起始版本：** 12
 
+<!--Device-WebCustomScheme-isCodeCacheSupported?: boolean--><!--Device-WebCustomScheme-isCodeCacheSupported?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isCspBypassing
@@ -26,14 +36,15 @@ If isCodeCacheSupported is true, then the js of this scheme can generate code ca
 isCspBypassing?: boolean
 ```
 
-If isCspBypassing is true, then this scheme can bypass Content Security Policy (CSP)
-checks. In most cases, this value should not be true when isStandard is true.
+If isCspBypassing is true, then this scheme can bypass Content Security Policy (CSP)checks. In most cases, this value should not be true when isStandard is true.
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebCustomScheme-isCspBypassing?: boolean--><!--Device-WebCustomScheme-isCspBypassing?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -43,14 +54,15 @@ checks. In most cases, this value should not be true when isStandard is true.
 isDisplayIsolated?: boolean
 ```
 
-If isDisplayIsolated is true, then the scheme can only be displayed from other content
-hosted using the same scheme.
+If isDisplayIsolated is true, then the scheme can only be displayed from other content hosted using the same scheme.
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebCustomScheme-isDisplayIsolated?: boolean--><!--Device-WebCustomScheme-isDisplayIsolated?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,14 +72,15 @@ hosted using the same scheme.
 isLocal?: boolean
 ```
 
-If isLocal is true, the same security rules as those applied to the "file" URL will be
-used to handle the scheme.
+If isLocal is true, the same security rules as those applied to the "file" URL will be used to handle the scheme.
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebCustomScheme-isLocal?: boolean--><!--Device-WebCustomScheme-isLocal?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -77,14 +90,15 @@ used to handle the scheme.
 isSecure?: boolean
 ```
 
-If isSecure is true, the same security rules as those applied to the "https" URL will be
-used to handle the scheme.
+If isSecure is true, the same security rules as those applied to the "https" URL will be used to handle the scheme.
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebCustomScheme-isSecure?: boolean--><!--Device-WebCustomScheme-isSecure?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -94,15 +108,15 @@ used to handle the scheme.
 isStandard?: boolean
 ```
 
-If isStandard is true, the scheme will be handled as a standard scheme. The standard
-schemes needs to comply with the URL normalization and parsing rules defined in Section 3.1 of RFC 1738,
-which can be found in the http://www.ietf.org/rfc/rfc1738.txt.
+If isStandard is true, the scheme will be handled as a standard scheme. The standard schemes needs to comply with the URL normalization and parsing rules defined in Section 3.1 of RFC 1738,which can be found in the http://www.ietf.org/rfc/rfc1738.txt.
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebCustomScheme-isStandard?: boolean--><!--Device-WebCustomScheme-isStandard?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -120,6 +134,8 @@ Whether Cross-Origin Resource Sharing is supported.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WebCustomScheme-isSupportCORS: boolean--><!--Device-WebCustomScheme-isSupportCORS: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isSupportFetch
@@ -136,6 +152,8 @@ Whether fetch request is supported.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WebCustomScheme-isSupportFetch: boolean--><!--Device-WebCustomScheme-isSupportFetch: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## schemeName
@@ -151,6 +169,8 @@ Name of the custom scheme.
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebCustomScheme-schemeName: string--><!--Device-WebCustomScheme-schemeName: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

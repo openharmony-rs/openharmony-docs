@@ -1,0 +1,25 @@
+# SecureLevel
+
+```TypeScript
+type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'
+```
+
+表示认证的安全级别。
+
+**起始版本：** 6
+
+**废弃版本：** 8
+
+**替代接口：** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
+
+<!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'--><!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+| 类型 | 说明 |
+| --- | --- |
+| 'S1' | 认证结果的信任等级级别1，代表该认证方案能够识别用户个体，有一定的活体检测能力。常用的业务场景有业务风控、一般个人数据查询等。 |
+| 'S2' | 认证结果的信任等级级别2，代表该认证方案能够精确识别用户个体，有一定的活体检测能力。常用的业务场景有维持设备解锁状态，应用登录等。 |
+| 'S3' | 认证结果的信任等级级别3，代表该认证方案能够精确识别用户个体，有较强的活体检测能力。常用的业务场景有设备解锁等。 |
+| 'S4' | 认证结果的信任等级级别4，代表该认证方案能够高精度的识别用户个体，有很强的活体检测能力。常用的业务场景有小额支付等。 |
+

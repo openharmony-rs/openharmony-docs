@@ -1,14 +1,22 @@
 # getAppCloneIdentityBySandboxDataDir（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAppCloneIdentityBySandboxDataDir
 
 ```TypeScript
 function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity
 ```
 
-����Ӧ�õ�ɳ��Ŀ¼���ƻ�ȡӦ�õ�������Ϣ������Ӧ�ð����ͷ���������Ϣ��
+根据应用的沙箱目录名称获取应用的身份信息，包括应用包名和分身索引信息。
 
 **起始版本：** 20
+
+<!--Device-bundleManager-function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity--><!--Device-bundleManager-function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,13 +26,13 @@ function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneId
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sandboxDataDir | string | 是 | ��ʾ[Ӧ�õ�ɳ��Ŀ¼](../../../../file-management/app-sandbox-directory.md)���ơ�<br/>**˵����** ������У��Ϸ��ԣ�������sandboxDataDir�����Ϸ���Ӧ�û�Ԫ�����Ŀ¼���Ƹ�ʽ����sandboxDataDir����Ϊ������Ϣ�е�AppCloneIdentity.bundleName���أ���ʱ<br/>AppCloneIdentity.appIndexΪ0��<br/>1.����Ӧ��Ŀ¼���Ƹ�ʽҪ��`+clone-{appIndex}+{bundleName}`��appIndex��bundleName�Ǳ�������Ӧ��������<br/>��Ӧ�ð��������磺 `+clone-1+com.example.myapplication`��<br/>2.Ԫ����Ŀ¼���Ƹ�ʽ��ʽҪ��`+auid-{uid}+{bundleName}`��uid��bundleName�Ǳ�<br/>������ӦӦ�ó����UID��Ӧ�ð��������磺 `+auid-20000000+com.example.myapplication`�� |
+| sandboxDataDir | string | 是 | 表示[应用的沙箱目录](../../../../file-management/app-sandbox-directory.md)名称。 <br>**说明：**<br> 参数不校验合法性，如果入参sandboxDataDir不符合分身应用或元服务的目录名称格式，则sandboxDataDir将作为返回信息中的AppCloneIdentity.bundleName返回，此时AppCloneIdentity.appIndex为0。 <br> 1.分身应用目录名称格式要求：`+clone-{appIndex}+{bundleName}`，appIndex和bundleName是变量，对应分身索引和应用包名，例如： `+clone-1+com.example.myapplication`。<br> 2.元服务目录名称格式格式要求：`+auid-{uid}+{bundleName}`，uid和bundleName是变量，对应应用程序的UID和应用包名，例如： `+auid-20000000+com.example.myapplication`。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| AppCloneIdentity | ����Ӧ�ð����ͷ���������Ϣ�� |
+| [AppCloneIdentity](arkts-ability-bundlemanager-appcloneidentity-t.md) | 返回应用包名和分身索引信息。 |
 
 **示例：**
 

@@ -115,10 +115,10 @@ fileio
 
 | 名称 | 说明 |
 | --- | --- |
-| [Dir](arkts-corefile-dir-depr-i.md) | 管理目录，在调用Dir的方法前，需要先通过opendir方法（同步或异步）来构建一个Dir实例。 |
-| [Dirent](arkts-corefile-dirent-depr-i.md) | 在调用Dirent的方法前，需要先通过[dir.read()](arkts-corefile-fileio-read-f.md#read-1)方法（同步或异步）来构建一个Dirent实例。 |
-| [ReadOut](arkts-corefile-readout-depr-i.md) | 仅用于read方法，获取文件的读取结果。 |
-| [Stat](arkts-corefile-stat-depr-i.md) | 文件具体信息，在调用Stat的方法前，需要先通过[stat()](arkts-corefile-fileio-stat-f.md#stat-1)方法（同步或异步）来构建一个Stat实例。 |
-| [Stream](arkts-corefile-stream-depr-i.md) | 文件流，在调用Stream的方法前，需要先通过createStream()方法（同步或异步）来构建一个Stream实例。 |
-| [Watcher](arkts-corefile-watcher-depr-i.md) | Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或异步）来停止文件监听。 |
+| [Dir](arkts-corefile-fileio-dir-depr-i.md) | 管理目录，在调用Dir的方法前，需要先通过opendir方法（同步或异步）来构建一个Dir实例。 |
+| [Dirent](arkts-corefile-fileio-dirent-depr-i.md) | 在调用Dirent的方法前，需要先通过[dir.read()](arkts-corefile-fileio-read-f.md#read-1)方法（同步或异步）来构建一个Dirent实例。 |
+| [ReadOut](arkts-corefile-fileio-readout-depr-i.md) | 仅用于read方法，获取文件的读取结果。 |
+| [Stat](arkts-corefile-fileio-stat-depr-i.md) | 文件具体信息，在调用Stat的方法前，需要先通过[stat()](arkts-corefile-fileio-stat-f.md#stat-1)方法（同步或异步）来构建一个Stat实例。 |
+| [Stream](arkts-corefile-fileio-stream-depr-i.md) | 文件流，在调用Stream的方法前，需要先通过createStream()方法（同步或异步）来构建一个Stream实例。 |
+| [Watcher](arkts-corefile-fileio-watcher-depr-i.md) | Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或异步）来停止文件监听。 |
 

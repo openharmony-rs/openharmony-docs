@@ -1,0 +1,58 @@
+# BundleInfo（系统接口）
+
+端云协同应用信息。
+
+**起始版本：** 26.0.0
+
+<!--Device-cloudData-interface BundleInfo--><!--Device-cloudData-interface BundleInfo-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudData } from '@kit.ArkData';
+```
+
+## bundleName
+
+```TypeScript
+bundleName: string
+```
+
+应用包名。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-bundleName: string--><!--Device-BundleInfo-bundleName: string-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**系统接口：** 此接口为系统接口。
+
+## storeId
+
+```TypeScript
+storeId?: string
+```
+
+数据库名称。默认值为空字符串，此时查询该应用下所有数据库。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-storeId?: string--><!--Device-BundleInfo-storeId?: string-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**系统接口：** 此接口为系统接口。
+

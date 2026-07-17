@@ -8,6 +8,8 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
 **起始版本：** 23
 
+<!--Device-unnamed-type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void--><!--Device-unnamed-type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**

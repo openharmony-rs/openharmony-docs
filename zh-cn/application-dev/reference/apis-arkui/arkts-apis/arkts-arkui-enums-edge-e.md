@@ -1,12 +1,10 @@
 # Edge
 
-```TypeScript
-declare enum Edge
-```
-
 Edge.
 
 **起始版本：** 11
+
+<!--Device-unnamed-declare enum Edge--><!--Device-unnamed-declare enum Edge-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +18,9 @@ The top is centered horizontally.
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Edge-Top--><!--Device-Edge-Top-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +36,8 @@ Center horizontal and vertical.
 
 **废弃版本：** 9
 
+<!--Device-Edge-Center--><!--Device-Edge-Center-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bottom
@@ -48,7 +50,9 @@ The bottom is centered horizontally.
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Edge-Bottom--><!--Device-Edge-Bottom-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ Cross axis direction text baseline alignment.
 
 **废弃版本：** 9
 
+<!--Device-Edge-Baseline--><!--Device-Edge-Baseline-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Start
@@ -76,7 +82,9 @@ Align the head of the cross axis direction.
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Edge-Start--><!--Device-Edge-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +100,8 @@ Middle
 
 **废弃版本：** 9
 
+<!--Device-Edge-Middle--><!--Device-Edge-Middle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## End
@@ -104,7 +114,9 @@ Align the head of the cross axis direction.
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Edge-End--><!--Device-Edge-End-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

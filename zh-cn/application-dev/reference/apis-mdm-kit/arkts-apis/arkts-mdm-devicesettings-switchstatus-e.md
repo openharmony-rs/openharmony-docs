@@ -1,14 +1,10 @@
 # SwitchStatus
 
-```TypeScript
-enum SwitchStatus
-```
-
-����״̬��ö�١�
+开关状态的枚举。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-deviceSettings-enum SwitchStatus--><!--Device-deviceSettings-enum SwitchStatus-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum SwitchStatus
 ON = 0
 ```
 
-����״̬��
+开启状态。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchStatus-ON = 0--><!--Device-SwitchStatus-ON = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ ON = 0
 OFF = 1
 ```
 
-�ر�״̬��
+关闭状态。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchStatus-OFF = 1--><!--Device-SwitchStatus-OFF = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ OFF = 1
 FORCE_ON = 2
 ```
 
-ǿ�ƿ���״̬��
+强制开启状态。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchStatus-FORCE_ON = 2--><!--Device-SwitchStatus-FORCE_ON = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

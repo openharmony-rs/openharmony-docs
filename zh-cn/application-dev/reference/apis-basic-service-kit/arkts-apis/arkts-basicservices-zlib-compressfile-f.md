@@ -1,5 +1,11 @@
 # compressFile
 
+## 导入模块
+
+```TypeScript
+import { zlib } from '@kit.BasicServicesKit';
+```
+
 ## compressFile
 
 ```TypeScript
@@ -8,13 +14,15 @@ function compressFile(inFile: string, outFile: string, options: Options, callbac
 
 压缩文件，压缩的结果。使用callback异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 为了避免路径穿越，从API version 13开始，inFile和outFile传入的参数不允许包含“../”，否则会返回900001、900002错误码。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-zlib-function compressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback<void>): void--><!--Device-zlib-function compressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -22,18 +30,18 @@ function compressFile(inFile: string, outFile: string, options: Options, callbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inFile | string | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md#Context)，<br/>[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md#Context)。待压缩的文件夹不可为空，否则使用<br/>[decompressFile](zlib.decompressFile(inFile: string, outFile: string, options: Options,<br/>callback: AsyncCallback))对压缩后的文件解压时会报错。 |
+| inFile | string | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。待压缩的文件夹不可为空，否则使用[decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1)对压缩后的文件解压时会报错。 |
 | outFile | string | 是 | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。 |
-| options | Options | 是 | 压缩的配置参数。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步获取压缩结果之后的回调。成功返回null，失败返回错误码。 |
+| options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 压缩的配置参数。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步获取压缩结果之后的回调。成功返回null，失败返回错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [900001](../../errorcode-universal.md#900001-The) | The input source file is invalid. |
-| [900002](../../errorcode-universal.md#900002-The) | The input destination file is invalid. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [900001](../../apis-basic-services-kit/errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
+| [900002](../../apis-basic-services-kit/errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 
 **示例：**
 
@@ -74,13 +82,15 @@ function compressFile(inFile: string, outFile: string, options: Options): Promis
 
 压缩文件，压缩的结果。使用Promise异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 为了避免路径穿越，从API version 13开始，inFile和outFile传入的参数不允许包含“../”，否则会返回900001、900002错误码。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-zlib-function compressFile(inFile: string, outFile: string, options: Options): Promise<void>--><!--Device-zlib-function compressFile(inFile: string, outFile: string, options: Options): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -88,23 +98,23 @@ function compressFile(inFile: string, outFile: string, options: Options): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inFile | string | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md#Context)，<br/>[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md#Context)。待压缩的文件夹不可为空，否则使用<br/>[decompressFile](zlib.decompressFile(inFile: string, outFile: string, options: Options,<br/>callback: AsyncCallback))对压缩后的文件解压时会报错。 |
+| inFile | string | 是 | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)，[Stage模型](../../apis-ability-kit/arkts-apis/arkts-ability-context-context-depr-i.md)。待压缩的文件夹不可为空，否则使用[decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1)对压缩后的文件解压时会报错。 |
 | outFile | string | 是 | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。 |
-| options | Options | 是 | 压缩的配置参数。 |
+| options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 压缩的配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise<void> | Promise对象，无返回值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [900001](../../errorcode-universal.md#900001-The) | The input source file is invalid. |
-| [900002](../../errorcode-universal.md#900002-The) | The input destination file is invalid. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [900001](../../apis-basic-services-kit/errorcode-zlib.md#900001-传入的源文件错误) | The input source file is invalid. |
+| [900002](../../apis-basic-services-kit/errorcode-zlib.md#900002-传入的目标文件错误) | The input destination file is invalid. |
 
 **示例：**
 

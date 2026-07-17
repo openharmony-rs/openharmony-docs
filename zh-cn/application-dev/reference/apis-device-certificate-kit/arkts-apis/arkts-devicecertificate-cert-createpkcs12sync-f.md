@@ -1,16 +1,24 @@
 # createPkcs12Sync
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## createPkcs12Sync
 
 ```TypeScript
 function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 ```
 
-表示创建Pkcs12数据，同步返回结果。
+表示创建P12，同步返回结果。
 
 **起始版本：** 21
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+
+<!--Device-cert-function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array--><!--Device-cert-function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -18,23 +26,23 @@ function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Pkcs12Data | 是 | 要打包的P12数据对象。 |
-| config | Pkcs12CreationConfig | 是 | P12文件的创建配置。 |
+| data | [Pkcs12Data](arkts-devicecertificate-cert-pkcs12data-i.md) | 是 | 要打包的P12数据对象。 |
+| config | [Pkcs12CreationConfig](arkts-devicecertificate-cert-pkcs12creationconfig-i.md) | 是 | P12的创建配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 表示创建的P12文件，DER格式。 |
+| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 表示创建的P12，DER格式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../../errorcode-universal.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 密码过短或过长；<br/><br/>2. 私钥与证书不匹配；<br/><br/>3. 加密算法参数无效。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 密码过短或过长；<br>2. 私钥与证书不匹配；<br>3. 加密算法参数无效。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 

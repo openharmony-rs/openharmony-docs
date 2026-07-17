@@ -1,18 +1,26 @@
 # addContacts
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## addContacts
 
 ```TypeScript
 function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<number>>
 ```
 
-����������ϵ�ˡ�ʹ��Promise�첽�ص���
+批量添加联系人。使用Promise异步回调。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-contact-function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<int>>--><!--Device-contact-function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<int>>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -20,22 +28,22 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contacts | Array&lt;Contact&gt; | 是 | ��ϵ����Ϣ���顣 |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contacts | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Contact> | 是 | 联系人信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise���󣬷����������ӵ���ϵ��id���顣 |
+| Promise<Array<number>> | Promise对象，返回批量添加的联系人id数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [16700001](../../errorcode-universal.md#16700001-General) | General error. |
-| [16700002](../../errorcode-universal.md#16700002-Invalid) | Invalid parameter value. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
+| [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 
 **示例：**
 

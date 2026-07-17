@@ -1,5 +1,11 @@
 # getExternalStorageDir（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { Environment } from '@kit.CoreFileKit';
+```
+
 ## getExternalStorageDir
 
 ```TypeScript
@@ -11,6 +17,8 @@ function getExternalStorageDir(): string
 **起始版本：** 11
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-Environment-function getExternalStorageDir(): string--><!--Device-Environment-function getExternalStorageDir(): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.Environment.FolderObtain
 
@@ -26,8 +34,8 @@ function getExternalStorageDir(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application uses<br/>system API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| 13900042 | Unknown error. |
 

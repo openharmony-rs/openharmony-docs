@@ -4,7 +4,15 @@
 
 **起始版本：** 22
 
+<!--Device-window-interface FrameMetrics--><!--Device-window-interface FrameMetrics-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## firstDrawFrame
 
@@ -17,6 +25,8 @@ firstDrawFrame: boolean
 **类型：** boolean
 
 **起始版本：** 22
+
+<!--Device-FrameMetrics-firstDrawFrame: boolean--><!--Device-FrameMetrics-firstDrawFrame: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -32,6 +42,8 @@ inputHandlingDuration: number
 
 **起始版本：** 22
 
+<!--Device-FrameMetrics-inputHandlingDuration: long--><!--Device-FrameMetrics-inputHandlingDuration: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## layoutMeasureDuration
@@ -46,6 +58,8 @@ layoutMeasureDuration: number
 
 **起始版本：** 22
 
+<!--Device-FrameMetrics-layoutMeasureDuration: long--><!--Device-FrameMetrics-layoutMeasureDuration: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## vsyncTimestamp
@@ -59,6 +73,8 @@ vsyncTimestamp: number
 **类型：** number
 
 **起始版本：** 22
+
+<!--Device-FrameMetrics-vsyncTimestamp: long--><!--Device-FrameMetrics-vsyncTimestamp: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

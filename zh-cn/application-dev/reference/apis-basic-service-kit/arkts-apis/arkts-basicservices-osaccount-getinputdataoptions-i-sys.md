@@ -4,9 +4,17 @@
 
 **起始版本：** 12
 
+<!--Device-osAccount-interface GetInputDataOptions--><!--Device-osAccount-interface GetInputDataOptions-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## challenge
 
@@ -19,6 +27,8 @@ challenge?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 12
+
+<!--Device-GetInputDataOptions-challenge?: Uint8Array--><!--Device-GetInputDataOptions-challenge?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

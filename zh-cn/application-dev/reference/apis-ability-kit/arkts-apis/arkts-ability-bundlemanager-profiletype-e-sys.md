@@ -1,12 +1,10 @@
 # ProfileType（系统接口）
 
-```TypeScript
-export enum ProfileType
-```
-
-��ʶ�����ļ����͡�
+标识配置文件类型。
 
 **起始版本：** 11
+
+<!--Device-bundleManager-export enum ProfileType--><!--Device-bundleManager-export enum ProfileType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,9 +16,11 @@ export enum ProfileType
 INTENT_PROFILE = 1
 ```
 
-��ͼ��������ļ���
+意图框架配置文件。
 
 **起始版本：** 11
+
+<!--Device-ProfileType-INTENT_PROFILE = 1--><!--Device-ProfileType-INTENT_PROFILE = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,12 +32,13 @@ INTENT_PROFILE = 1
 CLOUD_PROFILE = 8
 ```
 
-[����ͬ��](../../apis-core-file-kit/arkts-apis/arkts-file-cloudsync.md#cloudSync)�����ļ���
-26.0.0
+[端云同步](../../apis-core-file-kit/arkts-apis/arkts-file-cloudsync.md)配置文件。26.0.0
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ProfileType-CLOUD_PROFILE = 8--><!--Device-ProfileType-CLOUD_PROFILE = 8-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

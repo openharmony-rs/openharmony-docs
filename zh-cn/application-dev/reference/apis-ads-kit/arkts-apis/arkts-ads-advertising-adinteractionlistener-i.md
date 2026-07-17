@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-advertising-export interface AdInteractionListener--><!--Device-advertising-export interface AdInteractionListener-End-->
+
 **系统能力：** SystemCapability.Advertising.Ads
+
+## 导入模块
+
+```TypeScript
+import { advertising } from '@kit.AdsKit';
+```
 
 ## onStatusChanged
 
@@ -18,15 +26,17 @@ onStatusChanged(status: string, ad: Advertisement, data: string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-AdInteractionListener-onStatusChanged(status: string, ad: Advertisement, data: string)--><!--Device-AdInteractionListener-onStatusChanged(status: string, ad: Advertisement, data: string)-End-->
+
 **系统能力：** SystemCapability.Advertising.Ads
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | string | 是 | 广告展示状态。<br/>- onAdLoad：广告加载成功。<br/>- onAdFail：广告加载失败。<br/>- onAdOpen：打开广告。<br/>- onAdClick：点击广告。<br/>- onAdClose：关闭广告。<br/>- onMediaProgress：广告播放进度。<br/>- onMediaStart：广告开始播放。<br/>- onMediaPause：广告暂停播放。<br/>- onMediaStop：广告停止播放。<br/>- onMediaComplete：广告播放完成。<br/>- onMediaCountDown：广告倒计时。<br/>- onMediaError：广告播放失败。<br/>- onLandscape：竖屏状态下点击全屏按钮。<br/>- onPortrait：全屏状态下点击返回按钮。<br/>- onBackClicked：点击返回按钮。<br/>- onAdSubWindow：打开半模态。 |
-| ad | Advertisement | 是 | 发生状态变化的广告内容。 |
-| data | string | 是 | 扩展信息。<br/>当status参数为onAdClose时，data值为关闭原因，关闭原因描述如下：<br/>- adShowEnded：广告展示结束。<br/>- adCloseBtnClicked：点击关闭按钮。<br/>- adSkipBtnClicked：点击跳过。<br/>- adFeedbackClosed：负反馈关闭。<br/>- adBackgroundClosed：开屏切后台关闭。 |
+| status | string | 是 | 广告展示状态。  - onAdLoad：广告加载成功。  - onAdFail：广告加载失败。  - onAdOpen：打开广告。  - onAdClick：点击广告。  - onAdClose：关闭广告。  - onMediaProgress：广告播放进度。  - onMediaStart：广告开始播放。  - onMediaPause：广告暂停播放。  - onMediaStop：广告停止播放。  - onMediaComplete：广告播放完成。  - onMediaCountDown：广告倒计时。  - onMediaError：广告播放失败。  - onLandscape：竖屏状态下点击全屏按钮。  - onPortrait：全屏状态下点击返回按钮。  - onBackClicked：点击返回按钮。  - onAdSubWindow：打开半模态。 |
+| ad | [Advertisement](arkts-ads-advertisement-advertisement-i.md) | 是 | 发生状态变化的广告内容。 |
+| data | string | 是 | 扩展信息。当status参数为onAdClose时，data值为关闭原因，关闭原因描述如下：  - adShowEnded：广告展示结束。  - adCloseBtnClicked：点击关闭按钮。  - adSkipBtnClicked：点击跳过。  - adFeedbackClosed：负反馈关闭。  - adBackgroundClosed：开屏切后台关闭。 |
 
 **示例：**
 

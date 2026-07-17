@@ -1,12 +1,10 @@
 # ApplicationFlag（系统接口）
 
-```TypeScript
-enum ApplicationFlag
-```
-
-Ӧ����Ϣ��־��ָʾ��Ҫ��ȡ��Ӧ����Ϣ�����ݡ�
+应用信息标志，指示需要获取的应用信息的内容。
 
 **起始版本：** 9
+
+<!--Device-bundleManager-enum ApplicationFlag--><!--Device-bundleManager-enum ApplicationFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,9 +16,11 @@ enum ApplicationFlag
 GET_APPLICATION_INFO_DEFAULT = 0x00000000
 ```
 
-���ڻ�ȡĬ�ϵ�applicationInfo����ȡ��applicationInfo������permission��metadata��Ϣ��
+用于获取默认的applicationInfo，获取的applicationInfo不包含permission和metadata信息。
 
 **起始版本：** 9
+
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_DEFAULT = 0x00000000--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_DEFAULT = 0x00000000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,9 +32,11 @@ GET_APPLICATION_INFO_DEFAULT = 0x00000000
 GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001
 ```
 
-���ڻ�ȡ����permission��applicationInfo��
+用于获取包含permission的applicationInfo。
 
 **起始版本：** 9
+
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,9 +48,11 @@ GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001
 GET_APPLICATION_INFO_WITH_METADATA = 0x00000002
 ```
 
-���ڻ�ȡ����metadata��applicationInfo��
+用于获取包含metadata的applicationInfo。
 
 **起始版本：** 9
+
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_METADATA = 0x00000002--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_METADATA = 0x00000002-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,9 +64,11 @@ GET_APPLICATION_INFO_WITH_METADATA = 0x00000002
 GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004
 ```
 
-���ڻ�ȡ��������Ӧ�ó����applicationInfo��
+用于获取包含禁用应用程序的applicationInfo。
 
 **起始版本：** 9
+
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -1,5 +1,11 @@
 # openSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## openSync
 
 ```TypeScript
@@ -10,7 +16,9 @@ declare function openSync(path: string, mode?: number): File
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function openSync(path: string, mode?: number): File--><!--Device-unnamed-declare function openSync(path: string, mode?: number): File-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -25,7 +33,7 @@ declare function openSync(path: string, mode?: number): File
 
 | 类型 | 说明 |
 | --- | --- |
-| File | 打开的File对象。 |
+| [File](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-request-file-i.md) | 打开的File对象。 |
 
 **错误码：**
 

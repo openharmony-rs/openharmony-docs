@@ -1,5 +1,11 @@
 # find
 
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
+
 ## find
 
 ```TypeScript
@@ -8,15 +14,17 @@ function find(id: string, callback: AsyncCallback<Window>): void
 
 查找id所对应的窗口，使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](arkts-arkui-window-findwindow-f.md#findWindow-1)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](arkts-arkui-window-findwindow-f.md#findwindow-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [findWindow](arkts-arkui-window-findwindow-f.md#findWindow-1)
+**替代接口：** [findWindow](arkts-arkui-window-findwindow-f.md#findwindow-1)
+
+<!--Device-window-function find(id: string, callback: AsyncCallback<Window>): void--><!--Device-window-function find(id: string, callback: AsyncCallback<Window>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -24,8 +32,8 @@ function find(id: string, callback: AsyncCallback<Window>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 窗口名字，即[Configuration](arkts-arkui-window-configuration-i.md#Configuration)中的name。 |
-| callback | AsyncCallback&lt;Window&gt; | 是 | 回调函数。返回当前查找到的窗口对象。 |
+| id | string | 是 | 窗口名字，即[Configuration](arkts-arkui-window-configuration-i.md)中的name。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Window> | 是 | 回调函数。返回当前查找到的窗口对象。 |
 
 **示例：**
 
@@ -54,15 +62,17 @@ function find(id: string): Promise<Window>
 
 查找id所对应的窗口，使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](arkts-arkui-window-findwindow-f.md#findWindow-1)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](arkts-arkui-window-findwindow-f.md#findwindow-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [findWindow](arkts-arkui-window-findwindow-f.md#findWindow-1)
+**替代接口：** [findWindow](arkts-arkui-window-findwindow-f.md#findwindow-1)
+
+<!--Device-window-function find(id: string): Promise<Window>--><!--Device-window-function find(id: string): Promise<Window>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -70,13 +80,13 @@ function find(id: string): Promise<Window>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 窗口名字，即[Configuration](arkts-arkui-window-configuration-i.md#Configuration)中的name。 |
+| id | string | 是 | 窗口名字，即[Configuration](arkts-arkui-window-configuration-i.md)中的name。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Window&gt; | Promise对象。返回当前查找的窗口对象。 |
+| Promise<Window> | Promise对象。返回当前查找的窗口对象。 |
 
 **示例：**
 

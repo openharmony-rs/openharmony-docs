@@ -6,6 +6,9 @@
 
 > 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor]{@link rich_editor}组件。
 
+## 子组件
+
+无
 
 ## TextInput
 
@@ -17,7 +20,9 @@ TextInput(value?: TextInputOptions)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextInputInterface-(value?: TextInputOptions): TextInputAttribute--><!--Device-TextInputInterface-(value?: TextInputOptions): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

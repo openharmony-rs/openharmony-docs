@@ -8,6 +8,9 @@
 > [CustomPatternLock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/CustomPatternLock)
 > <!--RP1End-->，通过[Canvas]{@link canvas}组件实现了图案密码锁功能，开发者可在此基础上自行进行功能扩展。
 
+## 子组件
+
+无
 
 ## PatternLock
 
@@ -19,7 +22,9 @@ PatternLock(controller?: PatternLockController)
 
 **起始版本：** 9
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PatternLockInterface-(controller?: PatternLockController): PatternLockAttribute--><!--Device-PatternLockInterface-(controller?: PatternLockController): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

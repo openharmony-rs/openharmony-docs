@@ -1,10 +1,10 @@
 # ErrorObserver
 
-定义异常监听，可以作为
-[errorManager.on('error')](arkts-ability-on-f.md#on-1)
-的入参监听当前应用发生的异常。
+定义异常监听，可以作为[errorManager.on('error')](arkts-ability-errormanager-on-f.md#on-1)的入参监听当前应用发生的异常。
 
 **起始版本：** 9
+
+<!--Device-unnamed-export default class ErrorObserver--><!--Device-unnamed-export default class ErrorObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -18,7 +18,9 @@ onException?(errObject: Error): void
 
 **起始版本：** 10
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ErrorObserver-onException?(errObject: Error): void--><!--Device-ErrorObserver-onException?(errObject: Error): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,7 +40,9 @@ onUnhandledException(errMsg: string): void
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ErrorObserver-onUnhandledException(errMsg: string): void--><!--Device-ErrorObserver-onUnhandledException(errMsg: string): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

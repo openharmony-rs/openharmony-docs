@@ -1,14 +1,10 @@
 # Protocol
 
-```TypeScript
-enum Protocol
-```
-
-����Э�顣
+网络协议。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-networkManager-enum Protocol--><!--Device-networkManager-enum Protocol-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum Protocol
 ALL = 0
 ```
 
-ȫ������Э�顣
+全部网络协议。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Protocol-ALL = 0--><!--Device-Protocol-ALL = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ ALL = 0
 TCP = 1
 ```
 
-����Э��TCP��
+网络协议TCP。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Protocol-TCP = 1--><!--Device-Protocol-TCP = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ TCP = 1
 UDP = 2
 ```
 
-����Э��UDP��
+网络协议UDP。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Protocol-UDP = 2--><!--Device-Protocol-UDP = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -60,11 +62,13 @@ UDP = 2
 ICMP = 3
 ```
 
-����Э��ICMP��
+网络协议ICMP。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Protocol-ICMP = 3--><!--Device-Protocol-ICMP = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

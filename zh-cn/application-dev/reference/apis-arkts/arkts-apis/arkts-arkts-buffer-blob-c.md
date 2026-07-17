@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-buffer-class Blob--><!--Device-buffer-class Blob-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
 
 ## arrayBuffer
 
@@ -18,13 +26,15 @@ arrayBuffer(): Promise<ArrayBuffer>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>--><!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ArrayBuffer&gt; | Promise对象，返回包含Blob数据的ArrayBuffer。 |
+| Promise<ArrayBuffer> | Promise对象，返回包含Blob数据的ArrayBuffer。 |
 
 **示例：**
 
@@ -53,6 +63,8 @@ Blob的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Blob-constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[], options?: Object)--><!--Device-Blob-constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[], options?: Object)-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -60,7 +72,7 @@ Blob的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sources | string[] \| ArrayBuffer[] \| TypedArray[] \| DataView[] \| Blob[] | 是 | Blob实例的数据源。 |
-| options | Object | 否 | options：<br/>- **endings**：含义为结束符'\n'的字符串如何被输出，值为'native'或'transparent'。<br/>'native'代表行结束符会跟随系统。'transparent'代表会保持Blob中保存的结束符不变。默认值：'transparent'。<br/><br/>- **type**：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格式的验证。默认值：''。 |
+| options | Object | 否 | options：<br/>- **endings**：含义为结束符'\n'的字符串如何被输出，值为'native'或'transparent'。'native'代表行结束符会跟随系统。'transparent'代表会保持Blob中保存的结束符不变。默认值：'transparent'。<br/>  - **type**：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格式的验证。默认值：''。 |
 
 **示例：**
 
@@ -90,6 +102,8 @@ slice(start?: number, end?: number, type?: string): Blob
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob--><!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -104,7 +118,7 @@ slice(start?: number, end?: number, type?: string): Blob
 
 | 类型 | 说明 |
 | --- | --- |
-| Blob | 新的Blob实例对象。 |
+| [Blob](arkts-arkts-buffer-blob-c.md) | 新的Blob实例对象。 |
 
 **示例：**
 
@@ -130,13 +144,15 @@ text(): Promise<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Blob-text(): Promise<string>--><!--Device-Blob-text(): Promise<string>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回以utf8解码后的字符串。 |
+| Promise<string> | Promise对象，返回以utf8解码后的字符串。 |
 
 **示例：**
 
@@ -166,6 +182,8 @@ Blob实例的总字节大小。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Blob-get size(): int--><!--Device-Blob-get size(): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 ## type
@@ -181,6 +199,8 @@ Blob实例的内容类型。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Blob-get type(): string--><!--Device-Blob-get type(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

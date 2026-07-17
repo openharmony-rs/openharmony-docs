@@ -4,7 +4,15 @@
 
 **起始版本：** 13
 
+<!--Device-webview-interface ScrollOffset--><!--Device-webview-interface ScrollOffset-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## x
 
@@ -24,7 +32,9 @@ x: number
 
 **起始版本：** 13
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ScrollOffset-x: number--><!--Device-ScrollOffset-x: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +56,9 @@ y: number
 
 **起始版本：** 13
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ScrollOffset-y: number--><!--Device-ScrollOffset-y: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

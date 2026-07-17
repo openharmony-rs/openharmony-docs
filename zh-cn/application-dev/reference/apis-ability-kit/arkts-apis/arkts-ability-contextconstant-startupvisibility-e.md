@@ -1,19 +1,10 @@
 # StartupVisibility
 
-```TypeScript
-export enum StartupVisibility
-```
-
-UIAbility启动后是否可见。
-当用户设置目标UIAbility为不可见时，目标UIAbility的窗口不会显示在前台，dock栏也不会有图标，同时目标UIAbility的onForeground生命周期不会被调用。
-StartupVisibility作为[StartOptions](@ohos.app.ability.StartOptions:StartOptions)的一个属性，仅在
-[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startAbility-2)
-中生效，用来指定目标UIAbility启动后的可见性。
-该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+UIAbility启动后是否可见。当用户设置目标UIAbility为不可见时，目标UIAbility的窗口不会显示在前台，dock栏也不会有图标，同时目标UIAbility的onForeground生命周期不会被调用。StartupVisibility作为[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)的一个属性，仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability-2)中生效，用来指定目标UIAbility启动后的可见性。该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-contextConstant-export enum StartupVisibility--><!--Device-contextConstant-export enum StartupVisibility-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -29,6 +20,8 @@ STARTUP_HIDE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-StartupVisibility-STARTUP_HIDE = 0--><!--Device-StartupVisibility-STARTUP_HIDE = 0-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## STARTUP_SHOW
@@ -42,6 +35,8 @@ STARTUP_SHOW = 1
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartupVisibility-STARTUP_SHOW = 1--><!--Device-StartupVisibility-STARTUP_SHOW = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -1,12 +1,18 @@
 # WifiEapProfile
 
-����չ������֤Э��������Ϣ��
+可扩展身份验证协议配置信息。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-wifiManager-interface WifiEapProfile--><!--Device-wifiManager-interface WifiEapProfile-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+```
 
 ## altSubjectMatch
 
@@ -14,13 +20,15 @@
 altSubjectMatch: string
 ```
 
-�������ƥ�䡣֤����֤�У����˼��֤���������������֤������ⱸ�������Ƿ�ƥ�䡣
+替代主题匹配。证书验证中，除了检查证书主域名，还检查证书的主题备用名称是否匹配。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-altSubjectMatch: string--><!--Device-WifiEapProfile-altSubjectMatch: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -30,13 +38,15 @@ altSubjectMatch: string
 anonymousIdentity: string
 ```
 
-�������ݡ�
+匿名身份。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-anonymousIdentity: string--><!--Device-WifiEapProfile-anonymousIdentity: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,13 +56,15 @@ anonymousIdentity: string
 caCertAliases: string
 ```
 
-CA ֤�������
+CA 证书别名。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-caCertAliases: string--><!--Device-WifiEapProfile-caCertAliases: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,13 +74,15 @@ CA ֤�������
 caPath: string
 ```
 
-CA ֤��·����
+CA 证书路径。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-caPath: string--><!--Device-WifiEapProfile-caPath: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -78,13 +92,15 @@ CA ֤��·����
 certEntry: Uint8Array
 ```
 
-�ͻ���֤�����ݡ���eapMethodΪEAP_TLSʱ��������ֶ�Ϊ�գ���ͻ���֤���������Ϊ�ա�
+客户端证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则客户端证书别名不能为空。
 
 **类型：** Uint8Array
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-certEntry: Uint8Array--><!--Device-WifiEapProfile-certEntry: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -94,13 +110,15 @@ certEntry: Uint8Array
 certPassword: string
 ```
 
-CA֤�����롣
+CA证书密码。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-certPassword: string--><!--Device-WifiEapProfile-certPassword: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -110,13 +128,15 @@ CA֤�����롣
 clientCertAliases: string
 ```
 
-�ͻ���֤����������ͻ���֤������Ϊ��ʱ���ͻ���֤�����ȵ���֤������ӿڰ�װ���������
+客户端证书别名。当客户端证书内容为空时，客户端证书需先调用证书管理接口安装后传入别名。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-clientCertAliases: string--><!--Device-WifiEapProfile-clientCertAliases: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -126,13 +146,15 @@ clientCertAliases: string
 domainSuffixMatch: string
 ```
 
-���׺ƥ�䡣
+域后缀匹配。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-domainSuffixMatch: string--><!--Device-WifiEapProfile-domainSuffixMatch: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -142,13 +164,15 @@ domainSuffixMatch: string
 eapMethod: EapMethod
 ```
 
-EAP��֤��ʽ��
+EAP认证方式。
 
 **类型：** EapMethod
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-eapMethod: EapMethod--><!--Device-WifiEapProfile-eapMethod: EapMethod-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -158,13 +182,15 @@ EAP��֤��ʽ��
 eapSubId: number
 ```
 
-SIM������ID��
+SIM卡的子ID。
 
 **类型：** number
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-eapSubId: number--><!--Device-WifiEapProfile-eapSubId: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -174,13 +200,15 @@ SIM������ID��
 identity: string
 ```
 
-������Ϣ����eapMethodΪTLSʱ�����ֶβ���Ϊ�ա�
+身份信息。当eapMethod为TLS时，该字段不能为空。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-identity: string--><!--Device-WifiEapProfile-identity: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -190,13 +218,15 @@ identity: string
 password: string
 ```
 
-���롣��eapMethodΪEAP_PEAP��EAP_PWDʱ�����ֶβ���Ϊ�մ�����󳤶�Ϊ128�ֽڡ�
+密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-password: string--><!--Device-WifiEapProfile-password: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -206,13 +236,15 @@ password: string
 phase2Method: Phase2Method
 ```
 
-�ڶ��׶���֤��ʽ��ֻ��eapMethodΪEAP_PEAP��EAP_TTLSʱ��Ҫ��д��
+第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。
 
 **类型：** Phase2Method
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-phase2Method: Phase2Method--><!--Device-WifiEapProfile-phase2Method: Phase2Method-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -222,13 +254,15 @@ phase2Method: Phase2Method
 plmn: string
 ```
 
-ƾ֤�ṩ�̡�
+凭证提供商。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-plmn: string--><!--Device-WifiEapProfile-plmn: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -238,13 +272,15 @@ plmn: string
 realm: string
 ```
 
-ͨ��֤ƾ֤������
+通行证凭证的领域。
 
 **类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WifiEapProfile-realm: string--><!--Device-WifiEapProfile-realm: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

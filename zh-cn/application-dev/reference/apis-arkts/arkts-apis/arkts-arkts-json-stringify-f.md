@@ -1,5 +1,11 @@
 # stringify
 
+## 导入模块
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+```
+
 ## stringify
 
 ```TypeScript
@@ -10,7 +16,9 @@ function stringify(value: Object, replacer?: (number | string)[] | null, space?:
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-json-function stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string--><!--Device-json-function stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -39,7 +47,9 @@ function stringify(value: Object, replacer?: Transformer, space?: string | numbe
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-json-function stringify(value: Object, replacer?: Transformer, space?: string | number): string--><!--Device-json-function stringify(value: Object, replacer?: Transformer, space?: string | number): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -48,7 +58,7 @@ function stringify(value: Object, replacer?: Transformer, space?: string | numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | Object | 是 | ArkTS对象或数组。对于容器，支持线性容器，但不支持非线性容器。 |
-| replacer | Transformer | 否 | 序列化期间，序列化值的每个键都由此函数转换和处理。默认值为undefined。 |
+| replacer | [Transformer](arkts-arkts-ason-transformer-t.md) | 否 | 序列化期间，序列化值的每个键都由此函数转换和处理。默认值为undefined。 |
 | space | string \| number | 否 | 为提高可读性，添加到输出JSON字符串中的缩进、空白或换行字符。如果是数字，表示作为缩进的空格字符数。如果是字符串，该字符串将插入到输出JSON字符串之前。如果传入null，不使用任何空白字符。默认值为空字符串。 |
 
 **返回值：**

@@ -4,9 +4,17 @@
 
 **起始版本：** 12
 
+<!--Device-deviceManager-interface DriverInfo--><!--Device-deviceManager-interface DriverInfo-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
 
 ## busType
 
@@ -19,6 +27,8 @@ busType: BusType
 **类型：** BusType
 
 **起始版本：** 12
+
+<!--Device-DriverInfo-busType: BusType--><!--Device-DriverInfo-busType: BusType-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -36,6 +46,8 @@ description: string
 
 **起始版本：** 12
 
+<!--Device-DriverInfo-description: string--><!--Device-DriverInfo-description: string-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ driverName: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-DriverInfo-driverName: string--><!--Device-DriverInfo-driverName: string-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -68,6 +82,8 @@ driverSize: string
 
 **起始版本：** 12
 
+<!--Device-DriverInfo-driverSize: string--><!--Device-DriverInfo-driverSize: string-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
@@ -84,6 +100,8 @@ driverUid: string
 
 **起始版本：** 12
 
+<!--Device-DriverInfo-driverUid: string--><!--Device-DriverInfo-driverUid: string-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
@@ -99,6 +117,8 @@ driverVersion: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-DriverInfo-driverVersion: string--><!--Device-DriverInfo-driverVersion: string-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 

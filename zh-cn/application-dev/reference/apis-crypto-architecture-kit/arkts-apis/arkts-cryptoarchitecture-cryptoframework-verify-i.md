@@ -1,24 +1,30 @@
 # Verify
 
-Verify类，使用Verify方法之前需要创建该类的实例进行操作，通过
-[createVerify(algName: string): Verify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createVerify-1)方法构造此实例。按序调用本类中的init、update、
-verify方法完成签名操作。验签操作的示例代码详见
-[签名验签开发指导](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+Verify类，使用Verify方法之前需要创建该类的实例进行操作，通过[createVerify(algName: string): Verify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createverify-1)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
 Verify类不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify对象并调用init初始化。
 
 业务方使用时，在createVerify时确定验签的模式，调用init接口设置密钥。
 
-当被签名的消息较短时，可在init初始化后，（无需update）直接调用verify接口传入被签名的消息和签名(signatureData)进行验签。
+当被签名的消息较短时，可在init初始化后，（无需update）直接调用verify接口传入被签名的消息和签名（signatureData）进行验签。
 
-当被签名的消息较长时，可通过update接口分段传入被签名的消息，最后调用verify接口对消息全文进行验签。verify接口的data入参在API 10之前只
-支持DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环结束后调用verify传入签名(signatureData)进行验签。
+当被签名的消息较长时，可通过update接口分段传入被签名的消息，最后调用verify接口对消息全文进行验签。verify接口的data入参在API 10之前只支持DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环结束后调用verify传入签名（signatureData）进行验签。
 
 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **起始版本：** 9
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-cryptoFramework-interface Verify--><!--Device-cryptoFramework-interface Verify-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+## 导入模块
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+```
 
 ## getVerifySpec
 
@@ -28,19 +34,21 @@ getVerifySpec(itemType: SignSpecItem): string | number
 
 获取验签参数。当前只支持RSA算法。
 
-验签的参数应当与签名的参数保持一致。
-
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-getVerifySpec(itemType: SignSpecItem): string | int--><!--Device-Verify-getVerifySpec(itemType: SignSpecItem): string | int-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | SignSpecItem | 是 | 用于指定需要获取的验签参数。 |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要获取的验签参数。 |
 
 **返回值：**
 
@@ -52,11 +60,11 @@ getVerifySpec(itemType: SignSpecItem): string | number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [801](../../errorcode-universal.md#801-该操作不支持) | 该操作不支持。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 **示例：**
 
@@ -78,31 +86,34 @@ function testGetVerifySpec() {
 init(pubKey: PubKey, callback: AsyncCallback<void>): void
 ```
 
-传入公钥初始化Verify对象。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update
-可选。
+传入公钥初始化Verify对象。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-init(pubKey: PubKey, callback: AsyncCallback<void>): void--><!--Device-Verify-init(pubKey: PubKey, callback: AsyncCallback<void>): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pubKey | PubKey | 是 | 公钥对象，用于Verify的初始化。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。 |
+| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 是 | 公钥对象，用于Verify的初始化。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当验签初始化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 密钥类型不正确。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 密钥类型不正确。<br>**适用版本：** 26.0.0+ |
 
 ## init
 
@@ -110,36 +121,39 @@ init(pubKey: PubKey, callback: AsyncCallback<void>): void
 init(pubKey: PubKey): Promise<void>
 ```
 
-传入公钥初始化Verify对象。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update
-可选。
+传入公钥初始化Verify对象。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-init(pubKey: PubKey): Promise<void>--><!--Device-Verify-init(pubKey: PubKey): Promise<void>-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pubKey | PubKey | 是 | 公钥对象，用于Verify的初始化。 |
+| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 是 | 公钥对象，用于Verify的初始化。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 密钥类型不正确。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 密钥类型不正确。<br>**适用版本：** 26.0.0+ |
 
 ## initSync
 
@@ -147,16 +161,15 @@ init(pubKey: PubKey): Promise<void>
 initSync(pubKey: PubKey): void
 ```
 
-传入公钥初始化Verify对象，通过同步方式获取结果。initSync、updateSync、verifySync为三段式接口，需要成组使用。其中initSync和
-verifySync必选，updateSync可选。
+传入公钥初始化Verify对象，通过同步方式获取结果。initSync、updateSync、verifySync为三段式接口，需要成组使用。其中initSync和verifySync必选，updateSync可选。
 
-<br><br>**说明：**
-<br>建议优先使用异步API{@link init}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。
-因此建议在子线程中调用同步API，以避免阻塞主线程。
+<br><br>**说明：**<br>建议优先使用异步API{@link init}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Verify-initSync(pubKey: PubKey): void--><!--Device-Verify-initSync(pubKey: PubKey): void-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -164,17 +177,17 @@ verifySync必选，updateSync可选。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pubKey | PubKey | 是 | 公钥对象，用于Verify的初始化。 |
+| pubKey | [PubKey](arkts-cryptoarchitecture-cryptoframework-pubkey-i.md) | 是 | 公钥对象，用于Verify的初始化。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 密钥类型不正确。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 密钥类型不正确。<br>**适用版本：** 26.0.0+ |
 
 ## recover
 
@@ -184,13 +197,15 @@ recover(signatureData: DataBlob): Promise<DataBlob | null>
 
 对数据进行签名恢复原始数据。使用Promise异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > - 目前仅RSA支持。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Verify-recover(signatureData: DataBlob): Promise<DataBlob | null>--><!--Device-Verify-recover(signatureData: DataBlob): Promise<DataBlob | null>-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -198,23 +213,23 @@ recover(signatureData: DataBlob): Promise<DataBlob | null>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| signatureData | DataBlob | 是 | 签名数据。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataBlob \\| null&gt; | Promise对象，返回从签名中恢复的原始数据。 |
+| Promise<DataBlob \| null> | Promise对象，返回从签名中恢复的原始数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。<br>**适用版本：** 26.0.0+ |
 
 **示例：**
 
@@ -303,17 +318,17 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 
 对数据进行签名恢复原始数据。
 
-> **说明：**
->
+> **说明：**  
+>  
 > - 目前仅RSA支持。
 
-<br><br>**说明：**
-<br>建议优先使用异步API{@link recover}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。
-因此建议在子线程中调用同步API，以避免阻塞主线程。
+<br><br>**说明：**<br>建议优先使用异步API{@link recover}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Verify-recoverSync(signatureData: DataBlob): DataBlob | null--><!--Device-Verify-recoverSync(signatureData: DataBlob): DataBlob | null-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -321,23 +336,23 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| signatureData | DataBlob | 是 | 签名数据。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| DataBlob | 恢复的数据。 |
+| [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 恢复的数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。<br>**适用版本：** 26.0.0+ |
 
 ## setVerifySpec
 
@@ -345,9 +360,9 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 ```
 
-设置验签参数。常用的签名参数直接通过[createVerify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createVerify-1) 来指定，剩余参数通过本接口指定。
+设置验签参数。常用的验签参数直接通过[createVerify](arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createverify-1) 来指定，剩余参数通过本接口指定。
 
-支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
+支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置签名验证参数。
 
 验签的参数应当与签名的参数保持一致。
 
@@ -355,24 +370,28 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-setVerifySpec(itemType: SignSpecItem, itemValue: int): void--><!--Device-Verify-setVerifySpec(itemType: SignSpecItem, itemValue: int): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | SignSpecItem | 是 | 用于指定需要设置的验签参数。 |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的验签参数。 |
 | itemValue | number | 是 | 用于指定验签参数的具体值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [801](../../errorcode-universal.md#801-该操作不支持) | 该操作不支持。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 **示例：**
 
@@ -393,7 +412,9 @@ function testSetVerifySpec() {
 setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 ```
 
-设置验签参数。当前仅支持RSA算法中的PSS_SALT_LEN和SM2算法中的USER_ID。
+设置签名验证参数。
+
+当前仅支持RSA算法中的PSS_SALT_LEN和SM2签名验证中的USER_ID。
 
 验签的参数应当与签名的参数保持一致。
 
@@ -401,26 +422,30 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-setVerifySpec(itemType: SignSpecItem, itemValue: int | Uint8Array): void--><!--Device-Verify-setVerifySpec(itemType: SignSpecItem, itemValue: int | Uint8Array): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | SignSpecItem | 是 | 用于指定需要设置的验签参数类型。 |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的验签参数类型。 |
 | itemValue | number \| Uint8Array | 是 | 指定验签参数的具体值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [801](../../errorcode-universal.md#801-该操作不支持) | 该操作不支持。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。&lt;br&gt;**适用版本：** 26.0.0+ |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。&lt;br&gt;**适用版本：** 26.0.0+ |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。<br>**适用版本：** 26.0.0+ |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。<br>**适用版本：** 26.0.0+ |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
 ## setVerifySpec
 
@@ -428,8 +453,9 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array): void
 setVerifySpec(itemType: SignSpecItem, itemValue: number | Uint8Array | boolean): void
 ```
 
-设置验签参数。当前仅支持RSA算法中的PSS_SALT_LEN、SM2算法中的USER_ID以及ML-DSA算法中的
-ML_DSA_DETERMINISTIC、ML_DSA_MU、ML_DSA_CONTEXT。
+设置签名验证参数。
+
+当前仅支持RSA算法中的PSS_SALT_LEN，SM2算法中的USER_ID以及ML-DSA算法中的ML_DSA_DETERMINISTIC、ML_DSA_MU和ML_DSA_CONTEXT。
 
 验签的参数应当与签名的参数保持一致。
 
@@ -437,7 +463,9 @@ ML_DSA_DETERMINISTIC、ML_DSA_MU、ML_DSA_CONTEXT。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Verify-setVerifySpec(itemType: SignSpecItem, itemValue: int | Uint8Array | boolean): void--><!--Device-Verify-setVerifySpec(itemType: SignSpecItem, itemValue: int | Uint8Array | boolean): void-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -445,19 +473,19 @@ ML_DSA_DETERMINISTIC、ML_DSA_MU、ML_DSA_CONTEXT。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| itemType | SignSpecItem | 是 | 用于指定需要设置的验签参数类型。 |
+| itemType | [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md) | 是 | 用于指定需要设置的验签参数类型。 |
 | itemValue | number \| Uint8Array \| boolean | 是 | 指定验签参数的具体值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该操作不支持) | 该操作不支持。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。 |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。 |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
 **示例：**
 
@@ -479,49 +507,52 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 
 追加待验签数据，使用callback异步回调完成更新。
 
-必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#Verify)实例使用[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)或
-[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initSync-1)初始化后，才能使用本函数。
+必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)或[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync-1)初始化后，才能使用本函数。
 
-> **说明：**
->
-> 根据数据量，可以不调用update（即[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)
-> 完成后直接调用
-> [verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verify-2)
-> ）或多次调用update。
->
-> 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请
-> 过大内存。
->
-> 验签使用多次update操作的示例代码详见
-> [使用RSA密钥对分段签名验签](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)
-> ，其余算法操作类似。
->
-> OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。
->
+> **说明：**  
+>  
+> 根据数据量，可以不调用update（即[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)  
+> 完成后直接调用  
+> [verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verify-2)  
+> ）或多次调用update。  
+>  
+> 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请  
+> 过大内存。  
+>  
+> 验签使用多次update操作的示例代码详见  
+> [使用RSA密钥对分段签名验签](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)  
+> ，其余算法操作类似。  
+>  
+> OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。  
+>  
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-update(data: DataBlob, callback: AsyncCallback<void>): void--><!--Device-Verify-update(data: DataBlob, callback: AsyncCallback<void>): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob | 是 | 传入的消息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当验签更新成功，err为undefined，否则为错误对象。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当验签更新成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。<br>**适用版本：** 26.0.0+ |
 
 ## update
 
@@ -531,52 +562,55 @@ update(data: DataBlob): Promise<void>
 
 追加待验签数据，使用Promise异步回调完成更新。
 
-必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#Verify)实例使用[init()](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)初始化后，才能使
-用本函数。
+必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[init()](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)初始化后，才能使用本函数。
 
-> **说明：**
->
-> 根据数据量，可以不调用update（即[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)完成后直接调用
-> [verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verify-4)）或多次调用update。
->
-> 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请
-> 过大内存。
->
-> 验签使用多次update操作的示例代码详见
-> [使用RSA密钥对分段签名验签](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)
-> ，其余算法操作类似。
->
-> OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。
->
+> **说明：**  
+>  
+> 根据数据量，可以不调用update（即[init](arkts-cryptoarchitecture-cryptoframework-verify-i.md#init-1)完成后直接调用  
+> [verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verify-4)）或多次调用update。  
+>  
+> 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请  
+> 过大内存。  
+>  
+> 验签使用多次update操作的示例代码详见  
+> [使用RSA密钥对分段签名验签](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)  
+> ，其余算法操作类似。  
+>  
+> OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。  
+>  
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-update(data: DataBlob): Promise<void>--><!--Device-Verify-update(data: DataBlob): Promise<void>-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob | 是 | 传入的消息。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。<br>**适用版本：** 26.0.0+ |
 
 ## updateSync
 
@@ -586,32 +620,31 @@ updateSync(data: DataBlob): void
 
 追加待验签数据，通过同步方式完成更新。
 
-必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md#Verify)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initSync-1)初始化后，才
-能使用本函数。
+必须在对[Verify](arkts-cryptoarchitecture-cryptoframework-verify-i.md)实例使用[initSync()](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync-1)初始化后，才能使用本函数。
 
-> **说明：**
->
-> 根据数据量，可以不调用updateSync（即[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initSync-1)完成后直接调用
-> [verifySync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verifySync-1)）或多次调用updateSync。
->
-> 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次updateSync的方式传入数据，避免
-> 一次性申请过大内存。
->
-> 验签使用多次updateSync操作的示例代码详见
-> [使用RSA密钥对分段签名验签](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，
-> 其余算法操作类似。
->
-> OnlyVerify模式下，不支持update操作，需要直接使用verifySync传入数据。
->
+> **说明：**  
+>  
+> 根据数据量，可以不调用updateSync（即[initSync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#initsync-1)完成后直接调用  
+> [verifySync](arkts-cryptoarchitecture-cryptoframework-verify-i.md#verifysync-1)）或多次调用updateSync。  
+>  
+> 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次updateSync的方式传入数据，避免  
+> 一次性申请过大内存。  
+>  
+> 验签使用多次updateSync操作的示例代码详见  
+> [使用RSA密钥对分段签名验签](../../../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，  
+> 其余算法操作类似。  
+>  
+> OnlyVerify模式下，不支持updateSync操作，需要直接使用verifySync传入数据。  
+>  
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
-<br><br>**说明：**
-<br>建议优先使用异步API{@link update}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。
-因此建议在子线程中调用同步API，以避免阻塞主线程。
+<br><br>**说明：**<br>建议优先使用异步API{@link update}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Verify-updateSync(data: DataBlob): void--><!--Device-Verify-updateSync(data: DataBlob): void-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -619,17 +652,17 @@ updateSync(data: DataBlob): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob | 是 | 传入的消息。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 传入的消息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620004](../../errorcode-universal.md#17620004-无效的函数调用) | 无效的函数调用。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | 无效的函数调用。<br>**适用版本：** 26.0.0+ |
 
 ## verify
 
@@ -643,25 +676,29 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback<boolean>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback<boolean>): void--><!--Device-Verify-verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback<boolean>): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob | 是 | 待验签的数据。 |
-| signatureData | DataBlob | 是 | 签名数据。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签失败。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 待验签的数据。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示验签通过；返回false表示验签失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 ## verify
 
@@ -675,25 +712,29 @@ verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback<b
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback<boolean>): void--><!--Device-Verify-verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback<boolean>): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | DataBlob \| null | 是 | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| signatureData | DataBlob | 是 | 签名数据。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示验签通过；返回false表示验签不通过。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 ## verify
 
@@ -707,30 +748,34 @@ verify(data: DataBlob, signatureData: DataBlob): Promise<boolean>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-verify(data: DataBlob, signatureData: DataBlob): Promise<boolean>--><!--Device-Verify-verify(data: DataBlob, signatureData: DataBlob): Promise<boolean>-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | DataBlob | 是 | 待验签的数据。 |
-| signatureData | DataBlob | 是 | 签名数据。 |
+| data | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 待验签的数据。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回验签结果。返回true表示验签成功，返回false表示验签失败。 |
+| Promise<boolean> | Promise对象，返回验签结果。返回true表示验签成功，返回false表示验签失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 ## verify
 
@@ -744,30 +789,34 @@ verify(data: DataBlob | null, signatureData: DataBlob): Promise<boolean>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-verify(data: DataBlob | null, signatureData: DataBlob): Promise<boolean>--><!--Device-Verify-verify(data: DataBlob | null, signatureData: DataBlob): Promise<boolean>-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | DataBlob \| null | 是 | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| signatureData | DataBlob | 是 | 签名数据。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示验签成功，返回false表示验签失败。 |
+| Promise<boolean> | Promise对象。返回true表示验签成功，返回false表示验签失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 ## verifySync
 
@@ -777,13 +826,13 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 对数据进行验签，通过同步方式返回验签结果。
 
-<br><br>**说明：**
-<br>建议优先使用异步API{@link verify}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。
-因此建议在子线程中调用同步API，以避免阻塞主线程。
+<br><br>**说明：**<br>建议优先使用异步API{@link verify}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Verify-verifySync(data: DataBlob | null, signatureData: DataBlob): boolean--><!--Device-Verify-verifySync(data: DataBlob | null, signatureData: DataBlob): boolean-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -792,7 +841,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | DataBlob \| null | 是 | 传入的消息。 |
-| signatureData | DataBlob | 是 | 签名数据。 |
+| signatureData | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 签名数据。 |
 
 **返回值：**
 
@@ -804,11 +853,11 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
-| [17620003](../../errorcode-universal.md#17620003-参数检查失败) | 参数检查失败。&lt;br&gt;**适用版本：** 26.0.0+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | 参数检查失败。<br>**适用版本：** 26.0.0+ |
 
 **示例：**
 
@@ -1049,5 +1098,9 @@ readonly algName: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+<!--Device-Verify-readonly algName: string--><!--Device-Verify-readonly algName: string-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 

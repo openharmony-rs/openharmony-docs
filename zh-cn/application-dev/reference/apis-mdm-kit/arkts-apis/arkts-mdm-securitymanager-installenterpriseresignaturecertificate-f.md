@@ -1,38 +1,42 @@
 # installEnterpriseReSignatureCertificate
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## installEnterpriseReSignatureCertificate
 
 ```TypeScript
 function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 ```
 
-��װ��ҵӦ����ǩ��֤�顣
+安装企业应用重签名证书。
 
-ͬһ�û��������·�10����֤ͬ�顣֤�������Ϊ֤���Ψһ��ʶ����֧���ظ��·���ͬ������֤�顣�������ͬһ������֤�飬���ȵ���
-[uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md#uninstallEnterpriseReSignatureCertificate-1)����ж�ء�
+同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md#uninstallenterpriseresignaturecertificate-1)进行卸载。
 
-��MDMӦ��ж�ػ�adminȡ��������£��Ѱ�װ��֤��ᱣ�����豸�ϣ����ᱻ�Ƴ���
+在MDM应用卸载或admin取消激活场景下，已安装的证书会保留在设备上，不会被移除。
 
-����ҵӦ�÷ַ������£�<!--RP2--><!--RP2End-->�����߿���ʹ����ǩ��֤�����ҵӦ�ý��ж���ǩ����ǩ����ɺ�Ӧ�ð��ṩ����ҵ����Ա����ҵ����Ա���Խ���ǩ�����Ӧ�ð�װ���Ѳ�����ǩ��֤�����ҵ�豸�ϡ�
+在企业应用分发场景下，<!--RP2--><!--RP2End-->开发者可以使用重签名证书对企业应用进行二次签名，签名完成后将应用包提供给企业管理员。企业管理员可以将重签名后的应用安装在已部署重签名证书的企业设备上。
 
-��ҵӦ����ǩ��֤��ʹ�����̣�<!--RP3--><!--RP3End-->
+企业应用重签名证书使用流程：<!--RP3--><!--RP3End-->
 
-1.ͨ��MDMӦ�ð�װ��ҵӦ����ǩ��֤�飻
+1.通过MDM应用安装企业应用重签名证书；
 
-2.����������ǩ�����ߣ���ohos-signer��DevEco Studioǩ�����������ԭʼHAP�����ж���ǩ����
+2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名；
 
-3.��װ��ǩ��Ӧ�ã�����ͨ����ҵ˽��Ӧ���г���װ����
+3.安装重签名应用（可以通过企业私有应用市场安装）；
 
-4.����Ӧ�á�
+4.运行应用。
 
-���Լ����
+规格约束：
 
-1.��װ�µ�ǩ��֤��֮��ʹ�þ�ǩ��֤���Ӧ�ÿ��Լ������У�
+1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；
 
-2.�Ѿ���װ����ҵӦ�ã���װ���µ���ҵǩ��֤����Ѱ�װ��Ӧ��������£�����ֱ�Ӹ��ǰ�װ��������ж��ԭӦ�ã�
+2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；
 
-3.��ҵ�����£��ر������漰��Ϣ��ȫ�ĳ����У���ҵ��Ҫȷ��Ա��ʹ�õ��ƶ��豸�н���װ�������ض����ڲ������͹��ߡ���ҵӦ����ǩ��֤��ͨ��ͳһ��Ӧ�����ݱ�ʶ����ϵͳ��Ӧ�ù�����Ȩ�޿��ƻ������ʹ�ã���֧����ҵӦ�õľ�Ĭ��װ���ܿص�ϵͳ
-�������ü����з�Χ���ƣ��Ӷ�ʵ����ҵ�������ܿ��ն��ϵ�׼������밲ȫ������
+3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
 
 **起始版本：** 24
 
@@ -40,27 +44,29 @@ function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: int, accountId: int): void--><!--Device-securityManager-function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: int, accountId: int): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| certificateAlias | string | 是 | ֤�������������'.cer'��β�� |
-| fd | number | 是 | ��ʾ�Ѵ��ڵ���ǩ��֤���ļ���������֤���ļ���Ҫ������[Ӧ��ɳ��Ŀ¼](../../../../file-management/app-sandbox-directory.md)�� |
-| accountId | number | 是 | �û�ID��ָ�������û���ȡֵ��Χ�����ڵ���0��accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ��*@ohos.account.osAccount** to obtain the account ID. |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| certificateAlias | string | 是 | 证书别名，必须以'.cer'结尾。 |
+| fd | number | 是 | 表示已存在的重签名证书文件描述符，证书文件需要放置于[应用沙箱目录](../../../../file-management/app-sandbox-directory.md)。 |
+| accountId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。*@ohos.account.osAccount** to obtain the account ID. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [9201006](../../errorcode-universal.md#9201006-The) | The number of certificates has reached the limit. |
-| [9201007](../../errorcode-universal.md#9201007-The) | The certificate is invalid. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9201006](../errorcode-enterpriseDeviceManager.md#9201006-安装企业重签名证书超过数量上限) | The number of certificates has reached the limit. |
+| [9201007](../errorcode-enterpriseDeviceManager.md#9201007-企业重签名证书无效) | The certificate is invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 
 **示例：**
 

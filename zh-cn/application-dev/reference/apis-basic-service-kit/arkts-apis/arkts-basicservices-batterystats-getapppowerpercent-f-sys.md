@@ -1,5 +1,11 @@
 # getAppPowerPercent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { batteryStats } from '@kit.BasicServicesKit';
+```
+
 ## getAppPowerPercent
 
 ```TypeScript
@@ -9,6 +15,8 @@ function getAppPowerPercent(uid: number): number
 获取应用的耗电百分比。
 
 **起始版本：** 8
+
+<!--Device-batteryStats-function getAppPowerPercent(uid: int): double--><!--Device-batteryStats-function getAppPowerPercent(uid: int): double-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
@@ -30,18 +38,18 @@ function getAppPowerPercent(uid: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Parameter verification failed. |
-| [4600101](../../errorcode-universal.md#4600101-Failed) | Failed to connect to the service. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [4600101](../../apis-basic-services-kit/errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
 **示例：**
 
 ```TypeScript
 try {
-    let percent = batteryStats.getAppPowerPercent(10021);
+    let percent = batteryStats.getAppPowerPercent(10021); // 10021为示例UID，实际使用时需通过bundleManager.getBundleInfoForSelf等接口获取应用UID
     console.info('battery statistics percent of app is: ' + percent);
-} catch(err) {
-    console.error('get battery statistics percent of app failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics percent of app. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```

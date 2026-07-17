@@ -1,12 +1,18 @@
 # publishFormToDesktop
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## publishFormToDesktop
 
 ```TypeScript
 function publishFormToDesktop(admin: Want, formInfo: FormInfo, accountId: number): void
 ```
 
-��Ƭ����
+卡片加桌
 
 **起始版本：** 26.0.0
 
@@ -14,23 +20,25 @@ function publishFormToDesktop(admin: Want, formInfo: FormInfo, accountId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-applicationManager-function publishFormToDesktop(admin: Want, formInfo: FormInfo, accountId: number): void--><!--Device-applicationManager-function publishFormToDesktop(admin: Want, formInfo: FormInfo, accountId: number): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸��չ��� |
-| formInfo | FormInfo | 是 | ��Ƭ��Ϣ |
-| accountId | number | 是 | ϵͳ�˺�ID<br/><br/>ȡֵ��Χ:[0, +��) |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备扩展组件 |
+| formInfo | FormInfo | 是 | 卡片信息 |
+| accountId | number | 是 | 系统账号ID<br>取值范围:[0, +∞) |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 

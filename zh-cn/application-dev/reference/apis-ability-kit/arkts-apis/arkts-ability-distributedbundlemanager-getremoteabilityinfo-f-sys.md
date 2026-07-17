@@ -1,16 +1,24 @@
 # getRemoteAbilityInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { distributedBundleManager } from '@kit.AbilityKit';
+```
+
 ## getRemoteAbilityInfo
 
 ```TypeScript
 function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<RemoteAbilityInfo>): void
 ```
 
-��ȡ��elementNameָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo��Ϣ��ʹ��callback�첽�ص���
+获取由elementName指定的远程设备上的应用的AbilityInfo信息。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<RemoteAbilityInfo>): void--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<RemoteAbilityInfo>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -20,21 +28,21 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementName | ElementName | 是 | ElementName��Ϣ�� |
-| callback | AsyncCallback&lt;RemoteAbilityInfo&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)�����óɹ�����errΪnull��dataΪ<br/>RemoteAbilityInfo���󣻵���ʧ��errΪ�������, dataΪundefined�� |
+| elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | ElementName信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RemoteAbilityInfo> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -70,11 +78,13 @@ try {
 function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityInfo>
 ```
 
-��ȡ��elementNameָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo��Ϣ��ʹ��Promise�첽�ص���
+获取由elementName指定的远程设备上的应用的AbilityInfo信息。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityInfo>--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -84,26 +94,26 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementName | ElementName | 是 | ElementName��Ϣ�� |
+| elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | ElementName信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RemoteAbilityInfo&gt; | Promise���󣬵��óɹ�����RemoteAbilityInfo���󣻵���ʧ�ܷ��ش������ |
+| Promise<RemoteAbilityInfo> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -137,11 +147,13 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void
 ```
 
-��ȡ��elementNameָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo������Ϣ��ʹ��callback�첽�ص���
+获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -151,21 +163,21 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;ElementName&gt; | 是 | ElementName��Ϣ,������鳤��Ϊ10�� |
-| callback | AsyncCallback&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)�����óɹ�����errΪnull<br/>��dataΪRemoteAbilityInfo������󣻵���ʧ��errΪ�������, dataΪundefined�� |
+| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息,最大数组长度为10。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<RemoteAbilityInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -208,11 +220,13 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<RemoteAbilityInfo>>
 ```
 
-��ȡ��elementNameָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo������Ϣ��ʹ��Promise�첽�ص���
+获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<RemoteAbilityInfo>>--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<RemoteAbilityInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -222,26 +236,26 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;ElementName&gt; | 是 | ElementName��Ϣ��������鳤��Ϊ10�� |
+| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息，最大数组长度为10。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | Promise���󣬵��óɹ�����RemoteAbilityInfo���󣻵���ʧ�ܷ��ش������ |
+| Promise<Array<RemoteAbilityInfo>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -282,11 +296,13 @@ try {
 function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCallback<RemoteAbilityInfo>): void
 ```
 
-��ȡ��elementName��localeָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo��Ϣ��ʹ��callback�첽�ص���
+获取由elementName和locale指定的远程设备上的应用的AbilityInfo信息。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCallback<RemoteAbilityInfo>): void--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCallback<RemoteAbilityInfo>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -296,22 +312,22 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementName | ElementName | 是 | ElementName��Ϣ�� |
-| locale | string | 是 | ���Ե����� |
-| callback | AsyncCallback&lt;RemoteAbilityInfo&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)�����óɹ�����errΪnull��dataΪ<br/>RemoteAbilityInfo���󣻵���ʧ��errΪ�������, dataΪundefined�� |
+| elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | ElementName信息。 |
+| locale | string | 是 | 语言地区。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RemoteAbilityInfo> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -347,11 +363,13 @@ try {
 function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise<RemoteAbilityInfo>
 ```
 
-��ȡ��elementName��localeָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo��Ϣ��ʹ��Promise�첽�ص���
+获取由elementName和locale指定的远程设备上的应用的AbilityInfo信息。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise<RemoteAbilityInfo>--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise<RemoteAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -361,27 +379,27 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementName | ElementName | 是 | ElementName��Ϣ�� |
-| locale | string | 是 | ���Ե����� |
+| elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | ElementName信息。 |
+| locale | string | 是 | 语言地区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;RemoteAbilityInfo&gt; | Promise���󣬵��óɹ�����RemoteAbilityInfo���󣻵���ʧ�ܷ��ش������ |
+| Promise<RemoteAbilityInfo> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -415,11 +433,13 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void
 ```
 
-��ȡ��elementName��localeָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo������Ϣ��ʹ��callback�첽�ص���
+获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -429,22 +449,22 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;ElementName&gt; | 是 | ElementName��Ϣ,������鳤��Ϊ10�� |
-| locale | string | 是 | ���Ե����� |
-| callback | AsyncCallback&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)�����óɹ�����errΪnull<br/>��dataΪRemoteAbilityInfo������󣻵���ʧ��errΪ�������, dataΪundefined�� |
+| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息,最大数组长度为10。 |
+| locale | string | 是 | 语言地区。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<RemoteAbilityInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 
@@ -487,11 +507,13 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string): Promise<Array<RemoteAbilityInfo>>
 ```
 
-��ȡ��elementName��localeָ����Զ���豸�ϵ�Ӧ�õ�AbilityInfo������Ϣ��ʹ��Promise�첽�ص���
+获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string): Promise<Array<RemoteAbilityInfo>>--><!--Device-distributedBundleManager-function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string): Promise<Array<RemoteAbilityInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -501,27 +523,27 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;ElementName&gt; | 是 | ElementName��Ϣ,������鳤��Ϊ10�� |
-| locale | string | 是 | ���Ե����� |
+| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息,最大数组长度为10。 |
+| locale | string | 是 | 语言地区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | Promise���󣬵��óɹ�����RemoteAbilityInfo���󣻵���ʧ�ܷ��ش������ |
+| Promise<Array<RemoteAbilityInfo>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability name is not found. |
-| [17700007](../../errorcode-universal.md#17700007-The) | The specified device ID is not found. |
-| [17700027](../../errorcode-universal.md#17700027-The) | The distributed service is not running. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability name is not found. |
+| [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
+| [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
 **示例：**
 

@@ -4,7 +4,21 @@
 
 > **说明：**
 
+## 子组件
 
+可以包含子组件。
+
+> **说明：**  
+>  
+> - 子组件类型：系统组件和自定义组件，不支持渲染控制类型（[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、  
+> [ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)和  
+> [LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。  
+>  
+> - 子组件个数：必须且仅包含2个子组件。  
+>  
+> - 子组件个数异常时：3个或以上子组件，显示第一个和第二个。1个子组件，显示侧边栏，内容区为空白。  
+>  
+> - SideBarContainer走焦时，先在内容区走焦，再在侧边栏走焦。
 
 ## SideBarContainer
 
@@ -16,7 +30,9 @@ SideBarContainer(type?: SideBarContainerType)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SideBarContainerInterface-(type?: SideBarContainerType): SideBarContainerAttribute--><!--Device-SideBarContainerInterface-(type?: SideBarContainerType): SideBarContainerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

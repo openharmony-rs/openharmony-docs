@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-update-export interface DescriptionOptions--><!--Device-update-export interface DescriptionOptions-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { update } from '@kit.BasicServicesKit';
+```
 
 ## format
 
@@ -19,6 +27,8 @@ format: DescriptionFormat
 **类型：** DescriptionFormat
 
 **起始版本：** 9
+
+<!--Device-DescriptionOptions-format: DescriptionFormat--><!--Device-DescriptionOptions-format: DescriptionFormat-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -35,6 +45,8 @@ language: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-DescriptionOptions-language: string--><!--Device-DescriptionOptions-language: string-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

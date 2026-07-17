@@ -1,5 +1,11 @@
 # on（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { BundleStatusCallback } from '@kit.AbilityKit';
+```
+
 ## on('BundleStatusChange')
 
 ```TypeScript
@@ -7,13 +13,13 @@ function on(type: 'BundleStatusChange',
     bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void
 ```
 
-ע��Callback��
+注册Callback。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1)
-> �����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1)  
+> 替代。
 
 **起始版本：** 8
 
@@ -23,6 +29,10 @@ function on(type: 'BundleStatusChange',
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-innerBundleManager-function on(type: 'BundleStatusChange',
+    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void--><!--Device-innerBundleManager-function on(type: 'BundleStatusChange',
+    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -31,9 +41,9 @@ function on(type: 'BundleStatusChange',
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'BundleStatusChange' | 是 | ָʾӦִ�����ֻ֧��BundleStatusChange�� |
-| bundleStatusCallback | BundleStatusCallback | 是 | ָʾҪע��Ļص��� |
-| callback | AsyncCallback&lt;string&gt; | 是 | ����������Ϊ��εĻص�������������ȷ����������Ϣ�� |
+| type | 'BundleStatusChange' | 是 | 指示应执行命令，只支持BundleStatusChange。 |
+| bundleStatusCallback | [BundleStatusCallback](arkts-ability-bundlestatuscallback-t-sys.md) | 是 | 指示要注册的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
 
 
 ## on('BundleStatusChange')
@@ -42,13 +52,13 @@ function on(type: 'BundleStatusChange',
 function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise<string>
 ```
 
-ע��Callback��
+注册Callback。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1)
-> �����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1)  
+> 替代。
 
 **起始版本：** 8
 
@@ -58,6 +68,8 @@ function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallba
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-innerBundleManager-function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise<string>--><!--Device-innerBundleManager-function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise<string>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -66,12 +78,12 @@ function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'BundleStatusChange' | 是 | ָʾӦִ�����ֻ֧��BundleStatusChange�� |
-| bundleStatusCallback | BundleStatusCallback | 是 | ָʾҪע��Ļص��� |
+| type | 'BundleStatusChange' | 是 | 指示应执行命令，只支持BundleStatusChange。 |
+| bundleStatusCallback | [BundleStatusCallback](arkts-ability-bundlestatuscallback-t-sys.md) | 是 | 指示要注册的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | - Promise��ʽ������ȷ����������Ϣ�� |
+| Promise<string> | - Promise形式返回正确结果或错误信息。 |
 

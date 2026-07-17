@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-window-interface SystemBarRegionTint--><!--Device-window-interface SystemBarRegionTint-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## backgroundColor
 
@@ -19,6 +27,8 @@ backgroundColor?: string
 **类型：** string
 
 **起始版本：** 8
+
+<!--Device-SystemBarRegionTint-backgroundColor?: string--><!--Device-SystemBarRegionTint-backgroundColor?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,6 +46,8 @@ contentColor?: string
 
 **起始版本：** 8
 
+<!--Device-SystemBarRegionTint-contentColor?: string--><!--Device-SystemBarRegionTint-contentColor?: string-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ isEnable?: boolean
 **类型：** boolean
 
 **起始版本：** 8
+
+<!--Device-SystemBarRegionTint-isEnable?: boolean--><!--Device-SystemBarRegionTint-isEnable?: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -68,6 +82,8 @@ region?: Rect
 
 **起始版本：** 8
 
+<!--Device-SystemBarRegionTint-region?: Rect--><!--Device-SystemBarRegionTint-region?: Rect-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ type: WindowType
 **类型：** WindowType
 
 **起始版本：** 8
+
+<!--Device-SystemBarRegionTint-type: WindowType--><!--Device-SystemBarRegionTint-type: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

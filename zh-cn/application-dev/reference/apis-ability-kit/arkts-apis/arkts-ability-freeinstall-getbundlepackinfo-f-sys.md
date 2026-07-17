@@ -1,5 +1,11 @@
 # getBundlePackInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { freeInstall } from '@kit.AbilityKit';
+```
+
 ## getBundlePackInfo
 
 ```TypeScript
@@ -7,11 +13,15 @@ function getBundlePackInfo(bundleName: string,
     bundlePackFlag : BundlePackFlag, callback: AsyncCallback<BundlePackInfo>): void
 ```
 
-����bundleName��bundlePackFlag����ȡbundlePackInfo��ʹ��callback�첽�ص���
+基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-freeInstall-function getBundlePackInfo(bundleName: string, 
+    bundlePackFlag : BundlePackFlag, callback: AsyncCallback<BundlePackInfo>): void--><!--Device-freeInstall-function getBundlePackInfo(bundleName: string, 
+    bundlePackFlag : BundlePackFlag, callback: AsyncCallback<BundlePackInfo>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -21,19 +31,19 @@ function getBundlePackInfo(bundleName: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| bundlePackFlag | BundlePackFlag | 是 | ָʾҪ��ѯ��Ӧ�ð���־�� |
-| callback | AsyncCallback&lt;BundlePackInfo&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)�����������óɹ���errΪundefined��<br/>dataΪ��ȡ����BundlePackInfo��Ϣ������Ϊ������� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| bundlePackFlag | [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 是 | 指示要查询的应用包标志。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundlePackInfo> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为获取到的BundlePackInfo信息。否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
 
 ## getBundlePackInfo
@@ -42,11 +52,13 @@ function getBundlePackInfo(bundleName: string,
 function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise<BundlePackInfo>
 ```
 
-����bundleName��BundlePackFlag����ȡbundlePackInfo��ʹ��Promise�첽�ص���
+基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-freeInstall-function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise<BundlePackInfo>--><!--Device-freeInstall-function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise<BundlePackInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -56,22 +68,22 @@ function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ�ó���Bundle���ơ� |
-| bundlePackFlag | BundlePackFlag | 是 | ָʾҪ��ѯ��Ӧ�ð���־�� |
+| bundleName | string | 是 | 应用程序Bundle名称。 |
+| bundlePackFlag | [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 是 | 指示要查询的应用包标志。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BundlePackInfo&gt; | Promise���󣬷���BundlePackInfo��Ϣ�� |
+| Promise<BundlePackInfo> | Promise对象，返回BundlePackInfo信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 

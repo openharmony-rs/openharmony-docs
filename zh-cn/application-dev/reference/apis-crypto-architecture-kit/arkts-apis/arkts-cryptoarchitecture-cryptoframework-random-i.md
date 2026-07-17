@@ -1,10 +1,20 @@
 # Random
 
-Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createRandom-1)构造Random实例。
+Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom-1)构造Random实例。
 
 **起始版本：** 9
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+<!--Device-cryptoFramework-interface Random--><!--Device-cryptoFramework-interface Random-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+## 导入模块
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+```
 
 ## enableHardwareEntropy
 
@@ -16,7 +26,11 @@ enableHardwareEntropy(): void
 
 **起始版本：** 21
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Random-enableHardwareEntropy(): void--><!--Device-Random-enableHardwareEntropy(): void-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
@@ -24,10 +38,10 @@ enableHardwareEntropy(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该操作不支持) | 该操作不支持。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17620002](../../errorcode-universal.md#17620002-获取Native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 该操作不支持。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | 获取Native对象失败或参数转换失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
 **示例：**
 
@@ -63,24 +77,32 @@ generateRandom(len: number, callback: AsyncCallback<DataBlob>): void
 
 **起始版本：** 9
 
+**模型约束：** 
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+<!--Device-Random-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void--><!--Device-Random-generateRandom(len: int, callback: AsyncCallback<DataBlob>): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | len | number | 是 | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
-| callback | AsyncCallback&lt;DataBlob&gt; | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为<br/>错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataBlob> | 是 | 回调函数。当生成随机数成功时，err为undefined，data为获取到的随机数；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
 **示例：**
 
@@ -108,9 +130,15 @@ generateRandom(len: number): Promise<DataBlob>
 
 **起始版本：** 9
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+<!--Device-Random-generateRandom(len: int): Promise<DataBlob>--><!--Device-Random-generateRandom(len: int): Promise<DataBlob>-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
@@ -122,15 +150,15 @@ generateRandom(len: number): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DataBlob&gt; | Promise对象，返回生成的随机数。 |
+| Promise<DataBlob> | Promise对象，返回生成的随机数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
 **示例：**
 
@@ -227,15 +255,21 @@ generateRandomSync(len: number): DataBlob
 
 同步生成指定长度的随机数。
 
-<br><br>**说明：**
-<br>建议优先使用异步API{@link generateRandom}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。
-因此建议在子线程中调用同步API，以避免阻塞主线程。
+<br><br>**说明：**<br>建议优先使用异步API{@link generateRandom}。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。
 
 **起始版本：** 10
 
+**模型约束：** 
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本10-11：此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+<!--Device-Random-generateRandomSync(len: int): DataBlob--><!--Device-Random-generateRandomSync(len: int): DataBlob-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
@@ -247,15 +281,15 @@ generateRandomSync(len: number): DataBlob
 
 | 类型 | 说明 |
 | --- | --- |
-| DataBlob | 表示生成的随机数。 |
+| [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 表示生成的随机数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-非法入参) | 非法入参。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数验证失败。 |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
-| [17630001](../../errorcode-universal.md#17630001-密码操作错误) | 密码操作错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 非法入参。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数验证失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17630001](../errorcode-crypto-framework.md#17630001-密码操作错误) | 密码操作错误。 |
 
 **示例：**
 
@@ -360,21 +394,29 @@ setSeed(seed: DataBlob): void
 
 **起始版本：** 9
 
+**模型约束：** 
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+<!--Device-Random-setSeed(seed: DataBlob): void--><!--Device-Random-setSeed(seed: DataBlob): void-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| seed | DataBlob | 是 | 设置的种子。 |
+| seed | [DataBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-datablob-i.md) | 是 | 设置的种子。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17620001](../../errorcode-universal.md#17620001-内存操作失败) | 内存操作失败。 |
+| [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | 内存操作失败。 |
 
 **示例：**
 
@@ -411,7 +453,13 @@ readonly algName: string
 
 **起始版本：** 10
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+<!--Device-Random-readonly algName: string--><!--Device-Random-readonly algName: string-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本10-11：SystemCapability.Security.CryptoFramework
 

@@ -1,5 +1,11 @@
 # publishReminder
 
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## publishReminder
 
 ```TypeScript
@@ -8,16 +14,18 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 
 发布后台代理提醒。使用callback异步回调。
 
-> **说明：**
->
-> 该接口需要申请通知弹窗权限
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestEnableNotification-2)
-> 后调用。
+> **说明：**  
+>  
+> 该接口需要申请通知弹窗权限  
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-2)  
+> 后调用。  
 >
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
+<!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<int>): void--><!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -25,16 +33,16 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderReq | ReminderRequest | 是 | 需要发布的代理提醒实例。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。<br/>当代理提醒发布成功，err为undefined，data为当前发布提醒的id；否则为错误对象。 |
+| reminderReq | [ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md) | 是 | 需要发布的代理提醒实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当代理提醒发布成功，err为undefined，data为当前发布提醒的id；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-If) | If the input parameter is not valid parameter. |
-| [1700001](../../errorcode-universal.md#1700001-Notification) | Notification is not enabled. |
-| [1700002](../../errorcode-universal.md#1700002-The) | The number of reminders exceeds the limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter is not valid parameter. |
+| [1700001](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700001-通知使能未开启) | Notification is not enabled. |
+| [1700002](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700002-提醒数量超出限制) | The number of reminders exceeds the limit. |
 
 **示例：**
 
@@ -66,16 +74,18 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 发布后台代理提醒。使用Promise异步回调。
 
-> **说明：**
->
-> 该接口需要申请通知弹窗权限
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestEnableNotification-2)
-> 后调用。
+> **说明：**  
+>  
+> 该接口需要申请通知弹窗权限  
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-2)  
+> 后调用。  
 >
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
+<!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest): Promise<int>--><!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -83,21 +93,21 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderReq | ReminderRequest | 是 | 需要发布的代理提醒实例。 |
+| reminderReq | [ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md) | 是 | 需要发布的代理提醒实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回当前发布提醒的id。 |
+| Promise<number> | Promise对象，返回当前发布提醒的id。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-If) | If the input parameter is not valid parameter. |
-| [1700001](../../errorcode-universal.md#1700001-Notification) | Notification is not enabled. |
-| [1700002](../../errorcode-universal.md#1700002-The) | The number of reminders exceeds the limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter is not valid parameter. |
+| [1700001](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700001-通知使能未开启) | Notification is not enabled. |
+| [1700002](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700002-提醒数量超出限制) | The number of reminders exceeds the limit. |
 
 **示例：**
 

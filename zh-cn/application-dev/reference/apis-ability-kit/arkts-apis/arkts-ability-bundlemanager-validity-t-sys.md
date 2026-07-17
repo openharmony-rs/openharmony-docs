@@ -4,9 +4,11 @@
 export type Validity = _AppProvisionInfo.Validity
 ```
 
-�����ļ��е���Ч�ڡ�
+配置文件中的有效期。
 
 **起始版本：** 10
+
+<!--Device-bundleManager-export type Validity = _AppProvisionInfo.Validity--><!--Device-bundleManager-export type Validity = _AppProvisionInfo.Validity-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

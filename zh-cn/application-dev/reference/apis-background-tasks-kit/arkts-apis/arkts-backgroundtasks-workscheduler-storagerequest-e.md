@@ -1,14 +1,10 @@
 # StorageRequest
 
-```TypeScript
-export enum StorageRequest
-```
-
 触发延迟任务回调的存储状态。
 
 **起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-workScheduler-export enum StorageRequest--><!--Device-workScheduler-export enum StorageRequest-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -24,6 +20,8 @@ STORAGE_LEVEL_LOW = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-StorageRequest-STORAGE_LEVEL_LOW = 0--><!--Device-StorageRequest-STORAGE_LEVEL_LOW = 0-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## STORAGE_LEVEL_OKAY
@@ -38,6 +36,8 @@ STORAGE_LEVEL_OKAY = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-StorageRequest-STORAGE_LEVEL_OKAY = 1--><!--Device-StorageRequest-STORAGE_LEVEL_OKAY = 1-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## STORAGE_LEVEL_LOW_OR_OKAY
@@ -51,6 +51,8 @@ STORAGE_LEVEL_LOW_OR_OKAY = 2
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StorageRequest-STORAGE_LEVEL_LOW_OR_OKAY = 2--><!--Device-StorageRequest-STORAGE_LEVEL_LOW_OR_OKAY = 2-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 

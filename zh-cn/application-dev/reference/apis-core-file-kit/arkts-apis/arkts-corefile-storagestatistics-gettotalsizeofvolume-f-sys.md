@@ -1,5 +1,11 @@
 # getTotalSizeOfVolume（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getTotalSizeOfVolume
 
 ```TypeScript
@@ -12,6 +18,8 @@ function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<number
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<long>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
@@ -21,18 +29,18 @@ function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeUuid | string | 是 | 卷设备uuid。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 获取指定卷设备总空间之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取指定卷设备总空间之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory<br/>parameters are left unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13600008](../../errorcode-universal.md#13600008-No) | No such object. |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -48,14 +56,14 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, number: number) => {
     if (error) {
-      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
+      console.error(`getTotalSizeOfVolume failed with err, code is: ${error.code}, message is: ${error.message}`);
     } else {
       // do something
       console.info("getTotalSizeOfVolume successfully:" + number);
     }
   });
 }).catch((err: BusinessError) => {
-  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+  console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 
 ```
@@ -73,6 +81,8 @@ function getTotalSizeOfVolume(volumeUuid: string): Promise<number>
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string): Promise<long>--><!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string): Promise<long>-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
@@ -87,18 +97,18 @@ function getTotalSizeOfVolume(volumeUuid: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
+| Promise<number> | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory<br/>parameters are left unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13600008](../../errorcode-universal.md#13600008-No) | No such object. |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -115,10 +125,10 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   storageStatistics.getTotalSizeOfVolume(uuid).then((number: number) => {
     console.info("getTotalSizeOfVolume successfully:" + number);
   }).catch((err: BusinessError) => {
-    console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
+    console.error(`getTotalSizeOfVolume failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
 }).catch((err: BusinessError) => {
-  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+  console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 
 ```

@@ -1,12 +1,10 @@
 # GroupType（系统接口）
 
-```TypeScript
-export enum GroupType
-```
-
 应用分组的设置类型。
 
 **起始版本：** 9
+
+<!--Device-usageStatistics-export enum GroupType--><!--Device-usageStatistics-export enum GroupType-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -22,6 +20,8 @@ ALIVE_GROUP = 10
 
 **起始版本：** 9
 
+<!--Device-GroupType-ALIVE_GROUP = 10--><!--Device-GroupType-ALIVE_GROUP = 10-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **系统接口：** 此接口为系统接口。
@@ -35,6 +35,8 @@ DAILY_GROUP = 20
 经常使用，但当前并未在活跃态。
 
 **起始版本：** 9
+
+<!--Device-GroupType-DAILY_GROUP = 20--><!--Device-GroupType-DAILY_GROUP = 20-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -50,6 +52,8 @@ FIXED_GROUP = 30
 
 **起始版本：** 9
 
+<!--Device-GroupType-FIXED_GROUP = 30--><!--Device-GroupType-FIXED_GROUP = 30-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **系统接口：** 此接口为系统接口。
@@ -63,6 +67,8 @@ RARE_GROUP = 40
 极少使用分组，不经常使用。
 
 **起始版本：** 9
+
+<!--Device-GroupType-RARE_GROUP = 40--><!--Device-GroupType-RARE_GROUP = 40-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -78,6 +84,8 @@ LIMITED_GROUP = 50
 
 **起始版本：** 9
 
+<!--Device-GroupType-LIMITED_GROUP = 50--><!--Device-GroupType-LIMITED_GROUP = 50-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **系统接口：** 此接口为系统接口。
@@ -91,6 +99,8 @@ NEVER_GROUP = 60
 从未使用分组，安装但是从未运行过。
 
 **起始版本：** 9
+
+<!--Device-GroupType-NEVER_GROUP = 60--><!--Device-GroupType-NEVER_GROUP = 60-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 

@@ -1,12 +1,18 @@
 # updateContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## updateContact
 
 ```TypeScript
 function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 ```
 
-������ϵ�ˡ�ʹ��callback�첽�ص���
+更新联系人。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -16,14 +22,16 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
+<!--Device-contact-function updateContact(contact: Contact, callback: AsyncCallback<void>): void--><!--Device-contact-function updateContact(contact: Contact, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | Contact | 是 | ��ϵ����Ϣ��id�����ͨ��[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)�ӿڻ�ȡ�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������ɹ����ظ��µ���ϵ��id��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)接口获取。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -61,11 +69,13 @@ contact.selectContacts().then((data) => {
 function updateContact(context: Context, contact: Contact, callback: AsyncCallback<void>): void
 ```
 
-������ϵ�ˡ�ʹ��callback�첽�ص���
+更新联系人。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
+
+<!--Device-contact-function updateContact(context: Context, contact: Contact, callback: AsyncCallback<void>): void--><!--Device-contact-function updateContact(context: Context, contact: Contact, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -73,16 +83,16 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contact | Contact | 是 | ��ϵ����Ϣ��id�����ͨ��[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)�ӿڻ�ȡ�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������ɹ����ظ��µ���ϵ��id��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)接口获取。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -124,7 +134,7 @@ contact.selectContacts().then((data) => {
 function updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void
 ```
 
-������ϵ�ˣ�֧�ִ�����ϵ�˵������б���ʹ��callback�첽�ص���
+更新联系人，支持传入联系人的属性列表。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -134,15 +144,17 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
+<!--Device-contact-function updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void--><!--Device-contact-function updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | Contact | 是 | ��ϵ����Ϣ��id�����ͨ��[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)�ӿڻ�ȡ�� |
-| attrs | ContactAttributes | 是 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������ɹ����ظ��µ���ϵ��id��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)接口获取。 |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -181,11 +193,13 @@ contact.selectContacts().then((data) => {
 function updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void
 ```
 
-������ϵ�ˣ�֧�ִ�����ϵ�˵������б�����ʹ��callback�첽�ص���
+更新联系人（支持传入联系人的属性列表）。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
+
+<!--Device-contact-function updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void--><!--Device-contact-function updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -193,17 +207,17 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contact | Contact | 是 | ��ϵ����Ϣ��id�����ͨ��[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)�ӿڻ�ȡ�� |
-| attrs | ContactAttributes | 是 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������ɹ����ظ��µ���ϵ��id��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)接口获取。 |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -246,7 +260,7 @@ contact.selectContacts().then((data) => {
 function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<void>
 ```
 
-������ϵ�ˣ�֧�ִ�����ϵ�˵������б���ʹ��Promise�첽�ص���
+更新联系人，支持传入联系人的属性列表。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -256,20 +270,22 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
+<!--Device-contact-function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<void>--><!--Device-contact-function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | Contact | 是 | ��ϵ����Ϣ��id�����ͨ��[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)�ӿڻ�ȡ�� |
-| attrs | ContactAttributes | 否 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)接口获取。 |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ����Promise���� |
+| Promise<void> | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -303,11 +319,13 @@ contact.selectContacts().then((data) => {
 function updateContact(context: Context, contact: Contact, attrs?: ContactAttributes): Promise<void>
 ```
 
-������ϵ�ˣ�֧�ִ�����ϵ�˵������б�����ʹ��Promise�첽�ص���
+更新联系人（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
+
+<!--Device-contact-function updateContact(context: Context, contact: Contact, attrs?: ContactAttributes): Promise<void>--><!--Device-contact-function updateContact(context: Context, contact: Contact, attrs?: ContactAttributes): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -315,22 +333,22 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contact | Contact | 是 | ��ϵ����Ϣ��id�����ͨ��[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectContacts-2)�ӿڻ�ȡ�� |
-| attrs | ContactAttributes | 否 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-2)接口获取。 |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ����Promise���� |
+| Promise<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 

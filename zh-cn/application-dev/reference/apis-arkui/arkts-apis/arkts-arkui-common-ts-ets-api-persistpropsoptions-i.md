@@ -1,8 +1,10 @@
 # PersistPropsOptions
 
-用于指定持久化属性及其默认值的键值对对象，作为[persistProps](arkts-arkui-persistentstorage-c.md#persistProps-1)参数传入。
+用于指定持久化属性及其默认值的键值对对象，作为[persistProps](arkts-arkui-common-ts-ets-api-persistentstorage-c.md#persistprops-1)参数传入。
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare interface PersistPropsOptions--><!--Device-unnamed-declare interface PersistPropsOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,6 +22,8 @@ defaultValue: number | string | boolean | Object
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PersistPropsOptions-defaultValue: number | string | boolean | Object--><!--Device-PersistPropsOptions-defaultValue: number | string | boolean | Object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -35,6 +39,8 @@ key: string
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PersistPropsOptions-key: string--><!--Device-PersistPropsOptions-key: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

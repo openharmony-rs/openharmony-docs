@@ -12,7 +12,9 @@ declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator--><!--Device-unnamed-declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +22,7 @@ declare function CustomEnv<T>(key: CustomEnvKey<T>): PropertyDecorator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | CustomEnvKey&lt;T&gt; | 是 | 自定义环境密钥 |
+| key | [CustomEnvKey](arkts-arkui-common-customenvkey-c.md)<T> | 是 | 自定义环境密钥 |
 
 **返回值：**
 

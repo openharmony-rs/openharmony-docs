@@ -1,5 +1,11 @@
 # createServer
 
+## 导入模块
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+```
+
 ## createServer
 
 ```TypeScript
@@ -14,6 +20,8 @@ function createServer(name: string): Server
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-linkEnhance-function createServer(name: string): Server--><!--Device-linkEnhance-function createServer(name: string): Server-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -26,16 +34,16 @@ function createServer(name: string): Server
 
 | 类型 | 说明 |
 | --- | --- |
-| Server | 创建成功的服务对象。 |
+| [Server](../../apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-server-i.md) | 创建成功的服务对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported<br/>because the linkEnhance function has been trimmed.&lt;br&gt;**适用版本：** 26.0.0+ |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
-| [32390203](../../errorcode-universal.md#32390203-Duplicate) | Duplicate server name. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the linkEnhance function has been trimmed.<br>**适用版本：** 26.0.0+ |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
+| [32390203](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390203-服务名重复注册) | Duplicate server name. |
 
 **示例：**
 

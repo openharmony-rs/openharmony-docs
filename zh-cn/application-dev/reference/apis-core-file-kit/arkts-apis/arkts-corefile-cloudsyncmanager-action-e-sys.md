@@ -1,12 +1,10 @@
 # Action（系统接口）
 
-```TypeScript
-enum Action
-```
-
-�����������������ʱ��Action��Ϊö�����͡�
+清理本地云相关数据时的Action，为枚举类型。
 
 **起始版本：** 10
+
+<!--Device-cloudSyncManager-enum Action--><!--Device-cloudSyncManager-enum Action-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -18,9 +16,11 @@ enum Action
 RETAIN_DATA = 0
 ```
 
-������ƶ˱�ʶ���������ػ����ļ���
+仅清除云端标识，保留本地缓存文件。
 
 **起始版本：** 10
+
+<!--Device-Action-RETAIN_DATA = 0--><!--Device-Action-RETAIN_DATA = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -32,9 +32,11 @@ RETAIN_DATA = 0
 CLEAR_DATA = 1
 ```
 
-����ƶ˱�ʶ��Ϣ�������ڱ��ػ����ļ���һ��ɾ����
+清除云端标识信息，若存在本地缓存文件，一并删除。
 
 **起始版本：** 10
+
+<!--Device-Action-CLEAR_DATA = 1--><!--Device-Action-CLEAR_DATA = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

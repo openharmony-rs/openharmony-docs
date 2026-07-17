@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-webview-class WebSchemeHandlerRequest--><!--Device-webview-class WebSchemeHandlerRequest-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## getFrameUrl
 
@@ -15,6 +23,8 @@ getFrameUrl(): string
 获取触发此请求的Frame的URL。
 
 **起始版本：** 12
+
+<!--Device-WebSchemeHandlerRequest-getFrameUrl(): string--><!--Device-WebSchemeHandlerRequest-getFrameUrl(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -34,7 +44,9 @@ getHeader(): Array<WebHeader>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-getHeader(): Array<WebHeader>--><!--Device-WebSchemeHandlerRequest-getHeader(): Array<WebHeader>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,7 +54,7 @@ getHeader(): Array<WebHeader>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;WebHeader&gt; | 返回资源请求头信息。 |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<WebHeader> | 返回资源请求头信息。 |
 
 ## getHttpBodyStream
 
@@ -54,7 +66,9 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-getHttpBodyStream(): WebHttpBodyStream | null--><!--Device-WebSchemeHandlerRequest-getHttpBodyStream(): WebHttpBodyStream | null-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -62,7 +76,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 | 类型 | 说明 |
 | --- | --- |
-| WebHttpBodyStream | Return http body stream. If request has no http body stream, return null. |
+| [WebHttpBodyStream](arkts-arkweb-webview-webhttpbodystream-c.md) | Return http body stream. If request has no http body stream, return null. |
 
 ## getReferrer
 
@@ -74,7 +88,9 @@ getReferrer(): string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-getReferrer(): string--><!--Device-WebSchemeHandlerRequest-getReferrer(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -94,7 +110,9 @@ getRequestMethod(): string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-getRequestMethod(): string--><!--Device-WebSchemeHandlerRequest-getRequestMethod(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -114,13 +132,15 @@ getRequestResourceType(): WebResourceType
 
 **起始版本：** 12
 
+<!--Device-WebSchemeHandlerRequest-getRequestResourceType(): WebResourceType--><!--Device-WebSchemeHandlerRequest-getRequestResourceType(): WebResourceType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| WebResourceType | 返回资源请求的资源类型。 |
+| [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | 返回资源请求的资源类型。 |
 
 ## getRequestUrl
 
@@ -132,7 +152,9 @@ getRequestUrl(): string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-getRequestUrl(): string--><!--Device-WebSchemeHandlerRequest-getRequestUrl(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -152,7 +174,9 @@ hasGesture(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-hasGesture(): boolean--><!--Device-WebSchemeHandlerRequest-hasGesture(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -172,7 +196,9 @@ isMainFrame(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandlerRequest-isMainFrame(): boolean--><!--Device-WebSchemeHandlerRequest-isMainFrame(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

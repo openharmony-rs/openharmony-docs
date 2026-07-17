@@ -1,10 +1,10 @@
 # LoopObserver
 
-定义异常监听，可以作为
-[ErrorManager.on](arkts-ability-on-f.md#on-2)
-的入参监听当前应用主线程事件处理事件。
+定义异常监听，可以作为[ErrorManager.on](arkts-ability-errormanager-on-f.md#on-2)的入参监听当前应用主线程事件处理事件。
 
 **起始版本：** 12
+
+<!--Device-unnamed-export interface LoopObserver--><!--Device-unnamed-export interface LoopObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -18,7 +18,9 @@ onLoopTimeOut?(timeout: number): void
 
 **起始版本：** 12
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LoopObserver-onLoopTimeOut?(timeout: int): void--><!--Device-LoopObserver-onLoopTimeOut?(timeout: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

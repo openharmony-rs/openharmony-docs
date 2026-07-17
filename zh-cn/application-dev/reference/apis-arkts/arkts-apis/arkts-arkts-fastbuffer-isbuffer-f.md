@@ -1,5 +1,11 @@
 # isBuffer
 
+## 导入模块
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+```
+
 ## isBuffer
 
 ```TypeScript
@@ -10,7 +16,9 @@ function isBuffer(obj: Object): boolean
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function isBuffer(obj: Object): boolean--><!--Device-fastbuffer-function isBuffer(obj: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -31,21 +39,21 @@ function isBuffer(obj: Object): boolean
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
 
-let result = fastbuffer.isBuffer(fastbuffer.alloc(10)); // 10: fastbuffer size
-console.info("result = " + result);
-// 输出结果：result = true
-let result1 = fastbuffer.isBuffer(fastbuffer.from('foo'));
-console.info("result1 = " + result1);
-// 输出结果：result1 = true
-let result2 = fastbuffer.isBuffer('a string');
-console.info("result2 = " + result2);
-// 输出结果：result2 = false
-let result3 = fastbuffer.isBuffer([]);
-console.info("result3 = " + result3);
-// 输出结果：result3 = false
-let result4 = fastbuffer.isBuffer(new Uint8Array(1024));
-console.info("result4 = " + result4);
-// 输出结果：result4 = false
+let allocResult = fastbuffer.isBuffer(fastbuffer.alloc(10)); // 10: fastbuffer size
+console.info('allocResult = ' + allocResult);
+// 输出结果：allocResult = true
+let fromResult = fastbuffer.isBuffer(fastbuffer.from('foo'));
+console.info('fromResult = ' + fromResult);
+// 输出结果：fromResult = true
+let stringResult = fastbuffer.isBuffer('a string');
+console.info('stringResult = ' + stringResult);
+// 输出结果：stringResult = false
+let arrayResult = fastbuffer.isBuffer([]);
+console.info('arrayResult = ' + arrayResult);
+// 输出结果：arrayResult = false
+let uint8ArrayResult = fastbuffer.isBuffer(new Uint8Array(1024));
+console.info('uint8ArrayResult = ' + uint8ArrayResult);
+// 输出结果：uint8ArrayResult = false
 
 ```
 

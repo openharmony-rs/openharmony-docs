@@ -29,6 +29,42 @@ type Matrix4Result = [
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-componentUtils-type Matrix4Result = [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+  ]--><!--Device-componentUtils-type Matrix4Result = [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+  ]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** [

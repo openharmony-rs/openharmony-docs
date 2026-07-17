@@ -1,5 +1,11 @@
 # copy（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
+
 ## copy
 
 ```TypeScript
@@ -12,6 +18,8 @@ function copy(logType: string, logName: string, dest: string): Promise<void>
 
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
+<!--Device-logLibrary-function copy(logType: string, logName: string, dest: string): Promise<void>--><!--Device-logLibrary-function copy(logType: string, logName: string, dest: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **系统接口：** 此接口为系统接口。
@@ -22,22 +30,22 @@ function copy(logType: string, logName: string, dest: string): Promise<void>
 | --- | --- | --- | --- |
 | logType | string | 是 | 日志类型字符串，例如“HILOG”, "FAULTLOG", "BETACLUB", "REMOTELOG"等。 |
 | logName | string | 是 | 日志文件名称。 |
-| dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多<br/>层目录。<br/><br/>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
+| dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多层目录。<br>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise实例，可以在其then()、catch()方法中分别对拷贝成功、拷贝异常的回调进行处理。 |
+| Promise<void> | Promise实例，可以在其then()、catch()方法中分别对拷贝成功、拷贝异常的回调进行处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid argument. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types.<br/><br/>3. Parameter verification failed. |
-| [21300001](../../errorcode-universal.md#21300001-Source) | Source file does not exists |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
+| [21300001](../errorcode-loglibrary-sys.md#21300001-指定文件不存在) | Source file does not exists |
 
 **示例：**
 
@@ -46,11 +54,11 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let logObj = logLibrary.list('HILOG');
-  if (logObj.length > 0) {
-    logLibrary.copy('HILOG', logObj[0].name, ''
+  let logFiles = logLibrary.list('HILOG');
+  if (logFiles.length > 0) {
+    logLibrary.copy('HILOG', logFiles[0].name, ''
     ).then(
-      (val) => {
+      (copyResult) => {
         // do something here.
       }
     ).catch(
@@ -60,7 +68,7 @@ try {
     )
   }
 } catch (error) {
-    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
 }
 
 ```
@@ -78,6 +86,8 @@ function copy(logType: string, logName: string, dest: string, callback: AsyncCal
 
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
+<!--Device-logLibrary-function copy(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-logLibrary-function copy(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **系统接口：** 此接口为系统接口。
@@ -88,17 +98,17 @@ function copy(logType: string, logName: string, dest: string, callback: AsyncCal
 | --- | --- | --- | --- |
 | logType | string | 是 | 日志类型字符串，例如“HILOG”, "FAULTLOG", "BETACLUB", "REMOTELOG"等。 |
 | logName | string | 是 | 日志文件名称。 |
-| dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多<br/>层目录。<br/><br/>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，可以在回调函数中处理接口返回值。0表示拷贝成功，其它值表示拷贝失败。 |
+| dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多层目录。<br>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，可以在回调函数中处理接口返回值。0表示拷贝成功，其它值表示拷贝失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid argument. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types.<br/><br/>3. Parameter verification failed. |
-| [21300001](../../errorcode-universal.md#21300001-Source) | Source file does not exists |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
+| [21300001](../errorcode-loglibrary-sys.md#21300001-指定文件不存在) | Source file does not exists |
 
 **示例：**
 
@@ -106,18 +116,18 @@ function copy(logType: string, logName: string, dest: string, callback: AsyncCal
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let logObj = logLibrary.list('HILOG');
-  if (logObj.length > 0) {
-    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (error, val) => {
-      if (val === undefined) {
-        // copy failed.
+  let logFiles = logLibrary.list('HILOG');
+  if (logFiles.length > 0) {
+    logLibrary.copy('HILOG', logFiles[0].name, 'dir1', (error, copyResult) => {
+      if (error) {
+        console.error(`Failed to copy log file. Code: ${error.code}, message: ${error.message}`);
       } else {
         // copy success.
       }
     });
   }
 } catch (error) {
-    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+    console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
 }
 
 ```

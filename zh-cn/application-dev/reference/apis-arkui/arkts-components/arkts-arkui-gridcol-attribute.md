@@ -8,6 +8,8 @@
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class GridColAttribute extends CommonMethod<GridColAttribute>--><!--Device-unnamed-declare class GridColAttribute extends CommonMethod<GridColAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridColOffset
@@ -20,9 +22,11 @@ gridColOffset(value: number | GridColColumnOption)
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridColAttribute-gridColOffset(value: number | GridColColumnOption): GridColAttribute--><!--Device-GridColAttribute-gridColOffset(value: number | GridColColumnOption): GridColAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,9 +46,11 @@ order(value: number | GridColColumnOption)
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridColAttribute-order(value: number | GridColColumnOption): GridColAttribute--><!--Device-GridColAttribute-order(value: number | GridColColumnOption): GridColAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,9 +70,11 @@ span(value: number | GridColColumnOption)
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridColAttribute-span(value: number | GridColColumnOption): GridColAttribute--><!--Device-GridColAttribute-span(value: number | GridColColumnOption): GridColAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

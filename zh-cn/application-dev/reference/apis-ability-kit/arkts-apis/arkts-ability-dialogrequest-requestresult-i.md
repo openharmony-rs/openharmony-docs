@@ -4,9 +4,15 @@
 
 **起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-dialogRequest-export interface RequestResult--><!--Device-dialogRequest-export interface RequestResult-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { dialogRequest } from '@kit.AbilityKit';
+```
 
 ## result
 
@@ -21,6 +27,8 @@ result: ResultCode
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RequestResult-result: ResultCode--><!--Device-RequestResult-result: ResultCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -37,6 +45,8 @@ want?: Want
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RequestResult-want?: Want--><!--Device-RequestResult-want?: Want-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

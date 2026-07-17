@@ -14,6 +14,8 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 **替代接口：** [fs:symlink](arkts-corefile-file-fs-symlink-f.md#symlink-1)
 
+<!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>--><!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -27,7 +29,7 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 
 ## symlink
@@ -44,6 +46,8 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 
 **替代接口：** [fs:symlink](arkts-corefile-file-fs-symlink-f.md#symlink-1)
 
+<!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -52,5 +56,5 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | target | string | 是 | 目标文件的应用沙箱路径。 |
 | srcPath | string | 是 | 符号链接文件的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步创建符号链接信息之后的回调。 |
 

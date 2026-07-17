@@ -4,9 +4,11 @@
 export type PackageSummary = _PackInfo.PackageSummary
 ```
 
-pack.info�еİ�ժҪ��Ϣ��
+pack.info中的包摘要信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type PackageSummary = _PackInfo.PackageSummary--><!--Device-freeInstall-export type PackageSummary = _PackInfo.PackageSummary-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

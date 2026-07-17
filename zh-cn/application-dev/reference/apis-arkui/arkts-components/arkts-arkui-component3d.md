@@ -1,6 +1,6 @@
 # Component3D
 
-定义Component3D. 
+定义Component3D组件. 
 
 
 ## Component3D
@@ -13,7 +13,9 @@ Component3D(sceneOptions?: SceneOptions)
 
 **起始版本：** 12
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Component3DInterface-(sceneOptions?: SceneOptions): Component3DAttribute--><!--Device-Component3DInterface-(sceneOptions?: SceneOptions): Component3DAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 

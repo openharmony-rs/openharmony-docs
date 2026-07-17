@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-interface EnrolledCredInfo--><!--Device-osAccount-interface EnrolledCredInfo-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## authSubType
 
@@ -19,6 +27,8 @@ authSubType: AuthSubType
 **类型：** AuthSubType
 
 **起始版本：** 8
+
+<!--Device-EnrolledCredInfo-authSubType: AuthSubType--><!--Device-EnrolledCredInfo-authSubType: AuthSubType-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ authType: AuthType
 
 **起始版本：** 8
 
+<!--Device-EnrolledCredInfo-authType: AuthType--><!--Device-EnrolledCredInfo-authType: AuthType-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ credentialId: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 8
+
+<!--Device-EnrolledCredInfo-credentialId: Uint8Array--><!--Device-EnrolledCredInfo-credentialId: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -68,6 +82,8 @@ isAbandoned?: boolean
 
 **起始版本：** 20
 
+<!--Device-EnrolledCredInfo-isAbandoned?: boolean--><!--Device-EnrolledCredInfo-isAbandoned?: boolean-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -84,6 +100,8 @@ templateId: Uint8Array
 
 **起始版本：** 8
 
+<!--Device-EnrolledCredInfo-templateId: Uint8Array--><!--Device-EnrolledCredInfo-templateId: Uint8Array-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -99,6 +117,8 @@ validityPeriod?: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-EnrolledCredInfo-validityPeriod?: long--><!--Device-EnrolledCredInfo-validityPeriod?: long-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

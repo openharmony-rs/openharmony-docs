@@ -12,6 +12,8 @@ declare function fchown(fd: number, uid: number, gid: number): Promise<void>
 
 **废弃版本：** 9
 
+<!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number): Promise<void>--><!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number): Promise<void>-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -26,7 +28,7 @@ declare function fchown(fd: number, uid: number, gid: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 
 ## fchown
@@ -41,6 +43,8 @@ declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCal
 
 **废弃版本：** 9
 
+<!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -50,5 +54,5 @@ declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCal
 | fd | number | 是 | 待改变文件的文件描述符。 |
 | uid | number | 是 | 文件所有者的UID。 |
 | gid | number | 是 | 文件所有组的GID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步改变文件所有者之后的回调。 |
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 6
 
+<!--Device-resourceManager-export class Configuration--><!--Device-resourceManager-export class Configuration-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
+
+## 导入模块
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+```
 
 ## colorMode
 
@@ -18,7 +26,9 @@ colorMode: ColorMode
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-colorMode: ColorMode--><!--Device-Configuration-colorMode: ColorMode-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -34,7 +44,9 @@ deviceType: DeviceType
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-deviceType: DeviceType--><!--Device-Configuration-deviceType: DeviceType-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -52,6 +64,8 @@ direction: Direction
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Configuration-direction: Direction--><!--Device-Configuration-direction: Direction-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 ## locale
@@ -68,6 +82,8 @@ locale: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Configuration-locale: string--><!--Device-Configuration-locale: string-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 ## mcc
@@ -82,7 +98,9 @@ mcc : number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-mcc : int--><!--Device-Configuration-mcc : int-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -98,7 +116,9 @@ mnc : number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-mnc : int--><!--Device-Configuration-mnc : int-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -114,7 +134,9 @@ screenDensity: ScreenDensity
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-screenDensity: ScreenDensity--><!--Device-Configuration-screenDensity: ScreenDensity-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

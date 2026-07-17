@@ -1,17 +1,24 @@
 # getAlternateIcons
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAlternateIcons
 
 ```TypeScript
 function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 ```
 
-��ѯ��ǰӦ����app.json5��[alternateIcons��ǩ](../../../../quick-start/app-configuration-file.md#alternateicons��ǩ)���õı���ͼ����Ϣ��ʹ��
-Promise�첽�ص���
+查询当前应用在app.json5中[alternateIcons标签](../../../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-bundleManager-function getAlternateIcons(): Promise<Array<AlternateIconInfo>>--><!--Device-bundleManager-function getAlternateIcons(): Promise<Array<AlternateIconInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -19,13 +26,13 @@ Promise�첽�ص���
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AlternateIconInfo&gt;&gt; | Promise���󣬷��ص�ǰӦ�õı���ͼ����Ϣ�� |
+| Promise<Array<AlternateIconInfo>> | Promise对象，返回当前应用的备用图标信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700311](../../errorcode-universal.md#17700311-Failed) | Failed to obtain the alternate icon. |
+| [17700311](../errorcode-bundle.md#17700311-查询备用图标失败) | Failed to obtain the alternate icon. |
 
 **示例：**
 

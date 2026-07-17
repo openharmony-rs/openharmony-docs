@@ -1,14 +1,10 @@
 # NearLinkProtocol
 
-```TypeScript
-enum NearLinkProtocol
-```
-
-����Э��ö�١�
+星闪协议枚举。
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-systemManager-enum NearLinkProtocol--><!--Device-systemManager-enum NearLinkProtocol-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum NearLinkProtocol
 SSAP = 0
 ```
 
-SSAP��SparkLink Service Access Protocol��Э�顣<!--RP1--><!--RP1End-->
+SSAP（SparkLink Service Access Protocol）协议。<!--RP1--><!--RP1End-->
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NearLinkProtocol-SSAP = 0--><!--Device-NearLinkProtocol-SSAP = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ SSAP��SparkLink Service Access Protocol��Э�顣<!--RP1--><!--RP1End-->
 DATA_TRANSFER = 1
 ```
 
-���ݴ���Э�顣<!--RP2--><!--RP2End-->
+数据传输协议。<!--RP2--><!--RP2End-->
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NearLinkProtocol-DATA_TRANSFER = 1--><!--Device-NearLinkProtocol-DATA_TRANSFER = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

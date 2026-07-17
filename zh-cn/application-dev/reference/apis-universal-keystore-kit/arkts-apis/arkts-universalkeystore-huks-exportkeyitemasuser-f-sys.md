@@ -1,16 +1,24 @@
 # exportKeyItemAsUser（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
 ## exportKeyItemAsUser
 
 ```TypeScript
 function exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>
 ```
 
-ָ���û����ݵ�����Կ��ʹ��Promise��ʽ�ص��첽���صĽ����
+指定用户身份导出密钥，使用Promise方式回调异步返回的结果。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+<!--Device-huks-function exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>--><!--Device-huks-function exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -20,41 +28,42 @@ function exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | �û�ID�� |
-| keyAlias | string | 是 | ��Կ������Ӧ��������Կ����ʱʹ�õı�����ͬ�� |
-| huksOptions | HuksOptions | 是 | �ն��󣨴˴����ռ��ɣ��� |
+| userId | number | 是 | 用户ID。 |
+| keyAlias | string | 是 | 密钥别名，应与所用密钥生成时使用的别名相同。 |
+| huksOptions | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 空对象（此处传空即可）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksReturnResult&gt; | Promise���� �����óɹ�ʱ��HuksReturnResult��outData��Ա�ǿգ�Ϊ����Կ�е����Ĺ�Կ������Ϊʧ�ܡ� |
+| Promise<HuksReturnResult> | Promise对象。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application permission is not sufficient, which may be caused by lack of<br/><br/>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
-| [202](../../errorcode-universal.md#202-nonsystem) | non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api) | api is not supported |
-| [12000001](../../errorcode-universal.md#12000001-Feature) | Feature is not supported. Possible causes:<br/>1. The algorithm mode is not supported.<br/>2. The group key is not supported.<br/>3. The crypto extension key is not supported. |
-| [12000002](../../errorcode-universal.md#12000002-algorithm) | algorithm param is missing |
-| [12000003](../../errorcode-universal.md#12000003-algorithm) | algorithm param is invalid |
-| [12000004](../../errorcode-universal.md#12000004-operating) | operating file failed |
-| [12000005](../../errorcode-universal.md#12000005-IPC) | IPC communication failed |
-| [12000006](../../errorcode-universal.md#12000006-error) | error occurred in crypto engine |
-| [12000011](../../errorcode-universal.md#12000011-queried) | queried entity does not exist |
-| [12000012](../../errorcode-universal.md#12000012-Device) | Device environment or input parameter abnormal |
-| [12000014](../../errorcode-universal.md#12000014-memory) | memory is insufficient |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application permission is not sufficient, which may be caused by lack of<br>cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system applications are not allowed to use system APIs. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes:1. The algorithm mode is not supported.2. The group key is not supported.3. The crypto extension key is not supported. |
+| [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
+| [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
 
 **示例：**
 
 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```TypeScript
+/* 以导出RSA公钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
@@ -86,6 +95,7 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -97,6 +107,7 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   })
 }
 
+/* 2. 导出公钥 */
 async function ExportPublicKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{

@@ -1,14 +1,22 @@
 # requestSerialRight
 
+## 导入模块
+
+```TypeScript
+import { serialManager } from '@kit.BasicServicesKit';
+```
+
 ## requestSerialRight
 
 ```TypeScript
 function requestSerialRight(portId: number): Promise<boolean>
 ```
 
-����Ӧ�ó�����ʴ����豸��Ȩ�ޡ�Ӧ���˳��Զ��Ƴ��Դ����豸�ķ���Ȩ�ޣ���Ӧ����������Ҫ����������Ȩ��ʹ��Promise�첽�ص���
+请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。
 
 **起始版本：** 19
+
+<!--Device-serialManager-function requestSerialRight(portId: int): Promise<boolean>--><!--Device-serialManager-function requestSerialRight(portId: int): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -16,22 +24,22 @@ function requestSerialRight(portId: number): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | Ŀ���豸�Ķ˿ںţ�����[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getPortList-1)��ȡ�Ĵ��ڲ���SerialPort�� |
+| portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist-1)获取的串口参数SerialPort。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise����true��ʾ����Ȩ�޳ɹ���false��ʾ����Ȩ��ʧ�ܡ� |
+| Promise<boolean> | Promise对象，true表示请求权限成功，false表示请求权限失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401) |  |
-| [14400005](../../errorcode-universal.md#14400005) |  |
-| [31400001](../../errorcode-universal.md#31400001) |  |
-| [31400003](../../errorcode-universal.md#31400003) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
+| [14400005](../../apis-basic-services-kit/errorcode-usb.md#14400005-数据库操作异常) |  |
+| [31400001](../../apis-basic-services-kit/errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400003](../../apis-basic-services-kit/errorcode-usb.md#31400003-端口号不存在) |  |
 
 **示例：**
 
@@ -40,9 +48,10 @@ function requestSerialRight(portId: number): Promise<boolean>
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function requestSerialRight() {
+function requestSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -61,6 +70,8 @@ function requestSerialRight() {
       } else {
         console.info('grant permission successfully');
       }
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to request serial right. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }

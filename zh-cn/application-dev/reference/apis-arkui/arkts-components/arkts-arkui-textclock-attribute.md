@@ -8,6 +8,8 @@
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class TextClockAttribute extends CommonMethod<TextClockAttribute>--><!--Device-unnamed-declare class TextClockAttribute extends CommonMethod<TextClockAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentModifier
@@ -22,7 +24,9 @@ contentModifier(modifier: ContentModifier<TextClockConfiguration>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextClockAttribute-contentModifier(modifier: ContentModifier<TextClockConfiguration>): TextClockAttribute--><!--Device-TextClockAttribute-contentModifier(modifier: ContentModifier<TextClockConfiguration>): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +34,7 @@ contentModifier(modifier: ContentModifier<TextClockConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | ContentModifier&lt;TextClockConfiguration&gt; | 是 | 在TextClock组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-contentmodifier-i.md)<TextClockConfiguration> | 是 | 在TextClock组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## dateTimeOptions
 
@@ -44,9 +48,11 @@ dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>): TextClockAttribute--><!--Device-TextClockAttribute-dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +60,7 @@ dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dateTimeOptions | Optional&lt;DateTimeOptions&gt; | 是 | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br/>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。 |
+| dateTimeOptions | [Optional](arkts-arkui-optional-t.md)<DateTimeOptions> | 是 | 设置小时是否显示前导0，只支持设置hour参数，参数值为{hour: "2-digit"}时表示显示前导0，参数值为{hour: "numeric"}时表示不显示前导0。<br/>默认值：undefined，默认状态下，24小时制显示前导0，12小时制不显示前导0。 |
 
 ## fontColor
 
@@ -66,9 +72,11 @@ fontColor(value: ResourceColor)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-fontColor(value: ResourceColor): TextClockAttribute--><!--Device-TextClockAttribute-fontColor(value: ResourceColor): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +84,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 字体颜色。<br/>Wearable设备上默认值：'#c5ffffff'，其他设备默认值：'e6182431' |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 字体颜色。<br/>Wearable设备上默认值：'#c5ffffff'，其他设备默认值：'e6182431' |
 
 ## fontFamily
 
@@ -88,9 +96,11 @@ fontFamily(value: ResourceStr)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-fontFamily(value: ResourceStr): TextClockAttribute--><!--Device-TextClockAttribute-fontFamily(value: ResourceStr): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +108,7 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceStr | 是 | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ## fontFeature
 
@@ -120,9 +130,11 @@ fontFeature(value: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-fontFeature(value: string): TextClockAttribute--><!--Device-TextClockAttribute-fontFeature(value: string): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,9 +154,11 @@ fontSize(value: Length)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-fontSize(value: Length): TextClockAttribute--><!--Device-TextClockAttribute-fontSize(value: Length): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +166,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Length | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
 
 ## fontStyle
 
@@ -164,9 +178,11 @@ fontStyle(value: FontStyle)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-fontStyle(value: FontStyle): TextClockAttribute--><!--Device-TextClockAttribute-fontStyle(value: FontStyle): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,7 +190,7 @@ fontStyle(value: FontStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | FontStyle | 是 | 字体样式。<br/>默认值：FontStyle.Normal，表示标准的字体样式（非斜体）。 |
+| value | [FontStyle](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontstyle-e.md) | 是 | 字体样式。<br/>默认值：FontStyle.Normal，表示标准的字体样式（非斜体）。 |
 
 ## fontWeight
 
@@ -186,9 +202,11 @@ fontWeight(value: number | FontWeight | string)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-fontWeight(value: number | FontWeight | string): TextClockAttribute--><!--Device-TextClockAttribute-fontWeight(value: number | FontWeight | string): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,8 +248,7 @@ a：上午/下午（当设置小时制式为H时，该参数不生效）
 
 允许自行拼接组合显示格式，即：年、月、日、星期、时、分、秒、毫秒可拆分为子元素，可自行排布组合。时间更新频率最高为一秒一次，不建议单独设置厘秒和毫秒格式。
 
-当设置无效字母时（非上述字母被认为是无效字母），该字母会被忽略。如果format全是无效字母时，显示格式跟随系统语言和系统小时制。例如系统语言为中文时，12小时制显示格式为yyyy/MM/dd aa hh:mm:ss.SSS，24
-小时制显示格式为yyyy/MM/dd HH:mm:ss.SSS。
+当设置无效字母时（非上述字母被认为是无效字母），该字母会被忽略。如果format全是无效字母时，显示格式跟随系统语言和系统小时制。例如系统语言为中文时，12小时制显示格式为yyyy/MM/dd aa hh:mm:ss.SSS，24小时制显示格式为yyyy/MM/dd HH:mm:ss.SSS。
 
 若format为空字符串（""）或者undefined，则使用默认值。
 
@@ -243,43 +260,45 @@ a：上午/下午（当设置小时制式为H时，该参数不生效）
 
 以下是format输入的格式样式及对应的显示效果：
 
-| 输入格式 | 显示效果 |
-| ---------------------- | ------------------- |
-| yyyy年M月d日 EEEE | 2023年2月4日 星期六 |
-| yyyy年M月d日 | 2023年2月4日 |
-| M月d日 EEEE | 2月4日 星期六 |
-| M月d日 | 2月4日 |
-| MM/dd/yyyy | 02/04/2023 |
-| EEEE MM月dd日 | 星期六 02月04日 |
-| yyyy（完整年份） | 2023年 |
-| yy（年份后两位） | 23年 |
-| MM（完整月份） | 02月 |
-| M（月份） | 2月 |
-| dd（完整日期） | 04日 |
-| d（日期） | 4日 |
-| EEEE（完整星期） | 星期六 |
-| E、EE、EEE（简写星期） | 周六 |
-| yyyy年M月d日 | 2023年2月4日 |
-| yyyy/M/d | 2023/2/4 |
-| yyyy-M-d | 2023-2-4 |
-| yyyy.M.d | 2023.2.4 |
-| HH:mm:ss（时:分:秒） | 17:00:04 |
-| aa hh:mm:ss（时:分:秒） | 上午 5:00:04 |
-| hh:mm:ss（时:分:秒） | 5:00:04 |
-| HH:mm（时:分） | 17:00 |
-| aa hh:mm（时:分） | 上午 5:00 |
-| hh:mm（时:分） | 5:00 |
-| mm:ss（分:秒） | 00:04 |
-| mm:ss.SS（分:秒.厘秒） | 00:04.91 |
-| mm:ss.SSS（分:秒.毫秒） | 00:04.536 |
-| hh:mm:ss aa | 5:00:04 上午 |
+| 输入格式 | 显示效果 |  
+| ---------------------- | ------------------- |  
+| yyyy年M月d日 EEEE | 2023年2月4日 星期六 |  
+| yyyy年M月d日 | 2023年2月4日 |  
+| M月d日 EEEE | 2月4日 星期六 |  
+| M月d日 | 2月4日 |  
+| MM/dd/yyyy | 02/04/2023 |  
+| EEEE MM月dd日 | 星期六 02月04日 |  
+| yyyy（完整年份） | 2023年 |  
+| yy（年份后两位） | 23年 |  
+| MM（完整月份） | 02月 |  
+| M（月份） | 2月 |  
+| dd（完整日期） | 04日 |  
+| d（日期） | 4日 |  
+| EEEE（完整星期） | 星期六 |  
+| E、EE、EEE（简写星期） | 周六 |  
+| yyyy年M月d日 | 2023年2月4日 |  
+| yyyy/M/d | 2023/2/4 |  
+| yyyy-M-d | 2023-2-4 |  
+| yyyy.M.d | 2023.2.4 |  
+| HH:mm:ss（时:分:秒） | 17:00:04 |  
+| aa hh:mm:ss（时:分:秒） | 上午 5:00:04 |  
+| hh:mm:ss（时:分:秒） | 5:00:04 |  
+| HH:mm（时:分） | 17:00 |  
+| aa hh:mm（时:分） | 上午 5:00 |  
+| hh:mm（时:分） | 5:00 |  
+| mm:ss（分:秒） | 00:04 |  
+| mm:ss.SS（分:秒.厘秒） | 00:04.91 |  
+| mm:ss.SSS（分:秒.毫秒） | 00:04.536 |  
+| hh:mm:ss aa | 5:00:04 上午 |  
 | HH | 17 |
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-format(value: ResourceStr): TextClockAttribute--><!--Device-TextClockAttribute-format(value: ResourceStr): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +306,7 @@ a：上午/下午（当设置小时制式为H时，该参数不生效）
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceStr | 是 | 显示时间格式。<br>**起始版本：** 20 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 显示时间格式。<br>**起始版本：** 20 |
 
 ## onDateChange
 
@@ -303,9 +322,11 @@ onDateChange(event: (value: number) => void)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-onDateChange(event: (value: number) => void): TextClockAttribute--><!--Device-TextClockAttribute-onDateChange(event: (value: number) => void): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +334,7 @@ onDateChange(event: (value: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (value: number) =&gt; void | 是 | Unix Time Stamp，即自1970年1月1日（UTC）起经过的秒数。 |
+| event | (value: number) => void | 是 | Unix Time Stamp，即自1970年1月1日（UTC）起经过的秒数。 |
 
 ## textShadow
 
@@ -327,9 +348,11 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockAttribute-textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute--><!--Device-TextClockAttribute-textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,5 +360,5 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ShadowOptions \| Array&lt;ShadowOptions&gt; | 是 | 文字的字体阴影效果。 |
+| value | ShadowOptions \| Array<ShadowOptions> | 是 | 文字的字体阴影效果。 |
 

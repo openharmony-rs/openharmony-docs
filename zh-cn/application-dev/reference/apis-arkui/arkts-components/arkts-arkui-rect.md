@@ -7,6 +7,9 @@
 > 该组件从API version 20开始支持使用[AttributeUpdater]{@link AttributeUpdater}类的
 > [updateConstructorParams](docroot://reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
+## 子组件
+
+无
 
 ## Rect
 
@@ -16,14 +19,19 @@ Rect(
     )
 ```
 
-Use new function to create Rect.
-Anonymous Object Rectification.
+Use new function to create Rect.Anonymous Object Rectification.
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RectInterface-new (
+      options?: RectOptions | RoundedRectOptions,
+    ): RectAttribute--><!--Device-RectInterface-new (
+      options?: RectOptions | RoundedRectOptions,
+    ): RectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,9 +53,15 @@ Rect(
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RectInterface-(
+      options?: RectOptions | RoundedRectOptions,
+    ): RectAttribute--><!--Device-RectInterface-(
+      options?: RectOptions | RoundedRectOptions,
+    ): RectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

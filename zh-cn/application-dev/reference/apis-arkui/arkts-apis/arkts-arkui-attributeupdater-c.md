@@ -1,11 +1,12 @@
 # AttributeUpdater
 
-为[AttributeModifier](../arkts-components/arkts-arkui-attributemodifier-i.md)的实现类，开发者需要自定义class继承AttributeUpdater。
-其中C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等，仅在使用updateConstructorParams时才需要传递C类型。
+为[AttributeModifier](../arkts-components/arkts-arkui-common-attributemodifier-i.md)的实现类，开发者需要自定义class继承AttributeUpdater。其中C代表组件的构造函数类型，比如Text组件的TextInterface，Image组件的ImageInterface等，仅在使用updateConstructorParams时才需要传递C类型。
 
 **继承/实现关系：** AttributeUpdater implements [AttributeModifier<T>](AttributeModifier<T>)
 
 **起始版本：** 12
+
+<!--Device-unnamed-export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T>--><!--Device-unnamed-export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,7 +22,9 @@ applyNormalAttribute?(instance: T): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AttributeUpdater-applyNormalAttribute?(instance: T): void--><!--Device-AttributeUpdater-applyNormalAttribute?(instance: T): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,7 +46,9 @@ AttributeUpdater首次设置给组件时提供的样式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AttributeUpdater-initializeModifier(instance: T): void--><!--Device-AttributeUpdater-initializeModifier(instance: T): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +70,9 @@ onComponentChanged(component: T): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AttributeUpdater-onComponentChanged(component: T): void--><!--Device-AttributeUpdater-onComponentChanged(component: T): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +96,9 @@ get attribute(): T | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AttributeUpdater-get attribute(): T | undefined--><!--Device-AttributeUpdater-get attribute(): T | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +116,9 @@ updateConstructorParams: C
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AttributeUpdater-updateConstructorParams: C--><!--Device-AttributeUpdater-updateConstructorParams: C-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

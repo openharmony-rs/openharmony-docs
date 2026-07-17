@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-interface GetPropertyRequest--><!--Device-osAccount-interface GetPropertyRequest-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## accountId
 
@@ -19,6 +27,8 @@ accountId?: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-GetPropertyRequest-accountId?: int--><!--Device-GetPropertyRequest-accountId?: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ authType: AuthType
 
 **起始版本：** 8
 
+<!--Device-GetPropertyRequest-authType: AuthType--><!--Device-GetPropertyRequest-authType: AuthType-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ keys: Array<GetPropertyType>
 **类型：** Array<GetPropertyType>
 
 **起始版本：** 8
+
+<!--Device-GetPropertyRequest-keys: Array<GetPropertyType>--><!--Device-GetPropertyRequest-keys: Array<GetPropertyType>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

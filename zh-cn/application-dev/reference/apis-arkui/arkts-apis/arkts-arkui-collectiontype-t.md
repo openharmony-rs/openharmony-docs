@@ -11,7 +11,11 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-export declare type CollectionType<S> = Array<S> | Map<string | number, S> |
+  Set<S> | collections.Array<S> | collections.Map<string | number, S> | collections.Set<S>--><!--Device-unnamed-export declare type CollectionType<S> = Array<S> | Map<string | number, S> |
+  Set<S> | collections.Array<S> | collections.Map<string | number, S> | collections.Set<S>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4,9 +4,11 @@
 export type BundlePackInfo = _PackInfo.BundlePackInfo
 ```
 
-Ӧ�ð���Ϣ��
+应用包信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type BundlePackInfo = _PackInfo.BundlePackInfo--><!--Device-freeInstall-export type BundlePackInfo = _PackInfo.BundlePackInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

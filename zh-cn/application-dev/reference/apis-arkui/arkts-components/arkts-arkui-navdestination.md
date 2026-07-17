@@ -17,6 +17,15 @@
 >
 > - 不建议设置位置、大小等布局相关属性，可能会造成页面显示异常。例如在NavDestination上添加[zIndex]{@link CommonMethod#zIndex}属性时，会覆盖掉系统设置的层级，可能导致出现显示异常。
 
+## 子组件
+
+> **说明：**  
+>  
+> - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、  
+> [ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)和  
+> [LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。  
+>  
+> - 子组件个数：多个。
 
 ## NavDestination
 
@@ -28,7 +37,9 @@ NavDestination()
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInterface-(): NavDestinationAttribute--><!--Device-NavDestinationInterface-(): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

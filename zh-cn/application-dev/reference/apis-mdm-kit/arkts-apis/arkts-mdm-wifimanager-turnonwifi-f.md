@@ -1,20 +1,22 @@
 # turnOnWifi
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+```
+
 ## turnOnWifi
 
 ```TypeScript
 function turnOnWifi(admin: Want, isForce: boolean): void
 ```
 
-��Wi-Fi���ء�
+打开Wi-Fi开关。
 
-��������£�ͨ�����ӿڴ�Wi-Fi���أ����ʧ�ܲ���ʾ"ϵͳ���ܱ�����"��
+以下情况下，通过本接口打开Wi-Fi开关，会打开失败并提示"系统功能被禁用"：
 
-?�Ѿ�ͨ��
-[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
-�ӿڽ�����Wi-Fi����ͨ��
-[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
-�ӿ�����Wi-Fi�����"ϵͳ���ܱ�����"������
+?已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用Wi-Fi，解决"系统功能被禁用"报错。
 
 **起始版本：** 20
 
@@ -22,23 +24,25 @@ function turnOnWifi(admin: Want, isForce: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-wifiManager-function turnOnWifi(admin: Want, isForce: boolean): void--><!--Device-wifiManager-function turnOnWifi(admin: Want, isForce: boolean): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| isForce | boolean | 是 | �Ƿ�ǿ�ƴ�Wi-Fi���ܡ�<br/>true��ʾǿ�ƿ���Wi-Fi��ǿ�ƿ�����֧���û����豸���ֶ��ر�Wi-Fi���أ��������<br/>[turnOffWifi](arkts-mdm-wifimanager-turnoffwifi-f.md#turnOffWifi-1)�ӿڹرա�false��ʾ��ǿ�ƿ���Wi-Fi����ʱ�û��������豸���ֶ������ر�Wi-Fi���ء� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| isForce | boolean | 是 | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](arkts-mdm-wifimanager-turnoffwifi-f.md#turnoffwifi-1)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [203](../../errorcode-universal.md#203-This) | This function is prohibited by enterprise management policies. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
 
 **示例：**
 

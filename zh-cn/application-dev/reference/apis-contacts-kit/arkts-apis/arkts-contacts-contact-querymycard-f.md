@@ -1,12 +1,18 @@
 # queryMyCard
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## queryMyCard
 
 ```TypeScript
 function queryMyCard(callback: AsyncCallback<Contact>): void
 ```
 
-��ѯ���ҵ���Ƭ����ʹ��callback�첽�ص���
+查询“我的名片”。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -16,13 +22,15 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryMyCard(callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryMyCard(callback: AsyncCallback<Contact>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Contact&gt; | 是 | �ص��������ɹ����ء��ҵ���Ƭ����Ϣ��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -48,11 +56,13 @@ contact.queryMyCard((err: BusinessError, data) => {
 function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 ```
 
-��ѯ���ҵ���Ƭ����ʹ��callback�첽�ص���
+查询“我的名片”。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -60,15 +70,15 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| callback | AsyncCallback&lt;Contact&gt; | 是 | �ص��������ɹ����ء��ҵ���Ƭ����Ϣ��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -98,7 +108,7 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>): void
 ```
 
-��ѯ���ҵ���Ƭ����֧�ִ�����ϵ�˵������б�����ʹ��callback�첽�ص���
+查询“我的名片”（支持传入联系人的属性列表）。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -108,14 +118,16 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| attrs | ContactAttributes | 是 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
-| callback | AsyncCallback&lt;Contact&gt; | 是 | �ص��������ɹ����ء��ҵ���Ƭ����Ϣ��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -143,11 +155,13 @@ contact.queryMyCard({
 function queryMyCard(context: Context, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void
 ```
 
-��ѯ���ҵ���Ƭ����֧�ִ�����ϵ�˵������б�����ʹ��callback�첽�ص���
+查询“我的名片”（支持传入联系人的属性列表）。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryMyCard(context: Context, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryMyCard(context: Context, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -155,16 +169,16 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| attrs | ContactAttributes | 是 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
-| callback | AsyncCallback&lt;Contact&gt; | 是 | �ص��������ɹ����ء��ҵ���Ƭ����Ϣ��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -196,7 +210,7 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 ```
 
-��ѯ���ҵ���Ƭ����֧�ִ�����ϵ�˵������б�����ʹ��Promise�첽�ص���
+查询“我的名片”（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -206,19 +220,21 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryMyCard(attrs?: ContactAttributes): Promise<Contact>--><!--Device-contact-function queryMyCard(attrs?: ContactAttributes): Promise<Contact>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| attrs | ContactAttributes | 否 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Contact&gt; | Promise���󡣷��ء��ҵ���Ƭ����ϵ�˶��� |
+| Promise<Contact> | Promise对象。返回“我的名片”联系人对象。 |
 
 **示例：**
 
@@ -242,11 +258,13 @@ promise.then((data) => {
 function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Contact>
 ```
 
-��ѯ���ҵ���Ƭ����֧�ִ�����ϵ�˵������б�����ʹ��Promise�첽�ص���
+查询“我的名片”（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Contact>--><!--Device-contact-function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Contact>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -254,21 +272,21 @@ function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Conta
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| attrs | ContactAttributes | 否 | ��ϵ�˵������б������Ϊ�գ����ѯ��ϵ�˵����������ֶΣ������������绰������ȣ��� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Contact&gt; | Promise���󡣷��ء��ҵ���Ƭ����ϵ�˶��� |
+| Promise<Contact> | Promise对象。返回“我的名片”联系人对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 

@@ -1,15 +1,22 @@
 # getTargetOverlayModuleInfos
 
+## 导入模块
+
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+```
+
 ## getTargetOverlayModuleInfos
 
 ```TypeScript
 function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void
 ```
 
-��ȡָ����Ŀ��module��������OverlayModuleInfo��overlay������moduleһ����Ϊ�豸�ϴ��ڵķ�overlay������module�ṩ���ǵ���Դ�ļ������з�overlay������module������Ŀ��
-module��ʹ��callback�첽�ص���
+获取指定的目标module所关联的OverlayModuleInfo。overlay特征的module一般是为设备上存在的非overlay特征的module提供覆盖的资源文件，其中非overlay特征的module被称作目标module。使用callback异步回调。
 
 **起始版本：** 10
+
+<!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void--><!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -17,16 +24,16 @@ module��ʹ��callback�첽�ص���
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetModuleName | string | 是 | ָ����ǰӦ���е�Ŀ��module�����ơ� |
-| callback | AsyncCallback&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)������ȡָ����Ŀ��module<br/>��[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#OverlayModuleInfo)�ɹ�ʱ��err����undefined������ص��������ؾ�������<br/>�� |
+| targetModuleName | string | 是 | 指定当前应用中的目标module的名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<OverlayModuleInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取指定的目标module的[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)成功时，err返回undefined。否则回调函数返回具体错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module name is not found. |
-| [17700034](../../errorcode-universal.md#17700034-The) | The specified module is an overlay module. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
+| [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
 
 **示例：**
 
@@ -60,10 +67,11 @@ try {
 function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<OverlayModuleInfo>>
 ```
 
-��ȡָ����Ŀ��module��������OverlayModuleInfo��overlay������moduleһ����Ϊ�豸�ϴ��ڵķ�overlay������module�ṩ���ǵ���Դ�ļ������з�overlay������module������Ŀ��
-module��ʹ��Promise�첽�ص���
+获取指定的目标module所关联的OverlayModuleInfo。overlay特征的module一般是为设备上存在的非overlay特征的module提供覆盖的资源文件，其中非overlay特征的module被称作目标module。使用Promise异步回调。
 
 **起始版本：** 10
+
+<!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<OverlayModuleInfo>>--><!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<OverlayModuleInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -71,21 +79,21 @@ module��ʹ��Promise�첽�ص���
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetModuleName | string | 是 | ָ����ǰӦ���е�Ŀ��module�����ơ� |
+| targetModuleName | string | 是 | 指定当前应用中的目标module的名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;OverlayModuleInfo&gt;&gt; | Promise���󣬷���&gt;�� |
+| Promise<Array<OverlayModuleInfo>> | Promise对象，返回&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)&gt;&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module name is not found. |
-| [17700034](../../errorcode-universal.md#17700034-The) | The specified module is an overlay module. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
+| [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
 
 **示例：**
 

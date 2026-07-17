@@ -1,15 +1,10 @@
 # AppDistributionType
 
-```TypeScript
-enum AppDistributionType
-```
-
-Ӧ�ó���ǩ��֤��ķַ����͡���ϸ������μ�[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md#ApplicationInfo)��appDistributionType����
-��
+应用程序签名证书的分发类型。详细介绍请参见[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)的appDistributionType属性。
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-bundleManager-enum AppDistributionType--><!--Device-bundleManager-enum AppDistributionType-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -19,11 +14,13 @@ enum AppDistributionType
 APP_GALLERY = 1
 ```
 
-Ӧ���г���װ��Ӧ�á�
+应用市场安装的应用。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-APP_GALLERY = 1--><!--Device-AppDistributionType-APP_GALLERY = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -33,11 +30,13 @@ APP_GALLERY = 1
 ENTERPRISE = 2
 ```
 
-��ҵӦ�á�
+企业应用。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -47,11 +46,13 @@ ENTERPRISE = 2
 ENTERPRISE_NORMAL = 3
 ```
 
-��ͨ��ҵӦ�á�
+普通企业应用。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -61,11 +62,13 @@ ENTERPRISE_NORMAL = 3
 ENTERPRISE_MDM = 4
 ```
 
-��ҵMDMӦ�á�
+企业MDM应用。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -75,11 +78,13 @@ ENTERPRISE_MDM = 4
 INTERNALTESTING = 5
 ```
 
-Ӧ���г��ڲ��Ӧ�á�
+应用市场内测的应用。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-INTERNALTESTING = 5--><!--Device-AppDistributionType-INTERNALTESTING = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -89,11 +94,13 @@ INTERNALTESTING = 5
 CROWDTESTING = 6
 ```
 
-�ڰ�����Ӧ�á�
+众包测试应用。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

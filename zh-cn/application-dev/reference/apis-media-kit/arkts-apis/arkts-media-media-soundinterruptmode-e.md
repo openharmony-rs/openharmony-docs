@@ -1,14 +1,10 @@
 # SoundInterruptMode
 
-```TypeScript
-enum SoundInterruptMode
-```
-
 表示在SoundPool中，同一ID的音频在播放时的打断模式的枚举。
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-media-enum SoundInterruptMode--><!--Device-media-enum SoundInterruptMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -24,6 +20,8 @@ NO_INTERRUPT = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SoundInterruptMode-NO_INTERRUPT = 0--><!--Device-SoundInterruptMode-NO_INTERRUPT = 0-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 ## SAME_SOUND_INTERRUPT
@@ -37,6 +35,8 @@ SAME_SOUND_INTERRUPT = 1
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SoundInterruptMode-SAME_SOUND_INTERRUPT = 1--><!--Device-SoundInterruptMode-SAME_SOUND_INTERRUPT = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 

@@ -1,14 +1,10 @@
 # AddMethod（系统接口）
 
-```TypeScript
-enum AddMethod
-```
-
-���������������
+添加网络包方法。
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-networkManager-enum AddMethod--><!--Device-networkManager-enum AddMethod-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,11 +16,13 @@ enum AddMethod
 APPEND = 0
 ```
 
-׷�ӡ�
+追加。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddMethod-APPEND = 0--><!--Device-AddMethod-APPEND = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,11 +34,13 @@ APPEND = 0
 INSERT = 1
 ```
 
-���롣
+插入。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddMethod-INSERT = 1--><!--Device-AddMethod-INSERT = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -65,7 +65,7 @@ rotate(options: Optional\<RotateOptions>): T
 
 ## rotate<sup>20+</sup>
 
-rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
+rotate(options: Optional\<RotateOptions \| RotateAngleOptions>): T
 
 设置组件旋转效果。与[rotate](#rotate18)相比，options参数新增了对RotateAngleOptions类型的支持。
 
@@ -105,7 +105,7 @@ translate(value: TranslateOptions): T
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [TranslateOptions](#translateoptions对象说明) | 是   | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x:&nbsp;0,<br/>y:&nbsp;0,<br/>z:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](figures/coordinateNote.png) |
+| value  | [TranslateOptions](#translateoptions对象说明) | 是   | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x、y、z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值：<br/>{<br/>x:&nbsp;0,<br/>y:&nbsp;0,<br/>z:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](figures/coordinateNote.png) |
 
 **返回值：**
 
@@ -132,7 +132,7 @@ translate(translate: Optional\<TranslateOptions>): T
 <!--Table: 10%; auto; 10%; auto-->
 | 参数名    | 类型                                                     | 必填 | 说明                                                         |
 | --------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| translate | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TranslateOptions](#translateoptions对象说明)> | 是   | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x:&nbsp;0,<br/>y:&nbsp;0,<br/>z:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](figures/coordinateNote.png)<br/>当translate的值为undefined时，恢复为无平移效果。 |
+| translate | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TranslateOptions](#translateoptions对象说明)> | 是   | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值：<br/>{<br/>x:&nbsp;0,<br/>y:&nbsp;0,<br/>z:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](figures/coordinateNote.png)<br/>当translate的值为undefined时，恢复为无平移效果。 |
 
 **返回值：**
 
@@ -156,7 +156,7 @@ scale(value: ScaleOptions): T
 
 | 参数名 | 类型                                  | 必填 | 说明                                                         |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ScaleOptions](#scaleoptions对象说明) | 是   | 可以分别设置X轴、Y轴、Z轴的缩放比例，默认值为1，同时可以通过centerX和centerY设置缩放的中心点。<br/>默认值:<br/>{<br/>x:&nbsp;1,<br/>y:&nbsp;1,<br/>z:&nbsp;1,<br/>centerX:'50%',<br/>centerY:'50%'<br/>} |
+| value  | [ScaleOptions](#scaleoptions对象说明) | 是   | 可以分别设置X轴、Y轴、Z轴的缩放比例，默认值为1，同时可以通过centerX和centerY设置缩放的中心点。<br/>默认值：<br/>{<br/>x:&nbsp;1,<br/>y:&nbsp;1,<br/>z:&nbsp;1,<br/>centerX:'50%',<br/>centerY:'50%'<br/>} |
 
 **返回值：**
 
@@ -182,7 +182,7 @@ scale(options: Optional\<ScaleOptions>): T
 
 | 参数名  | 类型                                             | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ScaleOptions](#scaleoptions对象说明)> | 是   | 可以分别设置X轴、Y轴、Z轴的缩放比例，默认值为1，同时可以通过centerX和centerY设置缩放的中心点。<br/>默认值:<br/>{<br/>x:&nbsp;1,<br/>y:&nbsp;1,<br/>z:&nbsp;1,<br/>centerX:'50%',<br/>centerY:'50%'<br/>}<br/>当options的值为undefined时，恢复为无缩放效果。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ScaleOptions](#scaleoptions对象说明)> | 是   | 可以分别设置X轴、Y轴、Z轴的缩放比例，默认值为1，同时可以通过centerX和centerY设置缩放的中心点。<br/>默认值：<br/>{<br/>x:&nbsp;1,<br/>y:&nbsp;1,<br/>z:&nbsp;1,<br/>centerX:'50%',<br/>centerY:'50%'<br/>}<br/>当options的值为undefined时，恢复为无缩放效果。 |
 
 **返回值：**
 
@@ -262,7 +262,7 @@ transform3D(transform: Optional\<Matrix4Transit>): T
 
 ## Matrix4Transit<sup>20+</sup>
 
-type Matrix4Transit = Matrix4Transit
+type Matrix4Transit = import('../api/@ohos.matrix4').default.Matrix4Transit
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -272,7 +272,7 @@ type Matrix4Transit = Matrix4Transit
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
+| import('../api/@ohos.matrix4').default.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
 
 ## RotateOptions对象说明
 
@@ -372,12 +372,12 @@ struct TransformExample {
           centerX: '50%',
           centerY: '50%',
           angle: 300
-        })// 组件以矢量(0,0,1)为旋转轴，绕中心点顺时针旋转300度
+        }) // 组件以矢量(0,0,1)为旋转轴，绕中心点顺时针旋转300度
         .width(100).height(100).backgroundColor(0xAFEEEE)
 
       Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(14)
       Row()
-        .translate({ x: 100, y: 10 })// x轴方向平移100，y轴方向平移10
+        .translate({ x: 100, y: 10 }) // x轴方向平移100，y轴方向平移10
         .width(100)
         .height(100)
         .backgroundColor(0xAFEEEE)
@@ -385,7 +385,7 @@ struct TransformExample {
 
       Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
       Row()
-        .scale({ x: 2, y: 0.5 })// 高度缩小一倍，宽度放大一倍，z轴在2D下无效果
+        .scale({ x: 2, y: 0.5 }) // 高度缩小一倍，宽度放大一倍，z轴在2D下无效果
         .width(100).height(100).backgroundColor(0xAFEEEE)
 
       Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
@@ -435,7 +435,7 @@ struct Index {
                 console.info('play end');
               }
             }, () => {
-              this.prep = 500 // 组件视距从10变换到500
+              this.prep = 500; // 组件视距从10变换到500
             })
           })
       }
@@ -511,7 +511,7 @@ struct MatrixExample {
           y: 1,
           centerX: 100,
           centerY: 60
-        })// transform的rotate不指定centerX、centerY，此次旋转的中心相对于组件本身锚点没有额外偏移
+        }) // transform的rotate不指定centerX、centerY，此次旋转的中心相对于组件本身锚点没有额外偏移
           // 该组件通过scale设置的锚点，绕(100vp,60vp)进行旋转，和"Hello2"实现同样的旋转效果
         .transform(matrix4.identity().rotate({ z: 1, angle: 90 }))
     }.width('100%')
@@ -534,7 +534,7 @@ let matrix: matrix4.Matrix4Transit = matrix4.init([
   0, 0.75, 0, 0,
   0.707107, 0, 0.707107, -0.000707107,
   0, 0, 0, 1
-])
+]);
 
 @Entry
 @Component
@@ -577,10 +577,10 @@ struct Index {
           .backgroundColor(Color.Blue)
           .rotate({ angleZ: -45 })
         Button('rotateAngle')
-          .width("40%")
+          .width('40%')
           .margin({ top: 100 })
           .rotate({ angleY: 30, centerX: '90%', perspective: 10 })
-        Image($r("app.media.startIcon"))
+        Image($r('app.media.startIcon'))
           .width(200)
           .height(200)
           .rotate({

@@ -1,5 +1,11 @@
 # @ohos.application.DataShareExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { DataShareExtensionAbility } from '@kit.ArkData';
+```
+
 ## 汇总
 
 <!--Del-->
@@ -7,7 +13,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DataShareExtensionAbility](arkts-arkdata-datashareextensionability-c-sys.md) | 本模块提供数据共享和扩展功能。 |
+| [DataShareExtensionAbility](arkts-arkdata-application-datashareextensionability-datashareextensionability-c-sys.md) | 本模块提供数据共享和扩展功能。 |
 <!--DelEnd-->
 
 <!--Del-->

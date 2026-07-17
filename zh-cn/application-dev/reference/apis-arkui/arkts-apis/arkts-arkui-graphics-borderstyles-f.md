@@ -12,7 +12,9 @@ export function borderStyles(all: BorderStyle): Edges<BorderStyle>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-export function borderStyles(all: BorderStyle): Edges<BorderStyle>--><!--Device-unnamed-export function borderStyles(all: BorderStyle): Edges<BorderStyle>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +22,11 @@ export function borderStyles(all: BorderStyle): Edges<BorderStyle>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| all | BorderStyle | 是 | 边框样式。 |
+| all | [BorderStyle](arkts-arkui-enums-borderstyle-e.md) | 是 | 边框样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Edges&lt;BorderStyle&gt; | 边框样式均设置为传入值的边框样式对象。 |
+| [Edges](arkts-arkui-graphics-edges-i.md)<BorderStyle> | 边框样式均设置为传入值的边框样式对象。 |
 

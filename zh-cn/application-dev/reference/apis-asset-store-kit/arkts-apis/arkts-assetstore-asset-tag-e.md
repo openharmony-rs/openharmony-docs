@@ -1,17 +1,15 @@
 # Tag
 
-```TypeScript
-enum Tag
-```
+枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的键。
 
-枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md#AssetMap)的键。
-
-> **说明：**
->
-> 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见
+> **说明：**  
+>  
+> 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见  
 > [各个场景的开发指导](../../../../security/AssetStoreKit/asset-store-kit-overview.md)。
 
 **起始版本：** 11
+
+<!--Device-asset-enum Tag--><!--Device-asset-enum Tag-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -27,6 +25,8 @@ SECRET = TagType.BYTES | 0x01
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-SECRET = TagType.BYTES | 0x01--><!--Device-Tag-SECRET = TagType.BYTES | 0x01-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## ALIAS
@@ -40,6 +40,8 @@ ALIAS = TagType.BYTES | 0x02
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-ALIAS = TagType.BYTES | 0x02--><!--Device-Tag-ALIAS = TagType.BYTES | 0x02-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -55,6 +57,8 @@ ACCESSIBILITY = TagType.NUMBER | 0x03
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-ACCESSIBILITY = TagType.NUMBER | 0x03--><!--Device-Tag-ACCESSIBILITY = TagType.NUMBER | 0x03-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## REQUIRE_PASSWORD_SET
@@ -68,6 +72,8 @@ REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04--><!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -83,6 +89,8 @@ AUTH_TYPE = TagType.NUMBER | 0x05
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-AUTH_TYPE = TagType.NUMBER | 0x05--><!--Device-Tag-AUTH_TYPE = TagType.NUMBER | 0x05-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## AUTH_VALIDITY_PERIOD
@@ -96,6 +104,8 @@ AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06--><!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -111,6 +121,8 @@ AUTH_CHALLENGE = TagType.BYTES | 0x07
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-AUTH_CHALLENGE = TagType.BYTES | 0x07--><!--Device-Tag-AUTH_CHALLENGE = TagType.BYTES | 0x07-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## AUTH_TOKEN
@@ -124,6 +136,8 @@ AUTH_TOKEN = TagType.BYTES | 0x08
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-AUTH_TOKEN = TagType.BYTES | 0x08--><!--Device-Tag-AUTH_TOKEN = TagType.BYTES | 0x08-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -139,6 +153,8 @@ SYNC_TYPE = TagType.NUMBER | 0x10
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-SYNC_TYPE = TagType.NUMBER | 0x10--><!--Device-Tag-SYNC_TYPE = TagType.NUMBER | 0x10-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## IS_PERSISTENT
@@ -150,6 +166,8 @@ IS_PERSISTENT = TagType.BOOL | 0x11
 在应用卸载时是否保留关键资产。
 
 **起始版本：** 11
+
+<!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11--><!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -165,6 +183,8 @@ DATA_LABEL_CRITICAL_1 = TagType.BYTES | 0x20
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-DATA_LABEL_CRITICAL_1 = TagType.BYTES | 0x20--><!--Device-Tag-DATA_LABEL_CRITICAL_1 = TagType.BYTES | 0x20-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## DATA_LABEL_CRITICAL_2
@@ -178,6 +198,8 @@ DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21--><!--Device-Tag-DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -193,6 +215,8 @@ DATA_LABEL_CRITICAL_3 = TagType.BYTES | 0x22
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-DATA_LABEL_CRITICAL_3 = TagType.BYTES | 0x22--><!--Device-Tag-DATA_LABEL_CRITICAL_3 = TagType.BYTES | 0x22-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## DATA_LABEL_CRITICAL_4
@@ -206,6 +230,8 @@ DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23--><!--Device-Tag-DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -221,6 +247,8 @@ DATA_LABEL_NORMAL_1 = TagType.BYTES | 0x30
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-DATA_LABEL_NORMAL_1 = TagType.BYTES | 0x30--><!--Device-Tag-DATA_LABEL_NORMAL_1 = TagType.BYTES | 0x30-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## DATA_LABEL_NORMAL_2
@@ -234,6 +262,8 @@ DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31--><!--Device-Tag-DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -249,6 +279,8 @@ DATA_LABEL_NORMAL_3 = TagType.BYTES | 0x32
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-DATA_LABEL_NORMAL_3 = TagType.BYTES | 0x32--><!--Device-Tag-DATA_LABEL_NORMAL_3 = TagType.BYTES | 0x32-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## DATA_LABEL_NORMAL_4
@@ -262,6 +294,8 @@ DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33--><!--Device-Tag-DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -277,6 +311,8 @@ DATA_LABEL_NORMAL_LOCAL_1 = TagType.BYTES | 0x34
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_1 = TagType.BYTES | 0x34--><!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_1 = TagType.BYTES | 0x34-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## DATA_LABEL_NORMAL_LOCAL_2
@@ -290,6 +326,8 @@ DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35
 **起始版本：** 12
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35--><!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -305,6 +343,8 @@ DATA_LABEL_NORMAL_LOCAL_3 = TagType.BYTES | 0x36
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_3 = TagType.BYTES | 0x36--><!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_3 = TagType.BYTES | 0x36-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## DATA_LABEL_NORMAL_LOCAL_4
@@ -318,6 +358,8 @@ DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37
 **起始版本：** 12
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37--><!--Device-Tag-DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -333,6 +375,8 @@ RETURN_TYPE = TagType.NUMBER | 0x40
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-RETURN_TYPE = TagType.NUMBER | 0x40--><!--Device-Tag-RETURN_TYPE = TagType.NUMBER | 0x40-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## RETURN_LIMIT
@@ -346,6 +390,8 @@ RETURN_LIMIT = TagType.NUMBER | 0x41
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-RETURN_LIMIT = TagType.NUMBER | 0x41--><!--Device-Tag-RETURN_LIMIT = TagType.NUMBER | 0x41-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -363,6 +409,8 @@ RETURN_OFFSET = TagType.NUMBER | 0x42
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-RETURN_OFFSET = TagType.NUMBER | 0x42--><!--Device-Tag-RETURN_OFFSET = TagType.NUMBER | 0x42-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## RETURN_ORDERED_BY
@@ -379,6 +427,8 @@ RETURN_ORDERED_BY = TagType.NUMBER | 0x43
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-RETURN_ORDERED_BY = TagType.NUMBER | 0x43--><!--Device-Tag-RETURN_ORDERED_BY = TagType.NUMBER | 0x43-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## CONFLICT_RESOLUTION
@@ -392,6 +442,8 @@ CONFLICT_RESOLUTION = TagType.NUMBER | 0x44
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44--><!--Device-Tag-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -407,6 +459,8 @@ UPDATE_TIME = TagType.BYTES | 0x45
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Tag-UPDATE_TIME = TagType.BYTES | 0x45--><!--Device-Tag-UPDATE_TIME = TagType.BYTES | 0x45-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## OPERATION_TYPE
@@ -418,6 +472,8 @@ OPERATION_TYPE = TagType.NUMBER | 0x46
 附加的操作类型。
 
 **起始版本：** 12
+
+<!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46--><!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -431,7 +487,9 @@ REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Tag-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47--><!--Device-Tag-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -445,6 +503,8 @@ GROUP_ID = TagType.BYTES | 0x48
 
 **起始版本：** 18
 
+<!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48--><!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## WRAP_TYPE
@@ -456,6 +516,8 @@ WRAP_TYPE = TagType.NUMBER | 0x49
 关键资产支持的加密导入导出类型。
 
 **起始版本：** 18
+
+<!--Device-Tag-WRAP_TYPE = TagType.NUMBER | 0x49--><!--Device-Tag-WRAP_TYPE = TagType.NUMBER | 0x49-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

@@ -1,12 +1,18 @@
 # addDisallowedUninstallBundlesSync
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
+
 ## addDisallowedUninstallBundlesSync
 
 ```TypeScript
 function addDisallowedUninstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void
 ```
 
-����Ӧ������ж�ؽ�ֹ��������������ֹ������Ӧ�ò������ڵ�ǰ/ָ���û���ж�ء�
+添加应用至包卸载禁止名单，添加至禁止名单的应用不允许在当前/指定用户下卸载。
 
 **起始版本：** 12
 
@@ -14,24 +20,26 @@ function addDisallowedUninstallBundlesSync(admin: Want, appIds: Array<string>, a
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-bundleManager-function addDisallowedUninstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void--><!--Device-bundleManager-function addDisallowedUninstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| appIds | Array&lt;string&gt; | 是 | Ӧ��ID���顣<br/>ȡֵ��Χ�������û��¸������������ܳ���200������100�û����Ѿ�������50����101�û�δ���ã���100�û�����������150����101��<br/>������������200����������һ�������ø�������50�������������������⡣<br/>**˵����** ��API version 21�汾��ʼ��֧�ִ���Ӧ�õ�<br/>[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)��<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)���Ƽ�ʹ��<br/>[appIdentifier](../../../../quick-start/common-problem-of-application.md#ʲô��appidentifier)��API version 20��֮ǰ�汾����֧<br/>��[appId](../../../../quick-start/common-problem-of-application.md#ʲô��appid)�� |
-| accountId | number | 否 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ��<br/><br/>- ���ýӿ�ʱ��������accountId����ʾָ���û���<br/>- ���ýӿ�ʱ����δ����accountId����ʾ��ǰ�û���*@ohos.account.osAccount** to obtain the account ID.<br/>- If **accountId** is passed in, this API applies to the<br/>specified user.<br/>- If **accountId** is not passed in, this API applies to the current user. |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| appIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用ID数组。<br/>取值范围：单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。不建议一次性设置个数大于50个，可能引入性能问题。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| accountId | number | 否 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。<br>  - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。*@ohos.account.osAccount** to obtain the account ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

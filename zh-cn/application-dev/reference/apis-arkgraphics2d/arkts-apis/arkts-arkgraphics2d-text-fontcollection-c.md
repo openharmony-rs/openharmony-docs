@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-text-class FontCollection--><!--Device-text-class FontCollection-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## clearCaches
 
@@ -19,6 +27,8 @@ clearCaches(): void
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-clearCaches(): void--><!--Device-FontCollection-clearCaches(): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -53,13 +63,15 @@ static getGlobalInstance(): FontCollection
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontCollection-static getGlobalInstance(): FontCollection--><!--Device-FontCollection-static getGlobalInstance(): FontCollection-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| FontCollection | FontCollection对象。 |
+| [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | FontCollection对象。 |
 
 **示例：**
 
@@ -95,9 +107,11 @@ static getLocalInstance(): FontCollection
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-static getLocalInstance(): FontCollection--><!--Device-FontCollection-static getLocalInstance(): FontCollection-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -105,7 +119,7 @@ static getLocalInstance(): FontCollection
 
 | 类型 | 说明 |
 | --- | --- |
-| FontCollection | FontCollection对象。<br/>@static |
+| [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | FontCollection对象。@static |
 
 **示例：**
 
@@ -121,14 +135,15 @@ let fontCollection = text.FontCollection.getLocalInstance();
 loadFont(name: string, path: string | Resource): Promise<void>
 ```
 
-加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：
-ttf、otf。
+加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-loadFont(name: string, path: string | Resource): Promise<void>--><!--Device-FontCollection-loadFont(name: string, path: string | Resource): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -143,13 +158,13 @@ ttf、otf。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -185,13 +200,15 @@ struct RenderTest {
 loadFontSync(name: string, path: string | Resource): void
 ```
 
-同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-loadFontSync(name: string, path: string | Resource): void--><!--Device-FontCollection-loadFontSync(name: string, path: string | Resource): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -245,14 +262,15 @@ struct RenderTest {
 loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
 ```
 
-同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、
-ttc。
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
 
 **起始版本：** 23
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void--><!--Device-FontCollection-loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -262,20 +280,20 @@ ttc。
 | --- | --- | --- | --- |
 | name | string | 是 | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
 | path | string \| Resource | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
-| index | number | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br/>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+| index | number | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [25900001](../../errorcode-universal.md#25900001-Parameter) | Parameter error. |
-| [25900002](../../errorcode-universal.md#25900002-File) | File not found. |
-| [25900003](../../errorcode-universal.md#25900003-Failed) | Failed to open the file. |
-| [25900004](../../errorcode-universal.md#25900004-File) | File seek failed. |
-| [25900005](../../errorcode-universal.md#25900005-Failed) | Failed to get the file size. |
-| [25900006](../../errorcode-universal.md#25900006-Failed) | Failed to read the file. |
-| [25900007](../../errorcode-universal.md#25900007-Empty) | Empty file. |
-| [25900008](../../errorcode-universal.md#25900008-Corrupted) | Corrupted file. |
+| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. |
+| [25900002](../errorcode-drawing.md#25900002-文件未找到) | File not found. |
+| [25900003](../errorcode-drawing.md#25900003-打开文件失败) | Failed to open the file. |
+| [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
+| [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
+| [25900006](../errorcode-drawing.md#25900006-读取文件失败) | Failed to read the file. |
+| [25900007](../errorcode-drawing.md#25900007-文件为空) | Empty file. |
+| [25900008](../errorcode-drawing.md#25900008-文件损坏) | Corrupted file. |
 
 **示例：**
 
@@ -322,14 +340,15 @@ struct Index {
 loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise<void>
 ```
 
-加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：
-ttf、otf、ttc。
+加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
 
 **起始版本：** 23
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>--><!--Device-FontCollection-loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -339,26 +358,26 @@ ttf、otf、ttc。
 | --- | --- | --- | --- |
 | name | string | 是 | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
 | path | string \| Resource | 是 | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
-| index | number | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br/>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+| index | number | 否 | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [25900001](../../errorcode-universal.md#25900001-Parameter) | Parameter error. |
-| [25900002](../../errorcode-universal.md#25900002-File) | File not found. |
-| [25900003](../../errorcode-universal.md#25900003-Failed) | Failed to open the file. |
-| [25900004](../../errorcode-universal.md#25900004-File) | File seek failed. |
-| [25900005](../../errorcode-universal.md#25900005-Failed) | Failed to get the file size. |
-| [25900006](../../errorcode-universal.md#25900006-Failed) | Failed to read the file. |
-| [25900007](../../errorcode-universal.md#25900007-Empty) | Empty file. |
-| [25900008](../../errorcode-universal.md#25900008-Corrupted) | Corrupted file. |
+| [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. |
+| [25900002](../errorcode-drawing.md#25900002-文件未找到) | File not found. |
+| [25900003](../errorcode-drawing.md#25900003-打开文件失败) | Failed to open the file. |
+| [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
+| [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
+| [25900006](../errorcode-drawing.md#25900006-读取文件失败) | Failed to read the file. |
+| [25900007](../errorcode-drawing.md#25900007-文件为空) | Empty file. |
+| [25900008](../errorcode-drawing.md#25900008-文件损坏) | Corrupted file. |
 
 **示例：**
 
@@ -415,7 +434,9 @@ setParagraphCachesEnabled(enable: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontCollection-setParagraphCachesEnabled(enable: boolean): void--><!--Device-FontCollection-setParagraphCachesEnabled(enable: boolean): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -459,8 +480,8 @@ unloadFont(name: string): Promise<void>
 
 所有使用该字体别名的排版对象都应该被销毁重建。
 
-- 卸载不存在的字体别名不会产生任何效果且不会抛出错误。
-- 此操作仅影响后续字体使用。
+- 卸载不存在的字体别名不会产生任何效果且不会抛出错误。  
+- 此操作仅影响后续字体使用。  
 - 卸载正在使用的字体可能导致文本渲染异常（如乱码或字形缺失）。
 
 **起始版本：** 20
@@ -468,6 +489,8 @@ unloadFont(name: string): Promise<void>
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-unloadFont(name: string): Promise<void>--><!--Device-FontCollection-unloadFont(name: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -481,7 +504,7 @@ unloadFont(name: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -528,8 +551,8 @@ unloadFontSync(name: string): void
 
 所有使用该字体别名的排版对象都应该被销毁重建。
 
-- 卸载不存在的字体别名不会产生任何效果且不会抛出错误。
-- 此操作仅影响后续字体使用。
+- 卸载不存在的字体别名不会产生任何效果且不会抛出错误。  
+- 此操作仅影响后续字体使用。  
 - 卸载正在使用的字体可能导致文本渲染异常（如乱码或字形缺失）。
 
 **起始版本：** 20
@@ -537,6 +560,8 @@ unloadFontSync(name: string): void
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontCollection-unloadFontSync(name: string): void--><!--Device-FontCollection-unloadFontSync(name: string): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 22
 
+<!--Device-display-interface BrightnessInfo--><!--Device-display-interface BrightnessInfo-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## currentHeadroom
 
@@ -18,7 +26,9 @@ readonly currentHeadroom: number
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-BrightnessInfo-readonly currentHeadroom: double--><!--Device-BrightnessInfo-readonly currentHeadroom: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,7 +44,9 @@ readonly maxHeadroom: number
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-BrightnessInfo-readonly maxHeadroom: double--><!--Device-BrightnessInfo-readonly maxHeadroom: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -50,7 +62,9 @@ readonly sdrNits: number
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-BrightnessInfo-readonly sdrNits: double--><!--Device-BrightnessInfo-readonly sdrNits: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

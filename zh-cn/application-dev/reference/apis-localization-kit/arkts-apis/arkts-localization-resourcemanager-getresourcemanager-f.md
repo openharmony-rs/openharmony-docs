@@ -1,5 +1,11 @@
 # getResourceManager
 
+## 导入模块
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+```
+
 ## getResourceManager
 
 ```TypeScript
@@ -12,13 +18,15 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-resourceManager-export function getResourceManager(callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(callback: AsyncCallback<ResourceManager>): void-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;ResourceManager&gt; | 是 | 回调函数，返回资源管理ResourceManager对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ResourceManager> | 是 | 回调函数，返回资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -61,6 +69,8 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：**
@@ -68,7 +78,7 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。 |
-| callback | AsyncCallback&lt;ResourceManager&gt; | 是 | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ResourceManager> | 是 | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -113,13 +123,15 @@ export function getResourceManager(): Promise<ResourceManager>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ResourceManager&gt; | Promise对象，返回资源管理ResourceManager对象。 |
+| Promise<ResourceManager> | Promise对象，返回资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -158,6 +170,8 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **参数：**
@@ -170,7 +184,7 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ResourceManager&gt; | Promise对象，返回应用包名对应的资源管理ResourceManager对象。 |
+| Promise<ResourceManager> | Promise对象，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
 

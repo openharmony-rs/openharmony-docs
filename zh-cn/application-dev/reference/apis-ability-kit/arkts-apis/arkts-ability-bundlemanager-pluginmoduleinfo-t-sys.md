@@ -4,9 +4,11 @@
 export type PluginModuleInfo = _PluginModuleInfo
 ```
 
-�����ģ����Ϣ��
+插件的模块信息。
 
 **起始版本：** 19
+
+<!--Device-bundleManager-export type PluginModuleInfo = _PluginModuleInfo--><!--Device-bundleManager-export type PluginModuleInfo = _PluginModuleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

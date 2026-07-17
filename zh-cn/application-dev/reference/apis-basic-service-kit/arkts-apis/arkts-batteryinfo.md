@@ -4,7 +4,15 @@
 
 **起始版本：** 6
 
+<!--Device-unnamed-declare namespace batteryInfo--><!--Device-unnamed-declare namespace batteryInfo-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+## 导入模块
+
+```TypeScript
+import { batteryInfo } from '@kit.BasicServicesKit';
+```
 
 ## 汇总
 
@@ -13,20 +21,20 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBatteryConfig](arkts-basicservices-getbatteryconfig-f-sys.md#getbatteryconfig-1) | 按场景名称查询电池配置。 |
-| [isBatteryConfigSupported](arkts-basicservices-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported-1) | 检查是否按场景名称启用电池配置。 |
-| [setBatteryConfig](arkts-basicservices-setbatteryconfig-f-sys.md#setbatteryconfig-1) | 按场景名称设置电池配置。 |
+| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md#getbatteryconfig-1) | 按场景名称查询电池配置。 |
+| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported-1) | 检查是否按场景名称启用电池配置。 |
+| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md#setbatteryconfig-1) | 按场景名称设置电池配置。 |
 <!--DelEnd-->
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [BatteryCapacityLevel](arkts-basicservices-batterycapacitylevel-e.md) | 表示电池电量等级的枚举。 |
-| [BatteryChargeState](arkts-basicservices-batterychargestate-e.md) | 表示电池充电状态的枚举。 |
-| [BatteryHealthState](arkts-basicservices-batteryhealthstate-e.md) | 表示电池健康状态的枚举。 |
-| [BatteryPluggedType](arkts-basicservices-batterypluggedtype-e.md) | 表示连接的充电器类型的枚举。 |
-| [CommonEventBatteryChangedKey](arkts-basicservices-commoneventbatterychangedkey-e.md) | 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。 |
+| [BatteryCapacityLevel](arkts-basicservices-batteryinfo-batterycapacitylevel-e.md) | 表示电池电量等级的枚举。 |
+| [BatteryChargeState](arkts-basicservices-batteryinfo-batterychargestate-e.md) | 表示电池充电状态的枚举。 |
+| [BatteryHealthState](arkts-basicservices-batteryinfo-batteryhealthstate-e.md) | 表示电池健康状态的枚举。 |
+| [BatteryPluggedType](arkts-basicservices-batteryinfo-batterypluggedtype-e.md) | 表示连接的充电器类型的枚举。 |
+| [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md) | 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。 |
 
 ### 常量
 

@@ -8,6 +8,8 @@ type IconType = Resource | image.PixelMap
 
 **起始版本：** 18
 
+<!--Device-unnamed-type IconType = Resource | image.PixelMap--><!--Device-unnamed-type IconType = Resource | image.PixelMap-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。

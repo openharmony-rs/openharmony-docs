@@ -4,9 +4,17 @@ childprocess 对象可用于创建新的进程。
 
 **起始版本：** 7
 
+<!--Device-process-export interface ChildProcess--><!--Device-process-export interface ChildProcess-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
 
 ## close
 
@@ -17,6 +25,8 @@ close(): void
 关闭目标进程。
 
 **起始版本：** 7
+
+<!--Device-ChildProcess-close(): void--><!--Device-ChildProcess-close(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -32,6 +42,8 @@ getErrorOutput(): Promise<Uint8Array>
 
 **起始版本：** 7
 
+<!--Device-ChildProcess-getErrorOutput(): Promise<Uint8Array>--><!--Device-ChildProcess-getErrorOutput(): Promise<Uint8Array>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -40,7 +52,7 @@ getErrorOutput(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 返回子进程的标准错误输出。 |
+| Promise<Uint8Array> | 返回子进程的标准错误输出。 |
 
 ## getOutput
 
@@ -52,6 +64,8 @@ getOutput(): Promise<Uint8Array>
 
 **起始版本：** 7
 
+<!--Device-ChildProcess-getOutput(): Promise<Uint8Array>--><!--Device-ChildProcess-getOutput(): Promise<Uint8Array>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -60,7 +74,7 @@ getOutput(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 返回子进程的标准输出。 |
+| Promise<Uint8Array> | 返回子进程的标准输出。 |
 
 ## kill
 
@@ -71,6 +85,8 @@ kill(signal: number | string): void
 向进程发送信号。
 
 **起始版本：** 7
+
+<!--Device-ChildProcess-kill(signal: number | string): void--><!--Device-ChildProcess-kill(signal: number | string): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -92,6 +108,8 @@ wait(): Promise<number>
 
 **起始版本：** 7
 
+<!--Device-ChildProcess-wait(): Promise<number>--><!--Device-ChildProcess-wait(): Promise<number>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -100,7 +118,7 @@ wait(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 返回目标进程的退出码。 |
+| Promise<number> | 返回目标进程的退出码。 |
 
 ## exitCode
 
@@ -113,6 +131,8 @@ readonly exitCode: number
 **类型：** number
 
 **起始版本：** 7
+
+<!--Device-ChildProcess-readonly exitCode: number--><!--Device-ChildProcess-readonly exitCode: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -130,6 +150,8 @@ readonly killed: boolean
 
 **起始版本：** 7
 
+<!--Device-ChildProcess-readonly killed: boolean--><!--Device-ChildProcess-readonly killed: boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -146,6 +168,8 @@ readonly pid: number
 
 **起始版本：** 7
 
+<!--Device-ChildProcess-readonly pid: number--><!--Device-ChildProcess-readonly pid: number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **系统接口：** 此接口为系统接口。
@@ -161,6 +185,8 @@ readonly ppid: number
 **类型：** number
 
 **起始版本：** 7
+
+<!--Device-ChildProcess-readonly ppid: number--><!--Device-ChildProcess-readonly ppid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

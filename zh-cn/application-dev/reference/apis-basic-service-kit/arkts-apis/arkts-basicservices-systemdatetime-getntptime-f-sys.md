@@ -1,5 +1,11 @@
 # getNtpTime（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { systemDateTime } from '@kit.BasicServicesKit';
+```
+
 ## getNtpTime
 
 ```TypeScript
@@ -9,6 +15,8 @@ function getNtpTime(): number
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
 **起始版本：** 14
+
+<!--Device-systemDateTime-function getNtpTime(): long--><!--Device-systemDateTime-function getNtpTime(): long-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -24,8 +32,8 @@ function getNtpTime(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [13000002](../../errorcode-universal.md#13000002-updateNtpTime) | updateNtpTime() is not called successfully. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [13000002](../../apis-basic-services-kit/errorcode-time.md#13000002-未更新ntp时间) | updateNtpTime() is not called successfully. |
 
 **示例：**
 
@@ -34,9 +42,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let time: number = systemDateTime.getNtpTime();
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get ntp time. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```

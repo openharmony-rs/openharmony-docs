@@ -1,5 +1,11 @@
 # queryAbilityByWant
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## queryAbilityByWant
 
 ```TypeScript
@@ -7,9 +13,9 @@ function queryAbilityByWant(want: Want,
     bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void
 ```
 
-���ݸ�������ͼ��ȡָ���û���Ability��Ϣ��ʹ��callback�첽�ص���
+根据给定的意图获取指定用户下Ability信息，使用callback异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -17,16 +23,20 @@ function queryAbilityByWant(want: Want,
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function queryAbilityByWant(want: Want,
+    bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void--><!--Device-bundle-function queryAbilityByWant(want: Want,
+    bundleFlags: number, userId: number, callback: AsyncCallback<Array<AbilityInfo>>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | ָʾ����Ҫ��ѯ��Ӧ��Bundle���Ƶ���ͼ�� |
-| bundleFlags | number | 是 | ����ָ������abilityInfo��Ϣ��ȡֵ��Χ���ο�[BundleFlag˵��](arkts-ability-bundle-bundleflag-e.md#BundleFlag)��Ability��Ϣ���flag�� |
-| userId | number | 是 | �û�ID��ȡֵ��Χ�����ڵ���0�� |
-| callback | AsyncCallback&lt;Array&lt;AbilityInfo&gt;&gt; | 是 | ����������Ϊ��εĻص�����������Ability��Ϣ�� |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 指示包含要查询的应用Bundle名称的意图。 |
+| bundleFlags | number | 是 | 用于指定返回abilityInfo信息。取值范围：参考[BundleFlag说明](arkts-ability-bundle-bundleflag-e.md)中Ability信息相关flag。 |
+| userId | number | 是 | 用户ID。取值范围：大于等于0。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AbilityInfo>> | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 
 ## queryAbilityByWant
@@ -35,9 +45,9 @@ function queryAbilityByWant(want: Want,
 function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCallback<Array<AbilityInfo>>): void
 ```
 
-���ݸ�������ͼ��ȡAbility��Ϣ��ʹ��callback�첽�ص���
+根据给定的意图获取Ability信息，使用callback异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -45,15 +55,17 @@ function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCall
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCallback<Array<AbilityInfo>>): void--><!--Device-bundle-function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCallback<Array<AbilityInfo>>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | ָʾ����Ҫ��ѯ��Ӧ��Bundle���Ƶ���ͼ�� |
-| bundleFlags | number | 是 | ����ָ������abilityInfo��Ϣ��ȡֵ��Χ���ο�[BundleFlag˵��](arkts-ability-bundle-bundleflag-e.md#BundleFlag)��Ability��Ϣ���flag�� |
-| callback | AsyncCallback&lt;Array&lt;AbilityInfo&gt;&gt; | 是 | ����������Ϊ��εĻص�����������Ability��Ϣ�� |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 指示包含要查询的应用Bundle名称的意图。 |
+| bundleFlags | number | 是 | 用于指定返回abilityInfo信息。取值范围：参考[BundleFlag说明](arkts-ability-bundle-bundleflag-e.md)中Ability信息相关flag。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AbilityInfo>> | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 
 ## queryAbilityByWant
@@ -62,9 +74,9 @@ function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCall
 function queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): Promise<Array<AbilityInfo>>
 ```
 
-���ݸ�������ͼ��ȡAbility�����Ϣ��ʹ��Promise�첽�ص���
+根据给定的意图获取Ability组件信息，使用Promise异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -72,19 +84,21 @@ function queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): P
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): Promise<Array<AbilityInfo>>--><!--Device-bundle-function queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): Promise<Array<AbilityInfo>>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | ����Ҫ��ѯ��Ӧ��Bundle���Ƶ���ͼ�� |
-| bundleFlags | number | 是 | ����ָ������abilityInfo��Ϣ��ȡֵ��Χ���ο�[BundleFlag˵��](arkts-ability-bundle-bundleflag-e.md#BundleFlag)��Ability��Ϣ���flag�� |
-| userId | number | 否 | �û�ID��Ĭ��ֵ�����÷������û���ȡֵ��Χ�����ڵ���0�� |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 包含要查询的应用Bundle名称的意图。 |
+| bundleFlags | number | 是 | 用于指定返回abilityInfo信息。取值范围：参考[BundleFlag说明](arkts-ability-bundle-bundleflag-e.md)中Ability信息相关flag。 |
+| userId | number | 否 | 用户ID。默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AbilityInfo&gt;&gt; | Promise��ʽ����Ability��Ϣ�� |
+| Promise<Array<AbilityInfo>> | Promise形式返回Ability信息。 |
 

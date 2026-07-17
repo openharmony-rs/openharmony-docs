@@ -1,12 +1,18 @@
 # setApplicationEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## setApplicationEnabled
 
 ```TypeScript
 function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void
 ```
 
-�����Ƿ�����ָ����Ӧ�ó���ʹ��callback�첽�ص���
+设置是否启用指定的应用程序，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -16,6 +22,8 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: 
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
+<!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void--><!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -24,9 +32,9 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ָʾ��Ҫ���û���õ�Ӧ��Bundle���ơ� |
-| isEnable | boolean | 是 | ָ���Ƿ�����Ӧ�ó���true��ʾ���ã�false��ʾ���á� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص������� |
+| bundleName | string | 是 | 指示需要启用或禁用的应用Bundle名称。 |
+| isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false表示禁用。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
 
 
 ## setApplicationEnabled
@@ -35,7 +43,7 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: 
 function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>
 ```
 
-�����Ƿ�����ָ����Ӧ�ó���ʹ��Promise�첽�ص���
+设置是否启用指定的应用程序，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -45,6 +53,8 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<v
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
+<!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>--><!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -53,12 +63,12 @@ function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ָʾ��Ҫ���û���õ�Ӧ��Bundle���ơ� |
-| isEnable | boolean | 是 | ָ���Ƿ�����Ӧ�ó���true��ʾ���ã�false���á� |
+| bundleName | string | 是 | 指示需要启用或禁用的应用Bundle名称。 |
+| isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ����Promise���� |
+| Promise<void> | Promise对象，无返回结果的Promise对象。 |
 

@@ -1,12 +1,18 @@
 # getBundleInstaller（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## getBundleInstaller
 
 ```TypeScript
 function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 ```
 
-��ȡ���ڰ�װ���Ľӿڣ�ʹ��callback�첽�ص���
+获取用于安装包的接口，使用callback异步回调。
 
 **起始版本：** 7
 
@@ -15,6 +21,8 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 **替代接口：** [null]
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-bundle-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void--><!--Device-bundle-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -24,7 +32,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;BundleInstaller&gt; | 是 | �ص����������ذ�װ�ӿڶ��� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleInstaller> | 是 | 回调函数，返回安装接口对象。 |
 
 
 ## getBundleInstaller
@@ -33,7 +41,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 function getBundleInstaller(): Promise<BundleInstaller>
 ```
 
-��ȡ���ڰ�װ���Ľӿڣ�ʹ��Promise�첽�ص������ذ�װ�ӿڶ���
+获取用于安装包的接口，使用Promise异步回调，返回安装接口对象。
 
 **起始版本：** 7
 
@@ -43,6 +51,8 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
+<!--Device-bundle-function getBundleInstaller(): Promise<BundleInstaller>--><!--Device-bundle-function getBundleInstaller(): Promise<BundleInstaller>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -51,5 +61,5 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;BundleInstaller&gt; | Promise���󣬷��ذ�װ�ӿڶ��� |
+| Promise<BundleInstaller> | Promise对象，返回安装接口对象。 |
 

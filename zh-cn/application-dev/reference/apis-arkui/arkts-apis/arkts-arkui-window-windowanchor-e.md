@@ -1,12 +1,10 @@
 # WindowAnchor
 
-```TypeScript
-enum WindowAnchor
-```
-
 窗口锚点枚举。
 
 **起始版本：** 20
+
+<!--Device-window-enum WindowAnchor--><!--Device-window-enum WindowAnchor-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -20,6 +18,8 @@ TOP_START = 0
 
 **起始版本：** 20
 
+<!--Device-WindowAnchor-TOP_START = 0--><!--Device-WindowAnchor-TOP_START = 0-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## TOP
@@ -31,6 +31,8 @@ TOP = 1
 窗口上边界横向居中点。
 
 **起始版本：** 20
+
+<!--Device-WindowAnchor-TOP = 1--><!--Device-WindowAnchor-TOP = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,6 +46,8 @@ TOP_END = 2
 
 **起始版本：** 20
 
+<!--Device-WindowAnchor-TOP_END = 2--><!--Device-WindowAnchor-TOP_END = 2-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## START
@@ -55,6 +59,8 @@ START = 3
 窗口左边界纵向居中点。
 
 **起始版本：** 20
+
+<!--Device-WindowAnchor-START = 3--><!--Device-WindowAnchor-START = 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -68,6 +74,8 @@ CENTER = 4
 
 **起始版本：** 20
 
+<!--Device-WindowAnchor-CENTER = 4--><!--Device-WindowAnchor-CENTER = 4-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## END
@@ -79,6 +87,8 @@ END = 5
 窗口右边界纵向居中点。
 
 **起始版本：** 20
+
+<!--Device-WindowAnchor-END = 5--><!--Device-WindowAnchor-END = 5-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -92,6 +102,8 @@ BOTTOM_START = 6
 
 **起始版本：** 20
 
+<!--Device-WindowAnchor-BOTTOM_START = 6--><!--Device-WindowAnchor-BOTTOM_START = 6-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## BOTTOM
@@ -104,6 +116,8 @@ BOTTOM = 7
 
 **起始版本：** 20
 
+<!--Device-WindowAnchor-BOTTOM = 7--><!--Device-WindowAnchor-BOTTOM = 7-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## BOTTOM_END
@@ -115,6 +129,8 @@ BOTTOM_END = 8
 窗口右下角。
 
 **起始版本：** 20
+
+<!--Device-WindowAnchor-BOTTOM_END = 8--><!--Device-WindowAnchor-BOTTOM_END = 8-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

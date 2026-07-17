@@ -4,6 +4,8 @@
 
 **起始版本：** 11
 
+<!--Device-unnamed-export enum AutoFillType--><!--Device-unnamed-export enum AutoFillType-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## UNSPECIFIED
@@ -17,6 +19,8 @@ UNSPECIFIED = 0
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-UNSPECIFIED = 0--><!--Device-AutoFillType-UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -34,6 +38,8 @@ PASSWORD = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-PASSWORD = 1--><!--Device-AutoFillType-PASSWORD = 1-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -49,6 +55,8 @@ USER_NAME = 2
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-USER_NAME = 2--><!--Device-AutoFillType-USER_NAME = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -66,6 +74,8 @@ NEW_PASSWORD = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-NEW_PASSWORD = 3--><!--Device-AutoFillType-NEW_PASSWORD = 3-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -81,6 +91,8 @@ FULL_STREET_ADDRESS = 4
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-FULL_STREET_ADDRESS = 4--><!--Device-AutoFillType-FULL_STREET_ADDRESS = 4-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -98,6 +110,8 @@ HOUSE_NUMBER = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-HOUSE_NUMBER = 5--><!--Device-AutoFillType-HOUSE_NUMBER = 5-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -113,6 +127,8 @@ DISTRICT_ADDRESS = 6
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-DISTRICT_ADDRESS = 6--><!--Device-AutoFillType-DISTRICT_ADDRESS = 6-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -130,6 +146,8 @@ CITY_ADDRESS = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-CITY_ADDRESS = 7--><!--Device-AutoFillType-CITY_ADDRESS = 7-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -145,6 +163,8 @@ PROVINCE_ADDRESS = 8
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-PROVINCE_ADDRESS = 8--><!--Device-AutoFillType-PROVINCE_ADDRESS = 8-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -162,6 +182,8 @@ COUNTRY_ADDRESS = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-COUNTRY_ADDRESS = 9--><!--Device-AutoFillType-COUNTRY_ADDRESS = 9-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -177,6 +199,8 @@ PERSON_FULL_NAME = 10
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-PERSON_FULL_NAME = 10--><!--Device-AutoFillType-PERSON_FULL_NAME = 10-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -194,6 +218,8 @@ PERSON_LAST_NAME = 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-PERSON_LAST_NAME = 11--><!--Device-AutoFillType-PERSON_LAST_NAME = 11-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -209,6 +235,8 @@ PERSON_FIRST_NAME = 12
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-PERSON_FIRST_NAME = 12--><!--Device-AutoFillType-PERSON_FIRST_NAME = 12-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -226,6 +254,8 @@ PHONE_NUMBER = 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-PHONE_NUMBER = 13--><!--Device-AutoFillType-PHONE_NUMBER = 13-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -241,6 +271,8 @@ PHONE_COUNTRY_CODE = 14
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-PHONE_COUNTRY_CODE = 14--><!--Device-AutoFillType-PHONE_COUNTRY_CODE = 14-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -258,6 +290,8 @@ FULL_PHONE_NUMBER = 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-FULL_PHONE_NUMBER = 15--><!--Device-AutoFillType-FULL_PHONE_NUMBER = 15-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -273,6 +307,8 @@ EMAIL_ADDRESS = 16
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-EMAIL_ADDRESS = 16--><!--Device-AutoFillType-EMAIL_ADDRESS = 16-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -290,6 +326,8 @@ BANK_CARD_NUMBER = 17
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-BANK_CARD_NUMBER = 17--><!--Device-AutoFillType-BANK_CARD_NUMBER = 17-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -305,6 +343,8 @@ ID_CARD_NUMBER = 18
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-ID_CARD_NUMBER = 18--><!--Device-AutoFillType-ID_CARD_NUMBER = 18-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -322,6 +362,8 @@ NICKNAME = 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-NICKNAME = 24--><!--Device-AutoFillType-NICKNAME = 24-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -337,6 +379,8 @@ DETAIL_INFO_WITHOUT_STREET = 25
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-DETAIL_INFO_WITHOUT_STREET = 25--><!--Device-AutoFillType-DETAIL_INFO_WITHOUT_STREET = 25-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -354,6 +398,8 @@ FORMAT_ADDRESS = 26
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-FORMAT_ADDRESS = 26--><!--Device-AutoFillType-FORMAT_ADDRESS = 26-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -369,6 +415,8 @@ PASSPORT_NUMBER = 27
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-PASSPORT_NUMBER = 27--><!--Device-AutoFillType-PASSPORT_NUMBER = 27-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -386,6 +434,8 @@ VALIDITY = 28
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-VALIDITY = 28--><!--Device-AutoFillType-VALIDITY = 28-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -401,6 +451,8 @@ ISSUE_AT = 29
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-ISSUE_AT = 29--><!--Device-AutoFillType-ISSUE_AT = 29-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -418,6 +470,8 @@ ORGANIZATION = 30
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-ORGANIZATION = 30--><!--Device-AutoFillType-ORGANIZATION = 30-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -433,6 +487,8 @@ TAX_ID = 31
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-TAX_ID = 31--><!--Device-AutoFillType-TAX_ID = 31-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -450,6 +506,8 @@ ADDRESS_CITY_AND_STATE = 32
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-ADDRESS_CITY_AND_STATE = 32--><!--Device-AutoFillType-ADDRESS_CITY_AND_STATE = 32-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -465,6 +523,8 @@ FLIGHT_NUMBER = 33
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-FLIGHT_NUMBER = 33--><!--Device-AutoFillType-FLIGHT_NUMBER = 33-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -482,6 +542,8 @@ LICENSE_NUMBER = 34
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-LICENSE_NUMBER = 34--><!--Device-AutoFillType-LICENSE_NUMBER = 34-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -497,6 +559,8 @@ LICENSE_FILE_NUMBER = 35
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-LICENSE_FILE_NUMBER = 35--><!--Device-AutoFillType-LICENSE_FILE_NUMBER = 35-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -514,6 +578,8 @@ LICENSE_PLATE = 36
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-LICENSE_PLATE = 36--><!--Device-AutoFillType-LICENSE_PLATE = 36-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -530,6 +596,8 @@ ENGINE_NUMBER = 37
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillType-ENGINE_NUMBER = 37--><!--Device-AutoFillType-ENGINE_NUMBER = 37-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -545,6 +613,8 @@ LICENSE_CHASSIS_NUMBER = 38
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillType-LICENSE_CHASSIS_NUMBER = 38--><!--Device-AutoFillType-LICENSE_CHASSIS_NUMBER = 38-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

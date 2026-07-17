@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) | OH_LowPowerVideoSink | LowPowerVideoSink声明。 |
-| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | 包含了LowPowerVideoSink回调函数指针的集合。<br> 应用需注册此实例结构体到{@link OH_LowPowerVideoSink}实例中，并对回调上报的信息进行处理，保证LowPowerVideoSink的正常运行。 |
+| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | 包含了LowPowerVideoSink回调函数指针的集合。<br> 应用需注册此实例结构体到[OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)实例中，并对回调上报的信息进行处理，保证LowPowerVideoSink的正常运行。 |
 
 ### 函数
 
@@ -133,7 +133,7 @@ LowPowerVideoSink流切换调用该方法，包含在[OH_LowPowerVideoSinkCallba
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
-| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)\* format | Carrying changing parameters and corresponding values |
+| OH_AVFormat\* format | Carrying changing parameters and corresponding values |
 | void\* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()

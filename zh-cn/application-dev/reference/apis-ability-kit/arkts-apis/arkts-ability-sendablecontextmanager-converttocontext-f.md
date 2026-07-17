@@ -1,5 +1,11 @@
 # convertToContext
 
+## 导入模块
+
+```TypeScript
+import { sendableContextManager } from '@kit.AbilityKit';
+```
+
 ## convertToContext
 
 ```TypeScript
@@ -12,7 +18,9 @@ function convertToContext(sendableContext: SendableContext): common.Context
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-sendableContextManager-function convertToContext(sendableContext: SendableContext): common.Context--><!--Device-sendableContextManager-function convertToContext(sendableContext: SendableContext): common.Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,19 +28,19 @@ function convertToContext(sendableContext: SendableContext): common.Context
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sendableContext | SendableContext | 是 |  |
+| sendableContext | [SendableContext](arkts-ability-sendablecontextmanager-sendablecontext-t.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| common.Context | [Context](arkts-ability-context-depr-i.md#Context) object. |
+| common.Context | [Context](arkts-ability-context-context-depr-i.md) object. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-If) | If the input parameter invalid. Possible causes: 1.Incorrect parameter types;<br/>2.Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter invalid. Possible causes: 1.Incorrect parameter types;2.Parameter verification failed. |
 
 **示例：**
 

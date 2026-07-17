@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-window-interface Configuration--><!--Device-window-interface Configuration-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## ctx
 
@@ -20,6 +28,8 @@ ctx?: BaseContext
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Configuration-ctx?: BaseContext--><!--Device-Configuration-ctx?: BaseContext-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## decorEnabled
@@ -34,7 +44,9 @@ decorEnabled?: boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-decorEnabled?: boolean--><!--Device-Configuration-decorEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -52,6 +64,8 @@ displayId?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Configuration-displayId?: long--><!--Device-Configuration-displayId?: long-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## name
@@ -67,6 +81,8 @@ name: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-name: string--><!--Device-Configuration-name: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -84,6 +100,8 @@ parentId?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Configuration-parentId?: int--><!--Device-Configuration-parentId?: int-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## title
@@ -92,14 +110,15 @@ parentId?: number
 title?: string
 ```
 
-`decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，
-超过部分以省略号表示。不设置，则默认为空字符串。
+`decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-title?: string--><!--Device-Configuration-title?: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -116,6 +135,8 @@ windowType: WindowType
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Configuration-windowType: WindowType--><!--Device-Configuration-windowType: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

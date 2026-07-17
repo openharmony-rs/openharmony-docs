@@ -1,16 +1,24 @@
 # getAdmins（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## getAdmins
 
 ```TypeScript
 function getAdmins(): Promise<Array<Want>>
 ```
 
-��ѯ��ǰ�û��µ������豸����Ӧ�á�ʹ��Promise�첽�ص���
+查询当前用户下的所有设备管理应用。使用Promise异步回调。
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-adminManager-function getAdmins(): Promise<Array<Want>>--><!--Device-adminManager-function getAdmins(): Promise<Array<Want>>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,13 +28,13 @@ function getAdmins(): Promise<Array<Want>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Want&gt;&gt; | ���������Ѽ�����豸����Ӧ�õ�Promise���� |
+| Promise<Array<Want>> | 包含所有已激活的设备管理应用的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 

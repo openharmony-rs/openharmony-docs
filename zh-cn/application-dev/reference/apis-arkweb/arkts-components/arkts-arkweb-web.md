@@ -1,6 +1,15 @@
 # Web
 
-Defines the Web interface.
+Defines Web Component.
+
+<p><strong>API Note</strong>:
+
+<strong>Performance Note</strong>:
+<p>For details about how to optimize the compilation, resource loading, and JSBridge performance,
+see [Optimizing Web Page Loading]{@link https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization}
+<p>When the white screen duration is long due to complex web page parsing,
+you can enable [optimizeParserBudget]{@link WebAttribute.optimizeParserBudget} to reduce the first frame rendering content.</p>
+</p>
 
 
 ## Web
@@ -13,7 +22,9 @@ Sets Value.
 
 **起始版本：** 11
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebInterface-(value: WebOptions): WebAttribute--><!--Device-WebInterface-(value: WebOptions): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

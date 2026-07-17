@@ -1,18 +1,30 @@
 # unwrapKeyItem
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
 ## unwrapKeyItem
 
 ```TypeScript
 function unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Promise<HuksReturnResult>
 ```
 
-���ܵ�����Կ��ʹ��Promise�첽�ص���
+加密导入密钥。使用Promise异步回调。
 
-<!--Del-->�ù����ݲ�֧�֡�<!--DelEnd-->
+> **说明：**  
+>  
+> 加密导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别密钥需要ohos.permission.ACCESS_SE_KEY权限。
+
+<!--Del-->该功能暂不支持。<!--DelEnd-->
 
 **起始版本：** 20
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-huks-function unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Promise<HuksReturnResult>--><!--Device-huks-function unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Promise<HuksReturnResult>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -20,26 +32,27 @@ function unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ��Կ������ָ��������Կ����Կ������ |
-| params | HuksOptions | 是 | ����ָ��������Կʱ�ļ������͡� |
-| wrappedKey | Uint8Array | 是 | ���ܵ�����Կ�����ġ� |
+| keyAlias | string | 是 | 密钥别名，指定导入密钥的密钥别名。 |
+| params | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于指定导入密钥时的加密类型。 |
+| wrappedKey | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 加密导出密钥的密文。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksReturnResult&gt; | Promise���󣬷��ص��ýӿڵĽ���� |
+| Promise<HuksReturnResult> | Promise对象，返回调用接口的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api) | api is not supported |
-| [12000004](../../errorcode-universal.md#12000004-operating) | operating file failed |
-| [12000005](../../errorcode-universal.md#12000005-IPC) | IPC communication failed |
-| [12000012](../../errorcode-universal.md#12000012-Device) | Device environment or input parameter abnormal |
-| [12000014](../../errorcode-universal.md#12000014-memory) | memory is insufficient |
-| [12000015](../../errorcode-universal.md#12000015-Failed) | Failed to obtain the security information via UserIAM |
-| [12000018](../../errorcode-universal.md#12000018-the) | the input parameter is invalid |
-| [12000026](../../errorcode-universal.md#12000026-the) | the secure element is not available&lt;br&gt;**适用版本：** 26.0.0+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application permissions are insufficient, possibly because the ohos.permission.ACCESS_SE_KEY permission is missing.<br>**适用版本：** 26.0.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000015](../errorcode-huks.md#12000015-调用其他系统服务失败) | Failed to obtain the security information via UserIAM |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the input parameter is invalid |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 

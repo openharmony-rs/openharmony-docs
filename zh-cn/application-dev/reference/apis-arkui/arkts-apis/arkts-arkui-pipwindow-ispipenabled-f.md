@@ -1,5 +1,11 @@
 # isPiPEnabled
 
+## 导入模块
+
+```TypeScript
+import { PiPWindow } from '@kit.ArkUI';
+```
+
 ## isPiPEnabled
 
 ```TypeScript
@@ -12,6 +18,8 @@ function isPiPEnabled(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PiPWindow-function isPiPEnabled(): boolean--><!--Device-PiPWindow-function isPiPEnabled(): boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
@@ -23,8 +31,8 @@ function isPiPEnabled(): boolean
 **示例：**
 
 ```TypeScript
-let enable: boolean = PiPWindow.isPiPEnabled();
-console.info('isPipEnabled:' + enable);
+let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前系统是否支持画中画功能
+console.info('isPiPEnabled:' + enable);
 
 ```
 

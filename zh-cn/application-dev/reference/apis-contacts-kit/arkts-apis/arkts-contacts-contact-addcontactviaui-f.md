@@ -1,16 +1,24 @@
 # addContactViaUI
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## addContactViaUI
 
 ```TypeScript
 function addContactViaUI(context: Context, contact: Contact): Promise<number>
 ```
 
-ͨ��UI����������ϵ�ˡ�ʹ��Promise�첽�ص���
+通过UI交互创建联系人。使用Promise异步回调。
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-contact-function addContactViaUI(context: Context, contact: Contact): Promise<number>--><!--Device-contact-function addContactViaUI(context: Context, contact: Contact): Promise<number>-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -18,24 +26,24 @@ function addContactViaUI(context: Context, contact: Contact): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contact | Contact | 是 | ��ϵ����Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󡣷������ӵ���ϵ��id�����½���ϵ��ʱϵͳ�Զ����ɵ�Ψһ��ʶ��һ��idΨһ��Ӧһ����ϵ�ˡ� |
+| Promise<number> | Promise对象。返回添加的联系人id，即新建联系人时系统自动生成的唯一标识，一个id唯一对应一个联系人。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
-| [801](../../errorcode-universal.md#801-The) | The specified SystemCapability name was not found. |
-| [16700001](../../errorcode-universal.md#16700001-General) | General error. |
-| [16700102](../../errorcode-universal.md#16700102-Failed) | Failed to set value to contacts data. |
-| [16700103](../../errorcode-universal.md#16700103-User) | User cancel. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
+| [16700102](../errorcode-contacts.md#16700102-增删改数据库失败) | Failed to set value to contacts data. |
+| [16700103](../errorcode-contacts.md#16700103-用户取消) | User cancel. |
 
 **示例：**
 

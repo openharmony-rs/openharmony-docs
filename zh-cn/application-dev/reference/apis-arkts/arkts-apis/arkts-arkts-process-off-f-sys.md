@@ -1,5 +1,11 @@
 # off（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## off
 
 ```TypeScript
@@ -9,6 +15,8 @@ function off(type: string): boolean
 移除已注册的事件。
 
 **起始版本：** 7
+
+<!--Device-process-function off(type: string): boolean--><!--Device-process-function off(type: string): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

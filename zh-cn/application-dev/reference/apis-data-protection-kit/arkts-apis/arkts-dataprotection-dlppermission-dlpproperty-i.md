@@ -4,9 +4,17 @@
 
 **起始版本：** 21
 
+<!--Device-dlpPermission-export interface DLPProperty--><!--Device-dlpPermission-export interface DLPProperty-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
 
 ## allowedOpenCount
 
@@ -14,11 +22,13 @@
 allowedOpenCount?: number
 ```
 
-表示允许打开的次数，默认为空。取值范围大于等于0，超出此范围抛出错误码19100001。
+表示允许打开的次数，默认为0。无范围限制。
 
 **类型：** number
 
 **起始版本：** 21
+
+<!--Device-DLPProperty-allowedOpenCount?: number--><!--Device-DLPProperty-allowedOpenCount?: number-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -28,13 +38,15 @@ allowedOpenCount?: number
 countdown?: number
 ```
 
-表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为空，单位：秒。取值范围大于等于0，超出此范围抛出错误码19100001。
+表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：秒。取值范围大于等于0。无范围限制。
 
 **类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DLPProperty-countdown?: number--><!--Device-DLPProperty-countdown?: number-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -45,13 +57,14 @@ extensionFields?: Record<string, Object>
 ```
 
 表示DLP文件的扩展属性，默认为空。
-**模型约束：**此接口仅可在Stage模型下使用。
 
 **类型：** Record<string, Object>
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DLPProperty-extensionFields?: Record<string, Object>--><!--Device-DLPProperty-extensionFields?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -61,11 +74,13 @@ extensionFields?: Record<string, Object>
 fileId?: string
 ```
 
-表示文件的标识，默认为空。不超过255字节，超出此范围抛出错误码19100001。
+表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码401。
 
 **类型：** string
 
 **起始版本：** 21
+
+<!--Device-DLPProperty-fileId?: string--><!--Device-DLPProperty-fileId?: string-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -80,6 +95,8 @@ waterMarkConfig?: boolean
 **类型：** boolean
 
 **起始版本：** 23
+
+<!--Device-DLPProperty-waterMarkConfig?: boolean--><!--Device-DLPProperty-waterMarkConfig?: boolean-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 

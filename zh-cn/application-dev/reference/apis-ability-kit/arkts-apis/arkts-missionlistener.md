@@ -7,6 +7,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [MissionListener](arkts-ability-missionlistener-i-sys.md) | 定义系统任务状态监听，可以通过[on](arkts-ability-on-f-sys.md#on-1)注册。 |
+| [MissionListener](arkts-ability-missionlistener-i-sys.md) | 定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-on-f-sys.md#on-1)注册。 |
 <!--DelEnd-->
 

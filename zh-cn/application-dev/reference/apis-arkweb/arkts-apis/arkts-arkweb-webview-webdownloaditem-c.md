@@ -1,11 +1,18 @@
 # WebDownloadItem
 
-表示下载任务，您可以使用此对象来操作相应的下载任务。
-当前WebDownloadItem支持的下载文件名最长长度为255字节。
+表示下载任务，您可以使用此对象来操作相应的下载任务。当前WebDownloadItem支持的下载文件名最长长度为255字节。
 
 **起始版本：** 11
 
+<!--Device-webview-class WebDownloadItem--><!--Device-webview-class WebDownloadItem-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## cancel
 
@@ -17,7 +24,9 @@ cancel(): void
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-cancel(): void--><!--Device-WebDownloadItem-cancel(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -31,7 +40,9 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem--><!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -39,19 +50,19 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| serializedData | Uint8Array | 是 | 序列化后的下载。 |
+| serializedData | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 序列化后的下载。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| WebDownloadItem | - 从字节数组反序列化为一个WebDownloadItem对象。 |
+| [WebDownloadItem](arkts-arkweb-webview-webdownloaditem-c.md) | - 从字节数组反序列化为一个WebDownloadItem对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Incorrect parameter types.<br/><br/>2. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
 
 ## getCurrentSpeed
 
@@ -63,7 +74,9 @@ getCurrentSpeed(): number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getCurrentSpeed(): number--><!--Device-WebDownloadItem-getCurrentSpeed(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -83,7 +96,9 @@ getFullPath(): string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getFullPath(): string--><!--Device-WebDownloadItem-getFullPath(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -103,7 +118,9 @@ getGuid(): string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getGuid(): string--><!--Device-WebDownloadItem-getGuid(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -123,7 +140,9 @@ getLastErrorCode(): WebDownloadErrorCode
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode--><!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -131,7 +150,7 @@ getLastErrorCode(): WebDownloadErrorCode
 
 | 类型 | 说明 |
 | --- | --- |
-| WebDownloadErrorCode | - 下载发生错误的时候的错误码。 |
+| [WebDownloadErrorCode](arkts-arkweb-webview-webdownloaderrorcode-e.md) | - 下载发生错误的时候的错误码。 |
 
 ## getMethod
 
@@ -143,7 +162,9 @@ getMethod(): string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getMethod(): string--><!--Device-WebDownloadItem-getMethod(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -163,7 +184,9 @@ getMimeType(): string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getMimeType(): string--><!--Device-WebDownloadItem-getMimeType(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -185,6 +208,8 @@ getOriginalUrl(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WebDownloadItem-getOriginalUrl(): string--><!--Device-WebDownloadItem-getOriginalUrl(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -203,7 +228,9 @@ getPercentComplete(): number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getPercentComplete(): number--><!--Device-WebDownloadItem-getPercentComplete(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -223,7 +250,9 @@ getReceivedBytes(): number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getReceivedBytes(): number--><!--Device-WebDownloadItem-getReceivedBytes(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -245,6 +274,8 @@ getReferrerUrl(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WebDownloadItem-getReferrerUrl(): string--><!--Device-WebDownloadItem-getReferrerUrl(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -263,7 +294,9 @@ getState(): WebDownloadState
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getState(): WebDownloadState--><!--Device-WebDownloadItem-getState(): WebDownloadState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -271,7 +304,7 @@ getState(): WebDownloadState
 
 | 类型 | 说明 |
 | --- | --- |
-| WebDownloadState | - 下载的状态。 |
+| [WebDownloadState](arkts-arkweb-webview-webdownloadstate-e.md) | - 下载的状态。 |
 
 ## getSuggestedFileName
 
@@ -283,7 +316,9 @@ getSuggestedFileName(): string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getSuggestedFileName(): string--><!--Device-WebDownloadItem-getSuggestedFileName(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -303,7 +338,9 @@ getTotalBytes(): number
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getTotalBytes(): number--><!--Device-WebDownloadItem-getTotalBytes(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -323,7 +360,9 @@ getUrl(): string
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-getUrl(): string--><!--Device-WebDownloadItem-getUrl(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -343,7 +382,9 @@ pause(): void
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-pause(): void--><!--Device-WebDownloadItem-pause(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -351,7 +392,7 @@ pause(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100019](../../errorcode-universal.md#17100019-The) | The download task is not started yet. |
+| [17100019](../errorcode-webview.md#17100019-下载还没开始) | The download task is not started yet. |
 
 ## resume
 
@@ -363,7 +404,9 @@ resume(): void
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-resume(): void--><!--Device-WebDownloadItem-resume(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -371,7 +414,7 @@ resume(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17100016](../../errorcode-universal.md#17100016-The) | The download task is not paused. |
+| [17100016](../errorcode-webview.md#17100016-下载任务没有处于暂停状态) | The download task is not paused. |
 
 ## serialize
 
@@ -383,7 +426,9 @@ serialize(): Uint8Array
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-serialize(): Uint8Array--><!--Device-WebDownloadItem-serialize(): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -391,7 +436,7 @@ serialize(): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | - 失败的下载序列化后的字节数组。 |
+| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | - 失败的下载序列化后的字节数组。 |
 
 ## start
 
@@ -401,16 +446,18 @@ start(downloadPath: string): void
 
 开始下载到指定目录，参数为下载文件的磁盘存储路径（包含文件名）。
 
-> **说明：**
->
-> 该接口应在WebDownloadDelegate的onBeforeDownload回调中使用。若在WebDownloadDelegate的onBeforeDownload中未调用start('xxx')，则下载任务将保持在
-> PENDING状态。处于PENDING状态的下载会将文件下载到临时目录，临时文件会在WebDownloadItem.start指定目标路径后被重命名为目标路径，未下载完成的部分会在WebDownloadItem.start
-> 指定目标路径后直接下载到目标路径。如果在调用WebDownloadItem.start之前不希望下载到临时文件路径，可以先通过WebDownloadItem.cancel取消当前下载任务，随后通过
+> **说明：**  
+>  
+> 该接口应在WebDownloadDelegate的onBeforeDownload回调中使用。若在WebDownloadDelegate的onBeforeDownload中未调用start('xxx')，则下载任务将保持在  
+> PENDING状态。处于PENDING状态的下载会将文件下载到临时目录，临时文件会在WebDownloadItem.start指定目标路径后被重命名为目标路径，未下载完成的部分会在WebDownloadItem.start  
+> 指定目标路径后直接下载到目标路径。如果在调用WebDownloadItem.start之前不希望下载到临时文件路径，可以先通过WebDownloadItem.cancel取消当前下载任务，随后通过  
 > WebDownloadManager.resumeDownload恢复被取消的下载任务。
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebDownloadItem-start(downloadPath: string): void--><!--Device-WebDownloadItem-start(downloadPath: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -424,5 +471,5 @@ start(downloadPath: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Incorrect parameter types.<br/><br/>2. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
 

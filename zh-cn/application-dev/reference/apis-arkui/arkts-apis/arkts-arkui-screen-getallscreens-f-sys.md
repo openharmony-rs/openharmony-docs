@@ -1,14 +1,22 @@
 # getAllScreens（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+```
+
 ## getAllScreens
 
 ```TypeScript
 function getAllScreens(callback: AsyncCallback<Array<Screen>>): void
 ```
 
-��ȡ���е���Ļ��ʹ��callback�첽�ص���
+获取所有的屏幕，使用callback异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>): void--><!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -18,14 +26,14 @@ function getAllScreens(callback: AsyncCallback<Array<Screen>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;Screen&gt;&gt; | 是 | �ص����������ص�ǰ��ȡ����Ļ���󼯺ϡ� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Screen>> | 是 | 回调函数。返回当前获取的屏幕对象集合。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [1400001](../../errorcode-universal.md#1400001-Invalid) | Invalid display or screen. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例：**
 
@@ -33,10 +41,11 @@ function getAllScreens(callback: AsyncCallback<Array<Screen>>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
 screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
@@ -54,9 +63,11 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 function getAllScreens(): Promise<Array<Screen>>
 ```
 
-��ȡ���е���Ļ��ʹ��Promise�첽�ص���
+获取所有的屏幕，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function getAllScreens(): Promise<Array<Screen>>--><!--Device-screen-function getAllScreens(): Promise<Array<Screen>>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -66,14 +77,14 @@ function getAllScreens(): Promise<Array<Screen>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Screen&gt;&gt; | Promise���󡣷��ص�ǰ��ȡ����Ļ���󼯺ϡ� |
+| Promise<Array<Screen>> | Promise对象。返回当前获取的屏幕对象集合。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [1400001](../../errorcode-universal.md#1400001-Invalid) | Invalid display or screen. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例：**
 
@@ -81,6 +92,7 @@ function getAllScreens(): Promise<Array<Screen>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
   if(data.length > 0){
@@ -88,7 +100,7 @@ promise.then((data: Array<screen.Screen>) => {
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message : ${err.message}`);
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
 });
 
 ```

@@ -1,5 +1,11 @@
 # getCurrentFunctions（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
+
 ## getCurrentFunctions
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getCurrentFunctions(): FunctionType
 
 **废弃版本：** 9
 
-**替代接口：** [getCurrentFunctions](arkts-basicservices-usbmanager-getcurrentfunctions-f-sys.md#getCurrentFunctions-1)
+**替代接口：** [getCurrentFunctions](arkts-basicservices-usbmanager-getcurrentfunctions-f-sys.md#getcurrentfunctions-1)
+
+<!--Device-usb-function getCurrentFunctions(): FunctionType--><!--Device-usb-function getCurrentFunctions(): FunctionType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -22,7 +30,7 @@ function getCurrentFunctions(): FunctionType
 
 | 类型 | 说明 |
 | --- | --- |
-| FunctionType | 当前的USB功能列表的数字组合掩码。 |
+| [FunctionType](arkts-basicservices-usb-functiontype-e-sys.md) | 当前的USB功能列表的数字组合掩码。 |
 
 **示例：**
 

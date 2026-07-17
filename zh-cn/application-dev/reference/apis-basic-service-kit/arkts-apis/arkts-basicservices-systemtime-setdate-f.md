@@ -1,5 +1,11 @@
 # setDate
 
+## 导入模块
+
+```TypeScript
+import { systemTime } from '@kit.BasicServicesKit';
+```
+
 ## setDate
 
 ```TypeScript
@@ -12,9 +18,11 @@ function setDate(date: Date, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setDate-1)
+**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setdate-1)
 
 **需要权限：** ohos.permission.SET_TIME
+
+<!--Device-systemTime-function setDate(date: Date, callback: AsyncCallback<void>): void--><!--Device-systemTime-function setDate(date: Date, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -23,13 +31,13 @@ function setDate(date: Date, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | date | Date | 是 | 目标日期。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [-1](../../errorcode-universal.md#-1) |  |
+| -1 |  |
 
 **示例：**
 
@@ -45,8 +53,8 @@ try {
     }
     console.info(`Succeeded in setting date.`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
 }
 
@@ -65,9 +73,11 @@ function setDate(date: Date): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setDate-1)
+**替代接口：** [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setdate-1)
 
 **需要权限：** ohos.permission.SET_TIME
+
+<!--Device-systemTime-function setDate(date: Date): Promise<void>--><!--Device-systemTime-function setDate(date: Date): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -81,13 +91,13 @@ function setDate(date: Date): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [-1](../../errorcode-universal.md#-1) |  |
+| -1 |  |
 
 **示例：**
 
@@ -101,8 +111,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
 }
 

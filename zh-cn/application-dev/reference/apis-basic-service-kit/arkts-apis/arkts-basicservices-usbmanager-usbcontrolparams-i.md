@@ -1,14 +1,22 @@
 # USBControlParams
 
-���ƴ��������
+控制传输参数。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-usbManager-interface USBControlParams--><!--Device-usbManager-interface USBControlParams-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
+
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
 
 ## data
 
@@ -16,7 +24,7 @@
 data: Uint8Array
 ```
 
-����д����ȡ�Ļ�������
+用于写入或读取的缓冲区。
 
 **类型：** Uint8Array
 
@@ -24,7 +32,9 @@ data: Uint8Array
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-data: Uint8Array--><!--Device-USBControlParams-data: Uint8Array-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -34,7 +44,7 @@ data: Uint8Array
 index: number
 ```
 
-�������value��Ӧ������ֵ��
+请求参数value对应的索引值。
 
 **类型：** number
 
@@ -42,7 +52,9 @@ index: number
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-index: number--><!--Device-USBControlParams-index: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -52,7 +64,7 @@ index: number
 reqType: USBControlRequestType
 ```
 
-����������͡�
+请求控制类型。
 
 **类型：** USBControlRequestType
 
@@ -60,7 +72,9 @@ reqType: USBControlRequestType
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -70,7 +84,7 @@ reqType: USBControlRequestType
 request: number
 ```
 
-�������͡�
+请求类型。
 
 **类型：** number
 
@@ -78,7 +92,9 @@ request: number
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-request: number--><!--Device-USBControlParams-request: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -88,7 +104,7 @@ request: number
 target: USBRequestTargetType
 ```
 
-����Ŀ�����͡�
+请求目标类型。
 
 **类型：** USBRequestTargetType
 
@@ -96,7 +112,9 @@ target: USBRequestTargetType
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-target: USBRequestTargetType--><!--Device-USBControlParams-target: USBRequestTargetType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -106,7 +124,7 @@ target: USBRequestTargetType
 value: number
 ```
 
-���������
+请求参数。
 
 **类型：** number
 
@@ -114,7 +132,9 @@ value: number
 
 **废弃版本：** 18
 
-**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md#USBDeviceRequestParams)
+**替代接口：** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-value: number--><!--Device-USBControlParams-value: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

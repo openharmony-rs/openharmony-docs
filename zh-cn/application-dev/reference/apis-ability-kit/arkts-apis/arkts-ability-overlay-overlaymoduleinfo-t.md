@@ -4,9 +4,11 @@
 export type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo
 ```
 
-OverlayModuleInfo��Ϣ��
+OverlayModuleInfo信息。
 
 **起始版本：** 10
+
+<!--Device-overlay-export type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo--><!--Device-overlay-export type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 

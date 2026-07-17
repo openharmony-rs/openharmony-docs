@@ -1,16 +1,24 @@
 # optimizeStorage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
+
 ## optimizeStorage
 
 ```TypeScript
 function optimizeStorage():Promise<void>
 ```
 
-�Ż�ͼ����ͬ���ƿռ�ı�����Դ�����ձ���ʣ��ռ�ִ���Զ��ϻ����ԡ�ʹ��Promise�첽�ص���
+优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。
 
 **起始版本：** 17
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-cloudSync-function optimizeStorage():Promise<void>--><!--Device-cloudSync-function optimizeStorage():Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -20,16 +28,16 @@ function optimizeStorage():Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application uses<br/>system API.<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API.<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -39,7 +47,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 cloudSync.optimizeStorage().then(() => {
   console.info("optimize storage successfully");   // 前台UX按需阻塞等待
 }).catch((err: BusinessError) => {
-  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`optimize storage failed with error message: ${err.message}, error code: ${err.code}`);
 });
 
 ```

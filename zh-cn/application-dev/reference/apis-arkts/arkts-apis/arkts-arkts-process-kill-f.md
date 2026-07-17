@@ -1,5 +1,11 @@
 # kill
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## kill
 
 ```TypeScript
@@ -13,6 +19,8 @@ function kill(signal: number, pid: number): boolean
 **废弃版本：** 9
 
 **替代接口：** [kill](arkts-arkts-process-processmanager-c.md#kill-1)
+
+<!--Device-process-function kill(signal: number, pid: number): boolean--><!--Device-process-function kill(signal: number, pid: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -32,8 +40,8 @@ function kill(signal: number, pid: number): boolean
 **示例：**
 
 ```TypeScript
-let pres = process.pid;
-let result = process.kill(28, pres);
+let pid = process.pid;
+let result = process.kill(28, pid);
 
 ```
 

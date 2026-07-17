@@ -1,5 +1,11 @@
 # getCfgDirListSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { configPolicy } from '@kit.BasicServicesKit';
+```
+
 ## getCfgDirListSync
 
 ```TypeScript
@@ -10,6 +16,8 @@ function getCfgDirListSync(): Array<string>
 
 **起始版本：** 11
 
+<!--Device-configPolicy-function getCfgDirListSync(): Array<string>--><!--Device-configPolicy-function getCfgDirListSync(): Array<string>-End-->
+
 **系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **系统接口：** 此接口为系统接口。
@@ -18,5 +26,5 @@ function getCfgDirListSync(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 返回配置层级目录列表。 |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回配置层级目录列表。 |
 

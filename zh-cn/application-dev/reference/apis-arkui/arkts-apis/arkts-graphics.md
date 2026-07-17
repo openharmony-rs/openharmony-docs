@@ -15,46 +15,46 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-arkui-colormetrics-c.md) | 用于混合颜色。 |
-| [DrawContext](arkts-arkui-drawcontext-c.md) | 图形绘制上下文，提供绘制所需的画布宽度和高度。 |
-| [LengthMetrics](arkts-arkui-lengthmetrics-c.md) | 用于设置长度属性，当长度单位为PERCENT时，值为1表示100%。 |
-| [ShapeClip](arkts-arkui-shapeclip-c.md) | 用于设置图形裁剪。 |
-| [ShapeMask](arkts-arkui-shapemask-c.md) | 用于设置图形遮罩。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 用于混合颜色。 |
+| [DrawContext](arkts-arkui-graphics-drawcontext-c.md) | 图形绘制上下文，提供绘制所需的画布宽度和高度。 |
+| [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | 用于设置长度属性，当长度单位为PERCENT时，值为1表示100%。 |
+| [ShapeClip](arkts-arkui-graphics-shapeclip-c.md) | 用于设置图形裁剪。 |
+| [ShapeMask](arkts-arkui-graphics-shapemask-c.md) | 用于设置图形遮罩。 |
 
 <!--Del-->
 ### 类（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-arkui-colormetrics-c-sys.md) | 用于混合颜色。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c-sys.md) | 用于混合颜色。 |
 <!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [BackgroundBlur](arkts-arkui-backgroundblur-i.md) | 设置背景模糊效果。 |
-| [Circle](arkts-arkui-circle-i.md) | 用于设置圆形的属性。 |
-| [CommandPath](arkts-arkui-commandpath-i.md) | 用于设置路径绘制的指令。 |
-| [ContentBlur](arkts-arkui-contentblur-i.md) | 设置内容模糊效果。 |
-| [Corners](arkts-arkui-corners-i.md) | 用于设置四个角的圆角属性。 |
-| [Edges](arkts-arkui-edges-i.md) | 用于设置边框的属性。 |
-| [ForegroundBlur](arkts-arkui-foregroundblur-i.md) | 设置前景模糊效果。 |
-| [Frame](arkts-arkui-frame-i.md) | 用于设置或返回组件的布局大小和位置。 |
-| [RoundRect](arkts-arkui-roundrect-i.md) | 用于设置带有圆角的矩形。 |
-| [Size](arkts-arkui-size-i.md) | 用于返回组件布局大小的宽和高。默认单位为vp，不同的接口使用Size类型时会再定义单位，以接口定义的单位为准。 |
-| [SizeT](arkts-arkui-sizet-i.md) | 用于设置宽高的属性。 |
-| [Vector2](arkts-arkui-vector2-i.md) | 用于表示包含x和y两个值的向量。 |
-| [Vector2T](arkts-arkui-vector2t-i.md) | 用于表示T类型的包含x和y两个值的向量。 |
-| [Vector3](arkts-arkui-vector3-i.md) | 用于表示包含x、y、z三个值的向量。 |
-| [Vector4](arkts-arkui-vector4-i.md) | 用于表示包含x、y、z、w四个值的向量。 |
+| [BackgroundBlur](arkts-arkui-graphics-backgroundblur-i.md) | 设置背景模糊效果。 |
+| [Circle](arkts-arkui-graphics-circle-i.md) | 用于设置圆形的属性。 |
+| [CommandPath](arkts-arkui-graphics-commandpath-i.md) | 用于设置路径绘制的指令。 |
+| [ContentBlur](arkts-arkui-graphics-contentblur-i.md) | 设置内容模糊效果。 |
+| [Corners](arkts-arkui-graphics-corners-i.md) | 用于设置四个角的圆角属性。 |
+| [Edges](arkts-arkui-graphics-edges-i.md) | 用于设置边框的属性。 |
+| [ForegroundBlur](arkts-arkui-graphics-foregroundblur-i.md) | 设置前景模糊效果。 |
+| [Frame](arkts-arkui-graphics-frame-i.md) | 用于设置或返回组件的布局大小和位置。 |
+| [RoundRect](arkts-arkui-graphics-roundrect-i.md) | 用于设置带有圆角的矩形。 |
+| [Size](arkts-arkui-graphics-size-i.md) | 用于返回组件布局大小的宽和高。默认单位为vp，不同的接口使用Size类型时会再定义单位，以接口定义的单位为准。 |
+| [SizeT](arkts-arkui-graphics-sizet-i.md) | 用于设置宽高的属性。 |
+| [Vector2](arkts-arkui-graphics-vector2-i.md) | 用于表示包含x和y两个值的向量。 |
+| [Vector2T](arkts-arkui-graphics-vector2t-i.md) | 用于表示T类型的包含x和y两个值的向量。 |
+| [Vector3](arkts-arkui-graphics-vector3-i.md) | 用于表示包含x、y、z三个值的向量。 |
+| [Vector4](arkts-arkui-graphics-vector4-i.md) | 用于表示包含x、y、z、w四个值的向量。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [LengthMetricsUnit](arkts-arkui-lengthmetricsunit-e.md) | 长度属性单位枚举。 |
-| [LengthUnit](arkts-arkui-lengthunit-e.md) | 长度属性单位枚举。 |
+| [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md) | 长度属性单位枚举。 |
+| [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | 长度属性单位枚举。 |
 
 ### 类型
 

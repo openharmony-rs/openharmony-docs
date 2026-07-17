@@ -1,5 +1,11 @@
 # printf
 
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
+
 ## printf
 
 ```TypeScript
@@ -13,6 +19,8 @@ function printf(format: string, ...args: Object[]): string
 **废弃版本：** 9
 
 **替代接口：** [format](arkts-arkts-util-format-f.md#format-1)
+
+<!--Device-util-function printf(format: string, ...args: Object[]): string--><!--Device-util-function printf(format: string, ...args: Object[]): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

@@ -1,5 +1,11 @@
 # @ohos.abilityAccessCtrl
 
+## 导入模块
+
+```TypeScript
+import { Context, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 命名空间

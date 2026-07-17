@@ -1,16 +1,24 @@
 # getBundleArchiveInfoSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getBundleArchiveInfoSync
 
 ```TypeScript
 function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
 ```
 
-��ͬ���������ݸ�����hapFilePath��bundleFlags��ȡBundleInfo����
+以同步方法根据给定的hapFilePath和bundleFlags获取BundleInfo对象。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo--><!--Device-bundleManager-function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,23 +28,23 @@ function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): Bun
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePath | string | 是 | ��ʾ�洢HAP��·����·��Ӧ���ǵ�ǰӦ�ó�������Ŀ¼�����·���� |
-| bundleFlags | number | 是 | ��ʾ����ָ��Ҫ���ص�BundleInfo�����а�������Ϣ�ı�־�� |
+| hapFilePath | string | 是 | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| bundleFlags | number | 是 | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleInfo | ����BundleInfo���� |
+| [BundleInfo](arkts-ability-bundleinfo-i.md) | 返回BundleInfo对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700022](../../errorcode-universal.md#17700022-The) | The hapFilePath is invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700022](../errorcode-bundle.md#17700022-输入的待解析源文件无效) | The hapFilePath is invalid. |
 
 **示例：**
 

@@ -4,9 +4,11 @@
 export type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
 ```
 
-����module������Ϣ��
+包的module配置信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type ModuleConfigInfo = _PackInfo.ModuleConfigInfo--><!--Device-freeInstall-export type ModuleConfigInfo = _PackInfo.ModuleConfigInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

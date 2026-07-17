@@ -8,6 +8,8 @@ export type AppForegroundStateObserver = _AppForegroundStateObserver.default
 
 **起始版本：** 11
 
+<!--Device-appManager-export type AppForegroundStateObserver = _AppForegroundStateObserver.default--><!--Device-appManager-export type AppForegroundStateObserver = _AppForegroundStateObserver.default-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。

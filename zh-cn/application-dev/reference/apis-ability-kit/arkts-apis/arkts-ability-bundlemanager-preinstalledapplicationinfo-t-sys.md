@@ -4,9 +4,11 @@
 export type PreinstalledApplicationInfo = _PreinstalledApplicationInfo
 ```
 
-Ԥ��Ӧ����Ϣ��
+预置应用信息。
 
 **起始版本：** 12
+
+<!--Device-bundleManager-export type PreinstalledApplicationInfo = _PreinstalledApplicationInfo--><!--Device-bundleManager-export type PreinstalledApplicationInfo = _PreinstalledApplicationInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

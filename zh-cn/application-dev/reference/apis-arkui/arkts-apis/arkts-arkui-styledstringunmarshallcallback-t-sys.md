@@ -4,11 +4,13 @@
 declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue
 ```
 
-属性字符串反序列化ArrayBuffer得到[StyledStringMarshallingValue](arkts-arkui-styled-string-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue)回调类型。
+属性字符串反序列化ArrayBuffer得到[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md)回调类型。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue--><!--Device-unnamed-declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,11 @@ declare type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledString
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | ArrayBuffer | 是 | [StyledStringMarshallingValue](arkts-arkui-styled-string-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue)序列化后的数据。 |
+| buf | ArrayBuffer | 是 | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md)序列化后的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| StyledStringMarshallingValue | 反序列化得到的[StyledStringMarshallingValue](arkts-arkui-styled-string-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue) 。 |
+| StyledStringMarshallingValue | 反序列化得到的[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) 。 |
 

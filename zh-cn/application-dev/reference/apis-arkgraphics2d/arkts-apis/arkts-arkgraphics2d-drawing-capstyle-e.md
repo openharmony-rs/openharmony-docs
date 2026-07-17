@@ -1,12 +1,10 @@
 # CapStyle
 
-```TypeScript
-enum CapStyle
-```
-
 定义线帽样式的枚举，即画笔在绘制线段时，在线段头尾端点的样式。
 
 **起始版本：** 12
+
+<!--Device-drawing-enum CapStyle--><!--Device-drawing-enum CapStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -20,6 +18,8 @@ FLAT_CAP = 0
 
 **起始版本：** 12
 
+<!--Device-CapStyle-FLAT_CAP = 0--><!--Device-CapStyle-FLAT_CAP = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## SQUARE_CAP
@@ -32,6 +32,8 @@ SQUARE_CAP = 1
 
 **起始版本：** 12
 
+<!--Device-CapStyle-SQUARE_CAP = 1--><!--Device-CapStyle-SQUARE_CAP = 1-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## ROUND_CAP
@@ -43,6 +45,8 @@ ROUND_CAP = 2
 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。
 
 **起始版本：** 12
+
+<!--Device-CapStyle-ROUND_CAP = 2--><!--Device-CapStyle-ROUND_CAP = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

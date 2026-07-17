@@ -1,5 +1,11 @@
 # getOriginalFileName
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## getOriginalFileName
 
 ```TypeScript
@@ -12,13 +18,15 @@ function getOriginalFileName(fileName: string): string
 
 **起始版本：** 10
 
+<!--Device-dlpPermission-function getOriginalFileName(fileName: string): string--><!--Device-dlpPermission-function getOriginalFileName(fileName: string): string-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fileName | string | 是 | 指定要查询的DLP文件名。长度范围[1, 255]字节，超出此范围抛出错误码19100001。 |
+| fileName | string | 是 | 指定要查询的DLP文件名。长度不超过255字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
@@ -30,8 +38,8 @@ function getOriginalFileName(fileName: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19100001](../../errorcode-universal.md#19100001-Invalid) | Invalid parameter value. |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例：**
 

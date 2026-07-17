@@ -1,21 +1,19 @@
 # DisplayOrientation
 
-```TypeScript
-export enum DisplayOrientation
-```
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用  
+> [bundleManager.DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md)替代。
 
-> **˵����**
->
-> ��API version 7��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [bundleManager.DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md#DisplayOrientation)�����
-
-��Ļ��ʾ����
+屏幕显示方向。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md#DisplayOrientation)
+**替代接口：** [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md)
+
+<!--Device-bundle-export enum DisplayOrientation--><!--Device-bundle-export enum DisplayOrientation-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -25,13 +23,15 @@ export enum DisplayOrientation
 UNSPECIFIED = 0
 ```
 
-��Ļ����--��ָ����
+屏幕方向--不指定。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** UNSPECIFIED
+
+<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -47,6 +47,8 @@ LANDSCAPE = 1
 
 **替代接口：** LANDSCAPE
 
+<!--Device-DisplayOrientation-LANDSCAPE = 1--><!--Device-DisplayOrientation-LANDSCAPE = 1-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## PORTRAIT
@@ -61,6 +63,8 @@ PORTRAIT = 2
 
 **替代接口：** PORTRAIT
 
+<!--Device-DisplayOrientation-PORTRAIT = 2--><!--Device-DisplayOrientation-PORTRAIT = 2-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## FOLLOW_RECENT
@@ -74,6 +78,8 @@ FOLLOW_RECENT = 3
 **废弃版本：** 9
 
 **替代接口：** FOLLOW_RECENT
+
+<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

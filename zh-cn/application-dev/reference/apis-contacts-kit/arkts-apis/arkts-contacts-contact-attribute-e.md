@@ -1,13 +1,10 @@
 # Attribute
 
-```TypeScript
-enum Attribute
-```
-
-ö�٣�����Ϊnumber����ϵ�������б���
-ͨ��JSON��ʽ�������ݡ�
+枚举，类型为number。联系人属性列表。通过JSON格式创建数据。
 
 **起始版本：** 7
+
+<!--Device-contact-enum Attribute--><!--Device-contact-enum Attribute-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -17,11 +14,13 @@ enum Attribute
 ATTR_CONTACT_EVENT = 0
 ```
 
-��ϵ�˵����ա�����������Ҫ���ڡ�
+联系人的生日、周年纪念等重要日期。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_CONTACT_EVENT = 0--><!--Device-Attribute-ATTR_CONTACT_EVENT = 0-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -31,11 +30,13 @@ ATTR_CONTACT_EVENT = 0
 ATTR_EMAIL = 1
 ```
 
-��ϵ�˵������ַ��
+联系人的邮箱地址。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_EMAIL = 1--><!--Device-Attribute-ATTR_EMAIL = 1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -45,11 +46,13 @@ ATTR_EMAIL = 1
 ATTR_GROUP_MEMBERSHIP = 2
 ```
 
-��ϵ�˵�Ⱥ�顣
+联系人的群组。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_GROUP_MEMBERSHIP = 2--><!--Device-Attribute-ATTR_GROUP_MEMBERSHIP = 2-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -59,11 +62,13 @@ ATTR_GROUP_MEMBERSHIP = 2
 ATTR_IM = 3
 ```
 
-��ϵ�˵ļ�ʱ��Ϣ��ַ��
+联系人的即时消息地址。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_IM = 3--><!--Device-Attribute-ATTR_IM = 3-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -73,11 +78,13 @@ ATTR_IM = 3
 ATTR_NAME = 4
 ```
 
-��ϵ�˵�������
+联系人的姓名。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_NAME = 4--><!--Device-Attribute-ATTR_NAME = 4-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -87,11 +94,13 @@ ATTR_NAME = 4
 ATTR_NICKNAME = 5
 ```
 
-��ϵ�˵��ǳơ�
+联系人的昵称。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_NICKNAME = 5--><!--Device-Attribute-ATTR_NICKNAME = 5-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -101,11 +110,13 @@ ATTR_NICKNAME = 5
 ATTR_NOTE = 6
 ```
 
-��ϵ�˵ı�ע��
+联系人的备注。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_NOTE = 6--><!--Device-Attribute-ATTR_NOTE = 6-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -115,11 +126,13 @@ ATTR_NOTE = 6
 ATTR_ORGANIZATION = 7
 ```
 
-��ϵ�˵���֯��Ϣ��
+联系人的组织信息。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_ORGANIZATION = 7--><!--Device-Attribute-ATTR_ORGANIZATION = 7-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -129,11 +142,13 @@ ATTR_ORGANIZATION = 7
 ATTR_PHONE = 8
 ```
 
-��ϵ�˵ĵ绰���롣
+联系人的电话号码。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_PHONE = 8--><!--Device-Attribute-ATTR_PHONE = 8-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -143,11 +158,13 @@ ATTR_PHONE = 8
 ATTR_PORTRAIT = 9
 ```
 
-��ϵ�˵�ͷ��
+联系人的头像。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_PORTRAIT = 9--><!--Device-Attribute-ATTR_PORTRAIT = 9-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -157,11 +174,13 @@ ATTR_PORTRAIT = 9
 ATTR_POSTAL_ADDRESS = 10
 ```
 
-��ϵ�˵�������ַ��
+联系人的邮政地址。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_POSTAL_ADDRESS = 10--><!--Device-Attribute-ATTR_POSTAL_ADDRESS = 10-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -171,11 +190,13 @@ ATTR_POSTAL_ADDRESS = 10
 ATTR_RELATION = 11
 ```
 
-��ϵ�˵Ĺ�ϵ��
+联系人的关系。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_RELATION = 11--><!--Device-Attribute-ATTR_RELATION = 11-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -185,11 +206,13 @@ ATTR_RELATION = 11
 ATTR_SIP_ADDRESS = 12
 ```
 
-��ϵ�˵ĻỰ����Э��(SIP)��ַ��
+联系人的会话发起协议(SIP)地址。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_SIP_ADDRESS = 12--><!--Device-Attribute-ATTR_SIP_ADDRESS = 12-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -199,11 +222,13 @@ ATTR_SIP_ADDRESS = 12
 ATTR_WEBSITE = 13
 ```
 
-��ϵ�˵���վ��
+联系人的网站。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Attribute-ATTR_WEBSITE = 13--><!--Device-Attribute-ATTR_WEBSITE = 13-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 

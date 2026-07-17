@@ -1,5 +1,11 @@
 # isConcurrent
 
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
+
 ## isConcurrent
 
 ```TypeScript
@@ -10,7 +16,9 @@ function isConcurrent(func: Function): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-taskpool-function isConcurrent(func: Function): boolean--><!--Device-taskpool-function isConcurrent(func: Function): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,15 +32,15 @@ function isConcurrent(func: Function): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果被检查函数标注了<br/>[@Concurrent装饰器](../../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)，则返回**true**；<br/>否则返回**false**。 |
+| boolean | 检查结果。如果被检查函数标注了[@Concurrent装饰器](../../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)，则返回**true**；否则返回**false**。 |
 
 **示例：**
 
 ```TypeScript
 @Concurrent
-function test() {}
+function emptyFunc(): void {}
 
-let result: Boolean = taskpool.isConcurrent(test);
+let result: boolean = taskpool.isConcurrent(emptyFunc);
 console.info("result is: " + result);
 
 ```

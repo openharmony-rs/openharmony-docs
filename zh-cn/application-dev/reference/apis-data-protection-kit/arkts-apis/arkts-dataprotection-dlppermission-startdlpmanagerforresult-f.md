@@ -1,22 +1,30 @@
 # startDLPManagerForResult
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## startDLPManagerForResult
 
 ```TypeScript
 function startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise<DLPManagerResult>
 ```
 
-在当前[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiability-c.md#UIAbility)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。
+在当前[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。
 
 该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 该接口仅支持域账号调用。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-dlpPermission-function startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise<DLPManagerResult>--><!--Device-dlpPermission-function startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise<DLPManagerResult>-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -24,24 +32,24 @@ function startDLPManagerForResult(context: common.UIAbilityContext, want: Want):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | common.UIAbilityContext | 是 | 当前窗口<br/>[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiability-c.md#UIAbility) 上下文。 |
-| want | Want | 是 | 请求对象，必须包含uri和displayName字段。 |
+| context | common.UIAbilityContext | 是 | 当前窗口[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md) 上下文。 |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 请求对象，必须包含uri和displayName字段。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DLPManagerResult&gt; | Promise对象。打开DLP权限管理应用并退出后的结果。 |
+| Promise<DLPManagerResult> | Promise对象。打开DLP权限管理应用并退出后的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. |
-| [19100001](../../errorcode-universal.md#19100001-Invalid) | Invalid parameter value. |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
-| [19100016](../../errorcode-universal.md#19100016-The) | The uri field is missing in the want parameter. |
-| [19100017](../../errorcode-universal.md#19100017-The) | The displayName field is missing in the want parameter. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+| [19100016](../errorcode-dlp.md#19100016-want参数中没有uri) | The uri field is missing in the want parameter. |
+| [19100017](../errorcode-dlp.md#19100017-want参数中parameters内没有displayname) | The displayName field is missing in the want parameter. |
 
 **示例：**
 

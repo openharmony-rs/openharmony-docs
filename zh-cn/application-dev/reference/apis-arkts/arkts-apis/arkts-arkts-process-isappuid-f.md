@@ -1,5 +1,11 @@
 # isAppUid
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## isAppUid
 
 ```TypeScript
@@ -12,7 +18,9 @@ function isAppUid(v: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [isAppUid](arkts-arkts-process-processmanager-c.md#isAppUid-1)
+**替代接口：** [isAppUid](arkts-arkts-process-processmanager-c.md#isappuid-1)
+
+<!--Device-process-function isAppUid(v: number): boolean--><!--Device-process-function isAppUid(v: number): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -26,12 +34,14 @@ function isAppUid(v: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true；<br/>否则返回 false。 |
+| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true；否则返回 false。 |
 
 **示例：**
 
 ```TypeScript
-let result = process.isAppUid(688);
+// uid通过process.uid获取
+let pres = process.uid;
+let result = process.isAppUid(pres);
 
 ```
 

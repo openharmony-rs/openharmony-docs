@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-stream-interface ReadableOptions--><!--Device-stream-interface ReadableOptions-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { stream } from '@kit.ArkTS';
+```
 
 ## encoding
 
@@ -22,7 +30,9 @@ encoding?: string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ReadableOptions-encoding?: string--><!--Device-ReadableOptions-encoding?: string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 7
 
+<!--Device-window-interface Rect--><!--Device-window-interface Rect-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## height
 
@@ -19,6 +27,8 @@ height: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Rect-height: int--><!--Device-Rect-height: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,6 +46,8 @@ left: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Rect-left: int--><!--Device-Rect-left: int-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## top
@@ -52,6 +64,8 @@ top: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Rect-top: int--><!--Device-Rect-top: int-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## width
@@ -67,6 +81,8 @@ width: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Rect-width: int--><!--Device-Rect-width: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -1,5 +1,11 @@
 # unregisterWatermarkCallback
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## unregisterWatermarkCallback
 
 ```TypeScript
@@ -14,19 +20,21 @@ function unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-print-function unregisterWatermarkCallback(callback?: WatermarkCallback): void--><!--Device-print-function unregisterWatermarkCallback(callback?: WatermarkCallback): void-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | WatermarkCallback | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
+| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 
 **示例：**
 

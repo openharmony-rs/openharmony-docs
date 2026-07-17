@@ -4,9 +4,11 @@
 export type BundleOptions = _BundleInfo.BundleOptions
 ```
 
-Ӧ�ð�ѡ��������û��ѯӦ�������Ϣ��
+应用包选项，用于设置或查询应用相关信息。
 
 **起始版本：** 20
+
+<!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions--><!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

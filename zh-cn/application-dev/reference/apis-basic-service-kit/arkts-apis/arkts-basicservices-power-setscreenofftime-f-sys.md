@@ -1,5 +1,11 @@
 # setScreenOffTime（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { power } from '@kit.BasicServicesKit';
+```
+
 ## setScreenOffTime
 
 ```TypeScript
@@ -10,7 +16,10 @@ function setScreenOffTime(timeout: number): void
 
 **起始版本：** 12
 
-**需要权限：** ohos.permission.POWER_MANAGER
+**需要权限：** 
+- API版本19+：ohos.permission.POWER_MANAGER
+
+<!--Device-power-function setScreenOffTime(timeout: long): void--><!--Device-power-function setScreenOffTime(timeout: long): void-End-->
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -26,18 +35,18 @@ function setScreenOffTime(timeout: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Parameter verification failed. |
-| [4900101](../../errorcode-universal.md#4900101-Failed) | Failed to connect to the service. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API.&lt;br&gt;**适用版本：** 19+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [4900101](../../apis-basic-services-kit/errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 19+ |
 
 **示例：**
 
 ```TypeScript
 try {
     power.setScreenOffTime(30000);
-} catch(err) {
-    console.error('set screen off time failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set screen off time. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```

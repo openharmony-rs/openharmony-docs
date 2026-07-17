@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-interface RequestResult--><!--Device-osAccount-interface RequestResult-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## credentialId
 
@@ -19,6 +27,8 @@ credentialId?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 8
+
+<!--Device-RequestResult-credentialId?: Uint8Array--><!--Device-RequestResult-credentialId?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

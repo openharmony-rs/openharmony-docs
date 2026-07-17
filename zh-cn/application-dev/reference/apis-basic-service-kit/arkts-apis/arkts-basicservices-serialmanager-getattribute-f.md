@@ -1,14 +1,22 @@
 # getAttribute
 
+## 导入模块
+
+```TypeScript
+import { serialManager } from '@kit.BasicServicesKit';
+```
+
 ## getAttribute
 
 ```TypeScript
 function getAttribute(portId: number): Readonly<SerialAttribute>
 ```
 
-��ȡָ�����ڵ����ò�����
+获取指定串口的配置参数。
 
 **起始版本：** 19
+
+<!--Device-serialManager-function getAttribute(portId: int): Readonly<SerialAttribute>--><!--Device-serialManager-function getAttribute(portId: int): Readonly<SerialAttribute>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -16,22 +24,22 @@ function getAttribute(portId: number): Readonly<SerialAttribute>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | Ŀ���豸�Ķ˿ںţ�����[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getPortList-1)��ȡ�Ĵ��ڲ���SerialPort�� |
+| portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist-1)获取的串口参数SerialPort。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly&lt;SerialAttribute&gt; | ���ش��ڵ����ò����� |
+| Readonly<SerialAttribute> | 返回串口的配置参数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401) |  |
-| [31400001](../../errorcode-universal.md#31400001) |  |
-| [31400003](../../errorcode-universal.md#31400003) |  |
-| [31400005](../../errorcode-universal.md#31400005) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
+| [31400001](../../apis-basic-services-kit/errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400003](../../apis-basic-services-kit/errorcode-usb.md#31400003-端口号不存在) |  |
+| [31400005](../../apis-basic-services-kit/errorcode-usb.md#31400005-设备未打开) |  |
 
 **示例：**
 
@@ -40,9 +48,10 @@ function getAttribute(portId: number): Readonly<SerialAttribute>
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function getAttribute() {
+async function getAttributeExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -53,15 +62,14 @@ function getAttribute() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 打开设备
@@ -69,8 +77,8 @@ function getAttribute() {
     serialManager.open(portId)
     console.info('open usbSerial success, portId: ' + portId);
   } catch (error) {
-    console.error('open usbSerial error, ' + JSON.stringify(error));
-    return;
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 
   // 获取串口配置
@@ -82,7 +90,17 @@ function getAttribute() {
       console.info('getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute));
     }
   } catch (error) {
-    console.error('getAttribute usbSerial error, ' + JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get attribute. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
   }
 }
 

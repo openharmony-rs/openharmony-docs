@@ -4,7 +4,7 @@
 
 **起始版本：** 14
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare class BackgroundColorStyle--><!--Device-unnamed-declare class BackgroundColorStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +20,9 @@ constructor(textBackgroundStyle: TextBackgroundStyle)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-BackgroundColorStyle-constructor(textBackgroundStyle: TextBackgroundStyle)--><!--Device-BackgroundColorStyle-constructor(textBackgroundStyle: TextBackgroundStyle)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +30,7 @@ constructor(textBackgroundStyle: TextBackgroundStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| textBackgroundStyle | TextBackgroundStyle | 是 | 文本背景色设置项。<br/>默认值：<br/>{<br/>color: Color.Transparent,<br/>radius: 0<br/>} |
+| textBackgroundStyle | [TextBackgroundStyle](../arkts-components/arkts-arkui-span-textbackgroundstyle-i.md) | 是 | 文本背景色设置项。<br />默认值：<br />{<br /> color: Color.Transparent,<br/> radius: 0<br />} |
 
 ## textBackgroundStyle
 
@@ -54,7 +56,9 @@ radius: 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-BackgroundColorStyle-readonly textBackgroundStyle: TextBackgroundStyle--><!--Device-BackgroundColorStyle-readonly textBackgroundStyle: TextBackgroundStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

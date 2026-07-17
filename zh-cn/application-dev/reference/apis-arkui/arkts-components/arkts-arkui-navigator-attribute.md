@@ -10,6 +10,8 @@ Navigator的属性。
 
 **替代接口：** Navigation
 
+<!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>--><!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## active
@@ -26,7 +28,9 @@ active(value: boolean)
 
 **替代接口：** Navigation
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigatorAttribute-active(value: boolean): NavigatorAttribute--><!--Device-NavigatorAttribute-active(value: boolean): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,9 +54,11 @@ params(value: object)
 
 **废弃版本：** 13
 
-**替代接口：** [param](arkts-arkui-navpathinfo-c.md#param)
+**替代接口：** [param](arkts-arkui-navigation-navpathinfo-c.md#param)
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigatorAttribute-params(value: object): NavigatorAttribute--><!--Device-NavigatorAttribute-params(value: object): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +66,7 @@ params(value: object)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | object | 是 | 跳转时要同时传递到目标页面的数据，可在目标页面使用[router.getParams()](../arkts-apis/arkts-arkui-getparams-f.md#getparams-1)获得。 |
+| value | object | 是 | 跳转时要同时传递到目标页面的数据，可在目标页面使用[router.getParams()](../arkts-apis/arkts-arkui-router-getparams-f.md#getparams-1)获得。 |
 
 ## target
 
@@ -76,7 +82,9 @@ target(value: string)
 
 **替代接口：** Navigation
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigatorAttribute-target(value: string): NavigatorAttribute--><!--Device-NavigatorAttribute-target(value: string): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,7 +110,9 @@ type(value: NavigationType)
 
 **替代接口：** Navigation
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigatorAttribute-type(value: NavigationType): NavigatorAttribute--><!--Device-NavigatorAttribute-type(value: NavigationType): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,5 +120,5 @@ type(value: NavigationType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | NavigationType | 是 | 路由跳转方式。<br/>默认值：NavigationType.Push |
+| value | [NavigationType](arkts-arkui-navigator-navigationtype-e.md) | 是 | 路由跳转方式。<br/>默认值：NavigationType.Push |
 

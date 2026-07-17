@@ -1,12 +1,10 @@
 # SharedTransitionEffectType
 
-```TypeScript
-declare enum SharedTransitionEffectType
-```
-
 动画类型。
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare enum SharedTransitionEffectType--><!--Device-unnamed-declare enum SharedTransitionEffectType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +22,8 @@ Static
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SharedTransitionEffectType-Static--><!--Device-SharedTransitionEffectType-Static-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Exchange
@@ -37,6 +37,8 @@ Exchange
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SharedTransitionEffectType-Exchange--><!--Device-SharedTransitionEffectType-Exchange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

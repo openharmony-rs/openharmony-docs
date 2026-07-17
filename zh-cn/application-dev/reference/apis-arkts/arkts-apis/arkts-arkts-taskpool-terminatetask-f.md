@@ -1,5 +1,11 @@
 # terminateTask
 
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
+
 ## terminateTask
 
 ```TypeScript
@@ -10,7 +16,9 @@ function terminateTask(longTask: LongTask): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-taskpool-function terminateTask(longTask: LongTask): void--><!--Device-taskpool-function terminateTask(longTask: LongTask): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -18,7 +26,7 @@ function terminateTask(longTask: LongTask): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| longTask | LongTask | 是 | 需要中止的长时任务。 |
+| longTask | [LongTask](arkts-arkts-taskpool-longtask-c.md) | 是 | 需要中止的长时任务。 |
 
 **示例：**
 

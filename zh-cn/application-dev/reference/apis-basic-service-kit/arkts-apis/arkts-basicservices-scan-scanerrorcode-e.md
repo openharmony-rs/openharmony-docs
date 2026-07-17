@@ -1,12 +1,10 @@
 # ScanErrorCode
 
-```TypeScript
-enum ScanErrorCode
-```
-
 定义扫描错误码的枚举。
 
 **起始版本：** 20
+
+<!--Device-scan-enum ScanErrorCode--><!--Device-scan-enum ScanErrorCode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ SCAN_ERROR_NO_PERMISSION = 201
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_NO_PERMISSION = 201--><!--Device-ScanErrorCode-SCAN_ERROR_NO_PERMISSION = 201-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_NOT_SYSTEM_APPLICATION
@@ -31,6 +31,8 @@ SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202
 非系统应用。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202--><!--Device-ScanErrorCode-SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -44,6 +46,8 @@ SCAN_ERROR_INVALID_PARAMETER = 401
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_INVALID_PARAMETER = 401--><!--Device-ScanErrorCode-SCAN_ERROR_INVALID_PARAMETER = 401-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_GENERIC_FAILURE
@@ -55,6 +59,8 @@ SCAN_ERROR_GENERIC_FAILURE = 13100001
 通用失败。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_GENERIC_FAILURE = 13100001--><!--Device-ScanErrorCode-SCAN_ERROR_GENERIC_FAILURE = 13100001-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -68,6 +74,8 @@ RPC失败。
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_RPC_FAILURE = 13100002--><!--Device-ScanErrorCode-SCAN_ERROR_RPC_FAILURE = 13100002-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_SERVER_FAILURE
@@ -79,6 +87,8 @@ SCAN_ERROR_SERVER_FAILURE = 13100003
 服务失败。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_SERVER_FAILURE = 13100003--><!--Device-ScanErrorCode-SCAN_ERROR_SERVER_FAILURE = 13100003-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -92,6 +102,8 @@ SCAN_ERROR_UNSUPPORTED = 13100004
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_UNSUPPORTED = 13100004--><!--Device-ScanErrorCode-SCAN_ERROR_UNSUPPORTED = 13100004-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_CANCELED
@@ -103,6 +115,8 @@ SCAN_ERROR_CANCELED = 13100005
 操作取消。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_CANCELED = 13100005--><!--Device-ScanErrorCode-SCAN_ERROR_CANCELED = 13100005-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -116,6 +130,8 @@ SCAN_ERROR_DEVICE_BUSY = 13100006
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_DEVICE_BUSY = 13100006--><!--Device-ScanErrorCode-SCAN_ERROR_DEVICE_BUSY = 13100006-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_INVALID
@@ -127,6 +143,8 @@ SCAN_ERROR_INVALID = 13100007
 无效操作。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_INVALID = 13100007--><!--Device-ScanErrorCode-SCAN_ERROR_INVALID = 13100007-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -140,6 +158,8 @@ SCAN_ERROR_JAMMED = 13100008
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_JAMMED = 13100008--><!--Device-ScanErrorCode-SCAN_ERROR_JAMMED = 13100008-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_NO_DOCS
@@ -151,6 +171,8 @@ SCAN_ERROR_NO_DOCS = 13100009
 缺纸。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_NO_DOCS = 13100009--><!--Device-ScanErrorCode-SCAN_ERROR_NO_DOCS = 13100009-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -164,6 +186,8 @@ SCAN_ERROR_COVER_OPEN = 13100010
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_COVER_OPEN = 13100010--><!--Device-ScanErrorCode-SCAN_ERROR_COVER_OPEN = 13100010-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_IO_ERROR
@@ -176,6 +200,8 @@ I/O错误。
 
 **起始版本：** 20
 
+<!--Device-ScanErrorCode-SCAN_ERROR_IO_ERROR = 13100011--><!--Device-ScanErrorCode-SCAN_ERROR_IO_ERROR = 13100011-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_ERROR_NO_MEMORY
@@ -187,6 +213,8 @@ SCAN_ERROR_NO_MEMORY = 13100012
 内存不足。
 
 **起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_NO_MEMORY = 13100012--><!--Device-ScanErrorCode-SCAN_ERROR_NO_MEMORY = 13100012-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

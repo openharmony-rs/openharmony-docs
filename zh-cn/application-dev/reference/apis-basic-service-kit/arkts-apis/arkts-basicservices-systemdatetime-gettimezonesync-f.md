@@ -1,5 +1,11 @@
 # getTimezoneSync
 
+## 导入模块
+
+```TypeScript
+import { systemDateTime } from '@kit.BasicServicesKit';
+```
+
 ## getTimezoneSync
 
 ```TypeScript
@@ -9,6 +15,8 @@ function getTimezoneSync(): string
 获取系统时区，使用同步方式。
 
 **起始版本：** 10
+
+<!--Device-systemDateTime-function getTimezoneSync(): string--><!--Device-systemDateTime-function getTimezoneSync(): string-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -25,9 +33,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let timezone: string = systemDateTime.getTimezoneSync();
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```

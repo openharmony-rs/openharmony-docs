@@ -1,5 +1,11 @@
 # queryTrafficStats
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## queryTrafficStats
 
 ```TypeScript
@@ -12,18 +18,18 @@ function queryTrafficStats(
   ): Promise<statistics.NetStatsInfo>
 ```
 
-��ѯ��ǰ�û���ָ��Ӧ�����ض�ʱ�����ʹ�����������ʹ��Promise�첽�ص���
+查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。
 
-> **˵����**
->
-> ������������ͣ�networkInfo.type����֧�ַ������磨connection.NetBearType.BEARER_CELLULAR����Wi-Fi���磨
-> connection.NetBearType.BEARER_WIFI��������������ֵ���ӿڻ᷵�ش�����9200012��
->
-> �������ʼʱ�䣨networkInfo.startTime��������ʱ�䣨networkInfo.endTime��Ϊ�뼶ʱ��������������ʼʱ�䡢����ʱ��Ϊ����������ʼʱ����ڽ���ʱ�䣬�ӿڻ᷵�ش�����9200012��
->
-> ������û�ID��accountId���ǵ�ǰ�û�ʱ���ӿڻ᷵�ش�����9200012��
->
-> �����ѯ��ʱ����������ʱ��-��ʼʱ�䣩��СΪ1�죬���Ϊ30�졣ʱ����̫С����ѯ������ܲ�׼ȷ��ʱ����̫�󣬲�ѯ��ʱ��ܳ���
+> **说明：**  
+>  
+> 传入的网络类型（networkInfo.type）仅支持蜂窝网络（connection.NetBearType.BEARER_CELLULAR）和Wi-Fi网络（  
+> connection.NetBearType.BEARER_WIFI）。若传入其他值，接口会返回错误码9200012。  
+>  
+> 传入的起始时间（networkInfo.startTime）、结束时间（networkInfo.endTime）为秒级时间戳。若传入的起始时间、结束时间为负数，或起始时间大于结束时间，接口会返回错误码9200012。  
+>  
+> 传入的用户ID（accountId）非当前用户时，接口会返回错误码9200012。  
+>  
+> 建议查询的时间间隔（结束时间-起始时间）最小为1天，最大为30天。时间间隔太小，查询结果可能不准确。时间间隔太大，查询耗时会很长。
 
 **起始版本：** 26.0.0
 
@@ -31,32 +37,46 @@ function queryTrafficStats(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-applicationManager-function queryTrafficStats(
+    admin: Want,
+    bundleName: string,
+    appIndex: number,
+    accountId: number,
+    networkInfo: statistics.NetworkInfo
+  ): Promise<statistics.NetStatsInfo>--><!--Device-applicationManager-function queryTrafficStats(
+    admin: Want,
+    bundleName: string,
+    appIndex: number,
+    accountId: number,
+    networkInfo: statistics.NetworkInfo
+  ): Promise<statistics.NetStatsInfo>-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| bundleName | string | 是 | Ӧ�õİ����� |
-| appIndex | number | 是 | Ӧ�÷�������<br/><br/>ȡֵӦΪ��0��������<br/>- Ӧ�÷���������ȡֵ��Χ�����ڵ���0��������<br/>appIndex����ͨ��@ohos.bundle.bundleManager�е�<br/>[getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md#getAppCloneIdentity-1)�Ƚӿ�����ȡ�� |
-| accountId | number | 是 | �û�ID<br/><br/>ȡֵӦΪ��0��������<br/><br/>accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ�� |
-| networkInfo | statistics.NetworkInfo | 是 | ������Ϣ�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| bundleName | string | 是 | 应用的包名。 |
+| appIndex | number | 是 | 应用分身索引<br>取值应为≥0的整数。  - 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md#getappcloneidentity-1)等接口来获取。 |
+| accountId | number | 是 | 用户ID<br>取值应为≥0的整数。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。 |
+| networkInfo | statistics.NetworkInfo | 是 | 网络信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;statistics.NetStatsInfo&gt; | returns the detailed network statistics information. |
+| Promise<statistics.NetStatsInfo> | returns the detailed network statistics information. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 
 **示例：**
 

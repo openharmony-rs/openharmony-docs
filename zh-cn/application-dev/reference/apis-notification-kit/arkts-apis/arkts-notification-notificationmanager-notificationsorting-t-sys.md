@@ -8,6 +8,8 @@ export type NotificationSorting = _NotificationSorting
 
 **起始版本：** 9
 
+<!--Device-notificationManager-export type NotificationSorting = _NotificationSorting--><!--Device-notificationManager-export type NotificationSorting = _NotificationSorting-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。

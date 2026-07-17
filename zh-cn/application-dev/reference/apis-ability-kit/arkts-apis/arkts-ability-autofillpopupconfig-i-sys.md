@@ -4,6 +4,8 @@
 
 **起始版本：** 12
 
+<!--Device-unnamed-export default interface AutoFillPopupConfig--><!--Device-unnamed-export default interface AutoFillPopupConfig-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -22,6 +24,8 @@ placement?: PopupPlacement
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillPopupConfig-placement?: PopupPlacement--><!--Device-AutoFillPopupConfig-placement?: PopupPlacement-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -39,6 +43,8 @@ popupSize?: PopupSize
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AutoFillPopupConfig-popupSize?: PopupSize--><!--Device-AutoFillPopupConfig-popupSize?: PopupSize-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

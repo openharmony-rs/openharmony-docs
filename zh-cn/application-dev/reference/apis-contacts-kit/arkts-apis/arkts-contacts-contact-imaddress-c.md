@@ -1,10 +1,18 @@
 # ImAddress
 
-��ϵ�˵ļ�ʱ��Ϣ��ַ��
+联系人的即时消息地址。
 
 **起始版本：** 7
 
+<!--Device-contact-class ImAddress--><!--Device-contact-class ImAddress-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## CUSTOM_LABEL
 
@@ -12,13 +20,15 @@
 static readonly CUSTOM_LABEL: -1
 ```
 
-�Զ����������ͣ�Ĭ��ֵΪ0��
+自定义邮箱类型，默认值为0。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly CUSTOM_LABEL: -1--><!--Device-ImAddress-static readonly CUSTOM_LABEL: -1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -28,13 +38,15 @@ static readonly CUSTOM_LABEL: -1
 static readonly IM_AIM: 0
 ```
 
-AIM��ʱ��Ϣ���ͣ�Ĭ��ֵΪ0��
+AIM即时消息类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_AIM: 0--><!--Device-ImAddress-static readonly IM_AIM: 0-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -44,13 +56,15 @@ AIM��ʱ��Ϣ���ͣ�Ĭ��ֵΪ0��
 static readonly IM_ICQ: 6
 ```
 
-ICQ��ʱ��Ϣ���ͣ�Ĭ��ֵΪ6��
+ICQ即时消息类型，默认值为6。
 
 **类型：** 6
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_ICQ: 6--><!--Device-ImAddress-static readonly IM_ICQ: 6-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -60,13 +74,15 @@ ICQ��ʱ��Ϣ���ͣ�Ĭ��ֵΪ6��
 static readonly IM_JABBER: 7
 ```
 
-JABBER��ʱ��Ϣ���ͣ�Ĭ��ֵΪ7��
+JABBER即时消息类型，默认值为7。
 
 **类型：** 7
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_JABBER: 7--><!--Device-ImAddress-static readonly IM_JABBER: 7-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -76,13 +92,15 @@ JABBER��ʱ��Ϣ���ͣ�Ĭ��ֵΪ7��
 static readonly IM_MSN: 1
 ```
 
-MSN��ʱ��Ϣ���ͣ�Ĭ��ֵΪ1��
+MSN即时消息类型，默认值为1。
 
 **类型：** 1
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_MSN: 1--><!--Device-ImAddress-static readonly IM_MSN: 1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -92,13 +110,15 @@ MSN��ʱ��Ϣ���ͣ�Ĭ��ֵΪ1��
 static readonly IM_QQ: 4
 ```
 
-QQ��ʱ��Ϣ���ͣ�Ĭ��ֵΪ4��
+QQ即时消息类型，默认值为4。
 
 **类型：** 4
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_QQ: 4--><!--Device-ImAddress-static readonly IM_QQ: 4-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -108,13 +128,15 @@ QQ��ʱ��Ϣ���ͣ�Ĭ��ֵΪ4��
 static readonly IM_SKYPE: 3
 ```
 
-SKYPE��ʱ��Ϣ���ͣ�Ĭ��ֵΪ3��
+SKYPE即时消息类型，默认值为3。
 
 **类型：** 3
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_SKYPE: 3--><!--Device-ImAddress-static readonly IM_SKYPE: 3-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -124,13 +146,15 @@ SKYPE��ʱ��Ϣ���ͣ�Ĭ��ֵΪ3��
 static readonly IM_YAHOO: 2
 ```
 
-YAHOO��ʱ��Ϣ���ͣ�Ĭ��ֵΪ2��
+YAHOO即时消息类型，默认值为2。
 
 **类型：** 2
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly IM_YAHOO: 2--><!--Device-ImAddress-static readonly IM_YAHOO: 2-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -140,13 +164,15 @@ YAHOO��ʱ��Ϣ���ͣ�Ĭ��ֵΪ2��
 static readonly INVALID_LABEL_ID: -2
 ```
 
-��Ч�������ͣ�Ĭ��ֵΪ-1��
+无效邮箱类型，默认值为-1。
 
 **类型：** -2
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-static readonly INVALID_LABEL_ID: -2--><!--Device-ImAddress-static readonly INVALID_LABEL_ID: -2-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -156,13 +182,15 @@ static readonly INVALID_LABEL_ID: -2
 imAddress: string
 ```
 
-��ʱ��Ϣ��ַ��
+即时消息地址。
 
 **类型：** string
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-imAddress: string--><!--Device-ImAddress-imAddress: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -172,13 +200,15 @@ imAddress: string
 labelId?: number
 ```
 
-��������͡�
+邮箱的类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-labelId?: number--><!--Device-ImAddress-labelId?: number-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -188,13 +218,15 @@ labelId?: number
 labelName?: string
 ```
 
-������������ơ�
+邮箱的类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ImAddress-labelName?: string--><!--Device-ImAddress-labelName?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 

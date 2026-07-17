@@ -1,8 +1,13 @@
 - 头文件
     - [hidebug_type.h](capi-hidebug-type-h.md)
     - [hidebug.h](capi-hidebug-h.md)
+    - [hiappevent.h](capi-hiappevent-h.md)
+    - [hiappevent_cfg.h](capi-hiappevent-cfg-h.md)
+    - [hiappevent_event.h](capi-hiappevent-event-h.md)
+    - [hiappevent_param.h](capi-hiappevent-param-h.md)
 - 模块
     - [HiDebug](capi-hidebug.md)
+    - [HiAppEvent](capi-hiappevent.md)
 - 结构体
     - [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md)
     - [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md)
@@ -18,3 +23,9 @@
     - [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)
     - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
     - [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md)
+    - [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md)
+    - [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md)
+    - [ParamListNode*](capi-hiappevent-paramlistnode8h.md)
+    - [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)
+    - [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)
+    - [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)

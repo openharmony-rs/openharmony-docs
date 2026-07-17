@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-taskpool-interface TaskResult--><!--Device-taskpool-interface TaskResult-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
 
 ## error
 
@@ -18,7 +26,9 @@ error?: Error | Object
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TaskResult-error?: Error | Object--><!--Device-TaskResult-error?: Error | Object-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -34,7 +44,9 @@ result?: Object
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TaskResult-result?: Object--><!--Device-TaskResult-result?: Object-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

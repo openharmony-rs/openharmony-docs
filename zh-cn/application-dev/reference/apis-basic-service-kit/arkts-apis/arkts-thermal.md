@@ -4,7 +4,15 @@
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare namespace thermal--><!--Device-unnamed-declare namespace thermal-End-->
+
 **系统能力：** SystemCapability.PowerManager.ThermalManager
+
+## 导入模块
+
+```TypeScript
+import { thermal } from '@kit.BasicServicesKit';
+```
 
 ## 汇总
 
@@ -12,16 +20,16 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLevel](arkts-basicservices-getlevel-f.md#getlevel-1) | 获取当前热档位信息。 |
-| [getThermalLevel](arkts-basicservices-getthermallevel-f.md#getthermallevel-1) | 获取当前热档位信息。 |
-| [registerThermalLevelCallback](arkts-basicservices-registerthermallevelcallback-f.md#registerthermallevelcallback-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
-| [subscribeThermalLevel](arkts-basicservices-subscribethermallevel-f.md#subscribethermallevel-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
-| [unregisterThermalLevelCallback](arkts-basicservices-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
-| [unsubscribeThermalLevel](arkts-basicservices-unsubscribethermallevel-f.md#unsubscribethermallevel-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel-1) | 获取当前热档位信息。 |
+| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md#getthermallevel-1) | 获取当前热档位信息。 |
+| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md#subscribethermallevel-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md#unsubscribethermallevel-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [ThermalLevel](arkts-basicservices-thermallevel-e.md) | 热档位信息。 |
+| [ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md) | 热档位信息。 |
 

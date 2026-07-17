@@ -1,12 +1,10 @@
 # FontHinting
 
-```TypeScript
-enum FontHinting
-```
-
 字型轮廓效果类型枚举。
 
 **起始版本：** 12
+
+<!--Device-drawing-enum FontHinting--><!--Device-drawing-enum FontHinting-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ NONE = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontHinting-NONE = 0--><!--Device-FontHinting-NONE = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## SLIGHT
@@ -35,6 +35,8 @@ SLIGHT = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontHinting-SLIGHT = 1--><!--Device-FontHinting-SLIGHT = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,6 +52,8 @@ NORMAL = 2
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontHinting-NORMAL = 2--><!--Device-FontHinting-NORMAL = 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## FULL
@@ -63,6 +67,8 @@ FULL = 3
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontHinting-FULL = 3--><!--Device-FontHinting-FULL = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

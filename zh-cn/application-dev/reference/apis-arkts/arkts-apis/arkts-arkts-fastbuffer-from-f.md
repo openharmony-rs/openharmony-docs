@@ -1,5 +1,11 @@
 # from
 
+## 导入模块
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+```
+
 ## from
 
 ```TypeScript
@@ -10,7 +16,9 @@ function from(array: number[]): FastBuffer
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function from(array: number[]): FastBuffer--><!--Device-fastbuffer-function from(array: number[]): FastBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,7 +32,7 @@ function from(array: number[]): FastBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| FastBuffer | 新的FastBuffer对象。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 新的FastBuffer对象。 |
 
 **示例：**
 
@@ -48,7 +56,9 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): FastBuffer--><!--Device-fastbuffer-function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): FastBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -64,22 +74,22 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 | 类型 | 说明 |
 | --- | --- |
-| FastBuffer | 返回一个FastBuffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 返回一个FastBuffer对象，该对象与入参对象`arrayBuffer`共享相同的内存区域。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-Range) | Range error. Possible causes:<br/>The value of the parameter is not within the specified range. |
-| [10200068](../../errorcode-universal.md#10200068-The) | The underlying ArrayBuffer is null or detach. |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | Range error. Possible causes:The value of the parameter is not within the specified range. |
+| [10200068](../errorcode-utils.md#10200068-引用已释放或分离的arraybuffer) | The underlying ArrayBuffer is null or detach. |
 
 **示例：**
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
 
-let ab = new ArrayBuffer(10);
-let buf = fastbuffer.from(ab, 0, 2);
+let arrayBuffer = new ArrayBuffer(10);
+let buf = fastbuffer.from(arrayBuffer, 0, 2);
 console.info(buf.length.toString());
 // 输出结果：2
 
@@ -98,7 +108,9 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function from(buffer: FastBuffer | Uint8Array): FastBuffer--><!--Device-fastbuffer-function from(buffer: FastBuffer | Uint8Array): FastBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -112,21 +124,22 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| FastBuffer | 返回新的FastBuffer对象。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 返回新的FastBuffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200068](../../errorcode-universal.md#10200068-The) | The underlying ArrayBuffer is null or detach. |
+| [10200068](../errorcode-utils.md#10200068-引用已释放或分离的arraybuffer) | The underlying ArrayBuffer is null or detach. |
 
 **示例：**
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
 
-// 以FastBuffer对象类型进行创建新的FastBuffer对象
+// 从字符串创建FastBuffer对象
 let buf1 = fastbuffer.from('buffer');
+// 以FastBuffer对象类型创建新的FastBuffer对象
 let buf2 = fastbuffer.from(buf1);
 console.info(buf2.toString());
 // 输出结果：buffer
@@ -134,8 +147,9 @@ console.info(buf2.toString());
 // 以Uint8Array对象类型进行创建FastBuffer对象，保持对象间内存共享
 let uint8Array = new Uint8Array(10);
 let buf3 = fastbuffer.from(uint8Array);
-buf3.fill(1)
-console.info("uint8Array:", uint8Array)
+// 修改buf3以验证内存共享：buf3修改后uint8Array同步变化
+buf3.fill(1);
+console.info('uint8Array:', uint8Array);
 // 输出结果：1,1,1,1,1,1,1,1,1,1
 
 ```
@@ -151,7 +165,9 @@ function from(value: string, encoding?: BufferEncoding): FastBuffer
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function from(value: string, encoding?: BufferEncoding): FastBuffer--><!--Device-fastbuffer-function from(value: string, encoding?: BufferEncoding): FastBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -160,20 +176,22 @@ function from(value: string, encoding?: BufferEncoding): FastBuffer
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | string | 是 | 字符串。 |
-| encoding | BufferEncoding | 否 | 编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 编码格式。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| FastBuffer | 返回新的FastBuffer对象。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 返回新的FastBuffer对象。 |
 
 **示例：**
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';
 
+// 从普通字符串创建FastBuffer对象
 let buf1 = fastbuffer.from('this is a test');
+// 从hex编码字符串创建FastBuffer对象
 let buf2 = fastbuffer.from('7468697320697320612074c3a97374', 'hex');
 
 console.info(buf1.toString());

@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-webview-class BackForwardCacheOptions--><!--Device-webview-class BackForwardCacheOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## constructor
 
@@ -13,6 +21,8 @@ constructor()
 ```
 
 **起始版本：** 12
+
+<!--Device-BackForwardCacheOptions-constructor()--><!--Device-BackForwardCacheOptions-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -34,6 +44,8 @@ Web会根据内存压力对缓存进行回收。
 
 **起始版本：** 12
 
+<!--Device-BackForwardCacheOptions-size: number--><!--Device-BackForwardCacheOptions-size: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## timeToLive
@@ -51,6 +63,8 @@ timeToLive: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-BackForwardCacheOptions-timeToLive: number--><!--Device-BackForwardCacheOptions-timeToLive: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

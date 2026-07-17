@@ -1,14 +1,22 @@
 # cancelSerialRight
 
+## 导入模块
+
+```TypeScript
+import { serialManager } from '@kit.BasicServicesKit';
+```
+
 ## cancelSerialRight
 
 ```TypeScript
 function cancelSerialRight(portId: number): void
 ```
 
-�Ƴ�Ӧ�ó�������ʱ���ʴ����豸��Ȩ�ޡ��˽ӿڻ����close�ر��Ѵ򿪵Ĵ��ڡ�
+移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。
 
 **起始版本：** 19
+
+<!--Device-serialManager-function cancelSerialRight(portId: int): void--><!--Device-serialManager-function cancelSerialRight(portId: int): void-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -16,17 +24,17 @@ function cancelSerialRight(portId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | Ŀ���豸�Ķ˿ںţ�����[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getPortList-1)��ȡ�Ĵ��ڲ���SerialPort�� |
+| portId | number | 是 | 目标设备的端口号，来自[getPortList](arkts-basicservices-serialmanager-getportlist-f.md#getportlist-1)获取的串口参数SerialPort。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401) |  |
-| [14400005](../../errorcode-universal.md#14400005) |  |
-| [31400001](../../errorcode-universal.md#31400001) |  |
-| [31400002](../../errorcode-universal.md#31400002) |  |
-| [31400003](../../errorcode-universal.md#31400003) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
+| [14400005](../../apis-basic-services-kit/errorcode-usb.md#14400005-数据库操作异常) |  |
+| [31400001](../../apis-basic-services-kit/errorcode-usb.md#31400001-串口服务异常) |  |
+| [31400002](../../apis-basic-services-kit/errorcode-usb.md#31400002-没有串口设备访问权限) |  |
+| [31400003](../../apis-basic-services-kit/errorcode-usb.md#31400003-端口号不存在) |  |
 
 **示例：**
 
@@ -35,9 +43,10 @@ function cancelSerialRight(portId: number): void
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
-function cancelSerialRight() {
+async function cancelSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
@@ -48,15 +57,14 @@ function cancelSerialRight() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    serialManager.requestSerialRight(portId).then(result => {
-      if (!result) {
-        // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation permission');
-        return;
-      } else {
-        console.info('grant permission successfully');
-      }
-    });
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
   }
 
   // 取消已经授予的权限
@@ -64,7 +72,8 @@ function cancelSerialRight() {
     serialManager.cancelSerialRight(portId);
     console.info('cancelSerialRight success, portId: ', portId);
   } catch (error) {
-    console.error('cancelSerialRight error, ', JSON.stringify(error));
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to cancel serial right. Code: ${err.code}, message: ${err.message}`);
   }
 }
 

@@ -1,14 +1,22 @@
 # setOverlayEnabled
 
+## 导入模块
+
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+```
+
 ## setOverlayEnabled
 
 ```TypeScript
 function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void
 ```
 
-���õ�ǰӦ����overlay module�Ľ���ʹ��״̬��ʹ��callback�첽�ص���
+设置当前应用中overlay module的禁用使能状态。使用callback异步回调。
 
 **起始版本：** 10
+
+<!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void--><!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -16,17 +24,17 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: Asyn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | overlay����module�����ơ� |
-| isEnabled | boolean | 是 | ֵΪtrue��ʾʹ�ܣ�ֵΪfalse��ʾ���á� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)��������ָ��module��overlay����ʹ��״̬�ɹ�ʱ��errΪ<br/>undefined������Ϊ������� |
+| moduleName | string | 是 | overlay特征module的名称。 |
+| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置指定module的overlay禁用使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module name is not found. |
-| [17700033](../../errorcode-universal.md#17700033-The) | The specified module is not an overlay module. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
+| [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
 **示例：**
 
@@ -60,9 +68,11 @@ try {
 function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 ```
 
-���õ�ǰӦ����overlay����module�Ľ���ʹ��״̬��ʹ��Promise�첽�ص���
+设置当前应用中overlay特征module的禁用使能状态。使用Promise异步回调。
 
 **起始版本：** 10
+
+<!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>--><!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -70,22 +80,22 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | overlay����module�����ơ� |
-| isEnabled | boolean | 是 | ֵΪtrue��ʾʹ�ܣ�ֵΪfalse��ʾ���á� |
+| moduleName | string | 是 | overlay特征module的名称。 |
+| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module name is not found. |
-| [17700033](../../errorcode-universal.md#17700033-The) | The specified module is not an overlay module. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
+| [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
 **示例：**
 

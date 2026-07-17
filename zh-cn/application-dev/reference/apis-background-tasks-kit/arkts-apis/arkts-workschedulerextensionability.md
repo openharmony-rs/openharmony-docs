@@ -1,5 +1,11 @@
 # @ohos.WorkSchedulerExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { WorkSchedulerExtensionContext } from '@kit.BackgroundTasksKit';
+```
+
 ## 汇总
 
 ### 类

@@ -1,12 +1,10 @@
 # DownloadStopReason
 
-```TypeScript
-enum DownloadStopReason
-```
-
-ȫ������ֹͣԭ���ö�٣�Ĭ��ֵΪNO_STOP��
+全量下载停止原因的枚举，默认值为NO_STOP。
 
 **起始版本：** 20
+
+<!--Device-cloudSyncManager-enum DownloadStopReason--><!--Device-cloudSyncManager-enum DownloadStopReason-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -16,9 +14,11 @@ enum DownloadStopReason
 NO_STOP = 0
 ```
 
-������δֹͣ��
+下载中未停止。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-NO_STOP = 0--><!--Device-DownloadStopReason-NO_STOP = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -28,9 +28,11 @@ NO_STOP = 0
 NETWORK_UNAVAILABLE = 1
 ```
 
-���ع����У��ƶ����������WIFI�������á�
+下载过程中，移动数据网络和WIFI均不可用。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-NETWORK_UNAVAILABLE = 1--><!--Device-DownloadStopReason-NETWORK_UNAVAILABLE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -40,9 +42,11 @@ NETWORK_UNAVAILABLE = 1
 LOCAL_STORAGE_FULL = 2
 ```
 
-���ع����У���ǰ�豸�ռ䲻�㡣
+下载过程中，当前设备空间不足。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-LOCAL_STORAGE_FULL = 2--><!--Device-DownloadStopReason-LOCAL_STORAGE_FULL = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -52,9 +56,11 @@ LOCAL_STORAGE_FULL = 2
 TEMPERATURE_LIMIT = 3
 ```
 
-���ع����У��豸�¶ȹ��ߡ�
+下载过程中，设备温度过高。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-TEMPERATURE_LIMIT = 3--><!--Device-DownloadStopReason-TEMPERATURE_LIMIT = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -64,9 +70,11 @@ TEMPERATURE_LIMIT = 3
 USER_STOPPED = 4
 ```
 
-���ع����У��ͻ�������ֹͣ���ء�
+下载过程中，客户端主动停止下载。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-USER_STOPPED = 4--><!--Device-DownloadStopReason-USER_STOPPED = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -76,9 +84,11 @@ USER_STOPPED = 4
 APP_UNLOAD = 5
 ```
 
-���ع����У����ļ�����Ӧ�ñ�ж�ء�
+下载过程中，云文件所属应用被卸载。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-APP_UNLOAD = 5--><!--Device-DownloadStopReason-APP_UNLOAD = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -88,9 +98,11 @@ APP_UNLOAD = 5
 OTHER_REASON = 6
 ```
 
-���ع����У�������ԭ��ֹͣ���أ��磺�Ʒ�����δ��Ӧ�ȡ�
+下载过程中，因其他原因停止下载，如：云服务器未响应等。
 
 **起始版本：** 20
+
+<!--Device-DownloadStopReason-OTHER_REASON = 6--><!--Device-DownloadStopReason-OTHER_REASON = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

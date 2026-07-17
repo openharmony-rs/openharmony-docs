@@ -1,16 +1,10 @@
 # StartupScene
 
-```TypeScript
-export enum StartupScene
-```
-
-��������ɳ������˲�ϵͳ���״��л����û���ɣ�����PC����OTA������ɡ��״ο�����ɿ�����ʱ��ͨ��
-[onStartupGuideCompleted](arkts-mdm-enterpriseadminextensionability-c.md#onStartupGuideCompleted-1)
-�ص��ӿ�֪ͨ�豸����Ӧ�á�
+开机向导完成场景。端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导时会通过[onStartupGuideCompleted](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onstartupguidecompleted-1)回调接口通知设备管理应用。
 
 **起始版本：** 24
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-common-export enum StartupScene--><!--Device-common-export enum StartupScene-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,11 +14,13 @@ export enum StartupScene
 USER_SETUP = 0
 ```
 
-���û����״��л�������俪���򵼳���������PC���������ٴ��л������û����ᴥ���ص���
+子用户被首次切换并完成其开机向导场景（仅限PC）。后续再次切换该子用户不会触发回调。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartupScene-USER_SETUP = 0--><!--Device-StartupScene-USER_SETUP = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -34,11 +30,13 @@ USER_SETUP = 0
 OTA = 1
 ```
 
-OTA������ɳ�����
+OTA升级完成场景。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartupScene-OTA = 1--><!--Device-StartupScene-OTA = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -48,11 +46,13 @@ OTA������ɳ�����
 DEVICE_PROVISION = 2
 ```
 
-�״ο�����ɿ����򵼳�����
+首次开机完成开机向导场景。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartupScene-DEVICE_PROVISION = 2--><!--Device-StartupScene-DEVICE_PROVISION = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -1,16 +1,24 @@
 # setAdditionalInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## setAdditionalInfo
 
 ```TypeScript
 function setAdditionalInfo(bundleName: string, additionalInfo: string): void
 ```
 
-����ָ��Ӧ�õĶ�����Ϣ���˽ӿڽ���Ӧ���г����á�
+设置指定应用的额外信息。此接口仅供应用市场调用。
 
 **起始版本：** 11
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function setAdditionalInfo(bundleName: string, additionalInfo: string): void--><!--Device-bundleManager-function setAdditionalInfo(bundleName: string, additionalInfo: string): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,18 +28,18 @@ function setAdditionalInfo(bundleName: string, additionalInfo: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ָ��Ӧ�õİ����� |
-| additionalInfo | string | 是 | ��Ҫ���õ�Ӧ�õĶ�����Ϣ�� |
+| bundleName | string | 是 | 指定应用的包名。 |
+| additionalInfo | string | 是 | 需要设置的应用的额外信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter bundleName is empty. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700053](../../errorcode-universal.md#17700053-The) | The caller is not AppGallery. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter bundleName is empty. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700053](../errorcode-bundle.md#17700053-非应用市场调用) | The caller is not AppGallery. |
 
 **示例：**
 

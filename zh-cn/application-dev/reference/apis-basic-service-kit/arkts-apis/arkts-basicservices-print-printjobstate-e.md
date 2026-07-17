@@ -1,12 +1,10 @@
 # PrintJobState
 
-```TypeScript
-enum PrintJobState
-```
-
 打印任务状态的枚举。
 
 **起始版本：** 14
+
+<!--Device-print-enum PrintJobState--><!--Device-print-enum PrintJobState-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ PRINT_JOB_PREPARE = 0
 
 **起始版本：** 14
 
+<!--Device-PrintJobState-PRINT_JOB_PREPARE = 0--><!--Device-PrintJobState-PRINT_JOB_PREPARE = 0-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## PRINT_JOB_QUEUED
@@ -31,6 +31,8 @@ PRINT_JOB_QUEUED = 1
 表示打印任务传送到打印机。
 
 **起始版本：** 14
+
+<!--Device-PrintJobState-PRINT_JOB_QUEUED = 1--><!--Device-PrintJobState-PRINT_JOB_QUEUED = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -44,6 +46,8 @@ PRINT_JOB_RUNNING = 2
 
 **起始版本：** 14
 
+<!--Device-PrintJobState-PRINT_JOB_RUNNING = 2--><!--Device-PrintJobState-PRINT_JOB_RUNNING = 2-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## PRINT_JOB_BLOCKED
@@ -56,6 +60,8 @@ PRINT_JOB_BLOCKED = 3
 
 **起始版本：** 14
 
+<!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3--><!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## PRINT_JOB_COMPLETED
@@ -67,6 +73,8 @@ PRINT_JOB_COMPLETED = 4
 表示打印任务完成。
 
 **起始版本：** 14
+
+<!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4--><!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

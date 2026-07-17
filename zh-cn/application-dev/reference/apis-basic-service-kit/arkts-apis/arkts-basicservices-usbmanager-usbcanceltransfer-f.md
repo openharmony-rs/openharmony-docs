@@ -1,21 +1,29 @@
 # usbCancelTransfer
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## usbCancelTransfer
 
 ```TypeScript
 function usbCancelTransfer(transfer: UsbDataTransferParams): void
 ```
 
-ȡ���첽��������
+取消异步传输请求。
 
-> **˵����**
->
-> �ýӿڵ���Ҫ����������ȡ����δ��ɵ�USB���ݴ���������usbSubmitTransfer�ύ�Ĵ��䣩��<br>
-> > �ڵ��øýӿ�ǰ��Ҫͨ��
-> [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md#claimInterface-1)
-> claimͨ�Žӿڡ�
+> **说明：**  
+>  
+> 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>  
+> > 在调用该接口前需要通过  
+> [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md#claiminterface-1)  
+> claim通信接口。
 
 **起始版本：** 18
+
+<!--Device-usbManager-function usbCancelTransfer(transfer: UsbDataTransferParams): void--><!--Device-usbManager-function usbCancelTransfer(transfer: UsbDataTransferParams): void-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -23,17 +31,17 @@ function usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| transfer | UsbDataTransferParams | 是 | ��ȡ������Ľӿ��У�ֻ��Ҫ���[USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md#USBDevicePipe)��<br/>[USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md#USBEndpoint)���ɡ� |
+| transfer | [UsbDataTransferParams](arkts-basicservices-usbmanager-usbdatatransferparams-i.md) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md)和[USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md)即可。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [14400001](../../errorcode-universal.md#14400001-Access) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
-| [14400008](../../errorcode-universal.md#14400008-No) | No such device (it may have been disconnected). |
-| [14400010](../../errorcode-universal.md#14400010-Other) | Other USB error. Possible causes:<br/><br/>1.Unrecognized discard error code. |
-| [14400011](../../errorcode-universal.md#14400011-The) | The transfer is not in progress, or is already complete or cancelled. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [14400001](../../apis-basic-services-kit/errorcode-usb.md#14400001-连接usb设备被拒绝) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| [14400008](../../apis-basic-services-kit/errorcode-usb.md#14400008-没有设备连接已断开) | No such device (it may have been disconnected). |
+| [14400010](../../apis-basic-services-kit/errorcode-usb.md#14400010-无法识别的错误) | Other USB error. Possible causes:* <br>1.Unrecognized discard error code. |
+| [14400011](../../apis-basic-services-kit/errorcode-usb.md#14400011-未找到正在进行的传输) | The transfer is not in progress, or is already complete or cancelled. |
 
 **示例：**
 
@@ -43,14 +51,18 @@ function usbCancelTransfer(transfer: UsbDataTransferParams): void
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-function usbCancelTransfer() {
+async function usbCancelTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
     return;
   }
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   if (devicepipe === undefined) {
     console.info(`connect device fail`);
@@ -65,7 +77,7 @@ function usbCancelTransfer() {
     return;
   }
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -89,6 +101,7 @@ function usbCancelTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 
 ```

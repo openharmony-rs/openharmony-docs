@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供文本宽度、高度等相关计算。
+MeasureUtils提供文本宽度、高度等相关计算能力，适用于文本自适应布局、多行文本截断、动态UI适配等场景。通过该类可精确计算文本尺寸，帮助开发者在布局前预判文本显示效果，避免文本溢出或布局错乱等问题。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@
 >
 > - 如需更多测算文本参数，比如[includeFontPadding](./arkui-ts/ts-basic-components-text.md#includefontpadding23)和[fallbackLineSpacing](./arkui-ts/ts-basic-components-text.md#fallbacklinespacing23)，建议使用图形对应测算接口[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)接口。
 >
-> - 调用文本计算接口时，不推荐同时用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
+> - 调用文本计算接口时，应避免同时用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
 >
 > - 在测算裁剪后的文本时，由于某些Unicode字符（如emoji）的码位长度大于1，直接按字符串长度裁剪会导致不准确的结果。建议基于Unicode码点进行迭代处理，避免错误截断字符，确保测算结果准确，请参考[measureTextSize](#measuretextsize12)的示例2。
 
@@ -26,11 +26,12 @@
 
 measureText(options: MeasureOptions): number
 
-计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
+计算指定文本作为单行文本显示时的宽度，如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
 > **说明：**
 >
-> measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](#measuretextsize12)方法。
+> - 调用此接口时，应避免同时使用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
+> - measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](#measuretextsize12)方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -42,14 +43,13 @@ measureText(options: MeasureOptions): number
 
 | 参数名     | 类型                              | 必填   | 说明        |
 | ------- | ------------------------------- | ---- | --------- |
-| options | [MeasureOptions](js-apis-measure.md#measureoptions) | 是    | 被计算文本描述信息。 |
+| options | [MeasureOptions](js-apis-measure.md#measureoptions) | 是    | 文本测量配置选项。包含文本内容（textContent）、字体大小（fontSize）等属性。constraintWidth、maxLines等布局约束属性对measureText的计算结果无影响，如需计算布局约束下的宽度，请使用measureTextSize方法。 |
 
 **返回值：**
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| number        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
-
+| number        | 文本宽度。<br>**说明：**<br>浮点数会向上取整。<br>单位：px |
 
 **示例：** 
 
@@ -64,7 +64,7 @@ struct Index {
   @State uiContext: UIContext = this.getUIContext();
   @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
   @State textWidth: number = this.uiContextMeasure.measureText({
-    textContent: "Hello World",
+    textContent: 'Hello World',
     fontSize: '50px'
   });
 
@@ -84,7 +84,11 @@ struct Index {
 
 measureTextSize(options: MeasureOptions): SizeOptions
 
-计算指定文本单行布局下的宽度和高度。
+计算指定文本的宽度和高度。
+
+> **说明：**
+>
+> 调用此接口时，应避免同时使用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -96,14 +100,13 @@ measureTextSize(options: MeasureOptions): SizeOptions
 
 | 参数名     | 类型                              | 必填   | 说明        |
 | ------- | ------------------------------- | ---- | --------- |
-| options | [MeasureOptions](js-apis-measure.md#measureoptions) | 是    | 被计算文本描述信息。 |
+| options | [MeasureOptions](js-apis-measure.md#measureoptions) | 是    | 文本测量配置选项。包含文本内容（textContent）、字体大小（fontSize）、约束宽度（constraintWidth）、最大行数（maxLines）等属性，用于配置被计算文本的测量参数。 |
 
 **返回值：**
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | 返回文本所占布局宽度和高度。<br/>**说明:**<br/>没有传参constraintWidth的情况下，文本宽度返回值浮点数会向上取整。<br/>文本宽度以及高度返回值单位均为px。 |
-
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | 返回文本所占布局宽度和高度。<br>**说明：**<br>未设置constraintWidth时，文本宽度返回值会向上取整；传参constraintWidth时，文本宽度返回值不被取整。<br>文本宽度以及高度返回值单位均为px。 |
 
 **示例1：** 
 
@@ -118,7 +121,7 @@ struct Index {
   @State uiContext: UIContext = this.getUIContext();
   @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
   textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
-    textContent: "Hello World",
+    textContent: 'Hello World',
     fontSize: '50px'
   });
   build() {
@@ -142,9 +145,7 @@ struct Index {
 @Entry
 @Component
 struct TextDemo {
-  @State isExpanded: boolean = false;
   @State displayedText: string = '';
-  @State defaultFontSize: number = 16;
   @State textWidth: number = 150;
   @State numLength: number = 0;
   @State numUnicode: number = 0;
@@ -173,7 +174,7 @@ struct TextDemo {
     return codePoints;
   }
 
-  lastUnicodeLength(str: string) { // 获得字符串最后一个字符的unicode长度
+  lastUnicodeLength(str: string): number { // 获得字符串最后一个字符的unicode长度
     if (!str || str.length < 1) {
       return 0;
     }
@@ -181,14 +182,14 @@ struct TextDemo {
       return 1;
     }
     let lastCodePoint = str.codePointAt(str.length - 2);
-    if (lastCodePoint == undefined) {
+    if (lastCodePoint === undefined) {
       return 1;
     }
     let lastStr = String.fromCodePoint(lastCodePoint);
     return lastStr.length;
   }
 
-  calculateText(maxLines: number, fullText: string) { // 计算文本是否需要截断
+  calculateText(maxLines: number, fullText: string): void { // 计算并处理文本截断
     const noMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
       textContent: fullText,
       constraintWidth: this.textWidth
@@ -199,13 +200,13 @@ struct TextDemo {
       maxLines: this.maxLines
     });
 
-    this.displayedText = this.displayedText = this.fullText;
+    this.displayedText = this.fullText;
     if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // 存在截断
       while (this.displayedText.length > 0) {
         this.displayedText =
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // 删掉几个字
-        let textAfterCut = this.displayedText + "…"; // 加上省略号
+        let textAfterCut = this.displayedText + '…'; // 加上省略号
         let sizeAfterCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
@@ -213,10 +214,10 @@ struct TextDemo {
         if (Number(sizeAfterCut.height) <= Number(hasMaxLinesSize.height)) {
           break;
         } else {
-          console.info("displayedText: " + this.displayedText);
+          console.info('displayedText: ' + this.displayedText);
         }
       }
-      this.displayedText = this.displayedText + "…";
+      this.displayedText = this.displayedText + '…';
     }
   }
 
@@ -228,7 +229,7 @@ struct TextDemo {
       Text(this.fullText)
         .borderWidth(1)
 
-      Text('下面是设置了maxLines和texOverflow')
+      Text('下面是设置了maxLines和textOverflow')
       Text(this.fullText)
         .maxLines(this.maxLines)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -262,13 +263,13 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<P
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
 | styledString | [StyledString](arkui-ts/ts-universal-styled-string.md#styledstring) | 是   | 待转换的属性字符串。|
-| options | [TextLayoutOptions](arkui-ts/ts-text-common.md#textlayoutoptions对象说明20) | 否 | 文本布局选项。|
+| options | [TextLayoutOptions](arkui-ts/ts-text-common.md#textlayoutoptions对象说明20) | 否 | 文本布局选项。省略时使用默认布局配置。|
 
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| Array<[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)> | [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)的数组。 |
+| Array\<[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)> | 根据文本布局选项转换后得到的[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)对象数组，用于后续的文本布局计算。 |
 
 **示例：** 
 
@@ -326,7 +327,7 @@ class MyCustomSpan extends CustomSpan {
   }
 
   width: number = 160;
-  word: string = "drawing";
+  word: string = 'drawing';
   height: number = 10;
   context: UIContext;
 }
@@ -335,7 +336,7 @@ class MyCustomSpan extends CustomSpan {
 @Component
 struct Index {
   str: string =
-    "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.";
+    'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
   mutableStr2 = new MutableStyledString(this.str, [
     {
       start: 0,
@@ -354,11 +355,11 @@ struct Index {
   // 测算属性字符串在指定宽度下能显示的行数
   getLineNum(styledString: StyledString, width: LengthMetrics) {
     let paragraphArr = this.getUIContext().getMeasureUtils().getParagraphs(styledString, { constraintWidth: width });
-    let res = 0;
+    let lineCount = 0;
     for (let i = 0; i < paragraphArr.length; ++i) {
-      res += paragraphArr[i].getLineCount();
+      lineCount += paragraphArr[i].getLineCount();
     }
-    return res;
+    return lineCount;
   }
 
   // 测算属性字符串显示maxLines行时最多可以显示的字数
@@ -368,15 +369,15 @@ struct Index {
     // 使用二分查找
     while (low <= high) {
       let mid = (low + high) >> 1;
-      console.info("demo: get " + low + " " + high + " " + mid);
-      let moreStyledString = new MutableStyledString("... 全文", [{
+      console.info('demo: get ' + low + ' ' + high + ' ' + mid);
+      let moreStyledString = new MutableStyledString('... 全文', [{
         start: 4,
         length: 2,
         styledKey: StyledStringKey.FONT,
         styledValue: new TextStyle({ fontColor: Color.Blue })
       }]);
       moreStyledString.insertStyledString(0, styledString.subStyledString(0, mid));
-      let lineNum = this.getLineNum(moreStyledString, LengthMetrics.px(500));
+      let lineNum = this.getLineNum(moreStyledString, width);
       if (lineNum <= maxLines) {
         low = mid + 1;
       } else {
@@ -400,7 +401,7 @@ struct Index {
       styledValue: new TextStyle({ fontColor: Color.Brown })
     }
   ]);
-  customSpan1: MyCustomSpan = new MyCustomSpan("Hello", 120, 10, this.getUIContext());
+  customSpan1: MyCustomSpan = new MyCustomSpan('Hello', 120, 10, this.getUIContext());
   mutableStrAllContent2 = new MutableStyledString(this.str, [
     {
       start: 0,
@@ -435,15 +436,15 @@ struct Index {
         Divider().strokeWidth(8).color('#F1F3F5')
         Text('排版后')
         Text(undefined, { controller: this.textController }).onAppear(() => {
-          let now = this.getCorrectIndex(this.mutableStrAllContent, 3, LengthMetrics.px(500));
-          if (now != this.mutableStrAllContent.length - 1) {
-            let moreStyledString = new MutableStyledString("... 全文", [{
+          let correctIndex = this.getCorrectIndex(this.mutableStrAllContent, 3, LengthMetrics.px(500));
+          if (correctIndex != this.mutableStrAllContent.length - 1) {
+            let moreStyledString = new MutableStyledString('... 全文', [{
               start: 4,
               length: 2,
               styledKey: StyledStringKey.FONT,
               styledValue: new TextStyle({ fontColor: Color.Blue })
             }]);
-            moreStyledString.insertStyledString(0, this.mutableStrAllContent.subStyledString(0, now));
+            moreStyledString.insertStyledString(0, this.mutableStrAllContent.subStyledString(0, correctIndex));
             this.textController.setStyledString(moreStyledString);
           } else {
             this.textController.setStyledString(this.mutableStrAllContent);
@@ -458,14 +459,14 @@ struct Index {
         Divider().strokeWidth(8).color('#F1F3F5')
         Text('排版后')
         Text(undefined, { controller: this.textController2 }).onAppear(() => {
-          let now = this.getCorrectIndex(this.mutableStrAllContent2, 3, LengthMetrics.px(500));
-          let moreStyledString = new MutableStyledString("... 全文", [{
+          let correctIndex = this.getCorrectIndex(this.mutableStrAllContent2, 3, LengthMetrics.px(500));
+          let moreStyledString = new MutableStyledString('... 全文', [{
             start: 4,
             length: 2,
             styledKey: StyledStringKey.FONT,
             styledValue: new TextStyle({ fontColor: Color.Blue })
           }]);
-          moreStyledString.insertStyledString(0, this.mutableStrAllContent2.subStyledString(0, now));
+          moreStyledString.insertStyledString(0, this.mutableStrAllContent2.subStyledString(0, correctIndex));
           this.textController2.setStyledString(moreStyledString);
         })
           .width('500px')

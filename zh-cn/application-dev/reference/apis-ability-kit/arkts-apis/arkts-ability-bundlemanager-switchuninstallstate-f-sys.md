@@ -1,16 +1,24 @@
 # switchUninstallState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## switchUninstallState
 
 ```TypeScript
 function switchUninstallState(bundleName: string, state: boolean): void
 ```
 
-�л�ָ��Ӧ�õĿ�ж��״̬���˽ӿ���EDMӦ�����عܿػ��Ʋ�����Ӱ�졣
+切换指定应用的可卸载状态，此接口与EDM应用拦截管控机制不互相影响。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.CHANGE_BUNDLE_UNINSTALL_STATE
+
+<!--Device-bundleManager-function switchUninstallState(bundleName: string, state: boolean): void--><!--Device-bundleManager-function switchUninstallState(bundleName: string, state: boolean): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,18 +28,18 @@ function switchUninstallState(bundleName: string, state: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ʾָ��Ӧ�õ�bundleName�� |
-| state | boolean | 是 | ��ʾӦ�õĿ�ж��״̬��ֵΪtrue��ʾӦ�ÿ��Ա�ж�أ�ֵΪfalse��ʾӦ�ò����Ա�ж�ء� |
+| bundleName | string | 是 | 表示指定应用的bundleName。 |
+| state | boolean | 是 | 表示应用的可卸载状态，值为true表示应用可以被卸载，值为false表示应用不可以被卸载。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700060](../../errorcode-universal.md#17700060-The) | The specified application cannot be uninstalled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled. |
 
 **示例：**
 

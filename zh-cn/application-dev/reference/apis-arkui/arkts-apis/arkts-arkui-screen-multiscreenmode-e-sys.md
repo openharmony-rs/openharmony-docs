@@ -1,12 +1,10 @@
 # MultiScreenMode（系统接口）
 
-```TypeScript
-enum MultiScreenMode
-```
-
-��Ļģʽö�١�
+屏幕模式枚举。
 
 **起始版本：** 13
+
+<!--Device-screen-enum MultiScreenMode--><!--Device-screen-enum MultiScreenMode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -18,9 +16,11 @@ enum MultiScreenMode
 SCREEN_MIRROR = 0
 ```
 
-��ʾ��ĻΪ����ģʽ��
+表示屏幕为镜像模式。
 
 **起始版本：** 13
+
+<!--Device-MultiScreenMode-SCREEN_MIRROR = 0--><!--Device-MultiScreenMode-SCREEN_MIRROR = 0-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -32,9 +32,11 @@ SCREEN_MIRROR = 0
 SCREEN_EXTEND = 1
 ```
 
-��ʾ��ĻΪ��չģʽ��
+表示屏幕为扩展模式。
 
 **起始版本：** 13
+
+<!--Device-MultiScreenMode-SCREEN_EXTEND = 1--><!--Device-MultiScreenMode-SCREEN_EXTEND = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

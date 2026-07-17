@@ -1,5 +1,11 @@
 # copyFile
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## copyFile
 
 ```TypeScript
@@ -10,7 +16,9 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -26,7 +34,7 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -62,7 +70,9 @@ declare function copyFile(src: string | number, dest: string | number, callback:
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -72,7 +82,7 @@ declare function copyFile(src: string | number, dest: string | number, callback:
 | --- | --- | --- | --- |
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件的文件描述符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步复制文件之后的回调。 |
 
 **错误码：**
 
@@ -112,7 +122,19 @@ declare function copyFile(
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function copyFile(
+  src: string | number,
+  dest: string | number,
+  mode: number,
+  callback: AsyncCallback<void>
+): void--><!--Device-unnamed-declare function copyFile(
+  src: string | number,
+  dest: string | number,
+  mode: number,
+  callback: AsyncCallback<void>
+): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -123,7 +145,7 @@ declare function copyFile(
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件的文件描述符。 |
 | mode | number | 是 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步复制文件之后的回调。 |
 
 **错误码：**
 

@@ -1,12 +1,18 @@
 # setValueForAccount
 
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
+
 ## setValueForAccount
 
 ```TypeScript
 function setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void
 ```
 
-����ָ���û����豸���ò��ԡ��ýӿڿ�������ָ���û�������Ӧ���е�ĳ�����������������û�100���豸���Ƶȡ�
+设置指定用户的设备设置策略。该接口可以设置指定用户在设置应用中的某个参数，比如设置用户100的设备名称等。
 
 **起始版本：** 24
 
@@ -14,26 +20,28 @@ function setValueForAccount(admin: Want, item: SettingsItem, accountId: number, 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-deviceSettings-function setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void--><!--Device-deviceSettings-function setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| item | SettingsItem | 是 | �豸���ò������͡� |
-| accountId | number | 是 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��<br/>[getOsAccountLocalId](@ohos.account.osAccount:osAccount.AccountManager.getOsAccountLocalId(callback:<br/>AsyncCallback))<br/>�Ƚӿ�����ȡ<br/><br/>ȡֵ��ΧΪȫ��������<br/><br/>-�û�ID��������ڵ���0��<br/>�����Ե���<br/>[getOsAccountLocalId](@Ohos.account.osAccount:osAccount.AccountManager.getOsAccountLocalId(�ص���<br/>AsyncCallback��ȡ�û�ID�� |
-| value | string | 是 | ��������ֵ��<br/>��itemΪ[SettingsItem.DEVICE_NAME]{@link deviceSettings.SettingsItem)ʱ��valueΪ�豸��<br/>�Ƶ��ַ����� �ַ������ȷ�Χ�����ڵ���1��С�ڵ���100��ֻ�������õ�ǰ�û����豸���ƣ����������û����豸���Ʒ���9200012�����롣<br/>��itemΪ<br/>[SettingsItem.FLOATING_NAVIGATION](arkts-mdm-devicesettings-settingsitem-e.md#SettingsItem)ʱ��valueΪ���������Ŀ���״̬��<br/>- '0'����ʾ��������������ͨ���ӿ�<br/>[enterKioskMode](../../apis-ability-kit/arkts-apis/arkts-ability-kioskmanager-enterkioskmode-f.md#enterKioskMode-1)����Kioskģʽ�£�����������ʾ�����ײ����ƿ�����������<br/>�������غ͵ײ����ƿ���ͬʱ����ʱ�����������Ż���ʾ���ײ����ƿ�ͨ���ӿ�<br/>[applicationManager.setKioskFeatures](|
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| item | [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md) | 是 | 设备设置策略类型。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取<br>取值范围为全体整数。<br>  -用户ID，必须大于等于0。<br>您可以调用[getOsAccountLocalId](@Ohos.account.osAccount:osAccount.AccountManager.getOsAccountLocalId(回调：AsyncCallback&lt;int&gt;获取用户ID。 |
+| value | string | 是 | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME]{@link deviceSettings.SettingsItem)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](arkts-mdm-devicesettings-settingsitem-e.md)时，value为三键导航的开关状态。<br/>- '0'：表示开启三键导航（通过接口[enterKioskMode](../../apis-ability-kit/arkts-apis/arkts-ability-kioskmanager-enterkioskmode-f.md#enterkioskmode-1)进入Kiosk模式下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](|
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

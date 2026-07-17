@@ -4,9 +4,11 @@
 export type ModuleDistroInfo = _PackInfo.ModuleDistroInfo
 ```
 
-module���а���Ϣ��
+module发行版信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type ModuleDistroInfo = _PackInfo.ModuleDistroInfo--><!--Device-freeInstall-export type ModuleDistroInfo = _PackInfo.ModuleDistroInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

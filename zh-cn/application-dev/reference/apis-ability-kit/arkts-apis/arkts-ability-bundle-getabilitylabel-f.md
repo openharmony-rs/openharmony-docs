@@ -1,14 +1,20 @@
 # getAbilityLabel
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## getAbilityLabel
 
 ```TypeScript
 function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void
 ```
 
-ͨ��Bundle���ƺ�Ability�������ȡӦ�����ƣ�ʹ��callback�첽�ص���
+通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 8
 
@@ -16,15 +22,17 @@ function getAbilityLabel(bundleName: string, abilityName: string, callback: Asyn
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void--><!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| abilityName | string | 是 | Ability���ơ� |
-| callback | AsyncCallback&lt;string&gt; | 是 | ����������Ϊ��εĻص�����������Ӧ��������Ϣ�� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| abilityName | string | 是 | Ability名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
 
 
 ## getAbilityLabel
@@ -33,9 +41,9 @@ function getAbilityLabel(bundleName: string, abilityName: string, callback: Asyn
 function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>
 ```
 
-ͨ��Bundle���ƺ�ability���ƻ�ȡӦ�����ƣ�ʹ��Promise�첽�ص���
+通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 8
 
@@ -43,18 +51,20 @@ function getAbilityLabel(bundleName: string, abilityName: string): Promise<strin
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>--><!--Device-bundle-function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| abilityName | string | 是 | Ability���ơ� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| abilityName | string | 是 | Ability名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise��ʽ����Ӧ��������Ϣ�� |
+| Promise<string> | Promise形式返回应用名称信息。 |
 

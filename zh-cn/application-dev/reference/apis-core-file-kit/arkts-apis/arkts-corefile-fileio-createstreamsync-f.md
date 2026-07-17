@@ -14,6 +14,8 @@ declare function createStreamSync(path: string, mode: string): Stream
 
 **替代接口：** [fs:createStreamSync](arkts-corefile-file-fs-createstreamsync-f.md#createstreamsync-1)
 
+<!--Device-unnamed-declare function createStreamSync(path: string, mode: string): Stream--><!--Device-unnamed-declare function createStreamSync(path: string, mode: string): Stream-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -27,5 +29,5 @@ declare function createStreamSync(path: string, mode: string): Stream
 
 | 类型 | 说明 |
 | --- | --- |
-| Stream | 返回文件流的结果。 |
+| [Stream](arkts-corefile-file-fs-stream-i.md) | 返回文件流的结果。 |
 

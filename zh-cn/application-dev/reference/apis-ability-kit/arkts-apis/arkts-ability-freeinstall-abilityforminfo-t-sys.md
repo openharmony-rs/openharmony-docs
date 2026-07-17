@@ -4,9 +4,11 @@
 export type AbilityFormInfo = _PackInfo.AbilityFormInfo
 ```
 
-��Ƭ��Ϣ��
+卡片信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type AbilityFormInfo = _PackInfo.AbilityFormInfo--><!--Device-freeInstall-export type AbilityFormInfo = _PackInfo.AbilityFormInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

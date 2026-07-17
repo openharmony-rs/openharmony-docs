@@ -1,12 +1,10 @@
 # SystemFontType
 
-```TypeScript
-enum SystemFontType
-```
-
 字体类型枚举，通过位或运算可实现组合类型。
 
 **起始版本：** 14
+
+<!--Device-text-enum SystemFontType--><!--Device-text-enum SystemFontType-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ ALL = 1 << 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SystemFontType-ALL = 1 << 0--><!--Device-SystemFontType-ALL = 1 << 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## GENERIC
@@ -35,6 +35,8 @@ GENERIC = 1 << 1
 **起始版本：** 14
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemFontType-GENERIC = 1 << 1--><!--Device-SystemFontType-GENERIC = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,6 +52,8 @@ STYLISH = 1 << 2
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SystemFontType-STYLISH = 1 << 2--><!--Device-SystemFontType-STYLISH = 1 << 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## INSTALLED
@@ -64,6 +68,8 @@ INSTALLED = 1 << 3
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-SystemFontType-INSTALLED = 1 << 3--><!--Device-SystemFontType-INSTALLED = 1 << 3-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## CUSTOMIZED
@@ -77,6 +83,8 @@ CUSTOMIZED = 1 << 4
 **起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SystemFontType-CUSTOMIZED = 1 << 4--><!--Device-SystemFontType-CUSTOMIZED = 1 << 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -1,12 +1,10 @@
 # DescriptionType（系统接口）
 
-```TypeScript
-export enum DescriptionType
-```
-
 描述文件类型。
 
 **起始版本：** 9
+
+<!--Device-update-export enum DescriptionType--><!--Device-update-export enum DescriptionType-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -22,6 +20,8 @@ CONTENT = 0
 
 **起始版本：** 9
 
+<!--Device-DescriptionType-CONTENT = 0--><!--Device-DescriptionType-CONTENT = 0-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -35,6 +35,8 @@ URI = 1
 链接。
 
 **起始版本：** 9
+
+<!--Device-DescriptionType-URI = 1--><!--Device-DescriptionType-URI = 1-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

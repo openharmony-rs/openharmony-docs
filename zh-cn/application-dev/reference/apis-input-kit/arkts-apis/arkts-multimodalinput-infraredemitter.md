@@ -6,7 +6,15 @@
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare namespace infraredEmitter--><!--Device-unnamed-declare namespace infraredEmitter-End-->
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+## 导入模块
+
+```TypeScript
+import { infraredEmitter } from '@kit.InputKit';
+```
 
 ## 汇总
 
@@ -14,15 +22,15 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [hasIrEmitter](arkts-input-hasiremitter-f.md#hasiremitter-1) | 查询设备是否配备红外发射器。使用Promise异步回调。 |
+| [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md#hasiremitter-1) | 查询设备是否配备红外发射器。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getInfraredFrequencies](arkts-input-getinfraredfrequencies-f-sys.md#getinfraredfrequencies-1) | 查询设备支持的红外信号的频率范围。 |
-| [transmitInfrared](arkts-input-transmitinfrared-f-sys.md#transmitinfrared-1) | 产生特定频率和特定电平大小的红外信号。 |
+| [getInfraredFrequencies](arkts-input-infraredemitter-getinfraredfrequencies-f-sys.md#getinfraredfrequencies-1) | 查询设备支持的红外信号的频率范围。 |
+| [transmitInfrared](arkts-input-infraredemitter-transmitinfrared-f-sys.md#transmitinfrared-1) | 产生特定频率和特定电平大小的红外信号。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -30,6 +38,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [InfraredFrequency](arkts-input-infraredfrequency-i-sys.md) | 红外信号的频率范围。 |
+| [InfraredFrequency](arkts-input-infraredemitter-infraredfrequency-i-sys.md) | 红外信号的频率范围。 |
 <!--DelEnd-->
 

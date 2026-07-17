@@ -4,12 +4,14 @@
 
 **起始版本：** 20
 
+<!--Device-notificationManager-export interface NotificationSetting--><!--Device-notificationManager-export interface NotificationSetting-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@ohos.notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## badgeNumberEnabled
@@ -20,7 +22,7 @@ badgeNumberEnabled?: boolean
 
 表示是否开启通知角标数字展示。
 
-- true：开启。
+- true：开启。  
 - false：关闭。
 
 **类型：** boolean
@@ -28,6 +30,8 @@ badgeNumberEnabled?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotificationSetting-badgeNumberEnabled?: boolean--><!--Device-NotificationSetting-badgeNumberEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -39,7 +43,7 @@ bannerEnabled?: boolean
 
 表示是否开启横幅通知。
 
-- true：开启。
+- true：开启。  
 - false：关闭。
 
 **类型：** boolean
@@ -47,6 +51,8 @@ bannerEnabled?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotificationSetting-bannerEnabled?: boolean--><!--Device-NotificationSetting-bannerEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -58,7 +64,7 @@ lockScreenEnabled?: boolean
 
 表示是否开启锁屏通知。
 
-- true：开启。
+- true：开启。  
 - false：关闭。
 
 **类型：** boolean
@@ -66,6 +72,8 @@ lockScreenEnabled?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotificationSetting-lockScreenEnabled?: boolean--><!--Device-NotificationSetting-lockScreenEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -77,7 +85,7 @@ notificationEnabled?: boolean
 
 表示应用通知使能状态。
 
-- true：开启。
+- true：开启。  
 - false：关闭。
 
 **类型：** boolean
@@ -85,6 +93,8 @@ notificationEnabled?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotificationSetting-notificationEnabled?: boolean--><!--Device-NotificationSetting-notificationEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -96,12 +106,14 @@ soundEnabled: boolean
 
 表示是否开启响铃。
 
-- true：开启。
+- true：开启。  
 - false：关闭。
 
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-NotificationSetting-soundEnabled: boolean--><!--Device-NotificationSetting-soundEnabled: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -113,12 +125,14 @@ vibrationEnabled: boolean
 
 表示是否开启振动。
 
-- true：开启。
+- true：开启。  
 - false：关闭。
 
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-NotificationSetting-vibrationEnabled: boolean--><!--Device-NotificationSetting-vibrationEnabled: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

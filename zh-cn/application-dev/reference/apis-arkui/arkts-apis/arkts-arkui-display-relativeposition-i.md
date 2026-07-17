@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-display-interface RelativePosition--><!--Device-display-interface RelativePosition-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## displayId
 
@@ -17,6 +25,8 @@ displayId: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-RelativePosition-displayId: long--><!--Device-RelativePosition-displayId: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -31,6 +41,8 @@ position: Position
 **类型：** Position
 
 **起始版本：** 20
+
+<!--Device-RelativePosition-position: Position--><!--Device-RelativePosition-position: Position-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

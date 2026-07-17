@@ -1,10 +1,18 @@
 # PhoneNumber
 
-��ϵ�˵绰�����ࡣ
+联系人电话号码类。
 
 **起始版本：** 7
 
+<!--Device-contact-class PhoneNumber--><!--Device-contact-class PhoneNumber-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## CUSTOM_LABEL
 
@@ -12,13 +20,15 @@
 static readonly CUSTOM_LABEL: 0
 ```
 
-�Զ����������ͣ�Ĭ��ֵΪ0��
+自定义邮箱类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly CUSTOM_LABEL: 0--><!--Device-PhoneNumber-static readonly CUSTOM_LABEL: 0-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -28,13 +38,15 @@ static readonly CUSTOM_LABEL: 0
 static readonly INVALID_LABEL_ID: -1
 ```
 
-��Ч�������ͣ�Ĭ��ֵΪ-1��
+无效邮箱类型，默认值为-1。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly INVALID_LABEL_ID: -1--><!--Device-PhoneNumber-static readonly INVALID_LABEL_ID: -1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -44,13 +56,15 @@ static readonly INVALID_LABEL_ID: -1
 static readonly NUM_ASSISTANT: 19
 ```
 
-�����绰���ͣ�Ĭ��ֵ��19��
+助理电话类型，默认值是19。
 
 **类型：** 19
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_ASSISTANT: 19--><!--Device-PhoneNumber-static readonly NUM_ASSISTANT: 19-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -60,13 +74,15 @@ static readonly NUM_ASSISTANT: 19
 static readonly NUM_CALLBACK: 8
 ```
 
-�غ��绰���ͣ�Ĭ��ֵ��8��
+回呼电话类型，默认值是8。
 
 **类型：** 8
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_CALLBACK: 8--><!--Device-PhoneNumber-static readonly NUM_CALLBACK: 8-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -76,13 +92,15 @@ static readonly NUM_CALLBACK: 8
 static readonly NUM_CAR: 9
 ```
 
-�����绰���ͣ�Ĭ��ֵ��9��
+车机电话类型，默认值是9。
 
 **类型：** 9
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_CAR: 9--><!--Device-PhoneNumber-static readonly NUM_CAR: 9-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -92,13 +110,15 @@ static readonly NUM_CAR: 9
 static readonly NUM_COMPANY_MAIN: 10
 ```
 
-��˾�绰���ͣ�Ĭ��ֵ��10��
+公司电话类型，默认值是10。
 
 **类型：** 10
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_COMPANY_MAIN: 10--><!--Device-PhoneNumber-static readonly NUM_COMPANY_MAIN: 10-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -108,13 +128,15 @@ static readonly NUM_COMPANY_MAIN: 10
 static readonly NUM_FAX_HOME: 5
 ```
 
-��ͥ����绰���ͣ�Ĭ��ֵ��5��
+家庭传真电话类型，默认值是5。
 
 **类型：** 5
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_FAX_HOME: 5--><!--Device-PhoneNumber-static readonly NUM_FAX_HOME: 5-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -124,13 +146,15 @@ static readonly NUM_FAX_HOME: 5
 static readonly NUM_FAX_WORK: 4
 ```
 
-��������绰���ͣ�Ĭ��ֵ��4��
+工作传真电话类型，默认值是4。
 
 **类型：** 4
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_FAX_WORK: 4--><!--Device-PhoneNumber-static readonly NUM_FAX_WORK: 4-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -140,13 +164,15 @@ static readonly NUM_FAX_WORK: 4
 static readonly NUM_HOME: 1
 ```
 
-��ͥ�绰���ͣ�Ĭ��ֵ��1��
+家庭电话类型，默认值是1。
 
 **类型：** 1
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_HOME: 1--><!--Device-PhoneNumber-static readonly NUM_HOME: 1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -156,13 +182,15 @@ static readonly NUM_HOME: 1
 static readonly NUM_ISDN: 11
 ```
 
-�ۺ�ҵ��������(ISDN)�绰���ͣ�Ĭ��ֵ��11��
+综合业务数字网(ISDN)电话类型，默认值是11。
 
 **类型：** 11
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_ISDN: 11--><!--Device-PhoneNumber-static readonly NUM_ISDN: 11-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -172,13 +200,15 @@ static readonly NUM_ISDN: 11
 static readonly NUM_MAIN: 12
 ```
 
-���绰���ͣ�Ĭ��ֵ��12��
+主电话类型，默认值是12。
 
 **类型：** 12
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_MAIN: 12--><!--Device-PhoneNumber-static readonly NUM_MAIN: 12-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -188,13 +218,15 @@ static readonly NUM_MAIN: 12
 static readonly NUM_MMS: 20
 ```
 
-���ŵ绰���ͣ�Ĭ��ֵ��20��
+彩信电话类型，默认值是20。
 
 **类型：** 20
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_MMS: 20--><!--Device-PhoneNumber-static readonly NUM_MMS: 20-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -204,13 +236,15 @@ static readonly NUM_MMS: 20
 static readonly NUM_MOBILE: 2
 ```
 
-�ƶ��绰���ͣ�Ĭ��ֵ��2��
+移动电话类型，默认值是2。
 
 **类型：** 2
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_MOBILE: 2--><!--Device-PhoneNumber-static readonly NUM_MOBILE: 2-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -220,13 +254,15 @@ static readonly NUM_MOBILE: 2
 static readonly NUM_OTHER: 7
 ```
 
-�����绰���ͣ�Ĭ��ֵ��7��
+其它电话类型，默认值是7。
 
 **类型：** 7
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_OTHER: 7--><!--Device-PhoneNumber-static readonly NUM_OTHER: 7-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -236,13 +272,15 @@ static readonly NUM_OTHER: 7
 static readonly NUM_OTHER_FAX: 13
 ```
 
-�����������ͣ�Ĭ��ֵ��13��
+其它传真类型，默认值是13。
 
 **类型：** 13
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_OTHER_FAX: 13--><!--Device-PhoneNumber-static readonly NUM_OTHER_FAX: 13-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -252,13 +290,15 @@ static readonly NUM_OTHER_FAX: 13
 static readonly NUM_PAGER: 6
 ```
 
-Ѱ�����绰���ͣ�Ĭ��ֵ��6��
+寻呼机电话类型，默认值是6。
 
 **类型：** 6
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_PAGER: 6--><!--Device-PhoneNumber-static readonly NUM_PAGER: 6-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -268,13 +308,15 @@ static readonly NUM_PAGER: 6
 static readonly NUM_RADIO: 14
 ```
 
-���ߵ绰���ͣ�Ĭ��ֵ��14��
+无线电话类型，默认值是14。
 
 **类型：** 14
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_RADIO: 14--><!--Device-PhoneNumber-static readonly NUM_RADIO: 14-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -284,13 +326,15 @@ static readonly NUM_RADIO: 14
 static readonly NUM_TELEX: 15
 ```
 
-�紫�绰���ͣ�Ĭ��ֵ��15��
+电传电话类型，默认值是15。
 
 **类型：** 15
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_TELEX: 15--><!--Device-PhoneNumber-static readonly NUM_TELEX: 15-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -300,13 +344,15 @@ static readonly NUM_TELEX: 15
 static readonly NUM_TTY_TDD: 16
 ```
 
-�紫���ֻ�(TTY)�������������(TDD)�绰���ͣ�Ĭ��ֵ��16��
+电传打字机(TTY)或测试驱动开发(TDD)电话类型，默认值是16。
 
 **类型：** 16
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_TTY_TDD: 16--><!--Device-PhoneNumber-static readonly NUM_TTY_TDD: 16-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -316,13 +362,15 @@ static readonly NUM_TTY_TDD: 16
 static readonly NUM_WORK: 3
 ```
 
-�����绰���ͣ�Ĭ��ֵ��3��
+工作电话类型，默认值是3。
 
 **类型：** 3
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_WORK: 3--><!--Device-PhoneNumber-static readonly NUM_WORK: 3-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -332,13 +380,15 @@ static readonly NUM_WORK: 3
 static readonly NUM_WORK_MOBILE: 17
 ```
 
-�����ƶ��绰���ͣ�Ĭ��ֵ��17��
+工作移动电话类型，默认值是17。
 
 **类型：** 17
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_WORK_MOBILE: 17--><!--Device-PhoneNumber-static readonly NUM_WORK_MOBILE: 17-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -348,13 +398,15 @@ static readonly NUM_WORK_MOBILE: 17
 static readonly NUM_WORK_PAGER: 18
 ```
 
-����Ѱ�����绰���ͣ�Ĭ��ֵ��18��
+工作寻呼机电话类型，默认值是18。
 
 **类型：** 18
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-static readonly NUM_WORK_PAGER: 18--><!--Device-PhoneNumber-static readonly NUM_WORK_PAGER: 18-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -364,13 +416,15 @@ static readonly NUM_WORK_PAGER: 18
 labelId?: number
 ```
 
-��������͡�
+邮箱的类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-labelId?: number--><!--Device-PhoneNumber-labelId?: number-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -380,13 +434,15 @@ labelId?: number
 labelName?: string
 ```
 
-������������ơ�
+邮箱的类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-labelName?: string--><!--Device-PhoneNumber-labelName?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -396,13 +452,15 @@ labelName?: string
 phoneNumber: string
 ```
 
-�绰���롣
+电话号码。
 
 **类型：** string
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PhoneNumber-phoneNumber: string--><!--Device-PhoneNumber-phoneNumber: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 

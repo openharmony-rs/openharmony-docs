@@ -8,11 +8,17 @@
 
 **替代接口：** WatchEvent
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-fileAccess-interface NotifyMessage--><!--Device-fileAccess-interface NotifyMessage-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
 
 ## type
 
@@ -31,6 +37,8 @@ type: NotifyType
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyMessage-type: NotifyType--><!--Device-NotifyMessage-type: NotifyType-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -53,6 +61,8 @@ uris: Array<string>
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyMessage-uris: Array<string>--><!--Device-NotifyMessage-uris: Array<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 

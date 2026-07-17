@@ -1,14 +1,22 @@
 # getRawDescriptor
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## getRawDescriptor
 
 ```TypeScript
 function getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 ```
 
-��ȡԭʼ��USB�����������USB�����쳣�����ܷ���`undefined`��ע����Ҫ�Խӿڷ���ֵ���пմ�����
+获取原始的USB描述符。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
 
 **起始版本：** 9
+
+<!--Device-usbManager-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array--><!--Device-usbManager-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -16,36 +24,45 @@ function getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pipe | USBDevicePipe | 是 | ����ȷ�����ߺź��豸��ַ����Ҫ����[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectDevice-1)��ȡ�� |
+| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定总线号和设备地址，需要调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | ���ػ�ȡ��ԭʼ���ݣ�ʧ�ܷ���undefined�� |
+| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回获取的原始数据；失败返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
-| [14400001](../../errorcode-universal.md#14400001) |  |
-| [14400004](../../errorcode-universal.md#14400004) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1.Mandatory parameters are left unspecified.* <br>2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [14400001](../../apis-basic-services-kit/errorcode-usb.md#14400001-连接usb设备被拒绝) |  |
+| [14400004](../../apis-basic-services-kit/errorcode-usb.md#14400004-服务异常) |  |
 
 **示例：**
 
 ```TypeScript
-function getRawDescriptor() {
+async function getRawDescriptor() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
     return;
   }
 
-  usbManager.requestRight(devicesList?.[0]?.name);
+  let rightResult = await usbManager.requestRight(devicesList?.[0]?.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
+  usbManager.getRawDescriptor(devicepipe);
+  usbManager.closePipe(devicepipe);
 }
 
 ```

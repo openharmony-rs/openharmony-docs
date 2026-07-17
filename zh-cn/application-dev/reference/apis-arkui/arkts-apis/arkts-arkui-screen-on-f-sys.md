@@ -1,14 +1,22 @@
 # on（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+```
+
 ## on
 
 ```TypeScript
 function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<number>): void
 ```
 
-������Ļ״̬�仯�ļ�����
+开启屏幕状态变化的监听。
 
 **起始版本：** 9
+
+<!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void--><!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -18,22 +26,23 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventType | 'connect' \| 'disconnect' \| 'change' | 是 | �����¼���<br/>-eventTypeΪ"connect"��ʾ��Ļ�����¼���<br/>-eventTypeΪ"<br/>disconnect"��ʾ�Ͽ���Ļ�����¼���<br/>-eventTypeΪ"change"��ʾ��Ļ״̬�ı��¼��� |
-| callback | Callback&lt;number&gt; | 是 | �ص�������������Ļ��id���ò���Ϊ������ |
+| eventType | 'connect' \| 'disconnect' \| 'change' | 是 | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
+| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例：**
 
 ```TypeScript
 let callback: Callback<number> = (data: number) => {
-  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`)
+  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`);
 };
+// 开启屏幕连接事件的监听
 screen.on('connect', callback);
 
 ```
@@ -45,9 +54,11 @@ screen.on('connect', callback);
 function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<number>): void
 ```
 
-������Ļ״̬�仯�ļ�����
+开启屏幕状态变化的监听。
 
 **起始版本：** 9
+
+<!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void--><!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -57,22 +68,23 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventType | 'connect' \| 'disconnect' \| 'change' | 是 | �����¼���<br/>-eventTypeΪ"connect"��ʾ��Ļ�����¼���<br/>-eventTypeΪ"<br/>disconnect"��ʾ�Ͽ���Ļ�����¼���<br/>-eventTypeΪ"change"��ʾ��Ļ״̬�ı��¼��� |
-| callback | Callback&lt;number&gt; | 是 | �ص�������������Ļ��id���ò���Ϊ������ |
+| eventType | 'connect' \| 'disconnect' \| 'change' | 是 | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
+| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例：**
 
 ```TypeScript
 let callback: Callback<number> = (data: number) => {
-  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`)
+  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`);
 };
+// 开启屏幕连接事件的监听
 screen.on('connect', callback);
 
 ```
@@ -84,9 +96,11 @@ screen.on('connect', callback);
 function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<number>): void
 ```
 
-������Ļ״̬�仯�ļ�����
+开启屏幕状态变化的监听。
 
 **起始版本：** 9
+
+<!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void--><!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -96,22 +110,23 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventType | 'connect' \| 'disconnect' \| 'change' | 是 | �����¼���<br/>-eventTypeΪ"connect"��ʾ��Ļ�����¼���<br/>-eventTypeΪ"<br/>disconnect"��ʾ�Ͽ���Ļ�����¼���<br/>-eventTypeΪ"change"��ʾ��Ļ״̬�ı��¼��� |
-| callback | Callback&lt;number&gt; | 是 | �ص�������������Ļ��id���ò���Ϊ������ |
+| eventType | 'connect' \| 'disconnect' \| 'change' | 是 | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
+| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 回调函数。返回屏幕的id，该参数为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例：**
 
 ```TypeScript
 let callback: Callback<number> = (data: number) => {
-  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`)
+  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`);
 };
+// 开启屏幕连接事件的监听
 screen.on('connect', callback);
 
 ```

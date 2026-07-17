@@ -1,5 +1,11 @@
 # fdatasyncSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## fdatasyncSync
 
 ```TypeScript
@@ -9,6 +15,8 @@ declare function fdatasyncSync(fd: number): void
 以同步方法实现文件内容的数据同步。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function fdatasyncSync(fd: number): void--><!--Device-unnamed-declare function fdatasyncSync(fd: number): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

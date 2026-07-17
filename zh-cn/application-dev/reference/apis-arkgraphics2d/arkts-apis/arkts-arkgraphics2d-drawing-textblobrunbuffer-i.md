@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-drawing-interface TextBlobRunBuffer--><!--Device-drawing-interface TextBlobRunBuffer-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## glyph
 
@@ -17,6 +25,8 @@ glyph: number
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-TextBlobRunBuffer-glyph: int--><!--Device-TextBlobRunBuffer-glyph: int-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -32,6 +42,8 @@ positionX: number
 
 **起始版本：** 11
 
+<!--Device-TextBlobRunBuffer-positionX: double--><!--Device-TextBlobRunBuffer-positionX: double-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## positionY
@@ -45,6 +57,8 @@ positionY: number
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-TextBlobRunBuffer-positionY: double--><!--Device-TextBlobRunBuffer-positionY: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

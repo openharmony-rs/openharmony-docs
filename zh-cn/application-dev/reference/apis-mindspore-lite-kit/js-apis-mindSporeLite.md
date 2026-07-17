@@ -36,7 +36,7 @@ loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                             |
 | -------- | ------------------------- | ---- | ------------------------------------------------ |
 | model    | string                    | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。                         |
+| callback | Callback<[Model](#model)> | 是   | 回调函数，用于返回模型对象。当检查到模型输入为空时，加载失败。                         |
 
 **示例：** 
 
@@ -516,7 +516,7 @@ getAllNNRTDeviceDescriptions() : NNRTDeviceDescription[]
 try {
   let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
   if (allDevices == null || allDevices.length === 0) {
-    console.error(`Failed to get NNRT device descriptions. Result: null or empty array`);
+    console.error('Failed to get NNRT device descriptions. Result: null or empty array');
   } else {
     console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   }
@@ -556,9 +556,9 @@ CPU后端设备选项。
 | threadNum              | number                                    | 否   | 是   | 设置运行时的线程数，默认值：2。                              |
 | threadAffinityMode     | [ThreadAffinityMode](#threadaffinitymode) | 否   | 是   | 设置运行时的CPU绑核策略模式，默认值为不绑核：mindSporeLite.ThreadAffinityMode.NO_AFFINITIES。 |
 | threadAffinityCoreList | number[]                                  | 否   | 是   | 设置运行时的CPU绑核列表，设置绑核策略模式后使能，当绑核策略模式为mindSporeLite.ThreadAffinityMode.NO_AFFINITIES时，绑核列表为空。列表中的数字代表核的序号。默认值：[]。 |
-| precisionMode          | string                                    | 否   | 是   | 设置是否使能**Float16推理模式**，设置为'preferred_fp16'代表使能半精度推理，其余设置情况均为不支持，默认设置'enforce_fp32'表示不使能半精度推理。 |
+| precisionMode          | string                                    | 否   | 是   | 设置是否使能**Float16推理模式**，设置为'preferred_fp16'代表使能半精度推理，其余设置值均不使能半精度推理，默认设置'enforce_fp32'表示不使能半精度推理。 |
 
-**Float16推理模式**：  Float16又称半精度，它使用16比特表示一个数。Float16推理模式表示推理的时候用半精度进行推理。 
+**Float16推理模式**：  表示使用半精度（Float16）进行推理计算，相比全精度（Float32）可减少内存占用并提升推理速度。
 
 **示例：** 
 
@@ -637,7 +637,7 @@ NNRt推理任务优先级枚举。
 
 ## NNRTDeviceDescription<sup>12+</sup>
 
-NNRt设备信息描述，包含设备ID，设备名称等信息。
+NNRt设备信息描述，包含设备ID、设备名称等信息。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -668,7 +668,7 @@ if (allDevices == null || allDevices.length === 0) {
   console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
     for (let i: number = 0; i < allDevices.length; i++) {
       console.info(`Device ${i} ID: ${allDevices[i].deviceID().toString()}`);
-  }
+    }
 }
 ```
 
@@ -696,7 +696,7 @@ let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
 if (allDevices == null || allDevices.length === 0) {
   console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
-console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
+  console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   for (let i: number = 0; i < allDevices.length; i++) {
     console.info(`Device ${i} type: ${allDevices[i].deviceType().toString()}`);
   }
@@ -727,7 +727,7 @@ let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
 if (allDevices == null || allDevices.length === 0) {
   console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
-console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
+  console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   for (let i: number = 0; i < allDevices.length; i++) {
     console.info(`Device ${i} name: ${allDevices[i].deviceName()}`);
   }
@@ -755,7 +755,7 @@ NNRt设备类型枚举。
 
 | 名称                            | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| lossName         | string[]                                  | 否   | 是   | 损失函数的名称列表。默认值为["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]。 |
+| lossName         | string[]                                  | 否   | 是   |  损失函数的名称列表，用于端侧训练时标识模型中的损失函数节点。默认值为["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]。 |
 | optimizationLevel | [OptimizationLevel](#optimizationlevel12) | 否   | 是   | 端侧训练的网络优化等级。默认值为O0。                         |
 
 **示例：** 
@@ -775,7 +775,7 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 | 名称 | 值   | 说明                                                       |
 | ---- | ---- | ---------------------------------------------------------- |
 | O0   | 0    | 无优化等级。                                               |
-| O2   | 2    | 将网络转换为float16，保持批量归一化层和损失函数为float32。 |
+| O2   | 2    | 将网络转换为Float16，保持批量归一化层和损失函数为Float32。 |
 | O3   | 3    | 将网络转换为float16，包括批量归一化层。                    |
 | AUTO | 4    | 根据设备选择优化等级。                                     |
 
@@ -796,7 +796,7 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 模型实例。描述Model对象的属性和方法。
 
-下例API示例中都需先使用[loadModelFromFile()](#mindsporeliteloadmodelfromfile)、[loadModelFromBuffer()](#mindsporeliteloadmodelfrombuffer)、[loadModelFromFd()](#mindsporeliteloadmodelfromfd)中的任一方法获取到Model实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[loadModelFromFile()](#mindsporeliteloadmodelfromfile)、[loadModelFromBuffer()](#mindsporeliteloadmodelfrombuffer)、[loadModelFromFd()](#mindsporeliteloadmodelfromfd)中的任一方法获取到Model实例，再通过此实例调用对应方法。
 
 ### 属性
 
@@ -860,7 +860,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// The name of the preprocessed model input data file
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile: string = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -926,6 +926,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -997,11 +998,11 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLi
   let originalShape = modelInputs[0].shape;
   console.info(`Original input shape: [${originalShape.join(', ')}]`);
   
-  let new_dim = [[1, 32, 32, 1]];
-  let ret = mindSporeLiteModel.resize(modelInputs, new_dim);
+  let newDim = [[1, 32, 32, 1]];
+  let ret = mindSporeLiteModel.resize(modelInputs, newDim);
   
   if (ret === false) {
-    console.error(`Failed to resize model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], Target shape: [${new_dim[0].join(', ')}]`);
+    console.error(`Failed to resize model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], Target shape: [${newDim[0].join(', ')}]`);
   } else {
     console.info(`Succeeded in resizing model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], New shape: [${modelInputs[0].shape.join(', ')}]`);
   }
@@ -1179,7 +1180,7 @@ setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number):
 | 参数名                 | 类型   | 必填 | 说明                                                 |
 | ---------------------- | ------ | ---- | ---------------------------------------------------- |
 | virtualBatchMultiplier | number | 是   | 虚拟批次乘法器，只能为整数。取值小于1时：表示禁用虚拟batch；取值为1时：等同于禁用虚拟batch；取值大于1时：表示将一个大batch分割成N个小batch。 |
-| lr                     | number | 是   | 学习率，控制每次参数更新时，沿着梯度方向移动的步长。取值为-1时，使用默认学习率；取值小于-1或大于-1且小于0时，表示无效值，会导致设置失败；取值为0时，固定当前参数；取值大于0时，自定义学习率。 |
+| lr                     | number | 是   | 学习率，控制每次参数更新时，沿着梯度方向移动的步长。取值为-1时，使用默认学习率；取值小于0且不为-1时，表示无效值，会导致设置失败；取值为0时，固定当前参数；取值大于0时，自定义学习率。 |
 | momentum               | number | 是   | 动量，用于加速训练并减少梯度震荡。取值为-1时，表示使用系统默认的动量值，在不确定具体值时的选择；取值为0时，表示不使用动量优化，退化为纯梯度下降算法；取值在0.5~0.9时，能够在训练速度和稳定性之间取得较好的平衡；取值在0.9~0.99时，能够显著加速训练过程，适合凸优化问题；取值小于0且不为-1时，表示无效值，会导致虚拟批次设置失败。                                              |
 
 **返回值：**
@@ -1276,7 +1277,7 @@ exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, ena
 
 导出供micro推理使用的模型权重，仅用于端侧训练。
 
-**micro推理**：MindSpore Lite针对MCUs（MicroControllerUnits）部署硬件后端，提供了一种超轻量Micro AI部署解决方案，离线阶段直接将模型生成轻量化代码，不再需要在线解析模型和图编译。
+**micro推理**：一种MindSpore Lite针对MCUs（MicroControllerUnits）硬件的超轻量AI部署方案。该方案在离线阶段直接将模型转换为轻量化代码，无需在设备端在线解析模型和编译图。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -1326,7 +1327,7 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 | ---------- | --------------------- | ---- | ---- | ---------------------- |
 | name       | string                | 否   | 否   | 张量的名称。           |
 | shape      | number[]              | 否   | 否   | 张量的维度数组。       |
-| elementNum | number                | 否   | 否   | 张量的维度数组的长度。 |
+| elementNum | number                | 否   | 否   | 张量的元素总数。       |
 | dataSize   | number                | 否   | 否   | 张量的数据的长度。     |
 | dtype      | [DataType](#datatype) | 否   | 否   | 张量的数据类型。       |
 | format     | [Format](#format)     | 否   | 否   | 张量的数据排布方式。   |
@@ -1370,6 +1371,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1432,6 +1434,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;

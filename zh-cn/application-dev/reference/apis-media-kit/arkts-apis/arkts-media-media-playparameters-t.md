@@ -8,6 +8,8 @@ type PlayParameters = _PlayParameters
 
 **起始版本：** 10
 
+<!--Device-media-type PlayParameters = _PlayParameters--><!--Device-media-type PlayParameters = _PlayParameters-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **属性类型：** _PlayParameters

@@ -1,10 +1,18 @@
 # Relation
 
-��ϵ�˵Ĺ�ϵ�ࡣ
+联系人的关系类。
 
 **起始版本：** 7
 
+<!--Device-contact-class Relation--><!--Device-contact-class Relation-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## CUSTOM_LABEL
 
@@ -12,13 +20,15 @@
 static readonly CUSTOM_LABEL: 0
 ```
 
-�Զ����ϵ���ͣ�Ĭ��ֵΪ0��
+自定义关系类型，默认值为0。
 
 **类型：** 0
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly CUSTOM_LABEL: 0--><!--Device-Relation-static readonly CUSTOM_LABEL: 0-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -28,13 +38,15 @@ static readonly CUSTOM_LABEL: 0
 static readonly INVALID_LABEL_ID: -1
 ```
 
-��Ч�Ĺ�ϵ���ͣ�Ĭ��ֵΪ-1��
+无效的关系类型，默认值为-1。
 
 **类型：** -1
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly INVALID_LABEL_ID: -1--><!--Device-Relation-static readonly INVALID_LABEL_ID: -1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -44,13 +56,15 @@ static readonly INVALID_LABEL_ID: -1
 static readonly RELATION_ASSISTANT: 1
 ```
 
-���ֹ�ϵ���ͣ�Ĭ��ֵΪ1��
+助手关系类型，默认值为1。
 
 **类型：** 1
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_ASSISTANT: 1--><!--Device-Relation-static readonly RELATION_ASSISTANT: 1-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -60,13 +74,15 @@ static readonly RELATION_ASSISTANT: 1
 static readonly RELATION_BROTHER: 2
 ```
 
-�ֵܹ�ϵ���ͣ�Ĭ��ֵΪ2��
+兄弟关系类型，默认值为2。
 
 **类型：** 2
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_BROTHER: 2--><!--Device-Relation-static readonly RELATION_BROTHER: 2-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -76,13 +92,15 @@ static readonly RELATION_BROTHER: 2
 static readonly RELATION_CHILD: 3
 ```
 
-��Ů��ϵ���ͣ�Ĭ��ֵΪ3��
+子女关系类型，默认值为3。
 
 **类型：** 3
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_CHILD: 3--><!--Device-Relation-static readonly RELATION_CHILD: 3-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -92,13 +110,15 @@ static readonly RELATION_CHILD: 3
 static readonly RELATION_DOMESTIC_PARTNER: 4
 ```
 
-ͬ��ͬ���ϵ���ͣ�Ĭ��ֵΪ4��
+同居同伴关系类型，默认值为4。
 
 **类型：** 4
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_DOMESTIC_PARTNER: 4--><!--Device-Relation-static readonly RELATION_DOMESTIC_PARTNER: 4-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -108,13 +128,15 @@ static readonly RELATION_DOMESTIC_PARTNER: 4
 static readonly RELATION_FATHER: 5
 ```
 
-���׹�ϵ���ͣ�Ĭ��ֵΪ5��
+父亲关系类型，默认值为5。
 
 **类型：** 5
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_FATHER: 5--><!--Device-Relation-static readonly RELATION_FATHER: 5-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -124,13 +146,15 @@ static readonly RELATION_FATHER: 5
 static readonly RELATION_FRIEND: 6
 ```
 
-���ѹ�ϵ���ͣ�Ĭ��ֵΪ6��
+朋友关系类型，默认值为6。
 
 **类型：** 6
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_FRIEND: 6--><!--Device-Relation-static readonly RELATION_FRIEND: 6-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -140,13 +164,15 @@ static readonly RELATION_FRIEND: 6
 static readonly RELATION_MANAGER: 7
 ```
 
-�����߹�ϵ���ͣ�Ĭ��ֵΪ7��
+管理者关系类型，默认值为7。
 
 **类型：** 7
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_MANAGER: 7--><!--Device-Relation-static readonly RELATION_MANAGER: 7-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -156,13 +182,15 @@ static readonly RELATION_MANAGER: 7
 static readonly RELATION_MOTHER: 8
 ```
 
-ĸ�׹�ϵ���ͣ�Ĭ��ֵΪ8��
+母亲关系类型，默认值为8。
 
 **类型：** 8
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_MOTHER: 8--><!--Device-Relation-static readonly RELATION_MOTHER: 8-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -172,13 +200,15 @@ static readonly RELATION_MOTHER: 8
 static readonly RELATION_PARENT: 9
 ```
 
-��ĸ��ϵ���ͣ�Ĭ��ֵΪ9��
+父母关系类型，默认值为9。
 
 **类型：** 9
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_PARENT: 9--><!--Device-Relation-static readonly RELATION_PARENT: 9-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -188,13 +218,15 @@ static readonly RELATION_PARENT: 9
 static readonly RELATION_PARTNER: 10
 ```
 
-��ĸ��ϵ���ͣ�Ĭ��ֵΪ9��
+父母关系类型，默认值为9。
 
 **类型：** 10
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_PARTNER: 10--><!--Device-Relation-static readonly RELATION_PARTNER: 10-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -204,13 +236,15 @@ static readonly RELATION_PARTNER: 10
 static readonly RELATION_REFERRED_BY: 11
 ```
 
-�Ƽ��˹�ϵ���ͣ�Ĭ��ֵΪ11��
+推荐人关系类型，默认值为11。
 
 **类型：** 11
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_REFERRED_BY: 11--><!--Device-Relation-static readonly RELATION_REFERRED_BY: 11-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -220,13 +254,15 @@ static readonly RELATION_REFERRED_BY: 11
 static readonly RELATION_RELATIVE: 12
 ```
 
-������ϵ���ͣ�Ĭ��ֵΪ12��
+亲属关系类型，默认值为12。
 
 **类型：** 12
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_RELATIVE: 12--><!--Device-Relation-static readonly RELATION_RELATIVE: 12-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -236,13 +272,15 @@ static readonly RELATION_RELATIVE: 12
 static readonly RELATION_SISTER: 13
 ```
 
-������ϵ���ͣ�Ĭ��ֵΪ12��
+亲属关系类型，默认值为12。
 
 **类型：** 13
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_SISTER: 13--><!--Device-Relation-static readonly RELATION_SISTER: 13-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -252,13 +290,15 @@ static readonly RELATION_SISTER: 13
 static readonly RELATION_SPOUSE: 14
 ```
 
-��ż��ϵ���ͣ�Ĭ��ֵΪ14��
+配偶关系类型，默认值为14。
 
 **类型：** 14
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-static readonly RELATION_SPOUSE: 14--><!--Device-Relation-static readonly RELATION_SPOUSE: 14-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -268,13 +308,15 @@ static readonly RELATION_SPOUSE: 14
 labelId?: number
 ```
 
-��������͡�
+邮箱的类型。
 
 **类型：** number
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-labelId?: number--><!--Device-Relation-labelId?: number-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -284,13 +326,15 @@ labelId?: number
 labelName?: string
 ```
 
-������������ơ�
+邮箱的类型名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-labelName?: string--><!--Device-Relation-labelName?: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -300,13 +344,15 @@ labelName?: string
 relationName: string
 ```
 
-��ϵ���ơ�
+关系名称。
 
 **类型：** string
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Relation-relationName: string--><!--Device-Relation-relationName: string-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 

@@ -64,9 +64,123 @@ Defines the border width property.
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare type EdgeWidths = {
+  /**
+   * top property.
+   *
+   *****/
+  /**
+   * top property.
+   *
+   ******/
+  /**
+   * top property.
+   *
+   *******/
+  top?: Length;
+
+  /**
+   * right property.
+   *
+   *****/
+  /**
+   * right property.
+   *
+   ******/
+  /**
+   * right property.
+   *
+   *******/
+  right?: Length;
+
+  /**
+   * bottom property.
+   *
+   *****/
+  /**
+   * bottom property.
+   *
+   ******/
+  /**
+   * bottom property.
+   *
+   *******/
+  bottom?: Length;
+
+  /**
+   * left property.
+   *
+   *****/
+  /**
+   * left property.
+   *
+   ******/
+  /**
+   * left property.
+   *
+   *******/
+  left?: Length;
+}--><!--Device-unnamed-declare type EdgeWidths = {
+  /**
+   * top property.
+   *
+   *****/
+  /**
+   * top property.
+   *
+   ******/
+  /**
+   * top property.
+   *
+   *******/
+  top?: Length;
+
+  /**
+   * right property.
+   *
+   *****/
+  /**
+   * right property.
+   *
+   ******/
+  /**
+   * right property.
+   *
+   *******/
+  right?: Length;
+
+  /**
+   * bottom property.
+   *
+   *****/
+  /**
+   * bottom property.
+   *
+   ******/
+  /**
+   * bottom property.
+   *
+   *******/
+  bottom?: Length;
+
+  /**
+   * left property.
+   *
+   *****/
+  /**
+   * left property.
+   *
+   ******/
+  /**
+   * left property.
+   *
+   *******/
+  left?: Length;
+}-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

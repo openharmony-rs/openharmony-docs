@@ -1,14 +1,10 @@
 # PrintDocumentFormat
 
-```TypeScript
-enum PrintDocumentFormat
-```
-
 打印数据格式的枚举。
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-print-enum PrintDocumentFormat--><!--Device-print-enum PrintDocumentFormat-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,6 +20,8 @@ DOCUMENT_FORMAT_AUTO = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_AUTO = 0--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_AUTO = 0-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## DOCUMENT_FORMAT_JPEG
@@ -37,6 +35,8 @@ DOCUMENT_FORMAT_JPEG = 1
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_JPEG = 1--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_JPEG = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -52,6 +52,8 @@ DOCUMENT_FORMAT_PDF = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_PDF = 2--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_PDF = 2-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## DOCUMENT_FORMAT_POSTSCRIPT
@@ -65,6 +67,8 @@ DOCUMENT_FORMAT_POSTSCRIPT = 3
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_POSTSCRIPT = 3--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_POSTSCRIPT = 3-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -80,6 +84,8 @@ DOCUMENT_FORMAT_TEXT = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## DOCUMENT_FORMAT_RAW
@@ -93,6 +99,8 @@ DOCUMENT_FORMAT_RAW = 5
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_RAW = 5--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_RAW = 5-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

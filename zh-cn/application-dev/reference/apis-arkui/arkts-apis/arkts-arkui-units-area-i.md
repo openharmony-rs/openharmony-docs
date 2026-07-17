@@ -4,6 +4,8 @@
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface Area--><!--Device-unnamed-declare interface Area-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalPosition
@@ -21,6 +23,8 @@ globalPosition: Position
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Area-globalPosition: Position--><!--Device-Area-globalPosition: Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ height: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Area-height: Length--><!--Device-Area-height: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -59,6 +65,8 @@ position: Position
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Area-position: Position--><!--Device-Area-position: Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +87,8 @@ width: Length
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Area-width: Length--><!--Device-Area-width: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

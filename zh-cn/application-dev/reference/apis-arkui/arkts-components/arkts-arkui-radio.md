@@ -9,6 +9,9 @@
 > - 该组件默认有[margin]{@link CommonMethod#margin}间距，默认值为：{&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&
 > nbsp;left: '14px' }。
 
+## 子组件
+
+无
 
 ## Radio
 
@@ -20,9 +23,11 @@ Radio(options: RadioOptions)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RadioInterface-(options: RadioOptions): RadioAttribute--><!--Device-RadioInterface-(options: RadioOptions): RadioAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

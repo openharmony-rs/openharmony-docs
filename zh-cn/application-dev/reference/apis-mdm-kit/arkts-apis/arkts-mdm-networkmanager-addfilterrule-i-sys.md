@@ -1,14 +1,20 @@
 # AddFilterRule（系统接口）
 
-������������˹���
+添加网络包过滤规则。
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-networkManager-interface AddFilterRule--><!--Device-networkManager-interface AddFilterRule-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
 
 ## action
 
@@ -16,13 +22,15 @@
 action: Action
 ```
 
-���ջ��߶������ݰ���
+接收或者丢弃数据包。
 
 **类型：** Action
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-action: Action--><!--Device-AddFilterRule-action: Action-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -34,13 +42,15 @@ action: Action
 destAddr?: string
 ```
 
-ipĿ���ַ��
+ip目标地址。
 
 **类型：** string
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-destAddr?: string--><!--Device-AddFilterRule-destAddr?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -52,13 +62,15 @@ ipĿ���ַ��
 destPort?: string
 ```
 
-ipĿ��˿ڡ�
+ip目标端口。
 
 **类型：** string
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-destPort?: string--><!--Device-AddFilterRule-destPort?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -70,13 +82,15 @@ ipĿ��˿ڡ�
 direction: Direction
 ```
 
-��������
+规则链。
 
 **类型：** Direction
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-direction: Direction--><!--Device-AddFilterRule-direction: Direction-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -88,13 +102,15 @@ direction: Direction
 method: AddMethod
 ```
 
-���Ӳ��ԡ�
+添加策略。
 
 **类型：** AddMethod
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-method: AddMethod--><!--Device-AddFilterRule-method: AddMethod-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -106,13 +122,15 @@ method: AddMethod
 protocol?: Protocol
 ```
 
-����Э�顣
+网络协议。
 
 **类型：** Protocol
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-protocol?: Protocol--><!--Device-AddFilterRule-protocol?: Protocol-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -124,13 +142,15 @@ protocol?: Protocol
 ruleNo?: number
 ```
 
-������š�
+规则序号。
 
 **类型：** number
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-ruleNo?: number--><!--Device-AddFilterRule-ruleNo?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -142,13 +162,15 @@ ruleNo?: number
 srcAddr?: string
 ```
 
-ipԴ��ַ��
+ip源地址。
 
 **类型：** string
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-srcAddr?: string--><!--Device-AddFilterRule-srcAddr?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -160,13 +182,15 @@ ipԴ��ַ��
 srcPort?: string
 ```
 
-ipԴ�˿ڡ�
+ip源端口。
 
 **类型：** string
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-srcPort?: string--><!--Device-AddFilterRule-srcPort?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -178,13 +202,15 @@ ipԴ�˿ڡ�
 uid?: string
 ```
 
-Ӧ��uid��
+应用uid。
 
 **类型：** string
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AddFilterRule-uid?: string--><!--Device-AddFilterRule-uid?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

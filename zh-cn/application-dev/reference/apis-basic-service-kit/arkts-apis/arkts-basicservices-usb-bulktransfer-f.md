@@ -1,5 +1,11 @@
 # bulkTransfer
 
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
+
 ## bulkTransfer
 
 ```TypeScript
@@ -13,15 +19,25 @@ function bulkTransfer(
 
 批量传输。
 
-需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getDevices-1)获取设备信息列表以及endpoint；再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestRight-1)获取设备请求权限；
-然后调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectDevice-1)接口得到返回数据devicepipe之后，再次获取接口
-[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claimInterface-1)；再调用usb.bulkTransfer接口。
+需要调用[usb.getDevices](arkts-basicservices-usb-getdevices-f.md#getdevices-1)获取设备信息列表以及endpoint；再调用[usb.requestRight](arkts-basicservices-usb-requestright-f.md#requestright-1)获取设备请求权限；然后调用[usb.connectDevice](arkts-basicservices-usb-connectdevice-f.md#connectdevice-1)接口得到返回数据devicepipe之后，再次获取接口[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface-1)；再调用usb.bulkTransfer接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md#bulkTransfer-1)
+**替代接口：** [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md#bulktransfer-1)
+
+<!--Device-usb-function bulkTransfer(
+    pipe: USBDevicePipe,
+    endpoint: USBEndpoint,
+    buffer: Uint8Array,
+    timeout?: number
+  ): Promise<number>--><!--Device-usb-function bulkTransfer(
+    pipe: USBDevicePipe,
+    endpoint: USBEndpoint,
+    buffer: Uint8Array,
+    timeout?: number
+  ): Promise<number>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -29,16 +45,16 @@ function bulkTransfer(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pipe | USBDevicePipe | 是 | 用于确定设备。 |
-| endpoint | USBEndpoint | 是 | 用于确定传输的端口。 |
-| buffer | Uint8Array | 是 | 用于写入或读取的缓冲区。 |
+| pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 用于确定设备。 |
+| endpoint | [USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md) | 是 | 用于确定传输的端口。 |
+| buffer | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 用于写入或读取的缓冲区。 |
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
+| Promise<number> | Promise对象，获取传输或接收到的数据块大小。失败返回-1。 |
 
 **示例：**
 

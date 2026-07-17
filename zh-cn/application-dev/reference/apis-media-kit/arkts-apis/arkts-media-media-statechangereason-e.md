@@ -1,12 +1,10 @@
 # StateChangeReason
 
-```TypeScript
-enum StateChangeReason
-```
-
 表示播放或录制实例状态机切换原因的枚举，伴随state一起上报。
 
 **起始版本：** 9
+
+<!--Device-media-enum StateChangeReason--><!--Device-media-enum StateChangeReason-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -22,6 +20,8 @@ USER = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-StateChangeReason-USER = 1--><!--Device-StateChangeReason-USER = 1-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 ## BACKGROUND
@@ -35,6 +35,8 @@ BACKGROUND = 2
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StateChangeReason-BACKGROUND = 2--><!--Device-StateChangeReason-BACKGROUND = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

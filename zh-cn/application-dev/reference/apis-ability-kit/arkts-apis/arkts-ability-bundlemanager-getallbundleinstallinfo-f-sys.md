@@ -1,18 +1,26 @@
 # getAllBundleInstallInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAllBundleInstallInfo
 
 ```TypeScript
 function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>
 ```
 
-��ȡϵͳ������Ӧ�õ���չ��װ��Ϣ��ʹ��Promise�첽�ص���
+获取系统内所有应用的扩展安装信息。使用Promise异步回调。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-bundleManager-function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>--><!--Device-bundleManager-function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -22,14 +30,14 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Record&lt;string, Object&gt;&gt;&gt; | The install information. |
+| Promise<Array<Record<string, Object>>> | The install information. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例：**
 

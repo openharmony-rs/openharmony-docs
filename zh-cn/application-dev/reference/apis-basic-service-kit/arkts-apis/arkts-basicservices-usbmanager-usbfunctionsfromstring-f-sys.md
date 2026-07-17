@@ -1,18 +1,26 @@
 # usbFunctionsFromString（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## usbFunctionsFromString
 
 ```TypeScript
 function usbFunctionsFromString(funcs: string): number
 ```
 
-���豸ģʽ�£����ַ�����ʽ��USB�����б�ת��Ϊ�������롣
+在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
 **替代接口：** getFunctionsFromString(funcs:
+
+<!--Device-usbManager-function usbFunctionsFromString(funcs: string): number--><!--Device-usbManager-function usbFunctionsFromString(funcs: string): number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -22,17 +30,17 @@ function usbFunctionsFromString(funcs: string): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| funcs | string | 是 | �ַ�����ʽ�Ĺ����б��� |
+| funcs | string | 是 | 字符串形式的功能列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | ת����Ĺ����б���Ӧ���������롣 |
+| number | 转化后的功能列表对应的数字掩码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1.Mandatory parameters are left unspecified.* <br>2.Incorrect parameter types. |
 

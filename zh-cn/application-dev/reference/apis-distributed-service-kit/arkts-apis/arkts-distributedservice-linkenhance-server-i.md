@@ -4,9 +4,15 @@
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-linkEnhance-interface Server--><!--Device-linkEnhance-interface Server-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## 导入模块
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+```
 
 ## close
 
@@ -22,13 +28,15 @@ close(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-close(): void--><!--Device-Server-close(): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例：**
 
@@ -66,6 +74,8 @@ off(type: 'connectionAccepted', callback?: Callback<Connection>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-off(type: 'connectionAccepted', callback?: Callback<Connection>): void--><!--Device-Server-off(type: 'connectionAccepted', callback?: Callback<Connection>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -73,14 +83,14 @@ off(type: 'connectionAccepted', callback?: Callback<Connection>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectionAccepted' | 是 | 事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。 |
-| callback | Callback&lt;Connection&gt; | 否 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md#Connection)返回的连接对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Connection> | 否 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md)返回的连接对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Parameter) | Parameter invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Parameter invalid. |
 
 **示例：**
 
@@ -124,6 +134,8 @@ off(type: 'serverStopped', callback?: Callback<number>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-off(type: 'serverStopped', callback?: Callback<number>): void--><!--Device-Server-off(type: 'serverStopped', callback?: Callback<number>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -131,14 +143,14 @@ off(type: 'serverStopped', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'serverStopped' | 是 | 事件回调类型，支持的事件为'serverStopped'，底层服务异常时触发。 |
-| callback | Callback&lt;number&gt; | 否 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Parameter) | Parameter invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Parameter invalid. |
 
 **示例：**
 
@@ -155,11 +167,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 取消订阅服务停止
   server.off('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -182,6 +194,8 @@ on(type: 'connectionAccepted', callback: Callback<Connection>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-on(type: 'connectionAccepted', callback: Callback<Connection>): void--><!--Device-Server-on(type: 'connectionAccepted', callback: Callback<Connection>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -189,14 +203,14 @@ on(type: 'connectionAccepted', callback: Callback<Connection>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectionAccepted' | 是 | 事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。 |
-| callback | Callback&lt;Connection&gt; | 是 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md#Connection)返回的连接对象。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Connection> | 是 | 注册的回调函数。[Connection](arkts-distributedservice-linkenhance-connection-i.md)返回的连接对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Parameter) | Parameter invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Parameter invalid. |
 
 **示例：**
 
@@ -240,6 +254,8 @@ on(type: 'serverStopped', callback: Callback<number>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-on(type: 'serverStopped', callback: Callback<number>): void--><!--Device-Server-on(type: 'serverStopped', callback: Callback<number>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -247,14 +263,14 @@ on(type: 'serverStopped', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'serverStopped' | 是 | 事件回调类型，支持的事件为'serverStopped'，底层服务异常时，触发该事件。 |
-| callback | Callback&lt;number&gt; | 是 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Parameter) | Parameter invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Parameter invalid. |
 
 **示例：**
 
@@ -273,7 +289,7 @@ try {
 
   // 订阅服务停止
   server.on('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 启动服务
   server.start();
@@ -298,15 +314,17 @@ start(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-start(): void--><!--Device-Server-start(): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390202](../../errorcode-universal.md#32390202-The) | The number of servers exceeds the limit. |
-| [32390300](../../errorcode-universal.md#32390300-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390202](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390202-服务个数超出限制) | The number of servers exceeds the limit. |
+| [32390300](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390300-内部错误) | Internal error. |
 
 **示例：**
 
@@ -343,13 +361,15 @@ stop(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Server-stop(): void--><!--Device-Server-stop(): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例：**
 

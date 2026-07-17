@@ -1,5 +1,11 @@
 # addPrinter
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## addPrinter
 
 ```TypeScript
@@ -13,6 +19,8 @@ function addPrinter(printerName: string, uri: string, ppdName?: string, options?
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-print-function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>--><!--Device-print-function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -29,14 +37,14 @@ function addPrinter(printerName: string, uri: string, ppdName?: string, options?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。 |
+| Promise<boolean> | Promise对象，返回添加打印机成功与否的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [13100003](../../errorcode-universal.md#13100003-Add) | Add the printer to system failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [13100003](../../apis-basic-services-kit/errorcode-print.md#13100003-打印服务异常) | Add the printer to system failed. |
 
 **示例：**
 

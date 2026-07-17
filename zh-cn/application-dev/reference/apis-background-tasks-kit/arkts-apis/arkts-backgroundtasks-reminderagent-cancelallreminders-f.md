@@ -1,5 +1,11 @@
 # cancelAllReminders
 
+## 导入模块
+
+```TypeScript
+import { reminderAgent } from '@kit.BackgroundTasksKit';
+```
+
 ## cancelAllReminders
 
 ```TypeScript
@@ -12,7 +18,9 @@ function cancelAllReminders(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** cancelAllReminders(callback:
+**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelallreminders-1)
+
+<!--Device-reminderAgent-function cancelAllReminders(callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function cancelAllReminders(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -20,7 +28,7 @@ function cancelAllReminders(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步回调。 |
 
 **示例：**
 
@@ -47,7 +55,9 @@ function cancelAllReminders(): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [cancelAllReminders()](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelAllReminders-2)
+**替代接口：** [cancelAllReminders](arkts-backgroundtasks-reminderagentmanager-cancelallreminders-f.md#cancelallreminders-1)
+
+<!--Device-reminderAgent-function cancelAllReminders(): Promise<void>--><!--Device-reminderAgent-function cancelAllReminders(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -55,7 +65,7 @@ function cancelAllReminders(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise类型异步回调。 |
+| Promise<void> | Promise类型异步回调。 |
 
 **示例：**
 

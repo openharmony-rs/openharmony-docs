@@ -1,12 +1,10 @@
 # WantAgentFlags
 
-```TypeScript
-export enum WantAgentFlags
-```
-
 表示WantAgent行为控制标志，用于配置WantAgent的创建和触发行为。
 
 **起始版本：** 9
+
+<!--Device-wantAgent-export enum WantAgentFlags--><!--Device-wantAgent-export enum WantAgentFlags-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -22,6 +20,8 @@ WantAgent仅能使用一次，trigger触发后自动cancel取消。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WantAgentFlags-ONE_TIME_FLAG = 0--><!--Device-WantAgentFlags-ONE_TIME_FLAG = 0-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## NO_BUILD_FLAG
@@ -35,6 +35,8 @@ NO_BUILD_FLAG
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WantAgentFlags-NO_BUILD_FLAG--><!--Device-WantAgentFlags-NO_BUILD_FLAG-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,6 +52,8 @@ CANCEL_PRESENT_FLAG
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WantAgentFlags-CANCEL_PRESENT_FLAG--><!--Device-WantAgentFlags-CANCEL_PRESENT_FLAG-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## UPDATE_PRESENT_FLAG
@@ -63,6 +67,8 @@ UPDATE_PRESENT_FLAG
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG--><!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -78,6 +84,8 @@ WantAgent是不可变的。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WantAgentFlags-CONSTANT_FLAG--><!--Device-WantAgentFlags-CONSTANT_FLAG-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## REPLACE_ELEMENT
@@ -91,6 +99,8 @@ REPLACE_ELEMENT
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WantAgentFlags-REPLACE_ELEMENT--><!--Device-WantAgentFlags-REPLACE_ELEMENT-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,6 +116,8 @@ REPLACE_ACTION
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WantAgentFlags-REPLACE_ACTION--><!--Device-WantAgentFlags-REPLACE_ACTION-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## REPLACE_URI
@@ -119,6 +131,8 @@ REPLACE_URI
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WantAgentFlags-REPLACE_URI--><!--Device-WantAgentFlags-REPLACE_URI-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -134,6 +148,8 @@ REPLACE_ENTITIES
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WantAgentFlags-REPLACE_ENTITIES--><!--Device-WantAgentFlags-REPLACE_ENTITIES-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## REPLACE_BUNDLE
@@ -147,6 +163,8 @@ REPLACE_BUNDLE
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WantAgentFlags-REPLACE_BUNDLE--><!--Device-WantAgentFlags-REPLACE_BUNDLE-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

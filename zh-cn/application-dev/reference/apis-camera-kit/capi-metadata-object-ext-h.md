@@ -42,6 +42,7 @@
 | [Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)](#oh_metadataobjectext_getrighteyeboundingbox) | 获取元数据对象（如人脸）的右眼边界框。 |
 | [Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_MetadataObjectEmotion* emotion)](#oh_metadataobjectext_getemotion) | 获取元数据对象（如人脸）的情绪类型。 |
 | [void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t objectCount)](#oh_metadataobjectext_destroy) | 销毁OH_Camera_MetadataObjectExt实例数组。 |
+| [bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* metadataObjectExt)](#oh_metadataobjectext_islockfocustracked) |  查询焦点是否已锁定跟踪。 |
 
 ## 函数说明
 
@@ -289,4 +290,26 @@ void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectEx
 | [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)** metadataObjectExt | OH_Camera_MetadataObjectExt实例数组的指针。 |
 | uint32_t objectCount | 要销毁的元数据对象数量。 |
 
+### OH_MetadataObjectExt_IsLockFocusTracked()
 
+```c
+bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* metadataObjectExt)
+```
+
+**描述**
+
+查询焦点是否已锁定跟踪。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | OH_Camera_MetadataObjectExt实例指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 焦点是否已锁定跟踪，返回true表示已锁定，返回false表示未锁定。 |

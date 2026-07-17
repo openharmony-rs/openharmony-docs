@@ -1,18 +1,24 @@
 # getProfileByAbilitySync
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getProfileByAbilitySync
 
 ```TypeScript
 function getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>
 ```
 
-��ͬ���������ݸ�����moduleName��abilityName��metadataName��module.json5��
-[metadata��ǩ](../../../../quick-start/module-configuration-file.md#metadata��ǩ)�µ�name����ȡ������Ӧ�����ļ���json��ʽ�ַ��������ض���Ϊstring��
-�顣
+以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中[metadata标签](../../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-bundleManager-function getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>--><!--Device-bundleManager-function getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,25 +26,25 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | ��ʾModule���ơ� |
-| abilityName | string | 是 | ��ʾUIAbility��������ơ� |
-| metadataName | string | 否 | ��ʾUIAbility�����Ԫ��Ϣ���ƣ���module.json5�����ļ���<br/>[abilities��ǩ](../../../../quick-start/module-configuration-file.md#abilities��ǩ)�µ�metadata��ǩ��name��Ĭ��ֵΪ�ա� |
+| moduleName | string | 是 | 表示Module名称。 |
+| abilityName | string | 是 | 表示UIAbility组件的名称。 |
+| metadataName | string | 否 | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name，默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | ������󣬷���Array�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 数组对象，返回Array&lt;string&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified moduleName is not existed. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityName is not existed. |
-| [17700024](../../errorcode-universal.md#17700024-Failed) | Failed to get the profile because there is no profile in the HAP. |
-| [17700029](../../errorcode-universal.md#17700029-The) | The specified ability is disabled. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not existed. |
+| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
+| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
 **示例：**
 

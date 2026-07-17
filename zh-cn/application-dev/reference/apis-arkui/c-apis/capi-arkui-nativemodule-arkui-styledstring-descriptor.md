@@ -12,5 +12,5 @@ Define the data objects of styled string supported by text components.
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [text_common.h](capi-text-common-h.md)
 

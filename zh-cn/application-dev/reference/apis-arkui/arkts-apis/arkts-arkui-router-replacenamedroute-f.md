@@ -1,24 +1,30 @@
 # replaceNamedRoute
 
+## 导入模块
+
+```TypeScript
+import { router } from '@kit.ArkUI';
+```
+
 ## replaceNamedRoute
 
 ```TypeScript
 function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void
 ```
 
-��ָ��������·��ҳ���滻��ǰҳ�棬�����ٱ��滻��ҳ�档
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。
 
-> **˵����**
->
-> - ��API version 10��ʼ֧�֣���API version 18��ʼ����������ʹ��
-> [replaceNamedRoute](arkts-arkui-router-c.md#replaceNamedRoute-1)
-> �����replaceNamedRoute����ͨ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)��ȡ
-> [Router](arkts-arkui-uicontext.md)ʵ����Ȼ��ͨ����ʵ�����е��á�
->
-> - ��API version 10��ʼ������ͨ��ʹ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)������ȡ��ǰUI�����Ĺ�����
-> [Router](arkts-arkui-uicontext.md)����
+> **说明：**  
+>  
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用  
+> [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-1)  
+> 替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
+>  
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
 
@@ -30,26 +36,30 @@ function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-router-function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void--><!--Device-router-function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | NamedRouterOptions | 是 | �滻ҳ��������Ϣ�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �쳣��Ӧ�ص��� |
+| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 替换页面描述信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异常响应回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-The) | The UI execution context is not found. This error code is thrown only in the<br/>standard system. |
-| [100004](../../errorcode-universal.md#100004-Named) | Named route error. The named route does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
 **示例：**
 
 ```TypeScript
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -63,7 +73,7 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 }, (err) => {
   if (err) {
-    console.error(`replaceNamedRoute failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('replaceNamedRoute success');
@@ -78,19 +88,19 @@ router.replaceNamedRoute({
 function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 ```
 
-��ָ��������·��ҳ���滻��ǰҳ�棬�����ٱ��滻��ҳ�档
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。
 
-> **˵����**
->
-> - ��API version 10��ʼ֧�֣���API version 18��ʼ����������ʹ��
-> [replaceNamedRoute](arkts-arkui-router-c.md#replaceNamedRoute-2)�����
-> replaceNamedRoute����ͨ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)��ȡ
-> [Router](arkts-arkui-uicontext.md)ʵ����Ȼ��ͨ����ʵ�����е��á�
->
-> - ��API version 10��ʼ������ͨ��ʹ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)������ȡ��ǰUI�����Ĺ�����
-> [Router](arkts-arkui-uicontext.md)����
+> **说明：**  
+>  
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用  
+> [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-2)替代。  
+> replaceNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
+>  
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
 
@@ -102,31 +112,35 @@ function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-router-function replaceNamedRoute(options: NamedRouterOptions): Promise<void>--><!--Device-router-function replaceNamedRoute(options: NamedRouterOptions): Promise<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | NamedRouterOptions | 是 | �滻ҳ��������Ϣ�� |
+| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 替换页面描述信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | �쳣���ؽ���� |
+| Promise<void> | 异常返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-The) | The UI execution context is not found. This error code is thrown only in the<br/>standard system. |
-| [100004](../../errorcode-universal.md#100004-Named) | Named route error. The named route does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
 **示例：**
 
 ```TypeScript
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class RouterParams {
@@ -142,10 +156,10 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 })
   .then(() => {
-    console.error(`replaceNamedRoute finish`);
+    console.info(`replaceNamedRoute finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`replaceNamedRoute failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
   })
 
 ```
@@ -157,19 +171,19 @@ router.replaceNamedRoute({
 function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
 ```
 
-��ָ��������·��ҳ���滻��ǰҳ�棬�����ٱ��滻��ҳ�档
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。
 
-> **˵����**
->
-> - ��API version 10��ʼ֧�֣���API version 18��ʼ����������ʹ��
-> [replaceNamedRoute](arkts-arkui-router-c.md#replaceNamedRoute-3)
-> �����replaceNamedRoute����ͨ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)��ȡ
-> [Router](arkts-arkui-uicontext.md)ʵ����Ȼ��ͨ����ʵ�����е��á�
->
-> - ��API version 10��ʼ������ͨ��ʹ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)������ȡ��ǰUI�����Ĺ�����
-> [Router](arkts-arkui-uicontext.md)����
+> **说明：**  
+>  
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用  
+> [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-3)  
+> 替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
+>  
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
 
@@ -181,27 +195,31 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callba
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-router-function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void--><!--Device-router-function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | NamedRouterOptions | 是 | �滻ҳ��������Ϣ�� |
-| mode | RouterMode | 是 | ��תҳ��ʹ�õ�ģʽ�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �쳣��Ӧ�ص��� |
+| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 替换页面描述信息。 |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异常响应回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-The) | The UI execution context is not found. This error code is thrown only in the<br/>standard system. |
-| [100004](../../errorcode-universal.md#100004-Named) | Named route error. The named route does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
 **示例：**
 
 ```TypeScript
+import { router } from '@kit.ArkUI';
+
 class RouterParams {
   data1: string;
 
@@ -215,7 +233,7 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 }, router.RouterMode.Standard, (err) => {
   if (err) {
-    console.error(`replaceNamedRoute failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('replaceNamedRoute success');
@@ -230,19 +248,19 @@ router.replaceNamedRoute({
 function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>
 ```
 
-��ָ��������·��ҳ���滻��ǰҳ�棬�����ٱ��滻��ҳ�档
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。
 
-> **˵����**
->
-> - ��API version 10��ʼ֧�֣���API version 18��ʼ����������ʹ��
-> [replaceNamedRoute](arkts-arkui-router-c.md#replaceNamedRoute-4)
-> �����replaceNamedRoute����ͨ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)��ȡ
-> [Router](arkts-arkui-uicontext.md)ʵ����Ȼ��ͨ����ʵ�����е��á�
->
-> - ��API version 10��ʼ������ͨ��ʹ��[UIContext](arkts-arkui-uicontext.md)�е�
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)������ȡ��ǰUI�����Ĺ�����
-> [Router](arkts-arkui-uicontext.md)����
+> **说明：**  
+>  
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用  
+> [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute-4)  
+> 替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
+>  
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
+> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 10
 
@@ -254,32 +272,36 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promi
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-router-function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>--><!--Device-router-function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | NamedRouterOptions | 是 | �滻ҳ��������Ϣ�� |
-| mode | RouterMode | 是 | ��תҳ��ʹ�õ�ģʽ�� |
+| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 替换页面描述信息。 |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | �쳣���ؽ���� |
+| Promise<void> | 异常返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-Failed) | Failed to get the delegate. This error code is thrown only in the standard<br/>system. |
-| [100004](../../errorcode-universal.md#100004-Named) | Named route error. The named route does not exist. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
 **示例：**
 
 ```TypeScript
+import { router } from '@kit.ArkUI';
+
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class RouterParams {
@@ -295,10 +317,10 @@ router.replaceNamedRoute({
   params: new RouterParams('message')
 }, router.RouterMode.Standard)
   .then(() => {
-    console.error(`replaceNamedRoute finish`);
+    console.info(`replaceNamedRoute finish`);
   })
-  .catch((err: ESObject) => {
-    console.error(`replaceNamedRoute failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
+  .catch((err: BusinessError) => {
+    console.error(`replaceNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
   })
 
 ```

@@ -1,28 +1,34 @@
 # addDockApp
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## addDockApp
 
 ```TypeScript
 function addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
 ```
 
-����λ����������Ӧ�õ�PC/2in1�豸�ĵײ�����������Ӻ��û�����ͨ������������Ӧ��ͼ��ֱ������Ӧ�ã�Ӧ��ͼ��ΪӦ������������ʾ��Ĭ��ͼ�ꡣ
+根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。
 
-> **˵����**
->
-> 1.��λ��0��1���Ѵ��ڡ�Ӧ�����ġ����������ġ����������λ������Ӧ�û᷵�ش�����9201019������λ��Ϊ����Ӧ�ã�����������ӡ�
->
-> 2.����Ӧ�ò���ͨ�����ӿ����ӵ����������Ӧ�����ġ������������ġ������ļ���������������վ����
->
-> 3.��֧�����Ӿ���Ӧ�ó�����ڣ�����ͼ�꣩��Ӧ�ã���ͼ���Ӧ�ò�֧�����ӡ�
->
-> 4.��֧�����õ�ǰ�û��µĿ������ÿ���û��Ŀ������������100��Ӧ�á�
->
-> 5.������Ӧ�õ�λ�ò�����Ӧ��ʱ����Ӧ�ý�ֱ��ռ�ø�λ�ã�ԭӦ�ü�����Ӧ���������˳��һλ��
->
-> 6.������index�����������indexֵ���ڿ������ǰӦ������������Ӧ��Ĭ��׷�ӵ������ĩβ��
->
-> 7.ͨ�����ӿ�����Ӧ�õ���������û������ֶ��Ƴ������Ӧ�õ�λ�á�
+> **说明：**  
+>  
+> 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。  
+>  
+> 2.以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。  
+>  
+> 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。  
+>  
+> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。  
+>  
+> 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。  
+>  
+> 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。  
+>  
+> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
 
 **起始版本：** 24
 
@@ -30,32 +36,34 @@ function addDockApp(admin: Want, bundleName: string, abilityName: string, index?
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-applicationManager-function addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void--><!--Device-applicationManager-function addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| bundleName | string | 是 | Ӧ�õİ����� |
-| abilityName | string | 是 | Ӧ�õ�Ability���ƣ���֧��Ӧ�ó������Ability�� |
-| index | number | 否 | Ӧ���ڿ�����е�λ��������<br/><br/>ȡֵӦΪ[0,99]�ڵ�������Ĭ��ֵΪ99�� Ĭ��ֵ�� 99�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| bundleName | string | 是 | 应用的包名。 |
+| abilityName | string | 是 | 应用的Ability名称，仅支持应用程序入口Ability。 |
+| index | number | 否 | 应用在快捷栏中的位置索引，<br>取值应为[0,99]内的整数，默认值为99。 默认值： 99。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [9200015](../../errorcode-universal.md#9200015-The) | The ability does not exist. |
-| [9201013](../../errorcode-universal.md#9201013-The) | The number of applications in the Dock has reached the maximum. |
-| [9201014](../../errorcode-universal.md#9201014-The) | The application is already in the Dock. |
-| [9201015](../../errorcode-universal.md#9201015-The) | The application is not installed. |
-| [9201018](../../errorcode-universal.md#9201018-The) | The application is inoperable. |
-| [9201019](../../errorcode-universal.md#9201019-The) | The location is inoperable. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9200015](../errorcode-enterpriseDeviceManager.md#9200015-组件不存在) | The ability does not exist. |
+| [9201013](../errorcode-enterpriseDeviceManager.md#9201013-快捷栏中的应用数量已到最大值) | The number of applications in the Dock has reached the maximum. |
+| [9201014](../errorcode-enterpriseDeviceManager.md#9201014-指定应用已经在快捷栏中) | The application is already in the Dock. |
+| [9201015](../errorcode-enterpriseDeviceManager.md#9201015-指定应用未安装) | The application is not installed. |
+| [9201018](../errorcode-enterpriseDeviceManager.md#9201018-指定应用不支持操作) | The application is inoperable. |
+| [9201019](../errorcode-enterpriseDeviceManager.md#9201019-指定位置不支持操作) | The location is inoperable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

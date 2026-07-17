@@ -6,9 +6,17 @@ The ResourceManager callback.
 
 **废弃版本：** 9
 
-**替代接口：** [base:AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)
+**替代接口：** [base:AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)
+
+<!--Device-resourceManager-export interface AsyncCallback<T>--><!--Device-resourceManager-export interface AsyncCallback<T>-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+## 导入模块
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+```
 
 ## constructor
 
@@ -22,7 +30,9 @@ The ResourceManager callback.
 
 **废弃版本：** 9
 
-**替代接口：** [base:AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)
+**替代接口：** [base:AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)
+
+<!--Device-AsyncCallback-(err: Error, data: T): void--><!--Device-AsyncCallback-(err: Error, data: T): void-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

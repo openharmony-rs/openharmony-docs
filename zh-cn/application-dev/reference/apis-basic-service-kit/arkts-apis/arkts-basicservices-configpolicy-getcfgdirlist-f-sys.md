@@ -1,5 +1,11 @@
 # getCfgDirList（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { configPolicy } from '@kit.BasicServicesKit';
+```
+
 ## getCfgDirList
 
 ```TypeScript
@@ -10,6 +16,8 @@ function getCfgDirList(callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 8
 
+<!--Device-configPolicy-function getCfgDirList(callback: AsyncCallback<Array<string>>): void--><!--Device-configPolicy-function getCfgDirList(callback: AsyncCallback<Array<string>>): void-End-->
+
 **系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **系统接口：** 此接口为系统接口。
@@ -18,13 +26,13 @@ function getCfgDirList(callback: AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取配置层级目录列表成功，err为undefined，<br/>data为获取到的配置层级目录列表；否则err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | 回调函数。当获取配置层级目录列表成功，err为undefined，data为获取到的配置层级目录列表；否则err为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified;<br/><br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
 ## getCfgDirList
@@ -37,6 +45,8 @@ function getCfgDirList(): Promise<Array<string>>
 
 **起始版本：** 8
 
+<!--Device-configPolicy-function getCfgDirList(): Promise<Array<string>>--><!--Device-configPolicy-function getCfgDirList(): Promise<Array<string>>-End-->
+
 **系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **系统接口：** 此接口为系统接口。
@@ -45,5 +55,5 @@ function getCfgDirList(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回配置层级目录列表。 |
+| Promise<Array<string>> | Promise对象，返回配置层级目录列表。 |
 

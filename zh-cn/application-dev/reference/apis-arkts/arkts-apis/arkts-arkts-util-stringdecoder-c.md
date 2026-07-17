@@ -1,11 +1,18 @@
 # StringDecoder
 
-提供将二进制流解码为字符串的能力。支持以下编码类型：utf-8、iso-8859-2、koi8-r、macintosh、windows-1250、
-windows-1251、gbk、gb18030、big5、utf-16be 和 UTF-16le。
+提供将二进制流解码为字符串的能力。支持以下编码类型：utf-8、iso-8859-2、koi8-r、macintosh、windows-1250、windows-1251、gbk、gb18030、big5、utf-16be 和 UTF-16le。
 
 **起始版本：** 12
 
+<!--Device-util-class StringDecoder--><!--Device-util-class StringDecoder-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -17,7 +24,9 @@ constructor(encoding?: string)
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StringDecoder-constructor(encoding?: string)--><!--Device-StringDecoder-constructor(encoding?: string)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -44,7 +53,9 @@ end(chunk?: string | Uint8Array): string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StringDecoder-end(chunk?: string | Uint8Array): string--><!--Device-StringDecoder-end(chunk?: string | Uint8Array): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -84,7 +95,9 @@ write(chunk: string | Uint8Array): string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StringDecoder-write(chunk: string | Uint8Array): string--><!--Device-StringDecoder-write(chunk: string | Uint8Array): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -92,7 +105,7 @@ write(chunk: string | Uint8Array): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| chunk | string \| Uint8Array | 是 | 要解码的字符串。基于输入的编码类型进行解码。如果输入为 Uint8Array 类型，<br/>则正常解码。如果输入为字符串类型，则直接返回该参数。 |
+| chunk | string \| Uint8Array | 是 | 要解码的字符串。基于输入的编码类型进行解码。如果输入为 Uint8Array 类型，则正常解码。如果输入为字符串类型，则直接返回该参数。 |
 
 **返回值：**
 

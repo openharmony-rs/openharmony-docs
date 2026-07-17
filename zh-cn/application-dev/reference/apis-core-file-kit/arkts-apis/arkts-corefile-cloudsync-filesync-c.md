@@ -1,10 +1,18 @@
 # FileSync
 
-����ͬ����������֧���ļ�������Ӧ����������ļ��Ķ���ͬ�����̡���ʹ��ǰ����Ҫ�ȴ���FileSyncʵ����
+云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。
 
 **起始版本：** 12
 
+<!--Device-cloudSync-class FileSync--><!--Device-cloudSync-class FileSync-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -12,9 +20,11 @@
 constructor()
 ```
 
-����ͬ�����̵Ĺ��캯�������ڻ�ȡFileSync���ʵ����
+端云同步流程的构造函数，用于获取FileSync类的实例。
 
 **起始版本：** 12
+
+<!--Device-FileSync-constructor()--><!--Device-FileSync-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -22,7 +32,7 @@ constructor()
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
 
 **示例：**
 
@@ -37,9 +47,11 @@ let fileSync = new cloudSync.FileSync()
 getLastSyncTime(): Promise<number>
 ```
 
-�첽������ȡ�ϴ�ͬ��ʱ�䡣ʹ��Promise�첽�ص���
+异步方法获取上次同步时间。使用Promise异步回调。
 
 **起始版本：** 12
+
+<!--Device-FileSync-getLastSyncTime(): Promise<long>--><!--Device-FileSync-getLastSyncTime(): Promise<long>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -47,14 +59,14 @@ getLastSyncTime(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󣬷����ϴ�ͬ��ʱ�䡣 |
+| Promise<number> | Promise对象，返回上次同步时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| 13600001 | IPC error. |
 
 **示例：**
 
@@ -79,9 +91,11 @@ fileSync.getLastSyncTime().then((timeStamp: number) => {
 getLastSyncTime(callback: AsyncCallback<number>): void
 ```
 
-��ȡ�ϴ�ͬ��ʱ�䡣ʹ��callback�첽�ص���
+获取上次同步时间。使用callback异步回调。
 
 **起始版本：** 12
+
+<!--Device-FileSync-getLastSyncTime(callback: AsyncCallback<long>): void--><!--Device-FileSync-getLastSyncTime(callback: AsyncCallback<long>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -89,14 +103,14 @@ getLastSyncTime(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;number&gt; | 是 | �ص��������첽��ȡ�ϴ�ͬ��ʱ�䡣 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。异步获取上次同步时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
 
 **示例：**
 
@@ -122,9 +136,11 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
 off(event: 'progress', callback?: Callback<SyncProgress>): void
 ```
 
-����ͬ�������Ƴ�'progress'���͵�ָ��callback�ص���
+云盘同步对象移除'progress'类型的指定callback回调。
 
 **起始版本：** 12
+
+<!--Device-FileSync-off(event: 'progress', callback?: Callback<SyncProgress>): void--><!--Device-FileSync-off(event: 'progress', callback?: Callback<SyncProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -132,15 +148,15 @@ off(event: 'progress', callback?: Callback<SyncProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'progress' | 是 | ȡ�����ĵ��¼����ͣ�ȡֵΪ'progress'��ͬ�������¼����� |
-| callback | Callback&lt;SyncProgress&gt; | 否 | �ص�������ͬ�������¼��� Ĭ��ֵΪnull�� |
+| event | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SyncProgress> | 否 | 回调函数。同步过程事件， 默认值为null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
@@ -148,7 +164,7 @@ off(event: 'progress', callback?: Callback<SyncProgress>): void
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+  console.info(`file sync state: ${pg.state}, error type: ${pg.error}`);
 }
 
 fileSync.on('progress', callback);
@@ -163,9 +179,11 @@ fileSync.off('progress', callback);
 on(event: 'progress', callback: Callback<SyncProgress>): void
 ```
 
-����ͬ����������ͬ�������¼�������
+云盘同步对象添加同步过程事件监听。
 
 **起始版本：** 12
+
+<!--Device-FileSync-on(event: 'progress', callback: Callback<SyncProgress>): void--><!--Device-FileSync-on(event: 'progress', callback: Callback<SyncProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -173,22 +191,22 @@ on(event: 'progress', callback: Callback<SyncProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'progress' | 是 | ���ĵ��¼����ͣ�ȡֵΪ'progress'��ͬ�������¼����� |
-| callback | Callback&lt;SyncProgress&gt; | 是 | �ص�������ͬ�������¼��� |
+| event | 'progress' | 是 | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SyncProgress> | 是 | 回调函数。同步过程事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
 ```TypeScript
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+  console.info(`file sync state: ${pg.state}, error type: ${pg.error}`);
 }
 
 fileSync.on('progress', callback);
@@ -201,9 +219,11 @@ fileSync.on('progress', callback);
 start(): Promise<void>
 ```
 
-�첽�����������̶���ͬ����ʹ��Promise�첽�ص���
+异步方法启动云盘端云同步。使用Promise异步回调。
 
 **起始版本：** 12
+
+<!--Device-FileSync-start(): Promise<void>--><!--Device-FileSync-start(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -211,17 +231,17 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [22400001](../../errorcode-universal.md#22400001-Cloud) | Cloud status not ready. |
-| [22400002](../../errorcode-universal.md#22400002-Network) | Network unavailable. |
-| [22400003](../../errorcode-universal.md#22400003-Low) | Low battery level. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
 
 **示例：**
 
@@ -250,9 +270,11 @@ fileSync.start().then(() => {
 start(callback: AsyncCallback<void>): void
 ```
 
-�첽�����������̶���ͬ����ʹ��callback�첽�ص���
+异步方法启动云盘端云同步。使用callback异步回调。
 
 **起始版本：** 12
+
+<!--Device-FileSync-start(callback: AsyncCallback<void>): void--><!--Device-FileSync-start(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -260,17 +282,17 @@ start(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������첽��������ͬ���� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [22400001](../../errorcode-universal.md#22400001-Cloud) | Cloud status not ready. |
-| [22400002](../../errorcode-universal.md#22400002-Network) | Network unavailable. |
-| [22400003](../../errorcode-universal.md#22400003-Low) | Low battery level. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
 
 **示例：**
 
@@ -295,11 +317,13 @@ fileSync.start((err: BusinessError) => {
 stop(): Promise<void>
 ```
 
-�첽����ֹͣ���̶���ͬ����ʹ��Promise�첽�ص���
+异步方法停止云盘端云同步。使用Promise异步回调。
 
-����stop�ӿڣ�ͬ�����̻�ֹͣ���ٴε���[start](arkts-corefile-cloudsync-filesync-c.md#start-1)�ӿڻ����ͬ����
+调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-filesync-c.md#start-1)接口会继续同步。
 
 **起始版本：** 12
+
+<!--Device-FileSync-stop(): Promise<void>--><!--Device-FileSync-stop(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -307,14 +331,14 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| 13600001 | IPC error. |
 
 **示例：**
 
@@ -337,11 +361,13 @@ fileSync.stop().then(() => {
 stop(callback: AsyncCallback<void>): void
 ```
 
-�첽����ֹͣ���̶���ͬ����ʹ��callback�첽�ص���
+异步方法停止云盘端云同步。使用callback异步回调。
 
-����stop�ӿڣ�ͬ�����̻�ֹͣ���ٴε���[start](arkts-corefile-cloudsync-filesync-c.md#start-1)�ӿڻ����ͬ����
+调用stop接口，同步流程会停止。再次调用[start](arkts-corefile-cloudsync-filesync-c.md#start-1)接口会继续同步。
 
 **起始版本：** 12
+
+<!--Device-FileSync-stop(callback: AsyncCallback<void>): void--><!--Device-FileSync-stop(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -349,14 +375,14 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������첽ֹͣ����ͬ���� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
 
 **示例：**
 

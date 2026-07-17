@@ -1,12 +1,10 @@
 # ChargeType（系统接口）
 
-```TypeScript
-export enum ChargeType
-```
-
 表示充电类型的枚举。
 
 **起始版本：** 10
+
+<!--Device-charger-export enum ChargeType--><!--Device-charger-export enum ChargeType-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -22,6 +20,8 @@ NONE
 
 **起始版本：** 10
 
+<!--Device-ChargeType-NONE--><!--Device-ChargeType-NONE-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -35,6 +35,8 @@ WIRED_NORMAL
 表示有线正常充电类型。
 
 **起始版本：** 10
+
+<!--Device-ChargeType-WIRED_NORMAL--><!--Device-ChargeType-WIRED_NORMAL-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -50,6 +52,8 @@ WIRED_QUICK
 
 **起始版本：** 10
 
+<!--Device-ChargeType-WIRED_QUICK--><!--Device-ChargeType-WIRED_QUICK-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -63,6 +67,8 @@ WIRED_SUPER_QUICK
 表示有线超级快速充电类型。
 
 **起始版本：** 10
+
+<!--Device-ChargeType-WIRED_SUPER_QUICK--><!--Device-ChargeType-WIRED_SUPER_QUICK-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -78,6 +84,8 @@ WIRELESS_NORMAL
 
 **起始版本：** 10
 
+<!--Device-ChargeType-WIRELESS_NORMAL--><!--Device-ChargeType-WIRELESS_NORMAL-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -92,6 +100,8 @@ WIRELESS_QUICK
 
 **起始版本：** 10
 
+<!--Device-ChargeType-WIRELESS_QUICK--><!--Device-ChargeType-WIRELESS_QUICK-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -105,6 +115,8 @@ WIRELESS_SUPER_QUICK
 表示无线超级快速充电类型。
 
 **起始版本：** 10
+
+<!--Device-ChargeType-WIRELESS_SUPER_QUICK--><!--Device-ChargeType-WIRELESS_SUPER_QUICK-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 

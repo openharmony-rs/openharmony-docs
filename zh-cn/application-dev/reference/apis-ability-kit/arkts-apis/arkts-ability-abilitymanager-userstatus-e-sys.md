@@ -1,14 +1,10 @@
 # UserStatus（系统接口）
 
-```TypeScript
-export enum UserStatus
-```
-
 用户操作的断言调试结果，该类型为枚举。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-abilityManager-export enum UserStatus--><!--Device-abilityManager-export enum UserStatus-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,6 +22,8 @@ ASSERT_TERMINATE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserStatus-ASSERT_TERMINATE = 0--><!--Device-UserStatus-ASSERT_TERMINATE = 0-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -42,6 +40,8 @@ ASSERT_CONTINUE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserStatus-ASSERT_CONTINUE = 1--><!--Device-UserStatus-ASSERT_CONTINUE = 1-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -57,6 +57,8 @@ ASSERT_RETRY = 2
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatus-ASSERT_RETRY = 2--><!--Device-UserStatus-ASSERT_RETRY = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

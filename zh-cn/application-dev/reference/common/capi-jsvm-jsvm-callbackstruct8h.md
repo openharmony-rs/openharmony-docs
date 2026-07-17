@@ -1,10 +1,10 @@
 # JSVM_CallbackStruct*
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ```c
 typedef JSVM_CallbackStruct* JSVM_Callback
@@ -23,8 +23,6 @@ typedef JSVM_CallbackStruct* JSVM_Callback
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
-
-**支持设备类型：** Phone | PC/2in1 | Tablet | Wearable。具体支持情况可通过对应的API接口进行判断。
 
 **相关模块：** [JSVM](capi-jsvm.md)
 

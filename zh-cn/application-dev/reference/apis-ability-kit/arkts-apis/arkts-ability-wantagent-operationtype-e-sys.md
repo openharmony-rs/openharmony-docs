@@ -1,12 +1,10 @@
 # OperationType
 
-```TypeScript
-export enum OperationType
-```
-
 表示WantAgent支持的操作类型。
 
 **起始版本：** 9
+
+<!--Device-wantAgent-export enum OperationType--><!--Device-wantAgent-export enum OperationType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -21,6 +19,8 @@ START_SERVICE_EXTENSION = 6
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-OperationType-START_SERVICE_EXTENSION = 6--><!--Device-OperationType-START_SERVICE_EXTENSION = 6-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

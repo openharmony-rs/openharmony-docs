@@ -1,12 +1,10 @@
 # FilterProcessStateType（系统接口）
 
-```TypeScript
-export enum FilterProcessStateType
-```
-
-表示要监听的进程状态，该类型为枚举。可配合[AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md#AppStateFilter)过滤想要监听的进程状态。
+表示要监听的进程状态，该类型为枚举。可配合[AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md)过滤想要监听的进程状态。
 
 **起始版本：** 21
+
+<!--Device-appManager-export enum FilterProcessStateType--><!--Device-appManager-export enum FilterProcessStateType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -18,10 +16,11 @@ export enum FilterProcessStateType
 CREATE = 1 << 0
 ```
 
-进程刚创建完成，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值
-为0的状态。
+进程刚创建完成，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为0的状态。
 
 **起始版本：** 21
+
+<!--Device-FilterProcessStateType-CREATE = 1 << 0--><!--Device-FilterProcessStateType-CREATE = 1 << 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -33,10 +32,11 @@ CREATE = 1 << 0
 FOREGROUND = 1 << 1
 ```
 
-进程处于前台，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为
-2的状态。
+进程处于前台，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为2的状态。
 
 **起始版本：** 21
+
+<!--Device-FilterProcessStateType-FOREGROUND = 1 << 1--><!--Device-FilterProcessStateType-FOREGROUND = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,10 +48,11 @@ FOREGROUND = 1 << 1
 BACKGROUND = 1 << 2
 ```
 
-进程处于后台，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为
-4的状态。
+进程处于后台，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为4的状态。
 
 **起始版本：** 21
+
+<!--Device-FilterProcessStateType-BACKGROUND = 1 << 2--><!--Device-FilterProcessStateType-BACKGROUND = 1 << 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -63,10 +64,11 @@ BACKGROUND = 1 << 2
 DESTROY = 1 << 3
 ```
 
-进程已终止，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为5
-的状态。
+进程已终止，对应[ProcessData](../../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#属性)中state取值为5的状态。
 
 **起始版本：** 21
+
+<!--Device-FilterProcessStateType-DESTROY = 1 << 3--><!--Device-FilterProcessStateType-DESTROY = 1 << 3-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

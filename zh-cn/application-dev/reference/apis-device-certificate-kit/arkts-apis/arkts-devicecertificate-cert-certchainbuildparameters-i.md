@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-cert-interface CertChainBuildParameters--><!--Device-cert-interface CertChainBuildParameters-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## certMatchParameters
 
@@ -18,7 +26,9 @@ certMatchParameters: X509CertMatchParameters
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainBuildParameters-certMatchParameters: X509CertMatchParameters--><!--Device-CertChainBuildParameters-certMatchParameters: X509CertMatchParameters-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -28,13 +38,15 @@ certMatchParameters: X509CertMatchParameters
 maxLength?: number
 ```
 
-指定最终证书链中CA证书的最大长度。
+指定CA证书的最大数量。
 
 **类型：** number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainBuildParameters-maxLength?: int--><!--Device-CertChainBuildParameters-maxLength?: int-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -50,7 +62,9 @@ validationParameters: CertChainValidationParameters
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainBuildParameters-validationParameters: CertChainValidationParameters--><!--Device-CertChainBuildParameters-validationParameters: CertChainValidationParameters-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 

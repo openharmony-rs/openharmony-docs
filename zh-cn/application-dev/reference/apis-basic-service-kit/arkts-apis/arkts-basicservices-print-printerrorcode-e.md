@@ -1,12 +1,10 @@
 # PrintErrorCode
 
-```TypeScript
-enum PrintErrorCode
-```
-
 打印错误代码的枚举。
 
 **起始版本：** 14
+
+<!--Device-print-enum PrintErrorCode--><!--Device-print-enum PrintErrorCode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ E_PRINT_NONE = 0
 
 **起始版本：** 14
 
+<!--Device-PrintErrorCode-E_PRINT_NONE = 0--><!--Device-PrintErrorCode-E_PRINT_NONE = 0-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_NO_PERMISSION
@@ -31,6 +31,8 @@ E_PRINT_NO_PERMISSION = 201
 表示没有许可。
 
 **起始版本：** 14
+
+<!--Device-PrintErrorCode-E_PRINT_NO_PERMISSION = 201--><!--Device-PrintErrorCode-E_PRINT_NO_PERMISSION = 201-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -44,6 +46,8 @@ E_PRINT_INVALID_PARAMETER = 401
 
 **起始版本：** 14
 
+<!--Device-PrintErrorCode-E_PRINT_INVALID_PARAMETER = 401--><!--Device-PrintErrorCode-E_PRINT_INVALID_PARAMETER = 401-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_GENERIC_FAILURE
@@ -55,6 +59,8 @@ E_PRINT_GENERIC_FAILURE = 13100001
 表示一般打印失败。
 
 **起始版本：** 14
+
+<!--Device-PrintErrorCode-E_PRINT_GENERIC_FAILURE = 13100001--><!--Device-PrintErrorCode-E_PRINT_GENERIC_FAILURE = 13100001-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -68,6 +74,8 @@ E_PRINT_RPC_FAILURE = 13100002
 
 **起始版本：** 14
 
+<!--Device-PrintErrorCode-E_PRINT_RPC_FAILURE = 13100002--><!--Device-PrintErrorCode-E_PRINT_RPC_FAILURE = 13100002-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_SERVER_FAILURE
@@ -79,6 +87,8 @@ E_PRINT_SERVER_FAILURE = 13100003
 表示打印服务失败。
 
 **起始版本：** 14
+
+<!--Device-PrintErrorCode-E_PRINT_SERVER_FAILURE = 13100003--><!--Device-PrintErrorCode-E_PRINT_SERVER_FAILURE = 13100003-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -92,6 +102,8 @@ E_PRINT_INVALID_EXTENSION = 13100004
 
 **起始版本：** 14
 
+<!--Device-PrintErrorCode-E_PRINT_INVALID_EXTENSION = 13100004--><!--Device-PrintErrorCode-E_PRINT_INVALID_EXTENSION = 13100004-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_INVALID_PRINTER
@@ -103,6 +115,8 @@ E_PRINT_INVALID_PRINTER = 13100005
 表示打印机无效。
 
 **起始版本：** 14
+
+<!--Device-PrintErrorCode-E_PRINT_INVALID_PRINTER = 13100005--><!--Device-PrintErrorCode-E_PRINT_INVALID_PRINTER = 13100005-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -116,6 +130,8 @@ E_PRINT_INVALID_PRINT_JOB = 13100006
 
 **起始版本：** 14
 
+<!--Device-PrintErrorCode-E_PRINT_INVALID_PRINT_JOB = 13100006--><!--Device-PrintErrorCode-E_PRINT_INVALID_PRINT_JOB = 13100006-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_FILE_IO
@@ -128,6 +144,8 @@ E_PRINT_FILE_IO = 13100007
 
 **起始版本：** 14
 
+<!--Device-PrintErrorCode-E_PRINT_FILE_IO = 13100007--><!--Device-PrintErrorCode-E_PRINT_FILE_IO = 13100007-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_TOO_MANY_FILES
@@ -139,6 +157,8 @@ E_PRINT_TOO_MANY_FILES = 13100010
 表示文件数量超过上限，当前上限99个。
 
 **起始版本：** 18
+
+<!--Device-PrintErrorCode-E_PRINT_TOO_MANY_FILES = 13100010--><!--Device-PrintErrorCode-E_PRINT_TOO_MANY_FILES = 13100010-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -156,6 +176,8 @@ E_PRINT_SMB_LOGIN_LOCKOUT = 13100012
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrintErrorCode-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012--><!--Device-PrintErrorCode-E_PRINT_SMB_LOGIN_LOCKOUT = 13100012-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_SMB_CONNECTION_FAILURE
@@ -172,6 +194,8 @@ E_PRINT_SMB_CONNECTION_FAILURE = 13100013
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrintErrorCode-E_PRINT_SMB_CONNECTION_FAILURE = 13100013--><!--Device-PrintErrorCode-E_PRINT_SMB_CONNECTION_FAILURE = 13100013-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## E_PRINT_SMB_INVALID_CREDENTIALS
@@ -187,6 +211,8 @@ E_PRINT_SMB_INVALID_CREDENTIALS = 13100014
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintErrorCode-E_PRINT_SMB_INVALID_CREDENTIALS = 13100014--><!--Device-PrintErrorCode-E_PRINT_SMB_INVALID_CREDENTIALS = 13100014-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

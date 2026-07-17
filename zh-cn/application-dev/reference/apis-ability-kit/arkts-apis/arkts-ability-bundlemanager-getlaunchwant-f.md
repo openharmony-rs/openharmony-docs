@@ -1,16 +1,24 @@
 # getLaunchWant
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getLaunchWant
 
 ```TypeScript
 function getLaunchWant(): Want
 ```
 
-��ȡ��Ӧ��[���UIAbility](../../../../quick-start/application-package-glossary.md#uiability)��Want������
+获取本应用[入口UIAbility](../../../../quick-start/application-package-glossary.md#uiability)的Want参数。
 
 **起始版本：** 13
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+
+<!--Device-bundleManager-function getLaunchWant(): Want--><!--Device-bundleManager-function getLaunchWant(): Want-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,13 +26,13 @@ function getLaunchWant(): Want
 
 | 类型 | 说明 |
 | --- | --- |
-| Want | ���ؽ�����bundleName��abilityName��Want���� |
+| [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 返回仅包含bundleName和abilityName的Want对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700072](../../errorcode-universal.md#17700072-The) | The launch want is not found. |
+| [17700072](../errorcode-bundle.md#17700072-launch-want不存在) | The launch want is not found. |
 
 **示例：**
 

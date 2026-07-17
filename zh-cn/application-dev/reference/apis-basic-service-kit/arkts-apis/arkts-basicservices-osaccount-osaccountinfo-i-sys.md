@@ -4,7 +4,15 @@
 
 **起始版本：** 7
 
+<!--Device-osAccount-interface OsAccountInfo--><!--Device-osAccount-interface OsAccountInfo-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## isLoggedIn
 
@@ -19,6 +27,8 @@ isLoggedIn?: boolean
 **类型：** boolean
 
 **起始版本：** 12
+
+<!--Device-OsAccountInfo-isLoggedIn?: boolean--><!--Device-OsAccountInfo-isLoggedIn?: boolean-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -37,6 +47,8 @@ shortName?: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-OsAccountInfo-shortName?: string--><!--Device-OsAccountInfo-shortName?: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

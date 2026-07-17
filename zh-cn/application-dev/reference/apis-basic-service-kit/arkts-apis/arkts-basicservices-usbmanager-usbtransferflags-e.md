@@ -1,12 +1,10 @@
 # UsbTransferFlags
 
-```TypeScript
-export enum UsbTransferFlags
-```
-
 Enumerates USB transfer flags.
 
 **起始版本：** 18
+
+<!--Device-usbManager-export enum UsbTransferFlags--><!--Device-usbManager-export enum UsbTransferFlags-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -16,9 +14,11 @@ Enumerates USB transfer flags.
 USB_TRANSFER_SHORT_NOT_OK = 0
 ```
 
-����֡����Ϊ����
+将短帧报告为错误。
 
 **起始版本：** 18
+
+<!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0--><!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -28,9 +28,11 @@ USB_TRANSFER_SHORT_NOT_OK = 0
 USB_TRANSFER_FREE_BUFFER = 1
 ```
 
-�Զ��ͷŴ��仺������
+自动释放传输缓冲区。
 
 **起始版本：** 18
+
+<!--Device-UsbTransferFlags-USB_TRANSFER_FREE_BUFFER = 1--><!--Device-UsbTransferFlags-USB_TRANSFER_FREE_BUFFER = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -40,9 +42,11 @@ USB_TRANSFER_FREE_BUFFER = 1
 USB_TRANSFER_FREE_TRANSFER = 2
 ```
 
-��ɻص����Զ����䡣
+完成回调后自动传输。
 
 **起始版本：** 18
+
+<!--Device-UsbTransferFlags-USB_TRANSFER_FREE_TRANSFER = 2--><!--Device-UsbTransferFlags-USB_TRANSFER_FREE_TRANSFER = 2-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -52,9 +56,11 @@ USB_TRANSFER_FREE_TRANSFER = 2
 USB_TRANSFER_ADD_ZERO_PACKET = 3
 ```
 
-���佫����һ����������ݰ���
+传输将增加一个额外的数据包。
 
 **起始版本：** 18
+
+<!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3--><!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

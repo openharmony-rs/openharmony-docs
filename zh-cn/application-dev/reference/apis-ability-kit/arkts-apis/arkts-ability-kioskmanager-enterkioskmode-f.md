@@ -1,17 +1,24 @@
 # enterKioskMode
 
+## 导入模块
+
+```TypeScript
+import { kioskManager } from '@kit.AbilityKit';
+```
+
 ## enterKioskMode
 
 ```TypeScript
 function enterKioskMode(context: UIAbilityContext): Promise<void>
 ```
 
-进入Kiosk模式。使用Promise异步回调。
-该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+进入Kiosk模式。使用Promise异步回调。该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-kioskManager-function enterKioskMode(context: UIAbilityContext): Promise<void>--><!--Device-kioskManager-function enterKioskMode(context: UIAbilityContext): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -19,23 +26,23 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | UIAbilityContext | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](arkts-ability-common-uiabilitycontext-t.md) | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [16000050](../../errorcode-universal.md#16000050-Failed) | Failed to connect to the system service. |
-| [16000110](../../errorcode-universal.md#16000110-The) | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
-| [16000111](../../errorcode-universal.md#16000111-The) | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| [16000113](../../errorcode-universal.md#16000113-Current) | Current ability is not in foreground. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
+| [16000110](../errorcode-ability.md#16000110-当前应用不在kiosk模式的列表内) | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
+| [16000111](../errorcode-ability.md#16000111-已经有应用进入了kiosk模式) | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
+| [16000113](../errorcode-ability.md#16000113-当前ability不在前台) | Current ability is not in foreground. |
 
 **示例：**
 
@@ -59,7 +66,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }

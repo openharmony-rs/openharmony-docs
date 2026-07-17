@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare namespace GestureControl--><!--Device-unnamed-declare namespace GestureControl-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,5 +14,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [GestureType](arkts-arkui-gesturecontrol-gesturetype-e.md) | 定义手势类型。<br/> |
+| [GestureType](arkts-arkui-gesturecontrol-gesturetype-e.md) | 定义手势类型。 |
 
