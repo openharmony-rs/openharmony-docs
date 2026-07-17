@@ -172,6 +172,9 @@
 | [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | 获取Swiper节点的模拟拖拽状态。 |
 | [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | 显示Swiper节点的上一页。 |
 | [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | 显示Swiper节点的下一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_showprevious) | - | 显示ArcSwiper节点的上一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_shownext) | - | 显示ArcSwiper节点的下一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_finishanimation) | - | 停止ArcSwiper节点正在执行的动画。 |
 | [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | 设置菜单栏的可见性。 |
 | [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | 获得指定的UIContext对应窗口中的页面根节点。 |
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | 注册组件尺寸与区域变化的监听事件。可在任意时机对有效的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)组件节点调用该函数。新注册的回调会替换该事件此前已注册的回调，并从下一帧开始生效。当回调不再需要时，请调用[OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent)进行注销。否则，回调会在节点释放时自动注销。 |
@@ -3592,6 +3595,78 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示ArcSwiper节点的上一页。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示ArcSwiper节点的下一页。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_FinishAnimation()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+停止ArcSwiper节点正在执行的动画。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible()
 
