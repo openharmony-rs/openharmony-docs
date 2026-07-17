@@ -502,7 +502,7 @@ export struct DatePickerDialogExample {
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
-该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
+该示例通过配置textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
 
 ArkTS-Dyn示例：
@@ -808,7 +808,7 @@ export struct TextPickerCNDialogExample {
 
 ## 列表选择弹窗 (ActionSheet)
 
-列表选择器弹窗适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
+列表选择弹窗适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
 
 列表选择器弹窗通过UIContext中的[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)接口实现。
 
@@ -982,7 +982,7 @@ export struct showActionSheetExample {
 
 警告弹窗中，title和subtitle字段的字体最大放大倍数为2。
 
-该示例通过配置[width](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[height](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)等接口，定义了多个按钮弹窗的样式以及弹出动效。
+该示例通过配置[transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)等接口，定义了多个按钮弹窗的样式以及弹出动效。
 
 ArkTS-Dyn示例：
 
