@@ -407,7 +407,6 @@
        auto renderNode = std::make_shared<ArkUIRenderNode>();
        Custom->AddRenderNode(renderNode);
        renderNode->SetSize(g_num300, g_num300);
-       Custom->AddRenderNode(renderNode);
        render_ = renderNode;
    
        scroll->AddChild(column);
