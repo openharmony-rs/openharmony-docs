@@ -670,7 +670,7 @@ try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
   console.info(`Succeeded in getting password policy, result : ${result}`);
 } catch(err) {
-  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -783,7 +783,7 @@ try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
   console.info(`Succeeded in getting password policy, result : ${result}`);
 } catch(err) {
-  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -843,7 +843,7 @@ let source: string = '/data/storage/el1/base/test.png';
 let accountId: number = 100;
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
-  console.info(`Succeeded in setting set watermarkImage policy.`);
+  console.info(`Succeeded in setting watermarkImage policy.`);
 } catch(err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
@@ -896,7 +896,7 @@ let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
   securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
-  console.info(`Succeeded in setting cancel watermarkImage policy.`);
+  console.info(`Succeeded in cancelling watermarkImage policy.`);
 } catch(err) {
   console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1769,7 +1769,7 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | bundleName | string    | 是   | 被设置水印的应用包名。                                                       |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。<br>image.PixelMap表示图像对象。<br>图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
-| accountId     | number     | 是   | 用户ID，指定具体用户，取值范围：大于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| accountId     | number     | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | properties     | [WatermarkProperties](#watermarkproperties)     | 是   | 配置水印的行列数。|
 
 **错误码**：
@@ -1882,7 +1882,7 @@ getWatermarkImageApps(admin: Want, accountId: number): Array\<string\>
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
-| accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
 
