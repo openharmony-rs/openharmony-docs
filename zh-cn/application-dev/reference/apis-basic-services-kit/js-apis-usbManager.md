@@ -397,6 +397,7 @@ async function claimInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicepipe);
     return;
   }
   console.info(`claimInterface = ${ret}`);
@@ -465,6 +466,7 @@ async function releaseInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicepipe);
     return;
   }
   ret = usbManager.releaseInterface(devicepipe, interfaces);
@@ -592,6 +594,7 @@ async function setInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicepipe);
     return;
   }
   ret = usbManager.setInterface(devicepipe, interfaces);
@@ -947,6 +950,7 @@ async function usbSubmitTransfer() {
   let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicepipe);
     return;
   }
 
@@ -1051,6 +1055,7 @@ async function usbCancelTransfer() {
   let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
+    usbManager.closePipe(devicepipe);
     return;
   }
   let transferParams: usbManager.UsbDataTransferParams = {
