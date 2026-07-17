@@ -74,7 +74,7 @@
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
-| DISTORTION_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位自动生效非线性效果。高中档算力设备生效，低档算力设备不生效。 |
+| DISTORTION_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位和系统设置中的沉浸光感配置自动生效非线性效果。高算力设备在沉浸光感配置为强或均衡时生效，为弱时不生效；中算力和低算力设备均不生效。 |
 | DISTORTION_ENABLED | 1 | 沉浸式材质下非线性动效生效。|
 | DISTORTION_DISABLED | 2 | 沉浸式材质下非线性动效不生效。 |
 
@@ -93,6 +93,6 @@
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
-| EDGELIGHT_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位自动生效流光动效。高档算力设备生效，中低档算力设备不生效。 |
+| EDGELIGHT_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位和系统设置中的沉浸光感配置自动生效流光效果。高算力设备在沉浸光感配置为强或均衡时生效，为弱时不生效；中算力设备在沉浸光感配置为强时生效，为均衡或弱时不生效；低算力设备不生效。 |
 | EDGELIGHT_ENABLED | 1 | 沉浸式材质下流光动效生效。|
 | EDGELIGHT_DISABLED | 2 | 沉浸式材质下流光动效不生效。 |
