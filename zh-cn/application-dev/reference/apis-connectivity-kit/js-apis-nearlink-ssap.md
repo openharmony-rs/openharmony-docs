@@ -63,7 +63,7 @@ createClient(address: string): Client
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -111,7 +111,7 @@ createServer(): Server
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -171,7 +171,7 @@ connect(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -221,7 +221,7 @@ disconnect(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -270,7 +270,7 @@ close(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -316,7 +316,7 @@ getServices(): Promise&lt;Array&lt;Service&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -340,7 +340,7 @@ try {
   });
   // 连接耗时较长，等待连接完成才能获取服务，实际开发者根据连接速度调整定时器长度
   setTimeout(() => {
-    client.getServices().then((result: Array<ssap.Service>) => {
+    client.getServices().then((result: ssap.Service[]) => {
       console.info('getServices successfully:' + JSON.stringify(result));
     }).catch ((err: BusinessError) => {
       console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
@@ -380,7 +380,7 @@ readProperty(property: Property): Promise&lt;Property&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -456,7 +456,7 @@ writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -533,7 +533,7 @@ setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -608,7 +608,7 @@ requestMtuSize(mtu: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -906,13 +906,12 @@ addService(service: Service): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
 | 36100003 | NearLink disabled. |
-| 36100042 | Property array is empty. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
@@ -923,7 +922,7 @@ import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造descriptor
-let descriptorsArray: Array<ssap.PropertyDescriptor> = [];
+let descriptorsArray: ssap.PropertyDescriptor[] = [];
 let arrayBuffer = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBuffer);
 descValue[0] = 11;
@@ -937,7 +936,7 @@ let descriptor: ssap.PropertyDescriptor = {
 };
 descriptorsArray[0] = descriptor;
 // 构造properties
-let propertiesArray: Array<ssap.Property> = [];
+let propertiesArray: ssap.Property[] = [];
 let arrayBufferProperty = new ArrayBuffer(8);
 let properValue = new Uint8Array(arrayBufferProperty);
 properValue[0] = 1;
@@ -993,7 +992,7 @@ removeService(serviceUuid: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1036,7 +1035,7 @@ close(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1088,7 +1087,7 @@ notifyPropertyChanged(address: string, property: Property): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1105,7 +1104,7 @@ import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造descriptor
-let descriptorsArray: Array<ssap.PropertyDescriptor> = [];
+let descriptorsArray: ssap.PropertyDescriptor[] = [];
 let arrayBuffer = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBuffer);
 descValue[0] = 11;
@@ -1165,7 +1164,7 @@ sendResponse(response: ServerResponse): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

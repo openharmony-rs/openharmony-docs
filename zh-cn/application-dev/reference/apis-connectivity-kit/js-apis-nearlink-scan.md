@@ -48,7 +48,7 @@ startScan(filters: Array&lt;ScanFilters&gt; | null, options?: ScanOptions): Prom
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -115,7 +115,7 @@ stopScan(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -174,7 +174,7 @@ onDeviceFound(callback: Callback\<Array\<ScanResults\>\>): void
 import { scan } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let onReceiveEvent:(data: Array<scan.ScanResults>) => void = (data: Array<scan.ScanResults>) => {
+let onReceiveEvent:(data: scan.ScanResults[]) => void = (data: scan.ScanResults[]) => {
   console.info('scan result addr:' + data[0].address + 'name:' + data[0].deviceName);
 };
 try {
