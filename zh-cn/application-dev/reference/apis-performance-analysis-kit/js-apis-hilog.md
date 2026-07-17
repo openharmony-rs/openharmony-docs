@@ -653,11 +653,12 @@ getLogFile(latestSeconds: number): Array&lt;string&gt;
 
 获取5分钟之内修改过的文件。
 ```js
-hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
-hilog.flush();
-let logs = hilog.getLogFile(300);
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let timeInterval = 300
+let logs = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+hilog.flush();
 ```
 
 **打印结果：**
