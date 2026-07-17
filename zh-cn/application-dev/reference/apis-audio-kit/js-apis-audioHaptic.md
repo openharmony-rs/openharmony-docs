@@ -653,7 +653,7 @@ setLoop(loop: boolean): Promise&lt;void&gt;
 
 >**注意：**
 >
-> 该方法需在音振播放器销毁前调用。
+> 该方法需在音振播放器释放前调用。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
