@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-动态设置组件的属性，支持开发者在属性设置时使用if/else语法，且根据需要使用多态样式设置属性。
+动态设置组件的属性，支持开发者在属性设置时使用if/else语法，且根据需要使用多态样式设置属性。适用于需要根据组件状态（如按压、获焦、禁用、选中、悬浮等）动态切换样式的场景，可提升样式管理的灵活性和代码复用性。
 
 > **说明：**
 >
@@ -42,7 +42,7 @@ attributeModifier(modifier: AttributeModifier\<T>): T
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<T>](#attributemodifiert) | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。 |
+| modifier | [AttributeModifier\<T>](#attributemodifiert) | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。 |
 
 **返回值：**
 
@@ -126,7 +126,7 @@ applyFocusedAttribute?(instance: T): void
 
 applyDisabledAttribute?(instance: T): void
 
-组件禁用状态的样式。参考[示例6（组件绑定modifier禁用状态的样式）](#示例6组件绑定modifier禁用状态的样式)。
+组件禁用状态的样式。参考[示例6（组件绑定Modifier禁用状态的样式）](#示例6组件绑定modifier禁用状态的样式)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -148,7 +148,7 @@ applySelectedAttribute?(instance: T): void
 
 组件选中状态的样式。
 
-开发者可根据需要自定义实现这些方法，通过传入的参数识别组件类型，对instance设置属性，支持使用if/else语法进行动态设置。参考[示例7（组件绑定modifier选中状态样式）](#示例7组件绑定modifier选中状态样式)。
+开发者可根据需要自定义实现上述回调方法，通过传入的参数识别组件类型，对instance设置属性，支持使用if/else语法进行动态设置。参考[示例7（组件绑定Modifier选中状态样式）](#示例7组件绑定modifier选中状态样式)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -289,16 +289,16 @@ ArkTS-Sta: default applyHoveredAttribute(instance: T) : void
 
 > **说明：**
 >
-> - StepperAttribute从API version 22开始废弃，建议使用SwiperAttribute替代。
-> - StepperItemAttribute从API version 22开始废弃，建议使用SwiperAttribute替代。
-> - NavigatorAttribute从API version 20开始废弃，建议使用NavigationAttribute替代。
-> - NavRouterAttribute从API version 20开始废弃，建议使用NavigationAttribute替代。
-> - PanelAttribute从API version 20开始废弃，推荐使用通用属性bindSheet。
+> - StepperAttribute从API version 11开始支持，从API version 22开始废弃。建议使用SwiperAttribute替代。
+> - StepperItemAttribute从API version 11开始支持，从API version 22开始废弃。建议使用SwiperAttribute替代。
+> - NavigatorAttribute从API version 11开始支持，从API version 20开始废弃。建议使用NavigationAttribute替代。
+> - NavRouterAttribute从API version 11开始支持，从API version 20开始废弃。建议使用NavigationAttribute替代。
+> - PanelAttribute从API version 11开始支持，从API version 20开始废弃。建议使用通用属性bindSheet替代。
 
 **属性支持范围：**
 
 1. 不支持入参或者返回值为[CustomBuilder](ts-types.md#custombuilder8)的属性。
-2. 不支持入参为[modifier](../../../ui/arkts-user-defined-modifier.md)类型的属性，具体为以下属性方法：[attributeModifier](#attributemodifier)，[drawModifier](./ts-universal-attributes-draw-modifier.md#drawmodifier)和[gestureModifier](./ts-universal-attributes-gesture-modifier.md#gesturemodifier)。
+2. 不支持入参为[modifier](../../../ui/arkts-user-defined-modifier.md)类型的属性，具体为以下属性方法：[attributeModifier](#attributemodifier)、[drawModifier](./ts-universal-attributes-draw-modifier.md#drawmodifier)和[gestureModifier](./ts-universal-attributes-gesture-modifier.md#gesturemodifier)。
 3. 不支持[animation](./ts-animatorproperty.md)属性。
 4. 不支持[gesture](../../../ui/arkts-gesture-events-binding.md)类型的属性。
 5. 不支持[stateStyles](./ts-universal-attributes-polymorphic-style.md#statestyles)属性。
@@ -306,11 +306,11 @@ ArkTS-Sta: default applyHoveredAttribute(instance: T) : void
    <!--Del-->
 7. 不支持系统组件属性。<!--DelEnd-->
 
-不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
+不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributeModifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
 
 ## 自定义Modifier
 
-从API version 12开始，开发者可使用自定义Modifier构建组件并配置属性，通过此自定义的Modifier可调用所封装组件的属性和样式接口。
+从API version 12开始，开发者可使用自定义Modifier构建组件并配置属性，通过此自定义的Modifier可调用所封装组件的属性和样式接口。适用于需要封装和复用组件属性配置的场景，可简化组件样式管理并提高代码复用性。
 
 **自定义Modifier支持范围：**  
 
@@ -397,11 +397,11 @@ ArkTS-Sta: default applyHoveredAttribute(instance: T) : void
 
 > **说明：**
 >
-> - StepperModifier从API version 22开始废弃，建议使用SwiperModifier替代。
-> - StepperItemModifier从API version 22开始废弃，建议使用SwiperModifier替代。
-> - NavigatorModifier从API version 20开始废弃，建议使用NavigationModifier替代。
-> - NavRouterModifier从API version 20开始废弃，建议使用NavigationModifier替代。
-> - PanelModifier从API version 20开始废弃，推荐使用通用属性bindSheet。
+> - StepperModifier从API version 20开始支持，从API version 22开始废弃。建议使用[SwiperModifier](#自定义modifier)替代。
+> - StepperItemModifier从API version 12开始支持，从API version 22开始废弃。建议使用[SwiperModifier](#自定义modifier)替代。
+> - NavigatorModifier从API version 12开始支持，从API version 20开始废弃。建议使用[NavigationModifier](#自定义modifier)替代。
+> - NavRouterModifier从API version 12开始支持，从API version 20开始废弃。建议使用[NavigationModifier](#自定义modifier)替代。
+> - PanelModifier从API version 12开始支持，从API version 20开始废弃。建议使用通用属性bindSheet替代。
 
 **注意事项**
 
@@ -409,8 +409,8 @@ ArkTS-Sta: default applyHoveredAttribute(instance: T) : void
 2. 自定义Modifier属性值变化，组件对应属性也会变化。自定义Modifier类型为基类，构造的对象为子类对象，使用时要通过as进行类型断言为子类。  
 3. 一个自定义Modifier设置给两个组件，Modifier属性变化的时候对两个组件同时生效。  
 4. 一个Modifier设置了属性A和属性B，再设置属性C和属性D，4个属性同时在组件上生效。  
-5. 自定义Modifier不支持@State标注的状态数据的变化感知，见[示例3（自定义Modifier不支持感知@State装饰的状态数据变化）](#示例3自定义modifier不支持感知state装饰的状态数据变化)。  
-6. 多次通过attributeModifier设置属性时，生效的属性为所有属性的并集，相同属性按照设置顺序生效。
+5. 自定义Modifier不支持@State装饰的状态数据的变化感知，见[示例3（自定义Modifier不支持感知@State装饰的状态数据变化）](#示例3自定义modifier不支持感知state装饰的状态数据变化)。  
+6. 多次通过attributeModifier设置属性时，生效的属性为所有属性的并集，相同属性以最后设置的值为准。
 
 ## 示例
 
@@ -437,13 +437,13 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
           .onClick(() => {
             this.modifier.isDark = !this.modifier.isDark;
@@ -518,13 +518,13 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributePressedDemo {
+struct AttributePressedDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
       }
       .width('100%')
@@ -574,9 +574,9 @@ struct attributePressedDemo {
 该示例通过状态数据设置自定义Modifier的宽度，自定义Modifier不支持感知@State装饰的状态数据变化，点击按钮后宽度不发生改变。
 
 ```ts
-import { CommonModifier } from "@kit.ArkUI";
+import { CommonModifier } from '@kit.ArkUI';
 
-const TEST_TAG: string = "AttributeModifier";
+const TEST_TAG: string = 'AttributeModifier';
 
 // 设置通用组件属性的自定义AttributeModifier
 class MyModifier extends CommonModifier {
@@ -590,7 +590,7 @@ struct MyImage1 {
   @Link modifier: CommonModifier;
 
   build() {
-    Image($r("app.media.startIcon")).attributeModifier(this.modifier as MyModifier)
+    Image($r('app.media.startIcon')).attributeModifier(this.modifier as MyModifier)
   }
 }
 
@@ -604,17 +604,17 @@ struct Index {
 
   build() {
     Column() {
-      Button($r("app.string.EntryAbility_label"))
+      Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info(TEST_TAG, "onClick");
+          console.info(TEST_TAG, 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             this.width1 = 10;
-            console.info(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, 'setGroup1');
           } else {
             this.height1 = 10;
-            console.info(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, 'setGroup2');
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -629,12 +629,12 @@ struct Index {
 
 ### 示例4（Modifier和自定义Modifier的属性同时生效）
 
-该示例通过自定义Modifier设置了width和height，点击按钮时设置[borderStyle](ts-appendix-enums.md#borderstyle)和[borderWidth](ts-universal-attributes-border.md#borderwidth)，点击后4个属性同时生效。
+该示例通过自定义Modifier设置了width、height和margin，点击按钮时设置[borderStyle](ts-appendix-enums.md#borderstyle)和[borderWidth](ts-universal-attributes-border.md#borderwidth)，点击后5个属性同时生效。
 
 ```ts
-import { CommonModifier } from "@kit.ArkUI";
+import { CommonModifier } from '@kit.ArkUI';
 
-const TEST_TAG: string = "AttributeModifier";
+const TEST_TAG: string = 'AttributeModifier';
 
 // 设置通用组件属性的自定义AttributeModifier
 class MyModifier extends CommonModifier {
@@ -658,7 +658,7 @@ struct MyImage1 {
   @Link modifier: CommonModifier;
 
   build() {
-    Image($r("app.media.startIcon")).attributeModifier(this.modifier as MyModifier)
+    Image($r('app.media.startIcon')).attributeModifier(this.modifier as MyModifier)
   }
 }
 
@@ -670,17 +670,17 @@ struct Index {
 
   build() {
     Column() {
-      Button($r("app.string.EntryAbility_label"))
+      Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info(TEST_TAG, "onClick");
+          console.info(TEST_TAG, 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.info(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, 'setGroup1');
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.info(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, 'setGroup2');
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -712,22 +712,22 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
   @State isDisable: boolean = true;
 
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
           .enabled(this.isDisable)
-          .id("app")
+          .id('app')
         Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
-        Button("Button2")
+        Button('Button2')
           .onClick(() => {
             this.getUIContext().getFocusController().activate(true);
-            this.getUIContext().getFocusController().requestFocus("app");
+            this.getUIContext().getFocusController().requestFocus('app');
           })
       }
       .width('100%')
@@ -799,18 +799,18 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
   @State isDisable: boolean = true;
 
   build() {
     Row() {
       Column() {
-        Button("Button")
+        Button('Button')
           .attributeModifier(this.modifier)
           .enabled(this.isDisable)
         Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
-        Button("Button2")
+        Button('Button2')
           .onClick(() => {
             this.isDisable = !this.isDisable;
           })
@@ -864,7 +864,7 @@ struct attributeDemo {
 
 ### 示例7（组件绑定Modifier选中状态样式）
 
-该示例通过Radio绑定Modifier实现了展示组件选中时样式的效果。
+该示例通过Radio绑定Modifier实现了组件选中时的样式效果。
 
 ArkTS-Dyn示例：
 
@@ -883,10 +883,9 @@ class MyRadioModifier implements AttributeModifier<RadioAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyRadioModifier = new MyRadioModifier();
   @State value: boolean = false;
-  @State value2: boolean = false;
 
   build() {
     Row() {
@@ -965,18 +964,18 @@ struct attributeDemo {
 // 设置自定义组件属性的自定义AttributeModifier
 class CustomModifier implements AttributeModifier<CommonAttribute> {
   applyNormalAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Blue)
+    instance.backgroundColor(Color.Blue);
   }
 
   applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Gray)
+    instance.backgroundColor(Color.Gray);
   }
 }
 
 @Entry
 @Component
-struct attributePressedDemo {
-  @State modifier: CustomModifier = new CustomModifier()
+struct AttributePressedDemo {
+  @State modifier: CustomModifier = new CustomModifier();
 
   build() {
     Row() {
@@ -994,7 +993,7 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common")
+    Text('common')
       .fontColor(Color.White)
       .fontSize(28)
       .textAlign(TextAlign.Center)
@@ -1029,7 +1028,7 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeHoveredDemo {
+struct AttributeHoveredDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {
