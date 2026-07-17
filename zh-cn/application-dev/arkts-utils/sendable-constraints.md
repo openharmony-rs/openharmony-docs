@@ -370,7 +370,7 @@ let b = new B();
 
   @Sendable
   class C {
-    u: I = bar(); // bar不是sendable class对象，编译报错
+    u: I = bar(); // bar不是sendable function对象，编译报错
     v: I = new A(); // A不是定义在top level中，编译报错
 
     foo() {
