@@ -1,10 +1,10 @@
 # UI高性能开发
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wild-mucor-->
-<!--Designer: @wild-mucor-->
-<!--Tester: @sally__-->
-<!--Adviser: @ge-yafang-->
+<!--Owner: @zjucx1-->
+<!--Designer: @zjucx1-->
+<!--Tester: @liujiang077-->
+<!--Adviser: @Brilliantry_Rui-->
 
 优化应用的性能对于提升用户体验至关重要。当发现性能问题后，一般可按照以下步骤进行分析：
 1. 复现问题：根据用户的反馈复现性能问题是分析的第一步，开发者可通过回访用户或在应用中增加自己的性能监测埋点来获得性能问题的发生场景和复现步骤。
