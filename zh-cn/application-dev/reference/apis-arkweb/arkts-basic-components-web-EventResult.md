@@ -75,11 +75,7 @@ EventResult的构造函数。
 
 ## setMouseEventResult<sup>20+</sup>
 
-**返回值：**
-
-| 返回值 | 说明 |
-| --- | --- |
-| void | 无返回值，仅用于设置鼠标事件消费结果和冒泡控制。 |
+setMouseEventResult(result: boolean, stopPropagation?: boolean): void
 
 设置鼠标事件消费结果和冒泡控制。
 
