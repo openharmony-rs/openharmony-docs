@@ -10,7 +10,7 @@
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder](arkts-apis-media-AVRecorder.md)替代。
 
-音频录制管理类，用于录制音频媒体。在调用AudioRecorder的方法前，需要先通过[createAudioRecorder()](arkts-apis-media-f.md#mediacreateaudiorecorderdeprecated) 构建一个AudioRecorder实例。
+音频录制管理类，用于录制音频媒体。AudioRecorder遵循状态机模型进行录音控制，典型录制流程为：prepare（准备录音）→ start（开始录制）→ pause/resume（暂停/恢复录制）→ stop（停止录音）→ release（释放资源），也可在stop后调用reset重置后重新prepare。在调用AudioRecorder的方法前，需要先通过[createAudioRecorder()](arkts-apis-media-f.md#mediacreateaudiorecorderdeprecated) 创建一个AudioRecorder实例。
 
 ## 导入模块
 
@@ -22,7 +22,7 @@ import { media } from '@kit.MediaKit';
 
 prepare(config: AudioRecorderConfig): void
 
-录音准备。
+准备录制，根据传入的AudioRecorderConfig配置参数分配录音资源并初始化编码管道，完成后可调用start()开始录制。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.prepare](arkts-apis-media-AVRecorder.md#prepare9)替代。
@@ -67,7 +67,7 @@ audioRecorder.prepare(audioRecorderConfig);
 
 start(): void
 
-开始录制，需在'prepare'事件成功触发后，才能调用start方法。
+开始录制。需在prepare()接口调用成功后，才能调用start()接口。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.start](arkts-apis-media-AVRecorder.md#start9)替代。
@@ -87,7 +87,7 @@ audioRecorder.start();
 
 pause():void
 
-暂停录制，需要在'start'事件成功触发后，才能调用pause方法。
+暂停录制。需要在start()接口调用成功后，才能调用pause()接口。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.pause](arkts-apis-media-AVRecorder.md#pause9)替代。
@@ -107,7 +107,7 @@ audioRecorder.pause();
 
 resume():void
 
-恢复录制，需要在'pause'事件成功触发后，才能调用resume方法。
+恢复录制。需要在pause()接口调用成功后，才能调用resume()接口。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.resume](arkts-apis-media-AVRecorder.md#resume9)替代。
@@ -127,7 +127,7 @@ audioRecorder.resume();
 
 stop(): void
 
-停止录音。
+停止录制，停止后录音器进入停止状态，可调用reset()重置录音配置或release()释放录音资源。需要在start()接口调用成功后，才能调用stop()接口。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.stop](arkts-apis-media-AVRecorder.md#stop9)替代。
@@ -147,7 +147,7 @@ audioRecorder.stop();
 
 release(): void
 
-释放录音资源。
+释放录制资源。与createAudioRecorder()配对使用，必须在AudioRecorder实例使用完毕后调用release()释放资源，否则会导致录音资源泄漏，影响后续录音功能。调用release()后，不能再调用其他录制接口。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.release](arkts-apis-media-AVRecorder.md#release9)替代。
@@ -168,7 +168,7 @@ audioRecorder = undefined;
 
 reset(): void
 
-重置录音。
+重置录制。
 
 进行重置录音之前，需要先调用stop()停止录音。重置录音之后，需要调用prepare()设置录音参数项，才能再次进行录音。
 
@@ -190,7 +190,7 @@ audioRecorder.reset();
 
 on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset', callback: () => void): void
 
-开始订阅音频录制事件。
+订阅音频录制事件。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.on('stateChange')](arkts-apis-media-AVRecorder.md#onstatechange9)替代。
@@ -201,7 +201,7 @@ on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset'
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 录制事件回调类型，支持的事件包括：'prepare'&nbsp;\|&nbsp;'start'&nbsp;\|  'pause' \| ’resume‘ \|&nbsp;'stop'&nbsp;\|&nbsp;'release'&nbsp;\|&nbsp;'reset'。<br/>-&nbsp;'prepare'&nbsp;：完成prepare调用，音频录制参数设置完成，触发该事件。<br/>-&nbsp;'start'&nbsp;：完成start调用，音频录制开始，触发该事件。<br/>-&nbsp;'pause': 完成pause调用，音频暂停录制，触发该事件。<br/>-&nbsp;'resume': 完成resume调用，音频恢复录制，触发该事件。<br/>-&nbsp;'stop'&nbsp;：完成stop调用，音频停止录制，触发该事件。<br/>-&nbsp;'release'&nbsp;：完成release调用，音频释放录制资源，触发该事件。<br/>-&nbsp;'reset'：完成reset调用，音频重置为初始状态，触发该事件。 |
+| type     | string   | 是   | 录制事件回调类型，支持的事件包括：'prepare'&nbsp;\|&nbsp;'start'&nbsp;\|&nbsp;'pause'&nbsp;\|&nbsp;'resume'&nbsp;\|&nbsp;'stop'&nbsp;\|&nbsp;'release'&nbsp;\|&nbsp;'reset'。<br/>-&nbsp;'prepare'：完成prepare调用，音频录制参数设置完成，触发该事件。<br/>-&nbsp;'start'：完成start调用，音频录制开始，触发该事件。<br/>-&nbsp;'pause'：完成pause调用，音频暂停录制，触发该事件。<br/>-&nbsp;'resume'：完成resume调用，音频恢复录制，触发该事件。<br/>-&nbsp;'stop'：完成stop调用，音频停止录制，触发该事件。<br/>-&nbsp;'release'：完成release调用，音频释放录制资源，触发该事件。<br/>-&nbsp;'reset'：完成reset调用，音频重置为初始状态，触发该事件。 |
 | callback | ()=>void | 是   | 录制事件回调方法。                                           |
 
 **示例：**
@@ -251,7 +251,7 @@ audioRecorder.prepare(audioRecorderConfig)  // 设置录制参数 ，并触发'p
 
 on(type: 'error', callback: ErrorCallback): void
 
-开始订阅音频录制错误事件，当上报error错误事件后，用户需处理error事件，退出录制操作。
+订阅音频录制错误事件，当上报error错误事件后，用户需根据错误信息确认错误原因，并调用release()释放录制资源以退出录制。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.on('error')](arkts-apis-media-AVRecorder.md#onerror9)替代。
@@ -282,5 +282,5 @@ let audioRecorderConfig: media.AudioRecorderConfig = {
 audioRecorder.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`audio error called, error: ${error}`);
 });
-audioRecorder.prepare(audioRecorderConfig);  // prepare不设置参数，触发'error'事件。
+audioRecorder.prepare(audioRecorderConfig);  // prepare传入不正确的参数配置，触发'error'事件。
 ```

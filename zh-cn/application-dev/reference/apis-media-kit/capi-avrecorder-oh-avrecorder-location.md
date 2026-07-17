@@ -26,7 +26,7 @@ typedef struct OH_AVRecorder_Location {...} OH_AVRecorder_Location
 
 | 名称 | 描述 |
 | -- | -- |
-| float latitude | 地理位置的纬度。 |
-| float longitude | 地理位置的经度。 |
+| float latitude | 地理位置的纬度，取值范围[-90, 90]，单位：度。超出范围时返回错误。 |
+| float longitude | 地理位置的经度，取值范围[-180, 180]，单位：度。超出范围时返回错误。 |
 
 
