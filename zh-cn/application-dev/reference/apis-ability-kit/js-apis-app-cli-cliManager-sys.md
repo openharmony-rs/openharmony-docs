@@ -320,6 +320,7 @@ let CLI_DEMO: abilityAccessCtrl.CliInfo = {
     cliName: 'ohos-timer',
     subCliName: '',
 };
+// 定义授权信息列表
 const authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
     cliInfo: CLI_DEMO,
     permissionNames: ['ohos.permission.APPROXIMATELY_LOCATION', "ohos.permission.LOCATION"],
@@ -400,6 +401,7 @@ import { cliManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sessionId = 'example_session_id';
+// 定义CLI工具会话事件回调
 let callback: common.ToolEventCallback = {
   onEvent: (event: common.CliToolEvent) => {
     console.info('subscribeSession event type: ' + event.toolEventType + ', data: ' + event.data);
@@ -680,7 +682,7 @@ sendMessage(sessionId: string, message: string): Promise\<void>
 | 参数名    | 类型   | 必填 | 说明                                  |
 | --------- | ------ | ---- | ------------------------------------- |
 | sessionId | string | 是   | 目标CLI工具进程的会话ID。             |
-| message   | string | 是   | 要发送的消息，最大长度为10240。超过最大长度时抛出错误码401。 |
+| message   | string | 是   | 要发送的消息，最大长度为10240字符。超过最大长度时抛出错误码401。 |
 
 **返回值：**
 

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置点光源样式。
+设置点光源样式，用于通过配置光源属性和组件是否可被照亮，实现点光源照亮周围组件并产生光效的UI效果，适用于需要突出组件视觉焦点或营造装饰性光照效果的场景。
 
 >  **说明：**
 >
@@ -26,9 +26,9 @@
 
 | 名称        | 类型                                                    | 只读 | 可选 | 说明                                                         |
 | ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
-| lightSource | [LightSource](#lightsource对象说明)                         | 否   |  是   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br/>默认值：无光源 |
-| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   |  是  | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br/>默认值：IlluminatedType.NONE |
-| bloom       | number                                                      | 否   |  是   | 设置组件的发光强度，取值范围为[0, 1]，超出取值范围时会转换为默认值。<br/>默认值：0        |
+| lightSource | [LightSource](#lightsource对象说明)                         | 否   |  是   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br>默认值：无光源 |
+| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   |  是  | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br>默认值：IlluminatedType.NONE |
+| bloom       | number                                                      | 否   |  是   | 设置组件的发光强度，取值范围为[0, 1]，超出取值范围时会转换为默认值。<br>默认值：0        |
 
 ## LightSource对象说明
 
@@ -44,7 +44,7 @@
 | positionY           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源相对于当前组件的Y坐标。                              |
 | positionZ           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源高度。光源越高，照射范围越大。                       |
 | intensity           | number                                     | 否 | 否   | 光源强度，建议取值范围0-1。当光源强度为0时，光源不发光。 |
-| color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 光源颜色。<br/>默认值：Color.White                       |
+| color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 光源颜色。<br>默认值：Color.White                       |
 
 ## 示例
 
@@ -68,8 +68,8 @@ struct Index {
         .pointLight({
           lightSource: {
             intensity: this.lightIntensity,
-            positionX: "50%",
-            positionY: "50%",
+            positionX: '50%',
+            positionY: '50%',
             positionZ: 80
           },
           bloom: this.bloomValue
@@ -79,8 +79,9 @@ struct Index {
         .size({ width: 50, height: 50 })
         .borderRadius(25)
         .onTouch((event: TouchEvent) => {
+          // 按下时增强光源强度和发光强度，松开或取消时恢复默认效果。
           if (event.type === TouchType.Down) {
-            this.lightIntensity = 2;
+            this.lightIntensity = 1;
             this.bloomValue = 1;
           } else if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
             this.lightIntensity = 0;

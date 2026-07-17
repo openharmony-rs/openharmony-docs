@@ -1,4 +1,4 @@
-# 编码支持前处理
+# 视频编码前处理
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

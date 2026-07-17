@@ -548,8 +548,6 @@ struct DatePickerExample {
   build() {
     Column() {
       DatePicker({
-        start: new Date("2000-1-1"),
-        end: new Date("2100-12-31"),
         selected: this.selectedDate,
       })
         .canLoop(this.isLoop)

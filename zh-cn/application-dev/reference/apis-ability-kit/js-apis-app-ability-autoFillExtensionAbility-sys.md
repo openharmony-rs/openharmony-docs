@@ -87,6 +87,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     hilog.info(0x0000, 'testTag', 'fill requestCallback: %{public}s', JSON.stringify(callback));
     hilog.info(0x0000, 'testTag', 'get request viewData: %{public}s', JSON.stringify(request.viewData));
     try {
+      // 定义本地存储数据
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.FillRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
@@ -95,6 +96,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
         'viewData': request.viewData,
         'context': this.context
       };
+      // 创建本地存储实例，用于在页面间传递数据
       let storage_fill = new LocalStorage(localStorageData);
       if (session) {
         // 加载自动保存页面
@@ -137,6 +139,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
                 callback : autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
     try {
+      // 定义本地存储数据
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.SaveRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
@@ -145,6 +148,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
         'viewData': request.viewData,
         'context': this.context,
       };
+      // 创建本地存储实例，用于在页面间传递数据
       let storage_save = new LocalStorage(localStorageData);
       if (session) {
         // 加载自动保存页面

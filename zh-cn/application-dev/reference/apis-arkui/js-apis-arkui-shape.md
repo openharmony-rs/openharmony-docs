@@ -49,7 +49,7 @@ constructor(options?: ShapeSize)
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | 否 | 形状的大小，包含width（宽度）和height（高度）属性，用于设置形状的尺寸。 |
+| options | [ShapeSize](#shapesize) | 否 | 形状的大小，包含width（宽度）和height（高度）属性，用于设置形状的尺寸。不传入时使用默认尺寸，默认宽度0vp，默认高度0vp。 |
 
 ## EllipseShape
 
@@ -79,7 +79,7 @@ constructor(options?: ShapeSize)
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | 否 | 形状的大小，用于自定义椭圆的宽高尺寸。 |
+| options | [ShapeSize](#shapesize) | 否 | 形状的大小，用于自定义椭圆的宽高尺寸。不传入时width和height默认值为0vp。 |
 
 ## PathShape
 
@@ -149,7 +149,7 @@ commands(commands: string): PathShape
 
 ### constructor
 
-constructor(options?: RectShapeOptions | RoundRectShapeOptions)
+constructor(options?: RectShapeOptions \| RoundRectShapeOptions)
 
 创建RectShape对象。
 
@@ -167,7 +167,7 @@ constructor(options?: RectShapeOptions | RoundRectShapeOptions)
 
 ### radiusWidth
 
-radiusWidth(rWidth: number | string): RectShape
+radiusWidth(rWidth: number \| string): RectShape
 
 设置矩形形状圆角半径的宽度。
 
@@ -191,7 +191,7 @@ radiusWidth(rWidth: number | string): RectShape
 
 ### radiusHeight
 
-radiusHeight(rHeight: number | string): RectShape
+radiusHeight(rHeight: number \| string): RectShape
 
 设置矩形形状圆角半径的高度。
 
@@ -493,6 +493,7 @@ struct ShapeExample {
       Text('PathShape, fill').fontSize(20).width('75%').fontColor('#DCDCDC')
       // $r('app.media.startIcon')需替换为开发者所需的资源文件
       Image($r('app.media.startIcon'))
+        // 使用SVG路径指令绘制三角形作为遮罩形状
         .maskShape(new PathShape().commands('M100 0 L200 240 L0 240 Z').fill(Color.Red))
         .width('500px').height('280px')
     

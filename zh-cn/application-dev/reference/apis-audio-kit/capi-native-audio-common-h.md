@@ -28,7 +28,7 @@
 | -- | -- | -- |
 | [OH_AudioCommon_Result](#oh_audiocommon_result) | OH_AudioCommon_Result | 音频错误码。 |
 | [OH_AudioScene](#oh_audioscene) | OH_AudioScene | 定义音频场景。 |
-| [OH_AudioRingerMode](#oh_audioringermode) | OH_AudioRingerMode | 定义铃音模式。 |
+| [OH_AudioRingerMode](#oh_audioringermode) | OH_AudioRingerMode | 定义铃声模式。 |
 | [OH_AudioNoiseReductionMode](#oh_audionoisereductionmode) | OH_AudioNoiseReductionMode | 定义录音降噪模式。 |
 
 ## 枚举类型说明
@@ -49,7 +49,7 @@ enum OH_AudioCommon_Result
 | -- | -- |
 | AUDIOCOMMON_RESULT_SUCCESS = 0 | 操作成功。 |
 | AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 | 入参错误。 |
-| AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | 无内存。 |
+| AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | 内存不足。 |
 | AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103 | 非法状态。 |
 | AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104 | 操作不支持。 |
 | AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105 | 操作超时。 |
@@ -83,7 +83,7 @@ enum OH_AudioRingerMode
 
 **描述**
 
-定义铃音模式。
+定义铃声模式。
 
 **设备行为差异：** 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
 

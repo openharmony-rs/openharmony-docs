@@ -166,6 +166,7 @@ import { agentManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.example.myapplication';
+// 设置待查询的Agent标识
 let agentId = 'agent_001';
 
 agentManager.getAgentCardByAgentId(bundleName, agentId)
@@ -269,6 +270,7 @@ struct Index {
               bundleName: 'com.acts.agentextensionability',
               abilityName: 'AgentExtAbility',
             };
+            // 设置待连接的Agent标识
             let agentId: string = 'test';
             try {
               // 连接AgentExtensionAbility
@@ -574,7 +576,7 @@ struct Index {
           .enabled(true)
           .onClick(() => {
             try {
-              // 连接AgentExtensionAbility
+              // 断开AgentExtensionAbility连接
               agentManager.disconnectAgentExtensionAbility(this.comProxy)
                 .then(() => {
                 })
@@ -659,7 +661,7 @@ connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callb
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -789,7 +791,8 @@ export default class DemoAgentForDisConnect extends AgentExtensionAbility {
       agentManager.disconnectServiceExtensionAbility(this.context, connectId);
       console.info(`${TAG} disconnect end:${connectId}`);
     } catch (err) {
-      console.error(`${TAG} client disconnectServiceExtensionAbility failed.`);
+      const error = err as BusinessError;
+      console.error(`${TAG} disconnectServiceExtensionAbility failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }

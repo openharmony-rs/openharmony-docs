@@ -1120,7 +1120,7 @@
 | 错误码 | 触发条件 |
 | ---- | ---- |
 | 110 | `params`字段非JSON对象 |
-| 115 | 未提供`id`或`xpath`定位参数，或`xpath`为空字符串 |
+| 115 | 未提供`id`或`xpath`定位参数 |
 | 131 | 目标元素不存在 |
 | 132 | browser或host为空，通常表示Web实例不可用 |
 | 161 | 目标元素不是`<select>`元素 |
@@ -1130,7 +1130,7 @@
 | 254 | 单选`<select>`传入多个索引 |
 | 255 | 选中的option被禁用 |
 | 256 | `<select>`元素无option子元素 |
-| 392 | `id`和`xpath`同时传入，或`id`/`xpath`字段类型无效 |
+| 392 | `id`和`xpath`同时传入，或`id`/`xpath`字段不是string或为空字符串 |
 
 ### 请求示例
 
@@ -1175,6 +1175,15 @@
 {
   "code": 115,
   "message": "missing or empty xpath"
+}
+```
+
+`392`（`xpath`为空字符串）：
+
+```json
+{
+  "code": 392,
+  "message": "invalid id or xpath"
 }
 ```
 

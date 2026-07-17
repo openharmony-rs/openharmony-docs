@@ -1,4 +1,4 @@
-# 模糊
+# 动态模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->

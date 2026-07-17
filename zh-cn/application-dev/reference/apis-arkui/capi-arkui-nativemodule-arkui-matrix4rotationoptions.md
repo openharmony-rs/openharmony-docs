@@ -12,7 +12,7 @@ typedef struct ArkUI_Matrix4RotationOptions ArkUI_Matrix4RotationOptions
 
 ## 概述
 
-定义矩阵旋转变化的参数配置对象。
+定义矩阵旋转变换的参数配置对象。
 
 **起始版本：** 24
 

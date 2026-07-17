@@ -6,15 +6,19 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。
+绘制组件的父组件，描述所有绘制组件均支持的通用属性。
 
-1、绘制组件使用Shape作为父组件，实现类似SVG的效果。
+Shape组件通过定义视口、填充、边框等属性，支持矢量图形的绘制和组合。Shape作为容器组件，可包含Rect、Circle、Path等绘制子组件，实现类似SVG（Scalable Vector Graphics，可缩放矢量图形）的矢量图形绘制能力。
+
+Shape组件的两种使用方式：
+
+1、绘制组件使用Shape作为父组件，实现类似SVG的矢量图形的组合绘制。
 
 2、绘制组件单独使用，用于在页面上绘制指定的图形。
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
@@ -30,7 +34,7 @@
 
 new Shape(value?: PixelMap)
 
-用于绘制Shape组件的构造函数。 
+用于绘制Shape组件的构造函数。调用后创建一个Shape对象，可设置视口、填充、边框等属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -40,13 +44,13 @@ new Shape(value?: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### Shape
 
 Shape(value: PixelMap)
 
-用于绘制Shape组件的构造函数。 
+用于绘制Shape组件的构造函数。调用后创建一个Shape对象，可设置视口、填充、边框等属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -56,13 +60,13 @@ Shape(value: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中。<br>说明：此参数为必填参数，应传入有效的PixelMap对象，传入undefined或null时不生效。 |
 
 ### Shape
 
 Shape()
 
-用于绘制Shape组件的无参构造函数。 
+用于绘制Shape组件的无参构造函数。调用后创建一个Shape对象，使用默认视口和属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -88,10 +92,10 @@ Shape()
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的水平坐标。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| y<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的垂直坐标。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| x<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的水平坐标。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| y<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的垂直坐标。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的宽度，取值范围≥0。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的高度，取值范围≥0。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## 属性
@@ -102,7 +106,9 @@ Shape()
 
 viewPort(value: ViewportRect)
 
-设置形状的视口。 
+设置形状的视口。
+
+视口定义了绘制内容的坐标系统和显示区域。视口的起始点坐标(x, y)和宽高(width, height)决定了绘制内容在组件中的显示位置和范围。当视口范围与组件尺寸不同时，绘制内容会自动缩放适配。视口常用于调整绘制内容的显示比例和位置。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -114,13 +120,15 @@ viewPort(value: ViewportRect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br/>默认值：{}<br/>异常值undefined和null按照默认值处理。 |
+| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br>默认值：{x: 0, y: 0, width: 0, height: 0}<br>异常值undefined和null按照默认值处理。 |
 
 ### mesh<sup>8+</sup>
 
 mesh(value: Array&lt;any&gt;, column: number, row: number)
 
-设置网格效果。将图像分割为（row + 1）* (column + 1)的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置网格效果。将图像分割为（row + 1）* （column + 1）的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。适用于需要实现图像变形效果的场景，如图片扭曲、波浪效果等视觉效果。
+
+坐标数组按行优先顺序存储。原始图像被均匀分割后，每个网格区域根据顶点的新坐标进行变换，最终形成扭曲效果。
 
 > **说明：**
 >
@@ -136,9 +144,9 @@ mesh(value: Array&lt;any&gt;, column: number, row: number)
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
-| column | number              | 是   | mesh矩阵列数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
-| row    | number              | 是   | mesh矩阵行数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
+| value  | Array&lt;any&gt; | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。坐标系基于Shape组件显示区域，原点(0,0)位于左上角，x轴向右延伸，y轴向下延伸。<br>默认单位：vp <br>设置异常值undefined、null时按照空数组处理。 |
+| column | number              | 是   | mesh矩阵列数，取值范围≥0。<br>默认值：0<br>设置异常值undefined、null、NaN和Infinity时，column参数和row参数按默认值0处理，value参数按空数组处理。 |
+| row    | number              | 是   | mesh矩阵行数，取值范围≥0。<br>默认值：0<br>设置异常值undefined、null、NaN和Infinity时，column参数和row参数按默认值0处理，value参数按空数组处理。 |
 
 ## 示例
 
@@ -400,13 +408,16 @@ import { image } from '@kit.ImageKit';
 @Component
 struct Index {
   private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  // mesh数组，长度为(row+1)*(column+1)*2，每两个元素表示一个网格顶点的x、y坐标
   private meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
   @State pixelMap: image.PixelMap | undefined = undefined
 
   aboutToAppear(): void {
     // "resources/base/media/img.png"需要替换为开发者所需的图像资源文件。
+    // 创建图像位图并绘制到离屏画布
     let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
     this.context.drawImage(img, 0, 0, 200, 200)
+    // 从画布获取PixelMap对象，用于Shape组件
     this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
   }
 

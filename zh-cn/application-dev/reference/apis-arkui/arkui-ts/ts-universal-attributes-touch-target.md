@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件的响应热区。在ArkUI开发框架中，处理触屏事件和鼠标事件时，会在事件触发前进行按压点与组件响应热区的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，以收集需响应事件的组件。基于测试结果，框架会分发相应的事件。影响[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)和[手势事件](ts-gesture-settings.md)的分发。
+设置组件的触摸热区。在ArkUI开发框架中，处理触屏事件和鼠标事件时，会在事件触发前进行按压点与组件响应热区的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，以收集需响应事件的组件。基于测试结果，框架会分发相应的事件。影响[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)和[手势事件](ts-gesture-settings.md)的分发。
 
 
 >  **说明：**
@@ -19,7 +19,7 @@
 
 responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-设置一个或多个触摸热区。从API版本26.0.0开始，未主动设置时[Button](./ts-basic-components-button.md)、[Button模式的Toggle](./ts-basic-components-toggle.md)、[Select](./ts-basic-components-select.md)、[Chip](./ohos-arkui-advanced-Chip.md)和[ChipGroup](./ohos-arkui-advanced-ChipGroup.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
+设置一个或多个触摸热区。调用[responseRegionList](#responseregionlist22)接口时，该接口不再生效。从API版本26.0.0开始，未主动设置时[Button](./ts-basic-components-button.md)、[Button模式的Toggle](./ts-basic-components-toggle.md)、[Select](./ts-basic-components-select.md)、[Chip](./ohos-arkui-advanced-Chip.md)和[ChipGroup](./ohos-arkui-advanced-ChipGroup.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -31,19 +31,19 @@ responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>}<br/> |
+| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 触摸热区，包括位置和大小。<br>默认触摸热区为整个组件，默认值：<br>{<br>x：0,<br>y：0,<br>width：'100%',<br>height：'100%'<br>}<br> |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于支持链式调用。 |
 
 ## mouseResponseRegion<sup>10+</sup>
 
 mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-设置一个或多个鼠标触摸热区。
+设置一个或多个鼠标触摸热区。调用[responseRegionList](#responseregionlist22)接口时，该接口不再生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -55,13 +55,13 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 鼠标触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>} |
+| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 鼠标触摸热区，包括位置和大小。<br>默认触摸热区为整个组件，默认值：<br>{<br>x：0,<br>y：0,<br>width：'100%',<br>height：'100%'<br>} |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于支持链式调用。 |
 
 ## responseRegionList<sup>22+</sup>
 
@@ -79,13 +79,13 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| regions  | Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp; | 是   | 组件的触摸热区数组。<br/>每个触摸热区均包括输入工具类型、位置和大小。<br/>默认值：<br/>[{<br/>tool：ResponseRegionSupportedTool.ALL,<br/>x：LengthMetrics.vp(0),<br/>y：LengthMetrics.vp(0),<br/>width：LengthMetrics.percent(1),<br/>height：LengthMetrics.percent(1)<br/>}] |
+| regions  | Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp; | 是   | 组件的触摸热区数组。<br>每个触摸热区均包括输入工具类型、位置和大小。<br>默认值：<br>[{<br>tool：ResponseRegionSupportedTool.ALL,<br>x：LengthMetrics.vp(0),<br>y：LengthMetrics.vp(0),<br>width：LengthMetrics.percent(1),<br>height：LengthMetrics.percent(1)<br>}] |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，用于支持链式调用。 |
 
 ## Rectangle对象说明
 
@@ -97,10 +97,10 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
 | 名称        | 类型                        | 只读    |  可选   |  说明                             |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
-| x      | [Length](ts-types.md#length)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br/>默认值：0vp |
-| y      | [Length](ts-types.md#length)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br/>默认值：0vp |
-| width  | [Length](ts-types.md#length)  | 否   | 是   |触摸热区的宽度。<br/>默认值：'100%' |
-| height | [Length](ts-types.md#length) | 否   | 是   |触摸热区的高度。<br/>默认值：'100%' |
+| x      | [Length](ts-types.md#length)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br>默认值：0vp |
+| y      | [Length](ts-types.md#length)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br>默认值：0vp |
+| width  | [Length](ts-types.md#length)  | 否   | 是   |触摸热区的宽度。<br>默认值：'100%' |
+| height | [Length](ts-types.md#length) | 否   | 是   |触摸热区的高度。<br>默认值：'100%' |
 
   >  **说明：**
   >
@@ -121,12 +121,12 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >  **说明：**
   >
   > - 当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)为true时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
-  >  
-  > - 如果触摸热区未配置输入工具类型，触摸位置和大小均采用默认值。
-  >  
+  >
+  > - 如果触摸热区未配置输入工具类型、触摸位置或大小，对应项采用默认值。
+  >
   > - x和y的计算结果为正值时，分别代表向右偏移和向下偏移；当计算结果为负值时，分别代表向左偏移和向上偏移。
   >
-  > - width和height采用string类型时，string需采用小写字符否则不生效，支持calc()的动态计算。指定calc()的入参字符串格式为'宽高缩放比例 ± 宽高增量'，宽高缩放比例为百分比，宽高增量单位为px或vp。例如'calc(80% + 10vp)'中，80%为宽高缩放比例、10vp为宽高增量。width和height采用LengthMetrics类型且单位为percent时，相对于组件自身宽高进行计算，percent(1)代表100%。当计算结果为负值时，采用默认值。
+  > - width和height采用string类型时，string需采用小写字符，否则不生效，支持calc()的动态计算。指定calc()的入参字符串格式为'宽高缩放比例 ± 宽高增量'，宽高缩放比例为百分比，宽高增量单位为px或vp。例如'calc(80% + 10vp)'中，80%为宽高缩放比例、10vp为宽高增量。width和height采用LengthMetrics类型且单位为percent时，相对于组件自身宽高进行计算，percent(1)代表100%。当计算结果为负值时，采用默认值。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -136,11 +136,11 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
 | 名称        | 类型                        | 只读    |  可选   |  说明                             |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
-| tool   | [ResponseRegionSupportedTool](./ts-appendix-enums.md#responseregionsupportedtool22)  | 否   | 是   |触摸热区适用的输入工具类型。<br/>默认值：ResponseRegionSupportedTool.ALL |
-| x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br/>默认值：LengthMetrics.vp(0) |
-| y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br/>默认值：LengthMetrics.vp(0) |
-| width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的宽度。<br/>默认值：LengthMetrics.percent(1) |
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的高度。<br/>默认值：LengthMetrics.percent(1) |
+| tool   | [ResponseRegionSupportedTool](./ts-appendix-enums.md#responseregionsupportedtool22)  | 否   | 是   |触摸热区适用的输入工具类型。<br>默认值：ResponseRegionSupportedTool.ALL |
+| x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br>默认值：LengthMetrics.vp(0) |
+| y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br>默认值：LengthMetrics.vp(0) |
+| width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的宽度。<br>默认值：LengthMetrics.percent(1) |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的高度。<br>默认值：LengthMetrics.percent(1) |
 
 ## 示例
 
@@ -153,13 +153,13 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = "";
+  @State text: string = '';
 
   build() {
     Column({ space: 20 }) {
       Text("{x:0,y:0,width:'50%',height:'100%'}")
       // 热区宽度为按钮的一半，点击button1右半部无响应
-      Button("button1")
+      Button('button1')
         .responseRegion({
           x: 0,
           y: 0,
@@ -167,13 +167,13 @@ struct TouchTargetExample {
           height: '100%'
         })
         .onClick(() => {
-          this.text = 'button1 clicked'
+          this.text = 'button1 clicked';
         })
 
       // 为一个组件添加多个热区
       Text("[{x:'100%',y:0,width:'50%',height:'100%'}," +
         "\n{ x: 0, y: 0, width: '50%', height: '100%' }]")
-      Button("button2")
+      Button('button2')
         .responseRegion([
           {
             x: '100%',
@@ -186,14 +186,14 @@ struct TouchTargetExample {
             y: 0,
             width: '50%',
             height: '100%'
-          }// 第二个热区宽度为按钮的一半，点击button2左半部，点击事件生效
+          } // 第二个热区宽度为按钮的一半，点击button2左半部，点击事件生效
         ])
         .onClick(() => {
-          this.text = 'button2 clicked'
+          this.text = 'button2 clicked';
         })
       // 热区大小为整个按钮，且下移一个按钮高度，点击button3下方按钮大小区域，点击事件生效
       Text("{x:0,y:'100%',width:'100%',height:'100%'}")
-      Button("button3")
+      Button('button3')
         .responseRegion({
           x: 0,
           y: '100%',
@@ -201,7 +201,7 @@ struct TouchTargetExample {
           height: '100%'
         })
         .onClick(() => {
-          this.text = 'button3 clicked'
+          this.text = 'button3 clicked';
         })
 
       Text(this.text).margin({ top: 50 })
@@ -225,13 +225,13 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = "";
+  @State text: string = '';
 
   build() {
     Column({ space: 20 }) {
-      Text("left part of button1")
+      Text('left part of button1')
       // 热区宽度为按钮的一半，点击button1右半部无响应
-      Button("button1")
+      Button('button1')
         .responseRegionList([{
           x: LengthMetrics.vp(0),
           y: LengthMetrics.vp(0),
@@ -239,13 +239,13 @@ struct TouchTargetExample {
           height: LengthMetrics.percent(1),
         }])
         .onClick(() => {
-          this.text = 'button1 clicked'
+          this.text = 'button1 clicked';
         })
 
       // 热区一的大小为整个按钮，且右移一个按钮宽度，点击button2右边按钮大小区域，点击事件生效
       // 热区二的大小为整个按钮，且下移一个按钮高度，鼠标点击button2下方按钮大小区域，点击事件生效
-      Text("one button size right of button2," + "\n one button size below button2")
-      Button("button2")
+      Text('one button size right of button2,' + '\n one button size below button2')
+      Button('button2')
         .responseRegionList([{
           x: LengthMetrics.percent(1),
           y: LengthMetrics.vp(0),
@@ -259,7 +259,7 @@ struct TouchTargetExample {
           height: 'calc(100% - 0px)',
         }])
         .onClick(() => {
-          this.text = 'button2 clicked'
+          this.text = 'button2 clicked';
         })
 
       Text(this.text).margin({ top: 50 })
@@ -272,7 +272,7 @@ struct TouchTargetExample {
 
 ### 示例3（设置鼠标的触摸热区以响应点击事件）
 
-该示例通过[mouseResponseRegion](ts-universal-attributes-touch-target.md#mouseresponseregion10)设置鼠标的触摸热区以响应点击事件。
+该示例通过[mouseResponseRegion](#mouseresponseregion10)设置鼠标的触摸热区以响应点击事件。
 
 ```ts
 // xxx.ets

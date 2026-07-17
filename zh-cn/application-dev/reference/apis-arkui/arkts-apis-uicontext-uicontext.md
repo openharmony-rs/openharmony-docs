@@ -35,7 +35,7 @@ struct Index {
       Button('Button')
           .onClick(() => {
             // 通过自定义组件内置方法获取
-            this.getUIContext()
+            this.getUIContext();
             // 通过UIContext类的静态方法获取
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
@@ -51,7 +51,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
+    windowStage.getMainWindowSync().getUIContext();
     // 其他运行逻辑
   }
 }
@@ -676,6 +676,28 @@ getPromptAction(): PromptAction
 
 完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
+## getDialogPresenter
+
+getDialogPresenter(): DialogPresenter
+
+获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                            | 说明                  |
+| ----------------------------- | ------------------- |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象，可用于管理和展示Dialog。 |
+
+**示例：**
+
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
+
 ## getOverlayManager<sup>12+</sup>
 
 getOverlayManager(): OverlayManager
@@ -684,7 +706,7 @@ getOverlayManager(): OverlayManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -704,7 +726,7 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -730,7 +752,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -3953,7 +3975,7 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 >  **说明：**
 >
-> 如果缓存上限设置的太大，有内存开销过大的风险，建议合理配置。
+> 如果缓存上限设置得太大，有内存开销过大的风险，建议合理配置。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 

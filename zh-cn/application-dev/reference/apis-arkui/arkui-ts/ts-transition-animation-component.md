@@ -343,7 +343,7 @@ animation(value: AnimateParam): TransitionEffect
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | -------- | ---- | ------------------ |
-| value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明)   | 是   | 动画参数。</br>该参数仅用于指定动画参数，其入参AnimateParam的onFinish回调不生效。</br>如果通过combine进行TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
+| value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明)   | 是   | 动画参数。<br/>该参数仅用于指定动画参数，其入参AnimateParam的onFinish回调不生效。<br/>如果通过combine进行TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
 
 **返回值：**
 
@@ -530,7 +530,7 @@ struct TransitionEffectExample3 {
         Column() {
           Row() {
             // $r('app.media.testImg')需要替换为开发者所需的图像资源文件。
-            Image($r('app.media.testImg')).width(150).height(150).id("image1")
+            Image($r('app.media.testImg')).width(150).height(150).id('image1')
               .transition(TransitionEffect.OPACITY.animation({ duration: 1000 }))
           }
 
@@ -539,11 +539,11 @@ struct TransitionEffectExample3 {
             .width(150)
             .height(150)
             .margin({ top: 50 })
-            .id("image2")
+            .id('image2')
             .transition(TransitionEffect.scale({ x: 0, y: 0 }).animation({ duration: 1000 }))
-          Text("view").margin({ top: 50 })
+          Text('view').margin({ top: 50 })
         }
-        .id("column1")
+        .id('column1')
         .transition(TransitionEffect.opacity(0.99).animation({ duration: 1000 }),
           // 结束回调设置在消失的第一层节点上，确保能有消失的结束回调
           (transitionIn: boolean) => {
@@ -575,7 +575,7 @@ struct TransitionVisibilityExample {
         .onClick(() => {
           this.getUIContext()?.animateTo({ duration: 1000 }, () => {
             this.isVisible = !this.isVisible;
-          })
+          });
         })
       Column() {
         Text('Hello World')

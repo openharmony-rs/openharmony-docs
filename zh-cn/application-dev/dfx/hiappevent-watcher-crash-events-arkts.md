@@ -29,7 +29,7 @@
 
 以订阅用户点击按钮触发崩溃生成的崩溃事件为例，说明开发步骤。
 
-1. DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下：
+1. 在DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下：
 
     <!-- @[Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -187,7 +187,7 @@
       }
       ```
 
-      在"index.d.ts"文件中，定义ArkTS接口：
+      在"entry > src > main > cpp > types > libentry > Index.d.ts"文件中，定义ArkTS接口：
 
       <!-- @[Sys_Native_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
       

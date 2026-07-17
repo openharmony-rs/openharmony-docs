@@ -87,7 +87,7 @@ struct Tests {
     Column() {
       // $r("app.media.zh")需要替换为开发者所需的图像资源文件。 
       Image($r("app.media.zh"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .transform(matrix)
     }
@@ -132,7 +132,7 @@ struct Tests {
     Column() {
       // $r("app.media.zh")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.zh"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .transform(matrix1)
       // $r("app.media.zh")需要替换为开发者所需的图像资源文件。
@@ -185,7 +185,7 @@ struct Test {
   imageSize: Length = '300px';
 
   build() {
-    Column({ space: "50px" }) {
+    Column({ space: '50px' }) {
       // $r("app.media.testImage")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.testImage"))
         .width(this.imageSize)
@@ -248,7 +248,7 @@ struct Test {
       // 矩阵变换前
       // $r("app.media.icon")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.icon"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .margin({ top: 50 })
       // 先平移x轴200px，再缩放两倍x轴，得到矩阵变换后的效果图
@@ -351,7 +351,7 @@ struct Test {
     Column() {
       // $r("app.media.bg1")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.bg1")).transform(this.matrix1)
-        .width("40%")
+        .width('40%')
         .height(100)
     }
   }
@@ -405,7 +405,7 @@ struct Test {
     Column() {
       // $r("app.media.testImage")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.testImage")).transform(this.matrix1)
-        .width("300px")
+        .width('300px')
         .height("300px")
     }.width("100%").height("100%").justifyContent(FlexAlign.Center)
   }
@@ -460,7 +460,7 @@ struct Test {
           top: 300
         })
     }
-    .width("100%")
+    .width('100%')
     .height("100%")
   }
 }
@@ -512,7 +512,7 @@ struct Test {
     Column() {
       // $r("app.media.bg1")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.bg1")).transform(this.matrix1)
-        .width("40%")
+        .width('40%')
         .height(100)
     }.width("100%").margin({ top: 50 })
   }
@@ -576,7 +576,7 @@ struct Test {
         .height('300px')
         .margin({ top: 50 })
         .transform(this.matrix_2)
-    }.width("100%").padding(50)
+    }.width('100%').padding(50)
   }
 }
 ```
@@ -634,7 +634,7 @@ struct Index {
         .transform(this.matrix1)
         .width('500px')
         .height('500px')
-    }.width("100%").height("100%").opacity(0.5)
+    }.width('100%').height('100%').opacity(0.5)
   }
 }
 ```
@@ -756,7 +756,7 @@ struct Test {
     Column() {
       // $r("app.media.bg1")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.bg1"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .transform(this.matrix1)
       // $r("app.media.bg2")需要替换为开发者所需的图像资源文件。
@@ -908,4 +908,4 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| [number, number] | 返回矩阵变换后的Point对象。 |
+| [number, number] | 返回矩阵变换后的坐标点，格式为[x, y]。 |

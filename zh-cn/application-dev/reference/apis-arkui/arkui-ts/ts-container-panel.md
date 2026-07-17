@@ -88,7 +88,7 @@ mode(value: PanelMode)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | [PanelMode](#panelmode枚举说明) | 是   | 设置可滑动面板的初始状态。<br/>Minibar类型默认值：PanelMode.Mini；其余类型默认值：PanelMode.Half<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
+| value   | [PanelMode](#panelmode枚举说明) | 是   | 设置可滑动面板的初始状态。<br>Minibar类型默认值：PanelMode.Mini；其余类型默认值：PanelMode.Half<br>从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
 
 ### dragBar
 

@@ -6,7 +6,7 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到本地媒体文件的场景。
+AVRecorder支持开发音视频录制，集成了音频捕获、音频编码、视频编码、音视频封装功能，适用于实现简单视频录制并直接得到本地媒体文件的场景。
 
 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。
 
@@ -179,7 +179,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
                OH_LOG_ERROR(LOG_APP, "==NDKDemo== changeRequest is null!");
                return;
            }
-           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG; // 待媒体库提供可用的VIDEO接口。
+           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
            uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
    
@@ -380,7 +380,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static constexpr int32_t VIDEO_FRAME_HEIGHT = 1080;
    static constexpr int32_t VIDEO_FRAME_RATE = 30;
    static constexpr int32_t CALLBACK_ARG_COUNT = 2;
-   static constexpr int32_t FILE_PERMISSIONS = 0777;
+   static constexpr int32_t FILE_PERMISSIONS = 0644;
    
    static OH_AVRecorder *g_recorder = nullptr;
    static int32_t g_outputFd = -1;
@@ -427,7 +427,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
                OH_LOG_ERROR(LOG_APP, "==NDKDemo== changeRequest is null!");
                return;
            }
-           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG; // 待媒体库提供可用的VIDEO接口。
+           MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
            uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
            OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
    

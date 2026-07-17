@@ -1,4 +1,5 @@
 # 通用属性
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
@@ -6,6 +7,9 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
+
+通用属性用于为ArkUI组件配置尺寸、位置、布局、边框、背景、显隐、交互、无障碍等通用能力，适用于需要统一调整组件外观、布局行为和交互效果的场景，可帮助开发者提升界面构建效率并保持组件表现一致。
+
 - [尺寸设置](ts-universal-attributes-size.md)
 - [位置设置](ts-universal-attributes-location.md)
 - [布局约束](ts-universal-attributes-layout-constraints.md)

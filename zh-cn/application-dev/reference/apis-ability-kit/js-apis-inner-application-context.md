@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及执行应用级操作的回调。
+Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及提供应用级操作的回调能力。
 
 > **说明：**
 >
@@ -291,6 +291,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 ```ts
 import { common, UIAbility, contextConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {

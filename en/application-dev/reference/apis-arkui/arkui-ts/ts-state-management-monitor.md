@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:37:26.290Z pushedAt=2026-07-15T09:08:12.258Z -->
 
-**@Monitor** is used in state management V2 to listen for changes to state variables, so that the state variables support deep listening. It is applicable to scenarios where custom logic (such as data synchronization, UI refresh, and log recording) needs to be executed when state variables or their nested properties change. Compared with **@Watch** in state management V1, **@Monitor** supports deep listening to changes in nested object properties. Since API version 26.0.0, **@Monitor** also supports wildcard characters, allowing for more flexible matching of variable paths.
+**\@Monitor** is used in state management V2 to listen for changes to state variables, so that the state variables support deep listening. It is applicable to scenarios where custom logic (such as data synchronization, UI refresh, and log recording) needs to be executed when state variables or their nested properties change. Compared with **@Watch** in state management V1, **@Monitor** supports deep listening to changes in nested object properties. Since API version 26.0.0, **@Monitor** also supports wildcard characters, allowing for more flexible matching of variable paths.
 
 For details, see [@Monitor Decorator: Listening for Value Changes of the State Variables](../../../ui/state-management/arkts-new-monitor.md).
 
@@ -117,12 +118,11 @@ Represents the configuration options of the **@Monitor** decorator.
 
 | Name          | Type   | Read-Only| Optional| Description                                                        |
 | -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| enableWildcard | boolean | No  | Yes  | Whether to enable the wildcard capability. **true**: The wildcard capability is enabled, and the wildcard character ('*') can be used in the path for fuzzy monitoring. **false**: The wildcard capability is disabled. The default value is **true**, indicating that the wildcard capability is enabled by default.|
-
+| enableWildcard | boolean | No | Yes | Whether to support the wildcard capability. The value **true** indicates to enable the wildcard capability, allowing the use of wildcards (**'*'**) in the path for fuzzy monitoring, and **false** indicates to disable the wildcard capability. The default value is **true**. |
 
 ## IMonitor
 
-When the monitored variable changes, the state management framework will call the registered function and pass the change information of the IMonitor type.
+When the monitored variable changes, the state management framework will call the registered function and pass the change information of the **IMonitor** type.
 
 ### Properties
 
@@ -136,7 +136,7 @@ When the monitored variable changes, the state management framework will call th
 
 | Name               | Type           | Read-Only| Optional| Description            |
 | ------------------- | --------------- | ---- | ---- | ---------------- |
-| dirty | Array\<string\> | No  | No  | Array of paths where properties have changed in the monitored variable. The path format is the same as that of the variable name path specified by **@Monitor**. Nested property paths separated by periods (.) are supported, for example, **'a.b.c'**.|
+| dirty | Array\<string\> | No | No | Array of paths where properties have changed in the monitored variable. The path format is the same as that of the variable name path specified by **\@Monitor**. Nested property paths separated by periods (.) are supported, for example, **'a.b.c'**. Since API version 26.0.0, when the wildcard capability is enabled, this array may contain wildcard paths, and querying wildcard paths through **[value](#value)()** will return **undefined**. |
 
 ### value
 
@@ -156,13 +156,14 @@ Obtains the change information for the specified path.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | No  | Path name of the monitored variable. This parameter is optional. If it is not specified, the first path in the **dirty** array is used by default. Since API version 26.0.0, the first non-wildcard path in **dirty** is used by default. If the specified path is a wildcard path, **undefined** is returned.|
+| path   | string | No  | Path name of the monitored variable. If it is not specified, the first path in the **dirty** array is used by default. Since API version 26.0.0, the first non-wildcard path in **dirty** is used by default. If the specified path is a wildcard path, **undefined** is returned. |
 
 **Returns**
 
 | Type                                                 | Description                                                        |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| [IMonitorValue\<T\>](#imonitorvaluet)  \| undefined | Path and change information for the monitored variable.<br>**T** is the type of the monitored variable.<br>If the monitored path does not exist, **undefined** is returned.<br>Prior to API version 26.0.0, if no path is specified, this parameter returns information corresponding to the first path in the **dirty** array of changed paths by default.<br>Since API version 26.0.0, if no path is specified, this parameter returns the first non-wildcard path in the **dirty** array of changed paths by default.<br>If the specified path is a wildcard path, **undefined** is returned.<br>If no path is specified and all paths in the **dirty** array are wildcard paths, **undefined** is returned.|
+| [IMonitorValue\<T\>](#imonitorvaluet)  \| undefined | Path and change information for the variable monitored by **@Monitor**.<br>**T** is the type of the monitored variable.<br>If the monitored path does not exist, **undefined** is returned.<br>Prior to API version 26.0.0, if no path is specified, this parameter returns information corresponding to the first path in the **dirty** array of changed paths by default.<br>Since API version 26.0.0, if no path is specified, this parameter returns the first non-wildcard path in the **dirty** array of changed paths by default.
+If the specified path is a wildcard path, undefined is returned.<br>If the specified path is a wildcard path, **undefined** is returned.<br>If no path is specified and all paths in the **dirty** array are wildcard paths, **undefined** is returned. |
 
 **Example:**
 
@@ -181,7 +182,7 @@ class Info {
   }
 
   // Listen for multiple variables.
-  @Monitor('age','height')
+  @Monitor('age', 'height')
   onRecordChange(monitor: IMonitor) {
     // If a path is specified for value, the change information for the specified path is returned.
     monitor.dirty.forEach((path: string) => {
