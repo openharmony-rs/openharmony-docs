@@ -553,7 +553,7 @@ zoom(factor: number): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
