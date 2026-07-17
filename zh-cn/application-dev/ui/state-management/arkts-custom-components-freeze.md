@@ -215,7 +215,7 @@ struct FreezeChild {
 ### LazyForEach
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
-<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
+<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -256,28 +256,28 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处添加子组件
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处删除该子组件
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 }
 
@@ -1093,7 +1093,7 @@ struct DelayComponent {
   @Prop @Watch('onChange') delayVal: number;
 
   onChange() {
-    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor DelayComponent: delayVal changed:${this.delayVal}`);
   }
 
   build() {
@@ -1241,13 +1241,13 @@ struct PageTwoStack {
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在4个打印，页面路由返回时，会解冻Tabcontent所有的标签。
 
-![freeze](figures/freeze_tabcontent_back_api15.png)
+![freeze](figures/freeze_tabcontent_before_api18.png)
 
 在API version 18及以上：
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。
 
-![freeze](figures/freeze_tabcontent_back_api16.png)
+![freeze](figures/freeze_tabcontent_after_api18.png)
 
 **页面和LazyForEach**
 

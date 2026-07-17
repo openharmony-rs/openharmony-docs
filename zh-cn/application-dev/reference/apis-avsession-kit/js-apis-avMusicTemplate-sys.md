@@ -1,4 +1,4 @@
-# @ohos.multimedia.avMusicTemplate(音频模板)(系统接口)
+# @ohos.multimedia.avMusicTemplate (音频模板)(系统接口)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
@@ -48,7 +48,7 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [AVMusicTemplateController](arkts-apis-avMusicTemplate-AVMusicTemplateController.md) | 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。 |
+| [AVMusicTemplateController](arkts-apis-avMusicTemplate-AVMusicTemplateController.md) | 音频模板控制器实例，用于与接入音频模板的媒体应用进行数据交互。 |
 
 **错误码：**
 
@@ -335,7 +335,7 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。用于处理会话创建的命令。 |
+| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | 是   | 回调函数，参数为音频模板描述。用于监听音频模板创建事件。 |
 
 **错误码：**
 
@@ -451,7 +451,7 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 | 参数名   | 类型                                                         | 必填 | 说明                         |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。 |
+| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | 是   | 回调函数，参数为音频模板描述。 |
 
 **错误码：**
 

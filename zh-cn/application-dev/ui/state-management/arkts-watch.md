@@ -239,7 +239,7 @@ struct BasketModifier {
 
 2. \@Link装饰的BasketViewer shopBasket值发生变化；
 
-3. 状态管理框架调用\@Watch函数BasketViewer onBasketUpdated 更新BasketViewer TotalPurchase的值；
+3. 状态管理框架调用\@Watch函数BasketViewer onBasketUpdated 更新BasketViewer totalPurchase的值；
 
 4. \@Link shopBasket的改变，新增了数组项，ForEach组件会执行item Builder，渲染构建新的Item项；\@State totalPurchase改变，对应的Text组件也重新渲染；重新渲染是异步发生的。
 
@@ -382,7 +382,7 @@ struct ChildComponent {
 
 3. 通过日志可以看到，父组件的回调顺序和修改顺序一致，而子组件中\@Link和\@ObjectLink的回调触发顺序与父组件中变量更新的顺序不同。这是因为父组件的变量更新是即时的，但子组件中\@Link和\@ObjectLink获取更新数据的时机不同。\@Link的状态更新是同步的，状态变化会立刻触发\@Watch回调。而\@ObjectLink的更新依赖于父组件的同步，当父组件刷新并将更新后的变量传递给子组件时，\@Watch回调才会触发，因此触发顺序略晚于\@Link。
 
-4. 这是符合预期的行为，展示了\@Watch回调的触发时机是根据状态变量真正变化的时间。因为\@Link直接同步，而\@ObjectLink需要等父组件更新子组件变量。类似地，\@Prop也可能表现出与\@ObjectLink类似的行为，其回调触发时间也会略晚。
+4. 这是符合预期的行为，展示了\@Watch回调的触发时机是根据状态变量真正变化的时间。因为\@Link直接同步，而\@ObjectLink需要等父组件更新子组件变量。类似地，当父组件的数据源变化时，\@Prop也会表现出与\@ObjectLink类似的行为，其回调触发时间也会略晚。
 
 ### 使用changedPropertyName进行不同的逻辑处理
 

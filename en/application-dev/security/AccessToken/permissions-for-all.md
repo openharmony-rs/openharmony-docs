@@ -222,6 +222,8 @@ Allows an application to set screens that cannot be captured or recorded.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 9
 
 **Changelog**: The permission level is system_basic in API versions 9 to 10 and changed to normal since API version 11.
@@ -287,6 +289,18 @@ With this permission, the application can publish sticky common events, so that 
 **Authorization mode**: system_grant
 
 **Valid since**: 7
+
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock to keep running in the background.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | car | phone | TV | wearable
+
+**Since**: 7
 
 ## ohos.permission.ACCESS_CERT_MANAGER
 
@@ -446,11 +460,13 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
+This permission allows starting a UIAbility within the same application from the native layer, suitable for scenarios where C/C++ APIs are called to launch a UIAbility.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets | Phones
 
 **Valid since**: 15
 

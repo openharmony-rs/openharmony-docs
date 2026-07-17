@@ -94,7 +94,7 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 
 ## shadow
 
-shadow(value: ShadowOptions | ShadowStyle): T
+shadow(value: ShadowOptions \| ShadowStyle): T
 
 为组件添加阴影效果。
 
@@ -118,7 +118,7 @@ shadow(value: ShadowOptions | ShadowStyle): T
 
 ## shadow<sup>18+</sup>
 
-shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
+shadow(options: Optional\<ShadowOptions \| ShadowStyle>): T
 
 为组件添加阴影效果。与[shadow](#shadow)相比，options参数新增了对undefined类型的支持。
 
@@ -344,7 +344,7 @@ contrast(contrast: Optional\<number>): T
 
 ## invert
 
-invert(value: number | InvertOptions): T
+invert(value: number \| InvertOptions): T
 
 反转输入的图像。
 
@@ -368,7 +368,7 @@ invert(value: number | InvertOptions): T
 
 ## invert<sup>18+</sup>
 
-invert(options: Optional\<number | InvertOptions>): T
+invert(options: Optional\<number \| InvertOptions>): T
 
 反转输入的图像。与[invert](#invert)相比，options参数新增了对undefined类型的支持。
 
@@ -384,7 +384,7 @@ invert(options: Optional\<number | InvertOptions>): T
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup>> | 是   | 反转输入的图像。<br/>入参对象为number时。入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>当options的值为undefined时，恢复为图像无变化的效果。<br/>**说明：**<br/>number和InvertOptions两种形式的入参对应不同的反转效果。两种类型的入参切换时，不会清除之前已设置的反转效果，两种反转效果会同时存在，建议始终使用同一种形式的入参。|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup>> | 是   | 反转输入的图像。<br/>入参对象为number时，入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>当options的值为undefined时，恢复为图像无变化的效果。<br/>**说明：**<br/>number和InvertOptions两种形式的入参对应不同的反转效果。两种类型的入参切换时，不会清除之前已设置的反转效果，两种反转效果会同时存在，建议始终使用同一种形式的入参。|
 
 **返回值：**
 
@@ -444,7 +444,7 @@ sepia(sepia: Optional\<number>): T
 
 ## hueRotate
 
-hueRotate(value: number | string): T
+hueRotate(value: number \| string): T
 
 色相旋转效果。不通过该接口设置时，默认无变化。
 
@@ -458,7 +458,7 @@ hueRotate(value: number | string): T
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | 是   | 色相旋转效果，输入参数为旋转角度。<br/>取值范围：(-∞, +∞)<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。 |
+| value  | number&nbsp;\|&nbsp;string | 是   | 色相旋转效果，输入参数为旋转角度。<br/>单位：度（°）<br/>取值范围：(-∞, +∞)<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。 |
 
 **返回值：**
 
@@ -468,7 +468,7 @@ hueRotate(value: number | string): T
 
 ## hueRotate<sup>18+</sup>
 
-hueRotate(rotation: Optional\<number | string>): T
+hueRotate(rotation: Optional\<number \| string>): T
 
 色相旋转效果。不通过该接口设置时，默认无变化。与[hueRotate](#huerotate)相比，rotation参数新增了对undefined类型的支持。
 
@@ -494,7 +494,7 @@ hueRotate(rotation: Optional\<number | string>): T
 
 ## colorBlend
 
-colorBlend(value: Color | string | Resource): T
+colorBlend(value: Color \| string \| Resource): T
 
 为组件添加颜色叠加效果。
 
@@ -518,7 +518,7 @@ colorBlend(value: Color | string | Resource): T
 
 ## colorBlend<sup>18+</sup>
 
-colorBlend(color: Optional\<Color | string | Resource>): T
+colorBlend(color: Optional\<Color \| string \| Resource>): T
 
 为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
 
@@ -977,9 +977,9 @@ systemBarEffect(): T
 
 | 名称      | 类型                                       | 只读 | 可选   | 说明                                       |
 | ------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| radius  | number \| [Resource](ts-types.md#resource) | 否 | 否    | 阴影模糊半径。<br/>取值范围：[0, +∞)，API版本26.0.0开始取值范围变更为(-∞, +∞)<br/>单位：px<br/>**说明：**  <br/>API版本26.0.0之前，设置小于0的值时，按值为0处理。从API版本26.0.0开始，设置的值即为最终取值，当设置负数值时阴影消失。<br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果radius为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| radius  | number \| [Resource](ts-types.md#resource) | 否 | 否    | 阴影模糊半径。<br/>取值范围：[0, +∞)，API版本26.0.0开始取值范围变更为(-∞, +∞)<br/>单位：px<br/>**说明：**  <br/>API版本26.0.0之前，设置小于0的值时，按值为0处理，此时不绘制阴影；从API版本26.0.0开始，设置的值即为最终取值，值为0时仍绘制阴影，设置负数值时不绘制阴影。<br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果radius为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | type<sup>10+</sup> | [ShadowType](#shadowtype10枚举说明)  |      否 | 是    | 阴影类型。<br/>默认值：COLOR <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。       |
-| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)<sup>11+</sup>  | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
+| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)<sup>11+</sup>  | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
 | offsetX | number \| [Resource](ts-types.md#resource) | 否  | 是  | 阴影的X轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果offsetX为Resource类型，则传入的值需为number类型。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是   | 阴影的Y轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果offsetY为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
 | fill<sup>11+</sup>     | boolean                                    | 否  | 是  | 阴影是否内部填充。true表示阴影在内部填充，false表示阴影在外部填充。<br/>默认值：false。<br/>**说明：**<br/>[textShadow](ts-basic-components-text.md#textshadow10)中该字段不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
@@ -1095,7 +1095,7 @@ type FractionStop = [ number, number ]
 | -------------- | ------ | ----- | ----- | ------------------------------------------ |
 | low            | number | 否    | 否    | 背景颜色灰度值大于阈值区间时的取值。 <br/>取值范围：[0, 1]                 |
 | high           | number | 否    | 否    | 背景颜色灰度值小于阈值区间时的取值。  <br/>取值范围：[0, 1]            |
-| threshold      | number | 否    | 否    | 灰度阈值。    <br/>取值范围：[0, 1]                            |
+| threshold      | number | 否    | 否    | 灰度阈值。与thresholdRange配合使用，灰度阈值上下偏移thresholdRange构成阈值区间。    <br/>取值范围：[0, 1]                            |
 | thresholdRange | number | 否    | 否    | 阈值范围。<br/>取值范围：[0, 1]<br/>**说明：**<br/>灰度阈值上下偏移thresholdRange构成阈值区间，背景颜色灰度值在区间内取值由high线性渐变到low。|
 
 ## BackgroundImageOptions<sup>18+</sup>
@@ -1177,14 +1177,15 @@ freeze(freeze: Optional\<boolean>): T
 
 ## systemMaterial
 
-systemMaterial(material: SystemUiMaterial | undefined): T
+systemMaterial(material: SystemUiMaterial \| undefined): T
 
-设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果，影响的属性与设备算力档位相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis-uimaterial.md#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
 
 > **说明：**
 > 
+> - [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis-uimaterial.md#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。在不支持沉浸式材质的设备上，设置ImmersiveMaterial后，组件的样式仍由已设置的通用属性决定，ImmersiveMaterial不会覆盖任何通用属性。
 > - 在同时设置了材质影响的通用属性发生冲突时，除阴影外，总体原则为后设置的生效，对于阴影属性取决于[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的applyShadow参数。
->   - 先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在高算力和中算力设备上，背景色属性被清空为透明色；在低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。
+>   - 先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在支持沉浸式材质的高算力和中算力设备上，背景色属性被清空为透明色；在支持沉浸式材质的低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。
 >   - 先设置[systemMaterial](#systemmaterial)属性后设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性：systemMaterial属性影响的背景色效果被覆盖，背景色属性生效为后设置的backgroundColor属性的颜色。
 > - 对于所有设备算力档位均需要材质颜色的场景，可以通过[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的materialColor参数承载，不再设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性。
 

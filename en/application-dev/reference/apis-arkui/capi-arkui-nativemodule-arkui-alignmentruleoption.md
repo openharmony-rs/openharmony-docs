@@ -18,4 +18,4 @@ Defines the alignment rule in the relative container.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [layout.h](capi-layout-h.md)

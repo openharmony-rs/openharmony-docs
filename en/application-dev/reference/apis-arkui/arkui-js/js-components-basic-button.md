@@ -28,7 +28,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | value                  | string  | -     | No   | Text value of the button.                             |
 | icon                   | string  | -     | No   | Path of the button icon. The supported icon formats are JPG, PNG, and SVG.           |
 | placement<sup>5+</sup> | string  | end   | No   | Position of the button icon in text. This attribute is valid only when **type** is not set. Available values are as follows:<br>- **start**: The button icon is at the beginning of the text.<br>- **end**: The button icon is at the end of the text.<br>- **top**: The button icon is at the top of the text.<br>- **bottom**: The button icon is at the bottom of the text.|
-| waiting                | boolean | false | No   | Waiting status. When this attribute is set to **true**, a loading animation is displayed on the left of the text. This attribute does not work for download buttons.|
+| waiting                | boolean | false | No   | Waiting status. When this attribute is set to **true**, a loading animation is displayed on the left of the text. If its value is **false**, the loading animation is not displayed. This attribute does not work for download buttons.|
 
 ## Styles
 
@@ -56,7 +56,7 @@ In addition to the **background-color**, **opacity**, **display**, **visibility*
 | ----------- | -------------------------- | ---------- | ---- | ---------------------------------------- |
 | text-color  | &lt;color&gt;              | \#de0000   | No   | Text color of the arc button.                              |
 | font-size   | &lt;length&gt;             | 37.5px     | No   | Font size of the arc button.                              |
-| allow-scale | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.          |
+| allow-scale | boolean                    | true       | No   | Whether the font size changes with the system's font size settings. The value **true** indicates the font size changes with the system's font size settings, and **false** indicates the opposite.       |
 | font-style  | string                     | normal     | No   | Font style of the arc button.                              |
 | font-weight | number \| string | normal     | No   | Font weight of the arc button. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md#styles) component. |
 | font-family | &lt;string&gt;             | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|

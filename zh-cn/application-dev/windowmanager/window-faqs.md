@@ -265,7 +265,7 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**
 > 
-> - 在支持[自由多窗](window-terminology.md#free-multi-window-mode自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
+> - 在支持[自由窗口](window-terminology.md#freeform-window自由窗口)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
 > 
 > - 在PC/2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
 
@@ -574,6 +574,72 @@ module.json5配置示例如下：
 对于画中画和闪控球窗口，其隐私模式跟随父窗口。
 
 若需要对隐私窗口进行截图，可使用[snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18)接口。
+
+## APP退后台在多任务窗口展示时，如何实现模糊效果
+APP可以通过监听主窗口生命周期状态，并用[AppStorage]( ../ui/state-management/arkts-appstorage.md)存储该状态，当状态为前台不可交互状态或后台状态时，设置组件[foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle)。
+
+示例代码如下所示：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+    AppStorage.setOrCreate('windowStage', windowStage);
+    windowStage.on('windowStageEvent', (data) => {
+      console.info('Succeeded in enabling the listener for window stage event changes. Data : ' +
+        JSON.stringify(data));
+      // 根据事件状态类型选择进行相应的处理
+      if (data == window.WindowStageEventType.SHOWN) {
+        console.info('current window stage event is SHOWN');
+        AppStorage.setOrCreate('interact', true);
+        // 应用进入前台为前台状态时，默认为可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.HIDDEN) {
+        console.info('current window stage event is HIDDEN');
+        AppStorage.setOrCreate('interact', false);
+        // 应用进入后台为后台状态时，默认为不可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.PAUSED) {
+        console.info('current window stage event is PAUSED');
+        AppStorage.setOrCreate('interact', false);
+        // 前台应用进入多任务为前台不可交互状态时，转为不可交互状态
+        // ...
+      } else if (data == window.WindowStageEventType.RESUMED) {
+        console.info('current window stage event is RESUMED');
+        AppStorage.setOrCreate('interact', true);
+        // 应用进入多任务后又继续返回前台为前台可交互状态时，恢复可交互状态
+        // ...
+      }
+    });
+  }
+}
+```
+
+```ts
+// ets/pages/Index.ets
+@Entry
+@Component
+struct Index {
+  @StorageLink('interact') interact: boolean = true;
+  build() {
+    Column() {
+      Text('文本文本')
+        .fontSize(60)
+    }
+    .foregroundBlurStyle(this.interact ? BlurStyle.NONE : BlurStyle.COMPONENT_ULTRA_THICK) // 可自定义模糊程度
+  }
+}
+```
 
 ## resize、moveWindowTo等接口有什么位置/大小限制
 

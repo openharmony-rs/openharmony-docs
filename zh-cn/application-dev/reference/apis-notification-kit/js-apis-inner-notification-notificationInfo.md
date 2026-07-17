@@ -19,7 +19,7 @@
 | 名称                 | 类型    | 只读 | 可选 | 说明                                            | 
 | -------------------- | ------ | ---- | ---- | ---------------------------------------------- |
 | hashCode             | string | 是   | 否   | 通知的唯一标识符。                               |
-| notificationSlotType | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype)| 是 | 否 | 通知渠道类型，标识通知所属的渠道分类（如社交通信、服务提醒等）。不同渠道类型对应不同的提醒方式。 |
+| notificationSlotType | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype)| 是 | 否 | 通知渠道类型，标识通知所属的渠道分类（如社交通讯、服务提醒等）。不同渠道类型对应不同的提醒方式。 |
 | content              | [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md)      | 是 | 否 | 通知内容。包含通知的标题和正文。     |
 | bundleName           | string | 是   | 否   | 创建通知的包名。                                 |
 | appIndex             | number | 是   | 否   | 创建通知的应用包的分身索引标识，仅在分身应用中生效。|

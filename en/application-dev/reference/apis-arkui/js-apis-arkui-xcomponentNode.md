@@ -44,7 +44,7 @@ Constructor used to create an XComponentNode.
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uiContext   | [UIContext](arkts-apis-uicontext-uicontext.md)                      | Yes  | UI context. For details about how to obtain it, see [Obtaining UI Context](./js-apis-arkui-node.md#obtaining-ui-context).|
-| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes  | Parameters for creating an XComponentNode.                              |
+| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes  | Parameters for constructing an XComponentNode.                              |
 | id          | string                                                       | Yes  | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
 | type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | Yes  | Type of the **XComponent**. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
 | libraryName | string                                                       | No  | Name of the dynamic library generated during compilation at the native layer. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
@@ -110,7 +110,7 @@ Changes the rendering type of the XComponentNode.
 ## Example
 
 ```ts
-import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext} from '@kit.ArkUI'
+import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext } from '@kit.ArkUI'
 
 class XComponentNodeController extends NodeController {
   private xComponentNode: MyXComponentNode | null = null;

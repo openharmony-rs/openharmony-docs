@@ -24,11 +24,11 @@
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_CreateSharedFontCollection (void) | 创建可共享的字体集对象OH_Drawing_FontCollection。 | 
-| OH_Drawing_RegisterFont (OH_Drawing_FontCollection\* , const char\* fontFamily, const char\* familySrc ) | 用于在字体管理器中注册自定义字体，支持的字体文件格式包含：ttf、otf。 | 
+| OH_Drawing_CreateSharedFontCollection(void) | 创建可共享的字体集对象OH_Drawing_FontCollection。 | 
+| OH_Drawing_RegisterFont(OH_Drawing_FontCollection\* , const char\* fontFamily, const char\* familySrc ) | 用于在字体管理器中注册自定义字体，支持的字体文件格式包含：ttf、otf。 | 
 | OH_Drawing_CreateTextStyle(void) | 创建指向OH_Drawing_TextStyle对象的指针，用于设置文本样式。 | 
-| OH_Drawing_SetTextStyleFontFamilies (OH_Drawing_TextStyle \*, int, const char \*fontFamilies[]) | 设置字体类型。 | 
-| OH_Drawing_UnregisterFont (OH_Drawing_FontCollection\* , const char\* fontFamily) | 通过字体家族名称取消注册自定义字体。 | 
+| OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle \*, int, const char \*fontFamilies[]) | 设置指定文本样式的字体家族类型。 | 
+| OH_Drawing_UnregisterFont(OH_Drawing_FontCollection\* , const char\* fontFamily) | 通过字体家族名称取消注册自定义字体。 | 
 
 ## 开发步骤
 1. 在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
@@ -84,7 +84,6 @@
    <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
-   // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
    ```
 

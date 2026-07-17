@@ -91,7 +91,7 @@ During file processing, the system checks whether the file is a DLP file and the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -138,7 +138,7 @@ During file processing, the system checks whether the file is a DLP file and the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -183,7 +183,7 @@ When processing files in the DLP sandbox, the system determines the operations t
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
@@ -225,7 +225,7 @@ When processing files in the DLP sandbox, the system determines the operations t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -276,7 +276,7 @@ Determine the file type based on the original file name extension and select an 
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -310,7 +310,7 @@ This API is used to obtain the standard extension of the DLP file, which can be 
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100011 | The system ability works abnormally. |
 
@@ -344,7 +344,7 @@ Subscribes to a DLP file open event. After this API is successfully called, a ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 19100001 | Invalid parameter value. |
@@ -381,7 +381,7 @@ This API is usually called to release resources when the page is destroyed or th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 19100001 | Invalid parameter value. |
@@ -418,7 +418,7 @@ This API is used to determine whether the current application is running in a DL
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -455,7 +455,7 @@ This API is used to determine whether the current application is running in a DL
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -495,7 +495,7 @@ This API is used to obtain the types of files that can be used to generate DLP f
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -532,7 +532,7 @@ This API is used to obtain the types of files that can be used to generate DLP f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -576,7 +576,7 @@ Sets the retention state for sandbox applications. By default, when a DLP file i
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -617,7 +617,7 @@ Sets the retention state for sandbox applications. By default, when a DLP file i
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -672,7 +672,7 @@ This API is used to cancel the retention state for sandbox application and resto
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -712,7 +712,7 @@ This API is used to cancel the retention state for sandbox application and resto
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -759,7 +759,7 @@ This API is used to query the sandbox retention information of a specified appli
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -799,7 +799,7 @@ This API is used to query the sandbox retention information of a specified appli
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -840,7 +840,7 @@ This API is used to query the sandbox retention information of a specified appli
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -881,7 +881,7 @@ This API is used to obtain the list of DLP files that are accessed recently, whi
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
@@ -919,7 +919,7 @@ This API is used to obtain the list of DLP files that are accessed recently, whi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -973,7 +973,7 @@ This API starts the DLP manager application to configure file permissions and re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -1028,7 +1028,7 @@ This API sets the sandbox application configuration so that the application can 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
@@ -1067,7 +1067,7 @@ This API clears the sandbox application configuration and restores the default s
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
@@ -1104,7 +1104,7 @@ This API obtains the sandbox application configuration, which can be used to rea
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -1144,7 +1144,7 @@ This API checks whether the current system supports the DLP encryption function,
 
 For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 19100011 | The system ability works abnormally. |
 
@@ -1186,7 +1186,7 @@ This API is used by the enterprise administrator to configure DLP security polic
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100001 | Invalid parameter value. |
@@ -1368,7 +1368,7 @@ This API encrypts a plaintext file to generate a DLP file that can be accessed o
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100001 | Invalid parameter value. |
@@ -1450,7 +1450,7 @@ This API decrypts DLP files into plaintext files, which is applicable to exporti
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100001 | Invalid parameter value. |
@@ -1521,7 +1521,7 @@ This API obtains the policy information of a DLP file for analysis in scenarios 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100001 | Invalid parameter value. |
@@ -1661,7 +1661,7 @@ This API can be used in enterprise account authentication and cloud permission v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100011 | The system ability works abnormally. |
@@ -1710,7 +1710,7 @@ Represents a constructor for instantiating [DlpConnManager](#dlpconnmanager21).
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
   
@@ -1751,7 +1751,7 @@ Registers a callback with the SA.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100001 | Invalid parameter value. |
@@ -1803,7 +1803,7 @@ This API unregisters a callback and releases resources when an application exits
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100001 | Invalid parameter value. |
@@ -1870,7 +1870,7 @@ This API is called when the system needs to manage or track enterprise DLP files
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 801 | Capability not supported. |
@@ -1930,7 +1930,7 @@ This API can be called to close enterprise DLP files in batches, clear file reso
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 801 | Capability not supported. |

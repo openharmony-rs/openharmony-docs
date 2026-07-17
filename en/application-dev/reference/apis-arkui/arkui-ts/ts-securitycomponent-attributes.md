@@ -604,7 +604,7 @@ Sets the alignment rules for child components within a relative container. This 
 
 | Name | Type                                        | Mandatory | Description                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12) | Yes   | Alignment rule configuration object that uses **start**/**end** in place of **left**/**right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within [RelativeContainer](ts-container-relativecontainer.md). |
+| alignRule | [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12) | Yes   | Alignment rule configuration object that uses **start** and **end** in place of **left** and **right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within [RelativeContainer](ts-container-relativecontainer.md). |
 
 **Return value**
 

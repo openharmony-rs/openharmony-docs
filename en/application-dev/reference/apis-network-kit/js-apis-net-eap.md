@@ -6,6 +6,7 @@
 <!--Designer: @h00918518-->
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:42.905Z pushedAt=2026-06-26T03:00:41.291Z -->
 
 The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
 
@@ -60,16 +61,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
     
-try {
-  eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('regCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('regCustomEapHandler success');
 ```
 
 ## eap.unregCustomEapHandler
@@ -111,16 +108,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
     
-try {
-  eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('unregCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('unregCustomEapHandler success');
 ```
 
 ## eap.replyCustomEapData

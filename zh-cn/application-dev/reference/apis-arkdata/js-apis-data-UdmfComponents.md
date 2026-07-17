@@ -95,14 +95,14 @@ struct Index {
       // 构建内容卡片数据对象
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       };
     } catch (err) {
-      console.error("Init data error");
+      console.error(`Init data error`);
     }
   }
 
@@ -123,7 +123,7 @@ struct Index {
           formHeight: 50,
           // 点击卡片的回调函数
           handleOnClick: () => {
-            console.info("Clicked card");
+            console.info(`Clicked card`);
           }
         })
       }

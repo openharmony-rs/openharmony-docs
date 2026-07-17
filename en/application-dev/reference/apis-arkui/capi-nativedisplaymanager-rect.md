@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_Rect
 
 ## Overview
 
-The struct describes a rectangle.
+Describes a rectangle.
 
 **Since**: 12
 
@@ -26,7 +26,7 @@ The struct describes a rectangle.
 
 | Name| Description|
 | -- | -- |
-| int32_t left | Left boundary of the rectangle.|
-| int32_t top | Top boundary of the rectangle.|
-| uint32_t width | Width of the rectangle.|
-| uint32_t height | Height of the rectangle.|
+| int32_t left | Left boundary of the rectangle, in px. The value is an integer.|
+| int32_t top | Top boundary of the rectangle, in px. The value is an integer.|
+| uint32_t width | Width of the rectangle, in px. The value is an integer.|
+| uint32_t height | Height of the rectangle, in px. The value is an integer.|

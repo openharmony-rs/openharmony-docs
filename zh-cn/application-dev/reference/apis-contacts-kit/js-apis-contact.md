@@ -4581,7 +4581,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
 
 **错误码：**
 
@@ -4594,7 +4594,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 | 16700002      | Invalid parameter value. |
 | 16700003      | Background usage is prohibited. |
 | 16700004      | The number of contacts exceeds the limit. |
-| 16700103      | User canceled. |
+| 16700103      | User cancel. |
 
 **示例：**
 
@@ -4634,7 +4634,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
         };
       contacts.push(contactData);
     }
-    const progress: ContactSyncProgress = {
+    const progress: contact.ContactSyncProgress = {
       syncId: syncId,
       currentBatch: batch,
       totalBatches: totalBatches
@@ -4660,7 +4660,7 @@ queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.WRITE_CONTACTS
+**需要权限**：ohos.permission.READ_CONTACTS
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4699,7 +4699,7 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-const syncInfoList: ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as ContactSyncInfo[];
+const syncInfoList: contact.ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as contact.ContactSyncInfo[];
 console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
 ```
 
@@ -4740,7 +4740,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 | 16700004      | The number of contacts exceeds the limit. |
-| 16700103      | User canceled. |
+| 16700103      | User cancel. |
 
 **示例：**
 
@@ -4900,7 +4900,7 @@ promise.then((data) => {
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
 | events            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
-| groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。                     |
+| groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。<br> **说明**： 添加或更新联系人时，仅支持关联到已有群组，不支持创建新群组。                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | 否   | 是   | 联系人的即时消息地址列表。             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | 否   | 是   | 联系人的电话号码列表。                 |
 | portrait          | [Portrait](#portrait)                   | 否   | 是   | 联系人的头像。                         |
@@ -5541,12 +5541,14 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称                  | 值 | 说明                               |
 | --------------------- | ---- | ---------------------------------- |
-| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
-| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。 |
+| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。                 |
 
 ## ContactSyncProgress
 
@@ -5556,7 +5558,9 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
@@ -5572,7 +5576,9 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
@@ -5580,5 +5586,5 @@ let website: contact.Website = {
 | syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
 | completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
-| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
+| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳，单位为毫秒(ms)。|
 

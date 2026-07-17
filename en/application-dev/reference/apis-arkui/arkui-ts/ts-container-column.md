@@ -5,6 +5,7 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:27:31.887Z pushedAt=2026-07-02T09:00:06.738Z -->
 
 The **Column** component lays out child components vertically.
 
@@ -23,6 +24,7 @@ Supported
 ## APIs
 
 ### Column
+
 Column(options?: ColumnOptions)
 
 Creates a vertical linear layout container. You can set the spacing between child components.
@@ -41,7 +43,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [ColumnOptions](#columnoptions18)| No| Vertical spacing between two adjacent child components. The value can be of the number or string type.|
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18) | No | Configuration options for vertical layout elements, which can set the vertical spacing of child components.<br/>**Model restriction:** This API can be used only in the stage model. |
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
@@ -52,13 +54,15 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No| Vertical spacing between two adjacent child components. The value can be of the number, string, or Resource type.|
+| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No | Configuration options for the vertical layout element, which can set the vertical spacing of child components.|
 
 ## ColumnOptions<sup>18+</sup>
 
@@ -71,6 +75,8 @@ Sets the spacing between child components of the **Column** component.
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +91,8 @@ Sets the spacing between child components of the **Column** component. The spaci
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,6 +109,8 @@ Describes the supported data types for the **space** parameter in the constructo
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +174,8 @@ Sets whether to reverse the vertical arrangement of child components.
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

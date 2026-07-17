@@ -232,7 +232,7 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Font shadow of the text.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow.|
 
 ### fontFeature<sup>11+</sup>
 
@@ -393,7 +393,7 @@ You need a custom class to implement the **ContentModifier** API.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | timeZoneOffset | number | No| No| Time zone offset of the text clock.<br>The value range is [-14, 12], indicating UTC+12 to UTC-12. A negative value indicates Eastern Standard Time, and a positive value indicates Western Standard Time. For example, **-8** indicates UTC+8. If the value is a floating point number within the value range, it is rounded off, with the decimal portion discarded.|
-| started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is disabled.<br>Default value: **true**|
+| started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is stopped.<br>Default value: **true**|
 | timeValue | number | No| No| Time zone offset of the text clock in seconds from UTC.|
 
 ## Example
@@ -401,9 +401,9 @@ You need a custom class to implement the **ContentModifier** API.
 
 This example demonstrates the basic usage of the **TextClock** component, setting the clock display format using the [format](#format) attribute.
 
-Clicking **"start TextClock"** triggers the callback to invoke **TextClockController** and initiate the clock. Clicking **"stop TextClock"** pauses the clock via **TextClockController**.
+Clicking **"start TextClock"** triggers the callback to invoke **TextClockController** and initiate the clock. Clicking **"stop TextClock"** to invoke **TextClockController** and stop the clock.
 
-The example demonstrates how to continuously update **accumulateTime** content during clock updates by invoking the [TextClockController](#textclockcontroller) callback.
+This example uses the [onDateChange](#ondatechange) callback to update **accumulateTime** whenever the text clock refreshes.
 
 ```ts
 @Entry
@@ -489,7 +489,7 @@ struct TextClockExample {
 ![TextshadowExample](figures/text_clock_textshadow.png)
 
 ### Example 3: Configuring the Custom Content Area
-This example implements the functionality of customizing the style of a text clock, creating a time picker component with a custom style: The time picker dynamically adjusts its selected value based on the text clock's timezone offset and the time zone offset in seconds from UTC, creating a clock effect; depending on whether the text clock is started, the time picker toggles between a 12-hour and a 24-hour format display.
+This example implements the functionality of customizing the style of a text clock, creating a time picker component with a custom style: The time picker dynamically adjusts its selected value based on the text clock's timezone offset and the timezone offset in seconds from UTC to deliver a clock effect. Depending on whether the text clock is started, the time picker toggles between a 12-hour and a 24-hour format display.
 
 ``` ts
 class MyTextClockStyle implements ContentModifier<TextClockConfiguration> {

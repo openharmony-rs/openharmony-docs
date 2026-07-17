@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明输入音频格式、输出音频格式底层数据结构和格式转换接口的定义。
+声明输入音频格式、输出音频格式底层数据结构和格式转换接口。
 
 **引用文件：** <ohaudiosuite/native_audio_converter.h>
 
@@ -127,8 +127,8 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 
 | 参数项 | 描述 |
 | --- | --- |
-| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | 配置指向输入音频格式的指针。 |
-| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | 配置指向输出音频格式的指针。 |
+| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | 指向输入音频格式的指针。 |
+| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | 指向输出音频格式的指针。 |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)** converter | 指向可用的音频转换器的指针。 |
 
 **返回：**
@@ -174,7 +174,7 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 | -- | -- |
 | void\* userData | 传递给回调函数的用户自定义数据。 |
 | const void\*\* outInputData | 指向回调函数设置的指向输入音频数据缓冲区的指针。 |
-| [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | 通过回调函数设置，以通知转换器数据流状态是否可用。 |
+| [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | 通过回调函数设置，用于通知转换器输入数据的状态。 |
 
 **返回：**
 

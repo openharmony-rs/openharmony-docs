@@ -10,7 +10,7 @@
 
 Defines the structs and APIs of the **EmbeddedComponent** component.
 
-**File to include:** <arkui/embedded_component.h>
+**File to include:** <arkui/node_attributes/embedded_component.h>
 
 **Library:** libace_ndk.z.so
 
