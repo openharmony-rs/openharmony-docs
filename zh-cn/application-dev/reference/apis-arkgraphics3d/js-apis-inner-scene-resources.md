@@ -16,9 +16,9 @@
 ## 导入模块
 
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
