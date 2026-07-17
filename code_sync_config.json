@@ -50708,7 +50708,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"example_use",
 						"start_line":16
 					}
@@ -50868,7 +50868,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/workers/Worker.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":24,
 						"name":"directly_operate_obj",
 						"start_line":15
 					}
