@@ -9,8 +9,9 @@
 本模块提供公共事件的发布、订阅、取消订阅等能力。公共事件是一种系统级的事件通知机制，允许应用在系统状态变化（如开机完成、电量变化、屏幕亮灭等）或业务自定义事件发生时，向订阅了该事件的应用发送通知，实现跨组件、跨应用的信息传递。
 
 本模块涉及的关键概念：
-- 系统公共事件：是由系统服务或系统应用发布的预置公共事件，对应`Support`枚举中定义的事件名称，部分系统公共事件的订阅需要特定权限。
-- 有序公共事件：是按订阅者优先级依次投递的公共事件，高优先级订阅者先收到事件，可通过修改事件数据将信息传递给后续订阅者，也可中止向低优先级订阅者投递事件。
+- 无序公共事件：CES在转发公共事件时，不考虑订阅者是否接收到该事件，也不保证订阅者接收到该事件的顺序与其订阅顺序一致。
+- 有序公共事件：CES在转发公共事件时，根据订阅者设置的优先级等级，优先将公共事件发送给优先级较高的订阅者，等待其成功接收该公共事件之后再将事件发送给优先级较低的订阅者。如果有多个订阅者具有相同的优先级，则他们将随机接收到公共事件。
+- 粘性公共事件：能够让订阅者收到在订阅前已经发送的公共事件就是粘性公共事件。普通的公共事件只能在订阅后发送才能收到，而粘性公共事件的特殊性就是可以先发送后订阅，同时也支持先订阅后发送。发送粘性公共事件必须是系统应用或系统服务。
 
 **API 组合使用关系说明：**
 
@@ -74,7 +75,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功时，err为undefined；发布失败时，err为错误对象。 |
 
 **错误码：**
 
@@ -147,7 +148,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。  |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
-| callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功时，err为undefined，否则为错误对象。  |
+| callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功时，err为undefined；发布失败时，err为错误对象。  |
 
 **错误码：**
 
@@ -233,7 +234,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 | 参数名          | 类型                                                         | 必填 | 说明                       |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | 是   | 表示订阅信息。             |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 是   | 回调函数，用于接收创建的订阅者对象。当公共事件订阅者创建成功时，err为undefined，data为创建成功的CommonEventSubscriber订阅者对象；否则err为错误对象。 |
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 是   | 回调函数，用于接收创建的订阅者对象。当公共事件订阅者创建成功时，err为undefined，data为创建成功的CommonEventSubscriber订阅者对象；创建失败时，err为错误对象。 |
 
 **错误码：**
 
@@ -469,7 +470,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. <br> 适用版本：20+|
+| 1500010  | The count of subscriber exceeds system specification. <br> 适用版本：20+|
 
 **示例：**
 
@@ -576,7 +577,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 | 参数名       | 类型                                             | 必填 | 说明                     |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 是   | 表示订阅者对象。         |
-| callback   | AsyncCallback\<void>                            | 否   | 回调函数。当取消公共事件订阅成功时，err为undefined，否则为错误对象。不传该参数时，默认取消订阅且不返回结果。 |
+| callback   | AsyncCallback\<void>                            | 否   | 回调函数。当取消公共事件订阅成功时，err为undefined；取消失败时，err为错误对象。不传该参数时，默认取消订阅且不返回结果。 |
 
 **错误码：**
 
@@ -764,7 +765,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. |
+| 1500010  | The count of subscriber exceeds system specification. |
 
 **示例：**
 
