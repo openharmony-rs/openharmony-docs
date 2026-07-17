@@ -123,7 +123,7 @@
    ``` TypeScript
    PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
      .then(() => {
-       hilog.info(DOMAIN, 'testTag', 'CloseCustomDialog complete.g complete.');
+       hilog.info(DOMAIN, 'testTag', 'CloseCustomDialog complete.');
        if (PromptActionClassNew.contentNode !== null) {
          PromptActionClassNew.contentNode.dispose();   // 释放contentNode
        }
