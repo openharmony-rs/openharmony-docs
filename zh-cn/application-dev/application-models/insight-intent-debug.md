@@ -35,11 +35,11 @@
 
       | 装饰器类型 | 执行模式 | 意图调用结果 |
       | --------- | --------- | -------- |
-      | [@InsightIntentLink](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) | UI_ABILITY_FOREGROUND | 页面跳转，下方出现半模态窗口展示意图调用返回结果。 |
-      | [@InsightIntentPage](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) | UI_ABILITY_FOREGROUND | 页面跳转，下方出现半模态窗口展示意图调用返回结果。 |
-      | [@InsightIntentEntry](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) | UI_ABILITY_FOREGROUND | 页面跳转，下方出现半模态窗口展示意图调用返回结果。 |
-      | [@InsightIntentEntry](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) | UI_ABILITY_BACKGROUND | 下方出现半模态窗口展示意图调用返回结果。 |
-      | [@InsightIntentEntry](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)| UI_EXTENSION_ABILITY | 下方出现半模态窗口展示内嵌[UIExtensionAbility](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)页面。 |
-      | <!--DelRow--> [@InsightIntentEntry](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) | SERVICE_EXTENSION_ABILITY | 下方出现半模态窗口展示意图调用返回结果。 |
-      | [@InsightIntentFunctionMethod](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod) | UI_ABILITY_BACKGROUND | 下方出现半模态窗口展示意图调用返回结果。 |
-      | [@InsightIntentForm](../../application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform) | - | 内嵌卡片页面，点击卡片可跳转至应用 |
+      | [@InsightIntentLinkapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) | UI_ABILITY_FOREGROUND | 页面跳转，下方出现半模态窗口展示意图调用返回结果。 |
+      | [@InsightIntentPageapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) | UI_ABILITY_FOREGROUND | 页面跳转，下方出现半模态窗口展示意图调用返回结果。 |
+      | [@InsightIntentEntryapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) | UI_ABILITY_FOREGROUND | 页面跳转，下方出现半模态窗口展示意图调用返回结果。 |
+      | [@InsightIntentEntryapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) | UI_ABILITY_BACKGROUND | 下方出现半模态窗口展示意图调用返回结果。 |
+      | [@InsightIntentEntryapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)| UI_EXTENSION_ABILITY | 下方出现半模态窗口展示内嵌[UIExtensionAbilityapis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)页面。 |
+      | <!--DelRow--> [@InsightIntentEntryapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry) | SERVICE_EXTENSION_ABILITY | 下方出现半模态窗口展示意图调用返回结果。 |
+      | [@InsightIntentFunctionMethodapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod) | UI_ABILITY_BACKGROUND | 下方出现半模态窗口展示意图调用返回结果。 |
+      | [@InsightIntentFormapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform) | - | 内嵌卡片页面，点击卡片可跳转至应用 |

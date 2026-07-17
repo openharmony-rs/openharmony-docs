@@ -123,11 +123,11 @@ struct Index {
 
 **问题现象**
 
-Button组件的type属性支持使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举或数字进行设置，但SDK中枚举的数值与实际type可用的数值不一致。例如ButtonType.ROUNDED_RECTANGLE枚举数值为3，但是使用`type(ButtonType.ROUNDED_RECTANGLE)`与`type(3)`的效果不同。
+Button组件的type属性支持使用[ButtonTypeapis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举或数字进行设置，但SDK中枚举的数值与实际type可用的数值不一致。例如ButtonType.ROUNDED_RECTANGLE枚举数值为3，但是使用`type(ButtonType.ROUNDED_RECTANGLE)`与`type(3)`的效果不同。
 
 **可能原因**
 
-[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举数值的定义仅表示枚举项的索引，与type属性实际接收数值不同。映射如下：
+[ButtonTypeapis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举数值的定义仅表示枚举项的索引，与type属性实际接收数值不同。映射如下：
 
 | ButtonType枚举 | 枚举值 | type实际数值 |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ Button组件的type属性支持使用[ButtonType](../../application-dev/referenc
 
 **解决措施**
 
-建议使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举进行设置，避免直接使用数字值可能带来的混淆。如果确需使用数字值，请参照上表中的"type实际数值"列进行设置。
+建议使用[ButtonTypeapis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举进行设置，避免直接使用数字值可能带来的混淆。如果确需使用数字值，请参照上表中的"type实际数值"列进行设置。
 
 **示例**
 

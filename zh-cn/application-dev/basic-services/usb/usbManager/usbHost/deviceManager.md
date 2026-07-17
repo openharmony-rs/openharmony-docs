@@ -42,7 +42,7 @@
 
 USB设备管理主要提供的功能有：查询USB设备列表、USB设备权限控制、设置USB设备配置等。
 
-USB类开放能力如下，具体请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+USB类开放能力如下，具体请查阅[@ohos.usbManagerapis-basic-services-kit/js-apis-usbManager.md)。
 
 **表1** USB类的开放能力接口
 

@@ -327,11 +327,11 @@
 
 从API版本26.0.0开始，支持开发查询应用内数据的意图实体。由系统入口传递给应用的数据通常为静态参数。如需基于应用内实时数据执行意图，可通过动态查询意图实体实现。
 
-以播放音乐为例，当用户告知系统入口需要播放自定义歌单中的歌曲时，为使系统入口能够感知应用内歌单信息，开发者可将歌单信息定义为可查询意图实体，并在实体中描述歌单ID、歌单名称、显示名称、创建者等字段。意图实体需要继承[insightIntent.AppIntentEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类并使用[@InsightIntentEntity](./../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)进行装饰。
+以播放音乐为例，当用户告知系统入口需要播放自定义歌单中的歌曲时，为使系统入口能够感知应用内歌单信息，开发者可将歌单信息定义为可查询意图实体，并在实体中描述歌单ID、歌单名称、显示名称、创建者等字段。意图实体需要继承[insightIntent.AppIntentEntityapis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类并使用[@InsightIntentEntityapis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)进行装饰。
 
 系统入口可基于这些字段查询应用内可用歌单。例如，可以通过歌单ID、歌单名称、创建者筛选目标歌单，再将匹配结果用于后续意图执行。
 
-为实现该场景，开发者可将歌单信息定义为可查询意图实体，并实现[onQueryEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)意图实体查询接口。具体步骤如下：
+为实现该场景，开发者可将歌单信息定义为可查询意图实体，并实现[onQueryEntityapis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)意图实体查询接口。具体步骤如下：
 
 1. 定义支持查询的意图实体。
 
@@ -339,7 +339,7 @@
 
     parameters属性需要列出实体的数据成员及其数据格式。这些属性对应继承自[insightIntent.AppIntentEntity/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类中定义的实体字段（例如entityId、playlistName、owner等）。当属性在[IntentEntityDecoratorInfo/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)的supportedQueryProperties中声明时，需要为该属性添加title，用于配置该查询条件的界面显示名称。
 
-    [onQueryEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)接口需要根据传入的查询参数[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)返回符合条件的实体列表。推荐在[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)中的[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[ALL](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时返回意图实体全部信息（例如返回所有歌单列表）；在[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[BY_PROPERTY](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时，根据QueryEntityParam中的parameters属性值筛选符合条件的信息（例如同时传入歌单名称和创建者时，返回歌单名称和创建者均匹配的歌单列表）。
+    [onQueryEntityapis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)接口需要根据传入的查询参数[QueryEntityParamapis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)返回符合条件的实体列表。推荐在[QueryEntityParamapis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)中的[queryTypeapis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[ALLapis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时返回意图实体全部信息（例如返回所有歌单列表）；在[queryTypeapis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[BY_PROPERTYapis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时，根据QueryEntityParam中的parameters属性值筛选符合条件的信息（例如同时传入歌单名称和创建者时，返回歌单名称和创建者均匹配的歌单列表）。
 
     <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
 

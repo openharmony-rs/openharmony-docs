@@ -243,7 +243,7 @@ PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](
 
 ### 可绘制描述符
 
-DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考[DrawableDescriptor](../../application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md)。
+DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考[DrawableDescriptorapis-arkui/js-apis-arkui-drawableDescriptor.md)。
 
 通过DrawableDescriptor显示图片及动画的示例如下所示：
 
@@ -371,7 +371,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 ## 显示矢量图
 
-Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-svg.md)。
+Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明apis-arkui/arkui-ts/ts-basic-svg.md)。
 
 如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过image标签引用SVG格式和gif格式的本地其他图片。
 

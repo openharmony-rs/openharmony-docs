@@ -68,7 +68,7 @@
   breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // 表示xs、sm、md、lg、xl共5个断点被使用，小于320vp为xs，320vp-600vp为sm，  600vp-840vp为md，840vp-1440vp为lg，大于1440vp为xl。
   ```
 
-- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过[reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints)设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
+- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过[apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints)设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
 
   例如，通过断点设置将应用宽度分成6个区间，通过[columns/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)配置各断点下栅格容器的栅格列数。
 
