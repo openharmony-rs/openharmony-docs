@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebStorage（Web Storage）可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
+通过WebStorage可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
 
 ## 概述
 
@@ -31,15 +31,12 @@ WebStorage采用统一管理的设计模式：
 
 ### 使用示例
 
-```ts
+````ts
 import { webview } from '@kit.ArkWeb';
 
 // 获取所有源的信息
 webview.WebStorage.getOrigins((error, origins) => {
-    if (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-      return;
-    }
+  if (!error) {
     origins.forEach(origin => {
       console.info(`Origin: ${origin.origin}, Usage: ${origin.usage}, Quota: ${origin.quota}`);
     });
@@ -48,11 +45,11 @@ webview.WebStorage.getOrigins((error, origins) => {
 
 // 清除指定源的存储
 webview.WebStorage.deleteOrigin('https://example.com');
-```
+````
 
 > **说明：**
 >
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
 >
@@ -60,7 +57,7 @@ webview.WebStorage.deleteOrigin('https://example.com');
 >
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。
 >
-> - 接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
+> - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 ## 导入模块
 
@@ -72,12 +69,11 @@ import { webview } from '@kit.ArkWeb';
 
 static deleteOrigin(origin: string): void
 
-清除指定源所使用的存储。常用于用户登出时清理网站数据、实现"清除浏览器数据"功能、隐私保护等场景。调用前需先加载Web组件。
+清除指定源所使用的存储。
 
 **方法调用关系：**
-- origin参数必须从getOrigins()方法获取。
-- 必须先调用getOrigins()获取源列表，再调用deleteOrigin()清除指定源存储。
-- 如果传入非getOrigins()返回的origin参数，会导致参数无效，返回错误17100011。
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用deleteOrigin()清除指定源存储。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -91,10 +87,10 @@ static deleteOrigin(origin: string): void
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100011 | Invalid origin. | origin参数无效，请检查origin参数是否从getOrigins()方法获取或格式是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100011 | Invalid origin.                             |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -220,10 +216,7 @@ struct WebComponent {
 
 static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
-以回调方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。调用前需先加载Web组件。
-
-**方法调用关系：**
-- 建议先调用getOrigins()获取源列表，再使用返回的源信息进行后续操作。
+以回调方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -231,16 +224,16 @@ static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                   |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------ |
-| callback | AsyncCallback\<Array\<[WebStorageOrigin](./arkts-apis-webview-i.md#webstorageorigin)>> | 是   | 回调函数，用于异步获取所有源的信息，成功时返回WebStorageOrigin对象数组。 |
+| callback | AsyncCallback\<Array\<[WebStorageOrigin](./arkts-apis-webview-i.md#webstorageorigin)>> | 是   | 以数组方式返回源的信息。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100012 | Invalid web storage origin. | Web存储origin无效，请检查origin参数是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100012 | Invalid web storage origin.                             |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -287,10 +280,7 @@ struct WebComponent {
 
 static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
-以Promise方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。调用前需先加载Web组件。
-
-**方法调用关系：**
-- 建议先调用getOrigins()获取源列表，再使用返回的源信息进行后续操作。
+以Promise方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -298,16 +288,16 @@ static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
 | 类型                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[WebStorageOrigin](./arkts-apis-webview-i.md#webstorageorigin)>> | Promise实例。resolve时返回WebStorageOrigin数组，包含当前所有源的信息；reject时返回错误对象。 |
+| Promise\<Array\<[WebStorageOrigin](./arkts-apis-webview-i.md#webstorageorigin)>> | Promise实例，用于获取当前所有源的信息。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100012 | Invalid web storage origin. | Web存储origin无效，请检查origin参数是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100012 | Invalid web storage origin.                             |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -335,7 +325,7 @@ struct WebComponent {
                 }
               })
               .catch((e: BusinessError) => {
-                console.error(`Get origin usage failed. Code: ${e.code}, message: ${e.message}`);
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -354,12 +344,11 @@ struct WebComponent {
 
 static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
-使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。调用前需先加载Web组件。
+使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **方法调用关系：**
-- origin参数必须从getOrigins()方法获取。
-- 必须先调用getOrigins()获取源列表，再调用getOriginQuota()获取指定源配额。
-- 如果传入非getOrigins()返回的origin参数，会导致参数无效，返回错误17100011。
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用getOriginQuota()获取指定源配额。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -367,17 +356,17 @@ static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
-| origin   | string                | 是   | 指定源的字符串索引，来自于[getOrigins](#getorigins)。 |
-callback | AsyncCallback\<number\> | 是 | 指定源的存储配额。<br>number是long型整数，范围为[0, 2147483647]。<br>单位：byte。
+| origin   | string                | 是   | 指定源的字符串索引。 |
+| callback | AsyncCallback\<number> | 是   | 指定源的存储配额。<br>number是long型整数，范围为[-2147483648, 2147483647]。<br>单位：byte。   |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100011 | Invalid origin. | origin参数无效，请检查origin参数是否从getOrigins()方法获取或格式是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100011 | Invalid origin.                             |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -421,7 +410,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。调用前需先加载Web组件。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **方法调用关系：**
 - origin参数应从getOrigins()方法获取。
@@ -433,22 +422,22 @@ static getOriginQuota(origin: string): Promise\<number>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| origin | string | 是   | 指定源的字符串索引，该值应从getOrigins()方法返回的WebStorageOrigin对象中获取。 |
+| origin | string | 是   | 指定源的字符串索引 |
 
 **返回值：**
 
 | 类型            | 说明                                    |
 | --------------- | --------------------------------------- |
-| Promise\<number> | Promise实例，用于获取指定源的存储配额。<br>number是long型整数，范围为[0, 2147483647]。<br>单位：byte。 |
+| Promise\<number> | Promise实例，用于获取指定源的存储配额。<br>单位：byte。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100011 | Invalid origin. | origin参数无效，请检查origin参数是否从getOrigins()方法获取或格式是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100011 | Invalid origin.                             |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -473,7 +462,7 @@ struct WebComponent {
                 console.info('quota: ' + quota);
               })
               .catch((e: BusinessError) => {
-                console.error(`Get origin quota failed. Code: ${e.code}, message: ${e.message}`);
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -492,12 +481,11 @@ struct WebComponent {
 
 static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
-以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。调用前需先加载Web组件。
+以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **方法调用关系：**
-- origin参数必须从getOrigins()方法获取。
-- 必须先调用getOrigins()获取源列表，再调用getOriginUsage()获取指定源使用量。
-- 如果传入非getOrigins()返回的origin参数，会导致参数无效，返回错误17100011。
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用getOriginUsage()获取指定源使用量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -506,16 +494,16 @@ static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | 是   | 指定源的字符串索引 |
-| callback | AsyncCallback\<number> | 是   | 指定源的存储量。<br>number是long型整数，范围为[0, 2147483647]。<br>单位： byte。   |
+| callback | AsyncCallback\<number> | 是   | 指定源的存储量。<br>单位：byte。   |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100011 | Invalid origin. | origin参数无效，请检查origin参数是否从getOrigins()方法获取或格式是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100011 | Invalid origin.                             |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -559,7 +547,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。调用前需先加载Web组件。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **方法调用关系：**
 - origin参数应从getOrigins()方法获取。
@@ -577,16 +565,16 @@ static getOriginUsage(origin: string): Promise\<number>
 
 | 类型            | 说明                                  |
 | --------------- | ------------------------------------- |
-| Promise\<number> | Promise实例，用于获取指定源的存储量。<br>number是long型整数，范围为[0, 2147483647]。<br>单位：byte。 |
+| Promise\<number> | Promise实例，用于获取指定源的存储量。<br>单位：byte。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | ---- |
-| 17100011 | Invalid origin. | origin参数无效，请检查origin参数是否从getOrigins()方法获取或格式是否正确。 |
-| 401 | Parameter error. | 参数错误。可能原因：1. 必填参数未填写；2. 参数类型不正确；3. 参数校验失败。请检查参数类型和范围。 |
+| 错误码ID | 错误信息                                              |
+| -------- | ----------------------------------------------------- |
+| 17100011 | Invalid origin.                            |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -610,8 +598,8 @@ struct WebComponent {
               .then(usage => {
                 console.info('usage: ' + usage);
               }).catch((e: BusinessError) => {
-                console.error(`Get origins failed. Code: ${e.code}, message: ${e.message}`);
-              })
+              console.error('error: ' + JSON.stringify(e));
+            })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -628,7 +616,7 @@ struct WebComponent {
 
 static deleteAllData(incognito?: boolean): void
 
-清除被JavaScript存储API使用的所有存储数据。当incognito参数为true时，删除所有隐私模式下内存中的web数据；当incognito参数为false或未设置时，删除正常非隐私模式下被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。调用前需先加载Web组件。
+清除被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -636,7 +624,7 @@ static deleteAllData(incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的Web数据。<br>false表示删除正常非隐私模式下被JavaScript存储API使用的所有存储数据（包括Web SQL数据库和HTML5 Web存储API）。<br>默认值：false。<br>传入undefined或null时为false。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。<br>默认值：false。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -666,4 +654,4 @@ struct WebComponent {
 }
 ```
 
-加载的html文件，请参考[deleteOrigin](#deleteorigin)接口下的html文件。
+加载的html文件，请参考[deleteOrigin](#deleteorigin)接口下加载的html文件。
