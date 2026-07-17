@@ -1126,7 +1126,7 @@ export default class AccessibilityManager {
 
 removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt;OperateVirtualNodeResult&gt;
 
-删除无障碍虚拟节点树。使用Promise异步回调。
+删除新增的无障碍虚拟节点树。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
