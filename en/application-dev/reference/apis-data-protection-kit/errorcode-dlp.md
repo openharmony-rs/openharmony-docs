@@ -294,7 +294,7 @@ Account not logged in.
 
 **Description**
 
-You need to log in to with the account before performing this operation. The current account has not logged in or the login status has expired.
+You need to log in using the account before performing this operation. The current account has not logged in or the login status has expired.
 
 **Possible Causes**
 
@@ -407,7 +407,7 @@ No network connection.
 
 **Description**
 
-This operation requires connection connection. The current device is not connected to the network or not authenticated.
+This operation requires network connection. The current device is not connected to the network or not authenticated.
 
 **Possible Causes**
 
