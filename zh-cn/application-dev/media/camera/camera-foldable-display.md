@@ -68,7 +68,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
 此处提供两种方案供开发者选择。
 
-- **方案一：使用相机框架提供的[CameraManager.on('foldStatusChange')](../../../application-dev/reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12)监听设备折叠态变化。**
+- **方案一：使用相机框架提供的[CameraManager.on('foldStatusChange')apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12)监听设备折叠态变化。**
     ```ts
     import { camera } from '@kit.CameraKit';
     import { BusinessError } from '@kit.BasicServicesKit';

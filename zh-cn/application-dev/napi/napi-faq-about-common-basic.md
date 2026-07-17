@@ -54,7 +54,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
 1. napi_async_work系列接口只能保证execute_cb在complete_cb之前执行，但无法保证不同napi_async_work的时序。  
 
-   [napi_queue_async_work_with_qos](../../application-dev/reference/native-lib/napi.md#napi_queue_async_work_with_qos)是在普通napi_queue_async_work的基础上，支持自定义qos优先级，而这里只是指定libuv调度任务时使用线程的优先级，不是指任务的优先级，所以也无法保证任务的时序。   
+   [napi_queue_async_work_with_qosnative-lib/napi.md#napi_queue_async_work_with_qos)是在普通napi_queue_async_work的基础上，支持自定义qos优先级，而这里只是指定libuv调度任务时使用线程的优先级，不是指任务的优先级，所以也无法保证任务的时序。   
 
 2. napi_threadsafe_function系列接口内部维护了一个队列，可以保证任务执行的顺序。 
 

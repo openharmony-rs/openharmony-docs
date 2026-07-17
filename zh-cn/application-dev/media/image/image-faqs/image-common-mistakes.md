@@ -44,7 +44,7 @@ Tid:5005, Name:OS_FFRT_3_0
 
 **解决措施：**
 
-1. **异步操作的生命周期管理：** 在调用Image Kit的异步接口（如[packToData](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13)、[packToFile](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11)、[createPixelMap](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)等）时，必须确保传入的资源对象（如PixelMap、ImageSource）在异步操作完成之前不被释放或修改。
+1. **异步操作的生命周期管理：** 在调用Image Kit的异步接口（如[packToDataapis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13)、[packToFileapis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11)、[createPixelMapapis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)等）时，必须确保传入的资源对象（如PixelMap、ImageSource）在异步操作完成之前不被释放或修改。
 
 2. **使用await或Promise.then：** 推荐使用`await`等待异步操作完成，或者在`Promise.then()`的回调中释放资源，确保释放时机正确。
 

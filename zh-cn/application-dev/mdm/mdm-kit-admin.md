@@ -11,16 +11,16 @@
 企业设备管理扩展能力组件，是设备管理应用必备组件。当开发者为企业开发设备管理应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。
 
 ## 接口说明
-以下为本次开发示例所使用的接口，更多接口及使用方式请见[企业设备管理扩展能力接口文档](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)。
+以下为本次开发示例所使用的接口，更多接口及使用方式请见[企业设备管理扩展能力接口文档apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)。
 
 | 接口名称                                  | 描述                         |
 | ----------------------------------------- | ---------------------------- |
-| [onAdminEnabled(): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onadminenabled)                    | 设备管理应用被激活回调方法。   |
-| [onAdminDisabled(): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onadmindisabled)                   | 设备管理应用被解除激活回调方法。 |
-| [onBundleAdded(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onbundleadded)   | 应用安装回调方法。             |
-| [onBundleRemoved(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onbundleremoved) | 应用卸载回调方法。             |
-| [onDeviceAdminEnabled(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#ondeviceadminenabled23) | 普通设备管理应用被激活回调方法。 |
-| [onDeviceAdminDisabled(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#ondeviceadmindisabled23) | 普通设备管理应用被解除激活回调方法。 |
+| [onAdminEnabled(): voidapis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onadminenabled)                    | 设备管理应用被激活回调方法。   |
+| [onAdminDisabled(): voidapis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onadmindisabled)                   | 设备管理应用被解除激活回调方法。 |
+| [onBundleAdded(bundleName: string): voidapis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onbundleadded)   | 应用安装回调方法。             |
+| [onBundleRemoved(bundleName: string): voidapis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#onbundleremoved) | 应用卸载回调方法。             |
+| [onDeviceAdminEnabled(bundleName: string): voidapis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#ondeviceadminenabled23) | 普通设备管理应用被激活回调方法。 |
+| [onDeviceAdminDisabled(bundleName: string): voidapis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#ondeviceadmindisabled23) | 普通设备管理应用被解除激活回调方法。 |
 
 ## 开发步骤
 

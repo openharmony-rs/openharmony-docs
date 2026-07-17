@@ -44,7 +44,7 @@
 | ------------------------------------------------------------ |--------|
 | usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: number): Promise&lt;number&gt; | 控制传输。  |
 
-更多关于设备管理和传输模式的详细接口介绍，请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+更多关于设备管理和传输模式的详细接口介绍，请查阅[@ohos.usbManagerapis-basic-services-kit/js-apis-usbManager.md)。
 
 ### 开发步骤
 

@@ -1285,7 +1285,7 @@ SysCap不一致导致安装失败。
 
 **可能原因**
 
-多个HAP/HSP中配置的[SysCap](./../reference/syscap.md#syscap的用途)不一致。
+多个HAP/HSP中配置的[SysCapsyscap.md#syscap的用途)不一致。
 
 **处理步骤**
 
@@ -3114,7 +3114,7 @@ error: install parse syscap error.
 
 **错误描述**
 
-安装过程中，解析安装包获取[SysCap](./../reference/syscap.md#syscap的用途)信息失败。
+安装过程中，解析安装包获取[SysCapsyscap.md#syscap的用途)信息失败。
 
 **可能原因**
 
