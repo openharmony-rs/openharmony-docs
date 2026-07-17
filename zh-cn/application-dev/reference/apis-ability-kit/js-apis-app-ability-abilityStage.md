@@ -355,7 +355,7 @@ onAcceptWantAsync(want: Want): Promise\<string\>
 import { AbilityStage } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onAcceptWantAsync(): Promise<string> {
+  async onAcceptWantAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
     });

@@ -12,7 +12,7 @@
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
 >  Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
->  Video组件在使用expandSafeArea扩展安全区域时，组件视频显示内容区域不支持扩展。
+>  Video组件在使用[expandSafeArea](./ts-universal-attributes-expand-safe-area.md#expandsafearea)扩展安全区域时，组件视频显示内容区域不支持扩展。
 
 ## 权限列表
 
@@ -612,7 +612,7 @@ setCurrentTime(value: number, seekMode: SeekMode)
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | -------- | ---- | -------------- |
 | value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒 |
-| seekMode | [SeekMode](#seekmode8枚举说明) | 是    | 跳转模式。          |
+| seekMode | [SeekMode](#seekmode8枚举说明) | 是    | 跳转模式。<br>异常值undefined、null、NaN和Infinity按PreviousKeyframe处理。 |
 
 ## SeekMode<sup>8+</sup>枚举说明
 
@@ -622,12 +622,12 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 说明                         |
-| ---------------- | ---------------------------- |
-| PreviousKeyframe | 跳转到前一个最近的关键帧。   |
-| NextKeyframe     | 跳转到后一个最近的关键帧。   |
-| ClosestKeyframe  | 跳转到最近的关键帧。         |
-| Accurate         | 精准跳转，不论是否为关键帧。 |
+| 名称             |值|  说明                         |
+| ---------------- |--|  ---------------------------- |
+| PreviousKeyframe |0|  跳转到前一个最近的关键帧。   |
+| NextKeyframe     |1|  跳转到后一个最近的关键帧。   |
+| ClosestKeyframe  |2|  跳转到最近的关键帧。         |
+| Accurate         |3|  精准跳转，不论是否为关键帧。 |
 
 ## 示例
 
