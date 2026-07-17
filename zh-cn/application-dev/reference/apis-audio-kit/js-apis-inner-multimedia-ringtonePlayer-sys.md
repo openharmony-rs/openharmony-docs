@@ -680,7 +680,7 @@ systemRingtonePlayer.onAudioInterrupt((interruptEvent: audio.InterruptEvent) => 
 });
 ```
 
-### off('audioInterrupt')
+### off('audioInterrupt')<sup>10+</sup>
 
 off(type: 'audioInterrupt'): void
 
