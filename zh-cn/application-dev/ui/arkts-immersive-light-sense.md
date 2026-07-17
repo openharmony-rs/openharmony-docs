@@ -92,7 +92,7 @@
 
 以下示例展示如何通过配置[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)调整组件系统材质行为：在DEFAULT和ENABLE模式下，均可通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)通用属性为[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)等组件主动设置沉浸式系统材质（DISABLE模式下主动设置不生效）；此外，ENABLE模式下[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)等组件会默认开启沉浸式系统材质，且材质样式的优先级高于组件自身的背景色、模糊、阴影和边框。如需单独关闭某个已默认开启材质的组件，可设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)。
 
-<!-- @[MaterialInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MaterialInfo.ets) -->
+<!-- @[MaterialInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MaterialInfo.ets) --> 
 
 ``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
@@ -532,7 +532,7 @@ struct MaterialInfoPage {
 
    此外，部分组件的材质由多个独立接口控制。以[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)为例，其下拉按钮的材质通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置，下拉菜单的材质则通过独立的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)接口设置，两者相互独立、可分别开启或关闭。
    
-   <!-- @[CloseMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/CloseMaterial.ets) -->
+   <!-- @[CloseMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/CloseMaterial.ets) --> 
    
    ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
