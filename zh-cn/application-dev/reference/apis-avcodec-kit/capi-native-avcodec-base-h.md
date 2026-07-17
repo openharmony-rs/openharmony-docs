@@ -1147,7 +1147,7 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 | 使用场景| 错误码 |
 | -------- | -------- |
 | 音频编解码 | AV_ERR_DRM_DECRYPT_FAILED：DRM解密失败。  |
-| 视频编解码 | AV_ERROR_NO_MEMORY：系统资源不足。<br>AV_ERROR_UNKNOWN：未知错误，请通过具体日志分析。<br>AV_ERR_SERVICE_DIED：服务状态已消亡。  |
+| 视频编解码 | AV_ERR_NO_MEMORY：系统资源不足。<br>AV_ERR_UNKNOWN：未知错误，请通过具体日志分析。<br>AV_ERR_SERVICE_DIED：服务状态已消亡。  |
 | 视频解码 | AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION：当前输入不支持色彩空间转换功能。  |
 <!--RP1--><!--RP1End-->
 
