@@ -1,4 +1,4 @@
-# Introduction to Freeform Windows
+# Freeform Windows Overview
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
