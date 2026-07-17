@@ -952,18 +952,18 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 表示修改无障碍节点的节点id |
-| windowId | number | 是 | 表示修改无障碍节点的窗口id |
+| elementId | number | 是 | 表示修改无障碍节点的节点id。 |
+| windowId | number | 是 | 表示修改无障碍节点的窗口id。 |
 | node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值，可修改的属性包括：<br>accessibilityText，accessibilityGroup，accessibilityLevel，checkable， isChecked, isSelected, isClickable,  isEnable, customComponentType。|
 
 **返回值：**
@@ -978,9 +978,9 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 9300000 | System abnormality.  |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+| 202 | Permission verification failed.A non-system application calls a system API. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed.<br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed.<br>4.Failed to obtain the accessibility service proxy.<br>5.Timed out while waiting for the result of an asynchronous operation. |
 
 **示例：**
 
@@ -1042,11 +1042,11 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1054,7 +1054,7 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | elementId | number | 是 | 表示新增虚拟节点树的父节点id。 |
 | windowId | number | 是 | 表示新增虚拟节点树的父节点窗口Id。 |
-| nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 数组中的虚拟节点按parentId、childNodeIds父子关系构建成一颗树|
+| nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 数组中的虚拟节点按parentId、childNodeIds父子关系构建成一颗树。|
 
 **返回值：**
 
@@ -1068,9 +1068,9 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 9300000 | System abnormality.  |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+| 202 | Permission verification failed.A non-system application calls a system API. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed.<br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed.<br>4.Failed to obtain the accessibility service proxy.<br>5.Timed out while waiting for the result of an asynchronous operation. |
 
 **示例：**
 
@@ -1126,23 +1126,23 @@ export default class AccessibilityManager {
 
 removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt;OperateVirtualNodeResult&gt;
 
-删除无障碍虚拟节点。使用Promise异步回调。
+删除无障碍虚拟节点树。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| elementId | number | 是 | 表示删除当前节点id下的所有虚拟节点。 |
+| elementId | number | 是 | 表示删除当前节点id下的虚拟节点树。 |
 | windowId  | number | 是 | 表示节点所在的窗口Id。 |
 
 **返回值：**
@@ -1157,9 +1157,9 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 9300000 | System abnormality.  |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed.A non-system application calls a system API. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed.<br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed.<br>4.Failed to obtain the accessibility service proxy.<br>5.Timed out while waiting for the result of an asynchronous operation. |
 
 **示例：**
 
@@ -2132,9 +2132,9 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -2156,7 +2156,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 | accessibilityFocused | boolean | 否 | 是 | 表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
 | parentId | number  | 否  | 是  | 组件的父元素ID。|
 | childNodeIds | Array\<number>  | 否  | 是  | 组件的子元素ID列表。|
-| componentId | number | 否 | 是 | 元素所属组件的ID。<br>默认值：-1。|
+| elementId | number | 否 | 是 | 元素所属组件的ID。<br>默认值：-1。|
 | supportedActionNames | Array&lt;string&gt; | 否  | 是  | 支持的操作名称。|
 
 ## TouchPosition
@@ -2167,9 +2167,9 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
