@@ -3370,22 +3370,6 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt | un
 > - 支持嵌套滚动的输入事件：使用手势、鼠标、触控板。
 > - 嵌套滚动场景下，由于Web滚动到边缘时会优先触发过滚动的过界回弹效果，建议设置[overScrollMode](#overscrollmode11)为`OverScrollMode.NEVER`，避免影响此场景的用户体验。
 
- ```mermaid
- graph LR
-     A[用户手势/鼠标/触控板] --> B{检测滚动方向}
-     B -->|上下左右| C[NestedScrollOptionsExt]
-     B -->|前后| D[NestedScrollOptions]
-     C --> E{滚动优先级判断}
-     D --> E
-     E -->|SELF_FIRST| F[Web组件先响应]
-     E -->|PARENT_FIRST| G[父组件先响应]
-     F -->|Web滚动到边缘| H[触发滚动联动]
-     G -->|父组件滚动完成| H
-     H --> I{检查overScrollMode}
-     I -->|NEVER| J[无过界回弹]
-     I -->|非NEVER| K[有过界回弹效果]
- ```
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 11
@@ -3396,7 +3380,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt | un
 
 | 参数名   | 类型                                     | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | ArkTS-Dyn: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> <br/>ArkTS-Sta: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> \|  undefined| 是    | 可滚动组件滚动时的嵌套滚动选项。<br>NestedScrollOptions对象包含以下属性：scrollForward（NestedScrollMode类型，向前滚动时的嵌套滚动模式，默认为SELF_FIRST），scrollBackward（NestedScrollMode类型，向后滚动时的嵌套滚动模式，默认为SELF_FIRST）。<br>NestedScrollOptionsExt对象包含以下属性：scrollUp（NestedScrollMode类型，向上滚动时的嵌套滚动模式，默认为SELF_FIRST），scrollDown（NestedScrollMode类型，向下滚动时的嵌套滚动模式，默认为SELF_FIRST），scrollLeft（NestedScrollMode类型，向左滚动时的嵌套滚动模式，默认为SELF_FIRST），scrollRight（NestedScrollMode类型，向右滚动时的嵌套滚动模式，默认为SELF_FIRST）。|
+| value | ArkTS-Dyn: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> <br/>ArkTS-Sta: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> \|  undefined| 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。|
 
 **示例：**
 
@@ -3569,23 +3553,6 @@ ArkTS-Sta: enableScrollDirectionalLock(value: boolean | undefined, type: ScrollD
 | ------ | ---------------- | ---- | -------- |
 | value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
 | type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
-
-```mermaid
-graph TD
-    A[用户开始滑动] --> B{value=true?}
-    B -->|否| C[不锁定滚动轴]
-    B -->|是| D{检查type}
-    D -->|NESTED_SCROLL| E{是否为嵌套滚动场景?}
-    D -->|ALL| F[锁定滚动轴]
-    E -->|否| C
-    E -->|是| F
-    F --> G[检测初始滑动方向]
-    G --> H{方向判定}
-    H -->|水平| I[锁定为水平滚动轴]
-    H -->|垂直| J[锁定为垂直滚动轴]
-    I --> K[用户后续滚动仅限水平]
-    J --> L[用户后续滚动仅限垂直]
-```
 
 **示例：**
 
@@ -4584,7 +4551,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 > **说明：**
 > 本接口与bindSelectionMenu功能类似，差异如下：
 > - editMenuOptions：在系统默认菜单风格基础上添加扩展项，触发条件不变。
-> - bindSelectionMenu：完全自定义菜单风格和触发条件，由开发者定义。
+> - [bindSelectionMenu](#bindselectionmenu13)：完全自定义菜单风格和触发条件，由开发者定义。
 > 两者不宜同时使用，建议根据自定义程度需求选择。
 
 用户可以通过该属性设置自定义的文本菜单。
@@ -4595,7 +4562,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 在[onPrepareMenu<sup>20+</sup>](../apis-arkui/arkui-ts/ts-text-common.md#属性-1)中，当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行修改、增加、删除菜单选项，实现动态更新菜单。
 
-本接口在与[selectionMenuOptions<sup>(deprecated)</sup>](#selectionmenuoptionsdeprecated)同时使用时，会使selectionMenuOptions<sup>(deprecated)</sup>不生效。默认菜单项会受[enableDefaultContextMenu](#enabledefaultcontextmenu24)控制，通过此属性可以自定义菜单选项。
+本接口在与[selectionMenuOptions<sup>(deprecated)</sup>](#selectionmenuoptionsdeprecated)同时使用时，会使selectionMenuOptions<sup>(deprecated)</sup>不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4607,7 +4574,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| editMenu | ArkTS-Dyn: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) <br/>ArkTS-Sta: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) \|  undefined| 是     | Web自定义文本菜单选项。EditMenuOptions对象包含以下属性：onCreateMenu（函数类型，用于创建菜单，参数为Array\<TextMenuItem>，返回Array\<TextMenuItem>），onMenuItemClick（函数类型，菜单项被点击时的回调，参数为menuItem和textRange，返回boolean），onPrepareMenu（函数类型，菜单显示前的回调，参数为Array\<TextMenuItem>，返回Array\<TextMenuItem>）。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。|
+| editMenu | ArkTS-Dyn: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) <br/>ArkTS-Sta: [EditMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) \|  undefined| 是     | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。|
 
 **示例**
 
@@ -4927,7 +4894,7 @@ ArkTS-Sta: bindSelectionMenu(elementType: WebElementType | undefined, content: C
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
 | elementType     | ArkTS-Dyn: [WebElementType](./arkts-basic-components-web-e.md#webelementtype13)<br/>ArkTS-Sta: [WebElementType](./arkts-basic-components-web-e.md#webelementtype13) \|  undefined| 是   | 菜单的类型。   |
-| content      | ArkTS-Dyn: [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) \|  undefined| 是   | 菜单的内容。需要使用@Builder装饰器定义的自定义构建函数，函数内可使用Menu组件构建菜单项。   |
+| content      | ArkTS-Dyn: [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) \|  undefined| 是   | 菜单的内容。   |
 | responseType | ArkTS-Dyn: [WebResponseType](./arkts-basic-components-web-e.md#webresponsetype13)<br/>ArkTS-Sta: [WebResponseType](./arkts-basic-components-web-e.md#webresponsetype13) \|  undefined| 是   | 菜单的响应类型。 |
 | options      | ArkTS-Dyn: [SelectionMenuOptionsExt](./arkts-basic-components-web-i.md#selectionmenuoptionsext13)<br/>ArkTS-Sta: [SelectionMenuOptionsExt](./arkts-basic-components-web-i.md#selectionmenuoptionsext13) \|  undefined| 否   | 菜单的选项。传入undefined或null时使用默认配置。|
 
@@ -5982,7 +5949,7 @@ ArkTS-Sta: dataDetectorConfig(config: TextDataDetectorConfig | undefined)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | <br/>ArkTS-Dyn: [TextDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)<br/>ArkTS-Sta: [TextDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明) \| undefined | 是   | 文本识别配置。设置后，Web组件将根据配置识别网页中的文本实体（如电话、邮箱、网址等），并应用指定的颜色和下划线样式。<br>TextDataDetectorConfig对象包含以下属性：types（Array\<TextDataDetectorType>类型，要识别的实体类型数组，如PHONE_NUMBER、EMAIL等），color（ResourceColor类型，识别实体的文本颜色），decoration（TextDecoration类型，识别实体的文本装饰样式），enablePreviewMenu（boolean类型，是否启用预览菜单）。<br>需配合enableDataDetector属性一起使用，当enableDataDetector为false或未设置时，dataDetectorConfig的配置不生效。<br>传入undefined或null时不启用文本识别配置。|
+| config | <br/>ArkTS-Dyn: [TextDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)<br/>ArkTS-Sta: [TextDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明) \| undefined | 是   | 文本识别配置。|
 
 > **说明：**
 >
@@ -6184,7 +6151,7 @@ ArkTS-Dyn: gestureFocusMode(mode: GestureFocusMode)
 
 ArkTS-Sta: gestureFocusMode(mode: GestureFocusMode | undefined)
 
-设置Web组件手势获焦模式，用于控制Web组件的焦点响应行为。该属性适用于需要精细控制焦点管理的场景，如混合Web和原生组件的应用。该属性没有显式调用时，默认表示手势按下时，任何手势均会使Web组件获焦。
+设置Web组件手势获焦模式，用于控制Web组件的焦点响应行为。该属性没有显式调用时，默认表示手势按下时，任何手势均会使Web组件获焦。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6196,7 +6163,7 @@ ArkTS-Sta: gestureFocusMode(mode: GestureFocusMode | undefined)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| mode | ArkTS-Dyn: [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) <br/>ArkTS-Sta: [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) \| undefined| 是     | 设置Web组件手势获焦模式。可选值：DEFAULT（默认模式，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。），GESTURE_TAP_AND_LONG_PRESS（Web只会在点击和长按手势事件生成时申请获焦，点击和长按在触摸抬起之后生成，滑动和缩放等手势行为不会获焦。）。传入undefined或null时为GestureFocusMode.DEFAULT。|
+| mode | ArkTS-Dyn: [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) <br/>ArkTS-Sta: [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) \| undefined| 是     | 设置Web组件手势获焦模式。传入undefined或null时为GestureFocusMode.DEFAULT。|
 
 **示例：**
 
