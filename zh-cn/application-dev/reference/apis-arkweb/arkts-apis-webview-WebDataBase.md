@@ -151,7 +151,7 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------ |
- | 401      | 参数错误。可能原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数验证失败。请检查参数类型和范围。 |
+ | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
