@@ -207,9 +207,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
@@ -231,9 +231,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
