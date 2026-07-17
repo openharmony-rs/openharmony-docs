@@ -31,6 +31,7 @@
     - [native_averrors.h](capi-native-averrors-h.md)
     - [native_avformat.h](capi-native-avformat-h.md)
     - [native_avmemory.h](capi-native-avmemory-h.md)
+    - [native_avcodec_videobase.h](capi-native-avcodec-videobase-h.md)
     - [native_avcodec_videodecoder.h](capi-native-avcodec-videodecoder-h.md)
     - [native_avcodec_videoencoder.h](capi-native-avcodec-videoencoder-h.md)
     - [native_avdemuxer.h](capi-native-avdemuxer-h.md)

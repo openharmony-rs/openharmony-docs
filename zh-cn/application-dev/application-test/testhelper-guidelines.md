@@ -423,7 +423,7 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
 - `<trk>`（track）：轨迹，包含`<trkseg>`和`<trkpt>`。
 - `<rte>`（route）：路线，包含`<rtept>`。
 
-每个位置点需包含以下属性：
+每个位置点支持以下属性：
 - `lat`和`lon`：经纬度坐标（必填），纬度范围-90到90，经度范围-180到180。
 - `<ele>`：海拔高度（可选，单位：米）。
 - `<time>`：时间戳（可选，ISO 8601格式）。
@@ -431,6 +431,25 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
 - `<direction>`或`<course>`：方向（可选，单位：度，范围0-360）。
 
 **GPX文件模板示例：**
+`<wpt>`（航点）模板示例：
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="TestHelper" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="22.5431" lon="114.0579">
+    <ele>8.0</ele>
+    <time>2024-01-15T09:00:00Z</time>
+    <speed>25.0</speed>
+    <direction>90.0</direction>
+  </wpt>
+  <wpt lat="22.5531" lon="114.0679">
+    <ele>10.0</ele>
+    <time>2024-01-15T09:01:00Z</time>
+    <speed>28.0</speed>
+    <direction>95.0</direction>
+  </wpt>
+</gpx>
+```
+`<trk>`（轨迹）模板示例：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -455,6 +474,24 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
       </trkpt>
     </trkseg>
   </trk>
+</gpx>
+```
+`<rte>`（路线）模板示例：
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="TestHelper" xmlns="http://www.topografix.com/GPX/1/1">
+  <rte>
+    <rtept lat="22.5431" lon="114.0579">
+      <ele>8.0</ele>
+      <speed>25.0</speed>
+      <direction>90.0</direction>
+    </rtept>
+    <rtept lat="22.5531" lon="114.0679">
+      <ele>10.0</ele>
+      <speed>28.0</speed>
+      <direction>95.0</direction>
+    </rtept>
+  </rte>
 </gpx>
 ```
 

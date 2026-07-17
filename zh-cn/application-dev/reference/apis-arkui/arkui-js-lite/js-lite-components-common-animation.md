@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-组件支持通过style或css设置动态的旋转、平移及缩放效果。
+组件支持通过style或css设置动态的旋转及平移效果。
 
 
 | 名称                        | 类型                                 | 默认值         | 描述                                       |
@@ -38,9 +38,9 @@
 
 | 名称               | 类型             | 默认值  | 描述                 |
 | ---------------- | -------------- | ---- | ------------------ |
-| background-color | &lt;color&gt;  | -    | 动画执行后应用到组件上的背景颜色。  |
-| width            | &lt;length&gt; | -    | 动画执行后应用到组件上的宽度值。   |
-| height           | &lt;length&gt; | -    | 动画执行后应用到组件上的高度值。   |
+| background-color | &lt;color&gt;  | -    | 动画关键帧时刻应用到组件上的背景颜色。  |
+| width            | &lt;length&gt; | -    | 动画关键帧时刻应用到组件上的宽度值。   |
+| height           | &lt;length&gt; | -    | 动画关键帧时刻应用到组件上的高度值。   |
 | transform        | string         | -    | 定义应用在组件上的变换类型，见表1。 |
 
 

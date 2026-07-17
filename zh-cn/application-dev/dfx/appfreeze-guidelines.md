@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
 <!--Adviser: @jinqiuheng-->
@@ -173,7 +173,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 
 从API version 20开始，当整机资源告警（如整机低内存或热限频）时，系统会输出NOTE行。此时开发者可忽略应用冻屏故障。在之前的API版本中，无论整机资源状态如何，系统都不会输出此NOTE行。
 
-从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 从API版本26.0.0开始，支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息。若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因。
 
@@ -513,55 +513,99 @@ client actions for app:
 
 下面表格用**两个完整生命周期切换**示例来解释MSG中的信息。
 
+> **说明：**
+>
+> 每条记录均带有时间戳，通过相邻记录的时间戳差值可定位耗时步骤。
+>
+> "失败原因"列说明该步骤可能导致超时的原因。
+>
+> "是否需要应用处理"列说明是否需要应用开发者处理及处理方式。
+>
+> 标注"（异常场景）"的记录仅在对应异常发生时出现，标注"（[InsightIntent](../application-models/insight-intent-overview.md)场景）"的记录仅在涉及意图框架时出现。
+
 1. load 阶段事件，以应用进程未创建为例。
 
-   | server | client | 描述 |
-   | ------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- |
-   | AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | Ability加载生命周期开始，系统准备加载Ability所需的资源和进程。 |
-   | AppMgrServiceInner::LoadAbility | -| 在创建应用进程之前，服务端开始处理Ability加载请求，检查进程状态。 |
-   | AppMgrService::AttachApplication | -| 应用进程创建成功后，进程向服务端发起attach（挂载）请求，建立通信通道。 |
-   | ServiceInner::AttachApplication | -| 服务端处理进程attach，记录进程信息，准备后续调度。 |
-   | ServiceInner::LaunchApplication | -| 服务端调度应用执行加载流程，通知应用进程进行初始化。 |
-   | AppRunningRecord::LaunchApplication | -| 调度应用执行加载流程。 |
-   | AppScheduler::ScheduleLaunchApplication | -| 调度应用执行加载流程。 |
-   | -| ScheduleLaunchApplication | 应用进程接收到应用加载调度请求，开始准备加载环境。 |
-   | -| HandleLaunchApplication begin | 应用开始执行加载逻辑。 |
-   | -| HandleLaunchApplication end | 应用加载逻辑执行结束。 |
-   | AppRunningRecord::LaunchPendingAbilities | -| 调度应用中待启动的Ability，触发具体的Ability加载。 |
-   | -| MainThread::ScheduleLaunchAbility | 应用进程收到加载Ability的请求，准备执行Ability的创建流程。 |
-   | -| MainThread::HandleLaunchAbility | 应用主线程处理Ability加载请求。 |
-   | -| JsAbilityStage::Create | 加载AbilityStage。 |
-   | -| JsAbilityStage::OnCreate begin | AbilityStage onCreate生命周期开始。 |
-   | -| JsAbilityStage::OnCreate end | AbilityStage的onCreate生命周期结束，AbilityStage初始化完成。 |
-   | -| AbilityThread::Attach | AbilityStage挂载（Attach）到AMS，load阶段结束。 |
+   | server | client | 描述 | 失败原因 | 是否需要应用处理 |
+   | ------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+   | AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. | - | Ability加载生命周期开始，系统准备加载Ability所需的资源和进程。标识load阶段起点。 | - | 否，系统侧调度。 |
+   | AppMgrServiceInner::LoadAbility | - | 在创建应用进程之前，服务端开始处理Ability加载请求，检查进程状态。 | - | 否，系统侧调度。 |
+   | AppMgrService::AttachApplication | - | 应用进程创建成功后，进程向服务端发起attach（挂载）请求，建立通信通道。 | - | 否，系统侧调度。 |
+   | ServiceInner::AttachApplication | - | 服务端处理进程attach，记录进程信息，准备后续调度。 | - | 否，系统侧调度。 |
+   | ServiceInner::LaunchApplication | - | 服务端调度应用执行加载流程，通知应用进程进行初始化。 | - | 否，系统侧调度。 |
+   | AppRunningRecord::LaunchApplication | - | 调度应用执行加载流程。 | - | 否，系统侧调度。 |
+   | AppRunningRecord::LaunchApplication; null scheduler（异常场景） | - | 调度应用加载流程时调度器为空，记录异常信息。 | - | 否，系统侧调度问题。 |
+   | AppScheduler::ScheduleLaunchApplication | - | 通过IPC向应用进程发送ScheduleLaunchApplication调度请求。 | - | 否，系统侧IPC。 |
+   | write launchData fail（异常场景） | - | 序列化launchData失败。 | - | 否，系统侧数据问题。 |
+   | write config fail（异常场景） | - | 序列化config失败。 | - | 否，系统侧数据问题。 |
+   | ScheduleLaunchApplication ipc error *（异常场景） | - | ScheduleLaunchApplication IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
+   | - | ScheduleLaunchApplication | 应用进程接收到应用加载调度请求，开始准备加载环境。 | 主线程被阻塞，未及时处理IPC请求。 | 是，检查主线程是否存在耗时任务或阻塞调用。 |
+   | - | HandleLaunchApplication begin | 应用开始执行加载逻辑。 | Application初始化逻辑耗时。 | 是，检查应用是否存在异常耗时。 |
+   | - | HandleLaunchApplication end | 应用加载逻辑执行结束。与begin对比可计算加载耗时。 | - | 是，检查应用是否存在异常耗时。 |
+   | AppRunningRecord::LaunchPendingAbilities | - | 调度应用中待启动的Ability，触发具体的Ability加载。 | - | 否，系统侧调度。 |
+   | AppLifeCycleDeal::LaunchAbility | - | 服务端通过IPC调度应用加载具体的Ability。 | IPC通信失败、序列化[Want](../application-models/want-overview.md)失败。 | 否，系统侧IPC问题。 |
+   | AppLifeCycleDeal::LaunchAbility; write want fail（异常场景） | - | 序列化want数据失败，记录异常信息。 | want参数过大或包含不可序列化对象。 | 是，检查want参数是否包含过大或不可序列化数据。 |
+   | AppLifeCycleDeal::LaunchAbility; ipc error *（异常场景） | - | ScheduleLaunchAbility IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
+   | - | MainThread::ScheduleLaunchAbility | 应用进程收到加载Ability的请求，准备执行Ability的创建流程。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
+   | - | MainThread::HandleLaunchAbility | 应用主线程处理Ability加载请求。 | - | 否，系统侧加载过程。 |
+   | - | JsAbilityStage::Create | 加载[AbilityStage](../application-models/abilitystage.md)。 | - | 否，系统侧加载过程。 |
+   | - | JsAbilityStage::OnCreate begin | AbilityStage [onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期开始。 | AbilityStage onCreate中执行耗时操作。 | 是，避免在AbilityStage onCreate中执行耗时操作。 |
+   | - | JsAbilityStage::OnCreate end | AbilityStage的onCreate生命周期结束，AbilityStage初始化完成。与begin对比可计算耗时。 | AbilityStage onCreate耗时过长。 | 是，优化AbilityStage onCreate逻辑。 |
+   | - | JsAbilityStage::OnAboutToCreateAbility begin（InsightIntent场景） | AbilityStage即将创建Ability（[onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)回调）。 | onAboutToCreateAbility中执行耗时操作。 | 是，避免在onAboutToCreateAbility中执行耗时操作。 |
+   | - | JsAbilityStage::OnAboutToCreateAbility end（InsightIntent场景） | onAboutToCreateAbility回调结束。与begin对比可计算耗时。 | onAboutToCreateAbility耗时过长。 | 是，优化onAboutToCreateAbility逻辑。 |
+   | - | JsAbilityStage::OnAboutToCreateAbilityAsync begin（InsightIntent场景） | 异步创建Ability（onAboutToCreateAbilityAsync回调）。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
+   | - | JsAbilityStage::OnAboutToCreateAbilityAsync end（InsightIntent场景） | onAboutToCreateAbilityAsync回调结束。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
+   | - | AbilityThread::CreateObjError（异常场景） | Ability JS对象创建失败，记录异常信息。 | Ability类未注册、JS引擎初始化失败。 | 是，检查Ability类是否正确注册导出。 |
+   | - | AbilityThread::Attach | Ability binder挂载（Attach）到服务侧，建立通信。 | - | 否，系统侧IPC。 |
+   | - | AbilityThread::Attach; error *（异常场景） | AttachAbilityThread IPC调用失败，记录错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
+   | AbilityManagerService::AttachAbilityThread; the end of load lifecycle. | - | 服务端确认AbilityThread挂载完成，load生命周期结束。 | - | 否，系统侧调度。 |
 
 2. foreground 阶段事件，应用冷启动。
 
-   | server | client | 描述 |
-   | ------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- |
-   | AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. | -| Ability进入前台生命周期（Foreground Lifecycle）的起始阶段。 |
-   | ServiceInner::UpdateAbilityState | -| 先调度应用前台，更新Ability的运行状态为“正在前台”。 |
-   | AppRunningRecord::ScheduleForegroundRunning | -| 调度应用前台，通知应用进程进入前台运行模式。 |
-   | AppScheduler::ScheduleForegroundApplication | -| 调度应用前台。 |
-   | -| ScheduleForegroundApplication | 应用进程接收调度指令，开始处理应用前台切换。 |
-   | -| HandleForegroundApplication | 主线程执行调度，分发应用前台任务到具体模块。 |
-   | AppMgrService::AppForegrounded | -| 应用前台完成，服务端记录应用状态已切换至前台。 |
-   | ServiceInner::AppForegrounded | -| 应用前台完成。 |
-   | -| AbilityThread::ScheduleAbilityTransaction | 应用收到Ability前台调度，准备对具体的Ability进行事务处理。 |
-   | -| AbilityThread::HandleAbilityTransaction | 主线程执行Ability前台调度，触发Ability的生命周期回调。 |
-   | -| JsUIAbility::OnStart begin | onCreate生命周期开始，Ability执行初始化工作。 |
-   | -| JsUIAbility::OnStart end | onCreate生命周期结束，Ability的初始资源已准备就绪。 |
-   | -| JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 |
-   | -| JsUIAbility::OnSceneCreated end | 创建窗口scene结束。 |
-   | -| JsUIAbility::OnWillForeground begin | -|
-   | -| JsUIAbility::OnWillForeground end |- |
-   | -| JsUIAbility::WindowScene::GoForeground begin | 调用窗口接口执行GoForeground开始。 |
-   | -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | 窗口前台后回调。 |
-   | -| JsUIAbility::IntentForeground execute start begin | 执行应用前台相关的意图操作开始，处理由前台切换触发的Intent任务。 |
-   | -| JsUIAbility::IntentForeground end | 应用前台相关的意图操作执行结束，Intent相关逻辑已处理完成。 |
-   | -| JsUIAbility::OnForeground begin | onForeground生命周期开始，通知开发者Ability已经在前台展示。 |
-   | -| JsUIAbility::OnForeground end | onForeground生命周期结束，Ability的前台生命周期回调完成。 |
-   | -| -| 当窗口回调和onForeground都完成后，前台生命周期结束。 |
+   | server | client | 描述 | 失败原因 | 是否需要应用处理 |
+   | ------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+   | AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. | - | Ability进入前台生命周期（Foreground Lifecycle）的起始阶段。标识foreground阶段起点。 | - | 否，系统侧调度。 |
+   | ServiceInner::UpdateAbilityState | - | 先调度应用前台。 | - | 否，系统侧调度。 |
+   | AppRunningRecord::ScheduleForegroundRunning | - | 调度应用前台，通知应用进程进入前台运行模式。 | - | 否，系统侧调度。 |
+   | AppRunningRecord::ScheduleForegroundRunning; null scheduler（异常场景） | - | 调度应用前台时调度器为空，记录异常信息。 | - | 否，系统侧调度问题。 |
+   | ScheduleForegroundRunning fail（异常场景） | - | ScheduleForegroundRunning调度失败，记录异常信息。 | - | 否，系统侧调度问题。 |
+   | AppScheduler::ScheduleForegroundApplication | - | 通过IPC向应用发送ScheduleForegroundApplication调度请求。 | - | 否，系统侧IPC。 |
+   | ScheduleForegroundApplication ipc error *（异常场景） | - | ScheduleForegroundApplication IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
+   | - | ScheduleForegroundApplication | 应用进程接收调度指令，开始处理应用前台切换。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
+   | - | HandleForegroundApplication | 主线程执行调度，分发应用前台任务到具体模块。 | - | 是，检查Application onForeground是否耗时。 |
+   | - | HandleForegroundApplication; fail（异常场景） | PerformForeground执行失败，记录异常信息。 | - | 否，系统侧调度问题。 |
+   | AppMgrService::AppForegrounded | - | 应用前台完成，服务端记录应用状态已切换至前台。 | - | 否，系统侧调度。 |
+   | ServiceInner::AppForegrounded | - | 应用前台完成。 | - | 否，系统侧调度。 |
+   | AppRunningRecord::OnWindowVisibilityChanged | - | 窗口可见性变化。 | - | 否，系统侧窗口调度。 |
+   | write want failed（异常场景） | - | 服务端通过ScheduleAbilityTransaction调度Ability前台事务时，序列化[Want](../application-models/want-overview.md)失败。 | want参数过大或包含不可序列化对象。 | 是，检查want参数是否包含过大或不可序列化数据。 |
+   | write sessionInfo failed（异常场景） | - | 序列化sessionInfo失败。 | - | 否，系统侧数据问题。 |
+   | ScheduleAbilityTransaction ipc error *（异常场景） | - | ScheduleAbilityTransaction IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
+   | - | AbilityThread::ScheduleAbilityTransaction | 应用收到Ability前台调度，准备对具体的Ability进行事务处理。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
+   | - | AbilityThread::HandleAbilityTransaction | 主线程执行Ability前台调度，触发Ability的生命周期回调。 | - | 否，系统侧记录。 |
+   | - | JsUIAbility::OnStart begin | [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期开始，Ability执行初始化工作。 | onCreate中执行耗时操作。 | 是，避免在onCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnStart end | onCreate生命周期结束，Ability的初始资源已准备就绪。与begin对比可计算耗时。 | onCreate耗时过长。 | 是，避免在onCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 | [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)中执行耗时操作。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnSceneCreated end | 创建窗口scene结束。与begin对比可计算耗时。 | onWindowStageCreate耗时过长。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnWillForeground begin | [onWillForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwillforeground20)回调开始。 | onWillForeground中执行耗时操作。 | 是，避免在onWillForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnWillForeground end | onWillForeground回调结束。与begin对比可计算耗时。 | onWillForeground耗时过长。 | 是，避免在onWillForeground中执行耗时操作。 |
+   | - | JsUIAbility::WindowScene::GoForeground begin | 调用窗口接口执行GoForeground开始。 | 窗口scene初始化失败、窗口系统响应慢。 | 否，窗口系统问题。 |
+   | - | JsUIAbility::DoOnForegroundForSceneIsNull; error *（异常场景） | 窗口scene初始化失败，记录错误码。 | 窗口scene创建失败、displayId获取失败。 | 否，窗口系统问题。 |
+   | - | UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | 窗口前台后回调。 | 窗口GoForeground未及时回调。 | 否，窗口系统问题。 |
+   | - | UIAbilityImpl::WindowLifeCycleImpl::ForegroundFailed; GoForeground failed（异常场景） | 窗口GoForeground失败，记录异常信息。 | - | 否，窗口系统问题。 |
+   | - | JsUIAbility::IntentForeground execute start begin（InsightIntent场景） | 执行应用前台相关的[意图](../application-models/insight-intent-overview.md)操作开始，处理由前台切换触发的Intent任务。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
+   | - | JsUIAbility::IntentForeground end（InsightIntent场景） | 应用前台相关的意图操作执行结束，Intent相关逻辑已处理完成。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
+   | - | JsUIAbility::IntentRepeat execute start（InsightIntent场景） | Intent重复执行模式开始。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
+   | - | JsUIAbility::IntentRepeat execute end（InsightIntent场景） | Intent重复执行模式结束。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
+   | - | JsUIAbility::IntentPage execute start（InsightIntent场景） | Intent页面执行模式开始。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
+   | - | JsUIAbility::IntentPage execute end（InsightIntent场景） | Intent页面执行模式结束。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
+   | - | UIAbilityImpl::HandleExecuteInsightIntentForeground（InsightIntent场景） | 处理前台意图执行。 | InsightIntent参数生成失败。 | 是，检查InsightIntent参数配置。 |
+   | - | JsUIAbility::OnForeground begin | [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)生命周期开始，通知开发者Ability已经在前台展示。 | onForeground中执行耗时操作。 | 是，避免在onForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnForeground end | onForeground生命周期结束，Ability的前台生命周期回调完成。与begin对比可计算耗时。 | onForeground耗时过长。 | 是，避免在onForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnDidForeground begin | [onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)回调开始。 | onDidForeground中执行耗时操作。 | 是，避免在onDidForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnDidForeground end | onDidForeground回调结束。与begin对比可计算耗时。 | onDidForeground耗时过长。 | 是，避免在onDidForeground中执行耗时操作。 |
+   | - | AbilityManagerClient::AbilityTransitionDone | 客户端通知AMS前台切换完成。 | AbilityTransitionDone IPC调用失败。 | 否，系统侧IPC问题。 |
+   | - | AbilityTransitionDone; write saveData failed（异常场景） | 客户端序列化saveData失败，记录异常信息。 | - | 否，系统侧数据问题。 |
+   | - | AbilityTransitionDone; ipc error *（异常场景） | AbilityTransitionDone IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
+   | AbilityManagerService::AbilityTransitionDone; the end of foreground lifecycle. | - | 服务端确认前台切换完成，foreground生命周期结束。 | 客户端未及时调用AbilityTransitionDone。 | 否，系统侧调度。 |
 
 参考[日志规格](#日志规格)分析其他日志信息。特别说明：生命周期切换时若发生主线程卡死，请结合前后两次日志的堆栈与 BinderCatcher 信息进行对比分析，以定位问题。
 
@@ -604,7 +648,7 @@ DisplayPowerInfo:powerState:AWAKE
 
    > **说明：**
    >
-   > 由于应用冻屏事件的采样栈会与[MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈的会与应用当前配置的采集堆栈的个数一致。
+   > 由于应用冻屏事件的采样栈会与[MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈会与应用当前配置的采集堆栈的个数一致。
    >
    > APP_INPUT_BLOCK故障有增强日志的前提是：先发生THREAD_BLOCK_3S或LIFECYCLE_HALF_TIMEOUT。
 

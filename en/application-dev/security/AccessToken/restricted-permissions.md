@@ -1431,3 +1431,17 @@ Allows an application to invoke the smart diagnosis service to obtain data.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.ACCESS_SE_KEY
+
+Allows an application to generate, use, and delete secure element keys.
+
+<!--RP100--><!--RP100End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars   
+
+**Since**: 26.0.0
