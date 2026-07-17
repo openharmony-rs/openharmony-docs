@@ -10394,7 +10394,7 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。典型使用场景包括：需要使用特定内核版本的特性或兼容性时，可切换到对应内核版本。
 
 **遗留内核适配：**
 
@@ -10692,7 +10692,7 @@ export default class EntryAbility extends UIAbility {
 
 setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 
-设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。
+设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。典型使用场景包括：需要完全控制软键盘行为的场景可以禁用自动控制；需要系统自动管理软键盘的场景可以使用默认模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

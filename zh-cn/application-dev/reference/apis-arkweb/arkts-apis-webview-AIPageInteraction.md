@@ -73,7 +73,7 @@
 
 ## click
 
-点击目标元素，使其响应点击事件(click event)。该命令仅使目标元素响应点击事件(click event)，不关注是否产生真实的鼠标事件(mouse event)。
+点击目标元素，使其响应点击事件(click event)，不关注是否产生真实的鼠标事件(mouse event)。
 
 ### ClickCommand
 
@@ -331,8 +331,8 @@
 | 字段 | 子字段 | 类型 | 说明 |
 | ---- | ---- | ---- | ---- |
 | result | - | Object | 文本插入符位置信息。 |
-| result | x | number | 文本插入符的x坐标，相对于Web组件。 |
-| result | y | number | 文本插入符的y坐标，相对于Web组件。 |
+| result | x | number | 文本插入符的x坐标，相对于Web组件，单位：px。 |
+| result | y | number | 文本插入符的y坐标，相对于Web组件，单位：px。 |
 
 > **说明：**
 >
