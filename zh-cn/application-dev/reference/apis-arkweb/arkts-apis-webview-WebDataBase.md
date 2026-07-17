@@ -53,7 +53,7 @@ webview.WebDataBase.deleteHttpAuthCredentials();
 
 > **说明：**
 >
-> - 本模块及Class首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
 >
@@ -71,7 +71,7 @@ import { webview } from '@kit.ArkWeb';
 
 static getHttpAuthCredentials(host: string, realm: string): Array\<string>
 
-检索给定主机和域的HTTP身份验证凭据，该方法为同步方法。调用该方法前需要先加载Web组件。
+检索给定主机和域的HTTP身份验证凭据，该方法为同步方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -94,7 +94,7 @@ static getHttpAuthCredentials(host: string, realm: string): Array\<string>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------ |
-| 401      | 参数错误。可能原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数验证失败。请检查参数类型和范围。 |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -132,7 +132,7 @@ struct WebComponent {
 
 static saveHttpAuthCredentials(host: string, realm: string, username: string, password: string): void
 
-保存给定主机和域的HTTP身份验证凭据，该方法为同步方法。调用该方法需要先加载Web组件。
+保存给定主机和域的HTTP身份验证凭据，该方法为同步方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -187,7 +187,7 @@ struct WebComponent {
 
 static existHttpAuthCredentials(): boolean
 
-判断是否存在任何已保存的HTTP身份验证凭据，该方法为同步方法。调用该方法需要先加载Web组件。
+判断是否存在任何已保存的HTTP身份验证凭据，该方法为同步方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -196,14 +196,6 @@ static existHttpAuthCredentials(): boolean
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
 | boolean | 是否存在任何已保存的HTTP身份验证凭据。<br>存在返回true，不存在返回false。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                |
-| -------- | ------------------------------------------------------ |
- | 401      | 参数错误。可能原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数验证失败。请检查参数类型和范围。 |
 
 **示例：**
 
@@ -241,7 +233,7 @@ struct WebComponent {
 
 static deleteHttpAuthCredentials(): void
 
-清除所有已保存的HTTP身份验证凭据，该方法为同步方法。调用该方法需要先加载Web组件。
+清除所有已保存的HTTP身份验证凭据，该方法为同步方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
