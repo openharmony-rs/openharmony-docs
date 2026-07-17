@@ -1757,15 +1757,15 @@ Format partition failed.
 
 2.<!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
 
-### 13600033 查询指定卷是否被占用失败
+### 13600033 卷占用状态查询执行失败
 
 **错误信息**
 
-Failed to query whether the specified volume is currently in use.
+Failed to query the occupancy status of the specified volume.
 
 **错误描述**
 
-查询指定卷是否被占用失败。
+查询指定卷是否被占用的操作执行失败。
 
 **可能原因**
 
