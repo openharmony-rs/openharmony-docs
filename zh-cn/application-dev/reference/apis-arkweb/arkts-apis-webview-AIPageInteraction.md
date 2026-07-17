@@ -331,8 +331,8 @@
 | 字段 | 子字段 | 类型 | 说明 |
 | ---- | ---- | ---- | ---- |
 | result | - | Object | 文本插入符位置信息。 |
-| result | x | number | 文本插入符的x坐标，相对于Web组件，单位：px。 |
-| result | y | number | 文本插入符的y坐标，相对于Web组件，单位：px。 |
+| result | x | number | 文本插入符的x坐标，相对于Web组件。 |
+| result | y | number | 文本插入符的y坐标，相对于Web组件。 |
 
 > **说明：**
 >
