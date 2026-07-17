@@ -127,7 +127,7 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 > **注意：**
 >
->该方法需在音振播放器释放前调用，且每次播放仅支持调用一次。
+> 该方法需在音振播放器释放前调用，且每次播放仅支持调用一次。
 
 **系统接口：** 此接口为系统接口。
 
@@ -176,8 +176,8 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 > **注意：**
 >
->- 该方法需在音振协同播放器播放前或播放后，以及释放前使用。
->- 该方法仅能调用一次。
+> - 该方法需在音振协同播放器播放前/后，以及释放前使用。
+> - 该方法仅能调用一次。
 
 **系统接口：** 此接口为系统接口。
 
