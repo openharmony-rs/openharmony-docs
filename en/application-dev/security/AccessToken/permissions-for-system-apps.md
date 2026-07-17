@@ -6973,3 +6973,17 @@ With this permission, the application can add file event records, search for fil
 **Supported devices**: Phone | PC/2in1 | Tablet
 
 **Since**: 26.0.0
+
+## ohos.permission.ACCESS_MEDIALIB_SANDBOX
+
+Allows an application to mount the media library sandbox within appspawn.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: wearables | TVs | tablets | phones | PCs/2-in-1 devices | cars | lite wearables | smartlocks | routers
+
+**Since**: 26.1.0
