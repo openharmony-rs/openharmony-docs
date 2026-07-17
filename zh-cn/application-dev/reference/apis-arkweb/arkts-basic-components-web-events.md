@@ -3239,7 +3239,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback<\[OnFirstContentfulPaintEvent\](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)> | 是 | 网页首次内容绘制时触发。事件对象包含导航开始时间戳、首次内容绘制耗时等性能指标。 |
+| callback | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制时触发。事件对象包含导航开始时间戳、首次内容绘制耗时等性能指标。 |
 
 **示例：**
 
@@ -3730,7 +3730,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 > **说明：**
 >
-> - 本接口与onNativeEmbedVisibilityChange都监控同层标签状态，但监控维度不同<br>onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE）, 适用于处理标签的创建、销毁、缓存等生命周期事件<br>onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden），适用于处理标签滚动进出视口的场景。两者可根据实际需求配合使用或单独使用。
+> - 本接口与onNativeEmbedVisibilityChange都监控同层标签状态，但监控维度不同。<br>onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE）, 适用于处理标签的创建、销毁、缓存等生命周期事件。<br>onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden），适用于处理标签滚动进出视口的场景。两者可根据实际需求配合使用或单独使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
