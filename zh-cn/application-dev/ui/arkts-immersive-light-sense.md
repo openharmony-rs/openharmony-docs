@@ -125,11 +125,11 @@ struct MaterialInfoPage {
           .value('选择')
           .margin({ bottom: 10 })
 
-        // 单独关闭Select的沉浸式系统材质
+        // 关闭Select和Select下拉菜单的沉浸式系统材质
         Select([{ value: '选项1' }, { value: '选项2' }])
           .value('选择（已关闭材质）')
           .systemMaterial(uiMaterial.Material.empty)
-          // .menuSystemMaterial(uiMaterial.Material.empty)
+          .menuSystemMaterial(uiMaterial.Material.empty)
       }
     }
     .width('100%')
