@@ -58,7 +58,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | error                | string                                                             | 否   | 否   | 错误状态字符串。 |
 | focusable            | boolean                                                            | 否   | 否   | 表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦，默认值为false。 |
 | hintText             | string                                                             | 否   | 否   | 提示文本。 |
-| inputType            | number                                                             | 否   | 否   | 输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型，1表示文本，2表示邮箱，3表示日期，4表示时间，5表示数字，6表示密码，7表示电话号码，8表示用户名，9表示新密码。默认值为0。 |
+| inputType            | number                                                             | 否   | 否   | 输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。默认值为0。 |
 | inspectorKey         | string                                                             | 否   | 否   | 表示元素的别名。 |
 | isActive             | boolean                                                            | 否   | 否   | 表示元素是否处于活动状态。true表示元素处于活动状态，false表示元素不处于活动状态，默认值为true。 |
 | isEnable             | boolean                                                            | 否   | 否   | 表示元素是否启用。true表示元素已启用，false表示元素未启用，默认值为false。 |
@@ -267,7 +267,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
 | 参数名                  | 类型      | 必填   | 说明                  |
 | -------------------- | ------- | ---- | ------------------- |
-| isAccessibilityFocus | boolean | 否    | 获取的是否是无障碍焦点元素，true表示是，false表示否，默认值为false。 |
+| isAccessibilityFocus | boolean | 否    | 获取的是否是无障碍焦点元素，true表示是无障碍焦点元素，false表示不是无障碍焦点元素，默认值为false。 |
 
 **返回值：**
 
@@ -363,7 +363,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 
 | 参数名                  | 类型                                       | 必填   | 说明                |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
-| isAccessibilityFocus | boolean                                  | 是    | 获取的是否是无障碍焦点元素，true表示是，false表示否。    |
+| isAccessibilityFocus | boolean                                  | 是    | 获取的是否是无障碍焦点元素，true表示是无障碍焦点元素，false表示不是无障碍焦点元素。    |
 | callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | 是    | 回调函数。当获取焦点元素成功，err为undefined，data为当前对应的焦点元素；否则为错误对象。 |
 
 **错误码：**

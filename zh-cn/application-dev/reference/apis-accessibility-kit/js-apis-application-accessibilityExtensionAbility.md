@@ -376,7 +376,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 onKeyEvent(keyEvent: KeyEvent): boolean
 
-在按键按下时回调此接口，可在该方法中根据业务判断是否消费事件。返回true表示此事件被消费，返回false表示此事件未被消费。该方法可选择性重写。
+在按键按下时回调此接口，可在该方法中根据业务判断是否消费事件。该方法可选择性重写。
 
 > **说明：**
 >

@@ -40,7 +40,7 @@ import { config } from '@kit.AccessibilityKit';
 | captions                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助字幕功能启用状态。true表示已启用辅助字幕功能，false表示未启用辅助字幕功能，默认值为false。                                             |
 | captionsStyle                      | [Config](#config)\<[accessibility.CaptionsStyle](js-apis-accessibility.md#captionsstyle8)> | 否 | 否 | 表示辅助字幕样式的配置。                                                |
 | audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频功能启用状态。true表示已启用单声道音频功能，false表示未启用单声道音频功能，默认值为false。                                            |
-| audioBalance<sup>10+</sup>         | [Config](#config)\<number>                                                                 | 否 | 否 | 表示左右声道音量平衡的配置。-1.0表示仅左声道输出，0.0表示左右声道平衡输出，1.0表示仅右声道输出，中间值为左右声道音量的线性比例。取值范围为-1.0~1.0。默认值为0.0。                                |
+| audioBalance<sup>10+</sup>         | [Config](#config)\<number>                                                                 | 否 | 否 | 表示左右声道音量平衡的配置。-1.0表示仅左声道输出；0.0表示左右声道平衡输出；1.0表示仅右声道输出；中间值为左右声道音量的线性比例。取值范围为-1.0~1.0。默认值为0.0。                                |
 | shortkeyMultiTargets<sup>11+</sup> | [Config](#config)&lt;Array&lt;string&gt;&gt;                                                    | 否 | 否 | 表示辅助扩展快捷键的多目标列表配置。取值为辅助扩展应用的名称，格式为：['bundleName/abilityName']。格式不正确或名称无效时，设置不生效。 |
 | clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。                                             |
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
@@ -69,7 +69,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -103,7 +103,9 @@ config.enableAbility(name, capability).then(() => {
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-启用辅助扩展，需与[config.disableAbility](#configdisableability)配对使用。与[config.enableAbilityWithCallback](#configenableabilitywithcallback23)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开连接事件，请使用[config.enableAbilityWithCallback](#configenableabilitywithcallback23)。使用callback异步回调。
+启用辅助扩展，需与[config.disableAbility](#configdisableability)配对使用。使用callback异步回调。
+
+与[config.enableAbilityWithCallback](#configenableabilitywithcallback23)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开连接事件，请使用[config.enableAbilityWithCallback](#configenableabilitywithcallback23)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1114,8 +1116,6 @@ config.highContrastText.off(callback);
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
 
 | 名称         | 类型                                         | 只读 | 可选 | 说明                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |

@@ -7,7 +7,9 @@
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
 
-AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。**生命周期流程：**onAccessibilityConnect（连接回调，用于初始化）→ onAccessibilityEventInfo/onAccessibilityKeyEvent（处理无障碍事件和按键事件）→ onAccessibilityDisconnect（断开回调，用于资源回收）。
+AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。
+
+**生命周期流程：** onAccessibilityConnect（连接回调，用于初始化）→ onAccessibilityEventInfo/onAccessibilityKeyEvent（处理无障碍事件和按键事件）→ onAccessibilityDisconnect（断开回调，用于资源回收）。
 
 > **说明：**
 >
@@ -156,7 +158,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
-在按键按下时回调该接口，可在该方法中根据业务判断是否消费事件。返回true表示此事件被消费，返回false表示此事件未被消费。该方法可选择性重写。
+在按键按下时回调该接口，可在该方法中根据业务判断是否消费事件。该方法可选择性重写。
 
 **系统接口：** 此接口为系统接口。
 
