@@ -1145,9 +1145,11 @@ Failed to install the HAP because installing the native package failed.
 安装HAP时，native软件包安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**
+
 native软件包配置信息有误。
 
 **处理步骤**
+
 检查native软件包的配置信息。
 
 ## 17700067 卸载应用失败，native软件包卸载失败
@@ -1157,12 +1159,15 @@ native软件包配置信息有误。
 Failed to uninstall the HAP because uninstalling the native package failed.
 
 **错误描述**
+
 卸载应用时，native软件包卸载失败。
 
 **可能原因**
+
 需要卸载的native软件包被占用。
 
 **处理步骤**
+
 检查是否存在进程占用相应native软件包。
 
 ## 17700069 应用不支持创建分身
@@ -1848,7 +1853,6 @@ Dynamic icons cannot take effect due to existing custom themes.
 **处理步骤**
 
 1. 检查当前使用的主题是否为自定义主题。
-
 2. 可以切换为官方主题后重新调用使能接口。<!--DelEnd-->
 
 ## 17700308 备用图标名称没有在配置文件中配置
