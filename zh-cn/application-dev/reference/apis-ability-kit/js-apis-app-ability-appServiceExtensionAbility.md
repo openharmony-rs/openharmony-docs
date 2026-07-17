@@ -61,7 +61,7 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该属性仅在PC/2in1设备中可正常使用，在其他设备上不可使用。
+**设备行为差异**：该属性仅在PC/2in1设备中可正常调用，在其他设备上不生效。
 
 **ArkTS-Dyn起始版本：** 20
 
