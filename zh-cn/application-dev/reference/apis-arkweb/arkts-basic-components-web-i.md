@@ -99,7 +99,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
-|  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
+|  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭该功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的层级，覆盖网页内容。false表示保持原层级，嵌入在网页中。<br>默认值：false。 |
 
 ## ExpandedMenuItemOptions<sup>(deprecated)</sup>
