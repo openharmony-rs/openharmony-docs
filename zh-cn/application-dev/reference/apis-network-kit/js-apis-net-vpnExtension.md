@@ -817,7 +817,7 @@ VpnExtensionAbility不支持以下模块的引用。
 | Kit | 模块 |
 |--|--|
 | Contacts Kit | [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md) |
-| Location Kit | [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md) |
+| Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md) |
 | Location Kit | [@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md) |
 | Audio Kit | [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md) |
 | Camera Kit | [@ohos.multimedia.camera (相机管理)](../apis-camera-kit/arkts-apis-camera.md) |
