@@ -28,15 +28,11 @@ EventResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## setGestureEventResult(result: boolean)<sup>12+</sup>
+## setGestureEventResult<sup>12+</sup>
 
-**返回值：**
+setGestureEventResult(result: boolean): void
 
-| 返回值 | 说明 |
-| --- | --- |
-| void | 无返回值，仅用于设置手势事件消费结果。 |
-
-设置手势事件消费结果。该接口为API 12版本，仅设置是否消费事件。若需同时控制冒泡，请使用API 14版本的重载接口。
+设置手势事件消费结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
