@@ -740,3 +740,4 @@ bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)
 | -- | -- |
 | bool | 成功时返回true，失败时返回false。 |
 
+
