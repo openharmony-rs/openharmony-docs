@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-16T10:44:37.567Z pushedAt=2026-07-17T02:16:56.566Z -->
+<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-16T10:44:37.567Z pushedAt=2026-07-17T07:45:39.332Z -->
 
 ```c
 typedef struct {...} ArkUI_AccessibilityProviderCallbacks
@@ -136,7 +136,7 @@ Finds the next node that can be focused based on the reference node and focus mo
 | Name                                                                                                                              | Description|
 |-----------------------------------------------------------------------------------------------------------------------------------| -- |
 | int64_t elementId                                                                                                                 | Unique ID of the accessibility element.|
-| [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | Focus move direction. For details about the values and their meanings, see [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection). |
+| [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection) direction | Focus movement direction. For details about the values and their meanings, see [ArkUI_AccessibilityFocusMoveDirection](capi-native-interface-accessibility-h.md#arkui_accessibilityfocusmovedirection). |
 | int32_t requestId                                                                                                                 | Request ID.|
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the accessibility element information. |
 

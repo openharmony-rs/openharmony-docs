@@ -716,7 +716,7 @@ Deletes the property corresponding to **propName** from [AppStorage](../../../ui
 
 The deletion is only successful if the property has no subscribers. If there is a subscriber, the deletion fails and **false** is returned. If there are no subscribers, the deletion is successful and **true** is returned.
 
-Subscribers include properties bound using [Link](#linkdeprecated) and [Prop](#propdeprecated) APIs, as well as those decorated with [@StorageLink](../../../ui/state-management/arkts-appstorage.md#storagelink) and [@StorageProp](../../../ui/state-management/arkts-appstorage.md#storageprop). This means that if there is still an **\@StorageLink('propName')**/**\@StorageProp('propName')** decorated variables or a **SubscribedAbstractProperty** instance in a synchronization with the property, the property cannot be deleted from AppStorage.
+Subscribers include properties bound using [Link](#linkdeprecated) and [Prop](#propdeprecated) APIs, as well as those decorated with [@StorageLink](../../../ui/state-management/arkts-appstorage.md#storagelink) and [@StorageProp](../../../ui/state-management/arkts-appstorage.md#storageprop). This means that if there is still an **\@StorageLink('propName')**/**\@StorageProp('propName')** decorated variable or a **SubscribedAbstractProperty** instance in a synchronization with the property, the property cannot be deleted from AppStorage.
 
 > **NOTE**
 >
@@ -1194,7 +1194,7 @@ Similar to the [link](#link9) API, establishes a two-way data binding with the p
 | Name      | Type  | Mandatory| Description                                                    |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | propName     | string | Yes  | Property name in LocalStorage.                                    |
-| defaultValue | T | Mandatory | Default value used to initialize the property corresponding to **propName** in LocalStorage if **propName** does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**. |
+| defaultValue | T | Yes | Default value used to initialize the property corresponding to **propName** in LocalStorage if **propName** does not exist. Since API version 12, **defaultValue** can be **null** or **undefined**. |
 
 **Return value**
 
