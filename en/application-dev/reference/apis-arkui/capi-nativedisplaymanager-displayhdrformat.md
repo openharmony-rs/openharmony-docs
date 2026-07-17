@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_DisplayHdrFormat
 
 ## Overview
 
-The struct describes all the HDR formats supported by a display.
+Describes all the HDR formats supported by a display.
 
 **Since**: 14
 
@@ -26,5 +26,5 @@ The struct describes all the HDR formats supported by a display.
 
 | Name| Description|
 | -- | -- |
-| uint32_t hdrFormatLength | Number of HDR formats supported by the display.|
-| uint32_t* hdrFormats | Data of the HDR formats supported by the display.|
+| uint32_t hdrFormatLength | Number of HDR formats supported by a display.|
+| uint32_t* hdrFormats | Pointer to the HDR format array supported by a display.|

@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-自定义组件内置方法是由ArkUI开发框架提供给应用开发者的，定义在自定义组件基类上的API。应用开发者可以在自定义组件的实例上调用对应的API以获取当前自定义组件实例相关的信息。例如，查询当前自定义组件上下文的UIContext信息。
+自定义组件内置方法由ArkUI开发框架提供，定义在自定义组件基类上。开发者可以在自定义组件的实例上调用对应的API，以获取当前自定义组件实例的相关信息，包括组件所属的UIContext、组件唯一标识、组件关联的NavDestination、Navigation和路由页面信息，以及自定义弹窗控制器。
 
 > **说明：**
 >
@@ -21,6 +21,8 @@ getUIContext(): UIContext
 获取UIContext对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,9 +66,11 @@ struct MyComponent {
 
 getUniqueId(): number
 
-获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
+获取当前组件的UniqueId。UniqueId由系统为每个组件分配，可保证在当前应用中唯一。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

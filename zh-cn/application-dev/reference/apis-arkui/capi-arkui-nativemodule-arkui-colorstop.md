@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_ColorStop
 
 ## 概述
 
-定义渐变色结构。
+定义渐变色结构，用于配置组件的渐变效果，支持通过颜色数组与位置数组组合定义多种渐变样式。
 
 **起始版本：** 12
 
@@ -26,8 +26,8 @@ typedef struct {...} ArkUI_ColorStop
 
 | 名称 | 描述 |
 | -- | -- |
-| const uint32_t* colors | 颜色数组。 |
-| float* stops | 位置数组。 |
-| int size | 数组长度。 |
+| const uint32_t* colors | 颜色数组，与stops数组成对对应，每个颜色对应一个渐变位置，数组长度必须与size一致。 |
+| float* stops | 位置数组，取值范围为0.0~1.0，表示渐变色的位置偏移，数组长度必须与size一致。 |
+| int size | 数组长度，colors和stops数组的实际元素个数。 |
 
 

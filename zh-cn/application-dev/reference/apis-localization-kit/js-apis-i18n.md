@@ -5490,7 +5490,7 @@ is24HourClock(): boolean
 
 set24HourClock(option: boolean): boolean
 
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅支持系统应用使用。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 修改系统时间的24小时制设置。
 
@@ -5523,7 +5523,7 @@ set24HourClock(option: boolean): boolean
 
 addPreferredLanguage(language: string, index?: number): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，替代接口仅支持系统应用使用。
+> 从API version 8开始支持，从API version 9开始废弃。
 
 在系统偏好语言列表的指定位置添加偏好语言。
 
@@ -5559,7 +5559,7 @@ addPreferredLanguage(language: string, index?: number): boolean
 
 removePreferredLanguage(index: number): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，替代接口仅支持系统应用使用。
+> 从API version 8开始支持，从API version 9开始废弃。
 
 从系统偏好语言列表中移除指定位置的偏好语言。
 

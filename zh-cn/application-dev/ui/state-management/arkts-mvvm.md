@@ -583,20 +583,6 @@ struct BuilderIndex {
 
 上一章节展示了非MVVM模式下的代码组织方式。随着主页面代码的增加，应该采取合理的分层策略，使项目结构清晰，组件之间不互相引用，避免后期维护时牵一发而动全身，增加功能更新的困难。本章将通过对MVVM的核心文件组织模式，向开发者展示如何使用MVVM来重构上一章节的代码。
 
-### MVVM文件结构说明
-
-```txt
-├── src
-│   ├── ets
-│   │   ├── pages 存放页面组件。
-│   │   ├── views 存放业务组件。
-│   │   ├── shares 存放通用组件。
-│   │   └── viewmodel 数据服务。
-│   │   │   ├── LoginViewModel.ets 登录页ViewModel。
-│   │   │   └── xxxViewModel.ets 其他页ViewModel。
-│
-```
-
 ### 分层设计技巧
 
 **Model层**
@@ -634,17 +620,17 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 ```txt
 ├── src
 │   ├── ets
-│   │   ├── model
+│   │   ├── model // 存放数据结构
 │   │   │   ├── ThingModel.ets
 │   │   │   └── TodoListModel.ets
-│   │   ├── pages
+│   │   ├── pages // 存放页面组件
 │   │   │   ├── Index.ets
-│   │   ├── views
+│   │   ├── views // 存放业务组件
 │   │   │   ├── AllChooseComponent.ets
 │   │   │   ├── ThingComponent.ets
 │   │   │   ├── TodoComponent.ets
 │   │   │   └── TodoListComponent.ets
-│   │   ├── viewmodel
+│   │   ├── viewmodel // 存放数据服务
 │   │   │   ├── ThingViewModel.ets
 │   │   │   └── TodoListViewModel.ets
 │   └── resources

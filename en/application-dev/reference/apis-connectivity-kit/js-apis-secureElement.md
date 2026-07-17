@@ -144,7 +144,7 @@ function secureElementDemo() {
 }
 ```
 
-## omapi.on<sup>18+</sup>
+## omapi.on('stateChanged')<sup>18+</sup>
 
 on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
 
@@ -171,9 +171,9 @@ For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 **Example**
 
-See the sample code in [off](#omapioff18).
+See the example of [omapi.off](#omapioffstatechanged18).
 
-## omapi.off<sup>18+</sup>
+## omapi.off('stateChanged')<sup>18+</sup>
 
 off(type: 'stateChanged', callback?: Callback\<ServiceState>): void;
 
@@ -186,7 +186,7 @@ Disables listening for service status change events.
 | **Name**| **Type**                                            | **Mandatory**| **Description**            |
 | ---------- | ---------------------------------------------------- | ------ | -------------------- |
 | type       | string                                               | Yes     | Event type. It has a fixed value of **stateChanged**.     |
-| callback   | Callback<[ServiceState](#servicestate)> | No     | Callback used to return the SE service state.|
+| callback   | Callback<[ServiceState](#servicestate)> | No     | Callback invoked to return the SE service status. If this parameter is left empty, all callbacks corresponding to the type will be unsubscribed.|
 
 **Error codes**
 
@@ -1529,7 +1529,7 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses a promise to 
 
 | **Type**| **Description**      |
 | -------- | -------------- |
-| Promise\<number[]> | Promise used to return the response received, in a number array. If the chip captures an unknown exception, an all zero value is returned.|
+| Promise\<number[]> | Promise used to return the response received, in a number array. If the chip captures an exception, an all zero value is returned.|
 
 **Error codes**
 
@@ -1556,7 +1556,7 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
 try {
     seChannel.transmit(cmdData).then((response) => {
-        // If the chip captures an unknown exception, an all zero value is returned for response.
+        // If the chip captures an exception, an all zero value is returned for response.
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'transmit error = %{public}s.', JSON.stringify(error));
@@ -1579,7 +1579,7 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchrono
 | **Name**| **Type**               | **Mandatory**| **Description**                             |
 | ---------- | ----------------------- | ------ | ------------------------------------- |
 | command    | number[]                | Yes     | APDU data to send.|
-| callback   | AsyncCallback\<number[]> | Yes     | Callback used to return the response received, in a number array. If the chip captures an unknown exception, an all zero value is returned.|
+| callback   | AsyncCallback\<number[]> | Yes     | Callback used to return the response received, in a number array. If the chip captures an exception, an all zero value is returned.|
 
 **Error codes**
 
@@ -1609,7 +1609,7 @@ try {
     if (error) {
         hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
     } else {
-        // If the chip captures an unknown exception, an all zero value is returned for response.
+        // If the chip captures an exception, an all zero value is returned for response.
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }
     });

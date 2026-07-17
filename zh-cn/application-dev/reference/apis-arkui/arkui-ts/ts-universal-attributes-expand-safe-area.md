@@ -6,34 +6,39 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-安全区域是指页面的显示区域，默认情况下开发者开发的界面都布局在安全区域内，不与系统设置的避让区比如状态栏、导航栏区域重叠。提供属性方法允许开发者设置组件绘制内容突破安全区域的限制，通过[expandSafeArea](#expandsafearea)属性支持组件不改变布局情况下扩展其绘制区域至安全区外，通过设置[setKeyboardAvoidMode](#setkeyboardavoidmode11)来配置虚拟键盘弹出时页面的避让模式。页面中有标题栏等文字不希望和避让区重叠时，建议对组件设置expandSafeArea属性实现沉浸式效果，也可直接通过窗口接口[setWindowLayoutFullScreen](../arkts-apis-window-Window.md#setwindowlayoutfullscreen9)实现全屏沉浸式效果。
+安全区域是指页面的显示区域，默认情况下开发者开发的界面都布局在安全区域内，不与系统设置的避让区（如状态栏、导航栏）重叠。提供属性方法允许开发者设置组件绘制内容突破安全区域限制：
+- 通过[expandSafeArea](#expandsafearea)属性支持组件在不改变布局情况下扩展其绘制区域至安全区外。
+- 通过设置[setKeyboardAvoidMode](#setkeyboardavoidmode11)来配置虚拟键盘弹出时页面的避让模式。
+- 通过[ignoreLayoutSafeArea](#ignorelayoutsafearea20)属性扩展组件布局时的安全区域，组件布局位置及大小可能改变。
+
+页面中有标题栏等文字不希望和避让区重叠时，建议对组件设置expandSafeArea属性实现沉浸式效果，也可直接通过窗口接口[setWindowLayoutFullScreen](../arkts-apis-window-Window.md#setwindowlayoutfullscreen9)实现全屏沉浸式效果。
 
 > **说明：**
 >
-> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br />
+> - 从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 摄像头挖孔区域不属于避让区，页面默认不避让挖孔。<br />
+> - 摄像头挖孔区域不属于避让区，页面默认不避让挖孔。<br>
 >
-> - 从API version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br />
-  "metadata": [<br />
-    &nbsp;&nbsp;{<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br />
-    &nbsp;&nbsp;}<br />
-  ],<br />
+> - 从API version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br>
+  "metadata": [<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br>
+    &nbsp;&nbsp;}<br>
+  ],<br>
   
 
 ## expandSafeArea
 
 expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
 
-控制组件扩展其安全区域。
+控制组件扩展其安全区域，实现沉浸式效果。
 
 >  **说明：**
 >
-> - 设置expandSafeArea属性进行组件绘制扩展时，建议组件尺寸不要设置固定宽高（百分比除外），当设置固定宽高（包括设置'auto'）时，扩展安全区域的方向只支持[SafeAreaEdge.TOP, SafeAreaEdge.START]，扩展后的组件尺寸保持不变。
+> - 设置expandSafeArea属性进行组件绘制扩展时，建议组件尺寸不要设置固定宽高（百分比除外）。若设置固定宽高或'auto'，则扩展安全区域的方向只支持向上（SafeAreaEdge.TOP）和向起始方向（SafeAreaEdge.START，LTR模式下表示左侧，RTL模式下表示右侧）扩展，且扩展后的组件尺寸保持不变。
 >
 > - 安全区域不会限制内部组件的布局和大小，不会裁剪内部组件。
 >
@@ -42,14 +47,14 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 > - 设置expandSafeArea()时，不传参，走默认值处理；设置expandSafeArea([],[])时，相当于入参是空数组，此时expandSafeArea属性设置无效。
 >   
 > - 组件设置expandSafeArea生效的条件为：  
->  1.type为SafeAreaType.KEYBOARD时默认生效，表现为组件不避让键盘。<br/>
->  2.设置其他type，组件的边界与安全区域重合时组件能够延伸到安全区域下。例如：设备顶部状态栏高度100，那么组件在屏幕中的绝对位置需要为0 <= y <= 100。
+>  1.type为SafeAreaType.KEYBOARD时默认生效，表现为组件不避让键盘。<br>
+>  2.设置其他type时，仅当组件边界与安全区域重合，组件才能延伸到安全区域下。例如：设备顶部状态栏高度为100，组件在屏幕中的绝对位置需要为0 <= y <= 100。
 >   
 > - 组件延伸到避让区时，在避让区的事件如点击事件等可能会被系统拦截，优先给状态栏等系统组件响应。
 >  
-> - 滚动类容器内的组件不建议设置expandSafeArea属性，如果设置，需要按照组件嵌套关系，将当前节点到滚动类祖先容器间所有直接节点设置expandSafeArea属性，否则expandSafeArea属性在滚动后可能会失效，写法参考[示例7](#示例7滚动类容器扩展安全区)。
+> - 滚动类容器内的组件不建议设置expandSafeArea属性。如果设置，需要按照组件嵌套关系，将当前节点到滚动类祖先容器间的所有直接节点设置expandSafeArea属性，否则expandSafeArea属性在滚动后可能会失效。写法参考[示例7](#示例7滚动类容器扩展安全区)。
 > 
-> - expandSafeArea属性仅作用于当前组件，不会向父组件或子组件传递，因此使用过程中，所有相关组件均需配置。
+> - expandSafeArea属性仅作用于当前组件，不会向父组件或子组件传递，因此开发者需为所有相关组件单独配置该属性。
 > 
 > - 同时设置expandSafeArea和position属性时，position属性会优先生效，expandSafeArea属性会后生效。对于未设置position、offset等绘制属性的组件，如果其边界未与避让区重叠，设置expandSafeArea属性将不生效，如弹窗和半模态组件。
 > 
@@ -63,8 +68,8 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[SafeAreaType](#safeareatype)> | 否   | 配置扩展安全区域的类型。未添加[Metadata](../../apis-ability-kit/js-apis-bundleManager-metadata.md)配置项时，页面不避让挖孔，CUTOUT类型不生效。<br />默认值：[SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD] <br />非法值：按默认值处理。|
-| edges  | Array <[SafeAreaEdge](#safeareaedge)> | 否   | 配置扩展安全区域的边缘。<br />默认值：[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END] <br />非法值：按默认值处理。<br />扩展至所有避让区域。 |
+| types  | Array <[SafeAreaType](#safeareatype)> | 否   | 配置扩展安全区域的类型。默认值包含SafeAreaType.CUTOUT，但未添加[Metadata](../../apis-ability-kit/js-apis-bundleManager-metadata.md)配置项时，页面不避让挖孔，CUTOUT类型不生效。<br>默认值：[SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD] <br>非法值：按默认值处理。|
+| edges  | Array<[SafeAreaEdge](#safeareaedge)> | 否   | 配置扩展安全区域的边缘，默认扩展至所有避让区域。<br>默认值：[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END]。<br>非法值：按默认值处理。 |
 
 **返回值：**
 
@@ -82,9 +87,9 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| SYSTEM   |0| 系统默认非安全区域，包括状态栏、导航栏。   |
-| CUTOUT   |1 | 设备的非安全区域，例如刘海屏或挖孔屏区域。 |
-| KEYBOARD |2 |软键盘区域。                               |
+| SYSTEM   | 0 | 系统默认非安全区域，包括状态栏、导航栏。 |
+| CUTOUT   | 1 | 设备的非安全区域，例如刘海屏或挖孔屏区域。未添加Metadata配置项时，CUTOUT类型不生效。 |
+| KEYBOARD | 2 | 软键盘区域。 |
 
 ## SafeAreaEdge
 
@@ -96,16 +101,16 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| TOP    |0| 上方区域。 |
-| BOTTOM |1| 下方区域。 |
-| START  |2| 前部区域。 |
-| END    |3| 尾部区域。 |
+| TOP    | 0 | 上方区域。 |
+| BOTTOM | 1 | 下方区域。 |
+| START  | 2 | 前部区域。 |
+| END    | 3 | 尾部区域。 |
 
 ## setKeyboardAvoidMode<sup>11+</sup>
 
 setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
-设置虚拟键盘抬起时页面的避让模式。
+设置虚拟键盘抬起时页面的避让模式。支持OFFSET（上抬）、RESIZE（压缩）和NONE（不避让）三种模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -115,7 +120,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br />setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
+| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 虚拟键盘抬起时页面的避让模式。可选值：OFFSET（上抬）、RESIZE（压缩）、NONE（不避让）。<br>默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br>setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
 >  **说明：**
 >
@@ -145,7 +150,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;): T
 
-扩展组件布局时的安全区。
+扩展组件布局时的安全区域，组件布局位置及大小可能改变，与expandSafeArea（仅扩展绘制区域，布局不变）机制不同。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -155,8 +160,8 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | 否   | 扩展布局安全区域的类型。<br />默认值：[LayoutSafeAreaType.SYSTEM]，扩展至所有安全区域，比如：状态栏，导航栏和组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）。<br />非法值：按默认值处理。 |
-| edges  | Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | 否   | 扩展布局安全区的边缘，并且支持镜像能力。<br />默认值：[LayoutSafeAreaEdge.ALL]，扩展组件所有边缘。<br />非法值：按默认值处理。|
+| types  | Array<[LayoutSafeAreaType](#layoutsafeareatype12)> | 否   | 扩展布局安全区域的类型。<br>默认值：[LayoutSafeAreaType.SYSTEM]，扩展至系统安全区域，例如：状态栏、导航栏、挖孔区和组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）。<br>非法值：按默认值处理。 |
+| edges  | Array<[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | 否   | 扩展布局安全区域的边缘，并且支持镜像能力。<br>默认值：[LayoutSafeAreaEdge.ALL]，扩展组件所有边缘。<br>非法值：按默认值处理。|
 
 **返回值：**
 
@@ -184,7 +189,7 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| SYSTEM   |  0 |设置后，组件的布局范围可扩展至组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）和页面级安全区（状态栏、导航栏、挖孔区）。   |
+| SYSTEM   | 0 | 设置后，组件的布局范围可扩展至组件级安全区（[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)）和页面级安全区（状态栏、导航栏、挖孔区）。 |
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
@@ -195,12 +200,12 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
 | TOP    | 0 | 上方区域。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BOTTOM | 1 | 下方区域。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| BOTTOM | 1 | 下方区域。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | START<sup>20+</sup>      | 2 | 前部区域。LTR模式时表示左侧区域，RTL模式表示右侧区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| END<sup>20+</sup>        | 3 |尾部区域。LTR模式时表示右侧区域，RTL模式表示左侧区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| VERTICAL<sup>20+</sup>   | 4 |垂直区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| HORIZONTAL<sup>20+</sup> | 5 |水平区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| ALL<sup>20+</sup>        | 6 |全部区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| END<sup>20+</sup>        | 3 | 尾部区域。LTR模式时表示右侧区域，RTL模式表示左侧区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| VERTICAL<sup>20+</sup>   | 4 | 垂直区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| HORIZONTAL<sup>20+</sup> | 5 | 水平区域。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| ALL<sup>20+</sup>        | 6 | 全部边缘。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 
@@ -213,9 +218,6 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 @Entry
 @Component
 struct SafeAreaExample1 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
   build() {
     Row() {
       Column()
@@ -323,9 +325,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // 设置虚拟键盘抬起时压缩页面大小为减去键盘的高度
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -378,9 +379,8 @@ export default class EntryAbility extends UIAbility{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-      let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
       // 设置虚拟键盘抬起时把页面上抬直到露出光标
-    windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -426,9 +426,9 @@ struct KeyboardAvoidExample2 {
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyboardAvoidMode } from '@kit.ArkUI';
+
 @Entry
 @Component
-
 struct KeyboardAvoidExample3 {
   build() {
     Column() {
@@ -625,8 +625,6 @@ struct IgnoreLayoutSafeAreaTest2 {
 该示例展示了容器分别设置了expandSafeArea和ignoreLayoutSafeArea的布局效果和各自对子组件布局效果的影响。两种设置下，容器都可见地进行了延伸，但前者的子组件不受延伸影响，后者的子组件因父容器的延伸改变了位置。
 
 ```ts
-import { LengthMetrics } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct IgnoreLayoutSafeAreaTest3 {

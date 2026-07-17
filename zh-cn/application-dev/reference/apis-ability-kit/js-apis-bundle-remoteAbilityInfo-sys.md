@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 remoteAbility信息。
@@ -12,7 +12,7 @@ remoteAbility信息。
 >
 > 本模块首批接口从API version 8 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)替代。
 > 
 > 本模块为系统接口。
 

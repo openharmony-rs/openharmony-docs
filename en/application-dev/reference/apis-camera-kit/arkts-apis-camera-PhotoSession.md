@@ -50,7 +50,7 @@ Checks whether this session supports a preconfigured resolution.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                       |
+| ID  | Error Message                       |
 |---------|-----------------------------|
 | 7400201 | Camera service fatal error. |
 
@@ -92,7 +92,7 @@ Preconfigures this session.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                       |
+| ID  | Error Message                       |
 |---------|-----------------------------|
 | 7400201 | Camera service fatal error. |
 

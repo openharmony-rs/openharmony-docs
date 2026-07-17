@@ -6,15 +6,19 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。
+绘制组件的父组件，描述所有绘制组件均支持的通用属性。
 
-1、绘制组件使用Shape作为父组件，实现类似SVG的效果。
+Shape组件通过定义视口、填充、边框等属性，支持矢量图形的绘制和组合。Shape作为容器组件，可包含Rect、Circle、Path等绘制子组件，实现类似SVG（Scalable Vector Graphics，可缩放矢量图形）的矢量图形绘制能力。
+
+Shape组件的两种使用方式：
+
+1、绘制组件使用Shape作为父组件，实现类似SVG的矢量图形的组合绘制。
 
 2、绘制组件单独使用，用于在页面上绘制指定的图形。
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
@@ -30,7 +34,7 @@
 
 new Shape(value?: PixelMap)
 
-用于绘制Shape组件的构造函数。 
+用于绘制Shape组件的构造函数。调用后创建一个Shape对象，可设置视口、填充、边框等属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -40,13 +44,13 @@ new Shape(value?: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### Shape
 
 Shape(value: PixelMap)
 
-用于绘制Shape组件的构造函数。 
+用于绘制Shape组件的构造函数。调用后创建一个Shape对象，可设置视口、填充、边框等属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -56,13 +60,13 @@ Shape(value: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中。<br>说明：此参数为必填参数，应传入有效的PixelMap对象，传入undefined或null时不生效。 |
 
 ### Shape
 
 Shape()
 
-用于绘制Shape组件的无参构造函数。 
+用于绘制Shape组件的无参构造函数。调用后创建一个Shape对象，使用默认视口和属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -88,21 +92,23 @@ Shape()
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的水平坐标。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| y<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的垂直坐标。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| x<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的水平坐标。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| y<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口起始点的垂直坐标。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的宽度，取值范围≥0。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 形状视口的高度，取值范围≥0。<br>默认值：0<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 
 ## 属性
 
-除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+除支持[通用属性](ts-component-general-attributes.md)以及[图形绘制通用属性](ts-drawing-components-common.md)外，还支持以下属性：
 
 ### viewPort
 
 viewPort(value: ViewportRect)
 
-设置形状的视口。 
+设置形状的视口。
+
+视口定义了绘制内容的坐标系统和显示区域。视口的起始点坐标(x, y)和宽高(width, height)决定了绘制内容在组件中的显示位置和范围。当视口范围与组件尺寸不同时，绘制内容会自动缩放适配。视口常用于调整绘制内容的显示比例和位置。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -114,213 +120,15 @@ viewPort(value: ViewportRect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br/>默认值：{}<br/>异常值undefined和null按照默认值处理。 |
-
-### fill
-
-fill(value: ResourceColor)
-
-设置填充区域的颜色，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                       | 必填 | 说明                                   |
-| ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
-
-### fillOpacity
-
-fillOpacity(value: number | string | Resource)
-
-设置填充区域透明度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明                           |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 填充区域透明度。<br/>**说明：**<br/>number格式取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0，其余异常值按1.0处理。<br/>string格式支持number格式取值的字符串形式，取值范围与number格式相同。<br/>Resource格式支持系统资源或者应用资源中的字符串，取值范围和number格式相同。<br/>默认值：1.0 |
-
-### stroke
-
-stroke(value: ResourceColor)
-
-设置边框颜色，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                       | 必填 | 说明       |
-| ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
-
-### strokeDashArray
-
-strokeDashArray(value: Array&lt;any&gt;)
-
-设置边框的虚线长度和虚线间隙长度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型             | 必填 | 说明                      |
-| ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 定义Shape边框的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
-
-### strokeDashOffset
-
-strokeDashOffset(value: Length)
-
-设置边框绘制起点的偏移量，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                       | 必填 | 说明                                 |
-| ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框绘制起点的偏移量。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理，NaN和Infinity会导致strokeDashArray失效。|
-
-### strokeLineCap
-
-strokeLineCap(value: LineCapStyle)
-
-设置边框端点绘制样式，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                              | 必填 | 说明                                             |
-| ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | 是   | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
-
-### strokeLineJoin
-
-strokeLineJoin(value: LineJoinStyle)
-
-设置边框拐角绘制样式，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                | 必填 | 说明                                               |
-| ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | 是   | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
-
-### strokeMiterLimit
-
-strokeMiterLimit(value: Length)
-
-设置斜接长度与边框宽度比值的极限值，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。该属性取值需在strokeLineJoin属性取值LineJoinStyle.Miter时生效。 
-
-该属性的合法值范围应当大于等于1.0，当取值范围在[0,1)时按1.0处理，其余异常值按默认值处理。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                       | 必填 | 说明                                           |
-| ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 斜接长度与边框宽度比值的极限值。<br/>默认值：4 <br/>异常值undefined、null和NaN按照默认值处理，Infinity会导致stroke失效。 |
-
-### strokeOpacity
-
-strokeOpacity(value: number | string | Resource)
-
-设置边框透明度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明                       |
-| ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 边框透明度。<br/>默认值：[stroke](#stroke)接口设置的透明度。<br/>异常值NaN按0.0处理，undefined、null和Infinity按1.0处理。 |
-
-### strokeWidth
-
-strokeWidth(value: Length)
-
-设置边框宽度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                         | 必填 | 说明                     |
-| ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1 <br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
-
-### antiAlias
-
-antiAlias(value: boolean)
-
-设置是否开启抗锯齿效果，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型    | 必填 | 说明                                  |
-| ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
+| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br>默认值：{x: 0, y: 0, width: 0, height: 0}<br>异常值undefined和null按照默认值处理。 |
 
 ### mesh<sup>8+</sup>
 
 mesh(value: Array&lt;any&gt;, column: number, row: number)
 
-设置网格效果。将图像分割为（row + 1）* (column + 1)的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置网格效果。将图像分割为（row + 1）* （column + 1）的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。适用于需要实现图像变形效果的场景，如图片扭曲、波浪效果等视觉效果。
+
+坐标数组按行优先顺序存储。原始图像被均匀分割后，每个网格区域根据顶点的新坐标进行变换，最终形成扭曲效果。
 
 > **说明：**
 >
@@ -336,9 +144,9 @@ mesh(value: Array&lt;any&gt;, column: number, row: number)
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
-| column | number              | 是   | mesh矩阵列数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
-| row    | number              | 是   | mesh矩阵行数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
+| value  | Array&lt;any&gt; | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。坐标系基于Shape组件显示区域，原点(0,0)位于左上角，x轴向右延伸，y轴向下延伸。<br>默认单位：vp <br>设置异常值undefined、null时按照空数组处理。 |
+| column | number              | 是   | mesh矩阵列数，取值范围≥0。<br>默认值：0<br>设置异常值undefined、null、NaN和Infinity时，column参数和row参数按默认值0处理，value参数按空数组处理。 |
+| row    | number              | 是   | mesh矩阵行数，取值范围≥0。<br>默认值：0<br>设置异常值undefined、null、NaN和Infinity时，column参数和row参数按默认值0处理，value参数按空数组处理。 |
 
 ## 示例
 
@@ -354,9 +162,9 @@ struct ShapeExample {
   build() {
     Column({ space: 10 }) {
       Text('basic').fontSize(11).fontColor(0xCCCCCC).width(320)
-      // 在Shape的(-2, -2)点绘制一个 300 * 50 带边框的矩形,颜色0x317AF7,边框颜色黑色,边框宽度4,边框间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
-      // 在Shape的(-2, 58)点绘制一个 300 * 50 带边框的椭圆,颜色0x317AF7,边框颜色黑色,边框宽度4,边框间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
-      // 在Shape的(-2, 118)点绘制一个 300 * 10 直线路径,颜色0x317AF7,边框颜色黑色,宽度4,间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
+      // 在Shape的(-2, -2)点绘制一个 300 * 50 带边框的矩形，颜色0x317AF7，边框颜色黑色，边框宽度4，边框间隙20，向左偏移10，线条两端样式为半圆，拐角样式圆角，抗锯齿(默认开启)
+      // 在Shape的(-2, 58)点绘制一个 300 * 50 带边框的椭圆，颜色0x317AF7，边框颜色黑色，边框宽度4，边框间隙20，向左偏移10，线条两端样式为半圆，拐角样式圆角，抗锯齿(默认开启)
+      // 在Shape的(-2, 118)点绘制一个 300 * 10 直线路径，颜色0x317AF7，边框颜色黑色，宽度4，间隙20，向左偏移10，线条两端样式为半圆，拐角样式圆角，抗锯齿(默认开启)
       Shape() {
         Rect().width(300).height(50)
         Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
@@ -512,9 +320,9 @@ struct ShapeExample {
 struct ShapeTypeExample {
   build() {
     Column({ space: 10 }) {
-      // 在Shape的(-2, -2)点绘制一个 300 * 50 带边框的矩形,颜色0x317AF7,边框颜色黑色,边框宽度4,边框间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
-      // 在Shape的(-2, 58)点绘制一个 300 * 50 带边框的椭圆,颜色0x317AF7,边框颜色黑色,边框宽度4,边框间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
-      // 在Shape的(-2, 118)点绘制一个 300 * 10 直线路径,颜色0x317AF7,边框颜色黑色,宽度4,间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
+      // 在Shape的(-2, -2)点绘制一个 300 * 50 带边框的矩形,颜色橙色,边框颜色黑色,边框宽度4,边框间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
+      // 在Shape的(-2, 58)点绘制一个 300 * 50 带边框的椭圆,颜色橙色,边框颜色黑色,边框宽度4,边框间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
+      // 在Shape的(-2, 118)点绘制一个 300 * 10 直线路径,颜色橙色,边框颜色黑色,宽度4,间隙20,向左偏移10,线条两端样式为半圆,拐角样式圆角,抗锯齿(默认开启)
       Shape() {
         Rect().width('300').height('50')
         Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
@@ -600,13 +408,16 @@ import { image } from '@kit.ImageKit';
 @Component
 struct Index {
   private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  // mesh数组，长度为(row+1)*(column+1)*2，每两个元素表示一个网格顶点的x、y坐标
   private meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
   @State pixelMap: image.PixelMap | undefined = undefined
 
   aboutToAppear(): void {
     // "resources/base/media/img.png"需要替换为开发者所需的图像资源文件。
+    // 创建图像位图并绘制到离屏画布
     let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
     this.context.drawImage(img, 0, 0, 200, 200)
+    // 从画布获取PixelMap对象，用于Shape组件
     this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
   }
 

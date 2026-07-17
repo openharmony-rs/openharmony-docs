@@ -1537,7 +1537,7 @@ try {
 
 removeService(serviceUuid: string): void
 
-Deletes a service added to the server.
+Removes a service from the server.
 - The service has been added by calling [addService](#addservice).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -1572,10 +1572,47 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let server: ble.GattServer = ble.createGattServer();
 try {
-    // Before removeService is called, the server and the client must be paired and connected.
     server.removeService('00001810-0000-1000-8000-00805F9B34FB');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+### removeAllServices
+
+removeAllServices(): void
+
+Removes all services from the server.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported. Failed to call the API because the short-range chip is not inserted on the 2in1 device.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+```js
+let server: ble.GattServer = ble.createGattServer();
+try {
+    server.removeAllServices();
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -4803,24 +4840,27 @@ let bleScanner: ble.BleScanner = ble.createBleScanner();
 function onReceiveEvent(scanReport: ble.ScanReport) {
     console.info('BLE scan device find result = '+ JSON.stringify(scanReport));
 }
-try {
-    bleScanner.on("BLEDeviceFind", onReceiveEvent);
-    let scanFilter: ble.ScanFilter = {
+async function startscan() {
+    try {
+        bleScanner.on("BLEDeviceFind", onReceiveEvent);
+        let scanFilter: ble.ScanFilter = {
             deviceId:"XX:XX:XX:XX:XX:XX",
             name:"test",
             serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
         };
-    let scanOptions: ble.ScanOptions = {
-        interval: 500,
-        dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
-        matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
-        reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
+        let scanOptions: ble.ScanOptions = {
+            interval: 500,
+            dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
+            matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
+            reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
+        }
+        await bleScanner.startScan([scanFilter],scanOptions);
+        console.info('startScan success');
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
-    bleScanner.startScan([scanFilter],scanOptions);
-    console.info('startScan success');
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
+startscan();
 ```
 
 ### stopScan<sup>15+</sup>
@@ -4861,12 +4901,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
-try {
-    bleScanner.stopScan();
-    console.info('stopScan success');
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+async function stopScan() {
+    try {
+        await bleScanner.stopScan();
+        console.info('stopScan success');
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    }
 }
+stopScan();
 ```
 
 ### on('BLEDeviceFind')<sup>15+</sup>
@@ -5144,7 +5187,7 @@ Defines the scan result to be reported upon scanning advertising packets that me
 <!--Table: auto; auto; 10%; 10%; 60%-->
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For information security purposes, if the [actual MAC address type](./js-apis-bluetooth-common.md#bluetoothaddresstype) is not configured in [ScanFilter](#scanfilter) when the application starts scanning, the device address obtained here is the [virtual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype).<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For information security purposes, if the [actual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype) is not configured in [ScanFilter](#scanfilter) when the application starts scanning, the device address obtained here is the [virtual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype).<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No| Yes| Bluetooth device address information, including the address and address type.|
 | rssi     | number      | No| No   | Signal strength, in dBm.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | data     | ArrayBuffer | No| No   | Raw unresolved broadcast packets sent by the discovered device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5162,22 +5205,21 @@ Defines the scan result to be reported upon scanning advertising packets that me
 
 Defines the BLE advertising parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name         | Type   | Read-Only| Optional  | Description                                      |
 | ----------- | ------- | ---- | ---- | ---------------------------------------- |
-| interval    | number  | No| Yes   | Advertising interval.<br>The value range is [32, 16777215], in slots. One slot represents 0.625 ms. The default value is **1600**.<br>The maximum value is **16384** for traditional advertising.|
-| txPower     | number  | No| Yes   | Transmit power. The value range is [–127, 1], in dBm. The default value is **–7**.<br>Considering performance and power consumption, the recommended parameter values are as follows: **1** for high level, **-7** for medium level, and **-15** for low level.  |
-| connectable | boolean | No| Yes   | Whether the advertising is connectable. The value **true** indicates that the advertising is connectable, and the value false indicates the opposite. The default value is **true**.                  |
+| interval    | number  | No| Yes   | Advertising interval.<br>The value range is [32, 16777215], in slots. One slot represents 0.625 ms. The default value is **1600**.<br>The maximum value is **16384** for traditional advertising.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| txPower     | number  | No| Yes   | Transmit power. The value range is [–127, 1], in dBm. The default value is **–7**.<br>Considering performance and power consumption, the recommended parameter values are as follows: **1** for high level, **-7** for medium level, and **-15** for low level.<br>**Atomic service API**: This API can be used in atomic services since API version 12.  |
+| connectable | boolean | No| Yes   | Whether the advertising is connectable. The value **true** indicates that the advertising is connectable, and the value false indicates the opposite. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
+| isExtended  | boolean | No| Yes   | Whether to use extended advertising. The value **false** indicates that the traditional advertising is used, and the maximum packet length is 31 bytes. The value **true** indicates that the extended advertising is used, and the maximum packet length is determined by the Bluetooth chip capability. false<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model constraint**: This API can be used only in the stage model.                |
 
 
 ## AdvertiseData
 
-Defines the BLE advertising packet data, which can also be used in the response to a scan request. Currently, only traditional advertising is supported. The maximum length of the packet data is 31 bytes. The advertising will fail if the maximum length is exceeded.
+Defines the BLE advertising packet data, which can also be used in the response to a scan request. Both traditional advertising and extended advertising are supported. The maximum length of a traditional advertising packet is 31 bytes, and the maximum length of an extended advertising packet is determined by the Bluetooth chip capability. The advertising will fail if the maximum length is exceeded.
 
-- When all parameters are included (especially the advertising name, which is set by **includeDeviceName** or **advertiseName**), pay attention to the length of advertising packets.
+- In the traditional advertising mode, when all parameters are included (especially the advertising name, which is set by **includeDeviceName** or **advertiseName**), pay attention to the length of advertising packets.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -5302,6 +5344,7 @@ Defines the scan options.
 | matchMode | [MatchMode](#matchmode) | No| Yes   | Hardware match mode. The default value is **MATCH_MODE_AGGRESSIVE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | phyType<sup>12+</sup> | [PhyType](#phytype12) | No| Yes   | Physical channel type. The default value is **PHY_LE_1M**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | reportMode<sup>15+</sup> | [ScanReportMode](#scanreportmode15) | No| Yes   | Reporting mode. The default value is **NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| isExtended | boolean  | No| Yes   | Whether to use extended scanning. The value **false** indicates traditional scanning is used; the value **true** indicates extended scanning is used. false<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model constraint**: This API can be used only in the stage model.                |
 
 
 ## GattProperties
@@ -5315,7 +5358,7 @@ Describes the properties supported by a GATT characteristic. The properties dete
 | -------- | ------ |---- |---- | ----------- |
 | write    | boolean | No| Yes | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported and a response is required, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | writeNoResponse | boolean | No| Yes  | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported without requiring a response, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| read | boolean   | No|  Yes   | Whether the read operation is supported.<br>**true** if the read operation is supported, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| read | boolean   | No|  Yes   | Whether the read operation is supported.<br>**true** if supported; **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | notify | boolean   | No| Yes   | Whether the notification operation is supported.<br>The value **true** indicates that the notification operation is supported without requiring a confirmation response, and the value **false** indicates the notification operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | indicate | boolean   | No| Yes   | Whether the indication operation is supported.<br>The value **true** indicates that the indication operation is supported with requiring a confirmation response, and the value **false** indicates the indication operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | broadcast<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic can be sent by the server in advertising packets.<br>The value **true** indicates that the characteristic can be sent by the server as [ServiceData](#servicedata) in advertising packets, and the value **false** indicates the opposite. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|

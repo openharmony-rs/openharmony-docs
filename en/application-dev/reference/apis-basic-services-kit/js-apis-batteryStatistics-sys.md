@@ -41,7 +41,7 @@ Obtains the power consumption information list. This API uses a promise to retur
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -78,7 +78,7 @@ Obtains the power consumption information list. This API uses an asynchronous ca
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -122,7 +122,7 @@ Obtains the power consumption of an application, in mAh.
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -165,7 +165,7 @@ Obtains the proportion of the power consumption of an application.
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -208,7 +208,7 @@ Obtains the power consumption of a hardware unit according to the consumption ty
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -251,7 +251,7 @@ Obtains the proportion of the power consumption of a hardware unit according to 
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |

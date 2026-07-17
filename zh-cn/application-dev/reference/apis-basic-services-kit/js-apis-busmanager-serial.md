@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供串口通信管理功能，包括获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等。
+本模块提供串口通信管理功能，适用于需要与串口设备进行数据交互的场景，如工业控制、传感器数据采集、嵌入式设备通信等。支持获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等功能，帮助开发者便捷地实现与外部串口设备的通信，提高设备互联效率。
 
 **起始版本：** 26.0.0
 
@@ -21,7 +21,7 @@ import { serial } from "@kit.BasicServicesKit";
 
 getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 
-查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。
+查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等应用。
 
 **起始版本：** 26.0.0
 
@@ -47,6 +47,7 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 **示例：**
 
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // 获取串口设备列表
 serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
   console.info(`getSerialPortList success, length: ${portList.length}`);
@@ -54,8 +55,8 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
     let portInfo: serial.SerialPortInfo = portList[0].portInfo;
     console.info(`portName: ${portInfo.portName}`);
   }
-}).catch((error: Error) => {
-  console.error(`getSerialPortList error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to get serial port list. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -79,7 +80,11 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
-打开串口设备。使用Promise异步回调。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。
+打开串口设备。使用Promise异步回调。用于建立与串口设备的通信连接，如传感器数据采集、设备控制命令发送、串口打印机等场景。
+
+**配对调用：**
+- 调用open()后，必须在使用完毕后调用close()释放串口资源
+- 未调用close()会导致串口资源泄漏，可能影响其他应用的串口使用
 
 **起始版本：** 26.0.0
 
@@ -91,13 +96,13 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
 | 参数名 | 类型                                      | 必填 | 说明                                       |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------ |
-| config | [SerialConfigs](#serialconfigs)           | 否   | 串口通信参数。默认值参考[SerialConfigs](#serialconfigs)各参数。 |
+| config | [SerialConfigs](#serialconfigs)           | 否   | 串口通信参数。不传入config参数时，使用SerialConfigs的默认配置打开串口。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -114,6 +119,7 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // 获取串口列表并打开第一个串口
 serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   if (portList.length === 0) {
@@ -129,8 +135,8 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
   };
   await port.open(config);
   console.info('open success');
-}).catch((error: Error) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to open serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -138,7 +144,11 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
 
 close(): Promise&lt;void&gt;
 
-关闭串口设备。使用Promise异步回调。
+关闭串口设备。使用Promise异步回调。用于断开与串口设备的通信连接，如应用退出、设备切换、任务完成后释放串口资源等场景。需在串口打开后调用。
+
+**配对调用：**
+- 必须先调用open()打开串口，才能调用close()关闭串口
+- 调用close()后释放串口资源，如需再次使用需要重新调用open()
 
 **起始版本：** 26.0.0
 
@@ -163,13 +173,15 @@ close(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 关闭串口
 port.close().then(() => {
   console.info('close success');
-}).catch((error: Error) => {
-  console.error(`close error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to close serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -177,7 +189,11 @@ port.close().then(() => {
 
 write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。
+向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。用于向连接的串口设备发送控制命令、数据包、配置参数等，如工业控制、设备调试、数据采集等场景。需在串口打开后调用。
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用write()发送数据
+- 未调用open()就调用write()会抛出错误码35700005（Port not open）
 
 **起始版本：** 26.0.0
 
@@ -190,7 +206,7 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 | 参数名   | 类型         | 必填 | 说明                                                                                                     |
 | -------- | ------------ | ---- | -------------------------------------------------------------------------------------------------------- |
 | data     | Uint8Array   | 是   | 待发送的数据。长度范围：(0, 4096]。发送超过4096字节的数据时，建议分多次调用write方法发送。                                                                        |
-| timeout  | number       | 否   | 超时时间。取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入端口时，不等待直接返回写入长度0。 |
+| timeout  | number       | 否   | 超时时间，取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入端口时，不等待直接返回写入长度0。传入负数、非整数或大于300000时返回错误码35700002。 |
 
 **返回值：**
 
@@ -212,15 +228,17 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
-import { buffer } from '@kit.ArkTS';
+// buffer需从@kit.ArkTS导入
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 向串口写入数据
 let writeData: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
 port.write(writeData, 2000).then((size: number) => {
   console.info('write success, size: ' + size);
-}).catch((error: Error) => {
-  console.error(`write error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to write to serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -228,7 +246,15 @@ port.write(writeData, 2000).then((size: number) => {
 
 onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
-监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](#close)后，所有回调将被清除。
+监听串口接收数据事件。使用callback异步回调，返回接收到的数据。需在串口打开后调用，调用[close](#close)后，所有回调将被清除。用于实时接收串口设备发送的数据，如传感器数据监测、设备状态反馈、实时数据采集等场景。
+
+**配对调用：**
+- 与offDataRead()方法配对使用，offDataRead()用于取消监听
+- 建议在不需要监听时调用offDataRead()释放监听资源
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用onDataRead()监听数据
+- 未调用open()就调用onDataRead()会抛出错误码35700005（Port not open）
 
 **起始版本：** 26.0.0
 
@@ -240,7 +266,7 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 | 参数名   | 类型                       | 必填 | 说明                             |
 | -------- | -------------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;Uint8Array&gt; | 是   | 回调函数，返回串口接收到的数据。 |
+| callback | Callback&lt;Uint8Array&gt; | 是   | 回调函数，返回串口接收到的数据。用于监听串口数据接收事件，注册回调后，串口接收到数据时会触发该回调函数。 |
 
 **错误码：**
 
@@ -254,6 +280,7 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 监听串口数据接收
@@ -266,7 +293,11 @@ port.onDataRead((data: Uint8Array) => {
 
 offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
-取消监听串口接收数据事件。使用callback异步回调。
+取消监听串口接收数据事件。使用callback异步回调。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+
+**配对调用：**
+- 与onDataRead()方法配对使用，用于取消onDataRead()注册的监听
+- 可以取消所有监听，也可以取消指定的监听回调
 
 **起始版本：** 26.0.0
 
@@ -291,6 +322,7 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 取消监听串口数据接收
@@ -307,7 +339,13 @@ port.offDataRead(callback);
 
 flush(): Promise&lt;void&gt;
 
-清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。
+清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。需在串口打开后调用。用于丢弃缓冲区中无效或过时的数据，如数据传输出错时清空缓冲区重传、切换通信协议时清理旧数据等场景。
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用flush()清空缓冲区
+- 未调用open()就调用flush()会抛出错误码35700005（Port not open）
+
+**与drain的区别：** flush直接丢弃缓冲区中的所有数据，适用于需要快速清空缓冲区或丢弃无效数据的场景；drain等待写缓冲区中的数据正常发送完成，适用于需要确保数据完整传输的场景。
 
 **起始版本：** 26.0.0
 
@@ -333,13 +371,15 @@ flush(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 刷新串口缓冲区
 port.flush().then(() => {
   console.info('flush success');
-}).catch((error: Error) => {
-  console.error(`flush error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to flush serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -347,7 +387,7 @@ port.flush().then(() => {
 
 drain(): Promise&lt;void&gt;
 
-等待所有写请求完成。使用Promise异步回调。
+等待所有写请求完成。使用Promise异步回调。需在串口打开后调用。用于确保所有数据写入完成后再进行后续操作，如数据传输完成后关闭串口、发送数据后等待硬件响应等场景。
 
 **起始版本：** 26.0.0
 
@@ -373,13 +413,15 @@ drain(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 等待所有写请求完成
 port.drain().then(() => {
   console.info('drain success');
-}).catch((error: Error) => {
-  console.error(`drain error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to drain serial port. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -387,7 +429,9 @@ port.drain().then(() => {
 
 setRts(enable: boolean): Promise&lt;void&gt;
 
-设置RTS（请求发送）信号状态。使用Promise异步回调。
+设置RTS（请求发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制硬件流控的请求发送信号，如启用RTS/CTS硬件流控时控制发送权、与支持硬件流控的设备通信等场景。
+
+**与setDtr的区别：** setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控；DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
 
 **起始版本：** 26.0.0
 
@@ -419,13 +463,15 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置RTS信号
 port.setRts(true).then(() => {
   console.info('setRts success');
-}).catch((error: Error) => {
-  console.error(`setRts error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to set RTS. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -433,7 +479,7 @@ port.setRts(true).then(() => {
 
 getCts(): Promise&lt;boolean&gt;
 
-获取CTS（清除发送）信号状态。使用Promise异步回调。
+获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询硬件流控的清除发送信号状态，判断是否可以发送数据，如启用RTS/CTS硬件流控时检查发送权、与支持硬件流控的设备通信前检查状态等场景。
 
 **起始版本：** 26.0.0
 
@@ -459,13 +505,15 @@ getCts(): Promise&lt;boolean&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取CTS信号状态
 port.getCts().then((cts: boolean) => {
   console.info('getCts success, cts: ' + cts);
-}).catch((error: Error) => {
-  console.error(`getCts error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to get CTS. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -473,7 +521,7 @@ port.getCts().then((cts: boolean) => {
 
 sendBrk(): Promise&lt;void&gt;
 
-发送BRK（中断）信号。使用Promise异步回调。
+发送BRK（中断）信号。使用Promise异步回调。需在串口打开后调用。用于向设备发送中断信号，如紧急停止设备通信、通知设备复位、特殊协议要求的信号交互等场景。
 
 **起始版本：** 26.0.0
 
@@ -499,13 +547,15 @@ sendBrk(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 发送BRK信号
 port.sendBrk().then(() => {
   console.info('sendBrk success');
-}).catch((error: Error) => {
-  console.error(`sendBrk error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to send BRK. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -513,7 +563,7 @@ port.sendBrk().then(() => {
 
 setDtr(enable: boolean): Promise&lt;void&gt;
 
-设置DTR（数据终端就绪）信号状态。使用Promise异步回调。
+设置DTR（数据终端就绪）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制数据终端就绪信号，如向设备通知终端准备就绪、通过DTR信号控制设备上电或复位、与需要DTR信号检测的设备通信等场景。
 
 **起始版本：** 26.0.0
 
@@ -531,7 +581,7 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -545,13 +595,15 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置DTR信号
 port.setDtr(true).then(() => {
   console.info('setDtr success');
-}).catch((error: Error) => {
-  console.error(`setDtr error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to set DTR. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -559,7 +611,7 @@ port.setDtr(true).then(() => {
 
 getDsr(): Promise&lt;boolean&gt;
 
-获取DSR（数据设备就绪）信号状态。使用Promise异步回调。
+获取DSR（数据设备就绪）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询数据设备就绪信号状态，判断通信设备是否准备就绪，如检查设备连接状态、在设备准备就绪后开始通信等场景。
 
 **起始版本：** 26.0.0
 
@@ -585,13 +637,15 @@ getDsr(): Promise&lt;boolean&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
+// BusinessError需从@kit.BasicServicesKit导入
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取DSR信号状态
 port.getDsr().then((dsr: boolean) => {
   console.info('getDsr success, dsr: ' + dsr);
-}).catch((error: Error) => {
-  console.error(`getDsr error: ${JSON.stringify(error)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to get DSR. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -599,7 +653,15 @@ port.getDsr().then((dsr: boolean) => {
 
 onDisconnect(callback: Callback&lt;void&gt;): void
 
-监听串口断开事件。使用callback异步回调。
+监听串口断开事件。使用callback异步回调。调用close后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。
+
+**配对调用：**
+- 与offDisconnect()方法配对使用，offDisconnect()用于取消监听
+- 建议在不需要监听时调用offDisconnect()释放监听资源
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用onDisconnect()监听断开事件
+- 未调用open()就调用onDisconnect()会抛出错误码35700005（Port not open）
 
 **起始版本：** 26.0.0
 
@@ -611,7 +673,7 @@ onDisconnect(callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                             |
 | -------- | --------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;void&gt;  | 是   | 回调函数，串口断开时触发。 |
+| callback | Callback&lt;void&gt;  | 是   | 回调函数，串口断开时触发。用于监听串口断开事件，注册回调后，串口设备断开连接时会触发该回调函数。 |
 
 **错误码：**
 
@@ -624,6 +686,7 @@ onDisconnect(callback: Callback&lt;void&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 监听串口断开事件
@@ -636,7 +699,11 @@ port.onDisconnect(() => {
 
 offDisconnect(callback?: Callback&lt;void&gt;): void
 
-取消监听串口断开事件。
+取消监听串口断开事件。用于不再需要监听串口断开事件时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+
+**配对调用：**
+- 与onDisconnect()方法配对使用，用于取消onDisconnect()注册的监听
+- 可以取消所有监听，也可以取消指定的监听回调
 
 **起始版本：** 26.0.0
 
@@ -661,6 +728,7 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 取消监听串口断开事件
@@ -753,10 +821,10 @@ port.offDisconnect(disconnectedCallback);
 | 名称     | 类型                     | 只读 | 可选 | 说明                                                                  |
 | -------- | ------------------------ | ---- | ---- | --------------------------------------------------------------------- |
 | baudRate | number                   | 否   | 是   | 波特率。值为正整数，非标准波特率的具体支持情况依赖于硬件。单位：bit/s。默认值：115200。       |
-| dataBits | [DataBits](#databits)    | 否   | 是   | 数据位。默认值：EIGHT。                                                |
-| stopBits | [StopBits](#stopbits)    | 否   | 是   | 停止位。默认值：ONE。                                                  |
-| parity   | [Parity](#parity)        | 否   | 是   | 校验位。默认值：NONE。                                                 |
-| rtscts   | boolean                  | 否   | 是   | 是否启用RTS/CTS硬件自动流控。默认值：false。true表示启用，false表示未启用。                                   |
-| xon      | boolean                  | 否   | 是   | 是否启用XON控制发送流。默认值：false。true表示启用，false表示未启用。                                  |
-| xoff     | boolean                  | 否   | 是   | 是否启用XOFF控制接收流。默认值：false。true表示启用，false表示未启用。                                 |
-| xany     | boolean                  | 否   | 是   | 是否启用XANY控制流。默认值：false。true表示启用，false表示未启用。                                     |
+| dataBits | [DataBits](#databits) | 否 | 是   | 数据位。默认值：EIGHT（8数据位，标准通信）。FIVE/SIX/SEVEN用于老旧设备或特殊协议。 |
+| stopBits | [StopBits](#stopbits)    | 否   | 是   | 停止位。默认值：ONE。1个停止位用于标准通信场景；2个停止位用于低速通信或与老旧设备通信时增加信号稳定性。 |
+| parity | [Parity](#parity) | 否 | 是   | 校验位。默认值：NONE（无校验）。EVEN/ODD用于数据准确性要求高的场景；MARK/SPACE用于特殊通信协议。 |
+| rtscts   | boolean                  | 否   | 是   | 是否启用RTS/CTS硬件自动流控。RTS/CTS硬件流控是一种通过硬件信号实现的自动数据流控制机制，RTS和CTS信号线协同工作以防止缓冲区溢出。启用后，系统会自动控制RTS和CTS信号来管理数据流量。默认值：false。true表示启用，false表示未启用。                                   |
+| xon      | boolean                  | 否   | 是   | 是否启用XON（Xmitter On，传输继续控制字符）控制发送流。XON是软件流控协议中的一个控制字符（ASCII值为17），当接收端缓冲区有空间时发送XON字符通知发送端恢复发送数据。默认值：false。true表示启用，false表示未启用。                                  |
+| xoff     | boolean                  | 否   | 是   | 是否启用XOFF（Xmitter Off，传输停止控制字符）控制接收流。XOFF是软件流控协议中的一个控制字符（ASCII值为19），当接收端缓冲区即将溢出时发送XOFF字符通知发送端暂停发送数据。默认值：false。true表示启用，false表示未启用。                                 |
+| xany     | boolean                  | 否   | 是   | 是否启用XANY（Any Character Resume，任意字符恢复模式）控制流。XANY是软件流控协议中的一种扩展模式，当启用XANY时，任何字符都可以作为恢复发送的信号，而不仅仅是XON字符。默认值：false。true表示启用，false表示未启用。                                     |

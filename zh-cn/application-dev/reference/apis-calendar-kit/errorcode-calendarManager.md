@@ -63,7 +63,7 @@ The specified account was not found.
 
 **错误信息**
 
-Internal program error.
+Internal program errors.
 
 **错误描述**
 

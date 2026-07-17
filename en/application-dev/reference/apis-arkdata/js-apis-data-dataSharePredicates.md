@@ -15,7 +15,7 @@ The APIs provided by **DataSharePredicates** correspond to the filter criteria o
 - It is used as a search criterion in the media file management service. For details, see [FetchOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions) in the fetch options of the album management. In this scenario, you do not need to pay attention to the database type.
 
 <!--Del-->
-- It is used as a search criterion when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
+- It is used as the search criteria when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [distributed KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
 <!--DelEnd-->
 
 > **NOTE**
@@ -35,7 +35,9 @@ import { dataSharePredicates } from '@kit.ArkData';
 ## DataSharePredicates
 Provides APIs for setting different **DataSharePredicates** objects. This type is not multi-thread safe. If a **DataSharePredicates** instance is operated by multiple threads at the same time in an application, use a lock for it.
 
-### equalTo<sup>10+</sup>
+**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+
+### equalTo
 
 equalTo(field: string, value: ValueType): DataSharePredicates
 
@@ -68,7 +70,7 @@ predicates.equalTo("NAME", "Rose");
 ```
 
 
-### and<sup>10+</sup>
+### and
 
 and(): DataSharePredicates
 
@@ -95,7 +97,7 @@ predicates.equalTo("NAME", "lisi")
     .equalTo("SALARY", 200.5);
 ```
 
-### orderByAsc<sup>10+</sup>
+### orderByAsc
 
 orderByAsc(field: string): DataSharePredicates
 
@@ -126,7 +128,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.orderByAsc("AGE");
 ```
 
-### orderByDesc<sup>10+</sup>
+### orderByDesc
 
 orderByDesc(field: string): DataSharePredicates
 
@@ -157,7 +159,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.orderByDesc("AGE");
 ```
 
-### limit<sup>10+</sup>
+### limit
 
 limit(total: number, offset: number): DataSharePredicates
 
@@ -189,7 +191,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose").limit(10, 3);
 ```
 
-### in<sup>10+</sup>
+### in
 
 in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
@@ -205,8 +207,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type            | Mandatory| Description                                   |
 | ------- | ---------------- | ---- | --------------------------------------- |
-| field   | string           | Yes| Column name in the database table.<br>If this parameter is set to **undefined** or **null**, the predicate used is invalid.                  |
-| value | Array&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)&gt; | Yes  | Array of the values to match.|
+| field   | string           | Yes| Column name in the database table.<br>If this parameter is set to **undefined** or **null**, the predicate used is invalid.<br>If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs.                  |
+| value | Array<[ValueType](js-apis-data-valuesBucket.md#valuetype)> | Yes  | Array of the values to match.<br>If this parameter is set to **undefined** or **null**, the predicate used is invalid.|
 
 **Return value**
 

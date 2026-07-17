@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated)获取。

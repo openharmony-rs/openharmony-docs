@@ -37,7 +37,7 @@ Checks whether WLAN is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -69,7 +69,7 @@ Enables the WLAN.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -138,7 +138,7 @@ Starts WLAN scanning. Note that WLAN must have been enabled.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -217,7 +217,7 @@ Obtains the scan result. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -247,7 +247,7 @@ Obtains the scan result. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -320,7 +320,7 @@ Obtains the scanning result. This API returns an array containing multiple WifiS
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -377,7 +377,7 @@ Obtains the cached scan results within 30s before the current time point.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -607,6 +607,20 @@ When a user connects to the WLAN through the WAPI authentication protocol, the u
 | wapiAsCert | string | No| No| Authentication server certificate (AS certificate).|
 | wapiUserCert | string | No| No| User Certificate.|
 
+## WifiCapability
+
+Defines the Wi-Fi function
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| WIFI_AUTO_ENABLE | 0 | Automatic Wi-Fi enabling.|
+
 ## WapiPskType<sup>12+</sup>
 
 Enumerates the WAPI authentication types.
@@ -675,13 +689,15 @@ Represents the settings for Wi-Fi connection.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
 **Model restriction**: This API can be used only in the stage model.
 
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | No| No| ID of the candidate network configuration.|
-| withUserAction | boolean | No| Yes| Whether to prompt the user to trust the Wi-Fi connection. The value **true** indicates that the API should have the same function as that of the **connectToCandidateConfigWithUserAction** API. The value **false** indicates the opposite. The default value is **false**.|
+| withUserAction | boolean | No| Yes| Whether to prompt the user to trust the Wi-Fi connection. The value **true** indicates that the API should have the same function as that of the **connectToCandidateConfigWithUserAction** API. The value **false** indicates not prompting the user to trust the Wi-Fi connection. The default value is **false**.|
 | userActionTimeout | number | No| Yes| Display time of the dialog box for the user to confirm, in seconds. The value ranges from 1 to 30, and the default value is **10**.|
 | addNetworkToSystem | boolean | No| Yes| Whether to add the network to the system. The value **true** indicates adding the recommended network to the system, and the value **false** indicates leaving the recommended network in its previous state. The default value is **false**.|
 
@@ -715,7 +731,7 @@ Adds the candidate network configuration. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -725,7 +741,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | 2501000  | Operation failed.|
 
 **Example**
-`````ts
+```ts
   import { wifiManager } from '@kit.ConnectivityKit';
   
   try {
@@ -742,7 +758,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }
-`````
+```
 
 ## wifiManager.addCandidateConfig
 
@@ -768,7 +784,7 @@ Adds the configuration of a candidate network. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -778,7 +794,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | 2501000  | Operation failed.|
 
 **Example**
-`````ts
+```ts
   import { wifiManager } from '@kit.ConnectivityKit';
 
   try {
@@ -793,7 +809,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }
-`````
+```
 
 ## wifiManager.removeCandidateConfig
 
@@ -820,11 +836,11 @@ Removes the configuration of a candidate network. This API uses a promise to ret
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -871,11 +887,11 @@ Removes the candidate network configuration of a specified network. This API use
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| ID of the network configuration to remove.|
-  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0**. If the operation fails, **error** is not **0**.|
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0**. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -920,7 +936,7 @@ Removes the network configuration.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -968,7 +984,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1018,7 +1034,7 @@ Connects to a candidate network.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1043,7 +1059,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 ## wifiManager.connectToCandidateConfig
 
-connectToCandidateConfig(settings: ConnectSettings): void
+connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
 Connects to a candidate network. Custom parameters can be set.
 
@@ -1051,7 +1067,7 @@ Connects to a candidate network. Custom parameters can be set.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -1063,17 +1079,25 @@ Connects to a candidate network. Custom parameters can be set.
   | -------- | -------- | -------- | -------- |
   | settings | [ConnectSettings](#connectsettings) | Yes| Settings for Wi-Fi connection.|
 
+ **Return value**
+
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise that returns no value.|
+
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
+| 2501005  | The user does not respond.|
+| 2501006  | The user refused the action.|
+| 2501007  | Parameter validation failed.|
 
 **Example**
 ```ts
@@ -1173,7 +1197,7 @@ Adds network configuration. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1222,7 +1246,7 @@ Adds network configuration. This API uses an asynchronous callback to return the
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1269,7 +1293,7 @@ Obtains network configuration.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1309,7 +1333,7 @@ Connects to a hotspot.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1357,7 +1381,7 @@ Obtains the WLAN signal level.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1403,7 +1427,7 @@ If **macType** is set to **1** (device MAC address), you also need to apply for 
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1434,7 +1458,7 @@ Obtains information about the WLAN connection. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1478,7 +1502,7 @@ Obtains the WLAN connection information. This API returns the result synchronous
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1581,7 +1605,7 @@ Checks whether WLAN is connected.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1616,7 +1640,7 @@ Disconnects from a WLAN.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1677,7 +1701,7 @@ Checks whether the device supports the specified WLAN feature.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1721,7 +1745,7 @@ This permission is available only to system applications in API versions 8 to 15
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1762,7 +1786,7 @@ Obtains IPv4 information.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1817,7 +1841,7 @@ Obtains IPv6 information.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1872,7 +1896,7 @@ Obtains the country code.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1919,7 +1943,7 @@ Checks whether the current frequency band is supported.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1959,7 +1983,7 @@ Checks whether the Wi-Fi network connected to the device is a smartphone hotspot
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2000,7 +2024,7 @@ Checks whether this hotspot is active.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2041,7 +2065,7 @@ To obtain the value of **groupOwnerAddr**, you also need to apply for the ohos.p
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2070,7 +2094,7 @@ To obtain the value of **groupOwnerAddr**, you also need to apply for the ohos.p
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2141,7 +2165,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2169,7 +2193,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2214,7 +2238,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2242,7 +2266,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2319,7 +2343,7 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2389,7 +2413,7 @@ Creates a P2P group.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2460,7 +2484,7 @@ Removes this P2P group.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2500,7 +2524,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2589,7 +2613,7 @@ Cancels the P2P connection being set up.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2623,7 +2647,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2655,7 +2679,7 @@ Stops discovering devices.
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -2754,11 +2778,11 @@ Subscribes to WLAN state changes. When the service exits, call off(type: 'wifiSt
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **0** (not activated), **1** (activated), **2** (activating), or **3** (deactivating).|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -2798,7 +2822,7 @@ Unsubscribes from WLAN state changes. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -2840,7 +2864,7 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **0** (not connected) or **1** (connected).|
 
 **WLAN connection states**
 
@@ -2851,7 +2875,7 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -2881,7 +2905,7 @@ Unsubscribes from WLAN connection state changes. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -2922,7 +2946,7 @@ Subscribes to WLAN scan state changes. When the service exits, call off(type: 'w
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The value **0** indicates that the scan fails, and the value **1** indicates that the scan is successful.|
 
 **WLAN scan states**
 
@@ -2933,7 +2957,7 @@ Subscribes to WLAN scan state changes. When the service exits, call off(type: 'w
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -2963,7 +2987,7 @@ Unsubscribes from WLAN scan state changes. This API uses an asynchronous callbac
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3006,7 +3030,7 @@ Subscribes to WLAN received signal strength indicator (RSSI) changes. When the s
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3034,7 +3058,7 @@ Unsubscribes from WLAN RSSI changes. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3073,7 +3097,7 @@ Subscribes to hotspot state changes. When the service exits, call off(type: 'hot
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
+| callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **0** (not activated), **1** (activated), **2** (activating), or **3** (deactivating).|
 
 **Hotspot states**
 
@@ -3086,7 +3110,7 @@ Subscribes to hotspot state changes. When the service exits, call off(type: 'hot
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3114,7 +3138,7 @@ Unsubscribes from hotspot state changes. This API uses an asynchronous callback 
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3154,7 +3178,7 @@ Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStat
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
+| callback | Callback&lt;number&gt; | Yes| Callback for status changes. The parameter can be set to **1** (idle), **2** (enabling), **3** (enabled), **4** (disabling), or **5** (disabled).|
 
 **P2P states**
 
@@ -3168,7 +3192,7 @@ Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStat
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3196,7 +3220,7 @@ Unsubscribes from P2P state changes. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3235,11 +3259,11 @@ Subscribes to P2P connection state changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback for status changes.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback for status changes. The information about the P2P connection is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3267,7 +3291,7 @@ Unsubscribes from P2P connection state changes. This API uses an asynchronous ca
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3308,11 +3332,11 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback for status changes.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback for status changes. The P2P device information is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3338,7 +3362,7 @@ Unsubscribes from P2P device state changes. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3383,7 +3407,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3409,7 +3433,7 @@ Unsubscribes from P2P peer device state changes. This API uses an asynchronous c
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3452,7 +3476,7 @@ Subscribes to P2P persistent group changes. When the service exits, call off(typ
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3480,7 +3504,7 @@ Unsubscribes from P2P persistent group state changes. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3519,7 +3543,7 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes. The value **0** indicates that the status remains unchanged, and the value **1** indicates that the status has changed.|
 
 **P2P discovered device states**
 
@@ -3530,7 +3554,7 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3558,7 +3582,7 @@ Unsubscribes from P2P device discovery state changes. This API uses an asynchron
 
 **Error codes**
 
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -3581,3 +3605,27 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   // Unregister an event.
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
+
+## wifiManager.isWlanSupported
+
+isWlanSupported(): boolean
+
+Checks whether Wi-Fi is available.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+  | Type| Description|
+  | -------- | -------- |
+  | boolean | Whether Wi-Fi is available. The value **true** indicates that Wi-Fi is available, and the value **false** indicates that Wi-Fi is unavailable.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| Error codes| Error Message|
+| -------- | -------- |
+| 2501000  | Operation failed. |

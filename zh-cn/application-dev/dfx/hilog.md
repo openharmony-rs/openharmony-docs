@@ -2,9 +2,9 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
 
 HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。开发者可以通过hilog命令行查询相关日志信息。
@@ -48,7 +48,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
 > **说明：**
 >
-> 日志级别：I表示Info级别，其余级别参考[日志等级](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)首字母。
+> 日志级别：I表示Info级别，其余级别参考[LogLevel](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)首字母。
 >
 > domainID：A03200中A表示应用日志（LOG_APP），3200表示domainID为0x3200。
 >
@@ -443,7 +443,7 @@ $ param get hilog.loggable.global
 I
 ```
 <!--RP17-->
-全局日志级别默认为INFO;
+全局日志级别默认为INFO；
 <!--RP17End-->
 
 <!--RP16-->

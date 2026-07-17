@@ -1,20 +1,22 @@
 # @ohos.bundle (Bundle Module) (System API)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:57:25.785Z pushedAt=2026-06-25T06:21:21.391Z -->
 
-The module provides APIs for obtaining information about an application, including [bundle information](js-apis-bundle-BundleInfo.md), [application information](js-apis-bundle-ApplicationInfo.md), and [ability information](js-apis-bundle-AbilityInfo.md). It also provides APIs to obtain and set the application disabling state.
+This module provides the capability to query app information, including [BundleInfo](js-apis-bundle-BundleInfo.md), [ApplicationInfo](js-apis-bundle-ApplicationInfo.md), [AbilityInfo](js-apis-bundle-AbilityInfo.md), and other information, as well as querying and setting the disabled status of apps.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager-sys.md) instead.
+> Since API version 9, this module is no longer maintained. It is recommended that you use [Bundle Management Module](js-apis-bundleManager-sys.md) for system APIs instead.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundle](js-apis-Bundle.md).
+> This page contains only the system APIs of this module. For other public APIs, see [Bundle Module](js-apis-Bundle.md).
 
 ## Modules to Import
 
@@ -116,6 +118,7 @@ bundle.getBundleInstaller((err, data) => {
   }
 });
 ```
+
 ## bundle.cleanBundleCacheFiles<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -392,6 +395,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
   console.error('getAbilityInfo failed. Cause: ' + JSON.stringify(error));
 });
 ```
+
 ## bundle.getPermissionDef<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -483,3 +487,326 @@ bundle.getPermissionDef(permissionName).then((data) => {
   console.error('getPermissionDef failed. Cause: ' + error.message);
 });
 ```
+
+## bundle.getBundleInfos<sup>deprecated</sup>
+
+getBundleInfos(bundleFlag: BundleFlag, userId?: number): Promise\<Array\<BundleInfo\>\>
+
+Obtains all [BundleInfo](js-apis-bundle-BundleInfo.md) for a specified user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2) instead.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name     | Type       | Mandatory | Description                                                         |
+| ---------- | ---------- | ---- | ------------------------------------------------------------ |
+| bundleFlag | BundleFlag | Yes   | Flag used to specify the information contained in the returned bundle information object. Value range: see the bundle information related flags in [BundleFlag](js-apis-Bundle.md#bundleflagdeprecated). |
+| userId     | number     | No   | User ID.<br/>Default value: the user to which the caller belongs. Value range: greater than or equal to 0.        |
+
+**Return value**
+
+| Type                          | Description                         |
+| --------------------------- | -------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | Promise used to return all available [BundleInfo](js-apis-bundle-BundleInfo.md). |
+
+**Example**
+
+```ts
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+let userId: number = 100;
+
+bundle.getBundleInfos(bundleFlag, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
+
+## bundle.getBundleInfos<sup>deprecated</sup>
+
+getBundleInfos(bundleFlag: BundleFlag, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
+
+Obtains all [BundleInfo](js-apis-bundle-BundleInfo.md) for the current user. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1) instead.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name     | Type                                                         | Mandatory | Description                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleFlag | BundleFlag                                                   | Yes   | Flag used to specify the information contained in the returned bundle information object. Value range: see the bundle information related flags in [BundleFlag](js-apis-Bundle.md#bundleflagdeprecated). |
+| callback   | AsyncCallback<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | Yes   | Callback used to return all available [BundleInfo](js-apis-bundle-BundleInfo.md) as the input parameter at program startup.      |
+
+**Example**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+
+bundle.getBundleInfos(bundleFlag, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## bundle.getBundleInfos<sup>deprecated</sup>
+
+getBundleInfos(bundleFlag: BundleFlag, userId: number, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
+
+Obtains all [BundleInfo](js-apis-bundle-BundleInfo.md) for a specified user in the system. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo) instead.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name        | Type                                                                | Mandatory  | Description                                                                  |
+|------------|-------------------------------------------------------------------|-----|---------------------------------------------------------------------|
+| bundleFlag | BundleFlag                                                        | Yes   | Flag used to specify the information contained in the returned bundle information object. Value range: see the bundle information related flags in [BundleFlag](js-apis-Bundle.md#bundleflagdeprecated). |
+| userId     | number                                                            | Yes   | User ID.<br/>Value range: greater than or equal to 0.                           |
+| callback   | AsyncCallback<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | Yes   | Callback used to return the [BundleInfo](js-apis-bundle-BundleInfo.md) of all bundles under the specified user as the input parameter at program startup.                  |
+
+**Example**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlag: number = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+let userId: number = 100;
+
+bundle.getBundleInfos(bundleFlag, userId, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## bundle.getApplicationInfos<sup>deprecated</sup>
+
+getApplicationInfos(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
+
+Obtains information about all installed apps for a specified user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2) instead.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name      | Type   | Mandatory | Description                                                         |
+| ----------- | ------ | ---- | ------------------------------------------------------------ |
+| bundleFlags | number | Yes   | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](js-apis-Bundle.md#bundleflagdeprecated). |
+| userId      | number | No   | User ID.<br/>Default value: the user to which the caller belongs. Value range: greater than or equal to 0.        |
+
+**Return value**
+
+| Type                               | Description                              |
+| -------------------------------- | ------------------------------- |
+| Promise<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | Promise used to return the list of app information when obtained successfully. |
+
+**Example**
+
+```ts
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+let userId: number = 100;
+
+bundle.getApplicationInfos(bundleFlags, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
+
+## bundle.getApplicationInfos<sup>deprecated</sup>
+
+getApplicationInfos(bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
+
+Obtains information about all installed apps for a specified user. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo) instead.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name      | Type                                                         | Mandatory | Description                                                         |
+| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleFlags | number                                                       | Yes   | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](js-apis-Bundle.md#bundleflagdeprecated). |
+| userId      | number                                                       | Yes   | User ID.<br/>Value range: greater than or equal to 0.        |
+| callback    | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | Yes   | Callback used to return the list of app information as the input parameter at program startup.               |
+
+**Example**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+let userId: number = 100;
+
+bundle.getApplicationInfos(bundleFlags, userId, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## bundle.getApplicationInfos<sup>deprecated</sup>
+
+getApplicationInfos(bundleFlags: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
+
+Obtains information about installed apps for the user to which the caller belongs. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1) instead.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name      | Type                                                         | Mandatory | Description                                                         |
+| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleFlags | number                                                       | Yes   | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](js-apis-Bundle.md#bundleflagdeprecated). |
+| callback    | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | Yes   | Callback used to return the list of app information as the input parameter at program startup.               |
+
+**Example**
+
+```ts
+import bundle from '@ohos.bundle';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+
+bundle.getApplicationInfos(bundleFlags, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+## ModuleRemoveFlag<sup>deprecated</sup>
+
+Flag indicating whether a module is associated with a widget or shortcut when it is removed.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. There is no alternative API.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+| Name | Value | Description |
+| ---------- | ---- | -------- |
+| FLAG_MODULE_NOT_USED_BY_FORM | 0 | Not used by a widget. |
+| FLAG_MODULE_USED_BY_FORM | 1 | Used by a widget. |
+| FLAG_MODULE_NOT_USED_BY_SHORTCUT | 2 | Not used by a shortcut. |
+| FLAG_MODULE_USED_BY_SHORTCUT | 3 | Used by a shortcut. |
+
+## SignatureCompareResult<sup>deprecated</sup>
+
+Signature verification result.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. There is no alternative API.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+| Name | Value | Description |
+| ---------- | ---- | -------- |
+| SIGNATURE_MATCHED | 0 | Signatures match. |
+| SIGNATURE_NOT_MATCHED | 1 | Signatures do not match. |
+| SIGNATURE_UNKNOWN_BUNDLE | 2 | The bundle corresponding to the signature is unknown. |
+
+## ShortcutExistence<sup>deprecated</sup>
+
+Result returned when querying whether a shortcut exists.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. There is no alternative API.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+| Name | Value | Description |
+| ---------- | ---- | -------- |
+| SHORTCUT_EXISTENCE_EXISTS | 0 | Exists. |
+| SHORTCUT_EXISTENCE_NOT_EXISTS | 1 | Does not exist. |
+| SHORTCUT_EXISTENCE_UNKNOW | 2 | Unknown. |
+
+## QueryShortCutFlag<sup>deprecated</sup>
+
+Flag used to specify the query scope for shortcuts.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. There is no alternative API.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.BundleManager.BundleFramework
+
+| Name | Value | Description |
+| ---------- | ---- | -------- |
+| QUERY_SHORTCUT_HOME | 0 | Query home screen shortcuts.|

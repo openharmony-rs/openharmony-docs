@@ -1,4 +1,4 @@
-# HiDebug接口使用示例(ArkTS)
+# HiDebug接口使用示例（ArkTS）
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->

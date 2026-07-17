@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,11 +12,10 @@ typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
 
 ## 概述
 
-定义 Swiper 组件的导航箭头风格。
+定义Swiper组件的导航箭头样式结构体，通过配置箭头位置、大小、颜色等属性实现翻页指引。
 
 **起始版本：** 19
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
-
+**所在头文件：** [swiper.h](capi-swiper-h.md)

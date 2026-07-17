@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
+当滑动距离达到设定的最小值时，触发滑动手势事件。
 
 以下场景可以触发滑动手势：
 
-| 触发方式              | 输入源类型           | 输入设备类型            | 备注                              | 
+| 触发方式              | 输入源类型           | 输入设备类型            | 备注                              |
 |----------------------|---------------------|------------------------|-----------------------------------|
 | 手指按下滑动。          | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).Finger   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).TouchScreen | axisVertical和axisHorizontal均为0。 |
 | 鼠标左键按下滑动。      | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).MOUSE    | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse        | axisVertical和axisHorizontal均为0。 |
@@ -21,7 +21,7 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 接口
@@ -40,13 +40,13 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection枚举说明); distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection枚举说明); distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免滑动手势与Tabs组件滑动事件的响应结果不符合预期。<br/>当设定的值小于0时，按默认值处理。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### PanGesture<sup>15+</sup>
 
 PanGesture(options?: PanGestureHandlerOptions)
 
-创建滑动手势对象。与[PanGesture](#pangesture-1)相比，options参数新增了对isFingerCountLimited和distanceMap参数，分别表示是否检查触摸屏幕的手指数量以及指定不同输入源触发滑动手势事件的最小滑动距离。
+创建滑动手势对象。与[PanGesture](#pangesture-1)相比，options参数新增了isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量；distanceMap参数从API version 19开始支持，用于指定不同输入源触发滑动手势事件的最小滑动距离，单位为vp。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -58,7 +58,7 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options   | [PanGestureHandlerOptions](./ts-gesturehandler.md#pangesturehandleroptions)   | 否   | 滑动手势处理器配置参数。 |
+| options | [PanGestureHandlerOptions](./ts-gesturehandler.md#pangesturehandleroptions) | 否 | 滑动手势处理器配置参数，用于配置触发滑动手势事件的条件，包括是否检查触摸屏幕的手指数量（isFingerCountLimited）以及为不同输入源指定触发滑动手势事件的最小滑动距离（distanceMap，API version 19开始支持，单位为vp）。当需要配置是否检查触摸屏幕的手指数量，或需要为不同输入源分别指定触发滑动手势事件的最小滑动距离时，传入该参数；不传入时，使用默认滑动手势处理器配置。 |
 
 ## PanDirection枚举说明
 
@@ -86,7 +86,7 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })
 
-创建滑动手势配置参数对象。通过PanGestureOptions对象接口可以动态修改滑动手势的属性，从而避免通过状态变量修改属性（状态变量修改会导致UI刷新）。
+创建滑动手势配置参数对象。通过PanGestureOptions对象可以动态修改滑动手势的属性，从而避免通过状态变量修改属性导致UI刷新。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -96,7 +96,7 @@ constructor(value?: { fingers?: number; direction?: PanDirection; distance?: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value   | { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number } | 否   | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。|
+| value | { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number } | 否 | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1<br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延增加）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### setDirection
 
@@ -112,13 +112,13 @@ setDirection(value: PanDirection)
 
 | 参数名 | 类型                                       | 必填 | 说明                      |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  [PanDirection](#pandirection枚举说明) | 是   | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
+| value  |  [PanDirection](#pandirection枚举说明) | 是   | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br>默认值：PanDirection.All |
 
 ### setDistance
 
 setDistance(value: number)
 
-设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手、响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286)。
+设置触发滑动手势事件的最小滑动距离，单位为vp。建议以手写笔8vp、其余输入源5vp为初始值，根据实际交互场景调整滑动距离；滑动距离增大时，可能出现手势跟随效果变差、响应时延增加等问题，导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -128,7 +128,7 @@ setDistance(value: number)
 
 | 参数名 | 类型                                       | 必填 | 说明                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value  |  number | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br>取值范围：[0, +∞)<br>手写笔默认值：8，其余输入源默认值：5<br>**说明：**<br>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免滑动手势与Tabs组件滑动事件的响应结果不符合预期。<br>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### setFingers
 
@@ -144,7 +144,7 @@ setFingers(value: number)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
+| value | number | 是 | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
 
 ### getDirection<sup>12+</sup>
 
@@ -162,7 +162,7 @@ getDirection(): PanDirection
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [PanDirection](#pandirection枚举说明) | 滑动方向。 |
+| [PanDirection](#pandirection枚举说明) | 当前PanGestureOptions对象中配置的滑动触发方向。 |
 
 ### getDistance<sup>18+</sup>
 
@@ -180,7 +180,7 @@ getDistance(): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 滑动手势事件的最小滑动距离。 |
+| number | 当前PanGestureOptions对象中配置的触发滑动手势事件的最小滑动距离，单位为vp。 |
 
 
 ## 事件
@@ -203,13 +203,13 @@ onActionStart(event: (event: GestureEvent) => void)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势识别成功回调。 |
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势识别成功时触发的回调函数，回调参数event为GestureEvent对象，用于获取本次滑动手势的事件信息。 |
 
 ### onActionUpdate
 
 onActionUpdate(event: (event: GestureEvent) => void)
 
-设置滑动手势更新回调。fingerList为多根手指时，该回调监听每次只会更新一根手指的位置信息。
+设置滑动手势更新回调。fingerList包含多根手指时，每次触发该回调仅更新一根手指的位置信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -219,7 +219,7 @@ onActionUpdate(event: (event: GestureEvent) => void)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势更新回调。 |
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势更新时触发的回调函数，回调参数event为GestureEvent对象，用于获取滑动过程中的手势事件信息。 |
 
 ### onActionEnd
 
@@ -235,7 +235,7 @@ onActionEnd(event: (event: GestureEvent) => void)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势结束回调。 |
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势结束时触发的回调函数，回调参数event为GestureEvent对象，用于获取滑动结束时的手势事件信息。 |
 
 ### onActionCancel
 
@@ -269,7 +269,7 @@ onActionCancel(event: Callback\<GestureEvent\>)
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 滑动手势取消回调。 |
+| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 滑动手势取消时触发的回调函数，回调参数为GestureEvent对象，用于获取滑动取消时的手势事件信息。 |
 
 ## 示例
 
@@ -306,11 +306,13 @@ struct PanGestureExample {
         })
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
+            // 根据滑动偏移量更新组件当前位置
             this.offsetX = this.positionX + event.offsetX;
             this.offsetY = this.positionY + event.offsetY;
           }
         })
         .onActionEnd((event: GestureEvent) => {
+          // 滑动结束后保存当前位置，作为下一次滑动的起始位置
           this.positionX = this.offsetX;
           this.positionY = this.offsetY;
           console.info('Pan end');
@@ -333,8 +335,8 @@ struct PanGestureExample {
 
 向左滑动：
 
-![panGesture2](figures/panGesture2.png) 
+![panGesture2](figures/panGesture2.png)
 
-点击按钮时，修改PanGesture触发条件为双指向左下方滑动：
+点击按钮时，修改PanGesture触发条件为双指向任意方向滑动：
 
- ![panGesture](figures/panGesture.png) 
+ ![panGesture](figures/panGesture.png)

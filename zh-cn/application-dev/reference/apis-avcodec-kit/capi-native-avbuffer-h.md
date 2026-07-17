@@ -166,7 +166,7 @@ OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 
 **描述**
 
-获取除基础属性外的其他参数，信息在OH_AVFormat中承载。需要注意的是，返回值指向的创建OH_AVFormat的实例需要开发者主动释放，请参阅[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)。
+获取除基础属性外的其他参数，信息在OH_AVFormat中承载。需要注意的是，返回值指向的OH_AVFormat实例需要开发者主动释放，请参阅[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

@@ -10,6 +10,8 @@
   - @ohos.multimedia.media (媒体服务)<!--js-apis-media-->
     - [模块描述](arkts-apis-media.md)
     - [Functions](arkts-apis-media-f.md)
+    - [Interface (AVAdsController)](arkts-apis-media-AVAdsController.md)
+    - [Interface (AVDownloaderManager)](arkts-apis-media-AVDownloaderManager.md)
     - [Interface (AVImageGenerator)](arkts-apis-media-AVImageGenerator.md)
     - [Interface (AVMetadataExtractor)](arkts-apis-media-AVMetadataExtractor.md)
     - [Interface (AVPlayer)](arkts-apis-media-AVPlayer.md)

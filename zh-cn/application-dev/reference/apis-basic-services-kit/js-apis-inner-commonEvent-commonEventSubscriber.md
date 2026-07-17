@@ -12,7 +12,7 @@
 
 ## CommonEventSubscriber
 
-表示公共事件的订阅者。
+表示公共事件的订阅者。CommonEventSubscriber提供了对有序公共事件的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或粘性事件、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -20,7 +20,7 @@
 
 ### 使用说明
 
-在使用CommonEventSubscriber的功能前，需要通过commonEventManager.createSubscriber获取subscriber对象。
+在使用CommonEventSubscriber的功能前，需要通过[commonEventManager.createSubscriberSync](js-apis-commonEventManager.md#commoneventmanagercreatesubscribersync10)获取subscriber对象。
 
 <!--code_no_check-->
 ```ts
@@ -45,13 +45,13 @@ getCode(callback: AsyncCallback\<number>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明               |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<number\> | 是   | 回调函数。返回有序公共事件传递的数据（number类型）。 |
+| callback | AsyncCallback\<number\> | 是   | 回调函数。当获取有序公共事件传递的数据（number类型）成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -68,7 +68,7 @@ getCode(callback: AsyncCallback\<number>): void
 ```ts
 subscriber.getCode((err: BusinessError, code: number) => {
   if (err) {
-    console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to get code. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
@@ -83,7 +83,7 @@ getCode(): Promise\<number>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -107,17 +107,17 @@ subscriber.getCode().then((code: number) => {
 
 getCodeSync(): number
 
-获取有序公共事件传递的数据（number类型）。
+同步获取有序公共事件传递的数据（number类型）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| number | 表示有序公共事件传递的数据（number类型）。 |
+| number | 有序公共事件传递的数据（number类型）。 |
 
 **示例：**
 
@@ -136,7 +136,7 @@ setCode(code: number, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -175,7 +175,7 @@ setCode(code: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -217,7 +217,7 @@ setCodeSync(code: number): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -254,13 +254,13 @@ getData(callback: AsyncCallback\<string>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | 是   | 回调函数。返回有序公共事件传递的数据（string类型）。 |
+| callback | AsyncCallback\<string> | 是   | 回调函数。当获取有序公共事件传递的数据（string类型）成功时，err为undefined，data为获取到的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -293,7 +293,7 @@ getData(): Promise\<string>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -321,7 +321,7 @@ getDataSync(): string
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -346,13 +346,13 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                 |
 | -------- | -------------------- | ---- | -------------------- |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
+| data     | string               | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（string类型）成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -385,7 +385,7 @@ setData(data: string): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -427,13 +427,13 @@ setDataSync(data: string): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **错误码：**
 
@@ -458,20 +458,20 @@ try {
 
 ### setCodeAndData
 
-setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
+setCodeAndData(code: number, data: string, callback: AsyncCallback\<void\>): void
 
-设置有序公共事件数据。使用callback异步回调。
+设置有序公共事件传递的数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | code     | number               | 是   | 有序公共事件传递的数据（number类型）。   |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
+| data     | string               | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -504,14 +504,14 @@ setCodeAndData(code: number, data: string): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **返回值：**
 
@@ -547,14 +547,14 @@ setCodeAndDataSync(code: number, data: string): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据（string类型），长度不超过65536字符，若超过限制，接口设置失效。 |
 
 **错误码：**
 
@@ -584,13 +584,13 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 查询当前公共事件是否为有序公共事件。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示有序公共事件；返回false表示无序公共事件。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数。当查询成功时，err为undefined，data为true表示有序公共事件，data为false表示不是有序公共事件；否则err为错误对象。 |
 
 **错误码：**
 
@@ -605,9 +605,9 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered: boolean) => {
   if (err) {
-    console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to check ordered common event. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
@@ -620,7 +620,7 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 查询当前公共事件是否为有序公共事件。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -633,7 +633,7 @@ isOrderedCommonEvent(): Promise\<boolean>
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
 }).catch((err: BusinessError) => {
   console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
@@ -646,13 +646,13 @@ isOrderedCommonEventSync(): boolean
 
 查询当前公共事件是否为有序公共事件。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
 | 类型              | 说明                             |
 | ----------------- | -------------------------------- |
-| boolean |返回true表示有序公共事件；返回false表示无序公共事件。 |
+| boolean | 返回true表示有序公共事件；返回false表示无序公共事件。 |
 
 **示例：**
 
@@ -667,15 +667,15 @@ console.info(`isOrderedCommonEventSync ${JSON.stringify(isOrdered)}`);
 
 isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
-检查当前公共事件是否为一个粘性事件。使用callback异步回调。
+查询当前公共事件是否为一个粘性公共事件。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示是粘性公共事件；返回false表示不是粘性公共事件。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数。当查询成功时，err为undefined，data为true表示是粘性公共事件，data为false表示不是粘性公共事件；否则err为错误对象。 |
 
 **错误码：**
 
@@ -690,7 +690,7 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent((err: BusinessError, isSticky:boolean) => {
+subscriber.isStickyCommonEvent((err: BusinessError, isSticky: boolean) => {
   if (err) {
     console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -703,9 +703,9 @@ subscriber.isStickyCommonEvent((err: BusinessError, isSticky:boolean) => {
 
 isStickyCommonEvent(): Promise\<boolean>
 
-检查当前公共事件是否为一个粘性事件。使用Promise异步回调。
+查询当前公共事件是否为一个粘性公共事件。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -718,7 +718,7 @@ isStickyCommonEvent(): Promise\<boolean>
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
+subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
 }).catch((err: BusinessError) => {
   console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
@@ -731,7 +731,7 @@ isStickyCommonEventSync(): boolean
 
 检查当前公共事件是否为一个粘性事件。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -754,7 +754,7 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -797,7 +797,7 @@ abortCommonEvent(): Promise\<void>
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -828,7 +828,7 @@ abortCommonEventSync(): void
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **示例：**
 
@@ -849,7 +849,7 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -892,7 +892,7 @@ clearAbortCommonEvent(): Promise\<void>
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -923,7 +923,7 @@ clearAbortCommonEventSync(): void
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **示例：**
 
@@ -944,13 +944,13 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 获取当前有序公共事件是否处于中止状态。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                               |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| callback | AsyncCallback\<boolean> | 是   | 当查询成功时，err为undefined，data为true表示当前有序公共事件处于中止状态，data为false表示当前有序公共事件没有处于中止状态；否则err为错误对象。 |
 
 **错误码：**
 
@@ -980,7 +980,7 @@ getAbortCommonEvent(): Promise\<boolean>
 
 获取当前有序公共事件是否处于中止状态。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -1006,13 +1006,13 @@ getAbortCommonEventSync(): boolean
 
 获取当前有序公共事件是否处于中止状态。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
 | 类型              | 说明                               |
 | ----------------- | ---------------------------------- |
-| boolean |返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
+| boolean | 返回true表示当前有序公共事件处于中止状态；返回false表示当前有序公共事件没有处于中止状态。 |
 
 **示例：**
 
@@ -1031,13 +1031,13 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> | 是   | 回调函数。返回订阅者的订阅信息。 |
+| callback | AsyncCallback\<[CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)> | 是   | 回调函数。当获取成功时，err为undefined，data为订阅者的订阅信息；否则err为错误对象 |
 
 **错误码：**
 
@@ -1069,7 +1069,7 @@ getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -1097,7 +1097,7 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 
@@ -1110,8 +1110,8 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 <!--code_no_check-->
 
 ```ts
-let subscribeInfo1: commonEventManager.CommonEventSubscribeInfo = subscriber.getSubscribeInfoSync();
-console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo1)}`);
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = subscriber.getSubscribeInfoSync();
+console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
 ```
 
 ### finishCommonEvent<sup>9+</sup>
@@ -1120,7 +1120,7 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 用于订阅者结束对当前有序公共事件的处理。使用callback异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **参数：**
 
@@ -1156,7 +1156,7 @@ finishCommonEvent(): Promise\<void>
 
 用于订阅者结束对当前有序公共事件的处理。使用Promise异步回调。
 
-**系统能力：** `SystemCapability.Notification.CommonEvent`
+**系统能力：** SystemCapability.Notification.CommonEvent
 
 **返回值：**
 

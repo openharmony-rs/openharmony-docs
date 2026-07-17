@@ -1,8 +1,8 @@
 # avtranscoder_base.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -91,12 +91,12 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | OH_AVTranscoder实例的指针。 |
 | [OH_AVTranscoder_State](#oh_avtranscoder_state) state | 转码状态，详细说明请参见[OH_AVTranscoder_State](#oh_avtranscoder_state)。 |
-|  void *userData | 用户特定数据的指针。 |
+| void *userData | 用户特定数据的指针。 |
 
 ### OH_AVTranscoder_OnError()
 
 ```c
-typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg,void *userData)
+typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg, void *userData)
 ```
 
 **描述**

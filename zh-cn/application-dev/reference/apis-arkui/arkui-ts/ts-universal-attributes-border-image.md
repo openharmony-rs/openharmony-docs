@@ -49,7 +49,7 @@ borderImage(value: BorderImageOption): T
 | ------ | ------------------------------------------------------------ | ---- |  ------------------------------------------------------------ |  ------------------------------------------------------------ |
 | source | string \| [Resource](ts-types.md#resource) \| [LinearGradient](#lineargradient) | 否 | 是 | 边框图源或者渐变色设置。参数类型为string类型时，用于设置边框图源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>**说明：**<br>边框图源仅适用于容器组件，如[Row](ts-container-row.md)、[Column](ts-container-column.md)、[Flex](ts-container-flex.md)，在非容器组件上使用会失效。 |
 | slice  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9)  \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>| 否 | 是 | 设置边框图片左上角、右上角、左下角以及右下角的切割宽高。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四个角的宽高。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片上侧被切割的高。<br/>-&nbsp;Bottom：设置图片下侧被切割的高。<br/>-&nbsp;Left：设置图片左侧被切割的宽。<br/>-&nbsp;Right：设置图片右侧被切割的宽。 <br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片上侧被切割的高。<br/>-&nbsp;Bottom：设置图片下侧被切割的高。<br/>-&nbsp;Start：设置图片左侧被切割的宽。<br />从右至左显示语言模式下为设置图片右侧被切割的宽。<br/>-&nbsp;End：设置图片右侧被切割的宽。 <br/>从右至左显示语言模式下为设置图片左侧被切割的宽。|
-| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置图片边框宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的宽度。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Left：设置图片边框左边框的宽。<br/>-&nbsp;Right：设置图片边框右边框宽。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Start：设置图片边框左边框的宽。<br />从右至左显示语言模式下为设置图片边框右边框宽。<br/>-&nbsp;End：设置图片边框右边框宽。<br />从右至左显示语言模式下为设置图片边框左边框的宽。 |
+| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置图片边框宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的宽度。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Left：设置图片边框左边框的宽。<br/>-&nbsp;Right：设置图片边框右边框的宽。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Start：设置图片边框左边框的宽。<br />从右至左显示语言模式下为设置图片边框右边框宽。<br/>-&nbsp;End：设置图片边框右边框宽。<br />从右至左显示语言模式下为设置图片边框左边框的宽。 |
 | outset | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置边框图片向外延伸距离。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的向外延伸距离。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Left：设置边框图片左边框向外延伸的距离。<br/>-&nbsp;Right：设置边框图片右边框向外延伸的距离。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Start：设置边框图片左边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片右边框向外延伸的距离。<br/>-&nbsp;End：设置边框图片右边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片左边框向外延伸的距离。 |
 | repeat | [RepeatMode](#repeatmode)                            | 否 | 是 | 设置被切割的图片在边框上的重复方式。<br/>默认值：RepeatMode.Stretch |
 | fill   | boolean                                                      | 否 | 是 | 设置边框图片是否中心填充。true表示中心填充，false表示非中心填充。<br/>默认值：false                     |
@@ -73,15 +73,17 @@ borderImage(value: BorderImageOption): T
 
 ## LinearGradient
 
+用于设置边框的线性渐变效果。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ---- | ------------------------- |
-| angle  | number \| string | 否   | 是   |  线性渐变的起始角度。0点方向顺时针旋转为正向角度。<br/>默认值：180<br/>角度为字符串时仅支持类型'deg'，'grad'，'rad'，'turn'。 |
+| angle  | number \| string | 否   | 是   |  线性渐变的起始角度。以12点钟方向为0度，顺时针旋转为正向角度。<br/>默认值：180<br/>角度为字符串时支持'deg'、'grad'、'rad'、'turn'类型。<br/>**说明：**<br/>设置direction后该属性不生效。 |
 | direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | 否   | 是   | 线性渐变的方向，设置angle后不生效。<br/>默认值：GradientDirection.Bottom |
-| colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | 否   | 否   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 |
+| colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | 否   | 否   | 指定渐变色颜色和其对应的百分比位置的数组。数组元素为[颜色, 位置]对，位置取值范围为[0.0, 1.0]，建议按位置升序排列，设置非法颜色直接跳过。 |
 | repeating  | boolean | 否   | 是   | 是否允许渐变的颜色重复渲染。<br/>默认值：false<br>true：允许渐变的颜色重复渲染。<br>false：不允许渐变的颜色重复渲染。 |
 
 ## 示例
@@ -123,7 +125,7 @@ struct Index {
 
 ### 示例2（动态调整属性值）
 
-通过[slider](../../apis-arkui/arkui-js/js-components-basic-slider.md)接口动态调整[borderImage](#borderimage)接口中属性值。
+通过[Slider](../../apis-arkui/arkui-js/js-components-basic-slider.md)接口动态调整[borderImage](#borderimage)接口中属性值。
 
 ```ts
 // xxx.ets
@@ -286,7 +288,7 @@ struct BorderImage {
         }
 
         Column() {
-          Text(`borderImageEndSliceStart = ${this.SliceEndValue}px`)
+          Text(`borderImageSliceEnd = ${this.SliceEndValue}px`)
           Slider({
             value: this.SliceEndValue,
             min: 0,
