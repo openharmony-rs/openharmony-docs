@@ -1152,7 +1152,7 @@ getPositionToParentWithTransform(): Position
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于父组件的位置偏移，单位为VP。 当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于父组件的位置偏移，单位为VP。当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
@@ -1236,7 +1236,7 @@ getPositionToWindowWithTransform(): Position
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于窗口的位置偏移，单位为VP。 当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于窗口的位置偏移，单位为VP。当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
@@ -1319,7 +1319,7 @@ getPositionToScreenWithTransform(): Position
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于屏幕的位置偏移，单位为VP。 当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| [Position](./js-apis-arkui-graphics.md#position) | 节点相对于屏幕的位置偏移，单位为VP。当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
