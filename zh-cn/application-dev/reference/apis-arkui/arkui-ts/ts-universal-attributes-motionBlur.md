@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件由缩放大小或位移变化引起的运动过程中的动态模糊效果。需要与动画的[AnimateParam](ts-explicit-animation.md#animateparam对象说明)的onFinish参数配合使用。
+设置组件由缩放大小或位移变化引起的运动过程中的运动模糊效果。需要与动画的[AnimateParam](ts-explicit-animation.md#animateparam对象说明)的onFinish参数配合使用。
 
 >  **说明：**
 >
@@ -20,7 +20,7 @@
 
 motionBlur(value: MotionBlurOptions): T
 
-在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
+在当前组件由缩放大小或位移变化引起的运动过程中，增加运动模糊效果。
 
 > **说明：**
 >
@@ -62,7 +62,7 @@ motionBlur(value: MotionBlurOptions): T
 
 motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
-在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。与[motionBlur](#motionblur)相比，motionBlur参数新增了对undefined类型的支持。
+在当前组件由缩放大小或位移变化引起的运动过程中，增加运动模糊效果。与[motionBlur](#motionblur)相比，motionBlur参数新增了对undefined类型的支持。
 
 1、不建议在组件内转场、共享元素转场、组件内隐式元素转场、粒子动画场景下使用该属性，否则会产生非预期效果。
 

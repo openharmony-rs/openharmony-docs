@@ -24,7 +24,7 @@ ArkTS-Dyn: bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOpt
 
 ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: SheetOptions): this
 
-给组件绑定半模态页面，点击后显示模态页面。
+给组件绑定半模态页面，点击后显示半模态页面。
 
 > **说明：**
 >
@@ -224,7 +224,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
 | detents | 无挡位能力。| 
-| dragBar         | 不支持DragBar。  |
+| dragBar         | 不支持控制条。  |
 | onDetentsDidChange | 无挡位能力。|
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
@@ -263,9 +263,9 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | height          | 高度只支持全屏高度。 |
 | width           | 宽度只支持全屏宽度。 |
 | detents | 无挡位能力。|
-| dragBar         | 不支持拖动条。  |
+| dragBar         | 不支持控制条。  |
 | onDetentsDidChange | 无挡位能力。|
-| showClose          | 不支持显示关闭按钮。 |
+| showClose          | 不支持显示关闭图标。 |
 | title          | 不支持显示标题栏。 |
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
@@ -283,7 +283,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | maskColor      | 不支持蒙层颜色。  |
 | enableOutsideInteractive | 不支持设置是否允许交互。  |
 | effectEdge     | 不支持边缘回弹效果。  |
-| enableFloatingDragBar | 不支持浮动拖动条。  |
+| enableFloatingDragBar | 不支持悬浮控制条。  |
 | onWillSpringBackWhenDismiss | 无回弹效果。  |
 
 ## SheetDismiss<sup>11+</sup>
@@ -743,7 +743,7 @@ struct bindSheetExample {
             }
           }),
 
-          onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
+          onWillSpringBackWhenDismiss: ((springBackAction: SpringBackAction) => {
           // 没有注册springBack，下拉半模态页面无回弹行为
           // SpringBackAction.springBack();
           }),
@@ -1017,7 +1017,7 @@ struct SheetSideExample {
       TextInput()
         .margin({ top: 5 })
       Text('改变半模态交互模式')
-        .fontSize(22).fontColor(0xFFFFFF).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
+        .fontSize(22).fontColor(Color.White).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
         .width('100%').height(50).backgroundColor('#2ebd82')
       Button("change enableOutsideInteractive = " + this.enableOutsideInteractive)
         .margin({ top: 5 })
