@@ -244,7 +244,7 @@ ArkTS-Sta: finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int
 标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。
 > **说明：**
 > 
-> finishsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace()](#hitracemeterstartasynctrace19)对应参数值一致。
+> finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace()](#hitracemeterstartasynctrace19)对应参数值一致。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 19开始，该接口支持在原子化服务中使用。
 
