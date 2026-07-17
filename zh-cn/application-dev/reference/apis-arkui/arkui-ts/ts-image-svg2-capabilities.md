@@ -421,7 +421,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 >
 >SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
-图源示例显示一个线性渐变从绝对坐标(10，10) 到 (180，180)的长方形范围内。
+图源示例显示一个线性渐变从绝对坐标(10, 10)到(180, 180)的长方形范围内。
 
 ```xml
  <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -439,7 +439,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | ![](figures/line_gradient_before.PNG) | ![](figures/line_gradient_after.PNG) |
 
-图源示例显示一个径向渐变从绝对坐标圆心 (100，100) 开始，半径为90的渐变效果。
+图源示例显示一个径向渐变从绝对坐标圆心(100, 100)开始，半径为90的渐变效果。
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -465,7 +465,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 >
 >SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
-图源示例显示一个五角星遮罩范围从绝对坐标 (10，10)到(200，200)，遮罩内容相对于应用矩形左上角，水平尺寸乘以图形包围盒宽度，垂直尺寸乘以图形包围盒高度。
+图源示例显示一个五角星遮罩范围从绝对坐标(10, 10)到(200, 200)，遮罩内容相对于应用矩形左上角，水平尺寸乘以图形包围盒宽度，垂直尺寸乘以图形包围盒高度。
 
 ```xml
 <svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">

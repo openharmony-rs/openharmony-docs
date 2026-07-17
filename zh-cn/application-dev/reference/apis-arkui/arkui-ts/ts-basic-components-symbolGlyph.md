@@ -270,7 +270,7 @@ minFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。   |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。   |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -858,7 +858,7 @@ struct Index {
 
 ### 示例3（设置颜色渐变）
 
-从API version 20开始，该示例通过[shaderStyle](#shaderstyle20)接口实现了symbolGlyph组件显示为渐变色的功能。
+从API version 20开始，该示例通过[shaderStyle](#shaderstyle20)接口实现了SymbolGlyph组件显示为渐变色的功能。
 
 ```ts
 @Entry
