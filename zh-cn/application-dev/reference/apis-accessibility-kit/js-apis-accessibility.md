@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> - 本模块首批接口从 API version 7 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -25,9 +25,9 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 辅助应用状态类型。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -43,9 +43,9 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 无障碍辅助应用类型。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -62,9 +62,9 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 辅助应用信息。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -73,7 +73,7 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 | 名称                             | 类型                                       | 只读   | 可选   | 说明               |
 | ------------------------------ | ---------------------------------------- | ---- | ---- | ---------------- |
 | id                             | string                                   | 是    | 否    | ability&nbsp;id。 |
-| name                           | string                                   | 是    | 否    | ability 名。       |
+| name                           | string                                   | 是    | 否    | ability名。       |
 | bundleName                     | string                                   | 是    | 否    | Bundle名称。        |
 | targetBundleNames<sup>9+</sup> | Array&lt;string&gt;                      | 是    | 否    | 关注的目标Bundle名称。   |
 | abilityTypes                   | Array&lt;[AbilityType](#abilitytype)&gt; | 是    | 否    | 辅助应用类型。          |
@@ -92,9 +92,9 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 
 应用所支持的目标动作，需要配置参数的目标动作已在下表各动作的说明列中标明。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -132,9 +132,9 @@ type Capability = 'retrieve' | 'touchGuide' | 'keyEventObserver' | 'zoom' | 'ges
 
 辅助应用能力类型。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -152,9 +152,9 @@ type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropS
 
 字幕字体边缘类型。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -173,19 +173,19 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕字体。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 | 类型                  | 说明                |
 | ------------------- | ----------------- |
 | 'default'             | 表示默认字体。             |
-| 'monospacedSerif'         | 表示等宽 Serif 字体。      |
-| 'serif'               | 表示 Serif 字体。         |
-| 'monospacedSansSerif'        | 表示等宽 Sans Serif 字体。 |
-| 'sansSerif'           | 表示 Sans Serif 字体。    |
+| 'monospacedSerif'         | 表示等宽Serif字体。      |
+| 'serif'               | 表示Serif字体。         |
+| 'monospacedSansSerif'        | 表示等宽Sans Serif字体。 |
+| 'sansSerif'           | 表示Sans Serif字体。    |
 | 'casual'              | 表示非正式字体。            |
 | 'cursive'             | 表示手写字体。             |
 | 'smallCapitals'       | 表示小型大写字母字体。         |
@@ -194,9 +194,9 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕风格。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -204,18 +204,18 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 | --------------- | ---------------------------------------- | ---- | ---- | ----------- |
 | fontFamily      | [CaptionsFontFamily](#captionsfontfamily8) | 否    | 否    | 描述字幕字体。     |
 | fontScale       | number                                   | 否    | 否    | 描述字幕字体缩放系数，单位%，参数范围1~200。 |
-| fontColor       | number \| string                         | 否    | 否    | 描述字幕字体颜色。<br>number：HEX 格式颜色，支持 rgb 或 argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。 |
+| fontColor       | number \| string                         | 否    | 否    | 描述字幕字体颜色。<br>number：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。 |
 | fontEdgeType    | [CaptionsFontEdgeType](#captionsfontedgetype8) | 否    | 否    | 描述字幕字体边缘。   |
-| backgroundColor | number \| string                         | 否    | 否    | 描述字幕背景颜色。<br>number：HEX 格式颜色，支持 rgb 或 argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
-| windowColor     | number \| string                         | 否    | 否    | 描述字幕窗口颜色。<br>number：HEX 格式颜色，支持 rgb 或 argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
+| backgroundColor | number \| string                         | 否    | 否    | 描述字幕背景颜色。<br>number：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
+| windowColor     | number \| string                         | 否    | 否    | 描述字幕窗口颜色。<br>number：HEX格式颜色，支持rgb或argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number：0xffff0000，string：'#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
 
 ## CaptionsManager<sup>8+</sup>
 
 字幕配置管理。调用CaptionsManager的方法前，先调用[accessibility.getCaptionsManager()](#accessibilitygetcaptionsmanagerdeprecated)获取CaptionsManager实例。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -236,7 +236,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[off('enableChange')](#offenablechangedeprecated)取消监听，否则可能会导致崩溃。
-> - 从 API version 8 开始支持，从 API version 12 开始废弃。此接口已完全移除，无替代方案。
+> - 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -245,7 +245,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                      |
 | -------- | ----------------------- | ---- | --------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘enableChange’，即字幕配置启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在启用状态变化时将状态通过此函数进行通知。返回true表示字幕配置开启，返回false表示字幕配置关闭。              |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数。在启用状态变化时将状态通过此函数进行通知。返回true表示字幕配置开启；返回false表示字幕配置关闭。              |
 
 **错误码**：
 
@@ -290,7 +290,7 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[off('styleChange')](#offstylechangedeprecated)取消监听，否则可能会导致崩溃。
-> - 从 API version 8 开始支持，从 API version 12 开始废弃。此接口已完全移除，无替代方案。
+> - 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
@@ -343,7 +343,7 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
 > **说明**：
 >
-> 从 API version 8 开始支持，从 API version 12 开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -400,7 +400,7 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
 > **说明**：
 >
-> 从 API version 8 开始支持，从 API version 12 开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -453,9 +453,9 @@ struct Index {
 
 无障碍事件信息，用于描述界面变更或交互事件，作为[sendAccessibilityEvent](#accessibilitysendaccessibilityevent9)的参数定义事件的类型和触发动作。发送的无障碍事件将被系统分发到已注册且匹配事件类型的辅助应用进行响应，详见[sendAccessibilityEvent](#accessibilitysendaccessibilityevent9)。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -488,9 +488,9 @@ constructor(jsonObject: Object)
 
 构造函数，通过JSON对象构造EventInfo实例。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -498,19 +498,19 @@ constructor(jsonObject: Object)
 
 | 参数名        | 类型     | 必填   | 说明                   |
 | ---------- | ------ | ---- | -------------------- |
-| jsonObject | Object | 是    | 包含 type、bundleName 和 triggerAction 三个字段的 JSON对象，详见示例。 |
+| jsonObject | Object | 是    | 包含type、bundleName和triggerAction三个字段的JSON对象，详见示例。 |
 
 **示例**：
 
-  ```ts
-  import { accessibility } from '@kit.AccessibilityKit';
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
 
-  let eventInfo = new accessibility.EventInfo({
-    type: 'click',
-    bundleName: 'com.example.MyApplication',
-    triggerAction: 'click',
-  });
-  ```
+let eventInfo = new accessibility.EventInfo({
+  type: 'click',
+  bundleName: 'com.example.MyApplication',
+  triggerAction: 'click',
+});
+```
 
 ### constructor<sup>11+</sup>
 
@@ -518,9 +518,9 @@ constructor(type: EventType, bundleName: string, triggerAction: Action)
 
 构造函数，通过独立参数构造EventInfo实例。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -530,16 +530,16 @@ constructor(type: EventType, bundleName: string, triggerAction: Action)
 |------|-------------------|---|---------------|
 | type | [EventType](#eventtype)          | 是 | 无障碍事件类型。      |
 | bundleName | string | 是 | 目标应用的Bundle名称。        |
-| triggerAction | [Action](#action) | 是 | 触发事件的 Action。 |
+| triggerAction | [Action](#action) | 是 | 触发事件的Action。 |
 
 **示例**：
 
-  ```ts
-  import { accessibility } from '@kit.AccessibilityKit';
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
 
-  // 参数依次为：type、bundleName、triggerAction。
-  let eventInfo = new accessibility.EventInfo('click', 'com.example.MyApplication', 'click');
-  ```
+// 参数依次为：type、bundleName、triggerAction。
+let eventInfo = new accessibility.EventInfo('click', 'com.example.MyApplication', 'click');
+```
 
 ## EventType
 
@@ -551,9 +551,9 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 
 无障碍事件类型。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -585,9 +585,9 @@ type TextMoveUnit = 'char' | 'word' | 'line' | 'page' | 'paragraph'
 
 文本无障碍导航移动粒度。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -605,9 +605,9 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 窗口变化类型。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -627,7 +627,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;A
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -642,7 +642,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;A
 
 | 类型                                       | 说明                    |
 | ---------------------------------------- | --------------------- |
-| Promise&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Promise对象，返回辅助应用信息列表。reject表示查询失败，返回错误对象。 |
+| Promise&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Promise对象，返回辅助应用信息列表。 |
 
 **示例**：
 
@@ -668,7 +668,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: Asyn
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9-1)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -678,7 +678,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: Asyn
 | ----------- | ---------------------------------------- | ---- | ---------------- |
 | abilityType | [AbilityType](#abilitytype)              | 是    | 辅助应用的类型。         |
 | stateType   | [AbilityState](#abilitystate)            | 是    | 辅助应用的状态。         |
-| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
+| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数。当查询辅助应用列表成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
 
 **示例**：
 
@@ -704,9 +704,9 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 查询辅助应用列表。使用Promise异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -721,7 +721,7 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 | 类型                                       | 说明                    |
 | ---------------------------------------- | --------------------- |
-| Promise&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Promise对象，返回辅助应用信息列表。reject表示查询失败，返回错误对象。 |
+| Promise&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | Promise对象，返回辅助应用信息列表。 |
 
 **错误码**：
 
@@ -791,9 +791,9 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 
 查询辅助应用列表。使用callback异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -803,7 +803,7 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 | ----------- | ---------------------------------------- | ---- | ---------------- |
 | abilityType | [AbilityType](#abilitytype)              | 是    | 辅助应用的类型。         |
 | stateType   | [AbilityState](#abilitystate)            | 是    | 辅助应用的状态。         |
-| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
+| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数。当查询辅助应用列表成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
 
 **错误码**：
 
@@ -875,11 +875,13 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 
 getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilityState): Array&lt;AccessibilityAbilityInfo&gt;
 
-查询当前系统内辅助应用列表，支持按条件查询。本接口为同步版本，与[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
+查询当前系统内辅助应用列表，支持按条件查询。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+本接口为同步版本，与[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -967,7 +969,7 @@ getCaptionsManager(): CaptionsManager
 
 > **说明**：
 >
-> 从 API version 8 开始支持，从 API version 12 开始废弃。此接口已完全移除，无替代方案。
+> 从API version 8开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -989,16 +991,18 @@ let captionsManager = accessibility.getCaptionsManager();
 
 on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听辅助应用启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听辅助应用启用状态变化事件。使用callback异步回调。
+
+如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明**：
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange)取消监听，否则可能会导致崩溃。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1007,7 +1011,7 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 监听的事件名，固定为‘accessibilityStateChange’，即辅助应用启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在辅助应用启用状态变化时将状态通过此函数进行通知。此状态为全局辅助应用启用状态。返回true表示已启用辅助应用，返回false表示已禁用辅助应用。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。在辅助应用启用状态变化时将状态通过此函数进行通知。此状态为全局辅助应用启用状态。返回true表示已启用辅助应用；返回false表示已禁用辅助应用。 |
 
 **错误码**：
 
@@ -1055,16 +1059,18 @@ struct Index {
 
 on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听触摸浏览功能启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听触摸浏览功能启用状态变化事件。使用callback异步回调。
+
+如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明**：
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('touchGuideStateChange')](#accessibilityofftouchguidestatechange)取消监听，否则可能会导致崩溃。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1073,7 +1079,7 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘touchGuideStateChange’，即触摸浏览启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在触摸浏览启用状态变化时将状态通过此函数进行通知。返回true表示触摸浏览功能已开启，返回false表示触摸浏览功能已关闭。           |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数。在触摸浏览启用状态变化时将状态通过此函数进行通知。返回true表示触摸浏览功能已开启；返回false表示触摸浏览功能已关闭。           |
 
 **错误码**：
 
@@ -1125,9 +1131,9 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18)取消监听，否则可能会导致崩溃。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1136,7 +1142,7 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘screenReaderStateChange’，即屏幕朗读启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在屏幕朗读启用状态变化时将状态通过此函数进行通知。返回true表示屏幕朗读功能已开启，返回false表示屏幕朗读功能已关闭。           |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数。在屏幕朗读启用状态变化时将状态通过此函数进行通知。返回true表示屏幕朗读功能已开启；返回false表示屏幕朗读功能已关闭。           |
 
 **错误码**：
 
@@ -1185,9 +1191,9 @@ on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[accessibility.off('touchModeChange')](#accessibilityofftouchmodechange20)取消监听，否则可能会导致崩溃。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1253,7 +1259,7 @@ onAnimationReduceStateChange(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在减弱动效模式启用状态变化时将状态通过此函数进行通知。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。在减弱动效模式启用状态变化时将状态通过此函数进行通知。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
 
 **示例**：
 
@@ -1302,7 +1308,7 @@ onFlashReminderStateChange(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在闪烁提醒模式启用状态变化时将状态通过此函数进行通知。返回true表示闪烁提醒模式已开启；返回false表示闪烁提醒模式已关闭。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。在闪烁提醒模式启用状态变化时将状态通过此函数进行通知。返回true表示闪烁提醒模式已开启；返回false表示闪烁提醒模式已关闭。 |
 
 **示例**：
 
@@ -1351,7 +1357,7 @@ onAudioMonoStateChange(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在单声道音频模式启用状态变化时将状态通过此函数进行通知。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。在单声道音频模式启用状态变化时将状态通过此函数进行通知。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
 
 **示例**：
 
@@ -1402,7 +1408,7 @@ onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在系统关怀模式启用状态变化时将状态通过此函数进行通知。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。在系统关怀模式启用状态变化时将状态通过此函数进行通知。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。 |
 
 **示例**：
 
@@ -1436,7 +1442,9 @@ struct Index {
 
 onSeniorModeStateChangeForSelf(callback: Callback&lt;boolean&gt;): void
 
-监听应用自身“长辈模式”变化事件，与[accessibility.onSeniorModeStateChange](#accessibilityonseniormodestatechange)（监听系统关怀模式状态变化）对应不同作用范围，本接口仅关注应用自身状态。使用callback异步回调。
+监听应用自身“长辈模式”变化事件。使用callback异步回调。
+
+与[accessibility.onSeniorModeStateChange](#accessibilityonseniormodestatechange)（监听系统关怀模式状态变化）对应不同作用范围，本接口仅关注应用自身状态。
 
 > **说明**：
 >
@@ -1453,7 +1461,7 @@ onSeniorModeStateChangeForSelf(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在应用自身“长辈模式”状态变化时将状态通过此函数进行通知。返回true表示应用自身“长辈模式”已开启；返回false表示应用自身“长辈模式”已关闭。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。在应用自身“长辈模式”状态变化时将状态通过此函数进行通知。返回true表示应用自身“长辈模式”已开启；返回false表示应用自身“长辈模式”已关闭。 |
 
 **示例**：
 
@@ -1489,9 +1497,9 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1544,9 +1552,9 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1599,9 +1607,9 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1654,9 +1662,9 @@ off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1935,7 +1943,7 @@ isOpenAccessibility(): Promise&lt;boolean&gt;
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 10 开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1943,7 +1951,7 @@ isOpenAccessibility(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                                       |
 | ---------------------- | ---------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，如果辅助应用已启用，则返回true；否则返回false。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示辅助应用已启用；返回false表示辅助应用未启用。 |
 
 **示例**：
 
@@ -1966,7 +1974,7 @@ isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 10 开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1974,7 +1982,7 @@ isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名      | 类型                           | 必填   | 说明                                  |
 | -------- | ---------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，如果辅助应用已启用，则返回 true；否则返回 false。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示辅助应用已启用；返回false表示辅助应用未启用。 |
 
 **示例**：
 
@@ -1995,11 +2003,13 @@ accessibility.isOpenAccessibility((err: BusinessError, data: boolean) => {
 
 isOpenAccessibilitySync(): boolean
 
-查询当前系统内是否存在已开启的辅助应用。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+查询当前系统内是否存在已开启的辅助应用。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
-**原子化服务API**： 从 API version 11 开始，该接口支持在原子化服务中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API**： 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2028,7 +2038,7 @@ isOpenTouchGuide(): Promise&lt;boolean&gt;
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 10 开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -2036,7 +2046,7 @@ isOpenTouchGuide(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                                       |
 | ---------------------- | ---------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，如果触摸浏览模式已开启，则返回true；否则返回false。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示触摸浏览模式已开启；返回false表示触摸浏览模式未开启。 |
 
 **示例**：
 
@@ -2059,7 +2069,7 @@ isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 10 开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -2067,7 +2077,7 @@ isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名      | 类型                           | 必填   | 说明                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示触摸浏览模式已开启；返回false表示触摸浏览模式未开启。 |
 
 **示例**：
 
@@ -2090,9 +2100,9 @@ isOpenTouchGuideSync(): boolean
 
 查询触摸浏览模式是否开启。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 11 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -2116,9 +2126,9 @@ isScreenReaderOpenSync(): boolean
 
 查询屏幕朗读模式是否开启。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -2150,7 +2160,7 @@ isAnimationReduceEnabled(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
 
 **示例**：
 
@@ -2180,7 +2190,9 @@ struct Index {
 
 isAnimationReduceEnabledSync(): boolean
 
-查询减弱动效模式是否开启。本接口为同步版本，与[accessibility.isAnimationReduceEnabled](#accessibilityisanimationreduceenabled23)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
+查询减弱动效模式是否开启。
+
+本接口为同步版本，与[accessibility.isAnimationReduceEnabled](#accessibilityisanimationreduceenabled23)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -2226,7 +2238,7 @@ isFlashReminderEnabled(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示闪烁提醒模式已开启；返回false表示闪烁提醒模式已关闭。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示闪烁提醒模式已开启；返回false表示闪烁提醒模式已关闭。 |
 
 **示例**：
 
@@ -2256,7 +2268,9 @@ struct Index {
 
 isFlashReminderEnabledSync(): boolean
 
-查询闪烁提醒模式是否开启。本接口为同步版本，与[accessibility.isFlashReminderEnabled](#accessibilityisflashreminderenabled23)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
+查询闪烁提醒模式是否开启。
+
+本接口为同步版本，与[accessibility.isFlashReminderEnabled](#accessibilityisflashreminderenabled23)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -2302,7 +2316,7 @@ isAudioMonoEnabled(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
 
 **示例**：
 
@@ -2332,7 +2346,9 @@ struct Index {
 
 isAudioMonoEnabledSync(): boolean
 
-查询单声道音频模式是否开启。本接口为同步版本，与[accessibility.isAudioMonoEnabled](#accessibilityisaudiomonoenabled23)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
+查询单声道音频模式是否开启。
+
+本接口为同步版本，与[accessibility.isAudioMonoEnabled](#accessibilityisaudiomonoenabled23)（异步版本）功能相同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -2380,7 +2396,7 @@ isSeniorModeEnabled(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。 |
 
 **错误码**：
 
@@ -2418,7 +2434,9 @@ struct Index {
 
 getSeniorModeStateForSelf(): Promise&lt;boolean&gt;
 
-判断应用是否开启“长辈模式”，与[accessibility.isSeniorModeEnabled](#accessibilityisseniormodeenabled)（判断系统关怀模式是否开启）对应不同作用范围，本接口仅查询应用自身状态。使用Promise异步回调。
+判断应用是否开启“长辈模式”。使用Promise异步回调。
+
+与[accessibility.isSeniorModeEnabled](#accessibilityisseniormodeenabled)（判断系统关怀模式是否开启）对应不同作用范围，本接口仅查询应用自身状态。
 
 **起始版本**： 26.0.0
 
@@ -2430,7 +2448,7 @@ getSeniorModeStateForSelf(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示应用自身“长辈模式”已开启；返回false表示应用自身“长辈模式”已关闭。reject表示查询失败，返回错误对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示应用自身“长辈模式”已开启；返回false表示应用自身“长辈模式”已关闭。 |
 
 **错误码**：
 
@@ -2486,7 +2504,7 @@ setSeniorModeStateForSelf(state: boolean): Promise&lt;void&gt;
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果。resolve表示设置成功，reject表示设置失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -2528,7 +2546,7 @@ sendEvent(event: EventInfo): Promise&lt;void&gt;
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2542,7 +2560,7 @@ sendEvent(event: EventInfo): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。resolve表示发送成功，reject表示发送失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**：
 
@@ -2571,7 +2589,7 @@ sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**：
 >
-> 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9-1)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2580,7 +2598,7 @@ sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | event    | [EventInfo](#eventinfo)   | 是    | 无障碍事件对象。                                  |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，用于接收发送结果。若发送成功，err为undefined；若发送失败，err为错误对象，包含错误码和错误信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发送无障碍事件成功，err为undefined，否则为错误对象。 |
 
 **示例**：
 
@@ -2609,9 +2627,9 @@ sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助扩展应用进行响应。使用Promise异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2623,7 +2641,7 @@ sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。resolve表示发送成功，reject表示发送失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -2658,9 +2676,9 @@ sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): v
 
 发送无障碍事件，事件将被分发到系统中已注册且匹配事件类型的辅助应用进行响应。使用callback异步回调。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2669,7 +2687,7 @@ sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): v
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | event    | [EventInfo](#eventinfo)   | 是    | 无障碍事件对象。                                  |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，用于接收发送结果。若发送成功，err为undefined；若发送失败，err为错误对象，包含错误码和错误信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发送无障碍事件成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2763,9 +2781,9 @@ getTouchModeSync(): string
 
 查询触摸浏览功能下的单击/双击操作模式，可用于根据当前操作模式调整应用的交互响应方式（如单击模式下直接响应点击、双击模式下需双击确认操作）。
 
-**卡片能力**： 从 API version 23 开始，该接口支持在ArkTS卡片中使用。
+**卡片能力**： 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**： 从 API version 23 开始，该接口支持在原子化服务中使用。
+**原子化服务API**： 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> - 本模块首批接口从 API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
 
 ## 导入模块
@@ -50,7 +50,9 @@ import { config } from '@kit.AccessibilityKit';
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
-启用辅助扩展，需与[config.disableAbility](#configdisableability)配对使用。与[config.enableAbilityWithCallback](#configenableabilitywithcallback23)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开连接事件，请使用[config.enableAbilityWithCallback](#configenableabilitywithcallback23)。使用Promise异步回调。
+启用辅助扩展，需与[config.disableAbility](#configdisableability)配对使用。使用Promise异步回调。
+
+与[config.enableAbilityWithCallback](#configenableabilitywithcallback23)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开连接事件，请使用[config.enableAbilityWithCallback](#configenableabilitywithcallback23)。
 
 **系统接口**：此接口为系统接口。
 
@@ -69,7 +71,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，启用辅助扩展成功时无返回结果，失败时抛出错误对象。
+| Promise&lt;void&gt; | Promise对象，无返回结果。
 
 **错误码**：
 
@@ -117,7 +119,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, c
 | -------- |---------------------------------------------------------------------------------| -------- | -------- |
 | name | string                                                                          | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | 是 | 辅助扩展应用的能力属性。 |
-| callback | AsyncCallback&lt;void&gt;                                                       | 是 | 回调函数，用于接收启用辅助扩展的结果。启用成功时err为undefined，启用失败时err包含错误信息。 |
+| callback | AsyncCallback&lt;void&gt;                                                       | 是 | 回调函数。当启用辅助扩展成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -153,7 +155,9 @@ config.enableAbility(name, capability, (err: BusinessError) => {
 
 enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
 
-启用辅助扩展，并指定[ConnectCallback](#connectcallback23)作为辅助扩展连接断开事件的回调函数。当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](#configdisableability)配对使用。使用Promise异步回调。
+启用辅助扩展，并指定[ConnectCallback](#connectcallback23)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。
+
+当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](#configdisableability)配对使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -175,7 +179,7 @@ enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capab
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，启用辅助扩展成功时无返回结果，失败时抛出错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -231,7 +235,7 @@ disableAbility(name: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，关闭辅助扩展成功时无返回结果，失败时抛出错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -276,7 +280,7 @@ disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收关闭辅助扩展的结果。关闭成功时err为undefined，关闭失败时err包含错误信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭辅助扩展成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -310,7 +314,9 @@ config.disableAbility(name, (err: BusinessError) => {
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
-添加启用的辅助扩展的列表变化监听。需与[config.off('enabledAccessibilityExtensionListChange')](#configoffenabledaccessibilityextensionlistchange)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。使用callback异步回调。
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
+
+需与[config.off('enabledAccessibilityExtensionListChange')](#configoffenabledaccessibilityextensionlistchange)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
 **系统接口**：此接口为系统接口。
 
@@ -390,7 +396,9 @@ config.off('enabledAccessibilityExtensionListChange', callback);
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
-添加已安装的辅助扩展的列表变化监听。需与[config.off('installedAccessibilityListChange')](#configoffinstalledaccessibilitylistchange12)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。使用callback异步回调。
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
+
+需与[config.off('installedAccessibilityListChange')](#configoffinstalledaccessibilitylistchange12)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
 **系统接口**：此接口为系统接口。
 
@@ -534,7 +542,7 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，设置应用“长辈模式”成功时无返回结果，失败时抛出错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -593,7 +601,7 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象，查询应用“长辈模式”状态成功时返回对应boolean值，true表示应用已启用“长辈模式”，false表示应用未启用“长辈模式”，失败时抛出错误对象。|
+| Promise&lt;boolean&gt; | Promise对象。返回true表示应用已启用“长辈模式”；返回false表示应用未启用“长辈模式”。|
 
 **错误码**：
 
@@ -870,7 +878,7 @@ set(value: T): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，设置属性成功时无返回结果，失败时抛出错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -914,7 +922,7 @@ set(value: T, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 设置的属性值，值类型与对应Config属性的类型一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 设置属性结果的回调函数，成功时err为undefined，失败时err包含错误信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置属性成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -957,7 +965,7 @@ get(): Promise&lt;T&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;T&gt; | Promise对象，获取属性成功时返回对应属性值，失败时抛出错误对象。 |
+| Promise&lt;T&gt; | Promise对象，返回对应属性值。 |
 
 **错误码**：
 
@@ -995,7 +1003,7 @@ get(callback: AsyncCallback&lt;T&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;T&gt; | 是 | 回调函数，用于接收获取属性的结果。成功时err为undefined，data为属性值；失败时err包含错误信息。 |
+| callback | AsyncCallback&lt;T&gt; | 是 | 回调函数。当获取属性成功，err为undefined，data为属性值；否则为错误对象。 |
 
 **错误码**：
 
@@ -1024,7 +1032,9 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
 
 on(callback: Callback&lt;T&gt;): void
 
-添加属性变化监听。需与[off](#off)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。使用callback异步回调。
+添加属性变化监听。使用callback异步回调。
+
+需与[off](#off)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
 **系统接口**：此接口为系统接口。
 

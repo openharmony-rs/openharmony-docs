@@ -7,13 +7,13 @@
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
 
-GesturePath 表示手势路径信息。
+GesturePath表示手势路径信息。
 
 本模块用于创建手势路径信息，供辅助功能注入手势使用。
 
 > **说明**：
 >
-> - 本模块首批接口从 API version 9 开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -36,13 +36,13 @@ import { GesturePath } from '@kit.AccessibilityKit';
 
 ### constructor<sup>(deprecated)</sup>
 
-constructor(durationTime: number);
+constructor(durationTime: number)
 
-通过传入手势总耗时创建手势路径对象。创建 GesturePath 实例后，还需设置必填属性 points。
+通过传入手势总耗时创建手势路径对象。创建GesturePath实例后，还需设置必填属性points。
 
 > **说明**：
 >
-> 从 API version 9 开始支持，从 API version 12 开始废弃。此接口已完全移除，无替代方案。
+> 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -54,11 +54,11 @@ constructor(durationTime: number);
 
 **示例**：
 
-  ```ts
-  import { GesturePath, GesturePoint } from '@kit.AccessibilityKit';
+```ts
+import { GesturePath, GesturePoint } from '@kit.AccessibilityKit';
 
-  let gesturePath = new GesturePath(20);
-  let startPoint = new GesturePoint(100, 100);
-  let endPoint = new GesturePoint(200, 200);
-  gesturePath.points = [startPoint, endPoint];
-  ```
+let gesturePath = new GesturePath(20);
+let startPoint = new GesturePoint(100, 100);
+let endPoint = new GesturePoint(200, 200);
+gesturePath.points = [startPoint, endPoint];
+```

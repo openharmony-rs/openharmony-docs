@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> - 本模块首批接口从 API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口。其他公开接口参见[@ohos.accessibility](js-apis-accessibility.md)。
 
 ## 导入模块
@@ -111,7 +111,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 表示无障碍节点元素可执行的操作枚举。
 
-无障碍节点元素是指，UI 界面上可执行无障碍操作的组件，例如：按钮、文本输入框等。
+无障碍节点元素是指，UI界面上可执行无障碍操作的组件，例如：按钮、文本输入框等。
 
 **系统接口**：此接口为系统接口。
 
@@ -155,7 +155,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | -------------------------- | ---- | ------------------------ |
 | NOT_SUPPORTED                             | -1 | 当前节点不支持查询操作。              |
 | SEARCH_SUCCESS                            | 0  | 节点查询成功。         |
-| SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | 节点查询成功，建议下一次查询使用参数 bypassSelfDescendants 以提升查询效率。   |
+| SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | 节点查询成功，建议下一次查询使用参数bypassSelfDescendants以提升查询效率。   |
 | SEARCH_FAILURE                            | 2  | 节点查询失败，当前节点所在页面内无可聚焦节点。              |
 | SEARCH_FAILURE_IN_CHILD_TREE              | 3  | 节点查询失败，当前节点所在容器内无可聚焦节点。             |
 | SEARCH_FAILURE_LOST_NODE                  | 4  | 节点查询失败，未找到起始节点。                 |
