@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见[effect_filter](../reference/apis-arkgraphics2d/capi-effect-filter-h.md)。
+使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见[effect_filter/apis-arkgraphics2d/capi-effect-filter-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |

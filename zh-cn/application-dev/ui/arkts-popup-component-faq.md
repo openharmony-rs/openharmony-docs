@@ -12,7 +12,7 @@
 
 **问题现象**
 
-通过[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)设置[placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)属性后，气泡未显示在预期的位置。
+通过[Popup控制/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)设置[placement/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)属性后，气泡未显示在预期的位置。
 
 **可能原因**
 
@@ -28,8 +28,8 @@ Popup气泡优先在开发者设置的placement位置显示，当空间不足时
 
 3. 如果镜像位置的空间仍然不足，会切换到另一轴方向的位置显示，即跨轴避让（cross-axis fallback）。例如垂直方向（Top/Bottom）都不够时，会尝试水平方向（Left/Right），反之亦然。
 
-4. 如果四周空间均不足以完整显示气泡，则默认气泡会遮挡绑定组件进行显示。如果开发者不期望遮挡绑定组件，可通过设置[avoidTarget](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)属性为AvoidanceMode.AVOID_AROUND_TARGET来解决，此时气泡在剩余空间不足的情况下会进行压缩以避免遮挡绑定组件。
+4. 如果四周空间均不足以完整显示气泡，则默认气泡会遮挡绑定组件进行显示。如果开发者不期望遮挡绑定组件，可通过设置[avoidTarget/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)属性为AvoidanceMode.AVOID_AROUND_TARGET来解决，此时气泡在剩余空间不足的情况下会进行压缩以避免遮挡绑定组件。
 
 **参考链接**
 
-- [Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
+- [Popup控制/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)

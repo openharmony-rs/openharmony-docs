@@ -22,7 +22,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 初始化密钥属性集。用于查询时指定密钥的属性，查询单个密钥或者非群组密钥，可传空。
 
-3. 调用接口[OH_Huks_IsKeyItemExist](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist)，查询密钥是否存在。
+3. 调用接口[OH_Huks_IsKeyItemExist/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist)，查询密钥是否存在。
 
 <!-- @[query_whether_the_key_exists_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/cpp/napi_init.cpp) -->
 

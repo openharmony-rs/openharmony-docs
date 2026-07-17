@@ -70,7 +70,7 @@ struct ImageExample2 {
 
 ### 使用TaskPool线程池异步处理
 
-当前系统提供了[TaskPool线程池](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
+当前系统提供了[TaskPool线程池/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
 
 ```typescript
 import { taskpool } from '@kit.ArkTS';

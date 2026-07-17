@@ -27,7 +27,7 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **可能原因**
 
-应用通过[OH_NativeXComponent_RegisterCallback](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_registercallback)接口注册的[OH_NativeXComponent_Callback](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md)回调函数对象以裸指针形式保存在`XComponentPattern`对象中。这些回调的生命周期由应用控制。如果应用提前销毁了`OH_NativeXComponent_Callback`回调函数对象，将导致裸指针指向非法内存，引发Use-After-Free问题。
+应用通过[OH_NativeXComponent_RegisterCallback/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_registercallback)接口注册的[OH_NativeXComponent_Callback/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md)回调函数对象以裸指针形式保存在`XComponentPattern`对象中。这些回调的生命周期由应用控制。如果应用提前销毁了`OH_NativeXComponent_Callback`回调函数对象，将导致裸指针指向非法内存，引发Use-After-Free问题。
 
 ![OH_NativeXComponent_Callback](figures/OH_NativeXComponent_Callback.png)
 
@@ -37,7 +37,7 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-相关接口详见[OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
+相关接口详见[OH_NativeXComponent Native XComponent/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
 
 
 ## OH_NativeXComponent对象被提前释放
@@ -64,7 +64,7 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-相关接口详见[OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
+相关接口详见[OH_NativeXComponent Native XComponent/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
 
 
 ## @Consume缺少匹配的@Provide

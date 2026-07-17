@@ -34,14 +34,14 @@
 
 ### 窗口尺寸限制
 
-[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)表示窗口的最小和最大尺寸限制，包含窗口的最小高度（minWindowHeight）、最大高度（maxWindowHeight）、最小宽度（minWindowWidth）、最大宽度（maxWindowWidth）。使用[getWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)、[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)接口可以查询当前窗口的尺寸限制。
+[WindowLimits/apis-arkui/arkts-apis-window-i.md#windowlimits11)表示窗口的最小和最大尺寸限制，包含窗口的最小高度（minWindowHeight）、最大高度（maxWindowHeight）、最小宽度（minWindowWidth）、最大宽度（maxWindowWidth）。使用[getWindowLimits()/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)、[getWindowLimitsVP()/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)接口可以查询当前窗口的尺寸限制。
 
 系统提供了多种配置窗口尺寸限制的方式，窗口尺寸限制的最终生效结果由以下配置取交集得到，优先级从高到低：
 
 | 配置方式 | 优先级 | 单位 | 生效时机 | 使用场景 |
 | -------- | -------- | -------- | -------- | -------- |
-| 调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)传入参数windowLimits<br/>调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits15)接口传入参数windowLimits、isForcible | 最高（运行时设置） | px或vp<br/>（通过pixelUnit指定） | 窗口创建后动态生效 | 需要根据运行时状态动态调整窗口尺寸限制的场景，如根据内容自动适配、用户交互后调整等。 |
-| 调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)接口时通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)设置 | 中（启动时设置） | vp | Ability启动时生效 | 需要在启动时指定窗口尺寸限制的场景，如拉起其他应用时指定其窗口大小范围。 |
+| 调用[setWindowLimits()/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)传入参数windowLimits<br/>调用[setWindowLimits()/apis-arkui/arkts-apis-window-Window.md#setwindowlimits15)接口传入参数windowLimits、isForcible | 最高（运行时设置） | px或vp<br/>（通过pixelUnit指定） | 窗口创建后动态生效 | 需要根据运行时状态动态调整窗口尺寸限制的场景，如根据内容自动适配、用户交互后调整等。 |
+| 调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)接口时通过[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)设置 | 中（启动时设置） | vp | Ability启动时生效 | 需要在启动时指定窗口尺寸限制的场景，如拉起其他应用时指定其窗口大小范围。 |
 | 通过[module.json5配置文件](../quick-start/module-configuration-file.md)中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签配置 | 低（静态配置） | vp | 应用安装后生效 | 需要预设窗口尺寸限制的场景，作为默认配置供应用使用，对于当前UIAbility对应的主窗生效。 |
 | 默认系统限制 | 低（系统默认） | vp | 应用安装后生效 | 应用不需要指定窗口尺寸限制，跟随系统默认限制（基于不同产品和窗口类型，系统默认限制存在差异）。 |
 
@@ -60,8 +60,8 @@
 
 | 接口 | 功能描述 | 适用场景 | 生效范围 |
 | -------- | -------- | -------- | -------- |
-| [setAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10) | 设置窗口内容布局（不含边框和标题栏等装饰）的比例，该比例参数默认持久化保存。 | - 为同一应用下多个启动实例配置相同的内容宽高比。当同一应用的某个主窗口调用此接口设置宽高比生效后，后续打开的主窗口均会沿用该宽高比。 | [自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗 |
-| [setContentAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setcontentaspectratio21) | 设置窗口内容布局（不含边框和标题栏等装饰）的比例。<br/>窗口宽高会跟随窗口边框装饰尺寸或可见性变化而调整，并支持配置该比例参数是否持久化保存。 | - 自定义主窗口标题栏尺寸及可见性<br/>- 为单个主窗口单独设置宽高比 | [自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗 |
+| [setAspectRatio()/apis-arkui/arkts-apis-window-Window.md#setaspectratio10) | 设置窗口内容布局（不含边框和标题栏等装饰）的比例，该比例参数默认持久化保存。 | - 为同一应用下多个启动实例配置相同的内容宽高比。当同一应用的某个主窗口调用此接口设置宽高比生效后，后续打开的主窗口均会沿用该宽高比。 | [自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗 |
+| [setContentAspectRatio()/apis-arkui/arkts-apis-window-Window.md#setcontentaspectratio21) | 设置窗口内容布局（不含边框和标题栏等装饰）的比例。<br/>窗口宽高会跟随窗口边框装饰尺寸或可见性变化而调整，并支持配置该比例参数是否持久化保存。 | - 自定义主窗口标题栏尺寸及可见性<br/>- 为单个主窗口单独设置宽高比 | [自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗 |
 
 使用示例：
 
@@ -122,7 +122,7 @@ const TAG = 'IndexPage';
 
 应用窗口可以设置启动时初始的位置与大小，可通过以下两种方式实现。
 
-- 应用调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)启动时，可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)设置主窗口的初始位置与大小。
+- 应用调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-1)启动时，可通过[StartOptions/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)设置主窗口的初始位置与大小。
 
   相关属性及含义如下所示：
 
@@ -139,7 +139,7 @@ const TAG = 'IndexPage';
   > 
   > - 此种配置方式的优先级高于通过[module.json5配置文件](../quick-start/module-configuration-file.md)的配置方式。
   > 
-  > - 窗口大小取值范围受minWindowWidth/maxWindowWidth和minWindowHeight/maxWindowHeight限制，可通过[getWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)接口获取当前窗口的尺寸限制。
+  > - 窗口大小取值范围受minWindowWidth/maxWindowWidth和minWindowHeight/maxWindowHeight限制，可通过[getWindowLimits()/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)接口获取当前窗口的尺寸限制。
   > 
   > - 建议同时配置windowLeft和windowTop，当窗口位置超出指定屏幕区域时，系统会限制窗口在屏幕范围内可见。
 
@@ -162,29 +162,29 @@ const TAG = 'IndexPage';
 
   > **说明：**
   > 
-  > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）外的其他窗口模式下使用以下接口。
+  > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）外的其他窗口模式下使用以下接口。
   > 
   > - 使用以下移动接口时，如果主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
   | 接口 | 坐标系原点 | 说明 |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
-  | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12)传入参数x、y<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15)传入参数x、y、moveConfiguration | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为主窗口左上顶点 | 移动窗口位置，调用生效后返回。 |
-  | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y、moveConfiguration | 目标屏幕左上顶点 | 基于屏幕坐标移动窗口位置，调用生效后返回。 |
-  | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#全局坐标系)移动窗口位置。 |
+  | [moveWindowTo()/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
+  | [moveWindowToAsync()/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12)传入参数x、y<br/>[moveWindowToAsync()/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15)传入参数x、y、moveConfiguration | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为主窗口左上顶点 | 移动窗口位置，调用生效后返回。 |
+  | [moveWindowToGlobal()/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y<br/>[moveWindowToGlobal()/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y、moveConfiguration | 目标屏幕左上顶点 | 基于屏幕坐标移动窗口位置，调用生效后返回。 |
+  | [moveWindowToGlobalDisplay()/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#全局坐标系)移动窗口位置。 |
 
-- 调整窗口大小：使用[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9-1)、[resizeAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#resizeasync12)接口可以在运行时动态调整窗口的大小。  
+- 调整窗口大小：使用[resize()/apis-arkui/arkts-apis-window-Window.md#resize9-1)、[resizeAsync()/apis-arkui/arkts-apis-window-Window.md#resizeasync12)接口可以在运行时动态调整窗口的大小。  
 
   | 接口 | 说明 |
   | -------- | -------- |
-  | [resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9-1) | 基于窗口左上角顶点改变当前窗口大小，调用成功即返回，该接口返回后无法立即获取最终生效结果。 |
-  | [resizeAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#resizeasync12) | 基于窗口左上角顶点改变当前窗口大小，调用生效后返回，可立即获取最终生效结果。 |
+  | [resize()/apis-arkui/arkts-apis-window-Window.md#resize9-1) | 基于窗口左上角顶点改变当前窗口大小，调用成功即返回，该接口返回后无法立即获取最终生效结果。 |
+  | [resizeAsync()/apis-arkui/arkts-apis-window-Window.md#resizeasync12) | 基于窗口左上角顶点改变当前窗口大小，调用生效后返回，可立即获取最终生效结果。 |
 
   > **说明：**
   > 
-  > - 窗口存在大小限制[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)，设置的尺寸会受到此限制约束。
+  > - 窗口存在大小限制[WindowLimits/apis-arkui/arkts-apis-window-i.md#windowlimits11)，设置的尺寸会受到此限制约束。
   > 
-  > - 以上接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）时调用生效。
+  > - 以上接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）时调用生效。
   > 
   > - 在非[自由窗口](freeform-window-overview.md#自由窗口)状态下，主窗口调用不生效。
 
@@ -258,15 +258,15 @@ const TAG = 'IndexPage';
 
 目前提供了以下两种拖拽窗口的能力。
 
-- 可使用[startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving14)或带offset参数的[startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving15)开启窗口拖拽移动，成功调用此接口后，窗口将跟随鼠标或触摸点移动。  
+- 可使用[startMoving()/apis-arkui/arkts-apis-window-Window.md#startmoving14)或带offset参数的[startMoving()/apis-arkui/arkts-apis-window-Window.md#startmoving15)开启窗口拖拽移动，成功调用此接口后，窗口将跟随鼠标或触摸点移动。  
 
   > **说明：**
   > 
-  > - startMoving()接口必须在[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件的回调函数中调用，且事件类型为TouchType.Down时才能生效。
+  > - startMoving()接口必须在[onTouch/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件的回调函数中调用，且事件类型为TouchType.Down时才能生效。
   > 
-  > - 系统会在用户释放鼠标或触摸点时自动停止拖拽移动窗口，开发者也可以调用[stopMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#stopmoving15)接口主动停止。
+  > - 系统会在用户释放鼠标或触摸点时自动停止拖拽移动窗口，开发者也可以调用[stopMoving()/apis-arkui/arkts-apis-window-Window.md#stopmoving15)接口主动停止。
   > 
-  > - 调用带offset参数的[startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving15)接口时，可以指定拖拽时光标在窗口内的精确位置，实现更自然的拖拽体验。
+  > - 调用带offset参数的[startMoving()/apis-arkui/arkts-apis-window-Window.md#startmoving15)接口时，可以指定拖拽时光标在窗口内的精确位置，实现更自然的拖拽体验。
 
   适用场景：
 
@@ -410,11 +410,11 @@ const TAG = 'IndexPage';
   }
   ```
 
-- 可通过[enableDrag()](../reference/apis-arkui/arkts-apis-window-Window.md#enabledrag20)使能/禁止拖拽窗口。使能后，将允许通过鼠标操作或触摸对窗口进行拖拽缩放操作。 
+- 可通过[enableDrag()/apis-arkui/arkts-apis-window-Window.md#enabledrag20)使能/禁止拖拽窗口。使能后，将允许通过鼠标操作或触摸对窗口进行拖拽缩放操作。 
 
   > **说明：**
   > 
-  > 拖拽缩放时，窗口尺寸受到[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)的限制。
+  > 拖拽缩放时，窗口尺寸受到[WindowLimits/apis-arkui/arkts-apis-window-i.md#windowlimits11)的限制。
 
   <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
   
@@ -459,12 +459,12 @@ const TAG = 'IndexPage';
 
 | 接口 | 返回值类型 | 说明 |
 | -------- | -------- | -------- |
-| [on('windowSizeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7) | [Size](../reference/apis-arkui/arkts-apis-window-i.md#size7) | 监听窗口大小变化，单位为px。 |
-| [on('windowRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowrectchange12) | [RectChangeOptions](../reference/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）变化，返回对应值及变化原因，单位为px。 |
-| [on('rectChangeInGlobalDisplay')](../reference/apis-arkui/arkts-apis-window-Window.md#onrectchangeinglobaldisplay20) | [RectChangeOptions](../reference/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）在[全局坐标系](window-terminology.md#全局坐标系)中的变化，返回对应值及变化原因，单位为px。 |
-| [getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) | [WindowProperties](../reference/apis-arkui/arkts-apis-window-i.md#windowproperties) | 获取当前窗口的属性。其中窗口位置与大小相关的属性为：<br/>windowRect：窗口的位置和大小，相对于当前屏幕坐标系。<br/>drawableRect：窗口内的可绘制区域尺寸，其中左边界上边界相对于窗口左上顶点计算。globalDisplayRect：窗口的位置和大小，相对于[全局坐标系](window-terminology.md#全局坐标系)。 |
+| [on('windowSizeChange')/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7) | [Size/apis-arkui/arkts-apis-window-i.md#size7) | 监听窗口大小变化，单位为px。 |
+| [on('windowRectChange')/apis-arkui/arkts-apis-window-Window.md#onwindowrectchange12) | [RectChangeOptions/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）变化，返回对应值及变化原因，单位为px。 |
+| [on('rectChangeInGlobalDisplay')/apis-arkui/arkts-apis-window-Window.md#onrectchangeinglobaldisplay20) | [RectChangeOptions/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）在[全局坐标系](window-terminology.md#全局坐标系)中的变化，返回对应值及变化原因，单位为px。 |
+| [getWindowProperties()/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) | [WindowProperties/apis-arkui/arkts-apis-window-i.md#windowproperties) | 获取当前窗口的属性。其中窗口位置与大小相关的属性为：<br/>windowRect：窗口的位置和大小，相对于当前屏幕坐标系。<br/>drawableRect：窗口内的可绘制区域尺寸，其中左边界上边界相对于窗口左上顶点计算。globalDisplayRect：窗口的位置和大小，相对于[全局坐标系](window-terminology.md#全局坐标系)。 |
 
-应用还可以通过使用环境变量来感知窗口位置与大小的变化。环境变量是一种全局状态管理机制，在多设备开发的场景中，开发者可以使用[@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。详情请见[@Env：环境变量](../ui/arkts-env-system-property.md)。
+应用还可以通过使用环境变量来感知窗口位置与大小的变化。环境变量是一种全局状态管理机制，在多设备开发的场景中，开发者可以使用[@Env/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。详情请见[@Env：环境变量](../ui/arkts-env-system-property.md)。
 
 环境变量允许组件感知并响应窗口尺寸的变化。当窗口大小发生变化时，声明并使用环境变量进行布局的组件可实现响应式布局效果。
 

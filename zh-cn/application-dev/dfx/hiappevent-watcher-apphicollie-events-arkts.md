@@ -9,7 +9,7 @@
 
 ## 简介
 
-从API version 21开始，支持ArkTS接口订阅任务执行超时事件。 本文介绍如何使用HiAppEvent提供的ArkTS接口订阅任务执行超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+从API version 21开始，支持ArkTS接口订阅任务执行超时事件。 本文介绍如何使用HiAppEvent提供的ArkTS接口订阅任务执行超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 

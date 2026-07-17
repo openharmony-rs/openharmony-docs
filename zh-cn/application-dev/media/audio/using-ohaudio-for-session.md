@@ -27,7 +27,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 ### 添加头文件
 
-应用通过引入[native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)头文件，使用音频播放相关API。
+应用通过引入[native_audio_session_manager.h/apis-audio-kit/capi-native-audio-session-manager-h.md)头文件，使用音频播放相关API。
 
 <!-- @[cimport_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -37,7 +37,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 ## 获取音频会话管理器
 
-创建[OH_AudioSessionManager](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosessionmanager.md)实例。在使用音频会话管理功能前，需要先通过[OH_AudioManager_GetAudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager)创建音频会话管理实例。
+创建[OH_AudioSessionManager/apis-audio-kit/capi-ohaudio-oh-audiosessionmanager.md)实例。在使用音频会话管理功能前，需要先通过[OH_AudioManager_GetAudioSessionManager/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager)创建音频会话管理实例。
 
 <!-- @[cget_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -55,9 +55,9 @@ OH_AudioSessionManager *audioSessionManager;
 
 ## 激活音频会话
 
-应用可以通过[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活当前应用的音频会话。
+应用可以通过[OH_AudioSessionManager_ActivateAudioSession/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活当前应用的音频会话。
 
-应用在[激活音频会话](#激活音频会话)时，需指定[音频会话策略（OH_AudioSession_Strategy）](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md)，其中包含[音频并发模式（OH_AudioSession_ConcurrencyMode）](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode)参数，用于声明不同的音频并发策略。
+应用在[激活音频会话](#激活音频会话)时，需指定[音频会话策略（OH_AudioSession_Strategy）/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md)，其中包含[音频并发模式（OH_AudioSession_ConcurrencyMode）/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode)参数，用于声明不同的音频并发策略。
 
 <!-- @[cactive_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -71,7 +71,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 ## 查询音频会话是否已激活
 
-应用可以通过[OH_AudioSessionManager_IsAudioSessionActivated](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_isaudiosessionactivated)接口检查当前应用的音频会话是否已激活。
+应用可以通过[OH_AudioSessionManager_IsAudioSessionActivated/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_isaudiosessionactivated)接口检查当前应用的音频会话是否已激活。
 
 <!-- @[ccheck_isactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -81,7 +81,7 @@ bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionMa
 
 ## 停用音频会话
 
-应用可以通过[OH_AudioSessionManager_DeactivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_deactivateaudiosession)接口停用当前应用的音频会话。
+应用可以通过[OH_AudioSessionManager_DeactivateAudioSession/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_deactivateaudiosession)接口停用当前应用的音频会话。
 
 <!-- @[cdeactive_audiosession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -93,9 +93,9 @@ result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
 
 ## 监听音频会话停用事件
 
-在使用AudioSession功能的过程中，推荐应用监听[音频会话停用事件（OH_AudioSession_DeactivatedEvent）](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-deactivatedevent.md)。
+在使用AudioSession功能的过程中，推荐应用监听[音频会话停用事件（OH_AudioSession_DeactivatedEvent）/apis-audio-kit/capi-ohaudio-oh-audiosession-deactivatedevent.md)。
 
-当AudioSession被停用（非主动停用）时，应用会收到[音频会话停用事件（OH_AudioSession_DeactivatedEvent）](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-deactivatedevent.md)，其中包含[音频会话停用原因（OH_AudioSession_DeactivatedReason）](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedreason)。
+当AudioSession被停用（非主动停用）时，应用会收到[音频会话停用事件（OH_AudioSession_DeactivatedEvent）/apis-audio-kit/capi-ohaudio-oh-audiosession-deactivatedevent.md)，其中包含[音频会话停用原因（OH_AudioSession_DeactivatedReason）/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedreason)。
 
 在收到AudioSessionDeactivatedEvent时，应用可根据自身业务需求，做相应的处理，例如释放相应资源、重新激活AudioSession等。
 
@@ -121,7 +121,7 @@ OH_AudioSessionManager *audioSessionManager;
 
 ### 注册音频会话停用事件回调
 
-应用可以通过[OH_AudioSessionManager_RegisterSessionDeactivatedCallback](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registersessiondeactivatedcallback)接口监听音频会话停用事件。
+应用可以通过[OH_AudioSessionManager_RegisterSessionDeactivatedCallback/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registersessiondeactivatedcallback)接口监听音频会话停用事件。
 
 <!-- @[cregist_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -132,7 +132,7 @@ OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDea
 
 ### 取消注册音频会话停用事件回调
 
-应用可以通过[OH_AudioSessionManager_UnregisterSessionDeactivatedCallback](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_unregistersessiondeactivatedcallback)接口取消监听音频会话停用事件。
+应用可以通过[OH_AudioSessionManager_UnregisterSessionDeactivatedCallback/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_unregistersessiondeactivatedcallback)接口取消监听音频会话停用事件。
 
 <!-- @[cunregist_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -190,7 +190,7 @@ OH_AudioSessionManager *audioSessionManager;
 ```
 
 ## 通过设置AudioSession场景参数申请焦点
-应用通过AudioSession申请焦点。首先要调用接口[OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数，然后调用[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。
+应用通过AudioSession申请焦点。首先要调用接口[OH_AudioSessionManager_SetScene/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数，然后调用[OH_AudioSessionManager_ActivateAudioSession/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。
 
 <!-- @[cset_audioscene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -210,7 +210,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 启用静音建议通知后，本应用播放音频的同时，其他应用播放了不可与本应用并发播放的音频，本应用会收到静音建议通知，此时本应用可以选择不做处理，让本应用和其他应用进行并发播放；也可以选择将自身静音播放，让其他应用单独播放音频。
 
-启用混音播放下静音建议通知，需要先调用接口[OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数并订阅音频会话状态更改事件[OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint)，启用后再调用[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。启用静音建议通知的前提是[OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
+启用混音播放下静音建议通知，需要先调用接口[OH_AudioSessionManager_SetScene/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数并订阅音频会话状态更改事件[OH_AudioSession_StateChangeHint/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint)，启用后再调用[OH_AudioSessionManager_ActivateAudioSession/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。启用静音建议通知的前提是[OH_AudioSession_ConcurrencyMode/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
 <!-- @[cenable_muteSuggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -227,7 +227,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 ```
 
 ## 监听AudioSession焦点状态变化事件
-通过[AudioSession焦点状态事件（OH_AudioSession_StateChangedEvent）](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-statechangedevent.md)监听音频会话焦点状态的变化。
+通过[AudioSession焦点状态事件（OH_AudioSession_StateChangedEvent）/apis-audio-kit/capi-ohaudio-oh-audiosession-statechangedevent.md)监听音频会话焦点状态的变化。
 
 **AudioSession申请焦点以及监听焦点变化事件的完整示例：**
 
@@ -293,13 +293,13 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 ## 设置音频会话行为
 
-从API version 24开始，应用可以通过[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
+从API version 24开始，应用可以通过[OH_AudioSessionManager_SetBehavior/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-场景一：在游戏直播场景中，游戏应用可以设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).VOIP_PRIVACY_TYPE_PUBLIC会话行为，使游戏组队的VoIP录音与直播录音可以同时进行。
+场景一：在游戏直播场景中，游戏应用可以设置[OH_AudioSession_BehaviorFlags/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).VOIP_PRIVACY_TYPE_PUBLIC会话行为，使游戏组队的VoIP录音与直播录音可以同时进行。
 
-场景二：在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+场景二：在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[OH_AudioSession_BehaviorFlags/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
 
-如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy)。对于录音流，详情请参考[OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy)。
+如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[OH_AudioRenderer_SetIndependentAudioSessionStrategy/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy)。对于录音流，详情请参考[OH_AudioCapturer_SetIndependentAudioSessionStrategy/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy)。
 
 <!-- @[cset_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 

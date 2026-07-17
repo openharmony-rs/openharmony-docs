@@ -13,9 +13,9 @@
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient) | 为当前组件添加线性渐变的颜色渐变效果。 |
-| [sweepGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#sweepgradient) | 为当前组件添加角度渐变的颜色渐变效果。 |
-| [radialGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#radialgradient) | 为当前组件添加径向渐变的颜色渐变效果。 |
+| [linearGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient) | 为当前组件添加线性渐变的颜色渐变效果。 |
+| [sweepGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#sweepgradient) | 为当前组件添加角度渐变的颜色渐变效果。 |
+| [radialGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#radialgradient) | 为当前组件添加径向渐变的颜色渐变效果。 |
 
 
 ## 为组件添加线性渐变效果

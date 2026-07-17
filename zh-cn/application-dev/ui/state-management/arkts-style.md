@@ -20,7 +20,7 @@
 
 ## 装饰器使用说明
 
-- 当前\@Styles仅支持[通用属性](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)和[通用事件](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
+- 当前\@Styles仅支持[通用属性/apis-arkui/arkui-ts/ts-component-general-attributes.md)和[通用事件/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
 - \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内styles和全局styles的用法](#组件内styles和全局styles的用法)。
 

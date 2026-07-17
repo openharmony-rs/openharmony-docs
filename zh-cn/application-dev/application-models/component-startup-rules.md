@@ -10,9 +10,9 @@
 启动组件是指一切启动或连接应用组件的行为：
 
 
-- 启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、<!--Del-->ServiceExtensionAbility、<!--DelEnd-->DataShareExtensionAbility，如使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、<!--Del-->startServiceExtensionAbility()、<!--DelEnd-->[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)、[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)等相关接口。
+- 启动[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)、<!--Del-->ServiceExtensionAbility、<!--DelEnd-->DataShareExtensionAbility，如使用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、<!--Del-->startServiceExtensionAbility()、<!--DelEnd-->[startAbilityByCall()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)、[openLink()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)等相关接口。
 
-- 连接ServiceExtensionAbility、DataShareExtensionAbility，如使用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、createDataShareHelper()等相关接口。
+- 连接ServiceExtensionAbility、DataShareExtensionAbility，如使用[connectServiceExtensionAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、createDataShareHelper()等相关接口。
 
 ## 组件启动总体规则
 
@@ -55,7 +55,7 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+- 通过[startAbilityByCall/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 
@@ -72,7 +72,7 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+- 通过[startAbilityByCall/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 

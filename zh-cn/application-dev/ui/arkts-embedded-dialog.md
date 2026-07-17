@@ -23,7 +23,7 @@ ArkUI的弹出框默认设置为全局级别，弹窗节点作为页面根节点
 > 
 > 详细变量定义请参考[完整示例](#完整示例)。
 
-在弹出框的options入参中设置[levelMode](../reference/apis-arkui/js-apis-promptAction.md#levelmode15枚举说明)属性，值为LevelMode.EMBEDDED表示开启页面级弹出框能力。
+在弹出框的options入参中设置[levelMode/apis-arkui/js-apis-promptAction.md#levelmode15枚举说明)属性，值为LevelMode.EMBEDDED表示开启页面级弹出框能力。
 
 当弹出框弹出时，会自动获取当前显示的Page页面并将弹出框节点挂载在此页面下。此时弹出框的显示层级高于此Page页面下的所有Navigation页面。
 
@@ -39,14 +39,14 @@ this.getUIContext().getPromptAction().openCustomDialog({
 })
 ```
 
-如果希望弹出框显示在某个指定页面内，需通过第二个参数[levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)来实现。此参数接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
+如果希望弹出框显示在某个指定页面内，需通过第二个参数[levelUniqueId/apis-arkui/js-apis-promptAction.md#basedialogoptions11)来实现。此参数接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
 
 > **说明：**
 > 
 > - 当levelMode参数设置为LevelMode.EMBEDDED，但是levelUniqueId传入的ID无法正确找到节点时，页面级能力不生效。如果levelUniqueId所映射的节点存在但向上遍历不存在NavDestination节点则会将弹出框节点挂载在Page节点下。
-> - levelUniqueId必须传入[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的uniqueId，建议使用FrameNode的[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)方法获取uniqueId。
+> - levelUniqueId必须传入[FrameNode/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的uniqueId，建议使用FrameNode的[getUniqueId/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)方法获取uniqueId。
 
-如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
+如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
 
 <!-- [test_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
 
@@ -68,7 +68,7 @@ Text(this.message).id('test_text')
   })
 ```
 
-如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将[immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#immersivemode15枚举说明)参数的值设为ImmersiveMode.EXTEND。
+如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将[immersiveMode/apis-arkui/js-apis-promptAction.md#immersivemode15枚举说明)参数的值设为ImmersiveMode.EXTEND。
 
 <!-- @[dialog_embedded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
 
@@ -196,7 +196,7 @@ struct Next {
 ```
 ![embedded_dialog](figures/embedded_dialog.gif)
 
-下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
+下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
 
 <!-- [page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogInNavigation.ets) -->
 

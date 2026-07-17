@@ -12,19 +12,19 @@
 
 1. 通过[insight_intent.json配置文件](#insight_intentjson配置文件说明)定义意图，声明意图执行器的代码路径、绑定的Ability组件等意图信息。
 
-2. 通过[InsightIntentExecutor](../reference/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#insightintentexecutor)实现意图执行逻辑。
+2. 通过[InsightIntentExecutor/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#insightintentexecutor)实现意图执行逻辑。
 
 不同Ability组件类型需要配置的字段与需要实现的意图执行器，如下所示：
 
 | 组件类型 | 意图配置 | 意图执行器 |
 | --- | --- | --- |
-| UIAbility | 需要在`insight_intent.json`文件中配置"uiAbility"字段。 | 当"executeMode"字段为"foreground"时，实现`onExecuteInUIAbilityForegroundMode`，通过startAbility启动意图绑定的UIAbility组件。<br>当"executeMode"字段为"background"时，实现`onExecuteInUIAbilityBackgroundMode`，通过[Call调用](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动意图绑定的UIAbility组件。 |
+| UIAbility | 需要在`insight_intent.json`文件中配置"uiAbility"字段。 | 当"executeMode"字段为"foreground"时，实现`onExecuteInUIAbilityForegroundMode`，通过startAbility启动意图绑定的UIAbility组件。<br>当"executeMode"字段为"background"时，实现`onExecuteInUIAbilityBackgroundMode`，通过[Call调用/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动意图绑定的UIAbility组件。 |
 | UIExtensionAbility | 需要在`insight_intent.json`文件中配置"uiExtension"字段。 | 实现`onExecuteInUIExtensionAbility`。 |
 |<!--DelRow--> ServiceExtensionAbility | 需要在`insight_intent.json`文件中配置"serviceExtension"字段。 | 实现 `onExecuteInServiceExtensionAbility`。 |
 | 卡片(FormExtensionAbility) | 需要在`insight_intent.json`文件中配置"form"字段。 | 无需单独执行器。 |
 
 ## 接口说明
-意图执行器实现需要继承[InsightIntentExecutor](../reference/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#insightintentexecutor)，实现[onExecuteInUIAbilityForegroundMode](../reference/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)等方法。开发者响应意图执行通过onExecuteInUIAbilityForegroundMode等接口实现，在不同的意图执行模式下，接口的触发时机也不同。针对不同意图执行模式的意图回调执行时机见各个回调的API说明。
+意图执行器实现需要继承[InsightIntentExecutor/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#insightintentexecutor)，实现[onExecuteInUIAbilityForegroundMode/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)等方法。开发者响应意图执行通过onExecuteInUIAbilityForegroundMode等接口实现，在不同的意图执行模式下，接口的触发时机也不同。针对不同意图执行模式的意图回调执行时机见各个回调的API说明。
 
 ## 开发步骤
 ### 意图绑定UIAbility组件
@@ -185,7 +185,7 @@ export default class DownloadExecutor extends InsightIntentExecutor {
 }
 ```
 
-系统入口通过[startServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextstartserviceextensionability)方式执行该意图。
+系统入口通过[startServiceExtensionAbility/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextstartserviceextensionability)方式执行该意图。
 <!--DelEnd-->
 
 ### 意图绑定卡片

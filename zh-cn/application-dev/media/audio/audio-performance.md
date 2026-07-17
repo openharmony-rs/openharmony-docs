@@ -23,7 +23,7 @@
 
 因此，系统中的音频通路也并不是一成不变的。为应对不同的用户使用场景，系统针对性的提供多种不同方向的通路选择，有的更节省功耗，有的更偏向响应速度，还有的则相对平衡。
 
-系统无法直接感知应用所开发音频功能对应的使用场景，因此需要开发者通过指定[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)来提供对应的场景信息。系统会针对场景选择，提供一套默认的音频通路配置作用于输出/输入通路，如果开发者认为默认配置还不满足需要，也可以通过独立的设置接口进行调整。
+系统无法直接感知应用所开发音频功能对应的使用场景，因此需要开发者通过指定[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和[SourceType/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)来提供对应的场景信息。系统会针对场景选择，提供一套默认的音频通路配置作用于输出/输入通路，如果开发者认为默认配置还不满足需要，也可以通过独立的设置接口进行调整。
 
 ### 低时延音频播放与录音
 
@@ -139,7 +139,7 @@ HiSmartPerf工具完整的介绍可参考指南：[HiSmartPerf](https://develope
 
 音频播放时延高，通常是由于数据处理耗时长，或是缓冲区设置过大。
 
-对时延比较敏感的音频场景，不建议做过多的数据前处理。可以使用系统提供的低时延模式进行播放。提示音类功能，建议使用[SoundPool](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md)接口进行播放。
+对时延比较敏感的音频场景，不建议做过多的数据前处理。可以使用系统提供的低时延模式进行播放。提示音类功能，建议使用[SoundPool/apis-media-kit/js-apis-inner-multimedia-soundPool.md)接口进行播放。
 
 ### 视频音画不同步
 

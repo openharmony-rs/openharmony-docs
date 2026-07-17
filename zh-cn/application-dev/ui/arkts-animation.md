@@ -29,12 +29,12 @@ ArkUI中提供多种动画接口（[属性动画](arkts-attribute-animation-over
 - [属性动画](arkts-attribute-animation-overview.md)：最基础的动画类型，按照动画参数逐帧驱动属性的变化，产生一帧帧的动画效果。除其中的自定义属性动画外，动画过程的驱动由系统完成，应用侧不感知动画过程。
 
 - [转场动画](arkts-transition-overview.md)：为组件在出现和消失时添加过渡动画。为了保证动画一致性，部分接口动画曲线已内置，不支持开发者自定义。
-  - 不建议在应用内使用[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组合所有的界面：UIAbility是一个任务，会在多任务界面独立显示为一个卡片，UIAbility之间的跳转相当于任务之间的跳转。以应用内查看大图场景为例，不建议调用图库的UIAbility来打开图片查看大图，因为这会导致任务的跳转，图库的UIAbility也会加入多任务界面中。正确的方式是应用内构建大图组件，通过模态转场去调起大图组件，一个任务内的所有的界面都在一个UIAbility内闭环。
-  - 导航转场中，应使用[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)组件实现转场动画。过去的page+[router](../reference/apis-arkui/js-apis-router.md)方式在实现导航转场过程中，因为page和page之间相互独立，其联动动画效果受限。不仅容易导致页面之间的割裂，并且不支持一次开发多端部署。
+  - 不建议在应用内使用[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组合所有的界面：UIAbility是一个任务，会在多任务界面独立显示为一个卡片，UIAbility之间的跳转相当于任务之间的跳转。以应用内查看大图场景为例，不建议调用图库的UIAbility来打开图片查看大图，因为这会导致任务的跳转，图库的UIAbility也会加入多任务界面中。正确的方式是应用内构建大图组件，通过模态转场去调起大图组件，一个任务内的所有的界面都在一个UIAbility内闭环。
+  - 导航转场中，应使用[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)组件实现转场动画。过去的page+[router/apis-arkui/js-apis-router.md)方式在实现导航转场过程中，因为page和page之间相互独立，其联动动画效果受限。不仅容易导致页面之间的割裂，并且不支持一次开发多端部署。
 
 - [粒子动画](arkts-particle-animation.md)：介绍粒子动画的原理及使用方法。
 
-- [组件动画](arkts-component-animation.md)：组件提供默认动效（如[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)的滑动动效）便于开发者使用，同时部分组件还支持定制化动效。
+- [组件动画](arkts-component-animation.md)：组件提供默认动效（如[List/apis-arkui/arkui-ts/ts-container-list.md)的滑动动效）便于开发者使用，同时部分组件还支持定制化动效。
 
 - [动画曲线](arkts-traditional-curve.md)：介绍传统曲线和弹簧曲线的特点和使用方式。动画曲线影响属性值的运动规律，进而决定界面的动画效果。
 

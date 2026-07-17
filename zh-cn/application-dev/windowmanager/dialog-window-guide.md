@@ -13,7 +13,7 @@
 
 1. 创建模态窗口。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
+   通过[window.createWindow()/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
 
    ```ts
    let dialog_windowClass: window.Window | undefined = undefined;
@@ -40,7 +40,7 @@
 
    - 模态窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置窗口背景色、亮度等属性。
 
-   - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
+   - 在调用[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
   
    ```ts
    // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
@@ -69,7 +69,7 @@
 
 3. 加载显示窗口的具体内容。  
 
-   通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)接口加载显示模态窗口的具体内容。
+   通过[setUIContent()/apis-arkui/arkts-apis-window-Window.md#setuicontent9)和[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9)接口加载显示模态窗口的具体内容。
 
    ```ts
    // 3.为模态窗口加载对应的目标页面。
@@ -94,7 +94,7 @@
 
 4. 销毁窗口。 
 
-   当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)接口销毁模态窗口。
+   当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()/apis-arkui/arkts-apis-window-Window.md#destroywindow9)接口销毁模态窗口。
 
    ```ts
    dialog_windowClass.destroyWindow((err: BusinessError) => {

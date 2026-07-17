@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ArkUI开发框架针对拖拽事件提供了[NODE_ON_PRE_DRAG](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_ENTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_MOVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_LEAVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)等组件事件，当拖拽在不同的阶段时会触发对应的组件事件，完成对应的数据处理操作，实现期望的拖拽交互能力。
+ArkUI开发框架针对拖拽事件提供了[NODE_ON_PRE_DRAG/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_START/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DROP/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_ENTER/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_MOVE/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_LEAVE/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_END/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)等组件事件，当拖拽在不同的阶段时会触发对应的组件事件，完成对应的数据处理操作，实现期望的拖拽交互能力。
 
 ## 通用拖拽
 
@@ -14,7 +14,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 1. 组件拖拽设置。
 
-   通过[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口初始化nodeAPI，创建节点等操作均需通过nodeAPI完成。
+   通过[OH_ArkUI_GetModuleInterface/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口初始化nodeAPI，创建节点等操作均需通过nodeAPI完成。
 
    <!-- @[get_nodeAPI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/manager.cpp) -->
    
@@ -24,7 +24,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    nodeAPI = nativeNodeAPI;
    ```
 
-   创建Image节点，通过[OH_ArkUI_SetNodeDraggable](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodedraggable)设置节点可拖拽，并设置其他相关属性。
+   创建Image节点，通过[OH_ArkUI_SetNodeDraggable/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodedraggable)设置节点可拖拽，并设置其他相关属性。
 
    <!-- @[create_imageNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -159,7 +159,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 2. 自定义拖拽预览和背板图。
 
-   创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置pixelMap的宽高等各项属性。设置Image节点的[ArkUI_DragPreviewOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md)，可用于设置跟手图的圆角、角标等。
+   创建[pixelMap/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置pixelMap的宽高等各项属性。设置Image节点的[ArkUI_DragPreviewOption/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md)，可用于设置跟手图的圆角、角标等。
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -198,7 +198,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 3. 设置相关事件。
 
-   C API的事件通过统一的回调来接收，当收到事件时通过[eventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)进行区分。
+   C API的事件通过统一的回调来接收，当收到事件时通过[eventType/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)进行区分。
 
    <!-- @[event_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -248,7 +248,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 4. 处理NODE_ON_DRAG_START事件。
 
-   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)，将用于拖拽图片所需的数据imageValue以[OH_UdsFileUri](../reference/apis-arkdata/capi-udmf-oh-udsfileuri.md)类型添加到OH_UdmfRecord中，接着将OH_UdmfRecord设置到[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
+   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建[OH_UdmfRecord/apis-arkdata/capi-udmf-oh-udmfrecord.md)，将用于拖拽图片所需的数据imageValue以[OH_UdsFileUri/apis-arkdata/capi-udmf-oh-udsfileuri.md)类型添加到OH_UdmfRecord中，接着将OH_UdmfRecord设置到[OH_UdmfData/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -275,7 +275,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 5. 处理NODE_ON_DROP事件。
 
-   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用[udmf_meta.h](../reference/apis-arkdata/capi-udmf-meta-h.md)头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
+   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用[udmf_meta.h/apis-arkdata/capi-udmf-meta-h.md)头文件，获取[OH_UdmfData/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -351,7 +351,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 1. 节点注册事件。
 
-   创建Button节点，设置按钮相关属性，同时需要注册[NODE_ON_TOUCH_INTERCEPT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
+   创建Button节点，设置按钮相关属性，同时需要注册[NODE_ON_TOUCH_INTERCEPT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
 
    <!-- @[touch_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
    
@@ -477,7 +477,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 2. 接收NODE_ON_TOUCH_INTERCEPT事件。
 
-   DragAction主动发起拖拽需通过事件触发，在NODE_ON_TOUCH_INTERCEPT事件中执行发起拖拽所需的操作，通过[targetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_gettargetid)区分不同按钮触发的事件。
+   DragAction主动发起拖拽需通过事件触发，在NODE_ON_TOUCH_INTERCEPT事件中执行发起拖拽所需的操作，通过[targetId/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_gettargetid)区分不同按钮触发的事件。
 
    <!-- @[on_touchIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
    
@@ -505,7 +505,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    ```
 3. 起拖阶段设置。
 
-   在NODE_ON_TOUCH_INTERCEPT事件中，需要对DragAction进行相关设置。为了主动发起拖拽，需要创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置[ArkUI_DragPreviewOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md)和跟手点，并将拖拽过程中的文本数据设置到DragAction中。
+   在NODE_ON_TOUCH_INTERCEPT事件中，需要对DragAction进行相关设置。为了主动发起拖拽，需要创建[pixelMap/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置[ArkUI_DragPreviewOption/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md)和跟手点，并将拖拽过程中的文本数据设置到DragAction中。
 
    <!-- @[set_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
    

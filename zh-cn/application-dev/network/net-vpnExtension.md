@@ -14,13 +14,13 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 > **说明：**
 >
->- 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[@ohos.net.vpnExtension (VPN增强管理)](../reference/apis-network-kit/js-apis-net-vpnExtension.md)。
->- 完整的JS API说明以及示例代码请参考：[@ohos.net.vpnExtension (VPN增强管理)](../reference/apis-network-kit/js-apis-net-vpnExtension.md)。
+>- 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[@ohos.net.vpnExtension (VPN增强管理)/apis-network-kit/js-apis-net-vpnExtension.md)。
+>- 完整的JS API说明以及示例代码请参考：[@ohos.net.vpnExtension (VPN增强管理)/apis-network-kit/js-apis-net-vpnExtension.md)。
 >- 使用该功能需要[ohos.permission.INTERNET](../security/AccessToken/permissions-for-all.md#ohospermissioninternet)权限。
 
 ## VPN应用的显示体验
 
-借助系统提供的[VPN Extension](../reference/apis-network-kit/js-apis-net-vpnExtension.md)接口开发者可以构建支持不同协议的VPN服务。OpenHarmony系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接：
+借助系统提供的[VPN Extension/apis-network-kit/js-apis-net-vpnExtension.md)接口开发者可以构建支持不同协议的VPN服务。OpenHarmony系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接：
 
 - 在VPN应用首次启动连接之前，系统会显示VPN连接授权对话框。该对话框会提示用户是否信任该VPN应用并接受VPN连接请求。
 - 当VPN启动连接成功时，状态栏显示一个VPN (钥匙) 图标以提醒用户VPN处于连接状态。
@@ -58,9 +58,9 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 接下来您需要在创建的VpnExtensionAbility中实现VPN的配置、启动和停止操作：
 
 - 建立一个VPN的网络隧道，以UDP隧道为例（参考本文下方VPN Demo示例工程文件[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/cpp/napi_init.cpp)的UdpConnect()方法）；
-- 通过VpnConnection.[protect](../reference/apis-network-kit/js-apis-net-vpnExtension.md#protect)保护前一步建立的UDP隧道；
+- 通过VpnConnection.[protect/apis-network-kit/js-apis-net-vpnExtension.md#protect)保护前一步建立的UDP隧道；
 - 构建VPN Config参数，参考[VPN Config参数说明](#vpn-config参数说明)；
-- 通过VpnConnection.[create](../reference/apis-network-kit/js-apis-net-vpnExtension.md#create)建立VPN网络连接；
+- 通过VpnConnection.[create/apis-network-kit/js-apis-net-vpnExtension.md#create)建立VPN网络连接；
 - 处理虚拟网卡的数据，如：读写操作。
 
 ### 启动VPN Extension Ability
@@ -120,7 +120,7 @@ struct StartVpn {
 }
 ```
 
-如果您的VPN应用未获取用户信任，系统将弹出VPN连接的授权对话框，当获取用户授权后，系统将自动调用并启动您实现的VPN Extension Ability的[onCreate](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityoncreate)方法将被调用。
+如果您的VPN应用未获取用户信任，系统将弹出VPN连接的授权对话框，当获取用户授权后，系统将自动调用并启动您实现的VPN Extension Ability的[onCreate/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityoncreate)方法将被调用。
 
 目前系统仅支持启动一个VPN连接服务，当VPN已经启动时应用新调用启动接口会收到系统拒绝错误，此时建议您的应用可以提醒用户先断开当前已经激活的VPN应用连接。
 
@@ -195,7 +195,7 @@ struct StopVpn {
 }
 ```
 
-stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityondestroy)方法将被调用，您可在此时destroy vpn连接。
+stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityondestroy)方法将被调用，您可在此时destroy vpn连接。
 
 <!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
 
@@ -279,8 +279,8 @@ export class VpnTest extends VpnExtensionAbility {
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称       | 类型                                       | 只读 |可选| 说明          |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
-| addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                          |
-| routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | 否   | 是|VPN虚拟网卡的路由信息(目前最多可配置1024条路由)。              |
+| addresses           | Array\<[LinkAddress/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                          |
+| routes              | Array\<[RouteInfo/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | 否   | 是|VPN虚拟网卡的路由信息(目前最多可配置1024条路由)。              |
 | dnsAddresses        | Array\<string\>                                              | 否   |是 |DNS服务器地址信息。配置DNS服务器地址后，VPN启动状态下，被代理的应用上网时，使用配置的DNS服务器进行DNS查询。 |
 | searchDomains       | Array\<string\>                                              | 否   |是 |DNS的搜索域列表。                                            |
 | mtu                 | number                                                       | 否   |是| 最大传输单元MTU值(单位：字节)。                               |

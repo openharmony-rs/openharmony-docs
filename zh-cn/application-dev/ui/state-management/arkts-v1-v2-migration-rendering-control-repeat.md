@@ -223,7 +223,7 @@ struct MyComponent {
 
 2. 迁移数据源。
 
-   LazyForEach使用专用的数据结构[IDataSource](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)作为数据源。迁移至Repeat后，不再使用IDataSource作为数据源，而是使用状态管理V2装饰的数组作为数据源。
+   LazyForEach使用专用的数据结构[IDataSource/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)作为数据源。迁移至Repeat后，不再使用IDataSource作为数据源，而是使用状态管理V2装饰的数组作为数据源。
 
    ```ts
    // 迁移前 - LazyForEach
@@ -249,7 +249,7 @@ struct MyComponent {
 
    LazyForEach与Repeat均通过组件生成函数，为每一项数据创建一个子组件；通过键值生成函数，为每一项数据生成一个唯一的键值。
 
-   从LazyForEach迁移至Repeat时，两者的语法存在差异。Repeat需要在[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)或[.template()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)中设置组件生成函数，在[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#key)中设置键值生成函数。
+   从LazyForEach迁移至Repeat时，两者的语法存在差异。Repeat需要在[.each()/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)或[.template()/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)中设置组件生成函数，在[.key()/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#key)中设置键值生成函数。
 
    ```ts
    // 迁移前 - LazyForEach
@@ -285,7 +285,7 @@ struct MyComponent {
 
    - 懒加载模式动态渲染屏幕区域和预加载区域内的子节点（需要与容器组件配合使用，对标LazyForEach）。
 
-   从LazyForEach迁移至Repeat时，需要调用[virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)属性，使能懒加载。
+   从LazyForEach迁移至Repeat时，需要调用[virtualScroll/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)属性，使能懒加载。
 
    ```ts
    // 迁移前 - LazyForEach
@@ -344,7 +344,7 @@ struct MyComponent {
 
 **LazyForEach示例**
 
-当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用[DataChangeListener](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
+当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用[DataChangeListener/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
 
 示例2演示了主要的数据操作。
 
@@ -981,7 +981,7 @@ struct ChildComponent {
 
 **LazyForEach示例**
 
-LazyForEach的[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)属性提供了拖拽排序能力。
+LazyForEach的[onMove/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)属性提供了拖拽排序能力。
 
 示例6为典型用例。
 
@@ -1202,7 +1202,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用\@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认启用自身的复用能力，且优先级高于\@ReusableV2装饰器。若要使用\@ReusableV2装饰器，必须先手动关闭Repeat自身的复用能力，即Repeat中[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)的reusable属性设置为false（\@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认启用自身的复用能力，且优先级高于\@ReusableV2装饰器。若要使用\@ReusableV2装饰器，必须先手动关闭Repeat自身的复用能力，即Repeat中[VirtualScrollOptions/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)的reusable属性设置为false（\@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持关闭自身复用能力）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 
@@ -1460,7 +1460,7 @@ struct ChildComponentB {
 
 **迁移Repeat**
 
-Repeat本身具备模板渲染能力，开发者可以通过[templateId](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)方法为不同的数据项选择不同的模板，再通过[template](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)方法为不同的模板配置不同的组件生成函数。同时，开发者仍然可以选择自己实现逻辑判断，为不同的数据项分配不同的模板。
+Repeat本身具备模板渲染能力，开发者可以通过[templateId/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)方法为不同的数据项选择不同的模板，再通过[template/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)方法为不同的模板配置不同的组件生成函数。同时，开发者仍然可以选择自己实现逻辑判断，为不同的数据项分配不同的模板。
 
 需要注意的是，如果开发者选择自己实现模板渲染，则需要关闭Repeat自身的复用功能。否则，Repeat在复用子组件时无法选择正确的模板，会导致渲染异常。
 

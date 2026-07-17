@@ -10,11 +10,11 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 [NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)作为容器节点存在，具备通用属性，是UI节点。[ContentSlot](../ui/rendering-control/arkts-rendering-control-contentslot.md)只是一个语法节点，无通用属性，不参与布局和渲染。支持混合模式开发，当容器是ArkTS组件，子组件在Native侧创建时，推荐使用ContentSlot占位组件。具体使用参考[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)的接口文档说明。
 
-[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是用来占位的系统组件，主要用于自定义节点以及自定义节点树的显示，支持组件的通用属性，对通用属性的处理请参考默认左上角对齐的[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件。
+[NodeContainer/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是用来占位的系统组件，主要用于自定义节点以及自定义节点树的显示，支持组件的通用属性，对通用属性的处理请参考默认左上角对齐的[Stack/apis-arkui/arkui-ts/ts-container-stack.md)组件。
 
-[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)提供了一系列生命周期回调，通过[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)回调返回一个[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点树的根节点。将[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点树挂载到对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)下。同时提供了[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)、[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)、[aboutToResize](../reference/apis-arkui/js-apis-arkui-nodeController.md#abouttoresize)、[onTouchEvent](../reference/apis-arkui/js-apis-arkui-nodeController.md#ontouchevent)、[rebuild](../reference/apis-arkui/js-apis-arkui-nodeController.md#rebuild)五个回调方法用于监听对应的[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)的状态。
+[NodeController/apis-arkui/js-apis-arkui-nodeController.md)提供了一系列生命周期回调，通过[makeNode/apis-arkui/js-apis-arkui-nodeController.md#makenode)回调返回一个[FrameNode/apis-arkui/js-apis-arkui-frameNode.md)节点树的根节点。将[FrameNode/apis-arkui/js-apis-arkui-frameNode.md)节点树挂载到对应的[NodeContainer/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)下。同时提供了[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)、[aboutToDisappear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)、[aboutToResize/apis-arkui/js-apis-arkui-nodeController.md#abouttoresize)、[onTouchEvent/apis-arkui/js-apis-arkui-nodeController.md#ontouchevent)、[rebuild/apis-arkui/js-apis-arkui-nodeController.md#rebuild)五个回调方法用于监听对应的[NodeContainer/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)的状态。
 
-每个生命周期的回调的具体含义参考[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)的接口文档说明。
+每个生命周期的回调的具体含义参考[NodeController/apis-arkui/js-apis-arkui-nodeController.md)的接口文档说明。
 
 > **说明：**
 > 
@@ -26,7 +26,7 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 ## 基本概念
 
-- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)）、自定义渲染节点（[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)）、自定义声明式节点（[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)）、[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)等。
+- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（[FrameNode/apis-arkui/js-apis-arkui-frameNode.md)）、自定义渲染节点（[RenderNode/apis-arkui/js-apis-arkui-renderNode.md)）、自定义声明式节点（[BuilderNode/apis-arkui/js-apis-arkui-builderNode.md)）、[ComponentContent/apis-arkui/js-apis-arkui-ComponentContent.md)等。
 
 - 自定义节点树：根节点为自定义节点的节点树。
 
@@ -166,7 +166,7 @@ struct Index {
 
 ## NodeContainer和ContentSlot添加子节点布局差异
 
-[NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是一个容器节点，布局参考左上角对齐的[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件，不会按照父容器的布局规则进行布局。[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)只是一个语法节点，不参与布局，添加的子节点会按照父容器的布局规则进行布局。
+[NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是一个容器节点，布局参考左上角对齐的[Stack/apis-arkui/arkui-ts/ts-container-stack.md)组件，不会按照父容器的布局规则进行布局。[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)只是一个语法节点，不参与布局，添加的子节点会按照父容器的布局规则进行布局。
 
 <!-- @[place_holder_layout_diff](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets) -->
 

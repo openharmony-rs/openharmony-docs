@@ -6,16 +6,16 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
 
-[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)可用于获取自定义环境变量。开发者可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)组件的[.customEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#customenv)接口设置自定义环境变量，在子组件中通过[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器读取相同[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
+[\@CustomEnv/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)可用于获取自定义环境变量。开发者可通过[WithEnv/apis-arkui/arkui-ts/ts-container-with-env.md)组件的[.customEnv/apis-arkui/arkui-ts/ts-container-with-env.md#customenv)接口设置自定义环境变量，在子组件中通过[\@CustomEnv/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器读取相同[CustomEnvKey\<S\>/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
 
 >**说明：**
 >
-> 从API版本26.0.0开始，[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
+> 从API版本26.0.0开始，[\@CustomEnv/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
 >
 > 从API版本26.0.0开始，该装饰器支持在原子化服务中使用。
 
 ## 概述
-[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)是响应式自定义环境变量装饰器，其功能包括：
+[\@CustomEnv/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)是响应式自定义环境变量装饰器，其功能包括：
 - 根据入参读取相应的自定义环境变量信息，详情见[\@CustomEnv使用方法](#customenv使用方法)。
 - 自定义环境变量改变时，通知\@CustomEnv装饰的变量更新，并触发\@CustomEnv关联组件刷新，以实现界面内容的更新。
 - 使用\@CustomEnv装饰的变量具有只读特性，不允许在组件内直接赋值。若需更新该变量的值，必须通过父组件的WithEnv组件配合`.customEnv()`方法进行更新。尝试对\@CustomEnv变量进行本地赋值将导致编译错误。
@@ -28,7 +28,7 @@ const custom = CustomEnvKey.create<string>();
 ```
 
 其中：
-- `custom`：开发者自定义的环境变量key，类型为[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)，否则会编译报错。
+- `custom`：开发者自定义的环境变量key，类型为[CustomEnvKey\<S\>/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)，否则会编译报错。
 - `varName`：装饰的变量名。
 - `'default value'`：变量的默认值，当未找到对应的WithEnv组件提供的值时使用。
 
@@ -38,7 +38,7 @@ const custom = CustomEnvKey.create<string>();
 
 | \@CustomEnv装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数 | [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器的入参必须为[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)类型。 |
+| 装饰器参数 | [\@CustomEnv/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器的入参必须为[CustomEnvKey\<S\>/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)类型。 |
 | 可装饰的变量类型 | Object、class、string、number、boolean、enum等基本类型以及Array、Date、Map、Set等内置类型。支持null、undefined以及联合类型。 |
 | 装饰变量的初始值 | 必须本地初始化，不允许外部传入初始化。 |
 
@@ -125,7 +125,7 @@ struct Index {
 }
 ```
 
-- \@CustomEnv的入参必须是通过[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)的[create\<T\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#createt)方法创建的全局常量，且类型为开发者自定义的CustomEnvKey\<S\>，否则会编译报错，若开发者绕过编译检查，则会运行时报错。
+- \@CustomEnv的入参必须是通过[CustomEnvKey\<S\>/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)的[create\<T\>/apis-arkui/arkui-ts/ts-custom-env-property.md#createt)方法创建的全局常量，且类型为开发者自定义的CustomEnvKey\<S\>，否则会编译报错，若开发者绕过编译检查，则会运行时报错。
 
 ```ts
 const custom = CustomEnvKey.create<string>();
@@ -960,7 +960,7 @@ struct Child {
 
 ![image](./figures/custom-env-14.gif)
 
-- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量是\@Observed时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
+- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量是\@Observed时，需要调用[enableV2Compatibility/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 

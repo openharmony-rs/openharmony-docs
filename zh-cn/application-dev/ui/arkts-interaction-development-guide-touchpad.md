@@ -18,7 +18,7 @@
 
 ![touchpad-single](figures/touchpad-single-finger.png)
 
-单指操作触控板与操作鼠标的方式相同。例如，轻触后滑动会产生鼠标移动事件，而重按则会产生鼠标左键按下事件。若需判断鼠标事件是来自触控板还是鼠标设备，可以通过[sourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)和[sourceTool](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetool枚举说明9)信息进行区分。
+单指操作触控板与操作鼠标的方式相同。例如，轻触后滑动会产生鼠标移动事件，而重按则会产生鼠标左键按下事件。若需判断鼠标事件是来自触控板还是鼠标设备，可以通过[sourceType/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)和[sourceTool/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetool枚举说明9)信息进行区分。
 
 对该种操作产生的事件的处理，请参考[处理鼠标移动](arkts-interaction-development-guide-mouse.md#处理鼠标移动)章节。
 
@@ -29,7 +29,7 @@
 
 与鼠标滚轮不同，触控板上双指滑动产生的轴事件上报的数值单位并非角度，而是位移像素，为了区分该点，在处理轴值之前，可以通过sourceType及sourceTool来区分。
 
-当用户使用双指横滑时，可从[axisHorizontal](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#属性)中获取横向轴值（位移像素），向右滑动时，上报数值为负，向左滑动时，上报数值为正。使用双指竖滑时，可从[axisVertical](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#属性)获取到纵向轴值（位移像素），向上滑动时，上报数值为正，向下滑动时，上报数值为负。
+当用户使用双指横滑时，可从[axisHorizontal/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#属性)中获取横向轴值（位移像素），向右滑动时，上报数值为负，向左滑动时，上报数值为正。使用双指竖滑时，可从[axisVertical/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#属性)获取到纵向轴值（位移像素），向上滑动时，上报数值为正，向下滑动时，上报数值为负。
 
 同滚轮一样，产生的轴事件可以驱动滑动手势的触发。向右滑动时，上报offsetX数值为正，向左滑动时，上报offsetX数值为负。向上滑动时，上报offsetY数值为负，向下滑动时，上报offsetY数值为正。
 

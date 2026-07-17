@@ -12,11 +12,11 @@
 
 ## 接口说明
 
-详细的API说明请参考[oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
+详细的API说明请参考[oh_commonevent.h/apis-basic-services-kit/capi-oh-commonevent-h.md)。
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
-|[CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)|取消订阅公共事件。|
+|[CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)|取消订阅公共事件。|
 
 ## 开发步骤
 
@@ -43,7 +43,7 @@
 
 3. 取消订阅公共事件。
 
-   订阅者订阅公共事件并完成业务需求后，可以通过[OH_CommonEvent_UnSubscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)主动取消订阅事件。
+   订阅者订阅公共事件并完成业务需求后，可以通过[OH_CommonEvent_UnSubscribe/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)主动取消订阅事件。
 
    <!-- @[event_unsubscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.cpp) -->
    

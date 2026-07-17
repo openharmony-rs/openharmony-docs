@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-生成并显示二维码，具体用法请参考[qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md)。
+生成并显示二维码，具体用法请参考[qrcode/apis-arkui/arkui-js/js-components-basic-qrcode.md)。
 
 
 ## 创建qrcode组件

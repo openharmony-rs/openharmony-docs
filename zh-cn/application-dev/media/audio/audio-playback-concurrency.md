@@ -18,9 +18,9 @@
 
 对于应用而言，为了确保为用户提供优质的音频焦点体验，应当注意以下几点：
 
-- 在启动播放或录制操作前，应根据音频的具体用途，选择并[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)，即准确设置[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
+- 在启动播放或录制操作前，应根据音频的具体用途，选择并[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)，即准确设置[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[SourceType/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
 
-- 在播放或录制的过程中，需通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，并在接收到音频焦点中断事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，采取相应的处理措施。
+- 在播放或录制的过程中，需通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，并在接收到音频焦点中断事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，采取相应的处理措施。
 
 - 如果应用程序有意主动管理音频焦点，可使用[音频会话管理](audio-session-management.md)相关的接口进行操作。
 
@@ -28,31 +28,31 @@
 
 **当应用开始播放或录制音频时，系统将自动为相应的音频流申请音频焦点。**
 
-例如，应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，当调用AudioRenderer的[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)时，系统会自动为应用请求音频焦点。
+例如，应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，当调用AudioRenderer的[start/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)时，系统会自动为应用请求音频焦点。
 
 若音频焦点请求成功，音频流将正常启动；反之，若音频焦点请求被拒绝，音频流将无法开始播放或录制。
 
-建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）。
+建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到音频焦点事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）。
 
 如果应用希望只申请一次焦点，连续播放多条音频流不被中断，可使用[音频会话管理](audio-session-management.md)相关的接口进行操作。
 
 **特殊场景：**
 
-1. **短音播放**：若应用[使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)，且[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)指定为Music、Movie、AudioBook等类型，播放短音，则其申请焦点时默认为并发模式，不会影响其他音频。
+1. **短音播放**：若应用[使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)，且[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)指定为Music、Movie、AudioBook等类型，播放短音，则其申请焦点时默认为并发模式，不会影响其他音频。
 
 2. **静音播放**：若应用以静音状态开始播放音频（或视频），并且希望静音阶段不影响其他音频，当后续解除静音的时候，再以正常策略申请音频焦点，则可以调用静音并发播放模式的相关接口。具体可参考：
 
-   - [使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，可以调用[setMediaMuted](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12)函数。
+   - [使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，可以调用[setMediaMuted/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12)函数。
 
-   - [使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，可调用[setSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12)函数。
+   - [使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，可调用[setSilentModeAndMixWithOthers/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12)函数。
 
-   - [使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可调用[OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers)函数。
+   - [使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可调用[OH_AudioRenderer_SetSilentModeAndMixWithOthers/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers)函数。
 
 ### 释放音频焦点
 
 **当应用结束播放或录制音频时，系统会自动为相应的音频流释放音频焦点。**
 
-例如，应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，当调用AudioRenderer的[pause](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8)、[stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8)、[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8)等时，系统会为其释放音频焦点。
+例如，应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，当调用AudioRenderer的[pause/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8)、[stop/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8)、[release/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8)等时，系统会为其释放音频焦点。
 
 当音频流释放音频焦点时，若存在受其影响的其他音频流（如音量被调低或被暂停的流），将触发恢复操作。
 
@@ -64,7 +64,7 @@
 
 当音频流申请或释放音频焦点时，系统依据音频焦点策略，对所有音频流（包括播放和录制）实施焦点管理，决定哪些音频流可正常运行，哪些需被打断或执行其他操作。
 
-系统预设的默认音频焦点策略，主要依据音频流类型（即播放流的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和录制流的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)）及音频流启动的顺序进行决策。
+系统预设的默认音频焦点策略，主要依据音频流类型（即播放流的[StreamUsage/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和录制流的[SourceType/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)）及音频流启动的顺序进行决策。
 
 为防止焦点变化不符合预期，应用在启动播放或录制前，应根据音频流的用途，准确设置StreamUsage或SourceType。关于各类型的详细说明，请参考[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
 
@@ -80,7 +80,7 @@
 
 ### 焦点模式
 
-针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
+针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
 
 系统预设了两种焦点模式：
 
@@ -92,39 +92,39 @@
 
 设置焦点模式的方法：
 
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
+- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
 
-- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
+- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
 
-- 若[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
+- 若[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，则可以调用[setInterruptMode/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setinterruptmode9)函数进行设置。
 
-- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
+- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，则可以调用[OH_AudioStreamBuilder_SetRendererInterruptMode/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinterruptmode)函数进行设置。
 
 ### 处理音频焦点变化
 
-在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）通知应用。
+在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）通知应用。
 
-因此，为了维持应用和系统的状态一致性，保证良好的用户体验，推荐应用监听音频焦点事件，并在焦点发生变化时，根据[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)做出必要的响应。
+因此，为了维持应用和系统的状态一致性，保证良好的用户体验，推荐应用监听音频焦点事件，并在焦点发生变化时，根据[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)做出必要的响应。
 
 **使用不同方式开发时，如何监听音频焦点事件：**
 
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，可以调用[on('audioInterrupt')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiointerrupt9)接口，监听音频焦点事件[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，可以调用[on('audioInterrupt')/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiointerrupt9)接口，监听音频焦点事件[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
 
-- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，可以调用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)接口，监听音频焦点事件[OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)。
+- 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，可以调用[OH_AVPlayer_SetOnInfoCallback()/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)接口，监听音频焦点事件[OH_AVPlayerOnInfoCallback/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)。
 
-- 若[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，可以调用[on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)接口，监听音频焦点事件[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+- 若[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)，可以调用[on('audioInterrupt')/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)接口，监听音频焦点事件[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
 
-- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可以调用[OH_AudioStreamBuilder_SetRendererCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback)接口，监听音频焦点事件[OH_AudioRenderer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent)。
+- 若[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)，可以调用[OH_AudioStreamBuilder_SetRendererCallback/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback)接口，监听音频焦点事件[OH_AudioRenderer_OnInterruptEvent/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent)。
 
-- 若[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)，可以调用[on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)接口，监听音频焦点事件[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+- 若[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)，可以调用[on('audioInterrupt')/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)接口，监听音频焦点事件[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
 
-- 若[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)，可以调用[OH_AudioStreamBuilder_SetCapturerCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)接口，监听音频焦点事件[OH_AudioCapturer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent)。
+- 若[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)，可以调用[OH_AudioStreamBuilder_SetCapturerCallback/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback)接口，监听音频焦点事件[OH_AudioCapturer_OnInterruptEvent/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent)。
 
-应用在收到音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，需要根据其中信息，做出相应的处理，以保持应用与系统状态一致，带给用户良好的音频体验。
+应用在收到音频焦点事件（[InterruptEvent/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）时，需要根据其中信息，做出相应的处理，以保持应用与系统状态一致，带给用户良好的音频体验。
 
 在音频焦点事件中，应用应重点关注两个信息：打断类型（InterruptForceType）和打断提示（InterruptHint）。
 
-- 打断类型（[InterruptForceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptforcetype9)）：
+- 打断类型（[InterruptForceType/apis-audio-kit/arkts-apis-audio-e.md#interruptforcetype9)）：
 
   InterruptForceType参数提示应用该焦点变化是否已由系统强制操作：
 
@@ -138,7 +138,7 @@
   >
   > 对于一些系统无法强制执行的操作（例如INTERRUPT_HINT_RESUME），会采用共享打断类型（INTERRUPT_SHARE）。
 
-- 打断提示（[InterruptHint](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interrupthint)）：
+- 打断提示（[InterruptHint/apis-audio-kit/arkts-apis-audio-e.md#interrupthint)）：
 
   InterruptHint参数用于提示应用音频流的状态：
 
@@ -167,7 +167,7 @@
 
 为了带给用户更好的音频体验，针对不同的音频焦点事件内容，应用需要做出相应的处理操作。此处以[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)为例，展示推荐应用采取的处理方法，提供伪代码供开发者参考。
 
-在监听音频播放焦点变化事件之前，需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
+在监听音频播放焦点变化事件之前，需要先获取[AudioRenderer/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
 
 <!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 

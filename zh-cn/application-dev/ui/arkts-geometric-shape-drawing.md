@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，包含所有绘制组件的通用属性。具体用法请参考[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
+绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，包含所有绘制组件的通用属性。具体用法请参考[Shape/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
 
 
 ## 创建绘制组件
@@ -31,7 +31,7 @@
   ```
 
 
-- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)（圆形）、[Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)（椭圆形）、[Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)（直线）、[Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)（折线）、[Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)（多边形）、[Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md)（路径）、[Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md)（矩形）。以Circle的接口调用为例：
+- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle/apis-arkui/arkui-ts/ts-drawing-components-circle.md)（圆形）、[Ellipse/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)（椭圆形）、[Line/apis-arkui/arkui-ts/ts-drawing-components-line.md)（直线）、[Polyline/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)（折线）、[Polygon/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)（多边形）、[Path/apis-arkui/arkui-ts/ts-drawing-components-path.md)（路径）、[Rect/apis-arkui/arkui-ts/ts-drawing-components-rect.md)（矩形）。以Circle的接口调用为例：
 
   ```ts
   Circle(value?: { width?: string | number, height?: string | number })
@@ -205,11 +205,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 > **说明：**
 >
-> 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+> 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
 绘制组件支持通过各种属性更改组件样式。
 
-- 通过[fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
+- 通过[fill/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
 
   <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
   
@@ -224,7 +224,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023022792216](figures/2023022792216.jpg)
 
-- 通过[stroke](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke)可以设置组件边框颜色。
+- 通过[stroke/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke)可以设置组件边框颜色。
 
   <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
   
@@ -239,7 +239,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![stroke](figures/stroke.jpg)
 
-- 通过[strokeOpacity](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity)可以设置边框透明度。
+- 通过[strokeOpacity/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity)可以设置边框透明度。
 
   <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
   
@@ -256,7 +256,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![strokeopacity](figures/strokeopacity.jpg)
 
-- 通过[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
+- 通过[strokeLineJoin/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
 
   <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
   
@@ -274,11 +274,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
-- 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
+- 通过[strokeMiterLimit/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
 
-  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
+  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
   
-  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   
@@ -307,7 +307,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023032405917](figures/2023032405917.jpg)
 
-- 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
+- 通过[antiAlias/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
   <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
@@ -338,11 +338,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![2023032411518](figures/2023032411518.jpg)
 
-- 通过[mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
+- 通过[mesh/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
 
   > **说明：**
   >
-  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
   
@@ -508,7 +508,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   > **说明：**
   >
-  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
   
@@ -545,7 +545,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   > **说明：**
   >
-  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
+  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
 
   <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
@@ -577,7 +577,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 >  **说明：**
 >
-> [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
+> [backgroundColor/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
   <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 

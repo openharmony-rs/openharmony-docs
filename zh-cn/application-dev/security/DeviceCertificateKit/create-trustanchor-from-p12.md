@@ -11,9 +11,9 @@
 
 ## 开发步骤
 
-1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块/apis-device-certificate-kit/js-apis-cert.md)。
 
-2. 基于现有的p12文件数据，调用[cert.createTrustAnchorsWithKeyStore](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatetrustanchorswithkeystore12)创建[X509TrustAnchor](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509trustanchor11)数组对象，并返回结果。
+2. 基于现有的p12文件数据，调用[cert.createTrustAnchorsWithKeyStore/apis-device-certificate-kit/js-apis-cert.md#certcreatetrustanchorswithkeystore12)创建[X509TrustAnchor/apis-device-certificate-kit/js-apis-cert.md#x509trustanchor11)数组对象，并返回结果。
 
 <!-- @[trust_array_constructed_from_p12_file_during_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateTrustanchorFromP12.ets) -->
 

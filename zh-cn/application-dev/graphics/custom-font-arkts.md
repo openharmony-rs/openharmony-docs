@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-自定义字体注册和使用的常用接口如下表所示，详细接口说明请见[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)。
+自定义字体注册和使用的常用接口如下表所示，详细接口说明请见[@ohos.graphics.text (文本模块)/apis-arkgraphics2d/js-apis-graphics-text.md)。
 
 | 接口 | 描述 | 
 | -------- | -------- |

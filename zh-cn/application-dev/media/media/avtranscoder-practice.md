@@ -22,7 +22,7 @@
 
 本示例使用的是worker线程的方式来实现异步线程进行转码，worker线程的详细使用方式，可以参见文档:
 
-- [Worker线程使用说明](../../reference/apis-arkts/js-apis-worker.md)
+- [Worker线程使用说明/apis-arkts/js-apis-worker.md)
 - [Worker简介](../../arkts-utils/worker-introduction.md)
 
 ### 开发步骤

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-应用可以通过[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
+应用可以通过[onInterceptRequest/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
 
 > **注意：**
 >
@@ -28,20 +28,20 @@ ArkWeb支持通过SchemeHandler拦截Web组件或者ServiceWorker发出的HTTP(s
 
 请求开始的回调：  
 
-NDK：[ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart)  
+NDK：[ArkWeb_OnRequestStart/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart)  
 
-ArkTS：[onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)  
+ArkTS：[onRequestStart/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)  
 
 请求结束的回调：  
 
-NDK：[ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
+NDK：[ArkWeb_OnRequestStop/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
 
-ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
+ArkTS：[onRequestStop/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
 
 > **注意：**
 >
 > - 需要在Web组件初始化之后设置SchemeHandler，否则会设置失败。 
-> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
+> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
 
 在C++中，通过NDK接口为Web组件设置SchemeHandler：
 
@@ -79,7 +79,7 @@ ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHan
 
 Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initializeWebEngine接口，用于单独进行Web初始化。
 
-在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
+在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -212,9 +212,9 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 错误码定义：  
 
-NDK：[网络错误码(arkweb_net_error_list.h)](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
+NDK：[网络错误码(arkweb_net_error_list.h)/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
 
-ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
+ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)/apis-arkweb/arkts-apis-netErrorList.md)。  
 
 > **注意：**
 >
@@ -283,9 +283,9 @@ ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/
    })
    ```
 
-当希望通过[OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror)或者[didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12)结束当前请求时，需要在调用该接口之前通过[OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头，否则无法结束请求。
+当希望通过[OH_ArkWebResourceHandler_DidFailWithError/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror)或者[didFail(code: WebNetErrorList)/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12)结束当前请求时，需要在调用该接口之前通过[OH_ArkWebResourceHandler_DidReceiveResponse/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头，否则无法结束请求。
 
-从API version 20开始，可以直接通过[OH_ArkWebResourceHandler_DidFailWithErrorV2](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2)或者[didFail(code: WebNetErrorList, completeIfNoResponse: boolean)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail20)结束网络请求，不再依赖必须通过[OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头。
+从API version 20开始，可以直接通过[OH_ArkWebResourceHandler_DidFailWithErrorV2/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2)或者[didFail(code: WebNetErrorList, completeIfNoResponse: boolean)/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail20)结束网络请求，不再依赖必须通过[OH_ArkWebResourceHandler_DidReceiveResponse/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头。
 
 NDK示例：
   ```c++

@@ -7,10 +7,10 @@
 <!--Adviser: @HelloShuo-->
 
 
-前端页面和应用侧之间可以用[createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports)接口创建消息端口来实现两端的通信。
+前端页面和应用侧之间可以用[createWebMessagePorts()/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports)接口创建消息端口来实现两端的通信。
 
 
-在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
+在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过[postMessage()/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
 
 
 - 应用侧代码。
@@ -186,4 +186,4 @@
 ```
 
 ### onControllerAttached与javaScriptOnDocumentStart的执行顺序是什么？
-[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11)在[onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10)之后执行。 
+[javaScriptOnDocumentStart/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11)在[onControllerAttached/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10)之后执行。 

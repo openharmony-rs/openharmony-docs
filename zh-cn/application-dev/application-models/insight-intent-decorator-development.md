@@ -12,19 +12,19 @@
 
 | 意图调用场景 | 常见意图举例 | 意图开发方式 |
 | --- | --- | --- |
-| 拉起应用 | - 播放音乐。<br>- 打开购物软件直达商品详情页。 |  - 通过[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)创建新的意图逻辑，绑定UIAbility组件或UIExtensionAbility组件。<br>- 通过[@InsightIntentLink](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)将uri链接转换为意图。<br>- 通过[@InsightIntentPage](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) 将页面路由转换为意图。 |
-| 查询或更新信息 | - 查询天气。<br>- 修改应用配置或更新。 | - 通过[@InsightIntentFunctionMethod](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod) 将函数调用转换为系统意图。<br>- 通过[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)创建新的意图逻辑，绑定UIAbility组件的后台执行模式或ServiceExtensionAbility组件。 |
-| 添加服务卡片 | - 添加天气卡片。 | - 通过[@InsightIntentForm](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)开发意图。 |
+| 拉起应用 | - 播放音乐。<br>- 打开购物软件直达商品详情页。 |  - 通过[@InsightIntentEntry/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)创建新的意图逻辑，绑定UIAbility组件或UIExtensionAbility组件。<br>- 通过[@InsightIntentLink/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)将uri链接转换为意图。<br>- 通过[@InsightIntentPage/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) 将页面路由转换为意图。 |
+| 查询或更新信息 | - 查询天气。<br>- 修改应用配置或更新。 | - 通过[@InsightIntentFunctionMethod/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod) 将函数调用转换为系统意图。<br>- 通过[@InsightIntentEntry/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)创建新的意图逻辑，绑定UIAbility组件的后台执行模式或ServiceExtensionAbility组件。 |
+| 添加服务卡片 | - 添加天气卡片。 | - 通过[@InsightIntentForm/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)开发意图。 |
 
 ## 运行机制
 
 | 功能 | 意图开发 | 意图执行|
 | --- | --- | --- |
-| 使用[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)开发意图 | 1. 开发者新增意图执行文件，若该执行文件未被其他文件导入，需要通过`insight_intent.json`文件的"insightIntentsSrcEntry"字段配置意图执行文件路径，使其参与编译。<br> 2. 通过装饰器定义意图需要绑定Ability组件、定义意图执行模式。 | 系统入口匹配意图，根据意图执行模式触发Ability组件的启动和意图执行。 |
-| 使用[@InsightIntentLink](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)开发意图 | 开发者定义Link跳转意图，支持已有的uri链接和新增uri链接。 | 系统入口匹配意图，传递uri链接，通过[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)触发意图执行，意图执行时的入参处理见[LinkIntentParamMapping](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#linkintentparammapping)的paramCategory说明。 |
-| 使用[@InsightIntentPage](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)开发意图 | 开发者定义页面跳转意图，配置意图对应的UIAbility组件、[页面路由](../ui/arkts-routing.md)的路径和[Navigation](../ui/arkts-navigation-architecture.md)路径。 | 1. 系统入口通过startAbility启动意图绑定的UIAbility组件。若意图未绑定UIAbility组件，则启动意图所在module的[mainElement](../quick-start/module-configuration-file.md#配置文件标签)对应的UIAbility组件。<br>2. 意图执行时，若应用未启动，在UIAbility的首页加载后跳转到意图对应的页面；若应用已启动，由当前页面跳转到意图对应的页面。<br>3. 意图执行时，参数会被传递给目标页面。<br>4. "navigationId"字段或"navDestinationName"字段匹配失败时，退化为"pagePath"字段对应的页面跳转。 |
-| 使用[@InsightIntentFunctionMethod](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)开发意图 | 开发者为静态方法定义意图，静态方法可以是已有方法或新增方法。 | 系统入口通过[Call调用](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动意图所在module的[mainElement](../quick-start/module-configuration-file.md#配置文件标签)对应的UIAbility组件。|
-| 使用[@InsightIntentForm](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)开发意图 | 开发者定义卡片意图，卡片可以是已有卡片或新增卡片。| 系统入口通过FormComponent组件创建意图卡片。 |
+| 使用[@InsightIntentEntry/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)开发意图 | 1. 开发者新增意图执行文件，若该执行文件未被其他文件导入，需要通过`insight_intent.json`文件的"insightIntentsSrcEntry"字段配置意图执行文件路径，使其参与编译。<br> 2. 通过装饰器定义意图需要绑定Ability组件、定义意图执行模式。 | 系统入口匹配意图，根据意图执行模式触发Ability组件的启动和意图执行。 |
+| 使用[@InsightIntentLink/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)开发意图 | 开发者定义Link跳转意图，支持已有的uri链接和新增uri链接。 | 系统入口匹配意图，传递uri链接，通过[openLink/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)触发意图执行，意图执行时的入参处理见[LinkIntentParamMapping/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#linkintentparammapping)的paramCategory说明。 |
+| 使用[@InsightIntentPage/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)开发意图 | 开发者定义页面跳转意图，配置意图对应的UIAbility组件、[页面路由](../ui/arkts-routing.md)的路径和[Navigation](../ui/arkts-navigation-architecture.md)路径。 | 1. 系统入口通过startAbility启动意图绑定的UIAbility组件。若意图未绑定UIAbility组件，则启动意图所在module的[mainElement](../quick-start/module-configuration-file.md#配置文件标签)对应的UIAbility组件。<br>2. 意图执行时，若应用未启动，在UIAbility的首页加载后跳转到意图对应的页面；若应用已启动，由当前页面跳转到意图对应的页面。<br>3. 意图执行时，参数会被传递给目标页面。<br>4. "navigationId"字段或"navDestinationName"字段匹配失败时，退化为"pagePath"字段对应的页面跳转。 |
+| 使用[@InsightIntentFunctionMethod/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)开发意图 | 开发者为静态方法定义意图，静态方法可以是已有方法或新增方法。 | 系统入口通过[Call调用/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动意图所在module的[mainElement](../quick-start/module-configuration-file.md#配置文件标签)对应的UIAbility组件。|
+| 使用[@InsightIntentForm/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)开发意图 | 开发者定义卡片意图，卡片可以是已有卡片或新增卡片。| 系统入口通过FormComponent组件创建意图卡片。 |
 
 ## 开发步骤
 
@@ -88,7 +88,7 @@
 
 意图执行过程：
 1. 系统入口响应用户“查询单号为12345的快递”的请求，匹配到该应用的"ViewLogistics"意图，通过意图框架触发该应用的"ViewLogistics"意图执行。
-2. 由于意图绑定了"EntryAbility"组件、配置了`insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND`执行模式，在意图执行过程中，"ViewLogistics"意图绑定的"EntryAbility"组件会通过[Call调用](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动，意图执行过程中，ViewLogisticsImpl类的属性"trackingNo"会被赋值，进而执行onExecute()方法，将意图执行结果通过意图框架返回给系统入口。
+2. 由于意图绑定了"EntryAbility"组件、配置了`insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND`执行模式，在意图执行过程中，"ViewLogistics"意图绑定的"EntryAbility"组件会通过[Call调用/apis-ability-kit/js-apis-app-ability-uiAbility.md#后台通信能力)启动，意图执行过程中，ViewLogisticsImpl类的属性"trackingNo"会被赋值，进而执行onExecute()方法，将意图执行结果通过意图框架返回给系统入口。
 3. 系统入口将意图执行结果转换为自然语言呈现给用户。
 
 ### 通过意图装饰器开发自定义意图
@@ -176,7 +176,7 @@
 
 ### （可选）通过开发意图实体传递复杂参数
 
-由系统入口传递给应用的数据默认为基础类型。如果需要复杂数据（例如，播放音乐时需要传入的歌手信息包括歌手姓名、国籍等多个字段），需要采用对象类型，并使用[@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器装饰。被装饰的对象称为意图实体。
+由系统入口传递给应用的数据默认为基础类型。如果需要复杂数据（例如，播放音乐时需要传入的歌手信息包括歌手姓名、国籍等多个字段），需要采用对象类型，并使用[@InsightIntentEntity/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器装饰。被装饰的对象称为意图实体。
 
 以播放音乐为例，用户告诉系统入口希望播放的音乐名称与歌手信息，系统入口根据音乐名称和歌手信息拉起对应音乐界面，播放该音乐。
 
@@ -226,7 +226,7 @@
     ```
 
 
-2. 使用意图实体。添加[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌手信息（ArtistClassDef意图实体）作为播放音乐的入参。
+2. 使用意图实体。添加[@InsightIntentEntry/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌手信息（ArtistClassDef意图实体）作为播放音乐的入参。
 
     <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
     
@@ -335,9 +335,9 @@
 
 1. 定义支持查询的意图实体。
 
-    开发者将歌单信息（包括歌单ID、歌单名称、显示名称、创建者）定义为继承自[insightIntent.AppIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)的类，并使用[@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器将该类定义为可查询意图实体。[IntentEntityDecoratorInfo](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)中的supportedQueryProperties属性声明支持通过歌单ID、歌单名称、创建者筛选目标歌单。
+    开发者将歌单信息（包括歌单ID、歌单名称、显示名称、创建者）定义为继承自[insightIntent.AppIntentEntity/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)的类，并使用[@InsightIntentEntity/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器将该类定义为可查询意图实体。[IntentEntityDecoratorInfo/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)中的supportedQueryProperties属性声明支持通过歌单ID、歌单名称、创建者筛选目标歌单。
 
-    parameters属性需要列出实体的数据成员及其数据格式。这些属性对应继承自[insightIntent.AppIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类中定义的实体字段（例如entityId、playlistName、owner等）。当属性在[IntentEntityDecoratorInfo](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)的supportedQueryProperties中声明时，需要为该属性添加title，用于配置该查询条件的界面显示名称。
+    parameters属性需要列出实体的数据成员及其数据格式。这些属性对应继承自[insightIntent.AppIntentEntity/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类中定义的实体字段（例如entityId、playlistName、owner等）。当属性在[IntentEntityDecoratorInfo/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)的supportedQueryProperties中声明时，需要为该属性添加title，用于配置该查询条件的界面显示名称。
 
     [onQueryEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)接口需要根据传入的查询参数[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)返回符合条件的实体列表。推荐在[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)中的[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[ALL](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时返回意图实体全部信息（例如返回所有歌单列表）；在[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[BY_PROPERTY](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时，根据QueryEntityParam中的parameters属性值筛选符合条件的信息（例如同时传入歌单名称和创建者时，返回歌单名称和创建者均匹配的歌单列表）。
 
@@ -433,7 +433,7 @@
     ```
 
 
-2. 使用可查询意图实体：添加[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌单信息（AppPlaylistEntity意图实体）作为播放音乐的入参。系统入口在调用意图前，会先根据歌单ID、歌单名称或者创建者查询应用内歌单信息。
+2. 使用可查询意图实体：添加[@InsightIntentEntry/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌单信息（AppPlaylistEntity意图实体）作为播放音乐的入参。系统入口在调用意图前，会先根据歌单ID、歌单名称或者创建者查询应用内歌单信息。
 
     <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
 

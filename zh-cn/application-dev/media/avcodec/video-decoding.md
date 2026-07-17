@@ -13,7 +13,7 @@
 
 - Surface模式。
 
-  解码后的图像帧通过[NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
+  解码后的图像帧通过[NativeWindow/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
 
 - Buffer模式。
 
@@ -44,7 +44,7 @@ AVCodec支持的视频解码格式请参考[视频解码](avcodec-support-format
    - Executing状态包含三个子状态：
      - Running：调用OH_VideoDecoder_Start接口进入Running子状态。
      - Flushed：调用OH_VideoDecoder_Flush接口进入Flushed子状态。
-     - End-of-Stream：解码器接收到输入buffer的flag为[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS时，进入End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出尾帧。
+     - End-of-Stream：解码器接收到输入buffer的flag为[OH_AVCodecBufferFlags/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS时，进入End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出尾帧。
 5. 错误状态（Error）。
    - 极少数情况下，解码器异常时进入Error状态，接口会返回错误码或通过OH_AVCodecOnError回调抛出异常。
    - Error状态下，可以调用OH_VideoDecoder_Reset接口返回Initialized状态，或者调用OH_VideoDecoder_Destroy接口进入最后的Released状态。
@@ -57,7 +57,7 @@ AVCodec支持的视频解码格式请参考[视频解码](avcodec-support-format
 
 ## 开发指导
 
-详细的API说明请参考[native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)。
+详细的API说明请参考[native_avcodec_videodecoder.h/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)。
 
 参考以下示例代码，完成视频解码的基础流程，包括：创建解码器、设置解码参数、开始、刷新、重置、停止、销毁资源。
 
@@ -224,7 +224,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
+   - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
    - OH_AVCodecOnStreamChanged 码流信息变化，如码流宽、高变化；
    - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
    - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即解码完成。
@@ -290,7 +290,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    > 2. 播放视频时，若视频码流的SPS（Sequence Parameter Set）中包含颜色信息（如RangeFlag、ColorPrimary、MatrixCoefficient、TransferCharacteristic），解码器会把这些信息通过OH_AVCodecOnStreamChanged接口中的OH_AVFormat返回。
    > 3. 视频解码的Surface模式下，内部数据默认是走HEBC（High Efficiency Bandwidth Compression，高效带宽压缩），无法获取到widthStride和heightStride的值。
 
-4. （可选）OH_VideoDecoder_SetDecryptionConfig设置解密配置。在获取到DRM信息（参考[音视频解封装](audio-video-demuxer.md)开发步骤第4步），完成DRM许可证申请后，通过此接口进行解密配置。此接口需在Prepare前调用。在Surface模式下，DRM解密能力既支持安全视频通路，也支持非安全视频通路。DRM相关接口详见[DRM API文档](../../reference/apis-drm-kit/capi-drm.md)。
+4. （可选）OH_VideoDecoder_SetDecryptionConfig设置解密配置。在获取到DRM信息（参考[音视频解封装](audio-video-demuxer.md)开发步骤第4步），完成DRM许可证申请后，通过此接口进行解密配置。此接口需在Prepare前调用。在Surface模式下，DRM解密能力既支持安全视频通路，也支持非安全视频通路。DRM相关接口详见[DRM API文档/apis-drm-kit/capi-drm.md)。
 
    添加头文件。
 
@@ -344,9 +344,9 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 5. 调用OH_VideoDecoder_Configure()配置解码器。
 
-   详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
+   详细可配置选项的说明请参考[媒体数据键值对/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
 
-   参数校验规则请参考[OH_VideoDecoder_Configure() 参考文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)。
+   参数校验规则请参考[OH_VideoDecoder_Configure() 参考文档/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)。
 
    参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力](obtain-supported-codecs.md)。
 
@@ -446,7 +446,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 9. （可选）OH_VideoDecoder_SetParameter()动态配置解码器surface参数。
 
-   详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
+   详细可配置选项的说明请参考[媒体数据键值对/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
 
    ```c++
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -536,11 +536,11 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     送入输入队列进行解码，以下示例中：
 
     - size、offset、pts、frameData：输入尺寸、偏移量、时间戳、帧数据等字段信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)“步骤-9：开始解封装，循环获取sample”。
-    - flags：缓冲区标记的类别，请参考[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。
+    - flags：缓冲区标记的类别，请参考[OH_AVCodecBufferFlags/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。
 
     bufferInfo的成员变量：
 
-    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取输入码流虚拟地址。
+    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取输入码流虚拟地址。
     - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识。
     - isValid：bufferInfo中存储的buffer实例是否有效。
 
@@ -582,7 +582,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer：回调函数OnNewOutputBuffer传入的参数，Surface模式开发者无法通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取图像虚拟地址；
+    - buffer：回调函数OnNewOutputBuffer传入的参数，Surface模式开发者无法通过[OH_AVBuffer_GetAddr/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取图像虚拟地址；
     - isValid：bufferInfo中存储的buffer实例是否有效。
 
     ```c++
@@ -624,8 +624,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     > **注意：**
     >
-    > 1. 如果要获取buffer的属性，如pixel_format、stride等可通过调用[OH_NativeWindow_NativeWindowHandleOpt](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口获取。
-    > 2. 显示并释放解码帧时，推荐优先调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口。
+    > 1. 如果要获取buffer的属性，如pixel_format、stride等可通过调用[OH_NativeWindow_NativeWindowHandleOpt/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口获取。
+    > 2. 显示并释放解码帧时，推荐优先调用[OH_VideoDecoder_RenderOutputBufferAtTime/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口。
     >
 
 13. （可选）调用OH_VideoDecoder_Flush()刷新解码器。
@@ -794,7 +794,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
+   - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
    - OH_AVCodecOnStreamChanged 码流信息变化，如码流宽、高变化；
    - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
    - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即解码完成。
@@ -890,7 +890,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    >
    > 在回调函数中，对数据队列进行操作时，需要注意多线程同步的问题。
 
-4. （可选）OH_VideoDecoder_SetDecryptionConfig设置解密配置。在获取到DRM信息（参考[音视频解封装](audio-video-demuxer.md)开发步骤第4步），完成DRM许可证申请后，通过此接口进行解密配置。此接口需在Prepare前调用。在Buffer模式下，DRM解密能力仅支持非安全视频通路。DRM相关接口详见[DRM API文档](../../reference/apis-drm-kit/capi-drm.md)。
+4. （可选）OH_VideoDecoder_SetDecryptionConfig设置解密配置。在获取到DRM信息（参考[音视频解封装](audio-video-demuxer.md)开发步骤第4步），完成DRM许可证申请后，通过此接口进行解密配置。此接口需在Prepare前调用。在Buffer模式下，DRM解密能力仅支持非安全视频通路。DRM相关接口详见[DRM API文档/apis-drm-kit/capi-drm.md)。
 
    添加头文件。
 
@@ -985,7 +985,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 8. （可选）OH_VideoDecoder_SetParameter()动态配置解码器参数。
 
-   详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
+   详细可配置选项的说明请参考[媒体数据键值对/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
 
    ```c++
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -1101,7 +1101,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     以下示例中，bufferInfo的成员变量：
 
     - index：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer： 回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取图像虚拟地址；
+    - buffer： 回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取图像虚拟地址；
     - isValid：bufferInfo中存储的buffer实例是否有效。
     
     ```c++

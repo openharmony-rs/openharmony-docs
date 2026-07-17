@@ -11,7 +11,7 @@
 
 ## 系统窗口
 
-系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。<!--Del-->具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。<!--DelEnd-->
+系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。<!--Del-->具体可见[WindowType/apis-arkui/js-apis-window-sys.md#windowtype7)。<!--DelEnd-->
 
 ## 应用窗口
 
@@ -29,16 +29,16 @@
 
 - 子窗口  
 
-  Stage模型下通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口创建。具体可见[子窗口开发指导](subwindow-guide.md)。
+  Stage模型下通过[createSubWindow()/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)或[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口创建。具体可见[子窗口开发指导](subwindow-guide.md)。
 
-  当使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口配置zLevelAboveParentLoosened属性为true时，创建得到的子窗称为独立子窗。
+  当使用[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口配置zLevelAboveParentLoosened属性为true时，创建得到的子窗称为独立子窗。
 
 - 全局悬浮窗（即WindowType.TYPE_FLOAT），具体可见[全局悬浮窗开发指导](global-floating-window-guide.md)。
 
 - 模态窗口（即WindowType.TYPE_DIALOG），具体可见[模态窗口开发指导](dialog-window-guide.md)。
 
-- [画中画](../reference/apis-arkui/js-apis-pipWindow.md)
+- [画中画/apis-arkui/js-apis-pipWindow.md)
 
-- [闪控球](../reference/apis-arkui/js-apis-floatingBall.md)
+- [闪控球/apis-arkui/js-apis-floatingBall.md)
 
-- [标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)
+- [标准悬浮窗/apis-arkui/js-apis-floatView.md)

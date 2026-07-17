@@ -11,15 +11,15 @@
 
 | 名称 | 描述 |
 | ---- | ---- |
-| [on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted) | 订阅划词完成事件，使用`callback`回调函数。 |
-| [getSelectionContent(): Promise\<string\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent) | 获取选中文本的内容。 |
-| [createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel) | 创建划词面板。 |
-| [show(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show) | 显示面板。 |
-| [hide(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#hide) | 隐藏面板。 |
-| [startMoving(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#startmoving) | 使当前划词面板可以随鼠标拖动。 |
-| [moveToGlobalDisplay(x: number, y: number): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#movetoglobaldisplay) | 移动划词面板至屏幕指定位置。 |
+| [on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted) | 订阅划词完成事件，使用`callback`回调函数。 |
+| [getSelectionContent(): Promise\<string\>/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent) | 获取选中文本的内容。 |
+| [createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\>/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel) | 创建划词面板。 |
+| [show(): Promise\<void\>/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show) | 显示面板。 |
+| [hide(): Promise\<void\>/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#hide) | 隐藏面板。 |
+| [startMoving(): Promise\<void\>/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#startmoving) | 使当前划词面板可以随鼠标拖动。 |
+| [moveToGlobalDisplay(x: number, y: number): Promise\<void\>/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#movetoglobaldisplay) | 移动划词面板至屏幕指定位置。 |
 
-上述接口为本文档用到的核心接口，如需了解划词服务的全量接口，请参考[selectionInput.SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)接口文档获取接口详细描述。
+上述接口为本文档用到的核心接口，如需了解划词服务的全量接口，请参考[selectionInput.SelectionExtensionAbility/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)接口文档获取接口详细描述。
 
 ## 开发步骤
 
@@ -118,7 +118,7 @@
     }
     ```
 
-3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
+3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
 
     ``` TypeScript
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
@@ -156,10 +156,10 @@
 
     export default SelectionExtAbility;
     ```
-    上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
+    上述代码中，划词扩展被拉起时会触发[onConnect/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
 
 
-4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
+4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
     <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
 
     ``` TypeScript

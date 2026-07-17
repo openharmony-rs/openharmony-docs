@@ -26,7 +26,7 @@
 
 ## 约束与限制
 
-在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
+在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[errorManager.on('error')/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
 
 
 ## 日志获取
@@ -79,7 +79,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Error message | 异常信息 | 8 | 是 | - |
 | Stacktrace | 故障堆栈 | 8 | 是 | - |
 | HybridStack | CPP和JS之间跨语言的故障堆栈 | 22 | 否 | ARM 64位系统下，若Stacktrace为JS栈时，则包含此字段，至多显示256层。 |
-| SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
+| SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv/native-lib/libuv.md)和[ffrt/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 | AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
 | ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则包含此字段。 |
@@ -327,7 +327,7 @@ hdc shell param set persist.ark.properties 0x105c
 hdc shell reboot
 ```
 
-Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[on('unhandledRejection')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
+Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[on('unhandledRejection')/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
 
 在启用Promise异步栈功能的情况下，当Promise任务中抛出异常并导致JS Crash时，JS Crash日志中会展示Promise异步任务创建时的栈信息。
 

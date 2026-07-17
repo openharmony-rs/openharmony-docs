@@ -12,7 +12,7 @@
 
 ### mode
 
-[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性用于控制Navigation的显示模式，有四种模式：单栏，分栏，自适应，根据高宽比自适应。
+[mode/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性用于控制Navigation的显示模式，有四种模式：单栏，分栏，自适应，根据高宽比自适应。
 
 **图1** 单栏（NavigationMode.Stack）效果
 
@@ -32,7 +32,7 @@
 
 ### navBarPosition
 
-[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)用于控制导航栏显示的位置，用navBarPosition控制导航栏显示位置时，会被系统语言所影响。比如，在以汉语、英语为代表的LTR语言体系下，NavBarPosition.Start指代的是导航栏出现在左侧，而在以阿拉伯语为代表的RTL语言体系下，NavBarPosition.Start则指代导航栏出现在右侧。类似的效果也出现在NavBarPosition.End上。
+[navBarPosition/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)用于控制导航栏显示的位置，用navBarPosition控制导航栏显示位置时，会被系统语言所影响。比如，在以汉语、英语为代表的LTR语言体系下，NavBarPosition.Start指代的是导航栏出现在左侧，而在以阿拉伯语为代表的RTL语言体系下，NavBarPosition.Start则指代导航栏出现在右侧。类似的效果也出现在NavBarPosition.End上。
 
 **NavBarPosition.Start**
 
@@ -56,7 +56,7 @@
 
 ### enableDragBar
 
-[enableDragBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enabledragbar14)用于控制是否显示分栏的拖动按钮。
+[enableDragBar/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enabledragbar14)用于控制是否显示分栏的拖动按钮。
 
 **图8** enableDragBar为false效果
 
@@ -68,27 +68,27 @@
 
 ### navBarWidth
 
-[navBarWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)用于控制导航栏的宽度。
+[navBarWidth/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)用于控制导航栏的宽度。
 
 ### navBarWidthRange
 
-[navBarWidthRange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidthrange10)用于设置导航栏宽度可调整的范围。
+[navBarWidthRange/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidthrange10)用于设置导航栏宽度可调整的范围。
 
 ### minContentWidth
 
-[minContentWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mincontentwidth10)用于控制分栏子页的最小宽度；分栏模式导航栏和子页中间会有一个分割线，在可调范围内，用户可以通过拖动分割线来调整导航栏和子页的显示大小。
+[minContentWidth/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mincontentwidth10)用于控制分栏子页的最小宽度；分栏模式导航栏和子页中间会有一个分割线，在可调范围内，用户可以通过拖动分割线来调整导航栏和子页的显示大小。
 
 ### hideNavBar
 
-[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)用于控制导航栏的显示状态，默认值为`false`。如果同时将`mode`配置为`NavigationMode.Split`且`hideNavBar`设置为`true`，则实际效果会显示为单栏。
+[hideNavBar/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)用于控制导航栏的显示状态，默认值为`false`。如果同时将`mode`配置为`NavigationMode.Split`且`hideNavBar`设置为`true`，则实际效果会显示为单栏。
 
 ### enableModeChangeAnimation
 
-[enableModeChangeAnimation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablemodechangeanimation15)用于控制是否开启单双栏切换的动画，默认开启。
+[enableModeChangeAnimation/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablemodechangeanimation15)用于控制是否开启单双栏切换的动画，默认开启。
 
 ### splitPlaceholder
 
-[splitPlaceholder](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#splitplaceholder20)用于设置分栏模式下内容区的默认占位页。分栏模式在默认情况下，栈中没有页面时内容区展示空白，可使用此接口设置此区域的UI布局。
+[splitPlaceholder/apis-arkui/arkui-ts/ts-basic-components-navigation.md#splitplaceholder20)用于设置分栏模式下内容区的默认占位页。分栏模式在默认情况下，栈中没有页面时内容区展示空白，可使用此接口设置此区域的UI布局。
 
 需要注意的是，占位页仅作为UI展示页，仅分栏模式空栈的情况下才展示，不受路由栈管理也不可获焦和响应事件。
 

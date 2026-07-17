@@ -44,4 +44,4 @@
 
 -  在FA模型下，不支持系统窗口的相关开发。
 
--  窗口存在大小限制[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)，该限制由产品配置决定。未调用[setWindowLimits](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，使用[getWindowLimits](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)可获取系统限制，单位为px。
+-  窗口存在大小限制[WindowLimits/apis-arkui/arkts-apis-window-i.md#windowlimits11)，该限制由产品配置决定。未调用[setWindowLimits/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，使用[getWindowLimits/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)可获取系统限制，单位为px。

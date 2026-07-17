@@ -19,9 +19,9 @@ HDR图片解码主要包含以下流程：
    - Picture路径：解码为Picture对象，可分别获取SDR主图和GainMap增益图，并按需合成HDR图。
 3. 如果使用PixelMap路径，获取PixelMap图像信息，判断解码结果是否为HDR。
 4. 如果使用Picture路径，可根据业务场景进行以下处理：
-   - 调用[`OH_PictureNative_GetMainPixelmap()`](../../reference/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getmainpixelmap)获取SDR主图。
-   - 调用[`OH_PictureNative_GetGainmapPixelmap`](../../reference/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getgainmappixelmap)获取GainMap增益图。
-   - 调用[`OH_PictureNative_GetHdrComposedPixelmap`](../../reference/apis-image-kit/capi-picture-native-h.md#oh_picturenative_gethdrcomposedpixelmap)合成HDR图。
+   - 调用[`OH_PictureNative_GetMainPixelmap()`/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getmainpixelmap)获取SDR主图。
+   - 调用[`OH_PictureNative_GetGainmapPixelmap`/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getgainmappixelmap)获取GainMap增益图。
+   - 调用[`OH_PictureNative_GetHdrComposedPixelmap`/apis-image-kit/capi-picture-native-h.md#oh_picturenative_gethdrcomposedpixelmap)合成HDR图。
 5. 使用完成后释放ImageSource、PixelMap、Picture和解码参数等资源。
 
 ## 基本概念
@@ -53,7 +53,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 ### Native接口调用
 
-具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
+具体接口说明请参考[Image_NativeModule/apis-image-kit/capi-image-nativemodule.md)。
 
 在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 

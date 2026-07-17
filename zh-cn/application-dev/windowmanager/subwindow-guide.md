@@ -18,9 +18,9 @@
 
 ## 开发步骤
 
-1. 通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)接口或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建应用子窗口。子窗口创建后默认为[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
+1. 通过[createSubWindow()/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)接口或[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建应用子窗口。子窗口创建后默认为[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
 
-   API版本26.0.0开始，支持在使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。
+   API版本26.0.0开始，支持在使用[createSubWindowWithOptions()/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建子窗时设置[SubWindowOptions/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。
 
    独立子窗在[自由窗口](freeform-window-overview.md#自由窗口)状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
 
@@ -66,9 +66,9 @@
 
    - 子窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置窗口背景色、亮度等属性。
 
-   - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)之前，建议设置子窗口的大小和位置。
+   - 在调用[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)之前，建议设置子窗口的大小和位置。
 
-   - 如果没有设置子窗口的大小，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)后有如下表现：
+   - 如果没有设置子窗口的大小，调用[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)后有如下表现：
 
       - [自由窗口](freeform-window-overview.md#自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。
 
@@ -102,7 +102,7 @@
 
 3. 加载显示子窗口的具体内容。
 
-   通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载和显示子窗口的具体内容。
+   通过[setUIContent()/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载和显示子窗口的具体内容。
 
    此处以加载显示独立子窗的具体内容为例。示例代码如下：
 
@@ -133,7 +133,7 @@
 
 4. 销毁子窗口。
 
-   当不再需要某些子窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁子窗口。
+   当不再需要某些子窗口时，可根据具体实现逻辑，使用[destroyWindow()/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁子窗口。
 
    此处以销毁独立子窗为例。示例代码如下：
 

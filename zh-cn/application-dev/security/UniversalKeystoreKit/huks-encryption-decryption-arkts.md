@@ -17,7 +17,7 @@
 
 2. 初始化密钥属性集。
 
-3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 调用[generateKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
 除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
 
@@ -27,7 +27,7 @@
 
 2. 获取待加密的数据。
 
-3. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置加密算法参数配置。
+3. 使用[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置加密算法参数配置。
 
    文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
    - 使用AES算法加密，选取的分组模式为CBC、填充模式为PKCS7时，参数IV必选，请见开发案例：[AES/CBC/PKCS7](#aescbcpkcs7)。
@@ -41,9 +41,9 @@
    
    详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+4. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取加密后的密文。
+5. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取加密后的密文。
 
 **解密**
 
@@ -51,7 +51,7 @@
 
 2. 获取待解密的密文。
 
-3. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置解密算法参数配置。
+3. 使用[HuksParam/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置解密算法参数配置。
 
    文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
    - 使用AES算法解密，用例中选取的分组模式为GCM时，必须要填参数NONCE和参数AEAD，AAD可选，请见开发案例：[AES/GCM/NoPadding](#aesgcmnopadding)。
@@ -59,13 +59,13 @@
    
    详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+4. 调用[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取解密后的数据。
+5. 调用[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取解密后的数据。
 
 **删除密钥**
 
-当密钥废弃不用时，需要调用[deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，需要调用[deleteKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
 
 ## 开发案例
 

@@ -37,7 +37,7 @@
 
 ### 接口说明
 
-裁剪操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+裁剪操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -49,7 +49,7 @@
 
 ### 开发示例
 
-此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 使用OH_Drawing_CanvasClipRect接口裁剪矩形。有以下四个入参：
 - 第一个参数是画布Canvas，裁剪操作将在这个画布上进行。请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
@@ -102,7 +102,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -217,7 +217,7 @@ OH_Drawing_RectDestroy(rect);
 
 ### 接口说明
 
-画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |

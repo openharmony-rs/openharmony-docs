@@ -126,7 +126,7 @@ SQL语句中的函数，如下所示：
 
 ## 接口说明
 
-以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -167,7 +167,7 @@ SQL语句中的函数，如下所示：
    > 
    > - 当应用首次获取数据库（调用getRdbStore）后，在应用沙箱内会产生对应的数据库文件。使用数据库的过程中，在与数据库文件相同的目录下可能会产生以-wal和-shm结尾的临时文件。此时若开发者希望移动数据库文件到其它地方使用查看，则需要同时移动这些临时文件，当应用被卸载完成后，其在设备上产生的数据库文件及临时文件也会被移除。
    > 
-   > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
+   > - 错误码的详细介绍请参见[通用错误码/errorcode-universal.md)和[关系型数据库错误码/apis-arkdata/errorcode-data-rdb.md)。
 
    示例代码如下：
 

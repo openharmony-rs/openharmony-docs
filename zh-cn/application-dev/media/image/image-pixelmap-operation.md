@@ -16,7 +16,7 @@
 
 ## 开发步骤
 
-位图操作相关API的详细介绍请参见[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
+位图操作相关API的详细介绍请参见[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
 1. 完成[图片解码](image-decoding.md)，获取PixelMap位图对象。
 
@@ -82,7 +82,7 @@
 
 > **说明：**
 >
-> - 该方法仅可实现PixelMap基本内容的复制，不支持复制色域和HDR元数据。如果不需要改变新PixelMap的像素格式，请使用[clone](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#clone18)或[cloneSync](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#clonesync18)。
+> - 该方法仅可实现PixelMap基本内容的复制，不支持复制色域和HDR元数据。如果不需要改变新PixelMap的像素格式，请使用[clone/apis-image-kit/arkts-apis-image-PixelMap.md#clone18)或[cloneSync/apis-image-kit/arkts-apis-image-PixelMap.md#clonesync18)。
 > - 该方法不支持将新PixelMap转换为下列像素格式：RGBA_1010102、YCBCR_P010、YCRCB_P010、ASTC_4x4。
 
 1. 完成[图片解码](image-decoding.md)，获取PixelMap位图对象。

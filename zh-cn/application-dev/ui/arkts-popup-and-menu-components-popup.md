@@ -7,9 +7,9 @@
 <!--Adviser: @Brilliantry_Rui-->
 Popup属性可绑定在组件上显示气泡弹窗提示，设置弹窗内容、交互逻辑和显示状态。主要用于屏幕录制、信息弹出提醒等显示状态。
 
-气泡分为两种类型，一种是系统提供的气泡[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)，一种是开发者可以自定义的气泡[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)。其中，PopupOptions通过配置primaryButton和secondaryButton来设置带按钮的气泡；CustomPopupOptions通过配置[builder](../../application-dev/ui/state-management/arkts-builder.md)来设置自定义的气泡。其中系统提供的气泡PopupOptions，字体的最大放大倍数为2。
+气泡分为两种类型，一种是系统提供的气泡[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)，一种是开发者可以自定义的气泡[CustomPopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)。其中，PopupOptions通过配置primaryButton和secondaryButton来设置带按钮的气泡；CustomPopupOptions通过配置[builder](../../application-dev/ui/state-management/arkts-builder.md)来设置自定义的气泡。其中系统提供的气泡PopupOptions，字体的最大放大倍数为2。
 
-气泡可以通过配置[mask](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)来实现模态和非模态窗口，mask为true或者颜色值的时候，气泡为模态窗口，mask为false时，气泡为非模态窗口。
+气泡可以通过配置[mask/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)来实现模态和非模态窗口，mask为true或者颜色值的时候，气泡为模态窗口，mask为false时，气泡为非模态窗口。
 
 多个气泡同时弹出时，子窗内显示的气泡比主窗内显示的气泡层级高，所处窗口相同时，后面弹出的气泡层级比先弹出的气泡层级高。
 
@@ -50,7 +50,7 @@ export struct TextPopupExample {
 
 ## 添加气泡状态变化的事件
 
-通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的onStateChange属性为气泡添加状态变化的事件回调，可以判断气泡的当前显示状态。
+通过[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的onStateChange属性为气泡添加状态变化的事件回调，可以判断气泡的当前显示状态。
 
 <!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
 
@@ -88,7 +88,7 @@ export struct StatePopupExample {
 
 ## 带按钮的提示气泡
 
-通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的primaryButton、secondaryButton属性为气泡最多设置两个Button按钮，通过此按钮进行简单的交互，开发者可以通过配置action参数来设置想要触发的操作。
+通过[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的primaryButton、secondaryButton属性为气泡最多设置两个Button按钮，通过此按钮进行简单的交互，开发者可以通过配置action参数来设置想要触发的操作。
 
 <!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
 
@@ -140,7 +140,7 @@ export struct ButtonPopupExample {
 
 ## 气泡的动画
 
-通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)或[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中的transition属性，可以控制气泡的进场和出场动画效果。
+通过[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)或[CustomPopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中的transition属性，可以控制气泡的进场和出场动画效果。
 
 <!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
 
@@ -216,7 +216,7 @@ export struct AnimationPopupExample {
 
 ## 自定义气泡
 
-开发者可以使用[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)的builder创建自定义气泡，\@Builder中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
+开发者可以使用[CustomPopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)的builder创建自定义气泡，\@Builder中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
 
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
@@ -278,9 +278,9 @@ export struct CustomPopupExample {
 
 显示大小：气泡大小由内部的builder大小或者message的长度决定的。
 
-显示位置：气泡默认显示在宿主组件的下方，可以通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的Placement属性来配置其显示位置以及对齐方向。
+显示位置：气泡默认显示在宿主组件的下方，可以通过[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的Placement属性来配置其显示位置以及对齐方向。
 
-以下示例通过设置[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
+以下示例通过设置[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
 
 <!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
 
@@ -321,7 +321,7 @@ export struct StylePopupExample {
 
 ## 气泡避让软键盘
 
-当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中keyboardAvoidMode属性的值为KeyboardAvoidMode.DEFAULT，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
+当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置[CustomPopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中keyboardAvoidMode属性的值为KeyboardAvoidMode.DEFAULT，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
 
 <!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
 
@@ -479,7 +479,7 @@ struct PopupItemChild {
 
 ## 气泡支持避让中轴
 
-从API version 18起，气泡支持中轴避让功能。从API version 20开始，在2in1设备上默认启用（仅在窗口处于瀑布模式时产生避让）。开发者可通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的enableHoverMode属性，控制气泡是否启用中轴避让。
+从API version 18起，气泡支持中轴避让功能。从API version 20开始，在2in1设备上默认启用（仅在窗口处于瀑布模式时产生避让）。开发者可通过[PopupOptions/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的enableHoverMode属性，控制气泡是否启用中轴避让。
 
 > **说明：** 
 > - 如果气泡的点击位置在中轴区域，则气泡不会避让。

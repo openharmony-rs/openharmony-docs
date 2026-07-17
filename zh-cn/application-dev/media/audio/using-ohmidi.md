@@ -26,17 +26,17 @@ OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++
 
 ## 系统能力检查
 
-使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/init.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
+使用MIDI进行开发前，先调用接口[canIUse/common/init.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
 
 ## 接口说明
 
 OH_MIDI的主要接口包括：
 
-- 客户端管理接口：[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)、[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)。
-- 设备管理接口：[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)、[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)、[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)、[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)。
-- 端口管理接口：[OH_MIDIClient_GetPortCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportcount)、[OH_MIDIClient_GetPortInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportinfos)、[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)、[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)、[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)、[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)。
-- 数据传输接口：[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)、[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)。
-- 回调接口：[OH_MIDICallback_OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_ondevicechange)、[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)。
+- 客户端管理接口：[OH_MIDIClient_Create/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)、[OH_MIDIClient_Destroy/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)。
+- 设备管理接口：[OH_MIDIClient_GetDeviceCount/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)、[OH_MIDIClient_GetDeviceInfos/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)、[OH_MIDIClient_OpenDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)、[OH_MIDIClient_CloseDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)。
+- 端口管理接口：[OH_MIDIClient_GetPortCount/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportcount)、[OH_MIDIClient_GetPortInfos/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportinfos)、[OH_MIDIDevice_OpenInputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)、[OH_MIDIDevice_OpenOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)、[OH_MIDIDevice_CloseInputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)、[OH_MIDIDevice_CloseOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)。
+- 数据传输接口：[OH_MIDIDevice_Send/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)、[OH_MIDIDevice_SendSysEx/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)。
+- 回调接口：[OH_MIDICallback_OnDeviceChange/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_ondevicechange)、[OH_MIDIDevice_OnReceived/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)。
 
 ## 开发准备
 
@@ -91,11 +91,11 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
 客户端是应用与MIDI系统服务的连接入口，负责管理与MIDI服务的所有交互。创建客户端前，需要先准备回调结构体：
 
-系统已定义[OH_MIDICallbacks](../../reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md)结构体，开发者需要实现其中的回调函数：
+系统已定义[OH_MIDICallbacks/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md)结构体，开发者需要实现其中的回调函数：
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
 - onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑,如重新创建客户端。
 
-通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
+通过调用[OH_MIDIClient_Create/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
 
 <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -115,7 +115,7 @@ static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
 
 当不再需要MIDI功能时，应销毁客户端以释放资源。销毁前需要先关闭所有已打开的设备。
 
-通过调用[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)接口销毁MIDI客户端实例，释放所有关联资源。
+通过调用[OH_MIDIClient_Destroy/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)接口销毁MIDI客户端实例，释放所有关联资源。
 
 <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -140,16 +140,16 @@ static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
 
 创建客户端后，可以枚举系统中当前可用的MIDI设备。枚举设备分为两步：
 
-1. 获取设备数量：调用[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取当前连接的设备数量。
+1. 获取设备数量：调用[OH_MIDIClient_GetDeviceCount/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取当前连接的设备数量。
 
-2. 获取设备信息：分配足够大的缓冲区，调用[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口填充设备详细信息。
+2. 获取设备信息：分配足够大的缓冲区，调用[OH_MIDIClient_GetDeviceInfos/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口填充设备详细信息。
 
 > **注意：**
 >
 > - 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在枚举结果中。
 > - 当应用获取蓝牙权限后，需重新枚举MIDI设备以获取已连接的蓝牙MIDI设备。
 
-通过[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取设备数量，再通过[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口获取设备详细信息。
+通过[OH_MIDIClient_GetDeviceCount/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取设备数量，再通过[OH_MIDIClient_GetDeviceInfos/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口获取设备详细信息。
 
 <!-- @[get_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -171,11 +171,11 @@ static napi_value GetDeviceInfos(napi_env env, napi_callback_info info)
 
 ### 打开MIDI设备
 
-需要打开设备才能进行数据传输。根据设备类型不同，打开方式有所区别：USB MIDI设备通过[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开，BLE MIDI设备通过[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开。
+需要打开设备才能进行数据传输。根据设备类型不同，打开方式有所区别：USB MIDI设备通过[OH_MIDIClient_OpenDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开，BLE MIDI设备通过[OH_MIDIClient_OpenBLEDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开。
 
 **打开USB MIDI设备（同步）**
 
-通过[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开USB MIDI设备，传入设备ID获取设备句柄。
+通过[OH_MIDIClient_OpenDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开USB MIDI设备，传入设备ID获取设备句柄。
 
 <!-- @[open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -202,7 +202,7 @@ static napi_value OpenDevice(napi_env env, napi_callback_info info)
 
 **打开BLE MIDI设备（异步）**
 
-BLE MIDI设备的打开是异步操作，使用[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口。
+BLE MIDI设备的打开是异步操作，使用[OH_MIDIClient_OpenBLEDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口。
 
 BLE设备地址可通过以下方式获取：
 
@@ -214,7 +214,7 @@ BLE设备地址可通过以下方式获取：
 
 MIDI BLE设备可通过服务UUID `03B80E5A-EDE8-4B33-A751-6CE34EC4C700` 进行过滤识别。
 
-通过[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开BLE MIDI设备，传入设备MAC地址和结果回调。
+通过[OH_MIDIClient_OpenBLEDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开BLE MIDI设备，传入设备MAC地址和结果回调。
 
 <!-- @[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -243,7 +243,7 @@ static napi_value OpenBLEDevice(napi_env env, napi_callback_info info)
 }
 ```
 
-通过[OH_MIDIClient_OnDeviceOpened](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midiclient_ondeviceopened)回调接收BLE设备打开结果，在回调中获取设备句柄和设备信息。
+通过[OH_MIDIClient_OnDeviceOpened/apis-audio-kit/capi-native-midi-base-h.md#oh_midiclient_ondeviceopened)回调接收BLE设备打开结果，在回调中获取设备句柄和设备信息。
 
 <!-- @[ble_device_opened_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -264,7 +264,7 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 
 ### 关闭MIDI设备
 
-通过[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)接口关闭已打开的MIDI设备，释放设备资源。
+通过[OH_MIDIClient_CloseDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)接口关闭已打开的MIDI设备，释放设备资源。
 
 <!-- @[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -296,7 +296,7 @@ static napi_value CloseDevice(napi_env env, napi_callback_info info)
 
 每个MIDI设备可能提供多个端口，每个端口都有明确的方向（输入或输出）。需要先枚举所有端口，根据应用需求找到对应的输入端口和输出端口，然后分别打开。
 
-通过[OH_MIDIClient_GetPortCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportcount)接口获取端口数量，再通过[OH_MIDIClient_GetPortInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportinfos)接口获取端口详细信息。
+通过[OH_MIDIClient_GetPortCount/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportcount)接口获取端口数量，再通过[OH_MIDIClient_GetPortInfos/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportinfos)接口获取端口详细信息。
 
 <!-- @[get_port_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -334,7 +334,7 @@ static napi_value GetPortInfos(napi_env env, napi_callback_info info)
 
 回调函数应在独立线程中执行，需要使用互斥锁或其他同步机制来保证线程安全。回调中的events数据仅在此回调期间有效，如需保留必须复制。
 
-通过[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)回调接收MIDI数据，回调中获取事件数组及其数据。
+通过[OH_MIDIDevice_OnReceived/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)回调接收MIDI数据，回调中获取事件数组及其数据。
 
 <!-- @[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -347,7 +347,7 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 }
 ```
 
-通过[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)接口打开输入端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数，并注册数据接收回调。
+通过[OH_MIDIDevice_OpenInputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)接口打开输入端口，传入[OH_MIDIPortDescriptor/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数，并注册数据接收回调。
 
 <!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -381,7 +381,7 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 
 **关闭输入端口**
 
-使用[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)接口关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
+使用[OH_MIDIDevice_CloseInputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)接口关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
 
 <!-- @[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -429,7 +429,7 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 
 **打开输出端口**
 
-通过[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数和协议。
+通过[OH_MIDIDevice_OpenOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口，传入[OH_MIDIPortDescriptor/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数和协议。
 
 <!-- @[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -473,7 +473,7 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 
 **关闭输出端口**
 
-使用[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)接口关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
+使用[OH_MIDIDevice_CloseOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)接口关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
 
 <!-- @[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -515,11 +515,11 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 
 ### 发送MIDI消息
 
-发送MIDI消息需要先构造UMP（Universal MIDI Packet）格式的数据，再通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送。UMP是Universal MIDI Packet的缩写，是MIDI 2.0标准统一使用的数据包格式。
+发送MIDI消息需要先构造UMP（Universal MIDI Packet）格式的数据，再通过[OH_MIDIDevice_Send/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送。UMP是Universal MIDI Packet的缩写，是MIDI 2.0标准统一使用的数据包格式。
 
 **发送自定义MIDI消息**
 
-构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md)事件数组，通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
+构造[OH_MIDIEvent/apis-audio-kit/capi-ohmidi-oh-midievent.md)事件数组，通过[OH_MIDIDevice_Send/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
 
 <!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -626,7 +626,7 @@ static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity
 
 **发送系统专有消息(SysEx)**
 
-系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
+系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
 
 ``` C++
 // 发送大型SysEx消息。
@@ -654,7 +654,7 @@ void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex){
 
 ### 清空输出缓冲区
 
-通过[OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空指定端口的输出缓冲区，丢弃所有待发送消息。
+通过[OH_MIDIDevice_FlushOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空指定端口的输出缓冲区，丢弃所有待发送消息。
 
 <!-- @[flush_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -734,11 +734,11 @@ OH_MIDI API提供客户端级别、BLE连接级别和端口连接级别三个层
 
 11. 资源释放顺序：`OH_MIDIClient_Destroy()`会自动关闭所有已打开的设备和端口。但如果初始化过程中发生错误需要提前退出函数，应按以下顺序手动释放资源：
 
-    第一步：关闭已打开的端口（[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)/[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)）。详见[midi端口管理](#midi端口管理)中的关闭输入端口和关闭输出端口示例
+    第一步：关闭已打开的端口（[OH_MIDIDevice_CloseInputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)/[OH_MIDIDevice_CloseOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)）。详见[midi端口管理](#midi端口管理)中的关闭输入端口和关闭输出端口示例
 
-    第二步：关闭已打开的设备（[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)）。详见[关闭MIDI设备](#关闭midi设备)示例。
+    第二步：关闭已打开的设备（[OH_MIDIClient_CloseDevice/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)）。详见[关闭MIDI设备](#关闭midi设备)示例。
 
-    第三步：销毁客户端（[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)）。详见[销毁MIDI客户端](#销毁midi客户端)示例。
+    第三步：销毁客户端（[OH_MIDIClient_Destroy/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)）。详见[销毁MIDI客户端](#销毁midi客户端)示例。
 
 ## 调测验证
 
@@ -793,7 +793,7 @@ MIDI_LOGD("UMP Data: 0x%{public}08X", umpData[0]);
 
 1. 发送速度超过缓冲区处理能力：降低发送频率（通常在发送大量SysEx消息的场景）。
 
-2. 缓冲区未及时处理：考虑使用[OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空缓冲区。
+2. 缓冲区未及时处理：考虑使用[OH_MIDIDevice_FlushOutputPort/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空缓冲区。
 
 3. 处理部分发送：检查`eventsWritten`参数，了解实际发送了多少事件。
 
@@ -900,8 +900,8 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ## 相关参考
 
 - [OH_MIDI开发概述(C/C++)](midi-overview.md)
-- [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
-- [native_midi.h](../../reference/apis-audio-kit/capi-native-midi-h.md)
-- [native_midi_base.h](../../reference/apis-audio-kit/capi-native-midi-base-h.md)
-- [通用错误码](../../reference/errorcode-universal.md)说明
+- [OHMIDI/apis-audio-kit/capi-ohmidi.md)API参考
+- [native_midi.h/apis-audio-kit/capi-native-midi-h.md)
+- [native_midi_base.h/apis-audio-kit/capi-native-midi-base-h.md)
+- [通用错误码/errorcode-universal.md)说明
 - 蓝牙BLE开发指南：[查找设备](../../connectivity/bluetooth/ble-development-guide.md)

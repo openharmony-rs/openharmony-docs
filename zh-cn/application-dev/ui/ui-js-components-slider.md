@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-slider为滑动条组件，用来快速调节音量、亮度等。具体用法请参考[slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md)。
+slider为滑动条组件，用来快速调节音量、亮度等。具体用法请参考[slider/apis-arkui/arkui-js/js-components-basic-slider.md)。
 
 
 ## 创建slider组件

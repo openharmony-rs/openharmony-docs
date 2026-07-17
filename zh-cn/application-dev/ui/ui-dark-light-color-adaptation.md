@@ -65,7 +65,7 @@
 
 2. 图片资源适配
 
-    采用资源限定词目录的方式。参照颜色适配的方法，需要将深色模式下对应的同名图片放到 dark/media 目录下，再通过[$r](../reference/apis-arkui/js-apis-arkui-resource.md#r)的方式加载图片资源的key值，系统做深浅色模式切换时，会自动加载对应资源文件中的value值。
+    采用资源限定词目录的方式。参照颜色适配的方法，需要将深色模式下对应的同名图片放到 dark/media 目录下，再通过[$r/apis-arkui/js-apis-arkui-resource.md#r)的方式加载图片资源的key值，系统做深浅色模式切换时，会自动加载对应资源文件中的value值。
 
     对于 SVG 格式的一些简单图标，可以使用[fillColor](arkts-graphics-display.md#显示矢量图)属性配合系统资源改变图片的绘制颜色。不通过两套图片资源的方式，也可以实现深浅色模式适配。
 
@@ -81,7 +81,7 @@
 
 4. "自定义节点"适配
 
-    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
+    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
 
     <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -111,9 +111,9 @@
 
 5. 应用监听深浅色模式切换事件
 
-    应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
+    应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
 
-    a. 在 AbilityStage的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期中获取APP当前的颜色模式并保存到[AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)。
+    a. 在 AbilityStage的[onCreate()/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期中获取APP当前的颜色模式并保存到[AppStorage/apis-arkui/arkui-ts/ts-state-management.md#appstorage)。
 
     <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -124,7 +124,7 @@
     }
     ```
 
-    b. 在AbilityStage的[onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)生命周期中获取最新更新的颜色模式并刷新到AppStorage。
+    b. 在AbilityStage的[onConfigurationUpdate()/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)生命周期中获取最新更新的颜色模式并刷新到AppStorage。
 
     <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -144,7 +144,7 @@
       ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
     ```
 
-    d. 在[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)初始化函数中根据当前最新颜色模式刷新状态变量。
+    d. 在[aboutToAppear/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)初始化函数中根据当前最新颜色模式刷新状态变量。
 
     <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -179,7 +179,7 @@
 
 6. 局部深浅色适配
 
-    通过[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)可以设置三种[颜色模式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)，分别为：跟随系统深浅色模式、固定使用浅色模式和固定使用深色模式。
+    通过[WithTheme/apis-arkui/arkui-ts/ts-container-with-theme.md)可以设置三种[颜色模式/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)，分别为：跟随系统深浅色模式、固定使用浅色模式和固定使用深色模式。
 
     在WithTheme作用范围内，组件的样式资源值将依据指定模式，读取对应的深浅色模式系统和应用资源值。这表明，在WithTheme作用范围内，组件的配色将根据指定的深浅模式进行调整。详情请参阅[设置应用页面局部深浅色](./theme_skinning.md#设置应用页面局部深浅色)。
 
@@ -232,7 +232,7 @@ onCreate(): void {
 
 - 建议方法
 
-  当应用跟随系统深色或浅色模式时，建议采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化。一旦颜色模式发生变化，应通过绑定状态变量等方法，执行特定的业务逻辑。
+  当应用跟随系统深色或浅色模式时，建议采用[AbilityStage的监听回调/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化。一旦颜色模式发生变化，应通过绑定状态变量等方法，执行特定的业务逻辑。
 
 - 不推荐方法
 
@@ -286,7 +286,7 @@ onCreate(): void {
 
   - 根据实时读取的深浅色模式返回不同资源值。
 
-    开启深浅色切换优化选项后，可以采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
+    开启深浅色切换优化选项后，可以采用[AbilityStage的监听回调/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
 
       ```ts
       // EntryAbility.ets
@@ -426,24 +426,24 @@ onCreate(): void {
 
 ## 利用反色能力快速适配深色模式
 
-从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
+从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
 
 这种方式虽然管理上不如资源配置和主题方式精细可控，但适配工作量更低，应用包也不会因为大量的资源配置而膨胀，同时也能够带来一定程度上可以接受的视觉效果。
 
 > **说明：**
 >
 > - 反色能力需在[优化深浅色模式切换开销](#优化深浅色模式切换开销)使用的前提下使用。
-> - 跨进程场景如果想使用反色能力，需要[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)和对应UIExtensionAbility的宿主同时适配。UIExtensionAbility的宿主相关接口请参考[@ohos.arkui.uiExtension (uiExtension)](../reference/apis-arkui/js-apis-arkui-uiExtension.md)。
+> - 跨进程场景如果想使用反色能力，需要[UIExtensionAbility/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)和对应UIExtensionAbility的宿主同时适配。UIExtensionAbility的宿主相关接口请参考[@ohos.arkui.uiExtension (uiExtension)/apis-arkui/js-apis-arkui-uiExtension.md)。
 
 1. 使用反色能力。
 
-   从API version 20开始，ArkUI开发框架新增了[OH_ArkUI_SetForceDarkConfig](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_setforcedarkconfig)接口，提供反色能力。该功能可根据开发者自定义的反色算法，在深浅色切换时自动对颜色属性进行反色。反色能力只有在颜色属性设置为非资源值时生效，若通过$r设置颜色属性，则优先生效资源文件中配置的颜色值。
+   从API version 20开始，ArkUI开发框架新增了[OH_ArkUI_SetForceDarkConfig/apis-arkui/capi-native-node-h.md#oh_arkui_setforcedarkconfig)接口，提供反色能力。该功能可根据开发者自定义的反色算法，在深浅色切换时自动对颜色属性进行反色。反色能力只有在颜色属性设置为非资源值时生效，若通过$r设置颜色属性，则优先生效资源文件中配置的颜色值。
 
    在应用开发时，可能会涉及到多个颜色属性的设置，当该属性不存在深色模式颜色资源的配置时，使用该能力可以快速实现深色模式的适配。
 
     > **说明：**
     >
-    > - 调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
+    > - 调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
     >
     > - OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。**页面创建完成后，不支持通过该接口动态修改应用的反色能力生效状态。**
     >
@@ -508,4 +508,4 @@ onCreate(): void {
 
 3. 反色能力逃生通道。
 
-   从API version 21开始，基于开发者当前实现，开发者可以通过主动设置[allowForceDark](../reference/apis-arkui/arkui-ts/ts-allow-force-dark.md#allowforcedark)属性，禁用指定组件的自动反色能力，维持深浅色切换时的原有逻辑，即使用主题或资源值切换。
+   从API version 21开始，基于开发者当前实现，开发者可以通过主动设置[allowForceDark/apis-arkui/arkui-ts/ts-allow-force-dark.md#allowforcedark)属性，禁用指定组件的自动反色能力，维持深浅色切换时的原有逻辑，即使用主题或资源值切换。

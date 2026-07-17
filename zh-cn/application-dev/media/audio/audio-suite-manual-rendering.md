@@ -6,11 +6,11 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 22开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供音频离线编辑能力，允许在非实时预览场景下对音频数据进行处理，开发者可以组合多个音频节点实现复杂的音频处理流程。
+从API version 22开始，[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供音频离线编辑能力，允许在非实时预览场景下对音频数据进行处理，开发者可以组合多个音频节点实现复杂的音频处理流程。
 
 ## 开发基础配置
 
-开发者使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的离线编辑能力，添加对应的头文件。
+开发者使用[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)提供的离线编辑能力，添加对应的头文件。
 
 ### 在CMake脚本中链接动态库
 
@@ -18,7 +18,7 @@
 target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ```
 ### 添加头文件
-开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>和<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>，使用音频编创相关API。
+开发者通过引入头文件<[native_audio_suite_base.h/apis-audio-kit/capi-native-audio-suite-base-h.md)>和<[native_audio_suite_engine.h/apis-audio-kit/capi-native-audio-suite-engine-h.md)>，使用音频编创相关API。
 
 <!-- @[audioSuite_ManualRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
 
@@ -29,17 +29,17 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ## 开发步骤
 
-详细的API说明请参考：[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)。
+详细的API说明请参考：[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)。
 
 开发者参考本节内容实现音频离线编辑功能。
 
 ### 指定音频节点类型
 
-开发者需要根据业务场景，调用[OH_AudioSuiteNodeBuilder_SetNodeType()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setnodetype)接口，指定对应的[OH_AudioNode_Type](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)。
+开发者需要根据业务场景，调用[OH_AudioSuiteNodeBuilder_SetNodeType()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setnodetype)接口，指定对应的[OH_AudioNode_Type/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)。
 
 ### 指定音频节点格式
 
-开发者需要根据业务场景，调用[OH_AudioSuiteNodeBuilder_SetFormat()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setformat)或者[OH_AudioSuiteEngine_SetAudioFormat()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setaudioformat)接口，设置音频格式（位深（[OH_Audio_SampleFormat](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)）、采样率（[OH_Audio_SampleRate](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)）、声道数（[OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)）等）。
+开发者需要根据业务场景，调用[OH_AudioSuiteNodeBuilder_SetFormat()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setformat)或者[OH_AudioSuiteEngine_SetAudioFormat()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setaudioformat)接口，设置音频格式（位深（[OH_Audio_SampleFormat/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)）、采样率（[OH_Audio_SampleRate/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)）、声道数（[OH_AudioChannelLayout/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)）等）。
 
 ### 基础离线编辑
 
@@ -68,7 +68,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 2. 创建输入、输出、均衡器节点并连接组网。
 
-   创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)，调用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口设置回调函数。
+   创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为[OH_InputNode_RequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)，调用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口设置回调函数。
  
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    
@@ -163,7 +163,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 3. 渲染音频数据。
 
-   开发者调用[OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口渲染并获取PCM音频数据。
+   开发者调用[OH_AudioSuiteEngine_RenderFrame()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口渲染并获取PCM音频数据。
    
    <!-- @[audioSuite_StartBasePipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
@@ -242,7 +242,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 2. 创建输入、输出、音源分离节点并连接。
 
-   创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)，调用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口设置回调函数。
+   创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为[OH_InputNode_RequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)，调用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口设置回调函数。
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    
@@ -339,7 +339,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 3. 渲染音频数据。
 
-   包含音源分离节点的管线使用[OH_AudioSuiteEngine_MultiRenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_multirenderframe)接口渲染并获取两路PCM音频数据。
+   包含音源分离节点的管线使用[OH_AudioSuiteEngine_MultiRenderFrame()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_multirenderframe)接口渲染并获取两路PCM音频数据。
 
    <!-- @[audioSuite_StartSeparationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
@@ -433,7 +433,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 2. 创建输入、输出、效果类节点并连接。
 
-   由于混音功能有多个输入节点，需单独设置回调函数`InputNodeWriteDataCallBack`中的`userData`参数来区分多个输入节点，从而实现多个PCM音频数据的输入。`InputNodeWriteDataCallBack`函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)。
+   由于混音功能有多个输入节点，需单独设置回调函数`InputNodeWriteDataCallBack`中的`userData`参数来区分多个输入节点，从而实现多个PCM音频数据的输入。`InputNodeWriteDataCallBack`函数类型为[OH_InputNode_RequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)。
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    
@@ -544,7 +544,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 3. 渲染音频数据。
 
-   开发者调用[OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口渲染并获取PCM音频数据。
+   开发者调用[OH_AudioSuiteEngine_RenderFrame()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口渲染并获取PCM音频数据。
    
    <!-- @[audioSuite_StartMixingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    

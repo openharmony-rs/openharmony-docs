@@ -10,7 +10,7 @@
 
 从API version 7开始，LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能力。具体而言，LazyForEach从数据源中按需迭代数据，并在每次迭代时创建相应组件。当LazyForEach用于滚动容器时，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会销毁并回收组件以降低内存占用。</br>
 本文档依次介绍了LazyForEach的[基础特性](#基础特性)、[高级特性](#高级特性)和[常见问题](#常见问题)，开发者可以按需阅读。在[首次渲染](#首次渲染)小节中，给出了简单的示例，可以帮助开发者快速上手LazyForEach的使用。</br>
-本文档对应的API接口说明参见[LazyForEach API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)。
+本文档对应的API接口说明参见[LazyForEach API参数说明/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)。
 
 > **说明：**
 >
@@ -19,14 +19,14 @@
 
 ## 使用限制
 
-- LazyForEach必须在容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持数据懒加载（可配置cachedCount属性，即只加载可视部分以及其前后少量数据用于缓冲），其他组件仍然是一次性加载所有的数据。支持数据懒加载的父组件根据自身及子组件的高度或宽度计算可视区域内需布局的子节点数量，高度或宽度的缺失会导致部分场景[懒加载失效](#子组件尺寸缺失导致懒加载失效)。
+- LazyForEach必须在容器组件内使用，仅有[List/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持数据懒加载（可配置cachedCount属性，即只加载可视部分以及其前后少量数据用于缓冲），其他组件仍然是一次性加载所有的数据。支持数据懒加载的父组件根据自身及子组件的高度或宽度计算可视区域内需布局的子节点数量，高度或宽度的缺失会导致部分场景[懒加载失效](#子组件尺寸缺失导致懒加载失效)。
 - LazyForEach依赖生成的键值判断是否刷新子组件，键值不变则不触发刷新。
-- 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[ForEach](./arkts-rendering-control-foreach.md)、LazyForEach，不建议同时包含多个LazyForEach。
+- 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含[ListItem/apis-arkui/arkui-ts/ts-container-listitem.md)、[ForEach](./arkts-rendering-control-foreach.md)、LazyForEach，不建议同时包含多个LazyForEach。
 - LazyForEach在每次迭代中，必须创建且只允许创建一个子组件；即LazyForEach的子组件生成函数有且只有一个根组件。
 - 生成的子组件必须是允许包含在LazyForEach父容器组件中的子组件。
 - 允许LazyForEach包含在[if/else](./arkts-rendering-control-ifelse.md)条件渲染语句中，也允许LazyForEach中出现if/else条件渲染语句。
 - 键值生成器必须针对每个数据生成唯一的值，如果键值相同，将导致键值相同的UI组件渲染出现问题。
-- LazyForEach必须使用一个数据变化监听器DataChangeListener对象进行更新（具体参数使用参考[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)），重新赋值第一个参数dataSource会导致异常；dataSource使用状态变量时，状态变量改变不会触发LazyForEach的UI刷新。
+- LazyForEach必须使用一个数据变化监听器DataChangeListener对象进行更新（具体参数使用参考[LazyForEach/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)），重新赋值第一个参数dataSource会导致异常；dataSource使用状态变量时，状态变量改变不会触发LazyForEach的UI刷新。
 - 为了高性能渲染，使用DataChangeListener对象的onDataChange方法更新UI时，需要生成不同于原来的键值来触发组件刷新。
 - LazyForEach和[\@Reusable装饰器](../state-management/arkts-reusable.md)一起使用能触发节点复用。使用方法：将@Reusable装饰在LazyForEach列表的组件上，见[列表滚动配合LazyForEach使用](../state-management/arkts-reusable.md#列表滚动配合lazyforeach使用)。
 - LazyForEach和[\@ReusableV2装饰器](../state-management/arkts-new-reusableV2.md)一起使用能触发节点复用。详见@ReusableV2装饰器指南文档中的[在LazyForEach组件中使用](../state-management/arkts-new-reusableV2.md#在lazyforeach组件中使用)。
@@ -36,9 +36,9 @@
 
 ### 设置数据源
 
-为了管理[DataChangeListener](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)监听器和通知LazyForEach更新数据，开发者需要使用如下方法：首先实现LazyForEach提供的[IDataSource](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)接口，将其作为LazyForEach的数据源，然后管理监听器和更新数据。
+为了管理[DataChangeListener/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)监听器和通知LazyForEach更新数据，开发者需要使用如下方法：首先实现LazyForEach提供的[IDataSource/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)接口，将其作为LazyForEach的数据源，然后管理监听器和更新数据。
 
-为实现基本的数据管理和监听能力，开发者需要实现`IDataSource`的[totalCount](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#totalcount)、[getData](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#getdata)、[registerDataChangeListener](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#registerdatachangelistener)和[unregisterDataChangeListener](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#unregisterdatachangelistener)方法，具体请参考[BasicDataSource示例代码](#basicdatasource示例代码)。当数据源变化时，通过调用监听器的接口通知LazyForEach更新，具体请参考[数据更新](#数据更新)。
+为实现基本的数据管理和监听能力，开发者需要实现`IDataSource`的[totalCount/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#totalcount)、[getData/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#getdata)、[registerDataChangeListener/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#registerdatachangelistener)和[unregisterDataChangeListener/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#unregisterdatachangelistener)方法，具体请参考[BasicDataSource示例代码](#basicdatasource示例代码)。当数据源变化时，通过调用监听器的接口通知LazyForEach更新，具体请参考[数据更新](#数据更新)。
 
 ### 键值生成规则
 
@@ -1130,7 +1130,7 @@ struct ReceivingExternalInputChildComponent {
 使用`@Param`装饰器，子组件可以接受外部输入参数，实现父子组件间的数据同步。在`ReceivingExternalInput`中创建子组件时，传递`item.message`，并用`@Param`修饰的变量`data`与其关联。点击`ListItem`中的组件修改`item.message`，数据变化会从父组件传递到子组件，触发子组件刷新。
 
 ### 拖拽排序
-当LazyForEach在List组件下使用，并且设置了[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，可以使能拖拽排序。拖拽排序释放后，如果数据位置发生变化，将触发onMove事件，上报原始索引号和目标索引号。在onMove事件中，根据上报的索引号修改数据源。修改数据源时，无需调用DataChangeListener接口通知数据源变化。
+当LazyForEach在List组件下使用，并且设置了[onMove/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，可以使能拖拽排序。拖拽排序释放后，如果数据位置发生变化，将触发onMove事件，上报原始索引号和目标索引号。在onMove事件中，根据上报的索引号修改数据源。修改数据源时，无需调用DataChangeListener接口通知数据源变化。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
@@ -1699,7 +1699,7 @@ struct UINotRerenderedChildComponent {
 ![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
 
 ### 在List内使用屏幕闪烁
-在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)方法中调用onDataReloaded可能会导致屏幕闪烁。
+在[List/apis-arkui/arkui-ts/ts-container-list.md)的[onScrollIndex/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)方法中调用onDataReloaded可能会导致屏幕闪烁。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 

@@ -39,7 +39,7 @@
 
 ### 手动同步
 
-由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。[带有Query参数的端端同步接口](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
+由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。[带有Query参数的端端同步接口/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
 
 ### 自动同步
 
@@ -85,7 +85,7 @@
 
 ## 接口说明
 
-以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
+以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，更多接口及使用方式请见[分布式键值数据库/apis-arkdata/js-apis-distributedKVStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -233,7 +233,7 @@
    })
    ```
 
-5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。
+5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
@@ -323,7 +323,7 @@
 
    > **说明：**
    >
-   > 在手动端端同步的方式下，其中的deviceIds通过调用[devManager.getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
+   > 在手动端端同步的方式下，其中的deviceIds通过调用[devManager.getAvailableDeviceListSync/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
 
    <!-- @[kv_store13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    

@@ -63,7 +63,7 @@ HidDdk（HID Driver Development Kit）是为开发者提供的HID设备驱动程
 | int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t buffSize) | 获取设备报告。 |
 | int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t buffSize, uint32_t *bytesRead) | 获取设备报告描述符。 |
 
-详细的接口说明请参考[HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md)。
+详细的接口说明请参考[HidDdk/apis-driverdevelopment-kit/capi-hidddk.md)。
 
 ## 开发步骤
 
@@ -86,7 +86,7 @@ libhid.z.so
 
 1. 创建设备。
 
-   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[Hid_DdkErrCode](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
+   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[Hid_DdkErrCode/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
 
    <!-- @[driver_hid1_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    

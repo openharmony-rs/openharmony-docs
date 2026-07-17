@@ -235,7 +235,7 @@
     }
     ```
 
-2. 使用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
+2. 使用[bundleManager.setAlternateIcon/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
 
     <!-- @[layered_image_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
@@ -282,7 +282,7 @@
     }
     ```
 
-3. 调用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口传入空字符串可恢复默认图标。
+3. 调用[bundleManager.setAlternateIcon/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口传入空字符串可恢复默认图标。
 
     <!-- @[layered_image_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
@@ -327,7 +327,7 @@
     }
     ```
 
-4. 使用[bundleManager.getAlternateIcons](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetalternateicons)接口查询备用图标信息。返回的[AlternateIconInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#alternateiconinfo)数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
+4. 使用[bundleManager.getAlternateIcons/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetalternateicons)接口查询备用图标信息。返回的[AlternateIconInfo/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#alternateiconinfo)数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
 
     <!-- @[layered_image_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     

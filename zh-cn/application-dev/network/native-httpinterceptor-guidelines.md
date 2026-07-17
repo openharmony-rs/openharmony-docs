@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-HTTP全局拦截器常用接口如下表所示，详细的接口说明请参考[http_interceptor.h](../reference/apis-network-kit/capi-net-http-interceptor-h.md)。
+HTTP全局拦截器常用接口如下表所示，详细的接口说明请参考[http_interceptor.h/apis-network-kit/capi-net-http-interceptor-h.md)。
 
 
 | 接口名 | 描述 |

@@ -6,7 +6,7 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-在输入法框架中，可以通过[getController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcontroller9)方法获取到[InputMethodController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller)实例来绑定输入法并监听输入法应用的各种操作，比如插入、删除、选择、光标移动等。这样就可以在自绘编辑框中使用输入法，并实现更加灵活和自由的编辑操作。
+在输入法框架中，可以通过[getController/apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcontroller9)方法获取到[InputMethodController/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller)实例来绑定输入法并监听输入法应用的各种操作，比如插入、删除、选择、光标移动等。这样就可以在自绘编辑框中使用输入法，并实现更加灵活和自由的编辑操作。
 
 ## 开发步骤
 

@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
- 当在一个自定义组件内使用多个全局[\@Builder](./arkts-builder.md)函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrapBuilder不支持动态切换@Builder，引入[mutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md)实现全局@Builder的动态切换。
+ 当在一个自定义组件内使用多个全局[\@Builder](./arkts-builder.md)函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrapBuilder不支持动态切换@Builder，引入[mutableBuilder/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md)实现全局@Builder的动态切换。
 
 > **说明：**
 >
@@ -53,7 +53,7 @@ struct Index {
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
+mutableBuilder是一个模板函数，返回一个[MutableBuilder/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
@@ -258,7 +258,7 @@ struct Index {
 
 ## 观察mutableBuilder中@Builder的变化
 
- mutableBuilder对应的@Builder函数中可使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)进行包裹来观察状态变量的变化，同时可通过[@Monitor](./arkts-new-monitor.md)或[addMonitor](./arkts-new-addMonitor-clearMonitor.md)监听mutableBuilder中@Builder的变化。
+ mutableBuilder对应的@Builder函数中可使用[MutableBinding/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)进行包裹来观察状态变量的变化，同时可通过[@Monitor](./arkts-new-monitor.md)或[addMonitor](./arkts-new-addMonitor-clearMonitor.md)监听mutableBuilder中@Builder的变化。
 
 ```ts
 import { UIUtils, MutableBinding } from '@kit.ArkUI';

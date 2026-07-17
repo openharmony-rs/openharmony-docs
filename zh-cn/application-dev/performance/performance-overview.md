@@ -59,7 +59,7 @@
 
 - **延迟加载：**
 
-  将不必要的资源延迟加载可以减少应用启动时间。使用[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)以及[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)等容器组件时，配合系统提供的[LazyForEach数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)能力，可以有效减少应用启动时间和内存占用。
+  将不必要的资源延迟加载可以减少应用启动时间。使用[List/apis-arkui/arkui-ts/ts-container-list.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)以及[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)等容器组件时，配合系统提供的[LazyForEach数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)能力，可以有效减少应用启动时间和内存占用。
   
 - **使用缓存：**
 

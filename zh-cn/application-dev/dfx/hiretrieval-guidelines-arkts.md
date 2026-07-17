@@ -20,7 +20,7 @@
 
 > **注意：**
 >
-> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考应用灰度错误码[36000002](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
+> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考应用灰度错误码[36000002/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
 
 ## 工作原理
 
@@ -28,11 +28,11 @@
 
 应用灰度采集功能对发生故障的感知主要依赖HiAppEvent的事件订阅机制。
 
-在向HiAppEvent进行故障订阅（即调用[addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)接口）时，使用的Watcher名称为HiRetrievalWatcher，请勿在自定义的功能中使用此名称订阅事件，以避免出现冲突。
+在向HiAppEvent进行故障订阅（即调用[addWatcher/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)接口）时，使用的Watcher名称为HiRetrievalWatcher，请勿在自定义的功能中使用此名称订阅事件，以避免出现冲突。
 
 ### 故障日志采集
 
-主要依赖[HiDebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)模块提供的故障采集接口，大部分日志的采集都在应用进程内进行。
+主要依赖[HiDebug/apis-performance-analysis-kit/js-apis-hidebug.md)模块提供的故障采集接口，大部分日志的采集都在应用进程内进行。
 
 ## 应用灰度采集开发指导
 

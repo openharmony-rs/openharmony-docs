@@ -537,7 +537,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## onMemoryLevel回调命令（send-memory-level）
 
-从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
+从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
 
 ```bash
 # 触发onMemoryLevel回调
@@ -550,7 +550,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 | -------- | -------- |
 | -h/--help | 帮助信息。 |
 | -p | 必选参数，进程pid。 |
-| -l | 必选参数，内存使用级别，具体值参考[AbilityConstant.MemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)。 |
+| -l | 必选参数，内存使用级别，具体值参考[AbilityConstant.MemoryLevel/apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)。 |
 
 **返回值**：
 
@@ -570,7 +570,7 @@ aa send-memory-level -p 6066 -l 0
 
 ## 应用预启动命令（pre-start）
 
-从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到[onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到[onDidBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20)阶段。
+从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到[onDidForeground/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到[onDidBackground/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20)阶段。
 
 ```bash
 aa pre-start -m <MODE> -b <BUNDLE-NAME> -u <USER-ID>

@@ -24,7 +24,7 @@
 
 - 在子组件中使用\@ObjectLink装饰的状态变量，用于接收父组件\@Observed装饰的类实例，从而建立双向数据绑定。
 
-- API version 19之前，\@ObjectLink只能接收\@Observed装饰的类实例；API version 19及以后，\@ObjectLink也可以接收复杂类型，无\@Observed装饰的限制。但需注意，如需观察嵌套类型场景，需要其接收\@Observed装饰的类实例或[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值。示例请参考[二维数组](#二维数组)。
+- API version 19之前，\@ObjectLink只能接收\@Observed装饰的类实例；API version 19及以后，\@ObjectLink也可以接收复杂类型，无\@Observed装饰的限制。但需注意，如需观察嵌套类型场景，需要其接收\@Observed装饰的类实例或[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值。示例请参考[二维数组](#二维数组)。
 
 开发者如需实现单向数据同步，需要搭配\@Prop使用，示例请参考[\@Prop与\@ObjectLink的差异](#prop与objectlink的差异)。
 
@@ -78,11 +78,11 @@ this.objLink= ...
 
 ### 观察变化
 
-API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，二维数组，对象数组等，那么内层的数据类型也需要被\@Observed装饰。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来使内层数据可观察。内层数据需要传递给\@ObjectLink，使其在UI上可观察。示例请参考[嵌套对象](#嵌套对象)。
+API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，二维数组，对象数组等，那么内层的数据类型也需要被\@Observed装饰。API version 19及以后，也可以通过使用[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)来使内层数据可观察。内层数据需要传递给\@ObjectLink，使其在UI上可观察。示例请参考[嵌套对象](#嵌套对象)。
 
 \@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
 
-\@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)处理的返回值。示例请参考[嵌套对象](#嵌套对象)。
+\@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持被[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)处理的返回值。示例请参考[嵌套对象](#嵌套对象)。
 
 \@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
 
@@ -180,7 +180,7 @@ struct Parent {
 
 4. API version 19前，\@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译时报错。
 
-   API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化，若\@ObjectLink接收未使用\@Observed装饰的class或makeV1Observed返回值进行初始化，则会有运行时告警日志。
+   API version 19及以后，\@ObjectLink也可以被[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化，若\@ObjectLink接收未使用\@Observed装饰的class或makeV1Observed返回值进行初始化，则会有运行时告警日志。
 
    ```ts
    class Test {
@@ -558,7 +558,7 @@ struct Parent {
 ![Observed_ObjectLink_object_array](figures/Observed_ObjectLink_object_array.gif)
 
 - this.arrA[Math.floor(this.arrA.length/2)] = new Info(..) ：该状态变量的改变触发2次更新：
-  1. ForEach：数组项的赋值导致[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
+  1. ForEach：数组项的赋值导致[ForEach/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
   2. Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] })：上述更改改变了数组中第二个元素，所以绑定this.arrA[1]的Child将被更新。
 
 - this.arrA.push(new Info(0)) ： 将触发2次不同效果的更新：
@@ -651,7 +651,7 @@ struct IndexPage {
 }
 ```
 
-API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
+API version 19及以后，\@ObjectLink也可以被[makeV1Observed/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
 
 完整例子如下。
 

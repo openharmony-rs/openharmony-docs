@@ -6,11 +6,11 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
+用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[选择器/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 
 **约束限制**
 
-如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
+如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
 
 ```ts
 if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
@@ -21,15 +21,15 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 根据用户文件的常见类型，选择器（FilePicker）分别提供以下选项：
 
-- [PhotoViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)：适用于图片或视频类型文件的选择与保存（该接口在后续版本不再演进）。请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)来选择图片文件。请使用[安全控件保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
+- [PhotoViewPicker/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)：适用于图片或视频类型文件的选择与保存（该接口在后续版本不再演进）。请使用PhotoAccessHelper的[PhotoViewPicker/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)来选择图片文件。请使用[安全控件保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-- [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)：适用于文件类型文件的选择与保存。DocumentViewPicker对接的选择资源来自于FilePicker，负责文件类型的资源管理，文件类型不区分后缀，比如浏览器下载的图片、文档等，都属于文件类型。
+- [DocumentViewPicker/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)：适用于文件类型文件的选择与保存。DocumentViewPicker对接的选择资源来自于FilePicker，负责文件类型的资源管理，文件类型不区分后缀，比如浏览器下载的图片、文档等，都属于文件类型。
 
-- [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)：适用于音频类型文件的选择与保存。AudioViewPicker目前对接的选择资源来自于AudioPicker。
+- [AudioViewPicker/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)：适用于音频类型文件的选择与保存。AudioViewPicker目前对接的选择资源来自于AudioPicker。
 
 ## 选择图片或视频类文件
 
-[PhotoViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)在后续版本不再演进，请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)来选择图片文件。
+[PhotoViewPicker/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)在后续版本不再演进，请使用PhotoAccessHelper的[PhotoViewPicker/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)来选择图片文件。
 
 ## 选择文档类文件
 
@@ -42,7 +42,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 需根据实际业务需求配置[文档选择选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)。以下代码仅例举各选项的配置参考。
+2. 需根据实际业务需求配置[文档选择选项/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)。以下代码仅例举各选项的配置参考。
 
    ```ts
    const documentSelectOptions = new picker.DocumentSelectOptions();
@@ -69,7 +69,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    documentSelectOptions.allowsMulFolderSelection = false;
    ```
 
-3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)接口拉起FilePicker应用界面进行文件选择。
+3. 创建文件选择器[DocumentViewPicker/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[select()/apis-core-file-kit/js-apis-file-picker.md#select-3)接口拉起FilePicker应用界面进行文件选择。
 
    <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
    
@@ -89,12 +89,12 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **注意：**
    >
-   > 1. 使用Picker获取的[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)返回的URI权限是临时读写权限，待退出应用后台后，获取的临时权限就会失效。<br>
+   > 1. 使用Picker获取的[select()/apis-core-file-kit/js-apis-file-picker.md#select-3)返回的URI权限是临时读写权限，待退出应用后台后，获取的临时权限就会失效。<br>
    > 2. 如果想要获取持久化权限，请参考[文件持久化授权访问](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)。<br>
    > 3. 开发者可以根据结果集中URI做进一步的处理。建议定义一个全局变量保存URI。<br>
-   > 4. 如有获取元数据需求，可以通过[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)根据URI获取部分文件属性信息，比如文件大小、访问时间、修改时间、文件名、文件路径等。
+   > 4. 如有获取元数据需求，可以通过[文件管理/apis-core-file-kit/js-apis-file-fs.md)和[文件URI/apis-core-file-kit/js-apis-file-fileuri.md)根据URI获取部分文件属性信息，比如文件大小、访问时间、修改时间、文件名、文件路径等。
 
-4. 待界面从FilePicker返回后，使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，使用[fileIo.openSync/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
@@ -105,7 +105,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    }
    ```
 
-5. 通过fd使用[fileIo.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioreadsync)接口读取这个文件内的数据。
+5. 通过fd使用[fileIo.readSync/apis-core-file-kit/js-apis-file-fs.md#fileioreadsync)接口读取这个文件内的数据。
 
    ```ts
    let buffer = new ArrayBuffer(4096);
@@ -136,7 +136,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    const audioSelectOptions = new picker.AudioSelectOptions();
    ```
 
-3. 创建音频选择器[AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5)接口拉起AudioPicker应用界面进行文件选择。
+3. 创建音频选择器[AudioViewPicker/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[select()/apis-core-file-kit/js-apis-file-picker.md#select-5)接口拉起AudioPicker应用界面进行文件选择。
 
    <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
    
@@ -158,11 +158,11 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **注意：**
    >
-   > 1. 使用Picker获取的[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)返回的URI权限是临时只读权限，待退出应用后台后，获取的临时权限就会失效。<br>
+   > 1. 使用Picker获取的[select()/apis-core-file-kit/js-apis-file-picker.md#select-3)返回的URI权限是临时只读权限，待退出应用后台后，获取的临时权限就会失效。<br>
    > 2. 如果想要获取持久化权限，请参考[文件持久化授权访问](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)。<br>
-   > 3. 开发者可以根据结果集中的URI做读取文件数据操作。建议定义一个全局变量保存URI。例如通过[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口根据URI拿到音频资源的文件描述符（fd），再配合媒体服务实现音频播放的开发，具体请参考[音频播放开发指导](../media/audio/audio-playback-overview.md)。
+   > 3. 开发者可以根据结果集中的URI做读取文件数据操作。建议定义一个全局变量保存URI。例如通过[文件管理/apis-core-file-kit/js-apis-file-fs.md)模块的接口根据URI拿到音频资源的文件描述符（fd），再配合媒体服务实现音频播放的开发，具体请参考[音频播放开发指导](../media/audio/audio-playback-overview.md)。
 
-4. 待界面从AudioPicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从AudioPicker返回后，可以使用[fileIo.openSync/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
@@ -173,7 +173,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    }
    ```
 
-5. 通过fd可以使用[fileIo.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。
+5. 通过fd可以使用[fileIo.readSync/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。
 
    ```ts
    let buffer = new ArrayBuffer(4096);

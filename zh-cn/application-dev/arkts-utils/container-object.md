@@ -23,20 +23,20 @@
 
 | 容器类名称 | 支持版本 |
 | --------- | -------- |
-| [TreeSet](../reference/apis-arkts/js-apis-treeset.md) | 搭载<!--RP1-->OpenHarmony 6.1<!--RP1End-->及以上版本的设备支持 |
-| [ArrayList](../reference/apis-arkts/js-apis-arraylist.md) | 暂不支持 |
-| [List](../reference/apis-arkts/js-apis-list.md) | 暂不支持 |
-| [LinkedList](../reference/apis-arkts/js-apis-linkedlist.md) | 暂不支持 |
-| [Deque](../reference/apis-arkts/js-apis-deque.md) | 暂不支持 |
-| [Queue](../reference/apis-arkts/js-apis-queue.md) | 暂不支持 |
-| [Stack](../reference/apis-arkts/js-apis-stack.md) | 暂不支持 |
-| [Vector](../reference/apis-arkts/js-apis-vector.md) | 暂不支持 |
-| [HashMap](../reference/apis-arkts/js-apis-hashmap.md) | 暂不支持 |
-| [HashSet](../reference/apis-arkts/js-apis-hashset.md) | 暂不支持 |
-| [TreeMap](../reference/apis-arkts/js-apis-treemap.md) | 暂不支持 |
-| [LightWeightMap](../reference/apis-arkts/js-apis-lightweightmap.md) | 暂不支持 |
-| [LightWeightSet](../reference/apis-arkts/js-apis-lightweightset.md) | 暂不支持 |
-| [PlainArray](../reference/apis-arkts/js-apis-plainarray.md) | 暂不支持 |
+| [TreeSet/apis-arkts/js-apis-treeset.md) | 搭载<!--RP1-->OpenHarmony 6.1<!--RP1End-->及以上版本的设备支持 |
+| [ArrayList/apis-arkts/js-apis-arraylist.md) | 暂不支持 |
+| [List/apis-arkts/js-apis-list.md) | 暂不支持 |
+| [LinkedList/apis-arkts/js-apis-linkedlist.md) | 暂不支持 |
+| [Deque/apis-arkts/js-apis-deque.md) | 暂不支持 |
+| [Queue/apis-arkts/js-apis-queue.md) | 暂不支持 |
+| [Stack/apis-arkts/js-apis-stack.md) | 暂不支持 |
+| [Vector/apis-arkts/js-apis-vector.md) | 暂不支持 |
+| [HashMap/apis-arkts/js-apis-hashmap.md) | 暂不支持 |
+| [HashSet/apis-arkts/js-apis-hashset.md) | 暂不支持 |
+| [TreeMap/apis-arkts/js-apis-treemap.md) | 暂不支持 |
+| [LightWeightMap/apis-arkts/js-apis-lightweightmap.md) | 暂不支持 |
+| [LightWeightSet/apis-arkts/js-apis-lightweightset.md) | 暂不支持 |
+| [PlainArray/apis-arkts/js-apis-plainarray.md) | 暂不支持 |
 
 
 ## 使用示例

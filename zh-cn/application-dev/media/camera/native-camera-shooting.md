@@ -17,7 +17,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -85,7 +85,7 @@
 
 4. 选择设备支持的输出流能力，创建拍照输出流。
 
-   通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
+   通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
 
    <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -473,7 +473,7 @@
 
 8. 触发拍照。
 
-   通过[OH_PhotoOutput_Capture_WithCaptureSetting()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture_withcapturesetting)方法，执行拍照任务。
+   通过[OH_PhotoOutput_Capture_WithCaptureSetting()/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture_withcapturesetting)方法，执行拍照任务。
 
    <!-- @[capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -512,17 +512,17 @@
 
 ### 画质优先策略
 
-在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的[Camera_PhotoQualityPrioritization](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)枚举类型。 
+在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的[Camera_PhotoQualityPrioritization/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)枚举类型。 
 
-- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
-- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
 
 ### 如何正确设置画质优先策略
 
 为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口： 
 
-- [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
-- [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。 
+- [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
+- [OH_PhotoOutput_SetPhotoQualityPrioritization/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。 
 
 ### 开发步骤
  	 
@@ -530,7 +530,7 @@
  	 
 具体调用时机如下： 
 
-- 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)结束之后进行调用。 
+- 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)结束之后进行调用。 
 
   ```c++
   Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
@@ -590,7 +590,7 @@
   }
   ```
 
-- 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)之前调用。 
+- 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)之前调用。 
 
   ```c++
   Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
@@ -683,7 +683,7 @@
   }
   ```
 
-- 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
+- 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见[Camera_ErrorCode/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
   <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   

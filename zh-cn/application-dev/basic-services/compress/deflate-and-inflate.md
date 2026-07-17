@@ -10,7 +10,7 @@
 
 ## 接口说明
 
-以下是示例中使用的主要接口，更多接口及使用方式请见[@ohos.zlib (Zip模块)](../../reference/apis-basic-services-kit/js-apis-zlib.md)。
+以下是示例中使用的主要接口，更多接口及使用方式请见[@ohos.zlib (Zip模块)/apis-basic-services-kit/js-apis-zlib.md)。
 
 | 接口名                                                       | 接口描述                     |
 | ------------------------------------------------------------ | ---------------------------- |
@@ -67,7 +67,7 @@
 
 ### Zip文件的压缩与解压
 
-采用接口[zlib.compressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibcompressfile9-1)将文件data.txt压缩并归档到data.zip中，采用接口[zlib.decompressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibdecompressfile9-1)将data.zip解压到应用沙箱目录下，示例代码如下。
+采用接口[zlib.compressFile()/apis-basic-services-kit/js-apis-zlib.md#zlibcompressfile9-1)将文件data.txt压缩并归档到data.zip中，采用接口[zlib.decompressFile()/apis-basic-services-kit/js-apis-zlib.md#zlibdecompressfile9-1)将data.zip解压到应用沙箱目录下，示例代码如下。
   
   <!-- @[deflate_and_inflate_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages1/Index.ets) -->
   
@@ -113,7 +113,7 @@
 
 ### 已知大小缓冲区的压缩与解压
 
-针对一个已知大小的缓冲区中的数据，使用接口[compress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compress12)将其压缩到一个目标缓冲区中，使用接口[compressBound()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compressbound12)计算压缩目标缓冲区大小的上限值，使用接口[uncompress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#uncompress12)对存储压缩数据的缓冲区进行解压。由于解压时无法获取解压后原始数据的大小，为了确认解压后目标缓冲区的大小，需要在压缩前获取原始数据的大小并保存，示例代码如下。
+针对一个已知大小的缓冲区中的数据，使用接口[compress()/apis-basic-services-kit/js-apis-zlib.md#compress12)将其压缩到一个目标缓冲区中，使用接口[compressBound()/apis-basic-services-kit/js-apis-zlib.md#compressbound12)计算压缩目标缓冲区大小的上限值，使用接口[uncompress()/apis-basic-services-kit/js-apis-zlib.md#uncompress12)对存储压缩数据的缓冲区进行解压。由于解压时无法获取解压后原始数据的大小，为了确认解压后目标缓冲区的大小，需要在压缩前获取原始数据的大小并保存，示例代码如下。
 
   <!-- @[deflate_and_inflate_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages2/Index.ets) -->
   
@@ -201,7 +201,7 @@
 
 ### 未知大小缓冲区的压缩与解压（zlib格式）
 
-针对一个未知大小的缓冲区中的数据，使用接口[deflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#deflate12)将从一个原始输入流中读取的数据进行压缩，使用接口[inflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#inflate12)将从一个压缩输入流中读取的数据进行解压，示例代码如下。
+针对一个未知大小的缓冲区中的数据，使用接口[deflate()/apis-basic-services-kit/js-apis-zlib.md#deflate12)将从一个原始输入流中读取的数据进行压缩，使用接口[inflate()/apis-basic-services-kit/js-apis-zlib.md#inflate12)将从一个压缩输入流中读取的数据进行解压，示例代码如下。
 
   <!-- @[deflate_and_inflate_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages3/Index.ets) -->
   
@@ -354,7 +354,7 @@
 
 ### 未知大小缓冲区的压缩与解压（gzip格式）
 
-采用gzip格式，针对一个未知大小的缓冲区中的数据，使用接口[deflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#deflate12)将从一个原始输入流中读取的数据进行压缩，使用接口[inflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#inflate12)将从一个压缩输入流中读取的数据进行解压，示例代码如下。
+采用gzip格式，针对一个未知大小的缓冲区中的数据，使用接口[deflate()/apis-basic-services-kit/js-apis-zlib.md#deflate12)将从一个原始输入流中读取的数据进行压缩，使用接口[inflate()/apis-basic-services-kit/js-apis-zlib.md#inflate12)将从一个压缩输入流中读取的数据进行解压，示例代码如下。
 
   <!-- @[deflate_and_inflate_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages4/Index.ets) -->
   
@@ -513,8 +513,8 @@
 
 1. 17800005 传入的数据错误
 
-   可能原因和处理步骤，请参见错误码[17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
+   可能原因和处理步骤，请参见错误码[17800005/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
 
 2. 17800007 传入的缓冲区错误
 
-   可能原因和处理步骤，请参见错误码[17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。
+   可能原因和处理步骤，请参见错误码[17800007/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。

@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-开发者在使用[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
+开发者在使用[UIAbilityContext.openLink/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
 
 假设目标应用的UIAbility的[module.json5](../quick-start/module-configuration-file.md)配置信息如下：
 
@@ -150,7 +150,7 @@
 
 5. 使用Deep Linking方式拉起目标应用。
 
-    以下为通过[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。
+    以下为通过[UIAbilityContext.openLink/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。
 
     > **说明：**
     >

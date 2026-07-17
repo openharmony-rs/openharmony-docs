@@ -35,13 +35,13 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 
 ### 文档类URI获取方式
 
-1. 通过[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)接口选择或保存文件，返回选择或保存的文件URI。
+1. 通过[DocumentViewPicker/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)接口选择或保存文件，返回选择或保存的文件URI。
 
-2. 通过[AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)接口选择或保存文件，返回选择或保存的文件URI。
+2. 通过[AudioViewPicker/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)接口选择或保存文件，返回选择或保存的文件URI。
 
 ### 文档类URI的使用方式
 
-应用使用此类URI可通过[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)进行进一步处理。示例代码参见picker中的[选择文档类文件](./select-user-file.md#选择文档类文件)和[保存文档类文件](./save-user-file.md#保存文档类文件)。
+应用使用此类URI可通过[文件管理/apis-core-file-kit/js-apis-file-fs.md)进行进一步处理。示例代码参见picker中的[选择文档类文件](./select-user-file.md#选择文档类文件)和[保存文档类文件](./save-user-file.md#保存文档类文件)。
 
 ## 媒体文件URI
 
@@ -72,26 +72,26 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 | 'IMG_datetime_0001' | 表示图片文件在用户文件系统中存储的文件名去掉后缀剩下的部分。 |
 | 'VID_datetime_0001' | 表示视频文件在用户文件系统中存储的文件名去掉后缀剩下的部分。 |
 | 'AUD_datetime_0001' | 表示音频文件在用户文件系统中存储的文件名去掉后缀剩下的部分。 |
-|<!--DelRow--> 'displayName.jpg' | 表示图片文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
-|<!--DelRow--> 'displayName.mp4' | 表示视频文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
-|<!--DelRow--> 'displayName.mp3' | 表示音频文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
+|<!--DelRow--> 'displayName.jpg' | 表示图片文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
+|<!--DelRow--> 'displayName.mp4' | 表示视频文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
+|<!--DelRow--> 'displayName.mp3' | 表示音频文件对外展示的displayName，使用[photoAccessHelper.PhotoAsset.commitModify/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify)接口重命名修改的就是这个值，需要注意这个值修改后URI也会发生改变。 |
 
 ### 媒体文件URI获取方式
 
-1. 通过PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)选择图片和视频资源，返回选择的图片和视频的URI。
+1. 通过PhotoAccessHelper的[PhotoViewPicker/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)选择图片和视频资源，返回选择的图片和视频的URI。
 
-2. 通过[photoAccessHelper](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)模块中的[getAssets](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)或[createAsset](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset)接口获取媒体文件对应文件的URI。
+2. 通过[photoAccessHelper/apis-media-library-kit/arkts-apis-photoAccessHelper.md)模块中的[getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)或[createAsset/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset)接口获取媒体文件对应文件的URI。
 
-3. 通过Picker的[AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)选择和保存音乐文件资源，返回选择和保存后的音乐文件的URI。
+3. 通过Picker的[AudioViewPicker/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)选择和保存音乐文件资源，返回选择和保存后的音乐文件的URI。
 
 ### 媒体文件URI的使用方式
 
-normal等级的应用使用此类URI可以通过[photoAccessHelper](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)模块进行进一步处理。示例代码参见媒体资源使用指导中的[指定URI获取图片或视频资源](../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。此接口需要申请相册管理模块读权限（[ohos.permission.READ_IMAGEVIDEO](../media/medialibrary/photoAccessHelper-overview.md#能力范围)），在使用中需要注意应用是否有此权限。<!--Del-->
+normal等级的应用使用此类URI可以通过[photoAccessHelper/apis-media-library-kit/arkts-apis-photoAccessHelper.md)模块进行进一步处理。示例代码参见媒体资源使用指导中的[指定URI获取图片或视频资源](../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。此接口需要申请相册管理模块读权限（[ohos.permission.READ_IMAGEVIDEO](../media/medialibrary/photoAccessHelper-overview.md#能力范围)），在使用中需要注意应用是否有此权限。<!--Del-->
 
-system_basic等级及以上的应用使用此类URI的方式除了上述通过photoAccessHelper模块外还可以通过[userFileManager](../reference/apis-core-file-kit/js-apis-userFileManager-sys.md)模块进行进一步处理，接口详细使用方式见接口文档。
+system_basic等级及以上的应用使用此类URI的方式除了上述通过photoAccessHelper模块外还可以通过[userFileManager/apis-core-file-kit/js-apis-userFileManager-sys.md)模块进行进一步处理，接口详细使用方式见接口文档。
 <!--DelEnd-->
 
-若normal等级的应用不想申请权限也可以通过临时授权的方式使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)得到的URI使用[photoAccessHelper.getAssets](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口获取对应URI的PhotoAsset对象。通过此方式获取的PhotoAsset对象可调用[getThumbnail](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail)方法获取缩略图，并通过[get](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#get)接口方法读取[PhotoKeys](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)中的部分信息。
+若normal等级的应用不想申请权限也可以通过临时授权的方式使用PhotoAccessHelper的[PhotoViewPicker/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)得到的URI使用[photoAccessHelper.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口获取对应URI的PhotoAsset对象。通过此方式获取的PhotoAsset对象可调用[getThumbnail/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#getthumbnail)方法获取缩略图，并通过[get/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#get)接口方法读取[PhotoKeys/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)中的部分信息。
 
 以下为PhotoKeys中支持临时授权方式可以读取的信息：
 

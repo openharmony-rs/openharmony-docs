@@ -9,13 +9,13 @@
 本文主要提供主动刷新的开发指导，刷新流程请参考[主动刷新概述](./arkts-ui-widget-interaction-overview.md#主动刷新)。
 
 ## 卡片提供方主动刷新卡片内容
-卡片提供方可以通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)、[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)、[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)接口搭配使用。
+卡片提供方可以通过[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)、[onUpdateForm/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)、[onAddForm/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)接口搭配使用。
 
 ### 开发步骤
 下面给出一个示例，实现如下功能：卡片添加至桌面后，点击卡片上的刷新按钮，刷新卡片信息。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 
-2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
+2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
 
    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
@@ -194,7 +194,7 @@
 ![WidgetPrinciple](figures/主动刷新结果.gif)
 
 ## 卡片提供方批量请求刷新卡片内容
-从API version 22开始，支持卡片提供方批量请求刷新卡片内容。卡片提供方可以通过[reloadForms](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderreloadforms22)和[reloadAllForms](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderreloadallforms22)接口在应用主进程中通知FormExtension进程进行批量更新，仅支持在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用。
+从API version 22开始，支持卡片提供方批量请求刷新卡片内容。卡片提供方可以通过[reloadForms/apis-form-kit/js-apis-app-form-formProvider.md#formproviderreloadforms22)和[reloadAllForms/apis-form-kit/js-apis-app-form-formProvider.md#formproviderreloadallforms22)接口在应用主进程中通知FormExtension进程进行批量更新，仅支持在[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用。
 
 ### 开发步骤
 下面给出一个示例，实现如下功能：添加应用的多张卡片至桌面后，点击应用UIAbility中的刷新按钮，批量刷新卡片信息。
@@ -365,7 +365,7 @@
 <!--Del-->
 ## 卡片使用方主动刷新卡片内容（仅对系统应用开放）
 
-由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
+由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
 
    <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
    

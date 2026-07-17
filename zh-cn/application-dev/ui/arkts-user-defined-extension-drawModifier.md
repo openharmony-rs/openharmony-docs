@@ -29,11 +29,11 @@ declare class DrawModifier {
 }
 ```
 
-DrawModifier可设置遮罩层前景（[drawOverlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawoverlay23)）、前景（[drawForeground](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawforeground20)）、内容前景（[drawFront](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawfront)）、内容（[drawContent](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)）和内容背景（[drawBehind](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawbehind)）的绘制方法，开发者需要重载这些方法，并通过[Canvas](arkts-drawing-customization-on-canvas.md)的接口进行自定义绘制。自定义绘制层级图如下所示。
+DrawModifier可设置遮罩层前景（[drawOverlay/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawoverlay23)）、前景（[drawForeground/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawforeground20)）、内容前景（[drawFront/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawfront)）、内容（[drawContent/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)）和内容背景（[drawBehind/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawbehind)）的绘制方法，开发者需要重载这些方法，并通过[Canvas](arkts-drawing-customization-on-canvas.md)的接口进行自定义绘制。自定义绘制层级图如下所示。
 
 ![](figures/drawModifier.png)
 
-DrawModifier还提供主动触发重绘的方法[invalidate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#invalidate)，该接口开发者无需也无法重载，调用会触发所绑定组件的重绘。
+DrawModifier还提供主动触发重绘的方法[invalidate/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#invalidate)，该接口开发者无需也无法重载，调用会触发所绑定组件的重绘。
 
 > **说明：**
 >
@@ -325,7 +325,7 @@ struct DrawModifierExample {
 
 ## 调整自定义绘制Canvas的变换矩阵
 
-从API version 12开始，通过重写DrawModifier中的[drawContent](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)方法，可以替换组件原本的内容绘制函数。
+从API version 12开始，通过重写DrawModifier中的[drawContent/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)方法，可以替换组件原本的内容绘制函数。
 
 通过[concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12)可以调整自定义绘制画布的变换矩阵。
 

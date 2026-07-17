@@ -16,7 +16,7 @@
 
 ## 接口说明
 
-扩展外设管理基本能力如下，更多详情请查阅[@ohos.driver.deviceManager](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md)。
+扩展外设管理基本能力如下，更多详情请查阅[@ohos.driver.deviceManager/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md)。
 
 **表1** 扩展外设管理基本能力接口
 
@@ -27,7 +27,7 @@
 | unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API18开始支持。                       |
 
 <!--Del-->
-扩展外设管理系统接口如下，具体请查阅[@ohos.driver.deviceManager](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md)。
+扩展外设管理系统接口如下，具体请查阅[@ohos.driver.deviceManager/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md)。
 
 **表2** 扩展外设管理系统接口
 

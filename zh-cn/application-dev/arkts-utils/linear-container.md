@@ -26,7 +26,7 @@
 
 ## ArrayList
 
-[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)即动态数组，可用来构造全局的数组对象。需要频繁读取集合元素时，推荐使用ArrayList。
+[ArrayList/apis-arkts/js-apis-arraylist.md)即动态数组，可用来构造全局的数组对象。需要频繁读取集合元素时，推荐使用ArrayList。
 
 ArrayList依据泛型定义，存储位置为连续的内存空间，初始容量为10，支持动态扩容，每次扩容为原始容量的1.5倍。
 
@@ -45,9 +45,9 @@ ArrayList支持增、删、改、查操作，常用API如下：
 
 ## List
 
-[List](../reference/apis-arkts/js-apis-list.md)可用来构造一个单向链表对象，若需要查找List中某一个元素，只能从头结点开始遍历。List依据泛型定义，存储的元素在内存中的存储位置可以不连续。
+[List/apis-arkts/js-apis-list.md)可用来构造一个单向链表对象，若需要查找List中某一个元素，只能从头结点开始遍历。List依据泛型定义，存储的元素在内存中的存储位置可以不连续。
 
-List和[LinkedList](../reference/apis-arkts/js-apis-linkedlist.md)相比，LinkedList是双向链表，支持在头部和尾部快速增删操作。List则是单向链表，不支持双向操作。
+List和[LinkedList/apis-arkts/js-apis-linkedlist.md)相比，LinkedList是双向链表，支持在头部和尾部快速增删操作。List则是单向链表，不支持双向操作。
 
 当需要频繁插入和删除元素，并且使用单向链表时，推荐使用List进行高效操作。
 
@@ -73,11 +73,11 @@ List和[LinkedList](../reference/apis-arkts/js-apis-linkedlist.md)相比，Linke
 
 ## LinkedList
 
-[LinkedList](../reference/apis-arkts/js-apis-linkedlist.md)可用于构造双向链表对象，支持在任意节点向前或向后遍历LinkedList。LinkedList依据泛型定义，其元素在内存中的存储位置可以不连续。
+[LinkedList/apis-arkts/js-apis-linkedlist.md)可用于构造双向链表对象，支持在任意节点向前或向后遍历LinkedList。LinkedList依据泛型定义，其元素在内存中的存储位置可以不连续。
 
-LinkedList和[List](../reference/apis-arkts/js-apis-list.md)相比，LinkedList是双向链表，支持快速的头尾增删操作。List是单向链表，不支持双向操作。
+LinkedList和[List/apis-arkts/js-apis-list.md)相比，LinkedList是双向链表，支持快速的头尾增删操作。List是单向链表，不支持双向操作。
 
-LinkedList和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相比，LinkedList插入数据的效率高于ArrayList，ArrayList查询效率高于LinkedList。
+LinkedList和[ArrayList/apis-arkts/js-apis-arraylist.md)相比，LinkedList插入数据的效率高于ArrayList，ArrayList查询效率高于LinkedList。
 
 需要频繁插入删除元素且使用双向链表时，推荐使用LinkedList。
 
@@ -102,13 +102,13 @@ LinkedList和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相比，L
 
 ## Deque
 
-[Deque](../reference/apis-arkts/js-apis-deque.md)可用来构造双端队列对象，存储元素遵循先进先出以及先进后出的规则，双端队列可以分别从队头或者队尾进行访问。
+[Deque/apis-arkts/js-apis-deque.md)可用来构造双端队列对象，存储元素遵循先进先出以及先进后出的规则，双端队列可以分别从队头或者队尾进行访问。
 
 Deque依据泛型定义，要求存储位置为连续的内存空间，初始容量为8，支持动态扩容，每次扩容为原容量的2倍。Deque底层采用循环队列实现，入队和出队操作效率高。
 
-Deque和[Queue](../reference/apis-arkts/js-apis-queue.md)相比，Deque支持在两端进行元素的增删操作，而Queue仅支持在头部删除元素，尾部增加元素。
+Deque和[Queue/apis-arkts/js-apis-queue.md)相比，Deque支持在两端进行元素的增删操作，而Queue仅支持在头部删除元素，尾部增加元素。
 
-Deque和[Vector](../reference/apis-arkts/js-apis-vector.md)相比，都支持在两端增删元素，但Deque不支持中间插入。Deque在头部插入和删除元素的效率高于Vector，而Vector访问元素的效率高于Deque。
+Deque和[Vector/apis-arkts/js-apis-vector.md)相比，都支持在两端增删元素，但Deque不支持中间插入。Deque在头部插入和删除元素的效率高于Vector，而Vector访问元素的效率高于Deque。
 
 需要频繁在两端增删元素时，推荐使用Deque。
 
@@ -127,13 +127,13 @@ Deque支持增、删、改、查操作。常用API如下：
 
 ## Queue
 
-[Queue](../reference/apis-arkts/js-apis-queue.md)可用来构造队列对象，存储元素遵循先进先出的规则。
+[Queue/apis-arkts/js-apis-queue.md)可用来构造队列对象，存储元素遵循先进先出的规则。
 
 Queue基于泛型定义，存储位置为连续的内存空间，初始容量为8，支持动态扩容，每次扩容容量翻倍。
 
 Queue底层采用循环队列实现，入队和出队操作效率高。
 
-Queue和[Deque](../reference/apis-arkts/js-apis-deque.md)相比，Queue仅支持在头部删除元素，尾部增加元素，而Deque支持在两端进行元素的增删操作。
+Queue和[Deque/apis-arkts/js-apis-deque.md)相比，Queue仅支持在头部删除元素，尾部增加元素，而Deque支持在两端进行元素的增删操作。
 
 符合先进先出的场景可以使用Queue。
 
@@ -149,11 +149,11 @@ Queue支持增、删、改、查操作，常用API如下：
 
 ## Stack
 
-[Stack](../reference/apis-arkts/js-apis-stack.md)可用来构造栈对象，存储元素遵循先进后出的规则。
+[Stack/apis-arkts/js-apis-stack.md)可用来构造栈对象，存储元素遵循先进后出的规则。
 
 Stack基于泛型定义，要求使用连续的内存空间存储元素，初始容量为8，并支持动态扩容，每次扩容为原容量的1.5倍。Stack底层使用数组实现，入栈和出栈操作均在数组的一端进行。
 
-Stack和[Queue](../reference/apis-arkts/js-apis-queue.md)相比，Queue基于循环队列实现，仅支持在头部删除元素，尾部增加元素，而Stack都在一端进行操作。
+Stack和[Queue/apis-arkts/js-apis-queue.md)相比，Queue基于循环队列实现，仅支持在头部删除元素，尾部增加元素，而Stack都在一端进行操作。
 
 符合先进后出的场景可以使用Stack。
 
@@ -172,11 +172,11 @@ Stack支持增、删、改、查操作，常用API如下：
 
 > **说明**：
 >
-> API version 9开始，该接口不再维护，推荐使用[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)。
+> API version 9开始，该接口不再维护，推荐使用[ArrayList/apis-arkts/js-apis-arraylist.md)。
 
-[Vector](../reference/apis-arkts/js-apis-vector.md)是一种连续存储结构，用于创建全局数组对象。它基于泛型定义，要求存储在连续的内存空间中。Vector的初始容量为10，支持动态扩容，每次扩容时容量增加为原来的两倍。
+[Vector/apis-arkts/js-apis-vector.md)是一种连续存储结构，用于创建全局数组对象。它基于泛型定义，要求存储在连续的内存空间中。Vector的初始容量为10，支持动态扩容，每次扩容时容量增加为原来的两倍。
 
-Vector和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相似，都基于数组实现，但Vector提供了更多操作数组的接口，支持操作符访问，增加get/set接口，提供更完善的校验和容错机制，满足不同的场景需求。
+Vector和[ArrayList/apis-arkts/js-apis-arraylist.md)相似，都基于数组实现，但Vector提供了更多操作数组的接口，支持操作符访问，增加get/set接口，提供更完善的校验和容错机制，满足不同的场景需求。
 
 Vector支持增、删、改、查操作，常用API如下：
 

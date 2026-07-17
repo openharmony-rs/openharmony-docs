@@ -8,11 +8,11 @@ UI显示异常问题主要是通过分析UI布局信息来定位。当前分析U
 
 **组件树**
 
-从API version 9开始，可以使用[getInspectorTree](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9)接口获取组件树及其属性。
+从API version 9开始，可以使用[getInspectorTree/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9)接口获取组件树及其属性。
 
 **单个节点**
 
-从API version 10开始，可以使用[getRectangleById](../reference/apis-arkui/arkts-apis-uicontext-componentutils.md#getrectanglebyid)接口获取组件的大小、位置、平移、缩放、旋转及仿射矩阵等属性信息。
+从API version 10开始，可以使用[getRectangleById/apis-arkui/arkts-apis-uicontext-componentutils.md#getrectanglebyid)接口获取组件的大小、位置、平移、缩放、旋转及仿射矩阵等属性信息。
 
 ## 解决UI显示异常问题
 

@@ -15,9 +15,9 @@ Web组件引用第三方H5页面加载的视频，当单击视频全屏时，视
 | :--------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
 | ![web_fullscreen1](figures/web_fullscreen1.png)| ![web_fullscreen2](figures/web_fullscreen2.png) | ![web_fullscreen3](figures/web_fullscreen3.png) |
 
-Web组件可通过[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenenter9)和[onFullScreenExit](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenexit9)回调监听全屏按键的单击事件。其中，onFullScreenEnter表示Web组件进入全屏模式，onFullScreenExit表示Web组件退出全屏模式。在这两个监听事件中，可根据具体业务场景调整某些全局变量，例如组件的显隐状态、组件的margin属性等，以实现退出和进入沉浸式全屏模式的界面效果，如图1和图3所示。
+Web组件可通过[onFullScreenEnter/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenenter9)和[onFullScreenExit/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenexit9)回调监听全屏按键的单击事件。其中，onFullScreenEnter表示Web组件进入全屏模式，onFullScreenExit表示Web组件退出全屏模式。在这两个监听事件中，可根据具体业务场景调整某些全局变量，例如组件的显隐状态、组件的margin属性等，以实现退出和进入沉浸式全屏模式的界面效果，如图1和图3所示。
 
-可见性[visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)是ArkUI提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。
+可见性[visibility/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)是ArkUI提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。
 
 <!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
 

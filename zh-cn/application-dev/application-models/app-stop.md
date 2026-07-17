@@ -33,9 +33,9 @@
 ## 用户主动退出
 
 ### 用户通过返回退出
-**场景示例**：在手机类设备上，用户按下返回键时，系统回调UIAbility的[onBackPressed()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackpressed10)回调，该回调默认返回true，系统将UIAbility置于后台而不是销毁。
+**场景示例**：在手机类设备上，用户按下返回键时，系统回调UIAbility的[onBackPressed()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackpressed10)回调，该回调默认返回true，系统将UIAbility置于后台而不是销毁。
 
-**开发实现**：开发者可以通过重写[onBackPressed()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackpressed10)方法返回true来改变返回键的默认行为，例如在onBackPressed()中调用terminateSelf()，实现按下返回键时直接退出UIAbility。
+**开发实现**：开发者可以通过重写[onBackPressed()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackpressed10)方法返回true来改变返回键的默认行为，例如在onBackPressed()中调用terminateSelf()，实现按下返回键时直接退出UIAbility。
 
 **开发步骤**：
 
@@ -83,7 +83,7 @@ export default class OnBackPressedAbility extends UIAbility {
 
 **场景示例**：用户点击应用内自定义的"退出"按钮；或者由UIAbility承载的广告页面倒计时结束，需要自动关闭。
 
-**开发实现**：开发者可以在业务逻辑执行完毕后，通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself-1)接口主动退出当前UIAbility。
+**开发实现**：开发者可以在业务逻辑执行完毕后，通过调用[terminateSelf()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself-1)接口主动退出当前UIAbility。
 
 
 **开发步骤**：

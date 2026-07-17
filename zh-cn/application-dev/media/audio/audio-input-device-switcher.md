@@ -8,13 +8,13 @@
 
 从API version 21开始，支持音频输入设备路由切换。
 
-当应用进行音频输入时，系统会根据音频流类型选择对应的输入设备（SOURCE_TYPE_MIC：内置MIC录音；SOURCE_TYPE_VOICE_COMMUNICATION：跟随当前输出设备）。若默认输入设备不满足应用需求，应用可通过[setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21)或[selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)实现音频输入设备路由切换。
+当应用进行音频输入时，系统会根据音频流类型选择对应的输入设备（SOURCE_TYPE_MIC：内置MIC录音；SOURCE_TYPE_VOICE_COMMUNICATION：跟随当前输出设备）。若默认输入设备不满足应用需求，应用可通过[setBluetoothAndNearlinkPreferredRecordCategory/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21)或[selectMediaInputDevice/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)实现音频输入设备路由切换。
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
 
 ## 选择使用蓝牙或者星闪设备进行录音
 
-应用可使用AudioSessionManager的[setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21)设置应用程序的输入设备选择偏好，当蓝牙或星闪设备上线时生效。
+应用可使用AudioSessionManager的[setBluetoothAndNearlinkPreferredRecordCategory/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21)设置应用程序的输入设备选择偏好，当蓝牙或星闪设备上线时生效。
 
 > **说明：**
 >
@@ -44,7 +44,7 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
 
 ## 选择任意设备进行录音
 
-应用可使用AudioSessionManager的[selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)选择输入设备。
+应用可使用AudioSessionManager的[selectMediaInputDevice/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)选择输入设备。
 
 > **说明：**
 >

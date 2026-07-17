@@ -20,7 +20,7 @@
 | OH_DisplaySoloist_Stop (OH_DisplaySoloist * displaySoloist)  | 停止请求下一次VSync信号，并停止调用回调函数callback。 |
 | OH_DisplaySoloist_SetExpectedFrameRateRange (OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range) | 设置期望帧率范围。                                    |
 
-详细的接口说明请参考[NativeDisplaySoloist](../reference/apis-arkgraphics2d/capi-nativedisplaysoloist.md)。
+详细的接口说明请参考[NativeDisplaySoloist/apis-arkgraphics2d/capi-nativedisplaysoloist.md)。
 
 ## 开发示例
 

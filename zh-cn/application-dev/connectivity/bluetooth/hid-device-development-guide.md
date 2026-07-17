@@ -108,7 +108,7 @@ try {
 **3. 传输数据**<br>
 
 **3.1 发送数据**<br>
-连接建立后，应用可与HID主机进行数据交互。[sendReport](../../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md#sendreport23)用于主动向主机发送输入报告（如按键事件、坐标数据），[replyReport](../../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md#replyreport23)用于响应主机发送的获取报告请求，返回当前设备状态或特性数据；[reportError](../../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md#reporterror23)用于在报告传输失败或格式错误时向主机通知异常情况。
+连接建立后，应用可与HID主机进行数据交互。[sendReport/apis-connectivity-kit/js-apis-bluetooth-hid.md#sendreport23)用于主动向主机发送输入报告（如按键事件、坐标数据），[replyReport/apis-connectivity-kit/js-apis-bluetooth-hid.md#replyreport23)用于响应主机发送的获取报告请求，返回当前设备状态或特性数据；[reportError/apis-connectivity-kit/js-apis-bluetooth-hid.md#reporterror23)用于在报告传输失败或格式错误时向主机通知异常情况。
 
 ```ts
 let hidDevice: hid.HidDeviceProfile = hid.createHidDeviceProfile();

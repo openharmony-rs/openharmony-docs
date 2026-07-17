@@ -14,11 +14,11 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入media模块。
 
-   创建录像输出流的SurfaceId以及录像输出的数据，都需要用到系统提供的media接口[@ohos.multimedia.media (媒体服务)](../../reference/apis-media-kit/arkts-apis-media.md)能力，导入media接口的方法如下。
+   创建录像输出流的SurfaceId以及录像输出的数据，都需要用到系统提供的media接口[@ohos.multimedia.media (媒体服务)/apis-media-kit/arkts-apis-media.md)能力，导入media接口的方法如下。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -28,7 +28,7 @@
 
 2. 创建Surface。
 
-   系统提供的media接口可以创建一个录像[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)实例，通过该实例的[getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9)方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
+   系统提供的media接口可以创建一个录像[AVRecorder/apis-media-kit/arkts-apis-media-AVRecorder.md)实例，通过该实例的[getInputSurface/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9)方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
 
    <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -44,17 +44,17 @@
 
 3. 创建录像输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的videoProfiles属性，可获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过[createVideoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createvideooutput)方法创建录像输出流。
+   通过[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的videoProfiles属性，可获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过[createVideoOutput/apis-camera-kit/arkts-apis-camera-CameraManager.md#createvideooutput)方法创建录像输出流。
 
    > **说明：**
    >
    > 1.预览流与录像输出流的分辨率的宽高比要保持一致，如示例代码中宽高比为640:480 = 4:3，则需要预览流中的分辨率的宽高比也为4:3，如分辨率选择640:480，或960:720，或1440:1080，以此类推。
    >
-   > 2.在设置预览输出流的分辨率宽高前，需要先通过[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)查询视频帧支持可配置的宽高范围。
+   > 2.在设置预览输出流的分辨率宽高前，需要先通过[AVRecorderProfile/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)查询视频帧支持可配置的宽高范围。
    >
-   > 3.获取录像旋转角度的方法：通过[VideoOutput](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md)中的[getVideoRotation](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#getvideorotation12)方法获取rotation实际的值。
+   > 3.获取录像旋转角度的方法：通过[VideoOutput/apis-camera-kit/arkts-apis-camera-VideoOutput.md)中的[getVideoRotation/apis-camera-kit/arkts-apis-camera-VideoOutput.md#getvideorotation12)方法获取rotation实际的值。
    >
-   > 4.录像输出流帧率通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的videoProfiles属性，选择[VideoProfile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#videoprofile)中[frameRateRange](../../reference/apis-camera-kit/arkts-apis-camera-i.md#frameraterange)满足实际业务需求的录像输出流videoProfile。
+   > 4.录像输出流帧率通过[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的videoProfiles属性，选择[VideoProfile/apis-camera-kit/arkts-apis-camera-i.md#videoprofile)中[frameRateRange/apis-camera-kit/arkts-apis-camera-i.md#frameraterange)满足实际业务需求的录像输出流videoProfile。
 
    <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
@@ -128,15 +128,15 @@
 
    > **说明：**
    >
-   >  - 在设置预览流帧率时，需要先通过[getActiveFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#getactiveframerate12)查询当前录像流的帧率。
+   >  - 在设置预览流帧率时，需要先通过[getActiveFrameRate/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#getactiveframerate12)查询当前录像流的帧率。
    >
    > - 当录像流已设置过范围帧率时，预览流帧率必须设置与其相同的范围帧率。
    >
    > - 当录像流已设置过固定帧率时，预览流帧率要设置成录像帧率的约数，且必须也为固定帧率。
    >
-   > - 部分设备前置镜头录像分辨率若选择3280*2160，录像模式下可能会出现视频倒置的情况，建议在[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，避免该问题发生。
+   > - 部分设备前置镜头录像分辨率若选择3280*2160，录像模式下可能会出现视频倒置的情况，建议在[commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)后设置视频防抖[setVideoStabilizationMode/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，避免该问题发生。
 
-   先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
+   先通过videoOutput的[start/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
 
    <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
@@ -159,7 +159,7 @@
 
 5. 停止录像。
 
-   先通过avRecorder的[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)方法停止录像，再通过videoOutput的[stop](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1)方法停止录像输出流。
+   先通过avRecorder的[stop/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)方法停止录像，再通过videoOutput的[stop/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1)方法停止录像输出流。
 
    <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
@@ -201,7 +201,7 @@
   });
   ```
 
-- 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
   <!-- @[camera_video_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   

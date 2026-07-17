@@ -25,7 +25,7 @@
 
 ## 接口说明
 
-以下是键值型数据库持久化功能的相关接口，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
+以下是键值型数据库持久化功能的相关接口，更多接口及使用方式请见[分布式键值数据库/apis-arkdata/js-apis-distributedKVStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -151,7 +151,7 @@
    })
    ```
 
-3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。示例代码如下所示：
+3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。示例代码如下所示：
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    

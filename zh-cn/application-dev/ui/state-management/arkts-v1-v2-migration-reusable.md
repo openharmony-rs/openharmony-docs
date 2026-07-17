@@ -32,9 +32,9 @@
 
 **迁移规则**
 
-- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 
-- [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
+- [aboutToReuse/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
 
 ```ts
 // V1原组件
@@ -90,7 +90,7 @@ struct ReusableV2Component {
 
 **迁移规则**
 
-在组件复用V1中，使用[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)属性标记组件的复用组。迁移到组件复用V2后，需更换使用[reuse](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse)属性。
+在组件复用V1中，使用[reuseId/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)属性标记组件的复用组。迁移到组件复用V2后，需更换使用[reuse/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse)属性。
 
 ```ts
 // V1原写法

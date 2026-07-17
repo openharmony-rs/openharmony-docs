@@ -15,9 +15,9 @@ ECC的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-a
 
 ## 指定非压缩点数据转换为压缩点数据
 
-1. 指定Uint8Array类型的ECC非压缩点数据，调用[ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12)，构造[Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)对象，用于生成点数据。
+1. 指定Uint8Array类型的ECC非压缩点数据，调用[ECCKeyUtil.convertPoint/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12)，构造[Point/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)对象，用于生成点数据。
 
-2. 调用[ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12)，获取压缩点数据。
+2. 调用[ECCKeyUtil.getEncodedPoint/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12)，获取压缩点数据。
 
 <!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/CompressedPointData.ets) -->
 
@@ -38,13 +38,13 @@ function eccPointUncompressedToCompressed() {
 
 ## 指定压缩点数据获取密钥对象
 
-1. 指定Uint8Array类型的ECC压缩点数据，调用[ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12)，得到[Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)对象，用于密钥对象生成。
-2. 调用[ECCKeyUtil.genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11)，指定曲线名'NID_brainpoolP256r1'，生成ECC的非对称公共密钥参数。
-3. 构造[ECCPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccpubkeyspec10)对象，用于指定ECC算法中公钥包含的参数。ECCPubKeySpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型[AsyKeySpecType.PUBLIC_KEY_SPEC](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeyspectype10)，参数pk指定为得到的point对象。
-4. 通过得到的公钥参数，调用[createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10)，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
-5. 调用[AsyKeyGeneratorBySpec.generatePubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkey10)，得到指定的公钥。
-6. 调用[ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12)，得到非压缩点数据。
-7. 调用[PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10)，获取ECC算法中公钥pk的x坐标。
+1. 指定Uint8Array类型的ECC压缩点数据，调用[ECCKeyUtil.convertPoint/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12)，得到[Point/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)对象，用于密钥对象生成。
+2. 调用[ECCKeyUtil.genECCCommonParamsSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11)，指定曲线名'NID_brainpoolP256r1'，生成ECC的非对称公共密钥参数。
+3. 构造[ECCPubKeySpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccpubkeyspec10)对象，用于指定ECC算法中公钥包含的参数。ECCPubKeySpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型[AsyKeySpecType.PUBLIC_KEY_SPEC/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeyspectype10)，参数pk指定为得到的point对象。
+4. 通过得到的公钥参数，调用[createAsyKeyGeneratorBySpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10)，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
+5. 调用[AsyKeyGeneratorBySpec.generatePubKey/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkey10)，得到指定的公钥。
+6. 调用[ECCKeyUtil.getEncodedPoint/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12)，得到非压缩点数据。
+7. 调用[PubKey.getAsyKeySpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10)，获取ECC算法中公钥pk的x坐标。
 
 <!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets) -->
 

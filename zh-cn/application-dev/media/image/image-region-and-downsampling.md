@@ -21,7 +21,7 @@
 
 ## 区域解码
 
-区域解码通过设置解码参数desiredRegion，指定需要解码的矩形区域。解码器仅解码该区域的数据。参数详情请参考[Region](../../reference/apis-image-kit/arkts-apis-image-i.md#region8)。
+区域解码通过设置解码参数desiredRegion，指定需要解码的矩形区域。解码器仅解码该区域的数据。参数详情请参考[Region/apis-image-kit/arkts-apis-image-i.md#region8)。
 
 ### 开发步骤
 
@@ -65,7 +65,7 @@
 - **JPEG、PNG、HEIF格式**：解码过程中采用下采样策略，按最优采样率解码，解码效率更高。
 - **其他格式**：先完整解码原图，再缩放至期望尺寸。
 
-参数详情请参考[DecodingOptions](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)。
+参数详情请参考[DecodingOptions/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)。
 
 ### 开发步骤
 
@@ -105,7 +105,7 @@
 
 **推荐使用CROP_FIRST**：先裁剪再缩放可精确控制裁剪区域，保证不同格式解码效果一致。
 
-参数详情请参考[CropAndScaleStrategy](../../reference/apis-image-kit/arkts-apis-image-e.md#cropandscalestrategy18)。
+参数详情请参考[CropAndScaleStrategy/apis-image-kit/arkts-apis-image-e.md#cropandscalestrategy18)。
 
 ### 开发步骤
 

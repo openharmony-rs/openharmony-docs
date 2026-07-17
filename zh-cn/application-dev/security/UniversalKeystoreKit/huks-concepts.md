@@ -27,7 +27,7 @@
 
 ![keyt](figures/keyt.png)
 
-其中，密钥算法的值取自枚举类[HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)。
+其中，密钥算法的值取自枚举类[HuksKeyAlg/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)。
 
 ```ts
 let rsa2048KeyPairMaterial = new Uint8Array([

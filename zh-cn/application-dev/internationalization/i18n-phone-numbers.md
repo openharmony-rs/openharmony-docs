@@ -15,7 +15,7 @@
 
 ## 开发步骤
 
-电话号码格式化通过[PhoneNumberFormat](../reference/apis-localization-kit/js-apis-i18n.md#phonenumberformat8)的[format](../reference/apis-localization-kit/js-apis-i18n.md#format8)接口实现。
+电话号码格式化通过[PhoneNumberFormat/apis-localization-kit/js-apis-i18n.md#phonenumberformat8)的[format/apis-localization-kit/js-apis-i18n.md#format8)接口实现。
 
 **电话号码格式化选项**
 

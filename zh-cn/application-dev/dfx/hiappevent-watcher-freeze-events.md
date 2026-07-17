@@ -32,15 +32,15 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
+| [configEventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启应用冻屏事件的页面切换日志采集。
+开发者可以通过设置[EventPolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启应用冻屏事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| appFreezePolicy | [AppFreezePolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。 |
+| appFreezePolicy | [AppFreezePolicy/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。 |
 
 **参数设置示例**
 
@@ -90,7 +90,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
 | process_life_time | number | 故障进程存活时间。<br>**说明**：从API 22开始支持。 |
-| external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
+| external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
 | page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明
@@ -163,4 +163,4 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 ### 参数设置说明
 
-开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见[hiAppEvent.setEventParam](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventparam12)。
+开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见[hiAppEvent.setEventParam/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventparam12)。

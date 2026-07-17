@@ -95,7 +95,7 @@ external_log日志文件所在目录的空间已达到上限，但无法删除ex
 
 - 开发者如果有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以手动删除external_log日志文件。文件目录为/data/app/el2/100/log/应用包名/hiappevent（或resourcelimit或watchdog）。
 
-- 开发者若没有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以在应用代码中删除external_log日志文件。代码示例如下。文件删除接口可以参考[fileIo.unlink](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiounlink)。
+- 开发者若没有权限访问设备的“/data/app/el2/100/log/应用包名”目录，可以在应用代码中删除external_log日志文件。代码示例如下。文件删除接口可以参考[fileIo.unlink/apis-core-file-kit/js-apis-file-fs.md#fileiounlink)。
 
 **代码示例**
 
@@ -182,4 +182,4 @@ HiAppEvent remove file:/data/storage/el2/log/hiappevent/APP_CRASH_1751081104816_
 
 **接口参考链接**
 
-[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)。
+[hiAppEvent.addWatcher/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)。

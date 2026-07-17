@@ -11,8 +11,8 @@
 ## 基本概念
 
 * 拖拽操作：在可响应拖出的组件上长按并滑动以触发拖拽行为，当用户释放手指或鼠标时，拖拽操作即告结束。
-* 拖拽背景（背板）：用户拖动数据时的形象化表示。开发者可以通过[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)的[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)或[DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)进行设置，也可以通过[dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)通用属性进行自定义。
-* 拖拽内容：被拖动的数据，使用UDMF统一API [UnifiedData](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) 进行封装，确保数据的一致性和安全性。
+* 拖拽背景（背板）：用户拖动数据时的形象化表示。开发者可以通过[onDragStart/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)的[CustomBuilder/apis-arkui/arkui-ts/ts-types.md#custombuilder8)或[DragItemInfo/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)进行设置，也可以通过[dragPreview/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)通用属性进行自定义。
+* 拖拽内容：被拖动的数据，使用UDMF统一API [UnifiedData/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) 进行封装，确保数据的一致性和安全性。
 * 拖出对象：触发拖拽操作并提供数据的组件，通常具有响应拖拽的特性。
 * 拖入目标：可接收并处理拖动数据的组件，能够根据拖入的数据执行相应的操作。
 * 拖拽点：鼠标或手指与屏幕的接触位置，用于判断是否进入组件范围。判定依据是接触点是否位于组件的范围内。
@@ -23,7 +23,7 @@
 
 ### ​手势拖拽
 
-在手势长按触发拖拽的场景中，ArkUI在发起拖拽前会校验当前组件是否具备拖拽功能。若为默认支持拖出能力的组件（[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)），需要判断是否设置了[draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)为true<!--Del-->（对于默认支持拖出能力的组件，可通过[获取指定配置的资源](../quick-start/resource-categories-and-access.md#获取指定配置的资源)初始化其[draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)属性的默认值）<!--DelEnd-->。其他组件则需额外确认是否已设置[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)回调函数。在满足上述条件后，长按时间达到或超过500ms即可触发拖拽，而长按800ms时，系统开始执行预览图的浮起动效。若与Menu功能结合使用，并在[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)中通过isShow控制其显示与隐藏，建议避免在用户操作800ms后才控制菜单显示，此举可能引发非预期的行为。
+在手势长按触发拖拽的场景中，ArkUI在发起拖拽前会校验当前组件是否具备拖拽功能。若为默认支持拖出能力的组件（[Search/apis-arkui/arkui-ts/ts-basic-components-search.md)、[TextInput/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[RichEditor/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)、[Text/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Image/apis-arkui/arkui-ts/ts-basic-components-image.md)、[Hyperlink/apis-arkui/arkui-ts/ts-container-hyperlink.md)），需要判断是否设置了[draggable/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)为true<!--Del-->（对于默认支持拖出能力的组件，可通过[获取指定配置的资源](../quick-start/resource-categories-and-access.md#获取指定配置的资源)初始化其[draggable/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)属性的默认值）<!--DelEnd-->。其他组件则需额外确认是否已设置[onDragStart/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)回调函数。在满足上述条件后，长按时间达到或超过500ms即可触发拖拽，而长按800ms时，系统开始执行预览图的浮起动效。若与Menu功能结合使用，并在[bindMenu/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)中通过isShow控制其显示与隐藏，建议避免在用户操作800ms后才控制菜单显示，此举可能引发非预期的行为。
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
@@ -39,20 +39,20 @@
 
 | **回调事件** | **说明**|
 | ---------------- | ------------------------|
-| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | 拖出的组件产生拖出动作时，该回调触发。<br>该回调可以感知拖拽行为的发起，开发者可以在onDragStart方法中设置拖拽过程中传递的数据，并自定义拖拽的背板图像。建议开发者采用[DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)中的pixelMap字段来返回背板图像，避免使用[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)，因为后者可能会带来额外的性能开销。|
-| [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | 当拖拽操作的拖拽点进入组件的范围时，如果该组件监听了[onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop)事件，此回调将会被触发。|
-| [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove) | 当拖拽点在组件范围内移动时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在这一过程中，可以通过调用[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)中的setResult方法来影响系统在部分场景下的外观表现：<br>1. 设置DragResult.DROP\_ENABLED，组件允许落入。<br>2. 设置DragResult.DROP\_DISABLED，组件不允许落入。|
-| [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | 当拖拽点移出组件范围时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在以下两种情况下，系统默认不会触发onDragLeave事件：<br>1. 父组件移动到子组件。<br>2. 目标组件与当前组件布局有重叠。<br>API version 12开始可通过[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法严格触发onDragLeave事件。|
-| [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) | 当用户在组件范围内释放拖拽操作时，此回调会被触发。开发者需在此回调中通过DragEvent的setResult方法来设置拖拽结果，否则在拖出方组件的onDragEnd方法中，通过getResult方法获取的将只是默认的处理结果DragResult.DRAG\_FAILED。<br>此回调是开发者干预系统默认拖入处理行为的关键点，系统会优先执行开发者定义的onDrop回调。通过在onDrop回调中调用setResult方法，开发者可以告知系统如何处理被拖拽的数据。<br>1. 设置 DragResult.DRAG\_SUCCESSFUL，数据完全由开发者自己处理，系统不进行处理。<br>2. 设置DragResult.DRAG\_FAILED，数据不再由系统继续处理。<br>3. 设置DragResult.DRAG\_CANCELED，系统也不需要进行数据处理。<br>4. 设置DragResult.DROP\_ENABLED或DragResult.DROP\_DISABLED会被忽略，等同于设置DragResult.DRAG\_SUCCESSFUL。|
-| [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | 当用户释放拖拽时，拖拽活动终止，发起拖出动作的组件将触发该回调函数。|
-| [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) | 当触发拖拽事件的不同阶段时，绑定此事件的组件会触发该回调函数。<br>开发者可利用此方法，在拖拽开始前的不同阶段，根据[PreDragStatus](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#predragstatus12枚举说明)枚举准备相应数据。<br>1. ACTION\_DETECTING\_STATUS：拖拽手势启动阶段。按下50ms时触发。<br>2. READY\_TO\_TRIGGER\_DRAG\_ACTION：拖拽准备完成，可发起拖拽阶段。按下500ms时触发。<br>3. PREVIEW\_LIFT\_STARTED：拖拽浮起动效发起阶段。按下800ms时触发。<br>4. PREVIEW\_LIFT\_FINISHED：拖拽浮起动效结束阶段。浮起动效完全结束时触发。<br>5. PREVIEW\_LANDING\_STARTED：拖拽落回动效发起阶段。落回动效发起时触发。<br>6. PREVIEW\_LANDING\_FINISHED：拖拽落回动效结束阶段。落回动效结束时触发。<br>7. ACTION\_CANCELED\_BEFORE\_DRAG：拖拽浮起落位动效中断。已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬起时触发。<br>8. PREPARING\_FOR_DRAG\_DETECTION<sup>18+</sup>：拖拽准备完成，可发起拖拽阶段。按下350ms时触发。|
-| [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) | 当拖拽对象悬停在绑定此事件的组件上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。<br>开发者可以通过[SpringLoadingContext](../reference/apis-arkui/js-apis-arkui-dragController.md#springloadingcontext20)配置回调的上下文信息，包括当前悬停检测的状态、一次悬停检测中的回调通知次数、拖拽信息和配置信息等。<br>从API version 20开始，支持调用该接口。|
+| [onDragStart/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | 拖出的组件产生拖出动作时，该回调触发。<br>该回调可以感知拖拽行为的发起，开发者可以在onDragStart方法中设置拖拽过程中传递的数据，并自定义拖拽的背板图像。建议开发者采用[DragItemInfo/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)中的pixelMap字段来返回背板图像，避免使用[CustomBuilder/apis-arkui/arkui-ts/ts-types.md#custombuilder8)，因为后者可能会带来额外的性能开销。|
+| [onDragEnter/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | 当拖拽操作的拖拽点进入组件的范围时，如果该组件监听了[onDrop/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop)事件，此回调将会被触发。|
+| [onDragMove/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove) | 当拖拽点在组件范围内移动时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在这一过程中，可以通过调用[DragEvent/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)中的setResult方法来影响系统在部分场景下的外观表现：<br>1. 设置DragResult.DROP\_ENABLED，组件允许落入。<br>2. 设置DragResult.DROP\_DISABLED，组件不允许落入。|
+| [onDragLeave/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | 当拖拽点移出组件范围时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在以下两种情况下，系统默认不会触发onDragLeave事件：<br>1. 父组件移动到子组件。<br>2. 目标组件与当前组件布局有重叠。<br>API version 12开始可通过[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[setDragEventStrictReportingEnabled/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法严格触发onDragLeave事件。|
+| [onDrop/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) | 当用户在组件范围内释放拖拽操作时，此回调会被触发。开发者需在此回调中通过DragEvent的setResult方法来设置拖拽结果，否则在拖出方组件的onDragEnd方法中，通过getResult方法获取的将只是默认的处理结果DragResult.DRAG\_FAILED。<br>此回调是开发者干预系统默认拖入处理行为的关键点，系统会优先执行开发者定义的onDrop回调。通过在onDrop回调中调用setResult方法，开发者可以告知系统如何处理被拖拽的数据。<br>1. 设置 DragResult.DRAG\_SUCCESSFUL，数据完全由开发者自己处理，系统不进行处理。<br>2. 设置DragResult.DRAG\_FAILED，数据不再由系统继续处理。<br>3. 设置DragResult.DRAG\_CANCELED，系统也不需要进行数据处理。<br>4. 设置DragResult.DROP\_ENABLED或DragResult.DROP\_DISABLED会被忽略，等同于设置DragResult.DRAG\_SUCCESSFUL。|
+| [onDragEnd/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | 当用户释放拖拽时，拖拽活动终止，发起拖出动作的组件将触发该回调函数。|
+| [onPreDrag/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) | 当触发拖拽事件的不同阶段时，绑定此事件的组件会触发该回调函数。<br>开发者可利用此方法，在拖拽开始前的不同阶段，根据[PreDragStatus/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#predragstatus12枚举说明)枚举准备相应数据。<br>1. ACTION\_DETECTING\_STATUS：拖拽手势启动阶段。按下50ms时触发。<br>2. READY\_TO\_TRIGGER\_DRAG\_ACTION：拖拽准备完成，可发起拖拽阶段。按下500ms时触发。<br>3. PREVIEW\_LIFT\_STARTED：拖拽浮起动效发起阶段。按下800ms时触发。<br>4. PREVIEW\_LIFT\_FINISHED：拖拽浮起动效结束阶段。浮起动效完全结束时触发。<br>5. PREVIEW\_LANDING\_STARTED：拖拽落回动效发起阶段。落回动效发起时触发。<br>6. PREVIEW\_LANDING\_FINISHED：拖拽落回动效结束阶段。落回动效结束时触发。<br>7. ACTION\_CANCELED\_BEFORE\_DRAG：拖拽浮起落位动效中断。已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬起时触发。<br>8. PREPARING\_FOR_DRAG\_DETECTION<sup>18+</sup>：拖拽准备完成，可发起拖拽阶段。按下350ms时触发。|
+| [onDragSpringLoading/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) | 当拖拽对象悬停在绑定此事件的组件上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。<br>开发者可以通过[SpringLoadingContext/apis-arkui/js-apis-arkui-dragController.md#springloadingcontext20)配置回调的上下文信息，包括当前悬停检测的状态、一次悬停检测中的回调通知次数、拖拽信息和配置信息等。<br>从API version 20开始，支持调用该接口。|
 
 ## 拖拽事件
 
-拖拽回调函数可以接收[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)对象。通过该对象发出拖拽事件，其中包含了拖拽行为的详细信息，以及拖出时组件向系统提供的数据等。
+拖拽回调函数可以接收[DragEvent/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)对象。通过该对象发出拖拽事件，其中包含了拖拽行为的详细信息，以及拖出时组件向系统提供的数据等。
 
-通过[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)支持的get方法可以获取拖拽行为的详细信息。下表展示了在相应的拖拽回调中，这些get方法是否能够返回有效数据。
+通过[DragEvent/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)支持的get方法可以获取拖拽行为的详细信息。下表展示了在相应的拖拽回调中，这些get方法是否能够返回有效数据。
 | 回调事件 | onDragStart | onDragEnter | onDragMove | onDragLeave | onDrop | onDragEnd |
 | - | - | - | - | - | - | - |
 | getData         |—|—|—|—| 支持 |—|
@@ -71,7 +71,7 @@
 | getGlobalDisplayX/Y | 支持 | 支持 | 支持 | 支持 | 支持 |—|
 | behavior        |—|—|—|—|—| 支持 |
 
-[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)支持相关set方法向系统传递信息，这些信息部分会影响系统对UI或数据的处理方式。下表列出了set方法应该在回调的哪个阶段执行才会被系统接收并处理。
+[DragEvent/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)支持相关set方法向系统传递信息，这些信息部分会影响系统对UI或数据的处理方式。下表列出了set方法应该在回调的哪个阶段执行才会被系统接收并处理。
 | 回调事件 | onDragStart | onDragEnter | onDragMove | onDragLeave | onDrop |
 | - | - | - | - | - | - |
 | useCustomDropAnimation |—|—|—|—| 支持 |
@@ -82,22 +82,22 @@
 
 ## 拖拽背板图
 
-在拖拽移动过程中显示的背板图并非组件本身，而是表示用户拖动的数据，开发者可将其设定为任意可显示的图像。具体而言，onDragStart回调中返回的[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)或[DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)的pixelMap字段可以用于设置拖拽移动过程中的背板图，而浮起图则默认采用组件本身的截图。[dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)属性中设定的CustomBuilder或DragItemInfo的pixelMap字段可以用于配置浮起和拖拽过程的背板图。若开发者未配置背板图，系统将自动采用组件本身的截图作为拖拽和浮起时的背板图。
+在拖拽移动过程中显示的背板图并非组件本身，而是表示用户拖动的数据，开发者可将其设定为任意可显示的图像。具体而言，onDragStart回调中返回的[CustomBuilder/apis-arkui/arkui-ts/ts-types.md#custombuilder8)或[DragItemInfo/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)的pixelMap字段可以用于设置拖拽移动过程中的背板图，而浮起图则默认采用组件本身的截图。[dragPreview/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)属性中设定的CustomBuilder或DragItemInfo的pixelMap字段可以用于配置浮起和拖拽过程的背板图。若开发者未配置背板图，系统将自动采用组件本身的截图作为拖拽和浮起时的背板图。
 
-拖拽背板图当前支持设置透明度、圆角、阴影和模糊，具体用法见[拖拽控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md)。
+拖拽背板图当前支持设置透明度、圆角、阴影和模糊，具体用法见[拖拽控制/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md)。
 
 ![pixelMap](figures/pixelMap.png)
 
 **约束限制：**
 
-* 对于容器组件，如果内部内容通过[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)等接口使得绘制区域超出了容器组件范围，则系统截图无法截取到范围之外的内容。此种情况下，如果一定要浮起，即拖拽背板能够包含范围之外的内容，则可考虑通过扩大容器范围或自定义方式实现。
-* 不论是使用CustomBuilder或是系统默认截图方式，截图都暂时无法应用[scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate)等图形变换效果。
+* 对于容器组件，如果内部内容通过[position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)等接口使得绘制区域超出了容器组件范围，则系统截图无法截取到范围之外的内容。此种情况下，如果一定要浮起，即拖拽背板能够包含范围之外的内容，则可考虑通过扩大容器范围或自定义方式实现。
+* 不论是使用CustomBuilder或是系统默认截图方式，截图都暂时无法应用[scale/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[rotate/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate)等图形变换效果。
 
 ## 使用拖拽能力
 
 ### 通用拖拽适配
 
-如下以[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件为例，介绍组件拖拽开发的基本步骤，以及开发中需要注意的事项。
+如下以[Image/apis-arkui/arkui-ts/ts-basic-components-image.md)组件为例，介绍组件拖拽开发的基本步骤，以及开发中需要注意的事项。
 
 1. 组件使能拖拽。
 
@@ -148,7 +148,7 @@
 
 2. 自定义拖拽背板图。
    
-   可以通过在长按50ms时触发的回调中设置[onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)回调函数，来提前准备自定义拖拽背板图的pixmap。
+   可以通过在长按50ms时触发的回调中设置[onPreDrag/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)回调函数，来提前准备自定义拖拽背板图的pixmap。
    
    <!-- @[set_custom_drag_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -160,7 +160,7 @@
    })
    ```
 
-   pixmap的生成可以调用[this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)来实现。
+   pixmap的生成可以调用[this.getUIContext().getComponentSnapshot().createFromBuilder()/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)来实现。
 
    <!-- @[drag_hilog_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -201,7 +201,7 @@
    }
    ```
 
-3. 若开发者需确保触发[onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
+3. 若开发者需确保触发[onDragLeave/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
 
    <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
@@ -232,7 +232,7 @@
 
 4. 拖拽过程显示角标样式。
 
-   通过设置[allowDrop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)来定义接收的数据类型，这将影响角标显示。当拖拽的数据符合定义的允许落入的数据类型时，角标会显示加号。当拖拽的数据类型不在允许范围内时，可强制设置为显示禁用角标。若未设置allowDrop，则角标不会显示加号。以下代码示例表示仅接收UnifiedData中定义的HYPERLINK和PLAIN\_TEXT类型数据，其他类型数据将被禁止落入。
+   通过设置[allowDrop/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)来定义接收的数据类型，这将影响角标显示。当拖拽的数据符合定义的允许落入的数据类型时，角标会显示加号。当拖拽的数据类型不在允许范围内时，可强制设置为显示禁用角标。若未设置allowDrop，则角标不会显示加号。以下代码示例表示仅接收UnifiedData中定义的HYPERLINK和PLAIN\_TEXT类型数据，其他类型数据将被禁止落入。
 
    <!-- @[drag_allow_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -241,7 +241,7 @@
      uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
    ```
 
-   在实现onDrop回调的情况下，还可以在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
+   在实现onDrop回调的情况下，还可以在onDragMove中设置[DragResult/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
 
    <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -499,7 +499,7 @@ export struct DefaultDrag {
 
 ### 多选拖拽适配
 
-从API version 12开始，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)组件和[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中的[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)和[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)组件支持多选与拖拽功能。目前，仅支持onDragStart的触发方式。
+从API version 12开始，[Grid/apis-arkui/arkui-ts/ts-container-grid.md)组件和[List/apis-arkui/arkui-ts/ts-container-list.md)组件中的[GridItem/apis-arkui/arkui-ts/ts-container-griditem.md)和[ListItem/apis-arkui/arkui-ts/ts-container-listitem.md)组件支持多选与拖拽功能。目前，仅支持onDragStart的触发方式。
 
 以下以Grid为例，详细介绍实现多选拖拽的基本步骤，以及在开发过程中需要注意的事项。
 
@@ -529,7 +529,7 @@ export struct DefaultDrag {
    }
    ```
 
-   多选拖拽功能默认处于关闭状态。若要启用此功能，需在[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)接口的options参数中，将isMultiSelectionEnabled设置为true，以表明当前组件支持多选。此外，options还包含defaultAnimationBeforeLifting参数，用于控制组件浮起前的默认效果。将该参数设置为true，组件在浮起前将展示一个默认的缩小动画效果。
+   多选拖拽功能默认处于关闭状态。若要启用此功能，需在[dragPreviewOptions/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)接口的options参数中，将isMultiSelectionEnabled设置为true，以表明当前组件支持多选。此外，options还包含defaultAnimationBeforeLifting参数，用于控制组件浮起前的默认效果。将该参数设置为true，组件在浮起前将展示一个默认的缩小动画效果。
 
    <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -538,7 +538,7 @@ export struct DefaultDrag {
      { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
    ```
 
-   为了确保选中状态，应将GridItem子组件的[selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10)属性设置为true。例如，可以通过调用[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)来设置特定组件为选中状态。
+   为了确保选中状态，应将GridItem子组件的[selected/apis-arkui/arkui-ts/ts-container-griditem.md#selected10)属性设置为true。例如，可以通过调用[onClick/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)来设置特定组件为选中状态。
 
    <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -553,7 +553,7 @@ export struct DefaultDrag {
 
 2. 优化多选拖拽性能。
 
-   在多选拖拽操作中，当多选触发聚拢动画效果时，系统会截取当前屏幕内显示的选中组件图像。如果选中组件数量过多，可能会造成较高的性能消耗。为了优化性能，多选拖拽功能支持从[dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)中获取截图，用以实现聚拢动画效果，从而有效节省系统资源。
+   在多选拖拽操作中，当多选触发聚拢动画效果时，系统会截取当前屏幕内显示的选中组件图像。如果选中组件数量过多，可能会造成较高的性能消耗。为了优化性能，多选拖拽功能支持从[dragPreview/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11)中获取截图，用以实现聚拢动画效果，从而有效节省系统资源。
 
    <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -563,7 +563,7 @@ export struct DefaultDrag {
    })
    ```
 
-   截图的获取可以在选中组件时通过调用[this.getUIContext().getComponentSnapshot().get()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12)方法获取。以下示例通过获取组件对应id的方法进行截图。
+   截图的获取可以在选中组件时通过调用[this.getUIContext().getComponentSnapshot().get()/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12)方法获取。以下示例通过获取组件对应id的方法进行截图。
 
    <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -591,7 +591,7 @@ export struct DefaultDrag {
 
 3. 多选显示效果。
 
-    通过[stateStyles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles)可以设置选中态和非选中态的显示效果，方便区分。
+    通过[stateStyles/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles)可以设置选中态和非选中态的显示效果，方便区分。
 
     <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
@@ -615,7 +615,7 @@ export struct DefaultDrag {
 
 4. 适配数量角标。
 
-    多选拖拽的数量角标当前需要应用使用[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)中的numberBadge参数设置，开发者需要根据当前选中的节点数量来设置数量角标。
+    多选拖拽的数量角标当前需要应用使用[dragPreviewOptions/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)中的numberBadge参数设置，开发者需要根据当前选中的节点数量来设置数量角标。
 
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
@@ -737,7 +737,7 @@ build() {
 
 ### 适配自定义落位动效
 
-当开发者需要实现自定义落位动效时，可以禁用系统的默认动效。从API version 18开始，ArkUI提供了[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口，用于自定义落位动效。以下以Image组件为例，详细介绍使用[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口的基本步骤，以及开发过程中需要注意的事项。
+当开发者需要实现自定义落位动效时，可以禁用系统的默认动效。从API version 18开始，ArkUI提供了[executeDropAnimation/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口，用于自定义落位动效。以下以Image组件为例，详细介绍使用[executeDropAnimation/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口的基本步骤，以及开发过程中需要注意的事项。
 
 1. 组件拖拽设置。
 
@@ -761,7 +761,7 @@ build() {
 
 2. 设置自定义动效。
 
-   自定义落位动效通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口设置动画相关的参数来实现。例如，可以改变组件的大小。
+   自定义落位动效通过[animateTo/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口设置动画相关的参数来实现。例如，可以改变组件的大小。
 
    <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
@@ -779,7 +779,7 @@ build() {
 
 3. 拖拽落位适配动效。
 
-   设置onDrop回调函数，接收拖拽数据。拖拽落位动效通过[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)函数执行，设置[useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#属性)为true禁用系统默认动效。
+   设置onDrop回调函数，接收拖拽数据。拖拽落位动效通过[executeDropAnimation/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)函数执行，设置[useCustomDropAnimation/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#属性)为true禁用系统默认动效。
 
    <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
@@ -952,7 +952,7 @@ export struct DropAnimationExample {
     
 2. 多选拖拽选中时添加数据。
 
-   当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
+   当数据量较大时，建议在选择数据时通过[addRecord/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
    <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    
@@ -1009,7 +1009,7 @@ export struct DropAnimationExample {
 
 4. 数据准备未完成时设置主动阻塞拖拽。
 
-   在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出[WAITING](../reference/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18)信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到[dragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
+   在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出[WAITING/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18)信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到[dragEvent/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
 
    <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    
@@ -1225,7 +1225,7 @@ Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的
 
 ### 触发原理
 
-要实现这些能力，需要在组件上注册[onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口，并传入一个用于处理拖拽悬停触发通知的回调。使用该接口后，该组件将如同注册了onDrop接口的组件一样，成为一个可拖入目标，并且遵循与onDrop相同的命中检测规则，即：在悬停位置下方，仅有一个组件可以接收拖拽事件响应，并且总是首个被检测到的组件。
+要实现这些能力，需要在组件上注册[onDragSpringLoading/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口，并传入一个用于处理拖拽悬停触发通知的回调。使用该接口后，该组件将如同注册了onDrop接口的组件一样，成为一个可拖入目标，并且遵循与onDrop相同的命中检测规则，即：在悬停位置下方，仅有一个组件可以接收拖拽事件响应，并且总是首个被检测到的组件。
 
 Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -> 结束。在结束之前，如果用户重新开始移动，会自动中断Spring Loading，并通知应用取消。如果在悬停检测期间移动，且尚未进入Spring Loading状态，则不会触发取消通知。
 
@@ -1252,7 +1252,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 1. 触发参数自定义
 
-  [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
+  [onDragSpringLoading/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
   
   configuration参数必须在检测开始前准备就绪。系统一旦启动Spring Loading检测过程，将不再从该参数读取配置。然而，可以通过回调中传入的context对象中的updateCon  figuration方法动态更新配置。此动态更新仅对当前触发有效，不会影响通过configuration的配置。
   
@@ -1308,7 +1308,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 1.准备一些组件
 
-  为了简化示例，准备一个可拖出文字的组件以供用户拖出待搜索的文字，并添加一个按钮控件，用于响应Spring Loading来进一步激活视图。被激活的视图通过[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)实现，内部配置有一个输入框控件用于接收拖拽文本，以及一个文本组件用于展示搜索结果。
+  为了简化示例，准备一个可拖出文字的组件以供用户拖出待搜索的文字，并添加一个按钮控件，用于响应Spring Loading来进一步激活视图。被激活的视图通过[bindSheet/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)实现，内部配置有一个输入框控件用于接收拖拽文本，以及一个文本组件用于展示搜索结果。
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   

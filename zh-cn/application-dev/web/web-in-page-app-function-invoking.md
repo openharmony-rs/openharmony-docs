@@ -10,11 +10,11 @@
 
 ## 如何建立应用侧与H5侧的交互通道
 
-注册应用侧代码有两种方式，一种在Web组件初始化调用，使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口。另外一种在Web组件初始化完成后调用，使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口。两种方式都需要和[deleteJavaScriptRegister](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
+注册应用侧代码有两种方式，一种在Web组件初始化调用，使用[javaScriptProxy()/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口。另外一种在Web组件初始化完成后调用，使用[registerJavaScriptProxy()/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口。两种方式都需要和[deleteJavaScriptRegister/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
 
 在下面的示例中，将test()方法注册在前端页面中， 该函数可以在前端页面触发运行。
 
-应用侧使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口注册示例：
+应用侧使用[javaScriptProxy()/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口注册示例：
 
 <!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
@@ -75,11 +75,11 @@ struct WebComponent {
 }
 ```
 
-  应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册。
+  应用侧使用[registerJavaScriptProxy()/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册。
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后，在下次加载或者重新加载后生效。
+  > - 使用[registerJavaScriptProxy()/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后，在下次加载或者重新加载后生效。
 
 - 示例1：
 

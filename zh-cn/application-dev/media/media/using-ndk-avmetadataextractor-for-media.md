@@ -16,7 +16,7 @@
 target_link_libraries(entry PUBLIC libavmetadata_extractor.so libace_napi.z.so )
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[OH_AVFormat/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libace_napi.z.so )
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
-使用[OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)接口将nativePixelMap对象转换为PixelMapnapi对象、[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放OH_PixelmapNative对象资源，需引入如下头文件。
+使用[OH_PixelmapNative_ConvertPixelmapNativeToNapi()/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)接口将nativePixelMap对象转换为PixelMapnapi对象、[OH_PixelmapNative_Release()/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放OH_PixelmapNative对象资源，需引入如下头文件。
 ```C++
 #include <multimedia/image_framework/image/pixelmap_native.h>
 ```
@@ -46,20 +46,20 @@ target_link_libraries(entry PUBLIC libpixelmap.so libpixelmap_ndk.z.so)
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
-开发者通过引入[avmetadata_extractor.h](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md)、[avmetadata_extractor_base.h](../../reference/apis-media-kit/capi-avmetadata-extractor-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用获取元数据相关API。
+开发者通过引入[avmetadata_extractor.h/apis-media-kit/capi-avmetadata-extractor-h.md)、[avmetadata_extractor_base.h/apis-media-kit/capi-avmetadata-extractor-base-h.md)和[native_averrors.h/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用获取元数据相关API。
 
-详细的API说明请参考[AVMetadataExtractor API参考](../../reference/apis-media-kit/capi-avmetadataextractor.md)。
+详细的API说明请参考[AVMetadataExtractor API参考/apis-media-kit/capi-avmetadataextractor.md)。
 
-1. 使用[OH_AVMetadataExtractor_Create()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_create)创建实例。
+1. 使用[OH_AVMetadataExtractor_Create()/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_create)创建实例。
     ```c
     #include <multimedia/player_framework/avmetadata_extractor.h>
     // 创建OH_AVMetadataExtractor实例。
     OH_AVMetadataExtractor* mainExtractor = OH_AVMetadataExtractor_Create();
     ```
 
-2. 设置媒体资源的文件描述符：调用[OH_AVMetadataExtractor_SetFDSource()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)。
+2. 设置媒体资源的文件描述符：调用[OH_AVMetadataExtractor_SetFDSource()/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)。
 
-   不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
+   不同AVMetadataExtractor或者[AVImageGenerator/apis-media-kit/capi-avimagegenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
     ```c
     #include "napi/native_api.h"
     #include <multimedia/player_framework/avmetadata_extractor.h>
@@ -81,9 +81,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     }
     ```
 
-3. 获取元数据：调用[OH_AVMetadataExtractor_FetchMetadata()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata)。
+3. 获取元数据：调用[OH_AVMetadataExtractor_FetchMetadata()/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata)。
 
-   需要先调用OH_AVFormat_Create()函数创建一个OH_AVFormat对象，通过访问该对象的各个键值对，可以获取到元数据。使用完成需要调用OH_AVFormat_Destroy销毁该对象，防止产生内存泄漏，详细使用方法请参阅[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)。
+   需要先调用OH_AVFormat_Create()函数创建一个OH_AVFormat对象，通过访问该对象的各个键值对，可以获取到元数据。使用完成需要调用OH_AVFormat_Destroy销毁该对象，防止产生内存泄漏，详细使用方法请参阅[OH_AVFormat/apis-avcodec-kit/capi-native-avformat-h.md)。
    ```c
    // 获取元数据。
    avErrCode = OH_AVMetadataExtractor_FetchMetadata(mainExtractor, avMetadata);
@@ -98,9 +98,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     OH_AVFormat_GetIntValue(avMetadata, OH_AVMETADATA_EXTRACTOR_VIDEO_HEIGHT, &height);
     ```
 
-5. 对于音频资源而言，除了可以通过OH_AVFormat对象来获取音频资源的标题、时长等元数据外，还可以获取专辑封面（例如，调用[OH_AVMetadataExtractor_FetchAlbumCover()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchalbumcover)，可以获取到专辑封面）。
+5. 对于音频资源而言，除了可以通过OH_AVFormat对象来获取音频资源的标题、时长等元数据外，还可以获取专辑封面（例如，调用[OH_AVMetadataExtractor_FetchAlbumCover()/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchalbumcover)，可以获取到专辑封面）。
 
-   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
+   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
     ```c
     #include <multimedia/image_framework/image/pixelmap_native.h>
     #include <multimedia/player_framework/avmetadata_extractor.h>
@@ -111,7 +111,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     avErrCode = OH_AVMetadataExtractor_FetchAlbumCover(mainExtractor, &pixelMap);
     ```
 
-6. 释放资源：调用[OH_AVMetadataExtractor_Release()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_release)销毁实例，释放资源。
+6. 释放资源：调用[OH_AVMetadataExtractor_Release()/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_release)销毁实例，释放资源。
     ```c
     // 释放OH_AVMetadataExtractor资源。
     OH_AVMetadataExtractor_Release(mainExtractor);

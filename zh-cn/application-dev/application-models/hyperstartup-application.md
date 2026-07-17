@@ -45,7 +45,7 @@
 
 ![image](./figures/hyperstartup-application-process.png)
 
-包含在快启点内的流程有：AbilityStage模块加载、[AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](../arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
+包含在快启点内的流程有：AbilityStage模块加载、[AbilityStage.onCreate/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](../arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
 
 ## 接口说明
 
@@ -53,10 +53,10 @@
 
 | 接口名 | 功能描述 |
 | --- | --- |
-| [onLaunchFromHyperSnap](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行。 |
-| [onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调。 |
-| [setHyperSnapEnabled](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动。 |
-| [requestRebuildHyperSnap](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化。 |
+| [onLaunchFromHyperSnap/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行。 |
+| [onAboutToCreateAbility/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调。 |
+| [setHyperSnapEnabled/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动。 |
+| [requestRebuildHyperSnap/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化。 |
 
 ## 快启启动适配
 

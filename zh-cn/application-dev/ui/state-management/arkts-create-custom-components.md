@@ -18,7 +18,7 @@
 
 >**说明：**
 >
->从API version 24开始，可通过在应用工程的[module.json5配置文件](./../../quick-start/module-configuration-file.md)中配置[metadata标签](./../../quick-start/module-configuration-file.md#metadata标签)来使能自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。具体配置方式为：新增[name](./../../quick-start/module-configuration-file.md#metadata标签)为`"enableCustomComponentCrossAbility"`，[value](./../../quick-start/module-configuration-file.md#metadata标签)为`"true"`。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。
+>从API version 24开始，可通过在应用工程的[module.json5配置文件](./../../quick-start/module-configuration-file.md)中配置[metadata标签](./../../quick-start/module-configuration-file.md#metadata标签)来使能自定义组件支持跨[Ability/apis-ability-kit/js-apis-app-ability-ability.md)迁移。具体配置方式为：新增[name](./../../quick-start/module-configuration-file.md#metadata标签)为`"enableCustomComponentCrossAbility"`，[value](./../../quick-start/module-configuration-file.md#metadata标签)为`"true"`。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。
 
 
 ## 自定义组件的基本用法
@@ -100,7 +100,7 @@ struct ParentComponent {
   >
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   >
-  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的EntryOptions<sup>10+</sup>参数。
+  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的EntryOptions<sup>10+</sup>参数。
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
@@ -123,7 +123,7 @@ struct ParentComponent {
   | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
   | routeName | string | 否 | 是 | 表示作为命名路由页面的名字。 |
   | storage | [LocalStorage](arkts-localstorage.md) | 否 | 是 | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。 |
-  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是 | 是否使用[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的[LocalStorage](arkts-localstorage.md)实例对象。false：不使用共享的[LocalStorage](arkts-localstorage.md)实例对象。 |
+  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是 | 是否使用[loadContent/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的[LocalStorage](arkts-localstorage.md)实例对象。false：不使用共享的[LocalStorage](arkts-localstorage.md)实例对象。 |
 
   > **说明：**
   >
@@ -147,7 +147,7 @@ struct ParentComponent {
   >
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   > 
-  > 从API version 11开始，\@Component可以接受一个[ComponentOptions参数](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)。
+  > 从API version 11开始，\@Component可以接受一个[ComponentOptions参数/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)。
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
@@ -176,7 +176,7 @@ struct ParentComponent {
 - 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Once](arkts-new-once.md)、[\@Event](arkts-new-event.md)、[\@Provider](arkts-new-provider-and-consumer.md)、[\@Consumer](arkts-new-provider-and-consumer.md)等。
 - \@ComponentV2装饰的自定义组件暂不支持[LocalStorage](arkts-localstorage.md)等现有自定义组件的能力。
 - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
-- \@ComponentV2支持一个可选的[ComponentOptions参数](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)，来实现[组件冻结功能](arkts-custom-components-freezeV2.md)。
+- \@ComponentV2支持一个可选的[ComponentOptions参数/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)，来实现[组件冻结功能](arkts-custom-components-freezeV2.md)。
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
@@ -627,7 +627,7 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
 
 需要注意：
 1. 不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
-2. 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。例如使用[OH_ArkUI_GetNodeHandleFromNapiValue](../../reference/apis-arkui/capi-native-node-napi-h.md)获取[ArkUI_NodeHandle](../../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)场景中，如果OH_ArkUI_GetNodeHandleFromNapiValue接收的参数为[ComponentContent](../../reference/apis-arkui/js-apis-arkui-ComponentContent.md)，获取到的ArkUI_NodeHandle为ComponentContent下子树的第一个[FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md)节点，中间跳过的自定义组件将不会在组件树上，不支持迁移。
+2. 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。例如使用[OH_ArkUI_GetNodeHandleFromNapiValue/apis-arkui/capi-native-node-napi-h.md)获取[ArkUI_NodeHandle/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)场景中，如果OH_ArkUI_GetNodeHandleFromNapiValue接收的参数为[ComponentContent/apis-arkui/js-apis-arkui-ComponentContent.md)，获取到的ArkUI_NodeHandle为ComponentContent下子树的第一个[FrameNode/apis-arkui/js-apis-arkui-frameNode.md)节点，中间跳过的自定义组件将不会在组件树上，不支持迁移。
 
 <!-- @[EnableCustomComponentCrossAbility_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -663,7 +663,7 @@ export default class EntryAbility extends UIAbility {
    - 自定义组件`ComponentUnderBuilderNode`在被挂载到新的Ability下时，会通知切换Ability的自定义组件更新其所属的Ability实例ID。
    - 点击自定义组件`ComponentUnderBuilderNode`内```Button('change message')```，改变状态变量`message`的值，触发```@Watch('messageUpdate') ```回调和UI刷新。
 
-下面的示例包含了创建新的Ability流程，具体示例可参考[starAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)。
+下面的示例包含了创建新的Ability流程，具体示例可参考[starAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)。
 
 <!-- @[EnableCustomComponentCrossAbility_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/Index.ets) -->
 

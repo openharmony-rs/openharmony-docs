@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-应用开发者可以使用[@ohos.account.appAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md)管理本应用的账号数据。
+应用开发者可以使用[@ohos.account.appAccount/apis-basic-services-kit/js-apis-appAccount.md)管理本应用的账号数据。
 
 能力限制：应用卸载场景下，被卸载应用的账号数据会被删除；本地账号删除场景下，被删除本地账号下的所有应用的账号数据会被删除。
 
@@ -54,7 +54,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-2. 调用[createAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#createaccount9)接口，根据名称和选项创建应用账号。
+2. 调用[createAccount/apis-basic-services-kit/js-apis-appAccount.md#createaccount9)接口，根据名称和选项创建应用账号。
 
    <!-- @[create_an_app_account_based_on_the_name_and_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -74,7 +74,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 具体开发实例如下：
 
 
-调用[getAllAccounts](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getallaccounts9)接口查询账号列表。
+调用[getAllAccounts/apis-basic-services-kit/js-apis-appAccount.md#getallaccounts9)接口查询账号列表。
 
    <!-- @[query_the_account_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -104,7 +104,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-2. 调用[getCredential](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getcredential9)接口，获取账号的凭据。
+2. 调用[getCredential/apis-basic-services-kit/js-apis-appAccount.md#getcredential9)接口，获取账号的凭据。
 
    <!-- @[obtain_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -119,7 +119,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-3. 调用[setCredential](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setcredential9)接口，设置账号的凭据。
+3. 调用[setCredential/apis-basic-services-kit/js-apis-appAccount.md#setcredential9)接口，设置账号的凭据。
 
    <!-- @[set_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -148,7 +148,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-2. 调用[setCustomData](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setcustomdata9)接口，设置账号的自定义数据。
+2. 调用[setCustomData/apis-basic-services-kit/js-apis-appAccount.md#setcustomdata9)接口，设置账号的自定义数据。
 
    <!-- @[set_up_custom_data_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -162,7 +162,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-3. 调用[getCustomData](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getcustomdata9)接口，获取账号的自定义数据。
+3. 调用[getCustomData/apis-basic-services-kit/js-apis-appAccount.md#getcustomdata9)接口，获取账号的自定义数据。
 
    <!-- @[obtain_the_custom_data_of_the_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -193,7 +193,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-2. 调用[setAuthToken](../../reference/apis-basic-services-kit/js-apis-appAccount.md#setauthtoken9)接口，设置指定授权类型的授权令牌。
+2. 调用[setAuthToken/apis-basic-services-kit/js-apis-appAccount.md#setauthtoken9)接口，设置指定授权类型的授权令牌。
 
    <!-- @[set_the_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -207,7 +207,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 ```
 
 
-3. 调用[getAuthToken](../../reference/apis-basic-services-kit/js-apis-appAccount.md#getauthtoken9)接口，获取指定授权类型的授权令牌。
+3. 调用[getAuthToken/apis-basic-services-kit/js-apis-appAccount.md#getauthtoken9)接口，获取指定授权类型的授权令牌。
 
    <!-- @[obtain_an_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 
@@ -228,7 +228,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 具体开发实例如下：
 
-指定要删除的账号名称，调用[removeAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md#removeaccount9)接口删除账号。
+指定要删除的账号名称，调用[removeAccount/apis-basic-services-kit/js-apis-appAccount.md#removeaccount9)接口删除账号。
 
    <!-- @[delete_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
 

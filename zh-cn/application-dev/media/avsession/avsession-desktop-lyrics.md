@@ -10,29 +10,29 @@
 
 ## 具体步骤
 
-1. 调用[isDesktopLyricSupported](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口判断系统/设备是否支持歌词组件能力，返回true时表示支持歌词组件能力。
+1. 调用[isDesktopLyricSupported/apis-avsession-kit/arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口判断系统/设备是否支持歌词组件能力，返回true时表示支持歌词组件能力。
 
 2. 创建[AVSession实例](../avsession/avsession-access-scene.md#创建不同类型的会话)，通过[设置元数据](../avsession/avsession-access-scene.md#设置元数据)填入LRC格式的歌词数据，包含时间标签及对应的歌词文本。不符合LRC格式的歌词数据，系统可能存在解析异常导致无法展示歌词内容。
 
-3. 调用[enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口进行使能需传入参数true打开歌词组件。
+3. 调用[enableDesktopLyric/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口进行使能需传入参数true打开歌词组件。
 
 4. 歌词组件使能打开后默认是隐藏（不显示），应用可以通过接口主动显示/隐藏歌词组件，具体接口如下：
    
-   **设置可见性：** 调用[setDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23)接口，设置歌词组件是否显示。
+   **设置可见性：** 调用[setDesktopLyricVisible/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23)接口，设置歌词组件是否显示。
 
-   **查询可见性：** 调用[isDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#isdesktoplyricvisible23)接口，查询当前歌词组件是否显示。
+   **查询可见性：** 调用[isDesktopLyricVisible/apis-avsession-kit/arkts-apis-avsession-AVSession.md#isdesktoplyricvisible23)接口，查询当前歌词组件是否显示。
 
 5. 歌词组件使能打开后默认是非锁定状态，应用可以通过接口主动锁定/解锁歌词组件，具体接口如下：
 
-   **设置锁定状态：** 调用[setDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23)接口，设置歌词窗口是否锁定（限制歌词窗口的拖动、设置等操作）。
+   **设置锁定状态：** 调用[setDesktopLyricState/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23)接口，设置歌词窗口是否锁定（限制歌词窗口的拖动、设置等操作）。
    
-   **查询锁定状态：** 调用[getDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#getdesktoplyricstate23)接口，查询当前歌词组件锁定状态。
+   **查询锁定状态：** 调用[getDesktopLyricState/apis-avsession-kit/arkts-apis-avsession-AVSession.md#getdesktoplyricstate23)接口，查询当前歌词组件锁定状态。
 
 6. 应用可以通过系统提供的回调监听歌词组件可见性、锁定状态的变化，具体接口如下：
 
-   **监听歌词组件是否可见：** 监听[onDesktopLyricVisibilityChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ondesktoplyricvisibilitychanged23)，回调返回false，表示当前歌词组件不可见；回调返回true，表示当前歌词组件可见。如需取消该监听，使用[offDesktopLyricVisibilityChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#offdesktoplyricvisibilitychanged23)接口。
+   **监听歌词组件是否可见：** 监听[onDesktopLyricVisibilityChanged/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ondesktoplyricvisibilitychanged23)，回调返回false，表示当前歌词组件不可见；回调返回true，表示当前歌词组件可见。如需取消该监听，使用[offDesktopLyricVisibilityChanged/apis-avsession-kit/arkts-apis-avsession-AVSession.md#offdesktoplyricvisibilitychanged23)接口。
 
-   **监听歌词组件是否锁定：** 监听[onDesktopLyricStateChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ondesktoplyricstatechanged23)，回调返回false，表示当前歌词组件未锁定；回调返回true，表示当前歌词组件锁定。如需取消该监听，使用[offDesktopLyricStateChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#offdesktoplyricstatechanged23)接口。
+   **监听歌词组件是否锁定：** 监听[onDesktopLyricStateChanged/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ondesktoplyricstatechanged23)，回调返回false，表示当前歌词组件未锁定；回调返回true，表示当前歌词组件锁定。如需取消该监听，使用[offDesktopLyricStateChanged/apis-avsession-kit/arkts-apis-avsession-AVSession.md#offdesktoplyricstatechanged23)接口。
 
    > **说明：**
    >

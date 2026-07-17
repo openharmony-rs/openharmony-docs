@@ -14,11 +14,11 @@
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 ## 签名开发步骤
-1. 调用[OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。
-2. 调用[OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init)，使用私钥（OH_CryptoPrivKey）初始化Sign实例。
-3. 调用[OH_CryptoSign_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update)，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。
-4. 调用[OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final)，获取签名后的数据。
-5. 调用[OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)等释放内存。
+1. 调用[OH_CryptoSign_Create/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。
+2. 调用[OH_CryptoSign_Init/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init)，使用私钥（OH_CryptoPrivKey）初始化Sign实例。
+3. 调用[OH_CryptoSign_Update/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update)，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。
+4. 调用[OH_CryptoSign_Final/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final)，获取签名后的数据。
+5. 调用[OH_CryptoSign_Destroy/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)等释放内存。
 
 ```c++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -89,13 +89,13 @@ static OH_Crypto_ErrCode doTestRsaPssSignSeg() {
 
 ## 验签开发步骤
 
-1. 调用[OH_CryptoVerify_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_create)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Verify实例，用于完成验签操作。
+1. 调用[OH_CryptoVerify_Create/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_create)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Verify实例，用于完成验签操作。
 
-2. 调用[OH_CryptoVerify_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_init)，使用公钥（OH_CryptoPubKey）初始化Verify实例。
+2. 调用[OH_CryptoVerify_Init/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_init)，使用公钥（OH_CryptoPubKey）初始化Verify实例。
 
-3. 调用[OH_CryptoVerify_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_update)，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update，如果数据量较小，可以直接调用OH_CryptoVerify_Final接口一次性传入。
+3. 调用[OH_CryptoVerify_Update/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_update)，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update，如果数据量较小，可以直接调用OH_CryptoVerify_Final接口一次性传入。
 
-4. 调用[OH_CryptoVerify_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final)，对数据进行验签。
+4. 调用[OH_CryptoVerify_Final/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final)，对数据进行验签。
 
 <!-- @[pss_verify_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pss_verification_tool.cpp) -->
 

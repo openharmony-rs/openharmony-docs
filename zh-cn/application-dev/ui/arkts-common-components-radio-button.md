@@ -7,12 +7,12 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Radio是单选框组件，通常用于提供相应的用户交互选择项，同一组的Radio中只有一个可以被选中。具体用法请参考[Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md)。
+Radio是单选框组件，通常用于提供相应的用户交互选择项，同一组的Radio中只有一个可以被选中。具体用法请参考[Radio/apis-arkui/arkui-ts/ts-basic-components-radio.md)。
 
 
 ## 创建单选框
 
-Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
+Radio通过调用[RadioOptions/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
 
 ```ts
 Radio(options: {value: string, group: string})
@@ -36,7 +36,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 ## 添加事件
 
-除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
+除支持[通用事件/apis-arkui/arkui-ts/ts-component-general-events.md)外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
 
 <!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 

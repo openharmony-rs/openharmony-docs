@@ -25,7 +25,7 @@
 
 | 名称                                                                                                                                                                                                                                                                                                                                | 描述                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| int [OH_Ability_CreateNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocess) (const char *libName, [OH_Ability_OnNativeChildProcessStarted](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_onnativechildprocessstarted) onProcessStarted) | 创建子进程并加载参数中指定的动态链接库文件，进程启动结果通过参数中的回调函数onProcessStarted异步通知。回调函数运行在独立线程，如果需要访问共享资源在实现时需要注意线程同步，由于系统对于单个进程拥有的回调线程数量有限制，因此不建议在回调函数中执行高耗时操作。 |
+| int [OH_Ability_CreateNativeChildProcess/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocess) (const char *libName, [OH_Ability_OnNativeChildProcessStarted/apis-ability-kit/capi-native-child-process-h.md#oh_ability_onnativechildprocessstarted) onProcessStarted) | 创建子进程并加载参数中指定的动态链接库文件，进程启动结果通过参数中的回调函数onProcessStarted异步通知。回调函数运行在独立线程，如果需要访问共享资源在实现时需要注意线程同步，由于系统对于单个进程拥有的回调线程数量有限制，因此不建议在回调函数中执行高耗时操作。 |
 
 > **说明：**
 >
@@ -164,7 +164,7 @@ libchild_process.so
     }
     ```
 
-    回调函数传递的第二个参数OHIPCRemoteProxy对象，会与子进程实现的**NativeChildProcess_OnConnect**方法返回的OHIPCRemoteStub对象间建立IPC通道，具体使用方法参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述；OHIPCRemoteProxy对象使用完毕后，需要调用[OH_IPCRemoteProxy_Destroy](../reference/apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)函数释放。
+    回调函数传递的第二个参数OHIPCRemoteProxy对象，会与子进程实现的**NativeChildProcess_OnConnect**方法返回的OHIPCRemoteStub对象间建立IPC通道，具体使用方法参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述；OHIPCRemoteProxy对象使用完毕后，需要调用[OH_IPCRemoteProxy_Destroy/apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)函数释放。
 
 4. 主进程-启动Native子进程。
 
@@ -229,7 +229,7 @@ libchild_process.so
 
 | 名称                                                                                                                                                                                                                                                                                                                                | 描述                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) (const char \*entry, [NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md) args, [NativeChildProcess_Options](../reference/apis-ability-kit/capi-nativechildprocess-options.md) options, int32_t *pid) | 启动子进程并返回子进程pid。 |
+| [Ability_NativeChildProcess_ErrCode/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_StartNativeChildProcess/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) (const char \*entry, [NativeChildProcess_Args/apis-ability-kit/capi-nativechildprocess-args.md) args, [NativeChildProcess_Options/apis-ability-kit/capi-nativechildprocess-options.md) options, int32_t *pid) | 启动子进程并返回子进程pid。 |
 
 ### 开发步骤
 
@@ -250,7 +250,7 @@ libchild_process.so
 
 1. 子进程-实现必要的导出方法。
 
-    在子进程中，实现参数为[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
+    在子进程中，实现参数为[NativeChildProcess_Args/apis-ability-kit/capi-nativechildprocess-args.md)的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
 
     <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
     
@@ -381,7 +381,7 @@ libchild_process.so
 
 | 名称                                                                                                                                                                                                                                                                                                                                | 描述                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| [NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)* [OH_Ability_GetCurrentChildProcessArgs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)() | 返回子进程自身的启动参数。 |
+| [NativeChildProcess_Args/apis-ability-kit/capi-nativechildprocess-args.md)* [OH_Ability_GetCurrentChildProcessArgs/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)() | 返回子进程自身的启动参数。 |
 
 ### 开发步骤
 
@@ -402,7 +402,7 @@ libchild_process.so
 
 **获取启动参数**
 
-[OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)创建子进程后，子进程内的任意so和任意子线程可以通过调用[OH_Ability_GetCurrentChildProcessArgs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)()获取到子进程的启动参数[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)，便于操作相关的文件描述符。
+[OH_Ability_StartNativeChildProcess/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)创建子进程后，子进程内的任意so和任意子线程可以通过调用[OH_Ability_GetCurrentChildProcessArgs/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)()获取到子进程的启动参数[NativeChildProcess_Args/apis-ability-kit/capi-nativechildprocess-args.md)，便于操作相关的文件描述符。
 
 <!-- @[child_get_start_params_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
 
@@ -456,7 +456,7 @@ void Main(NativeChildProcess_Args args)
 
 | 名称                                                                                                                                                                                                                                                                                                                                | 描述                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid) | 终止当前进程创建的子进程，该接口既可以用来终止[Native子进程](../application-models/ability-terminology.md#native子进程)，也可以用来终止[ArkTS子进程](../application-models/ability-terminology.md#arkts子进程)。|
+| [Ability_NativeChildProcess_ErrCode/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_KillChildProcess/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid) | 终止当前进程创建的子进程，该接口既可以用来终止[Native子进程](../application-models/ability-terminology.md#native子进程)，也可以用来终止[ArkTS子进程](../application-models/ability-terminology.md#arkts子进程)。|
 
 ### 开发步骤
 
@@ -470,7 +470,7 @@ void Main(NativeChildProcess_Args args)
 
 **终止子进程**
 
-通过[native_child_process](../reference/apis-ability-kit/capi-native-child-process-h.md)和[childProcessManager](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md)（非SELF_FORK模式）中的接口创建子进程后，主进程可以调用[OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid)根据传入的pid终止相应的子进程。
+通过[native_child_process/apis-ability-kit/capi-native-child-process-h.md)和[childProcessManager/apis-ability-kit/js-apis-app-ability-childProcessManager.md)（非SELF_FORK模式）中的接口创建子进程后，主进程可以调用[OH_Ability_KillChildProcess/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid)根据传入的pid终止相应的子进程。
 
 <!-- @[kill_child_process_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
 

@@ -23,7 +23,7 @@
 
 - **页面路由和组件导航**
 
-  开发者可以将应用的用户界面设计为多个功能页面[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)，页面通过栈结构管理，并通过导航容器[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)完成页面间的调度管理如跳转、回退等操作，以实现应用内的功能解耦。
+  开发者可以将应用的用户界面设计为多个功能页面[NavDestination/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)，页面通过栈结构管理，并通过导航容器[Navigation/apis-arkui/arkui-ts/ts-basic-components-navigation.md)完成页面间的调度管理如跳转、回退等操作，以实现应用内的功能解耦。
 
 - **图形**
 
@@ -115,7 +115,7 @@
 
 - **默认单位**
 
-  表示长度的入参单位默认为vp，即入参为number类型、以及[Length](../reference/apis-arkui/arkui-ts/ts-types.md#length)和[Dimension](../reference/apis-arkui/arkui-ts/ts-types.md#dimension10)类型中的number单位为vp。
+  表示长度的入参单位默认为vp，即入参为number类型、以及[Length/apis-arkui/arkui-ts/ts-types.md#length)和[Dimension/apis-arkui/arkui-ts/ts-types.md#dimension10)类型中的number单位为vp。
 
 - **异常值处理**
 

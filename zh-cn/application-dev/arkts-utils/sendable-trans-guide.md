@@ -304,7 +304,7 @@
 
 ## 使用makeObserved将Sendable对象转换为可观察对象
 
-使用[UIUtils.makeObserved()](../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换为可观察对象。
+使用[UIUtils.makeObserved()/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换为可观察对象。
 
 - 定义并发任务。
 - 使用`taskpool.execute()`获取并发任务返回的Sendable对象，再通过`UIUtils.makeObserved()`转为可观察对象。

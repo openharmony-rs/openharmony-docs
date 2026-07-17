@@ -33,12 +33,12 @@
 
 - 多端协同需遵循[分布式跨设备组件启动规则](component-startup-rules.md#分布式跨设备组件启动规则)。
 
-- 为了获得最佳体验，使用[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)传输的数据建议在100KB以下。
+- 为了获得最佳体验，使用[want/apis-ability-kit/js-apis-app-ability-want.md)传输的数据建议在100KB以下。
 
 
 ## 通过跨设备启动UIAbility和ServiceExtensionAbility组件实现多端协同（无返回数据）
 
-在设备A上通过发起端应用提供的启动按钮，启动设备B上指定的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)与[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)。
+在设备A上通过发起端应用提供的启动按钮，启动设备B上指定的[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)与[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)。
 
 
 ### 接口说明
@@ -99,7 +99,7 @@
     }
     ```
 
-4. 设置目标组件参数，调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口，启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)。
+4. 设置目标组件参数，调用[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口，启动[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -170,7 +170,7 @@
     }
     ```
 
-5. 当设备A发起端应用不需要设备B上的[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)时，可调用[stopServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability-1)接口退出。（该接口不支持[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的退出，UIAbility由用户手动通过任务管理退出）
+5. 当设备A发起端应用不需要设备B上的[ServiceExtensionAbility/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)时，可调用[stopServiceExtensionAbility/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability-1)接口退出。（该接口不支持[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)的退出，UIAbility由用户手动通过任务管理退出）
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -229,7 +229,7 @@
 
 ## 通过跨设备启动UIAbility组件实现多端协同（获取返回数据）
 
-在设备A上通过应用提供的启动按钮，启动设备B上指定的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)，当设备B上的UIAbility退出后，会将返回值发回设备A上的发起端应用。
+在设备A上通过应用提供的启动按钮，启动设备B上指定的[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)，当设备B上的UIAbility退出后，会将返回值发回设备A上的发起端应用。
 
 
 ### 接口说明
@@ -249,7 +249,7 @@
 
 2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
-3. 在发起端设置目标组件参数，调用[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)接口启动目标端UIAbility，异步回调中的data用于接收目标端UIAbility停止自身后返回给调用方UIAbility的信息。getRemoteDeviceId方法参照[通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据](#通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据)。
+3. 在发起端设置目标组件参数，调用[startAbilityForResult()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult)接口启动目标端UIAbility，异步回调中的data用于接收目标端UIAbility停止自身后返回给调用方UIAbility的信息。getRemoteDeviceId方法参照[通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据](#通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据)。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -320,7 +320,7 @@
     }
     ```
 
-4. 在目标端[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)任务完成后，调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，将数据返回给发起端的UIAbility。
+4. 在目标端[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)任务完成后，调用[terminateSelfWithResult()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，将数据返回给发起端的UIAbility。
 
     ```ts
     import { common } from '@kit.AbilityKit';
@@ -373,7 +373,7 @@
     }
     ```
 
-5. 发起端[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)接收到目标端UIAbility返回的信息，对其进行处理。
+5. 发起端[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)接收到目标端UIAbility返回的信息，对其进行处理。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -454,7 +454,7 @@
 
 ## 通过跨设备连接ServiceExtensionAbility组件实现多端协同
 
-系统应用可以通过[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)跨设备连接一个服务，实现跨设备远程调用。比如：分布式游戏场景，平板作为遥控器，智慧屏作为显示器。
+系统应用可以通过[connectServiceExtensionAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)跨设备连接一个服务，实现跨设备远程调用。比如：分布式游戏场景，平板作为遥控器，智慧屏作为显示器。
 
 
 ### 接口说明
@@ -477,7 +477,7 @@
 3. 如果已有后台服务，请直接进入下一步；如果没有，则[实现一个后台服务（仅对系统应用开放）](serviceextensionability-sys.md#实现一个后台服务仅对系统应用开放)。
 
 4. 连接一个后台服务。
-   - 实现AbilityConnection接口。AbilityConnection提供了以下方法供开发者实现：[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)是用来处理连接Service成功的回调，[onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect)是用来处理Service异常终止的回调，[onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed)是用来处理连接Service失败的回调。
+   - 实现AbilityConnection接口。AbilityConnection提供了以下方法供开发者实现：[onConnect()/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)是用来处理连接Service成功的回调，[onDisconnect()/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect)是用来处理Service异常终止的回调，[onFailed()/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed)是用来处理连接Service失败的回调。
    - 设置目标组件参数，包括目标设备ID、Bundle名称、Ability名称。
    - 调用connectServiceExtensionAbility()发起连接。
    - 连接成功，收到目标设备返回的服务句柄。
@@ -585,7 +585,7 @@
 
     getRemoteDeviceId方法参照[通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据](#通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据)。
 
-5. 断开连接。调用[disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability)断开与后台服务的连接。
+5. 断开连接。调用[disconnectServiceExtensionAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability)断开与后台服务的连接。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -661,7 +661,7 @@
 
 3. 创建被调用端UIAbility。
 
-     被调用端[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)需要实现指定方法的数据接收回调函数、数据的序列化及反序列化方法。在需要接收数据期间，通过[on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)接口注册监听，无需接收数据时通过[off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)接口解除监听。
+     被调用端[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)需要实现指定方法的数据接收回调函数、数据的序列化及反序列化方法。在需要接收数据期间，通过[on/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)接口注册监听，无需接收数据时通过[off/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)接口解除监听。
 
     1. 配置UIAbility的启动模式。
         配置[module.json5](../quick-start/module-configuration-file.md)，将CalleeAbility配置为单实例"singleton"。
@@ -722,8 +722,8 @@
           };
         }
         ```
-    4. 实现[Callee.on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)监听及[Callee.off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)解除监听。
-          如下示例在Ability的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)注册MSG_SEND_METHOD监听，在[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)取消监听，收到序列化数据后作相应处理并返回。应用开发者根据实际业务需要做相应处理。
+    4. 实现[Callee.on/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)监听及[Callee.off/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)解除监听。
+          如下示例在Ability的[onCreate/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)注册MSG_SEND_METHOD监听，在[onDestroy/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)取消监听，收到序列化数据后作相应处理并返回。应用开发者根据实际业务需要做相应处理。
            
         ```ts
         import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
@@ -814,13 +814,13 @@
         ```
 
 4. 获取Caller接口，访问被调用端UIAbility。
-    1. 导入[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)模块。
+    1. 导入[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)模块。
       
         ```ts
         import { UIAbility } from '@kit.AbilityKit';
         ```
     2. 获取Caller通信接口。
-        Ability的context属性实现了[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组件的[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。如下示例通过this.context获取Ability实例的context属性，使用startAbilityByCall拉起[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)和[onRemoteStateChange](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onremotestatechange10)监听。应用开发者根据实际业务需要做相应处理。
+        Ability的context属性实现了[startAbilityByCall/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组件的[Caller/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。如下示例通过this.context获取Ability实例的context属性，使用startAbilityByCall拉起[Callee/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)和[onRemoteStateChange/apis-ability-kit/js-apis-app-ability-uiAbility.md#onremotestatechange10)监听。应用开发者根据实际业务需要做相应处理。
 
         ```ts
         import { BusinessError } from '@kit.BasicServicesKit';
@@ -912,7 +912,7 @@
         getRemoteDeviceId方法参照[通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据](#通过跨设备启动uiability和serviceextensionability组件实现多端协同无返回数据)。
 
 5. 向被调用端UIAbility发送约定序列化数据。
-    1. 向被调用端发送Parcelable数据有两种方式，一种是不带返回值，一种是获取被调用端返回的数据，method以及序列化数据需要与被调用端协商一致。如下示例调用[Call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call)接口，向[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端发送数据。
+    1. 向被调用端发送Parcelable数据有两种方式，一种是不带返回值，一种是获取被调用端返回的数据，method以及序列化数据需要与被调用端协商一致。如下示例调用[Call/apis-ability-kit/js-apis-app-ability-uiAbility.md#call)接口，向[Callee/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端发送数据。
       
         ```ts
         import { UIAbility, Caller } from '@kit.AbilityKit';
@@ -967,7 +967,7 @@
           // ...
         }
         ```
-    2. 如下示例调用[CallWithResult](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callwithresult)接口，向Callee被调用端发送待处理的数据originMsg，并将’CallSendMsg’方法处理完毕的数据赋值给backMsg。
+    2. 如下示例调用[CallWithResult/apis-ability-kit/js-apis-app-ability-uiAbility.md#callwithresult)接口，向Callee被调用端发送待处理的数据originMsg，并将’CallSendMsg’方法处理完毕的数据赋值给backMsg。
       
         ```ts
         import { UIAbility, Caller } from '@kit.AbilityKit';
@@ -1033,7 +1033,7 @@
    
 6. 释放Caller通信接口。
 
-    [Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)不再使用后，应用开发者可以通过[release](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#release)接口释放Caller。
+    [Caller/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)不再使用后，应用开发者可以通过[release/apis-ability-kit/js-apis-app-ability-uiAbility.md#release)接口释放Caller。
 
       ```ts
       import { UIAbility, Caller } from '@kit.AbilityKit';

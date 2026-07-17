@@ -61,10 +61,10 @@
 
 | 接口 | 描述 |
 | -------- | -------- |
-| [napi_create_callsite_info](../reference/native-lib/napi.md#napi_create_callsite_info) | 创建调用点信息句柄，用于缓存属性访问信息。 |
-| [napi_delete_callsite_info](../reference/native-lib/napi.md#napi_delete_callsite_info) | 删除调用点信息句柄，释放关联的缓存资源。 |
-| [napi_get_property_with_callsite_info](../reference/native-lib/napi.md#napi_get_property_with_callsite_info) | 使用调用点信息快速获取对象属性值。 |
-| [napi_set_property_with_callsite_info](../reference/native-lib/napi.md#napi_set_property_with_callsite_info) | 使用调用点信息快速设置对象属性值。 |
+| [napi_create_callsite_info/native-lib/napi.md#napi_create_callsite_info) | 创建调用点信息句柄，用于缓存属性访问信息。 |
+| [napi_delete_callsite_info/native-lib/napi.md#napi_delete_callsite_info) | 删除调用点信息句柄，释放关联的缓存资源。 |
+| [napi_get_property_with_callsite_info/native-lib/napi.md#napi_get_property_with_callsite_info) | 使用调用点信息快速获取对象属性值。 |
+| [napi_set_property_with_callsite_info/native-lib/napi.md#napi_set_property_with_callsite_info) | 使用调用点信息快速设置对象属性值。 |
 
 ## 示例代码
 

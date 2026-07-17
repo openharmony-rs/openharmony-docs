@@ -11,29 +11,29 @@
 
 **签名**
 
-1. 调用[cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd)，指定摘要算法SHA1，生成摘要实例（Md）。
+1. 调用[cryptoFramework.createMd/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd)，指定摘要算法SHA1，生成摘要实例（Md）。
 
-2. 调用[Md.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-6)，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
+2. 调用[Md.update/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-6)，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
 
-3. 调用[Md.digest](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#digest)，获取摘要计算结果。
+3. 调用[Md.digest/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#digest)，获取摘要计算结果。
 
-4. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为ECC、曲线类型为ECC224的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
+4. 调用[cryptoFramework.createAsyKeyGenerator/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为ECC、曲线类型为ECC224的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
 
    如何生成ECC非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：ECC](crypto-asym-key-generation-conversion-spec.md#ecc)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-5. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'ECC|SHA1|OnlySign'，创建非对称密钥类型为ECC、摘要算法为SHA1、签名模式为OnlySign的Sign实例，用于完成签名操作。
+5. 调用[cryptoFramework.createSign/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'ECC|SHA1|OnlySign'，创建非对称密钥类型为ECC、摘要算法为SHA1、签名模式为OnlySign的Sign实例，用于完成签名操作。
 
-6. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
+6. 调用[Sign.init/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-7. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成摘要数据签名。
+7. 调用[Sign.sign/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成摘要数据签名。
 
 **验签**
 
-1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'ECC|SHA1|OnlyVerify'，创建非对称密钥类型为ECC、摘要算法为SHA1、验签模式为OnlyVerify的Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'ECC|SHA1|OnlyVerify'，创建非对称密钥类型为ECC、摘要算法为SHA1、验签模式为OnlyVerify的Verify实例，用于完成验签操作。
 
-2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
+2. 调用[Verify.init/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对摘要数据进行验签。
+3. 调用[Verify.verify/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对摘要数据进行验签。
 
 - 异步方法示例：
 

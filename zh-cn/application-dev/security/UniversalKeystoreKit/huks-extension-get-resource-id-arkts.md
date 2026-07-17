@@ -14,11 +14,11 @@
 1. 准备提供者名称（providerName），建议包含厂商信息，全局唯一。长度最大为128字节。
 
 2. 构造必选参数：
-   - 通过[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入CryptoExtensionAbility名称。
-   - 通过[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入Bundle名称。
-   - 通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入厂商自定义的资源信息。
+   - 通过[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入CryptoExtensionAbility名称。
+   - 通过[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入Bundle名称。
+   - 通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入厂商自定义的资源信息。
 
-3. 调用[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取资源ID。
+3. 调用[getResourceId/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取资源ID。
 
 ## 开发案例
 ```ts

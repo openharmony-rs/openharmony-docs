@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-按键按下事件常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
+按键按下事件常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)/apis-input-kit/js-apis-inputconsumer.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
@@ -27,7 +27,7 @@
 
 ## 开发步骤
 
-应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeronkeypressed16)方法订阅按键按下事件，应用关闭时再用[off](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeroffkeypressed16)方法取消订阅按键按下事件。
+应用开启时调用[on/apis-input-kit/js-apis-inputconsumer.md#inputconsumeronkeypressed16)方法订阅按键按下事件，应用关闭时再用[off/apis-input-kit/js-apis-inputconsumer.md#inputconsumeroffkeypressed16)方法取消订阅按键按下事件。
 
 ### 应用内优先响应系统功能键
 

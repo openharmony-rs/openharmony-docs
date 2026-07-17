@@ -10,7 +10,7 @@
 
 为了增强数据库的安全性，数据库提供了一个安全适用的数据库加密能力，从而对数据库存储的内容实施有效保护。通过数据库加密等安全方法实现了数据库数据存储的保密性和完整性要求，使得数据库以密文方式存储并在密态方式下工作，确保了数据安全。
 
-键值型数据库的加密属性在创建时确定，不可修改；关系型数据库从API version 22开始，支持通过[rekeyEx](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#rekeyex22)接口调整其加密属性。
+键值型数据库的加密属性在创建时确定，不可修改；关系型数据库从API version 22开始，支持通过[rekeyEx/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#rekeyex22)接口调整其加密属性。
 
 键值型数据库和关系型数据库均支持数据库加密操作，其中关系型数据库支持自定义加密/解密的密钥和其他参数。
 
@@ -19,7 +19,7 @@
 
 键值型数据库，通过options中encrypt参数来设置是否加密，默认为false，表示不加密。encrypt参数为true时表示加密。
 
-具体接口及功能，可见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
+具体接口及功能，可见[分布式键值数据库/apis-arkdata/js-apis-distributedKVStore.md)。
 
    ```ts
    // 导入模块
@@ -122,7 +122,7 @@
 
 ## 关系型数据库加密
 
-关系型数据库，通过[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中encrypt属性来设置是否加密。encrypt参数为true时表示加密；为false时表示不加密；默认值为false。
+关系型数据库，通过[StoreConfig/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中encrypt属性来设置是否加密。encrypt参数为true时表示加密；为false时表示不加密；默认值为false。
 
 当encrypt为true时，支持开发者通过ArkTS API中的可选属性cryptoParam设置自定义的加密/解密密钥和算法等参数。
 

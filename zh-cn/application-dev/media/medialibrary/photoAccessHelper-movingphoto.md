@@ -23,20 +23,20 @@
 
 使用安全控件保存动态照片资源，无需申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'，允许用户通过点击按钮临时获取存储权限，并将资源直接保存到指定的媒体库路径，使得操作更为便捷。
 
-详情请参考[SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。
+详情请参考[SaveButton/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。
 
 **开发步骤**
 
 1. 设置安全控件按钮属性。
 2. 创建安全控件按钮。
-3. 调用[MediaAssetChangeRequest.createAssetRequest](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createassetrequest11)接口新建一个创建资产的变更请求，指定待创建资产的子类型为动态照片。
-4. 调用[MediaAssetChangeRequest.addResource](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11)接口指定动态照片的图片和视频内容，动态照片的视频时长不能超过10s。
+3. 调用[MediaAssetChangeRequest.createAssetRequest/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createassetrequest11)接口新建一个创建资产的变更请求，指定待创建资产的子类型为动态照片。
+4. 调用[MediaAssetChangeRequest.addResource/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11)接口指定动态照片的图片和视频内容，动态照片的视频时长不能超过10s。
    
    以下示例以从应用沙箱的[应用文件](../../file-management/app-file-access.md)fileUri指定动态照片的图片和视频内容为例。
    
-   开发者可根据实际情况，通过ArrayBuffer的方式指定资源内容，参考[MediaAssetChangeRequest.addResource(type: ResourceType, data: ArrayBuffer)](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)。
+   开发者可根据实际情况，通过ArrayBuffer的方式指定资源内容，参考[MediaAssetChangeRequest.addResource(type: ResourceType, data: ArrayBuffer)/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)。
 
-5. 调用[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口提交创建资产的变更请求。
+5. 调用[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口提交创建资产的变更请求。
 
 <!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) -->
 
@@ -120,8 +120,8 @@ export struct Scene1 {
 ### 获取媒体库动态照片对象
 
 1. 通过Picker选择动态照片的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。
-2. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)和[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取URI对应的PhotoAsset资产。
-3. 调用[MediaAssetManager.requestMovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestmovingphoto12)获取PhotoAsset对应的动态照片对象（MovingPhoto）。
+2. 调用[PhotoAccessHelper.getAssets/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)和[FetchResult.getFirstObject/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取URI对应的PhotoAsset资产。
+3. 调用[MediaAssetManager.requestMovingPhoto/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestmovingphoto12)获取PhotoAsset对应的动态照片对象（MovingPhoto）。
 
 <!-- @[Obtaining_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene2.ets) -->
 
@@ -211,7 +211,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### 获取应用沙箱动态照片对象
 
-调用[MediaAssetManager.loadMovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#loadmovingphoto12)加载应用沙箱的动态照片对象（MovingPhoto）。
+调用[MediaAssetManager.loadMovingPhoto/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#loadmovingphoto12)加载应用沙箱的动态照片对象（MovingPhoto）。
 
 <!-- @[Reading_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene3.ets) -->
 
@@ -266,7 +266,7 @@ async function example(context: Context): Promise<string> {
 
 ## 读取动态照片资源
 
-对于一个动态照片对象，应用可以通过[MovingPhoto.requestContent](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md#requestcontent12)导出图片和视频到应用沙箱，或者读取图片或视频的ArrayBuffer内容。
+对于一个动态照片对象，应用可以通过[MovingPhoto.requestContent/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md#requestcontent12)导出图片和视频到应用沙箱，或者读取图片或视频的ArrayBuffer内容。
 
 <!-- @[Reading_Moving_Photo_Assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene4.ets) -->
 

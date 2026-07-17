@@ -9,13 +9,13 @@
 
 应用适配折叠屏时，在简单UX交互场景下，如人脸识别场景推荐使用相机镜头自动切换能力。在有多个前置镜头的折叠设备上，应用使能自动切换镜头能力后，系统能够自动完成镜头切换、会话配置，在不同的折叠状态下，可自动切换到当前可使用的前置镜头，避免前置镜头被折入内部导致黑屏。
 
-例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。在当前折叠状态下启用前置摄像头，并调用[enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13)开启自动切换镜头；这样，在下次折叠屏状态变化时，会自动切换到对应折叠状态下的前置摄像头。
+例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过[CameraManager.getSupportedCameras/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。在当前折叠状态下启用前置摄像头，并调用[enableAutoDeviceSwitch/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13)开启自动切换镜头；这样，在下次折叠屏状态变化时，会自动切换到对应折叠状态下的前置摄像头。
 
 > **注意**
 > 
 > 自动切换镜头功能由系统自动完成输入设备切换，会话配置和参数接续。当系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过AutoDeviceSwitchStatus中的isDeviceCapabilityChanged字段告知应用，此时需要应用自己处理UX的变更（如变焦范围的调整，需要重新通过getZoomRatioRange接口获取数据并更新UX）。因此如相机拍照或录像等复杂场景的镜头选择，请参阅[适配不同折叠状态的摄像头变更](./camera-foldable-display.md)。
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -28,7 +28,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl } from '@kit.AbilityKit';
 ```
 ## 创建XComponent
-使用[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)展示摄像头的预览画面。
+使用[XComponent/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)展示摄像头的预览画面。
 ```ts
 @Entry
 @Component
@@ -70,7 +70,7 @@ struct Index {
 }
 ```
 ## 开启自动切换摄像头
-调用[enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13)接口前需要通过[isAutoDeviceSwitchSupported](../../reference/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13)接口查询当前设备是否支持自动切换摄像头能力。
+调用[enableAutoDeviceSwitch/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13)接口前需要通过[isAutoDeviceSwitchSupported/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13)接口查询当前设备是否支持自动切换摄像头能力。
 ```ts
 function enableAutoDeviceSwitch(session: camera.PhotoSession) {
   if (session.isAutoDeviceSwitchSupported()) {
@@ -84,9 +84,9 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession) {
 }
 ```
 ## 监听或解监听自动切换摄像头状态
-可以通过[on('autoDeviceSwitchStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13)监听自动切换摄像头的结果。系统自动切换镜头结束后会触发该回调。
+可以通过[on('autoDeviceSwitchStatusChange')/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13)监听自动切换摄像头的结果。系统自动切换镜头结束后会触发该回调。
 
-自动切换摄像头期间，禁止调用任何[session](../../reference/apis-camera-kit/arkts-apis-camera-Session.md)相关接口。
+自动切换摄像头期间，禁止调用任何[session/apis-camera-kit/arkts-apis-camera-Session.md)相关接口。
 ```ts
 function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceSwitchStatus): void {
   if (err !== undefined && err.code !== 0) {

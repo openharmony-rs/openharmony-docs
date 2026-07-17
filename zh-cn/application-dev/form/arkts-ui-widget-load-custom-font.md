@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getlocalinstance22)接口获取本地字体集实例，应用可以通过这个本地实例为卡片加载自定义字体。
+API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance/apis-arkgraphics2d/js-apis-graphics-text.md#getlocalinstance22)接口获取本地字体集实例，应用可以通过这个本地实例为卡片加载自定义字体。
 
 ## 开发步骤
 1. 创建动态卡片：按照[创建ArkTS卡片](arkts-ui-widget-creation.md)里的描述创建动态卡片。

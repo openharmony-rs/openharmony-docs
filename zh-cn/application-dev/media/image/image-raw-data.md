@@ -9,13 +9,13 @@
 
 图像的 RAW 数据是直接从图像传感器获取的原始数据，完整保留了所有传感器信息且无任何压缩损失。通过使用RAW数据，开发者可以获得最高质量的图像信息，并根据具体需求自定义图像处理算法，实现更灵活的图像处理和优化效果。
 
-从API version 24开始，支持将符合格式的图片文件解码为[ImageRawData](../../reference/apis-image-kit/arkts-apis-image-i.md#imagerawdata24)，以便在应用或系统中获取RAW数据。RAW数据包含图像缓冲区和像素位数。
+从API version 24开始，支持将符合格式的图片文件解码为[ImageRawData/apis-image-kit/arkts-apis-image-i.md#imagerawdata24)，以便在应用或系统中获取RAW数据。RAW数据包含图像缓冲区和像素位数。
 
 当前支持的图片文件格式为DNG。
 
 ## 开发步骤
 
-获取图片RAW数据相关API的详细介绍请参见：[createImageRawData](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createimagerawdata24)。
+获取图片RAW数据相关API的详细介绍请参见：[createImageRawData/apis-image-kit/arkts-apis-image-ImageSource.md#createimagerawdata24)。
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
    
@@ -42,7 +42,7 @@
      }
      ```
 
-   - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)文档。该方法需要导入\@kit.CoreFileKit模块。
+   - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考[@ohos.file.fs (文件管理)/apis-core-file-kit/js-apis-file-fs.md)文档。该方法需要导入\@kit.CoreFileKit模块。
    
      <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -60,7 +60,7 @@
      }
      ```
       
-   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)接口。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)接口。该方法需要导入\@kit.LocalizationKit模块。
 
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -81,7 +81,7 @@
      }
      ```
       
-   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)接口。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)接口。该方法需要导入\@kit.LocalizationKit模块。
    
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      

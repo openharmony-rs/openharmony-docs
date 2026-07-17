@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ForEach接口基于数组循环渲染，需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)组件要求ForEach的父容器组件必须为[List组件](../../reference/apis-arkui/arkui-ts/ts-container-list.md)。
+ForEach接口基于数组循环渲染，需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，[ListItem/apis-arkui/arkui-ts/ts-container-listitem.md)组件要求ForEach的父容器组件必须为[List组件/apis-arkui/arkui-ts/ts-container-list.md)。
 
-API参数说明见：[ForEach API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
+API参数说明见：[ForEach API参数说明/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
 
 > **说明：**
 >
@@ -528,7 +528,7 @@ struct ArticleCardChangeChild {
 2. `ArticleChangeChild`实例是`@ObjectLink`装饰的状态变量，其属性值变化，会触发`ArticleCardChangeChild`组件渲染，此时读取的`isLiked`和`likesCount`为修改后的新值。
 
 ### 拖拽排序
-在List组件下使用ForEach，并设置[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
+在List组件下使用ForEach，并设置[onMove/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
 
 <!-- @[foreach_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEachSort.ets) -->
 
@@ -594,7 +594,7 @@ struct ForEachSort {
 - 不建议在键值中包含数据项索引`index`，可能会导致[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。如果确实需要使用`index`，例如列表通过`index`进行条件渲染，开发者需接受`ForEach`在数据源变更后重新创建组件导致的性能损耗。
 - 基本类型数组的数据项没有唯一`ID`属性。如果使用数据项作为键值，必须确保数据项无重复。对于数据源会变化的场景，建议将基本类型数组转换为具有唯一`ID`属性的Object类型数组，再使用唯一`ID`属性作为键值。
 - 对于以上限制规则，`index`参数存在的意义为：index是开发者保证键值唯一性的最终手段；对数据项进行修改时，由于`itemGenerator`中的`item`参数是不可修改的，所以须用index索引值对数据源进行修改，进而触发UI重新渲染。
-- ForEach在滚动容器组件 [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) 内使用的时候，不建议与[LazyForEach](./arkts-rendering-control-lazyforeach.md) 同时使用。
+- ForEach在滚动容器组件 [List/apis-arkui/arkui-ts/ts-container-list.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md) 内使用的时候，不建议与[LazyForEach](./arkts-rendering-control-lazyforeach.md) 同时使用。
 - 在大量子组件的场景下，ForEach可能会导致卡顿。请考虑使用[LazyForEach](./arkts-rendering-control-lazyforeach.md)替代。最佳实践请参考[使用懒加载优化性能](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization)。
 - 当数组项为对象类型时，不建议用内容相同的数组项替换旧项。若数组项发生变更但键值未变，会导致[数据变化不渲染](#数据变化不渲染)。
 
@@ -720,7 +720,7 @@ struct ReducedChildItem {
 **图12**  渲染性能降低案例日志打印图  
 ![ForEach-RenderPerformanceDecreaseLogs](figures/ForEach-RenderPerformanceDecreaseLogs.png)
 
-插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ReducedChildItem`组件，并执行了组件的[`aboutToAppear()`](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数。这是因为：
+插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ReducedChildItem`组件，并执行了组件的[`aboutToAppear()`/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数。这是因为：
 
 1. `ForEach`首次渲染时，生成的键值依次为`0__one`、`1__two`和`2__three`。
 2. 插入新项后，数据源`simpleList`变为`['one', 'new item', 'two', 'three']`，ArkUI框架监听到`@State`装饰的数据源长度变化触发`ForEach`重新渲染。

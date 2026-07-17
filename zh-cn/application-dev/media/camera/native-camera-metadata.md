@@ -12,7 +12,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 ## 开发步骤
 
-详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，导入方法如下。
 
@@ -95,7 +95,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    }
    ```
 
-4. 调用[OH_CameraManager_CreateCaptureSession()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcapturesession)方法创建一个会话。
+4. 调用[OH_CameraManager_CreateCaptureSession()/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcapturesession)方法创建一个会话。
 
    <!-- @[create_capture_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -106,7 +106,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    }
    ```
 
-5. 配置session，完成后通过调用[OH_CaptureSession_Start()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start)方法输出metadata数据。接口调用失败会返回相应错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
+5. 配置session，完成后通过调用[OH_CaptureSession_Start()/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start)方法输出metadata数据。接口调用失败会返回相应错误码，错误码类型参见[Camera_ErrorCode/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
    <!-- @[add_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
@@ -180,7 +180,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
   >
   > 当前的元数据类型仅支持人脸检测（FACE_DETECTION）功能。元数据信息对象为识别到的人脸区域的矩形信息（Rect），包含矩形区域的左上角x坐标、y坐标和矩形的宽高数据。
 
-- 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
+- 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见[Camera_ErrorCode/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
   <!-- @[metadata_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   

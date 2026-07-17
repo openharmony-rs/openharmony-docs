@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-时区模块关键接口如下表所示，具体API说明详见[国际化-I18n](../reference/apis-localization-kit/js-apis-i18n.md)。
+时区模块关键接口如下表所示，具体API说明详见[国际化-I18n/apis-localization-kit/js-apis-i18n.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

@@ -12,9 +12,9 @@
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
+参考[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
 
-- 方法1：直接查看AudioRenderer的[属性](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#属性)state：
+- 方法1：直接查看AudioRenderer的[属性/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#属性)state：
 
   <!-- @[check_renderstate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
   
@@ -38,7 +38,7 @@
       });
   ```
 
-获取state后可对照[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如更改暂停播放按钮的显示等。
+获取state后可对照[AudioState/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如更改暂停播放按钮的显示等。
 
 ## 读取或监听所有音频流的变化
 
@@ -54,9 +54,9 @@
 
 ![Audio stream management invoking relationship](figures/audio-stream-mgmt-invoking-relationship.png)
 
-在进行应用开发的过程中，开发者需要先调用[getStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getstreammanager9)创建AudioStreamManager实例，进而通过该实例管理音频流。
+在进行应用开发的过程中，开发者需要先调用[getStreamManager/apis-audio-kit/arkts-apis-audio-AudioManager.md#getstreammanager9)创建AudioStreamManager实例，进而通过该实例管理音频流。
 
-详细API含义可参考[AudioStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md)。
+详细API含义可参考[AudioStreamManager/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md)。
 
 ## 开发步骤及注意事项
 
@@ -72,7 +72,7 @@
    let audioStreamManager = audioManager.getStreamManager();
    ```
 
-2. 使用[on('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiorendererchange9)监听音频播放流的变化。如果音频流监听应用需要在音频播放流状态变化、设备变化时获取通知，可以订阅该事件。
+2. 使用[on('audioRendererChange')/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiorendererchange9)监听音频播放流的变化。如果音频流监听应用需要在音频播放流状态变化、设备变化时获取通知，可以订阅该事件。
 
    <!-- @[regist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
    
@@ -85,7 +85,7 @@
      });
    ```
 
-3. （可选）使用[off('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiorendererchange9)取消监听音频播放流变化。
+3. （可选）使用[off('audioRendererChange')/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiorendererchange9)取消监听音频播放流变化。
 
    <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
  
@@ -94,7 +94,7 @@
    console.info('RendererChange Off is called ');
    ```
 
-4. （可选）使用[getCurrentAudioRendererInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiorendererinfoarray9)获取所有音频播放流的信息。该接口可获取音频播放流唯一ID、音频渲染器信息以及音频播放设备信息。
+4. （可选）使用[getCurrentAudioRendererInfoArray/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiorendererinfoarray9)获取所有音频播放流的信息。该接口可获取音频播放流唯一ID、音频渲染器信息以及音频播放设备信息。
 
    > **说明：**
    >

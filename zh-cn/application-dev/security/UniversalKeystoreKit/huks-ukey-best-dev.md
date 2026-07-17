@@ -13,7 +13,7 @@
 
 ### 浏览器使用系统ArkWeb能力并自定义客户端
 
-1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，获得[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId。
+1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，获得[keyUri/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId。
 
 2. 端侧应用监听PIN认证回调，处理事件，调用证书管理能力拉起PIN认证弹窗。
 
@@ -21,24 +21,24 @@
 
 ### 浏览器使用自定义Web组件并自定义客户端
 
-1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，将[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，透传到Web组件。
+1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，将[keyUri/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，透传到Web组件。
 
-2. Web组件通过证书管理获取对应证书的数据，并且通过[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId调用HUKS的打开资源接口，并查询PIN认证状态。
+2. Web组件通过证书管理获取对应证书的数据，并且通过[keyUri/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId调用HUKS的打开资源接口，并查询PIN认证状态。
 
 3. 根据认证结果，进行处理：
 
    - 如果未认证，需要让端侧应用拉起PIN认证，此时端侧应用收到认证请求并处理事件，调用证书管理能力拉起PIN认证弹窗，获得认证结果后返回给Web组件，接着执行已认证的流程。
-   - 如果已认证，Web组件可以直接调用HUKS的三段式接口[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)/[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)/[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)进行签名。
+   - 如果已认证，Web组件可以直接调用HUKS的三段式接口[initSession/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)/[updateSession/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)/[finishSession/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)进行签名。
 
 > **注意**
 >
-> 如果要调用底层Extension的三段式能力，需要传入参数中必须包含[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，且值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
+> 如果要调用底层Extension的三段式能力，需要传入参数中必须包含[OH_HUKS_TAG_KEY_CLASS/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，且值为[OH_HUKS_KEY_CLASS_EXTENSION/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
 
 ## 实践举例
 
 以下是浏览器使用系统能力进行双向SSL认证开发举例。
 
-1. 端侧应用调用证书管理的能力，拉起证书选择弹框[certificateManagerDialog.openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)，等待用户选择证书。
+1. 端侧应用调用证书管理的能力，拉起证书选择弹框[certificateManagerDialog.openAuthorizeDialog/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)，等待用户选择证书。
 
    ```ts
    import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
@@ -71,11 +71,11 @@
 
 2. Web组件解析证书，调用HUKS打开资源，并查询PIN认证状态。
 
-   首先调用证书管理的NDK接口解析用户选择的证书[OH_CertManager_GetUkeyCertificate](../../reference/apis-device-certificate-kit/capi-cm-native-api-h.md#oh_certmanager_getukeycertificate)，获取对应的证书数据。
+   首先调用证书管理的NDK接口解析用户选择的证书[OH_CertManager_GetUkeyCertificate/apis-device-certificate-kit/capi-cm-native-api-h.md#oh_certmanager_getukeycertificate)，获取对应的证书数据。
 
-   其次，根据用户选中的keyUri作为resourceId调用HUKS的NDK接口打开资源[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)。
+   其次，根据用户选中的keyUri作为resourceId调用HUKS的NDK接口打开资源[OH_Huks_OpenResource/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)。
    
-   最后，调用HUKS的NDK接口查询PIN认证状态[OH_Huks_GetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getukeypinauthstate)。
+   最后，调用HUKS的NDK接口查询PIN认证状态[OH_Huks_GetUkeyPinAuthState/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getukeypinauthstate)。
  
    ```c
    #include "huks/native_huks_external_crypto_api.h"
@@ -290,7 +290,7 @@
 
 3. 根据认证结果进行处理。
 
-   如果未认证，需让端侧应用拉起PIN认证，此时端侧应用收到认证请求，处理事件，调用证书管理能力拉起PIN认证弹窗[certificateManagerDialog.openUkeyAuthDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)，获得认证结果之后返回给Web组件，接着执行已认证的流程。
+   如果未认证，需让端侧应用拉起PIN认证，此时端侧应用收到认证请求，处理事件，调用证书管理能力拉起PIN认证弹窗[certificateManagerDialog.openUkeyAuthDialog/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)，获得认证结果之后返回给Web组件，接着执行已认证的流程。
 
    ```ts
    /* 拉起证书管理PIN认证弹窗 */

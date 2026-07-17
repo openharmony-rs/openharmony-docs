@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-[napi_create_threadsafe_function](../reference/native-lib/napi.md#napi_create_threadsafe_function)是Node-API接口之一，用于创建一个线程安全的JavaScript函数。该函数主要用于在多个线程之间共享和调用，避免竞争条件和死锁。包含以下场景：
+[napi_create_threadsafe_function/native-lib/napi.md#napi_create_threadsafe_function)是Node-API接口之一，用于创建一个线程安全的JavaScript函数。该函数主要用于在多个线程之间共享和调用，避免竞争条件和死锁。包含以下场景：
 
 
 - 异步计算：若需执行耗时的计算或IO操作，可创建线程安全的函数，在另一线程中完成计算或IO操作，避免阻塞主线程，提升程序响应速度。

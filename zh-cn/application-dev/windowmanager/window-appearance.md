@@ -25,19 +25,19 @@
 
 异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。仅应用子窗和全局悬浮窗可设置为异形窗口。
 
-可通过[setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)或[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置异形窗口的掩码，以定义窗口的可见区域。
+可通过[setWindowMask()/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)或[setWindowMaskWithAlpha()/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置异形窗口的掩码，以定义窗口的可见区域。
 
 设置掩码后，窗口将按照掩码形状显示，[窗口阴影](#窗口阴影)将被禁用，窗口的圆角半径变为0。
 
-- 使用[setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口的掩码。
+- 使用[setWindowMask()/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口的掩码。
 
   掩码仅支持取值为整数0和整数1的二维数组输入，数组行数对应窗口高度，列数对应窗口宽度。整数0代表对应像素透明且不可交互，整数1代表对应像素不透明且可交互。
 
   ![setWindowMask](figures/setWindowMask.png)
 
-- 从API版本26.0.0开始，支持使用[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置异形窗口的掩码。
+- 从API版本26.0.0开始，支持使用[setWindowMaskWithAlpha()/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置异形窗口的掩码。
 
-  掩码支持取值在[0, 255]范围的数组输入，数组长度等于窗口宽度乘以窗口高度。整数0代表对应像素透明且不可交互，整数255代表对应像素不透明且可交互，0~255之间代表对应像素部分透明且可交互。此接口性能优于[setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)，推荐使用。
+  掩码支持取值在[0, 255]范围的数组输入，数组长度等于窗口宽度乘以窗口高度。整数0代表对应像素透明且不可交互，整数255代表对应像素不透明且可交互，0~255之间代表对应像素部分透明且可交互。此接口性能优于[setWindowMask()/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)，推荐使用。
 
   ![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
 
@@ -45,7 +45,7 @@
 
 1. 点击“Create Sub Window”按钮可以创建子窗。
 
-2. 创建子窗后，点击“setWindowMask for Sub Window”按钮，可通过[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置子窗掩码。子窗发生以下变化：
+2. 创建子窗后，点击“setWindowMask for Sub Window”按钮，可通过[setWindowMaskWithAlpha()/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置子窗掩码。子窗发生以下变化：
 
      - 子窗变为三角形。
      - 子窗的阴影和圆角消失。
@@ -105,7 +105,7 @@ struct Index {
 窗口阴影是显示在窗口边缘的投影效果，可以增强窗口与背景之间的层次感，使窗口呈现悬浮于背景之上的视觉效果。
 
 <!--Del-->
-- 针对系统应用，可通过[setShadow()](../reference/apis-arkui/js-apis-window-sys.md#setshadow9)接口设置窗口边缘阴影，该接口支持设置窗口边缘阴影的模糊半径、颜色、X轴偏移量和Y轴偏移量。仅支持系统窗口、应用子窗口、全局悬浮窗和模态窗口使用。
+- 针对系统应用，可通过[setShadow()/apis-arkui/js-apis-window-sys.md#setshadow9)接口设置窗口边缘阴影，该接口支持设置窗口边缘阴影的模糊半径、颜色、X轴偏移量和Y轴偏移量。仅支持系统窗口、应用子窗口、全局悬浮窗和模态窗口使用。
 
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
@@ -155,7 +155,7 @@ struct Index {
   ![setShadow](figures/setShadow.png)
 <!--DelEnd-->
 
-- 可通过[setWindowShadowRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowshadowradius17)接口设置窗口边缘阴影的模糊半径，仅支持子窗和全局悬浮窗使用。
+- 可通过[setWindowShadowRadius()/apis-arkui/arkts-apis-window-Window.md#setwindowshadowradius17)接口设置窗口边缘阴影的模糊半径，仅支持子窗和全局悬浮窗使用。
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
@@ -185,7 +185,7 @@ struct Index {
 
 ## 设置窗口圆角<!--Del-->与模糊效果<!--DelEnd-->
 
-- 可通过[setWindowCornerRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcornerradius17)接口设置窗口的圆角半径，仅支持子窗和全局悬浮窗使用。
+- 可通过[setWindowCornerRadius()/apis-arkui/arkts-apis-window-Window.md#setwindowcornerradius17)接口设置窗口的圆角半径，仅支持子窗和全局悬浮窗使用。
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
@@ -213,9 +213,9 @@ struct Index {
   ![setWindowCornerRadius](figures/setWindowCornerRadius.gif)
 
 <!--Del-->
-- 针对系统应用，可通过[setBlur()](../reference/apis-arkui/js-apis-window-sys.md#setblur9)接口设置窗口内容的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
+- 针对系统应用，可通过[setBlur()/apis-arkui/js-apis-window-sys.md#setblur9)接口设置窗口内容的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
-- 针对系统应用，可通过[setBackdropBlur()](../reference/apis-arkui/js-apis-window-sys.md#setbackdropblur9)接口设置窗口背景的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
+- 针对系统应用，可通过[setBackdropBlur()/apis-arkui/js-apis-window-sys.md#setbackdropblur9)接口设置窗口背景的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
 
 此处以全局悬浮窗为例，设置其窗口模糊效果（窗口内容的模糊半径、窗口背景的模糊半径）。
@@ -265,19 +265,19 @@ struct SliderDemo {
 
 开发者可根据业务场景，选择设置应用内容区域背景色，或设置包含标题栏在内的窗口容器背景色，以实现页面背景透明、窗口整体配色统一等效果。
 
-- 可使用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口调整窗口内容区域的背景色，主要影响窗口内承载UI内容的部分。可传入不区分大小写的十六进制RGB或ARGB颜色，调整背景颜色。从API version 18开始，支持传入[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)类型。
+- 可使用[setWindowBackgroundColor()/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口调整窗口内容区域的背景色，主要影响窗口内承载UI内容的部分。可传入不区分大小写的十六进制RGB或ARGB颜色，调整背景颜色。从API version 18开始，支持传入[ColorMetrics/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)类型。
 
-- 可使用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置PC/2in1或Tablet设备上的主窗口容器区域的背景色，窗口容器背景色会覆盖整个窗口区域，包括标题栏和内容区域。如果处于非[自由窗口](window-terminology.md#自由窗口)状态下，效果等同于[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)。该接口不支持将非焦点态下的主窗口背景设置为透明。
+- 可使用[setWindowContainerColor()/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置PC/2in1或Tablet设备上的主窗口容器区域的背景色，窗口容器背景色会覆盖整个窗口区域，包括标题栏和内容区域。如果处于非[自由窗口](window-terminology.md#自由窗口)状态下，效果等同于[setWindowBackgroundColor()/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)。该接口不支持将非焦点态下的主窗口背景设置为透明。
 
-- 当同时使用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)和[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)时，内容区域显示[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)设置的颜色，而标题栏则显示[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)设置的颜色。
+- 当同时使用[setWindowContainerColor()/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)和[setWindowBackgroundColor()/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)时，内容区域显示[setWindowBackgroundColor()/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)设置的颜色，而标题栏则显示[setWindowContainerColor()/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)设置的颜色。
 
-- 从API版本26.0.0开始，支持使用[setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor)接口设置PC/2in1设备上的主窗口容器区域的背景色，以适配不同UI设计需求。通过该接口设置的背景色会作用于整个窗口容器区域，包括标题栏和内容区域。该接口支持将非焦点态下的主窗口背景设置为透明。
+- 从API版本26.0.0开始，支持使用[setWindowContainerModalColor()/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor)接口设置PC/2in1设备上的主窗口容器区域的背景色，以适配不同UI设计需求。通过该接口设置的背景色会作用于整个窗口容器区域，包括标题栏和内容区域。该接口支持将非焦点态下的主窗口背景设置为透明。
 
 > **说明：**
 >
-> - 未调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)或[setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor)接口设置窗口内容区域背景色时，内容区域背景色默认跟随系统颜色模式：浅色模式下为'#FFF0F0F0'，深色模式下为'#FF1A1A1A'。
+> - 未调用[setWindowContainerColor()/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)或[setWindowContainerModalColor()/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor)接口设置窗口内容区域背景色时，内容区域背景色默认跟随系统颜色模式：浅色模式下为'#FFF0F0F0'，深色模式下为'#FF1A1A1A'。
 >
-> - 需要在[loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9-1)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)调用生效后才能设置背景色。
+> - 需要在[loadContent()/apis-arkui/arkts-apis-window-Window.md#loadcontent9-1)或[setUIContent()/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)调用生效后才能设置背景色。
 
 ![backgroundColor](figures/backgroundColor.gif)
 

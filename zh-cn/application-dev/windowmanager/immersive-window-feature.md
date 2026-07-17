@@ -23,7 +23,7 @@
 
 - 设置窗口为[沉浸式布局](#沉浸式布局)，将应用内容拓展到整个窗口显示区域，通过[布局避让](#布局避让)避免重要组件与系统界面元素重叠。
 
-- 使用组件[安全区域](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)能力，将部分组件拓展到安全区域外部。
+- 使用组件[安全区域/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)能力，将部分组件拓展到安全区域外部。
 
 ### 界面元素构成
 
@@ -39,7 +39,7 @@
 
 - 沉浸式布局下，应用内的可用布局区域延伸到整个窗口大小，此时应用界面的布局内容可与系统UI界面重叠显示，但系统界面元素层级始终高于应用界面内容。  
 
-  可以通过[isImmersiveLayout()](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20)接口判断当前窗口是否为沉浸式布局。
+  可以通过[isImmersiveLayout()/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20)接口判断当前窗口是否为沉浸式布局。
 
 多设备场景下不同窗口形态的沉浸式开发与实现可以参考[窗口沉浸式](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive)最佳实践。
 
@@ -49,7 +49,7 @@
 
 [自由窗口](freeform-window-overview.md#自由窗口)状态和非[自由窗口](freeform-window-overview.md#自由窗口)状态下实现沉浸式布局的方式不同。
 
-- 非自由窗口状态下，可通过使用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置当前窗口进入/退出窗口沉浸式布局。 
+- 非自由窗口状态下，可通过使用[setWindowLayoutFullScreen()/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置当前窗口进入/退出窗口沉浸式布局。 
 
   > **说明：**
   > 
@@ -84,7 +84,7 @@
   | -------- | -------- |
   | ![非自由窗口的非沉浸式布局](figures/non-freeform-window-non-immersive-layout.png)  | ![非自由窗口的沉浸式布局](figures/non-freeform-window-immersive-layout.png) |
 
-- 自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。  
+- 自由窗口状态下，可通过[setWindowDecorVisible()/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。  
 
   ```ts
   // EntryAbility.ets
@@ -121,11 +121,11 @@
 
 窗口与系统界面元素显示的交叉区域称为**避让区域**，应用内通过布局避让，将关键显示组件避开避让区域显示，从而达到沉浸式效果。
 
-系统支持的避让区域类型通过枚举[AvoidAreaType](../reference/apis-arkui/arkts-apis-window-e.md#avoidareatype7)表示。
+系统支持的避让区域类型通过枚举[AvoidAreaType/apis-arkui/arkts-apis-window-e.md#avoidareatype7)表示。
 
 ### 避让区域AvoidArea的计算方式
 
-避让区域[AvoidArea](../reference/apis-arkui/arkts-apis-window-i.md#avoidarea7)的数据结构如下所示：
+避让区域[AvoidArea/apis-arkui/arkts-apis-window-i.md#avoidarea7)的数据结构如下所示：
 
 ```txt
 interface AvoidArea {
@@ -165,14 +165,14 @@ interface Rect {
 
 > **说明：**
 > 
-> [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)、[setWindowSystemBarEnable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowsystembarenable9)等控制系统界面元素显示的接口仅非[自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗口支持调用，在[辅助窗口](window-type-overview.md#辅助窗口)中调用或[自由窗口](freeform-window-overview.md#自由窗口)状态下调用不生效。在主窗口非全屏/非最大化模式时调用不会立即生效，应用在进入全屏/最大化模式后配置生效。
+> [setSpecificSystemBarEnabled()/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)、[setWindowSystemBarEnable()/apis-arkui/arkts-apis-window-Window.md#setwindowsystembarenable9)等控制系统界面元素显示的接口仅非[自由窗口](freeform-window-overview.md#自由窗口)状态下的主窗口支持调用，在[辅助窗口](window-type-overview.md#辅助窗口)中调用或[自由窗口](freeform-window-overview.md#自由窗口)状态下调用不生效。在主窗口非全屏/非最大化模式时调用不会立即生效，应用在进入全屏/最大化模式后配置生效。
 
 ![隐藏系统界面元素前后对比](figures/hide-system-bars-immersive-comparison.png)
 
-1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。  
+1. 调用[setWindowLayoutFullScreen()/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。  
 
 
-2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
+2. 调用[setSpecificSystemBarEnabled()/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
 
   ```ts
   // EntryAbility.ets
@@ -209,9 +209,9 @@ interface Rect {
 
 > **说明：**
 > 
-> 全局悬浮窗、模态窗口和系统窗口本身不具备获取避让区域的能力，如果需要在这些窗口中适配布局避让，需要使用[setSystemAvoidAreaEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setsystemavoidareaenabled18)接口使能避让区域能力后再进行布局避让。
+> 全局悬浮窗、模态窗口和系统窗口本身不具备获取避让区域的能力，如果需要在这些窗口中适配布局避让，需要使用[setSystemAvoidAreaEnabled()/apis-arkui/arkts-apis-window-Window.md#setsystemavoidareaenabled18)接口使能避让区域能力后再进行布局避让。
 
-1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。
+1. 调用[setWindowLayoutFullScreen()/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。
 
    ```ts
    // EntryAbility.ets
@@ -237,7 +237,7 @@ interface Rect {
 
    此处以获取并监听状态栏、底部导航区域、挖孔区为例。
 
-   - 可以通过使用[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取当前窗口避让区域。使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听避让区域的动态变化。
+   - 可以通过使用[getWindowAvoidArea()/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取当前窗口避让区域。使用[on('avoidAreaChange')/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)接口监听避让区域的动态变化。
 
      常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 
@@ -311,7 +311,7 @@ interface Rect {
      }
      ```
 
-   - 还可以使用响应式环境变量装饰器[@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)来实现避让区域的获取和监听。
+   - 还可以使用响应式环境变量装饰器[@Env/apis-arkui/arkui-ts/ts-env-system-property.md)来实现避让区域的获取和监听。
 
      可通过响应式环境变量装饰器@Env(@Env(SystemProperties.WINDOW_AVOID_AREA)或@Env(SystemProperties.WINDOW_AVOID_AREA_PX))获取并监听当前窗口的避让区域信息。
 

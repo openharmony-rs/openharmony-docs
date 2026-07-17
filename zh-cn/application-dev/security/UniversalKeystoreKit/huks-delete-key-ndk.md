@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 初始化密钥属性集。用于删除时指定密钥的属性，删除单个密钥或者非群组密钥，可传空。
 
-3. 调用接口[OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem)，删除密钥。
+3. 调用接口[OH_Huks_DeleteKeyItem/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem)，删除密钥。
 
 <!-- @[key_deletion_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/cpp/napi_init.cpp) -->
 

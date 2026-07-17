@@ -39,4 +39,4 @@
 
 ## 开发步骤
 
-接口具体使用方法请参考[getIntPluralStringValueSync](../reference/apis-localization-kit/js-apis-resource-manager.md#getintpluralstringvaluesync18)的API文档。
+接口具体使用方法请参考[getIntPluralStringValueSync/apis-localization-kit/js-apis-resource-manager.md#getintpluralstringvaluesync18)的API文档。

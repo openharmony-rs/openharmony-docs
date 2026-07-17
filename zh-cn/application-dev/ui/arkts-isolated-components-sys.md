@@ -12,13 +12,13 @@ IsolatedComponent组件是构建隔离组件的工具，能够帮助开发者创
 
 ## 基本概念
 
-[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md)旨在在本页面中嵌入并展示由独立Abc（即.abc文件）所提供的UI，其展示内容在受限的[worker](../reference/apis-arkts/js-apis-worker.md)线程中执行。
+[IsolatedComponent/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md)旨在在本页面中嵌入并展示由独立Abc（即.abc文件）所提供的UI，其展示内容在受限的[worker/apis-arkts/js-apis-worker.md)线程中执行。
 
 该组件通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
 
 ## 约束与限制
 
-1. Abc需要[bundleManager.verifyAbc](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件。
+1. Abc需要[bundleManager.verifyAbc/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件。
 
 2. 不支持构造参数更新，仅首次传入有效。
 
@@ -68,7 +68,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **受限worker**
 
-受限[worker](../reference/apis-arkts/js-apis-worker.md)是一个在隔离环境中运行的worker线程。这种隔离特性确保了受限worker与其他线程或组件之间实现内存隔离，避免它们之间的相互干扰或安全问题。
+受限[worker/apis-arkts/js-apis-worker.md)是一个在隔离环境中运行的worker线程。这种隔离特性确保了受限worker与其他线程或组件之间实现内存隔离，避免它们之间的相互干扰或安全问题。
 
 在IsolatedComponent场景中，组件常需动态加载外部hap资源。受限worker通过以下机制保障安全：
 
@@ -82,7 +82,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 - 异常隔离
 
-  worker内错误不会导致主应用崩溃，通过[onerror](../reference/apis-arkts/js-apis-worker.md#属性)事件可控处理。
+  worker内错误不会导致主应用崩溃，通过[onerror/apis-arkts/js-apis-worker.md#属性)事件可控处理。
 
 ```ts
 // OhCardWorker.ets

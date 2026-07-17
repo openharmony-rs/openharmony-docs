@@ -10,7 +10,7 @@
 
 ## 通过菜单或键盘快捷键与系统剪贴板交互
 
-开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用[cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9)、[copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9)、[copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9)、[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。
+开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用[cut/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9)、[copy/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9)、[copyImage/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9)、[paste/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。
 
 菜单功能接口的使用可参考[使用Web组件菜单处理网页内容](web-menu.md)。
 
@@ -18,7 +18,7 @@
 
 > **说明：**
 >
-> 通过[paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)接口读取系统剪贴板数据，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
+> 通过[paste/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9)、[pasteAndMatchStyle/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20)接口读取系统剪贴板数据，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
 
 ## 通过W3C异步剪贴板接口与系统剪贴板交互
 
@@ -290,7 +290,7 @@ struct WebComponent {
 
 ## 设置剪贴板复制范围选项
 
-开发者可以通过设置Web组件的[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)属性，来指定Web组件上剪贴板复制的范围。可以指定的选项有：CopyOptions.None（不支持复制）、CopyOptions.InApp（支持应用内复制）以及CopyOptions.LocalDevice（支持设备内复制）。默认值为：CopyOptions.LocalDevice，即默认支持设备内部的复制。
+开发者可以通过设置Web组件的[copyOptions/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)属性，来指定Web组件上剪贴板复制的范围。可以指定的选项有：CopyOptions.None（不支持复制）、CopyOptions.InApp（支持应用内复制）以及CopyOptions.LocalDevice（支持设备内复制）。默认值为：CopyOptions.LocalDevice，即默认支持设备内部的复制。
 
 <!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) -->
 

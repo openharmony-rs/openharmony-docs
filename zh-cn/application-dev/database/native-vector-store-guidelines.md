@@ -35,7 +35,7 @@
 
 ## 接口说明
 
-详细的接口说明请参考[RDB](../reference/apis-arkdata/capi-rdb.md)。
+详细的接口说明请参考[RDB/apis-arkdata/capi-rdb.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |

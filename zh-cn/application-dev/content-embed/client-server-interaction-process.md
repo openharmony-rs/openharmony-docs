@@ -21,7 +21,7 @@
 
 1. 创建[OE文档](content-embed-kit-terminology.md#oe文档)：客户端创建OE文档有三种方式：基于[OEID](content-embed-kit-terminology.md#oeid)创建OE文档，基于文件创建OE文档，基于[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档。
 2. 创建[客户端OE对象](content-embed-kit-terminology.md#客户端oe对象)：客户端基于OE文档创建客户端OE对象，实现OE文档与客户端OE对象的关联，并用于与服务端通信。创建客户端OE对象完成后需注册该对象回调以响应OE服务端通知。
-3. 启动OE Extension：在嵌入或者编辑OE文档时，OE客户端应用需通过调用[OE框架层接口](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md)，通知OE服务端启动OE Extension组件。
+3. 启动OE Extension：在嵌入或者编辑OE文档时，OE客户端应用需通过调用[OE框架层接口/apis-content-embed-kit/capi-content-embed-proxy-h.md)，通知OE服务端启动OE Extension组件。
 4. 注册OE Extension回调：当OE服务端应用的OE Extension组件启动后，需在OE Extension组件的入口函数中注册OE Extension回调，以响应客户端请求。
 5. 注册[服务端OE对象](content-embed-kit-terminology.md#服务端oe对象)回调：当OE服务端应用的OE Extension组件启动后，客户端OE对象将会与服务端OE对象绑定，此时需注册服务端OE对象回调函数，以响应OE客户端的请求。
 6. 获取OE文档快照：当OE客户端嵌入OE文档时，该文档在OE客户端界面中可能呈现为文档快照（Snapshot），当OE Extension被启动后，OE客户端会向服务端获取文档快照。

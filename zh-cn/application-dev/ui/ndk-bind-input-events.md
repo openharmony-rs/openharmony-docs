@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-NDK接口提供了监听和处理基础输入事件的能力，可绑定点击事件（[NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、触摸事件（[NODE_TOUCH_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、鼠标事件（[NODE_ON_MOUSE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、悬浮事件（[NODE_ON_HOVER_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、轴事件（[NODE_ON_AXIS](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、按键事件（[NODE_ON_KEY_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)），然后通过事件接收器中的回调函数获取事件的详细信息。
+NDK接口提供了监听和处理基础输入事件的能力，可绑定点击事件（[NODE_ON_CLICK_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、触摸事件（[NODE_TOUCH_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、鼠标事件（[NODE_ON_MOUSE/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、悬浮事件（[NODE_ON_HOVER_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、轴事件（[NODE_ON_AXIS/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、按键事件（[NODE_ON_KEY_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)），然后通过事件接收器中的回调函数获取事件的详细信息。
 
 以下示例均需基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，详细代码请参考[完整示例](#完整示例)。
 
@@ -47,7 +47,7 @@ void HandleClickEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-从API version 18开始，新增[NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_CLICK_EVENT事件监听，以响应上述处理函数。
+从API version 18开始，新增[NODE_ON_CLICK_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_CLICK_EVENT事件监听，以响应上述处理函数。
 
 <!-- @[register_click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
@@ -95,7 +95,7 @@ void HandleTouchEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-节点自身需要注册[NODE_TOUCH_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
+节点自身需要注册[NODE_TOUCH_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
 
 <!-- @[register_touch_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
@@ -132,7 +132,7 @@ void HandleMouseEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-节点自身需要注册[NODE_ON_MOUSE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
+节点自身需要注册[NODE_ON_MOUSE/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
 
 <!-- @[register_mouse_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
@@ -163,7 +163,7 @@ void HandleHoverEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-从API version 17开始，新增[NODE_ON_HOVER_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_HOVER_EVENT事件监听，以响应上述处理函数。
+从API version 17开始，新增[NODE_ON_HOVER_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_HOVER_EVENT事件监听，以响应上述处理函数。
 
 <!-- @[register_hover_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
@@ -197,7 +197,7 @@ void HandleAxisEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-从API version 17开始，新增[NODE_ON_AXIS](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_AXIS事件监听，以响应上述处理函数。
+从API version 17开始，新增[NODE_ON_AXIS/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_AXIS事件监听，以响应上述处理函数。
 
 <!-- @[register_axis_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
@@ -228,7 +228,7 @@ void HandleKeyEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-设置节点为可聚焦，并绑定点击事件，在点击时请求焦点。同时节点自身需要注册[NODE_ON_KEY_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
+设置节点为可聚焦，并绑定点击事件，在点击时请求焦点。同时节点自身需要注册[NODE_ON_KEY_EVENT/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
 
 <!-- @[register_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
@@ -828,7 +828,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_KEY_EVENT, 0, this);
    #endif // MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
    ```
 
-   由于使用了日志打印接口[OH_LOG_Print](../reference/apis-performance-analysis-kit/capi-log-h.md#oh_log_print)，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用。
+   由于使用了日志打印接口[OH_LOG_Print/apis-performance-analysis-kit/capi-log-h.md#oh_log_print)，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用。
 
    ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)

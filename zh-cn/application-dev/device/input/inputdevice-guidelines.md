@@ -19,7 +19,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ## 接口说明
 
-输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice (输入设备)](../../reference/apis-input-kit/js-apis-inputdevice.md)。
+输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice (输入设备)/apis-input-kit/js-apis-inputdevice.md)。
 
 | 接口名称  | 描述 |
 | ----------- | ------------------------------------------------------------ | 
@@ -34,8 +34,8 @@ import { inputDevice } from '@kit.InputKit';
 
 ### 开发步骤
 
-1. 调用[getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，调用[getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法遍历所有连接的设备，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保监听设备热插拔之前，检测所有插入的输入设备。
-2. 调用[on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceonchange9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔掉，则标记没有物理键盘连接。
+1. 调用[getDeviceList/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，调用[getKeyboardType/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法遍历所有连接的设备，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保监听设备热插拔之前，检测所有插入的输入设备。
+2. 调用[on/apis-input-kit/js-apis-inputdevice.md#inputdeviceonchange9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔掉，则标记没有物理键盘连接。
 
 <!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) --> 
 

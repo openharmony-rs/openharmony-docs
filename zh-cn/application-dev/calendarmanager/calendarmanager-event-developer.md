@@ -9,13 +9,13 @@
 
 日程指特定的事件或者活动安排，日程管理即对这些事件、活动进行规划和控制，能更有效地利用相关资源、提高生产力和效率，使人们更好地管理时间和任务。
 
-Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarManager.md#event)归属于某个对应的日历账户[Calendar](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendar)，一个日历账户下可以有多个日程，一个日程只属于一个Calendar。
+Calendar Kit中的日程[Event/apis-calendar-kit/js-apis-calendarManager.md#event)归属于某个对应的日历账户[Calendar/apis-calendar-kit/js-apis-calendarManager.md#calendar)，一个日历账户下可以有多个日程，一个日程只属于一个Calendar。
 
 获取到日历账户对象之后，即可对该账户下的日程进行管理，包括日程的创建、删除、修改、查询等操作。在创建、修改日程时，支持对日程的标题、开始时间、结束时间、日程类型、日程地点、日程提醒时间、日程重复规则等相关信息进行设置，以便进行更丰富更有效的日程管理。
 
 ## 接口说明
 
-以下是日程管理的相关接口，更多详细接口及使用请参考[@ohos.calendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md)。
+以下是日程管理的相关接口，更多详细接口及使用请参考[@ohos.calendarManager/apis-calendar-kit/js-apis-calendarManager.md)。
 
 | 接口名称                                      | 描述                                             |
 | ----------------------------------------- |------------------------------------------------|

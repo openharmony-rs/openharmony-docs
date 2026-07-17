@@ -6,7 +6,7 @@
  <!--Tester: @Filger-->
  <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)，用于实现三维空间音频渲染能力。空间渲染效果节点提供固定摆位、旋转及扩展三种[工作模式](audio-suite-space-render.md#工作模式)，将音频源在三维空间中进行定位、旋转和扩展处理，助力开发者高效构建沉浸式空间音频体验。
+从API version 23开始，[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)，用于实现三维空间音频渲染能力。空间渲染效果节点提供固定摆位、旋转及扩展三种[工作模式](audio-suite-space-render.md#工作模式)，将音频源在三维空间中进行定位、旋转和扩展处理，助力开发者高效构建沉浸式空间音频体验。
 
 ## 坐标系说明
 
@@ -24,23 +24,23 @@
 ## 工作模式
 
 ### 固定摆位模式
-固定摆位模式用于将音频源放置在特定空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用[OH_AudioSuiteEngine_SetSpaceRenderPositionParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行参数配置。固定摆位示意图如下：
+固定摆位模式用于将音频源放置在特定空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用[OH_AudioSuiteEngine_SetSpaceRenderPositionParams/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行参数配置。固定摆位示意图如下：
 
 ![audiosuite-space-render-position](figures/audiosuite-space-render-position.png)
 
 ### 旋转模式
-旋转模式让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染，用户可通过调用[OH_AudioSuiteEngine_SetSpaceRenderRotationParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)对空间渲染节点进行参数配置。旋转模式示意图如下：
+旋转模式让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染，用户可通过调用[OH_AudioSuiteEngine_SetSpaceRenderRotationParams/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)对空间渲染节点进行参数配置。旋转模式示意图如下：
 
 ![audiosuite-space-render-rotation](figures/audiosuite-space-render-rotation.png)
 
 ### 扩展模式
-扩展模式将音频源按照半径和角度进行扩展，用户可通过调用[OH_AudioSuiteEngine_SetSpaceRenderExtensionParams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行参数配置。扩展模式示意图如下：
+扩展模式将音频源按照半径和角度进行扩展，用户可通过调用[OH_AudioSuiteEngine_SetSpaceRenderExtensionParams/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行参数配置。扩展模式示意图如下：
 
 ![audiosuite-space-render-extension](figures/audiosuite-space-render-extension.png)
 
 ## 开发基础配置
 
-开发者使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的空间渲染效果节点，需要添加对应的头文件并链接动态库。
+开发者使用[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)提供的空间渲染效果节点，需要添加对应的头文件并链接动态库。
 
 ### 在CMake脚本中链接动态库
 
@@ -65,7 +65,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 ### 接口调用
 
-详细的API说明请参考[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)。
+详细的API说明请参考[OHAudioSuite/apis-audio-kit/capi-ohaudiosuite.md)。
 
 ### 空间渲染固定摆位效果
 
@@ -85,7 +85,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 2. 创建输入、输出、空间渲染等节点并连接组网。
 
-   创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为[OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)，调用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口设置回调函数。
+   创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为[OH_InputNode_RequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback)，调用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback()/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口设置回调函数。
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    

@@ -770,7 +770,7 @@ struct Page {
 
 在多个组件依赖同一个数据源并根据数据源变化刷新组件的情况下，直接关联数据源会导致每次数据源改变都刷新所有组件。为精准控制组件刷新，可以采取以下策略：
   1. 使用 [@Watch](../ui/state-management/arkts-watch.md) 装饰器：在组件中使用@Watch装饰器监听数据源，当数据变化时执行业务逻辑，确保只有满足条件的组件进行刷新。
-  2. 事件驱动更新：对于复杂组件关系或跨层级情况，使用[Emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)自定义事件发布订阅机制。数据源变化时触发相应事件，订阅该事件的组件接收到通知后，根据变化的具体值判断组件是否刷新。
+  2. 事件驱动更新：对于复杂组件关系或跨层级情况，使用[Emitter/apis-basic-services-kit/js-apis-emitter.md)自定义事件发布订阅机制。数据源变化时触发相应事件，订阅该事件的组件接收到通知后，根据变化的具体值判断组件是否刷新。
 
 【反例】
 
@@ -958,7 +958,7 @@ onCurrentValueUpdate() {
 Component.property(this.nestedComponentResult)
 ```
 
-当组件关系复杂或跨越层级过多时，推荐使用 [Emitter](../reference/apis-basic-services-kit/js-apis-emitter.md) 自定义事件发布订阅的方式。当数据源改变时发布事件，依赖该数据源的组件通过订阅事件来获取数据源的改变，完成业务逻辑的处理，从而实现组件的精准刷新。
+当组件关系复杂或跨越层级过多时，推荐使用 [Emitter/apis-basic-services-kit/js-apis-emitter.md) 自定义事件发布订阅的方式。当数据源改变时发布事件，依赖该数据源的组件通过订阅事件来获取数据源的改变，完成业务逻辑的处理，从而实现组件的精准刷新。
 
 下面通过部分示例代码介绍使用方式。
 

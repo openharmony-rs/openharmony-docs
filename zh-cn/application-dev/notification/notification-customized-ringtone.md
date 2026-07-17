@@ -10,10 +10,10 @@
 
 ## 接口说明
 
-自定义铃声可通过[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)携带sound字段来指定，不指定该字段默认为系统铃声。
+自定义铃声可通过[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)携带sound字段来指定，不指定该字段默认为系统铃声。
 
 - 资源文件：应用预置的音频文件，资源文件必须放在放在resources/rawfile目录下，使用时直接传入文件名。
-- 沙箱文件：网络下载或者用户生成的音频文件，必须放在[沙箱文件目录](../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)EL1区域的files目录或者其子目录下，传入格式为uri::{fileUri}，其中fileUri是通过[getUriFromPath](../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)获取的路径。<br/>
+- 沙箱文件：网络下载或者用户生成的音频文件，必须放在[沙箱文件目录](../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)EL1区域的files目录或者其子目录下，传入格式为uri::{fileUri}，其中fileUri是通过[getUriFromPath/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)获取的路径。<br/>
 
 支持m4a、aac、mp3、ogg、wav、flac、amr等格式。
 
@@ -21,7 +21,7 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [publish(request: NotificationRequest): Promise\<void\>](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)       | 发布通知。  |
+| [publish(request: NotificationRequest): Promise\<void\>/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)       | 发布通知。  |
 
 ## 开发步骤
 
@@ -130,5 +130,5 @@
 
 ## 约束限制
 
-- 应用使用非预置的音频资源作为通知铃声，发布通知时，[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)携带sound字段指定的uri资源路径中不能包含"../"或者"/.."，并且必须以"uri::"开始。
+- 应用使用非预置的音频资源作为通知铃声，发布通知时，[NotificationRequest/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)携带sound字段指定的uri资源路径中不能包含"../"或者"/.."，并且必须以"uri::"开始。
 - 应用使用非预置的音频资源作为通知铃声，音频资源必须放在应用沙箱EL1区域files目录下。

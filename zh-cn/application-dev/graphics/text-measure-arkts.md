@@ -30,7 +30,7 @@
 
 ## 接口说明
 
-文本测量中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)。
+文本测量中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)/apis-arkgraphics2d/js-apis-graphics-text.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -131,7 +131,7 @@
 
 5. 从API version 24开始支持在限定宽高区域内排版文本，获取排版结果。
 
-   使用[layoutWithConstraints()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#layoutwithconstraints24)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
+   使用[layoutWithConstraints()/apis-arkgraphics2d/js-apis-graphics-text.md#layoutwithconstraints24)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
 
    <!-- @[ts_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
 
@@ -151,7 +151,7 @@
 
 6. 从API version 24开始支持根据坐标获取字符位置信息。
 
-   使用[getCharacterPositionAtCoordinate()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterpositionatcoordinate24)获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
+   使用[getCharacterPositionAtCoordinate()/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterpositionatcoordinate24)获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
 
    <!-- @[ts_text_metrics_get_character_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
 
@@ -165,7 +165,7 @@
 
 7. 从API version 24开始支持字形范围与字符范围的相互转换。
 
-   使用[getCharacterRangeForGlyphRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterrangeforglyphrange24)根据字形范围获取对应的字符范围，使用[getGlyphRangeForCharacterRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglyphrangeforcharacterrange24)根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
+   使用[getCharacterRangeForGlyphRange()/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterrangeforglyphrange24)根据字形范围获取对应的字符范围，使用[getGlyphRangeForCharacterRange()/apis-arkgraphics2d/js-apis-graphics-text.md#getglyphrangeforcharacterrange24)根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
 
    <!-- @[ts_text_metrics_glyph_character_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
 

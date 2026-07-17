@@ -9,9 +9,9 @@
 
 ## 概述
 
-[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)是EMBEDDED_UI类型的[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)组件，提供了跨进程界面嵌入的能力。
+[EmbeddedUIExtensionAbility/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)是EMBEDDED_UI类型的[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)组件，提供了跨进程界面嵌入的能力。
 
-EmbeddedUIExtensionAbility需要和[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)一起配合使用，开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的页面中通过EmbeddedComponent嵌入本应用的EmbeddedUIExtensionAbility提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成其页面的布局和渲染，与UIAbility数据不互通，适用于有进程隔离诉求的模块化开发场景。
+EmbeddedUIExtensionAbility需要和[EmbeddedComponent/apis-arkui/arkui-ts/ts-container-embedded-component.md)一起配合使用，开发者可以在[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)的页面中通过EmbeddedComponent嵌入本应用的EmbeddedUIExtensionAbility提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成其页面的布局和渲染，与UIAbility数据不互通，适用于有进程隔离诉求的模块化开发场景。
 
 在下面的示例中，UIAbility运行在主进程，其中包含多个EmbeddedComponent。每个EmbeddedComponent对应一个EmbeddedUIExtensionAbility。多个EmbeddedUIExtensionAbility可以分别用于实现办公软件中的文档、表格、演示文件。
 
@@ -25,7 +25,7 @@ EmbeddedUIExtensionAbility需要和[EmbeddedComponent](../reference/apis-arkui/a
 
 ## 生命周期 
 
-[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供了onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调，根据需要重写对应的回调方法。以下生命周期回调均继承自[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+[EmbeddedUIExtensionAbility/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供了onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调，根据需要重写对应的回调方法。以下生命周期回调均继承自[UIExtensionAbility/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
 
 - **onCreate**：当EmbeddedUIExtensionAbility创建时回调，执行初始化业务逻辑操作。
 - **onSessionCreate**：当EmbeddedUIExtensionAbility界面内容对象创建后调用。
@@ -42,11 +42,11 @@ EmbeddedUIExtensionAbility需要和[EmbeddedComponent](../reference/apis-arkui/a
 >
 > EmbeddedUIExtensionAbility支持应用分身，被拉起的EmbeddedUIExtensionAbility与UIAbility属于同一分身应用。
 
-EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)和[UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)提供相关能力。本文描述中称被启动的EmbeddedUIExtensionAbility为提供方，称启动EmbeddedUIExtensionAbility的EmbeddedComponent组件为使用方。
+EmbeddedUIExtensionAbility通过[UIExtensionContext/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)和[UIExtensionContentSession/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)提供相关能力。本文描述中称被启动的EmbeddedUIExtensionAbility为提供方，称启动EmbeddedUIExtensionAbility的EmbeddedComponent组件为使用方。
 
 ## 开发EmbeddedUIExtensionAbility提供方
 
-开发者在实现一个[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供方时，需要在DevEco Studio工程中手动新建一个EmbeddedUIExtensionAbility，具体步骤如下。
+开发者在实现一个[EmbeddedUIExtensionAbility/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供方时，需要在DevEco Studio工程中手动新建一个EmbeddedUIExtensionAbility，具体步骤如下。
 
 1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为embeddeduiextability。
 
@@ -152,8 +152,8 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 ## 开发EmbeddedUIExtensionAbility使用方
 
-开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的页面中通过[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)容器加载自己应用内的[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)。此外，EmbeddedUIExtensionAbility在[want](../reference/apis-ability-kit/js-apis-app-ability-want.md).parameters中新增了两个字段ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstance。
-- ohos.extension.processMode.hostSpecified控制非首次启动的EmbeddedUIExtensionAbility是否运行在同[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)的进程中，参数是进程名称。例如，"ohos.extension.processMode.hostSpecified"： "com.ohos.inentexecutedemo:embeddedUI"。
+开发者可以在[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)的页面中通过[EmbeddedComponent/apis-arkui/arkui-ts/ts-container-embedded-component.md)容器加载自己应用内的[EmbeddedUIExtensionAbility/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)。此外，EmbeddedUIExtensionAbility在[want/apis-ability-kit/js-apis-app-ability-want.md).parameters中新增了两个字段ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstance。
+- ohos.extension.processMode.hostSpecified控制非首次启动的EmbeddedUIExtensionAbility是否运行在同[UIExtensionAbility/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)的进程中，参数是进程名称。例如，"ohos.extension.processMode.hostSpecified"： "com.ohos.inentexecutedemo:embeddedUI"。
 - ohos.extension.processMode.hostInstance控制启动的EmbeddedUIExtensionAbility是否按照独立进程启动，传入false时，按照UIExtensionAbility的进程模型启动，入参true的时候，不管被拉起的UIExtensionAbility配置的是什么进程模型，都会新增一个进程，例如，"ohos.extension.processMode.hostInstance": "true"。
 
 ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstance同时配置时，hostSpecified优先，会运行在指定的进程中。

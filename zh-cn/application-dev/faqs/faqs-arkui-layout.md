@@ -35,7 +35,7 @@
 
 **参考链接**
 
-[自定义组件的生命周期-onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)
+[自定义组件的生命周期-onBackPress/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)
 
 
 ## List组件怎么实现分组列表的粘性标题效果(API 9)
@@ -54,7 +54,7 @@
 
 **参考链接**
 
-[安全区域](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)
+[安全区域/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)
 
 ## 有哪些实现图文混排的方式，每种方式的优劣点是什么，推荐场景是什么(API 10)
 
@@ -66,7 +66,7 @@
 
 **参考链接**
 
-[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
+[RichEditor/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
 
 ## 如何实现协调布局的效果(API 10)
 
@@ -76,7 +76,7 @@
 
 **参考链接**
 
-[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)
+[Scroll/apis-arkui/arkui-ts/ts-container-scroll.md)
 
 ## 如何解决sidebar侧边栏出现时，遮挡住下方的导航栏的问题(API 10)
 
@@ -86,7 +86,7 @@
 
 **参考链接**
 
-[SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)
+[SideBarContainer/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)
 
 ## 如何解决使用foreach&lazyforeach循环渲染时，会出现更改数据源时，界面不刷新的问题(API 10)
 
@@ -118,8 +118,8 @@ MyGlobalBuilderFunction()
 
 **参考链接**
 
-1. [自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
-2. [Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
+1. [自定义弹窗 (CustomDialog)/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+2. [Popup控制/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
 3. [@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
 
 ## 为什么两个紧挨着的相同颜色的控件之间会有白线、暗线。如何解决(API 11)
@@ -139,4 +139,4 @@ Flex(){
 ```
 
 **参考链接**
-[布局约束](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md)
+[布局约束/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md)

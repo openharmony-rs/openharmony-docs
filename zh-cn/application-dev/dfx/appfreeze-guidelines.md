@@ -167,7 +167,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 
 从API version 20开始，当整机资源告警（如整机低内存或热限频）时，系统会输出NOTE行。此时开发者可忽略应用冻屏故障。在之前的API版本中，无论整机资源状态如何，系统都不会输出此NOTE行。
 
-从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息：
 

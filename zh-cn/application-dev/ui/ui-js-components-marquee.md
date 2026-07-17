@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用法请参考[marquee](../reference/apis-arkui/arkui-js/js-components-basic-marquee.md)。
+marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用法请参考[marquee/apis-arkui/arkui-js/js-components-basic-marquee.md)。
 
 
 ## 创建marquee组件

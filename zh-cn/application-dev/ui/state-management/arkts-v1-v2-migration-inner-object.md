@@ -19,7 +19,7 @@
 
 ### List
 
-开发者可以通过[ChildrenMainSize](../../reference/apis-arkui/arkui-ts/ts-container-list.md#childrenmainsize12)来设置[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)的子组件在主轴方向的大小信息。
+开发者可以通过[ChildrenMainSize/apis-arkui/arkui-ts/ts-container-list.md#childrenmainsize12)来设置[List/apis-arkui/arkui-ts/ts-container-list.md)的子组件在主轴方向的大小信息。
 
 V1：
 
@@ -115,7 +115,7 @@ struct ListExample {
 
 ### WaterFlow
 
-开发者可以通过[WaterFlowSections](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)来设置WaterFlow瀑布流分组信息。
+开发者可以通过[WaterFlowSections/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)来设置WaterFlow瀑布流分组信息。
 
 需要注意的是，数组arr的长度需要与WaterFlowSections的所有SectionOptions的itemsCount总和一致，否则WaterFlow无法处理，导致UI不刷新。
 
@@ -297,7 +297,7 @@ struct WaterFlowSample {
 
 ### attributeModifier
 
-开发者可以通过[attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件的属性方法。
+开发者可以通过[attributeModifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件的属性方法。
 
 V1：
 
@@ -390,7 +390,7 @@ struct AttributeDemo {
 
 ### CommonModifier
 
-动态设置组件的属性类。以[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
+动态设置组件的属性类。以[自定义Modifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
 
 V1：
 
@@ -464,7 +464,7 @@ struct Index {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[自定义Modifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 

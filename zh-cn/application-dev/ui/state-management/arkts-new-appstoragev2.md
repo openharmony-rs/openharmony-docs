@@ -10,7 +10,7 @@
 
 AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨ability的数据共享。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[AppStorageV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[AppStorageV2-API文档/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 >**说明：**
 >
@@ -49,18 +49,18 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 - keys：返回所有AppStorageV2中的key。
 
-以上接口详细描述请参考状态管理API文档中的[AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
+以上接口详细描述请参考状态管理API文档中的[AppStorageV2/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 
 ## 使用限制
 
-1、只支持class类型，否则会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
+1、只支持class类型，否则会抛出运行时报错，从API version 23开始，将返回错误码[140103/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
 2、需要配合UI使用（UI线程），不能在其他线程使用，如不支持[@Sendable](../../arkts-utils/arkts-sendable.md)。
 
-3、不支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)等类型。
+3、不支持[collections.Set/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map/apis-arkts/arkts-apis-arkts-collections-Map.md)等类型。
 
-4、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
+4、不支持非built-in类型，如[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 5、不支持存储基本类型，如string、number、boolean等。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
 

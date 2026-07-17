@@ -31,7 +31,7 @@
 | ----------- | ---------------------------------------- |
 | 装饰器参数       | 无。                                        |
 | 同步类型        | 单向同步。对父组件状态变量值的修改，将同步给子组件\@Prop装饰的变量，子组件\@Prop装饰的变量的修改不会同步到父组件的状态变量上。<br>嵌套类型的场景请参考[观察变化](#观察变化)。 |
-| 允许装饰的变量类型   |  Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[Prop支持联合类型实例](#prop支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
+| 允许装饰的变量类型   |  Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[Prop支持联合类型实例](#prop支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
 | 不允许装饰的变量类型 | 不支持装饰Function类型。      |
 | 嵌套传递层数        | 在组件复用场景，建议@Prop深度嵌套数据不要超过5层，嵌套太多会导致深拷贝占用的空间过大以及GarbageCollection(垃圾回收)，引起性能问题，此时更建议使用[\@ObjectLink](arkts-observed-and-objectlink.md)。 |
 | 被装饰变量的初始值   | 允许本地初始化。API version 11及以上，如果和[\@Require](arkts-require.md)结合使用，则必须父组件构造传参。 |
@@ -193,7 +193,7 @@ struct Father {
 
 ## 限制条件
 
-- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
 
 - \@Prop不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 

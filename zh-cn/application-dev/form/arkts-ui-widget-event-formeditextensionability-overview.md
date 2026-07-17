@@ -17,16 +17,16 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 1. 长按卡片弹出菜单，此时桌面通过[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。
 2. 点击“编辑”菜单项，桌面通过formConfigAbility中的字段拉起对应的页面，进入一级编辑页。一级编辑页的编辑区域有限，用于比较简单的编辑布局。
     - 预览区：灰色区域为预览区，用于呈现卡片编辑后的效果。预览区的布局是由桌面决定的。
-    - 编辑区：白色区域为编辑区，为应用自定义布局区域，用来实现卡片编辑的布局。卡片编辑区的布局由应用继承[FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)后绘制而成，可用于简单的编辑布局。
+    - 编辑区：白色区域为编辑区，为应用自定义布局区域，用来实现卡片编辑的布局。卡片编辑区的布局由应用继承[FormEditExtensionAbility/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)后绘制而成，可用于简单的编辑布局。
     - FormEditDemo：该字段为卡片宿主应用的应用名称，通过[app.json5](../quick-start/app-configuration-file.md#配置文件标签)配置文件中的label字段配置。
     - widget：该字段为卡片名称，通过卡片form_config.json配置文件中的[name](./arkts-ui-widget-configuration.md#配置文件字段说明)字段配置。
     - “完成”按钮：编辑完成之后，点击按钮可退出半模态卡片编辑页面。
-3. 在卡片编辑区，点击“切换到：上海”按钮后，卡片提供方可以通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口更新卡片信息，并在预览区显示。
-4. 在卡片编辑区，点击“进入二级编辑页”按钮，此时卡片通过FormEditExtensionContext提供的[startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法，将卡片提供方的二级编辑页信息传递给桌面，桌面拉起对应页面，即进入二级编辑页。二级编辑页主要有用于实现复杂的编辑布局，是否需要二级编辑页请开发者根据实际需求添加。
+3. 在卡片编辑区，点击“切换到：上海”按钮后，卡片提供方可以通过[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口更新卡片信息，并在预览区显示。
+4. 在卡片编辑区，点击“进入二级编辑页”按钮，此时卡片通过FormEditExtensionContext提供的[startSecondPage/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法，将卡片提供方的二级编辑页信息传递给桌面，桌面拉起对应页面，即进入二级编辑页。二级编辑页主要有用于实现复杂的编辑布局，是否需要二级编辑页请开发者根据实际需求添加。
 5. 编辑完成之后退出编辑页。
 ### 开发步骤
 1. [创建卡片](./arkts-ui-widget-creation.md)。
-2. 新增EntryFormEditAbility文件，用于实现[FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)的半模态编辑组件，并在form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
+2. 新增EntryFormEditAbility文件，用于实现[FormEditExtensionAbility/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)的半模态编辑组件，并在form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
    - 半模态一级编辑页Ability的实现。
    <!-- @[FormEditDemo_EntryFormEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets) --> 
    
@@ -210,7 +210,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        ]
    }
    ```
-3. 实现一级编辑页布局，通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息和预览卡片信息，通过[startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法去拉起二级编辑页。
+3. 实现一级编辑页布局，通过[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息和预览卡片信息，通过[startSecondPage/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法去拉起二级编辑页。
    - 一级编辑页布局实现如下。
    <!-- @[FormEditDemo_FormEditExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditExtension.ets) -->
    
@@ -378,7 +378,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        } 
        ```
 
-   - 新增ExtensionEvent文件，封装[startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法到startFormEditSecondPage中，供业务使用。
+   - 新增ExtensionEvent文件，封装[startSecondPage/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法到startFormEditSecondPage中，供业务使用。
    <!-- @[FormEditDemo_ExtensionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/model/ExtensionEvent.ets) --> 
    
    ``` TypeScript
@@ -637,11 +637,11 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 ![WidgetProject](figures/全屏编辑页操作流程.png)
 1. 长按卡片弹出菜单。桌面通过[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。
 2. 点击“编辑”菜单项进入全屏编辑页。桌面通过formConfigAbility字段的信息拉起卡片编辑页。
-3. 点击“切换到：上海”按钮编辑卡片内容。提供方通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去更新编辑卡片的信息。
+3. 点击“切换到：上海”按钮编辑卡片内容。提供方通过[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去更新编辑卡片的信息。
 ### 开发步骤
 下面给出示例，实现如下功能：长按卡片弹出编辑菜单，点击“编辑”菜单项进入全屏编辑页，修改卡片内容。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
-2. 开发者需要新增EntryEditAbility.ets文件，继承[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，实现[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onNewWant](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调函数。卡片使用方会通过[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)的parameters字段把被编辑的卡片ID带进来。并且需要在form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
+2. 开发者需要新增EntryEditAbility.ets文件，继承[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，实现[onCreate/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onNewWant/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调函数。卡片使用方会通过[Want/apis-ability-kit/js-apis-app-ability-want.md)的parameters字段把被编辑的卡片ID带进来。并且需要在form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
    - 实现编辑页面的Ability。
    <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
    
@@ -765,7 +765,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
-3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息。
+3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息。
    <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) --> 
    
    ``` TypeScript

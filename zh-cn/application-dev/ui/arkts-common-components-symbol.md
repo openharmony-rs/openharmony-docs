@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多色图标和使用动效图标。SymbolSpan作为Text组件的子组件，可在文本中穿插显示图标小符号。具体用法请参考[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)和[SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)组件的API文档。
+SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多色图标和使用动效图标。SymbolSpan作为Text组件的子组件，可在文本中穿插显示图标小符号。具体用法请参考[SymbolGlyph/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)和[SymbolSpan/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)组件的API文档。
 
 
 ## 创建图标
@@ -26,7 +26,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
 ## 添加到文本中
 
-[SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)可作为[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)的子组件用于显示图标小符号。可以在一个Text组件内添加多个SymbolSpan，从而展示一串连续的图标。  
+[SymbolSpan/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)可作为[Text/apis-arkui/arkui-ts/ts-basic-components-text.md)的子组件用于显示图标小符号。可以在一个Text组件内添加多个SymbolSpan，从而展示一串连续的图标。  
 
 - 创建SymbolSpan。
 
@@ -44,7 +44,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![symbol_trash](figures/symbolspan_trash.png)
 
-- 通过[fontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontsize)属性设置SymbolSpan的大小。
+- 通过[fontSize/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontsize)属性设置SymbolSpan的大小。
 
   <!-- @[symbol_span_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
@@ -84,7 +84,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![symbolSpan_multi_fontSize](figures/symbolspan_multi_fontsize.png)
 
-- 通过[fontWeight](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontweight)属性设置SymbolSpan组件的粗细。
+- 通过[fontWeight/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontweight)属性设置SymbolSpan组件的粗细。
 
   <!-- @[symbol_span_font_weight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
@@ -121,7 +121,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ![symbolSpan_multi_fontWeight_trash](figures/symbol_multi_fontweight_trash.png)
 
-- 通过[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)属性设置SymbolSpan的颜色。
+- 通过[fontColor/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)属性设置SymbolSpan的颜色。
 
   <!-- @[symbol_span_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
@@ -158,7 +158,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![symbolSpan_multi_fontColor](figures/symbolspan_multi_fontcolor.PNG)
 
-- 通过[renderingStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#renderingstrategy)属性设置SymbolSpan的渲染策略。
+- 通过[renderingStrategy/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#renderingstrategy)属性设置SymbolSpan的渲染策略。
 
   <!-- @[symbol_span_rendering_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
@@ -201,7 +201,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![symbolSpan_multi_renderingStrategy](figures/symbolspan_multi_renderingStrategy.png)
 
-- 通过[effectStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#effectstrategy)属性设置SymbolSpan的动效策略。
+- 通过[effectStrategy/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#effectstrategy)属性设置SymbolSpan的动效策略。
 
   <!-- @[symbol_span_effect_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
@@ -247,7 +247,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
 相较于effectStrategy属性在启动时即触发动效，可以通过以下两种方式来控制动效的播放状态，以及选择更多样化的动效策略。
 
-关于effectStrategy属性与symbolEffect属性的多种动态属性使用及生效原则，详情请参阅[SymbolGlyph.symbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symboleffect12-1)属性的说明。  
+关于effectStrategy属性与symbolEffect属性的多种动态属性使用及生效原则，详情请参阅[SymbolGlyph.symbolEffect/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symboleffect12-1)属性的说明。  
 
 - 通过设置SymbolEffect属性，可以同时配置SymbolGlyph的动效策略和播放状态。
 
@@ -303,7 +303,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
-- 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
+- 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
 
   <!-- @[symbol_disable_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
@@ -333,7 +333,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![symbolGlyph_symbolEffect_disable](figures/symbolGlyph_symbolEffect_disable.gif)
 
-- 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
+- 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
 
   <!-- @[symbol_quick_replacement_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
@@ -363,7 +363,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
 ## 设置阴影和渐变色
 
-- 从API version 20开始，支持通过[symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口实现了symbolGlyph组件显示阴影效果。
+- 从API version 20开始，支持通过[symbolShadow/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口实现了symbolGlyph组件显示阴影效果。
 
   <!-- @[shadow_color_1_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
@@ -398,7 +398,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
   ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
-- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20)接口实现了symbolGlyph组件显示渐变色效果。 
+- 从API version 20开始，支持通过[shaderStyle/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20)接口实现了symbolGlyph组件显示渐变色效果。 
 
   <!-- @[shadow_color_2_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
@@ -430,7 +430,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
 ## 添加事件
 
-SymbolGlyph组件可以添加通用事件，例如绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
+SymbolGlyph组件可以添加通用事件，例如绑定[onClick/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
 <!-- @[symbol_glyph_span_add_event_up](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 

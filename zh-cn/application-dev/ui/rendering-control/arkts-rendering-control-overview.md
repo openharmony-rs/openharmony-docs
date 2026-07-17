@@ -17,8 +17,8 @@ ArkUI通过[自定义组件](../state-management/arkts-create-custom-components.
 | 循环渲染 | 根据给定的数据源，渲染出一系列相似的UI组件。 |
 | 条件渲染组件 | 能够实现条件渲染的语法组件：[if-else](./arkts-rendering-control-ifelse.md)。 |
 | 循环渲染组件 | 能够实现循环渲染的语法组件：[ForEach](./arkts-rendering-control-foreach.md)、[LazyForEach](./arkts-rendering-control-lazyforeach.md)、[Repeat](./arkts-new-rendering-control-repeat.md)。 |
-| 滚动容器组件 | [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。 |
-| 预加载区域 | 懒加载模式下紧邻容器组件显示范围的区域。该区域内的子组件会在系统空闲时提前创建并布局。其大小由容器组件的cachedCount属性设定。</br>以List为例，设置[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性后，显示区域外上下各会预加载并布局cachedCount行[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)。cachedCount默认值等于显示区域中节点的数量。 |
+| 滚动容器组件 | [List/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)、[WaterFlow/apis-arkui/arkui-ts/ts-container-waterflow.md)。 |
+| 预加载区域 | 懒加载模式下紧邻容器组件显示范围的区域。该区域内的子组件会在系统空闲时提前创建并布局。其大小由容器组件的cachedCount属性设定。</br>以List为例，设置[cachedCount/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性后，显示区域外上下各会预加载并布局cachedCount行[ListItem/apis-arkui/arkui-ts/ts-container-listitem.md)。cachedCount默认值等于显示区域中节点的数量。 |
 
 ## 全量加载&懒加载介绍
 

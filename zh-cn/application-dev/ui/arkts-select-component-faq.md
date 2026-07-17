@@ -10,7 +10,7 @@
 
 ## Slider组件滑块与滑轨是如何对齐的
 
-Slider的滑块与滑轨显示样式[SliderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#sliderstyle枚举说明)有三种，其中SliderStyle.OutSet与SliderStyle.InSet存在滑块。Slider的滑动条进度为最小值时，滑块对齐方式如下：
+Slider的滑块与滑轨显示样式[SliderStyle/apis-arkui/arkui-ts/ts-basic-components-slider.md#sliderstyle枚举说明)有三种，其中SliderStyle.OutSet与SliderStyle.InSet存在滑块。Slider的滑动条进度为最小值时，滑块对齐方式如下：
 
 SliderStyle.OutSet模式下，滑块的中心与滑轨的端点对齐，示例图如下：
 
@@ -60,8 +60,8 @@ struct Index {
 **可能原因**
 
 设置LabelStyle有两种方式，其中：
-- 直接设置[LabelStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#labelstyle10对象说明)。此时font属性中的weight默认值为FontWeight.Medium，对应数值500。
-- 通过[AttributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)接口设置。此时font属性中的weight默认值为400，与LabelStyle对象说明中的默认值存在差异。
+- 直接设置[LabelStyle/apis-arkui/arkui-ts/ts-basic-components-button.md#labelstyle10对象说明)。此时font属性中的weight默认值为FontWeight.Medium，对应数值500。
+- 通过[AttributeModifier/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)接口设置。此时font属性中的weight默认值为400，与LabelStyle对象说明中的默认值存在差异。
 
 **解决措施**
 

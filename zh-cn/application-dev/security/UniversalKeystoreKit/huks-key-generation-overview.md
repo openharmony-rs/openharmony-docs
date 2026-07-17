@@ -12,7 +12,7 @@
 >
 > * 密钥别名长度最大为128字节。
 > * 密钥别名中禁止包含个人数据等敏感信息。不建议包含加密算法、密钥长度、加密模式等信息。
-> * 使用当前业务已有的密钥别名作为生成的密钥别名默认会把现有密钥覆盖，可以使用[HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)指定当密钥别名冲突时返回错误。
+> * 使用当前业务已有的密钥别名作为生成的密钥别名默认会把现有密钥覆盖，可以使用[HUKS_TAG_KEY_OVERRIDE/apis-universal-keystore-kit/js-apis-huks.md#hukstag)指定当密钥别名冲突时返回错误。
 > * 对于不同业务生成的密钥将基于业务身份信息进行存储路径隔离，避免不同业务因密钥别名相同导致冲突。
 
 从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
@@ -33,7 +33,7 @@
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | 表示密钥仅在解锁状态时可访问。 |
 > **说明：**
 >
->  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
+>  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
 
 ## 支持的算法
 

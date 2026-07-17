@@ -21,7 +21,7 @@ input组件属于类web范式组件，不支持设置文本对齐方式，text-a
 
 **参考链接**
 
-[input组件](../reference/apis-arkui/arkui-js/js-components-basic-input.md)，[text组件](../reference/apis-arkui/arkui-js/js-components-basic-text.md)
+[input组件/apis-arkui/arkui-js/js-components-basic-input.md)，[text组件/apis-arkui/arkui-js/js-components-basic-text.md)
 
 
 ## 如何判断JS对象中是否存在某个值(API 9)

@@ -7,19 +7,19 @@
 <!--Adviser: @w_Machine_cc-->
 折叠设备形态各异，在相机应用的开发过程中需要统一的摄像头切换方案，以确保用户在拍照、录像过程中获得更好的体验。
 
-一台可折叠设备在不同折叠状态下，可使用不同的相机。系统会标识所有摄像头，每个摄像头与一个折叠状态相对应，表示该摄像头可在对应的折叠状态下使用。应用可调用[CameraManager.on('foldStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12)或[display.on('foldStatusChange')](../../reference/apis-arkui/js-apis-display.md#displayonfoldstatuschange10)监听设备的折叠状态变化，并调用[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取当前状态下可用相机，完成相应适配，确保应用在折叠状态变更时的用户体验。
+一台可折叠设备在不同折叠状态下，可使用不同的相机。系统会标识所有摄像头，每个摄像头与一个折叠状态相对应，表示该摄像头可在对应的折叠状态下使用。应用可调用[CameraManager.on('foldStatusChange')/apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12)或[display.on('foldStatusChange')/apis-arkui/js-apis-display.md#displayonfoldstatuschange10)监听设备的折叠状态变化，并调用[CameraManager.getSupportedCameras/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取当前状态下可用相机，完成相应适配，确保应用在折叠状态变更时的用户体验。
 
 不同折叠设备在不同折叠状态下支持的摄像头数量不同。
 
-例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。不同的折叠状态获取到的镜头不同，因此，在折叠状态变化时，需要重新获取镜头信息。
+例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过[CameraManager.getSupportedCameras/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。不同的折叠状态获取到的镜头不同，因此，在折叠状态变化时，需要重新获取镜头信息。
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)/apis-camera-kit/arkts-apis-camera.md)。
 
 Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 在开发相机应用时，需要先申请相机相关权限，请参考[申请相关权限](camera-preparation.md)。
 ## 创建XComponent
-   使用两个[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)分别展示折叠态和展开态，防止切换折叠屏状态亮屏的时候上一个相机还未关闭，残留上一个相机的画面。
+   使用两个[XComponent/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)分别展示折叠态和展开态，防止切换折叠屏状态亮屏的时候上一个相机还未关闭，残留上一个相机的画面。
 
    ```ts
     @Entry
@@ -86,7 +86,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       cameraManager.off('foldStatusChange', registerFoldStatusChanged);
     }
     ```
-- **方案二：使用图形图像的[display.on('foldStatusChange')](../../reference/apis-arkui/js-apis-display.md#displayonfoldstatuschange10)监听设备折叠态变化。**
+- **方案二：使用图形图像的[display.on('foldStatusChange')/apis-arkui/js-apis-display.md#displayonfoldstatuschange10)监听设备折叠态变化。**
     ```ts
     import { display } from '@kit.ArkUI';
     
@@ -116,7 +116,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     })
     ```
 ## 判断是否存在对应位置摄像头
-通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到当前设备折叠状态下支持的所有镜头，遍历获取到的结果，通过[CameraPosition](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)判断镜头是否存在。
+通过[CameraManager.getSupportedCameras/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到当前设备折叠状态下支持的所有镜头，遍历获取到的结果，通过[CameraPosition/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)判断镜头是否存在。
 ```ts
 import { camera } from '@kit.CameraKit';
 

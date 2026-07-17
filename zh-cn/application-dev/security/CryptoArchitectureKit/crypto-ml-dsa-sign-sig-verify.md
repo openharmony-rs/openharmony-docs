@@ -11,29 +11,29 @@
 
 **签名**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成非对称密钥算法为ML-DSA的密钥对（KeyPair）。
+1. 调用[cryptoFramework.createAsyKeyGenerator/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成非对称密钥算法为ML-DSA的密钥对（KeyPair）。
 
-2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Sign实例，用于完成签名操作。
+2. 调用[cryptoFramework.createSign/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Sign实例，用于完成签名操作。
 
-3. （可选）调用[Sign.setSignSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setsignspec)，设置ML-DSA签名参数，如确定性签名（ML_DSA_DETERMINISTIC_BOOL）、外部μ哈希模式（ML_DSA_MU_BOOL）或上下文字符串（ML_DSA_CONTEXT_UINT8ARR），当设置外部μ哈希模式（ML_DSA_MU_BOOL）为true时，上下文字符串（ML_DSA_CONTEXT_UINT8ARR）无效。
+3. （可选）调用[Sign.setSignSpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setsignspec)，设置ML-DSA签名参数，如确定性签名（ML_DSA_DETERMINISTIC_BOOL）、外部μ哈希模式（ML_DSA_MU_BOOL）或上下文字符串（ML_DSA_CONTEXT_UINT8ARR），当设置外部μ哈希模式（ML_DSA_MU_BOOL）为true时，上下文字符串（ML_DSA_CONTEXT_UINT8ARR）无效。
 
-4. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
+4. 调用[Sign.init/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
    ML-DSA签名算法不支持update接口。
 
-5. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
+5. 调用[Sign.sign/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
 
 **验签**
 
-1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Verify实例，用于完成验签操作。
 
-2. （可选）调用[Verify.setVerifySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setverifyspec)，设置ML-DSA验签参数，如外部μ哈希模式（ML_DSA_MU_BOOL）或上下文字符串（ML_DSA_CONTEXT_UINT8ARR）。验签的参数应当与签名的参数保持一致，验签时无需设置确定性签名（ML_DSA_DETERMINISTIC_BOOL）。
+2. （可选）调用[Verify.setVerifySpec/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setverifyspec)，设置ML-DSA验签参数，如外部μ哈希模式（ML_DSA_MU_BOOL）或上下文字符串（ML_DSA_CONTEXT_UINT8ARR）。验签的参数应当与签名的参数保持一致，验签时无需设置确定性签名（ML_DSA_DETERMINISTIC_BOOL）。
 
-3. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
+3. 调用[Verify.init/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
    ML-DSA验签算法不支持update接口。
 
-4. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。
+4. 调用[Verify.verify/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。
 
 - 异步方法示例：
 

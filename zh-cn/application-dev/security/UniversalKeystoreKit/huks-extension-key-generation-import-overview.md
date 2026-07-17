@@ -11,25 +11,25 @@
 
 ## 功能概述
 
-在外部密钥管理扩展场景下，密钥生成与导入能力由[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)提供，驱动厂商需继承CryptoExtensionAbility并实现相关接口。
+在外部密钥管理扩展场景下，密钥生成与导入能力由[CryptoExtensionAbility/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)提供，驱动厂商需继承CryptoExtensionAbility并实现相关接口。
 
 ### 密钥生成
 
 密钥生成指在扩展设备内生成非对称密钥对（如RSA、ECC密钥对）。生成的密钥存储在扩展设备中，私钥不会离开扩展设备，公钥可通过导出接口获取。
 
-应用通过调用HUKS的[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongeneratekeyitem)接口完成密钥生成。
+应用通过调用HUKS的[generateKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的[onGenerateKeyItem/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongeneratekeyitem)接口完成密钥生成。
 
 ### 密钥导入
 
 密钥导入指将加密封装的密钥对导入到扩展设备中。加密封装的密钥对通常由安全协商密钥加密，确保密钥在传输过程中不被泄露。
 
-应用通过调用HUKS的[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9)接口发起密钥导入请求，请求被转发到CryptoExtensionAbility的[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onimportwrappedkeyitem)接口完成密钥导入。
+应用通过调用HUKS的[importWrappedKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9)接口发起密钥导入请求，请求被转发到CryptoExtensionAbility的[onImportWrappedKeyItem/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onimportwrappedkeyitem)接口完成密钥导入。
 
 ### 公钥导出
 
 公钥导出指从扩展设备中导出指定密钥的公钥。导出的公钥可用于证书申请、密钥协商等场景。
 
-应用通过调用HUKS的[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportkeyitem)接口完成公钥导出。
+应用通过调用HUKS的[exportKeyItem/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportkeyitem)接口完成公钥导出。
 
 ## 规格差异说明
 
@@ -41,4 +41,4 @@
 
 > **说明：**
 >
-> 在外部密钥管理扩展场景下，keyAlias传入的是资源ID（resourceId），而非传统的密钥别名。keyAlias和wrappingKeyAlias需要保证其是有效的资源ID，即已通过[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开的资源，同时需要保证keyAlias和wrappingKeyAlias中包含的提供者名称（providerName）、外部扩展名称（abilityName）和应用包名（bundleName）内容一致。
+> 在外部密钥管理扩展场景下，keyAlias传入的是资源ID（resourceId），而非传统的密钥别名。keyAlias和wrappingKeyAlias需要保证其是有效的资源ID，即已通过[openResource/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开的资源，同时需要保证keyAlias和wrappingKeyAlias中包含的提供者名称（providerName）、外部扩展名称（abilityName）和应用包名（bundleName）内容一致。

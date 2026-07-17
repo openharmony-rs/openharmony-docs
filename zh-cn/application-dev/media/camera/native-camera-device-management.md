@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。
 
@@ -36,7 +36,7 @@
    )
    ```
 
-3. 通过[OH_Camera_GetCameraManager()](../../reference/apis-camera-kit/capi-camera-h.md#oh_camera_getcameramanager)方法，获取cameraManager对象。
+3. 通过[OH_Camera_GetCameraManager()/apis-camera-kit/capi-camera-h.md#oh_camera_getcameramanager)方法，获取cameraManager对象。
 
    ```c++
    Camera_ErrorCode CreateCameraManager(Camera_Manager** cameraManager)
@@ -54,7 +54,7 @@
    >
    > 如果获取对象失败，说明相机可能被占用或无法使用。如果被占用，须等到相机被释放后才能重新获取。
 
-4. 通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
+4. 通过[OH_CameraManager_GetSupportedCameras()/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
      
    ```c++
    Camera_ErrorCode GetSupportedCameras(Camera_Manager* cameraManager, Camera_Device** cameras, uint32_t &size)
@@ -80,7 +80,7 @@
 
 在相机应用开发过程中，可以随时监听相机状态，包括新相机的出现、相机的移除、相机的可用状态。在回调函数中，通过相机ID、相机状态这两个参数进行监听，如当有新相机出现时，可以将新相机加入到应用的备用相机中。
 
-  通过[OH_CameraManager_RegisterCallback()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_registercallback)注册cameraStatus事件，通过回调返回监听结果，callback返回Camera_StatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[Camera_StatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-statusinfo.md)。
+  通过[OH_CameraManager_RegisterCallback()/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_registercallback)注册cameraStatus事件，通过回调返回监听结果，callback返回Camera_StatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[Camera_StatusInfo/apis-camera-kit/capi-oh-camera-camera-statusinfo.md)。
   ```c++
   void CameraStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
   {

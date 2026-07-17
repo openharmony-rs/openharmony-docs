@@ -20,13 +20,13 @@
 
 ## 接口说明
 
-以下是基于ArkTS脚本开发应用Skill使用的主要接口，更多接口及使用方式请见[@ohos.app.ability.scriptManager](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md)。
+以下是基于ArkTS脚本开发应用Skill使用的主要接口，更多接口及使用方式请见[@ohos.app.ability.scriptManager/apis-ability-kit/js-apis-app-ability-scriptManager.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult) | ArkTS脚本执行结果。 |
-| [ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo) | 应用的ArkTS脚本入口函数的第一个参数，用于接收系统传递的脚本上下文信息。 |
-| [completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise\<void>](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp) | 完成应用的ArkTS脚本执行，上报执行结果。使用Promise异步回调。 |
+| [ExecuteResult/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult) | ArkTS脚本执行结果。 |
+| [ArkTSScriptInfo/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo) | 应用的ArkTS脚本入口函数的第一个参数，用于接收系统传递的脚本上下文信息。 |
+| [completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise\<void>/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp) | 完成应用的ArkTS脚本执行，上报执行结果。使用Promise异步回调。 |
 
 ## 开发步骤
 
@@ -111,7 +111,7 @@
    入口脚本以`export default`方式导出一个类，类内每个`public async`方法对应SKILL.md声明的一项能力，须满足以下约定：
 
    - **方法名约定**：必须与SKILL.md中的`functionName`严格一致（本例为`playMusicByName`、`controlPlayback`）。
-   - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
+   - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
 
    <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
    
@@ -169,7 +169,7 @@
 
    3.5 按契约构造ExecuteResult并回传。
 
-   业务执行完成后，需将结果封装为[ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult)，并通过调用[completeArkTSScriptInApp](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp)回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
+   业务执行完成后，需将结果封装为[ExecuteResult/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult)，并通过调用[completeArkTSScriptInApp/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp)回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
 
    <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
    

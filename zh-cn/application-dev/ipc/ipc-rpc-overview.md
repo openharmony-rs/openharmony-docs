@@ -34,7 +34,7 @@ IPC和RPC采用客户端-服务端（Client-Server）模型。在使用时，Cli
 
 ## 约束与限制
 
-- 单个设备上跨进程通信时，传输的数据量最大为200KB。超过200KB的数据量传输可以使用[匿名共享内存](../reference/apis-ipc-kit/js-apis-rpc.md#ashmem8)。
+- 单个设备上跨进程通信时，传输的数据量最大为200KB。超过200KB的数据量传输可以使用[匿名共享内存/apis-ipc-kit/js-apis-rpc.md#ashmem8)。
 
 - 不支持在RPC中订阅匿名Stub对象（没有向SAMgr注册的Stub对象）的[死亡通知](subscribe-remote-state.md)。
 

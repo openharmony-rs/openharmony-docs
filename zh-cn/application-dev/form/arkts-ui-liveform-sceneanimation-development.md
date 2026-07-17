@@ -15,13 +15,13 @@
 
 | 接口名                                                                                                                                                                                                 | 描述                 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | 互动卡片界面对象创建的回调函数。   |
-| [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
-| [LiveFormExtensionContext](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
-| [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
-| [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
-| [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
-| [formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)                                        | 卡片提供方查询卡片位置、尺寸。 |
+| [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | 互动卡片界面对象创建的回调函数。   |
+| [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
+| [LiveFormExtensionContext/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
+| [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
+| [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
+| [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
+| [formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)                                        | 卡片提供方查询卡片位置、尺寸。 |
 
 ## 开发流程
 
@@ -29,7 +29,7 @@
 
 1. 创建互动卡片
 
-    通过[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
+    通过[LiveFormExtensionAbility/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
 
     <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) --> 
     
@@ -329,7 +329,7 @@
 
 1. 触发互动卡片动效
 
-    互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。
+    互动卡片通过调用[formProvider.requestOverflow/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。
 
     <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
     
@@ -439,6 +439,6 @@
     ```
 
 ## 实现效果
-以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
+以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
 
 ![live-form-base-demo.gif](figures/live-form-base-demo.gif)

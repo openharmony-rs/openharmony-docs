@@ -10,7 +10,7 @@
 
 ## 通过拉起文件处理类应用进行文件分享(startAbility)
 
-基于[文件选择器(startAbility)](../application-models/file-processing-apps-startup.md)的分享方式，应用可分享单个文件，通过[ohos.app.ability.wantConstant的wantConstant.Flags接口](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)以只读或读写权限授权给其他应用。被分享应用可通过[fileIo.open](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopen)打开URI，并进行读写操作。
+基于[文件选择器(startAbility)](../application-models/file-processing-apps-startup.md)的分享方式，应用可分享单个文件，通过[ohos.app.ability.wantConstant的wantConstant.Flags接口/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)以只读或读写权限授权给其他应用。被分享应用可通过[fileIo.open/apis-core-file-kit/js-apis-file-fs.md#fileioopen)打开URI，并进行读写操作。
 
 ## 应用可分享目录
 
@@ -35,7 +35,7 @@
 > **注意**
 >
 > 1. 因URI处理涉及编解码，系统无法保证应用自行拼接的URI地址的可用性。
-> 2. 推荐使用系统提供的接口获取URI，如[getUriFromPath接口](../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)。
+> 2. 推荐使用系统提供的接口获取URI，如[getUriFromPath接口/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)。
 
 ## 相关实例
 

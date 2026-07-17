@@ -5,11 +5,11 @@
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-从API version 20开始，ArkWeb提供了H5页面内的文本分词识别功能，支持文本分词高亮、分词长按预览及文本选择菜单扩展等。这些功能需将[enableDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enabledatadetector20)设置为true，默认为false。
+从API version 20开始，ArkWeb提供了H5页面内的文本分词识别功能，支持文本分词高亮、分词长按预览及文本选择菜单扩展等。这些功能需将[enableDataDetector/apis-arkweb/arkts-basic-components-web-attributes.md#enabledatadetector20)设置为true，默认为false。
 
 此功能主要用于单页H5页面内容的实体识别，能够自动识别页面中的电话号码、网址等信息，并提供便捷的交互操作。启用此功能后，用户可以直接在页面中与识别的实体交互，如点击电话号码进行呼叫，点击地址在地图中查看，从而提升用户体验。
 
-可识别的实体类型包括电话、链接、邮箱、地址和时间，详见[TextDataDetectorType](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectortype11枚举说明)。
+可识别的实体类型包括电话、链接、邮箱、地址和时间，详见[TextDataDetectorType/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectortype11枚举说明)。
 
 
 ## 文本分词高亮
@@ -84,14 +84,14 @@ struct Index {
 
 鼠标右键点击、鼠标拖拽将触发超链接的默认行为。
 
-接口[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)未被使用，或其参数[TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)的enablePreviewMenu设置为false时，长按、拖拽将触发超链接的默认行为，如下图。
+接口[dataDetectorConfig/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)未被使用，或其参数[TextDataDetectorConfig/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)的enablePreviewMenu设置为false时，长按、拖拽将触发超链接的默认行为，如下图。
 
 ![web-data-detector-normal-drag](figures/web-data-detector-normal-drag.gif)
 
-页面文本元素的计算样式存在`user-select:none`时，实体菜单中“选择文本”的选项无效，但在[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，仍可以复制实体文本。
+页面文本元素的计算样式存在`user-select:none`时，实体菜单中“选择文本”的选项无效，但在[copyOptions/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，仍可以复制实体文本。
 
 ## 分词长按预览
-使用分词长按预览功能时，需要额外配置[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)：
+使用分词长按预览功能时，需要额外配置[dataDetectorConfig/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)：
 
 <!--code_no_check-->
 <!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) -->
@@ -108,20 +108,20 @@ controller: this.webController
 })
 ```
 
-在[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
+在[copyOptions/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
 
 ![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)
 
-通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)绑定的[自定义菜单](web-menu.md#自定义菜单)与分词长按预览菜单互不影响。长按被高亮的分词超链接不会弹出自定义超链接菜单，长按普通超链接也不会弹出分词预览菜单。
+通过[bindSelectionMenu/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)绑定的[自定义菜单](web-menu.md#自定义菜单)与分词长按预览菜单互不影响。长按被高亮的分词超链接不会弹出自定义超链接菜单，长按普通超链接也不会弹出分词预览菜单。
 
 
 ## 文本选择菜单扩展
-从API version 22开始，支持通过[enableSelectedDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableselecteddatadetector22)单独配置文本选择AI菜单的启用情况。
+从API version 22开始，支持通过[enableSelectedDataDetector/apis-arkweb/arkts-basic-components-web-attributes.md#enableselecteddatadetector22)单独配置文本选择AI菜单的启用情况。
 
 在非编辑区域中，选中的文本满足以下条件时，文本选择菜单将显示相应的AI菜单项：
 
 - 选中文本经过UTF-8编码转换后，其字节长度不超过255字节。
-- 选中文本中仅包含一个匹配识别类型的实体（可通过[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)配置支持的识别类型）。
+- 选中文本中仅包含一个匹配识别类型的实体（可通过[dataDetectorConfig/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)配置支持的识别类型）。
 - 不处于“全选”操作状态下的文本。
 
 ![web-data-detector-selection-menu](figures/web-data-detector-selection-menu.gif)

@@ -2678,7 +2678,7 @@ abstract class C {
 
 源码态注解为一类特殊形式的注解。源码态注解的生命周期只在编译期，不会影响编译产物。
 
-开发者可以通过使用ArkTS提供的[Retention API](../reference/apis-arkts/js-apis-arkts-lang.md#retention24)来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
+开发者可以通过使用ArkTS提供的[Retention API/apis-arkts/js-apis-arkts-lang.md#retention24)来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
 - 类
 - 类成员（除构造函数外）
 - 变量声明

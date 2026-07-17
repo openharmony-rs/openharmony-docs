@@ -62,7 +62,7 @@
    OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
    ```
 
-4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
+4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
 ## 场景化开发
 
@@ -485,9 +485,9 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编解码档次和级别支持情况
 
-编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、主档次和高档次）。详情参见 [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
+编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、主档次和高档次）。详情参见 [OH_AVCProfile/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
 
-级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。
+级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -757,7 +757,7 @@ OH_AVFormat_Destroy(format);
 
 ### 设置正确的视频像素格式信息
 
-视频像素格式指示的编码输入图像或解码输出图像的像素排布方式，参考[OH_AVPixelFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat)。
+视频像素格式指示的编码输入图像或解码输出图像的像素排布方式，参考[OH_AVPixelFormat/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -791,7 +791,7 @@ if (!isMatched) {
 
 ### 查询编解码特性支持情况并获取特性属性信息
 
-编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考[OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature)。
+编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考[OH_AVCapabilityFeature/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |

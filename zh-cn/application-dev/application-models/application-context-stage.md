@@ -9,27 +9,27 @@
 
 ## 概述
 
-[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)是应用中对象的上下文，其提供了应用的一些基础信息，例如[resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md)（资源管理）、[applicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)（当前应用信息）、[area](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)（文件分区）等。
+[Context/apis-ability-kit/js-apis-inner-application-context.md)是应用中对象的上下文，其提供了应用的一些基础信息，例如[resourceManager/apis-localization-kit/js-apis-resource-manager.md)（资源管理）、[applicationInfo/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)（当前应用信息）、[area/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)（文件分区）等。
 
 ## 不同类型Context的对比
 
-[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件和各种[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)派生类组件都有各自不同的Context类。分别有基类Context、[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)、[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)<!--Del-->、[ServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)<!--DelEnd-->等Context。各类Context的继承和持有关系详见[不同类型Context的继承和持有关系](../reference/apis-ability-kit/js-apis-inner-application-context.md#不同类型context的继承和持有关系)。
+[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件和各种[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)派生类组件都有各自不同的Context类。分别有基类Context、[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)、[AbilityStageContext/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[ExtensionContext/apis-ability-kit/js-apis-inner-application-extensionContext.md)<!--Del-->、[ServiceExtensionContext/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)<!--DelEnd-->等Context。各类Context的继承和持有关系详见[不同类型Context的继承和持有关系/apis-ability-kit/js-apis-inner-application-context.md#不同类型context的继承和持有关系)。
 
 不同类型Context的获取方式与使用场景说明，如下表所示。
 
 > **说明：**
 >
-> 不同类型的Context具有不同的能力，不可相互替代或强行转换。例如，[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)绑定了[setFontSizeScale](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)方法，但[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中没有此方法。因此，即使将UIAbilityContext强行转换为ApplicationContext，也无法调用setFontSizeScale方法。
+> 不同类型的Context具有不同的能力，不可相互替代或强行转换。例如，[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)绑定了[setFontSizeScale/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)方法，但[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中没有此方法。因此，即使将UIAbilityContext强行转换为ApplicationContext，也无法调用setFontSizeScale方法。
 
    **表1** 不同类型Context的说明
 
   | Context类型 | 说明 | 获取方式 | 使用场景 |
   | -------- | -------- | -------- | -------- |
-  | [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md) | 应用的全局上下文，提供应用级别的信息和能力。| - 从API version 14开始，可以直接使用[getApplicationContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapplicationcontext14)获取。<br>- API version 14以前版本，只能使用其他Context实例的[getApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-context.md#getapplicationcontext)方法获取。 | - [获取当前应用的基本信息](#获取基本信息)。<br>- [获取应用级别的文件路径](#获取应用文件路径)。<br>- [获取和修改加密分区](#获取和修改加密分区)。<br>- [监听应用前后台变化](#监听应用前后台变化)。 |
-  | [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取[context](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#属性)属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
-  | [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | UIAbility组件对应的上下文，提供UIAbility对外的信息和能力。| - 通过UIAbility实例直接获取[context](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#属性)属性。<br>- 在UIAbility的窗口中加载的UI组件实例，需要使用@ohos.arkui.UIContext提供的[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法。 | - 获取当前UIAbility的基本信息。<br>- 启动其他应用或原子化服务、连接/断连系统应用创建的ServiceExtensionAbility等。<br>- 销毁自身的UIAbility。 |
-  | [ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md) | ExtensionAbility组件对应的上下文，每种类型的ExtensionContext提供不同的信息和能力。| 通过ExtensionAbility实例直接获取Context属性。 | 不同类型的ExtensionAbility对应的Context提供的能力不同。以输入法上下文[InputMethodExtensionContext](../reference/apis-ime-kit/js-apis-inputmethod-extension-context.md)为例，主要提供如下能力：<br>- 获取InputMethodExtensionAbility的基本信息。<br>- 销毁当前输入法。|
-  | [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) | ArkUI的UI实例上下文，提供UI操作相关的能力。与上述其他类型的Context无直接关系。 | - 在UI组件内获取UIContext，直接使用组件内置的[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法。<br>- 在存在Window实例的情况下，使用@ohos.window提供的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法。 | 主要用于UI实例中UI相关操作，例如：<br>- 获取当前UI实例的字体。<br>- 显示不同类型的弹框。<br>- 设置软键盘弹出时UI避让模式。 |
+  | [ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md) | 应用的全局上下文，提供应用级别的信息和能力。| - 从API version 14开始，可以直接使用[getApplicationContext/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapplicationcontext14)获取。<br>- API version 14以前版本，只能使用其他Context实例的[getApplicationContext/apis-ability-kit/js-apis-inner-application-context.md#getapplicationcontext)方法获取。 | - [获取当前应用的基本信息](#获取基本信息)。<br>- [获取应用级别的文件路径](#获取应用文件路径)。<br>- [获取和修改加密分区](#获取和修改加密分区)。<br>- [监听应用前后台变化](#监听应用前后台变化)。 |
+  | [AbilityStageContext/apis-ability-kit/js-apis-inner-application-abilityStageContext.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取[context/apis-ability-kit/js-apis-app-ability-abilityStage.md#属性)属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过[createModuleContext/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
+  | [UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | UIAbility组件对应的上下文，提供UIAbility对外的信息和能力。| - 通过UIAbility实例直接获取[context/apis-ability-kit/js-apis-app-ability-uiAbility.md#属性)属性。<br>- 在UIAbility的窗口中加载的UI组件实例，需要使用@ohos.arkui.UIContext提供的[getHostContext/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法。 | - 获取当前UIAbility的基本信息。<br>- 启动其他应用或原子化服务、连接/断连系统应用创建的ServiceExtensionAbility等。<br>- 销毁自身的UIAbility。 |
+  | [ExtensionContext/apis-ability-kit/js-apis-inner-application-extensionContext.md) | ExtensionAbility组件对应的上下文，每种类型的ExtensionContext提供不同的信息和能力。| 通过ExtensionAbility实例直接获取Context属性。 | 不同类型的ExtensionAbility对应的Context提供的能力不同。以输入法上下文[InputMethodExtensionContext/apis-ime-kit/js-apis-inputmethod-extension-context.md)为例，主要提供如下能力：<br>- 获取InputMethodExtensionAbility的基本信息。<br>- 销毁当前输入法。|
+  | [UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md) | ArkUI的UI实例上下文，提供UI操作相关的能力。与上述其他类型的Context无直接关系。 | - 在UI组件内获取UIContext，直接使用组件内置的[getUIContext/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法。<br>- 在存在Window实例的情况下，使用@ohos.window提供的[getUIContext/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法。 | 主要用于UI实例中UI相关操作，例如：<br>- 获取当前UI实例的字体。<br>- 显示不同类型的弹框。<br>- 设置软键盘弹出时UI避让模式。 |
 
 ## Context的获取方式
 
@@ -37,7 +37,7 @@
 
 ### 获取ApplicationContext（应用的全局上下文）
 
-[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)在基类Context的基础上提供了监听应用内应用组件的生命周期的变化、监听系统内存变化、监听应用内系统环境变化、设置应用语言、设置应用颜色模式、清除应用自身数据的同时撤销应用向用户申请的权限等能力，在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)、[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)中均可以获取。
+[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)在基类Context的基础上提供了监听应用内应用组件的生命周期的变化、监听系统内存变化、监听应用内系统环境变化、设置应用语言、设置应用颜色模式、清除应用自身数据的同时撤销应用向用户申请的权限等能力，在[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)、[ExtensionAbility/apis-ability-kit/js-apis-app-ability-extensionAbility.md)、[AbilityStage/apis-ability-kit/js-apis-app-ability-abilityStage.md)中均可以获取。
 
 <!-- @[application_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryexampleability/EntryAbility.ets) -->
 
@@ -54,7 +54,7 @@ export default class EntryAbility extends UIAbility {
 
 ### 获取AbilityStageContext（模块级别的上下文）
 
-[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)和基类Context相比，额外提供[HapModuleInfo](../reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md)、[Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)等信息。
+[AbilityStageContext/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)和基类Context相比，额外提供[HapModuleInfo/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md)、[Configuration/apis-ability-kit/js-apis-app-ability-configuration.md)等信息。
 
 <!-- @[abilityStageContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/abilitystagecontextability/MyAbilityStage.ets) -->
 
@@ -71,7 +71,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 获取本应用中其他Module的Context（模块级别的上下文）
 
-调用[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
+调用[createModuleContext/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
 
 <!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
 
@@ -127,7 +127,7 @@ struct CreateModuleContext {
 
 ### 获取UIAbilityContext（UIAbility组件的上下文）
 
-[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和基类[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)相比，额外提供abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，也可以获取操作UIAbility实例的方法（如[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)等）。
+[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和基类[Context/apis-ability-kit/js-apis-inner-application-context.md)相比，额外提供abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，也可以获取操作UIAbility实例的方法（如[startAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、[connectServiceExtensionAbility()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、[terminateSelf()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)等）。
 
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
@@ -173,7 +173,7 @@ struct CreateModuleContext {
   ```
 
 
-  也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
+  也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
 
   <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
@@ -200,7 +200,7 @@ struct CreateModuleContext {
   ```
 
 
-- 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
+- 当业务完成后，开发者如果想要终止当前[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
   <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
 
@@ -246,7 +246,7 @@ struct CreateModuleContext {
 
 ### 获取ExtensionAbilityContext (ExtensionAbility组件的上下文)
 
-获取特定场景[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。以FormExtensionContext为例，表示卡片服务的上下文环境，继承自ExtensionContext，提供卡片服务相关的接口能力。
+获取特定场景[ExtensionContext/apis-ability-kit/js-apis-inner-application-extensionContext.md)。以FormExtensionContext为例，表示卡片服务的上下文环境，继承自ExtensionContext，提供卡片服务相关的接口能力。
 
 <!-- @[extension_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/extensionability/MyFormExtensionAbility.ets) -->
 
@@ -282,7 +282,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 ### 获取基本信息
 
-继承自[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)的不同类型Context，默认会继承父类的方法和属性，还会拥有自己独立的方法与属性。
+继承自[Context/apis-ability-kit/js-apis-inner-application-context.md)的不同类型Context，默认会继承父类的方法和属性，还会拥有自己独立的方法与属性。
 
 通过Context属性可以获取当前应用、模块、UIAbility或ExtensionAbility的基本信息（例如资源管理对象、应用程序信息等），下面以UIAbility的信息获取为例：
 
@@ -306,10 +306,10 @@ export default class EntryAbility extends UIAbility {
 
 ### 获取应用文件路径
 
-[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)提供了获取应用文件路径的能力，[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)、[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)均继承该能力。不同类型的Context获取的路径可能存在差异。
+[Context/apis-ability-kit/js-apis-inner-application-context.md)提供了获取应用文件路径的能力，[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)、[AbilityStageContext/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[ExtensionContext/apis-ability-kit/js-apis-inner-application-extensionContext.md)均继承该能力。不同类型的Context获取的路径可能存在差异。
 
-- 通过[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)可以获取应用级的文件路径。该路径用于存放应用全局信息，路径下的文件会跟随应用的卸载而删除。
-- 通过[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)，可以获取[Module](../quick-start/application-package-overview.md)级的文件路径。该路径用于存放Module相关信息，路径下的文件会跟随[HAP](../quick-start/hap-package.md)/[HSP](../quick-start/in-app-hsp.md)的卸载而删除。HAP/HSP的卸载不会影响应用级路径下的文件，除非该应用的HAP/HSP已全部卸载。
+- 通过[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)可以获取应用级的文件路径。该路径用于存放应用全局信息，路径下的文件会跟随应用的卸载而删除。
+- 通过[AbilityStageContext/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[ExtensionContext/apis-ability-kit/js-apis-inner-application-extensionContext.md)，可以获取[Module](../quick-start/application-package-overview.md)级的文件路径。该路径用于存放Module相关信息，路径下的文件会跟随[HAP](../quick-start/hap-package.md)/[HSP](../quick-start/in-app-hsp.md)的卸载而删除。HAP/HSP的卸载不会影响应用级路径下的文件，除非该应用的HAP/HSP已全部卸载。
 
   - UIAbilityContext：可以获取UIAbility所在Module的文件路径。
   - ExtensionContext：可以获取ExtensionAbility所在Module的文件路径。
@@ -439,15 +439,15 @@ export default class EntryAbility extends UIAbility {
 
 应用文件加密是一种保护数据安全的方法，可以使得文件在未经授权访问的情况下得到保护。在不同的场景下，应用需要不同程度的文件保护。
 
-在实际应用中，开发者需要根据不同场景的需求选择合适的加密分区，从而保护应用数据的安全。通过合理使用不同级别的加密分区，可以有效提升应用数据的安全性。关于不同分区的权限说明，详见[ContextConstant](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md)的[AreaMode](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)。
+在实际应用中，开发者需要根据不同场景的需求选择合适的加密分区，从而保护应用数据的安全。通过合理使用不同级别的加密分区，可以有效提升应用数据的安全性。关于不同分区的权限说明，详见[ContextConstant/apis-ability-kit/js-apis-app-ability-contextConstant.md)的[AreaMode/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)。
 
 - EL1：对于私有文件，如闹铃、壁纸等，应用可以将这些文件放到设备级加密分区（EL1）中，以保证在用户输入密码前就可以被访问。
 - EL2：对于更敏感的文件，如个人隐私信息等，应用可以将这些文件放到更高级别的加密分区（EL2）中，以保证更高的安全性。
 - EL3：对于应用中的记录步数、文件下载、音乐播放，需要在锁屏时读写和创建新文件，放在（EL3）的加密分区比较合适。
 - EL4：对于用户安全信息相关的文件，锁屏时不需要读写文件、也不能创建文件，放在（EL4）的加密分区更合适。
-- EL5：对于用户隐私敏感数据文件，锁屏后默认不可读写，如果锁屏后需要读写文件，则锁屏前可以调用[acquireAccess](../reference/apis-ability-kit/js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口申请继续读写文件，或者锁屏后也需要创建新文件且可读写，放在（EL5）的应用级加密分区更合适。
+- EL5：对于用户隐私敏感数据文件，锁屏后默认不可读写，如果锁屏后需要读写文件，则锁屏前可以调用[acquireAccess/apis-ability-kit/js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口申请继续读写文件，或者锁屏后也需要创建新文件且可读写，放在（EL5）的应用级加密分区更合适。
 
-要实现获取和设置当前加密分区，可以通过读写[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)的`area`属性来实现。
+要实现获取和设置当前加密分区，可以通过读写[Context/apis-ability-kit/js-apis-inner-application-context.md)的`area`属性来实现。
 
 <!-- @[ability_area_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryareaability/EntryAbility.ets) -->
 
@@ -538,13 +538,13 @@ struct AreaContext {
 
 ### 监听应用前后台变化
 
-开发者可以使用`ApplicationContext`的[on('applicationStateChange')](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)监听应用的前后台变化，详见[监听应用前后台变化](application-lifecycle.md#监听应用前后台变化)中的介绍。
+开发者可以使用`ApplicationContext`的[on('applicationStateChange')/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)监听应用的前后台变化，详见[监听应用前后台变化](application-lifecycle.md#监听应用前后台变化)中的介绍。
 
 ### 监听UIAbility生命周期变化
 
-开发者可以通过[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)监听UIAbility生命周期变化。当[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)生命周期变化时，如UIAbility创建、切换至前/后台、销毁等情况，UIAbility会收到相应回调函数的通知，从而执行依赖UIAbility生命周期的方法，也可以统计指定页面停留时间和访问频率等信息。
+开发者可以通过[ApplicationContext/apis-ability-kit/js-apis-inner-application-applicationContext.md)监听UIAbility生命周期变化。当[UIAbility/apis-ability-kit/js-apis-app-ability-uiAbility.md)生命周期变化时，如UIAbility创建、切换至前/后台、销毁等情况，UIAbility会收到相应回调函数的通知，从而执行依赖UIAbility生命周期的方法，也可以统计指定页面停留时间和访问频率等信息。
 
-每次注册回调函数时，都会返回一个监听生命周期的ID，此ID会自增1。以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
+每次注册回调函数时，都会返回一个监听生命周期的ID，此ID会自增1。以[UIAbilityContext/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
 
 <!-- @[entry_lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrylifecycleability/EntryLifecycleAbility.ets) -->
 

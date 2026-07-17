@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-[OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
+[OH_ContentEmbed/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
 
-OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md)实现嵌入外部文档、展示文档快照，以及按需启动OE服务端应用编辑文档的功能。
+OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口/apis-content-embed-kit/capi-content-embed-proxy-h.md)实现嵌入外部文档、展示文档快照，以及按需启动OE服务端应用编辑文档的功能。
 
 典型应用场景包括：
 - 在CAD文档中嵌入Excel表格，通过点击嵌入对象启动Excel应用进行编辑。
@@ -19,11 +19,11 @@ OE客户端应用指嵌入其它文档的应用，通过调用[OE框架层接口
 - 在笔记应用中嵌入其他应用的文档，实现跨应用协作。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持](../reference/common/init.md#caniuse)。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[查询指定的系统能力是否被支持/common/init.md#caniuse)。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
-常用接口如下表所示。更多API说明请参考[OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)。
+常用接口如下表所示。更多API说明请参考[OH_ContentEmbed/apis-content-embed-kit/capi-contentembed.md)。
 
 **表1** 客户端主要接口
 

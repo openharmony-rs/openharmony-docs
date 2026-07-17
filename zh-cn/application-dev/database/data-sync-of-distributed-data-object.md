@@ -95,7 +95,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ### 对象持久化缓存机制
 
-分布式对象主要运行在应用程序的进程空间。当调用分布式对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。分布式数据库会自动实现同步，可调用[on('change')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onchange20)监听数据变更。
+分布式对象主要运行在应用程序的进程空间。当调用分布式对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。分布式数据库会自动实现同步，可调用[on('change')/apis-arkdata/js-apis-data-distributedobject.md#onchange20)监听数据变更。
 
 该场景是分布式对象的扩展场景，主要用于以下情况：
 
@@ -105,11 +105,11 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ### 资产同步机制
 
-在分布式对象中，可以使用[资产类型](../reference/apis-arkdata/js-apis-data-commonType.md#asset)来描述本地实体资产文件，分布式对象跨设备同步时，该文件会和数据一起同步到其他设备上。
+在分布式对象中，可以使用[资产类型/apis-arkdata/js-apis-data-commonType.md#asset)来描述本地实体资产文件，分布式对象跨设备同步时，该文件会和数据一起同步到其他设备上。
 
-在API version 20之前版本，仅支持资产类型，不支持[资产类型数组](../reference/apis-arkdata/js-apis-data-commonType.md#assets)。如需同步多个资产，可将每个资产作为分布式对象的一个根属性实现。
+在API version 20之前版本，仅支持资产类型，不支持[资产类型数组/apis-arkdata/js-apis-data-commonType.md#assets)。如需同步多个资产，可将每个资产作为分布式对象的一个根属性实现。
 
-从API version 20开始，支持[资产类型数组](../reference/apis-arkdata/js-apis-data-commonType.md#assets)的同步。
+从API version 20开始，支持[资产类型数组/apis-arkdata/js-apis-data-commonType.md#assets)的同步。
 
 ## 约束限制
 <!--RP5-->
@@ -133,7 +133,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ## 接口说明
 
-以下是分布式对象跨设备数据同步功能的相关接口，更多接口及使用方式请见[分布式数据对象](../reference/apis-arkdata/js-apis-data-distributedobject.md)。
+以下是分布式对象跨设备数据同步功能的相关接口，更多接口及使用方式请见[分布式数据对象/apis-arkdata/js-apis-data-distributedobject.md)。
 
 
 
@@ -181,7 +181,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 > **说明：**
 >
 > - 跨端迁移时，在迁移发起端调用setSessionId接口设置同步的sessionId后，必须再调用save接口保存数据到接收端。跨端迁移过程中save接口仅在首次调用时数据可以同步到接收端（原理是：首次从发起端设备获取数据后迁移任务即已完成，后续数据以接收端设备为准，不需要再同步）。
-> - 在应用迁移启动时，无论是冷启动还是热启动，都会在执行完onCreate()/onNewWant()后，触发[onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore)生命周期函数，不执行[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期函数。开发者如果在`onWindowStageCreate()`中进行了一些应用启动时必要的初始化，那么迁移后需要在`onWindowStageRestore()`中执行同样的初始化操作，避免应用异常。
+> - 在应用迁移启动时，无论是冷启动还是热启动，都会在执行完onCreate()/onNewWant()后，触发[onWindowStageRestore()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore)生命周期函数，不执行[onWindowStageCreate()/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期函数。开发者如果在`onWindowStageCreate()`中进行了一些应用启动时必要的初始化，那么迁移后需要在`onWindowStageRestore()`中执行同样的初始化操作，避免应用异常。
 >
 <!--RP1-->
 > - 跨端迁移需要配置`continuable`标签，详见[跨端迁移开发步骤](../application-models/hop-cross-device-migration.md#开发步骤)。<!--RP1End-->
@@ -194,7 +194,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 >
 > - API version 20版本之前不支持资产类型数组，如果要迁移多个文件，在业务数据中定义多条资产数据来记录。从API version 20开始，支持资产类型数组的同步。
 >
-> - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+> - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理/apis-core-file-kit/js-apis-file-fs.md)和[文件URI/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 <!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
 

@@ -8,7 +8,7 @@
 
 ## 概述
 
-当某些组件本身的绘制内容不满足需求时，可使用组件自定义绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。NDK提供了自定义绘制节点的能力，通过自定义绘制事件，开发者可以实现基于NDK侧[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型节点的自绘制能力。
+当某些组件本身的绘制内容不满足需求时，可使用组件自定义绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。NDK提供了自定义绘制节点的能力，通过自定义绘制事件，开发者可以实现基于NDK侧[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型节点的自绘制能力。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@
 
 ![](figures/drawModifier.png)
 
-开发者可以通过注册相应的事件类型来实现不同层级的自定义绘制，不同层级对应的枚举如下，NDK接口支持的事件类型范围请参考[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)枚举值。
+开发者可以通过注册相应的事件类型来实现不同层级的自定义绘制，不同层级对应的枚举如下，NDK接口支持的事件类型范围请参考[ArkUI_NodeCustomEventType/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)枚举值。
 
 | 事件类型 | 说明 |
 | --- | --- |
@@ -39,7 +39,7 @@
 
 ![自定义绘制](figures/自定义绘制.jpg)
 
-1. 通过[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口，传入[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)中的ARKUI_NODE_CUSTOM枚举值创建自定义节点。
+1. 通过[ArkUI_NativeNodeAPI_1/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[createNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口，传入[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)中的ARKUI_NODE_CUSTOM枚举值创建自定义节点。
 
    <!-- @[create_customNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
    
@@ -69,7 +69,7 @@
    });
    ```
     
-3. 在回调函数中，通过[OH_ArkUI_NodeCustomEvent_GetEventType](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtype)获取自定义事件的事件类型，通过[OH_ArkUI_NodeCustomEvent_GetEventTargetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtargetid)获取事件ID，通过[OH_ArkUI_NodeCustomEvent_GetUserData](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getuserdata)获取UserData，再根据事件类型和事件ID判断当前触发的是哪个绘制事件，从而执行对应的逻辑。
+3. 在回调函数中，通过[OH_ArkUI_NodeCustomEvent_GetEventType/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtype)获取自定义事件的事件类型，通过[OH_ArkUI_NodeCustomEvent_GetEventTargetId/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtargetid)获取事件ID，通过[OH_ArkUI_NodeCustomEvent_GetUserData/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getuserdata)获取UserData，再根据事件类型和事件ID判断当前触发的是哪个绘制事件，从而执行对应的逻辑。
 
    <!-- @[nodeCustomEvent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
    
@@ -79,7 +79,7 @@
    auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
    ```
     
-4. [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw)通过自定义组件事件获取绘制上下文，并将其传入[OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas)以获取Canvas画布指针，该指针随后将转换为[OH_Drawing_Canvas](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md)指针进行绘制。
+4. [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw)通过自定义组件事件获取绘制上下文，并将其传入[OH_ArkUI_DrawContext_GetCanvas/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas)以获取Canvas画布指针，该指针随后将转换为[OH_Drawing_Canvas/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md)指针进行绘制。
 
    <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
    

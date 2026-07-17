@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-在状态管理从V1迁移至V2的过程中，[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)执行动画前如需修改状态变量，可参考本文档的适配方案。
+在状态管理从V1迁移至V2的过程中，[animateTo/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)执行动画前如需修改状态变量，可参考本文档的适配方案。
 
 ## 执行动画前重新定义初始态场景
 
@@ -104,7 +104,7 @@ struct Index {
 
 ### API version 22之前的迁移方案
 
-从API version 22之前，可以使用一个duration为0的[animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md#animatetoimmediately)将额外的修改先刷新，再执行原来的动画达成预期的效果。
+从API version 22之前，可以使用一个duration为0的[animateToImmediately/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md#animatetoimmediately)将额外的修改先刷新，再执行原来的动画达成预期的效果。
 
 完整代码如下：
 

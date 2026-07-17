@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的相机功能API说明请参考Camera模块描述[OH_Camera](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的相机功能API说明请参考Camera模块描述[OH_Camera/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入依赖模块。
 
@@ -27,7 +27,7 @@
 
 2. 获取相机设备完整输出能力。
 
-   通过[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)方法，获取当前相机设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的各个profile字段中，其中拍照流支持YUV格式。
+   通过[getSupportedFullOutputCapability/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)方法，获取当前相机设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的各个profile字段中，其中拍照流支持YUV格式。
 
    ```ts
    function getFullOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice, sceneMode: camera.SceneMode): camera.CameraOutputCapability | undefined {
@@ -41,11 +41,11 @@
    ```
 3. 创建拍照输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。
+   通过[CameraOutputCapability/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。
 
-   通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)，创建拍照输出流。
+   通过[createPhotoOutput/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile/apis-camera-kit/arkts-apis-camera-i.md#profile)，创建拍照输出流。
 
-   通过[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)获取相机支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的Profile，作为创建拍照输出流的参数photoProfile。
+   通过[getSupportedFullOutputCapability/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)获取相机支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的Profile，作为创建拍照输出流的参数photoProfile。
 
    ```ts
    function getPhotoOutput(cameraManager: camera.CameraManager, photoProfile: camera.Profile): camera.PhotoOutput | undefined {
@@ -63,17 +63,17 @@
 
 4. 设置拍照输出流的回调。
 
-   设置单段式拍照[onCapturePhotoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23)或分段式拍照[on('photoAssetAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调，并将拍照的pixelMap数据保存为图片。如果应用需要快速得到回图，推荐使用分段式拍照回调。
+   设置单段式拍照[onCapturePhotoAvailable/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23)或分段式拍照[on('photoAssetAvailable')/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调，并将拍照的pixelMap数据保存为图片。如果应用需要快速得到回图，推荐使用分段式拍照回调。
 
    Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
    如果需要在图库中看到所保存的图片、视频资源，需要先将其保存到媒体库，保存方式请参考：[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)。
 
-   如果需要在[onCapturePhotoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23)接口获取到buffer，先将[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)数据在安全控件中保存到媒体库。
+   如果需要在[onCapturePhotoAvailable/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23)接口获取到buffer，先将[PixelMap/apis-image-kit/arkts-apis-image-PixelMap.md)数据在安全控件中保存到媒体库。
 
    - **单段式拍照（onCapturePhotoAvailable）开发流程**：
 
-     - 在会话[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1)前注册单段式拍照回调。
+     - 在会话[commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1)前注册单段式拍照回调。
      - 在单段式拍照回调函数中获取图片信息，解析出pixelMap数据，做自定义业务处理。
      - 将处理完的pixelMap通过回调回传，做图片显示或通过安全控件写文件保存图片。
      - 使用完后解注册单段式拍照回调函数。
@@ -157,10 +157,10 @@
 
    - **分段式拍照（PhotoAvailable）开发流程**：
 
-     - 在会话[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1)前注册分段式拍照回调。
+     - 在会话[commitConfig/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1)前注册分段式拍照回调。
      - 在分段式拍照回调函数中获取图片信息，解析出pixelMap数据，做自定义业务处理。
      - 将处理完的pixelMap回传，做图片显示或通过安全控件写文件保存图片。
-     - 调用[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)拍照后，需要及时调用[saveCameraPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#savecameraphoto12)保存图片或[discardCameraPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#discardcameraphoto12)取消保存图片，否则会影响后续图片的拍摄。
+     - 调用[capture/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)拍照后，需要及时调用[saveCameraPhoto/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#savecameraphoto12)保存图片或[discardCameraPhoto/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#discardcameraphoto12)取消保存图片，否则会影响后续图片的拍摄。
      - 使用完后解注册分段式拍照回调函数。
 
      ```ts
@@ -238,11 +238,11 @@
 
 5. 触发拍照。
 
-   通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置setting，setting中可以设置图片质量，图片旋转角度等信息。第二参数为异步回调函数，用于获取结果。接口调用失败会返回相应错误码。
+   通过photoOutput的[capture/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置setting，setting中可以设置图片质量，图片旋转角度等信息。第二参数为异步回调函数，用于获取结果。接口调用失败会返回相应错误码。
 
-   通过PhotoOutput中的[getPhotoRotation](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12)方法，可以获取拍照旋转角度。
+   通过PhotoOutput中的[getPhotoRotation/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12)方法，可以获取拍照旋转角度。
 
-   通过geoLocationManager中的[geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)方法，可以获取图片地理位置信息。使用方法可参考[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-3)示例。
+   通过geoLocationManager中的[geoLocationManager.getCurrentLocation/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)方法，可以获取图片地理位置信息。使用方法可参考[capture/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-3)示例。
 
    ```ts
    function capture(captureLocation: camera.Location, photoOutput: camera.PhotoOutput): void {
@@ -283,7 +283,7 @@
   }
   ```
 
-- 通过注册固定的captureEnd回调函数监听拍照结束结果，当photoOutput创建成功时，即可监听。该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo)。
+- 通过注册固定的captureEnd回调函数监听拍照结束结果，当photoOutput创建成功时，即可监听。该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo)。
 
   ```ts
   function onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
@@ -310,7 +310,7 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
   ```ts
   function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {

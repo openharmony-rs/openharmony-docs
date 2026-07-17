@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAuthLockState/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
 
 | 接口名称 | 功能描述 |
 | -------- | -------- |
@@ -21,7 +21,7 @@
 
 1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定认证类型（[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)），并调用[getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)接口查询指定认证类型的认证冻结状态。
+2. 指定认证类型（[UserAuthType/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)），并调用[getAuthLockState/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)接口查询指定认证类型的认证冻结状态。
 
 以查询PIN认证类型的认证冻结状态为例：
 

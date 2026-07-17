@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-以下是系统字体相关的常用接口和结构体，ArkTS侧对外接口由ArkUI提供，详细接口说明请见[@ohos.font](../reference/apis-arkui/js-apis-font.md)。
+以下是系统字体相关的常用接口和结构体，ArkTS侧对外接口由ArkUI提供，详细接口说明请见[@ohos.font/apis-arkui/js-apis-font.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |

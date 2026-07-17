@@ -13,7 +13,7 @@
 
 ## 常用布局
 
-布局是UI的必要元素，它定义了组件在界面中的位置。ArkUI框架提供了多种布局方式，除了基础的[线性布局](../ui/arkts-layout-development-linear.md)（[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)/[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)）、[层叠布局](../ui/arkts-layout-development-stack-layout.md)（[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)）、[弹性布局](../ui/arkts-layout-development-flex-layout.md)（[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)）、[相对布局](../ui/arkts-layout-development-relative-layout.md)（[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)）、[栅格布局](../ui/arkts-layout-development-grid-layout.md)（[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)）外，也提供了相对复杂的[列表](../ui/arkts-layout-development-create-list.md)（[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)）、[网格](../ui/arkts-layout-development-create-grid.md)（[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)/[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)）、[轮播](../ui/arkts-layout-development-create-looping.md)（[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)）。
+布局是UI的必要元素，它定义了组件在界面中的位置。ArkUI框架提供了多种布局方式，除了基础的[线性布局](../ui/arkts-layout-development-linear.md)（[Row/apis-arkui/arkui-ts/ts-container-row.md)/[Column/apis-arkui/arkui-ts/ts-container-column.md)）、[层叠布局](../ui/arkts-layout-development-stack-layout.md)（[Stack/apis-arkui/arkui-ts/ts-container-stack.md)）、[弹性布局](../ui/arkts-layout-development-flex-layout.md)（[Flex/apis-arkui/arkui-ts/ts-container-flex.md)）、[相对布局](../ui/arkts-layout-development-relative-layout.md)（[RelativeContainer/apis-arkui/arkui-ts/ts-container-relativecontainer.md)）、[栅格布局](../ui/arkts-layout-development-grid-layout.md)（[GridCol/apis-arkui/arkui-ts/ts-container-gridcol.md)）外，也提供了相对复杂的[列表](../ui/arkts-layout-development-create-list.md)（[List/apis-arkui/arkui-ts/ts-container-list.md)）、[网格](../ui/arkts-layout-development-create-grid.md)（[Grid/apis-arkui/arkui-ts/ts-container-grid.md)/[GridItem/apis-arkui/arkui-ts/ts-container-griditem.md)）、[轮播](../ui/arkts-layout-development-create-looping.md)（[Swiper/apis-arkui/arkui-ts/ts-container-swiper.md)）。
 
 ## 优化布局结构
 
@@ -294,7 +294,7 @@ struct MyComponent {
 
 ![输入图片说明](figures/layout-relative-introduce.png)
 
-使用扁平化布局推荐使用[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[绝对定位](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)、[Grid组件](../reference/apis-arkui/arkui-ts/ts-container-grid.md)等
+使用扁平化布局推荐使用[RelativeContainer/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[绝对定位/apis-arkui/arkui-ts/ts-universal-attributes-location.md)、[Grid组件/apis-arkui/arkui-ts/ts-container-grid.md)等
 
 ### 使用高性能布局组件
 
@@ -627,7 +627,7 @@ struct NormalCustom {
 
 **正例**
 
-ArkUI提供了[动态属性设置（Modifier）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)的接口，支持使用自定义Modifier构建组件并配置属性。
+ArkUI提供了[动态属性设置（Modifier）/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)的接口，支持使用自定义Modifier构建组件并配置属性。
 
 ```ts
 @Entry

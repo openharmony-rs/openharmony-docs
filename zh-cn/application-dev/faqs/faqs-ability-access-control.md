@@ -75,4 +75,4 @@
 
 [安全控件概述](../security/AccessToken/security-component-overview.md)
 
-[SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
+[SaveButton/apis-arkui/arkui-ts/ts-security-components-savebutton.md)

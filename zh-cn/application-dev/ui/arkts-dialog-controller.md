@@ -7,16 +7,16 @@
 <!--Adviser: @Brilliantry_Rui-->
 ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作能力，当前支持关闭功能。可以将控制器传入弹出框内容区域后进行操作。
 
-从API version 18开始，可设置controller参数以绑定[DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18)控制器，通过控制器能够操作弹出框。
+从API version 18开始，可设置controller参数以绑定[DialogController/apis-arkui/js-apis-promptAction.md#dialogcontroller18)控制器，通过控制器能够操作弹出框。
 
 ## 使用约束
 
-目前[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)和[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)支持通过controller参数来绑定弹出框进行操作，目前[getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)支持获取自定义组件所在的弹出框的控制器。
+目前[openCustomDialogWithController/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)和[presentCustomDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)支持通过controller参数来绑定弹出框进行操作，目前[getDialogController/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)支持获取自定义组件所在的弹出框的控制器。
 
 > **说明：**
 > 
 > 一个弹出框控制器只能绑定一个弹出框，且操作只对该弹出框生效。
-> 使用[getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)获取弹出框控制器时，如果当前自定义组件不在弹出框中显示则获取为undefined。
+> 使用[getDialogController/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)获取弹出框控制器时，如果当前自定义组件不在弹出框中显示则获取为undefined。
 
 ## 创建自定义内容为ComponentContent的弹出框控制器
 
@@ -85,7 +85,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    }
    ```
       
-4. 初始化一个弹出框控制器，并通过设置控制器参数来初始化一个弹出框内容实体对象。最后，通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口，并且设置初始化的内容实体对象和控制器参数以创建弹出框。
+4. 初始化一个弹出框控制器，并通过设置控制器参数来初始化一个弹出框内容实体对象。最后，通过调用[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialogWithController/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口，并且设置初始化的内容实体对象和控制器参数以创建弹出框。
 
    <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
    
@@ -131,7 +131,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    }
    ```
       
-2. 初始化一个弹出框控制器，并通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
+2. 初始化一个弹出框控制器，并通过调用[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
    <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
    
@@ -180,7 +180,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    }
    ```
       
-2. 初始化一个弹出框控制器，并通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
+2. 初始化一个弹出框控制器，并通过调用[UIContext/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
    <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
    
@@ -244,7 +244,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 ## 使用控制器获取弹出框的状态
 
-在自定义弹出框场景中，从API version 20 开始，可以通过控制器调用[getState](../reference/apis-arkui/js-apis-promptAction.md#getstate20)接口获取弹出框状态。
+在自定义弹出框场景中，从API version 20 开始，可以通过控制器调用[getState/apis-arkui/js-apis-promptAction.md#getstate20)接口获取弹出框状态。
 
 > **说明：**
 > 

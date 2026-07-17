@@ -9,7 +9,7 @@
 
 从API version 12开始，ArkUI在NDK中提供了一组通用布局属性，可以控制组件的尺寸、位置、边框等布局行为。
 
-本文选取了尺寸设置（[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[size](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[padding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)、[margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)）、位置设置（[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)）、边框设置（[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)）三个典型场景，提供NDK下通用布局属性接入的开发指导，对应属性设置和参数类型枚举可参考[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)。
+本文选取了尺寸设置（[width/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[size/apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[aspectRatio/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[padding/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)、[margin/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[layoutWeight/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)）、位置设置（[position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)）、边框设置（[borderWidth/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[borderColor/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderStyle/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderRadius/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)）三个典型场景，提供NDK下通用布局属性接入的开发指导，对应属性设置和参数类型枚举可参考[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype)。
 
 本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDKLayoutSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKLayoutSample)<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考[接入ArkTS页面](../ui/ndk-access-the-arkts-page.md)。
 
@@ -160,13 +160,13 @@ inline std::shared_ptr<ArkUITextNode> CreateMarginItem(const std::string &text, 
 }
 ```
 
-内边距padding用于控制组件内容区与边缘之间的留白，外边距margin用于控制组件与父容器边缘的留白间距。如果需要按父容器比例设置间距，则可使用[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)中NODE_PADDING_PERCENT和NODE_MARGIN_PERCENT对应的方法。
+内边距padding用于控制组件内容区与边缘之间的留白，外边距margin用于控制组件与父容器边缘的留白间距。如果需要按父容器比例设置间距，则可使用[ArkUI_NodeType/apis-arkui/capi-native-node-h.md#arkui_nodetype)中NODE_PADDING_PERCENT和NODE_MARGIN_PERCENT对应的方法。
 
 ![UICommonAttributeLayout_2](figures/UICommonAttributeLayout_2.jpg)
 
 ## 使用位置属性
 
-当尺寸和间距已经确定后，如果需要进一步调整组件摆放位置，可以使用[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)和[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)。两者都会改变组件的显示位置，但含义不同。position表示相对父容器进行定位，offset表示在原有布局结果上发生偏移。
+当尺寸和间距已经确定后，如果需要进一步调整组件摆放位置，可以使用[position/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)和[offset/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)。两者都会改变组件的显示位置，但含义不同。position表示相对父容器进行定位，offset表示在原有布局结果上发生偏移。
 
 <!-- @[layout_position_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 

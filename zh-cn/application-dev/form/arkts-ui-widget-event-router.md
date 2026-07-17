@@ -6,13 +6,13 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-在动态卡片中使用[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。
+在动态卡片中使用[postCardAction/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。
 
 ![WidgetCameraCard](figures/WidgetCameraCard.png)
 
 > **说明：**
 >
-> 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
+> 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ## 开发步骤
 1. 创建动态卡片，在工程的entry模块中，新建名为WidgetEventRouterCard的ArkTS卡片。

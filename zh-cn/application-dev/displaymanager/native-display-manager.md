@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-[OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md)屏幕管理模块用于提供屏幕的信息查询、屏幕状态变化监听、折叠设备的折叠状态变化监听等能力，应用可根据对应的屏幕信息、屏幕状态变化、屏幕折叠状态适配不同的UI界面显示。
+[OH_DisplayManager/apis-arkui/capi-oh-displaymanager.md)屏幕管理模块用于提供屏幕的信息查询、屏幕状态变化监听、折叠设备的折叠状态变化监听等能力，应用可根据对应的屏幕信息、屏幕状态变化、屏幕折叠状态适配不同的UI界面显示。
 
 - 支持查询的屏幕信息，包括屏幕的分辨率、物理像素密度、逻辑像素密度、刷新率、屏幕尺寸、屏幕旋转方向、屏幕旋转角度等。
 
@@ -24,7 +24,7 @@
 
 ## 接口说明
 
-常用接口如下表所示。更多API说明请参考[OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md)。
+常用接口如下表所示。更多API说明请参考[OH_DisplayManager/apis-arkui/capi-oh-displaymanager.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |

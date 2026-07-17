@@ -9,7 +9,7 @@
 保存图片、视频等用户文件到图库时，无需申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'，应用可以通过[安全控件](#使用安全控件保存媒体库资源)或[授权弹窗](#使用弹窗授权保存媒体库资源)的方式，将用户指定的媒体资源保存到图库中。
 
 > **注意：**
-> Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用[AudioViewPicker（音频选择器对象）](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)。
+> Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用[AudioViewPicker（音频选择器对象）/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)。
 
 ## 获取支持保存的资源格式
 
@@ -17,7 +17,7 @@
 
 **开发步骤**
 
-调用[phAccessHelper.getSupportedPhotoFormats](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getsupportedphotoformats18)接口获取支持保存的图片类型资源格式。
+调用[phAccessHelper.getSupportedPhotoFormats/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getsupportedphotoformats18)接口获取支持保存的图片类型资源格式。
 
 <!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) -->
 
@@ -78,7 +78,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 
 ## 使用安全控件保存媒体库资源
 
-安全控件的介绍可参考[SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。保存前可以通过调用[registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。资源保存成功后，根据接收到该资源的[NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知完成后续业务。
+安全控件的介绍可参考[SaveButton/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。保存前可以通过调用[registerChange/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。资源保存成功后，根据接收到该资源的[NOTIFY_ADD/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知完成后续业务。
 
 下面以使用安全控件创建一张图片资源为例。
 
@@ -86,9 +86,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 
 1. 设置安全控件按钮属性。
 2. 创建安全控件按钮。
-3. 调用[registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。
-4. 调用[MediaAssetChangeRequest.createImageAssetRequest](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createimageassetrequest11)和[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口创建图片资源。
-5. 调用[getAsset](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#getasset11)接口获取保存的资产，并获取资产URI。在接收到资产URI的[NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知后，完成后续业务。
+3. 调用[registerChange/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。
+4. 调用[MediaAssetChangeRequest.createImageAssetRequest/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createimageassetrequest11)和[PhotoAccessHelper.applyChanges/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口创建图片资源。
+5. 调用[getAsset/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#getasset11)接口获取保存的资产，并获取资产URI。在接收到资产URI的[NOTIFY_ADD/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知后，完成后续业务。
 
 <!-- @[Creating_Media_Asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene2.ets) -->
 
@@ -184,7 +184,7 @@ export struct Scene2 {
 }
 ```
 
-除了上述通过fileUri从应用沙箱指定资源内容的方式，开发者还可以通过ArrayBuffer的方式添加资源内容，详情请参考[addResource](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)接口。
+除了上述通过fileUri从应用沙箱指定资源内容的方式，开发者还可以通过ArrayBuffer的方式添加资源内容，详情请参考[addResource/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)接口。
 
 ## 使用弹窗授权保存媒体库资源
 
@@ -194,7 +194,7 @@ export struct Scene2 {
 
 1. 指定待保存到媒体库的[应用文件](../../file-management/app-file-access.md)uri（需为应用沙箱路径）。
 2. 指定待保存照片的创建选项，包括文件后缀和照片类型，标题和照片子类型可选。
-3. 调用[showAssetsCreationDialog](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#showassetscreationdialog12)，基于弹窗授权的方式获取的目标[媒体文件](../../file-management/user-file-uri-intro.md#媒体文件uri)uri。
+3. 调用[showAssetsCreationDialog/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#showassetscreationdialog12)，基于弹窗授权的方式获取的目标[媒体文件](../../file-management/user-file-uri-intro.md#媒体文件uri)uri。
 
    弹框需要显示应用名称，无法直接获取应用名称，依赖于配置项的label和icon，因此调用此接口时请确保module.json5文件中的abilities标签中配置了label和icon项。当传入uri为沙箱路径时，可正常保存图片/视频，但无界面预览。
 4. 将应用沙箱的照片内容写入媒体库的目标URI。

@@ -9,7 +9,7 @@
 
 ## 概述
 
-从API version 23开始，ArkUI开发框架在NDK接口提供了Picker容器组件。Picker容器组件用于实现用户自定义选项的选择操作，支持滚动选择、触感反馈、循环滚动等功能。Picker组件通过设置选择指示器样式，可以自定义选中项的显示效果，适用于日期选择、时间选择、文本选择等场景。从API版本26.0.0开始，可通过`NODE_PICKER_DISPLAYED_ITEM_COUNT`、`NODE_PICKER_ITEM_HEIGHT`配置可见选项行数与每行行高，语义与ArkTS侧[UIPickerComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md)的[displayedItemCount](../reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#displayeditemcount)、[itemHeight](../reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#itemheight)一致；详细参数格式见[信息选择类组件相关属性](../reference/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md)。
+从API version 23开始，ArkUI开发框架在NDK接口提供了Picker容器组件。Picker容器组件用于实现用户自定义选项的选择操作，支持滚动选择、触感反馈、循环滚动等功能。Picker组件通过设置选择指示器样式，可以自定义选中项的显示效果，适用于日期选择、时间选择、文本选择等场景。从API版本26.0.0开始，可通过`NODE_PICKER_DISPLAYED_ITEM_COUNT`、`NODE_PICKER_ITEM_HEIGHT`配置可见选项行数与每行行高，语义与ArkTS侧[UIPickerComponent/apis-arkui/arkui-ts/ts-container-ui-picker-component.md)的[displayedItemCount/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#displayeditemcount)、[itemHeight/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#itemheight)一致；详细参数格式见[信息选择类组件相关属性/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md)。
 
 [创建Picker](#创建picker)后，可以[设置Picker属性](#设置picker属性)，并[监听Picker事件](#监听picker事件)。
 
@@ -17,11 +17,11 @@
 
 ## 创建Picker
 
-通过[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)调用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)(ARKUI_NODE_PICKER)得到组件对象指针，并设置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的相关属性，可以创建一个Picker容器组件。
+通过[ArkUI_NativeNodeAPI_1/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)调用[createNode/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)(ARKUI_NODE_PICKER)得到组件对象指针，并设置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的相关属性，可以创建一个Picker容器组件。
 
 ### 基本创建方式
 
-以下示例展示了创建Picker组件并设置基本属性的方法，其中可见选项行数与每行行高从API版本26.0.0起支持，可按需设置；取值与默认行为见[NODE_PICKER_DISPLAYED_ITEM_COUNT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_displayed_item_count)、[NODE_PICKER_ITEM_HEIGHT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_item_height)。
+以下示例展示了创建Picker组件并设置基本属性的方法，其中可见选项行数与每行行高从API版本26.0.0起支持，可按需设置；取值与默认行为见[NODE_PICKER_DISPLAYED_ITEM_COUNT/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_displayed_item_count)、[NODE_PICKER_ITEM_HEIGHT/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_item_height)。
 
 ```cpp
 // 获取NativeNodeAPI接口
@@ -234,7 +234,7 @@ ConfigurePicker(picker, data);
 
 ### 设置默认选中项
 
-通过设置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的`NODE_PICKER_OPTION_SELECTED_INDEX`属性，可以设置Picker组件的默认选中项索引。
+通过设置[ArkUI_NodeAttributeType/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的`NODE_PICKER_OPTION_SELECTED_INDEX`属性，可以设置Picker组件的默认选中项索引。
 
 ```cpp
 picker->SetSelectedIndex(2); // 设置默认选中第3项（索引从0开始）
@@ -264,9 +264,9 @@ picker->SetCanLoop(false); // 不支持循环滚动
 
 ### 设置可见选项数量与选项行高
 
-从API版本26.0.0开始，可通过[NODE_PICKER_DISPLAYED_ITEM_COUNT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_displayed_item_count)设置可见选项行数，通过[NODE_PICKER_ITEM_HEIGHT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_item_height)设置每一行的高度（vp）。未设置时，默认分别为7行与40vp；取值范围、偶数行数规范及越界行为与[UIPickerComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md)的[displayedItemCount](../reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#displayeditemcount)、[itemHeight](../reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#itemheight)一致。立体滚轮样式下可视高度会受旋转影响，若增大行数或行高，请相应增大Picker容器高度。
+从API版本26.0.0开始，可通过[NODE_PICKER_DISPLAYED_ITEM_COUNT/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_displayed_item_count)设置可见选项行数，通过[NODE_PICKER_ITEM_HEIGHT/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md#node_picker_item_height)设置每一行的高度（vp）。未设置时，默认分别为7行与40vp；取值范围、偶数行数规范及越界行为与[UIPickerComponent/apis-arkui/arkui-ts/ts-container-ui-picker-component.md)的[displayedItemCount/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#displayeditemcount)、[itemHeight/apis-arkui/arkui-ts/ts-container-ui-picker-component.md#itemheight)一致。立体滚轮样式下可视高度会受旋转影响，若增大行数或行高，请相应增大Picker容器高度。
 
-使用[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)时可直接调用`setAttribute`。
+使用[ArkUI_NativeNodeAPI_1/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)时可直接调用`setAttribute`。
 
 ```cpp
 ArkUI_NumberValue visibleCountValue = {.i32 = 5};
@@ -289,7 +289,7 @@ picker->SetItemHeight(48.0f);        // 每行高度（vp）
 
 通过设置`NODE_PICKER_SELECTION_INDICATOR`属性，可以自定义Picker组件的选择指示器样式。选择指示器包括背景样式和分割线样式两部分。
 
-背景样式指示器通过[ArkUI_PickerIndicatorBackground](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)结构体设置，包括背景颜色和圆角半径。
+背景样式指示器通过[ArkUI_PickerIndicatorBackground/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)结构体设置，包括背景颜色和圆角半径。
 
 ```cpp
 ArkUI_PickerIndicatorBackground backgroundStyle = {
@@ -301,7 +301,7 @@ ArkUI_PickerIndicatorBackground backgroundStyle = {
 };
 ```
 
-分割线样式指示器通过[ArkUI_PickerIndicatorDivider](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)结构体设置，包括线宽、颜色和边距。
+分割线样式指示器通过[ArkUI_PickerIndicatorDivider/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)结构体设置，包括线宽、颜色和边距。
 
 ```cpp
 ArkUI_PickerIndicatorDivider dividerStyle = {
@@ -312,7 +312,7 @@ ArkUI_PickerIndicatorDivider dividerStyle = {
 };
 ```
 
-将背景样式或分割线样式组合到[ArkUI_PickerIndicatorStyle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)结构体中，并设置给Picker组件。
+将背景样式或分割线样式组合到[ArkUI_PickerIndicatorStyle/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)结构体中，并设置给Picker组件。
 
 ```cpp
 ArkUI_PickerIndicatorStyle indicatorStyle1 = {
