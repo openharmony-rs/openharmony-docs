@@ -390,7 +390,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
            .fontSize(30)
          Button('Close Dialog(Built-in Controller)')
            .onClick(() => {
-             let dialogController: PromptActionDialogController = this.getDialogController();
+             let dialogController: promptAction.DialogController = this.getDialogController();
              if (dialogController !== undefined) {
                dialogController.close();
              }
@@ -600,7 +600,7 @@ struct CustomDialogExample {
         .fontSize(30)
       Button('Close Dialog(Built-in Controller)')
         .onClick(() => {
-          let dialogController: PromptActionDialogController = this.getDialogController();
+          let dialogController: promptAction.DialogController = this.getDialogController();
           if (dialogController !== undefined) {
             dialogController.close();
           }
