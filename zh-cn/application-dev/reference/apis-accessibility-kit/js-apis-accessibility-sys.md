@@ -212,9 +212,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 表示聚焦规则类型的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
- 	 
+
 **系统接口：** 此接口为系统接口。
- 	 
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本：** 26.0.0
