@@ -1865,7 +1865,7 @@ struct Index {
      Column({ space: 20 }) {
        Text('bindContextMenuByIsShow grid menu')
          .fontSize(20)
-         .bindContextMenu(this.isShown, this.MyMenu, {
+         .bindContextMenuByIsShow(this.isShown, this.MyMenu, {
            gridStyle: {
              count: 4,
              horizontalSize: 3,
