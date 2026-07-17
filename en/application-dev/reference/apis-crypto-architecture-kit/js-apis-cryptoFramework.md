@@ -29,7 +29,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ------------------------------------- | -------- | ---------------------------- |
 | INVALID_PARAMS                        | 401      | Invalid parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
 | NOT_SUPPORT                           | 801      | Unsupported operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_OUT_OF_MEMORY                     | 17620001 | The memory operation failed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
+| ERR_OUT_OF_MEMORY                     | 17620001 | Memory operation fails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
 | ERR_RUNTIME_ERROR                     | 17620002 | The parameter conversion between ArkTS and C failed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | The parameter check failed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | ERR_CRYPTO_OPERATION                  | 17630001 | Cryptographic operation error.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
@@ -132,7 +132,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | No  | No  | IV for encryption and decryption. Only 7 bytes are supported. If the length of the input **iv** parameter exceeds 7 bytes, the excess part will be truncated.                             |
+| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 7 bytes. If the length of the input **iv** parameter exceeds 7 bytes, the excess part will be truncated.                             |
 | aad     | [DataBlob](#datablob) | No  | No  | AAD for encryption and decryption. The AAD value contains 1 to 2,048 bytes.                           |
 | authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#init-1) or [initSync()](#initsync12).|
 
@@ -272,7 +272,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Name        | Value  | Description            |
 | ------------ | ---- | ---------------- |
 | PSS_MD_NAME_STR | 100 | MD algorithm used with the PSS padding mode in RSA.|
-| PSS_MGF_NAME_STR | 101 | Mask generation algorithm used with the PSS padding mode in RSA. Currently, only MGF1 is supported.|
+| PSS_MGF_NAME_STR | 101 | MD algorithm used with the PSS padding mode in RSA. Currently, only MGF1 is supported.|
 | PSS_MGF1_MD_STR | 102 | MD parameters for the MGF1 mask generation used with the PSS padding mode in RSA.|
 | PSS_SALT_LEN_NUM | 103 | Length of the salt in bytes used with the PSS padding mode in RSA.|
 | PSS_TRAILER_FIELD_NUM | 104 | Trailer field used in the encoding operation when PSS padding mode is used in RSA.|
@@ -2091,7 +2091,7 @@ let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 
 ## AsyKeyGenerator
 
-Provides APIs for using the **AsKeyGenerator**. Before using any API of the **AsKeyGenerator** class, you must create an **AsyKeyGenerator** instance using [createAsyKeyGenerator](#cryptoframeworkcreateasykeygenerator).
+Provides APIs for using the **AsKeyGenerator**. Before using any API of the **AsKeyGenerator** class, you must create an **AsyKeyGenerator** instance by using [createAsyKeyGenerator](#cryptoframeworkcreateasykeygenerator).
 
 ### Attributes
 
@@ -2239,7 +2239,7 @@ try {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
-Parses the key data and generates an asymmetric key pair object. This API uses an asynchronous callback to return the result.
+Parses the key data and generates an asymmetric key object. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2294,7 +2294,7 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
-Parses the key data and generates an asymmetric key pair object. This API uses a promise to return the result.
+Parses the key data and generates an asymmetric key object. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2354,7 +2354,7 @@ keyGenPromise.then(keyPair => {
 
 convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
-Parses the key data and generates an asymmetric key pair object. This API is synchronous.
+Parses the key data and generates an asymmetric key object. This API is synchronous.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2415,10 +2415,10 @@ try {
 
 convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
-Parses the key data and generates an asymmetric key pair object. This API uses a promise to return the result.
+Parses the key data and generates an asymmetric key object. This API uses a promise to return the result.
 
 > **NOTE**
-> 1. When **convertPemKey()** is used to convert an external string into an asymmetric key pair object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
+> 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
 > 2. In **convertPemKey()**, you can pass in either **pubKey** or **priKey**, or both of them. If one of them is passed in, the returned **KeyPair** instance contains only the key converted from the data you passed in.
 > 3. When **convertPemKey** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the system does not verify whether the specifications of the generated key object are the same as the key specifications specified for the asymmetric key generator.
 
@@ -2493,10 +2493,10 @@ async function TestConvertPemKeyByPromise() {
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
 
-Parses the key data and generates an asymmetric key pair object. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API uses a promise to return the result.
+Parses the key data and generates an asymmetric key object. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API uses a promise to return the result.
 
 > **NOTE**
-> 1. When **convertPemKey()** is used to convert an external string into an asymmetric key pair object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
+> 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
 > 2. In **convertPemKey()**, you can pass in either **pubKey** or **priKey**, or both of them. If one of them is passed in, the returned **KeyPair** instance contains only the key converted from the data you passed in.
 > 3. When **convertPemKey** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the system does not verify whether the specifications of the generated key object are the same as the key specifications specified for the asymmetric key generator.
 > 4. If **password** is passed in, it can be used to decrypt the encrypted private key.
@@ -2648,7 +2648,7 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-Parses the key data and generates an asymmetric key pair object. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API is synchronous.
+Parses the key data and generates an asymmetric key object. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API is synchronous.
 
 > **NOTE**
 > The precautions for using **convertPemKeySync** are the same as those for [convertPemKey](#convertpemkey18).
@@ -5274,7 +5274,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Name  | Type                | Mandatory| Description                          |
 | -------- | -------------------- | ---- | ------------------------------ |
 | pubKey   | [PubKey](#pubkey)    | Yes  | Public key used to initialize the **Verify** instance.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the **Verify** instance is successfully initialized, **err** is **undefined**. Otherwise, **err** is an error object. |
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the signature verification objects is successfully initialized, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -6498,6 +6498,8 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
+ArkTS example:
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -6509,6 +6511,90 @@ async function mdByPromise() {
   console.info('[Promise]: MD result: ' + mdOutput.data);
   console.info('[Promise]: MD len: ' + md.getMdLength());
 }
+```
+
+JS example:
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto test</text>
+    <input class="btn" @click="MdTest">Md asynchronous test</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+
+let plainText = "123456";
+
+function mdTest() {
+    let inData = StringToUint8Array(plainText);
+    let md = cryptoFramework.createMd('SHA256');
+    console.info("createMd " + typeof md);
+
+    md.update({data: inData}, function (finishErr) {
+        if (finishErr) {
+            console.error("Digest update failed. Code:" + finishErr.code + " : " + finishErr.message);
+        } else {
+            console.info("Digest update successfully.");
+        }
+    })
+
+    md.digest(function (finishErr, digestOutput){
+        if (finishErr) {
+            console.error("Digest failed. Code:" + finishErr.code + " : " + finishErr.message);
+        } else {
+            console.info("Digest successfully:" + digestOutput);
+        }
+    })
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    MdTest() {
+        mdTest();
+    }
+};
 ```
 
 ### digestSync<sup>12+</sup>
@@ -6540,6 +6626,8 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
+ArkTS example:
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -6551,6 +6639,77 @@ function mdBySync() {
   console.info('[Sync]: MD result: ' + mdOutput.data);
   console.info('[Sync]: MD len: ' + md.getMdLength());
 }
+```
+
+JS example:
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto test</text>
+    <input class="btn" @click="MdTestSync">Md synchronous test</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+
+function mdTestSync() {
+    let mdAlgName = 'SHA256';
+    let message = 'mdTestMessage';
+    let md = cryptoFramework.createMd(mdAlgName);
+    md.updateSync({ data: StringToUint8Array(message) });
+    let mdResult = md.digestSync();
+    console.info('Digest successfully. result:' + mdResult.data);
+    let mdLen = md.getMdLength();
+    console.info("Digest successfully. md len: " + mdLen);
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    MdTestSync() {
+        mdTestSync();
+    }
+};
 ```
 
 ### getMdLength
@@ -6714,7 +6873,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 init(key: SymKey, callback: AsyncCallback\<void>): void
 
-Initializes the MAC calculation using a symmetric key. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes the MAC computation using a symmetric key. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
   > **NOTE**
   >
@@ -6747,7 +6906,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 init(key: SymKey): Promise\<void>
 
-Initializes the MAC calculation using a symmetric key. This API uses a promise to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes the MAC computation using a symmetric key. This API uses a promise to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6781,7 +6940,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 initSync(key: SymKey): void
 
-Initializes the MAC calculation using a symmetric key. This API returns the result synchronously. **initSync**, **updateSync**, and **doFinalSync** must be used together. **initSync** and **doFinalSync** are mandatory, and **updateSync** is optional.
+Initializes the MAC computation using a symmetric key. This API returns the result synchronously. **initSync**, **updateSync**, and **doFinalSync** must be used together. **initSync** and **doFinalSync** are mandatory, and **updateSync** is optional.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6921,7 +7080,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name  | Type                    | Mandatory| Description    |
 | -------- | ------------------------ | ---- | -------- |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the MAC calculation result. If the MAC calculation is successful, **err** is **undefined**, and **data** is the MAC calculation result. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the MAC computation result. If the MAC calculation is successful, **err** is **undefined**, and **data** is the MAC calculation result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -7254,6 +7413,8 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
+ArkTS example:
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7265,6 +7426,72 @@ promiseGenerateRand.then(randData => {
 }).catch((error: BusinessError) => {
   console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
 });
+```
+
+JS example:
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto test</text>
+    <input class="btn" @click="RandTest">Rand asynchronous test</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function randTest() {
+    let rand = cryptoFramework.createRandom();
+    let seed = new Uint8Array([1, 2, 3]);
+    rand.setSeed({ data : seed });
+
+    rand.generateRandom(12, function (finishErr, randData){
+        if (finishErr) {
+            console.error("GenerateRandom failed. Code:" + finishErr.code + " : " + finishErr.message);
+        } else {
+            console.info("GenerateRandom successfully:" + randData);
+        }
+    })
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    RandTest() {
+        randTest();
+    }
+};
 ```
 
 ### generateRandomSync<sup>10+</sup>
@@ -7303,6 +7530,8 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
+ArkTS example:
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7319,6 +7548,73 @@ try {
   let e: BusinessError = error as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
+```
+
+JS example:
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto test</text>
+    <input class="btn" @click="RandTestSync">Rand synchronous test</input>
+</div>
+```
+
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+function randTestSync() {
+    let rand = cryptoFramework.createRandom();
+    let randLen = 24;
+    try {
+        let randData = rand.generateRandomSync(randLen);
+        if (randData != null) {
+            console.info("GenerateRandom successfully: " + randData.data);
+        } else {
+            console.error("GenerateRandom failed!");
+        }
+    } catch (error) {
+        console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+    }
+}
+
+export default {
+    data: {
+        result: ''
+    },
+    RandTestSync() {
+        randTestSync();
+    }
+};
 ```
 
 ### enableHardwareEntropy<sup>21+</sup>
