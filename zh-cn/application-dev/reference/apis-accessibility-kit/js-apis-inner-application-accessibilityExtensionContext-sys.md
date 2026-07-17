@@ -1321,6 +1321,283 @@ export default class AccessibilityManager {
 }
 ```
 
+### updateAccessibilityElementProperty
+
+ArkTS-Dyn: updateAccessibilityElementProperty(elementId: number, windowId: number, node: AccessibilityVirtualNode): Promise&lt;OperateVirtualNodeResult&gt;
+
+ArkTS-Sta: updateAccessibilityElementProperty(elementId: long, windowId: int, node: AccessibilityVirtualNode): Promise&lt;OperateVirtualNodeResult&gt;
+
+修改无障碍节点属性。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| elementId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 表示修改无障碍节点的节点id。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示修改无障碍节点的窗口id。 |
+| node | [AccessibilityVirtualNode](#accessibilityvirtualnode) | 是 | 修改无障碍节点的属性值，可修改的属性包括：<br>accessibilityText，accessibilityGroup，accessibilityLevel，checkable， isChecked, isSelected, isClickable,  isEnable, customComponentType。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#operatevirtualnoderesult)&gt; | Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+| 202 | Permission verification failed.A non-system application calls a system API. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed.<br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed.<br>4.Failed to obtain the accessibility service proxy.<br>5.Timed out while waiting for the result of an asynchronous operation. |
+
+**示例：**
+
+```ts
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext,
+  AccessibilityVirtualNode,
+  OperateVirtualNodeResult
+} from '@kit.AccessibilityKit';
+
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let elementId: number = 0; // the componentId of the accessibility element to be updated
+    let windowId: number = 0; // the windowId of the accessibility element
+    let accessibilityVirtualNode: AccessibilityVirtualNode = {
+      virtualNodeId: 1,
+      accessibilityText: "accessibilityTextNew"
+    }
+    this.context.updateAccessibilityElementProperty(elementId, windowId, accessibilityVirtualNode).then((data: OperateVirtualNodeResult)=>{
+      console.info(`updateAccessibilityElementProperty: elementId:${elementId} windowId:${windowId}, result:${data}`)
+    }).catch((err: BusinessError) => {
+      console.error(`failed to update accessibility element property, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
+
+### addAccessibilityVirtualNodes
+
+ArkTS-Dyn: addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&lt;AccessibilityVirtualNode&gt;): Promise&lt;OperateVirtualNodeResult&gt;
+
+ArkTS-Sta: addAccessibilityVirtualNodes(elementId: long, windowId: int, nodes: Array&lt;AccessibilityVirtualNode&gt;): Promise&lt;OperateVirtualNodeResult&gt;
+
+新增无障碍虚拟节点树。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| elementId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 表示新增虚拟节点树的父节点id。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示新增虚拟节点树的父节点窗口Id。 |
+| nodes | Array<[AccessibilityVirtualNode](#accessibilityvirtualnode)> | 是 | 新增虚拟节点数组。 数组中的虚拟节点按parentId、childNodeIds父子关系构建成一颗树。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+| 202 | Permission verification failed.A non-system application calls a system API. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed.<br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed.<br>4.Failed to obtain the accessibility service proxy.<br>5.Timed out while waiting for the result of an asynchronous operation. |
+
+**示例：**
+
+```ts
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext,
+  AccessibilityVirtualNode,
+  OperateVirtualNodeResult
+} from '@kit.AccessibilityKit';
+
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let elementId: number = 0; // the componentId of the accessibility element to be added
+    let windowId: number = 0; // the windowId of the accessibility element
+    let accessibilityVirtualNode: AccessibilityVirtualNode = {
+      virtualNodeId: 1,
+      accessibilityText: "accessibilityTextNew"
+    }
+    this.context.addAccessibilityVirtualNodes(elementId, windowId, [accessibilityVirtualNode]).then((data: OperateVirtualNodeResult)=>{
+      console.info(`addAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
+    }).catch((err: BusinessError) => {
+      console.error(`failed to add virtual nodes, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
+
+### removeAccessibilityVirtualNodes
+
+ArkTS-Dyn: removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt;OperateVirtualNodeResult&gt;
+
+ArkTS-Sta: removeAccessibilityVirtualNodes(elementId: long, windowId: int): Promise&lt;OperateVirtualNodeResult&gt;
+
+删除无障碍虚拟节点树。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| elementId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 表示删除当前节点id下的虚拟节点树。 |
+| windowId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示节点所在的窗口Id。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed.A non-system application calls a system API. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed.<br>2.Failed to obtain the required service or client object (null pointer).<br>3.IPC communication failed.<br>4.Failed to obtain the accessibility service proxy.<br>5.Timed out while waiting for the result of an asynchronous operation. |
+
+**示例：**
+
+```ts
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext,
+  AccessibilityVirtualNode,
+  OperateVirtualNodeResult
+} from '@kit.AccessibilityKit';
+
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let elementId: number = 0; // the componentId of the accessibility element to be removed
+    let windowId: number = 0; // the windowId of the accessibility element
+    this.context.removeAccessibilityVirtualNodes(elementId, windowId).then((data: OperateVirtualNodeResult)=>{
+      console.info(`removeAccessibilityVirtualNodes: elementId:${elementId} windowId:${windowId}, result:${data}`)
+    }).catch((err: BusinessError) => {
+      console.error(`failed to remove virtual nodes, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
+
 ## AccessibilityElement
 
 无障碍节点元素。在调用AccessibilityElement的接口之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement](#getaccessibilityfocusedelement20)或[AccessibilityExtensionContext.getRootInActiveWindow](#getrootinactivewindow20)来获取一个AccessibilityElement实例。
@@ -1402,6 +1679,7 @@ export default class AccessibilityManager {
 | belongTreeId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示元素所属的组件树ID。默认值为-1。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 | childrenTreeId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示元素的子组件树ID。默认值为-1。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 | customActions             | Array\<string> | 否  | 是  | 元素支持的自定义操作列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
+| sourceType             | [AccessibilitySourceType](js-apis-inner-application-accessibilityExtensionContext.md#accessibilitysourcetype) | 否  | 是  | 组件来源类型，用于区分默认组件和新增、修改的虚拟组件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 
 **示例：**
 ```ts
@@ -2432,3 +2710,61 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 | accessibilityVisible             | boolean              | 否   | 是   | 表示元素是否是无障碍可见的。true表示元素是无障碍可见的，false表示元素是无障碍不可见的，默认值为true。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
 | navDestinationId             | number              | 否   | 是   | 表示元素所关联的导航目标ID。默认值为-1。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
 | customActions | Array\<string>                     | 否   | 是   | 元素支持的自定义操作列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0|
+
+## AccessibilityVirtualNode
+
+无障碍虚拟节点。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+### 属性
+
+| 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| virtualNodeId | number | 否 | 否 | 自定义的元素虚拟节点id。|
+| text | string  | 否  | 是  | 元素的文本内容。|
+| accessibilityText | string | 否 | 是 | 元素的无障碍文本信息。|
+| accessibilityGroup | boolean | 否 | 是 | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值：true。|
+| accessibilityLevel | string | 否 | 是 | 组件的无障碍级别。<br>'auto'：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。<br>'yes'：当前组件可被辅助功能识别。<br>'no'：当前组件不可被辅助功能识别。<br>'no-hide-descendants'：当前组件及其所有子组件不可被辅助功能识别。|
+| rect    | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)  | 否  | 是  | 元素的区域(父节点的相对位置)。|
+| checkable | boolean | 否 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值：false。|
+| checked | boolean | 否 | 是 | 元素是否已勾选。true表示已勾选，false表示未勾选。<br>默认值：false。|
+| clickable | boolean | 否 | 是 | 元素是否可点击。true表示可点击，false表示不可点击。<br>默认值：false。|
+| enabled | boolean | 否 | 是 | 元素是否启用。true表示启用，false表示未启用。<br>对应AccessibilityElement的isEnable属性，默认值：false。|
+| selected | boolean | 否  | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值：false。|
+| customComponentType | string   | 否  | 是  | 自定义组件类型。|
+| touchPosition | [TouchPosition](#touchposition)   | 否  | 是  | 模拟触摸点击位置。|
+| accessibilityFocused | boolean | 否 | 是 | 表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
+| parentId | number  | 否  | 是  | 组件的父元素ID。|
+| childNodeIds | Array\<number>  | 否  | 是  | 组件的子元素ID列表。|
+| elementId | number | 否 | 是 | 元素所属组件的ID。<br>默认值：-1。|
+| supportedActionNames | Array&lt;string&gt; | 否  | 是  | 支持的操作名称。|
+
+## TouchPosition
+
+触摸点击位置。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+### 属性
+
+| 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| x | number | 否 | 否 | 点击位置x坐标，单位为像素（px）。|
+| y | number  | 否  | 否  | 点击位置y坐标，单位为像素（px）。|
