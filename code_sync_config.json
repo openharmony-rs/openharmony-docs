@@ -36755,20 +36755,24 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets",
 				"functions":[
 					{
-						"end_line":24,
-						"name":"getRoutingManager_input",
+						"end_line":52,
+						"name":"getRoutingManager",
 						"start_line":16
 					},
 					{
-						"end_line":95,
-						"name":"getDevices_input",
+						"end_line":192,
+						"name":"getDevices",
 						"start_line":17
 					},
 					{
-						"end_line":62,
-						"name":"listen_InputStatus",
+						"end_line":210,
+						"name":"onDeviceChange",
 						"start_line":18
 					}
 				]
@@ -36780,15 +36784,19 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets",
 				"functions":[
 					{
-						"end_line":80,
-						"name":"set_BluetoothAndNearlinkPreferredRecordCategory",
+						"end_line":217,
+						"name":"setBluetoothAndNearlinkPreferredRecordCategory",
 						"start_line":16
 					},
 					{
-						"end_line":239,
-						"name":"select_MediaInputDevice",
+						"end_line":334,
+						"name":"selectMediaInputDevice",
 						"start_line":17
 					}
 				]
@@ -36820,11 +36828,20 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets",
 				"functions":[
 					{
-						"end_line":84,
-						"name":"all_outputDeviceChange",
+						"end_line":245,
+						"name":"onOutputDeviceChangeWithInfo",
 						"start_line":16
+					},
+					{
+						"end_line":293,
+						"name":"onCurrentOutputDeviceChanged",
+						"start_line":17
 					}
 				]
 			}
@@ -36835,56 +36852,59 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets",
-				"functions":[
-					{
-						"end_line":31,
-						"name":"getRoutingManager_output",
-						"start_line":16
-					},
-					{
-						"end_line":108,
-						"name":"get_OutputDevices",
-						"start_line":17
-					},
-					{
-						"end_line":77,
-						"name":"deviceChange_output",
-						"start_line":18
-					},
-					{
-						"end_line":187,
-						"name":"get_PreferOutputDeviceForRendererInfo",
-						"start_line":19
-					},
-					{
-						"end_line":141,
-						"name":"listen_OutputDeviceChangeForRendererInfo",
-						"start_line":20
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets",
 				"functions":[
 					{
-						"end_line":27,
-						"name":"get_SessionManager",
-						"start_line":20
-					},
-					{
-						"end_line":165,
-						"name":"set_DefaultOutputDevice",
+						"end_line":70,
+						"name":"getRoutingManager",
 						"start_line":16
 					},
 					{
-						"end_line":167,
-						"name":"get_DefaultOutputDevice",
-						"start_line":164
+						"end_line":233,
+						"name":"getDevices",
+						"start_line":17
 					},
 					{
-						"end_line":86,
-						"name":"listen_CurrentOutputDeviceChangedEvent",
+						"end_line":264,
+						"name":"onDeviceChange",
+						"start_line":18
+					},
+					{
+						"end_line":291,
+						"name":"getPreferOutputDeviceForRendererInfo",
+						"start_line":19
+					},
+					{
+						"end_line":320,
+						"name":"onPreferOutputDeviceChangeForRendererInfo",
+						"start_line":20
+					},
+					{
+						"end_line":73,
+						"name":"getSessionManager",
 						"start_line":21
+					},
+					{
+						"end_line":364,
+						"name":"setDefaultOutputDevice",
+						"start_line":24
+					},
+					{
+						"end_line":387,
+						"name":"getDefaultOutputDevice",
+						"start_line":23
+					},
+					{
+						"end_line":442,
+						"name":"onCurrentOutputDeviceChanged",
+						"start_line":22
 					}
 				]
 			}
@@ -36899,21 +36919,24 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets",
-				"functions":[
-					{
-						"end_line":133,
-						"name":"set_DefaultOutputDevice",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets",
 				"functions":[
 					{
-						"end_line":716,
-						"name":"set_default_output_device",
-						"start_line":25
+						"end_line":273,
+						"name":"audioRenderer_setDefaultOutputDevice",
+						"start_line":16
+					},
+					{
+						"end_line":226,
+						"name":"audioSessionManager_setDefaultOutputDevice",
+						"start_line":17
 					}
 				]
 			}
@@ -37529,36 +37552,35 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets",
 				"functions":[
 					{
-						"end_line":77,
-						"name":"get_volumemanager",
+						"end_line":57,
+						"name":"getVolumeManager",
+						"start_line":16
+					},
+					{
+						"end_line":243,
+						"name":"getVolumeByStream",
+						"start_line":17
+					},
+					{
+						"end_line":267,
+						"name":"onStreamVolumeChange",
+						"start_line":18
+					},
+					{
+						"end_line":329,
+						"name":"setAppVolumePercentage",
 						"start_line":19
 					},
 					{
-						"end_line":368,
-						"name":"get_systemvolume",
+						"end_line":379,
+						"name":"setVolume",
 						"start_line":20
-					},
-					{
-						"end_line":381,
-						"name":"regist_volumechangecallback",
-						"start_line":21
-					},
-					{
-						"end_line":411,
-						"name":"set_appvolume",
-						"start_line":22
-					},
-					{
-						"end_line":420,
-						"name":"AVPlayerset_streamvolume",
-						"start_line":417
-					},
-					{
-						"end_line":448,
-						"name":"Renderset_streamvolume",
-						"start_line":53
 					}
 				]
 			}
