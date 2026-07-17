@@ -9,7 +9,7 @@
 
 本模块提供无障碍事件类型和无障碍节点元素可执行的操作。
 
-> **说明**：
+> **说明：**
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口。其他公开接口参见[@ohos.accessibility](js-apis-accessibility.md)。
@@ -25,9 +25,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍事件类型。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 
 | 名称                     | 值                    |说明|
@@ -102,9 +102,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOUR_FINGER_SWIPE_LEFT  |67| 表示四指向左滑动的手势。|
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| 表示四指向右滑动的手势。|
 | TYPE_PAGE_ACTIVE<sup>23+</sup> |69| 表示页面活动状态发生变化。 |
-| TYPE_NOTIFICATION_UPDATE |70| 表示通知内容或状态发生更新。<br>**起始版本**： 26.0.0<br>**模型约束**： 此接口仅可在Stage模型下使用。 |
-| TYPE_FOCUS_INVISIBLE |71| 表示焦点变为不可见状态。<br>**起始版本**： 26.0.0<br>**模型约束**： 此接口仅可在Stage模型下使用。 |
-| TYPE_ONE_FINGER_DOUBLE_TAP |72| 表示单指双击的手势。<br>**起始版本**： 26.0.0<br>**模型约束**： 此接口仅可在Stage模型下使用。 |
+| TYPE_NOTIFICATION_UPDATE |70| 表示通知内容或状态发生更新。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_FOCUS_INVISIBLE |71| 表示焦点变为不可见状态。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_ONE_FINGER_DOUBLE_TAP |72| 表示单指双击的手势。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | TYPE_TOUCH_GUIDE_GESTURE |73| 表示触摸浏览手势事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AccessibilityAction
@@ -113,9 +113,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍节点元素是指，UI界面上可执行无障碍操作的组件，例如：按钮、文本输入框等。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
@@ -134,22 +134,22 @@ import { accessibility } from '@kit.AccessibilityKit';
 | SCROLL_BACKWARD            | 12   | 表示向后滚动组件（向内容起始方向滚动）。                |
 | SET_SELECTION              | 13   | 表示选定组件内文本范围。             |
 | SET_CURSOR_POSITION        | 14   | 表示设置组件内的光标位置。             |
-| HOME                       | 15   | 表示执行返回首页操作。<br>**使用约束**： 此操作在多屏场景下，仅在主屏幕上生效。              |
+| HOME                       | 15   | 表示执行返回首页操作。<br>**使用约束：** 此操作在多屏场景下，仅在主屏幕上生效。              |
 | BACK                       | 16   | 表示执行返回操作。               |
 | RECENT_TASK                | 17   | 表示显示最近任务。                  |
 | NOTIFICATION_CENTER        | 18   | 表示显示通知中心。                  |
 | CONTROL_CENTER             | 19   | 表示显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 表示对局部文本进行点击操作。             |
-| INJECT_ACTION              | 21   | 表示注入模拟用户操作的动作，具体注入动作类型参见[InjectActionType](#injectactiontype)。<br>**起始版本**： 26.0.0<br>**模型约束**： 此接口仅可在Stage模型下使用。|
-| EXECUTE_CUSTOM_ACTION      | 22   | 表示执行自定义操作。<br>**起始版本**： 26.0.0<br>**模型约束**： 此接口仅可在Stage模型下使用。    |
+| INJECT_ACTION              | 21   | 表示注入模拟用户操作的动作，具体注入动作类型参见[InjectActionType](#injectactiontype)。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| EXECUTE_CUSTOM_ACTION      | 22   | 表示执行自定义操作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。    |
 
 ## FocusMoveResultCode<sup>23+</sup>
 
 表示查询无障碍节点返回结果类型的枚举。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
@@ -168,13 +168,13 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 表示注入动作的枚举。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                   |
 | -------------------------- | ---- | ------------------------ |
@@ -186,13 +186,13 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 表示无障碍聚焦的场景参数的枚举。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |

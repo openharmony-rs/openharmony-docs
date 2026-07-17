@@ -9,7 +9,7 @@
 
 AccessibilityExtensionAbility基于ExtensionAbility框架，提供无障碍扩展业务的能力，包括连接无障碍服务、断开无障碍服务、处理无障碍事件和处理无障碍按键事件等。**生命周期流程：**onAccessibilityConnect（连接回调，用于初始化）→ onAccessibilityEventInfo/onAccessibilityKeyEvent（处理无障碍事件和按键事件）→ onAccessibilityDisconnect（断开回调，用于资源回收）。
 
-> **说明**：
+> **说明：**
 >
 > - 本模块首批接口从API version 20开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口。其他公开接口参见[@ohos.application.AccessibilityExtensionAbility](js-apis-application-accessibilityExtensionAbility.md)。
@@ -23,9 +23,9 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 无障碍事件信息。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -48,13 +48,13 @@ onAccessibilityConnect(): void
 
 用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，通知Ability已成功连接。开发者可在该方法中完成初始化业务逻辑操作，该方法可选择性重写。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -63,7 +63,7 @@ onAccessibilityConnect(): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
@@ -83,13 +83,13 @@ onAccessibilityDisconnect(): void
 
 用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，可在该方法中执行资源回收和退出业务操作。该方法可选择性重写。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -98,7 +98,7 @@ onAccessibilityDisconnect(): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
@@ -116,19 +116,19 @@ onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
 当无障碍事件发生时，系统将事件分发至已连接的AccessibilityExtensionAbility并回调该接口，可根据事件信息处理业务逻辑。通常需要重写。事件类型的详细说明请参见[AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype)。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明    |
 | ----- | ---------------------------------------- | ---- | ----- |
 | event | [AccessibilityEventInfo](#accessibilityeventinfo) | 是    | 无障碍事件信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -137,7 +137,7 @@ onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { AccessibilityExtensionAbility, AccessibilityEventInfo, AccessibilityEventType } from '@kit.AccessibilityKit';
@@ -158,24 +158,25 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 
 在按键按下时回调该接口，可在该方法中根据业务判断是否消费事件。返回true表示此事件被消费，返回false表示此事件未被消费。该方法可选择性重写。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明   |
 | -------- | ---------------------------------------- | ---- | ---- |
 | keyEvent | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是    | 按键事件。 |
 
-**返回值**：
+**返回值：**
+
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
 | boolean | 返回true表示此事件被消费，不会继续传递。<br>返回false表示此事件未被消费，会继续传递。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -184,7 +185,7 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';

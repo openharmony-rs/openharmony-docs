@@ -11,7 +11,7 @@ GesturePath表示手势路径信息。
 
 本模块用于创建手势路径信息，供辅助功能注入手势使用。
 
-> **说明**：
+> **说明：**
 >
 > - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -25,7 +25,7 @@ import { GesturePath } from '@kit.AccessibilityKit';
 
 表示手势路径信息，用于无障碍服务中模拟用户触摸手势（如点击、滑动等）。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -40,19 +40,19 @@ constructor(durationTime: number)
 
 通过传入手势总耗时创建手势路径对象。创建GesturePath实例后，还需设置必填属性points。
 
-> **说明**：
+> **说明：**
 >
 > 从API version 9开始支持，从API version 12开始废弃。此接口已完全移除，无替代方案。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | durationTime | number | 是 | 手势总耗时，单位：ms。取值需大于0。 |
 
-**示例**：
+**示例：**
 
 ```ts
 import { GesturePath, GesturePoint } from '@kit.AccessibilityKit';

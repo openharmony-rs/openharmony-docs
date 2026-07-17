@@ -9,7 +9,7 @@
 
 本模块提供系统辅助功能的配置，包括辅助扩展的启用与关闭、高对比度文字显示、鼠标键、无障碍字幕配置等。
 
-> **说明**：
+> **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
@@ -22,7 +22,7 @@ import { config } from '@kit.AccessibilityKit';
 
 ## 属性
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                                 | 类型                                                                                     | 只读 | 可选 | 说明                         |
 |------------------------------------|--------------------------------------------------------------------------------------------| -------- | -------- |-----------------------------------------------------------|
@@ -54,26 +54,24 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): 
 
 与[config.enableAbilityWithCallback](#configenableabilitywithcallback23)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开连接事件，请使用[config.enableAbilityWithCallback](#configenableabilitywithcallback23)。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
-
+**参数：**
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | name | string                                                                       | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | 是 | 辅助扩展应用的能力属性。 |
 
-**返回值**：
-
+**返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -85,7 +83,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): 
 | 9300001 | Invalid bundle name or ability name.  |
 | 9300002 | Target ability already enabled. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { accessibility, config } from '@kit.AccessibilityKit';
@@ -107,13 +105,13 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, c
 
 启用辅助扩展，需与[config.disableAbility](#configdisableability)配对使用。与[config.enableAbilityWithCallback](#configenableabilitywithcallback23)相比，本接口仅启用辅助扩展，不监听辅助扩展的连接状态变化；若需要监听辅助扩展断开连接事件，请使用[config.enableAbilityWithCallback](#configenableabilitywithcallback23)。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型                                                                              | 必填 | 说明 |
 | -------- |---------------------------------------------------------------------------------| -------- | -------- |
@@ -121,7 +119,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, c
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | 是 | 辅助扩展应用的能力属性。 |
 | callback | AsyncCallback&lt;void&gt;                                                       | 是 | 回调函数。当启用辅助扩展成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -133,7 +131,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, c
 | 9300001 | Invalid bundle name or ability name.  |
 | 9300002 | Target ability already enabled. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { accessibility, config } from '@kit.AccessibilityKit';
@@ -159,15 +157,15 @@ enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capab
 
 当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](#configdisableability)配对使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
@@ -175,13 +173,13 @@ enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capab
 | capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | 是 | 辅助扩展应用的能力属性。 |
 | connectCallback | [ConnectCallback](#connectcallback23)                             | 是 | 辅助扩展应用连接断开时调用的回调函数，用于监听辅助扩展的断开连接事件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -192,7 +190,7 @@ enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capab
 | 9300001 | Invalid bundle name or ability name.  |
 | 9300002 | Target ability already enabled. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { accessibility, config } from '@kit.AccessibilityKit';
@@ -219,25 +217,25 @@ disableAbility(name: string): Promise&lt;void&gt;
 
 关闭辅助扩展，需与[config.enableAbility](#configenableability)或[config.enableAbilityWithCallback](#configenableabilitywithcallback23)配对使用。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -248,7 +246,7 @@ disableAbility(name: string): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300001 | Invalid bundle name or ability name.  |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -269,20 +267,20 @@ disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 关闭辅助扩展，需与[config.enableAbility](#configenableability)或[config.enableAbilityWithCallback](#configenableabilitywithcallback23)配对使用。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭辅助扩展成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -293,7 +291,7 @@ disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300001 | Invalid bundle name or ability name.  |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -318,20 +316,20 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 
 需与[config.off('enabledAccessibilityExtensionListChange')](#configoffenabledaccessibilityextensionlistchange)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 参数固定为'enabledAccessibilityExtensionListChange'，指定监听启用的辅助扩展的列表变化事件类型。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，在启用的辅助扩展的列表变化时通过此函数进行通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -341,7 +339,7 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -357,20 +355,20 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 
 取消启用的辅助扩展的列表变化监听。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type |  string | 是 | 参数固定为'enabledAccessibilityExtensionListChange'，指定取消监听的事件类型为启用的辅助扩展的列表变化。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与on('enabledAccessibilityExtensionListChange')的callback一致。缺省时，表示注销所有已注册事件。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -380,7 +378,7 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -400,20 +398,20 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 
 需与[config.off('installedAccessibilityListChange')](#configoffinstalledaccessibilitylistchange12)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 参数固定为'installedAccessibilityListChange'，监听已安装的辅助扩展的列表变化。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，在已安装的辅助扩展的列表变化时通过此函数进行通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -423,7 +421,7 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -439,20 +437,20 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 
 取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type |  string | 是 | 参数固定为'installedAccessibilityListChange'，指定取消监听的事件类型为已安装的辅助扩展的列表变化。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与on('installedAccessibilityListChange')的callback一致。缺省时，表示注销所有已注册事件。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -462,7 +460,7 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -479,19 +477,19 @@ setMagnificationState(state: boolean): void
 
 设置放大效果的启用状态。放大效果依赖放大手势功能，仅在放大手势功能已启用的前提下，本接口的设置才会生效。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | state |  boolean | 是 | 表示放大效果的启用状态。<br>- true：表示启用放大效果。<br>- false：表示关闭放大效果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -502,7 +500,7 @@ setMagnificationState(state: boolean): void
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 9300007  | Trigger magnification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -522,29 +520,29 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 设置应用“长辈模式”的状态。使用Promise异步回调。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 修改应用的“长辈模式”的状态信息，数组中每个对象包含bundleName、appIndex、seniorModeState三个属性。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -555,7 +553,7 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 | 9300000 | System abnormality.  |
 | 9300008 | The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -580,30 +578,30 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 
 查询应用“长辈模式”的状态。使用Promise异步回调。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | bundleName | string | 是 | 查询“长辈模式”的应用包名。 |
 | appIndex | number | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示应用已启用“长辈模式”；返回false表示应用未启用“长辈模式”。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
 
@@ -614,7 +612,7 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 | 9300000 | System abnormality.  |
 | 9300008 | The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -633,28 +631,28 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
 监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
 
-> **说明**：
+> **说明：**
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[config.offSeniorModeStateChangeForApp](#configoffseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 回调函数。返回被修改的应用“长辈模式”信息。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -663,7 +661,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -696,23 +694,23 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 取消监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与[config.onSeniorModeStateChangeForApp](#configonseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -721,7 +719,7 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -758,11 +756,11 @@ startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -810,11 +808,11 @@ stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -862,25 +860,25 @@ set(value: T): Promise&lt;void&gt;
 
 设置属性。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 设置的属性值，值类型与对应Config属性的类型一致。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -890,7 +888,7 @@ set(value: T): Promise&lt;void&gt;
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -911,20 +909,20 @@ set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
 设置属性。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 设置的属性值，值类型与对应Config属性的类型一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置属性成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -934,7 +932,7 @@ set(value: T, callback: AsyncCallback&lt;void&gt;): void
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -957,17 +955,17 @@ get(): Promise&lt;T&gt;
 
 获取属性。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;T&gt; | Promise对象，返回对应属性值。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -976,7 +974,7 @@ get(): Promise&lt;T&gt;
 | 201 | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -995,17 +993,17 @@ get(callback: AsyncCallback&lt;T&gt;): void
 
 获取属性。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | AsyncCallback&lt;T&gt; | 是 | 回调函数。当获取属性成功，err为undefined，data为属性值；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -1013,7 +1011,7 @@ get(callback: AsyncCallback&lt;T&gt;): void
 | ------- | -------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -1036,19 +1034,19 @@ on(callback: Callback&lt;T&gt;): void
 
 需与[off](#off)配对使用，在不需要监听时调用off取消注册，避免资源泄漏。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;T&gt; | 是 | 回调函数，在属性变化时通过此函数进行通知。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -1058,7 +1056,7 @@ on(callback: Callback&lt;T&gt;): void
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -1074,19 +1072,19 @@ off(callback?: Callback&lt;T&gt;): void
 
 取消属性变化监听。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+**需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**参数**：
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;T&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与on()的callback一致。缺省时，表示注销所有已注册事件。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -1095,7 +1093,7 @@ off(callback?: Callback&lt;T&gt;): void
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { config } from '@kit.AccessibilityKit';
@@ -1111,13 +1109,13 @@ config.highContrastText.off(callback);
 
 通过[config.enableAbilityWithCallback](#configenableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数**：
+**参数：**
 
 | 名称         | 类型                                         | 只读 | 可选 | 说明                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -1130,20 +1128,20 @@ type OnDisconnectCallback = () => void
 
 描述AccessibilityExtensionAbility断开连接的回调接口。
 
-**系统接口**：此类型为系统接口。
+**系统接口：** 此类型为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**模型约束**：此类型仅可在Stage模型下使用。
+**模型约束：** 此类型仅可在Stage模型下使用。
 
 
 ## DaltonizationColorFilter
 
 用于不同色弱类型的校正颜色滤镜。色彩校正功能启用时（[daltonizationState](#属性)设置为true）配置生效；色彩校正功能未启用时（[daltonizationState](#属性)设置为false）显示为正常类型。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称 | 说明 |
 | -------- | -------- |
@@ -1156,9 +1154,9 @@ type OnDisconnectCallback = () => void
 
 用于不同时间长短的点击持续时间。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称          | 说明         |
 |-------------|------------|
@@ -1170,9 +1168,9 @@ type OnDisconnectCallback = () => void
 
 用于不同时间间隔的忽略重复点击。忽略重复点击功能启用时（[ignoreRepeatClick](#属性)设置为true）配置生效；忽略重复点击功能未启用时（[ignoreRepeatClick](#属性)设置为false）不生效。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称       | 说明    |
 |----------|-------|
@@ -1186,13 +1184,13 @@ type OnDisconnectCallback = () => void
 
 “长辈模式”在应用中的状态信息。
 
-**起始版本**： 26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**： 此类型仅可在Stage模型下使用。
+**模型约束：** 此类型仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称         | 类型                                         | 只读 | 可选 | 说明                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -1208,9 +1206,9 @@ type OnDisconnectCallback = () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
@@ -1225,9 +1223,9 @@ type OnDisconnectCallback = () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
@@ -1244,9 +1242,9 @@ type OnDisconnectCallback = () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                        | 值   | 说明                     |
 | -------------------------- | ---- | ------------------------ |
