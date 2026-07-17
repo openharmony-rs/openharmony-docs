@@ -35,7 +35,7 @@ type ConnectionState = nearlinkConstant.ConnectionState
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | 和远端设备的连接状态。 |
 
 
-## createClient
+## ssap.createClient
 
 createClient(address: string): Client
 
@@ -63,7 +63,7 @@ createClient(address: string): Client
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -89,7 +89,7 @@ try {
 ```
 
 
-## createServer
+## ssap.createServer
 
 createServer(): Server
 
@@ -111,7 +111,7 @@ createServer(): Server
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -137,7 +137,7 @@ try {
 
 ## Client
 
-提供和远端设备ssap数据交互操作方法，使用前需要使用[ssap.createClient](#createclient)方法创建一个[Client](#client)实例。
+提供和远端设备ssap数据交互操作方法，使用前需要使用[ssap.createClient](#ssapcreateclient)方法创建一个[Client](#client)实例。
 
 一个应用针对一个远端设备只需要创建一次实例。
 
@@ -171,7 +171,7 @@ connect(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -221,7 +221,7 @@ disconnect(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -270,7 +270,7 @@ close(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -296,7 +296,7 @@ try {
 
 ### getServices
 
-getServices(): Promise&lt;Array&lt;Service&gt;&gt;
+getServices(): Promise&lt;Service[]&gt;
 
 获取服务端支持的服务列表。使用Promise异步回调。
 
@@ -312,11 +312,11 @@ getServices(): Promise&lt;Array&lt;Service&gt;&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[Service](#service)&gt;&gt; | Promise对象，返回服务端支持的服务列表。 |
+| Promise&lt;[Service](#service)[]&gt; | Promise对象，返回服务端支持的服务列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -340,7 +340,7 @@ try {
   });
   // 连接耗时较长，等待连接完成才能获取服务，实际开发者根据连接速度调整定时器长度
   setTimeout(() => {
-    client.getServices().then((result: Array<ssap.Service>) => {
+    client.getServices().then((result: ssap.Service[]) => {
       console.info('getServices successfully:' + JSON.stringify(result));
     }).catch ((err: BusinessError) => {
       console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
@@ -380,7 +380,7 @@ readProperty(property: Property): Promise&lt;Property&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -456,7 +456,7 @@ writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -533,7 +533,7 @@ setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -608,7 +608,7 @@ requestMtuSize(mtu: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -906,13 +906,12 @@ addService(service: Service): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
 | 36100003 | NearLink disabled. |
-| 36100042 | Property array is empty. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
@@ -923,7 +922,7 @@ import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造descriptor
-let descriptorsArray: Array<ssap.PropertyDescriptor> = [];
+let descriptorsArray: ssap.PropertyDescriptor[] = [];
 let arrayBuffer = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBuffer);
 descValue[0] = 11;
@@ -937,7 +936,7 @@ let descriptor: ssap.PropertyDescriptor = {
 };
 descriptorsArray[0] = descriptor;
 // 构造properties
-let propertiesArray: Array<ssap.Property> = [];
+let propertiesArray: ssap.Property[] = [];
 let arrayBufferProperty = new ArrayBuffer(8);
 let properValue = new Uint8Array(arrayBufferProperty);
 properValue[0] = 1;
@@ -993,7 +992,7 @@ removeService(serviceUuid: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1036,7 +1035,7 @@ close(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1088,7 +1087,7 @@ notifyPropertyChanged(address: string, property: Property): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1105,7 +1104,7 @@ import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造descriptor
-let descriptorsArray: Array<ssap.PropertyDescriptor> = [];
+let descriptorsArray: ssap.PropertyDescriptor[] = [];
 let arrayBuffer = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBuffer);
 descValue[0] = 11;
@@ -1165,7 +1164,7 @@ sendResponse(response: ServerResponse): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1509,7 +1508,7 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36字节，该值由36个十六进制数字和连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用NearLink标准UUID。 |
-| properties | Array&lt;[Property](#property)&gt; | 否 | 否 | 表示服务的Property列表。 |
+| properties | [Property](#property)[] | 否 | 否 | 表示服务的Property列表。 |
 
 
 ## Property
@@ -1527,7 +1526,7 @@ try {
 | serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36字节，该值由36个十六进制数字和连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用NearLink标准UUID。|
 | propertyUuid | string | 否 | 否 | 表示Property的UUID，数据格式同serviceUuid。 |
 | value | ArrayBuffer | 否 | 否 | 表示Property的数据值。 |
-| descriptors | Array&lt;[PropertyDescriptor](#propertydescriptor)&gt; | 否 | 是 | 表示当前Property的描述符列表。若未配置则默认不携带该字段。 |
+| descriptors | [PropertyDescriptor](#propertydescriptor)[] | 否 | 是 | 表示当前Property的描述符列表。若未配置则默认不携带该字段。 |
 | operation | number | 否 | 是 | 表示Property支持的操作方式，默认值为READABLE\|WRITE_NO_RESPONSE，即可读并可写（以无响应方式）。如要使属性支持相应的操作，需要对该字段赋值，例如赋值为：READABLE\|WRITE_NO_RESPONSE\|NOTIFY。取值范围[0, 15]，各比特位对应的操作方式详见[Operation](#operation)。 |
 
 

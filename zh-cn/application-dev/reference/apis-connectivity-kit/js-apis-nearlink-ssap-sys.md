@@ -64,7 +64,7 @@ setPropertyIndication(property: Property, enable: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -133,14 +133,14 @@ callMethod(method: Method): Promise&lt;Method&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications are not allowed to use system APIs. |
 | 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID in property. |
+| 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
 | 36100099 | Operation failed. |
 
@@ -208,7 +208,7 @@ readDescriptor(descriptor: PropertyDescriptor): Promise&lt;PropertyDescriptor&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -285,7 +285,7 @@ writeDescriptor(descriptor: PropertyDescriptor): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -426,9 +426,9 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36字节，该值由36个十六进制数字和连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用NearLink标准UUID。 |
-| properties | Array&lt;[Property](js-apis-nearlink-ssap.md#property)&gt; | 否 | 否 | 表示服务的Property列表。 |
-| methods | Array&lt;[Method](#method)&gt; | 否 | 是 | 表示服务的方法列表。 |
-| events | Array&lt;[Event](#event)&gt; | 否 | 是 | 表示服务的事件列表。 |
+| properties | [Property](js-apis-nearlink-ssap.md#property)[] | 否 | 否 | 表示服务的Property列表。 |
+| methods | [Method](#method)[] | 否 | 是 | 表示服务的方法列表。 |
+| events | [Event](#event)[] | 否 | 是 | 表示服务的事件列表。 |
 
 
 ## Method
