@@ -234,7 +234,7 @@ nestedScroll(value: NestedScrollOptions)
 
 friction(value: number | Resource)
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -252,7 +252,7 @@ friction(value: number | Resource)
 
 enablePaging(value: boolean)
 
-设置是否支持划动翻页。如果同时设置了划动翻页enablePaging和限位滚动scrollSnap，则scrollSnap优先生效，enablePaging不生效。可用于书籍翻页、卡片分页浏览等场景。
+设置是否支持滑动翻页。如果同时设置了滑动翻页enablePaging和限位滚动scrollSnap，则scrollSnap优先生效，enablePaging不生效。可用于书籍翻页、卡片分页浏览等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -264,7 +264,7 @@ enablePaging(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否支持划动翻页。设置为true支持滑动翻页，false不支持。 <br/>默认值：false |
+| value  | boolean | 是   | 是否支持滑动翻页。设置为true支持滑动翻页，false不支持。 <br/>默认值：false |
 
 ### initialOffset<sup>12+</sup>
 
@@ -1913,7 +1913,7 @@ struct ScrollExample {
 
 ![edgeEffect_scroll](figures/edgeEffect_scroll.gif)
 
-### 示例9（划动翻页效果）
+### 示例9（滑动翻页效果）
 
 该示例通过[enablePaging](#enablepaging11)接口，实现了Scroll组件滑动翻页效果。
 

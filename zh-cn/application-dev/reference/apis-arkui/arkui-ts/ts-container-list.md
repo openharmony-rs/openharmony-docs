@@ -1027,7 +1027,7 @@ onScrollStart(event: () => void)
 
 onScrollStop(event: () => void)
 
-列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
