@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-cert-interface CertChainData--><!--Device-cert-interface CertChainData-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## count
 
@@ -20,6 +28,8 @@ count: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-CertChainData-count: int--><!--Device-CertChainData-count: int-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 ## data
@@ -28,13 +38,15 @@ count: number
 data: Uint8Array
 ```
 
-传入的证书数据。
+证书数据。
 
 **类型：** Uint8Array
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainData-data: Uint8Array--><!--Device-CertChainData-data: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -44,13 +56,15 @@ data: Uint8Array
 encodingFormat: EncodingFormat
 ```
 
-指明证书编码格式。
+编码格式。
 
 **类型：** EncodingFormat
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainData-encodingFormat: EncodingFormat--><!--Device-CertChainData-encodingFormat: EncodingFormat-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 

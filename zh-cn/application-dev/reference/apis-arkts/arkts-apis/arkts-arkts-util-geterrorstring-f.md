@@ -1,5 +1,11 @@
 # getErrorString
 
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
+
 ## getErrorString
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getErrorString(errno: number): string
 
 **废弃版本：** 9
 
-**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnoToString-1)
+**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring-1)
+
+<!--Device-util-function getErrorString(errno: number): string--><!--Device-util-function getErrorString(errno: number): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

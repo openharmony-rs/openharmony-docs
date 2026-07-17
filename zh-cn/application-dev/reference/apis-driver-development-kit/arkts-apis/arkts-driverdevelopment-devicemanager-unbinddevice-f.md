@@ -1,5 +1,11 @@
 # unbindDevice
 
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
+
 ## unbindDevice
 
 ```TypeScript
@@ -16,6 +22,8 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
+<!--Device-deviceManager-function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void--><!--Device-deviceManager-function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **参数：**
@@ -23,15 +31,15 @@ function unbindDevice(deviceId: number, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 设备ID，通过queryDevices获得。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当解绑设备成功时，err为undefined，data为设备ID；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-The) | The permission check failed. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types. |
-| [22900001](../../errorcode-universal.md#22900001-ExternalDeviceManager) | ExternalDeviceManager service exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| [22900001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception. |
 
 **示例：**
 
@@ -71,6 +79,8 @@ function unbindDevice(deviceId: number): Promise<number>
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
+<!--Device-deviceManager-function unbindDevice(deviceId: number): Promise<number>--><!--Device-deviceManager-function unbindDevice(deviceId: number): Promise<number>-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **参数：**
@@ -83,15 +93,15 @@ function unbindDevice(deviceId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回解除绑定的设备ID。 |
+| Promise<number> | Promise对象，返回解除绑定的设备ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-The) | The permission check failed. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.<br/>2.Incorrect parameter types.<br/>3.Parameter verification failed. |
-| [22900001](../../errorcode-universal.md#22900001-ExternalDeviceManager) | ExternalDeviceManager service exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| [22900001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception. |
 
 **示例：**
 

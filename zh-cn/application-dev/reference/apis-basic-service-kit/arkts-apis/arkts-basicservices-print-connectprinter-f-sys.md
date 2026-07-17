@@ -1,5 +1,11 @@
 # connectPrinter（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## connectPrinter
 
 ```TypeScript
@@ -10,7 +16,11 @@ function connectPrinter(printerId: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 20
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB, ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
+**需要权限：** 
+- API版本20+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
+- API版本10 - 19：ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void--><!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -21,14 +31,14 @@ function connectPrinter(printerId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | printerId | string | 是 | 打印机ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 通过打印机ID异步连接打印机的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 通过打印机ID异步连接打印机的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-not) | not system application&lt;br&gt;**适用版本：** 10 - 19 |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 19 |
 
 **示例：**
 
@@ -58,7 +68,11 @@ function connectPrinter(printerId: string): Promise<void>
 
 **起始版本：** 20
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB, ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
+**需要权限：** 
+- API版本20+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
+- API版本10 - 19：ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function connectPrinter(printerId: string): Promise<void>--><!--Device-print-function connectPrinter(printerId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -74,14 +88,14 @@ function connectPrinter(printerId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-not) | not system application&lt;br&gt;**适用版本：** 10 - 19 |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application<br>**适用版本：** 10 - 19 |
 
 **示例：**
 

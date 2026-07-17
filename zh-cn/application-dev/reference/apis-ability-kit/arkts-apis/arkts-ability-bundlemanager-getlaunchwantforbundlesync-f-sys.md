@@ -1,16 +1,26 @@
 # getLaunchWantForBundleSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getLaunchWantForBundleSync
 
 ```TypeScript
 function getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 ```
 
-���ݸ����İ������û�ID����ȡ��������Ӧ�ó����Want������
+根据给定的包名和用户ID，获取用于启动应用程序的Want参数。
 
 **起始版本：** 24
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+**需要权限：** 
+- API版本24+：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+- API版本10 - 23：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getLaunchWantForBundleSync(bundleName: string, userId?: int): Want--><!--Device-bundleManager-function getLaunchWantForBundleSync(bundleName: string, userId?: int): Want-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,25 +30,25 @@ function getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ʾӦ�õİ����� |
-| userId | number | 否 | ��ʾ�û�ID������ͨ��<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>��ȡ��<br/>Ĭ��ֵ�����÷������û���<br/>ȡֵ��Χ�����ڵ���0�� |
+| bundleName | string | 是 | 表示应用的包名。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Want | Want���� |
+| [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | Want对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api.&lt;br&gt;**适用版本：** 10 - 23 |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user id is not found. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 10 - 23 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user id is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例：**
 

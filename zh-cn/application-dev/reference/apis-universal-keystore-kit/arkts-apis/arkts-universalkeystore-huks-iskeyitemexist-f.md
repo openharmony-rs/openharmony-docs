@@ -1,16 +1,24 @@
 # isKeyItemExist
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
 ## isKeyItemExist
 
 ```TypeScript
 function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void
 ```
 
-�ж���Կ�Ƿ���ڡ�ʹ��callback�첽�ص���
+判断密钥是否存在。使用callback异步回调。
 
-����Կ�����ڣ����׳�������Ϊ12000011���쳣��
+若密钥不存在，则抛出错误码为12000011的异常。
 
 **起始版本：** 9
+
+<!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -18,23 +26,23 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ������ҵ���Կ�ı����� |
-| options | HuksOptions | 是 | ���ڲ�ѯʱָ����Կ������TAG����ʹ��[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md#HuksAuthStorageLevel)ָ�����ѯ��Կ��<br/>��ȫ����<br/>�ɴ��գ���API version �� 12ʱ������Ĭ��ΪCE����API version �� 12ʱ������Ĭ��ΪDE�� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | �ص���������Կ����ʱ��dataΪtrue����Կ������ʱ��dataΪundefined��err�еĴ�����Ϊ12000011����������Ӧ��������<br/>�� |
+| keyAlias | string | 是 | 所需查找的密钥的别名。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需查询密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。密钥存在时，data为true；密钥不存在时，data为undefined，err中的错误码为12000011，并附带对应错误描述。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api) | api is not supported |
-| [12000004](../../errorcode-universal.md#12000004-operating) | operating file failed |
-| [12000005](../../errorcode-universal.md#12000005-IPC) | IPC communication failed |
-| [12000006](../../errorcode-universal.md#12000006-error) | error occurred in crypto engine |
-| [12000011](../../errorcode-universal.md#12000011-queried) | queried entity does not exist |
-| [12000012](../../errorcode-universal.md#12000012-Device) | Device environment or input parameter abnormal |
-| [12000014](../../errorcode-universal.md#12000014-memory) | memory is insufficient |
-| [12000018](../../errorcode-universal.md#12000018-the) | the group id specified by the access group tag is invalid&lt;br&gt;**适用版本：** 23+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
 
 **示例：**
 
@@ -49,6 +57,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: isKeyItemExist failed`);
@@ -151,11 +160,13 @@ export default {
 function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 ```
 
-�ж���Կ�Ƿ���ڡ�ʹ��Promise�첽�ص���
+判断密钥是否存在。使用Promise异步回调。
 
-����Կ�����ڣ����׳�������Ϊ12000011���쳣��
+若密钥不存在，则抛出错误码为12000011的异常。
 
 **起始版本：** 9
+
+<!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -163,28 +174,28 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ������ҵ���Կ�ı����� |
-| options | HuksOptions | 是 | ���ڲ�ѯʱָ����Կ������TAG����ʹ��[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md#HuksAuthStorageLevel)ָ�����ѯ��Կ��<br/>��ȫ����<br/>�ɴ��գ���API version �� 12ʱ������Ĭ��ΪCE����API version �� 12ʱ������Ĭ��ΪDE�� |
+| keyAlias | string | 是 | 所需查找的密钥的别名。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需查询密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise������Կ����ʱ��dataΪtrue����Կ������ʱ��err�еĴ�����Ϊ12000011����������Ӧ���������� |
+| Promise<boolean> | Promise对象。密钥存在时，data为true；密钥不存在时，err中的错误码为12000011，并附带对应错误描述。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api) | api is not supported |
-| [12000004](../../errorcode-universal.md#12000004-operating) | operating file failed |
-| [12000005](../../errorcode-universal.md#12000005-IPC) | IPC communication failed |
-| [12000006](../../errorcode-universal.md#12000006-error) | error occurred in crypto engine |
-| [12000011](../../errorcode-universal.md#12000011-queried) | queried entity does not exist |
-| [12000012](../../errorcode-universal.md#12000012-Device) | Device environment or input parameter abnormal |
-| [12000014](../../errorcode-universal.md#12000014-memory) | memory is insufficient |
-| [12000018](../../errorcode-universal.md#12000018-the) | the group id specified by the access group tag is invalid&lt;br&gt;**适用版本：** 23+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
+| [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
 
 **示例：**
 
@@ -197,6 +208,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.isKeyItemExist(keyAlias, emptyOptions).then(() => {
   console.info(`keyAlias:${keyAlias} is existed!`);
 });

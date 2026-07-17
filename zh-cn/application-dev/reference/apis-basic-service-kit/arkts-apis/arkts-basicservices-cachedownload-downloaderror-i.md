@@ -4,7 +4,15 @@
 
 **起始版本：** 23
 
+<!--Device-cacheDownload-interface DownloadError--><!--Device-cacheDownload-interface DownloadError-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
+
+## 导入模块
+
+```TypeScript
+import { cacheDownload } from '@kit.BasicServicesKit';
+```
 
 ## errorCode
 
@@ -18,6 +26,8 @@ readonly errorCode: ErrorCode
 
 **起始版本：** 23
 
+<!--Device-DownloadError-readonly errorCode: ErrorCode--><!--Device-DownloadError-readonly errorCode: ErrorCode-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## message
@@ -26,12 +36,13 @@ readonly errorCode: ErrorCode
 readonly message: string
 ```
 
-返回[通用错误码](../../../../reference/errorcode-universal.md)或
-[HTTP错误码](../../../../reference/apis-network-kit/errorcode-net-http.md)。
+返回[通用错误码](../../../../reference/errorcode-universal.md)或[HTTP错误码](../../../../reference/apis-network-kit/errorcode-net-http.md)。
 
 **类型：** string
 
 **起始版本：** 23
+
+<!--Device-DownloadError-readonly message: string--><!--Device-DownloadError-readonly message: string-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-cert-interface X509CRLMatchParameters--><!--Device-cert-interface X509CRLMatchParameters-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## issuer
 
@@ -12,13 +20,15 @@
 issuer?: Array<Uint8Array>
 ```
 
-指定证书颁发者，为DER编码格式。
+指定CRL颁发者，为DER编码格式。
 
 **类型：** Array<Uint8Array>
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-X509CRLMatchParameters-issuer?: Array<Uint8Array>--><!--Device-X509CRLMatchParameters-issuer?: Array<Uint8Array>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -34,7 +44,9 @@ maxCRL?: bigint
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-X509CRLMatchParameters-maxCRL?: bigint--><!--Device-X509CRLMatchParameters-maxCRL?: bigint-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -50,7 +62,9 @@ minCRL?: bigint
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-X509CRLMatchParameters-minCRL?: bigint--><!--Device-X509CRLMatchParameters-minCRL?: bigint-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -60,13 +74,15 @@ minCRL?: bigint
 updateDateTime?: string
 ```
 
-指定证书更新时间。
+指定CRL更新时间。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-X509CRLMatchParameters-updateDateTime?: string--><!--Device-X509CRLMatchParameters-updateDateTime?: string-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -83,6 +99,8 @@ x509Cert?: X509Cert
 **起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-X509CRLMatchParameters-x509Cert?: X509Cert--><!--Device-X509CRLMatchParameters-x509Cert?: X509Cert-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 

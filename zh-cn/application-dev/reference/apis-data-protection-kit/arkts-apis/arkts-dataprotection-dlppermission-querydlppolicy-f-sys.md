@@ -1,23 +1,30 @@
 # queryDlpPolicy（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## queryDlpPolicy
 
 ```TypeScript
 function queryDlpPolicy(dlpFd: number): Promise<string>
 ```
 
-在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md#DLPProperty)和
-[CustomProperty](arkts-dataprotection-dlppermission-customproperty-i.md#CustomProperty)信息。使用Promise异步回调。
+在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i-sys.md)和[CustomProperty](arkts-dataprotection-dlppermission-customproperty-i-sys.md)信息。使用Promise异步回调。
 
 该接口可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。
 
-> **说明：**
->
-> 该接口仅支持企业账号调用
+> **说明：**  
+>  
+> 该接口仅支持企业账号调用。
 
 **起始版本：** 21
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+<!--Device-dlpPermission-function queryDlpPolicy(dlpFd: number): Promise<string>--><!--Device-dlpPermission-function queryDlpPolicy(dlpFd: number): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -27,29 +34,29 @@ function queryDlpPolicy(dlpFd: number): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 231-1]。当fd小于0时，函数抛出错误码19100001；当fd大于231-1<br/>时，fd的值被截断。 |
+| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，fd的值被截断。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的JSON字符串。长度不超过4194304字节。 |
+| Promise<string> | Promise对象，返回当前DLP策略的JSON字符串。长度不超过4194304字节。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Nonsystem) | Non-system applications use system APIs.&lt;br&gt;**适用版本：** 20 - 20 |
-| [19100001](../../errorcode-universal.md#19100001-Invalid) | Invalid parameter value. |
-| [19100002](../../errorcode-universal.md#19100002-Credential) | Credential service busy due to too many tasks or duplicate tasks. |
-| [19100003](../../errorcode-universal.md#19100003-Credential) | Credential task time out. |
-| [19100004](../../errorcode-universal.md#19100004-Credential) | Credential service error. |
-| [19100005](../../errorcode-universal.md#19100005-Credential) | Credential authentication server error. |
-| [19100008](../../errorcode-universal.md#19100008-The) | The file is not a DLP file. |
-| [19100009](../../errorcode-universal.md#19100009-Failed) | Failed to operate the DLP file. |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
-| [19100013](../../errorcode-universal.md#19100013-The) | The user does not have the permission. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs.<br>**适用版本：** 20+ |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
+| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
+| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
+| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
+| [19100008](../errorcode-dlp.md#19100008-非dlp文件) | The file is not a DLP file. |
+| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+| [19100013](../errorcode-dlp.md#19100013-用户无权限) | The user does not have the permission. |
 
 **示例：**
 

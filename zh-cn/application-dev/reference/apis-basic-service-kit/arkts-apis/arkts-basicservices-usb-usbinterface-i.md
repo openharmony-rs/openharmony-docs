@@ -1,14 +1,22 @@
 # USBInterface
 
-一个[USBConfig](arkts-basicservices-usb-usbconfig-i.md#USBConfig)中可以含有多个USBInterface，每个USBInterface提供一个功能。
+一个[USBConfig](arkts-basicservices-usb-usbconfig-i.md)中可以含有多个USBInterface，每个USBInterface提供一个功能。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md#USBInterface)
+**替代接口：** [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md)
+
+<!--Device-usb-interface USBInterface--><!--Device-usb-interface USBInterface-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
+
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
 
 ## alternateSetting
 
@@ -24,7 +32,9 @@ alternateSetting: number
 
 **废弃版本：** 9
 
-**替代接口：** [alternateSetting](arkts-basicservices-usbmanager-usbinterface-i.md#alternateSetting)
+**替代接口：** [alternateSetting](arkts-basicservices-usbmanager-usbinterface-i.md#alternatesetting)
+
+<!--Device-USBInterface-alternateSetting: number--><!--Device-USBInterface-alternateSetting: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -44,6 +54,8 @@ clazz: number
 
 **替代接口：** [clazz](arkts-basicservices-usbmanager-usbinterface-i.md#clazz)
 
+<!--Device-USBInterface-clazz: number--><!--Device-USBInterface-clazz: number-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 ## endpoints
@@ -61,6 +73,8 @@ endpoints: Array<USBEndpoint>
 **废弃版本：** 9
 
 **替代接口：** [endpoints](arkts-basicservices-usbmanager-usbinterface-i.md#endpoints)
+
+<!--Device-USBInterface-endpoints: Array<USBEndpoint>--><!--Device-USBInterface-endpoints: Array<USBEndpoint>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -80,6 +94,8 @@ id: number
 
 **替代接口：** [id](arkts-basicservices-usbmanager-usbinterface-i.md#id)
 
+<!--Device-USBInterface-id: number--><!--Device-USBInterface-id: number-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 ## name
@@ -97,6 +113,8 @@ name: string
 **废弃版本：** 9
 
 **替代接口：** [name](arkts-basicservices-usbmanager-usbinterface-i.md#name)
+
+<!--Device-USBInterface-name: string--><!--Device-USBInterface-name: string-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -116,6 +134,8 @@ protocol: number
 
 **替代接口：** [protocol](arkts-basicservices-usbmanager-usbinterface-i.md#protocol)
 
+<!--Device-USBInterface-protocol: number--><!--Device-USBInterface-protocol: number-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 ## subClass
@@ -132,7 +152,9 @@ subClass: number
 
 **废弃版本：** 9
 
-**替代接口：** [subClass](arkts-basicservices-usbmanager-usbinterface-i.md#subClass)
+**替代接口：** [subClass](arkts-basicservices-usbmanager-usbinterface-i.md#subclass)
+
+<!--Device-USBInterface-subClass: number--><!--Device-USBInterface-subClass: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

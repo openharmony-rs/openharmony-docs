@@ -8,6 +8,8 @@
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class CounterAttribute extends CommonMethod<CounterAttribute>--><!--Device-unnamed-declare class CounterAttribute extends CommonMethod<CounterAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableDec
@@ -22,7 +24,9 @@ enableDec(value: boolean)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CounterAttribute-enableDec(value: boolean): CounterAttribute--><!--Device-CounterAttribute-enableDec(value: boolean): CounterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +48,9 @@ enableInc(value: boolean)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CounterAttribute-enableInc(value: boolean): CounterAttribute--><!--Device-CounterAttribute-enableInc(value: boolean): CounterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,9 +70,11 @@ onDec(event: VoidCallback)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CounterAttribute-onDec(event: VoidCallback): CounterAttribute--><!--Device-CounterAttribute-onDec(event: VoidCallback): CounterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +82,7 @@ onDec(event: VoidCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | Counter数值减少的回调函数。<br>**起始版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter数值减少的回调函数。<br>**起始版本：** 18 |
 
 ## onInc
 
@@ -86,9 +94,11 @@ onInc(event: VoidCallback)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CounterAttribute-onInc(event: VoidCallback): CounterAttribute--><!--Device-CounterAttribute-onInc(event: VoidCallback): CounterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,5 +106,5 @@ onInc(event: VoidCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | Counter数值增加的回调函数。<br>**起始版本：** 18 |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter数值增加的回调函数。<br>**起始版本：** 18 |
 

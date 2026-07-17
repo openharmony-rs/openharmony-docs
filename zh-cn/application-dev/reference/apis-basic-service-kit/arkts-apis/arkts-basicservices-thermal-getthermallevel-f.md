@@ -1,5 +1,11 @@
 # getThermalLevel
 
+## 导入模块
+
+```TypeScript
+import { thermal } from '@kit.BasicServicesKit';
+```
+
 ## getThermalLevel
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getThermalLevel(): ThermalLevel
 
 **废弃版本：** 9
 
-**替代接口：** [getLevel](arkts-basicservices-thermal-getlevel-f.md#getLevel-1)
+**替代接口：** [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel-1)
+
+<!--Device-thermal-function getThermalLevel(): ThermalLevel--><!--Device-thermal-function getThermalLevel(): ThermalLevel-End-->
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -20,7 +28,7 @@ function getThermalLevel(): ThermalLevel
 
 | 类型 | 说明 |
 | --- | --- |
-| ThermalLevel | 热档位信息。 |
+| [ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md) | 热档位信息。 |
 
 **示例：**
 

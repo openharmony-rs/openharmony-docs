@@ -8,6 +8,8 @@ export type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **起始版本：** 12
 
+<!--Device-appManager-export type RunningMultiAppInfo = _RunningMultiAppInfo--><!--Device-appManager-export type RunningMultiAppInfo = _RunningMultiAppInfo-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。

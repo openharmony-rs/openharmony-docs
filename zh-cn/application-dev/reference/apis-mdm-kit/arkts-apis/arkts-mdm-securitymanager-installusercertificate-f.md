@@ -1,12 +1,18 @@
 # installUserCertificate
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## installUserCertificate
 
 ```TypeScript
 function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>
 ```
 
-��װ�û�֤�飬ʹ��Promise�첽�ص���
+安装用户证书，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -14,30 +20,32 @@ function installUserCertificate(admin: Want, certificate: CertBlob): Promise<str
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>--><!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| certificate | CertBlob | 是 | ֤����Ϣ��֤���ļ�Ӧ����Ӧ��ɳ��·��(Ӧ��ɳ��·������ʵ·���Ķ�Ӧ��ϵ�ɲμ���<br/>[Ӧ��ɳ��·������ʵ����·���Ķ�Ӧ��ϵ](../../../../file-management/app-sandbox-directory.md#Ӧ��ɳ��·������ʵ����·���Ķ�Ӧ��ϵ))��Ӧ����Ȩ�޷��ʵ�·���¡� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| certificate | [CertBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanager-certblob-i.md) | 是 | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise���󣬷��ص�ǰ֤�鰲װ���uri������ж��֤�顣 |
+| Promise<string> | Promise对象，返回当前证书安装后的uri，用于卸载证书。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9201001](../../errorcode-universal.md#9201001-Failed) | Failed to manage the certificate. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9201001](../errorcode-enterpriseDeviceManager.md#9201001-管理证书失败) | Failed to manage the certificate. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -78,7 +86,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 function installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): string
 ```
 
-֧�ְ�ϵͳ�˻���װ�û�֤�顣
+支持按系统账户安装用户证书。
 
 **起始版本：** 18
 
@@ -86,30 +94,32 @@ function installUserCertificate(admin: Want, certificate: CertBlob, accountId: n
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): string--><!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): string-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| certificate | CertBlob | 是 | ֤����Ϣ��֤���ļ�Ӧ����Ӧ��ɳ��·��(Ӧ��ɳ��·������ʵ·���Ķ�Ӧ��ϵ�ɲμ���<br/>[Ӧ��ɳ��·������ʵ����·���Ķ�Ӧ��ϵ](../../../../file-management/app-sandbox-directory.md#Ӧ��ɳ��·������ʵ����·���Ķ�Ӧ��ϵ))��Ӧ����Ȩ�޷��ʵ�·���¡� |
-| accountId | number | 是 | �û�ID��ָ�������û���ȡֵ��Χ�����ڵ���0��accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ��*@ohos.account.osAccount** to obtain the account ID. |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| certificate | [CertBlob](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanager-certblob-i.md) | 是 | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
+| accountId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。*@ohos.account.osAccount** to obtain the account ID. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | ���ص�ǰ֤�鰲װ���uri������ж��֤�顣 |
+| string | 返回当前证书安装后的uri，用于卸载证书。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9201001](../../errorcode-universal.md#9201001-Failed) | Failed to manage the certificate. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9201001](../errorcode-enterpriseDeviceManager.md#9201001-管理证书失败) | Failed to manage the certificate. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 

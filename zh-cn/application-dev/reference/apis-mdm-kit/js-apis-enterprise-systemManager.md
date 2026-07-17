@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供系统管理能力。
+本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
 
 > **说明**：
 > 
@@ -26,7 +26,7 @@ import { systemManager } from '@kit.MDMKit';
 
 setNTPServer(admin: Want, server: string): void
 
-设置NTP(Network Time Protocol)时间服务器。
+设置NTP(Network Time Protocol)时间服务器。设置成功后，系统将使用指定的NTP服务器进行时间同步，校准系统时间。适用于企业设备需要统一时间同步的场景，确保企业设备时间与标准时间保持一致，避免因时间不准确导致的业务问题，如日志时间戳不一致、证书验证失败等。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -79,7 +79,7 @@ try {
 
 getNTPServer(admin: Want): string
 
-获取NTP时间服务器信息。
+获取NTP时间服务器信息。适用于需要查询当前设备配置的NTP服务器地址的场景，用于验证时间同步配置是否正确，或在进行策略调整前获取当前配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -133,7 +133,7 @@ try {
 
 setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
-设置升级策略。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
+设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -249,7 +249,7 @@ try {
 
 getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy
 
-查询升级策略。
+查询升级策略。适用于需要获取当前设备OTA升级策略配置的场景，用于验证策略是否正确下发，或在进行策略调整前获取当前策略配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -408,7 +408,7 @@ systemManager.notifyUpdatePackages(wantTemp, updatePackageInfo).then(() => {
 
 getUpdateResult(admin: Want, version: string): Promise&lt;UpdateResult&gt;
 
-获取系统更新结果。使用Promise异步回调。
+获取系统更新结果。使用Promise异步回调。适用于需要检查系统更新是否成功的场景，帮助企业管理员了解设备升级状态，及时处理更新失败的情况，确保设备系统版本符合企业要求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -462,7 +462,7 @@ systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.Update
 
 getUpdateAuthData(admin: Want): Promise&lt;string&gt;
 
-获取系统更新的鉴权数据，用于校验系统更新信息。使用Promise异步回调。
+获取系统更新的鉴权数据，用于校验系统更新信息。使用Promise异步回调。适用于内网升级场景，企业管理员可以通过鉴权数据验证系统更新包的合法性和完整性，防止恶意更新包，提升系统安全性。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -576,7 +576,7 @@ try {
 
 isOtaUpdateNonceEnable(admin: Want): boolean
 
-查询OTA更新Nonce是否启用。
+查询OTA更新Nonce是否启用。适用于需要验证设备OTA更新安全配置的场景，帮助企业管理员确认Nonce校验功能状态，保障系统更新安全性。
 
 **起始版本：** 26.0.0
 
@@ -703,7 +703,7 @@ try {
 
 removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol&gt;, accountId: number): void
 
-为指定用户移除禁用的星闪协议名单。
+为指定用户移除禁用的星闪协议名单。移除成功后，指定用户可以重新使用移除列表中的星闪协议进行通信，恢复相应的协议连接能力。使用场景：在企业设备管理场景下，管理员可通过此接口移除之前设置的星闪协议禁用策略，允许用户恢复使用星闪协议进行设备间通信。适用于需要恢复特定用户星闪通信能力的场景，帮助企业管理员灵活调整用户设备的星闪协议访问权限，满足不同业务场景的通信需求。
 
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -766,7 +766,7 @@ try {
 
 getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array&lt;NearLinkProtocol&gt;
 
-获取指定用户下禁用的星闪协议名单。
+获取指定用户下禁用的星闪协议名单。适用于需要查询用户当前星闪协议访问限制的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -827,7 +827,7 @@ try {
 
 setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
-设置是否支持本地安装企业应用。设置为支持安装后，具备本地安装能力的PC/2in1企业设备可本地双击应用安装包，安装签名证书分发类型为enterprise_normal的企业应用。
+设置是否支持本地安装企业应用。设置为支持安装后，具备本地安装能力的PC/2in1企业设备可本地双击应用安装包，安装签名证书分发类型为enterprise_normal的企业应用。<!--RP8--><!--RP8End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -883,7 +883,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
-查询是否支持本地安装企业应用。
+查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。<!--RP8--><!--RP8End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -897,7 +897,7 @@ getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>API version 24之前，调用本接口查询系统当前是否支持本地安装企业应用。当设备有多个MDM应用时，传入admin查询对应admin设置的策略。从API version 24开始，admin新增支持传入null，传入null时查询整机实际生效的策略。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>API version 24之前，调用本接口查询系统当前是否支持本地安装企业应用。当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。从API version 24开始，admin新增支持传入null，传入null时查询整机实际生效的策略。 |
 
 **返回值：**
 
@@ -940,7 +940,7 @@ try {
 
 setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
-设置设备重启自动解锁，仅针对无锁屏密码设备生效。
+设置设备重启自动解锁，仅针对无锁屏密码设备生效。适用于企业无人值守设备或需要快速重启恢复服务的场景，避免因手动解锁导致的设备停机时间，提升设备运维效率和业务连续性。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -992,9 +992,9 @@ try {
 
 ## systemManager.getAutoUnlockAfterReboot<sup>20+</sup>
 
-getAutoUnlockAfterReboot(admin: Want): boolean
+getAutoUnlockAfterReboot(admin: Want | null): boolean
 
-获取设备是否重启自动解锁。
+获取设备是否重启自动解锁。适用于需要验证设备重启解锁策略是否正确配置的场景，帮助企业管理员确认设备自动解锁功能状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1008,7 +1008,7 @@ getAutoUnlockAfterReboot(admin: Want): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -1115,7 +1115,7 @@ try {
 
 removeKeyEventPolicies(admin: Want, keyCodes: Array&lt;KeyCode&gt;): void
 
-删除按键事件处理策略。
+删除按键事件处理策略。删除成功后，系统将恢复对指定按键事件的默认处理行为。适用于需要恢复按键默认行为的场景，帮助企业管理员灵活调整设备按键响应策略，满足不同业务场景的需求。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1170,9 +1170,9 @@ try {
 
 ## systemManager.getKeyEventPolicies<sup>23+</sup>
 
-getKeyEventPolicies(admin: Want): Array&lt;KeyEventPolicy&gt;
+getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
 
-获取按键事件处理策略。
+获取按键事件处理策略。适用于需要查询当前按键事件处理策略配置的场景，帮助企业管理员验证策略是否正确下发，或在进行策略调整前获取当前配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1186,7 +1186,7 @@ getKeyEventPolicies(admin: Want): Array&lt;KeyEventPolicy&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -1351,7 +1351,7 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->。
+禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1417,7 +1417,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-获取设备激活锁禁用状态。
+获取设备激活锁禁用状态。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1474,7 +1474,7 @@ systemManager.isActivationLockDisabled(wantTemp).then(result => {
 
 setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void
 
-设置指定用户下是否支持本地安装企业应用。在具备本地安装能力的PC/2in1企业设备上下发支持本地企业应用策略后，用户可以在桌面或者文件管理器直接双击企业应用安装包，即可直接安装企业应用。
+设置指定用户下是否支持本地安装企业应用。在具备本地安装能力的PC/2in1企业设备上下发支持本地企业应用策略后，用户可以在桌面或者文件管理器直接双击企业应用安装包，即可直接安装企业应用。<!--RP8--><!--RP8End-->
 
 仅支持enterprise_normal或enterprise_mdm签名类型的企业应用。
 
@@ -1543,7 +1543,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
 
-查询指定用户是否支持本地安装企业应用。
+查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。<!--RP8--><!--RP8End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1557,7 +1557,7 @@ getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: num
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>当设备有多个MDM应用时，传入admin查询对应admin设置的策略。传入null时查询整机实际生效的策略。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。传入null时查询整机实际生效的策略。 |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
 **返回值：**

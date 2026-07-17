@@ -6,9 +6,7 @@
 declare function px2vp(value: number): number
 ```
 
-Converts a number in units of px to a number in units of vp.
-By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion.
-If no UI instance is available, the virtual pixel ratio of the default screen is used instead.
+Converts a number in units of px to a number in units of vp.By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion.If no UI instance is available, the virtual pixel ratio of the default screen is used instead.
 
 **起始版本：** 11
 
@@ -16,9 +14,11 @@ If no UI instance is available, the virtual pixel ratio of the default screen is
 
 **替代接口：** px2vp
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare function px2vp(value: number): number--><!--Device-unnamed-declare function px2vp(value: number): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

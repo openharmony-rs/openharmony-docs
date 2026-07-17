@@ -1,14 +1,10 @@
 # FeatureForAccount
 
-```TypeScript
-enum FeatureForAccount
-```
-
-��Ϊָ���û����ý���/���õ����Ե�ö�١�
+可为指定用户设置禁用/启用的特性的枚举。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-restrictions-enum FeatureForAccount--><!--Device-restrictions-enum FeatureForAccount-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum FeatureForAccount
 MULTI_WINDOW = 0
 ```
 
-ϵͳ�ര�ڡ���ǰ��֧���ֻ���ƽ���豸ʹ�ã����ú��޷�ʹ��ϵͳ�ര�ڹ��ܣ�������һ���������ǻ۶ര���������ڣ�����ϵͳ�ര�ڹ����ѿ���������ʹ�ò���Ӱ�죬���رպ��޷��ٴ�ʹ�á�
+系统多窗口。当前仅支持手机、平板设备使用，禁用后无法使用系统多窗口功能（分屏、一键分屏、智慧多窗、悬浮窗口）。若系统多窗口功能已开启，本次使用不受影响，但关闭后将无法再次使用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForAccount-MULTI_WINDOW = 0--><!--Device-FeatureForAccount-MULTI_WINDOW = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ MULTI_WINDOW = 0
 DISTRIBUTED_TRANSMISSION = 1
 ```
 
-[�ֲ�ʽ��������](../../../../distributedservice/distributedservice-kit-intro.md#��������)�����ú��޷�ʹ���豸�ֲ�ʽ���������еķ��֡���֤����ѯ�������ȹ��ܡ�
+[分布式管理服务](../../../../distributedservice/distributedservice-kit-intro.md#运作机制)。禁用后无法使用设备分布式管理服务中的发现、认证、查询、监听等功能。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION = 1--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ DISTRIBUTED_TRANSMISSION = 1
 SUPER_HUB = 2
 ```
 
-��תվ����ǰ��֧���ֻ���ƽ���豸ʹ�ã����ú��޷�ʹ����תվ���ܡ�����תվ�ѿ���������ʹ�ò���Ӱ�죬���رպ��޷��ٴ�ʹ�á�
+中转站。当前仅支持手机、平板设备使用，禁用后无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForAccount-SUPER_HUB = 2--><!--Device-FeatureForAccount-SUPER_HUB = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

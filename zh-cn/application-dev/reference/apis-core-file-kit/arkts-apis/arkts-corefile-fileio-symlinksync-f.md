@@ -14,6 +14,8 @@ declare function symlinkSync(target: string, srcPath: string): void
 
 **替代接口：** [fs:symlinkSync](arkts-corefile-file-fs-symlinksync-f.md#symlinksync-1)
 
+<!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void--><!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**

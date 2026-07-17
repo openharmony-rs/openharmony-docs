@@ -1,14 +1,22 @@
 # DowngradeDownload（系统接口）
 
-ȫ�����أ�Ϊ���̹���Ӧ���ṩ���������ƶ����ݵ�������
+全量下载：为云盘管理应用提供集中下载云端数据的能力。
 
-����ȫ�����ض�������֧�����̹���Ӧ����������ļ���ȫ���������̡�
+云盘全量下载对象，用于支撑云盘管理应用完成云盘文件的全量下载流程。
 
 **起始版本：** 20
+
+<!--Device-cloudSyncManager-class DowngradeDownload--><!--Device-cloudSyncManager-class DowngradeDownload-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -16,11 +24,13 @@
 constructor(bundleName: string)
 ```
 
-ȫ�����ض���Ĺ��캯�������ڻ�ȡָ��������DowngradeDownload���ʵ����
+全量下载对象的构造函数，用于获取指定包名的DowngradeDownload类的实例。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+<!--Device-DowngradeDownload-constructor(bundleName: string)--><!--Device-DowngradeDownload-constructor(bundleName: string)-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -30,16 +40,16 @@ constructor(bundleName: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ�ð����� |
+| bundleName | string | 是 | 应用包名。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application<br/>uses system API. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -62,11 +72,13 @@ try {
 getCloudFileInfo(): Promise<CloudFileInfo>
 ```
 
-��ȡ��Ҫȫ�����ص�Ӧ�ý�λ�ڱ��ء���λ���ƶ˻��߱��غ��ƶ˾��е��ļ���С�͸�����Ϣ��ʹ��Promise�첽�ص���
+获取需要全量下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+<!--Device-DowngradeDownload-getCloudFileInfo(): Promise<CloudFileInfo>--><!--Device-DowngradeDownload-getCloudFileInfo(): Promise<CloudFileInfo>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -76,17 +88,17 @@ getCloudFileInfo(): Promise<CloudFileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;CloudFileInfo&gt; | Promise���󣬷���Я���������ƶ��ļ���Ϣ�Ķ��� |
+| Promise<CloudFileInfo> | Promise对象，返回携带本地与云端文件信息的对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application<br/>uses system API. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900010 | Try again. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -109,13 +121,15 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 startDownload(callback: Callback<DownloadProgress>): Promise<void>
 ```
 
-����ָ��Ӧ�õ����ļ���ȫ�����أ�ʹ��Promise�첽�ص���ʹ��callback�첽�ص���
+启动指定应用的云文件的全量下载，使用Promise异步回调。使用callback异步回调。
 
-ͬһӦ�ô�������ִ�е�ȫ���������������£��ظ������᷵�ش�����Ϣ��22400006����
+同一应用存在正在执行的全量下载任务的情况下，重复触发会返回错误信息（22400006）。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+<!--Device-DowngradeDownload-startDownload(callback: Callback<DownloadProgress>): Promise<void>--><!--Device-DowngradeDownload-startDownload(callback: Callback<DownloadProgress>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -125,25 +139,25 @@ startDownload(callback: Callback<DownloadProgress>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;DownloadProgress&gt; | 是 | �ص�������ȫ�����ؽ��ȣ�����ΪDownloadProgress������ֵΪvoid�� |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadProgress> | 是 | 回调函数。全量下载进度，参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application<br/>uses system API. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
-| [22400006](../../errorcode-universal.md#22400006-The) | The same task is already in progress. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400006 | The same task is already in progress. |
 
 **示例：**
 
@@ -174,15 +188,17 @@ downgradeMgr.startDownload(callback).then(() => {
 startTransfer(targetUri: string, callback: Callback<TransferProgress>): void
 ```
 
-������Ŀ¼������ɱ������ص��ļ���Ǩ��ָ��Ŀ¼��������ͨ���ص��ϱ���Ǩ���ȡ�ʹ��callback�첽�ص���
+将云盘目录下已完成本地下载的文件搬迁至指定目录，过程中通过回调上报搬迁进度。使用callback异步回调。
 
-ͬһӦ�ô�������ִ�еİ�Ǩ���������£��ظ������᷵�ش�����Ϣ��22400006����
+同一应用存在正在执行的搬迁任务的情况下，重复触发会返回错误信息（22400006）。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DowngradeDownload-startTransfer(targetUri: string, callback: Callback<TransferProgress>): void--><!--Device-DowngradeDownload-startTransfer(targetUri: string, callback: Callback<TransferProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -192,20 +208,20 @@ startTransfer(targetUri: string, callback: Callback<TransferProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetUri | string | 是 | ���ڴ�Ű�Ǩ����ļ�·��URI�������ԡ�/file://docs/storage/Users/currentUser/��Ϊǰ׺�� |
-| callback | Callback&lt;TransferProgress&gt; | 是 | �ص����������ذ�Ǩ���ȡ� |
+| targetUri | string | 是 | 用于存放搬迁后的文件路径URI，必须以“/file://docs/storage/Users/currentUser/”为前缀。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<TransferProgress> | 是 | 回调函数，返回搬迁进度。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted. Possible causes:<br/><br/>1.The DowngradeDownload task is running.<br/><br/>2.The full data synchronization task is running. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.The length of the input uri does not meet the value range requirement.<br/><br/>3.The input uri does not belong to a File Manager public directory. |
-| [22400006](../../errorcode-universal.md#22400006-The) | The same task is already in progress. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900001 | Operation not permitted. Possible causes:<br>1.The DowngradeDownload task is running.<br>2.The full data synchronization task is running. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified.<br>2.The length of the input uri does not meet the value range requirement.<br>3.The input uri does not belong to a File Manager public directory. |
+| 22400006 | The same task is already in progress. |
 
 **示例：**
 
@@ -220,7 +236,7 @@ try {
     });
 } catch (err) {
     let e = err as BusinessError;
-    console.error("transfer files failed with error message: " + e.message + ", error code: " + e.code);
+    console.error(`transfer files failed with error message: ${e.message}, error code: ${e.code}`);
 }
 
 ```
@@ -231,11 +247,13 @@ try {
 stopDownload(): Promise<void>
 ```
 
-ֹͣ��[startDownload](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md#startDownload-1)������ȫ����������ʹ��Promise�첽�ص���
+停止由[startDownload](arkts-corefile-cloudsyncmanager-downgradedownload-c-sys.md#startdownload-1)触发的全量下载任务，使用Promise异步回调。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+<!--Device-DowngradeDownload-stopDownload(): Promise<void>--><!--Device-DowngradeDownload-stopDownload(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -245,16 +263,16 @@ stopDownload(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application<br/>uses system API. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -267,18 +285,17 @@ downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
   console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
 }).then(() => {
   console.info("Downgrade started successfully.");
+  let needStop = true;
+  if (needStop) {
+    downgradeMgr.stopDownload().then(() => {
+      console.info("Downgrade stopped successfully.");
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
 });
-
-let needStop = true;
-if (needStop) {
-  downgradeMgr.stopDownload().then(() => {
-    console.info("Downgrade stopped successfully.");
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
-  });
-}
 
 ```
 

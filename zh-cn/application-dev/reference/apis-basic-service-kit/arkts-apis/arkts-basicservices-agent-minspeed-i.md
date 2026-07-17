@@ -1,11 +1,18 @@
 # MinSpeed
 
-任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为
-[LOW_SPEED](arkts-basicservices-agent-faults-e.md#Faults)。
+任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为[LOW_SPEED](arkts-basicservices-agent-faults-e.md)。
 
 **起始版本：** 20
 
+<!--Device-agent-interface MinSpeed--><!--Device-agent-interface MinSpeed-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
+
+## 导入模块
+
+```TypeScript
+import { request } from '@kit.BasicServicesKit';
+```
 
 ## duration
 
@@ -18,6 +25,8 @@ duration: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-MinSpeed-duration: int--><!--Device-MinSpeed-duration: int-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -32,6 +41,8 @@ speed: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-MinSpeed-speed: long--><!--Device-MinSpeed-speed: long-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 

@@ -1,12 +1,10 @@
 # SuspendType
 
-```TypeScript
-enum SuspendType
-```
-
 表示播放器的挂起类型。
 
 **起始版本：** 12
+
+<!--Device-webview-enum SuspendType--><!--Device-webview-enum SuspendType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -20,6 +18,8 @@ ENTER_BACK_FORWARD_CACHE = 0
 
 **起始版本：** 12
 
+<!--Device-SuspendType-ENTER_BACK_FORWARD_CACHE = 0--><!--Device-SuspendType-ENTER_BACK_FORWARD_CACHE = 0-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ENTER_BACKGROUND
@@ -32,6 +32,8 @@ ENTER_BACKGROUND = 1
 
 **起始版本：** 12
 
+<!--Device-SuspendType-ENTER_BACKGROUND = 1--><!--Device-SuspendType-ENTER_BACKGROUND = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## AUTO_CLEANUP
@@ -43,6 +45,8 @@ AUTO_CLEANUP = 2
 系统自动清理。
 
 **起始版本：** 12
+
+<!--Device-SuspendType-AUTO_CLEANUP = 2--><!--Device-SuspendType-AUTO_CLEANUP = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -1,10 +1,18 @@
 # FileVersion
 
-�����ļ��汾�����ࡣ֧�ֶԶ����ļ�����ʷ�汾���й������ṩ��ȡ�ļ���ʷ�汾��Ϣ�б���������ͨ����ʷ�汾��Ϣ���ɽ���ʷ�汾���ص����أ����ṩ��ʷ�汾�ļ��滻��ǰ�����ļ�����������԰汾��ͻ���ṩ��ѯ��ͻ��־�������ͻ��־��������
+端云文件版本管理类。支持对端云文件的历史版本进行管理，提供获取文件历史版本信息列表的能力，通过历史版本信息，可将历史版本下载到本地；并提供历史版本文件替换当前本地文件的能力，针对版本冲突，提供查询冲突标志，解除冲突标志的能力。
 
 **起始版本：** 20
 
+<!--Device-cloudSync-class FileVersion--><!--Device-cloudSync-class FileVersion-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## clearFileConflict
 
@@ -12,9 +20,11 @@
 clearFileConflict(uri: string): Promise<void>
 ```
 
-��������ļ��汾��ͻ��־�����������ͻ�����ؽ����ͻ����Ҫ���ô˷����������ͻ��ǣ������ſ��Դ����Զ�ͬ�����ƣ������ϱ���һ�¡�ʹ��Promise�첽�ص���
+清除本地文件版本冲突标志。如果产生冲突，本地解决冲突后需要调用此方法来清除冲突标记，后续才可以触发自动同步机制，和云上保持一致。使用Promise异步回调。
 
 **起始版本：** 20
+
+<!--Device-FileVersion-clearFileConflict(uri: string): Promise<void>--><!--Device-FileVersion-clearFileConflict(uri: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -22,25 +32,25 @@ clearFileConflict(uri: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �������ͻ��־���ļ�URI�� |
+| uri | string | 是 | 待清除冲突标志的文件URI。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid URI. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900012 | Permission denied by the file system. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid URI. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -78,13 +88,15 @@ A constructor used to create a FileVersion object.
 
 **起始版本：** 20
 
+<!--Device-FileVersion-constructor()--><!--Device-FileVersion-constructor()-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -99,10 +111,11 @@ let fileVersion = new cloudSync.FileVersion();
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback<VersionDownloadProgress>): Promise<string>
 ```
 
-���ݰ汾�Ż�ȡָ���ļ���ĳһ�汾���ļ����ݡ��û�ͨ���汾��ָ������ĳһ�汾���������ص�������ʱ�洢·������ʱ�ļ���Ӧ�����о����Ƿ��滻ԭʼ�ļ���Ҳ����ѡ������ֱ��ɾ����callback�����ļ����ؽ��ȣ�Promise������ʷ
-�汾��ʱ�ļ���URI��
+根据版本号获取指定文件的某一版本的文件内容。用户通过版本号指定云上某一版本，将其下载到本地临时存储路径，临时文件由应用自行决定是否替换原始文件，也可以选择保留或直接删除。callback返回文件下载进度，Promise返回历史版本临时文件的URI。
 
 **起始版本：** 20
+
+<!--Device-FileVersion-downloadHistoryVersion(uri: string, versionId: string, callback: Callback<VersionDownloadProgress>): Promise<string>--><!--Device-FileVersion-downloadHistoryVersion(uri: string, versionId: string, callback: Callback<VersionDownloadProgress>): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -110,28 +123,28 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �ļ���URI�� |
-| versionId | string | 是 | �ļ�ĳһ�汾�İ汾�ţ���ʽ�Խӿ�<br/>[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#getHistoryVersionList-1)����Ϊ׼�� |
-| callback | Callback&lt;VersionDownloadProgress&gt; | 是 | �ص��������������ؽ��ȡ� |
+| uri | string | 是 | 文件的URI。 |
+| versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist-1)返回为准。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VersionDownloadProgress> | 是 | 回调函数，返回下载进度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise���󣬷�����ʷ�汾��ʱ�洢�ļ���URI�� |
+| Promise<string> | Promise对象，返回历史版本临时存储文件的URI。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid URI. |
-| [22400002](../../errorcode-universal.md#22400002-Network) | Network unavailable. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900012 | Permission denied by the file system. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid URI. |
+| 22400002 | Network unavailable. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 ## getHistoryVersionList
 
@@ -139,13 +152,15 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 getHistoryVersionList(uri: string, versionNumLimit: number): Promise<Array<HistoryVersion>>
 ```
 
-��ȡ��ʷ�汾�б����������ݰ��޸�ʱ�������޸�ʱ��Խ�磬λ��Խ����ʹ��Promise�첽�ص���
+获取历史版本列表，返回内容按修改时间排序，修改时间越早，位置越靠后。使用Promise异步回调。
 
-�����ϰ汾����С�ڴ���ĳ�������ʱ������ʵ�ʰ汾����������ʷ�汾�б���
+当云上版本数量小于传入的长度限制时，按照实际版本数量返回历史版本列表。
 
-�����ϰ汾�������ڵ��ڴ���ĳ�������ʱ���򷵻����µ�versionNumLimit���汾��
+当云上版本数量大于等于传入的长度限制时，则返回最新的versionNumLimit个版本。
 
 **起始版本：** 20
+
+<!--Device-FileVersion-getHistoryVersionList(uri: string, versionNumLimit: int): Promise<Array<HistoryVersion>>--><!--Device-FileVersion-getHistoryVersionList(uri: string, versionNumLimit: int): Promise<Array<HistoryVersion>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -153,27 +168,27 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise<Array<Histo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �ļ���URI�� |
-| versionNumLimit | number | 是 | ��ʷ�汾�б��������ƣ�ȡֵ��Χ[0, 100000]����λ��������������ֵ����100000ʱ���������ֵ�����б��� |
+| uri | string | 是 | 文件的URI。 |
+| versionNumLimit | number | 是 | 历史版本列表长度限制，取值范围[0, 100000]（单位：个）。当输入值大于100000时，按照最大值返回列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;HistoryVersion&gt;&gt; | Promise���󣬷�����ʷ�汾�б��� |
+| Promise<Array<HistoryVersion>> | Promise对象，返回历史版本列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid URI. |
-| [22400002](../../errorcode-universal.md#22400002-Network) | Network unavailable. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900012 | Permission denied by the file system. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid URI. |
+| 22400002 | Network unavailable. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -203,12 +218,13 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 isFileConflict(uri: string): Promise<boolean>
 ```
 
-��ȡ�����ļ��汾��ͻ��־��ʹ��Promise�첽�ص����˷���ֻ��Ӧ���������ֶ����ͻ��Ż���Ч������Ĭ���Զ����ͻ������ֵΪfalse����ͬ�������Զ���ɽ��ͻ��
+获取本地文件版本冲突标志。使用Promise异步回调。此方法只有应用在配置手动解冲突后才会生效，否则默认自动解冲突，返回值为false，由同步流程自动完成解冲突；
 
-��Ӧ�������ֶ����ͻ�󣬵��ô˷����᷵�ص�ǰ�ļ��Ƿ����Ʋ��ļ�������ͻ��������Ӧ����ʾ�û��Գ�ͻ���д������ڳ�ͻ���ǰ�������Զ�ͬ�����ơ����������ͻ����Ҫ����
-[clearFileConflict](arkts-corefile-cloudsync-fileversion-c.md#clearFileConflict-1)�����������ͻ��־�������Ż��������ͬ�������ƶ˱���һ�¡�
+当应用配置手动解冲突后，调用此方法会返回当前文件是否与云侧文件产生冲突，并且由应用提示用户对冲突进行处理，在冲突解决前不会再自动同步上云。当处理完冲突后，需要调用[clearFileConflict](arkts-corefile-cloudsync-fileversion-c.md#clearfileconflict-1)方法来清除冲突标志，后续才会继续触发同步，与云端保持一致。
 
 **起始版本：** 20
+
+<!--Device-FileVersion-isFileConflict(uri: string): Promise<boolean>--><!--Device-FileVersion-isFileConflict(uri: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -216,25 +232,25 @@ isFileConflict(uri: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �ļ���URI�� |
+| uri | string | 是 | 文件的URI。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󣬷��ر����ļ����ƶ��ļ��ĳ�ͻ��־��true��ʾ��ͻ��false��ʾ����ͻ�� |
+| Promise<boolean> | Promise对象，返回本地文件和云端文件的冲突标志，true表示冲突，false表示不冲突。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid URI. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900012 | Permission denied by the file system. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid URI. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -261,10 +277,11 @@ fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
 replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<void>
 ```
 
-�ṩʹ����ʷ�汾�ļ��滻�����ļ������������滻ǰ����Ҫ����[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadHistoryVersion-1)������ѡ�����ʷ
-�汾�������ز��õ�versionUri��ֱ�ӵ��ô˽ӿڻ���versionUri�Ƿ�������쳣���滻��ɺ��ɾ����ʱ�洢�ļ���ʹ��Promise�첽�ص���
+提供使用历史版本文件替换本地文件的能力。在替换前，需要调用[downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion-1)方法对选择的历史版本进行下载并拿到versionUri；直接调用此接口或者versionUri非法会产生异常；替换完成后会删除临时存储文件。使用Promise异步回调。
 
 **起始版本：** 20
+
+<!--Device-FileVersion-replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<void>--><!--Device-FileVersion-replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -272,29 +289,29 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| originalUri | string | 是 | �����ļ���URI�� |
-| versionUri | string | 是 | ��ʷ�汾�ļ���URI�� |
+| originalUri | string | 是 | 本地文件的URI。 |
+| versionUri | string | 是 | 历史版本文件的URI。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900005](../../errorcode-universal.md#13900005-IO) | I/O error. |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid URI. Possible causes: 1.originalUri invalid; 2.versionUri invalid. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
-| [22400007](../../errorcode-universal.md#22400007-The) | The version file specified to replace the original file does not exist. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900005 | I/O error. |
+| 13900008 | Bad file descriptor. |
+| 13900010 | Try again. |
+| 13900012 | Permission denied by the file system. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid URI. Possible causes: 1.originalUri invalid; 2.versionUri invalid. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400007 | The version file specified to replace the original file does not exist. |
 
 **示例：**
 

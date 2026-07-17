@@ -4,7 +4,15 @@
 
 **起始版本：** 18
 
+<!--Device-osAccount-class DomainServerConfigManager--><!--Device-osAccount-class DomainServerConfigManager-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## addServerConfig
 
@@ -18,31 +26,33 @@ static addServerConfig(parameters: Record<string, Object>): Promise<DomainServer
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static addServerConfig(parameters: Record<string, Object>): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static addServerConfig(parameters: Record<string, Object>): Promise<DomainServerConfig>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameters | Record&lt;string, Object&gt; | 是 | 表示域服务器配置参数。 |
+| parameters | Record<string, Object> | 是 | 表示域服务器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DomainServerConfig&gt; | Promise对象，返回新添加的域服务器配置。 |
+| Promise<DomainServerConfig> | Promise对象，返回新添加的域服务器配置。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid server config parameters. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
-| [12300213](../../errorcode-universal.md#12300213-Server) | Server config already exists. |
-| [12300215](../../errorcode-universal.md#12300215-The) | The number of server config reaches the upper limit. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300213 | Server config already exists. |
+| 12300215 | The number of server config reaches the upper limit. |
 
 **示例：**
 
@@ -74,28 +84,30 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<Dom
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<DomainServerConfig>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 表示目标域账号信息。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 表示目标域账号信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DomainServerConfig&gt; | Promise对象，返回目标账号的域服务器配置。 |
+| Promise<DomainServerConfig> | Promise对象，返回目标账号的域服务器配置。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300003](../../errorcode-universal.md#12300003-Domain) | Domain account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Domain account not found. |
 
 **示例：**
 
@@ -127,21 +139,23 @@ static getAllServerConfigs(): Promise<Array<DomainServerConfig>>
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static getAllServerConfigs(): Promise<Array<DomainServerConfig>>--><!--Device-DomainServerConfigManager-static getAllServerConfigs(): Promise<Array<DomainServerConfig>>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DomainServerConfig&gt;&gt; | Promise对象，返回获取的所有域服务器配置。 |
+| Promise<Array<DomainServerConfig>> | Promise对象，返回获取的所有域服务器配置。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例：**
 
@@ -178,6 +192,8 @@ static getServerConfig(configId: string): Promise<DomainServerConfig>
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static getServerConfig(configId: string): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static getServerConfig(configId: string): Promise<DomainServerConfig>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
@@ -190,16 +206,16 @@ static getServerConfig(configId: string): Promise<DomainServerConfig>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DomainServerConfig&gt; | Promise对象，返回获取的域服务器配置。 |
+| Promise<DomainServerConfig> | Promise对象，返回获取的域服务器配置。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300212](../../errorcode-universal.md#12300212-Server) | Server config not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| 12300212 | Server config not found. |
 
 **示例：**
 
@@ -236,6 +252,8 @@ static removeServerConfig(configId: string): Promise<void>
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static removeServerConfig(configId: string): Promise<void>--><!--Device-DomainServerConfigManager-static removeServerConfig(configId: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
@@ -248,17 +266,17 @@ static removeServerConfig(configId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300212](../../errorcode-universal.md#12300212-Server) | Server config not found. |
-| [12300214](../../errorcode-universal.md#12300214-Server) | Server config has been associated with an account. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| 12300212 | Server config not found. |
+| 12300214 | Server config has been associated with an account. |
 
 **示例：**
 
@@ -292,6 +310,8 @@ static updateServerConfig(configId: string, parameters: Record<string, Object>):
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static updateServerConfig(configId: string, parameters: Record<string, Object>): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static updateServerConfig(configId: string, parameters: Record<string, Object>): Promise<DomainServerConfig>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
@@ -299,26 +319,26 @@ static updateServerConfig(configId: string, parameters: Record<string, Object>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | configId | string | 是 | 表示服务器配置标识。 |
-| parameters | Record&lt;string, Object&gt; | 是 | 表示域服务器配置参数。 |
+| parameters | Record<string, Object> | 是 | 表示域服务器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DomainServerConfig&gt; | Promise对象，返回更新后的域服务器配置。 |
+| Promise<DomainServerConfig> | Promise对象，返回更新后的域服务器配置。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid server config parameters. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
-| [12300212](../../errorcode-universal.md#12300212-Server) | Server config not found. |
-| [12300213](../../errorcode-universal.md#12300213-Server) | Server config already exists. |
-| [12300214](../../errorcode-universal.md#12300214-Server) | Server config has been associated with an account. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300212 | Server config not found. |
+| 12300213 | Server config already exists. |
+| 12300214 | Server config has been associated with an account. |
 
 **示例：**
 

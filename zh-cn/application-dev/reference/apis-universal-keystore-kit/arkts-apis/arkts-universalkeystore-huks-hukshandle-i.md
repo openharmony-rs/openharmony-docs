@@ -1,10 +1,10 @@
 # HuksHandle
 
-huks Handle�ṹ�塣
+huks Handle结构体。
 
-> **˵����**
->
-> ��API version 9��ʼ����������ʹ��[HuksSessionHandle<sup>9+</sup>](arkts-universalkeystore-huks-hukssessionhandle-i.md#HuksSessionHandle)�����
+> **说明：**  
+>  
+> 从API version 9开始废弃，建议使用[HuksSessionHandle<sup>9+</sup>](arkts-universalkeystore-huks-hukssessionhandle-i.md)替代。
 
 **起始版本：** 8
 
@@ -12,7 +12,15 @@ huks Handle�ṹ�塣
 
 **替代接口：** [null]
 
+<!--Device-huks-export interface HuksHandle--><!--Device-huks-export interface HuksHandle-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
+
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
 
 ## errorCode
 
@@ -20,15 +28,17 @@ huks Handle�ṹ�塣
 errorCode: number
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **类型：** number
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksHandle-errorCode: number--><!--Device-HuksHandle-errorCode: number-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -38,15 +48,17 @@ errorCode: number
 handle: number
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **类型：** number
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksHandle-handle: number--><!--Device-HuksHandle-handle: number-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -56,15 +68,17 @@ handle: number
 token?: Uint8Array
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **类型：** Uint8Array
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksHandle-token?: Uint8Array--><!--Device-HuksHandle-token?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

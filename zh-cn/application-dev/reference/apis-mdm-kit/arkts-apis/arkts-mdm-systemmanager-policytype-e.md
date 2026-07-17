@@ -1,14 +1,10 @@
 # PolicyType
 
-```TypeScript
-enum PolicyType
-```
-
-������������ö�١�
+升级策略类型枚举。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-systemManager-enum PolicyType--><!--Device-systemManager-enum PolicyType-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum PolicyType
 DEFAULT = 0
 ```
 
-Ĭ���������ԡ�������ʾ�û����û�ȷ�Ϻ�������
+默认升级策略。周期提示用户，用户确认后升级。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PolicyType-DEFAULT = 0--><!--Device-PolicyType-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ DEFAULT = 0
 PROHIBIT = 1
 ```
 
-��ֹ�������ԡ�
+禁止升级策略。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PolicyType-PROHIBIT = 1--><!--Device-PolicyType-PROHIBIT = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ PROHIBIT = 1
 UPDATE_TO_SPECIFIC_VERSION = 2
 ```
 
-ǿ���������ԡ���ָ����������ʱ�䣨latestUpdateTime��������
+强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PolicyType-UPDATE_TO_SPECIFIC_VERSION = 2--><!--Device-PolicyType-UPDATE_TO_SPECIFIC_VERSION = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -60,11 +62,13 @@ UPDATE_TO_SPECIFIC_VERSION = 2
 WINDOWS = 3
 ```
 
-ָ��ʱ�䴰���������ԡ���ָ��ʱ�䴰�ڲ�����installStartTime��installEndTime����
+指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PolicyType-WINDOWS = 3--><!--Device-PolicyType-WINDOWS = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -74,11 +78,13 @@ WINDOWS = 3
 POSTPONE = 4
 ```
 
-�ӳ��������ԡ��ӳ�ָ��ʱ�䣨delayUpdateTime�������DEFAULTģʽ��������ʾ�û�������
+延迟升级策略。延迟指定时间（delayUpdateTime）后进入DEFAULT模式，周期提示用户升级。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PolicyType-POSTPONE = 4--><!--Device-PolicyType-POSTPONE = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

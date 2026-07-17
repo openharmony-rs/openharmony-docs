@@ -1,14 +1,22 @@
 # getPluginBundlePathForSelf
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getPluginBundlePathForSelf
 
 ```TypeScript
 function getPluginBundlePathForSelf(pluginBundleName: string): string
 ```
 
-��ȡָ������ڵ�ǰ[Ӧ��ɳ��](../../../../file-management/app-sandbox-directory.md)�ڵİ�װ·����
+获取指定插件在当前[应用沙箱](../../../../file-management/app-sandbox-directory.md)内的安装路径。
 
 **起始版本：** 22
+
+<!--Device-bundleManager-function getPluginBundlePathForSelf(pluginBundleName: string): string--><!--Device-bundleManager-function getPluginBundlePathForSelf(pluginBundleName: string): string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -16,19 +24,19 @@ function getPluginBundlePathForSelf(pluginBundleName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pluginBundleName | string | 是 | Ŀ�����İ����� |
+| pluginBundleName | string | 是 | 目标插件的包名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Ŀ�����ڵ�ǰӦ��ɳ���ڵİ�װ·���� |
+| string | 目标插件在当前应用沙箱内的安装路径。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 **示例：**
 

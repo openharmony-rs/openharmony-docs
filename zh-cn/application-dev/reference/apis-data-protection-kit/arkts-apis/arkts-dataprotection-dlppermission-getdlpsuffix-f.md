@@ -1,5 +1,11 @@
 # getDLPSuffix
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## getDLPSuffix
 
 ```TypeScript
@@ -11,6 +17,8 @@ function getDLPSuffix(): string
 用于获取DLP文件的标准扩展名，便于构建DLP文件名或进行文件类型判断。
 
 **起始版本：** 10
+
+<!--Device-dlpPermission-function getDLPSuffix(): string--><!--Device-dlpPermission-function getDLPSuffix(): string-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -24,7 +32,7 @@ function getDLPSuffix(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例：**
 

@@ -1,5 +1,11 @@
 # getBatteryStats（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { batteryStats } from '@kit.BasicServicesKit';
+```
+
 ## getBatteryStats
 
 ```TypeScript
@@ -10,6 +16,8 @@ function getBatteryStats(): Promise<Array<BatteryStatsInfo>>
 
 **起始版本：** 8
 
+<!--Device-batteryStats-function getBatteryStats(): Promise<Array<BatteryStatsInfo>>--><!--Device-batteryStats-function getBatteryStats(): Promise<Array<BatteryStatsInfo>>-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
 **系统接口：** 此接口为系统接口。
@@ -18,14 +26,14 @@ function getBatteryStats(): Promise<Array<BatteryStatsInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;BatteryStatsInfo&gt;&gt; | Promise对象，返回耗电信息列表。 |
+| Promise<Array<BatteryStatsInfo>> | Promise对象，返回耗电信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [4600101](../../errorcode-universal.md#4600101-Failed) | Failed to connect to the service. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [4600101](../../apis-basic-services-kit/errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
 **示例：**
 
@@ -34,8 +42,8 @@ batteryStats.getBatteryStats()
 .then((data: batteryStats.BatteryStatsInfo[]) => {
     console.info('battery statistics info: ' + data);
 })
-.catch((err: Error) => {
-    console.error('get battery statistics failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
 });
 
 ```
@@ -51,6 +59,8 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 
 **起始版本：** 8
 
+<!--Device-batteryStats-function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void--><!--Device-batteryStats-function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void-End-->
+
 **系统能力：** SystemCapability.PowerManager.BatteryStatistics
 
 **系统接口：** 此接口为系统接口。
@@ -59,24 +69,24 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;BatteryStatsInfo&gt;&gt; | 是 | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array&gt;；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<BatteryStatsInfo>> | 是 | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array&lt;[BatteryStatsInfo](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)&gt;&gt;；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Parameter verification failed. |
-| [4600101](../../errorcode-universal.md#4600101-Failed) | Failed to connect to the service. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Parameter verification failed. |
+| [4600101](../../apis-basic-services-kit/errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
 **示例：**
 
 ```TypeScript
-batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]) => {
-    if (typeof err === 'undefined') {
-        console.info('battery statistics info: ' + data);
+batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStatsInfo[]) => {
+    if (err) {
+        console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('get battery statistics failed, err: ' + err);
+        console.info('battery statistics info: ' + data);
     }
 });
 

@@ -1,12 +1,10 @@
 # SetPropertyType（系统接口）
 
-```TypeScript
-enum SetPropertyType
-```
-
 表示要设置的属性类型的枚举。
 
 **起始版本：** 8
+
+<!--Device-osAccount-enum SetPropertyType--><!--Device-osAccount-enum SetPropertyType-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -21,6 +19,8 @@ INIT_ALGORITHM = 1
 初始化算法。
 
 **起始版本：** 8
+
+<!--Device-SetPropertyType-INIT_ALGORITHM = 1--><!--Device-SetPropertyType-INIT_ALGORITHM = 1-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

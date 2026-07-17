@@ -1,14 +1,10 @@
 # ServiceType
 
-```TypeScript
-enum ServiceType
-```
-
-�ֲ�ʽ�������͡�
+分布式能力类型。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-applicationManager-enum ServiceType--><!--Device-applicationManager-enum ServiceType-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum ServiceType
 COLLABORATION_SERVICE  = 0
 ```
 
-Эͬ��������ʹ��Эͬ�����Ӧ�ã������������豸�������ݡ�
+协同服务。允许使用协同服务的应用，可以向其他设备传输数据。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ServiceType-COLLABORATION_SERVICE  = 0--><!--Device-ServiceType-COLLABORATION_SERVICE  = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

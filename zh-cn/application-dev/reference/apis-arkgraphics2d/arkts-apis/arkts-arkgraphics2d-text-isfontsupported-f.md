@@ -1,5 +1,11 @@
 # isFontSupported
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## isFontSupported
 
 ```TypeScript
@@ -10,7 +16,9 @@ function isFontSupported(fontURL: string | Resource): boolean
 
 **起始版本：** 23
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-text-function isFontSupported(fontURL: string | Resource): boolean--><!--Device-text-function isFontSupported(fontURL: string | Resource): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

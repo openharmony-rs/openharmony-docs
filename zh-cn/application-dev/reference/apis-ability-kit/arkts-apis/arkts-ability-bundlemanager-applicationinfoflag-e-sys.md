@@ -1,12 +1,10 @@
 # ApplicationInfoFlag（系统接口）
 
-```TypeScript
-export enum ApplicationInfoFlag
-```
-
-��ʶӦ�ú��û�֮��ĸ���״̬���͡�
+标识应用和用户之间的各种状态类型。
 
 **起始版本：** 12
+
+<!--Device-bundleManager-export enum ApplicationInfoFlag--><!--Device-bundleManager-export enum ApplicationInfoFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,9 +16,11 @@ export enum ApplicationInfoFlag
 FLAG_INSTALLED = 0x00000001
 ```
 
-��ʾָ���û���װӦ�õ�״̬Ϊ�Ѱ�װ״̬��
+表示指定用户安装应用的状态为已安装状态。
 
 **起始版本：** 12
+
+<!--Device-ApplicationInfoFlag-FLAG_INSTALLED = 0x00000001--><!--Device-ApplicationInfoFlag-FLAG_INSTALLED = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,9 +32,11 @@ FLAG_INSTALLED = 0x00000001
 FLAG_OTHER_INSTALLED = 0x00000010
 ```
 
-��ʾ��ָ���û��⣬�����û���Ӧ�ð�װ״̬Ϊ�Ѱ�װ��
+表示除指定用户外，其他用户的应用安装状态为已安装。
 
 **起始版本：** 15
+
+<!--Device-ApplicationInfoFlag-FLAG_OTHER_INSTALLED = 0x00000010--><!--Device-ApplicationInfoFlag-FLAG_OTHER_INSTALLED = 0x00000010-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,9 +48,11 @@ FLAG_OTHER_INSTALLED = 0x00000010
 FLAG_PREINSTALLED_APP = 0x00000020
 ```
 
-��ʾӦ�õ�Ԥ������ΪԤ��Ӧ�á�
+表示应用的预置属性为预置应用。
 
 **起始版本：** 15
+
+<!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP = 0x00000020--><!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP = 0x00000020-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,9 +64,11 @@ FLAG_PREINSTALLED_APP = 0x00000020
 FLAG_PREINSTALLED_APP_UPDATE = 0x00000040
 ```
 
-��ʾ��Ԥ��Ӧ�õĸ���״̬Ϊ�Ѹ��¡�
+表示该预置应用的更新状态为已更新。
 
 **起始版本：** 15
+
+<!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP_UPDATE = 0x00000040--><!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP_UPDATE = 0x00000040-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

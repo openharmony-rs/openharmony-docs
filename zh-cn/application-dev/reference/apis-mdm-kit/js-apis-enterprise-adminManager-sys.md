@@ -936,11 +936,15 @@ adminManager.getEnterpriseInfo(wantTemp).then((result) => {
 });
 ```
 
-## adminManager.subscribeManagedEvent
+## adminManager.subscribeManagedEvent<sup>(deprecated)</sup>
 
 subscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>, callback: AsyncCallback\<void>): void
 
 订阅系统管理事件。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -992,11 +996,15 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-## adminManager.subscribeManagedEvent
+## adminManager.subscribeManagedEvent<sup>(deprecated)</sup>
 
 subscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
 订阅系统管理事件。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1051,11 +1059,15 @@ adminManager.subscribeManagedEvent(wantTemp, events).then(() => {
 })
 ```
 
-## adminManager.unsubscribeManagedEvent
+## adminManager.unsubscribeManagedEvent<sup>(deprecated)</sup>
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>, callback: AsyncCallback\<void>): void
 
 取消订阅系统管理事件。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [unsubscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagerunsubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1107,11 +1119,15 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-## adminManager.unsubscribeManagedEvent
+## adminManager.unsubscribeManagedEvent<sup>(deprecated)</sup>
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
 取消订阅系统管理事件。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [unsubscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagerunsubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1455,7 +1471,7 @@ setDelegatedPolicies(bundleName: string, accountId: number, policies: Array&lt;s
 | ----- | ----------------------------------- | ---- | ------- |
 | bundleName | String                  | 是    | 将要被委托的管理应用的包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。        |
 | accountId         | number                              | 是    | 用户ID，指定具体用户，取值范围：大于等于0。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) |
-| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](./js-apis-enterprise-adminManager.md#可委托策略列表)。 |
+| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](../../mdm/mdm-kit-appendix.md#可委托策略列表)。 |
 
 **错误码**：
 

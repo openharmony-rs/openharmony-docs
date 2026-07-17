@@ -1,18 +1,26 @@
 # queryContactsCount
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## queryContactsCount
 
 ```TypeScript
 function queryContactsCount(context: Context): Promise<number>
 ```
 
-��ѯ������ϵ�˵�������ʹ��Promise�첽�ص���
+查询所有联系人的数量。使用Promise异步回调。
 
 **起始版本：** 22
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-contact-function queryContactsCount(context: Context): Promise<int>--><!--Device-contact-function queryContactsCount(context: Context): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -20,20 +28,20 @@ function queryContactsCount(context: Context): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󡣷��ز�ѯ������ϵ�������� |
+| Promise<number> | Promise对象。返回查询到的联系人数量。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [16700001](../../errorcode-universal.md#16700001-General) | General error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
 **示例：**
 

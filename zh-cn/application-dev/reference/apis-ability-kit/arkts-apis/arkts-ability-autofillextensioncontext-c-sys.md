@@ -1,11 +1,12 @@
 # AutoFillExtensionContext（系统接口）
 
-AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自
-[ExtensionContext](arkts-ability-extensioncontext-c.md)。
+AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)。
 
 **继承/实现关系：** AutoFillExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
 **起始版本：** 11
+
+<!--Device-unnamed-declare class AutoFillExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AutoFillExtensionContext extends ExtensionContext-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -23,6 +24,8 @@ reloadInModal(customData: CustomData): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AutoFillExtensionContext-reloadInModal(customData: CustomData): Promise<void>--><!--Device-AutoFillExtensionContext-reloadInModal(customData: CustomData): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -31,13 +34,13 @@ reloadInModal(customData: CustomData): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| customData | CustomData | 是 | 拉起模态页面时的自定义信息。 |
+| customData | [CustomData](arkts-ability-customdata-i-sys.md) | 是 | 拉起模态页面时的自定义信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 

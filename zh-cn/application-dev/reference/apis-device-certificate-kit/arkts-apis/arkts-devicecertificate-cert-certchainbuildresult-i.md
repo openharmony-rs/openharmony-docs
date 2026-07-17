@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-cert-interface CertChainBuildResult--><!--Device-cert-interface CertChainBuildResult-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## certChain
 
@@ -18,7 +26,9 @@ readonly certChain: X509CertChain
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainBuildResult-readonly certChain: X509CertChain--><!--Device-CertChainBuildResult-readonly certChain: X509CertChain-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -28,13 +38,15 @@ readonly certChain: X509CertChain
 readonly validationResult: CertChainValidationResult
 ```
 
-指定最终证书链的最大长度。
+证书链校验结果。
 
 **类型：** CertChainValidationResult
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CertChainBuildResult-readonly validationResult: CertChainValidationResult--><!--Device-CertChainBuildResult-readonly validationResult: CertChainValidationResult-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 

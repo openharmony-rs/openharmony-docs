@@ -1,12 +1,10 @@
 # ReminderType
 
-```TypeScript
-export enum ReminderType
-```
-
 提醒的类型。
 
 **起始版本：** 9
+
+<!--Device-reminderAgentManager-export enum ReminderType--><!--Device-reminderAgentManager-export enum ReminderType-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -20,6 +18,8 @@ REMINDER_TYPE_TIMER = 0
 
 **起始版本：** 9
 
+<!--Device-ReminderType-REMINDER_TYPE_TIMER = 0--><!--Device-ReminderType-REMINDER_TYPE_TIMER = 0-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## REMINDER_TYPE_CALENDAR
@@ -32,6 +32,8 @@ REMINDER_TYPE_CALENDAR = 1
 
 **起始版本：** 9
 
+<!--Device-ReminderType-REMINDER_TYPE_CALENDAR = 1--><!--Device-ReminderType-REMINDER_TYPE_CALENDAR = 1-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## REMINDER_TYPE_ALARM
@@ -43,6 +45,8 @@ REMINDER_TYPE_ALARM = 2
 表示提醒类型：闹钟。
 
 **起始版本：** 9
+
+<!--Device-ReminderType-REMINDER_TYPE_ALARM = 2--><!--Device-ReminderType-REMINDER_TYPE_ALARM = 2-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 

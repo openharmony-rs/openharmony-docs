@@ -1,10 +1,18 @@
 # GeneralName
 
-用于表示证书主体信息对象。
+用于表示GeneralName。
 
 **起始版本：** 12
 
+<!--Device-cert-interface GeneralName--><!--Device-cert-interface GeneralName-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## name
 
@@ -12,13 +20,15 @@
 name?: Uint8Array
 ```
 
-指定具体的证书主体DER格式内容。
+指定GeneralName的DER编码值。
 
 **类型：** Uint8Array
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralName-name?: Uint8Array--><!--Device-GeneralName-name?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -28,13 +38,15 @@ name?: Uint8Array
 type: GeneralNameType
 ```
 
-指定具体的证书主体类型。
+GeneralName类型。
 
 **类型：** GeneralNameType
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralName-type: GeneralNameType--><!--Device-GeneralName-type: GeneralNameType-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 

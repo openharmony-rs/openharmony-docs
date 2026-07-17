@@ -1,12 +1,10 @@
 # RectType
 
-```TypeScript
-enum RectType
-```
-
-定义填充网格的矩形类型的枚举。仅在[Lattice](arkts-graphics-drawing.md#drawing)中使用。
+定义填充网格的矩形类型的枚举。仅在[Lattice](arkts-graphics-drawing.md)中使用。
 
 **起始版本：** 12
+
+<!--Device-drawing-enum RectType--><!--Device-drawing-enum RectType-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -20,6 +18,8 @@ DEFAULT = 0
 
 **起始版本：** 12
 
+<!--Device-RectType-DEFAULT = 0--><!--Device-RectType-DEFAULT = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## TRANSPARENT
@@ -32,6 +32,8 @@ TRANSPARENT = 1
 
 **起始版本：** 12
 
+<!--Device-RectType-TRANSPARENT = 1--><!--Device-RectType-TRANSPARENT = 1-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## FIXEDCOLOR
@@ -40,9 +42,11 @@ TRANSPARENT = 1
 FIXEDCOLOR = 2
 ```
 
-将[Lattice](arkts-graphics-drawing.md#drawing)中fColors数组的颜色绘制到矩形网格中。
+将[Lattice](arkts-graphics-drawing.md)中fColors数组的颜色绘制到矩形网格中。
 
 **起始版本：** 12
+
+<!--Device-RectType-FIXEDCOLOR = 2--><!--Device-RectType-FIXEDCOLOR = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -1,15 +1,14 @@
 # UIPickerComponent
 
-UIPickerComponent容器是用于实现用户选择操作的组件。它支持从一组有限的选项中让用户进行单选，可应用于时间选择、日期选择、
-地区选择、状态选择等多种场景。UIPickerComponent容器的显示效果为立体滚轮样式，支持选项按需定制，包括文本类型、图片类型
-和图文组合类型。
+UIPickerComponent容器是用于实现用户选择操作的组件。它支持从一组有限的选项中让用户进行单选，可应用于时间选择、日期选择、地区选
+择、状态选择等多种场景。UIPickerComponent容器的显示效果为立体滚轮样式，支持选项按需定制，包括文本类型、图片类型和图文组合类型。
 
 说明：
 
 - UIPickerComponent容器默认选项行高为40vp，默认显示7个选项。可通过
   [itemHeight]{@link UIPickerComponentAttribute#itemHeight}和
-  [displayedItemCount]{@link UIPickerComponentAttribute#displayedItemCount}属性进行配置。
-  由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于选项行高。
+  [displayedItemCount]{@link UIPickerComponentAttribute#displayedItemCount}属性进行配置。由于显示效果为立体滚轮样式，
+  因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于选项行高。
 
 - UIPickerComponent容器的[height]{@link CommonMethod#height(value: Length)}建议设置为200vp。当设置的高度大于等于
   该建议值时，可完整显示默认的7个选项；若通过[displayedItemCount]{@link UIPickerComponentAttribute#displayedItemCount}或
@@ -26,6 +25,31 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 
 - 该组件从API版本26.0.0开始支持[WithTheme]{@link with_theme}。
 
+组件
+
+- 支持多个子组件。
+- 支持子组件类型：[Text]{@link text}、[Image]{@link image}、[Row]{@link row}和[SymbolGlyph]{@link symbolglyph}。
+- 支持渲染控制类型：[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)和
+[ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)。
+
+说明：
+
+- 开发者在使用Row容器作为子组件时，Row容器中仅支持包含Text、Image、SymbolGlyph基础组件，包含其他容器组件可能会影响显示效果
+  或滑动功能异常。
+
+- 统计子组件的个数时，不包含Row容器内的子组件，Row容器及其子组件共同视为1个子组件。
+
+- 子组件为Text、Image、SymbolGlyph时，[height]{@link CommonMethod#height(value: Length)}属性不生效，固定为40vp。
+
+- 子组件为Row容器时，Row容器的[height]{@link CommonMethod#height(value: Length)}属性不生效，固定为40vp，Row容器内的子组件
+ [height]{@link CommonMethod#height(value: Length)}属性能正常生效，最终显示效果由Row容器决定。
+
+- 图文组合类型选项需要使用Row容器包含图片和文本组件。使用图文组合类型选项时，
+  建议将图片的[height]{@link CommonMethod#height(value: Length)}设置为40vp及以下，避免图片较大时被裁剪。
+
+- UIPickerComponent容器内所有文本组件（包括Row容器内的文本组件）的fontSize属性默认为20fp。用户设置将覆盖默认值，设置异常值时
+  以文本组件[fontSize]{@link TextAttribute#fontSize}处理的结果为准。建议统一设置或不设置fontSize以保证良好的显示效果。
+
 
 ## UIPickerComponent
 
@@ -39,7 +63,9 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-UIPickerComponentInterface-(options?: UIPickerComponentOptions): UIPickerComponentAttribute--><!--Device-UIPickerComponentInterface-(options?: UIPickerComponentOptions): UIPickerComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

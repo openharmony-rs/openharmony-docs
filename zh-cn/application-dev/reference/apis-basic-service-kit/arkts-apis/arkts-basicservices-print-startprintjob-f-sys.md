@@ -1,5 +1,11 @@
 # startPrintJob（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## startPrintJob
 
 ```TypeScript
@@ -12,6 +18,8 @@ function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void--><!--Device-print-function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -20,16 +28,16 @@ function startPrintJob(jobInfo: PrintJob, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | PrintJob | 是 | 打印任务信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步开始打印任务之后的回调。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步开始打印任务之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-not) | not system application |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -77,6 +85,8 @@ function startPrintJob(jobInfo: PrintJob): Promise<void>
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function startPrintJob(jobInfo: PrintJob): Promise<void>--><!--Device-print-function startPrintJob(jobInfo: PrintJob): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -85,21 +95,21 @@ function startPrintJob(jobInfo: PrintJob): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobInfo | PrintJob | 是 | 打印任务信息。 |
+| jobInfo | [PrintJob](arkts-basicservices-print-printjob-i-sys.md) | 是 | 打印任务信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-not) | not system application |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 

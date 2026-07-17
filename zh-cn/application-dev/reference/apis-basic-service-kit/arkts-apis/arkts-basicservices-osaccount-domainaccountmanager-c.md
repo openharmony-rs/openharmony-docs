@@ -4,7 +4,15 @@
 
 **起始版本：** 18
 
+<!--Device-osAccount-class DomainAccountManager--><!--Device-osAccount-class DomainAccountManager-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## updateAccountInfo
 
@@ -18,31 +26,33 @@ static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: Doma
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
+<!--Device-DomainAccountManager-static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccountInfo): Promise<void>--><!--Device-DomainAccountManager-static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccountInfo): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldAccountInfo | DomainAccountInfo | 是 | 表示旧域账号信息。 |
-| newAccountInfo | DomainAccountInfo | 是 | 表示新域账号信息。 |
+| oldAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 表示旧域账号信息。 |
+| newAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 表示新域账号信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-The) | The new account info is invalid. |
-| [12300003](../../errorcode-universal.md#12300003-The) | The old account not found. |
-| [12300004](../../errorcode-universal.md#12300004-The) | The new account already exists. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | The new account info is invalid. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | The old account not found. |
+| [12300004](../../apis-basic-services-kit/errorcode-account.md#12300004-账号已存在) | The new account already exists. |
 
 **示例：**
 

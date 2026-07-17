@@ -1,12 +1,10 @@
 # DisposedType（系统接口）
 
-```TypeScript
-export enum DisposedType
-```
-
-��ʶ����Ӧ�ó���ķ�ʽ���������Ӧ�õ�ȫ������������Ӧ�õ�ָ�����������߲����á�
+标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
 **起始版本：** 11
+
+<!--Device-appControl-export enum DisposedType--><!--Device-appControl-export enum DisposedType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -18,9 +16,11 @@ export enum DisposedType
 BLOCK_APPLICATION = 1
 ```
 
-Ӧ�������������������á�
+应用所有能力都将被禁用。
 
 **起始版本：** 11
+
+<!--Device-DisposedType-BLOCK_APPLICATION = 1--><!--Device-DisposedType-BLOCK_APPLICATION = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -32,9 +32,11 @@ BLOCK_APPLICATION = 1
 BLOCK_ABILITY = 2
 ```
 
-Ӧ��ָ���������Żᱻ���á�
+应用指定的能力才会被禁用。
 
 **起始版本：** 11
+
+<!--Device-DisposedType-BLOCK_ABILITY = 2--><!--Device-DisposedType-BLOCK_ABILITY = 2-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -46,9 +48,11 @@ BLOCK_ABILITY = 2
 NON_BLOCK = 3
 ```
 
-Ӧ�������������ᱻ���á�
+应用所有能力不会被禁用。
 
 **起始版本：** 11
+
+<!--Device-DisposedType-NON_BLOCK = 3--><!--Device-DisposedType-NON_BLOCK = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 

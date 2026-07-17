@@ -1,12 +1,10 @@
 # HuksAuthAccessType
 
-```TypeScript
-export enum HuksAuthAccessType
-```
-
-��ʾ��ȫ���ʿ������͡�
+表示安全访问控制类型。
 
 **起始版本：** 9
+
+<!--Device-huks-export enum HuksAuthAccessType--><!--Device-huks-export enum HuksAuthAccessType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -16,11 +14,13 @@ export enum HuksAuthAccessType
 HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0
 ```
 
-��ʾ��ȫ���ʿ�������Ϊ����������Կ��Ч��
+表示安全访问控制类型为清除密码后密钥无效。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -30,11 +30,13 @@ HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0
 HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1
 ```
 
-��ʾ��ȫ���ʿ�������Ϊ��¼��������������Կ��Ч��
+表示安全访问控制类型为新录入生物特征后密钥无效。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -44,11 +46,13 @@ HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1
 HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
 ```
 
-��ʾ��ȫ���ʿ�������Ϊ����Կ������Ч��
+表示安全访问控制类型为该密钥总是有效。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

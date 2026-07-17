@@ -1,5 +1,11 @@
 # getPrimaryDisplaySync
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## getPrimaryDisplaySync
 
 ```TypeScript
@@ -10,7 +16,9 @@ function getPrimaryDisplaySync(): Display
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-display-function getPrimaryDisplaySync(): Display--><!--Device-display-function getPrimaryDisplaySync(): Display-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -18,13 +26,13 @@ function getPrimaryDisplaySync(): Display
 
 | 类型 | 说明 |
 | --- | --- |
-| Display | 当前设备主屏幕的Display对象。 |
+| [Display](arkts-arkui-display-display-i.md) | 当前设备主屏幕的Display对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1400001](../../errorcode-universal.md#1400001-Invalid) | Invalid display or screen. Possible cause: Invalid display id. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. Possible cause: Invalid display id. |
 
 **示例：**
 

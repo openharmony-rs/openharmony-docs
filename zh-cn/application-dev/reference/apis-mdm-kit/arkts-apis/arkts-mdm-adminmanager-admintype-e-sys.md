@@ -1,12 +1,10 @@
 # AdminType
 
-```TypeScript
-export enum AdminType
-```
-
-�豸����Ӧ�õ����͡�
+设备管理应用的类型。
 
 **起始版本：** 15
+
+<!--Device-adminManager-export enum AdminType--><!--Device-adminManager-export enum AdminType-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -16,9 +14,11 @@ export enum AdminType
 ADMIN_TYPE_NORMAL = 0x00
 ```
 
-��ͨ�豸����Ӧ�ã������Ӧ�ÿ�ж�أ���[��ҵ�豸������չ����](../../../../mdm/mdm-kit-term.md#��ҵ�豸������չ����)��������������������������������������
+普通设备管理应用，激活后应用可卸载，其[企业设备管理扩展能力](../../../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。
 
 **起始版本：** 9
+
+<!--Device-AdminType-ADMIN_TYPE_NORMAL = 0x00--><!--Device-AdminType-ADMIN_TYPE_NORMAL = 0x00-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -30,9 +30,11 @@ ADMIN_TYPE_NORMAL = 0x00
 ADMIN_TYPE_SUPER = 0x01
 ```
 
-�����豸����Ӧ�ã������Ӧ�ò���ж�أ���[��ҵ�豸������չ����](../../../../mdm/mdm-kit-term.md#��ҵ�豸������չ����)��������������������������������������
+超级设备管理应用，激活后应用不可卸载，其[企业设备管理扩展能力](../../../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。
 
 **起始版本：** 9
+
+<!--Device-AdminType-ADMIN_TYPE_SUPER = 0x01--><!--Device-AdminType-ADMIN_TYPE_SUPER = 0x01-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

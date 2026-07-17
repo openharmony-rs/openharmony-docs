@@ -1,12 +1,10 @@
 # KeySource
 
-```TypeScript
-declare enum KeySource
-```
-
 定义触发按键事件的设备类型。
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare enum KeySource--><!--Device-unnamed-declare enum KeySource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,6 +20,8 @@ Unknown
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Keyboard
@@ -35,6 +35,8 @@ Keyboard
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-KeySource-Keyboard--><!--Device-KeySource-Keyboard-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +52,9 @@ JOYSTICK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

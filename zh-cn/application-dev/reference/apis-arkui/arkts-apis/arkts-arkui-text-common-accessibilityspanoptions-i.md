@@ -4,7 +4,7 @@ Span的无障碍朗读功能属性。
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare interface AccessibilitySpanOptions--><!--Device-unnamed-declare interface AccessibilitySpanOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,7 +26,9 @@ accessibilityDescription?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AccessibilitySpanOptions-accessibilityDescription?: ResourceStr--><!--Device-AccessibilitySpanOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,9 +58,7 @@ accessibilityLevel?: string
 
 当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：
 
-1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。
-2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。
-3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。
+1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。
 
 **类型：** string
 
@@ -68,7 +68,9 @@ accessibilityLevel?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AccessibilitySpanOptions-accessibilityLevel?: string--><!--Device-AccessibilitySpanOptions-accessibilityLevel?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +92,9 @@ accessibilityText?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AccessibilitySpanOptions-accessibilityText?: ResourceStr--><!--Device-AccessibilitySpanOptions-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

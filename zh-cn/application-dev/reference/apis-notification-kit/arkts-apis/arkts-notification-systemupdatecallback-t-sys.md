@@ -4,11 +4,13 @@
 export type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 ```
 
-type SystemUpdateCallback = (data: SubscribeCallbackData) => void
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void返回携带系统属性值通知信息的回调函数类型。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-export type SystemUpdateCallback = (data: SubscribeCallbackData) => void--><!--Device-unnamed-export type SystemUpdateCallback = (data: SubscribeCallbackData) => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

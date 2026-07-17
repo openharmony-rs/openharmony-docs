@@ -10,6 +10,8 @@ const ERROR_CANNOT_RESUME: number
 
 **起始版本：** 7
 
+<!--Device-request-const ERROR_CANNOT_RESUME: int--><!--Device-request-const ERROR_CANNOT_RESUME: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## ERROR_DEVICE_NOT_FOUND
@@ -21,6 +23,8 @@ const ERROR_DEVICE_NOT_FOUND: number
 下载任务错误码：找不到SD卡等存储设备。
 
 **起始版本：** 7
+
+<!--Device-request-const ERROR_DEVICE_NOT_FOUND: int--><!--Device-request-const ERROR_DEVICE_NOT_FOUND: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -34,6 +38,8 @@ const ERROR_FILE_ALREADY_EXISTS: number
 
 **起始版本：** 7
 
+<!--Device-request-const ERROR_FILE_ALREADY_EXISTS: int--><!--Device-request-const ERROR_FILE_ALREADY_EXISTS: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## ERROR_FILE_ERROR
@@ -45,6 +51,8 @@ const ERROR_FILE_ERROR: number
 下载任务错误码：文件操作失败。
 
 **起始版本：** 7
+
+<!--Device-request-const ERROR_FILE_ERROR: int--><!--Device-request-const ERROR_FILE_ERROR: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -58,6 +66,8 @@ const ERROR_HTTP_DATA_ERROR: number
 
 **起始版本：** 7
 
+<!--Device-request-const ERROR_HTTP_DATA_ERROR: int--><!--Device-request-const ERROR_HTTP_DATA_ERROR: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## ERROR_INSUFFICIENT_SPACE
@@ -69,6 +79,8 @@ const ERROR_INSUFFICIENT_SPACE: number
 下载任务错误码：存储空间不足。
 
 **起始版本：** 7
+
+<!--Device-request-const ERROR_INSUFFICIENT_SPACE: int--><!--Device-request-const ERROR_INSUFFICIENT_SPACE: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -82,6 +94,8 @@ const ERROR_OFFLINE: number
 
 **起始版本：** 9
 
+<!--Device-request-const ERROR_OFFLINE: int--><!--Device-request-const ERROR_OFFLINE: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## ERROR_TOO_MANY_REDIRECTS
@@ -94,6 +108,8 @@ const ERROR_TOO_MANY_REDIRECTS: number
 
 **起始版本：** 7
 
+<!--Device-request-const ERROR_TOO_MANY_REDIRECTS: int--><!--Device-request-const ERROR_TOO_MANY_REDIRECTS: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## ERROR_UNHANDLED_HTTP_CODE
@@ -105,6 +121,8 @@ const ERROR_UNHANDLED_HTTP_CODE: number
 下载任务错误码：无法识别的HTTP代码。
 
 **起始版本：** 7
+
+<!--Device-request-const ERROR_UNHANDLED_HTTP_CODE: int--><!--Device-request-const ERROR_UNHANDLED_HTTP_CODE: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -120,6 +138,8 @@ const ERROR_UNKNOWN: number
 
 **起始版本：** 7
 
+<!--Device-request-const ERROR_UNKNOWN: int--><!--Device-request-const ERROR_UNKNOWN: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## ERROR_UNSUPPORTED_NETWORK_TYPE
@@ -131,6 +151,8 @@ const ERROR_UNSUPPORTED_NETWORK_TYPE: number
 下载任务错误码：网络类型不匹配。
 
 **起始版本：** 9
+
+<!--Device-request-const ERROR_UNSUPPORTED_NETWORK_TYPE: int--><!--Device-request-const ERROR_UNSUPPORTED_NETWORK_TYPE: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -144,6 +166,8 @@ const EXCEPTION_FILEIO: number
 
 **起始版本：** 9
 
+<!--Device-request-const EXCEPTION_FILEIO: int--><!--Device-request-const EXCEPTION_FILEIO: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## EXCEPTION_FILEPATH
@@ -155,6 +179,8 @@ const EXCEPTION_FILEPATH: number
 特有错误码：文件路径异常。
 
 **起始版本：** 9
+
+<!--Device-request-const EXCEPTION_FILEPATH: int--><!--Device-request-const EXCEPTION_FILEPATH: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -168,6 +194,8 @@ const EXCEPTION_OTHERS: number
 
 **起始版本：** 9
 
+<!--Device-request-const EXCEPTION_OTHERS: int--><!--Device-request-const EXCEPTION_OTHERS: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## EXCEPTION_PARAMCHECK
@@ -179,6 +207,8 @@ const EXCEPTION_PARAMCHECK: number
 通用错误码：参数检查失败。
 
 **起始版本：** 9
+
+<!--Device-request-const EXCEPTION_PARAMCHECK: int--><!--Device-request-const EXCEPTION_PARAMCHECK: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -192,6 +222,8 @@ const EXCEPTION_PERMISSION: number
 
 **起始版本：** 9
 
+<!--Device-request-const EXCEPTION_PERMISSION: int--><!--Device-request-const EXCEPTION_PERMISSION: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## EXCEPTION_SERVICE
@@ -203,6 +235,8 @@ const EXCEPTION_SERVICE: number
 特有错误码：服务异常。
 
 **起始版本：** 9
+
+<!--Device-request-const EXCEPTION_SERVICE: int--><!--Device-request-const EXCEPTION_SERVICE: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -216,6 +250,8 @@ const EXCEPTION_UNSUPPORTED: number
 
 **起始版本：** 9
 
+<!--Device-request-const EXCEPTION_UNSUPPORTED: int--><!--Device-request-const EXCEPTION_UNSUPPORTED: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## NETWORK_MOBILE
@@ -227,6 +263,8 @@ const NETWORK_MOBILE: number
 网络类型：使用蜂窝网络时允许下载的位标志。
 
 **起始版本：** 6
+
+<!--Device-request-const NETWORK_MOBILE: int--><!--Device-request-const NETWORK_MOBILE: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -240,6 +278,8 @@ const NETWORK_WIFI: number
 
 **起始版本：** 6
 
+<!--Device-request-const NETWORK_WIFI: int--><!--Device-request-const NETWORK_WIFI: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## PAUSED_BY_USER
@@ -251,6 +291,8 @@ const PAUSED_BY_USER: number
 下载任务暂停原因：用户暂停会话。
 
 **起始版本：** 9
+
+<!--Device-request-const PAUSED_BY_USER: int--><!--Device-request-const PAUSED_BY_USER: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -264,6 +306,8 @@ const PAUSED_QUEUED_FOR_WIFI: number
 
 **起始版本：** 7
 
+<!--Device-request-const PAUSED_QUEUED_FOR_WIFI: int--><!--Device-request-const PAUSED_QUEUED_FOR_WIFI: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## PAUSED_UNKNOWN
@@ -275,6 +319,8 @@ const PAUSED_UNKNOWN: number
 下载任务暂停原因：未知原因导致暂停下载。
 
 **起始版本：** 7
+
+<!--Device-request-const PAUSED_UNKNOWN: int--><!--Device-request-const PAUSED_UNKNOWN: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -290,6 +336,8 @@ const PAUSED_WAITING_FOR_NETWORK: number
 
 **起始版本：** 7
 
+<!--Device-request-const PAUSED_WAITING_FOR_NETWORK: int--><!--Device-request-const PAUSED_WAITING_FOR_NETWORK: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## PAUSED_WAITING_TO_RETRY
@@ -301,6 +349,8 @@ const PAUSED_WAITING_TO_RETRY: number
 下载任务暂停原因：网络错误导致下载会话将被重试。
 
 **起始版本：** 7
+
+<!--Device-request-const PAUSED_WAITING_TO_RETRY: int--><!--Device-request-const PAUSED_WAITING_TO_RETRY: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -314,6 +364,8 @@ const SESSION_FAILED: number
 
 **起始版本：** 7
 
+<!--Device-request-const SESSION_FAILED: int--><!--Device-request-const SESSION_FAILED: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## SESSION_PAUSED
@@ -325,6 +377,8 @@ const SESSION_PAUSED: number
 下载任务状态码：下载会话已暂停。
 
 **起始版本：** 7
+
+<!--Device-request-const SESSION_PAUSED: int--><!--Device-request-const SESSION_PAUSED: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 
@@ -338,6 +392,8 @@ const SESSION_PENDING: number
 
 **起始版本：** 7
 
+<!--Device-request-const SESSION_PENDING: int--><!--Device-request-const SESSION_PENDING: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## SESSION_RUNNING
@@ -350,6 +406,8 @@ const SESSION_RUNNING: number
 
 **起始版本：** 7
 
+<!--Device-request-const SESSION_RUNNING: int--><!--Device-request-const SESSION_RUNNING: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Download
 
 ## SESSION_SUCCESSFUL
@@ -361,6 +419,8 @@ const SESSION_SUCCESSFUL: number
 下载任务状态码：下载会话已完成。
 
 **起始版本：** 7
+
+<!--Device-request-const SESSION_SUCCESSFUL: int--><!--Device-request-const SESSION_SUCCESSFUL: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.Download
 

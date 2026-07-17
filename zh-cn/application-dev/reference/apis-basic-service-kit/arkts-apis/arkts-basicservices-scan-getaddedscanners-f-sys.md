@@ -1,5 +1,11 @@
 # getAddedScanners（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+```
+
 ## getAddedScanners
 
 ```TypeScript
@@ -12,6 +18,8 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-scan-function getAddedScanners(): Promise<ScannerDevice[]>--><!--Device-scan-function getAddedScanners(): Promise<ScannerDevice[]>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -20,14 +28,14 @@ function getAddedScanners(): Promise<ScannerDevice[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ScannerDevice[]&gt; | Promise used to return the array of added scanners. |
+| Promise<ScannerDevice[]> | Promise used to return the array of added scanners. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
 **示例：**
 

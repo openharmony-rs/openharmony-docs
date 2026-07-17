@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-deviceManager-interface RemoteDeviceDriver--><!--Device-deviceManager-interface RemoteDeviceDriver-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
 
 ## deviceId
 
@@ -17,6 +25,8 @@ deviceId: number
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-RemoteDeviceDriver-deviceId: long--><!--Device-RemoteDeviceDriver-deviceId: long-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
@@ -31,6 +41,8 @@ remote: rpc.IRemoteObject
 **类型：** rpc.IRemoteObject
 
 **起始版本：** 11
+
+<!--Device-RemoteDeviceDriver-remote: rpc.IRemoteObject--><!--Device-RemoteDeviceDriver-remote: rpc.IRemoteObject-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 

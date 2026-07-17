@@ -10,6 +10,8 @@ type WatermarkCallback = (jobId: string, fd: number) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-print-type WatermarkCallback = (jobId: string, fd: int) => void--><!--Device-print-type WatermarkCallback = (jobId: string, fd: int) => void-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**

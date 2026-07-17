@@ -1,16 +1,24 @@
 # abort
 
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+```
+
 ## abort
 
 ```TypeScript
 function abort(handle: Uint8Array, callback: AsyncCallback<void>): void
 ```
 
-��ʾ��ֹǩ������ǩ�Ĳ�����ʹ��Callback�첽�ص���
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。
 
 **起始版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+<!--Device-certificateManager-function abort(handle: Uint8Array, callback: AsyncCallback<void>): void--><!--Device-certificateManager-function abort(handle: Uint8Array, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -18,16 +26,16 @@ function abort(handle: Uint8Array, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | Uint8Array | 是 | ��ʾ��ʼ���������صľ����<br/><br/>��󳤶�Ϊ8�ֽڡ� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص�����������ֹǩ������ǩ�ɹ�ʱ��errΪnull������Ϊ������� |
+| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示初始化操作返回的句柄，。<br>最大长度为8。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当中止签名、验签成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [17500001](../../errorcode-universal.md#17500001-Internal) | Internal error. Possible causes: 1. IPC communication failed;<br/><br/>2. Memory operation error; 3. File operation error. Please try again. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例：**
 
@@ -59,11 +67,13 @@ try {
 function abort(handle: Uint8Array): Promise<void>
 ```
 
-��ʾ��ֹǩ������ǩ�Ĳ�����ʹ��Promise�첽�ص���
+中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Promise异步回调。
 
 **起始版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+<!--Device-certificateManager-function abort(handle: Uint8Array): Promise<void>--><!--Device-certificateManager-function abort(handle: Uint8Array): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -71,21 +81,21 @@ function abort(handle: Uint8Array): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | Uint8Array | 是 | ��ʾ��ʼ���������صľ������󳤶�Ϊ8�ֽڡ� |
+| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示初始化操作返回的句柄，。<br>最大长度为8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [17500001](../../errorcode-universal.md#17500001-Internal) | Internal error. Possible causes: 1. IPC communication failed;<br/><br/>2. Memory operation error; 3. File operation error. Please try again. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例：**
 

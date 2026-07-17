@@ -1,20 +1,26 @@
 # getAbilityIcon（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAbilityIcon
 
 ```TypeScript
 function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback<image.PixelMap>): void
 ```
 
-ͨ��bundleName��moduleName��abilityName��ȡ��ӦIcon��[PixelMap](@ohos.multimedia.image:image)��ʹ��callback�첽�ص���
+通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，使用callback异步回调。
 
-��ȡ���÷���Ϣʱ����ҪȨ�ޡ�
+获取调用方信息时不需要权限。
 
-> **˵����**
->
-> ��API version 9��ʼ֧�֣���API version 10��ʼ����������ʹ��
-> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getMediaContent-5)
-> �����
+> **说明：**  
+>  
+> 从API version 9开始支持，从API version 10开始废弃，建议使用  
+> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-5)  
+> 替代。
 
 **起始版本：** 9
 
@@ -24,6 +30,8 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundleManager-function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback<image.PixelMap>): void--><!--Device-bundleManager-function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **系统接口：** 此接口为系统接口。
@@ -32,23 +40,23 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��Ӧ��Bundle���ơ� |
-| moduleName | string | 是 | Ҫ��ѯ��Ӧ��Module���ơ� |
-| abilityName | string | 是 | Ҫ��ѯ��Ability������� |
-| callback | AsyncCallback&lt;image.PixelMap&gt; | 是 | �ص�����������ָ��[PixelMap](@ohos.multimedia.image:image)����Ϊ��������<br/>ʱ����Ρ� |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
+| moduleName | string | 是 | 要查询的应用Module名称。 |
+| abilityName | string | 是 | 要查询的Ability组件名。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<image.PixelMap> | 是 | 回调函数，返回指定[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，作为程序启动时的入参。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle is not found. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability is not found. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
-| [17700029](../../errorcode-universal.md#17700029-The) | The specified ability is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
+| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
 
 ## getAbilityIcon
@@ -57,15 +65,15 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise<image.PixelMap>
 ```
 
-ͨ��bundleName��moduleName��abilityName��ȡ��ӦIcon��[PixelMap](@ohos.multimedia.image:image)��ʹ��Promise�첽�ص���
+通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，使用Promise异步回调。
 
-��ȡ���÷���Ϣʱ����ҪȨ�ޡ�
+获取调用方信息时不需要权限。
 
-> **˵����**
->
-> ��API version 9��ʼ֧�֣���API version 10��ʼ����������ʹ��
-> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getMediaContent-5)
-> �����
+> **说明：**  
+>  
+> 从API version 9开始支持，从API version 10开始废弃，建议使用  
+> [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent-5)  
+> 替代。
 
 **起始版本：** 9
 
@@ -75,6 +83,8 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundleManager-function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise<image.PixelMap>--><!--Device-bundleManager-function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise<image.PixelMap>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **系统接口：** 此接口为系统接口。
@@ -83,28 +93,28 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��Ӧ��Bundle���ơ� |
-| moduleName | string | 是 | Ҫ��ѯ��Ӧ��Module���ơ� |
-| abilityName | string | 是 | Ҫ��ѯ��Ability������� |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
+| moduleName | string | 是 | 要查询的应用Module名称。 |
+| abilityName | string | 是 | 要查询的Ability组件名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;image.PixelMap&gt; | Promise used to return PixelMap. |
+| Promise<image.PixelMap> | Promise used to return PixelMap. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle is not found. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified ability is not found. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
-| [17700029](../../errorcode-universal.md#17700029-The) | The specified ability is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
+| [17700029](../errorcode-bundle.md#17700029-指定的ability被禁用) | The specified ability is disabled. |
 
 **示例：**
 

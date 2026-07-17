@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-scan-interface PictureScanProgress--><!--Device-scan-interface PictureScanProgress-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+```
 
 ## isFinal
 
@@ -17,6 +25,8 @@ isFinal: boolean
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-PictureScanProgress-isFinal: boolean--><!--Device-PictureScanProgress-isFinal: boolean-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ pictureFd: number
 
 **起始版本：** 20
 
+<!--Device-PictureScanProgress-pictureFd: int--><!--Device-PictureScanProgress-pictureFd: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## progress
@@ -45,6 +57,8 @@ progress: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-PictureScanProgress-progress: int--><!--Device-PictureScanProgress-progress: int-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

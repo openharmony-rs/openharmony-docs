@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-update-export interface TaskBody--><!--Device-update-export interface TaskBody-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { update } from '@kit.BasicServicesKit';
+```
 
 ## errorMessages
 
@@ -19,6 +27,8 @@ errorMessages: Array<ErrorMessage>
 **类型：** Array<ErrorMessage>
 
 **起始版本：** 9
+
+<!--Device-TaskBody-errorMessages: Array<ErrorMessage>--><!--Device-TaskBody-errorMessages: Array<ErrorMessage>-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -36,6 +46,8 @@ installMode: number
 
 **起始版本：** 9
 
+<!--Device-TaskBody-installMode: int--><!--Device-TaskBody-installMode: int-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ progress: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-TaskBody-progress: int--><!--Device-TaskBody-progress: int-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -68,6 +82,8 @@ status: UpgradeStatus
 
 **起始版本：** 9
 
+<!--Device-TaskBody-status: UpgradeStatus--><!--Device-TaskBody-status: UpgradeStatus-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ subStatus: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-TaskBody-subStatus: int--><!--Device-TaskBody-subStatus: int-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -100,6 +118,8 @@ versionComponents: Array<VersionComponent>
 
 **起始版本：** 9
 
+<!--Device-TaskBody-versionComponents: Array<VersionComponent>--><!--Device-TaskBody-versionComponents: Array<VersionComponent>-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -115,6 +135,8 @@ versionDigestInfo: VersionDigestInfo
 **类型：** VersionDigestInfo
 
 **起始版本：** 9
+
+<!--Device-TaskBody-versionDigestInfo: VersionDigestInfo--><!--Device-TaskBody-versionDigestInfo: VersionDigestInfo-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

@@ -1,12 +1,18 @@
 # BundleInfo
 
-����Ӧ�ð���Ϣ��
+描述应用包信息。
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-bundleManager-interface BundleInfo--><!--Device-bundleManager-interface BundleInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
 
 ## appIndex
 
@@ -14,13 +20,15 @@
 readonly appIndex: number
 ```
 
-Ӧ�ð��ķ���������ʶ�����ڷ���Ӧ������Ч��
+应用包的分身索引标识，仅在分身应用中生效。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly appIndex: number--><!--Device-BundleInfo-readonly appIndex: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -30,13 +38,15 @@ readonly appIndex: number
 readonly appInfo: ApplicationInfo
 ```
 
-Ӧ�ó����������Ϣ��
+应用程序的配置信息。
 
 **类型：** ApplicationInfo
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly appInfo: ApplicationInfo--><!--Device-BundleInfo-readonly appInfo: ApplicationInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,13 +56,15 @@ readonly appInfo: ApplicationInfo
 readonly firstInstallTime?: number
 ```
 
-Ӧ���ڵ�ǰ�豸���״ΰ�װʱ�������ʾ��1970-01-01 08:00:00 UTC+8��ȥ�ĺ���������λ���룬Ԥ��Ӧ�õ��״ΰ�װʱ���Ϊ1533657660000��
+应用在当前设备的首次安装时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒，预置应用的首次安装时间戳为1533657660000。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly firstInstallTime?: number--><!--Device-BundleInfo-readonly firstInstallTime?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,13 +74,15 @@ readonly firstInstallTime?: number
 readonly installTime: number
 ```
 
-Ӧ�ð���װʱ�������ʾ��1970-01-01 08:00:00 UTC+8��ȥ�ĺ���������λ���롣
+应用包安装时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly installTime: number--><!--Device-BundleInfo-readonly installTime: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -78,13 +92,15 @@ readonly installTime: number
 readonly minCompatibleVersionCode: number
 ```
 
-�ֲ�ʽ�����µ�Ӧ�ð����ݵ���Ͱ汾����Ӧ[app.json5](../../../../quick-start/app-configuration-file.md)�����õ�minCompatibleVersionCode�ֶΡ�
+分布式场景下的应用包兼容的最低版本，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly minCompatibleVersionCode: number--><!--Device-BundleInfo-readonly minCompatibleVersionCode: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -94,13 +110,15 @@ readonly minCompatibleVersionCode: number
 readonly name: string
 ```
 
-Ӧ�ð������ƣ���Ӧ[app.json5](../../../../quick-start/app-configuration-file.md)�����õ�bundleName�ֶΡ�
+应用包的名称，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的bundleName字段。
 
 **类型：** string
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly name: string--><!--Device-BundleInfo-readonly name: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -110,13 +128,15 @@ readonly name: string
 readonly signatureInfo: SignatureInfo
 ```
 
-Ӧ�ð���ǩ����Ϣ��
+应用包的签名信息。
 
 **类型：** SignatureInfo
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly signatureInfo: SignatureInfo--><!--Device-BundleInfo-readonly signatureInfo: SignatureInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -126,13 +146,15 @@ readonly signatureInfo: SignatureInfo
 readonly targetVersion: number
 ```
 
-Ӧ������Ŀ��汾����Ӧ[app.json5](../../../../quick-start/app-configuration-file.md)�����õ�targetAPIVersion�ֶΡ�
+应用运行目标版本，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly targetVersion: number--><!--Device-BundleInfo-readonly targetVersion: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -142,13 +164,15 @@ readonly targetVersion: number
 readonly updateTime: number
 ```
 
-Ӧ�ð�����ʱ�������ʾ��1970-01-01 08:00:00 UTC+8��ȥ�ĺ���������λ���롣
+应用包更新时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly updateTime: number--><!--Device-BundleInfo-readonly updateTime: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -158,13 +182,15 @@ readonly updateTime: number
 readonly vendor: string
 ```
 
-Ӧ�ð��Ĺ�Ӧ�̣���Ӧ[app.json5](../../../../quick-start/app-configuration-file.md)�����õ�vendor�ֶΡ�
+应用包的供应商，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的vendor字段。
 
 **类型：** string
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly vendor: string--><!--Device-BundleInfo-readonly vendor: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -174,13 +200,15 @@ readonly vendor: string
 readonly versionCode: number
 ```
 
-Ӧ�ð��İ汾�ţ���Ӧ[app.json5](../../../../quick-start/app-configuration-file.md)�����õ�versionCode�ֶΡ�
+应用包的版本号，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的versionCode字段。
 
 **类型：** number
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly versionCode: number--><!--Device-BundleInfo-readonly versionCode: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -190,13 +218,15 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-Ӧ�ð��İ汾�ı�������Ϣ����Ӧ[app.json5](../../../../quick-start/app-configuration-file.md)�����õ�versionName�ֶΡ�
+应用包的版本文本描述信息，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的versionName字段。
 
 **类型：** string
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfo-readonly versionName: string--><!--Device-BundleInfo-readonly versionName: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

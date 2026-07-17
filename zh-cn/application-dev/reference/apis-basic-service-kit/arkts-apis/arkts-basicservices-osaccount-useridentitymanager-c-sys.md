@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-class UserIdentityManager--><!--Device-osAccount-class UserIdentityManager-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## addCredential
 
@@ -20,6 +28,8 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void--><!--Device-UserIdentityManager-addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -28,28 +38,28 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| credentialInfo | CredentialInfo | 是 | 指示凭据信息。 |
-| callback | IIdmCallback | 是 | 回调对象，返回添加凭据的结果。 |
+| credentialInfo | [CredentialInfo](arkts-basicservices-osaccount-credentialinfo-i-sys.md) | 是 | 指示凭据信息。 |
+| callback | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 是 | 回调对象，返回添加凭据的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid credentialInfo, i.e. authType or authSubType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found.&lt;br&gt;**适用版本：** 12+ |
-| [12300008](../../errorcode-universal.md#12300008-Restricted) | Restricted account.&lt;br&gt;**适用版本：** 12+ |
-| [12300020](../../errorcode-universal.md#12300020-Device) | Device hardware abnormal.&lt;br&gt;**适用版本：** 23+ |
-| [12300090](../../errorcode-universal.md#12300090-Crossdevice) | Cross-device capability not supported.&lt;br&gt;**适用版本：** 23+ |
-| [12300091](../../errorcode-universal.md#12300091-Crossdevice) | Cross-device communication failed.&lt;br&gt;**适用版本：** 23+ |
-| [12300101](../../errorcode-universal.md#12300101-The) | The token is invalid. |
-| [12300106](../../errorcode-universal.md#12300106-The) | The authentication type is not supported. |
-| [12300109](../../errorcode-universal.md#12300109-The) | The authentication, enrollment, or update operation is canceled. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation timeout. |
-| [12300115](../../errorcode-universal.md#12300115-The) | The number of credentials reaches the upper limit. |
-| [12300116](../../errorcode-universal.md#12300116-Credential) | Credential complexity verification failed.&lt;br&gt;**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300008](../../apis-basic-services-kit/errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| 12300090 | Cross-device capability not supported.<br>**适用版本：** 23+ |
+| 12300091 | Cross-device communication failed.<br>**适用版本：** 23+ |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
+| [12300106](../../apis-basic-services-kit/errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
+| [12300109](../../apis-basic-services-kit/errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation timeout. |
+| [12300115](../../apis-basic-services-kit/errorcode-account.md#12300115-用户认证密码个数达到上限) | The number of credentials reaches the upper limit. |
+| [12300116](../../apis-basic-services-kit/errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -98,6 +108,8 @@ cancel(challenge: Uint8Array): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-cancel(challenge: Uint8Array): void--><!--Device-UserIdentityManager-cancel(challenge: Uint8Array): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -106,17 +118,17 @@ cancel(challenge: Uint8Array): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | Uint8Array | 是 | 挑战值。 |
+| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 挑战值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid challenge. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid challenge. |
 
 **示例：**
 
@@ -146,6 +158,8 @@ closeSession(accountId?: number): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-closeSession(accountId?: int): void--><!--Device-UserIdentityManager-closeSession(accountId?: int): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -160,12 +174,12 @@ closeSession(accountId?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Incorrect parameter types.&lt;br&gt;**适用版本：** 12+ |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally.&lt;br&gt;**适用版本：** 12+ |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found.&lt;br&gt;**适用版本：** 12+ |
-| [12300008](../../errorcode-universal.md#12300008-Restricted) | Restricted account.&lt;br&gt;**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Incorrect parameter types.<br>**适用版本：** 12+ |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally.<br>**适用版本：** 12+ |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300008](../../apis-basic-services-kit/errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -186,6 +200,8 @@ constructor()
 
 **起始版本：** 8
 
+<!--Device-UserIdentityManager-constructor()--><!--Device-UserIdentityManager-constructor()-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -194,7 +210,7 @@ constructor()
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
 **示例：**
 
@@ -215,6 +231,8 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void--><!--Device-UserIdentityManager-delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -223,21 +241,21 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| credentialId | Uint8Array | 是 | 凭证索引。 |
-| token | Uint8Array | 是 | 身份验证令牌。 |
-| callback | IIdmCallback | 是 | 回调对象，返回删除凭据的结果。 |
+| credentialId | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 凭证索引。 |
+| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 身份验证令牌。 |
+| callback | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 是 | 回调对象，返回删除凭据的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid credentialId. |
-| [12300101](../../errorcode-universal.md#12300101-The) | The token is invalid. |
-| [12300102](../../errorcode-universal.md#12300102-The) | The credential does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid credentialId. |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 
 **示例：**
 
@@ -273,6 +291,8 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-delUser(token: Uint8Array, callback: IIdmCallback): void--><!--Device-UserIdentityManager-delUser(token: Uint8Array, callback: IIdmCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -281,18 +301,18 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| token | Uint8Array | 是 | 身份验证令牌。 |
-| callback | IIdmCallback | 是 | 回调对象，返回删除用户的结果。 |
+| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 身份验证令牌。 |
+| callback | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 是 | 回调对象，返回删除用户的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300101](../../errorcode-universal.md#12300101-The) | The token is invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 
 **示例：**
 
@@ -327,6 +347,8 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void--><!--Device-UserIdentityManager-getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -335,16 +357,16 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt; | 是 | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<EnrolledCredInfo>> | 是 | 回调函数。如果成功，err为null，data为当前用户的所有已注册凭据信息；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300020](../../errorcode-universal.md#12300020-Device) | Device hardware abnormal.&lt;br&gt;**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例：**
 
@@ -379,6 +401,8 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>): void--><!--Device-UserIdentityManager-getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -387,18 +411,18 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| authType | AuthType | 是 | 认证类型。 |
-| callback | AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt; | 是 | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对象。 |
+| authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 认证类型。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<EnrolledCredInfo>> | 是 | 回调函数，如果获取成功，err为null，data为当前用户指定类型的所有已注册凭据信息；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid authType. |
-| [12300020](../../errorcode-universal.md#12300020-Device) | Device hardware abnormal.&lt;br&gt;**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid authType. |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例：**
 
@@ -434,6 +458,8 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>--><!--Device-UserIdentityManager-getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -442,23 +468,23 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| authType | AuthType | 是 | 认证类型，表示查询所有认证类型的信息。 |
+| authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 认证类型，表示查询所有认证类型的信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
+| Promise<Array<EnrolledCredInfo>> | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid authType. |
-| [12300020](../../errorcode-universal.md#12300020-Device) | Device hardware abnormal.&lt;br&gt;**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid authType. |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例：**
 
@@ -491,6 +517,8 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>--><!--Device-UserIdentityManager-getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -499,24 +527,24 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | GetAuthInfoOptions | 否 | 获取认证信息的可选参数集合。默认为空，表示查询当前用户所有已注册凭据信息。 |
+| options | [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 否 | 获取认证信息的可选参数集合。默认为空，表示查询当前用户所有已注册凭据信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
+| Promise<Array<EnrolledCredInfo>> | Promise对象，返回当前用户指定类型的所有已注册凭据信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid options. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300020](../../errorcode-universal.md#12300020-Device) | Device hardware abnormal.&lt;br&gt;**适用版本：** 23+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid options. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
 
 **示例：**
 
@@ -553,6 +581,8 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>--><!--Device-UserIdentityManager-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -561,27 +591,27 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| authType | AuthType | 是 | 认证凭据类型 |
+| authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 认证凭据类型 |
 | accountId | number | 否 | 系统账号标识，默认为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。 |
+| Promise<Uint8Array> | Promise对象，返回已注册的凭据ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid authType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300020](../../errorcode-universal.md#12300020-Device) | Device hardware abnormal.&lt;br&gt;**适用版本：** 23+ |
-| [12300102](../../errorcode-universal.md#12300102-The) | The credential does not exist. |
-| [12300106](../../errorcode-universal.md#12300106-The) | The authentication type is not supported. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid authType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300106](../../apis-basic-services-kit/errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
 
 **示例：**
 
@@ -616,6 +646,8 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void--><!--Device-UserIdentityManager-offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -624,15 +656,15 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;CredentialChangeInfo&gt; | 否 | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关<br/>联的订阅记录。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CredentialChangeInfo> | 否 | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关联的订阅记录。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例：**
 
@@ -681,6 +713,8 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialChangeInfo>): void--><!--Device-UserIdentityManager-onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialChangeInfo>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -689,18 +723,18 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| credentialTypes | AuthType[] | 是 | 表示订阅的凭据类型集合。 |
-| callback | Callback&lt;CredentialChangeInfo&gt; | 是 | 表示用于接收凭据变更事件的回调函数。 |
+| credentialTypes | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md)[] | 是 | 表示订阅的凭据类型集合。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CredentialChangeInfo> | 是 | 表示用于接收凭据变更事件的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-One) | One or more credential types are invalid. |
-| [12300106](../../errorcode-universal.md#12300106-One) | One or more credential types are not supported. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | One or more credential types are invalid. |
+| [12300106](../../apis-basic-services-kit/errorcode-account.md#12300106-认证类型不支持) | One or more credential types are not supported. |
 
 **示例：**
 
@@ -741,6 +775,8 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-openSession(callback: AsyncCallback<Uint8Array>): void--><!--Device-UserIdentityManager-openSession(callback: AsyncCallback<Uint8Array>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -749,16 +785,16 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Uint8Array> | 是 | 回调函数。如果打开会话成功，err为null，data为挑战值；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例：**
 
@@ -793,6 +829,8 @@ openSession(accountId?: number): Promise<Uint8Array>
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-openSession(accountId?: int): Promise<Uint8Array>--><!--Device-UserIdentityManager-openSession(accountId?: int): Promise<Uint8Array>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -807,17 +845,17 @@ openSession(accountId?: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
+| Promise<Uint8Array> | Promise对象，返回挑战值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found.&lt;br&gt;**适用版本：** 12+ |
-| [12300008](../../errorcode-universal.md#12300008-Restricted) | Restricted account.&lt;br&gt;**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300008](../../apis-basic-services-kit/errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -851,6 +889,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **需要权限：** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void--><!--Device-UserIdentityManager-updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -859,24 +899,24 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| credentialInfo | CredentialInfo | 是 | 指示凭据信息。 |
-| callback | IIdmCallback | 是 | 回调对象，返回更新凭据的结果。 |
+| credentialInfo | [CredentialInfo](arkts-basicservices-osaccount-credentialinfo-i-sys.md) | 是 | 指示凭据信息。 |
+| callback | [IIdmCallback](arkts-basicservices-osaccount-iidmcallback-i-sys.md) | 是 | 回调对象，返回更新凭据的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid credentialInfo, i.e. authType or authSubType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found.&lt;br&gt;**适用版本：** 12+ |
-| [12300101](../../errorcode-universal.md#12300101-The) | The token is invalid. |
-| [12300102](../../errorcode-universal.md#12300102-The) | The credential does not exist. |
-| [12300106](../../errorcode-universal.md#12300106-The) | The authentication type is not supported. |
-| [12300109](../../errorcode-universal.md#12300109-The) | The authentication, enrollment, or update operation is canceled. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300116](../../errorcode-universal.md#12300116-Credential) | Credential complexity verification failed.&lt;br&gt;**适用版本：** 12+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
+| [12300106](../../apis-basic-services-kit/errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
+| [12300109](../../apis-basic-services-kit/errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300116](../../apis-basic-services-kit/errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
 
 **示例：**
 

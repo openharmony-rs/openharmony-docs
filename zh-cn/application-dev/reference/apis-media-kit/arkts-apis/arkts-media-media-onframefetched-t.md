@@ -10,6 +10,8 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-media-type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void--><!--Device-media-type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **参数：**

@@ -6,11 +6,11 @@ typedef struct OH_ArkUI_TextController OH_ArkUI_TextController
 
 ## 概述
 
-Defines controller for text.
+定义文本控制器。
 
 **起始版本：** 26.0.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [text.h](capi-text-h.md)
 

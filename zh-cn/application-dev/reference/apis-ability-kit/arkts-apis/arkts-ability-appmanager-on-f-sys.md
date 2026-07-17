@@ -1,5 +1,11 @@
 # on（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## on('applicationState')
 
 ```TypeScript
@@ -12,6 +18,8 @@ function on(type: 'applicationState', observer: ApplicationStateObserver, filter
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStateFilter): int--><!--Device-appManager-function on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStateFilter): int-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,22 +29,22 @@ function on(type: 'applicationState', observer: ApplicationStateObserver, filter
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'applicationState' | 是 | 调用接口类型，固定填'applicationState'字符串。 |
-| observer | ApplicationStateObserver | 是 | 应用状态监听器，用于监听应用的生命周期变化。 |
-| filter | AppStateFilter | 是 | 应用生命周期变化事件的过滤器。 |
+| observer | [ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md) | 是 | 应用状态监听器，用于监听应用的生命周期变化。 |
+| filter | [AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md) | 是 | 应用生命周期变化事件的过滤器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 已注册监听器ID，可用于<br/>[off](arkts-ability-appmanager-off-f.md#off-2)接口注销监听器。 |
+| number | 已注册监听器ID，可用于[off](arkts-ability-appmanager-off-f.md#off-2)接口注销监听器。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. Possible causes: 1. Failed to connect to the system service;<br/>2. The system service failed to communicate with dependency module. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Failed to connect to the system service;2. The system service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -104,6 +112,8 @@ function on(type: 'appForegroundState', observer: AppForegroundStateObserver): v
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function on(type: 'appForegroundState', observer: AppForegroundStateObserver): void--><!--Device-appManager-function on(type: 'appForegroundState', observer: AppForegroundStateObserver): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -113,16 +123,16 @@ function on(type: 'appForegroundState', observer: AppForegroundStateObserver): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'appForegroundState' | 是 | 调用接口类型，固定填'appForegroundState'字符串。 |
-| observer | AppForegroundStateObserver | 是 | 应用状态监听器，用于监听应用的启动和退出。 |
+| observer | [AppForegroundStateObserver](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md) | 是 | 应用状态监听器，用于监听应用的启动和退出。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例：**
 
@@ -159,6 +169,8 @@ function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObse
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bundleName?: string): void--><!--Device-appManager-function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bundleName?: string): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -168,17 +180,17 @@ function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObse
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'abilityFirstFrameState' | 是 | 调用接口类型，固定填'abilityFirstFrameState'字符串。 |
-| observer | AbilityFirstFrameStateObserver | 是 | 表示待注册的Ability首帧绘制完成事件观察者对象。 |
+| observer | [AbilityFirstFrameStateObserver](arkts-ability-appmanager-abilityfirstframestateobserver-t-sys.md) | 是 | 表示待注册的Ability首帧绘制完成事件观察者对象。 |
 | bundleName | string | 否 | 表示待监听的Ability的应用bundleName，不填表示注册监听所有应用ability首帧绘制完成事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例：**
 

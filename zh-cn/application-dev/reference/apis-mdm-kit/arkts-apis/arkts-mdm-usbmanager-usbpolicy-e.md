@@ -1,14 +1,10 @@
 # UsbPolicy
 
-```TypeScript
-export enum UsbPolicy
-```
-
-USB��д���Ե�ö�١�
+USB读写策略的枚举。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-usbManager-export enum UsbPolicy--><!--Device-usbManager-export enum UsbPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ USB��д���Ե�ö�١�
 READ_WRITE = 0
 ```
 
-�ɶ���д��
+可读可写。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UsbPolicy-READ_WRITE = 0--><!--Device-UsbPolicy-READ_WRITE = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ READ_WRITE = 0
 READ_ONLY = 1
 ```
 
-ֻ����
+只读。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UsbPolicy-READ_ONLY = 1--><!--Device-UsbPolicy-READ_ONLY = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ READ_ONLY = 1
 DISABLED = 2
 ```
 
-���á�
+禁用。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UsbPolicy-DISABLED = 2--><!--Device-UsbPolicy-DISABLED = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

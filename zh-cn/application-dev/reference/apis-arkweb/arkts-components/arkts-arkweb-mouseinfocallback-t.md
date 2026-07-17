@@ -8,6 +8,8 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 **起始版本：** 20
 
+<!--Device-unnamed-type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void--><!--Device-unnamed-type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**

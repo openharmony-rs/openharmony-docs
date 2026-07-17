@@ -1,21 +1,18 @@
 # PlaceholderAlignment
 
-```TypeScript
-enum PlaceholderAlignment
-```
-
 占位符相对于周围文本的纵向对齐方式。
 
-!
-[zh-ch_image_PlaceholderAlignment.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png)
+![zh-ch_image_PlaceholderAlignment.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png)
 
-> **说明：**
->
-> 示意图展示了后三种对齐方式，前三种对齐方式在文本基线对齐方式上类似，比较位置是文本基线，即绿色线条部分。
->
+> **说明：**  
+>  
+> 示意图展示了后三种对齐方式，前三种对齐方式在文本基线对齐方式上类似，比较位置是文本基线，即绿色线条部分。  
+>  
 > ![zh-ch_image_Baseline.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_Baseline.png)
 
 **起始版本：** 12
+
+<!--Device-text-enum PlaceholderAlignment--><!--Device-text-enum PlaceholderAlignment-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -31,6 +28,8 @@ OFFSET_AT_BASELINE = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PlaceholderAlignment-OFFSET_AT_BASELINE = 0--><!--Device-PlaceholderAlignment-OFFSET_AT_BASELINE = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## ABOVE_BASELINE
@@ -44,6 +43,8 @@ ABOVE_BASELINE = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-ABOVE_BASELINE = 1--><!--Device-PlaceholderAlignment-ABOVE_BASELINE = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -59,6 +60,8 @@ BELOW_BASELINE = 2
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PlaceholderAlignment-BELOW_BASELINE = 2--><!--Device-PlaceholderAlignment-BELOW_BASELINE = 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## TOP_OF_ROW_BOX
@@ -72,6 +75,8 @@ TOP_OF_ROW_BOX = 3
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-TOP_OF_ROW_BOX = 3--><!--Device-PlaceholderAlignment-TOP_OF_ROW_BOX = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -87,6 +92,8 @@ BOTTOM_OF_ROW_BOX = 4
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PlaceholderAlignment-BOTTOM_OF_ROW_BOX = 4--><!--Device-PlaceholderAlignment-BOTTOM_OF_ROW_BOX = 4-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## CENTER_OF_ROW_BOX
@@ -101,6 +108,8 @@ CENTER_OF_ROW_BOX = 5
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PlaceholderAlignment-CENTER_OF_ROW_BOX = 5--><!--Device-PlaceholderAlignment-CENTER_OF_ROW_BOX = 5-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## FOLLOW_PARAGRAPH
@@ -114,6 +123,8 @@ Follow Paragraph setting,
 **起始版本：** 20
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderAlignment-FOLLOW_PARAGRAPH = 6--><!--Device-PlaceholderAlignment-FOLLOW_PARAGRAPH = 6-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

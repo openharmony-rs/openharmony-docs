@@ -1,5 +1,11 @@
 # fdatasync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## fdatasync
 
 ```TypeScript
@@ -9,6 +15,8 @@ declare function fdatasync(fd: number): Promise<void>
 实现文件内容数据同步，使用promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function fdatasync(fd: number): Promise<void>--><!--Device-unnamed-declare function fdatasync(fd: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -22,7 +30,7 @@ declare function fdatasync(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -47,6 +55,8 @@ declare function fdatasync(fd: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare function fdatasync(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fdatasync(fd: number, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -54,7 +64,7 @@ declare function fdatasync(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 已打开的文件描述符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步将文件内容数据同步之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步将文件内容数据同步之后的回调。 |
 
 **错误码：**
 

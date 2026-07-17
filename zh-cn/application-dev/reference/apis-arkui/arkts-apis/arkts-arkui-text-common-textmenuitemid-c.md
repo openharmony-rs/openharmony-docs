@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare class TextMenuItemId--><!--Device-unnamed-declare class TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +20,9 @@ equals(id: TextMenuItemId): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-equals(id: TextMenuItemId): boolean--><!--Device-TextMenuItemId-equals(id: TextMenuItemId): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +30,7 @@ equals(id: TextMenuItemId): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | TextMenuItemId | 是 | TextMenuItemId的id。 |
+| id | [TextMenuItemId](arkts-arkui-text-common-textmenuitemid-c.md) | 是 | TextMenuItemId的id。 |
 
 **返回值：**
 
@@ -48,7 +50,9 @@ static of(id: ResourceStr): TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static of(id: ResourceStr): TextMenuItemId--><!--Device-TextMenuItemId-static of(id: ResourceStr): TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,13 +60,13 @@ static of(id: ResourceStr): TextMenuItemId
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | ResourceStr | 是 | 菜单的id。 |
+| id | [ResourceStr](arkts-arkui-resourcestr-t.md) | 是 | 菜单的id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| TextMenuItemId | TextMenuItemId的对象。 |
+| [TextMenuItemId](arkts-arkui-text-common-textmenuitemid-c.md) | TextMenuItemId的对象。 |
 
 ## AI_WRITER
 
@@ -78,7 +82,9 @@ static readonly AI_WRITER: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly AI_WRITER: TextMenuItemId--><!--Device-TextMenuItemId-static readonly AI_WRITER: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +102,9 @@ static readonly CAMERA_INPUT: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly CAMERA_INPUT: TextMenuItemId--><!--Device-TextMenuItemId-static readonly CAMERA_INPUT: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,7 +122,9 @@ static readonly COLLABORATION_SERVICE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly COLLABORATION_SERVICE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly COLLABORATION_SERVICE: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,7 +142,9 @@ static readonly COPY: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly COPY: TextMenuItemId--><!--Device-TextMenuItemId-static readonly COPY: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,7 +162,9 @@ static readonly CUT: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly CUT: TextMenuItemId--><!--Device-TextMenuItemId-static readonly CUT: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +182,9 @@ static readonly PASTE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly PASTE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly PASTE: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,7 +202,9 @@ static readonly SEARCH: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly SEARCH: TextMenuItemId--><!--Device-TextMenuItemId-static readonly SEARCH: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,7 +222,9 @@ static readonly SELECT_ALL: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly SELECT_ALL: TextMenuItemId--><!--Device-TextMenuItemId-static readonly SELECT_ALL: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,7 +242,9 @@ static readonly SHARE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly SHARE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly SHARE: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,7 +262,9 @@ static readonly TRANSLATE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly TRANSLATE: TextMenuItemId--><!--Device-TextMenuItemId-static readonly TRANSLATE: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,7 +282,9 @@ static readonly address: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly address: TextMenuItemId--><!--Device-TextMenuItemId-static readonly address: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,7 +302,9 @@ static readonly askAI: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly askAI: TextMenuItemId--><!--Device-TextMenuItemId-static readonly askAI: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,8 +314,7 @@ static readonly askAI: TextMenuItemId
 static readonly autoFill: TextMenuItemId
 ```
 
-自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](arkts-arkui-search.md)、[TextInput](arkts-arkui-textinput.md)、[TextArea](arkts-arkui-textarea.md)或
-[RichEditor](arkts-arkui-richeditor.md)。
+自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](../arkts-components/arkts-arkui-search.md)、[TextInput](../arkts-components/arkts-arkui-textinput.md)、[TextArea](../arkts-components/arkts-arkui-textarea.md)或[RichEditor](../arkts-components/arkts-arkui-richeditor.md)。
 
 **类型：** TextMenuItemId
 
@@ -295,7 +322,9 @@ static readonly autoFill: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly autoFill: TextMenuItemId--><!--Device-TextMenuItemId-static readonly autoFill: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +342,9 @@ static readonly dateTime: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly dateTime: TextMenuItemId--><!--Device-TextMenuItemId-static readonly dateTime: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -331,7 +362,9 @@ static readonly email: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly email: TextMenuItemId--><!--Device-TextMenuItemId-static readonly email: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,8 +374,7 @@ static readonly email: TextMenuItemId
 static readonly passwordVault: TextMenuItemId
 ```
 
-密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](arkts-arkui-search.md)、[TextInput](arkts-arkui-textinput.md)、
-[TextArea](arkts-arkui-textarea.md)或[RichEditor](arkts-arkui-richeditor.md)。
+密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](../arkts-components/arkts-arkui-search.md)、[TextInput](../arkts-components/arkts-arkui-textinput.md)、[TextArea](../arkts-components/arkts-arkui-textarea.md)或[RichEditor](../arkts-components/arkts-arkui-richeditor.md)。
 
 **类型：** TextMenuItemId
 
@@ -350,7 +382,9 @@ static readonly passwordVault: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly passwordVault: TextMenuItemId--><!--Device-TextMenuItemId-static readonly passwordVault: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -368,7 +402,9 @@ static readonly phoneNumber: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly phoneNumber: TextMenuItemId--><!--Device-TextMenuItemId-static readonly phoneNumber: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,7 +422,9 @@ static readonly url: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextMenuItemId-static readonly url: TextMenuItemId--><!--Device-TextMenuItemId-static readonly url: TextMenuItemId-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

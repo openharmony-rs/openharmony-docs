@@ -1,14 +1,22 @@
 # getPortList
 
+## 导入模块
+
+```TypeScript
+import { serialManager } from '@kit.BasicServicesKit';
+```
+
 ## getPortList
 
 ```TypeScript
 function getPortList(): Readonly<SerialPort>[]
 ```
 
-��ѯ�����豸�嵥�������豸���ƺͶ�Ӧ�Ķ˿ںš�
+查询串口设备清单，包括设备名称和对应的端口号。
 
 **起始版本：** 19
+
+<!--Device-serialManager-function getPortList(): Readonly<SerialPort>[]--><!--Device-serialManager-function getPortList(): Readonly<SerialPort>[]-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -16,7 +24,7 @@ function getPortList(): Readonly<SerialPort>[]
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly&lt;SerialPort&gt;[] | Serial port information list. |
+| Readonly<SerialPort>[] | Serial port information list. |
 
 **示例：**
 
@@ -27,14 +35,13 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口设备清单 
-function getPortList() {
+function getPortListExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
 }
 
 ```

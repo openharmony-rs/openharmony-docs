@@ -1,21 +1,18 @@
 # CipherSpecItem
 
-```TypeScript
-enum CipherSpecItem
-```
+表示加解密参数的枚举。这些参数支持通过[setCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#setcipherspec-1)接口设置，通过[getCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#getcipherspec-1)接口获取。
 
-表示加解密参数的枚举。这些参数支持通过[setCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#setCipherSpec-1)接口设置，通过
-[getCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#getCipherSpec-1)接口获取。
+当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_MD_NAME_STR参数的支持，详细规格请参考[加解密规格](../../../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
 
-当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_MD_NAME_STR参数的支持，详细规格请参考
-[加解密规格](../../../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
-
-API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为
-SystemCapability.Security.CryptoFramework.Cipher
+API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher
 
 **起始版本：** 10
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+<!--Device-cryptoFramework-enum CipherSpecItem--><!--Device-cryptoFramework-enum CipherSpecItem-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 ## OAEP_MD_NAME_STR
 
@@ -29,7 +26,11 @@ OAEP_MD_NAME_STR = 100
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+<!--Device-CipherSpecItem-OAEP_MD_NAME_STR = 100--><!--Device-CipherSpecItem-OAEP_MD_NAME_STR = 100-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 ## OAEP_MGF_NAME_STR
 
@@ -43,7 +44,11 @@ OAEP_MGF_NAME_STR = 101
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+<!--Device-CipherSpecItem-OAEP_MGF_NAME_STR = 101--><!--Device-CipherSpecItem-OAEP_MGF_NAME_STR = 101-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 ## OAEP_MGF1_MD_STR
 
@@ -57,7 +62,11 @@ OAEP_MGF1_MD_STR = 102
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+<!--Device-CipherSpecItem-OAEP_MGF1_MD_STR = 102--><!--Device-CipherSpecItem-OAEP_MGF1_MD_STR = 102-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 ## OAEP_MGF1_PSRC_UINT8ARR
 
@@ -71,7 +80,11 @@ OAEP_MGF1_PSRC_UINT8ARR = 103
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+<!--Device-CipherSpecItem-OAEP_MGF1_PSRC_UINT8ARR = 103--><!--Device-CipherSpecItem-OAEP_MGF1_PSRC_UINT8ARR = 103-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
 ## SM2_MD_NAME_STR
 
@@ -85,5 +98,9 @@ SM2_MD_NAME_STR = 104
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+<!--Device-CipherSpecItem-SM2_MD_NAME_STR = 104--><!--Device-CipherSpecItem-SM2_MD_NAME_STR = 104-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本11：SystemCapability.Security.CryptoFramework
 

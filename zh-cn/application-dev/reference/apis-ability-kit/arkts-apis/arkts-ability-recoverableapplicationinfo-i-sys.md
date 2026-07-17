@@ -1,14 +1,14 @@
 # RecoverableApplicationInfo（系统接口）
 
-预置应用被卸载后可以恢复的预置应用信息，通过接口
-[bundleManager.getRecoverableApplicationInfo](arkts-ability-getrecoverableapplicationinfo-f-sys.md#getrecoverableapplicationinfo-1)
-获取。
+预置应用被卸载后可以恢复的预置应用信息，通过接口[bundleManager.getRecoverableApplicationInfo](arkts-ability-bundlemanager-getrecoverableapplicationinfo-f-sys.md#getrecoverableapplicationinfo-1)获取。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 本模块为系统接口。
 
 **起始版本：** 11
+
+<!--Device-unnamed-export interface RecoverableApplicationInfo--><!--Device-unnamed-export interface RecoverableApplicationInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -26,6 +26,8 @@ readonly bundleName: string
 
 **起始版本：** 11
 
+<!--Device-RecoverableApplicationInfo-readonly bundleName: string--><!--Device-RecoverableApplicationInfo-readonly bundleName: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +43,8 @@ readonly bundleType: bundleManager.BundleType
 **类型：** bundleManager.BundleType
 
 **起始版本：** 12
+
+<!--Device-RecoverableApplicationInfo-readonly bundleType: bundleManager.BundleType--><!--Device-RecoverableApplicationInfo-readonly bundleType: bundleManager.BundleType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -58,6 +62,8 @@ readonly codePaths: Array<string>
 
 **起始版本：** 12
 
+<!--Device-RecoverableApplicationInfo-readonly codePaths: Array<string>--><!--Device-RecoverableApplicationInfo-readonly codePaths: Array<string>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +79,8 @@ readonly iconId: number
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-RecoverableApplicationInfo-readonly iconId: long--><!--Device-RecoverableApplicationInfo-readonly iconId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -90,6 +98,8 @@ readonly labelId: number
 
 **起始版本：** 11
 
+<!--Device-RecoverableApplicationInfo-readonly labelId: long--><!--Device-RecoverableApplicationInfo-readonly labelId: long-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -106,6 +116,8 @@ readonly moduleName: string
 
 **起始版本：** 11
 
+<!--Device-RecoverableApplicationInfo-readonly moduleName: string--><!--Device-RecoverableApplicationInfo-readonly moduleName: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -121,6 +133,8 @@ readonly systemApp: boolean
 **类型：** boolean
 
 **起始版本：** 12
+
+<!--Device-RecoverableApplicationInfo-readonly systemApp: boolean--><!--Device-RecoverableApplicationInfo-readonly systemApp: boolean-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -110,7 +110,7 @@ bool OH_AVMetadataExtractor_OutputParam_SetSize(OH_AVMetadataExtractor_OutputPar
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 成功返回true，失败返回false。<br>     可能失败的原因：outputParam为空指针。 |
+| bool | 成功返回true，失败返回false。<br>         可能失败的原因：outputParam为空指针。 |
 
 ### OH_AVMetadataExtractor_FetchFrameByTime()
 

@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-interface AuthResult--><!--Device-osAccount-interface AuthResult-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## accountId
 
@@ -19,6 +27,8 @@ accountId?: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-AuthResult-accountId?: int--><!--Device-AuthResult-accountId?: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ credentialId?: Uint8Array
 
 **起始版本：** 12
 
+<!--Device-AuthResult-credentialId?: Uint8Array--><!--Device-AuthResult-credentialId?: Uint8Array-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ freezingTime?: number
 **类型：** number
 
 **起始版本：** 8
+
+<!--Device-AuthResult-freezingTime?: int--><!--Device-AuthResult-freezingTime?: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -68,6 +82,8 @@ nextPhaseFreezingTime?: number
 
 **起始版本：** 12
 
+<!--Device-AuthResult-nextPhaseFreezingTime?: int--><!--Device-AuthResult-nextPhaseFreezingTime?: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ pinValidityPeriod?: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-AuthResult-pinValidityPeriod?: long--><!--Device-AuthResult-pinValidityPeriod?: long-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -100,6 +118,8 @@ remainTimes?: number
 
 **起始版本：** 8
 
+<!--Device-AuthResult-remainTimes?: int--><!--Device-AuthResult-remainTimes?: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -115,6 +135,8 @@ token?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 8
+
+<!--Device-AuthResult-token?: Uint8Array--><!--Device-AuthResult-token?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

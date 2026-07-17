@@ -1,5 +1,11 @@
 # createX509Cert
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## createX509Cert
 
 ```TypeScript
@@ -12,23 +18,25 @@ function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-cert-function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert>): void--><!--Device-cert-function createX509Cert(inStream: EncodingBlob, callback: AsyncCallback<X509Cert>): void-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inStream | EncodingBlob | 是 | X509证书序列化数据。 |
-| callback | AsyncCallback&lt;X509Cert&gt; | 是 | 回调函数。当创建X509证书对象成功时，err为undefined，data为获取到的<br/>X509Cert实例；否则为错误对象。 |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | X509证书序列化数据。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<X509Cert> | 是 | 回调函数。当创建X509证书对象成功时，err为undefined，data为获取到的X509Cert实例；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [801](../../errorcode-universal.md#801-不支持该操作) | 不支持该操作。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -84,28 +92,30 @@ function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-cert-function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>--><!--Device-cert-function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inStream | EncodingBlob | 是 | X509证书序列化数据。 |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | X509证书序列化数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;X509Cert&gt; | Promise对象，返回创建的X509Cert实例。 |
+| Promise<X509Cert> | Promise对象，返回创建的X509Cert实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [801](../../errorcode-universal.md#801-不支持该操作) | 不支持该操作。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 

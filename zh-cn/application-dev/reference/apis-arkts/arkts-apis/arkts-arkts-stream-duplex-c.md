@@ -1,13 +1,20 @@
 # Duplex
 
-既可读又可写的流。双工流允许数据双向传输，即可读可写。
-**Duplex**类继承自[Readable](arkts-arkts-stream-readableoptions-i.md#ReadableOptions)，支持**Readable**中的所有API。
+既可读又可写的流。双工流允许数据双向传输，即可读可写。**Duplex**类继承自[Readable](arkts-arkts-stream-readableoptions-i.md)，支持**Readable**中的所有API。
 
-**继承/实现关系：** Duplex extends [Readable](arkts-arkts-stream-readable-c.md#Readable)
+**继承/实现关系：** Duplex extends [Readable](arkts-arkts-stream-readable-c.md)
 
 **起始版本：** 12
 
+<!--Device-stream-class Duplex extends Readable--><!--Device-stream-class Duplex extends Readable-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { stream } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -19,7 +26,9 @@ constructor()
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-constructor()--><!--Device-Duplex-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -40,7 +49,9 @@ cork(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-cork(): boolean--><!--Device-Duplex-cork(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -69,7 +80,9 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void--><!--Device-Duplex-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -99,7 +112,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.write('data', 'utf8');
+duplexStream.write("data", "utf8");
 
 ```
 
@@ -113,7 +126,9 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-doWritev(chunks: string[] | Uint8Array[], callback: Function): void--><!--Device-Duplex-doWritev(chunks: string[] | Uint8Array[], callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -147,8 +162,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('data1', 'utf8');
-duplexStream.write('data2', 'utf8');
+duplexStream.write("data1", "utf8");
+duplexStream.write("data2", "utf8");
 duplexStream.uncork();
 duplexStream.end();
 
@@ -164,7 +179,9 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable--><!--Device-Duplex-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -180,13 +197,13 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 | 类型 | 说明 |
 | --- | --- |
-| Writable | 当前**Duplex**对象。 |
+| [Writable](arkts-arkts-stream-writable-c.md) | 当前**Duplex**对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200039](../../errorcode-universal.md#10200039-The) | The doTransform method has not been implemented for a class that inherits<br/>from Transform. |
+| [10200039](../errorcode-utils.md#10200039-dotransform接口未实现) | The doTransform method has not been implemented for a class that inherits from Transform. |
 
 **示例：**
 
@@ -206,7 +223,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end('test', 'utf8', () => {
+duplexStream.end("test", "utf8", () => {
   console.info("Duplex is end"); // Duplex is end
 });
 
@@ -222,7 +239,9 @@ setDefaultEncoding(encoding?: string): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-setDefaultEncoding(encoding?: string): boolean--><!--Device-Duplex-setDefaultEncoding(encoding?: string): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -255,7 +274,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.setDefaultEncoding('utf8');
+let result = duplexStream.setDefaultEncoding("utf8");
 console.info("duplexStream is result", result); // duplexStream is result true
 
 ```
@@ -270,7 +289,9 @@ uncork(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-uncork(): boolean--><!--Device-Duplex-uncork(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -283,7 +304,7 @@ uncork(): boolean
 **示例：**
 
 ```TypeScript
-let dataWritten = '';
+let dataWritten = "";
 class TestDuplex extends stream.Duplex {
   constructor() {
     super();
@@ -300,8 +321,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('a');
-duplexStream.write('b');
+duplexStream.write("a");
+duplexStream.write("b");
 duplexStream.uncork();
 console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 
@@ -317,7 +338,9 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean--><!--Device-Duplex-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -339,9 +362,9 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200036](../../errorcode-universal.md#10200036-The) | The stream has been ended. |
-| [10200037](../../errorcode-universal.md#10200037-The) | The callback is invoked multiple times consecutively. |
-| [10200039](../../errorcode-universal.md#10200039-The) | The doTransform method has not been implemented for a class that inherits<br/>from Transform. |
+| [10200036](../errorcode-utils.md#10200036-流已经结束仍进行写操作) | The stream has been ended. |
+| [10200037](../errorcode-utils.md#10200037-多次调用callback) | The callback is invoked multiple times consecutively. |
+| [10200039](../errorcode-utils.md#10200039-dotransform接口未实现) | The doTransform method has not been implemented for a class that inherits from Transform. |
 
 **示例：**
 
@@ -361,7 +384,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write('test', 'utf8');
+let result = duplexStream.write("test", "utf8");
 console.info("duplexStream result", result); // duplexStream result true
 
 ```
@@ -378,7 +401,9 @@ get writable(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writable(): boolean--><!--Device-Duplex-get writable(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -394,7 +419,9 @@ get writableCorked(): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writableCorked(): int--><!--Device-Duplex-get writableCorked(): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -410,7 +437,9 @@ get writableEnded(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writableEnded(): boolean--><!--Device-Duplex-get writableEnded(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -426,7 +455,9 @@ get writableFinished(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writableFinished(): boolean--><!--Device-Duplex-get writableFinished(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -442,7 +473,9 @@ highWatermark的值。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writableHighWatermark(): int--><!--Device-Duplex-get writableHighWatermark(): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -458,7 +491,9 @@ get writableLength(): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writableLength(): int--><!--Device-Duplex-get writableLength(): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -474,7 +509,9 @@ get writableObjectMode(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Duplex-get writableObjectMode(): boolean--><!--Device-Duplex-get writableObjectMode(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

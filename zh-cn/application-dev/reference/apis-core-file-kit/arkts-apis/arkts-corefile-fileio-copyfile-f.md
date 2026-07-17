@@ -14,6 +14,8 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 
 **替代接口：** [fs:copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1)
 
+<!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -28,7 +30,7 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 
 ## copyFile
@@ -45,6 +47,8 @@ copyFile.
 
 **替代接口：** [fs:copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1)
 
+<!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -53,7 +57,7 @@ copyFile.
 | --- | --- | --- | --- |
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件描述符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步复制文件之后的回调。 |
 
 
 ## copyFile
@@ -75,6 +79,18 @@ declare function copyFile(
 
 **替代接口：** [fs:copyFile](arkts-corefile-file-fs-copyfile-f.md#copyfile-1)
 
+<!--Device-unnamed-declare function copyFile(
+  src: string | number,
+  dest: string | number,
+  mode: number,
+  callback: AsyncCallback<void>
+): void--><!--Device-unnamed-declare function copyFile(
+  src: string | number,
+  dest: string | number,
+  mode: number,
+  callback: AsyncCallback<void>
+): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -84,5 +100,5 @@ declare function copyFile(
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件描述符。 |
 | mode | number | 是 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步复制文件之后的回调。 |
 

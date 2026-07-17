@@ -1,5 +1,11 @@
 # list（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
+
 ## list
 
 ```TypeScript
@@ -11,6 +17,8 @@ function list(logType: string): LogEntry[]
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
+
+<!--Device-logLibrary-function list(logType: string): LogEntry[]--><!--Device-logLibrary-function list(logType: string): LogEntry[]-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
@@ -26,15 +34,15 @@ function list(logType: string): LogEntry[]
 
 | 类型 | 说明 |
 | --- | --- |
-| LogEntry[] | 日志文件对象的数组。 |
+| [LogEntry](arkts-performanceanalysis-loglibrary-logentry-i-sys.md)[] | 日志文件对象的数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid argument. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types.<br/><br/>3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **示例：**
 
@@ -42,10 +50,10 @@ function list(logType: string): LogEntry[]
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let logObj = logLibrary.list('HILOG');
+  let logFiles = logLibrary.list('HILOG');
   // do something here.
 } catch (error) {
-  console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+  console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
 }
 
 ```

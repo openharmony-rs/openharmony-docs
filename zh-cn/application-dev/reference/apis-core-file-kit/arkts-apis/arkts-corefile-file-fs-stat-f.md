@@ -1,5 +1,11 @@
 # stat
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## stat
 
 ```TypeScript
@@ -10,7 +16,9 @@ declare function stat(file: string | number): Promise<Stat>
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function stat(file: string | number): Promise<Stat>--><!--Device-unnamed-declare function stat(file: string | number): Promise<Stat>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,7 +32,7 @@ declare function stat(file: string | number): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Stat&gt; | Promise对象。返回文件或目录的具体信息。 |
+| Promise<Stat> | Promise对象。返回文件或目录的具体信息。 |
 
 **错误码：**
 
@@ -55,7 +63,9 @@ declare function stat(file: string | number, callback: AsyncCallback<Stat>): voi
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function stat(file: string | number, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function stat(file: string | number, callback: AsyncCallback<Stat>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -64,7 +74,7 @@ declare function stat(file: string | number, callback: AsyncCallback<Stat>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
-| callback | AsyncCallback&lt;Stat&gt; | 是 | 异步获取文件或目录的信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Stat> | 是 | 异步获取文件或目录的信息之后的回调。 |
 
 **错误码：**
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 7
 
+<!--Device-appAccount-interface AppAccountManager--><!--Device-appAccount-interface AppAccountManager-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+## 导入模块
+
+```TypeScript
+import { appAccount } from '@kit.BasicServicesKit';
+```
 
 ## addAccount
 
@@ -14,10 +22,10 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 
 根据账号名添加应用账号。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createAccount-1)替
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-1)替  
 > 代。
 
 **起始版本：** 7
@@ -26,6 +34,8 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 
 **替代接口：** createAccount(name:
 
+<!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -33,7 +43,7 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -54,10 +64,10 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 
 根据账号名和额外信息添加应用账号。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createAccount-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-2)  
 > 替代。
 
 **起始版本：** 7
@@ -65,6 +75,8 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 **废弃版本：** 9
 
 **替代接口：** createAccount(name:
+
+<!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -74,7 +86,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | extraInfo | string | 是 | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -95,9 +107,9 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 
 根据账号名和额外信息添加应用账号。使用Promise异步回调。
 
-> **说明：**
-> > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createAccount-3)
+> **说明：**  
+> > 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [createAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccount-3)  
 > 替代。
 
 **起始版本：** 7
@@ -105,6 +117,8 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 **废弃版本：** 9
 
 **替代接口：** createAccount(name:
+
+<!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -119,7 +133,7 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -147,10 +161,10 @@ addAccountImplicitly(
 
 根据指定的账号所有者隐式地添加应用账号。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [createAccountImplicitly](arkts-basicservices-appaccount-appaccountmanager-i.md#createAccountImplicitly-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [createAccountImplicitly](arkts-basicservices-appaccount-appaccountmanager-i.md#createaccountimplicitly-1)  
 > 替代。
 
 **起始版本：** 8
@@ -158,6 +172,18 @@ addAccountImplicitly(
 **废弃版本：** 9
 
 **替代接口：** createAccountImplicitly(owner:
+
+<!--Device-AppAccountManager-addAccountImplicitly(
+      owner: string,
+      authType: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void--><!--Device-AppAccountManager-addAccountImplicitly(
+      owner: string,
+      authType: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -168,7 +194,7 @@ addAccountImplicitly(
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | options | { [key: string]: any } | 是 | 鉴权所需要的可选项。可选项可根据自己需要设置。 |
-| callback | AuthenticatorCallback | 是 | 认证器回调对象，返回添加结果。 |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 认证器回调对象，返回添加结果。 |
 
 **示例：**
 
@@ -222,6 +248,8 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-auth(name: string, owner: string, authType: string, callback: AuthCallback): void--><!--Device-AppAccountManager-auth(name: string, owner: string, authType: string, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -231,19 +259,19 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callback | AuthCallback | 是 | 回调对象，返回鉴权结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调对象，返回鉴权结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner or authType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner or authType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -308,6 +336,20 @@ auth(
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-auth(
+      name: string,
+      owner: string,
+      authType: string,
+      options: Record<string, Object>,
+      callback: AuthCallback
+    ): void--><!--Device-AppAccountManager-auth(
+      name: string,
+      owner: string,
+      authType: string,
+      options: Record<string, Object>,
+      callback: AuthCallback
+    ): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -317,20 +359,20 @@ auth(
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
-| options | Record&lt;string, Object&gt; | 是 | 鉴权所需的可选项。 |
-| callback | AuthCallback | 是 | 回调对象，返回鉴权结果。 |
+| options | Record<string, Object> | 是 | 鉴权所需的可选项。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调对象，返回鉴权结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner, authType or options. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner, authType or options. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -396,10 +438,10 @@ authenticate(
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [auth](arkts-basicservices-appaccount-appaccountmanager-i.md#auth-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [auth](arkts-basicservices-appaccount-appaccountmanager-i.md#auth-1)  
 > 替代。
 
 **起始版本：** 8
@@ -407,6 +449,20 @@ authenticate(
 **废弃版本：** 9
 
 **替代接口：** auth(name:
+
+<!--Device-AppAccountManager-authenticate(
+      name: string,
+      owner: string,
+      authType: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void--><!--Device-AppAccountManager-authenticate(
+      name: string,
+      owner: string,
+      authType: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -418,7 +474,7 @@ authenticate(
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | options | { [key: string]: any } | 是 | 鉴权所需的可选项。 |
-| callback | AuthenticatorCallback | 是 | 回调对象，返回鉴权结果。 |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | 是 | 回调对象，返回鉴权结果。 |
 
 **示例：**
 
@@ -472,6 +528,8 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>, callback:
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -480,20 +538,20 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>, callback:
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| labels | Array&lt;string&gt; | 是 | 标签数组。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当检查成功时，err为null，data为true表示满足特定的标签集合，data为false表示不满足；否则为错误对象。 |
+| labels | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 标签数组。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当检查成功时，err为null，data为true表示满足特定的标签集合，data为false表示不满足；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner or labels. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner or labels. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -527,6 +585,8 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<boolean>--><!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -535,25 +595,25 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| labels | Array&lt;string&gt; | 是 | 标签数组。 |
+| labels | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 标签数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定账号满足特定的标签集合，返回false表示不满足。 |
+| Promise<boolean> | Promise对象。返回true表示指定账号满足特定的标签集合，返回false表示不满足。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner or labels. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner or labels. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -585,6 +645,8 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -593,16 +655,16 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | bundleName | string | 是 | 第三方应用的包名。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示指定应用可访问特定账号的数据；返回false表示不可访问。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示指定应用可访问特定账号的数据；返回false表示不可访问。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -635,6 +697,8 @@ checkAppAccess(name: string, bundleName: string): Promise<boolean>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -648,16 +712,16 @@ checkAppAccess(name: string, bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定应用可访问特定账号的数据；返回false表示不可访问。 |
+| Promise<boolean> | Promise对象。返回true表示指定应用可访问特定账号的数据；返回false表示不可访问。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -685,10 +749,10 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 
 检查指定应用账号是否开启数据同步功能。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkDataSyncEnabled-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled-1)  
 > 替代。
 
 **起始版本：** 7
@@ -699,6 +763,8 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -706,7 +772,7 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **示例：**
 
@@ -731,10 +797,10 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 
 检查指定应用账号是否开启数据同步功能。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkDataSyncEnabled-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [checkDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#checkdatasyncenabled-2)替代。
 
 **起始版本：** 7
 
@@ -743,6 +809,8 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 **替代接口：** checkDataSyncEnabled(name:
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string): Promise<boolean>--><!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -756,7 +824,7 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
+| Promise<boolean> | Promise对象。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **示例：**
 
@@ -781,6 +849,8 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -790,17 +860,17 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | bundleName | string | 是 | 检查可见性的应用包名。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, authType or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, authType or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -833,6 +903,8 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -847,17 +919,17 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示授权令牌对指定应用的可见，返回false表示不可见。 |
+| Promise<boolean> | Promise对象。返回true表示授权令牌对指定应用的可见，返回false表示不可见。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, authType or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, authType or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -890,6 +962,8 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -897,17 +971,17 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -941,6 +1015,8 @@ checkDataSyncEnabled(name: string): Promise<boolean>
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-checkDataSyncEnabled(name: string): Promise<boolean>--><!--Device-AppAccountManager-checkDataSyncEnabled(name: string): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -953,17 +1029,17 @@ checkDataSyncEnabled(name: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
+| Promise<boolean> | Promise对象。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -996,10 +1072,10 @@ checkOAuthTokenVisibility(
 
 检查指定应用账号的特定鉴权类型的授权令牌对指定应用的可见性。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkAuthTokenVisibility-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility-1)  
 > 替代。
 
 **起始版本：** 8
@@ -1007,6 +1083,18 @@ checkOAuthTokenVisibility(
 **废弃版本：** 9
 
 **替代接口：** checkAuthTokenVisibility(name:
+
+<!--Device-AppAccountManager-checkOAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      callback: AsyncCallback<boolean>
+    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      callback: AsyncCallback<boolean>
+    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1017,7 +1105,7 @@ checkOAuthTokenVisibility(
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | bundleName | string | 是 | 检查可见性的应用包名。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。 |
 
 **示例：**
 
@@ -1043,10 +1131,10 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 
 检查指定应用账号的特定鉴权类型的授权令牌对指定应用的可见性。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkAuthTokenVisibility-2)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [checkAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#checkauthtokenvisibility-2)  
 > 替代。
 
 **起始版本：** 8
@@ -1054,6 +1142,8 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 **废弃版本：** 9
 
 **替代接口：** checkAuthTokenVisibility(name:
+
+<!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1069,7 +1159,7 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定鉴权类型的OAuth令牌对特定应用的可见，返回false表示不可见。 |
+| Promise<boolean> | Promise对象。返回true表示指定鉴权类型的OAuth令牌对特定应用的可见，返回false表示不可见。 |
 
 **示例：**
 
@@ -1095,6 +1185,8 @@ createAccount(name: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-createAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-createAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1102,17 +1194,17 @@ createAccount(name: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300004](../../errorcode-universal.md#12300004-Account) | Account already exists. |
-| [12300007](../../errorcode-universal.md#12300007-The) | The number of accounts reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300004](../../apis-basic-services-kit/errorcode-account.md#12300004-账号已存在) | Account already exists. |
+| [12300007](../../apis-basic-services-kit/errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
 
 **示例：**
 
@@ -1144,6 +1236,8 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1151,18 +1245,18 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| options | CreateAccountOptions | 是 | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
+| options | [CreateAccountOptions](arkts-basicservices-appaccount-createaccountoptions-i.md) | 是 | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or options. |
-| [12300004](../../errorcode-universal.md#12300004-Account) | Account already exists. |
-| [12300007](../../errorcode-universal.md#12300007-The) | The number of accounts reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or options. |
+| [12300004](../../apis-basic-services-kit/errorcode-account.md#12300004-账号已存在) | Account already exists. |
+| [12300007](../../apis-basic-services-kit/errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
 
 **示例：**
 
@@ -1199,6 +1293,8 @@ createAccount(name: string, options?: CreateAccountOptions): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-createAccount(name: string, options?: CreateAccountOptions): Promise<void>--><!--Device-AppAccountManager-createAccount(name: string, options?: CreateAccountOptions): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1206,23 +1302,23 @@ createAccount(name: string, options?: CreateAccountOptions): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| options | CreateAccountOptions | 否 | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。不填无影响，默认为空，表示创建的该账号无额外信息需要添加。 |
+| options | [CreateAccountOptions](arkts-basicservices-appaccount-createaccountoptions-i.md) | 否 | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。不填无影响，默认为空，表示创建的该账号无额外信息需要添加。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or options. |
-| [12300004](../../errorcode-universal.md#12300004-Account) | Account already exists. |
-| [12300007](../../errorcode-universal.md#12300007-The) | The number of accounts reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or options. |
+| [12300004](../../apis-basic-services-kit/errorcode-account.md#12300004-账号已存在) | Account already exists. |
+| [12300007](../../apis-basic-services-kit/errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
 
 **示例：**
 
@@ -1257,6 +1353,8 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-createAccountImplicitly(owner: string, callback: AuthCallback): void--><!--Device-AppAccountManager-createAccountImplicitly(owner: string, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1264,19 +1362,19 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AuthCallback | 是 | 认证器回调对象，返回创建结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调对象，返回创建结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner. |
-| [12300007](../../errorcode-universal.md#12300007-The) | The number of accounts reaches the upper limit. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner. |
+| [12300007](../../apis-basic-services-kit/errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -1334,6 +1432,8 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void--><!--Device-AppAccountManager-createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1341,20 +1441,20 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| options | CreateAccountImplicitlyOptions | 是 | 隐式创建账号的选项。 |
-| callback | AuthCallback | 是 | 认证器回调对象，返回创建结果。 |
+| options | [CreateAccountImplicitlyOptions](arkts-basicservices-appaccount-createaccountimplicitlyoptions-i.md) | 是 | 隐式创建账号的选项。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调对象，返回创建结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner or options. |
-| [12300007](../../errorcode-universal.md#12300007-The) | The number of accounts reaches the upper limit. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner or options. |
+| [12300007](../../apis-basic-services-kit/errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -1414,10 +1514,10 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 
 删除应用账号。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeAccount-1)替
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount-1)替  
 > 代。
 
 **起始版本：** 7
@@ -1426,6 +1526,8 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 
 **替代接口：** removeAccount(name:
 
+<!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1433,7 +1535,7 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1454,10 +1556,10 @@ deleteAccount(name: string): Promise<void>
 
 删除应用账号。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeAccount-2)替
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [removeAccount](arkts-basicservices-appaccount-appaccountmanager-i.md#removeaccount-2)替  
 > 代。
 
 **起始版本：** 7
@@ -1465,6 +1567,8 @@ deleteAccount(name: string): Promise<void>
 **废弃版本：** 9
 
 **替代接口：** removeAccount(name:
+
+<!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1478,7 +1582,7 @@ deleteAccount(name: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1503,6 +1607,8 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1513,17 +1619,17 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | token | string | 是 | 授权令牌。最大长度为1024个字符。如果授权令牌不存在，则不执行任何操作。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner, authType or token. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner, authType or token. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -1556,6 +1662,8 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1571,17 +1679,17 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner, authType or token. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner, authType or token. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -1611,6 +1719,8 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback<v
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1619,17 +1729,17 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback<v
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | credentialType | string | 是 | 凭据类型。自定义的类型，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or credentialType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300102](../../errorcode-universal.md#12300102-Credential) | Credential not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | Credential not found. |
 
 **示例：**
 
@@ -1661,6 +1771,8 @@ deleteCredential(name: string, credentialType: string): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string): Promise<void>--><!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -1674,17 +1786,17 @@ deleteCredential(name: string, credentialType: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or credentialType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300102](../../errorcode-universal.md#12300102-Credential) | Credential not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | Credential not found. |
 
 **示例：**
 
@@ -1712,10 +1824,10 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 
 删除指定应用账号的特定鉴权类型的授权令牌。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteAuthToken-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken-1)  
 > 替代。
 
 **起始版本：** 8
@@ -1723,6 +1835,8 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 **废弃版本：** 9
 
 **替代接口：** deleteAuthToken(name:
+
+<!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1734,7 +1848,7 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | token | string | 是 | 授权令牌。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除成功时，err为null；否则为错误对象。 |
 
 **示例：**
 
@@ -1760,10 +1874,10 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 
 删除指定应用账号的特定鉴权类型的授权令牌。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteAuthToken-2)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [deleteAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#deleteauthtoken-2)  
 > 替代。
 
 **起始版本：** 8
@@ -1771,6 +1885,8 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 **废弃版本：** 9
 
 **替代接口：** deleteAuthToken(name:
+
+<!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1787,7 +1903,7 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1810,10 +1926,10 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 
 禁止指定第三方应用账号名称对指定的第三方应用进行访问。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setAppAccess-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)  
 > 替代。
 
 **起始版本：** 7
@@ -1821,6 +1937,8 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 **废弃版本：** 9
 
 **替代接口：** setAppAccess(name:
+
+<!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1830,7 +1948,7 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | bundleName | string | 是 | 第三方应用的包名。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当禁止指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当禁止指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1851,10 +1969,10 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 
 禁止指定第三方应用账号名称对指定包名称的第三方应用进行访问。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setAppAccess-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-2)  
 > 替代。
 
 **起始版本：** 7
@@ -1862,6 +1980,8 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 **废弃版本：** 9
 
 **替代接口：** setAppAccess(name:
+
+<!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1876,7 +1996,7 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1899,10 +2019,10 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 
 允许指定第三方应用账号名称对指定包名称的第三方应用进行访问。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setAppAccess-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-1)  
 > 替代。
 
 **起始版本：** 7
@@ -1910,6 +2030,8 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 **废弃版本：** 9
 
 **替代接口：** setAppAccess(name:
+
+<!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1919,7 +2041,7 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | bundleName | string | 是 | 第三方应用的包名。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当允许指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当允许指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -1944,10 +2066,10 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 
 允许指定第三方应用账号的名称对指定包名称的第三方应用进行访问。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setAppAccess-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setAppAccess](arkts-basicservices-appaccount-appaccountmanager-i.md#setappaccess-2)  
 > 替代。
 
 **起始版本：** 7
@@ -1955,6 +2077,8 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 **废弃版本：** 9
 
 **替代接口：** setAppAccess(name:
+
+<!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -1969,7 +2093,7 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1992,10 +2116,10 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 
 获取指定应用账号的凭据。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getCredential-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential-1)  
 > 替代。
 
 **起始版本：** 7
@@ -2003,6 +2127,8 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 **废弃版本：** 9
 
 **替代接口：** getCredential(name:
+
+<!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2012,7 +2138,7 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | credentialType | string | 是 | 凭据类型。自定义的类型，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **示例：**
 
@@ -2037,16 +2163,18 @@ getAccountCredential(name: string, credentialType: string): Promise<string>
 
 获取指定应用账号的凭据。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getCredential-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#getcredential-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** getCredential(name:
+
+<!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2061,7 +2189,7 @@ getAccountCredential(name: string, credentialType: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回指定应用账号的凭据。 |
+| Promise<string> | Promise对象，返回指定应用账号的凭据。 |
 
 **示例：**
 
@@ -2084,10 +2212,10 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 
 获取指定应用账号的额外信息（能转换成string类型的其它信息）。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getCustomData-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)  
 > 替代。
 
 **起始版本：** 7
@@ -2096,6 +2224,8 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 
 **替代接口：** getCustomData(name:
 
+<!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -2103,7 +2233,7 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取此应用账号的额外信息成功时，err为null，data返回此应用账号的额外信息对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取此应用账号的额外信息成功时，err为null，data返回此应用账号的额外信息对象；否则为错误对象。 |
 
 **示例：**
 
@@ -2128,16 +2258,18 @@ getAccountExtraInfo(name: string): Promise<string>
 
 获取指定应用账号的额外信息（能转换成string类型的其它信息）。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getCustomData-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** getCustomData(name:
+
+<!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2151,7 +2283,7 @@ getAccountExtraInfo(name: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回此应用程序账号的额外信息对象。 |
+| Promise<string> | Promise对象，返回此应用程序账号的额外信息对象。 |
 
 **示例：**
 
@@ -2172,14 +2304,11 @@ appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => {
 getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void
 ```
 
-根据应用账号所有者获取调用方可访问的应用账号列表。使用callback异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权，或
-<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
+根据应用账号所有者获取调用方可访问的应用账号列表。使用callback异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权，或<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
 
 **起始版本：** 9
+
+<!--Device-AppAccountManager-getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2188,15 +2317,15 @@ getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 回调函数。如果获取成功，err为null，data为获取到的应用账号列表；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<AppAccountInfo>> | 是 | 回调函数。如果获取成功，err为null，data为获取到的应用账号列表；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
 
 **示例：**
 
@@ -2225,14 +2354,11 @@ try {
 getAccountsByOwner(owner: string): Promise<Array<AppAccountInfo>>
 ```
 
-根据应用账号所有者获取调用方可访问的应用账号列表。使用Promise异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权，或
-<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
+根据应用账号所有者获取调用方可访问的应用账号列表。使用Promise异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权，或<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
 
 **起始版本：** 9
+
+<!--Device-AppAccountManager-getAccountsByOwner(owner: string): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAccountsByOwner(owner: string): Promise<Array<AppAccountInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2246,15 +2372,15 @@ getAccountsByOwner(owner: string): Promise<Array<AppAccountInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AppAccountInfo&gt;&gt; | Promise对象，返回获取到的应用账号列表。 |
+| Promise<Array<AppAccountInfo>> | Promise对象，返回获取到的应用账号列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
 
 **示例：**
 
@@ -2281,16 +2407,12 @@ try {
 getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 ```
 
-获取所有可访问的应用账号信息。使用callback异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权。
+获取所有可访问的应用账号信息。使用callback异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getAllAccounts-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-1)  
 > 替代。
 
 **起始版本：** 7
@@ -2301,13 +2423,15 @@ getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
+<!--Device-AppAccountManager-getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 回调函数。当查询成功时，err为null，data为获取到的应用账号信息列表；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<AppAccountInfo>> | 是 | 回调函数。当查询成功时，err为null，data为获取到的应用账号信息列表；否则为错误对象。 |
 
 **示例：**
 
@@ -2330,24 +2454,22 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
 getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>
 ```
 
-获取所有可访问的应用账号信息。使用Promise异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权。
+获取所有可访问的应用账号信息。使用Promise异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getAllAccounts-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-2)  
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAccounts()](arkts-basicservices-appaccount-appaccountmanager-i.md#getAllAccounts-2)
+**替代接口：** [getAllAccounts()](arkts-basicservices-appaccount-appaccountmanager-i.md#getallaccounts-2)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
+
+<!--Device-AppAccountManager-getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2355,7 +2477,7 @@ getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AppAccountInfo&gt;&gt; | Promise对象，返回全部应用已授权账号信息对象。 |
+| Promise<Array<AppAccountInfo>> | Promise对象，返回全部应用已授权账号信息对象。 |
 
 **示例：**
 
@@ -2376,14 +2498,11 @@ appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountIn
 getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 ```
 
-获取所有可访问的应用账号信息。使用callback异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权，或
-<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
+获取所有可访问的应用账号信息。使用callback异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权，或<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
 
 **起始版本：** 9
+
+<!--Device-AppAccountManager-getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2391,14 +2510,14 @@ getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 回调函数。当查询成功时，err为null，data为获取到的应用账号信息列表；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<AppAccountInfo>> | 是 | 回调函数。当查询成功时，err为null，data为获取到的应用账号信息列表；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例：**
 
@@ -2426,14 +2545,11 @@ try {
 getAllAccounts(): Promise<Array<AppAccountInfo>>
 ```
 
-获取所有可访问的应用账号信息。使用Promise异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权，或
-<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
+获取所有可访问的应用账号信息。使用Promise异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权，或<br> 已获得ohos.permission.GET_ALL_APP_ACCOUNTS权限。
 
 **起始版本：** 9
+
+<!--Device-AppAccountManager-getAllAccounts(): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAllAccounts(): Promise<Array<AppAccountInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2441,13 +2557,13 @@ getAllAccounts(): Promise<Array<AppAccountInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AppAccountInfo&gt;&gt; | Promise对象，返回全部应用已授权账号信息对象。 |
+| Promise<Array<AppAccountInfo>> | Promise对象，返回全部应用已授权账号信息对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例：**
 
@@ -2473,16 +2589,12 @@ try {
 getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void
 ```
 
-根据应用账号所有者获取调用方可访问的应用账号列表。使用callback异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权。
+根据应用账号所有者获取调用方可访问的应用账号列表。使用callback异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getAccountsByOwner-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner-1)  
 > 替代。
 
 **起始版本：** 7
@@ -2493,6 +2605,8 @@ getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): v
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
+<!--Device-AppAccountManager-getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -2500,7 +2614,7 @@ getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 应用账号信息列表。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<AppAccountInfo>> | 是 | 应用账号信息列表。 |
 
 **示例：**
 
@@ -2524,16 +2638,12 @@ appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccou
 getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 ```
 
-根据应用账号所有者获取调用方可访问的应用账号列表。使用Promise异步回调。
-此方法适用于以下账户：
-<br> 本应用的账户。
-<br> 第三方应用的账户。要获取此类信息，
-<br> 您的应用必须已获得第三方应用的授权。
+根据应用账号所有者获取调用方可访问的应用账号列表。使用Promise异步回调。此方法适用于以下账户：<br> 本应用的账户。<br> 第三方应用的账户。要获取此类信息，<br> 您的应用必须已获得第三方应用的授权。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getAccountsByOwner-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getAccountsByOwner](arkts-basicservices-appaccount-appaccountmanager-i.md#getaccountsbyowner-2)替代。
 
 **起始版本：** 7
 
@@ -2542,6 +2652,8 @@ getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 **替代接口：** getAccountsByOwner(owner:
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
+
+<!--Device-AppAccountManager-getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2555,7 +2667,7 @@ getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AppAccountInfo&gt;&gt; | Promise对象，返回指定应用全部账号信息对象。 |
+| Promise<Array<AppAccountInfo>> | Promise对象，返回指定应用全部账号信息对象。 |
 
 **示例：**
 
@@ -2581,6 +2693,8 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<Auth
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<AuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<AuthTokenInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -2589,16 +2703,16 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<Auth
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt; | 是 | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<AuthTokenInfo>> | 是 | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or owner. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or owner. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -2631,6 +2745,8 @@ getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>--><!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -2644,16 +2760,16 @@ getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AuthTokenInfo&gt;&gt; | Promise对象，返回授权令牌数组。 |
+| Promise<Array<AuthTokenInfo>> | Promise对象，返回授权令牌数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or owner. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or owner. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -2682,10 +2798,10 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 
 获取指定账号对调用方可见的所有授权令牌。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getAllAuthTokens-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens-1)  
 > 替代。
 
 **起始版本：** 8
@@ -2693,6 +2809,8 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 **废弃版本：** 9
 
 **替代接口：** getAllAuthTokens(name:
+
+<!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2702,7 +2820,7 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;Array&lt;OAuthTokenInfo&gt;&gt; | 是 | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<OAuthTokenInfo>> | 是 | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。 |
 
 **示例：**
 
@@ -2728,16 +2846,18 @@ getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
 
 获取指定账号对调用方可见的所有授权令牌。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getAllAuthTokens-2)替代。
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAllAuthTokens](arkts-basicservices-appaccount-appaccountmanager-i.md#getallauthtokens-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** getAllAuthTokens(name:
+
+<!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2752,7 +2872,7 @@ getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;OAuthTokenInfo&gt;&gt; | Promise对象，返回授权令牌数组。 |
+| Promise<Array<OAuthTokenInfo>> | Promise对象，返回授权令牌数组。 |
 
 **示例：**
 
@@ -2776,10 +2896,10 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 
 根据指定键名获取特定应用账号的关联数据。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getCustomData-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-1)  
 > 替代。
 
 **起始版本：** 7
@@ -2787,6 +2907,8 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 **废弃版本：** 9
 
 **替代接口：** getCustomData(name:
+
+<!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2796,7 +2918,7 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | key | string | 是 | 关联数据的键名。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取成功时，err为null，data为关联数据的取值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取成功时，err为null，data为关联数据的取值；否则为错误对象。 |
 
 **示例：**
 
@@ -2821,16 +2943,18 @@ getAssociatedData(name: string, key: string): Promise<string>
 
 获取与此应用程序账号关联的数据。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getCustomData-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [getCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#getcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** getCustomData(name:
+
+<!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -2845,7 +2969,7 @@ getAssociatedData(name: string, key: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回关联数据的取值。 |
+| Promise<string> | Promise对象，返回关联数据的取值。 |
 
 **示例：**
 
@@ -2870,6 +2994,8 @@ getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void--><!--Device-AppAccountManager-getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -2877,16 +3003,16 @@ getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 鉴权会话的标识。 |
-| callback | AsyncCallback&lt;AuthCallback&gt; | 是 | 回调函数。当获取成功时，err为null，data为鉴权会话的认证器回调对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<AuthCallback> | 是 | 回调函数。当获取成功时，err为null，data为鉴权会话的认证器回调对象；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid sessionId. |
-| [12300108](../../errorcode-universal.md#12300108-Session) | Session not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid sessionId. |
+| [12300108](../../apis-basic-services-kit/errorcode-account.md#12300108-认证会话不存在) | Session not found. |
 
 **示例：**
 
@@ -2934,6 +3060,8 @@ getAuthCallback(sessionId: string): Promise<AuthCallback>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getAuthCallback(sessionId: string): Promise<AuthCallback>--><!--Device-AppAccountManager-getAuthCallback(sessionId: string): Promise<AuthCallback>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -2946,16 +3074,16 @@ getAuthCallback(sessionId: string): Promise<AuthCallback>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AuthCallback&gt; | Promise对象，返回鉴权会话的认证器回调对象。 |
+| Promise<AuthCallback> | Promise对象，返回鉴权会话的认证器回调对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid sessionId. |
-| [12300108](../../errorcode-universal.md#12300108-Session) | Session not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid sessionId. |
+| [12300108](../../apis-basic-services-kit/errorcode-account.md#12300108-认证会话不存在) | Session not found. |
 
 **示例：**
 
@@ -2997,11 +3125,11 @@ export default class EntryAbility extends UIAbility {
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过
-[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setAuthTokenVisibility-1)
-来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)来设置）。使用callback异步回调。
 
 **起始版本：** 9
+
+<!--Device-AppAccountManager-getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3011,17 +3139,17 @@ getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or authType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or authType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -3049,11 +3177,11 @@ try {
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过
-[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setAuthTokenVisibility-1)
-来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)来设置）。使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-AppAccountManager-getAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3068,17 +3196,17 @@ getAuthList(name: string, authType: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回被授权的包名数组。 |
+| Promise<Array<string>> | Promise对象，返回被授权的包名数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or authType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or authType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -3108,6 +3236,8 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3117,17 +3247,17 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner or authType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner or authType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -3160,6 +3290,8 @@ getAuthToken(name: string, owner: string, authType: string): Promise<string>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3174,17 +3306,17 @@ getAuthToken(name: string, owner: string, authType: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回授权令牌。 |
+| Promise<string> | Promise对象，返回授权令牌。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner or authType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner or authType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
 
 **示例：**
 
@@ -3212,10 +3344,10 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 
 获取鉴权会话的认证器回调。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getAuthCallback-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback-1)  
 > 替代。
 
 **起始版本：** 8
@@ -3224,6 +3356,8 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 
 **替代接口：** getAuthCallback(sessionId:
 
+<!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3231,7 +3365,7 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 鉴权会话的标识。 |
-| callback | AsyncCallback&lt;AuthenticatorCallback&gt; | 是 | 回调函数。当获取鉴权会话的认证器回调函数成功时，err为null，data为认证器回调函数；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<AuthenticatorCallback> | 是 | 回调函数。当获取鉴权会话的认证器回调函数成功时，err为null，data为认证器回调函数；否则为错误对象。 |
 
 **示例：**
 
@@ -3268,16 +3402,18 @@ getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
 
 获取鉴权会话的认证器回调。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getAuthCallback-2)替代。
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAuthCallback](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthcallback-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** getAuthCallback(sessionId:
+
+<!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3291,7 +3427,7 @@ getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AuthenticatorCallback&gt; | Promise对象，返回鉴权会话的认证器回调对象。 |
+| Promise<AuthenticatorCallback> | Promise对象，返回鉴权会话的认证器回调对象。 |
 
 **示例：**
 
@@ -3326,10 +3462,10 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 
 获取指定应用的认证器信息。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryAuthenticatorInfo-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo-1)  
 > 替代。
 
 **起始版本：** 8
@@ -3338,6 +3474,8 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 
 **替代接口：** queryAuthenticatorInfo(owner:
 
+<!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3345,7 +3483,7 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;AuthenticatorInfo&gt; | 是 | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<AuthenticatorInfo> | 是 | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。 |
 
 **示例：**
 
@@ -3371,16 +3509,18 @@ getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 
 获取指定应用的认证器信息。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryAuthenticatorInfo-2)替代。
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [queryAuthenticatorInfo](arkts-basicservices-appaccount-appaccountmanager-i.md#queryauthenticatorinfo-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** queryAuthenticatorInfo(owner:
+
+<!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3394,7 +3534,7 @@ getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AuthenticatorInfo&gt; | Promise对象，返回指定应用的认证器信息对象。 |
+| Promise<AuthenticatorInfo> | Promise对象，返回指定应用的认证器信息对象。 |
 
 **示例：**
 
@@ -3420,6 +3560,8 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback<stri
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3428,17 +3570,17 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback<stri
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | credentialType | string | 是 | 凭据类型。自定义的类型，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or credentialType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300102](../../errorcode-universal.md#12300102-Credential) | Credential not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | Credential not found. |
 
 **示例：**
 
@@ -3470,6 +3612,8 @@ getCredential(name: string, credentialType: string): Promise<string>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getCredential(name: string, credentialType: string): Promise<string>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3483,17 +3627,17 @@ getCredential(name: string, credentialType: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回指定应用账号的凭据。 |
+| Promise<string> | Promise对象，返回指定应用账号的凭据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or credentialType. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300102](../../errorcode-universal.md#12300102-Credential) | Credential not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300102](../../apis-basic-services-kit/errorcode-account.md#12300102-凭据不存在) | Credential not found. |
 
 **示例：**
 
@@ -3523,6 +3667,8 @@ getCustomData(name: string, key: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getCustomData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getCustomData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3531,17 +3677,17 @@ getCustomData(name: string, key: string, callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | key | string | 是 | 自定义数据的键名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取成功时，err为null，data为自定义数据的取值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取成功时，err为null，data为自定义数据的取值；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or key. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400002](../../errorcode-universal.md#12400002-Custom) | Custom data not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or key. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400002](../../apis-basic-services-kit/errorcode-account.md#12400002-自定义数据不存在) | Custom data not found. |
 
 **示例：**
 
@@ -3573,6 +3719,8 @@ getCustomData(name: string, key: string): Promise<string>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getCustomData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getCustomData(name: string, key: string): Promise<string>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3586,17 +3734,17 @@ getCustomData(name: string, key: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回自定义数据的取值。 |
+| Promise<string> | Promise对象，返回自定义数据的取值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or key. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400002](../../errorcode-universal.md#12400002-Custom) | Custom data not found |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or key. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400002](../../apis-basic-services-kit/errorcode-account.md#12400002-自定义数据不存在) | Custom data not found |
 
 **示例：**
 
@@ -3626,6 +3774,8 @@ getCustomDataSync(name: string, key: string): string
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-getCustomDataSync(name: string, key: string): string--><!--Device-AppAccountManager-getCustomDataSync(name: string, key: string): string-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3645,11 +3795,11 @@ getCustomDataSync(name: string, key: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or key. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400002](../../errorcode-universal.md#12400002-Custom) | Custom data not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or key. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400002](../../apis-basic-services-kit/errorcode-account.md#12400002-自定义数据不存在) | Custom data not found. |
 
 **示例：**
 
@@ -3672,14 +3822,12 @@ try {
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过
-[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setOAuthTokenVisibility-1)
-来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setoauthtokenvisibility-1)来设置）。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getAuthList-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist-1)  
 > 替代。
 
 **起始版本：** 8
@@ -3687,6 +3835,8 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<strin
 **废弃版本：** 9
 
 **替代接口：** getAuthList(name:
+
+<!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3696,7 +3846,7 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<strin
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
 
 **示例：**
 
@@ -3719,20 +3869,20 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过
-[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setOAuthTokenVisibility-1)
-来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setoauthtokenvisibility-1)来设置）。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getAuthList-2)替代。
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAuthList](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthlist-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** getAuthList(name:
+
+<!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3747,7 +3897,7 @@ getOAuthList(name: string, authType: string): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回被授权的包名数组。 |
+| Promise<Array<string>> | Promise对象，返回被授权的包名数组。 |
 
 **示例：**
 
@@ -3770,10 +3920,10 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 
 获取指定应用账号的特定鉴权类型的授权令牌。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getAuthToken-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken-1)  
 > 替代。
 
 **起始版本：** 8
@@ -3781,6 +3931,8 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 **废弃版本：** 9
 
 **替代接口：** getAuthToken(name:
+
+<!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3791,7 +3943,7 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。 |
 
 **示例：**
 
@@ -3817,10 +3969,10 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 
 获取指定应用账号的特定鉴权类型的授权令牌。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getAuthToken-2)替
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [getAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#getauthtoken-2)替  
 > 代。
 
 **起始版本：** 8
@@ -3828,6 +3980,8 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 **废弃版本：** 9
 
 **替代接口：** getAuthToken(name:
+
+<!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -3843,7 +3997,7 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回授权令牌。 |
+| Promise<string> | Promise对象，返回授权令牌。 |
 
 **示例：**
 
@@ -3866,10 +4020,10 @@ off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void
 
 取消订阅账号信息变更事件。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [off('accountChange')](arkts-basicservices-appaccount-appaccountmanager-i.md#off-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [off('accountChange')](arkts-basicservices-appaccount-appaccountmanager-i.md#off-2)  
 > 替代。
 
 **起始版本：** 7
@@ -3878,6 +4032,8 @@ off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void
 
 **替代接口：** off(type:
 
+<!--Device-AppAccountManager-off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3885,7 +4041,7 @@ off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件回调类型，支持的事件为'change'，当账号所有者更新账号信息时，触发该事件。 |
-| callback | Callback&lt;Array&lt;AppAccountInfo&gt;&gt; | 否 | 需要注销的回调函数，默认为空，表示取消该类型事件的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AppAccountInfo>> | 否 | 需要注销的回调函数，默认为空，表示取消该类型事件的所有回调。 |
 
 **示例：**
 
@@ -3918,6 +4074,8 @@ off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3925,15 +4083,15 @@ off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'accountChange' | 是 | 事件回调类型，支持的事件为'accountChange'，当账号所有者更新账号信息时，触发该事件。 |
-| callback | Callback&lt;Array&lt;AppAccountInfo&gt;&gt; | 否 | 需要注销的回调函数，默认为空，表示取消该类型事件所有的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AppAccountInfo>> | 否 | 需要注销的回调函数，默认为空，表示取消该类型事件所有的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid type. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid type. |
 
 **示例：**
 
@@ -3967,10 +4125,10 @@ on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInf
 
 订阅指定应用的账号信息变更事件。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [on('accountChange')](arkts-basicservices-appaccount-appaccountmanager-i.md#on-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [on('accountChange')](arkts-basicservices-appaccount-appaccountmanager-i.md#on-2)  
 > 替代。
 
 **起始版本：** 7
@@ -3979,6 +4137,8 @@ on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInf
 
 **替代接口：** on(type:
 
+<!--Device-AppAccountManager-on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -3986,8 +4146,8 @@ on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInf
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件回调类型，支持的事件为'change'，当账号所有者更新账号信息时，触发该事件。 |
-| owners | Array&lt;string&gt; | 是 | 应用账号所有者的包名列表。 |
-| callback | Callback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 需要注册的回调函数，返回信息发生变更的应用账号列表。 |
+| owners | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用账号所有者的包名列表。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AppAccountInfo>> | 是 | 需要注册的回调函数，返回信息发生变更的应用账号列表。 |
 
 **示例：**
 
@@ -4017,6 +4177,8 @@ on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAcc
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4024,16 +4186,16 @@ on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAcc
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'accountChange' | 是 | 事件回调类型，支持的事件为'accountChange'，当目标应用更新账号信息时，触发该事件。 |
-| owners | Array&lt;string&gt; | 是 | 应用账号所有者的包名列表。 |
-| callback | Callback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 需要注册的回调函数，返回信息为发生变更的应用账号列表。 |
+| owners | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用账号所有者的包名列表。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AppAccountInfo>> | 是 | 需要注册的回调函数，返回信息为发生变更的应用账号列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid type or owners. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid type or owners. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
 
 **示例：**
 
@@ -4063,6 +4225,8 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4070,16 +4234,16 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;AuthenticatorInfo&gt; | 是 | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<AuthenticatorInfo> | 是 | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
 
 **示例：**
 
@@ -4112,6 +4276,8 @@ queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4124,16 +4290,16 @@ queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AuthenticatorInfo&gt; | Promise对象，返回指定应用的认证器信息对象。 |
+| Promise<AuthenticatorInfo> | Promise对象，返回指定应用的认证器信息对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
 
 **示例：**
 
@@ -4164,6 +4330,8 @@ removeAccount(name: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-removeAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-removeAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4171,16 +4339,16 @@ removeAccount(name: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当删除成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -4212,6 +4380,8 @@ removeAccount(name: string): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-removeAccount(name: string): Promise<void>--><!--Device-AppAccountManager-removeAccount(name: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4224,16 +4394,16 @@ removeAccount(name: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -4263,24 +4433,26 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | SelectAccountsOptions | 是 | 选择账号的选项。 |
-| callback | AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt; | 是 | 回调函数。当根据选项选择请求方可访问的账号列表时，err为null，data为可访问的账号信息对象；否则为错误对象。 |
+| options | [SelectAccountsOptions](arkts-basicservices-appaccount-selectaccountsoptions-i.md) | 是 | 选择账号的选项。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<AppAccountInfo>> | 是 | 回调函数。当根据选项选择请求方可访问的账号列表时，err为null，data为可访问的账号信息对象；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid options. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid options. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -4317,29 +4489,31 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise<Array<AppAccoun
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions): Promise<Array<AppAccountInfo>>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | SelectAccountsOptions | 是 | 选择账号的选项。 |
+| options | [SelectAccountsOptions](arkts-basicservices-appaccount-selectaccountsoptions-i.md) | 是 | 选择账号的选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AppAccountInfo&gt;&gt; | Promise对象，返回调用方可访问的账号列表。 |
+| Promise<Array<AppAccountInfo>> | Promise对象，返回调用方可访问的账号列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid options. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid options. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -4370,10 +4544,10 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 
 设置指定应用账号的凭据。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setCredential-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用  
+> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential-1)  
 > 替代。
 
 **起始版本：** 7
@@ -4381,6 +4555,8 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 **废弃版本：** 9
 
 **替代接口：** setCredential(name:
+
+<!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4391,7 +4567,7 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | credentialType | string | 是 | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 | credential | string | 是 | 凭据取值。自定义的数据，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置此应用程序账号的凭据成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置此应用程序账号的凭据成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4416,10 +4592,10 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 
 设置指定应用账号的凭据。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setCredential-2)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用  
+> [setCredential](arkts-basicservices-appaccount-appaccountmanager-i.md#setcredential-2)  
 > 替代。
 
 **起始版本：** 7
@@ -4427,6 +4603,8 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 **废弃版本：** 9
 
 **替代接口：** setCredential(name:
+
+<!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4442,7 +4620,7 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -4465,10 +4643,10 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 
 设置指定应用账号的额外信息。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setCustomData-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)  
 > 替代。
 
 **起始版本：** 7
@@ -4476,6 +4654,8 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 **废弃版本：** 9
 
 **替代接口：** setCustomData(name:
+
+<!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4485,7 +4665,7 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | extraInfo | string | 是 | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4510,16 +4690,18 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
 
 设置此应用程序账号的额外信息。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setCustomData-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** setCustomData(name:
+
+<!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4534,7 +4716,7 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -4559,6 +4741,8 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4568,17 +4752,17 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | bundleName | string | 是 | 第三方应用的包名。最大长度为512个字符。 |
 | isAccessible | boolean | 是 | 是否可访问。true表示允许访问，false表示禁止访问。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，如果设置成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
-| [12400005](../../errorcode-universal.md#12400005-The) | The size of authorization list reaches the upper limit.&lt;br&gt;**适用版本：** 14+ |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
+| [12400005](../../apis-basic-services-kit/errorcode-account.md#12400005-授权列表已达上限) | The size of authorization list reaches the upper limit.<br>**适用版本：** 14+ |
 
 **示例：**
 
@@ -4610,6 +4794,8 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise<v
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise<void>--><!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4624,17 +4810,17 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
-| [12400005](../../errorcode-universal.md#12400005-The) | The size of authorization list reaches the upper limit.&lt;br&gt;**适用版本：** 14+ |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
+| [12400005](../../apis-basic-services-kit/errorcode-account.md#12400005-授权列表已达上限) | The size of authorization list reaches the upper limit.<br>**适用版本：** 14+ |
 
 **示例：**
 
@@ -4662,10 +4848,10 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 
 开启或禁止指定应用账号的数据同步功能。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setDataSyncEnabled-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled-1)  
 > 替代。
 
 **起始版本：** 7
@@ -4676,6 +4862,8 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4684,7 +4872,7 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | isEnable | boolean | 是 | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4709,10 +4897,10 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 
 开启或禁止指定应用账号的数据同步功能。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setDataSyncEnabled-2)替代
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setDataSyncEnabled](arkts-basicservices-appaccount-appaccountmanager-i.md#setdatasyncenabled-2)替代  
 > 。
 
 **起始版本：** 7
@@ -4722,6 +4910,8 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 **替代接口：** setDataSyncEnabled(name:
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>--><!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4736,7 +4926,7 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -4759,10 +4949,10 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 
 设置指定应用账号的关联数据。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setCustomData-1)
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-1)  
 > 替代。
 
 **起始版本：** 7
@@ -4770,6 +4960,8 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 **废弃版本：** 9
 
 **替代接口：** setCustomData(name:
+
+<!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4780,7 +4972,7 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | key | string | 是 | 关联数据的键名。 |
 | value | string | 是 | 关联数据的取值。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置与此应用账号关联的数据成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置与此应用账号关联的数据成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -4805,16 +4997,18 @@ setAssociatedData(name: string, key: string, value: string): Promise<void>
 
 设置指定应用账号的关联数据。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setCustomData-2)替代。
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃。建议使用  
+> [setCustomData](arkts-basicservices-appaccount-appaccountmanager-i.md#setcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **替代接口：** setCustomData(name:
+
+<!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4830,7 +5024,7 @@ setAssociatedData(name: string, key: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -4855,6 +5049,8 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4864,17 +5060,17 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | token | string | 是 | 授权令牌。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, authType or token. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400004](../../errorcode-universal.md#12400004-The) | The number of tokens reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, authType or token. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400004](../../apis-basic-services-kit/errorcode-account.md#12400004-令牌数量已达上限) | The number of tokens reaches the upper limit. |
 
 **示例：**
 
@@ -4906,6 +5102,8 @@ setAuthToken(name: string, authType: string, token: string): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4920,17 +5118,17 @@ setAuthToken(name: string, authType: string, token: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, authType or token. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400004](../../errorcode-universal.md#12400004-The) | The number of tokens reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, authType or token. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400004](../../apis-basic-services-kit/errorcode-account.md#12400004-令牌数量已达上限) | The number of tokens reaches the upper limit. |
 
 **示例：**
 
@@ -4966,6 +5164,20 @@ setAuthTokenVisibility(
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      isVisible: boolean,
+      callback: AsyncCallback<void>
+    ): void--><!--Device-AppAccountManager-setAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      isVisible: boolean,
+      callback: AsyncCallback<void>
+    ): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -4976,18 +5188,18 @@ setAuthTokenVisibility(
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | bundleName | string | 是 | 被设置可见性的应用包名。最大长度为512个字符。 |
 | isVisible | boolean | 是 | 是否可见。true表示可见，false表示不可见。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, authType or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
-| [12400005](../../errorcode-universal.md#12400005-The) | The size of authorization list reaches the upper limit. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, authType or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
+| [12400005](../../apis-basic-services-kit/errorcode-account.md#12400005-授权列表已达上限) | The size of authorization list reaches the upper limit. |
 
 **示例：**
 
@@ -5020,6 +5232,8 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5035,18 +5249,18 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, authType or bundleName. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300107](../../errorcode-universal.md#12300107-AuthType) | AuthType not found. |
-| [12400001](../../errorcode-universal.md#12400001-Application) | Application not found.&lt;br&gt;**适用版本：** 9 - 13 |
-| [12400005](../../errorcode-universal.md#12400005-The) | The size of authorization list reaches the upper limit. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, authType or bundleName. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300107](../../apis-basic-services-kit/errorcode-account.md#12300107-认证类型不存在) | AuthType not found. |
+| [12400001](../../apis-basic-services-kit/errorcode-account.md#12400001-应用不存在) | Application not found.<br>**适用版本：** 9 - 13 |
+| [12400005](../../apis-basic-services-kit/errorcode-account.md#12400005-授权列表已达上限) | The size of authorization list reaches the upper limit. |
 
 **示例：**
 
@@ -5076,6 +5290,8 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, callback: AuthCallback): void--><!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5083,18 +5299,18 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 认证器的所有者的包名。 |
-| callback | AuthCallback | 是 | 回调函数，返回设置属性的结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调函数，返回设置属性的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -5129,6 +5345,8 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void--><!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5136,19 +5354,19 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | owner | string | 是 | 认证器的所有者的包名。 |
-| options | SetPropertiesOptions | 是 | 设置属性的选项。 |
-| callback | AuthCallback | 是 | 认证器回调，返回设置属性的结果。 |
+| options | [SetPropertiesOptions](arkts-basicservices-appaccount-setpropertiesoptions-i.md) | 是 | 设置属性的选项。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 认证器回调，返回设置属性的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid owner or options. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid owner or options. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -5187,6 +5405,10 @@ setCredential(name: string, credentialType: string, credential: string,
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,
+                             callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,
+                             callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5196,16 +5418,16 @@ setCredential(name: string, credentialType: string, credential: string,
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | credentialType | string | 是 | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 | credential | string | 是 | 凭据取值。自定义的数据，最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当凭据设置成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当凭据设置成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, credentialType or credential. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, credentialType or credential. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -5237,6 +5459,8 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5251,16 +5475,16 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, credentialType or credential. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, credentialType or credential. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -5290,6 +5514,8 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback<
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5299,17 +5525,17 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback<
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | key | string | 是 | 自定义数据的键名。最大长度为1024个字符。 |
 | value | string | 是 | 自定义数据的取值。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置自定义数据成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置自定义数据成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, key or value. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400003](../../errorcode-universal.md#12400003-The) | The number of custom data reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, key or value. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400003](../../apis-basic-services-kit/errorcode-account.md#12400003-自定义数据的数量已达上限) | The number of custom data reaches the upper limit. |
 
 **示例：**
 
@@ -5341,6 +5567,8 @@ setCustomData(name: string, key: string, value: string): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5355,17 +5583,17 @@ setCustomData(name: string, key: string, value: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, key or value. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12400003](../../errorcode-universal.md#12400003-The) | The number of custom data reaches the upper limit. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, key or value. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12400003](../../apis-basic-services-kit/errorcode-account.md#12400003-自定义数据的数量已达上限) | The number of custom data reaches the upper limit. |
 
 **示例：**
 
@@ -5397,6 +5625,8 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<voi
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5405,17 +5635,17 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | isEnabled | boolean | 是 | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -5445,6 +5675,8 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>--><!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5458,17 +5690,17 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -5496,10 +5728,10 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 
 为指定应用账号设置特定鉴权类型的授权令牌。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setAuthToken-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken-1)  
 > 替代。
 
 **起始版本：** 8
@@ -5507,6 +5739,8 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 **废弃版本：** 9
 
 **替代接口：** setAuthToken(name:
+
+<!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5517,7 +5751,7 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | token | string | 是 | 授权令牌。最大长度为1024个字符。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **示例：**
 
@@ -5542,10 +5776,10 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 
 为指定应用账号设置特定鉴权类型的授权令牌。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setAuthToken-2)替
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [setAuthToken](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtoken-2)替  
 > 代。
 
 **起始版本：** 8
@@ -5553,6 +5787,8 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 **废弃版本：** 9
 
 **替代接口：** setAuthToken(name:
+
+<!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5568,7 +5804,7 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -5597,10 +5833,10 @@ setOAuthTokenVisibility(
 
 设置指定账号的特定鉴权类型的授权令牌对指定应用的可见性。使用callback异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setAuthTokenVisibility-1)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-1)  
 > 替代。
 
 **起始版本：** 8
@@ -5608,6 +5844,20 @@ setOAuthTokenVisibility(
 **废弃版本：** 9
 
 **替代接口：** setAuthTokenVisibility(
+
+<!--Device-AppAccountManager-setOAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      isVisible: boolean,
+      callback: AsyncCallback<void>
+    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      isVisible: boolean,
+      callback: AsyncCallback<void>
+    ): void-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5619,7 +5869,7 @@ setOAuthTokenVisibility(
 | authType | string | 是 | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | bundleName | string | 是 | 被设置可见性的应用包名。最大长度为512个字符。 |
 | isVisible | boolean | 是 | 是否可见。true表示可见，false表示不可见。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **示例：**
 
@@ -5645,10 +5895,10 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 设置指定账号的特定鉴权类型的授权令牌对指定应用的可见性。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setAuthTokenVisibility-2)
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃。建议使用  
+> [setAuthTokenVisibility](arkts-basicservices-appaccount-appaccountmanager-i.md#setauthtokenvisibility-2)  
 > 替代。
 
 **起始版本：** 8
@@ -5656,6 +5906,8 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 **废弃版本：** 9
 
 **替代接口：** setAuthTokenVisibility(name:
+
+<!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5672,7 +5924,7 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -5697,6 +5949,8 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-verifyCredential(name: string, owner: string, callback: AuthCallback): void--><!--Device-AppAccountManager-verifyCredential(name: string, owner: string, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5705,19 +5959,19 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| callback | AuthCallback | 是 | 回调函数，返回验证结果。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调函数，返回验证结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name or owner. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name or owner. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 
@@ -5752,6 +6006,8 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 **起始版本：** 9
 
+<!--Device-AppAccountManager-verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void--><!--Device-AppAccountManager-verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 **参数：**
@@ -5760,20 +6016,20 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 | --- | --- | --- | --- |
 | name | string | 是 | 应用账号的名称。最大长度为512个字符。 |
 | owner | string | 是 | 应用账号所有者的包名。最大长度为1024个字符。 |
-| options | VerifyCredentialOptions | 是 | 验证凭据的选项。 |
-| callback | AuthCallback | 是 | 回调函数，返回验证结果。 |
+| options | [VerifyCredentialOptions](arkts-basicservices-appaccount-verifycredentialoptions-i.md) | 是 | 验证凭据的选项。 |
+| callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | 是 | 回调函数，返回验证结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-System) | System service exception. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid name, owner or options. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300010](../../errorcode-universal.md#12300010-Account) | Account service busy. |
-| [12300113](../../errorcode-universal.md#12300113-Authenticator) | Authenticator service not found. |
-| [12300114](../../errorcode-universal.md#12300114-Authenticator) | Authenticator service exception. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | System service exception. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid name, owner or options. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300010](../../apis-basic-services-kit/errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | Authenticator service exception. |
 
 **示例：**
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-appAccount-interface VerifyCredentialOptions--><!--Device-appAccount-interface VerifyCredentialOptions-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+## 导入模块
+
+```TypeScript
+import { appAccount } from '@kit.BasicServicesKit';
+```
 
 ## credential
 
@@ -17,6 +25,8 @@ credential?: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-VerifyCredentialOptions-credential?: string--><!--Device-VerifyCredentialOptions-credential?: string-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -32,6 +42,8 @@ credentialType?: string
 
 **起始版本：** 9
 
+<!--Device-VerifyCredentialOptions-credentialType?: string--><!--Device-VerifyCredentialOptions-credentialType?: string-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
 
 ## parameters
@@ -45,6 +57,8 @@ parameters?: Record<string, Object>
 **类型：** Record<string, Object>
 
 **起始版本：** 9
+
+<!--Device-VerifyCredentialOptions-parameters?: Record<string, Object>--><!--Device-VerifyCredentialOptions-parameters?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 

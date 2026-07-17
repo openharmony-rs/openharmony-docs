@@ -1,5 +1,11 @@
 # trigger
 
+## 导入模块
+
+```TypeScript
+import { WantAgent } from '@kit.AbilityKit';
+```
+
 ## trigger
 
 ```TypeScript
@@ -12,21 +18,23 @@ function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCal
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-wantAgent-function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback<CompleteData>): void--><!--Device-wantAgent-function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback<CompleteData>): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | WantAgent | 是 | WantAgent对象。 |
-| triggerInfo | TriggerInfo | 是 | 表示触发WantAgent实例时携带的信息，如自定义的extraInfos。 |
-| callback | AsyncCallback&lt;CompleteData&gt; | 否 | 主动激发WantAgent实例的回调方法。 |
+| agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
+| triggerInfo | [TriggerInfo](arkts-ability-wantagent-triggerinfo-t.md) | 是 | 表示触发WantAgent实例时携带的信息，如自定义的extraInfos。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CompleteData> | 否 | 主动激发WantAgent实例的回调方法。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 
 **示例：**
 
@@ -70,10 +78,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
-    console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // trigger回调
@@ -85,6 +94,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用trigger接口触发WantAgent实例执行指定操作
     wantAgent.trigger(wantAgentData, triggerInfo, triggerCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -94,6 +104,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;

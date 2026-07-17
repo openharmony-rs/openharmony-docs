@@ -1,13 +1,10 @@
 # Priority
 
-```TypeScript
-enum Priority
-```
-
-表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系请参考
-[QoS等级定义](../../../../napi/qos-guidelines.md#qos-level)。
+表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系请参考[QoS等级定义](../../../../napi/qos-guidelines.md#qos-level)。
 
 **起始版本：** 9
+
+<!--Device-taskpool-enum Priority--><!--Device-taskpool-enum Priority-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -25,6 +22,8 @@ HIGH = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Priority-HIGH = 0--><!--Device-Priority-HIGH = 0-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 ## MEDIUM
@@ -40,6 +39,8 @@ MEDIUM = 1
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Priority-MEDIUM = 1--><!--Device-Priority-MEDIUM = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -57,6 +58,8 @@ LOW = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Priority-LOW = 2--><!--Device-Priority-LOW = 2-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 ## IDLE
@@ -71,7 +74,9 @@ IDLE = 3
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Priority-IDLE = 3--><!--Device-Priority-IDLE = 3-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

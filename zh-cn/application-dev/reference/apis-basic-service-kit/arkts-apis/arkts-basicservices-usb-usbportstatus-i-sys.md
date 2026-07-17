@@ -6,11 +6,19 @@ USB设备端口角色信息。
 
 **废弃版本：** 9
 
-**替代接口：** [USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#USBPortStatus)
+**替代接口：** [USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md)
+
+<!--Device-usb-interface USBPortStatus--><!--Device-usb-interface USBPortStatus-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
 
 ## currentDataRole
 
@@ -26,7 +34,9 @@ currentDataRole: number
 
 **废弃版本：** 9
 
-**替代接口：** [currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentDataRole)
+**替代接口：** [currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentdatarole)
+
+<!--Device-USBPortStatus-currentDataRole: number--><!--Device-USBPortStatus-currentDataRole: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -46,7 +56,9 @@ currentMode: number
 
 **废弃版本：** 9
 
-**替代接口：** [currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentMode)
+**替代接口：** [currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentmode)
+
+<!--Device-USBPortStatus-currentMode: number--><!--Device-USBPortStatus-currentMode: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -66,7 +78,9 @@ currentPowerRole: number
 
 **废弃版本：** 9
 
-**替代接口：** [currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentPowerRole)
+**替代接口：** [currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentpowerrole)
+
+<!--Device-USBPortStatus-currentPowerRole: number--><!--Device-USBPortStatus-currentPowerRole: number-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

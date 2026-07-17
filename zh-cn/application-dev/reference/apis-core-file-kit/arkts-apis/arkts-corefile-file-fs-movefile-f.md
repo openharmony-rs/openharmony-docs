@@ -1,5 +1,11 @@
 # moveFile
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## moveFile
 
 ```TypeScript
@@ -8,11 +14,13 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 
 移动文件，使用promise异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 该接口不支持在分布式文件路径下操作。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function moveFile(src: string, dest: string, mode?: number): Promise<void>--><!--Device-unnamed-declare function moveFile(src: string, dest: string, mode?: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -28,7 +36,7 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -63,11 +71,13 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 
 移动文件。如果移动位置存在同名文件，将强制覆盖。使用callback异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 该接口不支持在分布式文件路径下操作。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function moveFile(src: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function moveFile(src: string, dest: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -77,7 +87,7 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | src | string | 是 | 源文件的应用沙箱路径。 |
 | dest | string | 是 | 目标文件的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步移动文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步移动文件之后的回调。 |
 
 **错误码：**
 
@@ -112,11 +122,13 @@ declare function moveFile(src: string, dest: string, mode: number, callback: Asy
 
 移动文件，支持设置移动模式。使用callback异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 该接口不支持在分布式文件路径下操作。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function moveFile(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function moveFile(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -127,7 +139,7 @@ declare function moveFile(src: string, dest: string, mode: number, callback: Asy
 | src | string | 是 | 源文件的应用沙箱路径。 |
 | dest | string | 是 | 目标文件的应用沙箱路径。 |
 | mode | number | 是 | 移动模式。若mode为0，移动位置存在同名文件时，强制移动覆盖。若mode为1，移动位置存在同名文件时，抛出异常。默认为0。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步移动文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步移动文件之后的回调。 |
 
 **错误码：**
 

@@ -4,9 +4,17 @@ Bundle installer interface, include install uninstall recover.
 
 **起始版本：** 9
 
+<!--Device-installer-interface BundleInstaller--><!--Device-installer-interface BundleInstaller-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+```
 
 ## addExtResource
 
@@ -14,11 +22,13 @@ Bundle installer interface, include install uninstall recover.
 addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 ```
 
-���ݸ�����bundleName��hsp�ļ�·��������չ��Դ��ʹ��Promise�첽�ص���
+根据给定的bundleName和hsp文件路径添加扩展资源。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>--><!--Device-BundleInstaller-addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,24 +38,24 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ������չ��Դ��Ӧ�����ơ� |
-| filePaths | Array&lt;string&gt; | 是 | Ҫ������չ��Դ����Դ·���� |
+| bundleName | string | 是 | 要添加扩展资源的应用名称。 |
+| filePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 要添加扩展资源的资源路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700301](../../errorcode-universal.md#17700301-AddExtResource) | AddExtResource failed due to parse file failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700301](../errorcode-bundle.md#17700301-扩展资源添加失败) | AddExtResource failed due to parse file failed. |
 
 **示例：**
 
@@ -78,11 +88,13 @@ try {
 createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise<number>
 ```
 
-����Ӧ�÷�����ʹ��Promise�첽�ص���
+创建应用分身。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INSTALL_CLONE_BUNDLE
+
+<!--Device-BundleInstaller-createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise<int>--><!--Device-BundleInstaller-createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise<int>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -92,26 +104,26 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ������Ӧ�÷����İ����� |
-| createAppCloneParam | CreateAppCloneParam | 否 | ָ������Ӧ�÷������������������Ĭ��ֵ������<br/>[createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md#CreateAppCloneParam)��Ĭ��ֵ�� |
+| bundleName | string | 是 | 待创建应用分身的包名。 |
+| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | 否 | 指定创建应用分身所需的其他参数，默认值：参照[createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󡣷��ش����ķ���Ӧ������ֵ�� |
+| Promise<number> | Promise对象。返回创建的分身应用索引值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName cannot be found or the bundle is not installed by<br/>the specified user. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The userId is invalid. |
-| [17700061](../../errorcode-universal.md#17700061-The) | The appIndex is not in valid range or already exists. |
-| [17700069](../../errorcode-universal.md#17700069-The) | The app does not support the creation of an appClone instance. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The appIndex is not in valid range or already exists. |
+| [17700069](../errorcode-bundle.md#17700069-应用不支持创建分身) | The app does not support the creation of an appClone instance. |
 
 **示例：**
 
@@ -149,11 +161,13 @@ try {
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>
 ```
 
-ɾ��Ӧ�÷�����ʹ��Promise�첽�ص���
+删除应用分身。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
+
+<!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>--><!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -163,26 +177,26 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ɾ��Ӧ�÷����İ����� |
-| appIndex | number | 是 | ��ɾ��Ӧ�÷����������� |
-| userId | number | 否 | ��ɾ��Ӧ�÷��������û�ID������ͨ��<br/>[getOsAccountLocalId�ӿ�](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>��ȡ��Ĭ��ֵ�����÷������û��� |
+| bundleName | string | 是 | 待删除应用分身的包名。 |
+| appIndex | number | 是 | 待删除应用分身的索引。 |
+| userId | number | 否 | 待删除应用分身所属用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。默认值：调用方所在用户。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName cannot be found or the bundle is not installed by<br/>the specified user. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The userId is invalid. |
-| [17700061](../../errorcode-universal.md#17700061-AppIndex) | AppIndex not in valid range. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
 **示例：**
 
@@ -218,11 +232,13 @@ try {
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>
 ```
 
-ɾ��Ӧ�÷�����ʹ��Promise�첽�ص���
+删除应用分身。使用Promise异步回调。
 
 **起始版本：** 15
 
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
+
+<!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>--><!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -232,27 +248,27 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ɾ��Ӧ�÷����İ����� |
-| appIndex | number | 是 | ��ɾ��Ӧ�÷����������� |
-| destroyAppCloneParam | DestroyAppCloneParam | 否 | ָ��ɾ��Ӧ�÷������������������Ĭ��ֵ������<br/>[DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md#DestroyAppCloneParam)��Ĭ��ֵ�� |
+| bundleName | string | 是 | 待删除应用分身的包名。 |
+| appIndex | number | 是 | 待删除应用分身的索引。 |
+| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身所需的其他参数，默认值：参照[DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName cannot be found or the bundle is not installed by<br/>the specified user. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The userId is invalid. |
-| [17700061](../../errorcode-universal.md#17700061-AppIndex) | AppIndex not in valid range. |
-| [17700062](../../errorcode-universal.md#17700062-Failed) | Failed to uninstall the app because the app is locked. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
+| [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked. |
 
 **示例：**
 
@@ -296,16 +312,22 @@ try {
 install(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-��װָ��Ӧ�á�ʹ��callback�첽�ص���
+安装指定应用。使用callback异步回调。
 
-> **˵����**
->
-> ��װ��ͬ�ַ����͵�Ӧ����Ҫ������Ӧ��Ȩ�ޣ��ַ����Ϳ��Բο�[ApplicationInfo](arkts-ability-applicationinfo-i.md#ApplicationInfo)�е�
-> appDistributionType�ֶ�˵����
+> **说明：**  
+>  
+> 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的  
+> appDistributionType字段说明。
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+**需要权限：** 
+- API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+- API版本13 - 22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
+- API版本10 - 12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
+- API版本9：ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-install(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-install(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -315,42 +337,42 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | �洢Ӧ�ó������·����·��Ӧ���ǵ�ǰӦ�ó����д��HAP������Ŀ¼���������·����һ��Ŀ¼ʱ�� ��Ŀ¼��ֻ�ܷ�ͬһ��Ӧ�õ�HAP������ЩHAP��ǩ<br/>����Ҫ����һ�¡� |
-| installParam | InstallParam | 是 | ָ����װ��������������� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)����װӦ�óɹ���errΪundefined������Ϊ������� |
+| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 是 | 指定安装所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or '<br/>ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or<br/>'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'<br/>or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'<br/>or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of<br/>specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the HAP because the HAP fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the HAP because the HAP signature fails to be verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the HAP because the HAP path is invalid or the HAP is too<br/>large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the HAPs because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the HAP because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the HAP since the version of the HAP to install is too<br/>early. |
-| [17700018](../../errorcode-universal.md#17700018-Failed) | Failed to install because the dependent module does not exist. |
-| [17700031](../../errorcode-universal.md#17700031-Failed) | Failed to install the HAP because the overlay check of the HAP is failed. |
-| [17700036](../../errorcode-universal.md#17700036-Failed) | Failed to install the HSP because lacks appropriate permissions. |
-| [17700039](../../errorcode-universal.md#17700039-Failed) | Failed to install because disallow install a shared bundle by hapFilePaths. |
-| [17700041](../../errorcode-universal.md#17700041-Failed) | Failed to install because enterprise device management disallow install. |
-| [17700042](../../errorcode-universal.md#17700042-Failed) | Failed to install the HAP because of incorrect URI in the data proxy. |
-| [17700043](../../errorcode-universal.md#17700043-Failed) | Failed to install the HAP because of low APL in the non-system data proxy<br/>(required APL: system_basic or system_core). |
-| [17700044](../../errorcode-universal.md#17700044-Failed) | Failed to install the HAP because the isolationMode configured is not<br/>supported. |
-| [17700047](../../errorcode-universal.md#17700047-Failed) | Failed to install the HAP because the VersionCode to be updated is not<br/>greater than the current VersionCode. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the HAP because the code signature verification is<br/>failed.&lt;br&gt;**适用版本：** 10+ |
-| [17700050](../../errorcode-universal.md#17700050-Failed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be<br/>installed on non-enterprise device.&lt;br&gt;**适用版本：** 10+ |
-| [17700052](../../errorcode-universal.md#17700052-Failed) | Failed to install the HAP because debug bundle cannot be installed under non<br/>-developer mode.&lt;br&gt;**适用版本：** 11+ |
-| [17700054](../../errorcode-universal.md#17700054-Failed) | Failed to install the HAP because the HAP requests wrong<br/>permissions.&lt;br&gt;**适用版本：** 11+ |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because the device has been controlled.&lt;br&gt;**适用版本：** 12+ |
-| [17700066](../../errorcode-universal.md#17700066-Failed) | Failed to install the HAP because installing the native package<br/>failed.&lt;br&gt;**适用版本：** 12+ |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
-| [17700077](../../errorcode-universal.md#17700077-Failed) | Failed to install the HAP and restore to preinstalled bundle.&lt;br&gt;**适用版本：** 17+ |
-| [17700076](../../errorcode-universal.md#17700076-Failed) | Failed to install the HAP or HSP because the app distribution type is not<br/>allowed.&lt;br&gt;**适用版本：** 18+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the HAPs because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
+| [17700018](../errorcode-bundle.md#17700018-安装失败依赖的模块不存在) | Failed to install because the dependent module does not exist. |
+| [17700031](../errorcode-bundle.md#17700031-overlay特征校验失败导致hap安装失败) | Failed to install the HAP because the overlay check of the HAP is failed. |
+| [17700036](../errorcode-bundle.md#17700036-共享库缺少allowappsharelibrary特权导致安装失败) | Failed to install the HSP because lacks appropriate permissions. |
+| [17700039](../errorcode-bundle.md#17700039-不允许安装应用间共享库) | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| [17700041](../errorcode-bundle.md#17700041-企业设备管理不允许安装该应用) | Failed to install because enterprise device management disallow install. |
+| [17700042](../errorcode-bundle.md#17700042-数据代理中的uri配置错误) | Failed to install the HAP because of incorrect URI in the data proxy. |
+| [17700043](../errorcode-bundle.md#17700043-数据代理中的权限配置错误) | Failed to install the HAP because of low APL in the non-system data proxy(required APL: system_basic or system_core). |
+| [17700044](../errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾) | Failed to install the HAP because the isolationMode configured is not supported. |
+| [17700047](../errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本) | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the HAP because the code signature verification is failed.<br>**适用版本：** 10+ |
+| [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device.<br>**适用版本：** 10+ |
+| [17700052](../errorcode-bundle.md#17700052-非开发者模式下不允许安装调试应用) | Failed to install the HAP because debug bundle cannot be installed under non  -developer mode.<br>**适用版本：** 11+ |
+| [17700054](../errorcode-bundle.md#17700054-权限校验失败导致应用安装失败) | Failed to install the HAP because the HAP requests wrong permissions.<br>**适用版本：** 11+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because the device has been controlled.<br>**适用版本：** 12+ |
+| [17700066](../errorcode-bundle.md#17700066-安装失败native软件包安装失败) | Failed to install the HAP because installing the native package failed.<br>**适用版本：** 12+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
+| [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
 **示例：**
 
@@ -390,16 +412,22 @@ try {
 install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-��װָ��Ӧ�á�ʹ��callback�첽�ص���
+安装指定应用。使用callback异步回调。
 
-> **˵����**
->
-> ��װ��ͬ�ַ����͵�Ӧ����Ҫ������Ӧ��Ȩ�ޣ��ַ����Ϳ��Բο�[ApplicationInfo](arkts-ability-applicationinfo-i.md#ApplicationInfo)�е�
-> appDistributionType�ֶ�˵����
+> **说明：**  
+>  
+> 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的  
+> appDistributionType字段说明。
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+**需要权限：** 
+- API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+- API版本13 - 22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
+- API版本10 - 12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
+- API版本9：ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -409,40 +437,40 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | �洢Ӧ�ó������·����·��Ӧ���ǵ�ǰӦ�ó����д��HAP������Ŀ¼���������·����һ��Ŀ¼ʱ�� ��Ŀ¼��ֻ�ܷ�ͬһ��Ӧ�õ�HAP������ЩHAP��ǩ<br/>����Ҫ����һ�¡� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)����װӦ�óɹ���errΪundefined������Ϊ������� |
+| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or '<br/>ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or<br/>'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'<br/>or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'<br/>or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the HAP because the HAP fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the HAP because the HAP signature fails to be verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the HAP because the HAP path is invalid or the HAP is too<br/>large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the HAPs because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the HAP because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the HAP since the version of the HAP to install is too<br/>early. |
-| [17700018](../../errorcode-universal.md#17700018-Failed) | Failed to install because the dependent module does not exist. |
-| [17700031](../../errorcode-universal.md#17700031-Failed) | Failed to install the HAP because the overlay check of the HAP is failed. |
-| [17700036](../../errorcode-universal.md#17700036-Failed) | Failed to install the HSP because lacks appropriate permissions. |
-| [17700039](../../errorcode-universal.md#17700039-Failed) | Failed to install because disallow install a shared bundle by hapFilePaths. |
-| [17700041](../../errorcode-universal.md#17700041-Failed) | Failed to install because enterprise device management disallow install. |
-| [17700042](../../errorcode-universal.md#17700042-Failed) | Failed to install the HAP because of incorrect URI in the data proxy. |
-| [17700043](../../errorcode-universal.md#17700043-Failed) | Failed to install the HAP because of low APL in the non-system data proxy<br/>(required APL: system_basic or system_core). |
-| [17700044](../../errorcode-universal.md#17700044-Failed) | Failed to install the HAP because the isolationMode configured is not<br/>supported. |
-| [17700047](../../errorcode-universal.md#17700047-Failed) | Failed to install the HAP because the VersionCode to be updated is not<br/>greater than the current VersionCode. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the HAP because the code signature verification is<br/>failed.&lt;br&gt;**适用版本：** 10+ |
-| [17700050](../../errorcode-universal.md#17700050-Failed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be<br/>installed on non-enterprise device.&lt;br&gt;**适用版本：** 10+ |
-| [17700052](../../errorcode-universal.md#17700052-Failed) | Failed to install the HAP because debug bundle cannot be installed under non<br/>-developer mode.&lt;br&gt;**适用版本：** 11+ |
-| [17700054](../../errorcode-universal.md#17700054-Failed) | Failed to install the HAP because the HAP requests wrong<br/>permissions.&lt;br&gt;**适用版本：** 11+ |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because the device has been controlled.&lt;br&gt;**适用版本：** 12+ |
-| [17700066](../../errorcode-universal.md#17700066-Failed) | Failed to install the HAP because installing the native package<br/>failed.&lt;br&gt;**适用版本：** 12+ |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
-| [17700077](../../errorcode-universal.md#17700077-Failed) | Failed to install the HAP and restore to preinstalled bundle.&lt;br&gt;**适用版本：** 17+ |
-| [17700076](../../errorcode-universal.md#17700076-Failed) | Failed to install the HAP or HSP because the app distribution type is not<br/>allowed.&lt;br&gt;**适用版本：** 18+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the HAPs because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
+| [17700018](../errorcode-bundle.md#17700018-安装失败依赖的模块不存在) | Failed to install because the dependent module does not exist. |
+| [17700031](../errorcode-bundle.md#17700031-overlay特征校验失败导致hap安装失败) | Failed to install the HAP because the overlay check of the HAP is failed. |
+| [17700036](../errorcode-bundle.md#17700036-共享库缺少allowappsharelibrary特权导致安装失败) | Failed to install the HSP because lacks appropriate permissions. |
+| [17700039](../errorcode-bundle.md#17700039-不允许安装应用间共享库) | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| [17700041](../errorcode-bundle.md#17700041-企业设备管理不允许安装该应用) | Failed to install because enterprise device management disallow install. |
+| [17700042](../errorcode-bundle.md#17700042-数据代理中的uri配置错误) | Failed to install the HAP because of incorrect URI in the data proxy. |
+| [17700043](../errorcode-bundle.md#17700043-数据代理中的权限配置错误) | Failed to install the HAP because of low APL in the non-system data proxy(required APL: system_basic or system_core). |
+| [17700044](../errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾) | Failed to install the HAP because the isolationMode configured is not supported. |
+| [17700047](../errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本) | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the HAP because the code signature verification is failed.<br>**适用版本：** 10+ |
+| [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device.<br>**适用版本：** 10+ |
+| [17700052](../errorcode-bundle.md#17700052-非开发者模式下不允许安装调试应用) | Failed to install the HAP because debug bundle cannot be installed under non  -developer mode.<br>**适用版本：** 11+ |
+| [17700054](../errorcode-bundle.md#17700054-权限校验失败导致应用安装失败) | Failed to install the HAP because the HAP requests wrong permissions.<br>**适用版本：** 11+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because the device has been controlled.<br>**适用版本：** 12+ |
+| [17700066](../errorcode-bundle.md#17700066-安装失败native软件包安装失败) | Failed to install the HAP because installing the native package failed.<br>**适用版本：** 12+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
+| [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
 **示例：**
 
@@ -477,16 +505,22 @@ try {
 install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 ```
 
-��װָ��Ӧ�á�ʹ��Promise�첽�ص���
+安装指定应用。使用Promise异步回调。
 
-> **˵����**
->
-> ��װ��ͬ�ַ����͵�Ӧ����Ҫ������Ӧ��Ȩ�ޣ��ַ����Ϳ��Բο�[ApplicationInfo](arkts-ability-applicationinfo-i.md#ApplicationInfo)�е�
-> appDistributionType�ֶ�˵����
+> **说明：**  
+>  
+> 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的  
+> appDistributionType字段说明。
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE, ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+**需要权限：** 
+- API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+- API版本13 - 22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
+- API版本10 - 12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
+- API版本9：ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -496,47 +530,47 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | �洢Ӧ�ó������·����·��Ӧ���ǵ�ǰӦ�ó����д��HAP������Ŀ¼���������·����һ��Ŀ¼ʱ�� ��Ŀ¼��ֻ�ܷ�ͬһ��Ӧ�õ�HAP������ЩHAP��ǩ<br/>����Ҫ����һ�¡� |
-| installParam | InstallParam | 否 | ָ����װ���������������Ĭ��ֵ������[InstallParam](arkts-ability-installer-installparam-i-sys.md#InstallParam)��Ĭ��ֵ<br/>�� [since 12] |
+| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or '<br/>ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or<br/>'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'<br/>or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'<br/>or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of<br/>specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the HAP because the HAP fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the HAP because the HAP signature fails to be verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the HAP because the HAP path is invalid or the HAP is too<br/>large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the HAPs because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the HAP because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the HAP since the version of the HAP to install is too<br/>early. |
-| [17700018](../../errorcode-universal.md#17700018-Failed) | Failed to install because the dependent module does not exist. |
-| [17700031](../../errorcode-universal.md#17700031-Failed) | Failed to install the HAP because the overlay check of the HAP is failed. |
-| [17700036](../../errorcode-universal.md#17700036-Failed) | Failed to install the HSP because lacks appropriate permissions. |
-| [17700039](../../errorcode-universal.md#17700039-Failed) | Failed to install because disallow install a shared bundle by hapFilePaths. |
-| [17700041](../../errorcode-universal.md#17700041-Failed) | Failed to install because enterprise device management disallow install. |
-| [17700042](../../errorcode-universal.md#17700042-Failed) | Failed to install the HAP because of incorrect URI in the data proxy. |
-| [17700043](../../errorcode-universal.md#17700043-Failed) | Failed to install the HAP because of low APL in the non-system data proxy<br/>(required APL: system_basic or system_core). |
-| [17700044](../../errorcode-universal.md#17700044-Failed) | Failed to install the HAP because the isolationMode configured is not<br/>supported. |
-| [17700047](../../errorcode-universal.md#17700047-Failed) | Failed to install the HAP because the VersionCode to be updated is not<br/>greater than the current VersionCode. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the HAP because the code signature verification is<br/>failed.&lt;br&gt;**适用版本：** 10+ |
-| [17700050](../../errorcode-universal.md#17700050-Failed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be<br/>installed on non-enterprise device.&lt;br&gt;**适用版本：** 10+ |
-| [17700052](../../errorcode-universal.md#17700052-Failed) | Failed to install the HAP because debug bundle cannot be installed under non<br/>-developer mode.&lt;br&gt;**适用版本：** 11+ |
-| [17700054](../../errorcode-universal.md#17700054-Failed) | Failed to install the HAP because the HAP requests wrong<br/>permissions.&lt;br&gt;**适用版本：** 11+ |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because the device has been controlled.&lt;br&gt;**适用版本：** 12+ |
-| [17700066](../../errorcode-universal.md#17700066-Failed) | Failed to install the HAP because installing the native package<br/>failed.&lt;br&gt;**适用版本：** 12+ |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
-| [17700077](../../errorcode-universal.md#17700077-Failed) | Failed to install the HAP and restore to preinstalled bundle.&lt;br&gt;**适用版本：** 17+ |
-| [17700076](../../errorcode-universal.md#17700076-Failed) | Failed to install the HAP or HSP because the app distribution type is not<br/>allowed.&lt;br&gt;**适用版本：** 18+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE'or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE'or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE'). |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the HAPs because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
+| [17700018](../errorcode-bundle.md#17700018-安装失败依赖的模块不存在) | Failed to install because the dependent module does not exist. |
+| [17700031](../errorcode-bundle.md#17700031-overlay特征校验失败导致hap安装失败) | Failed to install the HAP because the overlay check of the HAP is failed. |
+| [17700036](../errorcode-bundle.md#17700036-共享库缺少allowappsharelibrary特权导致安装失败) | Failed to install the HSP because lacks appropriate permissions. |
+| [17700039](../errorcode-bundle.md#17700039-不允许安装应用间共享库) | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| [17700041](../errorcode-bundle.md#17700041-企业设备管理不允许安装该应用) | Failed to install because enterprise device management disallow install. |
+| [17700042](../errorcode-bundle.md#17700042-数据代理中的uri配置错误) | Failed to install the HAP because of incorrect URI in the data proxy. |
+| [17700043](../errorcode-bundle.md#17700043-数据代理中的权限配置错误) | Failed to install the HAP because of low APL in the non-system data proxy(required APL: system_basic or system_core). |
+| [17700044](../errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾) | Failed to install the HAP because the isolationMode configured is not supported. |
+| [17700047](../errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本) | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the HAP because the code signature verification is failed.<br>**适用版本：** 10+ |
+| [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device.<br>**适用版本：** 10+ |
+| [17700052](../errorcode-bundle.md#17700052-非开发者模式下不允许安装调试应用) | Failed to install the HAP because debug bundle cannot be installed under non  -developer mode.<br>**适用版本：** 11+ |
+| [17700054](../errorcode-bundle.md#17700054-权限校验失败导致应用安装失败) | Failed to install the HAP because the HAP requests wrong permissions.<br>**适用版本：** 11+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because the device has been controlled.<br>**适用版本：** 12+ |
+| [17700066](../errorcode-bundle.md#17700066-安装失败native软件包安装失败) | Failed to install the HAP because installing the native package failed.<br>**适用版本：** 12+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
+| [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
 **示例：**
 
@@ -575,11 +609,13 @@ try {
 installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginParam?: PluginParam): Promise<void>
 ```
 
-Ӧ�ð�װ�����ʹ��Promise�첽�ص���
+应用安装插件。使用Promise异步回调。
 
 **起始版本：** 19
 
 **需要权限：** ohos.permission.INSTALL_PLUGIN_BUNDLE
+
+<!--Device-BundleInstaller-installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginParam?: PluginParam): Promise<void>--><!--Device-BundleInstaller-installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginParam?: PluginParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -589,38 +625,38 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hostBundleName | string | 是 | ����װ�����Ӧ�ð����� |
-| pluginFilePaths | Array&lt;string&gt; | 是 | �洢����������·�������������ļ�·������һ��Ŀ¼ʱ����ȷ����Щ�ļ���ͬһ��������HSP������ЩHSP��ǩ����Ҫ����һ�¡� |
-| pluginParam | PluginParam | 否 | ָ����װ�������Ĳ�����Ĭ��ֵ������ [PluginParam](arkts-ability-installer-pluginparam-i-sys.md#PluginParam) ��Ĭ��ֵ�� |
+| hostBundleName | string | 是 | 待安装插件的应用包名。 |
+| pluginFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储插件程序包的路径。当传入多个文件路径或者一个目录时，需确保这些文件是同一插件程序的HSP，且这些HSP的签名需要保持一致。 |
+| pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定安装插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) 的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_PLUGIN_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified hostBundleName cannot be found or the bundle is not installed<br/>by the specified user. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The userId is invalid. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the plugin because the plugin fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the plugin because the plugin signature fails to be<br/>verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the plugin because the HSP path is invalid or the HSP is<br/>too large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the plugin because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the plugin because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the plugin since the version of the plugin to install is<br/>too early. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the plugin because the code signature verification is<br/>failed. |
-| [17700052](../../errorcode-universal.md#17700052-Failed) | Failed to install the plugin because debug bundle cannot be installed under<br/>non-developer mode. |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the plugin because a plugin with the same<br/><br/>bundle name but different signature information exists on the device. |
-| [17700087](../../errorcode-universal.md#17700087-Failed) | Failed to install the plugin because the current device does not support<br/>plugin. |
-| [17700088](../../errorcode-universal.md#17700088-Failed) | Failed to install the plugin because the host application lacks<br/>ohos.permission.kernel.SUPPORT_PLUGIN. |
-| [17700089](../../errorcode-universal.md#17700089-Failed) | Failed to install the plugin because the plugin id fails to be parsed. |
-| [17700090](../../errorcode-universal.md#17700090-Failed) | Failed to install the plugin because the plugin id fails to be verified. |
-| [17700091](../../errorcode-universal.md#17700091-Failed) | Failed to install the plugin because the plugin name is same as host bundle<br/>name. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_PLUGIN_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified hostBundleName cannot be found or the bundle is not installed by the specified user. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the plugin because the plugin fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the plugin because the plugin signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the plugin because the HSP path is invalid or the HSP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the plugin because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the plugin because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the plugin since the version of the plugin to install is too early. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the plugin because the code signature verification is failed. |
+| [17700052](../errorcode-bundle.md#17700052-非开发者模式下不允许安装调试应用) | Failed to install the plugin because debug bundle cannot be installed under non-developer mode. |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the plugin because a plugin with the same<br>bundle name but different signature information exists on the device. |
+| [17700087](../errorcode-bundle.md#17700087-当前设备不支持安装插件) | Failed to install the plugin because the current device does not support plugin. |
+| [17700088](../errorcode-bundle.md#17700088-应用缺少安装插件的权限) | Failed to install the plugin because the host application lacks ohos.permission.kernel.SUPPORT_PLUGIN. |
+| [17700089](../errorcode-bundle.md#17700089-插件的-plugindistributionids-解析失败) | Failed to install the plugin because the plugin id fails to be parsed. |
+| [17700090](../errorcode-bundle.md#17700090-插件与应用之间-plugindistributionids-校验失败) | Failed to install the plugin because the plugin id fails to be verified. |
+| [17700091](../errorcode-bundle.md#17700091-插件与主体同包名) | Failed to install the plugin because the plugin name is same as host bundle name. |
 
 **示例：**
 
@@ -658,16 +694,18 @@ try {
 installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 ```
 
-��ָ���û��°�װָ��bundleName��Ӧ�á�ʹ��Promise�첽�ص���
+在指定用户下安装指定bundleName的应用。使用Promise异步回调。
 
-> **˵����**
->
-> �ýӿڲ�֧�ְ�װ[ǩ��֤��ķַ�����](arkts-ability-applicationinfo-i.md#ApplicationInfo)Ϊenterprise��enterprise_mdm��
-> enterprise_normal��Ӧ�á�
+> **说明：**  
+>  
+> 该接口不支持安装[签名证书的分发类型](arkts-ability-applicationinfo-i.md)为enterprise，enterprise_mdm和  
+> enterprise_normal的应用。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-installPreexistingApp(bundleName: string, userId?: int): Promise<void>--><!--Device-BundleInstaller-installPreexistingApp(bundleName: string, userId?: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -677,26 +715,26 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��Ҫ��װӦ�õİ����� |
-| userId | number | 否 | ��Ҫ��װӦ�õ��û�ID������ͨ��<br/>[getOsAccountLocalId�ӿ�](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>��ȡ��userId��Ҫ����0��Ĭ��ֵ�����÷������û��� |
+| bundleName | string | 是 | 需要安装应用的包名。 |
+| userId | number | 否 | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，userId需要大于0。默认值：调用方所在用户。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName cannot be found or the bundle is not installed by<br/>the specified user. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The userId is invalid. |
-| [17700071](../../errorcode-universal.md#17700071-It) | It is not allowed to install the enterprise bundle. |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because this application is prohibited<br/><br/>from being installed on this device or by specified users.&lt;br&gt;**适用版本：** 14+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
+| [17700071](../errorcode-bundle.md#17700071-不允许企业应用安装) | It is not allowed to install the enterprise bundle. |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例：**
 
@@ -731,11 +769,13 @@ try {
 recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-�ع�Ӧ�õ����ΰ�װʱ��״̬��ʹ��callback�첽�ص���
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.RECOVER_BUNDLE
+
+<!--Device-BundleInstaller-recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -745,21 +785,21 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ���ָ�Ӧ�õİ����� |
-| installParam | InstallParam | 是 | ָ����װ��������������� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)���ع�Ӧ�óɹ���errΪundefined������Ϊ������� |
+| bundleName | string | 是 | 待恢复应用的包名。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 是 | 指定安装所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or '<br/>ohos.permission.RECOVER_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because this application is prohibited<br/><br/>from being installed on this device or by specified users.&lt;br&gt;**适用版本：** 14+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例：**
 
@@ -799,11 +839,13 @@ try {
 recover(bundleName: string, callback: AsyncCallback<void>): void
 ```
 
-�ع�Ӧ�õ����ΰ�װʱ��״̬��ʹ��callback�첽�ص���
+回滚应用到初次安装时的状态。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.RECOVER_BUNDLE
+
+<!--Device-BundleInstaller-recover(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-recover(bundleName: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -813,19 +855,19 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ���ָ�Ӧ�õİ����� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)���ع�Ӧ�óɹ���errΪundefined������Ϊ������� |
+| bundleName | string | 是 | 待恢复应用的包名。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or '<br/>ohos.permission.RECOVER_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because this application is prohibited<br/><br/>from being installed on this device or by specified users.&lt;br&gt;**适用版本：** 14+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例：**
 
@@ -860,11 +902,13 @@ try {
 recover(bundleName: string, installParam?: InstallParam): Promise<void>
 ```
 
-�ع�Ӧ�õ����ΰ�װʱ��״̬��ʹ��Promise�첽�ص���
+回滚应用到初次安装时的状态。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.RECOVER_BUNDLE
+
+<!--Device-BundleInstaller-recover(bundleName: string, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-recover(bundleName: string, installParam?: InstallParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -874,26 +918,26 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж��Ӧ�õİ����� |
-| installParam | InstallParam | 否 | ָ����װ���������������Ĭ��ֵ������[InstallParam](arkts-ability-installer-installparam-i-sys.md#InstallParam)��Ĭ��ֵ�� |
+| bundleName | string | 是 | 待卸载应用的包名。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or '<br/>ohos.permission.RECOVER_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
-| [17700058](../../errorcode-universal.md#17700058-Failed) | Failed to install the HAP because this application is prohibited<br/><br/>from being installed on this device or by specified users.&lt;br&gt;**适用版本：** 14+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.RECOVER_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例：**
 
@@ -932,11 +976,13 @@ try {
 removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 ```
 
-���ݸ�����bundleName��moduleNamesɾ����չ��Դ��ʹ��Promise�첽�ص���
+根据给定的bundleName和moduleNames删除扩展资源。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>--><!--Device-BundleInstaller-removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -946,24 +992,24 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫɾ����չ��Դ��Ӧ�����ơ� |
-| moduleNames | Array&lt;string&gt; | 是 | Ҫɾ����չ��Դ��moduleNames�� |
+| bundleName | string | 是 | 要删除扩展资源的应用名称。 |
+| moduleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 要删除扩展资源的moduleNames。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700302](../../errorcode-universal.md#17700302-RemoveExtResource) | RemoveExtResource failed due to module does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700302](../errorcode-bundle.md#17700302-扩展资源删除失败) | RemoveExtResource failed due to module does not exist. |
 
 **示例：**
 
@@ -996,11 +1042,13 @@ try {
 uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-ж��Ӧ�á�ʹ��callback�첽�ص���
+卸载应用。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1010,25 +1058,25 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж��Ӧ�õİ����� |
-| installParam | InstallParam | 是 | ָ����װ��������������� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)��ж��Ӧ�óɹ���errΪundefined������Ϊ������� |
+| bundleName | string | 是 | 待卸载应用的包名。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 是 | 指定安装所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700020](../../errorcode-universal.md#17700020-The) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
-| [17700040](../../errorcode-universal.md#17700040-The) | The specified bundle is a shared bundle and cannot be uninstalled. |
-| [17700045](../../errorcode-universal.md#17700045-Failed) | Failed to uninstall the HAP because uninstall is not allowed by the<br/>enterprise device management. |
-| [17700067](../../errorcode-universal.md#17700067-Failed) | Failed to uninstall the HAP because uninstalling the native package<br/>failed.&lt;br&gt;**适用版本：** 12+ |
-| [17700060](../../errorcode-universal.md#17700060-The) | The specified application cannot be uninstalled.&lt;br&gt;**适用版本：** 13+ |
-| [17700062](../../errorcode-universal.md#17700062-Failed) | Failed to uninstall the app because the app is locked.&lt;br&gt;**适用版本：** 15+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| [17700040](../errorcode-bundle.md#17700040-不允许卸载应用间共享库) | The specified bundle is a shared bundle and cannot be uninstalled. |
+| [17700045](../errorcode-bundle.md#17700045-企业设备管理不允许卸载该应用) | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
+| [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
+| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
+| [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked.<br>**适用版本：** 15+ |
 
 **示例：**
 
@@ -1068,11 +1116,13 @@ try {
 uninstall(bundleName: string, callback: AsyncCallback<void>): void
 ```
 
-ж��Ӧ�á�ʹ��callback�첽�ص���
+卸载应用。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstall(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-uninstall(bundleName: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1082,22 +1132,22 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж��Ӧ�õİ����� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)��ж��Ӧ�óɹ���errΪundefined������Ϊ������� |
+| bundleName | string | 是 | 待卸载应用的包名。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700020](../../errorcode-universal.md#17700020-The) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
-| [17700040](../../errorcode-universal.md#17700040-The) | The specified bundle is a shared bundle and cannot be uninstalled. |
-| [17700045](../../errorcode-universal.md#17700045-Failed) | Failed to uninstall the HAP because uninstall is not allowed by the<br/>enterprise device management. |
-| [17700067](../../errorcode-universal.md#17700067-Failed) | Failed to uninstall the HAP because uninstalling the native package<br/>failed.&lt;br&gt;**适用版本：** 12+ |
-| [17700060](../../errorcode-universal.md#17700060-The) | The specified application cannot be uninstalled.&lt;br&gt;**适用版本：** 13+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| [17700040](../errorcode-bundle.md#17700040-不允许卸载应用间共享库) | The specified bundle is a shared bundle and cannot be uninstalled. |
+| [17700045](../errorcode-bundle.md#17700045-企业设备管理不允许卸载该应用) | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
+| [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
+| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
 
 **示例：**
 
@@ -1132,11 +1182,13 @@ try {
 uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 ```
 
-ж��Ӧ�á�ʹ��Promise�첽�ص���
+卸载应用。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstall(bundleName: string, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-uninstall(bundleName: string, installParam?: InstallParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1146,30 +1198,30 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж��Ӧ�õİ����� |
-| installParam | InstallParam | 否 | ָ����װ���������������Ĭ��ֵ������[InstallParam](arkts-ability-installer-installparam-i-sys.md#InstallParam)��Ĭ��ֵ<br/>�� [since 15] |
+| bundleName | string | 是 | 待卸载应用的包名。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**起始版本：** 15 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700020](../../errorcode-universal.md#17700020-The) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
-| [17700040](../../errorcode-universal.md#17700040-The) | The specified bundle is a shared bundle and cannot be uninstalled. |
-| [17700045](../../errorcode-universal.md#17700045-Failed) | Failed to uninstall the HAP because uninstall is not allowed by the<br/>enterprise device management. |
-| [17700067](../../errorcode-universal.md#17700067-Failed) | Failed to uninstall the HAP because uninstalling the native package<br/>failed.&lt;br&gt;**适用版本：** 12+ |
-| [17700060](../../errorcode-universal.md#17700060-The) | The specified application cannot be uninstalled.&lt;br&gt;**适用版本：** 13+ |
-| [17700062](../../errorcode-universal.md#17700062-Failed) | Failed to uninstall the app because the app is locked.&lt;br&gt;**适用版本：** 15+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| [17700040](../errorcode-bundle.md#17700040-不允许卸载应用间共享库) | The specified bundle is a shared bundle and cannot be uninstalled. |
+| [17700045](../errorcode-bundle.md#17700045-企业设备管理不允许卸载该应用) | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
+| [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
+| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
+| [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked.<br>**适用版本：** 15+ |
 
 **示例：**
 
@@ -1208,11 +1260,13 @@ try {
 uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 ```
 
-ж��һ����������ʹ��callback�첽�ص���
+卸载一个共享包。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1222,19 +1276,19 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uninstallParam | UninstallParam | 是 | ������ж����ָ���Ĳ�����Ϣ�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)��ж��Ӧ�óɹ���errΪundefined������Ϊ������� |
+| uninstallParam | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | 是 | 共享包卸载需指定的参数信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700020](../../errorcode-universal.md#17700020-The) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
-| [17700037](../../errorcode-universal.md#17700037-The) | The version of shared bundle is dependent on other applications. |
-| [17700038](../../errorcode-universal.md#17700038-The) | The specified shared bundle does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
+| [17700038](../errorcode-bundle.md#17700038-被卸载的shared-library不存在) | The specified shared bundle does not exist. |
 
 **示例：**
 
@@ -1271,11 +1325,13 @@ try {
 uninstall(uninstallParam: UninstallParam): Promise<void>
 ```
 
-ж��һ����������ʹ��Promise�첽�ص���
+卸载一个共享包。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam): Promise<void>--><!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1285,24 +1341,24 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uninstallParam | UninstallParam | 是 | ������ж����ָ���Ĳ�����Ϣ�� |
+| uninstallParam | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | 是 | 共享包卸载需指定的参数信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700020](../../errorcode-universal.md#17700020-The) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
-| [17700037](../../errorcode-universal.md#17700037-The) | The version of shared bundle is dependent on other applications. |
-| [17700038](../../errorcode-universal.md#17700038-The) | The specified shared bundle does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
+| [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
+| [17700038](../errorcode-bundle.md#17700038-被卸载的shared-library不存在) | The specified shared bundle does not exist. |
 
 **示例：**
 
@@ -1339,13 +1395,15 @@ try {
 uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 ```
 
-����ж��������Ԥ��Ӧ�á�ʹ��Promise�첽�ص���
+批量卸载新增的预置应用。使用Promise异步回调。
 
 **起始版本：** 24
 
 **需要权限：** ohos.permission.UNINSTALL_BUNDLE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInstaller-uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>--><!--Device-BundleInstaller-uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1355,20 +1413,20 @@ uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNames | Array&lt;string&gt; | 是 | ��ж�ص�Ӧ�õİ����б��� |
+| bundleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待卸载的应用的包名列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例：**
 
@@ -1402,11 +1460,13 @@ try {
 uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise<void>
 ```
 
-Ӧ��ж�ز����ʹ��Promise�첽�ص���
+应用卸载插件。使用Promise异步回调。
 
 **起始版本：** 19
 
 **需要权限：** ohos.permission.UNINSTALL_PLUGIN_BUNDLE
+
+<!--Device-BundleInstaller-uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise<void>--><!--Device-BundleInstaller-uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1416,25 +1476,25 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hostBundleName | string | 是 | ��ж�ز����Ӧ�ð����� |
-| pluginBundleName | string | 是 | ����İ����� |
-| pluginParam | PluginParam | 否 | ָ��ж�ز������Ĳ�����Ĭ��ֵ������ [PluginParam](arkts-ability-installer-pluginparam-i-sys.md#PluginParam) ��Ĭ��ֵ�� |
+| hostBundleName | string | 是 | 待卸载插件的应用包名。 |
+| pluginBundleName | string | 是 | 插件的包名。 |
+| pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定卸载插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) 的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.UNINSTALL_PLUGIN_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The user id is invalid. |
-| [17700092](../../errorcode-universal.md#17700092-Failed) | Failed to uninstall the plugin because the specified plugin is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_PLUGIN_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The user id is invalid. |
+| [17700092](../errorcode-bundle.md#17700092-插件包名不存在) | Failed to uninstall the plugin because the specified plugin is not found. |
 
 **示例：**
 
@@ -1472,11 +1532,13 @@ try {
 uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 ```
 
-��Ԥ��Ӧ�ý���ж�ظ��£��ָ������ΰ�װʱ��״̬��ʹ��Promise�첽�ص���
+对预置应用进行卸载更新，恢复到初次安装时的状态。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1486,28 +1548,28 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ж�ظ���Ӧ�õİ����� |
-| installParam | InstallParam | 否 | ָ��ж�ظ������������������Ĭ��ֵ������[InstallParam](arkts-ability-installer-installparam-i-sys.md#InstallParam)��Ĭ��ֵ������<br/>userId�޷�ָ�������ñ��ӿڽ��������Ѱ�װ��ӦӦ�õ��û�����ж�ظ��²����� |
+| bundleName | string | 是 | 待卸载更新应用的包名。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 否 | 指定卸载更新所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。其中userId无法指定，调用本接口将对所有已安装相应应用的用户进行卸载更新操作。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700045](../../errorcode-universal.md#17700045-Failed) | Failed to uninstall because enterprise device management disallow uninstall. |
-| [17700057](../../errorcode-universal.md#17700057-Failed) | Failed to uninstall updates because the HAP is not pre-installed. |
-| [17700060](../../errorcode-universal.md#17700060-The) | The specified application cannot be uninstalled.&lt;br&gt;**适用版本：** 13+ |
-| [17700067](../../errorcode-universal.md#17700067-Failed) | Failed to uninstall the HAP because uninstalling the native package<br/>failed.&lt;br&gt;**适用版本：** 13+ |
-| [17700073](../../errorcode-universal.md#17700073-Failed) | Failed to install the HAP because an application with the same<br/><br/>bundle name but different signature information exists on the device.&lt;br&gt;**适用版本：** 13+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700045](../errorcode-bundle.md#17700045-企业设备管理不允许卸载该应用) | Failed to uninstall because enterprise device management disallow uninstall. |
+| [17700057](../errorcode-bundle.md#17700057-指定的应用不是预置应用) | Failed to uninstall updates because the HAP is not pre-installed. |
+| [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
+| [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 13+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 
 **示例：**
 
@@ -1545,11 +1607,13 @@ try {
 updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-���µ�ǰӦ�ã�������ҵ�豸�ϵ���ҵMDMӦ�õ��ã��Ҵ����hapFilePaths�е�hap���붼���ڵ�ǰӦ�á�ʹ��callback�첽�ص���
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.INSTALL_SELF_BUNDLE
+
+<!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1559,35 +1623,35 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | �洢Ӧ�ó������·����·��Ӧ���ǵ�ǰӦ�ó����д��HAP������Ŀ¼���������·����һ��Ŀ¼ʱ�� ��Ŀ¼��ֻ�ܷ�ͬһ��Ӧ�õ�HAP������ЩHAP��ǩ<br/>����Ҫ����һ�¡� |
-| installParam | InstallParam | 是 | ָ����װ��������������� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)����װӦ�óɹ���errΪundefined������Ϊ������� |
+| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 是 | 指定安装所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;<br/>4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3<br/>000. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the HAP because the HAP fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the HAP because the HAP signature fails to be verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the HAP because the HAP path is invalid or the HAP is too<br/>large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the HAPs because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the HAP because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the HAP since the version of the HAP to install is too<br/>early. |
-| [17700018](../../errorcode-universal.md#17700018-Failed) | Failed to install because the dependent module does not exist. |
-| [17700039](../../errorcode-universal.md#17700039-Failed) | Failed to install because disallow install a shared bundle by hapFilePaths. |
-| [17700041](../../errorcode-universal.md#17700041-Failed) | Failed to install because enterprise device management disallow install. |
-| [17700042](../../errorcode-universal.md#17700042-Failed) | Failed to install the HAP because of incorrect URI in the data proxy. |
-| [17700043](../../errorcode-universal.md#17700043-Failed) | Failed to install the HAP because of low APL in the non-system data proxy<br/>(required APL: system_basic or system_core). |
-| [17700044](../../errorcode-universal.md#17700044-Failed) | Failed to install the HAP because the isolationMode configured is not<br/>supported. |
-| [17700047](../../errorcode-universal.md#17700047-Failed) | Failed to install the HAP because the VersionCode to be updated is not<br/>greater than the current VersionCode. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the HAP because the code signature verification is failed. |
-| [17700049](../../errorcode-universal.md#17700049-Failed) | Failed to install the HAP because the bundleName is different from the<br/>bundleName of the caller application. |
-| [17700050](../../errorcode-universal.md#17700050-Failed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be<br/>installed on non-enterprise device. |
-| [17700051](../../errorcode-universal.md#17700051-Failed) | Failed to install the HAP because the distribution type of caller<br/>application is not enterprise_mdm. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the HAPs because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
+| [17700018](../errorcode-bundle.md#17700018-安装失败依赖的模块不存在) | Failed to install because the dependent module does not exist. |
+| [17700039](../errorcode-bundle.md#17700039-不允许安装应用间共享库) | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| [17700041](../errorcode-bundle.md#17700041-企业设备管理不允许安装该应用) | Failed to install because enterprise device management disallow install. |
+| [17700042](../errorcode-bundle.md#17700042-数据代理中的uri配置错误) | Failed to install the HAP because of incorrect URI in the data proxy. |
+| [17700043](../errorcode-bundle.md#17700043-数据代理中的权限配置错误) | Failed to install the HAP because of low APL in the non-system data proxy(required APL: system_basic or system_core). |
+| [17700044](../errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾) | Failed to install the HAP because the isolationMode configured is not supported. |
+| [17700047](../errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本) | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the HAP because the code signature verification is failed. |
+| [17700049](../errorcode-bundle.md#17700049-应用自升级时安装的应用与调用方包名不同) | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
+| [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| [17700051](../errorcode-bundle.md#17700051-应用自升级时调用方的签名证书profile文件中的类型不是企业mdm) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
 **示例：**
 
@@ -1627,11 +1691,13 @@ try {
 updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-���µ�ǰӦ�ã�������ҵ�豸�ϵ���ҵMDMӦ�õ��ã��Ҵ����hapFilePaths�е�hap���붼���ڵ�ǰӦ�á�ʹ��callback�첽�ص���
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.INSTALL_SELF_BUNDLE
+
+<!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1641,33 +1707,33 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | �洢Ӧ�ó������·����·��Ӧ���ǵ�ǰӦ�ó����д��HAP������Ŀ¼���������·����һ��Ŀ¼ʱ�� ��Ŀ¼��ֻ�ܷ�ͬһ��Ӧ�õ�HAP������ЩHAP��ǩ<br/>����Ҫ����һ�¡� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)����װӦ�óɹ���errΪundefined������Ϊ������� |
+| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2<br/>. Incorrect parameter types. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the HAP because the HAP fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the HAP because the HAP signature fails to be verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the HAP because the HAP path is invalid or the HAP is too<br/>large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the HAPs because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the HAP because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the HAP since the version of the HAP to install is too<br/>early. |
-| [17700018](../../errorcode-universal.md#17700018-Failed) | Failed to install because the dependent module does not exist. |
-| [17700039](../../errorcode-universal.md#17700039-Failed) | Failed to install because disallow install a shared bundle by hapFilePaths. |
-| [17700041](../../errorcode-universal.md#17700041-Failed) | Failed to install because enterprise device management disallow install. |
-| [17700042](../../errorcode-universal.md#17700042-Failed) | Failed to install the HAP because of incorrect URI in the data proxy. |
-| [17700043](../../errorcode-universal.md#17700043-Failed) | Failed to install the HAP because of low APL in the non-system data proxy<br/>(required APL: system_basic or system_core). |
-| [17700044](../../errorcode-universal.md#17700044-Failed) | Failed to install the HAP because the isolationMode configured is not<br/>supported. |
-| [17700047](../../errorcode-universal.md#17700047-Failed) | Failed to install the HAP because the VersionCode to be updated is not<br/>greater than the current VersionCode. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the HAP because the code signature verification is failed. |
-| [17700049](../../errorcode-universal.md#17700049-Failed) | Failed to install the HAP because the bundleName is different from the<br/>bundleName of the caller application. |
-| [17700050](../../errorcode-universal.md#17700050-Failed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be<br/>installed on non-enterprise device. |
-| [17700051](../../errorcode-universal.md#17700051-Failed) | Failed to install the HAP because the distribution type of caller<br/>application is not enterprise_mdm. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the HAPs because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
+| [17700018](../errorcode-bundle.md#17700018-安装失败依赖的模块不存在) | Failed to install because the dependent module does not exist. |
+| [17700039](../errorcode-bundle.md#17700039-不允许安装应用间共享库) | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| [17700041](../errorcode-bundle.md#17700041-企业设备管理不允许安装该应用) | Failed to install because enterprise device management disallow install. |
+| [17700042](../errorcode-bundle.md#17700042-数据代理中的uri配置错误) | Failed to install the HAP because of incorrect URI in the data proxy. |
+| [17700043](../errorcode-bundle.md#17700043-数据代理中的权限配置错误) | Failed to install the HAP because of low APL in the non-system data proxy(required APL: system_basic or system_core). |
+| [17700044](../errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾) | Failed to install the HAP because the isolationMode configured is not supported. |
+| [17700047](../errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本) | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the HAP because the code signature verification is failed. |
+| [17700049](../errorcode-bundle.md#17700049-应用自升级时安装的应用与调用方包名不同) | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
+| [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| [17700051](../errorcode-bundle.md#17700051-应用自升级时调用方的签名证书profile文件中的类型不是企业mdm) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
 **示例：**
 
@@ -1702,11 +1768,13 @@ try {
 updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 ```
 
-���µ�ǰӦ�ã�������ҵ�豸�ϵ���ҵMDMӦ�õ��ã��Ҵ����hapFilePaths�е�hap���붼���ڵ�ǰӦ�á�ʹ��Promise�첽�ص���
+更新当前应用，仅限企业设备上的企业MDM应用调用，且传入的hapFilePaths中的hap必须都属于当前应用。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.INSTALL_SELF_BUNDLE
+
+<!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1716,40 +1784,40 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | �洢Ӧ�ó������·����·��Ӧ���ǵ�ǰӦ�ó����д��HAP������Ŀ¼���������·����һ��Ŀ¼ʱ�� ��Ŀ¼��ֻ�ܷ�ͬһ��Ӧ�õ�HAP������ЩHAP��ǩ<br/>����Ҫ����һ�¡� |
-| installParam | InstallParam | 否 | ָ����װ���������������Ĭ��ֵ������[InstallParam](arkts-ability-installer-installparam-i-sys.md#InstallParam)��Ĭ��ֵ�� |
+| hapFilePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](../../apis-mdm-kit/arkts-apis/arkts-mdm-bundlemanager-installparam-i.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Calling) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;<br/>4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3<br/>000. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified user ID is not found. |
-| [17700010](../../errorcode-universal.md#17700010-Failed) | Failed to install the HAP because the HAP fails to be parsed. |
-| [17700011](../../errorcode-universal.md#17700011-Failed) | Failed to install the HAP because the HAP signature fails to be verified. |
-| [17700012](../../errorcode-universal.md#17700012-Failed) | Failed to install the HAP because the HAP path is invalid or the HAP is too<br/>large. |
-| [17700015](../../errorcode-universal.md#17700015-Failed) | Failed to install the HAPs because they have different configuration<br/>information. |
-| [17700016](../../errorcode-universal.md#17700016-Failed) | Failed to install the HAP because of insufficient system disk space. |
-| [17700017](../../errorcode-universal.md#17700017-Failed) | Failed to install the HAP since the version of the HAP to install is too<br/>early. |
-| [17700018](../../errorcode-universal.md#17700018-Failed) | Failed to install because the dependent module does not exist. |
-| [17700039](../../errorcode-universal.md#17700039-Failed) | Failed to install because disallow install a shared bundle by hapFilePaths. |
-| [17700041](../../errorcode-universal.md#17700041-Failed) | Failed to install because enterprise device management disallow install. |
-| [17700042](../../errorcode-universal.md#17700042-Failed) | Failed to install the HAP because of incorrect URI in the data proxy. |
-| [17700043](../../errorcode-universal.md#17700043-Failed) | Failed to install the HAP because of low APL in the non-system data proxy<br/>(required APL: system_basic or system_core). |
-| [17700044](../../errorcode-universal.md#17700044-Failed) | Failed to install the HAP because the isolationMode configured is not<br/>supported. |
-| [17700047](../../errorcode-universal.md#17700047-Failed) | Failed to install the HAP because the VersionCode to be updated is not<br/>greater than the current VersionCode. |
-| [17700048](../../errorcode-universal.md#17700048-Failed) | Failed to install the HAP because the code signature verification is failed. |
-| [17700049](../../errorcode-universal.md#17700049-Failed) | Failed to install the HAP because the bundleName is different from the<br/>bundleName of the caller application. |
-| [17700050](../../errorcode-universal.md#17700050-Failed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be<br/>installed on non-enterprise device. |
-| [17700051](../../errorcode-universal.md#17700051-Failed) | Failed to install the HAP because the distribution type of caller<br/>application is not enterprise_mdm. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
+| [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
+| [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
+| [17700012](../errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败) | Failed to install the HAP because the HAP path is invalid or the HAP is too large. |
+| [17700015](../errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败) | Failed to install the HAPs because they have different configuration information. |
+| [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
+| [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
+| [17700018](../errorcode-bundle.md#17700018-安装失败依赖的模块不存在) | Failed to install because the dependent module does not exist. |
+| [17700039](../errorcode-bundle.md#17700039-不允许安装应用间共享库) | Failed to install because disallow install a shared bundle by hapFilePaths. |
+| [17700041](../errorcode-bundle.md#17700041-企业设备管理不允许安装该应用) | Failed to install because enterprise device management disallow install. |
+| [17700042](../errorcode-bundle.md#17700042-数据代理中的uri配置错误) | Failed to install the HAP because of incorrect URI in the data proxy. |
+| [17700043](../errorcode-bundle.md#17700043-数据代理中的权限配置错误) | Failed to install the HAP because of low APL in the non-system data proxy(required APL: system_basic or system_core). |
+| [17700044](../errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾) | Failed to install the HAP because the isolationMode configured is not supported. |
+| [17700047](../errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本) | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
+| [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the HAP because the code signature verification is failed. |
+| [17700049](../errorcode-bundle.md#17700049-应用自升级时安装的应用与调用方包名不同) | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
+| [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
+| [17700051](../errorcode-bundle.md#17700051-应用自升级时调用方的签名证书profile文件中的类型不是企业mdm) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
 **示例：**
 

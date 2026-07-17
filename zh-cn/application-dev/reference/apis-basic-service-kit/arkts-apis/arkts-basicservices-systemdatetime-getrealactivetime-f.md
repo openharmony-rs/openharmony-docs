@@ -1,5 +1,11 @@
 # getRealActiveTime
 
+## 导入模块
+
+```TypeScript
+import { systemDateTime } from '@kit.BasicServicesKit';
+```
+
 ## getRealActiveTime
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): vo
 
 **废弃版本：** 12
 
-**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getUptime-1)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)
+
+<!--Device-systemDateTime-function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemDateTime-function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -20,14 +28,14 @@ function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNano | boolean | 是 | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。<br/>- false：表示返回结果为毫秒数（ms）。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
+| isNano | boolean | 是 | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -37,14 +45,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getRealActiveTime(true, (error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```
@@ -62,7 +70,9 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 **废弃版本：** 12
 
-**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getUptime-1)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)
+
+<!--Device-systemDateTime-function getRealActiveTime(callback: AsyncCallback<number>): void--><!--Device-systemDateTime-function getRealActiveTime(callback: AsyncCallback<number>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -70,13 +80,13 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间（ms），但不包括深度睡眠时间。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回自系统启动以来经过的时间（ms），但不包括深度睡眠时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -86,14 +96,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getRealActiveTime((error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```
@@ -111,7 +121,9 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 **废弃版本：** 12
 
-**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getUptime-1)
+**替代接口：** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime-1)
+
+<!--Device-systemDateTime-function getRealActiveTime(isNano?: boolean): Promise<number>--><!--Device-systemDateTime-function getRealActiveTime(isNano?: boolean): Promise<number>-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -119,19 +131,19 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNano | boolean | 否 | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。<br/>- false：表示返回结果为毫秒数（ms）。 |
+| isNano | boolean | 否 | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
+| Promise<number> | Promise对象，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -142,11 +154,11 @@ try {
   systemDateTime.getRealActiveTime().then((time: number) => {
     console.info(`Succeeded in getting real active time : ${time}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```

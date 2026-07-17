@@ -37,20 +37,21 @@ import { uniformDataStruct } from '@kit.ArkData';
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-let plainTextDetails : Record<string, string> = {
+
+let plainTextDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let plainText : uniformDataStruct.PlainText = {
-  uniformDataType : 'general.plain-text',
-  textContent : 'This is plainText textContent example',
-  abstract : 'this is abstract',
-  details : plainTextDetails
-}
+};
+let plainText: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'This is plainText textContent example',
+  abstract: 'this is abstract',
+  details: plainTextDetails
+};
 console.info('plainText.uniformDataType: ' + plainText.uniformDataType);
-if(plainText.details != undefined){
-  let plainTextDetailsObj : Record<string, string> = plainText.details;
-  for(let kv of Object.entries(plainTextDetailsObj)) {
+if (plainText.details != undefined) {
+  let plainTextDetailsObj: Record<string, string> = plainText.details;
+  for (let kv of Object.entries(plainTextDetailsObj)) {
     console.info('plainText.details.attr: ' + kv[0] + ', value:' + kv[1]);
   }
 }
@@ -74,16 +75,17 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-let hyperlinkDetails : Record<string, string> = {
+
+let hyperlinkDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType : 'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of this hyperlink',
-  details : hyperlinkDetails
-}
+};
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of this hyperlink',
+  details: hyperlinkDetails
+};
 console.info('hyperlink.uniformDataType: ' + hyperlink.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 ```
@@ -99,27 +101,28 @@ HTML类型数据，用于描述超文本标记语言数据。创建HTML对象后
 | uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | htmlContent  | string | 否   | 否   | HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文档或HTML片段。长度限制为20MB。建议使用UTF-8编码。例如：\<div>\<p>标题<\/p><\/div>。|
 | plainContent | string | 否   | 是   | 去除HTML标签后的纯文本内容，非必填字段。当需要提供HTML内容的纯文本版本时传入此参数（如用于文本搜索、无HTML渲染环境的展示等场景），不传入时默认值为空字符串，不提供纯文本版本。 |
-| details | Record<string, string> | 否   | 是   | 字典类型对象，key和value均为string类型，用于描述HTML的详细属性内容。例如，可生成一个details内容为<br/>{<br/>"title":"标题",<br/>"content":"内容"<br/>}<br/>的数据对象。非必填字段，默认值为空字典对象。|
+| details | Record<string, string> | 否   | 是   | 字典类型对象，key和value均为string类型，用于描述HTML的详细属性内容。非必填字段，默认值为空字典对象。例如，可生成一个details内容为<br/>{<br/>"title":"标题",<br/>"content":"内容"<br/>}<br/>的数据对象。|
 | uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0 |
 
 **示例：**
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-let htmlObjDetails : Record<string, string> = {
+
+let htmlObjDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let htmlObj : uniformDataStruct.HTML = {
-  uniformDataType : 'general.html',
-  htmlContent : '<div><p>标题</p></div>',
-  plainContent : 'this is plainContent',
-  details : htmlObjDetails,
+};
+let htmlObj: uniformDataStruct.HTML = {
+  uniformDataType: 'general.html',
+  htmlContent: '<div><p>标题</p></div>',
+  plainContent: 'this is plainContent',
+  details: htmlObjDetails,
   // 从API 26.0.0版本开始，支持uri授权策略
-  uriAuthorizationPolicies : [
+  uriAuthorizationPolicies: [
     unifiedDataChannel.UriPermission.WRITE
   ]
-}
+};
 console.info('htmlObj.uniformDataType: ' + htmlObj.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
 ```
@@ -146,22 +149,23 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-let appItemDetails : Record<string, number | string | Uint8Array> = {
+let appItemDetails: Record<string, number | string | Uint8Array> = {
   'appItemKey1': 123,
   'appItemKey2': 'appItemValue',
   'appItemKey3': u8Array
-}
-let appItem : uniformDataStruct.OpenHarmonyAppItem = {
+};
+let appItem: uniformDataStruct.OpenHarmonyAppItem = {
   uniformDataType: 'openharmony.app-item',
-  appId : 'MyAppId',
-  appName : 'MyAppName',
-  appIconId : 'MyAppIconId',
-  appLabelId : 'MyAppLabelId',
-  bundleName : 'MyBundleName',
-  abilityName : 'MyAbilityName',
-  details : appItemDetails
-}
+  appId: 'MyAppId',
+  appName: 'MyAppName',
+  appIconId: 'MyAppIconId',
+  appLabelId: 'MyAppLabelId',
+  bundleName: 'MyBundleName',
+  abilityName: 'MyAbilityName',
+  details: appItemDetails
+};
 console.info('appItem.uniformDataType: ' + appItem.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_APP_ITEM, appItem);
 ```
@@ -187,17 +191,18 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
 let thumbDataU8Array = new Uint8Array([1, 2, 3, 4, 5]);
 let appIconU8Array = new Uint8Array([6, 7, 8, 9, 10]);
-let contentForm : uniformDataStruct.ContentForm = {
-  uniformDataType : 'general.content-form',
-  title : 'MyTitle',
-  thumbData : thumbDataU8Array,
-  description : 'MyDescription',
-  appName : 'MyAppName',
-  linkUri : 'MyLinkUri',
-  appIcon : appIconU8Array
-}
+let contentForm: uniformDataStruct.ContentForm = {
+  uniformDataType: 'general.content-form',
+  title: 'MyTitle',
+  thumbData: thumbDataU8Array,
+  description: 'MyDescription',
+  appName: 'MyAppName',
+  linkUri: 'MyLinkUri',
+  appIcon: appIconU8Array
+};
 console.info('contentForm.uniformDataType: ' + contentForm.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.CONTENT_FORM, contentForm);
 ```
@@ -223,21 +228,22 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-let formDetails : Record<string, number | string | Uint8Array> = {
+let formDetails: Record<string, number | string | Uint8Array> = {
   'formKey1': 123,
   'formKey2': 'formValue',
   'formKey3': u8Array
-}
-let form : uniformDataStruct.Form = {
-  uniformDataType : 'openharmony.form',
-  formId : 1,
-  formName : 'formName',
-  bundleName : 'com.xx.app',
-  abilityName : 'abilityName',
-  module : 'module',
-  details : formDetails
-}
+};
+let form: uniformDataStruct.Form = {
+  uniformDataType: 'openharmony.form',
+  formId: 1,
+  formName: 'formName',
+  bundleName: 'com.xx.app',
+  abilityName: 'abilityName',
+  module: 'module',
+  details: formDetails
+};
 console.info('form.uniformDataType: ' + form.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
 ```
@@ -252,7 +258,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
 | uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | oriUri     | string | 否   | 否  | 文件的原始URI路径。支持本地文件绝对路径、file://协议和http/https网络URL格式。长度限制为4096字节。例如：`/data/local/tmp/test.txt`、`file:///data/local/tmp/test.txt`或`http://example.com/file.txt`。|
-| fileType   | string | 否   | 否  | 文件类型（必须是预置或自定义UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节，超出限制时抛出异常。|
+| fileType   | string | 否   | 否  | 文件类型（必须是标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。|
 | details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 | uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权）。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0|
 
@@ -261,22 +267,23 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-let fileUriDetails : Record<string, number | string | Uint8Array> = {
+let fileUriDetails: Record<string, number | string | Uint8Array> = {
   'fileUriKey1': 123,
   'fileUriKey2': 'fileUriValue',
   'fileUriKey3': u8Array
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'www.xx.com',
-  fileType : 'general.image',
-  details : fileUriDetails,
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'www.xx.com',
+  fileType: 'general.image',
+  details: fileUriDetails,
   // 从API 26.0.0版本开始，支持uri授权策略
-  uriAuthorizationPolicies : [
+  uriAuthorizationPolicies: [
     unifiedDataChannel.UriPermission.WRITE
   ]
-}
+};
 console.info('fileUri.uniformDataType: ' + fileUri.uniformDataType);
 // 当使用FileUri类型的标准化数据结构构造record时，推荐入参中的type值设为uniformTypeDescriptor.UniformDataType.FILE_URI
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
@@ -302,18 +309,23 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-let arrayBuffer = new ArrayBuffer(4*200*200);
-let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 }, alphaType: 3 };
-let pixelMapDetails : Record<string, number | string | Uint8Array> = {
+let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
+let opt: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: { height: 200, width: 200 },
+  alphaType: 3
+};
+let pixelMapDetails: Record<string, number | string | Uint8Array> = {
   'pixelMapKey1': 123,
   'pixelMapKey2': 'pixelMapValue',
   'pixelMapKey3': u8Array
-}
-let pixelMap : uniformDataStruct.PixelMap = {
-  uniformDataType : 'openharmony.pixel-map',
-  pixelMap : image.createPixelMapSync(arrayBuffer, opt),
-  details : pixelMapDetails
-}
+};
+let pixelMap: uniformDataStruct.PixelMap = {
+  uniformDataType: 'openharmony.pixel-map',
+  pixelMap: image.createPixelMapSync(arrayBuffer, opt),
+  details: pixelMapDetails
+};
 console.info('pixelMap.uniformDataType: ' + pixelMap.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
 ```

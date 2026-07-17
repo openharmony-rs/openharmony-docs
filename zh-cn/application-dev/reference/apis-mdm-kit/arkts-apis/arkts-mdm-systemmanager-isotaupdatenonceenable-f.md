@@ -1,12 +1,18 @@
 # isOtaUpdateNonceEnable
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## isOtaUpdateNonceEnable
 
 ```TypeScript
 function isOtaUpdateNonceEnable(admin: Want): boolean
 ```
 
-��ѯ�Ƿ�ʹ�ܷ��������������Nonce���
+查询是否使能服务器端生成随机Nonce标记
 
 **起始版本：** 26.0.0
 
@@ -14,29 +20,31 @@ function isOtaUpdateNonceEnable(admin: Want): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-systemManager-function isOtaUpdateNonceEnable(admin: Want): boolean--><!--Device-systemManager-function isOtaUpdateNonceEnable(admin: Want): boolean-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ��� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | �����Ƿ�����ota�������ֵ |
+| boolean | 返回是否是能ota升级随机值 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200016](../../errorcode-universal.md#9200016-Service) | Service timeout. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 
 **示例：**
 

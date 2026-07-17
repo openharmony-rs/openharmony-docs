@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-scan-interface ScannerOptionValue--><!--Device-scan-interface ScannerOptionValue-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+```
 
 ## boolValue
 
@@ -17,6 +25,8 @@ boolValue?: boolean
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-ScannerOptionValue-boolValue?: boolean--><!--Device-ScannerOptionValue-boolValue?: boolean-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ numValue?: number
 
 **起始版本：** 20
 
+<!--Device-ScannerOptionValue-numValue?: int--><!--Device-ScannerOptionValue-numValue?: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## strValue
@@ -46,6 +58,8 @@ strValue?: string
 
 **起始版本：** 20
 
+<!--Device-ScannerOptionValue-strValue?: string--><!--Device-ScannerOptionValue-strValue?: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## valueType
@@ -59,6 +73,8 @@ valueType: OptionValueType
 **类型：** OptionValueType
 
 **起始版本：** 20
+
+<!--Device-ScannerOptionValue-valueType: OptionValueType--><!--Device-ScannerOptionValue-valueType: OptionValueType-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

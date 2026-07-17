@@ -4,6 +4,8 @@
 
 **起始版本：** 20
 
+<!--Device-unnamed-export interface ShortcutInfo--><!--Device-unnamed-export interface ShortcutInfo-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **系统接口：** 此接口为系统接口。
@@ -19,6 +21,8 @@ appIndex: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-ShortcutInfo-appIndex: int--><!--Device-ShortcutInfo-appIndex: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -36,6 +40,8 @@ bundleName: string
 
 **起始版本：** 20
 
+<!--Device-ShortcutInfo-bundleName: string--><!--Device-ShortcutInfo-bundleName: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +57,8 @@ hostAbility?: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ShortcutInfo-hostAbility?: string--><!--Device-ShortcutInfo-hostAbility?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -68,6 +76,8 @@ icon?: string
 
 **起始版本：** 20
 
+<!--Device-ShortcutInfo-icon?: string--><!--Device-ShortcutInfo-icon?: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +93,8 @@ iconId?: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-ShortcutInfo-iconId?: long--><!--Device-ShortcutInfo-iconId?: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -100,6 +112,8 @@ id: string
 
 **起始版本：** 20
 
+<!--Device-ShortcutInfo-id: string--><!--Device-ShortcutInfo-id: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **系统接口：** 此接口为系统接口。
@@ -115,6 +129,8 @@ label?: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ShortcutInfo-label?: string--><!--Device-ShortcutInfo-label?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -132,6 +148,8 @@ labelId?: number
 
 **起始版本：** 20
 
+<!--Device-ShortcutInfo-labelId?: long--><!--Device-ShortcutInfo-labelId?: long-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **系统接口：** 此接口为系统接口。
@@ -147,6 +165,8 @@ moduleName?: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ShortcutInfo-moduleName?: string--><!--Device-ShortcutInfo-moduleName?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -164,6 +184,8 @@ sourceType: number
 
 **起始版本：** 20
 
+<!--Device-ShortcutInfo-sourceType: int--><!--Device-ShortcutInfo-sourceType: int-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **系统接口：** 此接口为系统接口。
@@ -179,6 +201,8 @@ wants?: Array<ShortcutWant>
 **类型：** Array<ShortcutWant>
 
 **起始版本：** 20
+
+<!--Device-ShortcutInfo-wants?: Array<ShortcutWant>--><!--Device-ShortcutInfo-wants?: Array<ShortcutWant>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 

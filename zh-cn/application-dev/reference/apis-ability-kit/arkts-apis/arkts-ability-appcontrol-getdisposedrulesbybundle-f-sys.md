@@ -1,18 +1,26 @@
 # getDisposedRulesByBundle（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
+
 ## getDisposedRulesByBundle
 
 ```TypeScript
 function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>
 ```
 
-��ȡָ��Ӧ�ó�������õ��������ع���
+获取指定应用程序包设置的所有拦截规则。
 
 **起始版本：** 23
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-appControl-function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>--><!--Device-appControl-function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -22,21 +30,21 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ʾ�������ع����Ӧ�ó�����İ����� |
+| bundleName | string | 是 | 表示设置拦截规则的应用程序包的包名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;DisposedRuleConfiguration&gt; | ָ��Ӧ�ó���������õ����ع��� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DisposedRuleConfiguration> | 指定应用程序包已设置的拦截规则。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied. A non-system application is not allowed to call a system API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
 **示例：**
 

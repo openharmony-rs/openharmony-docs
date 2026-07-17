@@ -8,6 +8,8 @@
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>--><!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillHide
@@ -20,13 +22,15 @@ onWillHide(event: VoidCallback)
 
 > **˵����**
 
-> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)�е��á�
+> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)�е��á�
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentAttribute-onWillHide(event: VoidCallback): TabContentAttribute--><!--Device-TabContentAttribute-onWillHide(event: VoidCallback): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +38,7 @@ onWillHide(event: VoidCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | TabContent��Ҫ���صĻص������� |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent��Ҫ���صĻص������� |
 
 ## onWillShow
 
@@ -46,13 +50,15 @@ onWillShow(event: VoidCallback)
 
 > **˵����**
 
-> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)�е��á�
+> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)�е��á�
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentAttribute-onWillShow(event: VoidCallback): TabContentAttribute--><!--Device-TabContentAttribute-onWillShow(event: VoidCallback): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +66,7 @@ onWillShow(event: VoidCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | VoidCallback | 是 | TabContent��Ҫ��ʾ�Ļص������� |
+| event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent��Ҫ��ʾ�Ļص������� |
 
 ## tabBar
 
@@ -76,7 +82,9 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentAttribute-tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,15 +104,17 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 > **˵����**
 
-> - ��ҳǩ��[SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md)����ʽ��ͨ��Ϊ����+�»��ߣ�����+�����ҳǩ������������ı���ʽ����������ڶ������ߵײ�ʹ�á��л�ҳǩʱĬ��֧�ֶ�����תЧ������������Ѷ
-> ��Ӧ�õĶ������ࣨ��"��ע����Ƶ������"��������ģ��Ķ�������������
->
-> - �ײ�ҳǩ/���ҳǩ��[BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md)����ʽ�����»��ߺͱ���Ч����ҳǩ��ʽͨ��Ϊͼ��+���ֵ���Ϸ�ʽ���л�ҳǩʱĬ���޶�����תЧ�����ײ�ҳǩͨ������Ӧ��
+> - ��ҳǩ��[SubTabBarStyle](arkts-arkui-tab-content-subtabbarstyle-c.md)����ʽ��ͨ��Ϊ����+�»��ߣ�����+�����ҳǩ������������ı���ʽ����������ڶ������ߵײ�ʹ�á��л�ҳǩʱĬ��֧�ֶ�����תЧ������������Ѷ  
+> ��Ӧ�õĶ������ࣨ��"��ע����Ƶ������"��������ģ��Ķ�������������  
+>  
+> - �ײ�ҳǩ/���ҳǩ��[BottomTabBarStyle](arkts-arkui-tab-content-bottomtabbarstyle-c.md)����ʽ�����»��ߺͱ���Ч����ҳǩ��ʽͨ��Ϊͼ��+���ֵ���Ϸ�ʽ���л�ҳǩʱĬ���޶�����תЧ�����ײ�ҳǩͨ������Ӧ��  
 > ������������ҳ�����֡��Ƽ��������ҳǩ�����ڿ���������������vertical(true)�������򲼾֣���ҳǩ�ڲ����ʾ��Ĭ�������ʾ��
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentAttribute-tabBar(value: SubTabBarStyle | BottomTabBarStyle): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(value: SubTabBarStyle | BottomTabBarStyle): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,8 +133,7 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 ����TabBar����ʾ���ݡ�
 
-ʹ��BottomTabBarStyle��TabBarOptions������Ϊ��β�����icon��icon�쳣ʱ��ʾ��ɫͼ�顣���icon����svg��ʽͼԴ����ɾ��svgͼԴ���õĿ�������ֵ������icon��С��ʹ��svgͼԴ���õĿ�
-������ֵ��
+ʹ��BottomTabBarStyle��TabBarOptions������Ϊ��β�����icon��icon�쳣ʱ��ʾ��ɫͼ�顣���icon����svg��ʽͼԴ����ɾ��svgͼԴ���õĿ�������ֵ������icon��С��ʹ��svgͼԴ���õĿ�������ֵ��
 
 ���õ����ݳ���TabBarҳǩʱ���в��С�
 
@@ -132,7 +141,11 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | 
+    TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | 
+    TabBarOptions): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,5 +153,5 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent \| SubTabBarStyle \| BottomTabBarStyle \| string \| Resource \| CustomBuilder \| TabBarOptions | 是 | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content,which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom andside tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**:resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builderthat can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content onthe tabs. |
+| content | ComponentContent \| SubTabBarStyle \| BottomTabBarStyle \| string \| Resource \| CustomBuilder \| TabBarOptions | 是 | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content,which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**:resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs. |
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from '@ohos.notificationSubscribe';
+import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
 ## remove
@@ -23,6 +23,18 @@ function remove(
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function remove(
+    bundle: BundleOption,
+    notificationKey: NotificationKey,
+    reason: RemoveReason,
+    callback: AsyncCallback<void>
+  ): void--><!--Device-notificationSubscribe-function remove(
+    bundle: BundleOption,
+    notificationKey: NotificationKey,
+    reason: RemoveReason,
+    callback: AsyncCallback<void>
+  ): void-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -31,23 +43,23 @@ function remove(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | BundleOption | 是 | 指定应用的包信息。 |
-| notificationKey | NotificationKey | 是 | 通知键值。 |
-| reason | RemoveReason | 是 | 通知删除原因。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 删除指定通知回调函数。 |
+| bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
+| notificationKey | [NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md) | 是 | 通知键值。 |
+| reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 删除指定通知回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600001](../../errorcode-universal.md#1600001-Internal) | Internal error. |
-| [1600002](../../errorcode-universal.md#1600002-Marshalling) | Marshalling or unmarshalling error. |
-| [1600003](../../errorcode-universal.md#1600003-Failed) | Failed to connect to the service. |
-| [1600007](../../errorcode-universal.md#1600007-The) | The notification does not exist. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name was not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+| [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
+| [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
 **示例：**
 
@@ -87,6 +99,8 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason): Promise<void>--><!--Device-notificationSubscribe-function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -95,28 +109,28 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | BundleOption | 是 | 指定应用的包信息。 |
-| notificationKey | NotificationKey | 是 | 通知键值。 |
-| reason | RemoveReason | 是 | 通知删除原因。 |
+| bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
+| notificationKey | [NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md) | 是 | 通知键值。 |
+| reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600001](../../errorcode-universal.md#1600001-Internal) | Internal error. |
-| [1600002](../../errorcode-universal.md#1600002-Marshalling) | Marshalling or unmarshalling error. |
-| [1600003](../../errorcode-universal.md#1600003-Failed) | Failed to connect to the service. |
-| [1600007](../../errorcode-universal.md#1600007-The) | The notification does not exist. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name was not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+| [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
+| [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
 **示例：**
 
@@ -153,6 +167,8 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void--><!--Device-notificationSubscribe-function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -161,21 +177,21 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过<br/>[onConsume](arkts-notification-notificationsubscriber-i-sys.md#onConsume)回调的入参<br/>[SubscribeCallbackData](arkts-notification-subscribecallbackdata-i-sys.md#SubscribeCallbackData)获取其内部<br/>[NotificationRequest](arkts-notification-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
-| reason | RemoveReason | 是 | 通知删除原因。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 删除指定通知回调函数。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 删除指定通知回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600001](../../errorcode-universal.md#1600001-Internal) | Internal error. |
-| [1600002](../../errorcode-universal.md#1600002-Marshalling) | Marshalling or unmarshalling error. |
-| [1600003](../../errorcode-universal.md#1600003-Failed) | Failed to connect to the service. |
-| [1600007](../../errorcode-universal.md#1600007-The) | The notification does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+| [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 
 **示例：**
 
@@ -208,6 +224,8 @@ function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncC
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncCallback<void>): void--><!--Device-notificationSubscribe-function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -216,20 +234,20 @@ function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过<br/>[onConsume](arkts-notification-notificationsubscriber-i-sys.md#onConsume)回调的入参<br/>[SubscribeCallbackData](arkts-notification-subscribecallbackdata-i-sys.md#SubscribeCallbackData)获取其内部<br/>[NotificationRequest](arkts-notification-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
-| reason | RemoveReason | 是 | 通知删除原因。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 删除指定通知回调函数。 |
+| hashCodes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<String> | 是 | 通知唯一ID数组集合。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 删除指定通知回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600001](../../errorcode-universal.md#1600001-Internal) | Internal error. |
-| [1600002](../../errorcode-universal.md#1600002-Marshalling) | Marshalling or unmarshalling error. |
-| [1600003](../../errorcode-universal.md#1600003-Failed) | Failed to connect to the service. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例：**
 
@@ -262,6 +280,8 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function remove(hashCode: string, reason: RemoveReason): Promise<void>--><!--Device-notificationSubscribe-function remove(hashCode: string, reason: RemoveReason): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -270,26 +290,26 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过<br/>[onConsume](arkts-notification-notificationsubscriber-i-sys.md#onConsume)回调的入参<br/>[SubscribeCallbackData](arkts-notification-subscribecallbackdata-i-sys.md#SubscribeCallbackData)获取其内部<br/>[NotificationRequest](arkts-notification-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
-| reason | RemoveReason | 是 | 通知删除原因。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600001](../../errorcode-universal.md#1600001-Internal) | Internal error. |
-| [1600002](../../errorcode-universal.md#1600002-Marshalling) | Marshalling or unmarshalling error. |
-| [1600003](../../errorcode-universal.md#1600003-Failed) | Failed to connect to the service. |
-| [1600007](../../errorcode-universal.md#1600007-The) | The notification does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
+| [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 
 **示例：**
 
@@ -319,6 +339,8 @@ function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>--><!--Device-notificationSubscribe-function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -327,25 +349,25 @@ function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。 |
-| reason | RemoveReason | 是 | 通知删除原因。 |
+| hashCodes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<String> | 是 | 通知唯一ID数组集合。 |
+| reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [1600001](../../errorcode-universal.md#1600001-Internal) | Internal error. |
-| [1600002](../../errorcode-universal.md#1600002-Marshalling) | Marshalling or unmarshalling error. |
-| [1600003](../../errorcode-universal.md#1600003-Failed) | Failed to connect to the service. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
+| [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
+| [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
 **示例：**
 

@@ -12,7 +12,9 @@ declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecora
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本22开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecorator--><!--Device-unnamed-declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecorator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +22,7 @@ declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecora
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | SystemEnvKey&lt;T&gt; \| SystemProperties | 是 | 用户输入的键值。【自22至26】 |
+| key | [SystemEnvKey](arkts-arkui-common-systemenvkey-c.md)<T> \| SystemProperties | 是 | 用户输入的键值。【自22至26】 |
 
 **返回值：**
 

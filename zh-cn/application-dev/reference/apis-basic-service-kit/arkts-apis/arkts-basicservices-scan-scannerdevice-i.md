@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-scan-interface ScannerDevice--><!--Device-scan-interface ScannerDevice-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.BasicServicesKit';
+```
 
 ## deviceName
 
@@ -17,6 +25,8 @@ deviceName: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ScannerDevice-deviceName: string--><!--Device-ScannerDevice-deviceName: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ discoveryMode: ScannerDiscoveryMode
 
 **起始版本：** 20
 
+<!--Device-ScannerDevice-discoveryMode: ScannerDiscoveryMode--><!--Device-ScannerDevice-discoveryMode: ScannerDiscoveryMode-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## manufacturer
@@ -45,6 +57,8 @@ manufacturer: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ScannerDevice-manufacturer: string--><!--Device-ScannerDevice-manufacturer: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -60,6 +74,8 @@ model: string
 
 **起始版本：** 20
 
+<!--Device-ScannerDevice-model: string--><!--Device-ScannerDevice-model: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## scannerId
@@ -74,6 +90,8 @@ scannerId: string
 
 **起始版本：** 20
 
+<!--Device-ScannerDevice-scannerId: string--><!--Device-ScannerDevice-scannerId: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## uniqueId
@@ -87,6 +105,8 @@ uniqueId: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-ScannerDevice-uniqueId: string--><!--Device-ScannerDevice-uniqueId: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

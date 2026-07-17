@@ -1,14 +1,10 @@
 # ManagedPolicy
 
-```TypeScript
-export enum ManagedPolicy
-```
-
-��ҵ�豸�ܿز��ԡ�
+企业设备管控策略。
 
 **起始版本：** 22
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-common-export enum ManagedPolicy--><!--Device-common-export enum ManagedPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ export enum ManagedPolicy
 DEFAULT = 0
 ```
 
-Ĭ�ϣ��޹ܿز��ԡ�
+默认，无管控策略。
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ManagedPolicy-DEFAULT = 0--><!--Device-ManagedPolicy-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ DEFAULT = 0
 DISALLOW = 1
 ```
 
-���á�
+禁用。
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ManagedPolicy-DISALLOW = 1--><!--Device-ManagedPolicy-DISALLOW = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ DISALLOW = 1
 FORCE_OPEN = 2
 ```
 
-ǿ�ƿ�����
+强制开启。
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ManagedPolicy-FORCE_OPEN = 2--><!--Device-ManagedPolicy-FORCE_OPEN = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

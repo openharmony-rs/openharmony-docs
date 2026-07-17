@@ -1,14 +1,22 @@
 # removeRight
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## removeRight
 
 ```TypeScript
 function removeRight(deviceName: string): boolean
 ```
 
-�Ƴ������������豸��Ȩ�ޡ�ϵͳӦ��Ĭ��ӵ�з����豸Ȩ�ޣ����ô˽ӿڲ������Ӱ�졣
+移除软件包访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。
 
 **起始版本：** 9
+
+<!--Device-usbManager-function removeRight(deviceName: string): boolean--><!--Device-usbManager-function removeRight(deviceName: string): boolean-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -16,20 +24,20 @@ function removeRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceName | string | 是 | �豸���ƣ�����[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getDevices-1)��ȡ���豸�б�USBDevice��name�� |
+| deviceName | string | 是 | 设备名称，来自[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)获取的设备列表USBDevice的name。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | ����Ȩ���Ƴ����������true��ʾȨ���Ƴ��ɹ�������false���ʾȨ���Ƴ�ʧ�ܡ� |
+| boolean | 返回权限移除结果。返回true表示权限移除成功；返回false则表示权限移除失败。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1.Mandatory parameters are left unspecified.* <br>2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例：**
 

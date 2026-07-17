@@ -1,20 +1,18 @@
 # HuksErrorCode
 
-```TypeScript
-export enum HuksErrorCode
-```
+表示错误码的枚举。
 
-��ʾ�������ö�١�
-
-> **˵����**
->
-> ��API version 9��ʼ����������ʹ��[HuksExceptionErrCode<sup>9+</sup>](arkts-universalkeystore-huks-huksexceptionerrcode-e.md#HuksExceptionErrCode)�����
+> **说明：**  
+>  
+> 从API version 9开始废弃，建议使用[HuksExceptionErrCode<sup>9+</sup>](arkts-universalkeystore-huks-huksexceptionerrcode-e.md)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
 **替代接口：** [null]
+
+<!--Device-huks-export enum HuksErrorCode--><!--Device-huks-export enum HuksErrorCode-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -24,13 +22,15 @@ export enum HuksErrorCode
 HUKS_SUCCESS = 0
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_SUCCESS = 0--><!--Device-HuksErrorCode-HUKS_SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -40,13 +40,15 @@ HUKS_SUCCESS = 0
 HUKS_FAILURE = -1
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_FAILURE = -1--><!--Device-HuksErrorCode-HUKS_FAILURE = -1-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -56,13 +58,15 @@ HUKS_FAILURE = -1
 HUKS_ERROR_BAD_STATE = -2
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_BAD_STATE = -2--><!--Device-HuksErrorCode-HUKS_ERROR_BAD_STATE = -2-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -72,13 +76,15 @@ HUKS_ERROR_BAD_STATE = -2
 HUKS_ERROR_INVALID_ARGUMENT = -3
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ARGUMENT = -3--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ARGUMENT = -3-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -88,13 +94,15 @@ HUKS_ERROR_INVALID_ARGUMENT = -3
 HUKS_ERROR_NOT_SUPPORTED = -4
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NOT_SUPPORTED = -4--><!--Device-HuksErrorCode-HUKS_ERROR_NOT_SUPPORTED = -4-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -104,13 +112,15 @@ HUKS_ERROR_NOT_SUPPORTED = -4
 HUKS_ERROR_NO_PERMISSION = -5
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NO_PERMISSION = -5--><!--Device-HuksErrorCode-HUKS_ERROR_NO_PERMISSION = -5-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -120,13 +130,15 @@ HUKS_ERROR_NO_PERMISSION = -5
 HUKS_ERROR_INSUFFICIENT_DATA = -6
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_DATA = -6--><!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_DATA = -6-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -136,13 +148,15 @@ HUKS_ERROR_INSUFFICIENT_DATA = -6
 HUKS_ERROR_BUFFER_TOO_SMALL = -7
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_BUFFER_TOO_SMALL = -7--><!--Device-HuksErrorCode-HUKS_ERROR_BUFFER_TOO_SMALL = -7-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -152,13 +166,15 @@ HUKS_ERROR_BUFFER_TOO_SMALL = -7
 HUKS_ERROR_INSUFFICIENT_MEMORY = -8
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_MEMORY = -8--><!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_MEMORY = -8-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -168,13 +184,15 @@ HUKS_ERROR_INSUFFICIENT_MEMORY = -8
 HUKS_ERROR_COMMUNICATION_FAILURE = -9
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_FAILURE = -9--><!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_FAILURE = -9-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -184,13 +202,15 @@ HUKS_ERROR_COMMUNICATION_FAILURE = -9
 HUKS_ERROR_STORAGE_FAILURE = -10
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_STORAGE_FAILURE = -10--><!--Device-HuksErrorCode-HUKS_ERROR_STORAGE_FAILURE = -10-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -200,13 +220,15 @@ HUKS_ERROR_STORAGE_FAILURE = -10
 HUKS_ERROR_HARDWARE_FAILURE = -11
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_HARDWARE_FAILURE = -11--><!--Device-HuksErrorCode-HUKS_ERROR_HARDWARE_FAILURE = -11-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -216,13 +238,15 @@ HUKS_ERROR_HARDWARE_FAILURE = -11
 HUKS_ERROR_ALREADY_EXISTS = -12
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_ALREADY_EXISTS = -12--><!--Device-HuksErrorCode-HUKS_ERROR_ALREADY_EXISTS = -12-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -232,13 +256,15 @@ HUKS_ERROR_ALREADY_EXISTS = -12
 HUKS_ERROR_NOT_EXIST = -13
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NOT_EXIST = -13--><!--Device-HuksErrorCode-HUKS_ERROR_NOT_EXIST = -13-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -248,13 +274,15 @@ HUKS_ERROR_NOT_EXIST = -13
 HUKS_ERROR_NULL_POINTER = -14
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NULL_POINTER = -14--><!--Device-HuksErrorCode-HUKS_ERROR_NULL_POINTER = -14-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -264,13 +292,15 @@ HUKS_ERROR_NULL_POINTER = -14
 HUKS_ERROR_FILE_SIZE_FAIL = -15
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_FILE_SIZE_FAIL = -15--><!--Device-HuksErrorCode-HUKS_ERROR_FILE_SIZE_FAIL = -15-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -280,13 +310,15 @@ HUKS_ERROR_FILE_SIZE_FAIL = -15
 HUKS_ERROR_READ_FILE_FAIL = -16
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_READ_FILE_FAIL = -16--><!--Device-HuksErrorCode-HUKS_ERROR_READ_FILE_FAIL = -16-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -296,13 +328,15 @@ HUKS_ERROR_READ_FILE_FAIL = -16
 HUKS_ERROR_INVALID_PUBLIC_KEY = -17
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PUBLIC_KEY = -17--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PUBLIC_KEY = -17-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -312,13 +346,15 @@ HUKS_ERROR_INVALID_PUBLIC_KEY = -17
 HUKS_ERROR_INVALID_PRIVATE_KEY = -18
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PRIVATE_KEY = -18--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PRIVATE_KEY = -18-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -328,13 +364,15 @@ HUKS_ERROR_INVALID_PRIVATE_KEY = -18
 HUKS_ERROR_INVALID_KEY_INFO = -19
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_INFO = -19--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_INFO = -19-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -344,13 +382,15 @@ HUKS_ERROR_INVALID_KEY_INFO = -19
 HUKS_ERROR_HASH_NOT_EQUAL = -20
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_HASH_NOT_EQUAL = -20--><!--Device-HuksErrorCode-HUKS_ERROR_HASH_NOT_EQUAL = -20-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -360,13 +400,15 @@ HUKS_ERROR_HASH_NOT_EQUAL = -20
 HUKS_ERROR_MALLOC_FAIL = -21
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_MALLOC_FAIL = -21--><!--Device-HuksErrorCode-HUKS_ERROR_MALLOC_FAIL = -21-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -376,13 +418,15 @@ HUKS_ERROR_MALLOC_FAIL = -21
 HUKS_ERROR_WRITE_FILE_FAIL = -22
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_WRITE_FILE_FAIL = -22--><!--Device-HuksErrorCode-HUKS_ERROR_WRITE_FILE_FAIL = -22-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -392,13 +436,15 @@ HUKS_ERROR_WRITE_FILE_FAIL = -22
 HUKS_ERROR_REMOVE_FILE_FAIL = -23
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_REMOVE_FILE_FAIL = -23--><!--Device-HuksErrorCode-HUKS_ERROR_REMOVE_FILE_FAIL = -23-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -408,13 +454,15 @@ HUKS_ERROR_REMOVE_FILE_FAIL = -23
 HUKS_ERROR_OPEN_FILE_FAIL = -24
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_OPEN_FILE_FAIL = -24--><!--Device-HuksErrorCode-HUKS_ERROR_OPEN_FILE_FAIL = -24-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -424,13 +472,15 @@ HUKS_ERROR_OPEN_FILE_FAIL = -24
 HUKS_ERROR_CLOSE_FILE_FAIL = -25
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CLOSE_FILE_FAIL = -25--><!--Device-HuksErrorCode-HUKS_ERROR_CLOSE_FILE_FAIL = -25-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -440,13 +490,15 @@ HUKS_ERROR_CLOSE_FILE_FAIL = -25
 HUKS_ERROR_MAKE_DIR_FAIL = -26
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_MAKE_DIR_FAIL = -26--><!--Device-HuksErrorCode-HUKS_ERROR_MAKE_DIR_FAIL = -26-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -456,13 +508,15 @@ HUKS_ERROR_MAKE_DIR_FAIL = -26
 HUKS_ERROR_INVALID_KEY_FILE = -27
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_FILE = -27--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_FILE = -27-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -472,13 +526,15 @@ HUKS_ERROR_INVALID_KEY_FILE = -27
 HUKS_ERROR_IPC_MSG_FAIL = -28
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_IPC_MSG_FAIL = -28--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_MSG_FAIL = -28-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -488,13 +544,15 @@ HUKS_ERROR_IPC_MSG_FAIL = -28
 HUKS_ERROR_REQUEST_OVERFLOWS = -29
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_REQUEST_OVERFLOWS = -29--><!--Device-HuksErrorCode-HUKS_ERROR_REQUEST_OVERFLOWS = -29-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -504,13 +562,15 @@ HUKS_ERROR_REQUEST_OVERFLOWS = -29
 HUKS_ERROR_PARAM_NOT_EXIST = -30
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_PARAM_NOT_EXIST = -30--><!--Device-HuksErrorCode-HUKS_ERROR_PARAM_NOT_EXIST = -30-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -520,13 +580,15 @@ HUKS_ERROR_PARAM_NOT_EXIST = -30
 HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31--><!--Device-HuksErrorCode-HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -536,13 +598,15 @@ HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31
 HUKS_ERROR_COMMUNICATION_TIMEOUT = -32
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_TIMEOUT = -32--><!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_TIMEOUT = -32-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -552,13 +616,15 @@ HUKS_ERROR_COMMUNICATION_TIMEOUT = -32
 HUKS_ERROR_IPC_INIT_FAIL = -33
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_IPC_INIT_FAIL = -33--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_INIT_FAIL = -33-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -568,13 +634,15 @@ HUKS_ERROR_IPC_INIT_FAIL = -33
 HUKS_ERROR_IPC_DLOPEN_FAIL = -34
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_IPC_DLOPEN_FAIL = -34--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_DLOPEN_FAIL = -34-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -584,13 +652,15 @@ HUKS_ERROR_IPC_DLOPEN_FAIL = -34
 HUKS_ERROR_EFUSE_READ_FAIL = -35
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_EFUSE_READ_FAIL = -35--><!--Device-HuksErrorCode-HUKS_ERROR_EFUSE_READ_FAIL = -35-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -600,13 +670,15 @@ HUKS_ERROR_EFUSE_READ_FAIL = -35
 HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36--><!--Device-HuksErrorCode-HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -616,13 +688,15 @@ HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36
 HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37--><!--Device-HuksErrorCode-HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -632,13 +706,15 @@ HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37
 HUKS_ERROR_VERIFICATION_FAILED = -38
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_VERIFICATION_FAILED = -38--><!--Device-HuksErrorCode-HUKS_ERROR_VERIFICATION_FAILED = -38-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -648,13 +724,15 @@ HUKS_ERROR_VERIFICATION_FAILED = -38
 HUKS_ERROR_CHECK_GET_ALG_FAIL = -100
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ALG_FAIL = -100--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ALG_FAIL = -100-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -664,13 +742,15 @@ HUKS_ERROR_CHECK_GET_ALG_FAIL = -100
 HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -680,13 +760,15 @@ HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101
 HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -696,13 +778,15 @@ HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102
 HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -712,13 +796,15 @@ HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103
 HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -728,13 +814,15 @@ HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104
 HUKS_ERROR_CHECK_GET_MODE_FAIL = -105
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_MODE_FAIL = -105--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_MODE_FAIL = -105-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -744,13 +832,15 @@ HUKS_ERROR_CHECK_GET_MODE_FAIL = -105
 HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -760,13 +850,15 @@ HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106
 HUKS_ERROR_CHECK_GET_AAD_FAIL = -107
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AAD_FAIL = -107--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AAD_FAIL = -107-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -776,13 +868,15 @@ HUKS_ERROR_CHECK_GET_AAD_FAIL = -107
 HUKS_ERROR_CHECK_GET_IV_FAIL = -108
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_IV_FAIL = -108--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_IV_FAIL = -108-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -792,13 +886,15 @@ HUKS_ERROR_CHECK_GET_IV_FAIL = -108
 HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -808,13 +904,15 @@ HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109
 HUKS_ERROR_CHECK_GET_SALT_FAIL = -110
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_SALT_FAIL = -110--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_SALT_FAIL = -110-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -824,13 +922,15 @@ HUKS_ERROR_CHECK_GET_SALT_FAIL = -110
 HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -840,13 +940,15 @@ HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111
 HUKS_ERROR_INVALID_ALGORITHM = -112
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ALGORITHM = -112--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ALGORITHM = -112-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -856,13 +958,15 @@ HUKS_ERROR_INVALID_ALGORITHM = -112
 HUKS_ERROR_INVALID_KEY_SIZE = -113
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_SIZE = -113--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_SIZE = -113-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -872,13 +976,15 @@ HUKS_ERROR_INVALID_KEY_SIZE = -113
 HUKS_ERROR_INVALID_PADDING = -114
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PADDING = -114--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PADDING = -114-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -888,13 +994,15 @@ HUKS_ERROR_INVALID_PADDING = -114
 HUKS_ERROR_INVALID_PURPOSE = -115
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PURPOSE = -115--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PURPOSE = -115-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -904,13 +1012,15 @@ HUKS_ERROR_INVALID_PURPOSE = -115
 HUKS_ERROR_INVALID_MODE = -116
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_MODE = -116--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_MODE = -116-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -920,13 +1030,15 @@ HUKS_ERROR_INVALID_MODE = -116
 HUKS_ERROR_INVALID_DIGEST = -117
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_DIGEST = -117--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_DIGEST = -117-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -936,13 +1048,15 @@ HUKS_ERROR_INVALID_DIGEST = -117
 HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -952,13 +1066,15 @@ HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118
 HUKS_ERROR_INVALID_IV = -119
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_IV = -119--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_IV = -119-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -968,13 +1084,15 @@ HUKS_ERROR_INVALID_IV = -119
 HUKS_ERROR_INVALID_AAD = -120
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AAD = -120--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AAD = -120-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -984,13 +1102,15 @@ HUKS_ERROR_INVALID_AAD = -120
 HUKS_ERROR_INVALID_NONCE = -121
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_NONCE = -121--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_NONCE = -121-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1000,13 +1120,15 @@ HUKS_ERROR_INVALID_NONCE = -121
 HUKS_ERROR_INVALID_AE_TAG = -122
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AE_TAG = -122--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AE_TAG = -122-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1016,13 +1138,15 @@ HUKS_ERROR_INVALID_AE_TAG = -122
 HUKS_ERROR_INVALID_SALT = -123
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SALT = -123--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SALT = -123-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1032,13 +1156,15 @@ HUKS_ERROR_INVALID_SALT = -123
 HUKS_ERROR_INVALID_ITERATION = -124
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ITERATION = -124--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ITERATION = -124-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1048,13 +1174,15 @@ HUKS_ERROR_INVALID_ITERATION = -124
 HUKS_ERROR_INVALID_OPERATION = -125
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_OPERATION = -125--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_OPERATION = -125-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1064,13 +1192,15 @@ HUKS_ERROR_INVALID_OPERATION = -125
 HUKS_ERROR_INTERNAL_ERROR = -999
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INTERNAL_ERROR = -999--><!--Device-HuksErrorCode-HUKS_ERROR_INTERNAL_ERROR = -999-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1080,13 +1210,15 @@ HUKS_ERROR_INTERNAL_ERROR = -999
 HUKS_ERROR_UNKNOWN_ERROR = -1000
 ```
 
-ԭΪԤ���ֶΡ�
+原为预留字段。
 
-**˵����** ��API version 9��ʼ������������ӿڡ�
+**说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_UNKNOWN_ERROR = -1000--><!--Device-HuksErrorCode-HUKS_ERROR_UNKNOWN_ERROR = -1000-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

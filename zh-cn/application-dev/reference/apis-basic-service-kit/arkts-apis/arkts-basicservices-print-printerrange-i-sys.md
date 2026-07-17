@@ -4,9 +4,17 @@
 
 **起始版本：** 24
 
+<!--Device-print-interface PrinterRange--><!--Device-print-interface PrinterRange-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## endPage
 
@@ -19,6 +27,8 @@ endPage?: number
 **类型：** number
 
 **起始版本：** 24
+
+<!--Device-PrinterRange-endPage?: int--><!--Device-PrinterRange-endPage?: int-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -36,6 +46,8 @@ pages?: Array<number>
 
 **起始版本：** 24
 
+<!--Device-PrinterRange-pages?: Array<int>--><!--Device-PrinterRange-pages?: Array<int>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ startPage?: number
 **类型：** number
 
 **起始版本：** 24
+
+<!--Device-PrinterRange-startPage?: int--><!--Device-PrinterRange-startPage?: int-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

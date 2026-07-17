@@ -1,12 +1,18 @@
 # setDisallowedPolicyForAccount
 
+## 导入模块
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+```
+
 ## setDisallowedPolicyForAccount
 
 ```TypeScript
 function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, accountId: number): void
 ```
 
-���ý���/����ָ���û���ĳ���ԡ�
+设置禁用/启用指定用户的某特性。
 
 **起始版本：** 14
 
@@ -16,25 +22,27 @@ function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: b
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, accountId: number): void--><!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, accountId: number): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| feature | string | 是 | feature���ơ�<br/>- fingerprint���豸ָ����֤��������ǰ��֧��PC/2in1�豸ʹ�á�ʹ�ô˲���ʱ�����¹���<br/>1. ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)��<br/>�ڽ������豸ָ����֤��������ʹ�ñ��ӿڴ���˲������ᱨ���Գ�ͻ��<br/>2. ͨ�����ӿ����ý���/����ָ���û����豸ָ����֤��������ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)��<br/>�ڽ����豸ָ����֤����ʱ�����߻Ḳ��ǰ�ߵĲ��ԡ��˺���ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)��<br/>�������豸ָ����֤�������������û�������ʹ���豸ָ����֤������<br/>- print20+���豸��ӡ��������API version 23֮ǰ��֧��PC/2in1�豸ʹ�ã���API version 2<br/>3��ʼ֧��PC/2in1��Phone��Tablet�豸�����ʹ�ñ��ӿڽ�����ָ���û����豸��ӡ��������ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)��<br/>�������豸��ӡ���������û��µ��豸��ӡ������Ȼ�����á�<br/>- mtpClient20+��MTP�ͻ���������������д�룩����ǰ��֧��PC/2in1�豸ʹ�á�MTP��<br/>MediaTransferProtocol��ý�崫��Э�飩����Э�������û����ƶ��豸�����Է���ý���ļ������Ѿ�ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)��<br/>�ڽ������豸MTP�ͻ�������ʱ����ͨ�����ӿڽ���ĳ�û�MTP�ͻ���д���������ᱨ���Գ�ͻ��<br/>- usbStorageDeviceWrite20+��USB�洢�豸д����������ǰ��֧��PC/2in<br/>1��ҵ�豸ʹ�á�<br/>�������������ͨ�����ӿڽ���ĳ�û�USB�洢�豸д���������ᱨ���Գ�ͻ��<br/>1��ͨ��<br/>[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)��<br/>���������豸USB�������á�<br/>2��ͨ��<br/>[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setUsbStorageDeviceAccessPolicy-1)<br/>�ӿ�������USB�洢�豸���ʲ���Ϊֻ��/���á�<br/>3��ͨ��<br/>[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices-1)�ӿ������˴洢���͵�USB�豸��<br/>�á�<br/>- diskRecoveryKey20+���ָ�<br/>[��Կ����](../../../../security/UniversalKeystoreKit/huks-export-key-arkts.md)��������ǰ��֧��PC/2in1�豸ʹ�á�<br/>- sudo20+<br/>��superuser do����ʾ�Գ����û�ִ�У���ǰ��֧��PC/2in1�豸ʹ�á����ú���ҵ�ռ����˿ռ䲻���Գ����û�ִ�С�<br/>- distributedTransmissionOutgoing20+���豸�䵥�������ݵ��������������������豸�������ݣ���<br/>- openFileBoost23+���ļ��򿪼���������ΪӦ���ṩ��<br/>���򿪼���״̬��֪������Ӧ�ÿ���ͨ�������ӦAPI����֪�ļ��ļ���״̬������Ӧ�ÿ���ʵ�ֶ��Ѽ����ļ��������ص�UI��user interface����ʶ�ȹ��ܣ��Ż��û��ļ������飬��ǰ��֧��PC/2in1�豸ʹ�á� |
-| disallow | boolean | 是 | true��ʾ���ã�false��ʾ���á� |
-| accountId | number | 是 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>�Ƚӿ�����ȡ�� |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| feature | string | 是 | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：<br/>1. 通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备指纹认证能力，再使用本接口传入此参数，会报策略冲突。<br/>2. 通过本接口设置禁用/启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。此后再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用设备指纹认证能力，则所有用户都允许使用设备指纹认证能力。<br/>- print&lt;sup&gt;20+&lt;/sup&gt;：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用本接口禁用了指定用户的设备打印能力，再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口启用设备打印能力，该用户下的设备打印能力仍然被禁用。<br/>- mtpClient&lt;sup&gt;20+&lt;/sup&gt;：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（MediaTransferProtocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备MTP客户端能力时，再通过本接口禁用某用户MTP客户端写入能力，会报策略冲突。<br/>- usbStorageDeviceWrite&lt;sup&gt;20+&lt;/sup&gt;：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。&lt;!--RP5--&gt;&lt;!--RP5End--&gt;<br/> 以下三种情况再通过本接口禁用某用户USB存储设备写入能力，会报策略冲突。<br/> 1）通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口设置了设备USB能力禁用。<br/> 2）通过[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1)接口设置了USB存储设备访问策略为只读/禁用。<br/> 3）通过[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#adddisallowedusbdevices-1)接口添加了存储类型的USB设备禁用。 <br/>- diskRecoveryKey&lt;sup&gt;20+&lt;/sup&gt;：恢复[密钥导出](../../../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo&lt;sup&gt;20+&lt;/sup&gt;：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。<br/>- distributedTransmissionOutgoing&lt;sup  &gt;20+&lt;/sup&gt;：设备间单向传输数据的能力（仅包含向其他设备传输数据）。<br/>- openFileBoost&lt;sup&gt;23+&lt;/sup&gt;：&lt;!--RP6--&gt;文件打开加速能力&lt;!--RP6End--&gt;，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
+| disallow | boolean | 是 | true表示禁用，false表示启用。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-the) | the administrator application does not have permission to manage the device. |
-| [9200010](../../errorcode-universal.md#9200010-A) | A conflict policy has been configured. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | the administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -65,7 +73,7 @@ try {
 function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void
 ```
 
-���ý���/����ָ���û���ĳ���ԡ�
+设置禁用/启用指定用户的某特性。
 
 **起始版本：** 26.0.0
 
@@ -73,27 +81,29 @@ function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void--><!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| feature | FeatureForAccount | 是 | feature���ơ�<br/>- - Ҫ���û��������û����ԡ�<br/>��featureֵΪSUPER_HUBʱ������Ѿ�ͨ��<br/>[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addUserNonStopApps-1)�ӿڽ���תվ���ӵ���<br/>ǰ�û��²��ɹ�ͣ��Ӧ���б��У��ٵ��ñ��ӿڽ�����תվ���ᷢ�����Գ�ͻ���׳�9200010�����롣����ͨ��<br/>[removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeUserNonStopApps-1)�ӿڽ���<br/>תվ�ӵ�ǰ�û��²��ɹ�ͣ��Ӧ���б����Ƴ��������ͻ�� |
-| disallow | boolean | 是 | true��ʾ���ã�false��ʾ���á� |
-| accountId | number | 是 | �û�ID<br/><br/>ȡֵӦΪ��0��������<br/>- �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��<br/>[getOsAccountLocalId](@ohos.account.osAccount:osAccount.AccountManager.getOsAccountLocalId(callback:<br/>AsyncCallback))<br/>�Ƚӿ�����ȡ��<br/>��featureֵΪSUPER_HUBʱ��accountId��֧�ִ��뵱ǰ�û����û�ID����֧�ֿ��û����á�������׳�9200012�����롣 |
+| admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| feature | [FeatureForAccount](arkts-mdm-restrictions-featureforaccount-e.md) | 是 | feature名称。  - - 要禁用或允许的用户特性。<br>当feature值为SUPER_HUB时，如果已经通过[addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addusernonstopapps-1)接口将中转站添加到当前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过[removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeusernonstopapps-1)接口将中转站从当前用户下不可关停的应用列表中移除来解决冲突。 |
+| disallow | boolean | 是 | true表示禁用，false表示启用。 |
+| accountId | number | 是 | 用户ID<br>取值应为≥0的整数。  - 用户ID，取值范围：大于等于0。<br>accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。<br>当feature值为SUPER_HUB时，accountId仅支持传入当前用户的用户ID，不支持跨用户设置。否则会抛出9200012错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-the) | the administrator application does not have permission to manage the device. |
-| [9200010](../../errorcode-universal.md#9200010-A) | A conflict policy has been configured. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | the administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

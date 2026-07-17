@@ -1,12 +1,10 @@
 # DownloadState
 
-```TypeScript
-enum DownloadState
-```
-
-ȫ����������״̬��ö�١�
+全量下载任务状态的枚举。
 
 **起始版本：** 20
+
+<!--Device-cloudSyncManager-enum DownloadState--><!--Device-cloudSyncManager-enum DownloadState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -16,11 +14,13 @@ enum DownloadState
 MISSING = 3
 ```
 
-�������񲻴��ڡ�
+下载任务不存在。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DownloadState-MISSING = 3--><!--Device-DownloadState-MISSING = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

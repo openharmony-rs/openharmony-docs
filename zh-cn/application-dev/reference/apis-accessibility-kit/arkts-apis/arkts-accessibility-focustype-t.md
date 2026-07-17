@@ -8,6 +8,8 @@ export type FocusType = 'accessibility' | 'normal'
 
 **起始版本：** 9
 
+<!--Device-unnamed-export type FocusType = 'accessibility' | 'normal'--><!--Device-unnamed-export type FocusType = 'accessibility' | 'normal'-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型 | 说明 |

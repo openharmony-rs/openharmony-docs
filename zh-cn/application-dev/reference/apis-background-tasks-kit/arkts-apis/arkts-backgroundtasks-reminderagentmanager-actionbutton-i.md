@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-reminderAgentManager-interface ActionButton--><!--Device-reminderAgentManager-interface ActionButton-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## title
 
@@ -17,6 +25,8 @@ title: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-ActionButton-title: string--><!--Device-ActionButton-title: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -32,6 +42,8 @@ titleResource?: string
 
 **起始版本：** 11
 
+<!--Device-ActionButton-titleResource?: string--><!--Device-ActionButton-titleResource?: string-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## type
@@ -45,6 +57,8 @@ type: ActionButtonType
 **类型：** ActionButtonType
 
 **起始版本：** 9
+
+<!--Device-ActionButton-type: ActionButtonType--><!--Device-ActionButton-type: ActionButtonType-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 

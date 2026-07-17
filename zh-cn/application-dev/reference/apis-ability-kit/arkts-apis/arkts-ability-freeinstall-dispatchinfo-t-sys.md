@@ -4,9 +4,11 @@
 export type DispatchInfo = _DispatchInfo
 ```
 
-�ⰲװ�ṹ��ͽӿڰ汾��Ϣ�ࡣ
+免安装结构体和接口版本信息类。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type DispatchInfo = _DispatchInfo--><!--Device-freeInstall-export type DispatchInfo = _DispatchInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

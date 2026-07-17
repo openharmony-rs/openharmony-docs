@@ -4,7 +4,15 @@
 
 **起始版本：** 10
 
+<!--Device-cert-interface CertExtension--><!--Device-cert-interface CertExtension-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## checkCA
 
@@ -18,21 +26,23 @@ checkCA(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-CertExtension-checkCA(): int--><!--Device-CertExtension-checkCA(): int-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 当证书扩展域段中密钥用途包含签名用途，并且基本约束中cA字段为true时，表示证书为CA证书。<br/>如果证书不是CA证书，则返回-1；否则返回基本约束中的路径长度。<br/>如果证书是CA证书，但是基本约束中未给定路径长度，则返回-2，表示无路径长度限制。 |
+| number | 当证书扩展域段中密钥用途扩展包含keyCertSign位，并且基本约束中cA字段为true时，表示证书为CA证书。如果证书不是CA证书，则返回-1；否则返回基本约束中的路径长度。如果证书是CA证书，但是基本约束中未给定路径长度，则返回-2，表示无路径长度限制。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -86,21 +96,23 @@ getEncoded(): EncodingBlob
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-CertExtension-getEncoded(): EncodingBlob--><!--Device-CertExtension-getEncoded(): EncodingBlob-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| EncodingBlob | 表示证书扩展域段序列化数据。 |
+| [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 表示证书扩展域段序列化数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -155,29 +167,31 @@ getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob--><!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| valueType | ExtensionEntryType | 是 | 表示证书扩展域段获取的类型。 |
-| oid | DataBlob | 是 | 表示证书扩展域段获取的对象标识符。 |
+| valueType | [ExtensionEntryType](arkts-devicecertificate-cert-extensionentrytype-e.md) | 是 | 表示证书扩展域段获取的类型。 |
+| oid | [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | 是 | 表示证书扩展域段获取的对象标识符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| DataBlob | 表示证书扩展域段对象的数据。 |
+| [DataBlob](arkts-devicecertificate-cert-datablob-i.md) | 表示证书扩展域段对象的数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -236,28 +250,30 @@ getOidList(valueType: ExtensionOidType): DataArray
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray--><!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| valueType | ExtensionOidType | 是 | 表示证书扩展域段对象标识符类型。 |
+| valueType | [ExtensionOidType](arkts-devicecertificate-cert-extensionoidtype-e.md) | 是 | 表示证书扩展域段对象标识符类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| DataArray | 表示证书扩展域段对象标识符列表。 |
+| [DataArray](arkts-devicecertificate-cert-dataarray-i.md) | 表示证书扩展域段对象标识符列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -312,6 +328,8 @@ hasUnsupportedCriticalExtension(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean--><!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **返回值：**
@@ -324,9 +342,9 @@ hasUnsupportedCriticalExtension(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 

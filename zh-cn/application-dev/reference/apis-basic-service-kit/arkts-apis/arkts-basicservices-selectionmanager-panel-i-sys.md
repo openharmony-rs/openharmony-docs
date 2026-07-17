@@ -4,11 +4,17 @@
 
 **起始版本：** 24
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-selectionManager-interface Panel--><!--Device-selectionManager-interface Panel-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { selectionManager } from '@kit.BasicServicesKit';
+```
 
 ## hide
 
@@ -20,6 +26,8 @@ hide(): Promise<void>
 
 **起始版本：** 24
 
+<!--Device-Panel-hide(): Promise<void>--><!--Device-Panel-hide(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -28,24 +36,25 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [33600001](../../errorcode-universal.md#33600001-Selection) | Selection service exception. |
-| [33600002](../../errorcode-universal.md#33600002-This) | This selection window has been destroyed. |
+| [33600001](../../apis-basic-services-kit/errorcode-selection.md#33600001-划词服务异常) | Selection service exception. |
+| [33600002](../../apis-basic-services-kit/errorcode-selection.md#33600002-划词面板已被销毁) | This selection window has been destroyed. |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 隐藏划词面板。selectionPanel为createPanel创建出的panel实例
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to hide panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 
 ```
@@ -58,15 +67,17 @@ moveTo(x: number, y: number): Promise<void>
 
 移动划词面板至屏幕指定位置。使用Promise异步回调。
 
-> **说明：**
-> 从API version 20开始支持，从API version 24开始废弃。建议使用
-> [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#moveToGlobalDisplay-1)替代。
+> **说明：**  
+> 从API version 20开始支持，从API version 24开始废弃。建议使用  
+> [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay-1)替代。
 
 **起始版本：** 20
 
 **废弃版本：** 24
 
-**替代接口：** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#moveToGlobalDisplay-1)
+**替代接口：** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay-1)
+
+<!--Device-Panel-moveTo(x: int, y: int): Promise<void>--><!--Device-Panel-moveTo(x: int, y: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -83,28 +94,29 @@ moveTo(x: number, y: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [33600001](../../errorcode-universal.md#33600001-Selection) | Selection service exception. |
-| [33600002](../../errorcode-universal.md#33600002-This) | This selection window has been destroyed. |
+| [33600001](../../apis-basic-services-kit/errorcode-selection.md#33600001-划词服务异常) | Selection service exception. |
+| [33600002](../../apis-basic-services-kit/errorcode-selection.md#33600002-划词面板已被销毁) | This selection window has been destroyed. |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 移动划词面板至屏幕指定位置。selectionPanel为createPanel创建出的panel实例
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 
 ```
@@ -119,6 +131,8 @@ off(type: 'destroyed', callback?: Callback<void>): void
 
 **起始版本：** 24
 
+<!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -128,17 +142,16 @@ off(type: 'destroyed', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'destroyed' | 是 | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback&lt;void&gt; | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 取消订阅划词面板销毁事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister destroyed. Error code: ${err.code}, error message: ${err.message}`);
 }
 
 ```
@@ -153,6 +166,8 @@ off(type: 'hidden', callback?: Callback<void>): void
 
 **起始版本：** 24
 
+<!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -162,17 +177,16 @@ off(type: 'hidden', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hidden' | 是 | 设置监听类型，固定取值为'hidden'。 |
-| callback | Callback&lt;void&gt; | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 取消订阅划词面板隐藏事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister hidden. Error code: ${err.code}, error message: ${err.message}`);
 }
 
 ```
@@ -187,6 +201,8 @@ on(type: 'destroyed', callback: Callback<void>): void
 
 **起始版本：** 24
 
+<!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void--><!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -196,19 +212,18 @@ on(type: 'destroyed', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'destroyed' | 是 | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回值为空。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，返回值为空。 |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 订阅划词面板销毁事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.on('destroyed', () => {
     console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register destroyed callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 
 ```
@@ -223,6 +238,8 @@ on(type: 'hidden', callback: Callback<void>): void
 
 **起始版本：** 24
 
+<!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void--><!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -232,19 +249,18 @@ on(type: 'hidden', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hidden' | 是 | 设置监听类型，固定取值为'hidden'。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回值为空。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，返回值为空。 |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 订阅划词面板隐藏事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.on('hidden', () => {
     console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register hidden callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 
 ```
@@ -261,6 +277,8 @@ setUiContent(path: string): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Panel-setUiContent(path: string): Promise<void>--><!--Device-Panel-setUiContent(path: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -275,28 +293,29 @@ setUiContent(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [33600001](../../errorcode-universal.md#33600001-Selection) | Selection service exception. |
-| [33600002](../../errorcode-universal.md#33600002-This) | This selection window has been destroyed. |
+| [33600001](../../apis-basic-services-kit/errorcode-selection.md#33600001-划词服务异常) | Selection service exception. |
+| [33600002](../../apis-basic-services-kit/errorcode-selection.md#33600002-划词面板已被销毁) | This selection window has been destroyed. |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 为划词面板加载页面内容。selectionPanel为createPanel创建出的panel实例
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
 }
 
 ```
@@ -313,6 +332,8 @@ show(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Panel-show(): Promise<void>--><!--Device-Panel-show(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -321,24 +342,25 @@ show(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [33600001](../../errorcode-universal.md#33600001-Selection) | Selection service exception. |
-| [33600002](../../errorcode-universal.md#33600002-This) | This selection window has been destroyed. |
+| [33600001](../../apis-basic-services-kit/errorcode-selection.md#33600001-划词服务异常) | Selection service exception. |
+| [33600002](../../apis-basic-services-kit/errorcode-selection.md#33600002-划词面板已被销毁) | This selection window has been destroyed. |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 显示划词面板。selectionPanel为createPanel创建出的panel实例
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to show panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 
 ```
@@ -355,6 +377,8 @@ startMoving(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Panel-startMoving(): Promise<void>--><!--Device-Panel-startMoving(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **系统接口：** 此接口为系统接口。
@@ -363,20 +387,21 @@ startMoving(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [33600001](../../errorcode-universal.md#33600001-Selection) | Selection service exception. |
-| [33600002](../../errorcode-universal.md#33600002-This) | This selection window has been destroyed. |
+| [33600001](../../apis-basic-services-kit/errorcode-selection.md#33600001-划词服务异常) | Selection service exception. |
+| [33600002](../../apis-basic-services-kit/errorcode-selection.md#33600002-划词面板已被销毁) | This selection window has been destroyed. |
 
 **示例：**
 
 ```TypeScript
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 此代码需放置在ArkUI页面组件的build()方法中，RelativeContainer为ArkUI内置组件，TouchEvent和TouchType为ArkUI框架内置类型
 RelativeContainer() {
   /* 
    * 页面布局内容，需要开发者根据实际补充
@@ -385,10 +410,11 @@ RelativeContainer() {
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
+      // 使划词面板可随鼠标、触控板或触屏拖动移动位置。selectionPanel为createPanel创建出的panel实例
+      selectionPanel.startMoving().then(() => {
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to startMoving panel. Error code: ${err.code}, error message: ${err.message}`);
       });
     }
   }

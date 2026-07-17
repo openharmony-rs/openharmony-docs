@@ -8,6 +8,8 @@ export type AccessibilityExtensionContext = _AccessibilityExtensionContext.defau
 
 **起始版本：** 10
 
+<!--Device-unnamed-export type AccessibilityExtensionContext = _AccessibilityExtensionContext.default--><!--Device-unnamed-export type AccessibilityExtensionContext = _AccessibilityExtensionContext.default-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **属性类型：** _AccessibilityExtensionContext.default

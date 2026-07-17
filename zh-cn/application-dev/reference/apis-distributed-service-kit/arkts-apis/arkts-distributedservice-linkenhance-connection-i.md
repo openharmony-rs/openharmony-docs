@@ -4,9 +4,15 @@
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-linkEnhance-interface Connection--><!--Device-linkEnhance-interface Connection-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## 导入模块
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+```
 
 ## close
 
@@ -22,13 +28,15 @@ close(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-close(): void--><!--Device-Connection-close(): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例：**
 
@@ -71,15 +79,17 @@ connect(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-connect(): void--><!--Device-Connection-connect(): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390204](../../errorcode-universal.md#32390204-The) | The number of connection exceeds the limit. |
-| [32390300](../../errorcode-universal.md#32390300-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390204](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390204-连接个数超出限制) | The number of connection exceeds the limit. |
+| [32390300](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390300-内部错误) | Internal error. |
 
 **示例：**
 
@@ -123,13 +133,15 @@ disconnect(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-disconnect(): void--><!--Device-Connection-disconnect(): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例：**
 
@@ -172,6 +184,8 @@ getPeerDeviceId(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-getPeerDeviceId(): string--><!--Device-Connection-getPeerDeviceId(): string-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **返回值：**
@@ -184,7 +198,7 @@ getPeerDeviceId(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
 **示例：**
 
@@ -199,8 +213,7 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.getPeerDeviceId();
-  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s", connection.getPeerDeviceId());
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -222,6 +235,8 @@ off(type: 'connectResult', callback?: Callback<ConnectResult>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-off(type: 'connectResult', callback?: Callback<ConnectResult>): void--><!--Device-Connection-off(type: 'connectResult', callback?: Callback<ConnectResult>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -229,14 +244,14 @@ off(type: 'connectResult', callback?: Callback<ConnectResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectResult' | 是 | 事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。 |
-| callback | Callback&lt;ConnectResult&gt; | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ConnectResult> | 否 | 注册的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例：**
 
@@ -279,6 +294,8 @@ off(type: 'disconnected', callback?: Callback<number>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-off(type: 'disconnected', callback?: Callback<number>): void--><!--Device-Connection-off(type: 'disconnected', callback?: Callback<number>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -286,14 +303,14 @@ off(type: 'disconnected', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'disconnected' | 是 | 事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。 |
-| callback | Callback&lt;number&gt; | 否 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例：**
 
@@ -336,6 +353,8 @@ off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void--><!--Device-Connection-off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -343,14 +362,14 @@ off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataReceived' | 是 | 事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。 |
-| callback | Callback&lt;ArrayBuffer&gt; | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ArrayBuffer> | 否 | 注册的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例：**
 
@@ -394,6 +413,8 @@ on(type: 'connectResult', callback: Callback<ConnectResult>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-on(type: 'connectResult', callback: Callback<ConnectResult>): void--><!--Device-Connection-on(type: 'connectResult', callback: Callback<ConnectResult>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -401,14 +422,14 @@ on(type: 'connectResult', callback: Callback<ConnectResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectResult' | 是 | 事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。 |
-| callback | Callback&lt;ConnectResult&gt; | 是 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ConnectResult> | 是 | 注册的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例：**
 
@@ -451,6 +472,8 @@ on(type: 'disconnected', callback: Callback<number>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-on(type: 'disconnected', callback: Callback<number>): void--><!--Device-Connection-on(type: 'disconnected', callback: Callback<number>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -458,14 +481,14 @@ on(type: 'disconnected', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'disconnected' | 是 | 事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。 |
-| callback | Callback&lt;number&gt; | 是 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例：**
 
@@ -505,6 +528,8 @@ on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void--><!--Device-Connection-on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
@@ -512,14 +537,14 @@ on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataReceived' | 是 | 事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。 |
-| callback | Callback&lt;ArrayBuffer&gt; | 是 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ArrayBuffer> | 是 | 注册的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
 
 **示例：**
 
@@ -561,22 +586,24 @@ sendData(data: ArrayBuffer): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Connection-sendData(data: ArrayBuffer): void--><!--Device-Connection-sendData(data: ArrayBuffer): void-End-->
+
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | ArrayBuffer | 是 | 需要发送的数据，最大发送长度为1024字节。 |
+| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 需要发送的数据，最大发送长度为1024字节。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [32390206](../../errorcode-universal.md#32390206-Invalid) | Invalid parameter. |
-| [32390205](../../errorcode-universal.md#32390205-Connection) | Connection is not ready. |
-| [32390300](../../errorcode-universal.md#32390300-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [32390206](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390206-参数非法) | Invalid parameter. |
+| [32390205](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390205-连接状态不可用) | Connection is not ready. |
+| [32390300](../../apis-distributedservice-kit/errorcode-link-enhance.md#32390300-内部错误) | Internal error. |
 
 **示例：**
 
@@ -595,9 +622,9 @@ try {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       let len = 1;
-      let arraybuffer = new ArrayBuffer(len); // 创建需要发送的数据
-      connection.sendData(arraybuffer);
-      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+      let arrayBuffer = new ArrayBuffer(len); // 创建需要发送的数据
+      connection.sendData(arrayBuffer);
+      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s", connection.getPeerDeviceId());
       connection.disconnect();
     }
   });

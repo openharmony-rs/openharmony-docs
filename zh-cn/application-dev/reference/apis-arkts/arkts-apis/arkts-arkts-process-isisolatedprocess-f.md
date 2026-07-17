@@ -1,5 +1,11 @@
 # isIsolatedProcess
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## isIsolatedProcess
 
 ```TypeScript
@@ -12,13 +18,15 @@ function isIsolatedProcess(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-process-function isIsolatedProcess(): boolean--><!--Device-process-function isIsolatedProcess(): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回判断结果。如果进程被隔离则返回 true；否则，<br/>返回 false。 |
+| boolean | 返回判断结果。如果进程被隔离则返回 true；否则，返回 false。 |
 
 **示例：**
 

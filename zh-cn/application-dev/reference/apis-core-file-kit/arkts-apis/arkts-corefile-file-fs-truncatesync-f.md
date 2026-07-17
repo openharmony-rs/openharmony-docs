@@ -1,5 +1,11 @@
 # truncateSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## truncateSync
 
 ```TypeScript
@@ -10,7 +16,9 @@ declare function truncateSync(file: string | number, len?: number): void
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function truncateSync(file: string | number, len?: number): void--><!--Device-unnamed-declare function truncateSync(file: string | number, len?: number): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

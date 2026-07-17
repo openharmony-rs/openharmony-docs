@@ -1,5 +1,11 @@
 # getPowerMode
 
+## 导入模块
+
+```TypeScript
+import { power } from '@kit.BasicServicesKit';
+```
+
 ## getPowerMode
 
 ```TypeScript
@@ -10,13 +16,15 @@ function getPowerMode(): DevicePowerMode
 
 **起始版本：** 9
 
+<!--Device-power-function getPowerMode(): DevicePowerMode--><!--Device-power-function getPowerMode(): DevicePowerMode-End-->
+
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| DevicePowerMode | 电源模式。 |
+| [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | 电源模式。 |
 
 **示例：**
 

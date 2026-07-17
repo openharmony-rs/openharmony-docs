@@ -1,19 +1,25 @@
 # removeDockApp
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## removeDockApp
 
 ```TypeScript
 function removeDockApp(admin: Want, bundleName: string, abilityName: string): void
 ```
 
-�ӿ�������Ƴ�Ӧ�á�
+从快捷栏中移除应用。
 
-> **˵����**
->
-> ����Ӧ�ò���ͨ�����ӿڴӿ�������Ƴ�����Ӧ�����ġ������������ġ������ļ���������������վ�������򱨴�9201018�����롣
+> **说明：**  
+>  
+> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
 
-> **˵��**
-> ����Ӧ�ò���ͨ�����ӿڴӿ�������Ƴ�����Ӧ�����ġ������������ġ������ļ���������������վ�������򱨴�9201018�����롣
+> **说明**  
+> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
 
 **起始版本：** 24
 
@@ -21,26 +27,28 @@ function removeDockApp(admin: Want, bundleName: string, abilityName: string): vo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-applicationManager-function removeDockApp(admin: Want, bundleName: string, abilityName: string): void--><!--Device-applicationManager-function removeDockApp(admin: Want, bundleName: string, abilityName: string): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| bundleName | string | 是 | Ӧ�õİ����� |
-| abilityName | string | 是 | Ӧ�õ�Ability���ơ� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| bundleName | string | 是 | 应用的包名。 |
+| abilityName | string | 是 | 应用的Ability名称。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9201016](../../errorcode-universal.md#9201016-The) | The application has not been added to the Dock. |
-| [9201018](../../errorcode-universal.md#9201018-The) | The application is inoperable. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9201016](../errorcode-enterpriseDeviceManager.md#9201016-指定应用不在快捷栏) | The application has not been added to the Dock. |
+| [9201018](../errorcode-enterpriseDeviceManager.md#9201018-指定应用不支持操作) | The application is inoperable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

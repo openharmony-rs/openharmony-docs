@@ -10,6 +10,8 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-text-type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean--><!--Device-text-type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -18,7 +20,7 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 | --- | --- | --- | --- |
 | offset | double | 是 | Offset of each character in a text line. The value is a floating point number. |
 | index | int | 是 | Index of each character in a text line. The value is an integer. |
-| leadingEdge | boolean | 是 | Whether the cursor is located at the front of the character. The value true means<br/>that the cursor is located at the front of the character, that is, the offset does not contain the character<br/>width. The value false means that the cursor is located at the rear of the character, that is, the offset<br/>contains the character width. |
+| leadingEdge | boolean | 是 | Whether the cursor is located at the front of the character. The value true meansthat the cursor is located at the front of the character, that is, the offset does not contain the characterwidth. The value false means that the cursor is located at the rear of the character, that is, the offsetcontains the character width. |
 
 **返回值：**
 

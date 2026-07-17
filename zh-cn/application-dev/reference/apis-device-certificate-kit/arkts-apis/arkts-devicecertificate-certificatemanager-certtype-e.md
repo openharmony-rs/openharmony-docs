@@ -1,12 +1,10 @@
 # CertType
 
-```TypeScript
-export enum CertType
-```
-
-��ʾ֤�����͡�
+表示证书类型。
 
 **起始版本：** 18
+
+<!--Device-certificateManager-export enum CertType--><!--Device-certificateManager-export enum CertType-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -16,9 +14,11 @@ export enum CertType
 CA_CERT_SYSTEM = 0
 ```
 
-��ʾϵͳCA֤�顣
+表示系统CA证书。
 
 **起始版本：** 18
+
+<!--Device-CertType-CA_CERT_SYSTEM = 0--><!--Device-CertType-CA_CERT_SYSTEM = 0-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -28,9 +28,11 @@ CA_CERT_SYSTEM = 0
 CA_CERT_USER = 1
 ```
 
-��ʾ�û�CA֤�顣
+表示用户CA证书。
 
 **起始版本：** 18
+
+<!--Device-CertType-CA_CERT_USER = 1--><!--Device-CertType-CA_CERT_USER = 1-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

@@ -1,14 +1,10 @@
 # KeyProcessingMode
 
-```TypeScript
-declare enum KeyProcessingMode
-```
-
 设置按键事件处理的优先级。
 
 **起始版本：** 15
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare enum KeyProcessingMode--><!--Device-unnamed-declare enum KeyProcessingMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +20,9 @@ FOCUS_NAVIGATION = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-KeyProcessingMode-FOCUS_NAVIGATION = 0--><!--Device-KeyProcessingMode-FOCUS_NAVIGATION = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +38,9 @@ ANCESTOR_EVENT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-KeyProcessingMode-ANCESTOR_EVENT = 1--><!--Device-KeyProcessingMode-ANCESTOR_EVENT = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

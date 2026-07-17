@@ -1,5 +1,11 @@
 # isStartupTaskInitialized
 
+## 导入模块
+
+```TypeScript
+import { startupManager } from '@kit.AbilityKit';
+```
+
 ## isStartupTaskInitialized
 
 ```TypeScript
@@ -12,13 +18,15 @@ function isStartupTaskInitialized(startupTask: string): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-startupManager-function isStartupTaskInitialized(startupTask: string): boolean--><!--Device-startupManager-function isStartupTaskInitialized(startupTask: string): boolean-End-->
+
 **系统能力：** SystemCapability.Ability.AppStartup
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-startuptask-c.md#StartupTask)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
 
 **返回值：**
 
@@ -30,7 +38,7 @@ function isStartupTaskInitialized(startupTask: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 
 **示例：**
 

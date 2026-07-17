@@ -10,9 +10,11 @@ global $rawfile function
 
 **起始版本：** 11
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare function $rawfile(value: string): Resource--><!--Device-unnamed-declare function $rawfile(value: string): Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,5 +28,5 @@ global $rawfile function
 
 | 类型 | 说明 |
 | --- | --- |
-| Resource | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
+| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | @syscap SystemCapability.ArkUI.ArkUI.Full@crossplatform@form@atomicservice |
 

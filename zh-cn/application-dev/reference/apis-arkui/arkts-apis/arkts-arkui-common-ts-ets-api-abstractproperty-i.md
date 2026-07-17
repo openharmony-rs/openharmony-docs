@@ -1,9 +1,10 @@
 # AbstractProperty
 
-AbstractProperty是[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/
-[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中属性的引用。
+AbstractProperty是[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中属性的引用。
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare interface AbstractProperty<T>--><!--Device-unnamed-declare interface AbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -13,12 +14,13 @@ AbstractProperty是[AppStorage](../../../../ui/state-management/arkts-appstorage
 get(): T
 ```
 
-读取[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/
-[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据。
+读取[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbstractProperty-get(): T--><!--Device-AbstractProperty-get(): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,12 +36,13 @@ get(): T
 info(): string
 ```
 
-读取[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/
-[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中所引用属性的属性名。
+读取[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中所引用属性的属性名。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbstractProperty-info(): string--><!--Device-AbstractProperty-info(): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,8 +58,7 @@ info(): string
 set(newValue: T): void
 ```
 
-更新[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/
-[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据，newValue必须是T类型，可以为null或undefined。
+更新[AppStorage](../../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../../ui/state-management/arkts-localstorage.md)中所引用属性的数据，newValue必须是T类型，可以为null或undefined。
 
 > **说明：**
 
@@ -64,7 +66,9 @@ set(newValue: T): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AbstractProperty-set(newValue: T): void--><!--Device-AbstractProperty-set(newValue: T): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

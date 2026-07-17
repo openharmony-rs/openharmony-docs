@@ -1,5 +1,11 @@
 # rmdirSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## rmdirSync
 
 ```TypeScript
@@ -8,13 +14,15 @@ declare function rmdirSync(path: string): void
 
 以同步方法删除目录及其所有子目录和文件。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlinkSync接口删除单个文件。
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function rmdirSync(path: string): void--><!--Device-unnamed-declare function rmdirSync(path: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

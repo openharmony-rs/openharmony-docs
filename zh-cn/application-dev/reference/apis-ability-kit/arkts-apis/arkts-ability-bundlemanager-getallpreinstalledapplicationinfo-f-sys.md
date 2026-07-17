@@ -1,16 +1,24 @@
 # getAllPreinstalledApplicationInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAllPreinstalledApplicationInfo
 
 ```TypeScript
 function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicationInfo>>
 ```
 
-��ȡ����Ԥ��Ӧ����Ϣ��ʹ��Promise�첽�ص���
+获取所有预置应用信息。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicationInfo>>--><!--Device-bundleManager-function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicationInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,14 +28,14 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;PreinstalledApplicationInfo&gt;&gt; | Promise���󣬷���Array�� |
+| Promise<Array<PreinstalledApplicationInfo>> | Promise对象，返回Array&lt;PreinstalledApplicationInfo&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
 **示例：**
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 10
 
+<!--Device-agent-interface TaskInfo--><!--Device-agent-interface TaskInfo-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
+
+## 导入模块
+
+```TypeScript
+import { request } from '@kit.BasicServicesKit';
+```
 
 ## bundle
 
@@ -12,12 +20,13 @@
 readonly bundle?: string
 ```
 
-The bundle name.
-For system query only.
+The bundle name.For system query only.
 
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-TaskInfo-readonly bundle?: string--><!--Device-TaskInfo-readonly bundle?: string-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -29,12 +38,13 @@ For system query only.
 readonly uid?: string
 ```
 
-The UID of an application.
-For system query only.
+The UID of an application.For system query only.
 
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-TaskInfo-readonly uid?: string--><!--Device-TaskInfo-readonly uid?: string-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 

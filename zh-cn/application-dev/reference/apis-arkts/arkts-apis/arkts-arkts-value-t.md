@@ -8,7 +8,9 @@ type Value = string | number | Decimal
 
 **起始版本：** 12
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-type Value = string | double | Decimal--><!--Device-unnamed-type Value = string | double | Decimal-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

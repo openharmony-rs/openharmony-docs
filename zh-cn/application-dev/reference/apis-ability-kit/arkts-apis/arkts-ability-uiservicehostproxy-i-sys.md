@@ -1,13 +1,14 @@
 # UIServiceHostProxy（系统接口）
 
-UIServiceHostProxy提供代理能力，可以将数据从
-[UIServiceExtension](arkts-ability-uiserviceextensionability-c-sys.md)服务端发送到客户端。
+UIServiceHostProxy提供代理能力，可以将数据从[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)服务端发送到客户端。
 
-> **说明：**
->
+> **说明：**  
+>  
 > - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
 **起始版本：** 14
+
+<!--Device-unnamed-export default interface UIServiceHostProxy--><!--Device-unnamed-export default interface UIServiceHostProxy-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -19,11 +20,13 @@ UIServiceHostProxy提供代理能力，可以将数据从
 sendData(data: Record<string, Object>): void
 ```
 
-从[UIServiceExtension](arkts-ability-uiserviceextensionability-c-sys.md)服务端给客户端发送数据。
+从[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)服务端给客户端发送数据。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIServiceHostProxy-sendData(data: Record<string, Object>): void--><!--Device-UIServiceHostProxy-sendData(data: Record<string, Object>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -33,7 +36,7 @@ sendData(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, Object&gt; | 是 | 待发送到[UIServiceExtension](arkts-ability-uiserviceextensionability-c-sys.md)客户端的数据。 |
+| data | Record<string, Object> | 是 | 待发送到[UIServiceExtension](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)客户端的数据。 |
 
 **错误码：**
 

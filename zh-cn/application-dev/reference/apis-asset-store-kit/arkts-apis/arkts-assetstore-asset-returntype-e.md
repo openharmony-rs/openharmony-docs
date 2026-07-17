@@ -1,12 +1,10 @@
 # ReturnType
 
-```TypeScript
-enum ReturnType
-```
-
 枚举，关键资产查询返回的结果类型。
 
 **起始版本：** 11
+
+<!--Device-asset-enum ReturnType--><!--Device-asset-enum ReturnType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -24,6 +22,8 @@ ALL = 0
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ReturnType-ALL = 0--><!--Device-ReturnType-ALL = 0-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 ## ATTRIBUTES
@@ -39,6 +39,8 @@ ATTRIBUTES = 1
 **起始版本：** 11
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ReturnType-ATTRIBUTES = 1--><!--Device-ReturnType-ATTRIBUTES = 1-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

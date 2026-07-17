@@ -40,8 +40,8 @@
 | [OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer, OH_AudioStream_Usage* usage)](#oh_audiorenderer_getrendererinfo) | - | 查询当前输出音频流的使用类型。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)](#oh_audiorenderer_getencodingtype) | - | 查询当前输出音频流编码类型。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)](#oh_audiorenderer_getframeswritten) | - | 查询自创建流以来已写入的帧数。 |
-| [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | 获取输出音频流时间戳和位置信息。<br>该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时的时间戳（timestamp）。<br>播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，频繁调用可能会带来功耗问题，调用时间间隔建议不要小于200ms，可以每分钟调用一次。因此在能保证音画同步效果的情况下，请避免频繁查询时间戳。 |
-| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | 获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。 |
+| [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | 获取输出音频流时间戳和位置信息。<br>该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时的时间戳（timestamp）。<br>播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。 |
+| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | 获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。|
 | [OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)](#oh_audiorenderer_getframesizeincallback) | - | 在回调中查询帧大小，它是一个固定的长度，每次回调都要填充流。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)](#oh_audiorenderer_getspeed) | - | 获取音频渲染速率。 |
 | [OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)](#oh_audiorenderer_setspeed) | - | 设置音频渲染速率。 |
@@ -407,7 +407,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| int64_t* frames | 指向将为帧计数设置的变量的指针。 |
+| int64_t* frames | 指向用于接收已写入帧数的变量的指针。 |
 
 **返回：**
 
@@ -423,7 +423,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **描述**
 
-获取输出音频流时间戳和位置信息。<br>该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时的时间戳（timestamp）。<br>播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，建议频率不要太频繁，可以每分钟一次，最好不要低于200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁地查询时间戳。
+获取输出音频流时间戳和位置信息。<br>该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时的时间戳（timestamp）。<br>播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。
 
 > **说明：**
 >
@@ -456,7 +456,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 **描述**
 
-获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。
+获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。
 
 > **说明：**
 >
@@ -500,7 +500,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| int32_t* frameSize | 指向将为帧大小设置的变量的指针。 |
+| int32_t* frameSize | 指向用于接收帧大小的变量的指针。 |
 
 **返回：**
 
@@ -677,7 +677,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| float* volume | 指向一个获取当前音频流音量值的指针。音量值的范围是[0.0, 1.0]。 |
+| float* volume | 指向一个用来接收当前音频流音量值的指针。音量值的范围是[0.0, 1.0]。 |
 
 **返回：**
 
@@ -870,7 +870,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 设置默认本机内置发声设备。<br> 本接口仅适用于音频流类型[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或者VoIP视频通话的场景使用，以及可选的设备类型为听筒、扬声器和系统默认设备。<br> 本接口允许在AudioRenderer创建以后的任何时间被调用，系统会记录应用设置的默认本机内置发声设备。在应用启动播放时，若有外接设备如蓝牙耳机/有线耳机接入，系统优先从外接设备发声；否则系统遵循应用设置的默认本机内置发声设备发声。<br>
 
-**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将从扬声器发声。
 
 **起始版本：** 12
 
@@ -972,7 +972,7 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, 
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。 |
-| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | 返回当前低时延状态。 |
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | 表示当前低时延状态。 |
 
 ### OH_AudioRenderer_SetLoudnessGain()
 
@@ -1049,7 +1049,7 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 应用实际填充有效音频数据的长度。返回值必须在[0, audioDataSize]范围内。<br> 如果返回值小于0，系统将调整为0。 并且，如果返回值大于audioDataSize，系统将其调整到audioDataSize。<br> 注意返回值必须是单个采样点大小的整数倍。<br> 比如，双声道s16格式的音频数据，必须是4(2 * 16 / 8)的整数倍。<br> 否则，可能造成播放杂音。 |
+| int32_t | 应用实际填充有效音频数据的长度。返回值必须在[0, audioDataSize]范围内。<br> 如果返回值小于0，系统将调整为0。 并且，如果返回值大于audioDataSize，系统将其调整到audioDataSize。<br> 注意返回值必须是单个采样点大小的整数倍。<br> 比如，双声道S16格式的音频数据，必须是4(2 * 16 / 8)的整数倍。<br> 否则，可能造成播放杂音。 |
 
 ### OH_AudioRenderer_GetLatency()
 

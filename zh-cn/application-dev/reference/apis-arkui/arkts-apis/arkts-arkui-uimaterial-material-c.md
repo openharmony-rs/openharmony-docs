@@ -4,11 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-uiMaterial-class Material--><!--Device-uiMaterial-class Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+```
 
 ## empty
 
@@ -24,7 +30,9 @@ static get empty(): Material
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Material-static get empty(): Material--><!--Device-Material-static get empty(): Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,5 +40,5 @@ static get empty(): Material
 
 | 类型 | 说明 |
 | --- | --- |
-| Material | 返回空材质对象，表示无材质效果。 |
+| [Material](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-material-i.md) | 返回空材质对象，表示无材质效果。 |
 

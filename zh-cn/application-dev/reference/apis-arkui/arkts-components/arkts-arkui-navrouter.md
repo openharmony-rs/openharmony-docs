@@ -2,6 +2,21 @@
 
 导航组件，默认提供点击响应处理，不需要开发者自定义点击事件逻辑。
 
+## 子组件
+
+必须包含两个子组件，其中第二个子组件必须为[NavDestination]{@link nav_destination}。
+
+> **说明：**  
+>  
+> 子组件个数异常时：  
+>  
+> 1. 有且仅有1个时，触发路由到NavDestination的能力失效。  
+>  
+> 2. 有且仅有1个时，且使用NavDestination场景下，不进行路由。  
+>  
+> 3. 大于2个时，后续的子组件不显示。  
+>  
+> 4. 第二个子组件不为NavDestination时，触发路由功能失效。
 
 ## NavRouter
 
@@ -17,7 +32,9 @@ NavRouter()
 
 **替代接口：** <!--SUBSTITUTE_API-->NavDestinationAttribute<!--/SUBSTITUTE_API-->
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavRouterInterface-(): NavRouterAttribute--><!--Device-NavRouterInterface-(): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +54,9 @@ NavRouter(value: RouteInfo)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavRouterInterface-(value: RouteInfo): NavRouterAttribute--><!--Device-NavRouterInterface-(value: RouteInfo): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

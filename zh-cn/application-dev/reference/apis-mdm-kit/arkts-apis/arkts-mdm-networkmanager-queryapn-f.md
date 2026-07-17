@@ -1,12 +1,18 @@
 # queryApn
 
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
+
 ## queryApn
 
 ```TypeScript
 function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>
 ```
 
-��ѯ�����ض�APN��Ϣ��APN ID��
+查询符合特定APN信息的APN ID。
 
 **起始版本：** 20
 
@@ -14,28 +20,30 @@ function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-networkManager-function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>--><!--Device-networkManager-function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| apnInfo | Record&lt;string, string&gt; | 是 | APN�Ĳ�ѯ������<br/>- apnName��APN���õ����Ʊ�ʶ������ѡ��<br/>- mcc��3λ���ֵ��ƶ����Ҵ��룬��ѡ��<br/>-<br/>mnc��2-3λ���ֵ��ƶ�������룬��ѡ��<br/>- apn����������ƣ���ѡ��<br/>- type��APN�ķ������ͣ���ѡ��<br/>- user��APN������֤���û�������ѡ��<br/>- proxy����ͨ��������<br/>�Ĵ�����������ַ����ѡ��<br/>- mmsproxy�����ŷ����ר�ô�����ַ����ѡ��<br/>- authType��APN����֤Э�����ͣ���ѡ�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| apnInfo | Record<string, string> | 是 | APN的查询条件。<br/>- apnName：APN配置的名称标识符，可选。<br/>- mcc：3位数字的移动国家代码，可选。<br/>-mnc：2-3位数字的移动网络代码，可选。<br/>- apn：接入点名称，可选。<br/>- type：APN的服务类型，可选。<br/>- user：APN身份验证的用户名，可选。<br/>- proxy：普通数据连接的代理服务器地址，可选。<br/>- mmsproxy：彩信服务的专用代理地址，可选。<br/>- authType：APN的认证协议类型，可选。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | ����Ҫ���APN ID�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 满足要求的APN ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -71,7 +79,7 @@ try {
 function queryApn(admin: Want, apnId: string): Record<string, string>
 ```
 
-��ѯ�ض�APN��APN������Ϣ��
+查询特定APN的APN参数信息。
 
 **起始版本：** 20
 
@@ -79,28 +87,30 @@ function queryApn(admin: Want, apnId: string): Record<string, string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-networkManager-function queryApn(admin: Want, apnId: string): Record<string, string>--><!--Device-networkManager-function queryApn(admin: Want, apnId: string): Record<string, string>-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| apnId | string | 是 | ָ����APN ID������ͨ��<br/>[networkManager.queryApn](arkts-mdm-networkmanager-queryapn-f.md#queryApn-1)��ȡ�豸��Ϣ�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| apnId | string | 是 | 指定的APN ID。可以通过[networkManager.queryApn](arkts-mdm-networkmanager-queryapn-f.md#queryapn-1)获取设备信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Record&lt;string, string&gt; | APN parameter information of the specified APN ID.<br/><br/>- **apnName**: APN identifier.<br/><br/>- **mcc**: 3-digit mobile country code (MCC).<br/><br/>- **mnc**: 2-digit or 3-digit mobile network code (MNC).<br/><br/>- **apn**: access point name.<br/><br/>- **type**: APN service type.<br/><br/>- **user**: user name for APN authentication.<br/><br/>- **proxy**: address of the proxy server for a common data connection.<br/><br/>- **mmsproxy**: dedicated proxy address of the MMS service.<br/><br/>- **authType**: authentication protocol type of the APN. |
+| Record<string, string> | APN parameter information of the specified APN ID.<br>- **apnName**: APN identifier.<br>- **mcc**: 3-digit mobile country code (MCC).<br>- **mnc**: 2-digit or 3-digit mobile network code (MNC).<br>- **apn**: access point name.<br>- **type**: APN service type.<br>- **user**: user name for APN authentication.<br>- **proxy**: address of the proxy server for a common data connection.<br>- **mmsproxy**: dedicated proxy address of the MMS service.<br>- **authType**: authentication protocol type of the APN. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 

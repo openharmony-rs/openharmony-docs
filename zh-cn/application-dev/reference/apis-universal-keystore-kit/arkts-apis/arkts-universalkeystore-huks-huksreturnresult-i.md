@@ -1,10 +1,18 @@
 # HuksReturnResult
 
-���ýӿڷ��ص�result��
+调用接口返回的result。
 
 **起始版本：** 9
 
+<!--Device-huks-export interface HuksReturnResult--><!--Device-huks-export interface HuksReturnResult-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
+
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
 
 ## certChains
 
@@ -12,13 +20,15 @@
 certChains?: Array<string>
 ```
 
-��ʾ֤�������ݡ�Ĭ��Ϊundefined��
+表示证书链数据。默认为undefined。
 
 **类型：** Array<string>
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksReturnResult-certChains?: Array<string>--><!--Device-HuksReturnResult-certChains?: Array<string>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -28,15 +38,15 @@ certChains?: Array<string>
 outData?: Uint8Array
 ```
 
-��ʾ
-[initSession](arkts-universalkeystore-huks-initsession-f.md#initSession-1)
-����֮���ȡ����challenge��Ϣ��Ĭ��Ϊundefined��
+表示[initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)操作之后获取到的challenge信息。默认为undefined。
 
 **类型：** Uint8Array
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksReturnResult-outData?: Uint8Array--><!--Device-HuksReturnResult-outData?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -46,15 +56,15 @@ outData?: Uint8Array
 properties?: Array<HuksParam>
 ```
 
-��ʾ
-[initSession](arkts-universalkeystore-huks-initsession-f.md#initSession-1)
-����֮���ȡ����challenge��Ϣ��Ĭ��Ϊundefined��
+表示[initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)操作之后获取到的challenge信息。默认为undefined。
 
 **类型：** Array<HuksParam>
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksReturnResult-properties?: Array<HuksParam>--><!--Device-HuksReturnResult-properties?: Array<HuksParam>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -64,15 +74,15 @@ properties?: Array<HuksParam>
 sharedSecret?: Uint8Array
 ```
 
-���干����Կ��
+定义共享密钥。
 
 **类型：** Uint8Array
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+<!--Device-HuksReturnResult-sharedSecret?: Uint8Array--><!--Device-HuksReturnResult-sharedSecret?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 

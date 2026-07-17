@@ -1,5 +1,11 @@
 # completelyDelete（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { trash } from '@kit.CoreFileKit';
+```
+
 ## completelyDelete
 
 ```TypeScript
@@ -16,6 +22,8 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-trash-function completelyDelete(uri: string): void--><!--Device-trash-function completelyDelete(uri: string): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -30,9 +38,9 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+| 13900002 | No such file or directory |
+| 13900020 | Invalid argument |
+| 13900042 | Unknown error |
 
 **示例：**
 

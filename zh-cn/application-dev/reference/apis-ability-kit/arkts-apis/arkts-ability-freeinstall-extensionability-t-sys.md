@@ -4,9 +4,11 @@
 export type ExtensionAbility = _PackInfo.ExtensionAbility
 ```
 
-extensionAbilities��������Ϣ��
+extensionAbilities的配置信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type ExtensionAbility = _PackInfo.ExtensionAbility--><!--Device-freeInstall-export type ExtensionAbility = _PackInfo.ExtensionAbility-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

@@ -8,7 +8,9 @@ type OnPlaybackRateDone = (rate: number) => void
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-media-type OnPlaybackRateDone = (rate: double) => void--><!--Device-media-type OnPlaybackRateDone = (rate: double) => void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

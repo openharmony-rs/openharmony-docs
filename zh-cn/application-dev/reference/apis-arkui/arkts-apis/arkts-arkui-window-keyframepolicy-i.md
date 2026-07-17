@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-window-interface KeyFramePolicy--><!--Device-window-interface KeyFramePolicy-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## animationDelay
 
@@ -19,6 +27,8 @@ animationDelay?: number
 **默认值：** 100
 
 **起始版本：** 20
+
+<!--Device-KeyFramePolicy-animationDelay?: long--><!--Device-KeyFramePolicy-animationDelay?: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,6 +46,8 @@ animationDuration?: number
 
 **起始版本：** 20
 
+<!--Device-KeyFramePolicy-animationDuration?: long--><!--Device-KeyFramePolicy-animationDuration?: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## distance
@@ -52,6 +64,8 @@ distance?: number
 
 **起始版本：** 20
 
+<!--Device-KeyFramePolicy-distance?: int--><!--Device-KeyFramePolicy-distance?: int-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## enable
@@ -65,6 +79,8 @@ enable: boolean
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-KeyFramePolicy-enable: boolean--><!--Device-KeyFramePolicy-enable: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -81,6 +97,8 @@ interval?: number
 **默认值：** 1000
 
 **起始版本：** 20
+
+<!--Device-KeyFramePolicy-interval?: long--><!--Device-KeyFramePolicy-interval?: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

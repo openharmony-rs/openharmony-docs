@@ -1,18 +1,24 @@
 # getProfileByExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getProfileByExtensionAbility
 
 ```TypeScript
 function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-���ݸ�����moduleName��extensionAbilityName��metadataName��module.json5��
-[metadata��ǩ](../../../../quick-start/module-configuration-file.md#metadata��ǩ)�µ�name����ȡ������Ӧ�����ļ���json��ʽ�ַ�����ʹ��callback�첽
-�ص���
+根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-bundleManager-function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName: string, callback: AsyncCallback<Array<string>>): void--><!--Device-bundleManager-function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName: string, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,19 +26,19 @@ function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | ��ʾModule���ơ� |
-| extensionAbilityName | string | 是 | ��ʾExtensionAbility��������ơ� |
-| metadataName | string | 是 | ��ʾExtensionAbility�����Ԫ��Ϣ���ƣ���module.json5�����ļ���<br/>[extensionAbilities��ǩ](../../../../quick-start/module-configuration-file.md#extensionabilities��ǩ)�µ�metadata��ǩ��<br/>name�� |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)������ȡ�ɹ�ʱ��errΪ<br/>undefined��dataΪ��ȡ����Array������Ϊ������� |
+| moduleName | string | 是 | 表示Module名称。 |
+| extensionAbilityName | string | 是 | 表示ExtensionAbility组件的名称。 |
+| metadataName | string | 是 | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;string&gt;；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified moduleName is not existed. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified extensionAbilityName not existed. |
-| [17700024](../../errorcode-universal.md#17700024-Failed) | Failed to get the profile because there is no profile in the HAP. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbilityName not existed. |
+| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
 
 **示例：**
 
@@ -67,13 +73,13 @@ try {
 function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName?: string): Promise<Array<string>>
 ```
 
-���ݸ�����moduleName��extensionAbilityName��metadataName��module.json5��
-[metadata��ǩ](../../../../quick-start/module-configuration-file.md#metadata��ǩ)�µ�name����ȡ������Ӧ�����ļ���json��ʽ�ַ�����ʹ��Promise�첽��
-����
+根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-bundleManager-function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName?: string): Promise<Array<string>>--><!--Device-bundleManager-function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName?: string): Promise<Array<string>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -81,24 +87,24 @@ function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | ��ʾModule���ơ� |
-| extensionAbilityName | string | 是 | ��ʾExtensionAbility��������ơ� |
-| metadataName | string | 否 | ��ʾExtensionAbility�����Ԫ��Ϣ���ƣ���module.json5�����ļ���<br/>[extensionAbilities��ǩ](../../../../quick-start/module-configuration-file.md#extensionabilities��ǩ)�µ�metadata��ǩ��<br/>name��Ĭ��ֵΪ�ա� |
+| moduleName | string | 是 | 表示Module名称。 |
+| extensionAbilityName | string | 是 | 表示ExtensionAbility组件的名称。 |
+| metadataName | string | 否 | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name，默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise���󣬷���Array���� |
+| Promise<Array<string>> | Promise对象，返回Array&lt;string&gt;对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified moduleName is not existed. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified extensionAbilityName not existed. |
-| [17700024](../../errorcode-universal.md#17700024-Failed) | Failed to get the profile because there is no profile in the HAP. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbilityName not existed. |
+| [17700024](../errorcode-bundle.md#17700024-没有相应的配置文件) | Failed to get the profile because there is no profile in the HAP. |
 
 **示例：**
 

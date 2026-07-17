@@ -1,12 +1,10 @@
 # MediaError
 
-```TypeScript
-enum MediaError
-```
-
 播放器的错误类型。
 
 **起始版本：** 12
+
+<!--Device-webview-enum MediaError--><!--Device-webview-enum MediaError-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -20,7 +18,9 @@ NETWORK_ERROR = 1
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaError-NETWORK_ERROR = 1--><!--Device-MediaError-NETWORK_ERROR = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -34,7 +34,9 @@ FORMAT_ERROR = 2
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaError-FORMAT_ERROR = 2--><!--Device-MediaError-FORMAT_ERROR = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,7 +50,9 @@ DECODE_ERROR = 3
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MediaError-DECODE_ERROR = 3--><!--Device-MediaError-DECODE_ERROR = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

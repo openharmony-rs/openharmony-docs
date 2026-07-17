@@ -1,12 +1,18 @@
 # setUnlockWallpaper
 
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
+
 ## setUnlockWallpaper
 
 ```TypeScript
 function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>
 ```
 
-����������ֽ��ʹ��Promise�첽�ص���
+设置锁屏壁纸，使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -14,29 +20,31 @@ function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-deviceSettings-function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>--><!--Device-deviceSettings-function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| fd | number | 是 | ��Ҫ����Ϊ������ֽͼƬ���ļ�������������ͨ��file.fs��<br/>[openSync](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)�ӿڻ�ȡӦ��ɳ��Ŀ¼�µ�ͼƬ�ļ�����������ֽͼƬ��С��<br/>�ܳ���100MB�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| fd | number | 是 | 需要设置为锁屏壁纸图片的文件描述符，可以通过file.fs的[openSync](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口获取应用沙箱目录下的图片文件描述符。壁纸图片大小不能超过100MB。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | �޷��ؽ����Promise���󡣵�����������ֽʧ�ܺ���׳�������� |
+| Promise<void> | 无返回结果的Promise对象。当设置锁屏壁纸失败后会抛出错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-The) | The parameter validation failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | The parameter validation failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API |
 
 **示例：**
 

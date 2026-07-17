@@ -4,9 +4,17 @@
 
 **起始版本：** 10
 
+<!--Device-logLibrary-interface LogEntry--><!--Device-logLibrary-interface LogEntry-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
 
 ## mtime
 
@@ -19,6 +27,8 @@ mtime: number
 **类型：** number
 
 **起始版本：** 10
+
+<!--Device-LogEntry-mtime: long--><!--Device-LogEntry-mtime: long-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
@@ -36,6 +46,8 @@ name: string
 
 **起始版本：** 10
 
+<!--Device-LogEntry-name: string--><!--Device-LogEntry-name: string-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ size: number
 **类型：** number
 
 **起始版本：** 10
+
+<!--Device-LogEntry-size: long--><!--Device-LogEntry-size: long-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 

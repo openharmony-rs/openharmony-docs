@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-reminderAgentManager-interface LocalDateTime--><!--Device-reminderAgentManager-interface LocalDateTime-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## day
 
@@ -17,6 +25,8 @@ day: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-LocalDateTime-day: int--><!--Device-LocalDateTime-day: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -32,6 +42,8 @@ hour: number
 
 **起始版本：** 9
 
+<!--Device-LocalDateTime-hour: int--><!--Device-LocalDateTime-hour: int-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## minute
@@ -45,6 +57,8 @@ minute: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-LocalDateTime-minute: int--><!--Device-LocalDateTime-minute: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -60,6 +74,8 @@ month: number
 
 **起始版本：** 9
 
+<!--Device-LocalDateTime-month: int--><!--Device-LocalDateTime-month: int-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## second
@@ -74,6 +90,8 @@ second?: number
 
 **起始版本：** 9
 
+<!--Device-LocalDateTime-second?: int--><!--Device-LocalDateTime-second?: int-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 ## year
@@ -87,6 +105,8 @@ year: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-LocalDateTime-year: int--><!--Device-LocalDateTime-year: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 

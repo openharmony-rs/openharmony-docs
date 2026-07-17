@@ -8,6 +8,8 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 
 **起始版本：** 18
 
+<!--Device-print-type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterInformation) => void--><!--Device-print-type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterInformation) => void-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**

@@ -12,5 +12,7 @@
 
 **替代接口：** grid_col/GridColAttribute
 
+<!--Device-unnamed-declare class GridContainerAttribute extends ColumnAttribute--><!--Device-unnamed-declare class GridContainerAttribute extends ColumnAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

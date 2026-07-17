@@ -1,6 +1,6 @@
 # PageTransitionEnter
 
-当前页面的自定义入场动效。继承自[CommonTransition]{@link CommonTransition}。
+Defines PageTransitionEnter Component.
 
 
 ## PageTransitionEnter
@@ -13,7 +13,9 @@ PageTransitionEnter(value: PageTransitionOptions)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,7 +35,9 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

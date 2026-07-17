@@ -1,5 +1,11 @@
 # getSystemFontFullNamesByType
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## getSystemFontFullNamesByType
 
 ```TypeScript
@@ -12,25 +18,27 @@ function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<s
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-text-function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<string>>--><!--Device-text-function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<string>>-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontType | SystemFontType | 是 | 指定的字体类型。 |
+| fontType | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 是 | 指定的字体类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回相应字体类型的所有字体的fullName。 |
+| Promise<Array<string>> | Promise对象，返回相应字体类型的所有字体的fullName。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

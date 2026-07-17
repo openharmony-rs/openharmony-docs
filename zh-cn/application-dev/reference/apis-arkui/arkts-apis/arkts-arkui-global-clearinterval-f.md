@@ -10,7 +10,9 @@ Cancel the interval set by " setInterval()".
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-export declare function clearInterval(intervalID?: number): void--><!--Device-unnamed-export declare function clearInterval(intervalID?: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

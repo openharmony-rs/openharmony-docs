@@ -12,6 +12,9 @@
 >
 > - 在对子组件的背景模糊特效进行绘制合并时，需要将子组件的backgroundBlurStyle(BlurStyle)属性替换成useEffect(true)。
 
+## 子组件
+
+可以包含子组件。
 
 ## EffectComponent
 
@@ -24,6 +27,8 @@ EffectComponent()
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EffectComponentInterface-(): EffectComponentAttribute--><!--Device-EffectComponentInterface-(): EffectComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +45,8 @@ EffectComponent(options?: EffectComponentOptions)
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute--><!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

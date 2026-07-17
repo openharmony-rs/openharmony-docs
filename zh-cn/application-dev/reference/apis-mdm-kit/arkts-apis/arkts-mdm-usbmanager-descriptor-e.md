@@ -1,14 +1,10 @@
 # Descriptor
 
-```TypeScript
-enum Descriptor
-```
-
-USB��������ö�١�
+USB描述符的枚举。
 
 **起始版本：** 14
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-usbManager-enum Descriptor--><!--Device-usbManager-enum Descriptor-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ USB��������ö�١�
 INTERFACE = 0
 ```
 
-�ӿ���������
+接口描述符。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Descriptor-INTERFACE = 0--><!--Device-Descriptor-INTERFACE = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ INTERFACE = 0
 DEVICE = 1
 ```
 
-�豸��������
+设备描述符。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Descriptor-DEVICE = 1--><!--Device-Descriptor-DEVICE = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

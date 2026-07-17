@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare namespace config--><!--Device-unnamed-declare namespace config-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+```
 
 ## 汇总
 
@@ -15,20 +23,20 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableAbility](arkts-accessibility-disableability-f-sys.md#disableability-1) | 关闭辅助扩展。使用Promise异步回调。 |
-| [disableAbility](arkts-accessibility-disableability-f-sys.md#disableability-2) | 关闭辅助扩展，使用callback异步回调。 |
-| [enableAbility](arkts-accessibility-enableability-f-sys.md#enableability-1) | 启用辅助扩展。使用Promise异步回调。 |
-| [enableAbility](arkts-accessibility-enableability-f-sys.md#enableability-2) | 启用辅助扩展，使用callback异步回调。 |
-| [enableAbilityWithCallback](arkts-accessibility-enableabilitywithcallback-f-sys.md#enableabilitywithcallback-1) | 启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-connectcallback-i-sys.md)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。 |
-| [getSeniorModeStateForApp](arkts-accessibility-getseniormodestateforapp-f-sys.md#getseniormodestateforapp-1) | Get the senior mode state for app. |
-| [off](arkts-accessibility-off-f-sys.md#off-1) | 取消启用的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [off](arkts-accessibility-off-f-sys.md#off-2) | 取消已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [offSeniorModeStateChangeForApp](arkts-accessibility-offseniormodestatechangeforapp-f-sys.md#offseniormodestatechangeforapp-1) | Unregister the observer for application's senior mode state changes. |
-| [on](arkts-accessibility-on-f-sys.md#on-1) | 添加启用的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [on](arkts-accessibility-on-f-sys.md#on-2) | 添加已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [onSeniorModeStateChangeForApp](arkts-accessibility-onseniormodestatechangeforapp-f-sys.md#onseniormodestatechangeforapp-1) | Register an observer for anyone application's senior mode state changes. |
-| [setMagnificationState](arkts-accessibility-setmagnificationstate-f-sys.md#setmagnificationstate-1) | 触发或者关闭放大手势功能的放大效果，使用前需要保证放大手势功能已开启。 |
-| [setSeniorModeStateForApp](arkts-accessibility-setseniormodestateforapp-f-sys.md#setseniormodestateforapp-1) | Set the senior mode state for app. |
+| [disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability-1) | 关闭辅助扩展。使用Promise异步回调。 |
+| [disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability-2) | 关闭辅助扩展，使用callback异步回调。 |
+| [enableAbility](arkts-accessibility-config-enableability-f-sys.md#enableability-1) | 启用辅助扩展。使用Promise异步回调。 |
+| [enableAbility](arkts-accessibility-config-enableability-f-sys.md#enableability-2) | 启用辅助扩展，使用callback异步回调。 |
+| [enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback-1) | 启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。 |
+| [getSeniorModeStateForApp](arkts-accessibility-config-getseniormodestateforapp-f-sys.md#getseniormodestateforapp-1) | Get the senior mode state for app. |
+| [off](arkts-accessibility-config-off-f-sys.md#off-1) | 取消启用的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [off](arkts-accessibility-config-off-f-sys.md#off-2) | 取消已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [offSeniorModeStateChangeForApp](arkts-accessibility-config-offseniormodestatechangeforapp-f-sys.md#offseniormodestatechangeforapp-1) | Unregister the observer for application's senior mode state changes. |
+| [on](arkts-accessibility-config-on-f-sys.md#on-1) | 添加启用的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [on](arkts-accessibility-config-on-f-sys.md#on-2) | 添加已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md#onseniormodestatechangeforapp-1) | Register an observer for anyone application's senior mode state changes. |
+| [setMagnificationState](arkts-accessibility-config-setmagnificationstate-f-sys.md#setmagnificationstate-1) | 触发或者关闭放大手势功能的放大效果，使用前需要保证放大手势功能已开启。 |
+| [setSeniorModeStateForApp](arkts-accessibility-config-setseniormodestateforapp-f-sys.md#setseniormodestateforapp-1) | Set the senior mode state for app. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -36,9 +44,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AppSeniorModeInfo](arkts-accessibility-appseniormodeinfo-i-sys.md) | Indicates the senior mode information of an application. |
-| [Config](arkts-accessibility-config-i-sys.md) | 用于属性的设置、获取与监听。 |
-| [ConnectCallback](arkts-accessibility-connectcallback-i-sys.md) | 通过[enableAbilityWithCallback](arkts-accessibility-enableabilitywithcallback-f-sys.md#enableabilitywithcallback-1)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。 |
+| [AppSeniorModeInfo](arkts-accessibility-config-appseniormodeinfo-i-sys.md) | Indicates the senior mode information of an application. |
+| [Config](arkts-accessibility-config-config-i-sys.md) | 用于属性的设置、获取与监听。 |
+| [ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md) | 通过[enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback-1)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -46,10 +54,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ClickResponseTime](arkts-accessibility-clickresponsetime-t-sys.md) | 用于不同时间长短的点击重复时间。 |
-| [DaltonizationColorFilter](arkts-accessibility-daltonizationcolorfilter-t-sys.md) | 颜色滤镜功能开启时（[daltonizationState](daltonizationState)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](daltonizationState)设置为false)，显示为正常类型。 |
-| [OnDisconnectCallback](arkts-accessibility-ondisconnectcallback-t-sys.md) | 描述AccessibilityExtensionAbility断开连接的回调接口。 |
-| [RepeatClickInterval](arkts-accessibility-repeatclickinterval-t-sys.md) | 忽略重复点击功能开启时（[ignoreRepeatClick](ignoreRepeatClick)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时（[ignoreRepeatClick](ignoreRepeatClick)设置为false)，显示为正常类型。 |
+| [ClickResponseTime](arkts-accessibility-config-clickresponsetime-t-sys.md) | 用于不同时间长短的点击重复时间。 |
+| [DaltonizationColorFilter](arkts-accessibility-config-daltonizationcolorfilter-t-sys.md) | 颜色滤镜功能开启时（[daltonizationState](daltonizationState)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](daltonizationState)设置为false)，显示为正常类型。 |
+| [OnDisconnectCallback](arkts-accessibility-config-ondisconnectcallback-t-sys.md) | 描述AccessibilityExtensionAbility断开连接的回调接口。 |
+| [RepeatClickInterval](arkts-accessibility-config-repeatclickinterval-t-sys.md) | 忽略重复点击功能开启时（[ignoreRepeatClick](ignoreRepeatClick)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时（[ignoreRepeatClick](ignoreRepeatClick)设置为false)，显示为正常类型。 |
 <!--DelEnd-->
 
 <!--Del-->

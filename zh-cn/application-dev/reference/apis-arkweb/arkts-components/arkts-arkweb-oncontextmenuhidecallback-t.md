@@ -8,7 +8,9 @@ type OnContextMenuHideCallback = () => void
 
 **起始版本：** 11
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-type OnContextMenuHideCallback = () => void--><!--Device-unnamed-type OnContextMenuHideCallback = () => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

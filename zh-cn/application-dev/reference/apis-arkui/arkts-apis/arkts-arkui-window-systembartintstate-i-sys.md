@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-window-interface SystemBarTintState--><!--Device-window-interface SystemBarTintState-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## displayId
 
@@ -19,6 +27,8 @@ displayId: number
 **类型：** number
 
 **起始版本：** 8
+
+<!--Device-SystemBarTintState-displayId: long--><!--Device-SystemBarTintState-displayId: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -35,6 +45,8 @@ regionTint: Array<SystemBarRegionTint>
 **类型：** Array<SystemBarRegionTint>
 
 **起始版本：** 8
+
+<!--Device-SystemBarTintState-regionTint: Array<SystemBarRegionTint>--><!--Device-SystemBarTintState-regionTint: Array<SystemBarRegionTint>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

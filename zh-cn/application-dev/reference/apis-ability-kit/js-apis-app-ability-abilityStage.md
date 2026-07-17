@@ -125,7 +125,9 @@ onNewProcessRequest(want: Want): string
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+**设备行为差异**：
+- 从API version 12开始，该接口在Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 13开始，该接口在PC/2in1、Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -219,7 +221,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onDestroy<sup>12+<sup>
+### onDestroy<sup>12+</sup>
 
 onDestroy(): void
 
@@ -241,7 +243,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTermination<sup>15+<sup>
+### onPrepareTermination<sup>15+</sup>
 
 onPrepareTermination(): AbilityConstant.PrepareTermination
 
@@ -260,8 +262,8 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 
@@ -282,7 +284,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTerminationAsync<sup>15+<sup>
+### onPrepareTerminationAsync<sup>15+</sup>
 
 onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 
@@ -301,8 +303,8 @@ onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **返回值：**
 
@@ -355,9 +357,10 @@ onAcceptWantAsync(want: Want): Promise\<string\>
 import { AbilityStage } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onAcceptWantAsync(): Promise<string> {
+  async onAcceptWantAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
+      console.info(`onNewProcessRequestAsync, want: ${JSON.stringify(want)}`);
     });
     return 'default';
   }
@@ -380,7 +383,7 @@ onNewProcessRequestAsync(want: Want): Promise\<string\>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 **参数：**
 
@@ -400,9 +403,10 @@ onNewProcessRequestAsync(want: Want): Promise\<string\>
 import { AbilityStage } from '@kit.AbilityKit';
 
 class MyAbilityStage extends AbilityStage {
-  async onNewProcessRequestAsync(): Promise<string> {
+  async onNewProcessRequestAsync(want: Want): Promise<string> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
+      console.info(`onNewProcessRequestAsync, want: ${JSON.stringify(want)}`);
     });
     return '';
   }

@@ -1,5 +1,11 @@
 # createWriteStream
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## createWriteStream
 
 ```TypeScript
@@ -10,6 +16,8 @@ declare function createWriteStream(path: string, options?: WriteStreamOptions): 
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare function createWriteStream(path: string, options?: WriteStreamOptions): WriteStream--><!--Device-unnamed-declare function createWriteStream(path: string, options?: WriteStreamOptions): WriteStream-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -17,13 +25,13 @@ declare function createWriteStream(path: string, options?: WriteStreamOptions): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件路径。 |
-| options | WriteStreamOptions | 否 | 支持如下选项：<br/>- start，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- mode，number 类型，创建文件可写流的[选项](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode)，可选，默认以只写方式创建。 |
+| options | [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md) | 否 | 支持如下选项：<br/>- start，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- mode，number 类型，创建文件可写流的[选项](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode)，可选，默认以只写方式创建。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| WriteStream | 文件可写流。 |
+| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流。 |
 
 **错误码：**
 

@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-util-interface TextDecoderOptions--><!--Device-util-interface TextDecoderOptions-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
 
 ## fatal
 
@@ -18,7 +26,9 @@ fatal?: boolean
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDecoderOptions-fatal?: boolean--><!--Device-TextDecoderOptions-fatal?: boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -34,7 +44,9 @@ ignoreBOM?: boolean
 
 **起始版本：** 11
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDecoderOptions-ignoreBOM?: boolean--><!--Device-TextDecoderOptions-ignoreBOM?: boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

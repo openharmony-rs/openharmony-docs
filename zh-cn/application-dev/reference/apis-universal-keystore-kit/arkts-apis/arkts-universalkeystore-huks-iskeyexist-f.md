@@ -1,18 +1,24 @@
 # isKeyExist
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
 ## isKeyExist
 
 ```TypeScript
 function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void
 ```
 
-�ж���Կ�Ƿ���ڡ�ʹ��callback�첽�ص���
+判断密钥是否存在。使用callback异步回调。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#isKeyItemExist-1)
-> �����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist-1)  
+> 替代。
 
 **起始版本：** 8
 
@@ -20,15 +26,17 @@ function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallb
 
 **替代接口：** isKeyItemExist(keyAlias:
 
+<!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ������ҵ���Կ�ı����� |
-| options | HuksOptions | 是 | ���ڲ�ѯʱָ����Կ������TAG�� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | �ص�������false������Կ�����ڣ�true������Կ���ڡ� |
+| keyAlias | string | 是 | 所需查找的密钥的别名。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。false代表密钥不存在，true代表密钥存在。 |
 
 **示例：**
 
@@ -52,12 +60,12 @@ huks.isKeyExist(keyAlias, emptyOptions, (err, data) => {
 function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 ```
 
-�ж���Կ�Ƿ���ڡ�ʹ��Promise�첽�ص���
+判断密钥是否存在。使用Promise异步回调。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#isKeyItemExist-2)�����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist-2)替代。
 
 **起始版本：** 8
 
@@ -65,20 +73,22 @@ function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 **替代接口：** isKeyItemExist(keyAlias:
 
+<!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyAlias | string | 是 | ������ҵ���Կ�ı����� |
-| options | HuksOptions | 是 | ���ڲ�ѯʱָ����Կ������TAG�� |
+| keyAlias | string | 是 | 所需查找的密钥的别名。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise����false������Կ�����ڣ�true������Կ���ڡ� |
+| Promise<boolean> | Promise对象。false代表密钥不存在，true代表密钥存在。 |
 
 **示例：**
 

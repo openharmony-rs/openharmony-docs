@@ -1,10 +1,18 @@
 # FileSync
 
-����ͬ����������֧���ļ�������Ӧ����������ļ��Ķ���ͬ�����̡���ʹ��ǰ����Ҫ�ȴ���FileSyncʵ����
+云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。
 
 **起始版本：** 12
 
+<!--Device-cloudSync-class FileSync--><!--Device-cloudSync-class FileSync-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -12,9 +20,11 @@
 constructor(bundleName: string)
 ```
 
-����ͬ�����̵Ĺ��캯�������ڻ�ȡFileSync���ʵ����
+端云同步流程的构造函数，用于获取FileSync类的实例。
 
 **起始版本：** 12
+
+<!--Device-FileSync-constructor(bundleName: string)--><!--Device-FileSync-constructor(bundleName: string)-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -24,14 +34,14 @@ constructor(bundleName: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ�ð����� |
+| bundleName | string | 是 | 应用包名。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application<br/>uses system API. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 **示例：**
 
@@ -46,13 +56,15 @@ let fileSync = new cloudSync.FileSync("com.ohos.demo")
 getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>
 ```
 
-��ȡ�ļ��ϴ��б��ͽ�����Ϣ��ʹ��Promise�첽�ص���
+获取文件上传列表和进度信息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileSync-getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>--><!--Device-FileSync-getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -62,22 +74,22 @@ getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array&lt;string&gt; | 是 | ����ѯ�ϴ����ȵ��ļ�URI���飬���鳤��ȡֵ��Χ[1,100]�� |
+| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待查询上传进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;UploadProgress&gt;&gt; | - Promise���󣬷����ϴ�������Ϣ���顣 |
+| Promise<Array<UploadProgress>> | - Promise对象，返回上传进度信息数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit.<br/><br/>3.The input parameter contains an invalid uri. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit.<br>3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -104,13 +116,15 @@ fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => 
 pauseUpload(uri: string): void
 ```
 
-��ͣ���ļ��ϴ���
+暂停云文件上传。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileSync-pauseUpload(uri: string): void--><!--Device-FileSync-pauseUpload(uri: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -120,17 +134,17 @@ pauseUpload(uri: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | ����ͣ���ļ�URI�� |
+| uri | string | 是 | 待暂停的文件URI。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -158,13 +172,15 @@ try {
 registerUploadProgress(callback: Callback<UploadProgress>): void
 ```
 
-ע���ϴ����Ȼص����������ڼ����ļ��ϴ����ȱ仯��ʹ��callback�첽�ص���
+注册上传进度回调函数，用于监听文件上传进度变化。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileSync-registerUploadProgress(callback: Callback<UploadProgress>): void--><!--Device-FileSync-registerUploadProgress(callback: Callback<UploadProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -174,16 +190,16 @@ registerUploadProgress(callback: Callback<UploadProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;UploadProgress&gt; | 是 | �ص������������ļ��ϴ����ȱ仯�����ļ��ϴ����ȷ����仯ʱ�����ص��������ϴ�������Ϣ�� |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<UploadProgress> | 是 | 回调函数，监听文件上传进度变化。当文件上传进度发生变化时触发回调，返回上传进度信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameter are left unspecified.<br/><br/>2.The number of instances registered at the same time exceeds the upper limit. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified.<br>2.The number of instances registered at the same time exceeds the upper limit. |
 
 **示例：**
 
@@ -194,14 +210,14 @@ let fileSync = new cloudSync.FileSync("com.ohos.demo");
 
 try {
   fileSync.registerUploadProgress((progress: cloudSync.UploadProgress) => {
-    console.info("upload progress - uri: " + progress.uri + ", state: " + progress.state);
-    console.info("processed: " + progress.processed + ", size: " + progress.size);
-    console.info("error: " + progress.error);
+    console.info(`upload progress - uri: ${progress.uri}, state: ${progress.state}`);
+    console.info(`processed: ${progress.processed}, size: ${progress.size}`);
+    console.info(`error: ${progress.error}`);
   });
   console.info("register upload progress successfully");
 } catch (err) {
   let error: BusinessError = err as BusinessError;
-  console.error("register upload progress failed with error message: " + error.message + ", error code: " + error.code);
+  console.error(`register upload progress failed with error message: ${error.message}, error code: ${error.code}`);
 }
 
 ```
@@ -212,13 +228,15 @@ try {
 resumeUpload(uri: string): void
 ```
 
-�ָ����ļ��ϴ���
+恢复云文件上传。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileSync-resumeUpload(uri: string): void--><!--Device-FileSync-resumeUpload(uri: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -228,17 +246,17 @@ resumeUpload(uri: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | ���ָ��ϴ����ļ�URI�� |
+| uri | string | 是 | 待恢复上传的文件URI。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -266,13 +284,15 @@ try {
 unregisterUploadProgress(): void
 ```
 
-ȡ��ע���ϴ����Ȼص�������
+取消注册上传进度回调函数。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileSync-unregisterUploadProgress(): void--><!--Device-FileSync-unregisterUploadProgress(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -282,9 +302,9 @@ unregisterUploadProgress(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900010 | Try again. |
 
 **示例：**
 

@@ -1,16 +1,24 @@
 # getDeveloperIds（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getDeveloperIds
 
 ```TypeScript
 function getDeveloperIds(appDistributionType?: number): Array<string>
 ```
 
-���ݸ�����Ӧ��[appDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md#AppDistributionType)��ȡ��ǰ�û��µ����п�����ID�б���
+根据给定的应用[appDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md)获取当前用户下的所有开发者ID列表。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getDeveloperIds(appDistributionType?: int): Array<string>--><!--Device-bundleManager-function getDeveloperIds(appDistributionType?: int): Array<string>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,21 +28,21 @@ function getDeveloperIds(appDistributionType?: number): Array<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appDistributionType | number | 否 | ��ʾӦ�õķַ����ͣ����ò���ȱʡʱ���᷵������Ӧ�õĿ�����ID�б��� |
+| appDistributionType | number | 否 | 表示应用的分发类型，当该参数缺省时，会返回所有应用的开发者ID列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | ͬ������Array�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 同步返回Array&lt;string&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 

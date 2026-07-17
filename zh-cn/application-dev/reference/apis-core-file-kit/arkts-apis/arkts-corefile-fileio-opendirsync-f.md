@@ -14,6 +14,8 @@ declare function opendirSync(path: string): Dir
 
 **替代接口：** [fs:listFileSync](arkts-corefile-file-fs-listfilesync-f.md#listfilesync-1)
 
+<!--Device-unnamed-declare function opendirSync(path: string): Dir--><!--Device-unnamed-declare function opendirSync(path: string): Dir-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -26,5 +28,5 @@ declare function opendirSync(path: string): Dir
 
 | 类型 | 说明 |
 | --- | --- |
-| Dir | 返回Dir对象。 |
+| [Dir](arkts-corefile-fileio-dir-depr-i.md) | 返回Dir对象。 |
 

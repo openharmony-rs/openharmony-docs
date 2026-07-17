@@ -10,7 +10,9 @@ const pid: number
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-process-const pid: number--><!--Device-process-const pid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,7 +26,9 @@ const tid: number
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-process-const tid: number--><!--Device-process-const tid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -38,7 +42,9 @@ const uid: number
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-process-const uid: number--><!--Device-process-const uid: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

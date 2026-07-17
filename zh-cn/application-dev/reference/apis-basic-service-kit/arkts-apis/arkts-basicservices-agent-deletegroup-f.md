@@ -1,5 +1,11 @@
 # deleteGroup
 
+## 导入模块
+
+```TypeScript
+import { request } from '@kit.BasicServicesKit';
+```
+
 ## deleteGroup
 
 ```TypeScript
@@ -12,25 +18,27 @@ function deleteGroup(gid: string): Promise<void>
 
 **起始版本：** 15
 
+<!--Device-agent-function deleteGroup(gid: string): Promise<void>--><!--Device-agent-function deleteGroup(gid: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gid | string | 是 | 目标分组id。与创建的任务分组ID保持一致，即使用<br/>[request.agent.createGroup](arkts-basicservices-agent-creategroup-f.md#createGroup-1)<br/>接口成功创建任务分组时的返回值。 |
+| gid | string | 是 | 目标分组id。与创建的任务分组ID保持一致，即使用[request.agent.createGroup](arkts-basicservices-agent-creategroup-f.md#creategroup-1)接口成功创建任务分组时的返回值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Missing mandatory parameters.<br/><br/>2. Incorrect parameter type.<br/><br/>3. Parameter verification failed. |
-| [13400003](../../errorcode-universal.md#13400003-Task) | Task service ability error. |
-| [21900008](../../errorcode-universal.md#21900008-Group) | Group deleted or not found. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters.<br> 2. Incorrect parameter type.<br> 3. Parameter verification failed. |
+| [13400003](../../apis-basic-services-kit/errorcode-request.md#13400003-服务异常) | Task service ability error. |
+| [21900008](../../apis-basic-services-kit/errorcode-request.md#21900008-任务分组不存在或已移除) | Group deleted or not found. |
 

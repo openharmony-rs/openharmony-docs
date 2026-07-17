@@ -1,5 +1,11 @@
 # getExtBundleStats（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getExtBundleStats
 
 ```TypeScript
@@ -13,6 +19,8 @@ function getExtBundleStats(userId: number, businessName: string): Promise<ExtBun
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-storageStatistics-function getExtBundleStats(userId: int, businessName: string): Promise<ExtBundleStats>--><!--Device-storageStatistics-function getExtBundleStats(userId: int, businessName: string): Promise<ExtBundleStats>-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -29,17 +37,17 @@ function getExtBundleStats(userId: number, businessName: string): Promise<ExtBun
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ExtBundleStats&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
+| Promise<ExtBundleStats> | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13600010](../../errorcode-universal.md#13600010-The) | The input parameter is invalid. |
-| [13600012](../../errorcode-universal.md#13600012-Failed) | Failed to query the specified business space usage. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600010 | The input parameter is invalid. |
+| 13600012 | Failed to query the specified business space usage. |
 
 **示例：**
 
@@ -48,7 +56,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
-let businessName: string = 'com.example.storagedemo';
+let businessName: string = "com.example.storagedemo";
 storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
   console.info("getExtBundleStats successfully.");
 }).catch((err: BusinessError) => {

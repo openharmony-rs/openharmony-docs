@@ -1,20 +1,18 @@
 # UIServiceExtensionContext（系统接口）
 
-UIServiceExtensionContext模块是
-[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-uiserviceextensionability-c-sys.md)的上下文环境，继承自
-[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
+UIServiceExtensionContext模块是[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
-UIServiceExtensionContext模块提供访问
-[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-uiserviceextensionability-c-sys.md)特定资源以及具有的能力，包括启
-动、停止、绑定、解绑Ability。
+UIServiceExtensionContext模块提供访问[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)特定资源以及具有的能力，包括启动、停止、绑定、解绑Ability。
 
-> **说明：**
->
+> **说明：**  
+>  
 > - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
 **继承/实现关系：** UIServiceExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **起始版本：** 14
+
+<!--Device-unnamed-declare class UIServiceExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UIServiceExtensionContext extends ExtensionContext-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,15 +24,17 @@ UIServiceExtensionContext模块提供访问
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 ```
 
-连接到[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensionability-c.md)，返回连接id。
+连接到[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)，返回连接id。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIServiceExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long--><!--Device-UIServiceExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,8 +44,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | Want parameter. |
-| options | ConnectOptions | 是 | Connection options. |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want parameter. |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md) | 是 | Connection options. |
 
 **返回值：**
 
@@ -78,12 +78,13 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 ```
 
-断开与[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensionability-c.md)的连接，与
-[connectServiceExtensionAbility](arkts-na-uiserviceextensioncontext-c-sys.md#connectserviceextensionability-1)功能相反。使用Promise异步回调。
+断开与[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的连接，与[connectServiceExtensionAbility](arkts-na-uiserviceextensioncontext-c-sys.md#connectserviceextensionability-1)功能相反。使用Promise异步回调。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIServiceExtensionContext-disconnectServiceExtensionAbility(connectionId: long): Promise<void>--><!--Device-UIServiceExtensionContext-disconnectServiceExtensionAbility(connectionId: long): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -99,7 +100,7 @@ disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -117,13 +118,15 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 启动Ability。使用Promise异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-UIServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -133,14 +136,14 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
-| options | StartOptions | 否 | 启动Ability所携带的参数。 |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
+| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 否 | 启动Ability所携带的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -172,17 +175,19 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
     abilityStartCallback: AbilityStartCallback): Promise<void>
 ```
 
-按目标ability的类型启动[UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)或
-[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensionability-c.md)。仅支持处于前台的应用调用。使用Promise异步回调
-。
+按目标ability的类型启动[UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)或[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)。仅支持处于前台的应用调用。使用Promise异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,
+    abilityStartCallback: AbilityStartCallback): Promise<void>--><!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,
+    abilityStartCallback: AbilityStartCallback): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -193,14 +198,14 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 目标ability类型。 |
-| wantParam | Record&lt;string, Object&gt; | 是 | Want参数。 |
-| abilityStartCallback | AbilityStartCallback | 是 | 拉起UIExtensionAbility执行结果的回调。 |
+| wantParam | Record<string, Object> | 是 | Want参数。 |
+| abilityStartCallback | [AbilityStartCallback](../../apis-ability-kit/arkts-apis/arkts-ability-abilitystartcallback-i.md) | 是 | 拉起UIExtensionAbility执行结果的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -215,12 +220,13 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 terminateSelf(): Promise<void>
 ```
 
-销毁[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-uiserviceextensionability-c-sys.md)。使用Promise异
-步回调。
+销毁[UIServiceExtension](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)。使用Promise异步回调。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIServiceExtensionContext-terminateSelf(): Promise<void>--><!--Device-UIServiceExtensionContext-terminateSelf(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -230,5 +236,5 @@ terminateSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 

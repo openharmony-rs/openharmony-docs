@@ -1,20 +1,28 @@
 # getDowngradeDownloadTaskState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## getDowngradeDownloadTaskState
 
 ```TypeScript
 function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Array<DownloadProgress>>
 ```
 
-��ѯ�������̵�Ӧ�õ�ȫ����������״̬��ʹ��Promise�첽�ص���
+查询接入云盘的应用的全量下载任务状态。使用Promise异步回调。
 
-���ڷ��ص�DownloadProgress�����в�����������Ϣ�������������ѯ���Ӧ��ʱ�����÷������м�¼Ӧ�ð�����
+由于返回的DownloadProgress对象中不包含包名信息，因此在批量查询多个应用时，调用方需自行记录应用包名。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-cloudSyncManager-function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Array<DownloadProgress>>--><!--Device-cloudSyncManager-function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Array<DownloadProgress>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -24,22 +32,22 @@ function getDowngradeDownloadTaskState(bundleNames: Array<string>): Promise<Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNames | Array&lt;string&gt; | 是 | ��Ҫ��ѯ��Ӧ�ð������飬ÿ��Ԫ��ΪӦ�õİ����ַ��������������С����Ϊ20���� |
+| bundleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | - Promise���󣬷��ز�ѯ��ȫ�����������״̬��Ϣ���顣 |
+| Promise<Array<DownloadProgress>> | - Promise对象，返回查询的全量下载任务的状态信息数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit.<br/><br/>3.The input parameter contains an invalid bundleName. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit.<br>3.The input parameter contains an invalid bundleName. |
 
 **示例：**
 

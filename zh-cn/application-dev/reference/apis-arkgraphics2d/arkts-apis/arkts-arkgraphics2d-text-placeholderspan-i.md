@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-text-interface PlaceholderSpan--><!--Device-text-interface PlaceholderSpan-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## align
 
@@ -19,6 +27,8 @@ align: PlaceholderAlignment
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderSpan-align: PlaceholderAlignment--><!--Device-PlaceholderSpan-align: PlaceholderAlignment-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -36,6 +46,8 @@ baseline: TextBaseline
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PlaceholderSpan-baseline: TextBaseline--><!--Device-PlaceholderSpan-baseline: TextBaseline-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## baselineOffset
@@ -51,6 +63,8 @@ baselineOffset: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderSpan-baselineOffset: double--><!--Device-PlaceholderSpan-baselineOffset: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -68,6 +82,8 @@ height: number
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-PlaceholderSpan-height: double--><!--Device-PlaceholderSpan-height: double-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## width
@@ -83,6 +99,8 @@ width: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-PlaceholderSpan-width: double--><!--Device-PlaceholderSpan-width: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

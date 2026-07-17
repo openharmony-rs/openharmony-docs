@@ -1,12 +1,10 @@
 # DisplayState
 
-```TypeScript
-enum DisplayState
-```
-
 显示设备的状态枚举。
 
 **起始版本：** 7
+
+<!--Device-display-enum DisplayState--><!--Device-display-enum DisplayState-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -22,6 +20,8 @@ STATE_UNKNOWN = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DisplayState-STATE_UNKNOWN = 0--><!--Device-DisplayState-STATE_UNKNOWN = 0-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## STATE_OFF
@@ -35,6 +35,8 @@ STATE_OFF = 1
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DisplayState-STATE_OFF = 1--><!--Device-DisplayState-STATE_OFF = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -50,6 +52,8 @@ STATE_ON = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DisplayState-STATE_ON = 2--><!--Device-DisplayState-STATE_ON = 2-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## STATE_DOZE
@@ -63,6 +67,8 @@ STATE_DOZE = 3
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DisplayState-STATE_DOZE = 3--><!--Device-DisplayState-STATE_DOZE = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -78,6 +84,8 @@ STATE_DOZE_SUSPEND = 4
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DisplayState-STATE_DOZE_SUSPEND = 4--><!--Device-DisplayState-STATE_DOZE_SUSPEND = 4-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## STATE_VR
@@ -92,6 +100,8 @@ STATE_VR = 5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DisplayState-STATE_VR = 5--><!--Device-DisplayState-STATE_VR = 5-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## STATE_ON_SUSPEND
@@ -105,6 +115,8 @@ STATE_ON_SUSPEND = 6
 **起始版本：** 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DisplayState-STATE_ON_SUSPEND = 6--><!--Device-DisplayState-STATE_ON_SUSPEND = 6-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

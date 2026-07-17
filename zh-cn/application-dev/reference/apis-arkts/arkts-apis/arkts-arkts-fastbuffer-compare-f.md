@@ -1,5 +1,11 @@
 # compare
 
+## 导入模块
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+```
+
 ## compare
 
 ```TypeScript
@@ -10,7 +16,9 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 1--><!--Device-fastbuffer-function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -31,7 +39,7 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200068](../../errorcode-universal.md#10200068-The) | The underlying ArrayBuffer is null or detach. |
+| [10200068](../errorcode-utils.md#10200068-引用已释放或分离的arraybuffer) | The underlying ArrayBuffer is null or detach. |
 
 **示例：**
 
@@ -40,9 +48,9 @@ import { fastbuffer } from '@kit.ArkTS';
 
 let buf1 = fastbuffer.from('1234');
 let buf2 = fastbuffer.from('0123');
-let res = fastbuffer.compare(buf1, buf2);
+let compareResult = fastbuffer.compare(buf1, buf2);
 
-console.info(Number(res).toString());
+console.info(Number(compareResult).toString());
 // 输出结果：1
 
 ```

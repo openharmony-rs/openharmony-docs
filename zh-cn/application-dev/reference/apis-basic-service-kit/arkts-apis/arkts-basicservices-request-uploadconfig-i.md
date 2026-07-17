@@ -4,7 +4,15 @@
 
 **起始版本：** 6
 
+<!--Device-request-interface UploadConfig--><!--Device-request-interface UploadConfig-End-->
+
 **系统能力：** SystemCapability.MiscServices.Upload
+
+## 导入模块
+
+```TypeScript
+import { request } from '@kit.BasicServicesKit';
+```
 
 ## begins
 
@@ -17,6 +25,8 @@ begins?: number
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-UploadConfig-begins?: long--><!--Device-UploadConfig-begins?: long-End-->
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -32,6 +42,8 @@ data: Array<RequestData>
 
 **起始版本：** 6
 
+<!--Device-UploadConfig-data: Array<RequestData>--><!--Device-UploadConfig-data: Array<RequestData>-End-->
+
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## ends
@@ -45,6 +57,8 @@ ends?: number
 **类型：** number
 
 **起始版本：** 11
+
+<!--Device-UploadConfig-ends?: long--><!--Device-UploadConfig-ends?: long-End-->
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -60,6 +74,8 @@ files: Array<File>
 
 **起始版本：** 6
 
+<!--Device-UploadConfig-files: Array<File>--><!--Device-UploadConfig-files: Array<File>-End-->
+
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## header
@@ -73,6 +89,8 @@ header: Object
 **类型：** Object
 
 **起始版本：** 6
+
+<!--Device-UploadConfig-header: Object--><!--Device-UploadConfig-header: Object-End-->
 
 **系统能力：** SystemCapability.MiscServices.Upload
 
@@ -88,6 +106,8 @@ index?: number
 
 **起始版本：** 11
 
+<!--Device-UploadConfig-index?: int--><!--Device-UploadConfig-index?: int-End-->
+
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## method
@@ -102,6 +122,8 @@ HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用P
 
 **起始版本：** 6
 
+<!--Device-UploadConfig-method: string--><!--Device-UploadConfig-method: string-End-->
+
 **系统能力：** SystemCapability.MiscServices.Upload
 
 ## url
@@ -110,12 +132,13 @@ HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用P
 url: string
 ```
 
-资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持
-[HTTP拦截](../../../../basic-services/request/app-file-upload-download.md#http拦截)功能。
+资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../../../basic-services/request/app-file-upload-download.md#http拦截)功能。
 
 **类型：** string
 
 **起始版本：** 6
+
+<!--Device-UploadConfig-url: string--><!--Device-UploadConfig-url: string-End-->
 
 **系统能力：** SystemCapability.MiscServices.Upload
 

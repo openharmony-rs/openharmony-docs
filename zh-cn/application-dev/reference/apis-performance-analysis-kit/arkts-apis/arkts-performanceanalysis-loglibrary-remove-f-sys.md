@@ -1,5 +1,11 @@
 # remove（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
+
 ## remove
 
 ```TypeScript
@@ -11,6 +17,8 @@ function remove(logType: string, logName: string): void
 **起始版本：** 10
 
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
+
+<!--Device-logLibrary-function remove(logType: string, logName: string): void--><!--Device-logLibrary-function remove(logType: string, logName: string): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
@@ -27,10 +35,10 @@ function remove(logType: string, logName: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid argument. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types.<br/><br/>3. Parameter verification failed. |
-| [21300001](../../errorcode-universal.md#21300001-Source) | Source file does not exists |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
+| [21300001](../errorcode-loglibrary-sys.md#21300001-指定文件不存在) | Source file does not exists |
 
 **示例：**
 
@@ -38,12 +46,12 @@ function remove(logType: string, logName: string): void
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let logObj = logLibrary.list('FAULTLOG');
-  if (logObj.length > 0) {
-    logLibrary.remove('FAULTLOG', logObj[0].name);
+  let logFiles = logLibrary.list('FAULTLOG');
+  if (logFiles.length > 0) {
+    logLibrary.remove('FAULTLOG', logFiles[0].name);
   }
 } catch (error) {
-  console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+  console.error(`Failed to call logLibrary API. Code: ${error?.code}, message: ${error?.message}`);
 }
 
 ```

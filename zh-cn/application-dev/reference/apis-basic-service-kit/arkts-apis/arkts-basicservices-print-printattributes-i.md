@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-print-interface PrintAttributes--><!--Device-print-interface PrintAttributes-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## colorMode
 
@@ -17,6 +25,8 @@ colorMode?: PrintColorMode
 **类型：** PrintColorMode
 
 **起始版本：** 11
+
+<!--Device-PrintAttributes-colorMode?: PrintColorMode--><!--Device-PrintAttributes-colorMode?: PrintColorMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ copyNumber?: number
 
 **起始版本：** 11
 
+<!--Device-PrintAttributes-copyNumber?: int--><!--Device-PrintAttributes-copyNumber?: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## directionMode
@@ -45,6 +57,8 @@ directionMode?: PrintDirectionMode
 **类型：** PrintDirectionMode
 
 **起始版本：** 11
+
+<!--Device-PrintAttributes-directionMode?: PrintDirectionMode--><!--Device-PrintAttributes-directionMode?: PrintDirectionMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -60,6 +74,8 @@ duplexMode?: PrintDuplexMode
 
 **起始版本：** 11
 
+<!--Device-PrintAttributes-duplexMode?: PrintDuplexMode--><!--Device-PrintAttributes-duplexMode?: PrintDuplexMode-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## pageRange
@@ -74,6 +90,8 @@ pageRange?: PrintPageRange
 
 **起始版本：** 11
 
+<!--Device-PrintAttributes-pageRange?: PrintPageRange--><!--Device-PrintAttributes-pageRange?: PrintPageRange-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## pageSize
@@ -87,6 +105,8 @@ pageSize?: PrintPageSize | PrintPageType
 **类型：** PrintPageSize | PrintPageType
 
 **起始版本：** 11
+
+<!--Device-PrintAttributes-pageSize?: PrintPageSize | PrintPageType--><!--Device-PrintAttributes-pageSize?: PrintPageSize | PrintPageType-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

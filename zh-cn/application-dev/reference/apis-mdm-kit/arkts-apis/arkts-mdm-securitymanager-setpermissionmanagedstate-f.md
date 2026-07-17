@@ -1,5 +1,11 @@
 # setPermissionManagedState
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## setPermissionManagedState
 
 ```TypeScript
@@ -11,7 +17,7 @@ function setPermissionManagedState(
   ): void
 ```
 
-����ָ��Ӧ�õ�[user_grantȨ��](permissions:Permissions)�Ĺ������ԡ�
+设置指定应用的[user_grant权限](permissions:Permissions)的管理策略。
 
 **起始版本：** 20
 
@@ -19,26 +25,38 @@ function setPermissionManagedState(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function setPermissionManagedState(
+    admin: Want,
+    applicationInstance: ApplicationInstance,
+    permissions: Array<string>,
+    managedState: PermissionManagedState
+  ): void--><!--Device-securityManager-function setPermissionManagedState(
+    admin: Want,
+    applicationInstance: ApplicationInstance,
+    permissions: Array<string>,
+    managedState: PermissionManagedState
+  ): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| applicationInstance | ApplicationInstance | 是 | ָ��Ӧ��ʵ���� |
-| permissions | Array&lt;string&gt; | 是 | ��Ҫ������Ȩ�������б�����֧��[user_grantȨ��](permissions:Permissions)��Ȩ�������б���<br/>[Ӧ��Ȩ����](../../../../security/AccessToken/app-permission-group-list.md)Ϊ��λ���б���Ӧ����Ӧ����<br/>[module.json5](../../../../quick-start/module-configuration-file.md)��������ͬһȨ�����ڵ�����Ȩ�ޡ����磺Ӧ�������module.json5��������Ҫ<br/>ohos.permission.READ_CALENDAR��ohos.permission.WRITE_CALENDARȨ�ޣ������Ȩ�������б�����ͬʱ����ohos.permission.READ_CALENDAR��<br/>ohos.permission.WRITE_CALENDAR����Ȩ�ޡ� |
-| managedState | PermissionManagedState | 是 | Ӧ��Ȩ�޵Ĺ������ԡ� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| applicationInstance | [ApplicationInstance](arkts-mdm-securitymanager-applicationinstance-i.md) | 是 | 指定应用实例。 |
+| permissions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](permissions:Permissions)。权限名称列表以[应用权限组](../../../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| managedState | [PermissionManagedState](arkts-mdm-securitymanager-permissionmanagedstate-e.md) | 是 | 应用权限的管理策略。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200010](../../errorcode-universal.md#9200010-A) | A conflict policy has been configured. |
-| [9200012](../../errorcode-universal.md#9200012-The) | The parameter validation failed. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | The parameter validation failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 
 **示例：**
 

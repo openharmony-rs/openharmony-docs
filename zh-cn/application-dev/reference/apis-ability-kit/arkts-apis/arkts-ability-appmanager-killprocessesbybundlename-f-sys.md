@@ -1,5 +1,11 @@
 # killProcessesByBundleName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -10,7 +16,11 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.CLEAN_BACKGROUND_PROCESSES, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限：** 
+- API版本14+：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本9 - 13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
+<!--Device-appManager-function killProcessesByBundleName(bundleName: string): Promise<void>--><!--Device-appManager-function killProcessesByBundleName(bundleName: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,16 +36,16 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The Promise对象。无返回结果的Promise对象。 |
+| Promise<void> | The Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例：**
 
@@ -70,7 +80,11 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.CLEAN_BACKGROUND_PROCESSES, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限：** 
+- API版本14+：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本9 - 13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
+<!--Device-appManager-function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-appManager-function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -81,16 +95,16 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例：**
 

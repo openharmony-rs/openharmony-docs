@@ -1,12 +1,20 @@
 # OptimizeSpaceProgress（系统接口）
 
-�����Ż��ռ�״̬�͵�ǰ���ȡ�
+立即优化空间状态和当前进度。
 
 **起始版本：** 17
+
+<!--Device-cloudSync-interface OptimizeSpaceProgress--><!--Device-cloudSync-interface OptimizeSpaceProgress-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## progress
 
@@ -14,13 +22,15 @@
 progress: number
 ```
 
-�Ż����Ȱٷֱȣ���Χ[0,100]����λ���ٷֱȡ�
+优化进度百分比，范围[0,100]，单位：百分比。
 
 **类型：** number
 
 **起始版本：** 17
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-OptimizeSpaceProgress-progress: int--><!--Device-OptimizeSpaceProgress-progress: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -32,13 +42,15 @@ progress: number
 state: OptimizeState
 ```
 
-ö��ֵ���Ż��ռ�״̬��
+枚举值，优化空间状态。
 
 **类型：** OptimizeState
 
 **起始版本：** 17
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-OptimizeSpaceProgress-state: OptimizeState--><!--Device-OptimizeSpaceProgress-state: OptimizeState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

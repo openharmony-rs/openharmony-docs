@@ -2,13 +2,19 @@
 
 定义AppIntentEntity。
 
-**继承/实现关系：** AppIntentEntity implements [IntentEntity](arkts-ability-insightintent-intententity-i.md#IntentEntity)
+**继承/实现关系：** AppIntentEntity implements [IntentEntity](arkts-ability-insightintent-intententity-i.md)
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-insightIntent-abstract class AppIntentEntity<T> implements IntentEntity--><!--Device-insightIntent-abstract class AppIntentEntity<T> implements IntentEntity-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { insightIntent } from '@kit.AbilityKit';
+```
 
 ## onQueryEntity
 
@@ -22,7 +28,9 @@ abstract onQueryEntity(params: QueryEntityParam): Promise<Array<T>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AppIntentEntity-abstract onQueryEntity(params: QueryEntityParam): Promise<Array<T>>--><!--Device-AppIntentEntity-abstract onQueryEntity(params: QueryEntityParam): Promise<Array<T>>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,13 +38,13 @@ abstract onQueryEntity(params: QueryEntityParam): Promise<Array<T>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | QueryEntityParam | 是 | 查询实体的参数。 |
+| params | [QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md) | 是 | 查询实体的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;T&gt;&gt; | - Returns an array of subclasses of the AppIntentEntity class, support promise. |
+| Promise<Array<T>> | - Returns an array of subclasses of the AppIntentEntity class, support promise. |
 
 **示例：**
 
@@ -80,17 +88,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
   supportedQueryProperties: ['entityId', 'name', 'extension'] // 表示onQueryEntity支持通过entityId、name或者extension属性来查询实体信息
 })
 export class AppIntentEntityImpl extends insightIntent.AppIntentEntity<AppIntentEntityImpl> {
-  entityId: string = "default";
-  name: string = "";
-  displayName: string = "";
+  entityId: string = 'default';
+  name: string = '';
+  displayName: string = '';
   description?: string;
   extension?: string;
 
   async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppIntentEntityImpl>> {
     const appStringEntities: AppIntentEntityImpl[] = [
-      this.createEntityInstance('id1', '名称1', '显示名称1', '描述1', "扩展字段1"),
-      this.createEntityInstance('id2', '名称2', '显示名称2', '描述2', "扩展字段2"),
-      this.createEntityInstance('id3', '名称3', '显示名称3', '描述3', "扩展字段3"),
+      this.createEntityInstance('id1', '名称1', '显示名称1', '描述1', '扩展字段1'),
+      this.createEntityInstance('id2', '名称2', '显示名称2', '描述2', '扩展字段2'),
+      this.createEntityInstance('id3', '名称3', '显示名称3', '描述3', '扩展字段3'),
     ];
 
     let resultEntities: AppIntentEntityImpl[] = [];
@@ -156,7 +164,9 @@ displayName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AppIntentEntity-displayName: string--><!--Device-AppIntentEntity-displayName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

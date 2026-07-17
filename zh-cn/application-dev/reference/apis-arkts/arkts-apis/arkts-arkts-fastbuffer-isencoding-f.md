@@ -1,5 +1,11 @@
 # isEncoding
 
+## 导入模块
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+```
+
 ## isEncoding
 
 ```TypeScript
@@ -10,7 +16,9 @@ function isEncoding(encoding: string): boolean
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function isEncoding(encoding: string): boolean--><!--Device-fastbuffer-function isEncoding(encoding: string): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -18,7 +26,7 @@ function isEncoding(encoding: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 是 | 编码格式。 |
+| encoding | string | 是 | 编码格式。* |
 
 **返回值：**
 

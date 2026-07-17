@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | 代表native侧的ResourceManager。此类封装了JavaScript resource manager的native实现，<b>ResourceManager</b>指针可以通过调用{@link OH_ResourceManager_InitNativeResourceManager}方法获取。 |
+| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | 代表native侧的ResourceManager。此类封装了JavaScript resource manager的native实现，<b>ResourceManager</b>指针可以通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 
 ### 函数
 

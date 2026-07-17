@@ -1,12 +1,10 @@
 # ScannerSyncMode
 
-```TypeScript
-enum ScannerSyncMode
-```
-
 定义扫描仪同步码的枚举。
 
 **起始版本：** 20
+
+<!--Device-scan-enum ScannerSyncMode--><!--Device-scan-enum ScannerSyncMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ UPDATE_STR = 'update'
 
 **起始版本：** 20
 
+<!--Device-ScannerSyncMode-UPDATE_STR = 'update'--><!--Device-ScannerSyncMode-UPDATE_STR = 'update'-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## DELETE_STR
@@ -31,6 +31,8 @@ DELETE_STR = 'delete'
 删除码，表示扫描仪掉线。
 
 **起始版本：** 20
+
+<!--Device-ScannerSyncMode-DELETE_STR = 'delete'--><!--Device-ScannerSyncMode-DELETE_STR = 'delete'-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

@@ -1,5 +1,11 @@
 # getUid
 
+## 导入模块
+
+```TypeScript
+import { WantAgent } from '@kit.AbilityKit';
+```
+
 ## getUid
 
 ```TypeScript
@@ -12,22 +18,24 @@ function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-wantAgent-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void--><!--Device-wantAgent-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | WantAgent | 是 | WantAgent对象。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
+| agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
-| [16000007](../../errorcode-universal.md#16000007-Service) | Service busy. There are concurrent tasks. Try again later. |
-| [16000151](../../errorcode-universal.md#16000151-Invalid) | Invalid wantAgent object. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
+| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 **示例：**
 
@@ -67,10 +75,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getUid回调
@@ -82,6 +91,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getUid接口获取WantAgent实例所属应用的UID
     wantAgent.getUid(wantAgentData, getUidCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -91,6 +101,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -113,27 +124,29 @@ function getUid(agent: WantAgent): Promise<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-wantAgent-function getUid(agent: WantAgent): Promise<int>--><!--Device-wantAgent-function getUid(agent: WantAgent): Promise<int>-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| agent | WantAgent | 是 | WantAgent对象。 |
+| agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回获取WantAgent实例所属应用的UID。 |
+| Promise<number> | Promise对象，返回获取WantAgent实例所属应用的UID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
-| [16000007](../../errorcode-universal.md#16000007-Service) | Service busy. There are concurrent tasks. Try again later. |
-| [16000151](../../errorcode-universal.md#16000151-Invalid) | Invalid wantAgent object. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
+| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 **示例：**
 
@@ -173,13 +186,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式获取WantAgent实例所属应用的UID
     wantAgent.getUid(wantAgentData).then((data) => {
       console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
     }).catch((err: BusinessError) => {
@@ -193,6 +208,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;

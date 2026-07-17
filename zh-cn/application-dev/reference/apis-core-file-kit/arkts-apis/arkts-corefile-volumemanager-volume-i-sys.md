@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-volumeManager-export interface Volume--><!--Device-volumeManager-export interface Volume-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { volumeManager } from '@kit.CoreFileKit';
+```
 
 ## description
 
@@ -19,6 +27,8 @@ description: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-Volume-description: string--><!--Device-Volume-description: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -35,6 +45,8 @@ diskId: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-Volume-diskId: string--><!--Device-Volume-diskId: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -54,6 +66,8 @@ fsType: string
 
 **起始版本：** 12
 
+<!--Device-Volume-fsType: string--><!--Device-Volume-fsType: string-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口：** 此接口为系统接口。
@@ -64,12 +78,13 @@ fsType: string
 id: string
 ```
 
-卷设备ID的格式为vol-{主设备号}-{次设备号}，主设备号用来区分不同种类的设备，
-次设备号用来区分同一类型的多个设备，卷设备ID会随着插卡顺序不同而变化。
+卷设备ID的格式为vol-{主设备号}-{次设备号}，主设备号用来区分不同种类的设备，次设备号用来区分同一类型的多个设备，卷设备ID会随着插卡顺序不同而变化。
 
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-Volume-id: string--><!--Device-Volume-id: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -87,6 +102,8 @@ path: string
 
 **起始版本：** 9
 
+<!--Device-Volume-path: string--><!--Device-Volume-path: string-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口：** 此接口为系统接口。
@@ -102,6 +119,8 @@ removable: boolean
 **类型：** boolean
 
 **起始版本：** 9
+
+<!--Device-Volume-removable: boolean--><!--Device-Volume-removable: boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
@@ -127,6 +146,8 @@ state: number
 
 **起始版本：** 9
 
+<!--Device-Volume-state: int--><!--Device-Volume-state: int-End-->
+
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口：** 此接口为系统接口。
@@ -142,6 +163,8 @@ uuid: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-Volume-uuid: string--><!--Device-Volume-uuid: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 

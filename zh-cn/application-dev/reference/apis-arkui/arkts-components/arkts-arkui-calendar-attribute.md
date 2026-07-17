@@ -4,6 +4,8 @@
 
 **废弃版本：** 20
 
+<!--Device-unnamed-declare class CalendarAttribute--><!--Device-unnamed-declare class CalendarAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。

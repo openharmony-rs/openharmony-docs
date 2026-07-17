@@ -4,9 +4,17 @@
 
 **起始版本：** 24
 
+<!--Device-print-interface PrinterCapability--><!--Device-print-interface PrinterCapability-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## colorMode
 
@@ -19,6 +27,8 @@ colorMode: number
 **类型：** number
 
 **起始版本：** 24
+
+<!--Device-PrinterCapability-colorMode: int--><!--Device-PrinterCapability-colorMode: int-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -36,6 +46,8 @@ duplexMode: number
 
 **起始版本：** 24
 
+<!--Device-PrinterCapability-duplexMode: int--><!--Device-PrinterCapability-duplexMode: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ minMargin?: PrintMargin
 **类型：** PrintMargin
 
 **起始版本：** 24
+
+<!--Device-PrinterCapability-minMargin?: PrintMargin--><!--Device-PrinterCapability-minMargin?: PrintMargin-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -68,6 +82,8 @@ options?: Object
 
 **起始版本：** 24
 
+<!--Device-PrinterCapability-options?: Object--><!--Device-PrinterCapability-options?: Object-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -84,6 +100,8 @@ pageSize: Array<PrintPageSize>
 
 **起始版本：** 24
 
+<!--Device-PrinterCapability-pageSize: Array<PrintPageSize>--><!--Device-PrinterCapability-pageSize: Array<PrintPageSize>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -99,6 +117,8 @@ resolution?: Array<PrintResolution>
 **类型：** Array<PrintResolution>
 
 **起始版本：** 24
+
+<!--Device-PrinterCapability-resolution?: Array<PrintResolution>--><!--Device-PrinterCapability-resolution?: Array<PrintResolution>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

@@ -1,12 +1,10 @@
 # FontWidth
 
-```TypeScript
-enum FontWidth
-```
-
 字体宽度的枚举。
 
 **起始版本：** 12
+
+<!--Device-text-enum FontWidth--><!--Device-text-enum FontWidth-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ ULTRA_CONDENSED = 1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontWidth-ULTRA_CONDENSED = 1--><!--Device-FontWidth-ULTRA_CONDENSED = 1-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## EXTRA_CONDENSED
@@ -35,6 +35,8 @@ EXTRA_CONDENSED = 2
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontWidth-EXTRA_CONDENSED = 2--><!--Device-FontWidth-EXTRA_CONDENSED = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,6 +52,8 @@ CONDENSED = 3
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontWidth-CONDENSED = 3--><!--Device-FontWidth-CONDENSED = 3-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## SEMI_CONDENSED
@@ -63,6 +67,8 @@ SEMI_CONDENSED = 4
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontWidth-SEMI_CONDENSED = 4--><!--Device-FontWidth-SEMI_CONDENSED = 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -78,6 +84,8 @@ NORMAL = 5
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontWidth-NORMAL = 5--><!--Device-FontWidth-NORMAL = 5-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## SEMI_EXPANDED
@@ -91,6 +99,8 @@ SEMI_EXPANDED = 6
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontWidth-SEMI_EXPANDED = 6--><!--Device-FontWidth-SEMI_EXPANDED = 6-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -106,6 +116,8 @@ EXPANDED = 7
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontWidth-EXPANDED = 7--><!--Device-FontWidth-EXPANDED = 7-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## EXTRA_EXPANDED
@@ -120,6 +132,8 @@ EXTRA_EXPANDED = 8
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontWidth-EXTRA_EXPANDED = 8--><!--Device-FontWidth-EXTRA_EXPANDED = 8-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## ULTRA_EXPANDED
@@ -133,6 +147,8 @@ ULTRA_EXPANDED = 9
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontWidth-ULTRA_EXPANDED = 9--><!--Device-FontWidth-ULTRA_EXPANDED = 9-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -1,5 +1,11 @@
 # on
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## on('openDLPFile')
 
 ```TypeScript
@@ -12,6 +18,8 @@ function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void
 
 **起始版本：** 10
 
+<!--Device-dlpPermission-function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void--><!--Device-dlpPermission-function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **参数：**
@@ -19,16 +27,16 @@ function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'openDLPFile' | 是 | 监听事件类型。固定值为'openDLPFile'：打开DLP文件事件。 |
-| listener | Callback&lt;AccessedDLPFileInfo&gt; | 是 | DLP文件打开事件的回调。在当前应用的沙箱应用打开DLP文件时，通知当前应用。 |
+| listener | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AccessedDLPFileInfo> | 是 | DLP文件打开事件的回调。在当前应用的沙箱应用打开DLP文件时，通知当前应用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. 3. Parameter verification failed. |
-| [19100001](../../errorcode-universal.md#19100001-Invalid) | Invalid parameter value. |
-| [19100007](../../errorcode-universal.md#19100007-No) | No permission to call this API,<br/>which is available only for non-DLP sandbox applications. |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100007](../errorcode-dlp.md#19100007-dlp沙箱应用不允许调用此接口) | No permission to call this API,which is available only for non-DLP sandbox applications. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例：**
 

@@ -1,12 +1,10 @@
 # WindowMode（系统接口）
 
-```TypeScript
-enum WindowMode
-```
-
 窗口模式枚举。
 
 **起始版本：** 7
+
+<!--Device-window-enum WindowMode--><!--Device-window-enum WindowMode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -22,6 +20,8 @@ UNDEFINED = 1
 
 **起始版本：** 7
 
+<!--Device-WindowMode-UNDEFINED = 1--><!--Device-WindowMode-UNDEFINED = 1-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -35,6 +35,8 @@ FULLSCREEN = 2
 表示APP全屏模式。
 
 **起始版本：** 7
+
+<!--Device-WindowMode-FULLSCREEN = 2--><!--Device-WindowMode-FULLSCREEN = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -50,6 +52,8 @@ PRIMARY = 3
 
 **起始版本：** 7
 
+<!--Device-WindowMode-PRIMARY = 3--><!--Device-WindowMode-PRIMARY = 3-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -64,6 +68,8 @@ SECONDARY = 4
 
 **起始版本：** 7
 
+<!--Device-WindowMode-SECONDARY = 4--><!--Device-WindowMode-SECONDARY = 4-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +83,8 @@ FLOATING = 5
 表示APP自由悬浮形式窗口模式。
 
 **起始版本：** 7
+
+<!--Device-WindowMode-FLOATING = 5--><!--Device-WindowMode-FLOATING = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

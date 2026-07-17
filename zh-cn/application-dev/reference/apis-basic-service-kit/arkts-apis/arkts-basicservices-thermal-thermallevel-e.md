@@ -1,12 +1,10 @@
 # ThermalLevel
 
-```TypeScript
-export enum ThermalLevel
-```
-
 热档位信息。
 
 **起始版本：** 8
+
+<!--Device-thermal-export enum ThermalLevel--><!--Device-thermal-export enum ThermalLevel-End-->
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -20,6 +18,8 @@ COOL = 0
 
 **起始版本：** 8
 
+<!--Device-ThermalLevel-COOL = 0--><!--Device-ThermalLevel-COOL = 0-End-->
+
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 ## NORMAL
@@ -31,6 +31,8 @@ NORMAL = 1
 表明设备温度正常，但邻近温热状态，无感知业务应降低规格和负载。
 
 **起始版本：** 8
+
+<!--Device-ThermalLevel-NORMAL = 1--><!--Device-ThermalLevel-NORMAL = 1-End-->
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -44,6 +46,8 @@ WARM = 2
 
 **起始版本：** 8
 
+<!--Device-ThermalLevel-WARM = 2--><!--Device-ThermalLevel-WARM = 2-End-->
+
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 ## HOT
@@ -55,6 +59,8 @@ HOT = 3
 表明设备发热明显，无感知业务应停止，非关键业务应降低规格及负载。
 
 **起始版本：** 8
+
+<!--Device-ThermalLevel-HOT = 3--><!--Device-ThermalLevel-HOT = 3-End-->
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -68,6 +74,8 @@ OVERHEATED = 4
 
 **起始版本：** 8
 
+<!--Device-ThermalLevel-OVERHEATED = 4--><!--Device-ThermalLevel-OVERHEATED = 4-End-->
+
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 ## WARNING
@@ -80,6 +88,8 @@ WARNING = 5
 
 **起始版本：** 8
 
+<!--Device-ThermalLevel-WARNING = 5--><!--Device-ThermalLevel-WARNING = 5-End-->
+
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
 ## EMERGENCY
@@ -91,6 +101,8 @@ EMERGENCY = 6
 表明设备已经进入过热紧急状态，整机资源供给降至最低，设备功能受限，仅保留基础功能可用。
 
 **起始版本：** 8
+
+<!--Device-ThermalLevel-EMERGENCY = 6--><!--Device-ThermalLevel-EMERGENCY = 6-End-->
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -105,6 +117,8 @@ ESCAPE = 7
 **说明**: 从API version 11开始支持。
 
 **起始版本：** 11
+
+<!--Device-ThermalLevel-ESCAPE = 7--><!--Device-ThermalLevel-ESCAPE = 7-End-->
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 

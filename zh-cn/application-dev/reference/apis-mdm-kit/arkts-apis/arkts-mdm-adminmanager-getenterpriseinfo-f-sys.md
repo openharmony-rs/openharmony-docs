@@ -1,16 +1,24 @@
 # getEnterpriseInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## getEnterpriseInfo
 
 ```TypeScript
 function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>): void
 ```
 
-��ȡ�豸����Ӧ�õ���ҵ��Ϣ��ʹ��callback�첽�ص���
+获取设备管理应用的企业信息。使用callback异步回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-adminManager-function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>): void--><!--Device-adminManager-function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>): void-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -20,16 +28,16 @@ function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| callback | AsyncCallback&lt;EnterpriseInfo&gt; | 是 | �ص����������ӿڵ��óɹ���errΪnull��dataΪ�豸����Ӧ�õ���ҵ��Ϣ������errΪ������� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<EnterpriseInfo> | 是 | 回调函数，当接口调用成功，err为null，data为设备管理应用的企业信息，否则err为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -60,11 +68,13 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>
 ```
 
-��ȡ�豸����Ӧ�õ���ҵ��Ϣ��ʹ��Promise�첽�ص���
+获取设备管理应用的企业信息，使用Promise异步回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-adminManager-function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>--><!--Device-adminManager-function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -74,21 +84,21 @@ function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;EnterpriseInfo&gt; | Promise���󣬷����豸����Ӧ�õ���ҵ��Ϣ�� |
+| Promise<EnterpriseInfo> | Promise对象，返回设备管理应用的企业信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

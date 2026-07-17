@@ -1,17 +1,22 @@
 # addDisallowedWifiList
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+```
+
 ## addDisallowedWifiList
 
 ```TypeScript
 function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void
 ```
 
-����Wi-Fi�������������ӽ���������ǰ�豸���������Ӹ������µ�Wi-Fi��
+添加Wi-Fi禁用名单。添加禁用名单后当前设备不允许连接该名单下的Wi-Fi。
 
-��������£����ñ��ӿڻᱨ���Գ�ͻ��
+以下情况下，调用本接口会报策略冲突：
 
-1. �Ѿ�ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)�ӿڽ������豸Wi-Fi������ͨ��[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)���Wi-Fi���ú󣬿ɽ����ͻ��
-2. �Ѿ�ͨ��[addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md#addAllowedWifiList-1)�ӿ�������Wi-Fi����������ͨ��[removeAllowedWifiList](arkts-mdm-wifimanager-removeallowedwifilist-f.md#removeAllowedWifiList-1)�Ƴ�Wi-Fi���������󣬿ɽ����ͻ��
+1. 已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)接口禁用了设备Wi-Fi能力。通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)解除Wi-Fi禁用后，可解除冲突。2. 已经通过[addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md#addallowedwifilist-1)接口添加了Wi-Fi允许名单。通过[removeAllowedWifiList](arkts-mdm-wifimanager-removeallowedwifilist-f.md#removeallowedwifilist-1)移除Wi-Fi允许名单后，可解除冲突。
 
 **起始版本：** 19
 
@@ -19,23 +24,25 @@ function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-wifiManager-function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void--><!--Device-wifiManager-function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| list | Array&lt;WifiAccessInfo&gt; | 是 | Wi-Fi�����������顣�����ܳ��Ȳ��ܳ���200�����磬����ǰ������������������100��Wi-Fi�������֧��ͨ���ýӿ�������100���� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| list | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<WifiAccessInfo> | 是 | Wi-Fi禁用名单数组。数组总长度不能超过200。例如，若当前禁用名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200010](../../errorcode-universal.md#9200010-A) | A conflict policy has been configured. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 

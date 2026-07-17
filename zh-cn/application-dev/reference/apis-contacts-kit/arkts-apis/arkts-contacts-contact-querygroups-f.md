@@ -1,12 +1,18 @@
 # queryGroups
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## queryGroups
 
 ```TypeScript
 function queryGroups(callback: AsyncCallback<Array<Group>>): void
 ```
 
-��ѯ��ϵ�˵�����Ⱥ�顣ʹ��callback�첽�ص���
+查询联系人的所有群组。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -16,13 +22,15 @@ function queryGroups(callback: AsyncCallback<Array<Group>>): void
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryGroups(callback: AsyncCallback<Array<Group>>): void--><!--Device-contact-function queryGroups(callback: AsyncCallback<Array<Group>>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;Group&gt;&gt; | 是 | �ص��������ɹ����ز�ѯ����Ⱥ��������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -47,11 +55,13 @@ contact.queryGroups((err: BusinessError, data) => {
 function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): void
 ```
 
-��ѯ��ϵ�˵�����Ⱥ�顣ʹ��callback�첽�ص���
+查询联系人的所有群组。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): void--><!--Device-contact-function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -59,15 +69,15 @@ function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| callback | AsyncCallback&lt;Array&lt;Group&gt;&gt; | 是 | �ص��������ɹ����ز�ѯ����Ⱥ��������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -97,7 +107,7 @@ contact.queryGroups(context, (err: BusinessError, data) => {
 function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): void
 ```
 
-����holder��ѯ��ϵ�˵�����Ⱥ�顣ʹ��callback�첽�ص���
+根据holder查询联系人的所有群组。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -107,14 +117,16 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): void--><!--Device-contact-function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| holder | Holder | 是 | ������ϵ�˵�Ӧ����Ϣ�࣬����������Ϊ����Ĭ��ʹ��ϵͳ��ϵ��Ӧ�ò�ѯ�� |
-| callback | AsyncCallback&lt;Array&lt;Group&gt;&gt; | 是 | �ص��������ɹ����ز�ѯ����Ⱥ��������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -124,8 +136,8 @@ import { contact } from '@kit.ContactsKit';
 
 contact.queryGroups({
   holderId: 1,
-  bundleName: "",
-  displayName: ""
+  bundleName: '',
+  displayName: ''
 }, (err: BusinessError, data) => {
   if (err) {
     console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
@@ -143,11 +155,13 @@ contact.queryGroups({
 function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<Array<Group>>): void
 ```
 
-����holder��ѯ��ϵ�˵�����Ⱥ�顣ʹ��callback�첽�ص���
+根据holder查询联系人的所有群组。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<Array<Group>>): void--><!--Device-contact-function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<Array<Group>>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -155,16 +169,16 @@ function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| holder | Holder | 是 | ������ϵ�˵�Ӧ����Ϣ�࣬����������Ϊ����Ĭ��ʹ��ϵͳ��ϵ��Ӧ�ò�ѯ�� |
-| callback | AsyncCallback&lt;Array&lt;Group&gt;&gt; | 是 | �ص��������ɹ����ز�ѯ����Ⱥ��������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Group>> | 是 | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -179,8 +193,8 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 contact.queryGroups(context, {
   holderId: 1,
-  bundleName: "",
-  displayName: ""
+  bundleName: '',
+  displayName: ''
 }, (err: BusinessError, data) => {
   if (err) {
     console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
@@ -198,7 +212,7 @@ contact.queryGroups(context, {
 function queryGroups(holder?: Holder): Promise<Array<Group>>
 ```
 
-����holder��ѯ��ϵ�˵�����Ⱥ�顣ʹ��Promise�첽�ص���
+根据holder查询联系人的所有群组。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -208,19 +222,21 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryGroups(holder?: Holder): Promise<Array<Group>>--><!--Device-contact-function queryGroups(holder?: Holder): Promise<Array<Group>>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| holder | Holder | 否 | ������ϵ�˵�Ӧ����Ϣ�࣬�����ò�������Ĭ��ʹ��ϵͳ��ϵ��Ӧ�ò�ѯ�� |
+| holder | [Holder](arkts-contacts-contact-holder-c.md) | 否 | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Group&gt;&gt; | Promise���󡣷��ز�ѯ����Ⱥ��������顣 |
+| Promise<Array<Group>> | Promise对象。返回查询到的群组对象数组。 |
 
 **示例：**
 
@@ -229,8 +245,8 @@ import { contact } from '@kit.ContactsKit';
 
 let promise = contact.queryGroups({
   holderId: 1,
-  bundleName: "",
-  displayName: ""
+  bundleName: '',
+  displayName: ''
 });
 promise.then((data) => {
   console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
@@ -245,11 +261,13 @@ promise.then((data) => {
 function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>
 ```
 
-����holder��ѯ��ϵ�˵�����Ⱥ�顣ʹ��Promise�첽�ص���
+根据holder查询联系人的所有群组。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>--><!--Device-contact-function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -257,21 +275,21 @@ function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| holder | Holder | 否 | ������ϵ�˵�Ӧ����Ϣ�࣬�����ò�������Ĭ��ʹ��ϵͳ��ϵ��Ӧ�ò�ѯ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| holder | [Holder](arkts-contacts-contact-holder-c.md) | 否 | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Group&gt;&gt; | Promise���󡣷��ز�ѯ����Ⱥ��������顣 |
+| Promise<Array<Group>> | Promise对象。返回查询到的群组对象数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -285,8 +303,8 @@ import { contact } from '@kit.ContactsKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.queryGroups(context, {
   holderId: 1,
-  bundleName: "",
-  displayName: ""
+  bundleName: '',
+  displayName: ''
 });
 promise.then((data) => {
   console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);

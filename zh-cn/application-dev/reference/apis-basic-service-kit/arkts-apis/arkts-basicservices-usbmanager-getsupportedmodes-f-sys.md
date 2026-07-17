@@ -1,18 +1,26 @@
 # getSupportedModes（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## getSupportedModes
 
 ```TypeScript
 function getSupportedModes(portId: number): PortModeType
 ```
 
-��ȡָ���Ķ˿�֧�ֵ�ģʽ�б���������롣
+获取指定的端口支持的模式列表的组合掩码。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
 **替代接口：** getPortSupportModes(portId:
+
+<!--Device-usbManager-function getSupportedModes(portId: number): PortModeType--><!--Device-usbManager-function getSupportedModes(portId: number): PortModeType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -22,17 +30,17 @@ function getSupportedModes(portId: number): PortModeType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| portId | number | 是 | �˿ںš� |
+| portId | number | 是 | 端口号。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| PortModeType | ֧�ֵ�ģʽ�б���������롣 |
+| [PortModeType](arkts-basicservices-usbmanager-portmodetype-e-sys.md) | 支持的模式列表的组合掩码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1.Mandatory parameters are left unspecified.* <br>2.Incorrect parameter types. |
 

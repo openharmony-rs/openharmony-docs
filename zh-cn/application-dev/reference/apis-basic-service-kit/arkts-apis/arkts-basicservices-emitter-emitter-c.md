@@ -4,7 +4,15 @@
 
 **起始版本：** 22
 
+<!--Device-emitter-export class Emitter--><!--Device-emitter-export class Emitter-End-->
+
 **系统能力：** SystemCapability.Notification.Emitter
+
+## 导入模块
+
+```TypeScript
+import { emitter } from '@kit.BasicServicesKit';
+```
 
 ## constructor
 
@@ -16,7 +24,9 @@ constructor()
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-constructor()--><!--Device-Emitter-constructor()-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -35,15 +45,15 @@ emit(eventId: string, data?: EventData): void
 
 发送指定事件到当前Emitter类实例。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用
-[@State装饰器](../../../../ui/state-management/arkts-state.md)、
-[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-emit(eventId: string, data?: EventData): void--><!--Device-Emitter-emit(eventId: string, data?: EventData): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -52,7 +62,7 @@ emit(eventId: string, data?: EventData): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| data | EventData | 否 | 事件携带的数据，默认为空。 |
+| data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | 否 | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -60,12 +70,12 @@ emit(eventId: string, data?: EventData): void
 let emitter1: emitter.Emitter = new emitter.Emitter();
 let eventData: emitter.EventData = {
   data: {
-  "content": "content",
-  "id": 1,
+    "content": "content",
+    "id": 1,
   }
 };
 
-emitter1.emit("eventId", eventData);
+emitter1.emit('eventId', eventData);
 
 ```
 
@@ -77,15 +87,15 @@ emit<T>(eventId: string, data?: GenericEventData<T>): void
 
 发送指定事件到当前Emitter类实例。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用
-[@State装饰器](../../../../ui/state-management/arkts-state.md)、
-[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-emit<T>(eventId: string, data?: GenericEventData<T>): void--><!--Device-Emitter-emit<T>(eventId: string, data?: GenericEventData<T>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -94,7 +104,7 @@ emit<T>(eventId: string, data?: GenericEventData<T>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| data | GenericEventData&lt;T&gt; | 否 | 事件携带的数据，默认为空。 |
+| data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)<T> | 否 | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -116,7 +126,7 @@ let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
 };
 
-emitter1.emit("eventId", eventData);
+emitter1.emit('eventId', eventData);
 
 ```
 
@@ -128,15 +138,15 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 发送指定事件到当前Emitter类实例。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用
-[@State装饰器](../../../../ui/state-management/arkts-state.md)、
-[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-emit(eventId: string, options: Options, data?: EventData): void--><!--Device-Emitter-emit(eventId: string, options: Options, data?: EventData): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -145,8 +155,8 @@ emit(eventId: string, options: Options, data?: EventData): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| options | Options | 是 | 事件优先级。 |
-| data | EventData | 否 | 事件携带的数据，默认为空。 |
+| options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 事件优先级。 |
+| data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | 否 | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -158,12 +168,12 @@ let options: emitter.Options = {
 };
 let eventData: emitter.EventData = {
   data: {
-  "content": "content",
-  "id": 1,
+    "content": "content",
+    "id": 1,
   }
 };
 
-emitter1.emit("eventId", options, eventData);
+emitter1.emit('eventId', options, eventData);
 
 ```
 
@@ -175,15 +185,15 @@ emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void
 
 发送指定优先级事件到当前Emitter类实例。
 
-该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用
-[@State装饰器](../../../../ui/state-management/arkts-state.md)、
-[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
+该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void--><!--Device-Emitter-emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -192,8 +202,8 @@ emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| options | Options | 是 | 事件优先级。 |
-| data | GenericEventData&lt;T&gt; | 否 | 事件携带的数据，默认为空。 |
+| options | [Options](arkts-basicservices-zlib-options-i.md) | 是 | 事件优先级。 |
+| data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)<T> | 否 | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -218,7 +228,7 @@ let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
 };
 
-emitter1.emit("eventId", options, eventData);
+emitter1.emit('eventId', options, eventData);
 
 ```
 
@@ -232,7 +242,9 @@ getListenerCount(eventId: string): number
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-getListenerCount(eventId: string): long--><!--Device-Emitter-getListenerCount(eventId: string): long-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -252,7 +264,7 @@ getListenerCount(eventId: string): number
 
 ```TypeScript
 let emitter1: emitter.Emitter = new emitter.Emitter();
-let count = emitter1.getListenerCount("eventId");
+let count: number = emitter1.getListenerCount('eventId');
 
 ```
 
@@ -268,7 +280,9 @@ off(eventId: string): void
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-off(eventId: string): void--><!--Device-Emitter-off(eventId: string): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -283,7 +297,7 @@ off(eventId: string): void
 ```TypeScript
 let emitter1: emitter.Emitter = new emitter.Emitter();
 
-emitter1.off("eventId");
+emitter1.off('eventId');
 
 ```
 
@@ -293,15 +307,15 @@ emitter1.off("eventId");
 off(eventId: string, callback: Callback<EventData>): void
 ```
 
-取消订阅当前Emitter类实例的事件。仅当已使用[on](arkts-basicservices-emitter-emitter-c.md#on-1)或
-[once](arkts-basicservices-emitter-emitter-c.md#once-1)接口订阅了事件ID为eventId且回调处理函数为
-callback的事件时，该接口才生效。
+取消订阅当前Emitter类实例的事件。仅当已使用[on](arkts-basicservices-emitter-emitter-c.md#on-1)或[once](arkts-basicservices-emitter-emitter-c.md#once-1)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
 使用该接口取消事件订阅后，已通过[emit](arkts-basicservices-emitter-emitter-c.md#emit-1)接口发布但尚未执行的事件将被取消。
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-off(eventId: string, callback: Callback<EventData>): void--><!--Device-Emitter-off(eventId: string, callback: Callback<EventData>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -310,7 +324,7 @@ callback的事件时，该接口才生效。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | Callback&lt;EventData&gt; | 是 | 回调函数，指定要取消订阅的事件处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 回调函数，指定要取消订阅的事件处理函数。 |
 
 **示例：**
 
@@ -321,9 +335,9 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-emitter1.off("eventId", callback);
+emitter1.off('eventId', callback);
 
 ```
 
@@ -333,17 +347,15 @@ emitter1.off("eventId", callback);
 off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 ```
 
-取消订阅当前Emitter类实例的事件。仅当已使用
-[on](arkts-basicservices-emitter-emitter-c.md#on-2)或
-[once](arkts-basicservices-emitter-emitter-c.md#once-2)接口订阅了事件ID为eventId且
-回调处理函数为callback的事件时，该接口才生效。
+取消订阅当前Emitter类实例的事件。仅当已使用[on](arkts-basicservices-emitter-emitter-c.md#on-2)或[once](arkts-basicservices-emitter-emitter-c.md#once-2)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
-使用该接口取消事件订阅后，已通过[emit](arkts-basicservices-emitter-emitter-c.md#emit-2)接口发布但尚未执行的事件将被取
-消。
+使用该接口取消事件订阅后，已通过[emit](arkts-basicservices-emitter-emitter-c.md#emit-2)接口发布但尚未执行的事件将被取消。
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-Emitter-off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -352,7 +364,7 @@ off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | Callback&lt;GenericEventData&lt;T&gt;&gt; | 是 | 回调函数，指定要取消订阅的事件处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<GenericEventData<T>> | 是 | 回调函数，指定要取消订阅的事件处理函数。 |
 
 **示例：**
 
@@ -377,9 +389,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 
-emitter1.off("eventId", callback);
+emitter1.off('eventId', callback);
 
 ```
 
@@ -393,7 +405,9 @@ on(eventId: string, callback: Callback<EventData>): void
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-on(eventId: string, callback: Callback<EventData>): void--><!--Device-Emitter-on(eventId: string, callback: Callback<EventData>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -402,7 +416,7 @@ on(eventId: string, callback: Callback<EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 持续订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | Callback&lt;EventData&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 回调函数，在接收到该事件时被调用。 |
 
 **示例：**
 
@@ -413,9 +427,9 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-emitter1.on(`eventId`, callback);
+emitter1.on('eventId', callback);
 
 ```
 
@@ -429,7 +443,9 @@ on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-Emitter-on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -438,7 +454,7 @@ on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 持续订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | Callback&lt;GenericEventData&lt;T&gt;&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<GenericEventData<T>> | 是 | 回调函数，在接收到该事件时被调用。 |
 
 **示例：**
 
@@ -463,9 +479,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 
-emitter1.on("eventId", callback);
+emitter1.on('eventId', callback);
 
 ```
 
@@ -479,7 +495,9 @@ once(eventId: string, callback: Callback<EventData>): void
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-once(eventId: string, callback: Callback<EventData>): void--><!--Device-Emitter-once(eventId: string, callback: Callback<EventData>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -488,7 +506,7 @@ once(eventId: string, callback: Callback<EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 单次订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | Callback&lt;EventData&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 回调函数，在接收到该事件时被调用。 |
 
 **示例：**
 
@@ -499,9 +517,9 @@ let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
-}
+};
 
-emitter1.once("eventId", callback);
+emitter1.once('eventId', callback);
 
 ```
 
@@ -515,7 +533,9 @@ once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Emitter-once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-Emitter-once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -524,7 +544,7 @@ once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 单次订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | Callback&lt;GenericEventData&lt;T&gt;&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<GenericEventData<T>> | 是 | 回调函数，在接收到该事件时被调用。 |
 
 **示例：**
 
@@ -549,9 +569,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
   if (eventData?.data instanceof Sample) {
     eventData?.data?.printCount();
   }
-}
+};
 
-emitter1.once("eventId", callback);
+emitter1.once('eventId', callback);
 
 ```
 

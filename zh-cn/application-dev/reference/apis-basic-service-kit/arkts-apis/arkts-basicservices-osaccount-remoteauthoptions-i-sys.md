@@ -4,9 +4,17 @@
 
 **起始版本：** 12
 
+<!--Device-osAccount-interface RemoteAuthOptions--><!--Device-osAccount-interface RemoteAuthOptions-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## collectorNetworkId
 
@@ -19,6 +27,8 @@ collectorNetworkId?: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-RemoteAuthOptions-collectorNetworkId?: string--><!--Device-RemoteAuthOptions-collectorNetworkId?: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ collectorTokenId?: number
 
 **起始版本：** 12
 
+<!--Device-RemoteAuthOptions-collectorTokenId?: int--><!--Device-RemoteAuthOptions-collectorTokenId?: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ verifierNetworkId?: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-RemoteAuthOptions-verifierNetworkId?: string--><!--Device-RemoteAuthOptions-verifierNetworkId?: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

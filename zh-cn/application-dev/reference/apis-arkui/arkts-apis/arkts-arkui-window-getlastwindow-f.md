@@ -1,5 +1,11 @@
 # getLastWindow
 
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
+
 ## getLastWindow
 
 ```TypeScript
@@ -8,12 +14,13 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 
 获取当前应用内层级最高的子窗口，使用callback异步回调。
 
-若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showWindow-1)进行显示，则返回应用主
-窗口。
+若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)进行显示，则返回应用主窗口。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-window-function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -21,16 +28,16 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ctx | BaseContext | 是 | Current application context. |
-| callback | AsyncCallback&lt;Window&gt; | 是 | Callback used to return the top window obtained. |
+| ctx | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | Current application context. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Window> | 是 | Callback used to return the top window obtained. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
-| [1300002](../../errorcode-universal.md#1300002-This) | This window state is abnormal. Possible cause:<br/>1. Top window or main window is null or destroyed;<br/>2. This window context is abnormal. |
-| [1300006](../../errorcode-universal.md#1300006-This) | This window context is abnormal. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:1. Top window or main window is null or destroyed;2. This window context is abnormal. |
+| [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
 
 **示例：**
 
@@ -87,12 +94,13 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 
 获取当前应用内层级最高的子窗口，使用Promise异步回调。
 
-若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showWindow-1)进行显示，则返回应用主
-窗口。
+若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)进行显示，则返回应用主窗口。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-window-function getLastWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getLastWindow(ctx: BaseContext): Promise<Window>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -100,21 +108,21 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ctx | BaseContext | 是 | 当前应用上下文信息。 |
+| ctx | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 当前应用上下文信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Window&gt; | Promise对象。返回当前应用内层级最高的窗口对象。 |
+| Promise<Window> | Promise对象。返回当前应用内层级最高的窗口对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
-| [1300002](../../errorcode-universal.md#1300002-This) | This window state is abnormal. Possible cause:<br/>1. Top window or main window is null or destroyed;<br/>2. This window context is abnormal. |
-| [1300006](../../errorcode-universal.md#1300006-This) | This window context is abnormal. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:1. Top window or main window is null or destroyed;2. This window context is abnormal. |
+| [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
 
 **示例：**
 

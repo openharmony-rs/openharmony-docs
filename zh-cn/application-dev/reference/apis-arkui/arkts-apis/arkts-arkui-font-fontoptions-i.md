@@ -2,16 +2,24 @@
 
 注册的自定义字体信息。
 
-> **说明：**
->
-> 直接使用font可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用
-> [UIContext](arkts-arkui-uicontext.md)中的
-> [getFont](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的
+> **说明：**  
+>  
+> 直接使用font可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用  
+> [UIContext](arkts-arkui-uicontext.md)中的  
+> [getFont](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的  
 > [Font](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
+<!--Device-font-interface FontOptions--><!--Device-font-interface FontOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { font } from '@kit.ArkUI';
+```
 
 ## familyName
 
@@ -26,6 +34,8 @@ familyName: string | Resource
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontOptions-familyName: string | Resource--><!--Device-FontOptions-familyName: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +56,8 @@ familySrc: string | Resource
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontOptions-familySrc: string | Resource--><!--Device-FontOptions-familySrc: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

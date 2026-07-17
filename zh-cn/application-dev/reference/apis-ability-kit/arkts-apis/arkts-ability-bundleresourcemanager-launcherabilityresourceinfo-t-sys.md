@@ -4,9 +4,11 @@
 export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo
 ```
 
-Ӧ�����õ����ͼ���������Ϣ��
+应用配置的入口图标和名称信息。
 
 **起始版本：** 11
+
+<!--Device-bundleResourceManager-export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo--><!--Device-bundleResourceManager-export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 

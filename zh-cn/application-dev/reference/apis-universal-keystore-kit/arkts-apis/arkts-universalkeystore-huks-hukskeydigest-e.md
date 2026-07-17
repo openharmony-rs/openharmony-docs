@@ -1,14 +1,14 @@
 # HuksKeyDigest
 
-```TypeScript
-export enum HuksKeyDigest
-```
-
-��ʾժҪ�㷨��
+表示摘要算法。
 
 **起始版本：** 8
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-huks-export enum HuksKeyDigest--><!--Device-huks-export enum HuksKeyDigest-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_NONE
 
@@ -16,13 +16,17 @@ export enum HuksKeyDigest
 HUKS_DIGEST_NONE = 0
 ```
 
-��ʾ��ժҪ�㷨��
+表示无摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0--><!--Device-HuksKeyDigest-HUKS_DIGEST_NONE = 0-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_MD5
 
@@ -30,13 +34,17 @@ HUKS_DIGEST_NONE = 0
 HUKS_DIGEST_MD5 = 1
 ```
 
-��ʾMD5ժҪ�㷨��
+表示MD5摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_MD5 = 1--><!--Device-HuksKeyDigest-HUKS_DIGEST_MD5 = 1-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SM3
 
@@ -44,13 +52,17 @@ HUKS_DIGEST_MD5 = 1
 HUKS_DIGEST_SM3 = 2
 ```
 
-��ʾSM3ժҪ�㷨��
+表示SM3摘要算法。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2--><!--Device-HuksKeyDigest-HUKS_DIGEST_SM3 = 2-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本9-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA1
 
@@ -58,13 +70,17 @@ HUKS_DIGEST_SM3 = 2
 HUKS_DIGEST_SHA1 = 10
 ```
 
-��ʾSHA1ժҪ�㷨��
+表示SHA1摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SHA1 = 10--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA1 = 10-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA224
 
@@ -72,13 +88,17 @@ HUKS_DIGEST_SHA1 = 10
 HUKS_DIGEST_SHA224 = 11
 ```
 
-��ʾSHA224ժҪ�㷨��
+表示SHA224摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SHA224 = 11--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA224 = 11-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA256
 
@@ -86,13 +106,17 @@ HUKS_DIGEST_SHA224 = 11
 HUKS_DIGEST_SHA256 = 12
 ```
 
-��ʾSHA256ժҪ�㷨��
+表示SHA256摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SHA256 = 12--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA256 = 12-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA384
 
@@ -100,13 +124,17 @@ HUKS_DIGEST_SHA256 = 12
 HUKS_DIGEST_SHA384 = 13
 ```
 
-��ʾSHA384ժҪ�㷨��
+表示SHA384摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SHA384 = 13--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA384 = 13-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_DIGEST_SHA512
 
@@ -114,11 +142,15 @@ HUKS_DIGEST_SHA384 = 13
 HUKS_DIGEST_SHA512 = 14
 ```
 
-��ʾSHA512ժҪ�㷨��
+表示SHA512摘要算法。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**系统能力：** SystemCapability.Security.Huks.Core
+<!--Device-HuksKeyDigest-HUKS_DIGEST_SHA512 = 14--><!--Device-HuksKeyDigest-HUKS_DIGEST_SHA512 = 14-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 

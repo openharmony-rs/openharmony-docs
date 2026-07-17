@@ -6,6 +6,8 @@
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>--><!--Device-unnamed-declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -18,7 +20,9 @@ color(value: Color | number | string | Resource)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HyperlinkAttribute-color(value: Color | number | string | Resource): HyperlinkAttribute--><!--Device-HyperlinkAttribute-color(value: Color | number | string | Resource): HyperlinkAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

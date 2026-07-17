@@ -4,9 +4,17 @@
 
 **起始版本：** 12
 
+<!--Device-osAccount-interface CreateOsAccountOptions--><!--Device-osAccount-interface CreateOsAccountOptions-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## allowedPreinstalledBundles
 
@@ -19,6 +27,8 @@ allowedPreinstalledBundles?: Array<string>
 **类型：** Array<string>
 
 **起始版本：** 19
+
+<!--Device-CreateOsAccountOptions-allowedPreinstalledBundles?: Array<string>--><!--Device-CreateOsAccountOptions-allowedPreinstalledBundles?: Array<string>-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ disallowedPreinstalledBundles?: Array<string>
 
 **起始版本：** 19
 
+<!--Device-CreateOsAccountOptions-disallowedPreinstalledBundles?: Array<string>--><!--Device-CreateOsAccountOptions-disallowedPreinstalledBundles?: Array<string>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -50,13 +62,13 @@ shortName: string
 
 **约束：**
 
-1. 不允许出现的字符：< > | : " * ? / \
-2. 不允许独立出现的字符串：.或..
-3. 长度不超过255个字符。
+1. 不允许出现的字符：< > | : " * ? / \2. 不允许独立出现的字符串：.或..3. 长度不超过255个字符。
 
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-CreateOsAccountOptions-shortName: string--><!--Device-CreateOsAccountOptions-shortName: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -73,6 +85,8 @@ token?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 24
+
+<!--Device-CreateOsAccountOptions-token?: Uint8Array--><!--Device-CreateOsAccountOptions-token?: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

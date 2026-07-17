@@ -1,5 +1,11 @@
 # symlink
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## symlink
 
 ```TypeScript
@@ -8,11 +14,13 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 基于文件路径创建符号链接，使用promise异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 从API version 11开始，不支持三方应用使用。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>--><!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -27,7 +35,7 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -57,11 +65,13 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 
 基于文件路径创建符号链接，使用callback异步回调。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 从API version 11开始，不支持三方应用使用。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -71,7 +81,7 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | target | string | 是 | 要链接的目标文件的应用沙箱路径。 |
 | srcPath | string | 是 | 符号链接文件的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步创建符号链接信息之后的回调。 |
 
 **错误码：**
 

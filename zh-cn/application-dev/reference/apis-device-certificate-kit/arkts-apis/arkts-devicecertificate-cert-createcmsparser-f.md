@@ -1,5 +1,11 @@
 # createCmsParser
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## createCmsParser
 
 ```TypeScript
@@ -10,7 +16,9 @@ function createCmsParser(): CmsParser
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-cert-function createCmsParser(): CmsParser--><!--Device-cert-function createCmsParser(): CmsParser-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -18,15 +26,15 @@ function createCmsParser(): CmsParser
 
 | 类型 | 说明 |
 | --- | --- |
-| CmsParser | CmsParser对象。 |
+| [CmsParser](arkts-devicecertificate-cert-cmsparser-i.md) | CmsParser对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 

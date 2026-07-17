@@ -4,7 +4,15 @@ This class is used to intercept requests for a specified scheme.
 
 **起始版本：** 12
 
+<!--Device-webview-class WebSchemeHandler--><!--Device-webview-class WebSchemeHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## onRequestStart
 
@@ -17,7 +25,11 @@ onRequestStart(
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandler-onRequestStart(
+      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void--><!--Device-WebSchemeHandler-onRequestStart(
+      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -25,13 +37,13 @@ onRequestStart(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) =&gt; boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值表示该请求是否拦截。<br/>it means no interception. |
+| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值表示该请求是否拦截。it means no interception. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 ## onRequestStop
 
@@ -43,7 +55,9 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void--><!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -51,11 +65,11 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;WebSchemeHandlerRequest&gt; | 是 | 对应请求结束的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<WebSchemeHandlerRequest> | 是 | 对应请求结束的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Invalid) | Invalid input parameter. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Invalid input parameter. |
 

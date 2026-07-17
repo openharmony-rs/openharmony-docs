@@ -301,7 +301,7 @@ ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 
@@ -325,7 +325,7 @@ int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 
@@ -349,7 +349,7 @@ const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 
@@ -373,7 +373,7 @@ ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* eve
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 
@@ -397,7 +397,7 @@ void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool sto
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 | bool stopPropagation | 表示是否阻止事件冒泡。true表示阻止事件冒泡，false表示不阻止事件冒泡。 |
 
 ### OH_ArkUI_KeyEvent_GetKeyIntensionCode()
@@ -416,7 +416,7 @@ ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEven
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 
@@ -440,7 +440,7 @@ uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 
@@ -464,7 +464,7 @@ void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 | bool isConsumed | 事件是否被该回调消费。true表示事件被消费，false表示事件未被消费。 |
 
 ### OH_ArkUI_KeyEvent_Dispatch()
@@ -484,7 +484,7 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 
 ### OH_ArkUI_KeyEvent_IsNumLockOn()
 
@@ -502,7 +502,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 | bool* state | 输出参数，返回NumLock的状态。true表示处于激活状态，false表示处于未激活状态。 |
 
 **返回：**
@@ -527,7 +527,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 | bool* state | 输出参数，返回CapsLock的状态。true表示处于激活状态，false表示处于未激活状态。 |
 
 **返回：**
@@ -552,7 +552,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| const ArkUI_UIInputEvent* event | ArkUI_UIInputEvent事件指针。 |
 | bool* state | 输出参数，返回ScrollLock的状态。true表示处于激活状态，false表示处于未激活状态。 |
 
 **返回：**

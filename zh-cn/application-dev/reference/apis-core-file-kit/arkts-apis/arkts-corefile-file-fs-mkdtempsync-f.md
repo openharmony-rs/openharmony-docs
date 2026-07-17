@@ -1,5 +1,11 @@
 # mkdtempSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## mkdtempSync
 
 ```TypeScript
@@ -9,6 +15,8 @@ declare function mkdtempSync(prefix: string): string
 以同步的方法创建临时目录。
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

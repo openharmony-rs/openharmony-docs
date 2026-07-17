@@ -1,14 +1,10 @@
 # SwitchKey
 
-```TypeScript
-enum SwitchKey
-```
-
-�������Ƶ�ö�١�
+开关名称的枚举。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-deviceSettings-enum SwitchKey--><!--Device-deviceSettings-enum SwitchKey-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum SwitchKey
 NEARLINK = 0
 ```
 
-�������ء�
+星闪开关。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchKey-NEARLINK = 0--><!--Device-SwitchKey-NEARLINK = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ NEARLINK = 0
 BLUETOOTH = 1
 ```
 
-�������ء�
+蓝牙开关。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchKey-BLUETOOTH = 1--><!--Device-SwitchKey-BLUETOOTH = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ BLUETOOTH = 1
 WIFI = 2
 ```
 
-Wi-Fi���ء�
+Wi-Fi开关。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchKey-WIFI = 2--><!--Device-SwitchKey-WIFI = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -60,11 +62,13 @@ Wi-Fi���ء�
 NFC = 3
 ```
 
-����ͨ��
+近场通信
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SwitchKey-NFC = 3--><!--Device-SwitchKey-NFC = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

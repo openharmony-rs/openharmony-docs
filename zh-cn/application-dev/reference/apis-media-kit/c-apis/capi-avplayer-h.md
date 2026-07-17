@@ -166,7 +166,7 @@ OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：设置成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，url为空或者player SetUrlSource执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，url为空或者player SetUrlSource执行失败。 |
 
 ### OH_AVPlayer_SetFDSource()
 
@@ -193,7 +193,7 @@ OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t of
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：fd设置成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SetFdSource执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：fd设置成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SetFdSource执行失败。 |
 
 ### OH_AVPlayer_SetDataSource()
 
@@ -212,14 +212,14 @@ OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* 
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | Pointer to an OH_AVPlayer instance |
-| OH_AVDataSourceExt* datasrc | Pointer to an OH_AVDataSourceExt instance |
+| [OH_AVDataSourceExt](../AVCodecKit/capi-codecbase-oh-avdatasourceext.md)* datasrc | Pointer to an OH_AVDataSourceExt instance |
 | void* userData | The handle passed in by the user is used to pass in the callback |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：设置成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者输入datasrc为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者输入datasrc为空指针。 |
 
 ### OH_AVPlayer_Prepare()
 
@@ -243,7 +243,7 @@ OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Prepare执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Prepare执行失败。 |
 
 ### OH_AVPlayer_Play()
 
@@ -267,7 +267,7 @@ OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Play执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Play执行失败。 |
 
 ### OH_AVPlayer_Pause()
 
@@ -291,7 +291,7 @@ OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Pause执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Pause执行失败。 |
 
 ### OH_AVPlayer_Stop()
 
@@ -315,7 +315,7 @@ OH_AVErrCode OH_AVPlayer_Stop(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Stop执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Stop执行失败。 |
 
 ### OH_AVPlayer_Reset()
 
@@ -339,7 +339,7 @@ OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Reset执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Reset执行失败。 |
 
 ### OH_AVPlayer_Release()
 
@@ -363,7 +363,7 @@ OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Release执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Release执行失败。 |
 
 ### OH_AVPlayer_ReleaseSync()
 
@@ -387,7 +387,7 @@ OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player ReleaseSync执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player ReleaseSync执行失败。 |
 
 ### OH_AVPlayer_GetMediaDescription()
 
@@ -411,7 +411,7 @@ OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../AVCodecKit/capi-core-oh-avformat.md) | 执行成功返回播放器媒体信息，否则返回nullptr。<br> 可能故障原因：<br> 1. 传入player指针不合法。<br> 2. 设置的播放资源不合法。 |
+| OH_AVFormat * | 执行成功返回播放器媒体信息，否则返回nullptr。<br> 可能故障原因：<br> 1. 传入player指针不合法。<br> 2. 设置的播放资源不合法。 |
 
 ### OH_AVPlayer_GetTrackDescription()
 
@@ -436,7 +436,7 @@ OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../AVCodecKit/capi-core-oh-avformat.md) | 执行成功按索引下标返回轨道信息，否则返回nullptr。<br> 可能故障原因：<br> 1. 传入player指针不合法。<br> 2. 设置的播放资源不合法。<br> 3. 轨道索引下标超出播放源文件数组界限。 |
+| OH_AVFormat * | 执行成功按索引下标返回轨道信息，否则返回nullptr。<br> 可能故障原因：<br> 1. 传入player指针不合法。<br> 2. 设置的播放资源不合法。<br> 3. 轨道索引下标超出播放源文件数组界限。 |
 
 ### OH_AVPlayer_SetVolume()
 
@@ -462,7 +462,7 @@ OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置音量。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SetVolume执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置音量。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SetVolume执行失败。 |
 
 ### OH_AVPlayer_Seek()
 
@@ -482,13 +482,13 @@ OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSee
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
 | int32_t mSeconds | 播放目标位置，精确到毫秒。 |
-| [AVPlayerSeekMode](capi-avplayer-base-h.md#avplayerseekmode) mode | 播放器的跳转模式。 |
+| AVPlayerSeekMode mode | 播放器的跳转模式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Seek执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player Seek执行失败。 |
 
 ### OH_AVPlayer_GetCurrentTime()
 
@@ -513,7 +513,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTim
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取当前播放位置。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetCurrentTime执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取当前播放位置。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetCurrentTime执行失败。 |
 
 ### OH_AVPlayer_GetVideoWidth()
 
@@ -538,7 +538,7 @@ OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取视频宽度。<br> AV_ERR_INVALID_VAL：输入player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取视频宽度。<br> AV_ERR_INVALID_VAL：输入player为空指针。 |
 
 ### OH_AVPlayer_GetVideoHeight()
 
@@ -563,7 +563,7 @@ OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeigh
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取视频高度。<br> AV_ERR_INVALID_VAL：输入player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取视频高度。<br> AV_ERR_INVALID_VAL：输入player为空指针。 |
 
 ### OH_AVPlayer_SetPlaybackSpeed()
 
@@ -582,13 +582,13 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed s
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed) speed | 速率模式。 |
+| AVPlaybackSpeed speed | 速率模式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置播放速率。<br> AV_ERR_INVALID_VAL：输入player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放速率。<br> AV_ERR_INVALID_VAL：输入player为空指针。 |
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
@@ -607,13 +607,13 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed) *speed | 速率模式。 |
+| AVPlaybackSpeed *speed | 速率模式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取播放速率。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetPlaybackSpeed执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取播放速率。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetPlaybackSpeed执行失败。 |
 
 ### OH_AVPlayer_GetPlaybackRate()
 
@@ -638,7 +638,7 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackRate(OH_AVPlayer *player, float *rate)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 如果成功获取当前播放器的播放速率，返回[AV_ERR_OK](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode)；<br> 否则返回{@link native_averrors.h}中定义的错误码。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 如果成功获取当前播放器的播放速率，返回[AV_ERR_OK](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode)；<br> 否则返回{@link native_averrors.h}中定义的错误码。 |
 
 ### OH_AVPlayer_SetAudioRendererInfo()
 
@@ -663,7 +663,7 @@ OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStrea
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置音频流类型。<br> AV_ERR_INVALID_VAL：输入player为空指针或者streamUsage值无效。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置音频流类型。<br> AV_ERR_INVALID_VAL：输入player为空指针或者streamUsage值无效。 |
 
 ### OH_AVPlayer_SetAudioInterruptMode()
 
@@ -688,7 +688,7 @@ OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInte
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置音频流的打断模式。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者interruptMode值无效。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置音频流的打断模式。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者interruptMode值无效。 |
 
 ### OH_AVPlayer_SetAudioEffectMode()
 
@@ -713,7 +713,7 @@ OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置音频流的音效模式。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者effectMode值无效。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置音频流的音效模式。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者effectMode值无效。 |
 
 ### OH_AVPlayer_SelectBitRate()
 
@@ -738,7 +738,7 @@ OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置码率。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SelectBitRate执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置码率。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SelectBitRate执行失败。 |
 
 ### OH_AVPlayer_SetVideoSurface()
 
@@ -757,13 +757,13 @@ OH_AVErrCode  OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *w
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| OHNativeWindow *window | 指向OHNativeWindow实例的指针。 |
+| [OHNativeWindow](../AVCodecKit/capi-codecbase-nativewindow.md) *window | 指向OHNativeWindow实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置播放画面窗口。<br> AV_ERR_INVALID_VAL：输入player为空指针，输入window为空指针或者player SetVideoSurface执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放画面窗口。<br> AV_ERR_INVALID_VAL：输入player为空指针，输入window为空指针或者player SetVideoSurface执行失败。 |
 
 ### OH_AVPlayer_GetDuration()
 
@@ -788,7 +788,7 @@ OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取媒体文件时长。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetDuration执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取媒体文件时长。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetDuration执行失败。 |
 
 ### OH_AVPlayer_GetState()
 
@@ -807,13 +807,13 @@ OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [AVPlayerState](capi-avplayer-base-h.md#avplayerstate) *state | 当前播放状态。 |
+| AVPlayerState *state | 当前播放状态。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取当前播放状态。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetState执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取当前播放状态。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetState执行失败。 |
 
 ### OH_AVPlayer_IsPlaying()
 
@@ -886,7 +886,7 @@ OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置循环播放。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SetLooping执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置循环播放。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SetLooping执行失败。 |
 
 ### OH_AVPlayer_SetPlayerCallback()
 
@@ -909,13 +909,13 @@ OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) callback | 回调对象指针。 |
+| AVPlayerCallback callback | 回调对象指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置播放器回调。<br> AV_ERR_INVALID_VAL：输入player为空指针，callback.onInfo或onError为空，或者player SetPlayerCallback执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放器回调。<br> AV_ERR_INVALID_VAL：输入player为空指针，callback.onInfo或onError为空，或者player SetPlayerCallback执行失败。 |
 
 ### OH_AVPlayer_SelectTrack()
 
@@ -940,7 +940,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SelectTrack执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player SelectTrack执行失败。 |
 
 ### OH_AVPlayer_DeselectTrack()
 
@@ -965,7 +965,7 @@ OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player DeselectTrack执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player DeselectTrack执行失败。 |
 
 ### OH_AVPlayer_GetCurrentTrack()
 
@@ -991,7 +991,7 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功获取轨道索引。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetCurrentTrack执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功获取轨道索引。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者player GetCurrentTrack执行失败。 |
 
 ### OH_AVPlayer_SetMediaKeySystemInfoCallback()
 
@@ -1016,7 +1016,7 @@ OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Play
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，callback为空指针，player SetDrmSystemInfoCallback，<br> SetDrmSystemInfoCallback或SetDrmSystemInfoCallback执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针，callback为空指针，player SetDrmSystemInfoCallback，<br> SetDrmSystemInfoCallback或SetDrmSystemInfoCallback执行失败。 |
 
 ### OH_AVPlayer_GetMediaKeySystemInfo()
 
@@ -1041,7 +1041,7 @@ OH_AVErrCode OH_AVPlayer_GetMediaKeySystemInfo(OH_AVPlayer *player, DRM_MediaKey
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针或者内存不足。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针或者内存不足。 |
 
 ### OH_AVPlayer_SetDecryptionConfig()
 
@@ -1067,7 +1067,7 @@ OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySessio
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针或者player SetDecryptionConfig执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入player为空指针或者player SetDecryptionConfig执行失败。 |
 
 ### OH_AVPlayer_SetOnInfoCallback()
 
@@ -1086,14 +1086,14 @@ OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInf
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) callback | 执行回调监听函数的指针，空指针表示取消设置播放器消息回调监听。 |
+| OH_AVPlayerOnInfoCallback callback | 执行回调监听函数的指针，空指针表示取消设置播放器消息回调监听。 |
 | void *userData | 指向应用调用者设置的实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_NO_MEMORY：内存分配失败。<br> AV_ERR_INVALID_VAL： 输入player为空指针或者函数执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_NO_MEMORY：内存分配失败。<br> AV_ERR_INVALID_VAL： 输入player为空指针或者函数执行失败。 |
 
 ### OH_AVPlayer_SetOnErrorCallback()
 
@@ -1112,14 +1112,14 @@ OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnEr
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback) callback | 执行回调监听函数的指针，空指针表示取消设置播放器错误回调监听。 |
+| OH_AVPlayerOnErrorCallback callback | 执行回调监听函数的指针，空指针表示取消设置播放器错误回调监听。 |
 | void *userData | 指向应用调用者设置的实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_NO_MEMORY：内存分配失败。<br> AV_ERR_INVALID_VAL： 输入player为空指针或者函数执行失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_NO_MEMORY：内存分配失败。<br> AV_ERR_INVALID_VAL： 输入player为空指针或者函数执行失败。 |
 
 ### OH_AVPlayer_SetVolumeMode()
 
@@ -1144,7 +1144,7 @@ OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_Volum
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置音频流音量模式。<br> AV_ERR_INVALID_VAL： 输入player为空指针或者volumeMode值无效。<br> AV_ERR_INVALID_STATE：函数在无效状态下调用，应先处于准备状态。<br> AV_ERR_SERVICE_DIED：系统错误。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置音频流音量模式。<br> AV_ERR_INVALID_VAL： 输入player为空指针或者volumeMode值无效。<br> AV_ERR_INVALID_STATE：函数在无效状态下调用，应先处于准备状态。<br> AV_ERR_SERVICE_DIED：系统错误。 |
 
 ### OH_AVPlayer_SetPlaybackRate()
 
@@ -1169,7 +1169,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置播放速率。<br> AV_ERR_OPERATE_NOT_PERMIT：如果在不支持的状态下调用或在直播期间调用。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者速率超出范围。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放速率。<br> AV_ERR_OPERATE_NOT_PERMIT：如果在不支持的状态下调用或在直播期间调用。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者速率超出范围。 |
 
 ### OH_AVPlayer_SetLoudnessGain()
 
@@ -1194,7 +1194,7 @@ OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：成功设置响度。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者输入的loudnessGain是无效参数。<br> AV_ERR_INVALID_STATE：函数在不正常的状态下调用，或者audioRendererInfo的usage参数不是<br> {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MUSIC，<br> {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MOVIE和<br> {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_AUDIOBOOK之一。<br> AV_ERR_SERVICE_DIED：系统错误。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置响度。<br> AV_ERR_INVALID_VAL：输入player为空指针，或者输入的loudnessGain是无效参数。<br> AV_ERR_INVALID_STATE：函数在不正常的状态下调用，或者audioRendererInfo的usage参数不是<br> {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MUSIC，<br> {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MOVIE和<br> {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_AUDIOBOOK之一。<br> AV_ERR_SERVICE_DIED：系统错误。 |
 
 ### OH_AVPlayer_GetPlaybackStatisticMetrics()
 
@@ -1218,7 +1218,7 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../AVCodecKit/capi-core-oh-avformat.md) | 执行成功返回播放器的统计指标信息（键值详情请参考avplayer_base.h中的{@link 变量}信息），否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
+| OH_AVFormat * | 执行成功返回播放器的统计指标信息（键值详情请参考avplayer_base.h中的{@link 变量}信息），否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
 
 ### OH_AVPlayer_AddFdSubtitleSource()
 
@@ -1245,7 +1245,7 @@ OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, in
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
 
 ### OH_AVPlayer_AddUrlSubtitleSource()
 
@@ -1270,7 +1270,7 @@ OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *u
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
 
 ### OH_AVPlayer_SetPlaybackRange()
 
@@ -1297,7 +1297,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsS
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
 
 ### OH_AVPlayer_SetMediaMuted()
 
@@ -1314,14 +1314,14 @@ OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaTy
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| OH_MediaType mediaType | 指定的媒体类型，参见{@link native_avcodec_base.h}中的[OH_MediaType](../AVCodecKit/capi-native-avcodec-base-h.md#oh_mediatype)。 |
+| [OH_MediaType](../AVCodecKit/capi-native-avcodec-base-h.md#oh_mediatype) mediaType | 指定的媒体类型，参见{@link native_avcodec_base.h}中的[OH_MediaType](../AVCodecKit/capi-native-avcodec-base-h.md#oh_mediatype)。 |
 | bool muted | true表示静音，false表示取消静音。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
 
 ### OH_AVPlayer_GetPlaybackPosition()
 
@@ -1389,13 +1389,13 @@ OH_AVErrCode OH_AVPlayer_SelectTrackWithMode(OH_AVPlayer *player, int32_t index,
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
 | int32_t index | 所选轨道的索引。 |
-| [AVPlayerTrackSwitchMode](capi-avplayer-base-h.md#avplayertrackswitchmode) mode | 切换模式。 |
+| AVPlayerTrackSwitchMode mode | 切换模式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
 
 ### OH_AVPlayer_SetAmplitudeUpdateCallback()
 
@@ -1414,14 +1414,14 @@ OH_AVErrCode OH_AVPlayer_SetAmplitudeUpdateCallback(OH_AVPlayer *player, OH_AVPl
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [OH_AVPlayerOnAmplitudeUpdateCallback](capi-avplayer-base-h.md#oh_avplayeronamplitudeupdatecallback) callback | 回调函数指针，nullptr表示取消注册回调。 |
+| OH_AVPlayerOnAmplitudeUpdateCallback callback | 回调函数指针，nullptr表示取消注册回调。 |
 | void *userData | 指向用户特定数据的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
 
 ### OH_AVPlayer_SetSeiReceivedCallback()
 
@@ -1442,14 +1442,14 @@ OH_AVErrCode OH_AVPlayer_SetSeiReceivedCallback(OH_AVPlayer *player, const int32
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
 | const int32_t *payloadTypes | 负载类型数组。 |
 | uint32_t typeNum | 负载类型数组的大小。 |
-| [OH_AVPlayerOnSeiMessageReceivedCallback](capi-avplayer-base-h.md#oh_avplayeronseimessagereceivedcallback) callback | 回调函数指针，nullptr表示取消注册回调。 |
+| OH_AVPlayerOnSeiMessageReceivedCallback callback | 回调函数指针，nullptr表示取消注册回调。 |
 | void *userData | 指向用户特定数据的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。 |
 
 ### OH_AVSeiMessage_GetSeiCount()
 
@@ -1467,7 +1467,7 @@ uint32_t OH_AVSeiMessage_GetSeiCount(OH_AVSeiMessageArray *message)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) *message | 指向OH_AVSeiMessageArray实例的指针。 |
+| OH_AVSeiMessageArray *message | 指向OH_AVSeiMessageArray实例的指针。 |
 
 **返回：**
 
@@ -1491,14 +1491,14 @@ OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t inde
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) *message | 指向OH_AVSeiMessageArray实例的指针。 |
+| OH_AVSeiMessageArray *message | 指向OH_AVSeiMessageArray实例的指针。 |
 | uint32_t index | 消息项的索引。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../AVCodecKit/capi-core-oh-avformat.md) | 该消息项的SEI。 |
+| OH_AVFormat * | 该消息项的SEI。 |
 
 ### OH_AVPlayer_SetTargetVideoWindowSize()
 
@@ -1524,7 +1524,7 @@ OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t w
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br> AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br> AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br> AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br> AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
 
 ### OH_AVPlayer_SetVideoSuperResolutionEnable()
 
@@ -1549,7 +1549,7 @@ OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br> AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br> AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br> AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br> AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
 
 ### OH_AVPlaybackStrategy_Create()
 
@@ -1567,7 +1567,7 @@ OH_AVPlaybackStrategy *OH_AVPlaybackStrategy_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVPlaybackStrategy *](capi-avplayer-oh-avplaybackstrategy.md) | 一个播放策略实例，失败时返回空指针。 |
+| OH_AVPlaybackStrategy * | 一个播放策略实例，失败时返回空指针。 |
 
 ### OH_AVPlaybackStrategy_Destroy()
 
@@ -1585,13 +1585,13 @@ OH_AVErrCode OH_AVPlaybackStrategy_Destroy(OH_AVPlaybackStrategy *strategy)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | OH_AVPlaybackStrategy实例。 |
+| OH_AVPlaybackStrategy *strategy | OH_AVPlaybackStrategy实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredWidth()
 
@@ -1609,14 +1609,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredWidth(OH_AVPlaybackStrategy *stra
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
+| OH_AVPlaybackStrategy *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
 | int32_t width | avplayer启动时选择播放的首选宽度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredHeight()
 
@@ -1634,14 +1634,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredHeight(OH_AVPlaybackStrategy *str
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
+| OH_AVPlaybackStrategy *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
 | int32_t height | avplayer启动时选择播放的首选高度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredBufferDuration()
 
@@ -1659,14 +1659,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredBufferDuration(OH_AVPlaybackStrat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
+| OH_AVPlaybackStrategy *strategy | avplayer使用的OH_AVPlaybackStrategy。 |
 | int32_t ms | avplayer启动时选择播放的首选缓冲时长。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredHdr()
 
@@ -1684,14 +1684,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredHdr(OH_AVPlaybackStrategy *strate
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | bool enabled | true表示启用HDR，false表示禁用。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredSubtitleLanguage()
 
@@ -1709,14 +1709,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredSubtitleLanguage(OH_AVPlaybackStr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | const char *lang | 字幕语言代码（例如"zh"）。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredAudioLanguage()
 
@@ -1734,14 +1734,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredAudioLanguage(OH_AVPlaybackStrate
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | const char *lang | 音频语言代码（例如"en"）。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetMutedMediaType()
 
@@ -1759,14 +1759,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetMutedMediaType(OH_AVPlaybackStrategy *stra
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
-| OH_MediaType mediaType | 要静音的媒体类型。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| [OH_MediaType](../AVCodecKit/capi-native-avcodec-base-h.md#oh_mediatype) mediaType | 要静音的媒体类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetShowFirstFrameOnPrepare()
 
@@ -1784,14 +1784,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetShowFirstFrameOnPrepare(OH_AVPlaybackStrat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | bool enabled | true表示显示，false表示不显示。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay()
 
@@ -1809,14 +1809,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(OH_AVPlaybackStr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | double seconds | 自动快速播放的阈值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetSuperResolutionEnable()
 
@@ -1834,14 +1834,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetSuperResolutionEnable(OH_AVPlaybackStrateg
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | bool enabled | true表示启用，false表示禁用。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetPreferredBufferDurationForPlaying()
 
@@ -1859,14 +1859,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredBufferDurationForPlaying(OH_AVPla
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | double seconds | 缓冲时长（秒）。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlaybackStrategy_SetKeepDecodingOnMute()
 
@@ -1884,14 +1884,14 @@ OH_AVErrCode OH_AVPlaybackStrategy_SetKeepDecodingOnMute(OH_AVPlaybackStrategy *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 指向OH_AVPlaybackStrategy的指针。 |
+| OH_AVPlaybackStrategy *strategy | 指向OH_AVPlaybackStrategy的指针。 |
 | bool enabled | true表示继续解码，false表示静音时暂停解码。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的strategy为空指针。 |
 
 ### OH_AVPlayer_SetPlaybackStrategy()
 
@@ -1910,13 +1910,13 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackStrategy(OH_AVPlayer *player, OH_AVPlaybackS
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | 播放策略实例。 |
+| OH_AVPlaybackStrategy *strategy | 播放策略实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player为空指针。<br> AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。 |
 
 ### OH_AVPlayer_GetPlaybackInfo()
 
@@ -1940,7 +1940,7 @@ OH_AVFormat* OH_AVPlayer_GetPlaybackInfo(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat*](../AVCodecKit/capi-core-oh-avformat.md) | 返回指向OH_AVFormat实例的指针。<br> 若player为空指针或无效，则返回空指针。 |
+| OH_AVFormat* | 返回指向OH_AVFormat实例的指针。<br> 若player为空指针或无效，则返回空指针。 |
 
 ### OH_AVPlayer_SetMediaSource()
 
@@ -1959,13 +1959,13 @@ OH_AVErrCode OH_AVPlayer_SetMediaSource(OH_AVPlayer *player, OH_AVMediaSource *s
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVMediaSource *source | 媒体源。 |
+| [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 媒体源。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player或者source为空指针，或player设置URL源失败。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示输入的player或者source为空指针，或player设置URL源失败。 |
 
 ### OH_AVPlayer_GetTrackCount()
 
@@ -2014,7 +2014,7 @@ OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../AVCodecKit/capi-core-oh-avformat.md) | 返回指向OH_AVFormat实例的指针。<br> 若player为空指针或无效，或trackIndex无效，则返回空指针。 |
+| OH_AVFormat * | 返回指向OH_AVFormat实例的指针。<br> 若player为空指针或无效，或trackIndex无效，则返回空指针。 |
 
 ### OH_AVPlayer_SetVideoSideOutput()
 
@@ -2033,7 +2033,7 @@ Method to set video decoded frame output callback. This API can be called onlywh
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer *player | Pointer to an OH_AVPlayer instance. |
-| OHNativeWindow *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../AVCodecKit/capi-codecbase-nativewindow.md) |
+| [OHNativeWindow](../AVCodecKit/capi-codecbase-nativewindow.md) *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../ArkGraphics2D/capi-nativewindow-nativewindow.md) |
 
 **返回：**
 
@@ -2063,6 +2063,6 @@ Method to get one video decoded frame. This API can be called only when the avpl
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | Returns OH_VIDEO_OUTPUT_OK when got a frame.<br>         Returns OH_VIDEO_OUTPUT_NO_IMAGE when there is no frame ready to render. |
+| OH_VideoOutputResult | Returns OH_VIDEO_OUTPUT_OK when got a frame.<br>         Returns OH_VIDEO_OUTPUT_NO_IMAGE when there is no frame ready to render. |
 
 

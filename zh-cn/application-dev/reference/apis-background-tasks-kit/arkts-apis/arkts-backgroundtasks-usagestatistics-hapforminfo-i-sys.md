@@ -4,9 +4,17 @@ FA模型的使用信息属性集合。
 
 **起始版本：** 9
 
+<!--Device-usageStatistics-interface HapFormInfo--><!--Device-usageStatistics-interface HapFormInfo-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
 
 ## count
 
@@ -19,6 +27,8 @@ count: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-HapFormInfo-count: int--><!--Device-HapFormInfo-count: int-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -36,6 +46,8 @@ formDimension: number
 
 **起始版本：** 9
 
+<!--Device-HapFormInfo-formDimension: int--><!--Device-HapFormInfo-formDimension: int-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ formId: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-HapFormInfo-formId: long--><!--Device-HapFormInfo-formId: long-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -68,6 +82,8 @@ formLastUsedTime: number
 
 **起始版本：** 9
 
+<!--Device-HapFormInfo-formLastUsedTime: long--><!--Device-HapFormInfo-formLastUsedTime: long-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ formName: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-HapFormInfo-formName: string--><!--Device-HapFormInfo-formName: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 

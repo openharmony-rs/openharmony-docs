@@ -50,9 +50,91 @@ Defines the outline radius property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare type OutlineRadiuses = {
+  /**
+   * top-left property.
+   *
+   *******/
+  /**
+   * top-left property.
+   *
+   ********/
+  topLeft?: Dimension;
+
+  /**
+   * top-right property.
+   *
+   *******/
+  /**
+   * top-right property.
+   *
+   ********/
+  topRight?: Dimension;
+
+  /**
+   * bottom-left property.
+   *
+   *******/
+  /**
+   * bottom-left property.
+   *
+   ********/
+  bottomLeft?: Dimension;
+
+  /**
+   * bottom-right property.
+   *
+   *******/
+  /**
+   * bottom-right property.
+   *
+   ********/
+  bottomRight?: Dimension;
+}--><!--Device-unnamed-declare type OutlineRadiuses = {
+  /**
+   * top-left property.
+   *
+   *******/
+  /**
+   * top-left property.
+   *
+   ********/
+  topLeft?: Dimension;
+
+  /**
+   * top-right property.
+   *
+   *******/
+  /**
+   * top-right property.
+   *
+   ********/
+  topRight?: Dimension;
+
+  /**
+   * bottom-left property.
+   *
+   *******/
+  /**
+   * bottom-left property.
+   *
+   ********/
+  bottomLeft?: Dimension;
+
+  /**
+   * bottom-right property.
+   *
+   *******/
+  /**
+   * bottom-right property.
+   *
+   ********/
+  bottomRight?: Dimension;
+}-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

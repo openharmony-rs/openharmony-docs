@@ -1,12 +1,10 @@
 # State
 
-```TypeScript
-enum State
-```
-
-���ļ�����״̬��Ϊö�����͡�
+云文件下载状态，为枚举类型。
 
 **起始版本：** 11
+
+<!--Device-cloudSync-enum State--><!--Device-cloudSync-enum State-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -16,9 +14,11 @@ enum State
 RUNNING = 0
 ```
 
-���ļ����������С�
+云文件正在下载中。
 
 **起始版本：** 11
+
+<!--Device-State-RUNNING = 0--><!--Device-State-RUNNING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -28,9 +28,11 @@ RUNNING = 0
 COMPLETED = 1
 ```
 
-���ļ�������ɡ�
+云文件下载完成。
 
 **起始版本：** 11
+
+<!--Device-State-COMPLETED = 1--><!--Device-State-COMPLETED = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -40,9 +42,11 @@ COMPLETED = 1
 FAILED = 2
 ```
 
-���ļ�����ʧ�ܡ�
+云文件下载失败。
 
 **起始版本：** 11
+
+<!--Device-State-FAILED = 2--><!--Device-State-FAILED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -52,9 +56,11 @@ FAILED = 2
 STOPPED = 3
 ```
 
-���ļ�������ֹͣ��
+云文件下载已停止。
 
 **起始版本：** 11
+
+<!--Device-State-STOPPED = 3--><!--Device-State-STOPPED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

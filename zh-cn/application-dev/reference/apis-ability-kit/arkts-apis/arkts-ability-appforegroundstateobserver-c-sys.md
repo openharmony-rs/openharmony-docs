@@ -1,10 +1,10 @@
 # AppForegroundStateObserver（系统接口）
 
-定义应用启动和退出的状态监听，可以作为
-[appManager.on('appForegroundState')](arkts-ability-on-f-sys.md#on-4)
-的入参监听所有应用的启动和退出的变化。
+定义应用启动和退出的状态监听，可以作为[appManager.on('appForegroundState')](arkts-ability-appmanager-on-f-sys.md#on-4)的入参监听所有应用的启动和退出的变化。
 
 **起始版本：** 11
+
+<!--Device-unnamed-export default class AppForegroundStateObserver--><!--Device-unnamed-export default class AppForegroundStateObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -20,6 +20,8 @@ onAppStateChanged(appStateData: AppStateData): void
 
 **起始版本：** 11
 
+<!--Device-AppForegroundStateObserver-onAppStateChanged(appStateData: AppStateData): void--><!--Device-AppForegroundStateObserver-onAppStateChanged(appStateData: AppStateData): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -28,5 +30,5 @@ onAppStateChanged(appStateData: AppStateData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appStateData | AppStateData | 是 | 应用状态信息。 |
+| appStateData | [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 是 | 应用状态信息。 |
 

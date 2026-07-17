@@ -4,9 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-floatView-interface FloatViewRectChangeInfo--><!--Device-floatView-interface FloatViewRectChangeInfo-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatView } from '@kit.ArkUI';
+```
 
 ## reason
 
@@ -28,6 +34,8 @@ reason: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewRectChangeInfo-reason: string--><!--Device-FloatViewRectChangeInfo-reason: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowRect
@@ -44,6 +52,8 @@ windowRect: window.Rect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewRectChangeInfo-windowRect: window.Rect--><!--Device-FloatViewRectChangeInfo-windowRect: window.Rect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowScale
@@ -59,6 +69,8 @@ windowScale: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewRectChangeInfo-windowScale: double--><!--Device-FloatViewRectChangeInfo-windowScale: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

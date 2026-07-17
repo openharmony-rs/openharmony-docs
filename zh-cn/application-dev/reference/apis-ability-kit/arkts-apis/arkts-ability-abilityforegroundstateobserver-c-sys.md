@@ -4,6 +4,8 @@
 
 **起始版本：** 11
 
+<!--Device-unnamed-export default class AbilityForegroundStateObserver--><!--Device-unnamed-export default class AbilityForegroundStateObserver-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -18,6 +20,8 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
 **起始版本：** 11
 
+<!--Device-AbilityForegroundStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void--><!--Device-AbilityForegroundStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -26,5 +30,5 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| abilityStateData | AbilityStateData | 是 | Ability状态信息。 |
+| abilityStateData | [AbilityStateData](arkts-ability-abilitystatedata-c.md) | 是 | Ability状态信息。 |
 

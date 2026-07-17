@@ -1,5 +1,11 @@
 # allocUninitializedFromPool
 
+## 导入模块
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+```
+
 ## allocUninitializedFromPool
 
 ```TypeScript
@@ -10,7 +16,9 @@ function allocUninitializedFromPool(size: number): FastBuffer
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-fastbuffer-function allocUninitializedFromPool(size: number): FastBuffer--><!--Device-fastbuffer-function allocUninitializedFromPool(size: number): FastBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -24,7 +32,7 @@ function allocUninitializedFromPool(size: number): FastBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| FastBuffer | 未初始化的Buffer实例。 |
+| [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) | 未初始化的Buffer实例。 |
 
 **示例：**
 

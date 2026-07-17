@@ -1,5 +1,11 @@
 # createChecksum
 
+## 导入模块
+
+```TypeScript
+import { zlib } from '@kit.BasicServicesKit';
+```
+
 ## createChecksum
 
 ```TypeScript
@@ -10,7 +16,9 @@ function createChecksum(): Promise<Checksum>
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-zlib-function createChecksum(): Promise<Checksum>--><!--Device-zlib-function createChecksum(): Promise<Checksum>-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -18,7 +26,7 @@ function createChecksum(): Promise<Checksum>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Checksum&gt; | Promise对象。返回校验对象实例。 |
+| Promise<Checksum> | Promise对象。返回校验对象实例。 |
 
 **示例：**
 

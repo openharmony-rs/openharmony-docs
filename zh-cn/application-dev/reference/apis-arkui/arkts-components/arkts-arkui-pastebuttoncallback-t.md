@@ -10,7 +10,9 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本18开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult, error?: BusinessError<void>) => void--><!--Device-unnamed-type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult, error?: BusinessError<void>) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

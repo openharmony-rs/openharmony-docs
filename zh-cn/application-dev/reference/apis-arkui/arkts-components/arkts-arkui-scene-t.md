@@ -8,7 +8,9 @@ declare type Scene = import('../api/@ohos.graphics.scene').Scene
 
 **起始版本：** 12
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type Scene = import('../api/@ohos.graphics.scene').Scene--><!--Device-unnamed-declare type Scene = import('../api/@ohos.graphics.scene').Scene-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 

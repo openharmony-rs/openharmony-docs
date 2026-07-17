@@ -1,17 +1,24 @@
 # connectDfs
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## connectDfs
 
 ```TypeScript
 declare function connectDfs(networkId: string, listeners: DfsListeners): Promise<void>
 ```
 
-业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内
-[onStatus](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#onstatus12)通知应用。
+业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#onstatus12)通知应用。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-unnamed-declare function connectDfs(networkId: string, listeners: DfsListeners): Promise<void>--><!--Device-unnamed-declare function connectDfs(networkId: string, listeners: DfsListeners): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -19,14 +26,14 @@ declare function connectDfs(networkId: string, listeners: DfsListeners): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkId | string | 是 | 设备的网络Id。通过[distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md)接口调用[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicebasicinfo-i.md)获得。 |
-| listeners | DfsListeners | 是 | 分布式文件系统状态监听器。 |
+| networkId | string | 是 | 设备的网络Id。通过[distributedDeviceManager](../../apis-distributed-service-kit/arkts-apis/arkts-distributeddevicemanager.md)接口调用[DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)获得。 |
+| listeners | [DfsListeners](arkts-corefile-file-fs-dfslisteners-i.md) | 是 | 分布式文件系统状态监听器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 

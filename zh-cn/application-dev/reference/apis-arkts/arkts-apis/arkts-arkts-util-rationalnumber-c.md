@@ -4,7 +4,15 @@
 
 **起始版本：** 8
 
+<!--Device-util-class RationalNumber--><!--Device-util-class RationalNumber-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
 
 ## compare
 
@@ -18,13 +26,15 @@ compare(another: RationalNumber): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-compare(another: RationalNumber): number--><!--Device-RationalNumber-compare(another: RationalNumber): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| another | RationalNumber | 是 | 表示其他有理数的对象。 |
+| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
 
 **返回值：**
 
@@ -46,13 +56,15 @@ compareTo(another: RationalNumber): number
 
 **替代接口：** compare
 
+<!--Device-RationalNumber-compareTo(another: RationalNumber): number--><!--Device-RationalNumber-compareTo(another: RationalNumber): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| another | RationalNumber | 是 | 表示其他有理数的对象。 |
+| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
 
 **返回值：**
 
@@ -72,7 +84,9 @@ constructor(numerator: number, denominator: number)
 
 **废弃版本：** 9
 
-**替代接口：** [parseRationalNumber](arkts-arkts-util-rationalnumber-c.md#parseRationalNumber-1)
+**替代接口：** [parseRationalNumber](arkts-arkts-util-rationalnumber-c.md#parserationalnumber-1)
+
+<!--Device-RationalNumber-constructor(numerator: number, denominator: number)--><!--Device-RationalNumber-constructor(numerator: number, denominator: number)-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -102,6 +116,8 @@ constructor()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-constructor()--><!--Device-RationalNumber-constructor()-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例：**
@@ -119,14 +135,16 @@ static createRationalFromString(rationalString: string): RationalNumber
 
 根据给定的字符串创建一个 **RationalNumber** 对象。
 
-> **NOTE**
->
-> **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息
+> **NOTE**  
+>  
+> **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息  
 > "createRationalFromString: The type of Parameter must be integer string"。
 
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RationalNumber-static createRationalFromString(rationalString: string): RationalNumber--><!--Device-RationalNumber-static createRationalFromString(rationalString: string): RationalNumber-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -140,7 +158,7 @@ static createRationalFromString(rationalString: string): RationalNumber
 
 | 类型 | 说明 |
 | --- | --- |
-| RationalNumber | 返回根据给定字符串生成的 RationalNumber 对象。 |
+| [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 返回根据给定字符串生成的 RationalNumber 对象。 |
 
 **示例：**
 
@@ -160,6 +178,8 @@ equals(obj: Object): boolean
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RationalNumber-equals(obj: Object): boolean--><!--Device-RationalNumber-equals(obj: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -209,7 +229,9 @@ static getCommonDivisor(number1: number, number2: number): number
 
 **废弃版本：** 9
 
-**替代接口：** [getCommonFactor](arkts-arkts-util-rationalnumber-c.md#getCommonFactor-1)
+**替代接口：** [getCommonFactor](arkts-arkts-util-rationalnumber-c.md#getcommonfactor-1)
+
+<!--Device-RationalNumber-static getCommonDivisor(number1: number, number2: number): number--><!--Device-RationalNumber-static getCommonDivisor(number1: number, number2: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -234,14 +256,16 @@ static getCommonFactor(number1: number, number2: number): number
 
 获取两个指定整数的最大公约数。
 
-> **NOTE**
->
-> **number1** 和 **number2** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息
+> **NOTE**  
+>  
+> **number1** 和 **number2** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息  
 > "getCommonFactor: The type of Parameter must be integer"。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RationalNumber-static getCommonFactor(number1: number, number2: number): number--><!--Device-RationalNumber-static getCommonFactor(number1: number, number2: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -249,8 +273,8 @@ static getCommonFactor(number1: number, number2: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE &lt;= number1 &lt;=<br/>Number.MAX_VALUE。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE &lt;= number2 &lt;=<br/>Number.MAX_VALUE。 |
+| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE &lt;= number1 &lt;=Number.MAX_VALUE。 |
+| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE &lt;= number2 &lt;=Number.MAX_VALUE。 |
 
 **返回值：**
 
@@ -278,6 +302,8 @@ getDenominator(): number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RationalNumber-getDenominator(): number--><!--Device-RationalNumber-getDenominator(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -319,6 +345,8 @@ getNumerator(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-getNumerator(): number--><!--Device-RationalNumber-getNumerator(): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -359,13 +387,15 @@ isFinite(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-isFinite(): boolean--><!--Device-RationalNumber-isFinite(): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果此 **RationalNumber** 对象表示有限值（分母不为 **0**），则返回 **true**；<br/>否则返回 **false**。 |
+| boolean | 检查结果。如果此 **RationalNumber** 对象表示有限值（分母不为 **0**），则返回 **true**；否则返回 **false**。 |
 
 **示例：**
 
@@ -399,13 +429,15 @@ isNaN(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-isNaN(): boolean--><!--Device-RationalNumber-isNaN(): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果此 **RationalNumber** 对象为 NaN（分母和分子都为 **0**），则返回 **true**；<br/>否则返回 **false**。 |
+| boolean | 检查结果。如果此 **RationalNumber** 对象为 NaN（分母和分子都为 **0**），则返回 **true**；否则返回 **false**。 |
 
 **示例：**
 
@@ -439,13 +471,15 @@ isZero(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-isZero(): boolean--><!--Device-RationalNumber-isZero(): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果此 **RationalNumber** 对象的值为 **0**，则返回 **true**；否则返回<br/>**false**。 |
+| boolean | 检查结果。如果此 **RationalNumber** 对象的值为 **0**，则返回 **true**；否则返回**false**。 |
 
 **示例：**
 
@@ -475,14 +509,16 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 
 根据给定的分子和分母创建一个 **RationalNumber** 实例。
 
-> **NOTE**
->
-> **numerator** 和 **denominator** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息
+> **NOTE**  
+>  
+> **numerator** 和 **denominator** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息  
 > "parseRationalNumber: The type of Parameter must be integer"。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RationalNumber-static parseRationalNumber(numerator: number, denominator: number): RationalNumber--><!--Device-RationalNumber-static parseRationalNumber(numerator: number, denominator: number): RationalNumber-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -497,7 +533,7 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 
 | 类型 | 说明 |
 | --- | --- |
-| RationalNumber | 获取到的 **RationalNumber** 对象。 |
+| [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 获取到的 **RationalNumber** 对象。 |
 
 **示例：**
 
@@ -518,13 +554,15 @@ toString(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RationalNumber-toString(): string--><!--Device-RationalNumber-toString(): string-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 正常情况下返回以分子/分母格式的字符串，例如 3/5；如果此对象的分子为 **0**，则返回<br/>**0/1**；如果分母为 **0**，则返回 **Infinity**；如果分子和分母都为 **0**，则返回 **NaN**。 |
+| string | 正常情况下返回以分子/分母格式的字符串，例如 3/5；如果此对象的分子为 **0**，则返回**0/1**；如果分母为 **0**，则返回 **Infinity**；如果分子和分母都为 **0**，则返回 **NaN**。 |
 
 **示例：**
 
@@ -557,6 +595,8 @@ valueOf(): number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RationalNumber-valueOf(): number--><!--Device-RationalNumber-valueOf(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

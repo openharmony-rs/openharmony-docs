@@ -1,5 +1,11 @@
 # getThreadPriority
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## getThreadPriority
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getThreadPriority(v: number): number
 
 **废弃版本：** 9
 
-**替代接口：** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getThreadPriority-1)
+**替代接口：** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getthreadpriority-1)
+
+<!--Device-process-function getThreadPriority(v: number): number--><!--Device-process-function getThreadPriority(v: number): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

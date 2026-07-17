@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-text-class ParagraphBuilder--><!--Device-text-class ParagraphBuilder-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## addPlaceholder
 
@@ -18,21 +26,20 @@ addPlaceholder(placeholderSpan: PlaceholderSpan): void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-addPlaceholder(placeholderSpan: PlaceholderSpan): void--><!--Device-ParagraphBuilder-addPlaceholder(placeholderSpan: PlaceholderSpan): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| placeholderSpan | PlaceholderSpan | 是 | 定义了占位符的尺寸、对齐方式、基线类型以及基线偏移量。 |
+| placeholderSpan | [PlaceholderSpan](arkts-arkgraphics2d-text-placeholderspan-i.md) | 是 | 定义了占位符的尺寸、对齐方式、基线类型以及基线偏移量。 |
 
 **示例：**
 
 ```TypeScript
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myParagraphStyle: text.ParagraphStyle = {
@@ -77,13 +84,15 @@ addSymbol(symbolId: number): void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-addSymbol(symbolId: int): void--><!--Device-ParagraphBuilder-addSymbol(symbolId: int): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| symbolId | number | 是 | 要设置的symbol码位，十六进制，当前支持的取值范围为：0xF0000-0xF0C97。可设置的symbol码位（即列表视图下的unicode值）请见<br/>[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)。 |
+| symbolId | number | 是 | 要设置的symbol码位，十六进制，当前支持的取值范围为：0xF0000-0xF0C97。可设置的symbol码位（即列表视图下的unicode值）请见[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)。 |
 
 **示例：**
 
@@ -132,6 +141,8 @@ addText(text: string): void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-addText(text: string): void--><!--Device-ParagraphBuilder-addText(text: string): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -143,10 +154,7 @@ addText(text: string): void
 **示例：**
 
 ```TypeScript
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -189,19 +197,20 @@ build(): Paragraph
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-build(): Paragraph--><!--Device-ParagraphBuilder-build(): Paragraph-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Paragraph | 可用于后续渲染的 Paragraph 对象。 |
+| [Paragraph](../../apis-arkui/arkts-apis/arkts-arkui-paragraph-t.md) | 可用于后续渲染的 Paragraph 对象。 |
 
 **示例：**
 
 ```TypeScript
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -245,13 +254,15 @@ buildLineTypeset(): LineTypeset
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-buildLineTypeset(): LineTypeset--><!--Device-ParagraphBuilder-buildLineTypeset(): LineTypeset-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| LineTypeset | 可用于后续渲染的LineTypeset对象。 |
+| [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md) | 可用于后续渲染的LineTypeset对象。 |
 
 **示例：**
 
@@ -295,14 +306,16 @@ ParagraphBuilder对象的构造函数。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-constructor(paragraphStyle: ParagraphStyle, fontCollection: FontCollection)--><!--Device-ParagraphBuilder-constructor(paragraphStyle: ParagraphStyle, fontCollection: FontCollection)-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| paragraphStyle | ParagraphStyle | 是 | 段落样式。 |
-| fontCollection | FontCollection | 是 | 字体集。 |
+| paragraphStyle | [ParagraphStyle](arkts-arkgraphics2d-text-paragraphstyle-i.md) | 是 | 段落样式。 |
+| fontCollection | [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 是 | 字体集。 |
 
 **示例：**
 
@@ -349,15 +362,14 @@ popStyle(): void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ParagraphBuilder-popStyle(): void--><!--Device-ParagraphBuilder-popStyle(): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **示例：**
 
 ```TypeScript
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -397,13 +409,15 @@ pushStyle(textStyle: TextStyle): void
 
 更新当前文本块的样式。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 更新当前文本块的样式，之后添加文字均采用该样式。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphBuilder-pushStyle(textStyle: TextStyle): void--><!--Device-ParagraphBuilder-pushStyle(textStyle: TextStyle): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -411,15 +425,12 @@ pushStyle(textStyle: TextStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| textStyle | TextStyle | 是 | 包含了对文本的各种视觉属性的定义，如字体、字号、颜色、字重、字间距、行距、装饰（如下划线、删除线）、文本阴影等。 |
+| textStyle | [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md) | 是 | 包含了对文本的各种视觉属性的定义，如字体、字号、颜色、字重、字间距、行距、装饰（如下划线、删除线）、文本阴影等。 |
 
 **示例：**
 
 ```TypeScript
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {

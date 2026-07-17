@@ -1,12 +1,10 @@
 # TextUndefinedGlyphDisplay
 
-```TypeScript
-enum TextUndefinedGlyphDisplay
-```
-
 文本未定义字形时的显示方式枚举。
 
 **起始版本：** 20
+
+<!--Device-text-enum TextUndefinedGlyphDisplay--><!--Device-text-enum TextUndefinedGlyphDisplay-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ USE_DEFAULT = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-TextUndefinedGlyphDisplay-USE_DEFAULT = 0--><!--Device-TextUndefinedGlyphDisplay-USE_DEFAULT = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## USE_TOFU
@@ -35,6 +35,8 @@ USE_TOFU = 1
 **起始版本：** 20
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextUndefinedGlyphDisplay-USE_TOFU = 1--><!--Device-TextUndefinedGlyphDisplay-USE_TOFU = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

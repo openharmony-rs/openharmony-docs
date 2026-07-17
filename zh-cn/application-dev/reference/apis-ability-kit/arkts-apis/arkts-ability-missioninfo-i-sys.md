@@ -1,10 +1,10 @@
 # MissionInfo（系统接口）
 
-表示任务的详细信息，可以通过
-[getMissionInfo](arkts-ability-getmissioninfo-f-sys.md#getmissioninfo-1)
-获取。
+表示任务的详细信息，可以通过[getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md#getmissioninfo-1)获取。
 
 **起始版本：** 8
+
+<!--Device-unnamed-export interface MissionInfo--><!--Device-unnamed-export interface MissionInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -22,6 +22,8 @@ abilityState: number
 
 **起始版本：** 10
 
+<!--Device-MissionInfo-abilityState: int--><!--Device-MissionInfo-abilityState: int-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -37,6 +39,8 @@ continuable: boolean
 **类型：** boolean
 
 **起始版本：** 8
+
+<!--Device-MissionInfo-continuable: boolean--><!--Device-MissionInfo-continuable: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -54,6 +58,8 @@ iconPath: string
 
 **起始版本：** 8
 
+<!--Device-MissionInfo-iconPath: string--><!--Device-MissionInfo-iconPath: string-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -69,6 +75,8 @@ label: string
 **类型：** string
 
 **起始版本：** 8
+
+<!--Device-MissionInfo-label: string--><!--Device-MissionInfo-label: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -86,6 +94,8 @@ lockedState: boolean
 
 **起始版本：** 8
 
+<!--Device-MissionInfo-lockedState: boolean--><!--Device-MissionInfo-lockedState: boolean-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -101,6 +111,8 @@ missionId: number
 **类型：** number
 
 **起始版本：** 8
+
+<!--Device-MissionInfo-missionId: int--><!--Device-MissionInfo-missionId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -118,6 +130,8 @@ runningState: number
 
 **起始版本：** 8
 
+<!--Device-MissionInfo-runningState: int--><!--Device-MissionInfo-runningState: int-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -133,6 +147,8 @@ timestamp: string
 **类型：** string
 
 **起始版本：** 8
+
+<!--Device-MissionInfo-timestamp: string--><!--Device-MissionInfo-timestamp: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -150,6 +166,8 @@ unclearable: boolean
 
 **起始版本：** 10
 
+<!--Device-MissionInfo-unclearable: boolean--><!--Device-MissionInfo-unclearable: boolean-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -165,6 +183,8 @@ want: Want
 **类型：** Want
 
 **起始版本：** 8
+
+<!--Device-MissionInfo-want: Want--><!--Device-MissionInfo-want: Want-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 

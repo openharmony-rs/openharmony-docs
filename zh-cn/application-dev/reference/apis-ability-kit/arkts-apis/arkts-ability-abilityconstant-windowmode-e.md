@@ -1,16 +1,10 @@
 # WindowMode
 
-```TypeScript
-export enum WindowMode
-```
-
-启动UIAbility时窗口的创建模式，类型为枚举。可配合
-[startAbility](arkts-ability-uiabilitycontext-c.md#startAbility-3)
-方法使用。
+启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-3)方法使用。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-AbilityConstant-export enum WindowMode--><!--Device-AbilityConstant-export enum WindowMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,6 +20,8 @@ WINDOW_MODE_FULLSCREEN = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowMode-WINDOW_MODE_FULLSCREEN = 1--><!--Device-WindowMode-WINDOW_MODE_FULLSCREEN = 1-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## WINDOW_MODE_SPLIT_PRIMARY
@@ -40,6 +36,8 @@ WINDOW_MODE_SPLIT_PRIMARY = 100
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowMode-WINDOW_MODE_SPLIT_PRIMARY = 100--><!--Device-WindowMode-WINDOW_MODE_SPLIT_PRIMARY = 100-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## WINDOW_MODE_SPLIT_SECONDARY
@@ -53,6 +51,8 @@ WINDOW_MODE_SPLIT_SECONDARY = 101
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowMode-WINDOW_MODE_SPLIT_SECONDARY = 101--><!--Device-WindowMode-WINDOW_MODE_SPLIT_SECONDARY = 101-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

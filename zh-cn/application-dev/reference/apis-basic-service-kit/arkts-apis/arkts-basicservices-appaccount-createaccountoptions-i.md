@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-appAccount-interface CreateAccountOptions--><!--Device-appAccount-interface CreateAccountOptions-End-->
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+## 导入模块
+
+```TypeScript
+import { appAccount } from '@kit.BasicServicesKit';
+```
 
 ## customData
 
@@ -17,6 +25,8 @@ customData?: Record<string, string>
 **类型：** Record<string, string>
 
 **起始版本：** 9
+
+<!--Device-CreateAccountOptions-customData?: Record<string, string>--><!--Device-CreateAccountOptions-customData?: Record<string, string>-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount
 

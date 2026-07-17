@@ -1,5 +1,11 @@
 # hasRight
 
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
+
 ## hasRight
 
 ```TypeScript
@@ -12,7 +18,9 @@ function hasRight(deviceName: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasRight-1)
+**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright-1)
+
+<!--Device-usb-function hasRight(deviceName: string): boolean--><!--Device-usb-function hasRight(deviceName: string): boolean-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

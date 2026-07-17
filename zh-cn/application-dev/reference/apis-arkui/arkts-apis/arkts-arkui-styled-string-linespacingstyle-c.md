@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare class LineSpacingStyle--><!--Device-unnamed-declare class LineSpacingStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +20,9 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LineSpacingStyle-constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)--><!--Device-LineSpacingStyle-constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,8 +30,8 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lineSpacing | LengthMetrics | 是 | 文本的行间距。<br/>默认值：0.0<br/>取值范围：<br/>[0, +∞)<br/>**说明：** LengthMetrics的value值小于0时，取默认值0.0。 |
-| options | LineSpacingOptions | 否 | 行间距的配置项。<br/>默认值：{ onlyBetweenLines: false } |
+| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本的行间距。<br/>默认值：0.0<br/>取值范围：[0, +∞) <br/>**说明：** LengthMetrics的value值小于0时，取默认值0.0。 |
+| options | [LineSpacingOptions](arkts-arkui-text-common-linespacingoptions-i.md) | 否 | 行间距的配置项。<br/>默认值：{ onlyBetweenLines: false } |
 
 ## lineSpacing
 
@@ -49,7 +51,9 @@ readonly lineSpacing: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LineSpacingStyle-readonly lineSpacing: number--><!--Device-LineSpacingStyle-readonly lineSpacing: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,7 +71,9 @@ readonly options?: LineSpacingOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LineSpacingStyle-readonly options?: LineSpacingOptions--><!--Device-LineSpacingStyle-readonly options?: LineSpacingOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

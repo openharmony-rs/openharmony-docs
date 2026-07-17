@@ -4,6 +4,9 @@
 
 组件不可见（非锁屏状态和应用后台状态）时，UI时间变动将停止（即该组件此时不会绘制），[onTimer]{@link TextTimerAttribute#onTimer}仍然会正常触发。
 
+## 子组件
+
+无
 
 ## TextTimer
 
@@ -15,9 +18,11 @@ TextTimer(options?: TextTimerOptions)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerInterface-(options?: TextTimerOptions): TextTimerAttribute--><!--Device-TextTimerInterface-(options?: TextTimerOptions): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

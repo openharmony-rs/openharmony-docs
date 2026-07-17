@@ -1,12 +1,10 @@
 # BackgroundMode
 
-```TypeScript
-export enum BackgroundMode
-```
-
 长时任务类型。
 
 **起始版本：** 9
+
+<!--Device-backgroundTaskManager-export enum BackgroundMode--><!--Device-backgroundTaskManager-export enum BackgroundMode-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -22,11 +20,11 @@ DATA_TRANSFER = 1
 
 **说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。
 
-更新进度的通知类型必须为实况窗，具体实现可参考
-[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startBackgroundRunning-3)
-中的示例。
+更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-3)中的示例。
 
 **起始版本：** 9
+
+<!--Device-BackgroundMode-DATA_TRANSFER = 1--><!--Device-BackgroundMode-DATA_TRANSFER = 1-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -50,6 +48,8 @@ AUDIO_PLAYBACK = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-BackgroundMode-AUDIO_PLAYBACK = 2--><!--Device-BackgroundMode-AUDIO_PLAYBACK = 2-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## AUDIO_RECORDING
@@ -66,6 +66,8 @@ AUDIO_RECORDING = 3
 
 **起始版本：** 9
 
+<!--Device-BackgroundMode-AUDIO_RECORDING = 3--><!--Device-BackgroundMode-AUDIO_RECORDING = 3-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## LOCATION
@@ -80,6 +82,8 @@ LOCATION = 4
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
+<!--Device-BackgroundMode-LOCATION = 4--><!--Device-BackgroundMode-LOCATION = 4-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## BLUETOOTH_INTERACTION
@@ -93,6 +97,8 @@ BLUETOOTH_INTERACTION = 5
 使用场景举例：通过蓝牙传输文件时退后台。
 
 **起始版本：** 9
+
+<!--Device-BackgroundMode-BLUETOOTH_INTERACTION = 5--><!--Device-BackgroundMode-BLUETOOTH_INTERACTION = 5-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -110,6 +116,8 @@ MULTI_DEVICE_CONNECTION = 6
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-BackgroundMode-MULTI_DEVICE_CONNECTION = 6--><!--Device-BackgroundMode-MULTI_DEVICE_CONNECTION = 6-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## VOIP
@@ -126,6 +134,8 @@ VOIP = 8
 
 **起始版本：** 13
 
+<!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## TASK_KEEPING
@@ -138,11 +148,11 @@ TASK_KEEPING = 9
 
 使用场景举例：杀毒软件
 
-**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为
-[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)
-的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。
+**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。
 
 **起始版本：** 9
+
+<!--Device-BackgroundMode-TASK_KEEPING = 9--><!--Device-BackgroundMode-TASK_KEEPING = 9-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

@@ -4,7 +4,15 @@ Defines the PrefetchOptions class.
 
 **起始版本：** 21
 
+<!--Device-webview-class PrefetchOptions--><!--Device-webview-class PrefetchOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## constructor
 
@@ -16,6 +24,8 @@ Constructor for PrefetchOptions.
 
 **起始版本：** 21
 
+<!--Device-PrefetchOptions-constructor()--><!--Device-PrefetchOptions-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ignoreCacheControlNoStore
@@ -24,14 +34,13 @@ Constructor for PrefetchOptions.
 ignoreCacheControlNoStore: boolean
 ```
 
-设置是否忽略响应头中的Cache-Control: no-store。默认值：false。
-<p><strong>API 说明</strong>:<br>
-此设置控制预取操作是否绕过 HTTP Cache-Control: no-store 指令。
-重要提示：默认行为（false）符合 HTTP 安全标准。若要覆盖默认行为（设置为 true），必须对非敏感资源进行明确的**风险评估**。
+设置是否忽略响应头中的Cache-Control: no-store。默认值：false。<p><strong>API 说明</strong>:<br>此设置控制预取操作是否绕过 HTTP Cache-Control: no-store 指令。重要提示：默认行为（false）符合 HTTP 安全标准。若要覆盖默认行为（设置为 true），必须对非敏感资源进行明确的**风险评估**。
 
 **类型：** boolean
 
 **起始版本：** 21
+
+<!--Device-PrefetchOptions-ignoreCacheControlNoStore: boolean--><!--Device-PrefetchOptions-ignoreCacheControlNoStore: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -54,6 +63,8 @@ minTimeBetweenPrefetchesMs: number
 **类型：** number
 
 **起始版本：** 21
+
+<!--Device-PrefetchOptions-minTimeBetweenPrefetchesMs: number--><!--Device-PrefetchOptions-minTimeBetweenPrefetchesMs: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

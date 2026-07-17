@@ -1,18 +1,26 @@
 # getShortcutInfoByAppIndex（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+```
+
 ## getShortcutInfoByAppIndex
 
 ```TypeScript
 function getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array<ShortcutInfo>
 ```
 
-��ѯ��ǰ�û���ָ������Ӧ�õĿ�ݷ�ʽ��Ϣ[ShortcutInfo](arkts-ability-shortcutinfo-i.md#ShortcutInfo)��
+查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。
 
-���÷���ȡ�Լ�����Ϣʱ����ҪȨ�ޡ�
+调用方获取自己的信息时不需要权限。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-launcherBundleManager-function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<ShortcutInfo>--><!--Device-launcherBundleManager-function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<ShortcutInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -22,24 +30,24 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| appIndex | number | 是 | ����Ӧ�õ������� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| appIndex | number | 是 | 分身应用的索引。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ShortcutInfo&gt; | Array��ʽ���ص�ǰ�û���ָ������Ӧ�õ�[ShortcutInfo](arkts-ability-shortcutinfo-i.md#ShortcutInfo)�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ShortcutInfo> | Array形式返回当前用户下指定分身应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Verify) | Verify permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not support. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700061](../../errorcode-universal.md#17700061-The) | The specified app index is invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
 **示例：**
 

@@ -6,6 +6,15 @@
 
 > - �����Ĭ��������[clip]{@link CommonMethod#clip(value: boolean)}���Ե�ֵΪtrue������Ҫ��չ���������������ʾ�����ȹر�clip���ԡ�
 
+## �����
+
+֧�ֵ����������
+
+> **˵����**  
+>  
+> ������ϵͳ������Զ��������֧����Ⱦ�������ͣ�[if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)��  
+> [ForEach](docroot://ui/rendering-control/arkts-rendering-control-foreach.md)��  
+> [LazyForEach](docroot://ui/rendering-control/arkts-rendering-control-lazyforeach.md)����
 
 ## TabContent
 
@@ -17,7 +26,9 @@ TabContent()
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TabContentInterface-(): TabContentAttribute--><!--Device-TabContentInterface-(): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

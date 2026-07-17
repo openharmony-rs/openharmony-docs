@@ -1,12 +1,18 @@
 # getDomainAccountPolicy
 
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
+
 ## getDomainAccountPolicy
 
 ```TypeScript
 function getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo): DomainAccountPolicy
 ```
 
-��ȡ���˺Ų��ԡ�
+获取域账号策略。
 
 **起始版本：** 19
 
@@ -14,29 +20,31 @@ function getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.Domain
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-accountManager-function getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo): DomainAccountPolicy--><!--Device-accountManager-function getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo): DomainAccountPolicy-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| domainAccountInfo | osAccount.DomainAccountInfo | 是 | ���˺���Ϣ��<br/>�������domainAccountInfo�ڲ����Ծ�Ϊ�գ����ѯȫ�����˺Ų��ԡ�<br/>�������domainAccountInfo�ڲ����Բ�Ϊ�գ����ѯָ�����˺Ų��ԡ�<br/>**˵��**������ѯָ�����˺Ų��ԣ�DomainAccountInfo��serverConfigId�ֶα�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| domainAccountInfo | osAccount.DomainAccountInfo | 是 | 域账号信息。<br />若传入的domainAccountInfo内部属性均为空，则查询全局域账号策略。<br/>若传入的domainAccountInfo内部属性不为空，则查询指定域账号策略。<br />**说明**：若查询指定域账号策略，DomainAccountInfo的serverConfigId字段必填。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| DomainAccountPolicy | ���˺Ų��ԡ� |
+| [DomainAccountPolicy](arkts-mdm-accountmanager-domainaccountpolicy-i.md) | 域账号策略。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. Failed to call the API due to limited device<br/>capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

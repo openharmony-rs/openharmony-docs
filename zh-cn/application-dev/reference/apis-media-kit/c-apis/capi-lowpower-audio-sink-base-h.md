@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | LowPowerAudioSink的声明。 |
-| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | 包含了LowPowerAudioSink回调函数指针的集合。<br> 应用需注册此实例结构体到{@link OH_LowPowerAudioSink}实例中，并对回调上报的信息进行处理，保证LowPowerAudioSink的正常运行。 |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | 包含了LowPowerAudioSink回调函数指针的集合。<br> 应用需注册此实例结构体到[OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)实例中，并对回调上报的信息进行处理，保证LowPowerAudioSink的正常运行。 |
 
 ### 函数
 

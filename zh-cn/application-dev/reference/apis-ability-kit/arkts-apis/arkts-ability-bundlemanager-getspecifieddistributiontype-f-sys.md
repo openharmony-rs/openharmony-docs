@@ -1,19 +1,26 @@
 # getSpecifiedDistributionType（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getSpecifiedDistributionType
 
 ```TypeScript
 function getSpecifiedDistributionType(bundleName: string): string
 ```
 
-��ͬ���ķ�����ѯָ��bundleName��[HarmonyAppProvision�����ļ�˵��](../../../../security/app-provision-structure.md)���÷���ֵ���ڵ���install�ӿ�ʱ��
-���[InstallParam](arkts-ability-installer-installparam-i-sys.md#InstallParam)�е�specifiedDistributionType�ֶΡ�
+以同步的方法查询指定bundleName的[HarmonyAppProvision配置文件说明](../../../../security/app-provision-structure.md)，该返回值是在调用install接口时传入的[InstallParam](arkts-ability-installer-installparam-i-sys.md)中的specifiedDistributionType字段。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getSpecifiedDistributionType(bundleName: string): string--><!--Device-bundleManager-function getSpecifiedDistributionType(bundleName: string): string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -23,22 +30,22 @@ function getSpecifiedDistributionType(bundleName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ָ����bundleName�� |
+| bundleName | string | 是 | 指定的bundleName。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | ����ָ��bundleName��[HarmonyAppProvision�����ļ�˵��](../../../../security/app-provision-structure.md)�� |
+| string | 返回指定bundleName的[HarmonyAppProvision配置文件说明](../../../../security/app-provision-structure.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 **示例：**
 

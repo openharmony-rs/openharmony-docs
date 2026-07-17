@@ -1,12 +1,18 @@
 # getLaunchWantForBundle
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## getLaunchWantForBundle
 
 ```TypeScript
 function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want>): void
 ```
 
-��ѯ����ָ��Ӧ�õ�want����ʹ��callback�첽�ص���
+查询拉起指定应用的want对象，使用callback异步回调。
 
 **起始版本：** 7
 
@@ -14,14 +20,16 @@ function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+<!--Device-bundle-function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want>): void--><!--Device-bundle-function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��Ӧ��Bundle���ơ� |
-| callback | AsyncCallback&lt;Want&gt; | 是 | ����������Ϊ��εĻص���������������ָ��Ӧ�õ�want���� |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Want> | 是 | 程序启动作为入参的回调函数，返回拉起指定应用的want对象。 |
 
 
 ## getLaunchWantForBundle
@@ -30,7 +38,7 @@ function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want
 function getLaunchWantForBundle(bundleName: string): Promise<Want>
 ```
 
-��ѯ����ָ��Ӧ�õ�want����ʹ��Promise�첽�ص���
+查询拉起指定应用的want对象，使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -38,17 +46,19 @@ function getLaunchWantForBundle(bundleName: string): Promise<Want>
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+<!--Device-bundle-function getLaunchWantForBundle(bundleName: string): Promise<Want>--><!--Device-bundle-function getLaunchWantForBundle(bundleName: string): Promise<Want>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��Ӧ��Bundle���ơ� |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Want&gt; | Returns the Want for starting the application's main ability if any. |
+| Promise<Want> | Returns the Want for starting the application's main ability if any. |
 

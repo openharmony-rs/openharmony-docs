@@ -1,5 +1,11 @@
 # queryDevices
 
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
+
 ## queryDevices
 
 ```TypeScript
@@ -12,26 +18,28 @@ function queryDevices(busType?: number): Array<Readonly<Device>>
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
+<!--Device-deviceManager-function queryDevices(busType?: int): Array<Readonly<Device>>--><!--Device-deviceManager-function queryDevices(busType?: int): Array<Readonly<Device>>-End-->
+
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| busType | number | 否 | 由[BusType](arkts-driverdevelopment-devicemanager-bustype-e.md#BusType)约定的设备总线类型，不填则查找所有类型设备。 |
+| busType | number | 否 | 由[BusType](arkts-driverdevelopment-devicemanager-bustype-e.md)约定的设备总线类型，不填则查找所有类型设备。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Readonly&lt;Device&gt;&gt; | 设备信息列表。 |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<Device>> | 设备信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-The) | The permission check failed. |
-| [22900001](../../errorcode-universal.md#22900001-ExternalDeviceManager) | ExternalDeviceManager service exception or busType parameter error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
+| [22900001](../../apis-driverdevelopment-kit/errorcode-deviceManager.md#22900001-扩展外设驱动服务异常或bustype参数错误) | ExternalDeviceManager service exception or busType parameter error. |
 
 **示例：**
 

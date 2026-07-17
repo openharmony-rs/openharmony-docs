@@ -4,7 +4,15 @@
 
 **起始版本：** 11
 
+<!--Device-util-class Aspect--><!--Device-util-class Aspect-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
 
 ## addAfter
 
@@ -18,6 +26,8 @@ static addAfter(targetClass: Object, methodName: string, isStatic: boolean, afte
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Aspect-static addAfter(targetClass: Object, methodName: string, isStatic: boolean, after: Function): void--><!--Device-Aspect-static addAfter(targetClass: Object, methodName: string, isStatic: boolean, after: Function): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -27,7 +37,7 @@ static addAfter(targetClass: Object, methodName: string, isStatic: boolean, afte
 | targetClass | Object | 是 | 目标类对象。 |
 | methodName | string | 是 | 方法名。不支持只读方法。 |
 | isStatic | boolean | 是 | 该方法是否为静态方法。值为 **true** 表示静态方法，值为 **false** 表示实例方法。 |
-| after | Function | 是 | 要插入的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**<br/>为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；<br/>第二个参数为原方法的返回值（如果原方法没有返回值则为 **undefined**）；其余参数为原方法携带的参数。如果该函数<br/>不携带任何参数，则不执行任何处理。 |
+| after | Function | 是 | 要插入的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；第二个参数为原方法的返回值（如果原方法没有返回值则为 **undefined**）；其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
 
 **示例：**
 
@@ -66,7 +76,7 @@ console.info('result is ' + result);
 console.info('asp.msg is ' + asp.msg);
 // 输出结果：asp.msg is msg111
 
-// 前后插桩的例子
+// 分别添加前置和后置插桩的例子
 class AroundTest {
   foo(arg: string) {
     console.info('execute foo with arg ' + arg);
@@ -98,6 +108,8 @@ static addBefore(targetClass: Object, methodName: string, isStatic: boolean, bef
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Aspect-static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void--><!--Device-Aspect-static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -107,7 +119,7 @@ static addBefore(targetClass: Object, methodName: string, isStatic: boolean, bef
 | targetClass | Object | 是 | 目标类对象。 |
 | methodName | string | 是 | 方法名。不支持只读方法。 |
 | isStatic | boolean | 是 | 该方法是否为静态方法。值为 **true** 表示静态方法，值为 **false** 表示实例方法。 |
-| before | Function | 是 | 要插入的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**<br/>为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；<br/>其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
+| before | Function | 是 | 要插入的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
 
 **示例：**
 
@@ -187,6 +199,8 @@ static replace(targetClass: Object, methodName: string, isStatic: boolean, inste
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Aspect-static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void--><!--Device-Aspect-static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -196,7 +210,7 @@ static replace(targetClass: Object, methodName: string, isStatic: boolean, inste
 | targetClass | Object | 是 | 目标类对象。 |
 | methodName | string | 是 | 方法名。不支持只读方法。 |
 | isStatic | boolean | 是 | 该方法是否为静态方法。值为 **true** 表示静态方法，值为 **false** 表示实例方法。 |
-| instead | Function | 是 | 用于替换的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**<br/>为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；<br/>其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
+| instead | Function | 是 | 用于替换的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
 
 **示例：**
 

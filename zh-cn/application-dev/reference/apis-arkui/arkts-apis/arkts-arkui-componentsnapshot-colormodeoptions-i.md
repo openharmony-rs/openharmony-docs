@@ -4,9 +4,15 @@
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-componentSnapshot-interface ColorModeOptions--><!--Device-componentSnapshot-interface ColorModeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentSnapshot } from '@kit.ArkUI';
+```
 
 ## colorSpace
 
@@ -18,8 +24,7 @@ colorSpace?: colorSpaceManager.ColorSpace
 
 如果知道被截图组件使用的色彩空间，可以通过`colorSpace`字段指定，并将`isAuto`设置为false，以达到预期的截图效果。
 
-取值范围：[colorSpaceManager.ColorSpace](@ohos.graphics.colorSpaceManager:colorSpaceManager.ColorSpace)中
-DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。
+取值范围：[colorSpaceManager.ColorSpace](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md)中DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。
 
 默认值：SRGB
 
@@ -31,7 +36,9 @@ DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace--><!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,13 +56,11 @@ isAuto?: boolean
 
 离屏截图仅支持设置为false，否则会返回错误码160004。
 
-当`isAuto`设置为true时，建议将[SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md#SnapshotOptions)中的`waitUntilRenderFinished`字段也设置为
-true，以便确保系统可以正常检测到所用的模式。
+当`isAuto`设置为true时，建议将[SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md)中的`waitUntilRenderFinished`字段也设置为true，以便确保系统可以正常检测到所用的模式。
 
 在不确定组件使用的色彩空间时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的色彩空间。
 
-当`isAuto`为true时，`colorSpace`字段设置的值会被忽略。此时，如果被截图组件同时包含不同色彩空间的子组件时，截图的色彩空间为优先级最高的色彩空间类型，优先级排序为DISPLAY_BT2020_SRGB >
-DISPLAY_P3 > SRGB。
+当`isAuto`为true时，`colorSpace`字段设置的值会被忽略。此时，如果被截图组件同时包含不同色彩空间的子组件时，截图的色彩空间为优先级最高的色彩空间类型，优先级排序为DISPLAY_BT2020_SRGB >DISPLAY_P3 > SRGB。
 
 **类型：** boolean
 
@@ -63,7 +68,9 @@ DISPLAY_P3 > SRGB。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ColorModeOptions-isAuto?: boolean--><!--Device-ColorModeOptions-isAuto?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4,9 +4,17 @@
 
 **起始版本：** 24
 
+<!--Device-print-interface PrinterInfo--><!--Device-print-interface PrinterInfo-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## capability
 
@@ -19,6 +27,8 @@ capability?: PrinterCapability
 **类型：** PrinterCapability
 
 **起始版本：** 24
+
+<!--Device-PrinterInfo-capability?: PrinterCapability--><!--Device-PrinterInfo-capability?: PrinterCapability-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -36,6 +46,8 @@ description?: string
 
 **起始版本：** 24
 
+<!--Device-PrinterInfo-description?: string--><!--Device-PrinterInfo-description?: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ options?: Object
 **类型：** Object
 
 **起始版本：** 24
+
+<!--Device-PrinterInfo-options?: Object--><!--Device-PrinterInfo-options?: Object-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -68,6 +82,8 @@ printerIcon?: number
 
 **起始版本：** 24
 
+<!--Device-PrinterInfo-printerIcon?: int--><!--Device-PrinterInfo-printerIcon?: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ printerId: string
 **类型：** string
 
 **起始版本：** 24
+
+<!--Device-PrinterInfo-printerId: string--><!--Device-PrinterInfo-printerId: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -100,6 +118,8 @@ printerName: string
 
 **起始版本：** 24
 
+<!--Device-PrinterInfo-printerName: string--><!--Device-PrinterInfo-printerName: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -115,6 +135,8 @@ printerState: PrinterState
 **类型：** PrinterState
 
 **起始版本：** 24
+
+<!--Device-PrinterInfo-printerState: PrinterState--><!--Device-PrinterInfo-printerState: PrinterState-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

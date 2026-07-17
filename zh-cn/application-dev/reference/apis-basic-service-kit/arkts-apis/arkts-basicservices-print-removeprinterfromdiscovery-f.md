@@ -1,5 +1,11 @@
 # removePrinterFromDiscovery
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## removePrinterFromDiscovery
 
 ```TypeScript
@@ -11,6 +17,8 @@ function removePrinterFromDiscovery(printerId: string): Promise<void>
 **起始版本：** 14
 
 **需要权限：** ohos.permission.PRINT
+
+<!--Device-print-function removePrinterFromDiscovery(printerId: string): Promise<void>--><!--Device-print-function removePrinterFromDiscovery(printerId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -24,14 +32,14 @@ function removePrinterFromDiscovery(printerId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 

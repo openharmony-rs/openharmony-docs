@@ -1,16 +1,24 @@
 # migrateData（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## migrateData
 
 ```TypeScript
 function migrateData(sourcePaths: Array<string>, destinationPath: string): Promise<void>
 ```
 
-�����ļ������ļ���Դ·��������Ŀ��·����ʹ��Promise�첽�ص���
+拷贝文件，将文件从源路径拷贝到目标路径。使用Promise异步回调。
 
 **起始版本：** 18
 
 **需要权限：** ohos.permission.MIGRATE_DATA
+
+<!--Device-bundleManager-function migrateData(sourcePaths: Array<string>, destinationPath: string): Promise<void>--><!--Device-bundleManager-function migrateData(sourcePaths: Array<string>, destinationPath: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,28 +28,28 @@ function migrateData(sourcePaths: Array<string>, destinationPath: string): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourcePaths | Array&lt;string&gt; | 是 | ��ҪǨ�Ƶ�Դ·�����飬֧�ִ�����/example1/test.txt�ĵ��ļ�·������/example2/test��Ŀ¼·���� |
-| destinationPath | string | 是 | Ŀ��·������֧�ִ���һ��Ŀ¼·�������磺/example2/test�� |
+| sourcePaths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要迁移的源路径数组，支持传入如/example1/test.txt的单文件路径，或/example2/test的目录路径。 |
+| destinationPath | string | 是 | 目标路径，仅支持传入一个目录路径，例如：/example2/test。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [17700080](../../errorcode-universal.md#17700080-The) | The source paths are invalid. |
-| [17700081](../../errorcode-universal.md#17700081-The) | The destination path is invalid. |
-| [17700082](../../errorcode-universal.md#17700082-User) | User authentication failed. |
-| [17700083](../../errorcode-universal.md#17700083-Waiting) | Waiting for user authentication timeout. |
-| [17700084](../../errorcode-universal.md#17700084-There) | There are inaccessible path in the source paths. |
-| [17700085](../../errorcode-universal.md#17700085-The) | The destination path cannot be accessed. |
-| [17700086](../../errorcode-universal.md#17700086-System) | System error occurred during copy execution. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [17700080](../errorcode-bundle.md#17700080-源路径中存在无效路径) | The source paths are invalid. |
+| [17700081](../errorcode-bundle.md#17700081-目标路径为无效路径) | The destination path is invalid. |
+| [17700082](../errorcode-bundle.md#17700082-用户身份认证失败) | User authentication failed. |
+| [17700083](../errorcode-bundle.md#17700083-用户身份认证超时) | Waiting for user authentication timeout. |
+| [17700084](../errorcode-bundle.md#17700084-源路径中存在未开启权限路径) | There are inaccessible path in the source paths. |
+| [17700085](../errorcode-bundle.md#17700085-目标路径未开启写权限) | The destination path cannot be accessed. |
+| [17700086](../errorcode-bundle.md#17700086-发生系统错误) | System error occurred during copy execution. |
 
 **示例：**
 

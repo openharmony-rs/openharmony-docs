@@ -1,21 +1,19 @@
 # AbilityType
 
-```TypeScript
-export enum AbilityType
-```
+> **说明：**  
+>  
+> 从API version 7开始支持，从API version 9开始废弃，建议使用  
+> [bundleManager.AbilityType](arkts-ability-bundlemanager-abilitytype-e.md)替代。
 
-> **˵����**
->
-> ��API version 7��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [bundleManager.AbilityType](arkts-ability-bundlemanager-abilitytype-e.md#AbilityType)�����
-
-Ability������͡�
+Ability组件类型。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md#AbilityType)
+**替代接口：** [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md)
+
+<!--Device-bundle-export enum AbilityType--><!--Device-bundle-export enum AbilityType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -25,11 +23,13 @@ Ability������͡�
 UNKNOWN = 0
 ```
 
-δ֪Ability���͡�
+未知Ability类型。
 
 **起始版本：** 7
 
 **废弃版本：** 9
+
+<!--Device-AbilityType-UNKNOWN = 0--><!--Device-AbilityType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -45,6 +45,8 @@ PAGE = 1
 
 **替代接口：** PAGE
 
+<!--Device-AbilityType-PAGE = 1--><!--Device-AbilityType-PAGE = 1-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## SERVICE
@@ -59,6 +61,8 @@ SERVICE = 2
 
 **替代接口：** SERVICE
 
+<!--Device-AbilityType-SERVICE = 2--><!--Device-AbilityType-SERVICE = 2-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 ## DATA
@@ -72,6 +76,8 @@ DATA = 3
 **废弃版本：** 9
 
 **替代接口：** DATA
+
+<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

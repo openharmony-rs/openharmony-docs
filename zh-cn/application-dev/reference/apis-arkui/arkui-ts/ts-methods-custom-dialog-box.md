@@ -59,11 +59,11 @@ constructor(value: CustomDialogControllerOptions)
 
 open()
 
-显示自定义弹窗内容，允许多次使用，但如果弹框为SubWindow模式，则该弹框不允许再弹出SubWindow弹框。
+显示自定义弹窗内容，允许多次使用，但如果弹窗为SubWindow模式（showInSubWindow为true），则该弹窗不允许再弹出SubWindow模式的弹窗。
 
->  **说明：**
+> **说明：**
 >
->  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的CustomDialog，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+> 不支持在输入法类型窗口中使用子窗口（showInSubWindow为true）的CustomDialog，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -74,12 +74,11 @@ open()
 
 close()
 
+关闭显示的自定义弹窗，若已关闭，则不生效。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-
-关闭显示的自定义弹窗，若已关闭，则不生效。
 
 ### getState<sup>20+</sup>
 
@@ -101,7 +100,7 @@ getState(): PromptActionCommonState
 
 ## PromptActionCommonState<sup>20+</sup>
 
-type PromptActionCommonState = promptAction.CommonState
+type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState
 
 自定义弹窗的状态。
 
@@ -113,7 +112,7 @@ type PromptActionCommonState = promptAction.CommonState
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [promptAction.CommonState](../js-apis-promptAction.md#commonstate20枚举说明) | 返回对应的弹窗状态。 |
+| import('../api/@ohos.promptAction').[promptAction.CommonState](../js-apis-promptAction.md#commonstate20枚举说明) | 返回对应的弹窗状态。 |
 
 ## CustomDialogControllerOptions对象说明
 
@@ -124,26 +123,26 @@ type PromptActionCommonState = promptAction.CommonState
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                           | 类型                                     | 只读 | 可选 | 说明                                     |
 | ----------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
-| builder                       | [CustomDialog](../../../ui/arkts-common-components-custom-dialog.md) | 否   | 否   | 自定义弹窗内容构造器。<br/>**说明：** <br/>若builder构造器使用回调函数作为入参，请注意使用this绑定问题，如builder: custombuilder({ callback: ()=> {...}})。<br/>若在builder中监听数据变化可以使用@Link或@Consume，而其他方式如@Prop、@ObjectLink不适用此场景。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| cancel                        | ()&nbsp;=&gt;&nbsp;void                  | 否    | 是   | 返回、ESC键和点击遮障层弹窗退出时的回调。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| autoCancel                    | boolean                                  | 否    | 是   | 是否允许点击遮障层退出，true表示关闭弹窗。false表示不关闭弹窗。<br>默认值：true<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| builder                       | [CustomDialog](../../../ui/arkts-common-components-custom-dialog.md) | 否   | 否   | 自定义弹窗内容构造器。<br/>**说明：** <br/>若builder构造器使用回调函数作为入参，请注意使用this绑定问题，如builder: CustomBuilder({ callback: ()=> {...}})。<br/>若在builder中监听数据变化可以使用@Link或@Consume，而其他方式如@Prop、@ObjectLink不适用此场景。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| cancel                        | ()&nbsp;=&gt;&nbsp;void                  | 否    | 是   | 返回、ESC键和点击遮罩层弹窗退出时的回调。未设置时不执行任何操作。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| autoCancel                    | boolean                                  | 否    | 是   | 是否允许点击遮罩层退出，true表示关闭弹窗。false表示不关闭弹窗。<br>默认值：true<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | alignment                     | [DialogAlignment](ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | 否    | 是   | 弹窗在竖直方向上的对齐方式。<br>默认值：DialogAlignment.Default<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | offset                        | [Offset](ts-types.md#offset)             | 否    | 是   | 弹窗相对alignment所在位置的偏移量。<br/>默认值：{ dx: 0, dy: 0 }<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| customStyle                   | boolean                                  | 否    | 是   | 弹窗容器样式是否自定义。值为true表示弹窗容器样式不能自定义，值为false表示弹窗容器样式能自定义。<br/>默认值：false<br/>设置为false时：<br/>1. 默认圆角为32vp。<br/>2. 未设置弹窗宽度高度：弹窗容器的宽度根据栅格系统自适应。高度自适应自定义的内容节点。<br/>3. 设置弹窗宽度高度：弹窗容器的宽度不超过默认样式下的最大宽度（自定义节点设置100%的宽度），弹窗容器的高度不超过默认样式下的最大高度（自定义节点设置100%的高度）。<br/>4. 受安全区域的影响，弹窗显示区域将排除安全区域。例如在PC/2in1设备上避让屏幕边缘以及窗口标题栏。<br/>设置为true时：<br/>1. 圆角为0，弹窗背景色为透明色。<br/>2. 不支持设置弹窗宽度、高度、边框宽度、边框样式、边框颜色以及阴影宽度。<br/>3. 弹窗显示区域为屏幕。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| customStyle                   | boolean                                  | 否    | 是   | 弹窗容器样式是否自定义。值为true表示弹窗容器样式能自定义，值为false表示弹窗容器样式不能自定义。<br/>默认值：false<br/>设置为false时：<br/>1. 默认圆角为32vp。<br/>2. 未设置弹窗宽度高度：弹窗容器的宽度根据栅格系统自适应。高度自适应自定义的内容节点。<br/>3. 设置弹窗宽度高度：弹窗容器的宽度不超过默认样式下的最大宽度（自定义节点设置100%的宽度），弹窗容器的高度不超过默认样式下的最大高度（自定义节点设置100%的高度）。<br/>4. 受安全区域的影响，弹窗显示区域将排除安全区域。例如在PC/2in1设备上避让屏幕边缘以及窗口标题栏。<br/>设置为true时：<br/>1. 圆角为0，弹窗背景色为透明色。<br/>2. 不支持设置弹窗宽度、高度、边框宽度、边框样式、边框颜色以及阴影宽度。<br/>3. 弹窗显示区域为屏幕。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | gridCount<sup>8+</sup>        | number                                   | 否    | 是   | 弹窗宽度占[栅格宽度](../../../ui/arkts-layout-development-grid-layout.md)的个数。<br>默认为按照窗口大小自适应，异常值按默认值处理，最大栅格数为系统最大栅格数。<br/>取值范围：大于等于0的整数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| maskColor<sup>10+</sup>       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 自定义蒙层颜色。<br>默认值：0x33000000<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
-| maskRect<sup>10+</sup>        | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是    | 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| openAnimation<sup>10+</sup>   | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否    | 是   | 自定义设置弹窗弹出的动画效果相关参数。<br>**说明**：<br>tempo默认值为1，当设置小于等于0的值时按默认值处理。<br/>iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。<br>playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| closeAnimation<sup>10+</sup>  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否    | 是   | 自定义设置弹窗关闭的动画效果相关参数。<br>**说明**：<br>tempo默认值为1，当设置小于等于0的值时按默认值处理。<br/>iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。<br>playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他数值时按照默认值处理。<br/>页面转场切换时，建议使用默认关闭动效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| showInSubWindow<sup>10+</sup> | boolean                                  | 否    | 是   | 某弹框需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br>默认值：false，弹窗显示在应用内，而非独立子窗口。<br>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast组件，弹窗会影响上述组件行为。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayModeInSubWindow | [DialogDisplayMode](./ts-appendix-enums.md#dialogdisplaymode) | 否 | 是 | 弹窗在子窗口中的显示模式。<br/>默认值：DialogDisplayMode.SCREEN_BASED<br/>**说明**：<br/>仅当showInSubWindow设置为true时生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maskColor<sup>10+</sup>       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 自定义遮罩层颜色。<br>默认值：0x33000000<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
+| maskRect<sup>10+</sup>        | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是    | 弹窗遮罩层区域，在遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| openAnimation<sup>10+</sup>   | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否    | 是   | 自定义设置弹窗弹出的动画效果相关参数。未设置时使用系统默认弹出动画。<br>**说明**：<br>tempo默认值为1，当设置小于等于0的值时按默认值处理。<br/>iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。<br>playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他值时按照默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| closeAnimation<sup>10+</sup>  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否    | 是   | 自定义设置弹窗关闭的动画效果相关参数。<br>**说明**：<br>tempo默认值为1，当设置小于等于0的值时按默认值处理。<br/>iterations默认值为1，默认播放一次，设置为其他数值时按默认值处理。<br>playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他值时按照默认值处理。<br/>页面转场时，建议使用默认关闭动效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| showInSubWindow<sup>10+</sup> | boolean                                  | 否    | 是   | 某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br>默认值：false，弹窗显示在应用内，而非独立子窗口。<br>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog、Toast组件，弹窗会影响上述组件行为。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| displayModeInSubWindow | [DialogDisplayMode](./ts-appendix-enums.md#dialogdisplaymode) | 否 | 是 | 弹窗在子窗口中的显示模式。取值范围及显示效果请参考[DialogDisplayMode](./ts-appendix-enums.md#dialogdisplaymode)枚举说明，例如SCREEN_BASED表示弹窗在屏幕居中显示，WINDOW_BASED表示弹窗在应用窗口居中显示。<br/>默认值：DialogDisplayMode.SCREEN_BASED<br/>**说明**：<br/>仅当showInSubWindow设置为true时生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | backgroundColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)      | 否   | 是  | 设置弹窗背板填充。<br/>默认值：Color.Transparent<br />**说明：** 如果同时设置了内容构造器的背景色，则backgroundColor会被内容构造器的背景色覆盖。<br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | cornerRadius<sup>10+</sup>    | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9) | 否   | 是  | 设置背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br />**说明**：自定义弹窗默认的背板圆角半径为32vp，如果需要使用cornerRadius属性，请和[borderRadius](ts-universal-attributes-border.md#borderradius)属性一起使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| isModal<sup>11+</sup> | boolean | 否 | 是 | 弹窗是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与弹窗周围其他控件进行交互，即蒙层区域无法事件透传。值为false表示为非模态窗口且无蒙层，可以与弹窗周围其他控件进行交互。<br/>默认值：true<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| onWillDismiss<sup>12+</sup> | Callback<[DismissDialogAction](#dismissdialogaction12)> | 否 | 是 | 交互式关闭回调函数。<br/>**说明：**<br/>1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。<br/>2.在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| isModal<sup>11+</sup> | boolean | 否 | 是 | 弹窗是否为模态窗口。值为true表示为模态窗口且有遮罩层，不可与弹窗周围其他控件进行交互，即遮罩层区域无法事件透传。值为false表示为非模态窗口且无遮罩层，可以与弹窗周围其他控件进行交互。<br/>默认值：true<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onWillDismiss<sup>12+</sup> | Callback<[DismissDialogAction](#dismissdialogaction12)> | 否 | 是 | 交互式关闭回调函数。<br/>**说明：**<br/>1.当用户执行点击遮罩层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。<br/>2.在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | borderWidth<sup>12+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](ts-types.md#edgewidths9)  | 否 | 是 | 设置弹窗背板的边框宽度。<br />可分别设置4个边框宽度。<br />默认值：0。<br /> 百分比参数方式：以父元素弹窗宽的百分比来设置弹窗的边框宽度。<br />当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| borderColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)  | 否 | 是 | 设置弹窗背板的边框颜色。<br/>默认值：Color.Black<br/>如果使用borderColor属性，需要和borderWidth属性一起使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| borderStyle<sup>12+</sup> | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](ts-types.md#edgestyles9)  | 否 | 是 | 设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid<br/>如果使用borderStyle属性，需要和borderWidth属性一起使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| borderColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)  | 否 | 是 | 设置弹窗背板的边框颜色。<br/>默认值：Color.Black<br/>如果使用borderColor属性，需要和borderWidth属性一起使用。当borderWidth为0时，borderColor不生效。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| borderStyle<sup>12+</sup> | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](ts-types.md#edgestyles9)  | 否 | 是 | 设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid<br/>如果使用borderStyle属性，需要和borderWidth属性一起使用。当borderWidth为0时，borderStyle不生效。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | width<sup>12+</sup> | [Dimension](ts-types.md#dimension10) | 否   | 是  | 设置弹窗背板的宽度。<br />**说明：**<br>- 弹窗宽度默认最大值：400vp。<br />- 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>12+</sup> | [Dimension](ts-types.md#dimension10)   | 否 | 是 | 设置弹窗背板的高度。<br />**说明：**<br />- 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域）。<br />- 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)   | 否 | 是 | 设置弹窗背板的阴影。 <br /> 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -151,7 +150,7 @@ type PromptActionCommonState = promptAction.CommonState
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>12+</sup> | [KeyboardAvoidMode](ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否 | 是 | 用于设置弹窗是否在拉起软键盘时进行自动避让。<br/>默认值：KeyboardAvoidMode.DEFAULT<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| enableHoverMode<sup>14+</sup>     | boolean | 否   | 是  | 是否响应悬停态。值为true时响应悬停态，值为false时不响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭弹窗时，onWillDisappear在onDidAppear前生效。<br/>4.弹窗入场动效未完成时彻底关闭弹窗，动效打断，onDidAppear不会触发。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
@@ -177,7 +176,7 @@ type PromptActionCommonState = promptAction.CommonState
 
 ## DismissDialogAction<sup>12+</sup>
 
-Dialog关闭的信息。
+弹窗关闭的信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -189,8 +188,8 @@ Dialog关闭的信息。
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| dismiss | Callback&lt;void&gt;                                         | 否   | 否   | Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
-| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog是否需要关闭。 |
+| dismiss | Callback&lt;void&gt;                                         | 否   | 否   | 弹窗关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
+| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | 弹窗无法关闭原因。根据开发者需要选择不同操作下，弹窗是否需要关闭。 |
 
 ## 示例
 
@@ -381,7 +380,7 @@ struct CustomDialogUser {
       cancel: ()=> { this.onCancel(); },
       confirm: ()=> { this.onAccept(); }
     }),
-    cancel: this.existApp,
+    cancel: this.exitApp,
     autoCancel: true,
     onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
       console.info(`reason= ${dismissDialogAction.reason}`);
@@ -417,7 +416,7 @@ struct CustomDialogUser {
     console.info('Callback when the second button is clicked');
   }
 
-  existApp() {
+  exitApp() {
     console.info('Click the callback in the blank area');
   }
 
@@ -437,7 +436,7 @@ struct CustomDialogUser {
 ![image-custom-showinsubwindow](figures/image-custom-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的样式）
-该示例定义了CustomDialog的样式，包括宽度、高度、背景色、阴影等。
+该示例展示了CustomDialog的样式，包括宽度、高度、背景色、阴影等。
 ```ts
 // xxx.ets
 @CustomDialog
@@ -470,11 +469,11 @@ struct CustomDialogUser {
       cancel: ()=> { this.onCancel(); },
       confirm: ()=> { this.onAccept(); }
     }),
-    cancel: this.existApp,
+    cancel: this.exitApp,
     autoCancel: true,
     onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
       console.info(`reason= ${dismissDialogAction.reason}`);
-      console.info('dialog onWillDismiss')
+      console.info('dialog onWillDismiss');
       if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
         dismissDialogAction.dismiss();
       }
@@ -507,7 +506,7 @@ struct CustomDialogUser {
     console.info('Callback when the second button is clicked');
   }
 
-  existApp() {
+  exitApp() {
     console.info('Click the callback in the blank area');
   }
 
@@ -782,7 +781,7 @@ struct CustomDialogUser {
   }
 }
 ```
-![zh-cn_image_custom](figures/dialog_consume_or_link.gif)
+![zh-cn_image_custom_consume_or_link](figures/dialog_consume_or_link.gif)
 
 ### 示例7（自定义带loading的弹窗）
 
@@ -886,11 +885,11 @@ struct CustomDialogUser {
   }
 }
 ```
-![zh-cn_image_custom](figures/custom_loading_dialog.gif)
+![zh-cn_image_custom_loading](figures/custom_loading_dialog.gif)
 
 ### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
 
-该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的[bottom](ts-types.md#margin)，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
+该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的`bottom`属性，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
 
 从API version 15开始，在CustomDialogControllerOptions中新增了keyboardAvoidDistance属性。
 
@@ -986,6 +985,7 @@ struct CustomDialogUser {
       // 获取底部导航栏高度
       let navigationArea = this.windowClass?.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
       this.navigationBarHeight = navigationArea.bottomRect.height;
+      // 监听窗口避让区域变化（如键盘显示/隐藏），动态调整弹窗与键盘的间距
       this.windowClass?.on('avoidAreaChange', (data) => {
         if (data.type == window.AvoidAreaType.TYPE_KEYBOARD) {
           this.isKeyboardShow = data.area.bottomRect.height > 0;
@@ -997,6 +997,7 @@ struct CustomDialogUser {
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
     this.dialogController = null; // 将dialogController置空
+    // 注销窗口避让区域变化事件监听，避免内存泄漏
     this.windowClass?.off('avoidAreaChange')
   }
 
@@ -1024,7 +1025,7 @@ struct CustomDialogUser {
   }
 }
 ```
-![zh-cn_image_custom](figures/dialog_keyboard_distance.gif)
+![zh-cn_image_custom_keyboard_distance](figures/dialog_keyboard_distance.gif)
 
 ### 示例9（弹窗生命周期）
 
@@ -1066,7 +1067,7 @@ struct Example3 {
       cancel: ()=> { this.onCancel(); },
       confirm: ()=> { this.onAccept(); }
     }),
-    cancel: this.existApp,
+    cancel: this.exitApp,
     autoCancel: true,
     alignment: DialogAlignment.Bottom,
     onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
@@ -1106,7 +1107,7 @@ struct Example3 {
     console.info('CustomDialog Callback when the second button is clicked');
   }
 
-  existApp() {
+  exitApp() {
     console.info('CustomDialog Click the callback in the blank area');
   }
   build() {
@@ -1206,7 +1207,7 @@ struct CustomDialogUser {
   }
 }
 ```
-![zh-cn_image_custom](figures/customstyle_dialog_demo.gif)
+![zh-cn_image_custom_style](figures/customstyle_dialog_demo.gif)
 
 ### 示例11（自定义背景模糊效果参数）
 
@@ -1381,7 +1382,7 @@ struct CustomDialogUser {
           .height(50)
         Slider({ min: 60, max: 100, step: 5 })
           .showTips(true, this.currentWidth + '%')
-          .onChange((value: number, mode: SliderChangeMode) => {
+          .onChange((value: number) => {
             this.currentWidth = value;
           }).width(200)
       }
@@ -1398,7 +1399,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundEffect](figures/image-dynamicRefreshwidth.gif)
+![zh-cn_image_custom_dynamicRefreshwidth](figures/image-dynamicRefreshwidth.gif)
 
 ### 示例14（设置弹窗的系统材质）
 

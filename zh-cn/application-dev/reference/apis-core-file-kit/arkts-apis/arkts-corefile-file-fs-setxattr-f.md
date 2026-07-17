@@ -1,5 +1,11 @@
 # setxattr
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## setxattr
 
 ```TypeScript
@@ -9,6 +15,8 @@ declare function setxattr(path: string, key: string, value: string): Promise<voi
 设置文件或目录的扩展属性。使用promise异步回调。
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare function setxattr(path: string, key: string, value: string): Promise<void>--><!--Device-unnamed-declare function setxattr(path: string, key: string, value: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,7 +32,7 @@ declare function setxattr(path: string, key: string, value: string): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 

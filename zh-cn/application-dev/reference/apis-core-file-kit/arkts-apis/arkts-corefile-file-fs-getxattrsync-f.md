@@ -1,5 +1,11 @@
 # getxattrSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## getxattrSync
 
 ```TypeScript
@@ -9,6 +15,8 @@ declare function getxattrSync(path: string, key: string): string
 使用同步接口获取文件或目录的扩展属性。
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare function getxattrSync(path: string, key: string): string--><!--Device-unnamed-declare function getxattrSync(path: string, key: string): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

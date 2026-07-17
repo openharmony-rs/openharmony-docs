@@ -1,5 +1,11 @@
 # setMinLogLevel
 
+## 导入模块
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
 ## setMinLogLevel
 
 ```TypeScript
@@ -8,15 +14,17 @@ function setMinLogLevel(level: LogLevel): void
 
 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。
 
-> **注意：**
->
-> 如果设置的日志级别低于[全局日志级别](../../../../dfx/hilog.md#查看和设置日志级别)，设置不生效。
->
+> **注意：**  
+>  
+> 如果设置的日志级别低于[全局日志级别](../../../../dfx/hilog.md#查看和设置日志级别)，设置不生效。  
+>  
 > debug版本应用下，此函数不生效。
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-hilog-function setMinLogLevel(level: LogLevel): void--><!--Device-hilog-function setMinLogLevel(level: LogLevel): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -24,7 +32,7 @@ function setMinLogLevel(level: LogLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| level | LogLevel | 是 | 日志级别。 |
+| level | [LogLevel](arkts-performanceanalysis-hilog-loglevel-e.md) | 是 | 日志级别。 |
 
 **示例：**
 
@@ -34,7 +42,7 @@ function setMinLogLevel(level: LogLevel): void
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
 hilog.setMinLogLevel(hilog.LogLevel.WARN);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
-hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.error(0x0001, "testTag", 'this is an error level log, id: %{public}d', 3);
 hilog.setMinLogLevel(hilog.LogLevel.DEBUG);
 hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);

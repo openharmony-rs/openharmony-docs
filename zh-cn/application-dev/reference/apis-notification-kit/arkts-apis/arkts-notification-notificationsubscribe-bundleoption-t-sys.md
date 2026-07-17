@@ -8,6 +8,8 @@ export type BundleOption = _BundleOption
 
 **起始版本：** 9
 
+<!--Device-notificationSubscribe-export type BundleOption = _BundleOption--><!--Device-notificationSubscribe-export type BundleOption = _BundleOption-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。

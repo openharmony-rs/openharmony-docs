@@ -18,5 +18,5 @@
 
 | 名称                 | 类型                 | 只读 | 可选 | 说明                   |
 | -------------------- | ---------------------|---- | --- |----------------------|
-| type                 | [notificationExtensionSubscription.SubscribeType](js-apis-notificationExtensionSubscription.md#subscribetype) | 否 | 否  | 表示订阅的类型，包括通过蓝牙订阅通知。                |
+| type                 | [notificationExtensionSubscription.SubscribeType](js-apis-notificationExtensionSubscription.md#subscribetype) | 否 | 否  | 订阅的类型，指定通知扩展的订阅方式。当前仅支持`SubscribeType.BLUETOOTH`，表示通过蓝牙订阅通知。                |
 | addr                 | string                | 否 | 否  | 表示设备的唯一标识符。例如："11:22:33:AA:BB:FF"            |

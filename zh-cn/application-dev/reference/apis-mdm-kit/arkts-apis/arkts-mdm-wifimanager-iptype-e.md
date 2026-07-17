@@ -1,14 +1,10 @@
 # IpType
 
-```TypeScript
-enum IpType
-```
-
-��ʾIP���͵�ö�١�
+表示IP类型的枚举。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-wifiManager-enum IpType--><!--Device-wifiManager-enum IpType-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum IpType
 STATIC = 0
 ```
 
-��̬IP��һ��������Ҫ�̶�IP�ĳ���������칫�Ҵ�ӡ�����̶���ӡ��IP��ַ�����ڴ���ȶ������Ӻ�ʹ�á�
+静态IP，一般用于需要固定IP的场景、例如办公室打印机，固定打印机IP地址，便于大家稳定地添加和使用。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-IpType-STATIC = 0--><!--Device-IpType-STATIC = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ STATIC = 0
 DHCP = 1
 ```
 
-��̬��������Э�飬һ�����Զ�Ϊ�����е��豸����IP��ַ����������������Ϣ�ķ���
+动态主机配置协议，一种能自动为网络中的设备分配IP地址和其他网络配置信息的服务。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-IpType-DHCP = 1--><!--Device-IpType-DHCP = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ DHCP = 1
 UNKNOWN = 2
 ```
 
-δָ����
+未指定。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-IpType-UNKNOWN = 2--><!--Device-IpType-UNKNOWN = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

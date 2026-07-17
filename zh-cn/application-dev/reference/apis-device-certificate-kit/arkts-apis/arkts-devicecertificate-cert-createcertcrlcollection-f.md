@@ -1,5 +1,11 @@
 # createCertCRLCollection
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## createCertCRLCollection
 
 ```TypeScript
@@ -12,27 +18,29 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-cert-function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>): CertCRLCollection--><!--Device-cert-function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>): CertCRLCollection-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| certs | Array&lt;X509Cert&gt; | 是 | X509Cert数组。 |
-| crls | Array&lt;X509CRL&gt; | 否 | X509CRL数组。 |
+| certs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<X509Cert> | 是 | X509Cert数组。 |
+| crls | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<X509CRL> | 否 | X509CRL数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| CertCRLCollection | 表示证书和证书吊销列表集合对象。 |
+| [CertCRLCollection](arkts-devicecertificate-cert-certcrlcollection-i.md) | 表示证书和证书吊销列表集合对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 
 **示例：**
 

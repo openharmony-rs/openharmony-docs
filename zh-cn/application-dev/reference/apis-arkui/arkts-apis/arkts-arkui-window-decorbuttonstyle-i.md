@@ -4,7 +4,15 @@
 
 **起始版本：** 14
 
+<!--Device-window-interface DecorButtonStyle--><!--Device-window-interface DecorButtonStyle-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## buttonBackgroundCornerRadius
 
@@ -18,7 +26,9 @@ buttonBackgroundCornerRadius? : number
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DecorButtonStyle-buttonBackgroundCornerRadius? : int--><!--Device-DecorButtonStyle-buttonBackgroundCornerRadius? : int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,7 +44,9 @@ buttonBackgroundSize? : number
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DecorButtonStyle-buttonBackgroundSize? : int--><!--Device-DecorButtonStyle-buttonBackgroundSize? : int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -50,7 +62,9 @@ buttonIconSize? : number
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DecorButtonStyle-buttonIconSize? : int--><!--Device-DecorButtonStyle-buttonIconSize? : int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -66,7 +80,9 @@ closeButtonRightMargin? : number
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DecorButtonStyle-closeButtonRightMargin? : int--><!--Device-DecorButtonStyle-closeButtonRightMargin? : int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -82,7 +98,9 @@ colorMode?: ConfigurationConstant.ColorMode
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DecorButtonStyle-colorMode?: ConfigurationConstant.ColorMode--><!--Device-DecorButtonStyle-colorMode?: ConfigurationConstant.ColorMode-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -98,7 +116,9 @@ spacingBetweenButtons? : number
 
 **起始版本：** 14
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DecorButtonStyle-spacingBetweenButtons? : int--><!--Device-DecorButtonStyle-spacingBetweenButtons? : int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

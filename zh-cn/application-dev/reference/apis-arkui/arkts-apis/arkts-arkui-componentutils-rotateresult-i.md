@@ -4,9 +4,15 @@
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-componentUtils-interface RotateResult--><!--Device-componentUtils-interface RotateResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## angle
 
@@ -25,6 +31,8 @@ angle: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RotateResult-angle: number--><!--Device-RotateResult-angle: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +54,8 @@ centerX: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RotateResult-centerX: number--><!--Device-RotateResult-centerX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
@@ -66,6 +76,8 @@ centerY: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RotateResult-centerY: number--><!--Device-RotateResult-centerY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -83,6 +95,8 @@ x: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RotateResult-x: number--><!--Device-RotateResult-x: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +116,8 @@ y: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-RotateResult-y: number--><!--Device-RotateResult-y: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -119,6 +135,8 @@ z: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-RotateResult-z: number--><!--Device-RotateResult-z: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

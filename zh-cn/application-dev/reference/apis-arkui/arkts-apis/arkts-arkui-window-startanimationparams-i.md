@@ -8,7 +8,15 @@
 
 **起始版本：** 20
 
+<!--Device-window-interface StartAnimationParams--><!--Device-window-interface StartAnimationParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## type
 
@@ -21,6 +29,8 @@ The type of window animation
 **类型：** AnimationType
 
 **起始版本：** 20
+
+<!--Device-StartAnimationParams-type: AnimationType--><!--Device-StartAnimationParams-type: AnimationType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

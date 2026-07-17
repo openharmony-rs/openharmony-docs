@@ -12,5 +12,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SkillType](arkts-ability-skilltype-e.md) | 枚举Skill类型。 |
+| [SkillType](arkts-ability-skillinfo-skilltype-e.md) | 枚举Skill类型。 |
 

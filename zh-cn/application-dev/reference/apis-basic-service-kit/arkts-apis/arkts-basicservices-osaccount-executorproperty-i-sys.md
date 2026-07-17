@@ -4,9 +4,17 @@
 
 **起始版本：** 8
 
+<!--Device-osAccount-interface ExecutorProperty--><!--Device-osAccount-interface ExecutorProperty-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## authSubType
 
@@ -19,6 +27,8 @@ authSubType: AuthSubType
 **类型：** AuthSubType
 
 **起始版本：** 8
+
+<!--Device-ExecutorProperty-authSubType: AuthSubType--><!--Device-ExecutorProperty-authSubType: AuthSubType-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -36,6 +46,8 @@ credentialLength?: number
 
 **起始版本：** 20
 
+<!--Device-ExecutorProperty-credentialLength?: int--><!--Device-ExecutorProperty-credentialLength?: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ enrollmentProgress?: string
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-ExecutorProperty-enrollmentProgress?: string--><!--Device-ExecutorProperty-enrollmentProgress?: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -68,6 +82,8 @@ freezingTime?: number
 
 **起始版本：** 8
 
+<!--Device-ExecutorProperty-freezingTime?: int--><!--Device-ExecutorProperty-freezingTime?: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ nextPhaseFreezingTime?: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-ExecutorProperty-nextPhaseFreezingTime?: int--><!--Device-ExecutorProperty-nextPhaseFreezingTime?: int-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -100,6 +118,8 @@ remainTimes?: number
 
 **起始版本：** 8
 
+<!--Device-ExecutorProperty-remainTimes?: int--><!--Device-ExecutorProperty-remainTimes?: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -116,6 +136,8 @@ result: number
 
 **起始版本：** 8
 
+<!--Device-ExecutorProperty-result: int--><!--Device-ExecutorProperty-result: int-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -131,6 +153,8 @@ sensorInfo?: string
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-ExecutorProperty-sensorInfo?: string--><!--Device-ExecutorProperty-sensorInfo?: string-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

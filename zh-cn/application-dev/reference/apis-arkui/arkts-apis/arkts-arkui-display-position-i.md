@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-display-interface Position--><!--Device-display-interface Position-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## x
 
@@ -17,6 +25,8 @@ x: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-Position-x: long--><!--Device-Position-x: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -31,6 +41,8 @@ y: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-Position-y: long--><!--Device-Position-y: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

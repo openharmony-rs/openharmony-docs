@@ -1,14 +1,20 @@
 # getAbilityInfo
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## getAbilityInfo
 
 ```TypeScript
 function getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback<AbilityInfo>): void
 ```
 
-ͨ��Bundle���ƺ��������ȡAbility�����Ϣ��ʹ��callback�첽�ص���
+通过Bundle名称和组件名获取Ability组件信息，使用callback异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -16,15 +22,17 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback<AbilityInfo>): void--><!--Device-bundle-function getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback<AbilityInfo>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| abilityName | string | 是 | Ability���ơ� |
-| callback | AsyncCallback&lt;AbilityInfo&gt; | 是 | ����������Ϊ��εĻص�����������Ability��Ϣ�� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| abilityName | string | 是 | Ability名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AbilityInfo> | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 
 ## getAbilityInfo
@@ -33,9 +41,9 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 function getAbilityInfo(bundleName: string, abilityName: string): Promise<AbilityInfo>
 ```
 
-ͨ��Bundle���ƺ��������ȡAbility�����Ϣ��ʹ��Promise��ʽ�첽�ص���
+通过Bundle名称和组件名获取Ability组件信息，使用Promise形式异步回调。
 
-��ȡ���÷��Լ�����Ϣʱ����ҪȨ�ޡ�
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -43,18 +51,20 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
+<!--Device-bundle-function getAbilityInfo(bundleName: string, abilityName: string): Promise<AbilityInfo>--><!--Device-bundle-function getAbilityInfo(bundleName: string, abilityName: string): Promise<AbilityInfo>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| abilityName | string | 是 | Ability������ơ� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| abilityName | string | 是 | Ability组件名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AbilityInfo&gt; | Promise��ʽ����Ability��Ϣ�� |
+| Promise<AbilityInfo> | Promise形式返回Ability信息。 |
 

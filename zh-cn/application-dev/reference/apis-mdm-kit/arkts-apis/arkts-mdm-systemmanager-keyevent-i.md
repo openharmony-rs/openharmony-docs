@@ -1,14 +1,18 @@
 # KeyEvent
 
-�����¼���
-[EnterpriseAdminExtensionAbility.onKeyEvent](arkts-mdm-enterpriseadminextensionability-c.md#onKeyEvent-1)
-�����¼��ص�����ʱ�����ݵ�ǰ�����¼���Ϣ��
+按键事件。[EnterpriseAdminExtensionAbility.onKeyEvent](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent-1)按键事件回调触发时，传递当前按键事件信息。
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-systemManager-interface KeyEvent--><!--Device-systemManager-interface KeyEvent-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
 
 ## actionTime
 
@@ -16,14 +20,15 @@
 actionTime: number
 ```
 
-������������ʱ�䣬ϵͳ������΢�뼶ʱ���������������ʱ���������¼��ò����������ı䣬Ӧ�ÿ���ͨ����ʱ�����жϸ��¼��Ƿ����ڳ����¼�����ִ�г����¼��߼�������
-ȡֵ��ΧΪȫ��������
+按键动作发生时间，系统开机后微秒级时间戳。当按键长按时后续按键事件该参数不发生改变，应用可以通过该时间来判断该事件是否属于长按事件，以执行长按事件逻辑处理。取值范围为全体整数。
 
 **类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyEvent-actionTime: number--><!--Device-KeyEvent-actionTime: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -33,13 +38,15 @@ actionTime: number
 keyAction: KeyAction
 ```
 
-����������
+按键动作。
 
 **类型：** KeyAction
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyEvent-keyAction: KeyAction--><!--Device-KeyEvent-keyAction: KeyAction-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -49,13 +56,15 @@ keyAction: KeyAction
 keyCode: KeyCode
 ```
 
-�������롣
+按键编码。
 
 **类型：** KeyCode
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyEvent-keyCode: KeyCode--><!--Device-KeyEvent-keyCode: KeyCode-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -65,13 +74,15 @@ keyCode: KeyCode
 keyItems: Array<KeyItem>
 ```
 
-����������Ϣ����ǰ�����¼�����ʱ���������ڱ����µİ�����Ϣ��
+其他按键信息，当前按键事件发生时，其他正在被按下的按键信息。
 
 **类型：** Array<KeyItem>
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyEvent-keyItems: Array<KeyItem>--><!--Device-KeyEvent-keyItems: Array<KeyItem>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

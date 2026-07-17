@@ -1,5 +1,11 @@
 # writeSync
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## writeSync
 
 ```TypeScript
@@ -14,7 +20,17 @@ declare function writeSync(
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function writeSync(
+  fd: number,
+  buffer: ArrayBuffer | string,
+  options?: WriteOptions
+): number--><!--Device-unnamed-declare function writeSync(
+  fd: number,
+  buffer: ArrayBuffer | string,
+  options?: WriteOptions
+): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,7 +40,7 @@ declare function writeSync(
 | --- | --- | --- | --- |
 | fd | number | 是 | 已打开的文件描述符。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | WriteOptions | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持?'utf-8'。<br>**起始版本：** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持?'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 

@@ -1,12 +1,18 @@
 # setAppClipboardPolicy
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## setAppClipboardPolicy
 
 ```TypeScript
 function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): void
 ```
 
-�����豸��������ԡ�
+设置设备剪贴板策略。
 
 **起始版本：** 12
 
@@ -14,24 +20,26 @@ function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): void--><!--Device-securityManager-function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| tokenId | number | 是 | Ŀ��Ӧ�õ����ݱ�ʶ����ͨ��[bundleManager.getApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md#ApplicationInfo)��<br/>ȡaccessTokenId�� |
-| policy | ClipboardPolicy | 是 | ��������ԡ� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)获取accessTokenId。 |
+| policy | [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md) | 是 | 剪贴板策略。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -62,7 +70,7 @@ try {
 function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
 ```
 
-����ָ���û���ָ��Ӧ�õ��豸��������ԡ�
+设置指定用户下指定应用的设备剪贴板策略。
 
 **起始版本：** 18
 
@@ -70,24 +78,26 @@ function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: numbe
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void--><!--Device-securityManager-function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| bundleName | string | 是 | �����ü�������Ե�Ӧ�ð����� |
-| accountId | number | 是 | �û�ID��ָ�������û���ȡֵ��Χ�����ڵ���0��accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ��*@ohos.account.osAccount** to obtain the account ID. |
-| policy | ClipboardPolicy | 是 | ��������ԡ� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| bundleName | string | 是 | 被设置剪贴板策略的应用包名。 |
+| accountId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。*@ohos.account.osAccount** to obtain the account ID. |
+| policy | [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md) | 是 | 剪贴板策略。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 

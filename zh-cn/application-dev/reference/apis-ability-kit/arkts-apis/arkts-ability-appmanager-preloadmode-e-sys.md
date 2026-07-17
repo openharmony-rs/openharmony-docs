@@ -1,14 +1,10 @@
 # PreloadMode（系统接口）
 
-```TypeScript
-export enum PreloadMode
-```
-
 表示预加载应用进程模式的枚举。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-appManager-export enum PreloadMode--><!--Device-appManager-export enum PreloadMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -25,6 +21,8 @@ The application process is preloaded when the application icon is pressed.
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PreloadMode-PRESS_DOWN = 0--><!--Device-PreloadMode-PRESS_DOWN = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

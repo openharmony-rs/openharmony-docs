@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-bundleMonitor-interface BundleChangedInfo--><!--Device-bundleMonitor-interface BundleChangedInfo-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { bundleMonitor } from '@kit.AbilityKit';
+```
 
 ## appIndex
 
@@ -19,6 +27,8 @@ readonly appIndex: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-BundleChangedInfo-readonly appIndex: int--><!--Device-BundleChangedInfo-readonly appIndex: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,6 +46,8 @@ readonly bundleName: string
 
 **起始版本：** 9
 
+<!--Device-BundleChangedInfo-readonly bundleName: string--><!--Device-BundleChangedInfo-readonly bundleName: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ readonly userId: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-BundleChangedInfo-readonly userId: int--><!--Device-BundleChangedInfo-readonly userId: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

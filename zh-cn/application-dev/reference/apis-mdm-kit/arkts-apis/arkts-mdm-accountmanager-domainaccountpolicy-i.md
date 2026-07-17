@@ -1,12 +1,18 @@
 # DomainAccountPolicy
 
-���˺Ų��ԡ�
+域账号策略。
 
 **起始版本：** 19
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-accountManager-interface DomainAccountPolicy--><!--Device-accountManager-interface DomainAccountPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
 
 ## authenticationValidityPeriod
 
@@ -14,15 +20,17 @@
 authenticationValidityPeriod?: number
 ```
 
-��ʾ���˺���֤Token����Ч�ڣ���λ��s����ȡֵ��Χ��[-1,2147483647]����Ч����ʼʱ��Ϊ���һ�����˺ŵ���֤ʱ��㣬���¼������������ȡ�
+表示域账号认证Token的有效期（单位：s），取值范围是[-1,2147483647]。有效期起始时间为最后一次域账号的认证时间点，如登录、锁屏后解锁等。
 
-Ĭ��ֵΪ-1����ʾToken������Ч��ȡֵΪ0����ʾToken����ʧЧ��Token����/ʧЧ���û�����ϵͳʱ����������˺���֤����֤���˺ź����롣
+默认值为-1，表示Token永久有效。取值为0，表示Token立即失效。Token过期/失效后，用户进入系统时必须进行域账号认证，验证域账号和密码。
 
 **类型：** number
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DomainAccountPolicy-authenticationValidityPeriod?: number--><!--Device-DomainAccountPolicy-authenticationValidityPeriod?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,18 +40,19 @@ authenticationValidityPeriod?: number
 passwordExpirationNotification?: number
 ```
 
-��ʾ���˺��������ǰ��ʾʱ�䣨��λ��s����ȡֵ��Χ��[0,2147483647]��
+表示域账号密码过期前提示时间（单位：s），取值范围是[0,2147483647]。
 
-Ĭ��ֵΪ0����ʾ���˺�������ڲ���ʾ��
+默认值为0，表示域账号密码过期不提示。
 
-**˵��**��passwordExpirationNotification����passwordValidityPeriod���ʹ�ã���ϵͳʱ����ڻ���ڣ��豸�����һ���޸����˺�����ʱ�� +
-passwordValidityPeriod - passwordExpirationNotification��ʱ���ᷢҳ��֪ͨ��ʾ���뼴�����ڡ�
+**说明**：passwordExpirationNotification需与passwordValidityPeriod配合使用，当系统时间大于或等于（设备侧最后一次修改域账号密码时间 +passwordValidityPeriod - passwordExpirationNotification）时，会发页面通知提示密码即将过期。
 
 **类型：** number
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DomainAccountPolicy-passwordExpirationNotification?: number--><!--Device-DomainAccountPolicy-passwordExpirationNotification?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -53,15 +62,17 @@ passwordValidityPeriod - passwordExpirationNotification��ʱ���ᷢҳ�
 passwordValidityPeriod?: number
 ```
 
-��ʾ���˺�������Ч�ڣ���λ��s����ȡֵ��Χ��[-1,2147483647]����Ч����ʼʱ��Ϊ�豸�����һ���޸������ʱ��㡣
+表示域账号密码有效期（单位：s），取值范围是[-1,2147483647]，有效期起始时间为设备侧最后一次修改密码的时间点。
 
-Ĭ��ֵΪ-1����ʾ���˺�����������Ч��
+默认值为-1，表示域账号密码永久有效。
 
 **类型：** number
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DomainAccountPolicy-passwordValidityPeriod?: number--><!--Device-DomainAccountPolicy-passwordValidityPeriod?: number-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

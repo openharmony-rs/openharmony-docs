@@ -2,8 +2,11 @@
 
 路由容器组件，提供路由跳转能力。
 
+> **说明：**
 
+## 子组件
 
+可以包含子组件。
 
 ## Navigator
 
@@ -19,7 +22,9 @@ Navigator(value?: { target: string; type?: NavigationType })
 
 **替代接口：** <!--SUBSTITUTE_API-->NavPathInfo<!--/SUBSTITUTE_API-->
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigatorInterface-(value?: { target: string; type?: NavigationType }): NavigatorAttribute--><!--Device-NavigatorInterface-(value?: { target: string; type?: NavigationType }): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,7 +50,9 @@ NavigationAttribute为Navigation组件的属性。
 
 **替代接口：** <!--SUBSTITUTE_API-->NavigationAttribute<!--/SUBSTITUTE_API-->
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavigatorInterface-(): NavigatorAttribute--><!--Device-NavigatorInterface-(): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,17 +1,24 @@
 # connectDevice
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## connectDevice
 
 ```TypeScript
 function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 ```
 
-����getDevices()���ص��豸��Ϣ��USB�豸�����USB�����쳣�����ܷ���`undefined`��ע����Ҫ�Խӿڷ���ֵ���пմ�����
+根据getDevices()返回的设备信息打开USB设备。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-1. ��Ҫ����[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getDevices-1)��ȡ�豸��Ϣ�Լ�device;
-2. ����[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestRight-1)����ʹ�ø��豸��Ȩ�ޡ�
+1. 需要调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)获取设备信息以及device;2. 调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright-1)请求使用该设备的权限。
 
 **起始版本：** 9
+
+<!--Device-usbManager-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>--><!--Device-usbManager-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -19,28 +26,28 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| device | USBDevice | 是 | USB�豸��Ϣ����[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getDevices-1)��ȡ��busNum��devAddressȷ���豸����ǰ�������Բ��������� |
+| device | [USBDevice](arkts-basicservices-usbmanager-usbdevice-i.md) | 是 | USB设备信息，用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)获取的busNum和devAddress确定设备，当前其他属性不做处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly&lt;USBDevicePipe&gt; | ָ���Ĵ���ͨ������ |
+| Readonly<USBDevicePipe> | 指定的传输通道对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified.<br/><br/>2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
-| [14400001](../../errorcode-universal.md#14400001-Access) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
-| [14400004](../../errorcode-universal.md#14400004) |  |
-| [14400012](../../errorcode-universal.md#14400012) |  |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1.Mandatory parameters are left unspecified.* <br>2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [14400001](../../apis-basic-services-kit/errorcode-usb.md#14400001-连接usb设备被拒绝) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| [14400004](../../apis-basic-services-kit/errorcode-usb.md#14400004-服务异常) |  |
+| [14400012](../../apis-basic-services-kit/errorcode-usb.md#14400012-io错误) |  |
 
 **示例：**
 
 ```TypeScript
-function connectDevice() {
+async function connectDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -48,9 +55,18 @@ function connectDevice() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  let rightResult = await usbManager.requestRight(device.name);
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
   console.info(`devicepipe = ${devicepipe}`);
+  usbManager.closePipe(devicepipe);
 }
 
 ```

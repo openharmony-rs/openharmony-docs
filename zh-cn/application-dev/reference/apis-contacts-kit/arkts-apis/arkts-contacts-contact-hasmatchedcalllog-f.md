@@ -1,12 +1,18 @@
 # hasMatchedCallLog
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## hasMatchedCallLog
 
 ```TypeScript
 function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): Promise<boolean>
 ```
 
-����Ƿ��з���������ͨ����¼��Ĭ�ϲ�ѯ6Сʱ���ڵ�ͨ����¼���������Ӫ��ͨ����ʹ��Promise�첽�ص���
+检查是否有符合条件的通话记录，默认查询6小时以内的通话记录，仅针对运营商通话。使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -14,7 +20,9 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+
+<!--Device-contact-function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: int): Promise<boolean>--><!--Device-contact-function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: int): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -22,23 +30,23 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| phoneNumber | string | 是 | ��ϵ�˵ĵ绰���롣 |
-| minDuration | number | 是 | ���ͨ��ʱ������λΪ�룬ȡֵ��Χ����0�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| phoneNumber | string | 是 | 联系人的电话号码。 |
+| minDuration | number | 是 | 最短通话时长，单位为秒，取值范围大于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󣬷����Ƿ��з���������ͨ����¼��true�����з��������ģ�false����û�С� |
+| Promise<boolean> | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [16700001](../../errorcode-universal.md#16700001-General) | General error. |
-| [16700002](../../errorcode-universal.md#16700002-Invalid) | Invalid parameter value. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
+| [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 
 **示例：**
 
@@ -67,7 +75,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, withinTime: number): Promise<boolean>
 ```
 
-����Ƿ��з���������ͨ����¼���������Ӫ��ͨ����ʹ��Promise�첽�ص���
+检查是否有符合条件的通话记录，仅针对运营商通话。使用Promise异步回调。
 
 **起始版本：** 24
 
@@ -75,7 +83,9 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+
+<!--Device-contact-function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: int, withinTime: int): Promise<boolean>--><!--Device-contact-function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: int, withinTime: int): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -83,24 +93,24 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| phoneNumber | string | 是 | ��ϵ�˵ĵ绰���롣 |
-| minDuration | number | 是 | ���ͨ��ʱ������λΪ�룬ȡֵ��Χ����0�� |
-| withinTime | number | 是 | ��ʾ�ӵ�ǰʱ�俪ʼ���㣬ͨ������ʼʱ��ͽ���ʱ��Ӧ�ڴ�ʱ�䷶Χ�ڣ���λΪ�롣��������6Сʱ������6Сʱ��Ĭ����6Сʱ��ѯ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| phoneNumber | string | 是 | 联系人的电话号码。 |
+| minDuration | number | 是 | 最短通话时长，单位为秒，取值范围大于0。 |
+| withinTime | number | 是 | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󣬷����Ƿ��з���������ͨ����¼��true�����з��������ģ�false����û�С� |
+| Promise<boolean> | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [16700001](../../errorcode-universal.md#16700001-General) | General error. |
-| [16700002](../../errorcode-universal.md#16700002-Invalid) | Invalid parameter value. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
+| [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 
 **示例：**
 

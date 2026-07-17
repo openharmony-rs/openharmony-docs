@@ -4,11 +4,17 @@
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-componentUtils-interface Rotation2D--><!--Device-componentUtils-interface Rotation2D-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## angle
 
@@ -23,6 +29,8 @@ angle: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Rotation2D-angle: double--><!--Device-Rotation2D-angle: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +50,8 @@ centerX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Rotation2D-centerX: double--><!--Device-Rotation2D-centerX: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -59,6 +69,8 @@ centerY: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Rotation2D-centerY: double--><!--Device-Rotation2D-centerY: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

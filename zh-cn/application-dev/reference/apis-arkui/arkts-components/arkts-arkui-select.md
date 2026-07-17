@@ -4,6 +4,9 @@
 
 > **说明：**
 
+## 子组件
+
+无
 
 ## Select
 
@@ -13,7 +16,9 @@ Select(options: Array<SelectOption>)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SelectInterface-(options: Array<SelectOption>): SelectAttribute--><!--Device-SelectInterface-(options: Array<SelectOption>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

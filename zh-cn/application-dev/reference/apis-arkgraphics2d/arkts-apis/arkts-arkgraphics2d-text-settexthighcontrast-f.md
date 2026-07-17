@@ -1,5 +1,11 @@
 # setTextHighContrast
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## setTextHighContrast
 
 ```TypeScript
@@ -18,13 +24,15 @@ function setTextHighContrast(action : TextHighContrast): void
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-text-function setTextHighContrast(action : TextHighContrast): void--><!--Device-text-function setTextHighContrast(action : TextHighContrast): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| action | TextHighContrast | 是 | 文字渲染高对比度模式。 |
+| action | [TextHighContrast](arkts-arkgraphics2d-text-texthighcontrast-e.md) | 是 | 文字渲染高对比度模式。 |
 
 **示例：**
 

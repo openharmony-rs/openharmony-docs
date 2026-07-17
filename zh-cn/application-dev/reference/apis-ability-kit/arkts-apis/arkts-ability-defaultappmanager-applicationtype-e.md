@@ -1,12 +1,10 @@
 # ApplicationType
 
-```TypeScript
-export enum ApplicationType
-```
-
-Ĭ��Ӧ�õ�Ӧ�����͡�
+默认应用的应用类型。
 
 **起始版本：** 9
+
+<!--Device-defaultAppManager-export enum ApplicationType--><!--Device-defaultAppManager-export enum ApplicationType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -16,9 +14,11 @@ export enum ApplicationType
 BROWSER = "Web Browser"
 ```
 
-Ĭ���������
+默认浏览器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-BROWSER = "Web Browser"--><!--Device-ApplicationType-BROWSER = "Web Browser"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -28,9 +28,11 @@ BROWSER = "Web Browser"
 IMAGE = "Image Gallery"
 ```
 
-Ĭ��ͼƬ�鿴����
+默认图片查看器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-IMAGE = "Image Gallery"--><!--Device-ApplicationType-IMAGE = "Image Gallery"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -40,9 +42,11 @@ IMAGE = "Image Gallery"
 AUDIO = "Audio Player"
 ```
 
-Ĭ����Ƶ��������
+默认音频播放器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-AUDIO = "Audio Player"--><!--Device-ApplicationType-AUDIO = "Audio Player"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -52,9 +56,11 @@ AUDIO = "Audio Player"
 VIDEO = "Video Player"
 ```
 
-Ĭ����Ƶ��������
+默认视频播放器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-VIDEO = "Video Player"--><!--Device-ApplicationType-VIDEO = "Video Player"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -64,9 +70,11 @@ VIDEO = "Video Player"
 PDF = "PDF Viewer"
 ```
 
-Ĭ��PDF�ĵ��鿴����
+默认PDF文档查看器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-PDF = "PDF Viewer"--><!--Device-ApplicationType-PDF = "PDF Viewer"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -76,9 +84,11 @@ PDF = "PDF Viewer"
 WORD = "Word Viewer"
 ```
 
-Ĭ��WORD�ĵ��鿴����
+默认WORD文档查看器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-WORD = "Word Viewer"--><!--Device-ApplicationType-WORD = "Word Viewer"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -88,9 +98,11 @@ WORD = "Word Viewer"
 EXCEL = "Excel Viewer"
 ```
 
-Ĭ��EXCEL�ĵ��鿴����
+默认EXCEL文档查看器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-EXCEL = "Excel Viewer"--><!--Device-ApplicationType-EXCEL = "Excel Viewer"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -100,9 +112,11 @@ EXCEL = "Excel Viewer"
 PPT = "PPT Viewer"
 ```
 
-Ĭ��PPT�ĵ��鿴����
+默认PPT文档查看器。
 
 **起始版本：** 9
+
+<!--Device-ApplicationType-PPT = "PPT Viewer"--><!--Device-ApplicationType-PPT = "PPT Viewer"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -112,9 +126,11 @@ PPT = "PPT Viewer"
 EMAIL = 'Email'
 ```
 
-Ĭ���ʼ���
+默认邮件。
 
 **起始版本：** 12
+
+<!--Device-ApplicationType-EMAIL = 'Email'--><!--Device-ApplicationType-EMAIL = 'Email'-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 

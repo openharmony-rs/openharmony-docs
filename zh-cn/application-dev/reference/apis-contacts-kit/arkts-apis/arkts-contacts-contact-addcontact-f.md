@@ -1,12 +1,18 @@
 # addContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## addContact
 
 ```TypeScript
 function addContact(contact: Contact, callback: AsyncCallback<number>): void
 ```
 
-������ϵ�ˡ�ʹ��callback�첽�ص���
+添加联系人。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -16,14 +22,16 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
+<!--Device-contact-function addContact(contact: Contact, callback: AsyncCallback<number>): void--><!--Device-contact-function addContact(contact: Contact, callback: AsyncCallback<number>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | Contact | 是 | ��ϵ����Ϣ�� |
-| callback | AsyncCallback&lt;number&gt; | 是 | �ص��������ɹ��������ӵ���ϵ��id��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -58,7 +66,7 @@ contact.addContact(context, {
 function addContact(context: Context, contact: Contact, callback: AsyncCallback<number>): void
 ```
 
-������ϵ�ˡ�ʹ��callback�첽�ص���
+添加联系人。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -66,22 +74,24 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-contact-function addContact(context: Context, contact: Contact, callback: AsyncCallback<number>): void--><!--Device-contact-function addContact(context: Context, contact: Contact, callback: AsyncCallback<number>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contact | Contact | 是 | ��ϵ����Ϣ�� |
-| callback | AsyncCallback&lt;number&gt; | 是 | �ص��������ɹ��������ӵ���ϵ��id��ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -118,7 +128,7 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 function addContact(contact: Contact): Promise<number>
 ```
 
-������ϵ�ˡ�ʹ��Promise�첽�ص���
+添加联系人。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -128,19 +138,21 @@ function addContact(contact: Contact): Promise<number>
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
+<!--Device-contact-function addContact(contact: Contact): Promise<number>--><!--Device-contact-function addContact(contact: Contact): Promise<number>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | Contact | 是 | ��ϵ����Ϣ�� |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󣬷������ӵ���ϵ��id�� |
+| Promise<number> | Promise对象，返回添加的联系人id。 |
 
 **示例：**
 
@@ -170,7 +182,7 @@ promise.then((data) => {
 function addContact(context: Context, contact: Contact): Promise<number>
 ```
 
-������ϵ�ˡ�ʹ��Promise�첽�ص���
+添加联系人。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -178,27 +190,29 @@ function addContact(context: Context, contact: Contact): Promise<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-contact-function addContact(context: Context, contact: Contact): Promise<number>--><!--Device-contact-function addContact(context: Context, contact: Contact): Promise<number>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| contact | Contact | 是 | ��ϵ����Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󣬷������ӵ���ϵ��id�� |
+| Promise<number> | Promise对象，返回添加的联系人id。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 

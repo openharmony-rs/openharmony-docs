@@ -4,9 +4,15 @@
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-componentUtils-interface ComponentInfo--><!--Device-componentUtils-interface ComponentInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## localOffset
 
@@ -23,6 +29,8 @@ localOffset: Offset
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ComponentInfo-localOffset: Offset--><!--Device-ComponentInfo-localOffset: Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +50,8 @@ rotate: RotateResult
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ComponentInfo-rotate: RotateResult--><!--Device-ComponentInfo-rotate: RotateResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## scale
@@ -59,6 +69,8 @@ scale: ScaleResult
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ComponentInfo-scale: ScaleResult--><!--Device-ComponentInfo-scale: ScaleResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +90,8 @@ screenOffset: Offset
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ComponentInfo-screenOffset: Offset--><!--Device-ComponentInfo-screenOffset: Offset-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -95,6 +109,8 @@ size: Size
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ComponentInfo-size: Size--><!--Device-ComponentInfo-size: Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +130,8 @@ transform: Matrix4Result
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ComponentInfo-transform: Matrix4Result--><!--Device-ComponentInfo-transform: Matrix4Result-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## translate
@@ -132,6 +150,8 @@ translate: TranslateResult
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ComponentInfo-translate: TranslateResult--><!--Device-ComponentInfo-translate: TranslateResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowOffset
@@ -149,6 +169,8 @@ windowOffset: Offset
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ComponentInfo-windowOffset: Offset--><!--Device-ComponentInfo-windowOffset: Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

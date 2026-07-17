@@ -1,12 +1,10 @@
 # BundleFlag
 
-```TypeScript
-enum BundleFlag
-```
-
-����Ϣ��־��ָʾ��Ҫ��ȡ�İ���Ϣ�����ݡ�
+包信息标志，指示需要获取的包信息的内容。
 
 **起始版本：** 9
+
+<!--Device-bundleManager-enum BundleFlag--><!--Device-bundleManager-enum BundleFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -16,13 +14,13 @@ enum BundleFlag
 GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000
 ```
 
-���ڻ�ȡ������������ͼ���Ӧ�õ�bundleInfo��������
-[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getAllBundleInfo-2)
-�ӿ�����Ч��
+用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getallbundleinfo-2)接口中生效。
 
-**ϵͳAPI��** �ñ�ǽ�֧����ϵͳAPI��ʹ�á�
+**系统API：** 该标记仅支持在系统API中使用。
 
 **起始版本：** 12
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000--><!--Device-BundleFlag-GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,15 +32,13 @@ GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000
 GET_BUNDLE_INFO_OF_ANY_USER = 0x00002000
 ```
 
-���ڻ�ȡ�����û���װ��bundleInfo�������ܵ���ʹ�ã���Ҫ��GET_BUNDLE_INFO_WITH_APPLICATIONһ��ʹ�á�������
-[getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getBundleInfo-2)
-��
-[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getAllBundleInfo-2)
-�ӿ���Ч��
+用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-2)、[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getallbundleinfo-2)接口生效。
 
-**ϵͳAPI��** �ñ�ǽ�֧����ϵͳAPI��ʹ�á�
+**系统API：** 该标记仅支持在系统API中使用。
 
 **起始版本：** 12
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_OF_ANY_USER = 0x00002000--><!--Device-BundleFlag-GET_BUNDLE_INFO_OF_ANY_USER = 0x00002000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -54,13 +50,13 @@ GET_BUNDLE_INFO_OF_ANY_USER = 0x00002000
 GET_BUNDLE_INFO_EXCLUDE_CLONE = 0x00004000
 ```
 
-���ڻ�ȡȥ������Ӧ�ö���������Ӧ�õ�bundleInfo��������
-[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getAllBundleInfo-2)
-�ӿ�����Ч��
+用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getallbundleinfo-2)接口中生效。
 
-**ϵͳAPI��** �ñ�ǽ�֧����ϵͳAPI��ʹ�á�
+**系统API：** 该标记仅支持在系统API中使用。
 
 **起始版本：** 12
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_EXCLUDE_CLONE = 0x00004000--><!--Device-BundleFlag-GET_BUNDLE_INFO_EXCLUDE_CLONE = 0x00004000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -72,13 +68,13 @@ GET_BUNDLE_INFO_EXCLUDE_CLONE = 0x00004000
 GET_BUNDLE_INFO_WITH_CLOUD_KIT = 0x00008000
 ```
 
-���ڻ�ȡ���ö����ļ�ͬ���������߶��ƽṹ������ͬ��������Ӧ�õ�bundleInfo��������
-[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getAllBundleInfo-2)
-�ӿ�����Ч��
+用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md#getallbundleinfo-2)接口中生效。
 
-**ϵͳAPI��** �ñ�ǽ�֧����ϵͳAPI��ʹ�á�
+**系统API：** 该标记仅支持在系统API中使用。
 
 **起始版本：** 20
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_CLOUD_KIT = 0x00008000--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_CLOUD_KIT = 0x00008000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

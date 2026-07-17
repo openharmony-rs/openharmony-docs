@@ -1,8 +1,10 @@
 # MissionListener（系统接口）
 
-定义系统任务状态监听，可以通过[on](arkts-ability-on-f-sys.md#on-1)注册。
+定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-on-f-sys.md#on-1)注册。
 
 **起始版本：** 8
+
+<!--Device-unnamed-export interface MissionListener--><!--Device-unnamed-export interface MissionListener-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -17,6 +19,8 @@ onMissionClosed(mission: number): void
 当系统关闭任务时会触发该回调函数。
 
 **起始版本：** 9
+
+<!--Device-MissionListener-onMissionClosed(mission: int): void--><!--Device-MissionListener-onMissionClosed(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -38,6 +42,8 @@ onMissionCreated(mission: number): void
 
 **起始版本：** 8
 
+<!--Device-MissionListener-onMissionCreated(mission: int): void--><!--Device-MissionListener-onMissionCreated(mission: int): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -58,6 +64,8 @@ onMissionDestroyed(mission: number): void
 
 **起始版本：** 8
 
+<!--Device-MissionListener-onMissionDestroyed(mission: int): void--><!--Device-MissionListener-onMissionDestroyed(mission: int): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +85,8 @@ onMissionIconUpdated(mission: number, icon: image.PixelMap): void
 当系统更新任务图标时会触发该回调函数。
 
 **起始版本：** 9
+
+<!--Device-MissionListener-onMissionIconUpdated(mission: int, icon: image.PixelMap): void--><!--Device-MissionListener-onMissionIconUpdated(mission: int, icon: image.PixelMap): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -99,6 +109,8 @@ onMissionLabelUpdated(mission: number): void
 
 **起始版本：** 9
 
+<!--Device-MissionListener-onMissionLabelUpdated(mission: int): void--><!--Device-MissionListener-onMissionLabelUpdated(mission: int): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -119,6 +131,8 @@ onMissionMovedToFront(mission: number): void
 
 **起始版本：** 8
 
+<!--Device-MissionListener-onMissionMovedToFront(mission: int): void--><!--Device-MissionListener-onMissionMovedToFront(mission: int): void-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
@@ -138,6 +152,8 @@ onMissionSnapshotChanged(mission: number): void
 当系统更新任务缩略图时会触发该回调函数。
 
 **起始版本：** 8
+
+<!--Device-MissionListener-onMissionSnapshotChanged(mission: int): void--><!--Device-MissionListener-onMissionSnapshotChanged(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 

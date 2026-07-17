@@ -8,6 +8,8 @@ type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
 **起始版本：** 9
 
+<!--Device-securityLabel-type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'--><!--Device-securityLabel-type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 | 类型 | 说明 |

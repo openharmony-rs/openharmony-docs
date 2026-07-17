@@ -1,16 +1,24 @@
 # setDisposedRules（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
+
 ## setDisposedRules
 
 ```TypeScript
 function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfiguration>): void
 ```
 
-��������ָ��Ӧ�û����Ӧ�õ����ع���
+批量设置指定应用或分身应用的拦截规则。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+
+<!--Device-appControl-function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfiguration>): void--><!--Device-appControl-function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfiguration>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -20,17 +28,17 @@ function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfigur
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disposedRuleConfigurations | Array&lt;DisposedRuleConfiguration&gt; | 是 | ��ʾ�����������ع�������ã�����������Ӧ�õ�appId������Ӧ�����������ع���ÿ��<br/>�������ع����������������Ϊ1000��<br/>**˵����**<br/>1.��������д���appId��appIndex��ͬ��DisposedRuleConfigurationʱ�������<br/>DisposedRuleConfiguration�Ḳ��ǰ��ġ�<br/>2.���Ӧ�������ù����ع�������Ϊ��Ӧ���������ع��򣬻Ḳ��֮ǰ�ġ�appId��appIndexһ�����ʾͬһӦ�á� |
+| disposedRuleConfigurations | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DisposedRuleConfiguration> | 是 | 表示批量设置拦截规则的配置，包括待拦截应用的appId、分身应用索引及拦截规则。每次设置拦截规则的数组的最大数量为1000。<br/>**说明：**<br/>1.如果数组中存在appId和appIndex相同的DisposedRuleConfiguration时，后面的DisposedRuleConfiguration会覆盖前面的。<br/>2.如果应用已设置过拦截规则，重新为该应用设置拦截规则，会覆盖之前的。appId和appIndex一致则表示同一应用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied. A non-system application is not allowed to call a system API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [17700005](../../errorcode-universal.md#17700005-The) | The specified app ID is invalid. |
-| [17700061](../../errorcode-universal.md#17700061-AppIndex) | AppIndex is not in the valid range. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is invalid. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex is not in the valid range. |
 
 **示例：**
 

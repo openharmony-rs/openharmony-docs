@@ -1,7 +1,6 @@
 # UnionEffectContainer
 
-形状融合容器，会收集该容器内所有使用[useUnionEffect]{@link CommonMethod#useUnionEffect(value: boolean | undefined)}的后代组件形状，将收集的形状融合生效在容
-器上，作为该容器的绘制形状。
+Defines UnionEffectContainer Component.
 
 
 ## UnionEffectContainer
@@ -15,6 +14,8 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UnionEffectContainerInterface-(options?: UnionEffectContainerOptions): UnionEffectContainerAttribute--><!--Device-UnionEffectContainerInterface-(options?: UnionEffectContainerOptions): UnionEffectContainerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

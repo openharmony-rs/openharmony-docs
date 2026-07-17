@@ -4,7 +4,15 @@ Define html web message port.
 
 **起始版本：** 9
 
+<!--Device-webview-interface WebMessagePort--><!--Device-webview-interface WebMessagePort-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## close
 
@@ -17,6 +25,8 @@ close(): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebMessagePort-close(): void--><!--Device-WebMessagePort-close(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,20 +42,22 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WebMessagePort-onMessageEvent(callback: (result: WebMessage) => void): void--><!--Device-WebMessagePort-onMessageEvent(callback: (result: WebMessage) => void): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (result: WebMessage) =&gt; void | 是 | 用于接收消息的回调函数。 |
+| callback | (result: WebMessage) => void | 是 | 用于接收消息的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100006](../../errorcode-universal.md#17100006-Failed) | Failed to register a message event for the port. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100006](../errorcode-webview.md#17100006-无法注册message-port回调) | Failed to register a message event for the port. |
 
 ## onMessageEventExt
 
@@ -53,11 +65,13 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 onMessageEventExt(callback: (result: WebMessageExt) => void): void
 ```
 
-在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessageType](arkts-arkweb-webview-webmessagetype-e.md#WebMessageType)类型消息。
+在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessageType](arkts-arkweb-webview-webmessagetype-e.md)类型消息。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebMessagePort-onMessageEventExt(callback: (result: WebMessageExt) => void): void--><!--Device-WebMessagePort-onMessageEventExt(callback: (result: WebMessageExt) => void): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -65,14 +79,14 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (result: WebMessageExt) =&gt; void | 是 | 接收到的消息。 |
+| callback | (result: WebMessageExt) => void | 是 | 接收到的消息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100006](../../errorcode-universal.md#17100006-Failed) | Failed to register a message event for the port. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100006](../errorcode-webview.md#17100006-无法注册message-port回调) | Failed to register a message event for the port. |
 
 ## postMessageEvent
 
@@ -86,20 +100,22 @@ postMessageEvent(message: WebMessage): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WebMessagePort-postMessageEvent(message: WebMessage): void--><!--Device-WebMessagePort-postMessageEvent(message: WebMessage): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | WebMessage | 是 | 要发送的消息。 |
+| message | [WebMessage](arkts-arkweb-webview-webmessage-t.md) | 是 | 要发送的消息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100010](../../errorcode-universal.md#17100010-Failed) | Failed to post messages through the port. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100010](../errorcode-webview.md#17100010-无法使用该端口发送消息) | Failed to post messages through the port. |
 
 ## postMessageEventExt
 
@@ -113,20 +129,22 @@ postMessageEventExt(message: WebMessageExt): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WebMessagePort-postMessageEventExt(message: WebMessageExt): void--><!--Device-WebMessagePort-postMessageEventExt(message: WebMessageExt): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | WebMessageExt | 是 | 要发送的消息。 |
+| message | [WebMessageExt](arkts-arkweb-webview-webmessageext-c.md) | 是 | 要发送的消息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100010](../../errorcode-universal.md#17100010-Failed) | Failed to post messages through the port. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100010](../errorcode-webview.md#17100010-无法使用该端口发送消息) | Failed to post messages through the port. |
 
 ## isExtentionType
 
@@ -141,6 +159,8 @@ isExtentionType?: boolean
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WebMessagePort-isExtentionType?: boolean--><!--Device-WebMessagePort-isExtentionType?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

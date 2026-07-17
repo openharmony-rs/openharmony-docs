@@ -4,9 +4,11 @@
 export type PermissionDef = _PermissionDef
 ```
 
-[module.json5�����ļ�](../../../../quick-start/module-configuration-file.md)�ж����Ȩ����ϸ��Ϣ��
+[module.json5配置文件](../../../../quick-start/module-configuration-file.md)中定义的权限详细信息。
 
 **起始版本：** 9
+
+<!--Device-bundleManager-export type PermissionDef = _PermissionDef--><!--Device-bundleManager-export type PermissionDef = _PermissionDef-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -1,15 +1,22 @@
 # createVideoRecorder（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## createVideoRecorder
 
 ```TypeScript
 function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void
 ```
 
-The maintenance of this interface has been stopped since version api 9. Please use AVRecorder
-Creates an VideoRecorder instance.
+该接口自API version 9起停止维护，建议使用AVRecorder。创建视频录制实例。
 
 **起始版本：** 9
+
+<!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void--><!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -19,14 +26,14 @@ Creates an VideoRecorder instance.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;VideoRecorder&gt; | 是 | used to return AudioPlayer instance if the operation is<br/>successful; returns null otherwise. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<VideoRecorder> | 是 | 回调函数，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400101](../../errorcode-universal.md#5400101-No) | No memory. Return by callback. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by callback. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -52,10 +59,11 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 function createVideoRecorder(): Promise<VideoRecorder>
 ```
 
-The maintenance of this interface has been stopped since version api 9. Please use AVRecorder
-Creates an VideoRecorder instance.
+该接口自API version 9起停止维护，建议使用AVRecorder。创建视频录制实例。
 
 **起始版本：** 9
+
+<!--Device-media-function createVideoRecorder(): Promise<VideoRecorder>--><!--Device-media-function createVideoRecorder(): Promise<VideoRecorder>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -65,14 +73,14 @@ Creates an VideoRecorder instance.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;VideoRecorder&gt; | A Promise instance used to return VideoRecorder instance if the operation is<br/>successful; returns null otherwise. |
+| Promise<VideoRecorder> | Promise对象，返回VideoRecorder实例，失败时返回null。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400101](../../errorcode-universal.md#5400101-No) | No memory. Return by promise. |
-| [202](../../errorcode-universal.md#202-Not) | Not System App.&lt;br&gt;**适用版本：** 12+ |
+| [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
 **示例：**
 

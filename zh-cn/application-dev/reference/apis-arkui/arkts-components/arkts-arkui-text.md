@@ -2,6 +2,14 @@
 
 显示一段文本的组件。
 
+## 子组件
+
+可以包含[Span]{@link span}、[ImageSpan]{@link image_span}、[SymbolSpan]{@link symbol_span}和[ContainerSpan]{@link container_span}子组件。
+
+> **说明：**  
+>  
+> 使用[子组件](docroot://reference/apis-arkui/arkui-ts/ts-basic-components-text.md#子组件)实现  
+> [图文混排](docroot://ui/arkts-text-image-layout.md)场景。
 
 ## Text
 
@@ -13,9 +21,11 @@ Text(content?: string | Resource, value?: TextOptions)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextInterface-(content?: string | Resource, value?: TextOptions): TextAttribute--><!--Device-TextInterface-(content?: string | Resource, value?: TextOptions): TextAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,12 +1,18 @@
 # setEthernetConfig
 
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
+
 ## setEthernetConfig
 
 ```TypeScript
 function setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void
 ```
 
-�����ض���̫������ӿڵ�IP��ַ��
+设置特定以太网网络接口的IP地址。
 
 **起始版本：** 23
 
@@ -14,25 +20,27 @@ function setEthernetConfig(admin: Want, networkInterface: string, config: Interf
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-networkManager-function setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void--><!--Device-networkManager-function setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ����� |
-| networkInterface | string | 是 | Ҫ���õ�����ӿ����� |
-| config | InterfaceConfig | 是 | Ҫ���õ�����ӿ�������Ϣ�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。 |
+| networkInterface | string | 是 | 要设置的网络接口名。 |
+| config | [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md) | 是 | 要设置的网络接口配置信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [9201010](../../errorcode-universal.md#9201010-Ethernet) | Ethernet configuration failed. Ethernet device not connected. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9201010](../errorcode-enterpriseDeviceManager.md#9201010-以太网网络接口配置失败) | Ethernet configuration failed. Ethernet device not connected. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 
 **示例：**
 

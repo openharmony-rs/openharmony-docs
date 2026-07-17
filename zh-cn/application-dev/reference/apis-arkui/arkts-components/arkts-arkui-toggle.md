@@ -12,6 +12,9 @@
 > 表现为原先的Toggle样式。
 > >   - ToggleType.Button：设置系统材质的效果与[Button]{@link button}组件设置系统材质的效果相同，主要影响背景颜色、边框、阴影等视觉属性。
 
+## 子组件
+
+仅当ToggleType设置为Button时，可包含子组件。
 
 ## Toggle
 
@@ -21,9 +24,11 @@ Toggle(options: ToggleOptions)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ToggleInterface-(options: ToggleOptions): ToggleAttribute--><!--Device-ToggleInterface-(options: ToggleOptions): ToggleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

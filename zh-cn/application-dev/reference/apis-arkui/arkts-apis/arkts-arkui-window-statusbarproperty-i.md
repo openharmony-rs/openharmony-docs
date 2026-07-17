@@ -4,7 +4,15 @@
 
 **起始版本：** 18
 
+<!--Device-window-interface StatusBarProperty--><!--Device-window-interface StatusBarProperty-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## contentColor
 
@@ -18,7 +26,9 @@ contentColor: string
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-StatusBarProperty-contentColor: string--><!--Device-StatusBarProperty-contentColor: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

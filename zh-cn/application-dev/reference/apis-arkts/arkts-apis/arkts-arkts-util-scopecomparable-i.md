@@ -4,7 +4,15 @@
 
 **起始版本：** 7
 
+<!--Device-util-interface ScopeComparable--><!--Device-util-interface ScopeComparable-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
 
 ## compareTo
 
@@ -18,13 +26,15 @@ compareTo(other: ScopeComparable): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-ScopeComparable-compareTo(other: ScopeComparable): boolean--><!--Device-ScopeComparable-compareTo(other: ScopeComparable): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| other | ScopeComparable | 是 | 与当前值进行比较的另一个值。 |
+| other | [ScopeComparable](arkts-arkts-util-scopecomparable-i.md) | 是 | 与当前值进行比较的另一个值。 |
 
 **返回值：**
 

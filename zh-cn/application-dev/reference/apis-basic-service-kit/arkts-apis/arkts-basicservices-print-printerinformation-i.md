@@ -4,7 +4,15 @@
 
 **起始版本：** 14
 
+<!--Device-print-interface PrinterInformation--><!--Device-print-interface PrinterInformation-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## alias
 
@@ -17,6 +25,8 @@ alias?: string
 **类型：** string
 
 **起始版本：** 18
+
+<!--Device-PrinterInformation-alias?: string--><!--Device-PrinterInformation-alias?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -32,6 +42,8 @@ capability?: PrinterCapabilities
 
 **起始版本：** 14
 
+<!--Device-PrinterInformation-capability?: PrinterCapabilities--><!--Device-PrinterInformation-capability?: PrinterCapabilities-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## description
@@ -45,6 +57,8 @@ description?: string
 **类型：** string
 
 **起始版本：** 14
+
+<!--Device-PrinterInformation-description?: string--><!--Device-PrinterInformation-description?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -60,6 +74,8 @@ options?: string
 
 **起始版本：** 14
 
+<!--Device-PrinterInformation-options?: string--><!--Device-PrinterInformation-options?: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## preferences
@@ -73,6 +89,8 @@ preferences?: PrinterPreferences
 **类型：** PrinterPreferences
 
 **起始版本：** 18
+
+<!--Device-PrinterInformation-preferences?: PrinterPreferences--><!--Device-PrinterInformation-preferences?: PrinterPreferences-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -88,6 +106,8 @@ printerId: string
 
 **起始版本：** 14
 
+<!--Device-PrinterInformation-printerId: string--><!--Device-PrinterInformation-printerId: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## printerMake
@@ -101,6 +121,8 @@ printerMake?: string
 **类型：** string
 
 **起始版本：** 14
+
+<!--Device-PrinterInformation-printerMake?: string--><!--Device-PrinterInformation-printerMake?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -116,6 +138,8 @@ printerName: string
 
 **起始版本：** 14
 
+<!--Device-PrinterInformation-printerName: string--><!--Device-PrinterInformation-printerName: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## printerStatus
@@ -129,6 +153,8 @@ printerStatus: PrinterStatus
 **类型：** PrinterStatus
 
 **起始版本：** 14
+
+<!--Device-PrinterInformation-printerStatus: PrinterStatus--><!--Device-PrinterInformation-printerStatus: PrinterStatus-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -148,6 +174,8 @@ selectedDriver?: PpdInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrinterInformation-selectedDriver?: PpdInfo--><!--Device-PrinterInformation-selectedDriver?: PpdInfo-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## selectedProtocol
@@ -166,6 +194,8 @@ selectedProtocol?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-PrinterInformation-selectedProtocol?: string--><!--Device-PrinterInformation-selectedProtocol?: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## uri
@@ -179,6 +209,8 @@ uri?: string
 **类型：** string
 
 **起始版本：** 14
+
+<!--Device-PrinterInformation-uri?: string--><!--Device-PrinterInformation-uri?: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

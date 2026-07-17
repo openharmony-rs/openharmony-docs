@@ -4,7 +4,7 @@
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare interface TextLayoutOptions--><!--Device-unnamed-declare interface TextLayoutOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,6 +21,8 @@ constraintWidth?: LengthMetrics
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextLayoutOptions-constraintWidth?: LengthMetrics--><!--Device-TextLayoutOptions-constraintWidth?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

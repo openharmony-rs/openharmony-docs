@@ -1,12 +1,10 @@
 # GeneralNameType
 
-```TypeScript
-enum GeneralNameType
-```
-
-表示证书主体用途的枚举。
+X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用者备用名称”（Subject Alternative Name）及其他扩展项中。
 
 **起始版本：** 12
+
+<!--Device-cert-enum GeneralNameType--><!--Device-cert-enum GeneralNameType-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -20,7 +18,9 @@ GENERAL_NAME_TYPE_OTHER_NAME = 0
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_OTHER_NAME = 0--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_OTHER_NAME = 0-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -34,7 +34,9 @@ GENERAL_NAME_TYPE_RFC822_NAME = 1
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_RFC822_NAME = 1--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_RFC822_NAME = 1-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -48,7 +50,9 @@ GENERAL_NAME_TYPE_DNS_NAME = 2
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_DNS_NAME = 2--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_DNS_NAME = 2-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -62,7 +66,9 @@ GENERAL_NAME_TYPE_X400_ADDRESS = 3
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_X400_ADDRESS = 3--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_X400_ADDRESS = 3-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -76,7 +82,9 @@ GENERAL_NAME_TYPE_DIRECTORY_NAME = 4
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_DIRECTORY_NAME = 4--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_DIRECTORY_NAME = 4-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -90,7 +98,9 @@ GENERAL_NAME_TYPE_EDI_PARTY_NAME = 5
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_EDI_PARTY_NAME = 5--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_EDI_PARTY_NAME = 5-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -104,7 +114,9 @@ GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID = 6
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID = 6--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID = 6-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -118,7 +130,9 @@ GENERAL_NAME_TYPE_IP_ADDRESS = 7
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_IP_ADDRESS = 7--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_IP_ADDRESS = 7-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -132,7 +146,9 @@ GENERAL_NAME_TYPE_REGISTERED_ID = 8
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GeneralNameType-GENERAL_NAME_TYPE_REGISTERED_ID = 8--><!--Device-GeneralNameType-GENERAL_NAME_TYPE_REGISTERED_ID = 8-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 

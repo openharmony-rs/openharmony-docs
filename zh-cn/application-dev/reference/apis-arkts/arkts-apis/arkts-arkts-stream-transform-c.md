@@ -1,12 +1,20 @@
 # Transform
 
-一种特殊的双工流，支持数据转换和结果输出。**Transform**类继承自[Duplex](arkts-arkts-stream-duplex-c.md#Duplex)，支持**Duplex**中的所有API。
+一种特殊的双工流，支持数据转换和结果输出。**Transform**类继承自[Duplex](arkts-arkts-stream-duplex-c.md)，支持**Duplex**中的所有API。
 
-**继承/实现关系：** Transform extends [Duplex](arkts-arkts-stream-duplex-c.md#Duplex)
+**继承/实现关系：** Transform extends [Duplex](arkts-arkts-stream-duplex-c.md)
 
 **起始版本：** 12
 
+<!--Device-stream-class Transform extends Duplex--><!--Device-stream-class Transform extends Duplex-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { stream } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -18,7 +26,9 @@ constructor()
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Transform-constructor()--><!--Device-Transform-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -39,7 +49,9 @@ doFlush(callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Transform-doFlush(callback: Function): void--><!--Device-Transform-doFlush(callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -62,13 +74,13 @@ class TestTransform extends stream.Transform {
   }
 
   doFlush(callback: Function) {
-    callback(null, 'test');
+    callback(null, "test");
   }
 }
 
 let transform = new TestTransform();
-transform.end('my test');
-transform.on('data', (data) => {
+transform.end("my test");
+transform.on("data", (data) => {
   console.info("data is", data.data); // data is test
 });
 
@@ -84,7 +96,9 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Transform-doTransform(chunk: string, encoding: string, callback: Function): void--><!--Device-Transform-doTransform(chunk: string, encoding: string, callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

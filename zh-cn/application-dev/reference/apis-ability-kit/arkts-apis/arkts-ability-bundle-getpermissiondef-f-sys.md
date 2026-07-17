@@ -1,12 +1,18 @@
 # getPermissionDef（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## getPermissionDef
 
 ```TypeScript
 function getPermissionDef(permissionName: string, callback: AsyncCallback<PermissionDef>): void
 ```
 
-��Ȩ�����ƻ�ȡȨ�޵���ϸ��Ϣ��ʹ��callback�첽�ص���
+按权限名称获取权限的详细信息，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -16,6 +22,8 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+<!--Device-bundle-function getPermissionDef(permissionName: string, callback: AsyncCallback<PermissionDef>): void--><!--Device-bundle-function getPermissionDef(permissionName: string, callback: AsyncCallback<PermissionDef>): void-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -24,8 +32,8 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissionName | string | 是 | ��Ҫ��ѯ��Ȩ�޵����ơ� |
-| callback | AsyncCallback&lt;PermissionDef&gt; | 是 | ����������Ϊ��εĻص����������ض����Ȩ����Ϣ�� |
+| permissionName | string | 是 | 需要查询的权限的名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PermissionDef> | 是 | 程序启动作为入参的回调函数，返回定义的权限信息。 |
 
 
 ## getPermissionDef
@@ -34,7 +42,7 @@ function getPermissionDef(permissionName: string, callback: AsyncCallback<Permis
 function getPermissionDef(permissionName: string): Promise<PermissionDef>
 ```
 
-��Ȩ�����ƻ�ȡȨ�޵���ϸ��Ϣ��ʹ��promise�첽�ص���
+按权限名称获取权限的详细信息，使用promise异步回调。
 
 **起始版本：** 8
 
@@ -44,6 +52,8 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+<!--Device-bundle-function getPermissionDef(permissionName: string): Promise<PermissionDef>--><!--Device-bundle-function getPermissionDef(permissionName: string): Promise<PermissionDef>-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
@@ -52,11 +62,11 @@ function getPermissionDef(permissionName: string): Promise<PermissionDef>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissionName | string | 是 | ��Ҫ��ѯ��Ȩ�޵����ơ� |
+| permissionName | string | 是 | 需要查询的权限的名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PermissionDef&gt; | Promise���󣬻�ȡ�ɹ�ʱ����Ȩ����ϸ��Ϣ�� |
+| Promise<PermissionDef> | Promise对象，获取成功时返回权限详细信息。 |
 

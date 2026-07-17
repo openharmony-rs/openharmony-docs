@@ -4,9 +4,11 @@
 export type PackageConfig = _PackInfo.PackageConfig
 ```
 
-pack.info�İ���Ϣ��
+pack.info的包信息。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type PackageConfig = _PackInfo.PackageConfig--><!--Device-freeInstall-export type PackageConfig = _PackInfo.PackageConfig-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

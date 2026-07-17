@@ -1166,7 +1166,7 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_AVCodec \*codec | OH_AVCodec实例。 |
-| [OH_AVFormat](capi-core-oh-avformat.md) \*format | 新输出流描述信息。 |
+| OH_AVFormat \*format | 新输出流描述信息。 |
 | void \*userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNeedInputData()
@@ -1193,7 +1193,7 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 | -- | -- |
 | (OH_AVCodec \*codec | OH_AVCodec实例。 |
 | uint32_t index | 与新可用的输入缓冲区相对应的索引。 |
-| OH_AVMemory \*data | 新的可用输入缓冲区。 |
+| [OH_AVMemory](capi-core-oh-avmemory.md) \*data | 新的可用输入缓冲区。 |
 | void \*userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNewOutputData()
@@ -1220,8 +1220,8 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 | -- | -- |
 | (OH_AVCodec \*codec | OH_AVCodec实例。 |
 | uint32_t index | 与新输出缓冲区对应的索引。 |
-| OH_AVMemory \*data | 包含新输出数据的缓冲区。 |
-| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) \*attr | 新输出缓冲区的说明。 |
+| [OH_AVMemory](capi-core-oh-avmemory.md) \*data | 包含新输出数据的缓冲区。 |
+| OH_AVCodecBufferAttr \*attr | 新输出缓冲区的说明。 |
 | void \*userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNeedInputBuffer()
@@ -1244,7 +1244,7 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 | -- | -- |
 | (OH_AVCodec \*codec | OH_AVCodec实例。 |
 | uint32_t index | 与新可用的输入缓冲区相对应的索引。 |
-| [OH_AVBuffer](capi-core-oh-avbuffer.md) \*buffer | 新的可用输入缓冲区。 |
+| OH_AVBuffer \*buffer | 新的可用输入缓冲区。 |
 | void \*userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNewOutputBuffer()
@@ -1267,7 +1267,7 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 | -- | -- |
 | (OH_AVCodec \*codec | OH_AVCodec实例。 |
 | uint32_t index | 与新输出缓冲区对应的索引。 |
-| [OH_AVBuffer](capi-core-oh-avbuffer.md) \*buffer | 包含新输出数据的缓冲区。 |
+| OH_AVBuffer \*buffer | 包含新输出数据的缓冲区。 |
 | void \*userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVDataSourceReadAt()

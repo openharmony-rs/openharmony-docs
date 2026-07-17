@@ -1,5 +1,11 @@
 # isSendable
 
+## 导入模块
+
+```TypeScript
+import { ArkTSUtils } from '@kit.ArkTS';
+```
+
 ## isSendable
 
 ```TypeScript
@@ -12,7 +18,9 @@ function isSendable(value: Object | null | undefined): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-utils-function isSendable(value: Object | null | undefined): boolean--><!--Device-utils-function isSendable(value: Object | null | undefined): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

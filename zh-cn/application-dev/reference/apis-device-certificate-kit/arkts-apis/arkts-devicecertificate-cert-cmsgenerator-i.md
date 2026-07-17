@@ -2,14 +2,22 @@
 
 CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消息。
 
-> **说明：**
->
-> PKCS#7是用于存储签名或加密数据的标准语法。注意CMS是PKCS#7的扩展，PKCS#7支持的数据类型包括数据、签名数据、信封数据、
-> 签名和信封数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
+> **说明：**  
+>  
+> PKCS #7是用于存储签名或加密数据的标准语法。注意CMS是PKCS #7的扩展，PKCS #7支持的数据类型包括数据、签名数据、封装数据、  
+> 签名和封装数据、摘要数据、加密数据。常用于保护数据的完整性和机密性。
 
 **起始版本：** 18
 
+<!--Device-cert-interface CmsGenerator--><!--Device-cert-interface CmsGenerator-End-->
+
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
 
 ## addCert
 
@@ -23,7 +31,9 @@ addCert(cert: X509Cert): void
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-addCert(cert: X509Cert): void--><!--Device-CmsGenerator-addCert(cert: X509Cert): void-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -31,16 +41,16 @@ addCert(cert: X509Cert): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | X509Cert | 是 | 要添加的X509证书。 |
+| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 要添加的X509证书。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -112,7 +122,9 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>--><!--Device-CmsGenerator-addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -120,22 +132,22 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| recipientInfo | CmsRecipientInfo | 是 | 接收者信息。 |
+| recipientInfo | [CmsRecipientInfo](arkts-devicecertificate-cert-cmsrecipientinfo-i.md) | 是 | 接收者信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../../errorcode-universal.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 接收者证书类型无效或不支持；<br/><br/>2. CmsKeyAgreeRecipientInfo的digestAlgorithm无效或不支持；<br/><br/>3. recipientInfo中无接收者信息。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 接收者证书类型无效或不支持；<br>2. CmsKeyAgreeRecipientInfo的digestAlgorithm无效或不支持；<br>3. recipientInfo中无接收者信息。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -231,7 +243,9 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void--><!--Device-CmsGenerator-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -239,19 +253,19 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | X509Cert | 是 | 指定X509证书。 |
-| keyInfo | PrivateKeyInfo | 是 | 指定私钥信息。 |
-| config | CmsSignerConfig | 是 | 指定签名者选项。 |
+| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 指定X509证书。 |
+| keyInfo | [PrivateKeyInfo](arkts-devicecertificate-cert-privatekeyinfo-i.md) | 是 | 指定私钥信息。 |
+| config | [CmsSignerConfig](arkts-devicecertificate-cert-cmssignerconfig-i.md) | 是 | 指定签名者选项。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
-| [19030008](../../errorcode-universal.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
 
 **示例：**
 
@@ -350,7 +364,9 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>--><!--Device-CmsGenerator-doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -358,23 +374,23 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Uint8Array | 是 | Cms操作的内容。 |
-| options | CmsGeneratorOptions | 否 | Cms操作的配置选项。 |
+| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | Cms操作的内容。 |
+| options | [CmsGeneratorOptions](arkts-devicecertificate-cert-cmsgeneratoroptions-i.md) | 否 | Cms操作的配置选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array \\| string&gt; | Promise对象，返回CMS数据。 |
+| Promise<Uint8Array \| string> | Promise对象，返回CMS消息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -482,11 +498,13 @@ async function testDoFinalByPromise() {
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 ```
 
-用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。（同步方法）。
+用于获取CMS消息，例如CMS签名数据或CMS封装数据。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string--><!--Device-CmsGenerator-doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -494,23 +512,23 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Uint8Array | 是 | Cms操作的内容。 |
-| options | CmsGeneratorOptions | 否 | Cms操作的配置选项。 |
+| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | Cms操作的内容。 |
+| options | [CmsGeneratorOptions](arkts-devicecertificate-cert-cmsgeneratoroptions-i.md) | 否 | Cms操作的配置选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 生成的CMS数据。 |
+| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 生成的CMS消息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -621,7 +639,9 @@ getEncryptedContentData(): Promise<Uint8Array>
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-getEncryptedContentData(): Promise<Uint8Array>--><!--Device-CmsGenerator-getEncryptedContentData(): Promise<Uint8Array>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -629,15 +649,15 @@ getEncryptedContentData(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回加密的数据内容。 |
+| Promise<Uint8Array> | Promise对象，返回加密的数据内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 
@@ -749,7 +769,9 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 **起始版本：** 22
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CmsGenerator-setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void--><!--Device-CmsGenerator-setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -757,16 +779,16 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algorithm | CmsRecipientEncryptionAlgorithm | 是 | 用于CMS封装数据的加密算法。 |
+| algorithm | [CmsRecipientEncryptionAlgorithm](arkts-devicecertificate-cert-cmsrecipientencryptionalgorithm-e.md) | 是 | 用于CMS封装数据的加密算法。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../../errorcode-universal.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 算法类型无效或不支持。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 算法类型无效或不支持。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
 **示例：**
 

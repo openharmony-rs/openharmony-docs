@@ -1,12 +1,10 @@
 # PowerKeyFilteringStrategy
 
-```TypeScript
-export enum PowerKeyFilteringStrategy
-```
-
 表示电源键过滤策略。
 
 **起始版本：** 21
+
+<!--Device-power-export enum PowerKeyFilteringStrategy--><!--Device-power-export enum PowerKeyFilteringStrategy-End-->
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -20,6 +18,8 @@ DISABLE_LONG_PRESS_FILTERING = 0
 
 **起始版本：** 21
 
+<!--Device-PowerKeyFilteringStrategy-DISABLE_LONG_PRESS_FILTERING = 0--><!--Device-PowerKeyFilteringStrategy-DISABLE_LONG_PRESS_FILTERING = 0-End-->
+
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 ## LONG_PRESS_FILTERING_ONCE
@@ -31,6 +31,8 @@ LONG_PRESS_FILTERING_ONCE = 1
 表示仅过滤当前电源键长按事件，下一次不过滤。
 
 **起始版本：** 21
+
+<!--Device-PowerKeyFilteringStrategy-LONG_PRESS_FILTERING_ONCE = 1--><!--Device-PowerKeyFilteringStrategy-LONG_PRESS_FILTERING_ONCE = 1-End-->
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 

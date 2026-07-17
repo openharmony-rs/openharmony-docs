@@ -2,6 +2,12 @@
 
 Window manager.
 
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 命名空间
@@ -14,7 +20,7 @@ Window manager.
 
 | 名称 | 说明 |
 | --- | --- |
-| [Callback](arkts-arkui-callback-i.md) | Defines the window callback. |
+| [Callback](arkts-arkui-window-callback-i.md) | Defines the window callback. |
 
 ### 类型
 

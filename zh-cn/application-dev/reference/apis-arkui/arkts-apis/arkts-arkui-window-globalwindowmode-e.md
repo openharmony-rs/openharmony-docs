@@ -1,12 +1,10 @@
 # GlobalWindowMode
 
-```TypeScript
-enum GlobalWindowMode
-```
-
 窗口模式。
 
 **起始版本：** 20
+
+<!--Device-window-enum GlobalWindowMode--><!--Device-window-enum GlobalWindowMode-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -20,7 +18,9 @@ FULLSCREEN = 1
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GlobalWindowMode-FULLSCREEN = 1--><!--Device-GlobalWindowMode-FULLSCREEN = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,7 +34,9 @@ SPLIT = 1 << 1
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GlobalWindowMode-SPLIT = 1 << 1--><!--Device-GlobalWindowMode-SPLIT = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -48,7 +50,9 @@ FLOAT = 1 << 2
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GlobalWindowMode-FLOAT = 1 << 2--><!--Device-GlobalWindowMode-FLOAT = 1 << 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -62,7 +66,9 @@ PIP = 1 << 3
 
 **起始版本：** 20
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-GlobalWindowMode-PIP = 1 << 3--><!--Device-GlobalWindowMode-PIP = 1 << 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

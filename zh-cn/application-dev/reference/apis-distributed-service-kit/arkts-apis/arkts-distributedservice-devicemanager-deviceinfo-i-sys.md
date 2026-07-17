@@ -6,11 +6,19 @@
 
 **废弃版本：** 11
 
-**替代接口：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#DeviceBasicInfo)
+**替代接口：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)
+
+<!--Device-deviceManager-interface DeviceInfo--><!--Device-deviceManager-interface DeviceInfo-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## authForm
 
@@ -25,6 +33,8 @@ authForm: AuthForm
 **起始版本：** 10
 
 **废弃版本：** 11
+
+<!--Device-DeviceInfo-authForm: AuthForm--><!--Device-DeviceInfo-authForm: AuthForm-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -44,7 +54,9 @@ deviceId: string
 
 **废弃版本：** 11
 
-**替代接口：** [deviceId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceId)
+**替代接口：** [deviceId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceid)
+
+<!--Device-DeviceInfo-deviceId: string--><!--Device-DeviceInfo-deviceId: string-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -64,7 +76,9 @@ deviceName: string
 
 **废弃版本：** 11
 
-**替代接口：** [deviceName](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceName)
+**替代接口：** [deviceName](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicename)
+
+<!--Device-DeviceInfo-deviceName: string--><!--Device-DeviceInfo-deviceName: string-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -84,7 +98,9 @@ deviceType: DeviceType
 
 **废弃版本：** 11
 
-**替代接口：** [deviceType](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#deviceType)
+**替代接口：** [deviceType](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicetype)
+
+<!--Device-DeviceInfo-deviceType: DeviceType--><!--Device-DeviceInfo-deviceType: DeviceType-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -104,7 +120,9 @@ networkId: string
 
 **废弃版本：** 11
 
-**替代接口：** [networkId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#networkId)
+**替代接口：** [networkId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#networkid)
+
+<!--Device-DeviceInfo-networkId: string--><!--Device-DeviceInfo-networkId: string-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -123,6 +141,8 @@ range: number
 **起始版本：** 9
 
 **废弃版本：** 11
+
+<!--Device-DeviceInfo-range: number--><!--Device-DeviceInfo-range: number-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 

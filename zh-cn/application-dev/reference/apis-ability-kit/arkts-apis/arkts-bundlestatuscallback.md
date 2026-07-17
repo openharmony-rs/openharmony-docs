@@ -7,6 +7,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [BundleStatusCallback](arkts-ability-bundlestatuscallback-depr-i-sys.md) | 应用状态发生变化时回调的信息。 |
+| [BundleStatusCallback](arkts-ability-bundlestatuscallback-bundlestatuscallback-depr-i-sys.md) | 应用状态发生变化时回调的信息。 |
 <!--DelEnd-->
 

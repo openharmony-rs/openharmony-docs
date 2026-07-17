@@ -1,16 +1,24 @@
 # setAbilityEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## setAbilityEnabled
 
 ```TypeScript
 function setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise<void>
 ```
 
-����ָ��Ӧ�û����Ӧ������Ľ��û�ʹ��״̬��ʹ��Promise�첽�ص���
+设置指定应用或分身应用组件的禁用或使能状态。使用Promise异步回调。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+<!--Device-bundleManager-function setAbilityEnabled(info: AbilityInfo, appIndex: int, isEnabled: boolean): Promise<void>--><!--Device-bundleManager-function setAbilityEnabled(info: AbilityInfo, appIndex: int, isEnabled: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,26 +28,26 @@ function setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boole
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��Ҫ�����õ������ |
-| appIndex | number | 是 | ��ʾ����Ӧ�õ�������<br/>appIndexΪ0ʱ����ʾ������Ӧ������Ľ��û�ʹ��״̬��appIndex����0ʱ����ʾ����ָ������Ӧ������Ľ��û�ʹ��״̬�� |
-| isEnabled | boolean | 是 | ֵΪtrue��ʾʹ�ܣ�ֵΪfalse��ʾ���á� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 需要被设置的组件。 |
+| appIndex | number | 是 | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用组件的禁用或使能状态。appIndex大于0时，表示设置指定分身应用组件的禁用或使能状态。 |
+| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityInfo is not found. |
-| [17700061](../../errorcode-universal.md#17700061-AppIndex) | AppIndex not in valid range. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityInfo is not found. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
 **示例：**
 
@@ -83,11 +91,13 @@ try {
 function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback<void>): void
 ```
 
-����ָ������Ľ��û�ʹ��״̬��ʹ��callback�첽�ص���
+设置指定组件的禁用或使能状态。使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+<!--Device-bundleManager-function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -97,19 +107,19 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: Asyn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��Ҫ�����õ������ |
-| isEnabled | boolean | 是 | ֵΪtrue��ʾʹ�ܣ�ֵΪfalse��ʾ���á� |
-| callback | AsyncCallback&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)��������������û�ʹ��״̬�ɹ�ʱ��errΪ<br/>undefined������Ϊ������� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 需要被设置的组件。 |
+| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置组件禁用或使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityInfo is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityInfo is not found. |
 
 **示例：**
 
@@ -155,11 +165,13 @@ try {
 function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>
 ```
 
-����ָ������Ľ��û�ʹ��״̬��ʹ��Promise�첽�ص���
+设置指定组件的禁用或使能状态。使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+<!--Device-bundleManager-function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>--><!--Device-bundleManager-function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -169,24 +181,24 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��Ҫ�����õ������ |
-| isEnabled | boolean | 是 | ֵΪtrue��ʾʹ�ܣ�ֵΪfalse��ʾ���á� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 需要被设置的组件。 |
+| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityInfo is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityInfo is not found. |
 
 **示例：**
 

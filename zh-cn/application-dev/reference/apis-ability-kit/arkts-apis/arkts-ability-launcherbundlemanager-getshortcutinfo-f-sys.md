@@ -1,19 +1,26 @@
 # getShortcutInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+```
+
 ## getShortcutInfo
 
 ```TypeScript
 function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<ShortcutInfo>>) : void
 ```
 
-��ѯ��ǰ�û���ָ��Ӧ�õĿ�ݷ�ʽ��Ϣ[ShortcutInfo](arkts-ability-shortcutinfo-i.md#ShortcutInfo)��ֻ֧�ֲ�ѯ��Ӧ�õ�ShortcutInfo����ѯ����Ӧ����ʹ��
-[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getShortcutInfoByAppIndex-1)��ʹ��callback�첽�ص���
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getshortcutinfobyappindex-1)。使用callback异步回调。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-launcherBundleManager-function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<ShortcutInfo>>) : void--><!--Device-launcherBundleManager-function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<ShortcutInfo>>) : void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -23,19 +30,19 @@ function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<Short
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
-| callback | AsyncCallback&lt;Array&lt;ShortcutInfo&gt;&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)�����������óɹ���errΪ<br/>undefined��dataΪ��ǰ�û���ָ��Ӧ�õ�[ShortcutInfo](arkts-ability-shortcutinfo-i.md#ShortcutInfo)��Ϣ������Ϊ������� |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<ShortcutInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)信息。否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Verify) | Verify permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not support. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例：**
 
@@ -67,14 +74,15 @@ try {
 function getShortcutInfo(bundleName : string) : Promise<Array<ShortcutInfo>>
 ```
 
-��ѯ��ǰ�û���ָ��Ӧ�õĿ�ݷ�ʽ��Ϣ[ShortcutInfo](arkts-ability-shortcutinfo-i.md#ShortcutInfo)��ֻ֧�ֲ�ѯ��Ӧ�õ�ShortcutInfo����ѯ����Ӧ����ʹ��
-[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getShortcutInfoByAppIndex-1)��ʹ��Promise�첽�ص���
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md#getshortcutinfobyappindex-1)。使用Promise异步回调。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-launcherBundleManager-function getShortcutInfo(bundleName : string) : Promise<Array<ShortcutInfo>>--><!--Device-launcherBundleManager-function getShortcutInfo(bundleName : string) : Promise<Array<ShortcutInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -84,24 +92,24 @@ function getShortcutInfo(bundleName : string) : Promise<Array<ShortcutInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ӧ��Bundle���ơ� |
+| bundleName | string | 是 | 应用Bundle名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;ShortcutInfo&gt;&gt; | Promise���󡣷��ص�ǰ�û���ָ��Ӧ�õ�[ShortcutInfo](arkts-ability-shortcutinfo-i.md#ShortcutInfo)�� |
+| Promise<Array<ShortcutInfo>> | Promise对象。返回当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Verify) | Verify permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not support. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundle name is not found. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not support. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例：**
 

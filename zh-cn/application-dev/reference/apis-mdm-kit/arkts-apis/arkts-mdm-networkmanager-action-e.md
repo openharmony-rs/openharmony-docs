@@ -1,14 +1,10 @@
 # Action
 
-```TypeScript
-enum Action
-```
-
-���ݰ�����Ϊ��
+数据包的行为。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-networkManager-enum Action--><!--Device-networkManager-enum Action-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -18,11 +14,13 @@ enum Action
 ALLOW = 0
 ```
 
-�������ݰ���
+接收数据包。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Action-ALLOW = 0--><!--Device-Action-ALLOW = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -32,11 +30,13 @@ ALLOW = 0
 DENY = 1
 ```
 
-�������ݰ���
+丢弃数据包。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Action-DENY = 1--><!--Device-Action-DENY = 1-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -46,11 +46,13 @@ DENY = 1
 REJECT = 2
 ```
 
-�ܾ����ݰ���
+拒绝数据包。
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Action-REJECT = 2--><!--Device-Action-REJECT = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

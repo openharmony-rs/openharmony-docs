@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-window-interface TransitionContext--><!--Device-window-interface TransitionContext-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## completeTransition
 
@@ -17,6 +25,8 @@ completeTransition(isCompleted: boolean): void
 设置属性转换的最终完成状态。该函数需要在动画函数[animateTo()](./@internal/component/ets/common)执行后设置。
 
 **起始版本：** 9
+
+<!--Device-TransitionContext-completeTransition(isCompleted: boolean): void--><!--Device-TransitionContext-completeTransition(isCompleted: boolean): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -32,8 +42,8 @@ completeTransition(isCompleted: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system<br/>API.&lt;br&gt;**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 
 **示例：**
 
@@ -78,6 +88,8 @@ toWindow: Window
 **类型：** Window
 
 **起始版本：** 9
+
+<!--Device-TransitionContext-toWindow: Window--><!--Device-TransitionContext-toWindow: Window-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

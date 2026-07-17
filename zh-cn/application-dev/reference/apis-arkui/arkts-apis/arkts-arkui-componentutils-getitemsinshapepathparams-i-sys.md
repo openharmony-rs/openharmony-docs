@@ -4,11 +4,17 @@
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-componentUtils-interface GetItemsInShapePathParams--><!--Device-componentUtils-interface GetItemsInShapePathParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## images
 
@@ -24,6 +30,8 @@ images: Array<ImageItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-GetItemsInShapePathParams-images: Array<ImageItem>--><!--Device-GetItemsInShapePathParams-images: Array<ImageItem>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -34,14 +42,15 @@ images: Array<ImageItem>
 ratio?: number
 ```
 
-所选区域中非透明空白像素的比例
-相对于图像总像素的比例。默认值为0.15。
+所选区域中非透明空白像素的比例相对于图像总像素的比例。默认值为0.15。
 
 **类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GetItemsInShapePathParams-ratio?: double--><!--Device-GetItemsInShapePathParams-ratio?: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +69,8 @@ shapePath: Array<common2D.Point>
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>--><!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

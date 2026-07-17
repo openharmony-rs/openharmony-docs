@@ -6,6 +6,8 @@
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## getAccessibilityFocusedElement
@@ -20,6 +22,8 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityExtensionContext-getAccessibilityFocusedElement(): Promise<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getAccessibilityFocusedElement(): Promise<AccessibilityElement>-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -28,13 +32,13 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AccessibilityElement&gt; | Promise对象，返回当前获得焦点的元素。 |
+| Promise<AccessibilityElement> | Promise对象，返回当前获得焦点的元素。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
@@ -51,6 +55,8 @@ getAccessibilityWindowsSync(displayId?: number): Array<AccessibilityElement>
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityExtensionContext-getAccessibilityWindowsSync(displayId?: long): Array<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getAccessibilityWindowsSync(displayId?: long): Array<AccessibilityElement>-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -65,13 +71,13 @@ getAccessibilityWindowsSync(displayId?: number): Array<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;AccessibilityElement&gt; | 窗口列表。 |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AccessibilityElement> | 窗口列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
@@ -84,6 +90,8 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array<number>>
 提供查询应用自定义默认焦点的能力。使用Promise异步回调。
 
 **起始版本：** 18
+
+<!--Device-AccessibilityExtensionContext-getDefaultFocusedElementIds(windowId: int): Promise<Array<long>>--><!--Device-AccessibilityExtensionContext-getDefaultFocusedElementIds(windowId: int): Promise<Array<long>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -99,7 +107,7 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回当前窗口下的自定义默认焦点列表。 |
+| Promise<Array<number>> | Promise对象，返回当前窗口下的自定义默认焦点列表。 |
 
 **错误码：**
 
@@ -119,6 +127,8 @@ getElements(windowId: number, elementId?: number): Promise<Array<AccessibilityEl
 
 **起始版本：** 18
 
+<!--Device-AccessibilityExtensionContext-getElements(windowId: int, elementId?: long): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityExtensionContext-getElements(windowId: int, elementId?: long): Promise<Array<AccessibilityElement>>-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -134,7 +144,7 @@ getElements(windowId: number, elementId?: number): Promise<Array<AccessibilityEl
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回当前窗口或者当前节点下的所有子节点列表。 |
+| Promise<Array<AccessibilityElement>> | Promise对象，返回当前窗口或者当前节点下的所有子节点列表。 |
 
 **错误码：**
 
@@ -156,6 +166,8 @@ getRootInActiveWindow(windowId?: number): Promise<AccessibilityElement>
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityExtensionContext-getRootInActiveWindow(windowId?: int): Promise<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getRootInActiveWindow(windowId?: int): Promise<AccessibilityElement>-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -170,13 +182,13 @@ getRootInActiveWindow(windowId?: number): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AccessibilityElement&gt; | Promise对象，返回活动窗口的根元素。 |
+| Promise<AccessibilityElement> | Promise对象，返回活动窗口的根元素。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
@@ -193,6 +205,8 @@ holdRunningLockSync(): void
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityExtensionContext-holdRunningLockSync(): void--><!--Device-AccessibilityExtensionContext-holdRunningLockSync(): void-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -201,7 +215,7 @@ holdRunningLockSync(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 ## notifyDisconnect
@@ -212,13 +226,13 @@ notifyDisconnect(): void
 
 通知无障碍服务可以关闭该无障碍扩展服务。
 
-此函数需要与注册预关闭接口
-[on('preDisconnect')](arkts-accessibility-accessibilityextensioncontext-c-sys.md#on-1)配合使用，
-如果没有调用过注册预关闭函数，直接调用此函数不生效。
+此函数需要与注册预关闭接口[on('preDisconnect')](arkts-accessibility-accessibilityextensioncontext-c-sys.md#on-1)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityExtensionContext-notifyDisconnect(): void--><!--Device-AccessibilityExtensionContext-notifyDisconnect(): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -228,7 +242,7 @@ notifyDisconnect(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 ## off('preDisconnect')
@@ -243,6 +257,8 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityExtensionContext-off(type: 'preDisconnect', callback?: Callback<void>): void--><!--Device-AccessibilityExtensionContext-off(type: 'preDisconnect', callback?: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -252,13 +268,13 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preDisconnect' | 是 | 监听事件名，固定为‘preDisconnect’，即无障碍扩展服务即将关闭事件。 |
-| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](arkts-accessibility-accessibilityextensioncontext-c-sys.md#on-1)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](arkts-accessibility-accessibilityextensioncontext-c-sys.md#on-1)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 ## on('preDisconnect')
@@ -269,12 +285,13 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 
 向无障碍服务注册回调函数，在无障碍服务关闭该无障碍扩展服务前会执行该回调函数。使用callback异步回调。
 
-此注册函数需要与[notifyDisconnect](arkts-accessibility-accessibilityextensioncontext-c-sys.md#notifydisconnect-1)配合使用，如果不调用
-[notifyDisconnect](arkts-accessibility-accessibilityextensioncontext-c-sys.md#notifydisconnect-1)，则默认等待30秒后，无障碍扩展服务会自动关闭。
+此注册函数需要与[notifyDisconnect](arkts-accessibility-accessibilityextensioncontext-c-sys.md#notifydisconnect-1)配合使用，如果不调用[notifyDisconnect](arkts-accessibility-accessibilityextensioncontext-c-sys.md#notifydisconnect-1)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **起始版本：** 20
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityExtensionContext-on(type: 'preDisconnect', callback: Callback<void>): void--><!--Device-AccessibilityExtensionContext-on(type: 'preDisconnect', callback: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -285,13 +302,13 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preDisconnect' | 是 | 监听事件名，固定为‘preDisconnect’，即无障碍扩展服务即将关闭事件。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，在无障碍扩展服务即将关闭时回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，在无障碍扩展服务即将关闭时回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
 ## startAbility
@@ -304,6 +321,8 @@ startAbility(want: Want): Promise<void>
 
 **起始版本：** 12
 
+<!--Device-AccessibilityExtensionContext-startAbility(want: Want): Promise<void>--><!--Device-AccessibilityExtensionContext-startAbility(want: Want): Promise<void>-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -312,13 +331,13 @@ startAbility(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -339,6 +358,8 @@ unholdRunningLockSync(): void
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityExtensionContext-unholdRunningLockSync(): void--><!--Device-AccessibilityExtensionContext-unholdRunningLockSync(): void-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
@@ -347,6 +368,6 @@ unholdRunningLockSync(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permissionrequired to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 

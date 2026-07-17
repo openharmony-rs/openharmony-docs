@@ -397,7 +397,7 @@ OH_AVErrCode OH_AVCapability_GetEncoderBitrateRange(OH_AVCapability *capability,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向编码器码率范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向编码器码率范围的指针为空指针。 |
 
 ### OH_AVCapability_IsEncoderBitrateModeSupported()
 
@@ -451,7 +451,7 @@ OH_AVErrCode OH_AVCapability_GetEncoderQualityRange(OH_AVCapability *capability,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向编码器质量范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向编码器质量范围的指针为空指针。 |
 
 ### OH_AVCapability_GetEncoderComplexityRange()
 
@@ -478,7 +478,7 @@ OH_AVErrCode OH_AVCapability_GetEncoderComplexityRange(OH_AVCapability *capabili
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向编码器复杂度范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向编码器复杂度范围的指针为空指针。 |
 
 ### OH_AVCapability_GetAudioSupportedSampleRates()
 
@@ -506,7 +506,7 @@ OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRates(OH_AVCapability *capab
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向采样率数组的指针为空指针，或者指向采样率数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向采样率数组的指针为空指针，或者指向采样率数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetAudioSupportedSampleRateRanges()
 
@@ -534,7 +534,7 @@ OH_AVErrCode OH_AVCapability_GetAudioSupportedSampleRateRanges(OH_AVCapability *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向采样率范围数组的指针为空指针，或者指向采样率范围数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向采样率范围数组的指针为空指针，或者指向采样率范围数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetAudioChannelCountRange()
 
@@ -561,7 +561,7 @@ OH_AVErrCode OH_AVCapability_GetAudioChannelCountRange(OH_AVCapability *capabili
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向音频通道计数范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向音频通道计数范围的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoWidthAlignment()
 
@@ -588,7 +588,7 @@ OH_AVErrCode OH_AVCapability_GetVideoWidthAlignment(OH_AVCapability *capability,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频宽度对齐的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频宽度对齐的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoHeightAlignment()
 
@@ -615,7 +615,7 @@ OH_AVErrCode OH_AVCapability_GetVideoHeightAlignment(OH_AVCapability *capability
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频高度对齐的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频高度对齐的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoWidthRangeForHeight()
 
@@ -643,7 +643,7 @@ OH_AVErrCode OH_AVCapability_GetVideoWidthRangeForHeight(OH_AVCapability *capabi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者高度不在通过[OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange)获取支持的高度范围中，或者指向宽度范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者高度不在通过[OH_AVCapability_GetVideoHeightRange](capi-native-avcapability-h.md#oh_avcapability_getvideoheightrange)获取支持的高度范围中，或者指向宽度范围的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoHeightRangeForWidth()
 
@@ -671,7 +671,7 @@ OH_AVErrCode OH_AVCapability_GetVideoHeightRangeForWidth(OH_AVCapability *capabi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者宽度不在通过[OH_AVCapability_GetVideoWidthRange](capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)获取支持的宽度范围中，或者指向高度范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者宽度不在通过[OH_AVCapability_GetVideoWidthRange](capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)获取支持的宽度范围中，或者指向高度范围的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoWidthRange()
 
@@ -698,7 +698,7 @@ OH_AVErrCode OH_AVCapability_GetVideoWidthRange(OH_AVCapability *capability, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频宽度范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频宽度范围的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoHeightRange()
 
@@ -725,7 +725,7 @@ OH_AVErrCode OH_AVCapability_GetVideoHeightRange(OH_AVCapability *capability, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频高度范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频高度范围的指针为空指针。 |
 
 ### OH_AVCapability_IsVideoSizeSupported()
 
@@ -780,7 +780,7 @@ OH_AVErrCode OH_AVCapability_GetVideoFrameRateRange(OH_AVCapability *capability,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频帧率范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频帧率范围的指针为空指针。 |
 
 ### OH_AVCapability_GetVideoFrameRateRangeForSize()
 
@@ -809,7 +809,7 @@ OH_AVErrCode OH_AVCapability_GetVideoFrameRateRangeForSize(OH_AVCapability *capa
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者宽度和高度组合不支持，或者指向帧率范围的指针为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者宽度和高度组合不支持，或者指向帧率范围的指针为空指针。 |
 
 ### OH_AVCapability_AreVideoSizeAndFrameRateSupported()
 
@@ -866,7 +866,7 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedPixelFormats(OH_AVCapability *capa
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频像素格式数组的指针为空指针，或者指向像素格式数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向视频像素格式数组的指针为空指针，或者指向像素格式数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetVideoSupportedNativeBufferFormats()
 
@@ -894,7 +894,7 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedNativeBufferFormats(OH_AVCapabilit
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：能力实例无效、能力实例是音频编码解码器能力、指向NativeBuffer格式数组的指针为空指针、<br> 或指向NativeBuffer格式数组的元素数目的指针为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：能力实例无效、能力实例是音频编码解码器能力、指向NativeBuffer格式数组的指针为空指针、<br> 或指向NativeBuffer格式数组的元素数目的指针为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetSupportedProfiles()
 
@@ -922,7 +922,7 @@ OH_AVErrCode OH_AVCapability_GetSupportedProfiles(OH_AVCapability *capability, c
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向档次数组的指针为空指针，或者指向档次数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者指向档次数组的指针为空指针，或者指向档次数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetSupportedLevelsForProfile()
 
@@ -951,7 +951,7 @@ OH_AVErrCode OH_AVCapability_GetSupportedLevelsForProfile(OH_AVCapability *capab
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者档次不在通过[OH_AVCapability_GetSupportedProfiles](capi-native-avcapability-h.md#oh_avcapability_getsupportedprofiles)获取支持的档次数组中，<br> 或者指向级别数组的指针为空指针，或者指向级别数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：能力实例无效，或者档次不在通过[OH_AVCapability_GetSupportedProfiles](capi-native-avcapability-h.md#oh_avcapability_getsupportedprofiles)获取支持的档次数组中，<br> 或者指向级别数组的指针为空指针，或者指向级别数组的元素数目的指针为空指针。<br> AV_ERR_UNKNOWN：未知错误。<br> AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_AreProfileAndLevelSupported()
 

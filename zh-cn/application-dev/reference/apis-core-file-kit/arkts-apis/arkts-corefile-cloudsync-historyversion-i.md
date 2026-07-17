@@ -1,11 +1,18 @@
 # HistoryVersion
 
-�����ļ���ʷ�汾��Ϣ�����ö����ļ��汾������[FileVersion](arkts-corefile-cloudsync-fileversion-c.md#FileVersion)��
-[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#getHistoryVersionList-1)����ʱ����ʷ�汾�б��е����ԡ�
+端云文件历史版本信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的[gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist-1)方法时，历史版本列表中的属性。
 
 **起始版本：** 20
 
+<!--Device-cloudSync-interface HistoryVersion--><!--Device-cloudSync-interface HistoryVersion-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## autoResolved
 
@@ -13,15 +20,17 @@
 autoResolved: boolean
 ```
 
-��ǰ�汾�Ƿ�Ϊ�Զ������ͻ�İ汾��
+当前版本是否为自动解决冲突的版本。
 
-Ӧ�������ֶ����ͻʱ��Ĭ�Ϸ���false�������塣
+应用设置手动解冲突时，默认返回false，无意义。
 
-Ӧ�������Զ����ͻʱ���˲���Զ����ͻ��true��ʾ��ǰ�汾���ڳ�ͻ�����Ʒ������Զ������ͻ��false��ʾ�޳�ͻ��δ�Զ����ͻ��
+应用设置自动解冲突时，端侧会自动解冲突，true表示当前版本存在冲突，端云服务已自动解决冲突，false表示无冲突，未自动解冲突。
 
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-HistoryVersion-autoResolved: boolean--><!--Device-HistoryVersion-autoResolved: boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -31,11 +40,13 @@ autoResolved: boolean
 editedTime: number
 ```
 
-�ļ������޸ĵ�ʱ�������λ��ms��
+文件内容修改的时间戳，单位：ms。
 
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-HistoryVersion-editedTime: long--><!--Device-HistoryVersion-editedTime: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -45,11 +56,13 @@ editedTime: number
 fileSize: number
 ```
 
-�ļ���С����λ��Byte��
+文件大小，单位：Byte。
 
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-HistoryVersion-fileSize: long--><!--Device-HistoryVersion-fileSize: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -59,11 +72,13 @@ fileSize: number
 originalFileName: string
 ```
 
-��ǰ�汾��Ӧ���ļ�����
+当前版本对应的文件名。
 
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-HistoryVersion-originalFileName: string--><!--Device-HistoryVersion-originalFileName: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -73,11 +88,13 @@ originalFileName: string
 sha256: string
 ```
 
-��ǰ�汾��Ӧ�ļ����ݵĹ�ϣֵ��
+当前版本对应文件内容的哈希值。
 
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-HistoryVersion-sha256: string--><!--Device-HistoryVersion-sha256: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -87,11 +104,13 @@ sha256: string
 versionId: string
 ```
 
-�ļ��汾�š�
+文件版本号。
 
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-HistoryVersion-versionId: string--><!--Device-HistoryVersion-versionId: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

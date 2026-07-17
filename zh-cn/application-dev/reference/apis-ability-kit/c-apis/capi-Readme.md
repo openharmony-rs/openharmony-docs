@@ -1,8 +1,10 @@
 - 头文件
+    - [ability_access_control.h](capi-ability-access-control-h.md)
     - [ability_resource_info.h](capi-ability-resource-info-h.md)
     - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
 - 模块
+    - [AbilityAccessControl](capi-abilityaccesscontrol.md)
     - [Native_Bundle](capi-native-bundle.md)
 - 结构体
     - [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)

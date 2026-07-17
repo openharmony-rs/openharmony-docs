@@ -8,14 +8,16 @@ declare type TextPickerScrollStopCallback = (value: string | string[], index: nu
 
 **说明：**
 
-- 当选择器内容为文本或图文混排时，value值为选中项中的文本值；
+- 当选择器内容为文本或图文混排时，value值为选中项中的文本值；  
 - 当选择器内容为图片时，value值为空。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本14开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare type TextPickerScrollStopCallback = (value: string | string[], index: number | number[]) => void--><!--Device-unnamed-declare type TextPickerScrollStopCallback = (value: string | string[], index: number | number[]) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

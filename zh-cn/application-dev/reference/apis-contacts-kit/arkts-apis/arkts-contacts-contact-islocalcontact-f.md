@@ -1,12 +1,18 @@
 # isLocalContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## isLocalContact
 
 ```TypeScript
 function isLocalContact(id: number, callback: AsyncCallback<boolean>): void
 ```
 
-�жϵ�ǰ��ϵ��id�Ƿ��ڵ绰���С�ʹ��callback�첽�ص���
+判断当前联系人id是否在电话簿中。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -16,14 +22,16 @@ function isLocalContact(id: number, callback: AsyncCallback<boolean>): void
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function isLocalContact(id: number, callback: AsyncCallback<boolean>): void--><!--Device-contact-function isLocalContact(id: number, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | number | 是 | ��ϵ�˶����id���ԣ�һ����ϵ�˶�Ӧһ��id�� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | �ص��������ɹ����ز���ֵ��true������ϵ��id�ڱ��ص绰���У�false�������ϵ��id���ڱ��ص绰���У�ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -49,11 +57,13 @@ contact.isLocalContact(1, (err: BusinessError, data) => {
 function isLocalContact(context: Context, id: number, callback: AsyncCallback<boolean>): void
 ```
 
-�жϵ�ǰ��ϵ��id�Ƿ��ڵ绰���С�ʹ��callback�첽�ص���
+判断当前联系人id是否在电话簿中。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function isLocalContact(context: Context, id: number, callback: AsyncCallback<boolean>): void--><!--Device-contact-function isLocalContact(context: Context, id: number, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -61,16 +71,16 @@ function isLocalContact(context: Context, id: number, callback: AsyncCallback<bo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| id | number | 是 | ��ϵ�˶����id���ԣ�һ����ϵ�˶�Ӧһ��id�� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | �ص��������ɹ����ز���ֵ��true������ϵ��id�ڱ��ص绰���У�false�������ϵ��id���ڱ��ص绰���У�ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例：**
 
@@ -100,7 +110,7 @@ contact.isLocalContact(context, 1, (err: BusinessError, data) => {
 function isLocalContact(id: number): Promise<boolean>
 ```
 
-�жϵ�ǰ��ϵ��id�Ƿ��ڵ绰���С�ʹ��Promise�첽�ص���
+判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -110,19 +120,21 @@ function isLocalContact(id: number): Promise<boolean>
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function isLocalContact(id: number): Promise<boolean>--><!--Device-contact-function isLocalContact(id: number): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | number | 是 | ��ϵ�˶����id���ԣ�һ����ϵ�˶�Ӧһ��id�� |
+| id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󡣷���true��ʾ��ϵ��id�ڱ��ص绰���У�����false��ʾ��ϵ��id���ڱ��ص绰���С� |
+| Promise<boolean> | Promise对象。返回true表示联系人id在本地电话簿中，返回false表示联系人id不在本地电话簿中。 |
 
 **示例：**
 
@@ -144,11 +156,13 @@ promise.then((data) => {
 function isLocalContact(context: Context, id: number): Promise<boolean>
 ```
 
-�жϵ�ǰ��ϵ��id�Ƿ��ڵ绰���С�ʹ��Promise�첽�ص���
+判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function isLocalContact(context: Context, id: number): Promise<boolean>--><!--Device-contact-function isLocalContact(context: Context, id: number): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -156,21 +170,21 @@ function isLocalContact(context: Context, id: number): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| id | number | 是 | ��ϵ�˶����id���ԣ�һ����ϵ�˶�Ӧһ��id�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| id | number | 是 | 联系人对象的id属性，一个联系人对应一个id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise���󡣷���true��ʾ��ϵ��id�ڱ��ص绰���У�����false��ʾ��ϵ��id���ڱ��ص绰���С� |
+| Promise<boolean> | Promise对象。返回true表示联系人id在本地电话簿中，返回false表示联系人id不在本地电话簿中。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例：**
 

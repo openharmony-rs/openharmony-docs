@@ -4,9 +4,15 @@ NavDestination组件信息，由系统返回给开发者。
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-uiObserver-export interface NavDestinationInfo--><!--Device-uiObserver-export interface NavDestinationInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { uiObserver } from '@kit.ArkUI';
+```
 
 ## index
 
@@ -14,8 +20,7 @@ NavDestination组件信息，由系统返回给开发者。
 index: number
 ```
 
-NavDestination在页面栈中的索引。
-取值应≥0。
+NavDestination在页面栈中的索引。取值应≥0。
 
 **类型：** number
 
@@ -23,7 +28,9 @@ NavDestination在页面栈中的索引。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInfo-index: number--><!--Device-NavDestinationInfo-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,8 +40,7 @@ NavDestination在页面栈中的索引。
 mode?: NavDestinationMode
 ```
 
-NavDestination类型。
-默认值：NavDestinationMode.Standard。
+NavDestination类型。默认值：NavDestinationMode.Standard。
 
 **类型：** NavDestinationMode
 
@@ -42,7 +48,9 @@ NavDestination类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInfo-mode?: NavDestinationMode--><!--Device-NavDestinationInfo-mode?: NavDestinationMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +70,8 @@ NavDestination组件的名称。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-NavDestinationInfo-name: ResourceStr--><!--Device-NavDestinationInfo-name: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## navDestinationId
@@ -78,7 +88,9 @@ Auto-generated navDestination id, which is different from common property id of 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInfo-navDestinationId: string--><!--Device-NavDestinationInfo-navDestinationId: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +110,8 @@ navigationId: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-NavDestinationInfo-navigationId: ResourceStr--><!--Device-NavDestinationInfo-navigationId: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -114,7 +128,9 @@ The detailed parameter of NavDestination.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInfo-param?: Object--><!--Device-NavDestinationInfo-param?: Object-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,7 +148,9 @@ NavDestination组件的大小,单位是vp。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInfo-size?: Size--><!--Device-NavDestinationInfo-size?: Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +170,8 @@ NavDestination组件的状态。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-NavDestinationInfo-state: NavDestinationState--><!--Device-NavDestinationInfo-state: NavDestinationState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -168,7 +188,9 @@ NavDestination组件的uniqueId。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-NavDestinationInfo-uniqueId?: number--><!--Device-NavDestinationInfo-uniqueId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

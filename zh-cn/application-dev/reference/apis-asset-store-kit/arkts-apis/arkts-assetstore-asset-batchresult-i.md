@@ -1,11 +1,18 @@
 # BatchResult
 
-[batchAdd](arkts-assetstore-asset-batchadd-f.md#batchAdd-1)、[batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchUpdate-1)和[batchRemove](arkts-assetstore-asset-batchremove-f.md#batchRemove-1)批量操作的
-结果。
+[batchAdd](arkts-assetstore-asset-batchadd-f.md#batchadd-1)、[batchUpdate](arkts-assetstore-asset-batchupdate-f.md#batchupdate-1)和[batchRemove](arkts-assetstore-asset-batchremove-f.md#batchremove-1)批量操作的结果。
 
 **起始版本：** 26.0.0
 
+<!--Device-asset-interface BatchResult--><!--Device-asset-interface BatchResult-End-->
+
 **系统能力：** SystemCapability.Security.Asset
+
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
 
 ## failedCount
 
@@ -18,6 +25,8 @@ failedCount: number
 **类型：** number
 
 **起始版本：** 26.0.0
+
+<!--Device-BatchResult-failedCount: number--><!--Device-BatchResult-failedCount: number-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -32,6 +41,8 @@ failedErrorInfos: Array<BatchErrInfo>
 **类型：** Array<BatchErrInfo>
 
 **起始版本：** 26.0.0
+
+<!--Device-BatchResult-failedErrorInfos: Array<BatchErrInfo>--><!--Device-BatchResult-failedErrorInfos: Array<BatchErrInfo>-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

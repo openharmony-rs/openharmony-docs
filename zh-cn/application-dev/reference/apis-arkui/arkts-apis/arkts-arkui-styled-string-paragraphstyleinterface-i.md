@@ -4,7 +4,7 @@ ParagraphStyleInterface
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare interface ParagraphStyleInterface--><!--Device-unnamed-declare interface ParagraphStyleInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +24,9 @@ leadingMargin?: LengthMetrics | LeadingMarginPlaceholder
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-leadingMargin?: LengthMetrics | LeadingMarginPlaceholder--><!--Device-ParagraphStyleInterface-leadingMargin?: LengthMetrics | LeadingMarginPlaceholder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +46,9 @@ leadingMarginSpan?: LeadingMarginSpan
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-leadingMarginSpan?: LeadingMarginSpan--><!--Device-ParagraphStyleInterface-leadingMarginSpan?: LeadingMarginSpan-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +66,9 @@ maxLines?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-maxLines?: number--><!--Device-ParagraphStyleInterface-maxLines?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +90,9 @@ overflow?: TextOverflow
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-overflow?: TextOverflow--><!--Device-ParagraphStyleInterface-overflow?: TextOverflow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +112,9 @@ paragraphSpacing?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-paragraphSpacing?: LengthMetrics--><!--Device-ParagraphStyleInterface-paragraphSpacing?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,8 +126,7 @@ shaderStyle?: ShaderStyle
 
 设置文本着色器效果。
 
-该接口与[TextStyleInterface](arkts-arkui-styled-string-textstyleinterface-i.md#TextStyleInterface)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于
-[TextStyleInterface](arkts-arkui-styled-string-textstyleinterface-i.md#TextStyleInterface)中的fontColor。
+该接口与[TextStyleInterface](arkts-arkui-styled-string-textstyleinterface-i.md)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[TextStyleInterface](arkts-arkui-styled-string-textstyleinterface-i.md)中的fontColor。
 
 **类型：** ShaderStyle
 
@@ -125,7 +134,9 @@ shaderStyle?: ShaderStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-shaderStyle?: ShaderStyle--><!--Device-ParagraphStyleInterface-shaderStyle?: ShaderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,13 +146,7 @@ shaderStyle?: ShaderStyle
 tailIndents?: LengthMetrics | Array<LengthMetrics>
 ```
 
-指定段落中每行的尾部缩进。
-<p><strong>说明</strong>：
-当提供单个LengthMetrics值时，所有行共享相同的尾部缩进
-当提供数组时，第i个元素指定第i行的尾部缩进。
-如果文本行数超过数组长度，则使用数组中的最后一个元素应用至其余的行。
-<br>负值被视为0。
-</p>。
+指定段落中每行的尾部缩进。<p><strong>说明</strong>：当提供单个LengthMetrics值时，所有行共享相同的尾部缩进当提供数组时，第i个元素指定第i行的尾部缩进。如果文本行数超过数组长度，则使用数组中的最后一个元素应用至其余的行。<br>负值被视为0。</p>。
 
 **类型：** LengthMetrics | Array<LengthMetrics>
 
@@ -149,7 +154,9 @@ tailIndents?: LengthMetrics | Array<LengthMetrics>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-tailIndents?: LengthMetrics | Array<LengthMetrics>--><!--Device-ParagraphStyleInterface-tailIndents?: LengthMetrics | Array<LengthMetrics>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,7 +176,9 @@ textAlign?: TextAlign
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-textAlign?: TextAlign--><!--Device-ParagraphStyleInterface-textAlign?: TextAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,7 +198,9 @@ textDirection?: TextDirection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-textDirection?: TextDirection--><!--Device-ParagraphStyleInterface-textDirection?: TextDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,7 +220,9 @@ textIndent?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-textIndent?: LengthMetrics--><!--Device-ParagraphStyleInterface-textIndent?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -229,7 +242,9 @@ textVerticalAlign?: TextVerticalAlign
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-textVerticalAlign?: TextVerticalAlign--><!--Device-ParagraphStyleInterface-textVerticalAlign?: TextVerticalAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -249,7 +264,9 @@ wordBreak?: WordBreak
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyleInterface-wordBreak?: WordBreak--><!--Device-ParagraphStyleInterface-wordBreak?: WordBreak-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

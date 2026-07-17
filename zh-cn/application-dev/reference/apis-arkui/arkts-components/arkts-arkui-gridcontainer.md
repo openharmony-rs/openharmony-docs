@@ -2,6 +2,9 @@
 
 纵向排布栅格布局容器，仅在栅格布局场景中使用。
 
+## 子组件
+
+可以包含子组件。
 
 ## GridContainer
 
@@ -16,6 +19,8 @@ GridContainer(value?: GridContainerOptions)
 **废弃版本：** 9
 
 **替代接口：** <!--SUBSTITUTE_API-->grid_col/GridColInterface<!--/SUBSTITUTE_API-->
+
+<!--Device-GridContainerInterface-(value?: GridContainerOptions): GridContainerAttribute--><!--Device-GridContainerInterface-(value?: GridContainerOptions): GridContainerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,5 +1,11 @@
 # startPrint
 
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
 ## startPrint
 
 ```TypeScript
@@ -14,25 +20,27 @@ function startPrint(job: PrintJobData): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-print-function startPrint(job: PrintJobData): Promise<void>--><!--Device-print-function startPrint(job: PrintJobData): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| job | PrintJobData | 是 | 打印任务数据。 |
+| job | [PrintJobData](arkts-basicservices-print-printjobdata-i.md) | 是 | 打印任务数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | the application does not have permission to call this function. |
 
 **示例：**
 

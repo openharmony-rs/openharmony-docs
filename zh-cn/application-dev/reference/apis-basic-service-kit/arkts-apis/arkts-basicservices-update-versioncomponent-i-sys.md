@@ -4,9 +4,17 @@
 
 **起始版本：** 9
 
+<!--Device-update-export interface VersionComponent--><!--Device-update-export interface VersionComponent-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { update } from '@kit.BasicServicesKit';
+```
 
 ## componentId
 
@@ -19,6 +27,8 @@ componentId: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-VersionComponent-componentId: string--><!--Device-VersionComponent-componentId: string-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -36,6 +46,8 @@ componentType: ComponentType
 
 **起始版本：** 9
 
+<!--Device-VersionComponent-componentType: ComponentType--><!--Device-VersionComponent-componentType: ComponentType-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ descriptionInfo: DescriptionInfo
 **类型：** DescriptionInfo
 
 **起始版本：** 9
+
+<!--Device-VersionComponent-descriptionInfo: DescriptionInfo--><!--Device-VersionComponent-descriptionInfo: DescriptionInfo-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -68,6 +82,8 @@ displayVersion: string
 
 **起始版本：** 9
 
+<!--Device-VersionComponent-displayVersion: string--><!--Device-VersionComponent-displayVersion: string-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ effectiveMode: EffectiveMode
 **类型：** EffectiveMode
 
 **起始版本：** 9
+
+<!--Device-VersionComponent-effectiveMode: EffectiveMode--><!--Device-VersionComponent-effectiveMode: EffectiveMode-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -100,6 +118,8 @@ innerVersion: string
 
 **起始版本：** 9
 
+<!--Device-VersionComponent-innerVersion: string--><!--Device-VersionComponent-innerVersion: string-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -115,6 +135,8 @@ otaMode?: OtaMode
 **类型：** OtaMode
 
 **起始版本：** 20
+
+<!--Device-VersionComponent-otaMode?: OtaMode--><!--Device-VersionComponent-otaMode?: OtaMode-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -132,6 +154,8 @@ size: number
 
 **起始版本：** 9
 
+<!--Device-VersionComponent-size: int--><!--Device-VersionComponent-size: int-End-->
+
 **系统能力：** SystemCapability.Update.UpdateService
 
 **系统接口：** 此接口为系统接口。
@@ -147,6 +171,8 @@ upgradeAction: UpgradeAction
 **类型：** UpgradeAction
 
 **起始版本：** 9
+
+<!--Device-VersionComponent-upgradeAction: UpgradeAction--><!--Device-VersionComponent-upgradeAction: UpgradeAction-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

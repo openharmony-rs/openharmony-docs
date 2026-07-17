@@ -6,7 +6,33 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供了公共事件相关的能力，包括发布公共事件、订阅公共事件、以及退订公共事件。
+本模块提供公共事件的发布、订阅、取消订阅等能力。公共事件是一种系统级的事件通知机制，允许应用在系统状态变化（如开机完成、电量变化、屏幕亮灭等）或业务自定义事件发生时，向订阅了该事件的应用发送通知，实现跨组件、跨应用的信息传递。
+
+本模块涉及的关键概念：
+- 系统公共事件：是由系统服务或系统应用发布的预置公共事件，对应`Support`枚举中定义的事件名称，部分系统公共事件的订阅需要特定权限。
+- 有序公共事件：是按订阅者优先级依次投递的公共事件，高优先级订阅者先收到事件，可通过修改事件数据将信息传递给后续订阅者，也可中止向低优先级订阅者投递事件。
+
+**API 组合使用关系说明：**
+
+本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布者与订阅者无需感知对方存在。
+
+**订阅流：创建订阅者 → 注册订阅 → 接收事件 → 取消订阅**
+
+1. 配置订阅者信息，声明订阅的事件名称，可选设置订阅优先级、发布方权限与包名。
+2. 通过`commonEventManager.createSubscriberSync`创建订阅者对象。
+3. 通过`commonEventManager.subscribe`注册订阅，事件发布时通过回调接收`CommonEventData`，在回调中处理事件数据。
+4. 不再需要时，通过`commonEventManager.unsubscribe`取消订阅。
+
+**发布流：发布事件（可选携带数据与属性）**
+
+1. 简单发布：通过`commonEventManager.publish`仅指定事件名发布事件。
+2. 携带数据与属性发布：通过`CommonEventPublishData`配置code、data、parameters及`isOrdered`等属性，再调用`publish`发布。
+
+**有序事件流：按优先级顺序投递 + 订阅者协作**
+
+1. 通过`CommonEventPublishData`将`isOrdered`设为`true`，调用`publish`发布有序事件，事件按订阅者优先级依次投递。
+2. 高优先级订阅者先收到事件，可在回调中通过`setCodeAndData`等方法修改code与data数据，供后续订阅者接收。
+3. 处理完成后调用`finishCommonEvent`，触发事件向下一优先级订阅者投递；若需中止后续投递，可调用`abortCommonEvent`标记事件为中止状态。
 
 > **说明：**
 >
@@ -20,7 +46,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限、使用相应的值，详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
+系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限，并使用相应的事件值，详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
 
 ## commonEventManager.publish
 
@@ -36,16 +62,16 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | 是   | 表示要发送的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
+| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
-| 1500003  | The common event sending frequency too high.<br> 适用版本：20 |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20+ |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -90,11 +116,11 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 1500003  | The common event sending frequency too high.<br> 适用版本：20 |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20+ |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -109,7 +135,7 @@ let options: commonEventManager.CommonEventPublishData = {
   code: 0,
   data: 'initial data',
   isOrdered: true // 有序公共事件
-}
+};
 
 // 发布公共事件
 try {
@@ -141,7 +167,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 | 参数名          | 类型                                                         | 必填 | 说明                       |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | 是   | 表示订阅信息。             |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 是   | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 是   | 回调函数，用于接收创建的订阅者对象。当公共事件订阅者创建成功时，err为undefined，data为创建成功的CommonEventSubscriber订阅者对象；否则err为错误对象 |
 
 **错误码：**
 
@@ -156,7 +182,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -167,7 +193,7 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(subscribeInfo,
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-      if(!err) {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
         subscriber = commonEventSubscriber;
         return;
@@ -214,7 +240,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -233,7 +259,7 @@ commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: 
 
 createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
 
-createSubscriber的同步接口。
+同步创建订阅者的接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -263,7 +289,7 @@ createSubscriber的同步接口。
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -293,7 +319,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
-| callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 回调函数。当公共事件订阅成功后，事件触发时执行的回调函数；否则订阅失败时，err为错误对象。 |
+| callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 回调函数。当公共事件订阅成功后，事件触发时通过data返回公共事件数据；订阅失败时，err为错误对象。 |
 
 **错误码：**
 
@@ -301,17 +327,17 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 801  | capability not supported.               |
+| 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. <br> 适用版本：20|
+| 1500010  | The count of subscriber exceed system specification. <br> 适用版本：20+|
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -322,7 +348,7 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(subscribeInfo,
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-      if(!err) {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
         subscriber = commonEventSubscriber;
         // 订阅公共事件
@@ -363,7 +389,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 | 参数名       | 类型                                             | 必填 | 说明                     |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 是   | 表示订阅者对象。         |
-| callback   | AsyncCallback\<void>                            | 否   | 回调函数。当取消公共事件订阅成功时，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback\<void>                            | 否   | 回调函数。当取消公共事件订阅成功时，err为undefined，否则为错误对象。不传该参数时，默认取消订阅且不返回结果。 |
 
 **错误码：**
 
@@ -372,7 +398,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
-| 801  | capability not supported.               |
+| 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 
@@ -381,7 +407,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -392,7 +418,7 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(subscribeInfo,
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-      if(!err) {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
         subscriber = commonEventSubscriber;
         // 订阅公共事件
@@ -463,7 +489,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
 
-| 错误码ID | 错误信息                            |
+| 错误码ID | 错误信息                            | 
 | -------- | ----------------------------------- |
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
@@ -475,11 +501,11 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-  events: ["event"]
+  events: ['event']
 };
 
 // 创建订阅者
@@ -494,9 +520,9 @@ try {
         // 订阅公共事件
         try {
           commonEventManager.subscribeToEvent(subscriber, (data: commonEventManager.CommonEventData) => {
-            console.info(`Succeeded to receive common event, data is ` + JSON.stringify(data));
+            console.info(`Succeeded to receive common event, data is ${JSON.stringify(data)}`);
           }).then(() => {
-            console.info(`Succeeded to subscribe.`);
+            console.info(`Succeeded in subscribing.`);
           }).catch((err: BusinessError) => {
             console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
           });
@@ -516,7 +542,7 @@ try {
 
 type CommonEventData = _CommonEventData
 
-表示公共事件的数据。
+描述公共事件的数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -544,7 +570,7 @@ type CommonEventSubscriber = _CommonEventSubscriber
 
 type CommonEventSubscribeInfo = _CommonEventSubscribeInfo
 
-用于表示订阅者的信息。
+描述公共事件订阅者的信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

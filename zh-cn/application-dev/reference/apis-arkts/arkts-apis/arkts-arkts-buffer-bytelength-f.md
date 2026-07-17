@@ -1,5 +1,11 @@
 # byteLength
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## byteLength
 
 ```TypeScript
@@ -15,6 +21,14 @@ function byteLength(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-buffer-function byteLength(
+    string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer,
+    encoding?: BufferEncoding
+  ): number--><!--Device-buffer-function byteLength(
+    string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer,
+    encoding?: BufferEncoding
+  ): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -22,7 +36,7 @@ function byteLength(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | string | string \| Buffer \| TypedArray \| DataView \| ArrayBuffer \| SharedArrayBuffer | 是 | 指定字符串。 |
-| encoding | BufferEncoding | 否 | 编码格式。默认值：'utf8'。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 编码格式。默认值：'utf8'。 |
 
 **返回值：**
 

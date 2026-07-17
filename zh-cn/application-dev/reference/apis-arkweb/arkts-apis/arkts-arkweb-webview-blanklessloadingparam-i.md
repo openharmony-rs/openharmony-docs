@@ -6,9 +6,15 @@
 
 **起始版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-webview-interface BlanklessLoadingParam--><!--Device-webview-interface BlanklessLoadingParam-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## callback
 
@@ -26,6 +32,8 @@ callback?: Callback<BlanklessFrameInterpolationInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-BlanklessLoadingParam-callback?: Callback<BlanklessFrameInterpolationInfo>--><!--Device-BlanklessLoadingParam-callback?: Callback<BlanklessFrameInterpolationInfo>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## duration
@@ -34,16 +42,15 @@ callback?: Callback<BlanklessFrameInterpolationInfo>
 duration?: number
 ```
 
-本次插入帧的存续时间，单位ms
-有效时长范围为 {0} 和[200, 2000]的并集
-设备行为差异:仅支持手机平台，其他平台返回801
-取值限定为整数。
+本次插入帧的存续时间，单位ms有效时长范围为 {0} 和[200, 2000]的并集设备行为差异:仅支持手机平台，其他平台返回801取值限定为整数。
 
 **类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlanklessLoadingParam-duration?: number--><!--Device-BlanklessLoadingParam-duration?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -63,6 +70,8 @@ enable: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-BlanklessLoadingParam-enable: boolean--><!--Device-BlanklessLoadingParam-enable: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## expirationTime
@@ -80,6 +89,8 @@ expirationTime?: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlanklessLoadingParam-expirationTime?: number--><!--Device-BlanklessLoadingParam-expirationTime?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

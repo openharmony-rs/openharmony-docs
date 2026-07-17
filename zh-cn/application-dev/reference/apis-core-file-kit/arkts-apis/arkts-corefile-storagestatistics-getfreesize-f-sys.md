@@ -1,5 +1,11 @@
 # getFreeSize（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getFreeSize
 
 ```TypeScript
@@ -10,7 +16,10 @@ function getFreeSize(callback: AsyncCallback<number>): void
 
 **起始版本：** 15
 
-**需要权限：** ohos.permission.STORAGE_MANAGER
+**需要权限：** 
+- API版本9 - 14：ohos.permission.STORAGE_MANAGER
+
+<!--Device-storageStatistics-function getFreeSize(callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getFreeSize(callback: AsyncCallback<long>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -20,28 +29,28 @@ function getFreeSize(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;number&gt; | 是 | 获取内置存储的可用空间大小之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取内置存储的可用空间大小之后的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.&lt;br&gt;**适用版本：** 9 - 14 |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application.&lt;br&gt;**适用版本：** 9 - 14 |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Mandatory<br/>parameters are left unspecified; |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| 13600001 | IPC error. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getFreeSize((error: BusinessError, number: number) => {
+storageStatistics.getFreeSize((error: BusinessError, freeSize: number) => {
   if (error) {
-    console.error("getFreeSize failed with error:" + JSON.stringify(error));
+    console.error(`getFreeSize failed. Code: ${error.code}, message: ${error.message}`);
   } else {
     // do something
-    console.info("getFreeSize successfully:" + number);
+    console.info('getFreeSize successfully:' + freeSize);
   }
 });
 

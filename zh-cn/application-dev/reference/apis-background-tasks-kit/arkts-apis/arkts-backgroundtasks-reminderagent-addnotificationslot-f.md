@@ -1,5 +1,11 @@
 # addNotificationSlot
 
+## 导入模块
+
+```TypeScript
+import { reminderAgent } from '@kit.BackgroundTasksKit';
+```
+
 ## addNotificationSlot
 
 ```TypeScript
@@ -12,7 +18,9 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 **废弃版本：** 9
 
-**替代接口：** addNotificationSlot(slot:
+**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot-1)
+
+<!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -20,8 +28,8 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | NotificationSlot | 是 | notification.slot实例，仅支持设置其type属性。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步回调。 |
+| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | 是 | notification.slot实例，仅支持设置其type属性。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步回调。 |
 
 **示例：**
 
@@ -53,7 +61,9 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** addNotificationSlot(slot:
+**替代接口：** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md#addnotificationslot-1)
+
+<!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -61,13 +71,13 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | NotificationSlot | 是 | notification.slot实例，仅支持设置其type属性。 |
+| slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | 是 | notification.slot实例，仅支持设置其type属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise类型异步回调。 |
+| Promise<void> | Promise类型异步回调。 |
 
 **示例：**
 

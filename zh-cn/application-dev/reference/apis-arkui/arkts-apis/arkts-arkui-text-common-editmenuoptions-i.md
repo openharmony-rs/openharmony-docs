@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare interface EditMenuOptions--><!--Device-unnamed-declare interface EditMenuOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +20,9 @@ onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditMenuOptions-onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem>--><!--Device-EditMenuOptions-onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +30,13 @@ onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| menuItems | Array&lt;TextMenuItem&gt; | 是 | 将要显示的菜单项。<br/>**说明：**<br/>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
+| menuItems | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextMenuItem> | 是 | 将要显示的菜单项。<br/>**说明：** <br/>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;TextMenuItem&gt; | 处理后的菜单项。 |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextMenuItem> | 处理后的菜单项。 |
 
 ## onMenuItemClick
 
@@ -48,7 +50,9 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditMenuOptions-onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean--><!--Device-EditMenuOptions-onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,8 +60,8 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| menuItem | TextMenuItem | 是 | 菜单项。<br/>**说明：**<br/>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执<br/>行用户自定义逻辑。 |
-| range | TextRange | 是 | 选中的文本信息。 |
+| menuItem | [TextMenuItem](arkts-arkui-text-common-textmenuitem-i.md) | 是 | 菜单项。<br/>**说明：** <br/>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
+| range | [TextRange](arkts-arkui-text-common-textrange-i.md) | 是 | 选中的文本信息。 |
 
 **返回值：**
 
@@ -79,7 +83,9 @@ onPrepareMenu?: OnPrepareMenuCallback
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-EditMenuOptions-onPrepareMenu?: OnPrepareMenuCallback--><!--Device-EditMenuOptions-onPrepareMenu?: OnPrepareMenuCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

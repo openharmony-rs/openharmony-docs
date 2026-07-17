@@ -1,5 +1,11 @@
 # getStartupTaskResult
 
+## 导入模块
+
+```TypeScript
+import { startupManager } from '@kit.AbilityKit';
+```
+
 ## getStartupTaskResult
 
 ```TypeScript
@@ -12,25 +18,27 @@ function getStartupTaskResult(startupTask: string): Object
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-startupManager-function getStartupTaskResult(startupTask: string): Object--><!--Device-startupManager-function getStartupTaskResult(startupTask: string): Object-End-->
+
 **系统能力：** SystemCapability.Ability.AppStartup
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-startuptask-c.md#StartupTask)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 输入为启动任务名时，返回指定的启动任务<br/>[init](arkts-ability-startuptask-c.md#init-1)返回的执行结果。<br/>输入为so<br/>文件名时，返回undefined。 |
+| Object | 输入为启动任务名时，返回指定的启动任务[init](@ohos.app.appstartup.StartupTask:StartupTask#init(context: AbilityStageContext))返回的执行结果。<br/>输入为so文件名时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 
 **示例：**
 

@@ -1,5 +1,11 @@
 # getAllDisplay
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## getAllDisplay
 
 ```TypeScript
@@ -14,13 +20,15 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 **替代接口：** getAllDisplays(callback:
 
+<!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;Display&gt;&gt; | 是 | 回调函数。返回当前所有的Display对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Display>> | 是 | 回调函数。返回当前所有的Display对象。 |
 
 **示例：**
 
@@ -51,7 +59,9 @@ function getAllDisplay(): Promise<Array<Display>>
 
 **废弃版本：** 9
 
-**替代接口：** [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getAllDisplays-2)
+**替代接口：** [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays-2)
+
+<!--Device-display-function getAllDisplay(): Promise<Array<Display>>--><!--Device-display-function getAllDisplay(): Promise<Array<Display>>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -59,7 +69,7 @@ function getAllDisplay(): Promise<Array<Display>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Display&gt;&gt; | Promise对象。返回当前所有的Display对象。 |
+| Promise<Array<Display>> | Promise对象。返回当前所有的Display对象。 |
 
 **示例：**
 

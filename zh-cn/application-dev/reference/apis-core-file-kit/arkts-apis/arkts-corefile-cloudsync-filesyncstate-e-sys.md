@@ -1,12 +1,10 @@
 # FileSyncState（系统接口）
 
-```TypeScript
-enum FileSyncState
-```
-
-�����ļ�ͬ��״̬��Ϊö�����͡�
+端云文件同步状态，为枚举类型。
 
 **起始版本：** 11
+
+<!--Device-cloudSync-enum FileSyncState--><!--Device-cloudSync-enum FileSyncState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -18,9 +16,11 @@ enum FileSyncState
 UPLOADING = 0
 ```
 
-����ͬ���С�
+上行同步中。
 
 **起始版本：** 11
+
+<!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -32,9 +32,11 @@ UPLOADING = 0
 DOWNLOADING = 1
 ```
 
-����ͬ���С�
+下行同步中。
 
 **起始版本：** 11
+
+<!--Device-FileSyncState-DOWNLOADING = 1--><!--Device-FileSyncState-DOWNLOADING = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -46,9 +48,11 @@ DOWNLOADING = 1
 COMPLETED = 2
 ```
 
-ͬ���ɹ���
+同步成功。
 
 **起始版本：** 11
+
+<!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -60,9 +64,11 @@ COMPLETED = 2
 STOPPED = 3
 ```
 
-ͬ����ֹͣ��
+同步已停止。
 
 **起始版本：** 11
+
+<!--Device-FileSyncState-STOPPED = 3--><!--Device-FileSyncState-STOPPED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -74,9 +80,11 @@ STOPPED = 3
 TO_BE_UPLOADED = 4
 ```
 
-���ڵȴ����С�
+正在等待上行。
 
 **起始版本：** 12
+
+<!--Device-FileSyncState-TO_BE_UPLOADED = 4--><!--Device-FileSyncState-TO_BE_UPLOADED = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -88,9 +96,11 @@ TO_BE_UPLOADED = 4
 UPLOAD_SUCCESS = 5
 ```
 
-�ļ��ѳɹ����С�
+文件已成功上行。
 
 **起始版本：** 12
+
+<!--Device-FileSyncState-UPLOAD_SUCCESS = 5--><!--Device-FileSyncState-UPLOAD_SUCCESS = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -102,9 +112,11 @@ UPLOAD_SUCCESS = 5
 UPLOAD_FAILURE = 6
 ```
 
-�ļ�����ʧ�ܡ�
+文件上行失败。
 
 **起始版本：** 12
+
+<!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

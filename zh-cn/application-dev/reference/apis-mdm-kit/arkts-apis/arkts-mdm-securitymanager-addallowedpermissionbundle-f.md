@@ -1,12 +1,18 @@
 # addAllowedPermissionBundle
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## addAllowedPermissionBundle
 
 ```TypeScript
 function addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void
 ```
 
-��������ʹ���ѽ���ָ��Ȩ�޵�Ӧ�õ�Ȩ��ʹ������������Ȩ��ʹ�����������е�Ӧ�ÿ��Բ���[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setDisallowedPermission-1)�Ĳ������ơ�
+添加允许使用已禁用指定权限的应用到权限使用例外名单，权限使用例外名单中的应用可以不受[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission-1)的策略限制。
 
 **起始版本：** 26.0.0
 
@@ -14,26 +20,28 @@ function addAllowedPermissionBundle(admin: Want, permission: string, application
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-securityManager-function addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void--><!--Device-securityManager-function addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
-| permission | string | 是 | Ȩ�����ơ� |
-| applicationInstance | common.ApplicationInstance | 是 | �����ӵ�Ȩ��ʹ������������Ӧ��ʵ����Ϣ�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| permission | string | 是 | 权限名称。 |
+| applicationInstance | common.ApplicationInstance | 是 | 需添加到权限使用例外名单的应用实例信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
-| [9201015](../../errorcode-universal.md#9201015-The) | The application is not installed. |
-| [9201044](../../errorcode-universal.md#9201044-This) | This permission is not disallowed.<br/>Applications cannot be added to or removed from the trustlist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9201015](../errorcode-enterpriseDeviceManager.md#9201015-指定应用未安装) | The application is not installed. |
+| [9201044](../errorcode-enterpriseDeviceManager.md#9201044-指定权限未被禁用) | This permission is not disallowed.Applications cannot be added to or removed from the trustlist. |
 
 **示例：**
 

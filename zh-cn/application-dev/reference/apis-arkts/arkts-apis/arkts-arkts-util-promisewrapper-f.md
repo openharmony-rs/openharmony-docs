@@ -1,5 +1,11 @@
 # promiseWrapper
 
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
+
 ## promiseWrapper
 
 ```TypeScript
@@ -14,13 +20,15 @@ function promiseWrapper(original: (err: Object, value: Object) => void): Object
 
 **替代接口：** [promisify](arkts-arkts-util-promisify-f.md#promisify-1)
 
+<!--Device-util-function promiseWrapper(original: (err: Object, value: Object) => void): Object--><!--Device-util-function promiseWrapper(original: (err: Object, value: Object) => void): Object-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
+| original | (err: Object, value: Object) => void | 是 | 异步函数。 |
 
 **返回值：**
 

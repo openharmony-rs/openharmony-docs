@@ -2,15 +2,23 @@
 
 画刷对象，描述所绘制图形的填充信息。
 
-> **说明：**
->
-> - 本模块使用屏幕物理像素单位px。
->
+> **说明：**  
+>  
+> - 本模块使用屏幕物理像素单位px。  
+>  
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **起始版本：** 11
 
+<!--Device-drawing-class Brush--><!--Device-drawing-class Brush-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## constructor
 
@@ -21,6 +29,8 @@ constructor()
 构造一个新的画刷对象。
 
 **起始版本：** 12
+
+<!--Device-Brush-constructor()--><!--Device-Brush-constructor()-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -34,19 +44,21 @@ constructor(brush: Brush)
 
 **起始版本：** 12
 
+<!--Device-Brush-constructor(brush: Brush)--><!--Device-Brush-constructor(brush: Brush)-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| brush | Brush | 是 | 待复制的画刷对象。 |
+| brush | [Brush](arkts-arkgraphics2d-drawing-brush-c.md) | 是 | 待复制的画刷对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## getAlpha
 
@@ -57,6 +69,8 @@ getAlpha(): number
 获取画刷的透明度。
 
 **起始版本：** 12
+
+<!--Device-Brush-getAlpha(): int--><!--Device-Brush-getAlpha(): int-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -76,6 +90,8 @@ getColor(): common2D.Color
 
 **起始版本：** 12
 
+<!--Device-Brush-getColor(): common2D.Color--><!--Device-Brush-getColor(): common2D.Color-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -90,9 +106,11 @@ getColor(): common2D.Color
 getColor4f(): common2D.Color4f
 ```
 
-获取画刷的颜色，与[getColor](arkts-arkgraphics2d-drawing-brush-c.md#getColor-1)的区别是返回值类型为浮点数，适用于需要浮点数类型的场景。
+获取画刷的颜色，与[getColor](arkts-arkgraphics2d-drawing-brush-c.md#getcolor-1)的区别是返回值类型为浮点数，适用于需要浮点数类型的场景。
 
 **起始版本：** 20
+
+<!--Device-Brush-getColor4f(): common2D.Color4f--><!--Device-Brush-getColor4f(): common2D.Color4f-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -112,13 +130,15 @@ getColorFilter(): ColorFilter
 
 **起始版本：** 12
 
+<!--Device-Brush-getColorFilter(): ColorFilter--><!--Device-Brush-getColorFilter(): ColorFilter-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorFilter | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
 
 ## getHexColor
 
@@ -129,6 +149,8 @@ getHexColor(): number
 获取画刷的颜色。
 
 **起始版本：** 18
+
+<!--Device-Brush-getHexColor(): int--><!--Device-Brush-getHexColor(): int-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -148,6 +170,8 @@ isAntiAlias(): boolean
 
 **起始版本：** 12
 
+<!--Device-Brush-isAntiAlias(): boolean--><!--Device-Brush-isAntiAlias(): boolean-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -166,6 +190,8 @@ reset(): void
 
 **起始版本：** 12
 
+<!--Device-Brush-reset(): void--><!--Device-Brush-reset(): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## setAlpha
@@ -177,6 +203,8 @@ setAlpha(alpha: number): void
 设置画刷的透明度。
 
 **起始版本：** 11
+
+<!--Device-Brush-setAlpha(alpha: int): void--><!--Device-Brush-setAlpha(alpha: int): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -190,7 +218,7 @@ setAlpha(alpha: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setAntiAlias
 
@@ -201,6 +229,8 @@ setAntiAlias(aa: boolean): void
 设置画刷是否开启抗锯齿。开启后，可以使得图形的边缘在显示时更平滑。未调用此接口设置时，系统默认关闭抗锯齿。
 
 **起始版本：** 11
+
+<!--Device-Brush-setAntiAlias(aa: boolean): void--><!--Device-Brush-setAntiAlias(aa: boolean): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -214,7 +244,7 @@ setAntiAlias(aa: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setBlendMode
 
@@ -226,19 +256,21 @@ setBlendMode(mode: BlendMode): void
 
 **起始版本：** 11
 
+<!--Device-Brush-setBlendMode(mode: BlendMode): void--><!--Device-Brush-setBlendMode(mode: BlendMode): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | BlendMode | 是 | 颜色的混合模式。 |
+| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 颜色的混合模式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setColor
 
@@ -249,6 +281,8 @@ setColor(color: common2D.Color): void
 设置画刷的颜色。
 
 **起始版本：** 11
+
+<!--Device-Brush-setColor(color: common2D.Color): void--><!--Device-Brush-setColor(color: common2D.Color): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -262,7 +296,7 @@ setColor(color: common2D.Color): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setColor
 
@@ -270,9 +304,11 @@ setColor(color: common2D.Color): void
 setColor(alpha: number, red: number, green: number, blue: number): void
 ```
 
-设置画刷的颜色。性能优于[setColor](arkts-arkgraphics2d-drawing-brush-c.md#setColor-1)接口，推荐使用本接口。
+设置画刷的颜色。性能优于[setColor](arkts-arkgraphics2d-drawing-brush-c.md#setcolor-1)接口，推荐使用本接口。
 
 **起始版本：** 12
+
+<!--Device-Brush-setColor(alpha: int, red: int, green: int, blue: int): void--><!--Device-Brush-setColor(alpha: int, red: int, green: int, blue: int): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -289,7 +325,7 @@ setColor(alpha: number, red: number, green: number, blue: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setColor
 
@@ -300,6 +336,8 @@ setColor(color: number): void
 设置画刷的颜色。
 
 **起始版本：** 18
+
+<!--Device-Brush-setColor(color: int): void--><!--Device-Brush-setColor(color: int): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -313,7 +351,7 @@ setColor(color: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## setColor4f
 
@@ -321,9 +359,11 @@ setColor(color: number): void
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-设置画刷的颜色以及标准色域，与[setColor](arkts-arkgraphics2d-drawing-brush-c.md#setColor-1)区别在于可以单独设置色域，适用于需要单独设置色域的场景。
+设置画刷的颜色以及标准色域，与[setColor](arkts-arkgraphics2d-drawing-brush-c.md#setcolor-1)区别在于可以单独设置色域，适用于需要单独设置色域的场景。
 
 **起始版本：** 20
+
+<!--Device-Brush-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void--><!--Device-Brush-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -344,19 +384,21 @@ setColorFilter(filter: ColorFilter | null): void
 
 **起始版本：** 11
 
+<!--Device-Brush-setColorFilter(filter: ColorFilter | null): void--><!--Device-Brush-setColorFilter(filter: ColorFilter | null): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | ColorFilter \| null | 是 | 颜色滤波器。null表示清空颜色滤波器。 [since 20] |
+| filter | ColorFilter \| null | 是 | 颜色滤波器。null表示清空颜色滤波器。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setImageFilter
 
@@ -367,6 +409,8 @@ setImageFilter(filter: ImageFilter | null): void
 为画刷设置图像滤波器。
 
 **起始版本：** 12
+
+<!--Device-Brush-setImageFilter(filter: ImageFilter | null): void--><!--Device-Brush-setImageFilter(filter: ImageFilter | null): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -380,7 +424,7 @@ setImageFilter(filter: ImageFilter | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setMaskFilter
 
@@ -392,19 +436,21 @@ setMaskFilter(filter: MaskFilter | null): void
 
 **起始版本：** 12
 
+<!--Device-Brush-setMaskFilter(filter: MaskFilter | null): void--><!--Device-Brush-setMaskFilter(filter: MaskFilter | null): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | MaskFilter \| null | 是 | 蒙版滤镜。null表示清空蒙版滤镜。 [since 20] |
+| filter | MaskFilter \| null | 是 | 蒙版滤镜。null表示清空蒙版滤镜。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setShaderEffect
 
@@ -416,19 +462,21 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 **起始版本：** 12
 
+<!--Device-Brush-setShaderEffect(shaderEffect: ShaderEffect | null): void--><!--Device-Brush-setShaderEffect(shaderEffect: ShaderEffect | null): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shaderEffect | ShaderEffect \| null | 是 | 着色器对象。null表示清空着色器效果。 [since 20] |
+| shaderEffect | ShaderEffect \| null | 是 | 着色器对象。null表示清空着色器效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ## setShadowLayer
 
@@ -440,17 +488,19 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 **起始版本：** 12
 
+<!--Device-Brush-setShadowLayer(shadowLayer: ShadowLayer | null): void--><!--Device-Brush-setShadowLayer(shadowLayer: ShadowLayer | null): void-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadowLayer | ShadowLayer \| null | 是 | 阴影层对象。null表示清空阴影层效果。 [since 20] |
+| shadowLayer | ShadowLayer \| null | 是 | 阴影层对象。null表示清空阴影层效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/><br/>2. Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 

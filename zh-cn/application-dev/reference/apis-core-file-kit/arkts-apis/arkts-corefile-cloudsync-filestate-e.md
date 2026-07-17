@@ -1,12 +1,10 @@
 # FileState
 
-```TypeScript
-enum FileState
-```
-
-�����ļ�ͬ��״̬��Ϊö�����͡�
+端云文件同步状态，为枚举类型。
 
 **起始版本：** 20
+
+<!--Device-cloudSync-enum FileState--><!--Device-cloudSync-enum FileState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -16,9 +14,11 @@ enum FileState
 INITIAL_AFTER_DOWNLOAD = 0
 ```
 
-�״����к�ĳ�ʼ״̬��
+首次下行后的初始状态。
 
 **起始版本：** 20
+
+<!--Device-FileState-INITIAL_AFTER_DOWNLOAD = 0--><!--Device-FileState-INITIAL_AFTER_DOWNLOAD = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -28,9 +28,11 @@ INITIAL_AFTER_DOWNLOAD = 0
 UPLOADING = 1
 ```
 
-����ͬ���С�
+上行同步中。
 
 **起始版本：** 20
+
+<!--Device-FileState-UPLOADING = 1--><!--Device-FileState-UPLOADING = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -40,9 +42,11 @@ UPLOADING = 1
 STOPPED = 2
 ```
 
-������ֹͣ��
+上行已停止。
 
 **起始版本：** 20
+
+<!--Device-FileState-STOPPED = 2--><!--Device-FileState-STOPPED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -52,9 +56,11 @@ STOPPED = 2
 TO_BE_UPLOADED = 3
 ```
 
-���ڵȴ����С�
+正在等待上行。
 
 **起始版本：** 20
+
+<!--Device-FileState-TO_BE_UPLOADED = 3--><!--Device-FileState-TO_BE_UPLOADED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -64,9 +70,11 @@ TO_BE_UPLOADED = 3
 UPLOAD_SUCCESS = 4
 ```
 
-�ļ��ѳɹ����С�
+文件已成功上行。
 
 **起始版本：** 20
+
+<!--Device-FileState-UPLOAD_SUCCESS = 4--><!--Device-FileState-UPLOAD_SUCCESS = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -76,9 +84,11 @@ UPLOAD_SUCCESS = 4
 UPLOAD_FAILURE = 5
 ```
 
-�ļ�����ʧ�ܡ�
+文件上行失败。
 
 **起始版本：** 20
+
+<!--Device-FileState-UPLOAD_FAILURE = 5--><!--Device-FileState-UPLOAD_FAILURE = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

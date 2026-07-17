@@ -1,12 +1,10 @@
 # OperationType
 
-```TypeScript
-export enum OperationType
-```
-
 表示WantAgent支持的操作类型。
 
 **起始版本：** 9
+
+<!--Device-wantAgent-export enum OperationType--><!--Device-wantAgent-export enum OperationType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -22,6 +20,8 @@ UNKNOWN_TYPE = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-OperationType-UNKNOWN_TYPE = 0--><!--Device-OperationType-UNKNOWN_TYPE = 0-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## START_ABILITY
@@ -35,6 +35,8 @@ START_ABILITY
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OperationType-START_ABILITY--><!--Device-OperationType-START_ABILITY-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,6 +52,8 @@ START_ABILITIES
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-OperationType-START_ABILITIES--><!--Device-OperationType-START_ABILITIES-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## START_SERVICE
@@ -64,6 +68,8 @@ START_SERVICE
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-OperationType-START_SERVICE--><!--Device-OperationType-START_SERVICE-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## SEND_COMMON_EVENT
@@ -77,6 +83,8 @@ SEND_COMMON_EVENT
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OperationType-SEND_COMMON_EVENT--><!--Device-OperationType-SEND_COMMON_EVENT-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

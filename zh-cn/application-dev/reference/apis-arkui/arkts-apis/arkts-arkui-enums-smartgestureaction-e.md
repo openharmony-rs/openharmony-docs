@@ -1,14 +1,10 @@
 # SmartGestureAction
 
-```TypeScript
-declare enum SmartGestureAction
-```
-
 智慧手势操作类型枚举。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare enum SmartGestureAction--><!--Device-unnamed-declare enum SmartGestureAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +20,9 @@ NONE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SmartGestureAction-NONE = 0--><!--Device-SmartGestureAction-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +38,9 @@ PAGE_FORWARD = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SmartGestureAction-PAGE_FORWARD = 1--><!--Device-SmartGestureAction-PAGE_FORWARD = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +56,9 @@ SCROLL_FORWARD = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SmartGestureAction-SCROLL_FORWARD = 2--><!--Device-SmartGestureAction-SCROLL_FORWARD = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +74,9 @@ SELECT = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SmartGestureAction-SELECT = 3--><!--Device-SmartGestureAction-SELECT = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +92,9 @@ CLICK = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SmartGestureAction-CLICK = 4--><!--Device-SmartGestureAction-CLICK = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +110,9 @@ BACK_PRESS = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-SmartGestureAction-BACK_PRESS = 5--><!--Device-SmartGestureAction-BACK_PRESS = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

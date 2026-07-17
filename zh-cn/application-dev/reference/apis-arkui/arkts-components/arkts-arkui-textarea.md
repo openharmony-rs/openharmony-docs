@@ -4,6 +4,11 @@
 
 高度未设置时，组件无默认高度，自适应内容高度。宽度未设置时，默认撑满最大宽度。
 
+> **说明：**
+
+## 子组件
+
+无
 
 ## TextArea
 
@@ -15,7 +20,9 @@ TextArea(value?: TextAreaOptions)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextAreaInterface-(value?: TextAreaOptions): TextAreaAttribute--><!--Device-TextAreaInterface-(value?: TextAreaOptions): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

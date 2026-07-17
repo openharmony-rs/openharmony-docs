@@ -8,6 +8,8 @@ export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'bac
 
 **起始版本：** 9
 
+<!--Device-unnamed-export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'--><!--Device-unnamed-export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型 | 说明 |

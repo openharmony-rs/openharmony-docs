@@ -1,5 +1,11 @@
 # getDevices
 
+## 导入模块
+
+```TypeScript
+import { usb } from '@kit.BasicServicesKit';
+```
+
 ## getDevices
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getDevices(): Array<Readonly<USBDevice>>
 
 **废弃版本：** 9
 
-**替代接口：** [getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getDevices-1)
+**替代接口：** [getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1)
+
+<!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>--><!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -20,7 +28,7 @@ function getDevices(): Array<Readonly<USBDevice>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;Readonly&lt;USBDevice&gt;&gt; | 设备信息列表。 |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<USBDevice>> | 设备信息列表。 |
 
 **示例：**
 

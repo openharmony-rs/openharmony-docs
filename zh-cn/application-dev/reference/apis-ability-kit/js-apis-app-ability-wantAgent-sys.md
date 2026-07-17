@@ -55,7 +55,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// wantAgent对象
+// 用于存储创建的WantAgent实例
 let wantAgentData: _WantAgent;
 // WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -85,22 +85,23 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+// 创建WantAgent实例的回调函数
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
-  // getWant回调
+  // 获取Want数据的回调函数
   let getWantCallback = (err: BusinessError, data: Want) => {
-    if(err.code) {
-      console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
+    if (err.code) {
+      console.error(`Failed to getWant. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info(`getWant success, data: ${JSON.stringify(data)}.`);
     }
   }
   try {
+    // 获取WantAgent对象的Want数据
     wantAgent.getWant(wantAgentData, getWantCallback);
   } catch(err) {
     let code = (err as BusinessError).code;
@@ -110,6 +111,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
 }
 
 try {
+  // 创建WantAgent实例
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   let code = (err as BusinessError).code;
@@ -153,15 +155,13 @@ getWant(agent: WantAgent): Promise\<Want\>
 | 16000015   | Service timeout.|
 | 16000151   | Invalid wantAgent object.|
 
-错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)
-
 **示例：**
 
 ```ts
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// wantAgent对象
+// 用于存储创建的WantAgent实例
 let wantAgentData: _WantAgent;
 // WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -191,14 +191,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+// 创建WantAgent实例的回调函数
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
   try {
+    // 获取WantAgent对象的Want数据
     wantAgent.getWant(wantAgentData).then((data)=>{
       console.info(`getWant success, data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError)=>{
@@ -212,6 +213,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
 }
 
 try {
+  // 创建WantAgent实例
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   let code = (err as BusinessError).code;
@@ -234,7 +236,7 @@ setWantAgentMultithreading(isMultithreadingSupported: boolean) : void
 
 | 参数名     | 类型                  | 必填 | 说明                            |
 | ---------- | --------------------- | ---- | ------------------------------- |
-| isMultithreadingSupported    | boolean    | 是   |表示是否开启多线程传递功能。true表示开启，false表示关闭。   |
+| isMultithreadingSupported    | boolean    | 是   | 是否开启WantAgent多线程传递功能。true表示开启，false表示关闭。   |
 
 **错误码**：
 
@@ -282,7 +284,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // 定义getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`Failed to call getWantAgentCallback. Code is ${err.code}. Message is ${err.message}.`);
   } else {
@@ -290,16 +292,22 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   }
 
   try {
+    // 开启WantAgent多线程传递功能
     wantAgent.setWantAgentMultithreading(true);
   } catch (err) {
-    console.error(`Failed to set wantAgentMultithreading. Code is ${err.code}. Message is ${err.message}.`);
+    let code = (err as BusinessError).code;
+    let msg = (err as BusinessError).message;
+    console.error(`Failed to set wantAgentMultithreading. Code: ${code}, message: ${msg}`);
   }
 }
 
 try {
+  // 创建WantAgent实例
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
-  console.error(`Failed to get wantAgent. Code is ${err.code}. Message is ${err.message}.`);
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`Failed to get wantAgent. Code: ${code}, message: ${msg}`);
 }
 ```
 
@@ -405,15 +413,15 @@ class MyAbility extends UIAbility {
           });
         } catch (err) {
           console.error(`triggerAsync failed! ${err.code} ${err.message}`);
-        }
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let msg = (err as BusinessError).message;
-      console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
-    }
-  }
-}
+         }
+       });
+     } catch (err) {
+       let code = (err as BusinessError).code;
+       let msg = (err as BusinessError).message;
+       console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
+     }
+   }
+ }
 ```
 
 ## wantAgent.createLocalWantAgent<sup>20+</sup>
@@ -424,7 +432,7 @@ createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 
 > **说明：**
 > 
-> - 本接口创建的本地WantAgent实例仅存储于WantAgent客户端，不受WantAgent服务端管理。使用该本地实例时，需要校验实例，以保证安全性。  
+> - 本接口创建的本地WantAgent实例仅存储于WantAgent客户端，不受WantAgent服务端管理。使用该本地实例时，需要校验实例的有效性和来源，以保证安全性。  
 >
 > - 本地WantAgent实例创建后，触发方法参见[wantAgent.triggerAsync](#wantagenttriggerasync20)接口说明。
 
@@ -566,6 +574,7 @@ let localWantAgentInfo: wantAgent.LocalWantAgentInfo = {
 // 创建WantAgent实例并获取是否为本地WantAgent实例
 try {
   wantAgentData = wantAgent.createLocalWantAgent(localWantAgentInfo);
+  // 判断WantAgent实例是否为本地实例
   let isLocal: boolean = wantAgent.isLocalWantAgent(wantAgentData);
 } catch (err) {
   console.error('call isLocalWantAgent failed');

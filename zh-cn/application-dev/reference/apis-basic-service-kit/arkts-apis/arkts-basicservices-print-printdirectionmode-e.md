@@ -1,12 +1,10 @@
 # PrintDirectionMode
 
-```TypeScript
-enum PrintDirectionMode
-```
-
 打印纸张方向的枚举。
 
 **起始版本：** 11
+
+<!--Device-print-enum PrintDirectionMode--><!--Device-print-enum PrintDirectionMode-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ DIRECTION_MODE_AUTO = 0
 
 **起始版本：** 11
 
+<!--Device-PrintDirectionMode-DIRECTION_MODE_AUTO = 0--><!--Device-PrintDirectionMode-DIRECTION_MODE_AUTO = 0-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## DIRECTION_MODE_PORTRAIT
@@ -32,6 +32,8 @@ DIRECTION_MODE_PORTRAIT = 1
 
 **起始版本：** 11
 
+<!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## DIRECTION_MODE_LANDSCAPE
@@ -43,6 +45,8 @@ DIRECTION_MODE_LANDSCAPE = 2
 表示横向打印。
 
 **起始版本：** 11
+
+<!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2--><!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

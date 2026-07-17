@@ -1,5 +1,11 @@
 # getUidForName
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## getUidForName
 
 ```TypeScript
@@ -12,7 +18,9 @@ function getUidForName(v: string): number
 
 **废弃版本：** 9
 
-**替代接口：** [getUidForName](arkts-arkts-process-processmanager-c.md#getUidForName-1)
+**替代接口：** [getUidForName](arkts-arkts-process-processmanager-c.md#getuidforname-1)
+
+<!--Device-process-function getUidForName(v: string): number--><!--Device-process-function getUidForName(v: string): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

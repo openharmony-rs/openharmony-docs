@@ -1,5 +1,11 @@
 # setResidentProcessEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## setResidentProcessEnabled
 
 ```TypeScript
@@ -9,6 +15,8 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 常驻进程支持按需启停。
 
 **起始版本：** 12
+
+<!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>--><!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -25,16 +33,16 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not a system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible cause: 1.Non empty package name needs to be provided;<br/>2.The second parameter needs to provide a Boolean type setting value. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
-| [16200006](../../errorcode-universal.md#16200006-The) | The caller application can only set the resident status of the configured process. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause: 1.Non empty package name needs to be provided;2.The second parameter needs to provide a Boolean type setting value. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16200006](../errorcode-ability.md#16200006-没有权限设置常驻进程使能状态) | The caller application can only set the resident status of the configured process. |
 
 **示例：**
 
@@ -43,6 +51,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 设置常驻进程的包名
   let residentProcessBundleName: string = 'com.xxx.xxxxxx';
   let enable: boolean = false;
   abilityManager.setResidentProcessEnabled(residentProcessBundleName, enable)

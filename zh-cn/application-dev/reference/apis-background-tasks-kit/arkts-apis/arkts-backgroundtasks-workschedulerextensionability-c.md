@@ -1,12 +1,18 @@
 # WorkSchedulerExtensionAbility
 
-延迟任务回调，当满足调度条件或调度结束时，系统会回调应用WorkSchedulerExtensionAbility中
-[onWorkStart()](arkts-backgroundtasks-workschedulerextensionability-c.md#onworkstart-1)或
-[onWorkStop()](arkts-backgroundtasks-workschedulerextensionability-c.md#onworkstop-1)的方法。
+延迟任务回调，当满足调度条件或调度结束时，系统会回调应用WorkSchedulerExtensionAbility中[onWorkStart()](arkts-backgroundtasks-workschedulerextensionability-c.md#onworkstart-1)或[onWorkStop()](arkts-backgroundtasks-workschedulerextensionability-c.md#onworkstop-1)的方法。
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class WorkSchedulerExtensionAbility--><!--Device-unnamed-declare class WorkSchedulerExtensionAbility-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+## 导入模块
+
+```TypeScript
+import { WorkSchedulerExtensionContext } from '@kit.BackgroundTasksKit';
+```
 
 ## onWorkStart
 
@@ -19,6 +25,8 @@ onWorkStart(work: workScheduler.WorkInfo): void
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WorkSchedulerExtensionAbility-onWorkStart(work: workScheduler.WorkInfo): void--><!--Device-WorkSchedulerExtensionAbility-onWorkStart(work: workScheduler.WorkInfo): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -35,9 +43,9 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStart(workInfo: workScheduler.WorkInfo) {
-    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
-      bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  onWorkStart(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
 }
 
@@ -49,12 +57,13 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 onWorkStop(work: workScheduler.WorkInfo): void
 ```
 
-结束延迟任务调度回调。当延迟任务2分钟超时或应用调用[stopWork](arkts-backgroundtasks-stopwork-f.md#stopwork-1)
-接口取消任务时，触发该回调。
+结束延迟任务调度回调。当延迟任务2分钟超时或应用调用[stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md#stopwork-1)接口取消任务时，触发该回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WorkSchedulerExtensionAbility-onWorkStop(work: workScheduler.WorkInfo): void--><!--Device-WorkSchedulerExtensionAbility-onWorkStop(work: workScheduler.WorkInfo): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -71,9 +80,9 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStop(workInfo: workScheduler.WorkInfo) {
-    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
-      bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  onWorkStop(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
 }
 
@@ -92,6 +101,8 @@ WorkSchedulerExtension的上下文环境，继承自ExtensionContext。
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WorkSchedulerExtensionAbility-context: WorkSchedulerExtensionContext--><!--Device-WorkSchedulerExtensionAbility-context: WorkSchedulerExtensionContext-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 

@@ -1,10 +1,18 @@
 # FilterClause
 
-��ϵ�˹������������ɸѡ����֮���ǡ����ߡ��Ĺ�ϵ������������������ͣ��������ֻ�ܰ���3��Ԫ�ء�
+联系人过滤条件。多个筛选条件之间是“或者”的关系，如果参数是数组类型，数组最多只能包含3个元素。
 
 **起始版本：** 15
 
+<!--Device-contact-interface FilterClause--><!--Device-contact-interface FilterClause-End-->
+
 **系统能力：** SystemCapability.Applications.Contacts
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## dataItem
 
@@ -12,13 +20,15 @@
 dataItem?: DataFilter
 ```
 
-��ϵ�����ݹ����
+联系人数据过滤项。
 
 **类型：** DataFilter
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FilterClause-dataItem?: DataFilter--><!--Device-FilterClause-dataItem?: DataFilter-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -28,13 +38,15 @@ dataItem?: DataFilter
 focusModeList?: Array<FilterOptions>
 ```
 
-רעģʽ��
+专注模式。
 
 **类型：** Array<FilterOptions>
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FilterClause-focusModeList?: Array<FilterOptions>--><!--Device-FilterClause-focusModeList?: Array<FilterOptions>-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -44,13 +56,15 @@ focusModeList?: Array<FilterOptions>
 id?: Array<FilterOptions>
 ```
 
-��ϵ��id��
+联系人id。
 
 **类型：** Array<FilterOptions>
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FilterClause-id?: Array<FilterOptions>--><!--Device-FilterClause-id?: Array<FilterOptions>-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -60,13 +74,15 @@ id?: Array<FilterOptions>
 name?: Array<FilterOptions>
 ```
 
-��ϵ��������
+联系人姓名。
 
 **类型：** Array<FilterOptions>
 
 **起始版本：** 15
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FilterClause-name?: Array<FilterOptions>--><!--Device-FilterClause-name?: Array<FilterOptions>-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 

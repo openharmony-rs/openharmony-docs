@@ -1,12 +1,10 @@
 # PathIteratorVerb
 
-```TypeScript
-enum PathIteratorVerb
-```
-
 迭代器包含的路径操作类型枚举，可用于读取path的操作指令。
 
 **起始版本：** 18
+
+<!--Device-drawing-enum PathIteratorVerb--><!--Device-drawing-enum PathIteratorVerb-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -20,6 +18,8 @@ MOVE = 0
 
 **起始版本：** 18
 
+<!--Device-PathIteratorVerb-MOVE = 0--><!--Device-PathIteratorVerb-MOVE = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## LINE
@@ -31,6 +31,8 @@ LINE = 1
 添加线段。
 
 **起始版本：** 18
+
+<!--Device-PathIteratorVerb-LINE = 1--><!--Device-PathIteratorVerb-LINE = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -44,6 +46,8 @@ QUAD = 2
 
 **起始版本：** 18
 
+<!--Device-PathIteratorVerb-QUAD = 2--><!--Device-PathIteratorVerb-QUAD = 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## CONIC
@@ -55,6 +59,8 @@ CONIC = 3
 添加圆锥曲线。
 
 **起始版本：** 18
+
+<!--Device-PathIteratorVerb-CONIC = 3--><!--Device-PathIteratorVerb-CONIC = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -68,6 +74,8 @@ CUBIC = 4
 
 **起始版本：** 18
 
+<!--Device-PathIteratorVerb-CUBIC = 4--><!--Device-PathIteratorVerb-CUBIC = 4-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## CLOSE
@@ -80,6 +88,8 @@ CLOSE = 5
 
 **起始版本：** 18
 
+<!--Device-PathIteratorVerb-CLOSE = 5--><!--Device-PathIteratorVerb-CLOSE = 5-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## DONE
@@ -91,6 +101,8 @@ DONE = CLOSE + 1
 路径设置完成。
 
 **起始版本：** 18
+
+<!--Device-PathIteratorVerb-DONE = CLOSE + 1--><!--Device-PathIteratorVerb-DONE = CLOSE + 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

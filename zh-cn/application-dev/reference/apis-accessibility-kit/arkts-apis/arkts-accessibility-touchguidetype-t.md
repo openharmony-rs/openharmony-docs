@@ -8,6 +8,8 @@ type TouchGuideType = 'touchBegin' | 'touchEnd'
 
 **起始版本：** 9
 
+<!--Device-unnamed-type TouchGuideType = 'touchBegin' | 'touchEnd'--><!--Device-unnamed-type TouchGuideType = 'touchBegin' | 'touchEnd'-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型 | 说明 |

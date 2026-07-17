@@ -1,5 +1,11 @@
 # setSandboxAppConfig
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## setSandboxAppConfig
 
 ```TypeScript
@@ -12,29 +18,31 @@ function setSandboxAppConfig(configInfo: string): Promise<void>
 
 **起始版本：** 11
 
+<!--Device-dlpPermission-function setSandboxAppConfig(configInfo: string): Promise<void>--><!--Device-dlpPermission-function setSandboxAppConfig(configInfo: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度范围[0, 4194304)字节，超出此范围抛出错误码19100001。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2&lt;sup&gt;22&lt;/sup&gt;-1字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types. |
-| [19100001](../../errorcode-universal.md#19100001-Invalid) | Invalid parameter value. |
-| [19100007](../../errorcode-universal.md#19100007-No) | No permission to call this API,<br/>which is available only for non-DLP sandbox applications. |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
-| [19100018](../../errorcode-universal.md#19100018-The) | The application is not authorized. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100007](../errorcode-dlp.md#19100007-dlp沙箱应用不允许调用此接口) | No permission to call this API,which is available only for non-DLP sandbox applications. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+| [19100018](../errorcode-dlp.md#19100018-应用未授权) | The application is not authorized. |
 
 **示例：**
 

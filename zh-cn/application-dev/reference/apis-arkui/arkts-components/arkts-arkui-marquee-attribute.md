@@ -6,6 +6,8 @@
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class MarqueeAttribute extends CommonMethod<MarqueeAttribute>--><!--Device-unnamed-declare class MarqueeAttribute extends CommonMethod<MarqueeAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowScale
@@ -18,9 +20,11 @@ allowScale(value: boolean)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-allowScale(value: boolean): MarqueeAttribute--><!--Device-MarqueeAttribute-allowScale(value: boolean): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,9 +44,11 @@ fontColor(value: ResourceColor)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-fontColor(value: ResourceColor): MarqueeAttribute--><!--Device-MarqueeAttribute-fontColor(value: ResourceColor): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +56,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 字体颜色。<br />Wearable设备上默认值为：'#c5ffffff'，显示为淡蓝色，其他设备默认值为：'e6182431'，显示为黑色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 字体颜色。<br />Wearable设备上默认值为：'#c5ffffff'，显示为淡蓝色，其他设备默认值为：'e6182431'，显示为黑色。 |
 
 ## fontFamily
 
@@ -62,9 +68,11 @@ fontFamily(value: string | Resource)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-fontFamily(value: string | Resource): MarqueeAttribute--><!--Device-MarqueeAttribute-fontFamily(value: string | Resource): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +80,7 @@ fontFamily(value: string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| Resource | 是 | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-fontcollection-c.md#loadfontsync-1)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value | string \| Resource | 是 | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync-1)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ## fontSize
 
@@ -84,9 +92,11 @@ fontSize(value: Length)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-fontSize(value: Length): MarqueeAttribute--><!--Device-MarqueeAttribute-fontSize(value: Length): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +104,7 @@ fontSize(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Length | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
 
 ## fontWeight
 
@@ -106,9 +116,11 @@ fontWeight(value: number | FontWeight | string)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-fontWeight(value: number | FontWeight | string): MarqueeAttribute--><!--Device-MarqueeAttribute-fontWeight(value: number | FontWeight | string): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,7 +142,9 @@ marqueeUpdateStrategy(value: MarqueeUpdateStrategy)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-MarqueeAttribute-marqueeUpdateStrategy(value: MarqueeUpdateStrategy): MarqueeAttribute--><!--Device-MarqueeAttribute-marqueeUpdateStrategy(value: MarqueeUpdateStrategy): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +152,7 @@ marqueeUpdateStrategy(value: MarqueeUpdateStrategy)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | MarqueeUpdateStrategy | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>默认值: MarqueeUpdateStrategy.DEFAULT |
+| value | [MarqueeUpdateStrategy](../arkts-apis/arkts-arkui-enums-marqueeupdatestrategy-e.md) | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>默认值: MarqueeUpdateStrategy.DEFAULT |
 
 ## onBounce
 
@@ -150,9 +164,11 @@ onBounce(event: () => void)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-onBounce(event: () => void): MarqueeAttribute--><!--Device-MarqueeAttribute-onBounce(event: () => void): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +176,7 @@ onBounce(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () =&gt; void | 是 | 完成一次滚动时触发的回调。 |
+| event | () => void | 是 | 完成一次滚动时触发的回调。 |
 
 ## onFinish
 
@@ -172,9 +188,11 @@ onFinish(event: () => void)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-onFinish(event: () => void): MarqueeAttribute--><!--Device-MarqueeAttribute-onFinish(event: () => void): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,7 +200,7 @@ onFinish(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () =&gt; void | 是 | 滚动全部循环次数完成时的回调。 |
+| event | () => void | 是 | 滚动全部循环次数完成时的回调。 |
 
 ## onStart
 
@@ -194,9 +212,11 @@ onStart(event: () => void)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-onStart(event: () => void): MarqueeAttribute--><!--Device-MarqueeAttribute-onStart(event: () => void): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,7 +224,7 @@ onStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () =&gt; void | 是 | 当滚动的文本内容变化或者开始滚动时的回调。 |
+| event | () => void | 是 | 当滚动的文本内容变化或者开始滚动时的回调。 |
 
 ## onStop
 
@@ -220,9 +240,11 @@ onStop(event: Callback<void> | undefined)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本26.0.0开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeAttribute-onStop(event: Callback<void> | undefined): MarqueeAttribute--><!--Device-MarqueeAttribute-onStop(event: Callback<void> | undefined): MarqueeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,5 +252,5 @@ onStop(event: Callback<void> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; \| undefined | 是 |  |
+| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<void> \| undefined | 是 |  |
 

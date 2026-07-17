@@ -8,6 +8,8 @@ export type AppStateData = _AppStateData.default
 
 **起始版本：** 14
 
+<!--Device-appManager-export type AppStateData = _AppStateData.default--><!--Device-appManager-export type AppStateData = _AppStateData.default-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **属性类型：** _AppStateData.default

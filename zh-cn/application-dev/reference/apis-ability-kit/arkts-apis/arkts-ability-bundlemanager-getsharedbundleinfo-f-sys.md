@@ -1,18 +1,26 @@
 # getSharedBundleInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getSharedBundleInfo
 
 ```TypeScript
 function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void
 ```
 
-��ȡָ���Ĺ�������Ϣ��ʹ��callback�첽�ص���
+获取指定的共享包信息。使用callback异步回调。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void--><!--Device-bundleManager-function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -22,19 +30,19 @@ function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ʾӦ�ó����bundleName�� |
-| moduleName | string | 是 | ��ʾ����ѯ��module��name�� |
-| callback | AsyncCallback&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)������ȡ�ɹ�ʱ<br/>��errΪundefined��dataΪ��ȡ��ָ����������Ϣ�� |
+| bundleName | string | 是 | 表示应用程序的bundleName。 |
+| moduleName | string | 是 | 表示被查询的module的name。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<SharedBundleInfo>> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取的指定共享包信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified moduleName is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 
 **示例：**
 
@@ -68,13 +76,15 @@ try {
 function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>
 ```
 
-��ȡָ���Ĺ�������Ϣ��ʹ��Promise�첽�ص���
+获取指定的共享包信息。使用Promise异步回调。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-bundleManager-function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>--><!--Device-bundleManager-function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -84,24 +94,24 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | ��ʾӦ�ó����bundleName�� |
-| moduleName | string | 是 | ��ʾ����ѯ��module��name�� |
+| bundleName | string | 是 | 表示应用程序的bundleName。 |
+| moduleName | string | 是 | 表示被查询的module的name。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;SharedBundleInfo&gt;&gt; | Promise���󣬷���ָ���Ĺ�������Ϣ�� |
+| Promise<Array<SharedBundleInfo>> | Promise对象，返回指定的共享包信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified moduleName is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 
 **示例：**
 

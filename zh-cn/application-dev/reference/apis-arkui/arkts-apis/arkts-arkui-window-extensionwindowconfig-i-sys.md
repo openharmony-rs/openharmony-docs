@@ -4,11 +4,17 @@
 
 **起始版本：** 14
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-window-interface ExtensionWindowConfig--><!--Device-window-interface ExtensionWindowConfig-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## subWindowOptions
 
@@ -23,6 +29,8 @@ subWindowOptions?: SubWindowOptions
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionWindowConfig-subWindowOptions?: SubWindowOptions--><!--Device-ExtensionWindowConfig-subWindowOptions?: SubWindowOptions-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -42,6 +50,8 @@ systemWindowOptions?: SystemWindowOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ExtensionWindowConfig-systemWindowOptions?: SystemWindowOptions--><!--Device-ExtensionWindowConfig-systemWindowOptions?: SystemWindowOptions-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -52,14 +62,15 @@ systemWindowOptions?: SystemWindowOptions
 windowAttribute: ExtensionWindowAttribute
 ```
 
-窗口的属性。用于配置创建的窗口是子窗口还是系统窗口。当windowAttribute配置为SUB_WINDOW时须配置subWindowOptions，当windowAttribute配置为SYSTEM_WINDOW时须配置
-systemWindowOptions，否则创建窗口失败。
+窗口的属性。用于配置创建的窗口是子窗口还是系统窗口。当windowAttribute配置为SUB_WINDOW时须配置subWindowOptions，当windowAttribute配置为SYSTEM_WINDOW时须配置systemWindowOptions，否则创建窗口失败。
 
 **类型：** ExtensionWindowAttribute
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionWindowConfig-windowAttribute: ExtensionWindowAttribute--><!--Device-ExtensionWindowConfig-windowAttribute: ExtensionWindowAttribute-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -79,6 +90,8 @@ windowName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ExtensionWindowConfig-windowName: string--><!--Device-ExtensionWindowConfig-windowName: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -96,6 +109,8 @@ windowRect: Rect
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionWindowConfig-windowRect: Rect--><!--Device-ExtensionWindowConfig-windowRect: Rect-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

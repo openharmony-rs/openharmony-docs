@@ -1,5 +1,11 @@
 # getExcludeDates
 
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## getExcludeDates
 
 ```TypeScript
@@ -10,26 +16,28 @@ function getExcludeDates(reminderId: number): Promise<Array<Date>>
 
 **起始版本：** 12
 
+<!--Device-reminderAgentManager-function getExcludeDates(reminderId: int): Promise<Array<Date>>--><!--Device-reminderAgentManager-function getExcludeDates(reminderId: int): Promise<Array<Date>>-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderId | number | 是 | 需要查询不提醒日期的代理提醒id。<br/>代理提醒id会在<br/>[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishReminder-1)<br/>时作为返回值返回。 |
+| reminderId | number | 是 | 需要查询不提醒日期的代理提醒id。代理提醒id会在[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishreminder-1)时作为返回值返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Date&gt;&gt; | Promise对象。返回特定日历设置的所有不提醒日期。 |
+| Promise<Array<Date>> | Promise对象。返回特定日历设置的所有不提醒日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
-| [1700003](../../errorcode-universal.md#1700003-The) | The reminder does not exist. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
+| [1700003](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
 
 **示例：**
 

@@ -2,6 +2,12 @@
 
 FileIO
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## 汇总
 
 ### 命名空间
@@ -28,7 +34,7 @@ FileIO
 | [copy](arkts-corefile-file-fs-copy-f.md#copy-3) | 拷贝文件或者目录，使用callback异步回调。支持跨设备拷贝。强制覆盖拷贝。入参支持文件或目录URI。跨端拷贝时，最多同时存在10个拷贝任务；单次拷贝的文件数量不得超过500个。 |
 | [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-1) | 复制源目录至目标路径下，使用promise异步回调。 |
 | [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-2) | 复制源目录至目标路径下，使用callback异步回调。 |
-| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-3) | 复制源目录至目标路径下，使用callback异步回调。如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\&lt;[ConflictFiles](arkts-corefile-conflictfiles-i.md)&gt;形式提供。 |
+| [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-3) | 复制源目录至目标路径下，使用callback异步回调。如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt;形式提供。 |
 | [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-4) | 复制源目录至目标路径下，可设置复制模式。使用callback异步回调。 |
 | [copyDir](arkts-corefile-file-fs-copydir-f.md#copydir-5) | 复制源目录至目标路径下，可设置复制模式。使用callback异步回调。 |
 | [copyDirSync](arkts-corefile-file-fs-copydirsync-f.md#copydirsync-1) | 以同步方法复制源目录至目标路径下。 |
@@ -41,9 +47,9 @@ FileIO
 | [createRandomAccessFile](arkts-corefile-file-fs-createrandomaccessfile-f.md#createrandomaccessfile-3) | 基于文件路径或文件对象创建RandomAccessFile对象，使用callback异步回调。 |
 | [createRandomAccessFileSync](arkts-corefile-file-fs-createrandomaccessfilesync-f.md#createrandomaccessfilesync-1) | 基于文件路径或文件对象创建RandomAccessFile对象。 |
 | [createReadStream](arkts-corefile-file-fs-createreadstream-f.md#createreadstream-1) | 以同步方法打开文件可读流。 |
-| [createStream](arkts-corefile-file-fs-createstream-f.md#createstream-1) | 基于文件路径创建文件流，使用promise异步回调。需要配合[Stream](arkts-corefile-stream-i.md)中的close()函数关闭文件流。 |
-| [createStream](arkts-corefile-file-fs-createstream-f.md#createstream-2) | 基于文件路径创建文件流，使用callback异步回调。需要配合[Stream](arkts-corefile-stream-i.md)中的close()函数关闭文件流。 |
-| [createStreamSync](arkts-corefile-file-fs-createstreamsync-f.md#createstreamsync-1) | 以同步方法基于文件路径创建文件流。需要配合[Stream](arkts-corefile-stream-i.md)中的close()函数关闭文件流。 |
+| [createStream](arkts-corefile-file-fs-createstream-f.md#createstream-1) | 基于文件路径创建文件流，使用promise异步回调。需要配合[Stream](arkts-corefile-file-fs-stream-i.md)中的close()函数关闭文件流。 |
+| [createStream](arkts-corefile-file-fs-createstream-f.md#createstream-2) | 基于文件路径创建文件流，使用callback异步回调。需要配合[Stream](arkts-corefile-file-fs-stream-i.md)中的close()函数关闭文件流。 |
+| [createStreamSync](arkts-corefile-file-fs-createstreamsync-f.md#createstreamsync-1) | 以同步方法基于文件路径创建文件流。需要配合[Stream](arkts-corefile-file-fs-stream-i.md)中的close()函数关闭文件流。 |
 | [createWatcher](arkts-corefile-file-fs-createwatcher-f.md#createwatcher-1) | 创建Watcher对象，监听文件或目录变动。 |
 | [createWriteStream](arkts-corefile-file-fs-createwritestream-f.md#createwritestream-1) | 以同步方法打开文件可写流。 |
 | [disconnectDfs](arkts-corefile-file-fs-disconnectdfs-f.md#disconnectdfs-1) | 业务调用disconnectDfs接口，传入networkId参数，触发断链。 |
@@ -51,9 +57,9 @@ FileIO
 | [fdatasync](arkts-corefile-file-fs-fdatasync-f.md#fdatasync-1) | 实现文件内容数据同步，使用promise异步回调。 |
 | [fdatasync](arkts-corefile-file-fs-fdatasync-f.md#fdatasync-2) | 实现文件内容数据同步，使用callback异步回调。 |
 | [fdatasyncSync](arkts-corefile-file-fs-fdatasyncsync-f.md#fdatasyncsync-1) | 以同步方法实现文件内容的数据同步。 |
-| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-1) | 基于文件描述符打开文件流，使用promise异步回调。需要配合[Stream](arkts-corefile-stream-i.md)中的close()函数关闭文件流。 |
-| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-2) | 基于文件描述符打开文件流，使用callback异步回调。需要配合[Stream](arkts-corefile-stream-i.md)中的close()函数关闭文件流。 |
-| [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md#fdopenstreamsync-1) | 以同步方法基于文件描述符打开文件流。需要配合[Stream](arkts-corefile-stream-i.md)中的close()函数关闭文件流。 |
+| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-1) | 基于文件描述符打开文件流，使用promise异步回调。需要配合[Stream](arkts-corefile-file-fs-stream-i.md)中的close()函数关闭文件流。 |
+| [fdopenStream](arkts-corefile-file-fs-fdopenstream-f.md#fdopenstream-2) | 基于文件描述符打开文件流，使用callback异步回调。需要配合[Stream](arkts-corefile-file-fs-stream-i.md)中的close()函数关闭文件流。 |
+| [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md#fdopenstreamsync-1) | 以同步方法基于文件描述符打开文件流。需要配合[Stream](arkts-corefile-file-fs-stream-i.md)中的close()函数关闭文件流。 |
 | [fsync](arkts-corefile-file-fs-fsync-f.md#fsync-1) | 将文件系统缓存数据写入磁盘，使用promise异步回调。 |
 | [fsync](arkts-corefile-file-fs-fsync-f.md#fsync-2) | 将文件系统缓存数据写入磁盘，使用callback异步回调。 |
 | [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md#fsyncsync-1) | 以同步方法将文件系统缓存数据写入磁盘。 |
@@ -78,7 +84,7 @@ FileIO
 | [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md#mkdtemp-1) | 创建临时目录，使用promise异步回调。 |
 | [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md#mkdtemp-2) | 创建临时目录，使用callback异步回调。 |
 | [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md#mkdtempsync-1) | 以同步的方法创建临时目录。 |
-| [mmap](arkts-corefile-file-fs-mmap-f.md#mmap-1) | 基于文件描述符或文件对象创建文件映射对象，使用promise异步回调。将文件内容映射到内存，以实现文件的高效读写访问。注意：读写模式（MappingMode.READ_WRITE）下，若映射范围超过原始文件大小，将自动扩展文件大小。&gt; **说明**&gt; 注意：在读写模式（MappingMode.READ_WRITE）下，如果映射范围超过原始文件大小，则文件大小&gt; 将自动展开。 |
+| [mmap](arkts-corefile-file-fs-mmap-f.md#mmap-1) | 基于文件描述符或文件对象创建文件映射对象，使用promise异步回调。将文件内容映射到内存，以实现文件的高效读写访问。注意：读写模式（MappingMode.READ_WRITE）下，若映射范围超过原始文件大小，将自动扩展文件大小。 &gt; **说明** &gt; 注意：在读写模式（MappingMode.READ_WRITE）下，如果映射范围超过原始文件大小，则文件大小 &gt; 将自动展开。 |
 | [mmapSync](arkts-corefile-file-fs-mmapsync-f.md#mmapsync-1) | 以同步方法基于文件描述符或文件对象创建文件映射对象。将文件内容映射到内存，以实现文件的高效读写访问。注意：读写模式（MappingMode.READ_WRITE）下，若映射范围超过原始文件大小，将自动扩展文件大小。 |
 | [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir-1) | 移动源目录至目标路径下，使用promise异步回调。 |
 | [moveDir](arkts-corefile-file-fs-movedir-f.md#movedir-2) | Moves the source directory to the destination directory. This API uses an asynchronous callback to return the result. |
@@ -137,50 +143,50 @@ FileIO
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtomicFile](arkts-corefile-atomicfile-c.md) | AtomicFile是一个用于对文件进行原子读写操作的类。在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。使用者可以自行调用finishWrite或failWrite来完成文件内容的写入或回滚。 |
-| [ReadStream](arkts-corefile-readstream-c.md) | 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。 |
-| [TaskSignal](arkts-corefile-tasksignal-c.md) | 拷贝中断信号。 |
-| [WriteStream](arkts-corefile-writestream-c.md) | 文件可写流，需要先通过[fileIo.createWriteStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-writable-c.md)。 |
+| [AtomicFile](arkts-corefile-file-fs-atomicfile-c.md) | AtomicFile是一个用于对文件进行原子读写操作的类。在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。使用者可以自行调用finishWrite或failWrite来完成文件内容的写入或回滚。 |
+| [ReadStream](arkts-corefile-file-fs-readstream-c.md) | 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。 |
+| [TaskSignal](arkts-corefile-file-fs-tasksignal-c.md) | 拷贝中断信号。 |
+| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流，需要先通过[fileIo.createWriteStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ConflictFiles](arkts-corefile-conflictfiles-i.md) | 冲突文件信息，支持copyDir及moveDir接口使用。 |
-| [CopyOptions](arkts-corefile-copyoptions-i.md) | 拷贝进度回调监听 |
-| [DfsListeners](arkts-corefile-dfslisteners-i.md) | 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。 |
-| [File](arkts-corefile-file-i.md) | 由open接口打开的File对象。 |
-| [FileFilter](arkts-corefile-filefilter-i.md) | 文件名过滤器，支持listFileExt接口使用。 |
-| [FileMapping](arkts-corefile-filemapping-i.md) | 文件映射对象，在调用FileMapping的方法前，需要先通过mmap()方法（同步或异步）构建一个FileMapping实例。 |
-| [Filter](arkts-corefile-filter-i.md) | 文件过滤配置项，支持listFile接口使用。 |
-| [ListFileExtOptions](arkts-corefile-listfileextoptions-i.md) | 可选项类型，支持listFileExt接口使用自定义过滤规则。 |
-| [ListFileOptions](arkts-corefile-listfileoptions-i.md) | 可选项类型，支持ListFile接口使用。 |
-| [Options](arkts-corefile-options-i.md) | 可选项类型，支持readLines接口使用。 |
-| [Progress](arkts-corefile-progress-i.md) | 拷贝进度回调数据 |
-| [RandomAccessFile](arkts-corefile-randomaccessfile-i.md) | 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。 |
-| [RandomAccessFileOptions](arkts-corefile-randomaccessfileoptions-i.md) | 可选项类型，支持 createRandomAccessFile 接口使用。 |
-| [ReadOptions](arkts-corefile-readoptions-i.md) | 可选项类型，支持read接口使用。 |
-| [ReadStreamOptions](arkts-corefile-readstreamoptions-i.md) | 可选项类型，支持 createReadStream 接口使用。 |
-| [ReadTextOptions](arkts-corefile-readtextoptions-i.md) | 可选项类型，支持readText接口使用，ReadTextOptions继承至[ReadOptions](arkts-corefile-readoptions-i.md)。 |
-| [ReaderIterator](arkts-corefile-readeriterator-i.md) | 文件读取迭代器。在调用ReaderIterator的方法前，需要先通过readLines方法（同步或异步）来构建一个ReaderIterator实例。 |
-| [ReaderIteratorResult](arkts-corefile-readeriteratorresult-i.md) | 文件读取迭代器返回结果，支持ReaderIterator接口使用。 |
-| [Stat](arkts-corefile-stat-i.md) | 文件具体信息，在调用Stat的方法前，需要先通过[stat()](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。 |
-| [Stream](arkts-corefile-stream-i.md) | 文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。 |
-| [WatchEvent](arkts-corefile-watchevent-i.md) | 事件类 |
-| [WatchEventListener](arkts-corefile-watcheventlistener-i.md) | 事件监听类。 |
-| [Watcher](arkts-corefile-watcher-i.md) | 文件目录变化监听对象。由createWatcher接口获得。 |
-| [WriteOptions](arkts-corefile-writeoptions-i.md) | 可选项类型，支持write接口使用，WriteOptions继承至[Options](arkts-corefile-options-i.md)。 |
-| [WriteStreamOptions](arkts-corefile-writestreamoptions-i.md) | 可选项类型，支持 createWriteStream 接口使用。 |
+| [ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md) | 冲突文件信息，支持copyDir及moveDir接口使用。 |
+| [CopyOptions](arkts-corefile-file-fs-copyoptions-i.md) | 拷贝进度回调监听 |
+| [DfsListeners](arkts-corefile-file-fs-dfslisteners-i.md) | 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。 |
+| [File](arkts-corefile-file-fs-file-i.md) | 由open接口打开的File对象。 |
+| [FileFilter](arkts-corefile-file-fs-filefilter-i.md) | 文件名过滤器，支持listFileExt接口使用。 |
+| [FileMapping](arkts-corefile-file-fs-filemapping-i.md) | 文件映射对象，在调用FileMapping的方法前，需要先通过mmap()方法（同步或异步）构建一个FileMapping实例。 |
+| [Filter](arkts-corefile-file-fs-filter-i.md) | 文件过滤配置项，支持listFile接口使用。 |
+| [ListFileExtOptions](arkts-corefile-file-fs-listfileextoptions-i.md) | 可选项类型，支持listFileExt接口使用自定义过滤规则。 |
+| [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md) | 可选项类型，支持ListFile接口使用。 |
+| [Options](arkts-corefile-file-fs-options-i.md) | 可选项类型，支持readLines接口使用。 |
+| [Progress](arkts-corefile-file-fs-progress-i.md) | 拷贝进度回调数据 |
+| [RandomAccessFile](arkts-corefile-file-fs-randomaccessfile-i.md) | 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。 |
+| [RandomAccessFileOptions](arkts-corefile-file-fs-randomaccessfileoptions-i.md) | 可选项类型，支持 createRandomAccessFile 接口使用。 |
+| [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 可选项类型，支持read接口使用。 |
+| [ReadStreamOptions](arkts-corefile-file-fs-readstreamoptions-i.md) | 可选项类型，支持 createReadStream 接口使用。 |
+| [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md) | 可选项类型，支持readText接口使用，ReadTextOptions继承至[ReadOptions](arkts-corefile-file-fs-readoptions-i.md)。 |
+| [ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md) | 文件读取迭代器。在调用ReaderIterator的方法前，需要先通过readLines方法（同步或异步）来构建一个ReaderIterator实例。 |
+| [ReaderIteratorResult](arkts-corefile-file-fs-readeriteratorresult-i.md) | 文件读取迭代器返回结果，支持ReaderIterator接口使用。 |
+| [Stat](arkts-corefile-file-fs-stat-i.md) | 文件具体信息，在调用Stat的方法前，需要先通过[stat()](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。 |
+| [Stream](arkts-corefile-file-fs-stream-i.md) | 文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。 |
+| [WatchEvent](arkts-corefile-file-fs-watchevent-i.md) | 事件类 |
+| [WatchEventListener](arkts-corefile-file-fs-watcheventlistener-i.md) | 事件监听类。 |
+| [Watcher](arkts-corefile-file-fs-watcher-i.md) | 文件目录变化监听对象。由createWatcher接口获得。 |
+| [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 可选项类型，支持write接口使用，WriteOptions继承至[Options](arkts-corefile-file-fs-options-i.md)。 |
+| [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md) | 可选项类型，支持 createWriteStream 接口使用。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessFlagType](arkts-corefile-accessflagtype-e.md) | 枚举，表示需要校验的文件位置。 |
-| [AccessModeType](arkts-corefile-accessmodetype-e.md) | 枚举，表示需要校验的具体权限。若不填，默认校验文件是否存在。 |
-| [LocationType](arkts-corefile-locationtype-e.md) | 枚举，文件位置，表示该文件是否在本地或者云端存在。 |
-| [MappingMode](arkts-corefile-mappingmode-e.md) | 枚举，文件内存映射模式类型，支持mmap接口使用。 |
-| [WhenceType](arkts-corefile-whencetype-e.md) | 枚举，文件偏移指针相对偏移位置类型，支持lseek接口使用。 |
+| [AccessFlagType](arkts-corefile-file-fs-accessflagtype-e.md) | 枚举，表示需要校验的文件位置。 |
+| [AccessModeType](arkts-corefile-file-fs-accessmodetype-e.md) | 枚举，表示需要校验的具体权限。若不填，默认校验文件是否存在。 |
+| [LocationType](arkts-corefile-file-fs-locationtype-e.md) | 枚举，文件位置，表示该文件是否在本地或者云端存在。 |
+| [MappingMode](arkts-corefile-file-fs-mappingmode-e.md) | 枚举，文件内存映射模式类型，支持mmap接口使用。 |
+| [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | 枚举，文件偏移指针相对偏移位置类型，支持lseek接口使用。 |
 
 ### 类型
 

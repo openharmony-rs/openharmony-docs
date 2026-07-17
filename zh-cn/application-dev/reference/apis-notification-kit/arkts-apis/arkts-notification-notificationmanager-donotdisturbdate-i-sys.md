@@ -4,6 +4,8 @@
 
 **起始版本：** 9
 
+<!--Device-notificationManager-export interface DoNotDisturbDate--><!--Device-notificationManager-export interface DoNotDisturbDate-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -11,7 +13,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@ohos.notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## begin
@@ -25,6 +27,8 @@ begin: Date
 **类型：** Date
 
 **起始版本：** 9
+
+<!--Device-DoNotDisturbDate-begin: Date--><!--Device-DoNotDisturbDate-begin: Date-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -42,6 +46,8 @@ end: Date
 
 **起始版本：** 9
 
+<!--Device-DoNotDisturbDate-end: Date--><!--Device-DoNotDisturbDate-end: Date-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -57,6 +63,8 @@ type: DoNotDisturbType
 **类型：** DoNotDisturbType
 
 **起始版本：** 9
+
+<!--Device-DoNotDisturbDate-type: DoNotDisturbType--><!--Device-DoNotDisturbDate-type: DoNotDisturbType-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

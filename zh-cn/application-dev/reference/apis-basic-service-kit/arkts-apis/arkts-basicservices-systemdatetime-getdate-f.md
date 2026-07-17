@@ -1,5 +1,11 @@
 # getDate
 
+## 导入模块
+
+```TypeScript
+import { systemDateTime } from '@kit.BasicServicesKit';
+```
+
 ## getDate
 
 ```TypeScript
@@ -14,19 +20,21 @@ function getDate(callback: AsyncCallback<Date>): void
 
 **替代接口：** new
 
+<!--Device-systemDateTime-function getDate(callback: AsyncCallback<Date>): void--><!--Device-systemDateTime-function getDate(callback: AsyncCallback<Date>): void-End-->
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Date> | 是 | 回调函数，返回当前系统日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. System error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. System error. |
 
 **示例：**
 
@@ -36,14 +44,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getDate((error: BusinessError, date: Date) => {
     if (error) {
-      console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting date : ${date}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```
@@ -63,19 +71,21 @@ function getDate(): Promise<Date>
 
 **替代接口：** new
 
+<!--Device-systemDateTime-function getDate(): Promise<Date>--><!--Device-systemDateTime-function getDate(): Promise<Date>-End-->
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Date&gt; | Promise对象，返回当前系统日期。 |
+| Promise<Date> | Promise对象，返回当前系统日期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. System error. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. System error. |
 
 **示例：**
 
@@ -86,11 +96,11 @@ try {
   systemDateTime.getDate().then((date: Date) => {
     console.info(`Succeeded in getting date : ${date}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
 }
 
 ```

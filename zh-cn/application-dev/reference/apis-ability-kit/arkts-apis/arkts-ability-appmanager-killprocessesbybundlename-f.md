@@ -1,5 +1,11 @@
 # killProcessesByBundleName
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -11,6 +17,8 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 **起始版本：** 14
 
 **需要权限：** ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
+<!--Device-appManager-function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?: int): Promise<void>--><!--Device-appManager-function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -26,15 +34,15 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-If) | If the input parameter is not valid parameter. |
-| [16000050](../../errorcode-universal.md#16000050-Internal) | Internal error. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | If the input parameter is not valid parameter. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例：**
 

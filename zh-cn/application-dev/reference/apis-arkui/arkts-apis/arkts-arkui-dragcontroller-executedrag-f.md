@@ -1,5 +1,11 @@
 # executeDrag
 
+## 导入模块
+
+```TypeScript
+import { dragController } from '@kit.ArkUI';
+```
+
 ## executeDrag
 
 ```TypeScript
@@ -19,6 +25,10 @@ Execute a drag event.
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,
+    callback: AsyncCallback<DragEventParam>): void--><!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,
+    callback: AsyncCallback<DragEventParam>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -26,15 +36,15 @@ Execute a drag event.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | custom | CustomBuilder \| DragItemInfo | 是 | Object used for prompts displayed when the object is dragged. |
-| dragInfo | DragInfo | 是 | Information about the drag event. |
-| callback | AsyncCallback&lt;DragEventParam&gt; | 是 | Callback that contains the drag event information. |
+| dragInfo | [DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | 是 | Information about the drag event. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DragEventParam> | 是 | Callback that contains the drag event information. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-Internal) | Internal handling failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
 **示例：**
 
@@ -55,9 +65,9 @@ struct DragControllerPage {
   @State text: string = ''
 
   @Builder
-  DraggingBuilder() {
+  draggingBuilder() {
     Column() {
-      Text("DraggingBuilder")
+      Text('DraggingBuilder')
         .fontColor(Color.White)
         .fontSize(12)
     }
@@ -73,7 +83,7 @@ struct DragControllerPage {
         .onTouch((event?: TouchEvent) => {
           if (event) {
             if (event.type == TouchType.Down) {
-              let text = new unifiedDataChannel.PlainText()
+              let text = new unifiedDataChannel.PlainText();
               text.textContent = 'drag text'
               text.abstract = 'abstract'
               let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -127,11 +137,11 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。使用Promise异步回调。
 
-> **说明：**
->
-> 从API version 11开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的
-> [getDragController](arkts-arkui-uicontext-c.md#getDragController-1)方法获取当前UI
-> 上下文关联的[DragController](arkts-arkui-dragcontroller-c.md#DragController)对象。
+> **说明：**  
+>  
+> 从API version 11开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
+> [getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller-1)方法获取当前UI  
+> 上下文关联的[DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md)对象。
 
 **起始版本：** 10
 
@@ -143,6 +153,8 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise<DragEventParam>--><!--Device-dragController-function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise<DragEventParam>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -150,20 +162,20 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | custom | CustomBuilder \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
-| dragInfo | DragInfo | 是 | 拖拽信息。 |
+| dragInfo | [DragInfo](arkts-arkui-dragcontroller-draginfo-i.md) | 是 | 拖拽信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DragEventParam&gt; | Promise used to return the result. [since 10 - 11]<br/>@returns { Promise } A Promise with the drag event information. [since 12] |
+| Promise<DragEventParam> | A Promise with the drag event information. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameters types.<br/><br/>3. Parameter verification failed. |
-| [100001](../../errorcode-universal.md#100001-Internal) | Internal handling failed. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
 **示例：**
 

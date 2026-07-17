@@ -10,15 +10,15 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
-> 
+>
 > 本文仅介绍当前模块的系统接口，其他公开接口参见[拖拽事件](ts-universal-events-drag-drop.md)。
 
 ## DragEvent<sup>7+</sup>
 
-拖拽事件信息。
+DragEvent用于表示拖拽事件信息，提供拖拽流程中的事件数据和拖拽动画配置能力，适用于在拖拽各阶段获取或设置拖拽行为。
 
 ### 属性
 
@@ -26,13 +26,13 @@
 
 | 名称 | 类型 | 只读  | 可选  | 说明 |
 | --------- | ----------------------------------------- | --------- | --------- | ---------------------------------- |
-| dragAnimationType | [DragAnimationType](#draganimationtype) | 否 | 是 | 设置拖拽动画类型。该属性仅支持在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)阶段设置，可在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)、[onDragEnter](ts-universal-events-drag-drop.md#ondragenter)、[onDragMove](ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](ts-universal-events-drag-drop.md#ondragleave)、[onDrop](ts-universal-events-drag-drop.md#ondrop)、[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)回调中获取。<br> 默认值为DEFAULT <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**系统接口：** 此接口为系统接口。|
+| dragAnimationType | [DragAnimationType](#draganimationtype) | 否 | 是 | 设置拖拽动画类型。该属性仅支持在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)阶段设置，可在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)、[onDragEnter](ts-universal-events-drag-drop.md#ondragenter)、[onDragMove](ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](ts-universal-events-drag-drop.md#ondragleave)、[onDrop](ts-universal-events-drag-drop.md#ondrop)、[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)回调中获取。<br> 默认值为DEFAULT。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**系统接口：** 此接口为系统接口。|
 
 ### enableInternalDropAnimation<sup>20+</sup>
 
 enableInternalDropAnimation(configuration: string): void
 
-使用系统的内置动效，且该动效只有系统应用可使用。仅支持在onDrop阶段使用。
+使用系统的内置动效，且该动效只有系统应用可使用。仅支持在onDrop阶段使用，适用于系统应用在拖拽释放后需要使用统一内置落位动效的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -43,7 +43,7 @@ enableInternalDropAnimation(configuration: string): void
 **参数：**
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| configuration | string | 是   | 动效配置参数，字符串内容为json格式。 |
+| configuration | string | 是   | 系统内置拖拽动效的配置参数，字符串内容为JSON格式，用于配置系统内置拖拽动效的执行效果。 |
 
 **错误码：**
 
@@ -59,7 +59,7 @@ enableInternalDropAnimation(configuration: string): void
 
 executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, animationOption?: string): void
 
-设置一个跟手变形落位动效执行完成后的回调，该回调由系统在拖拽框架动效结束后触发。使用callback异步回调。
+执行跟手变形落位动效，动效执行完成后触发回调，该回调由系统在拖拽框架动效结束后触发。使用callback异步回调。
 
 > **说明：**
 >
@@ -78,8 +78,8 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| onAnimationFinished | [Callback](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)\<void\> | 是 | 拖拽框架动效结束后触发的回调。 |
-| animationOption | string | 否 | 落位动效参数。<br> 参数为JSON字符串格式，包含以下字段：<br> **CubicCurveEnable**: boolean，表示是否启用三次曲线动画。设置为true时启用三次曲线动画，设置为false时不启用。<br> **SpringEnable**: boolean，表示是否启用弹簧动画。设置为true时启用弹簧动画效果，设置为false时不启用。 <br> **dropAnimationCurve**: number[]，表示落位动画曲线参数，其含义由SpringEnable和CubicCurveEnable决定（SpringEnable优先级更高）。当SpringEnable为true时，数组长度为3，格式为[response, dampingRatio, blendDuration]，对应[curves.springMotion](../../../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9)的弹簧曲线参数；当SpringEnable为false且CubicCurveEnable为true时，数组长度为4，格式为[x1, y1, x2, y2]，对应[curves.cubicBezierCurve](../../../reference/apis-arkui/js-apis-curve.md#curvescubicbeziercurve9)的三次贝塞尔曲线控制点参数。<br> **说明：** SpringEnable优先级高于CubicCurveEnable，当两者同时为true时，以弹簧动画为准。当SpringEnable和CubicCurveEnable均未正确设置时，使用默认弹簧动效。<br> **dropPosition**: number[]，落位位置坐标。数组长度为2，格式为[x, y]，单位为px，表示拖拽元素落位时的目标位置坐标，取值范围为(-∞, +∞)。<br> **dropSize**: number[]，落位尺寸。数组长度为2，格式为[width, height]，单位为px，表示拖拽元素落位时的目标尺寸，取值范围为(0, +∞)。 |
+| onAnimationFinished | [Callback](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)\<void\> | 是 | 拖拽框架动效结束后触发的回调。仅在[dragAnimationType](#属性)设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。 |
+| animationOption | string | 否 | 落位动效参数。用于在需要自定义跟手变形落位动效的曲线、落位位置或落位尺寸时传入；不传入时，使用系统默认的跟手变形落位动效配置。<br> 参数为JSON字符串格式，包含以下字段：<br> **CubicCurveEnable**: boolean，表示是否启用三次曲线动画。设置为true时启用三次曲线动画，适用于需要自定义贝塞尔曲线控制落位节奏的场景；设置为false时不启用。<br> **SpringEnable**: boolean，表示是否启用弹簧动画。设置为true时启用弹簧动画效果，适用于需要弹性回落效果的场景；设置为false时不启用。 <br> **dropAnimationCurve**: number[]，表示落位动画曲线参数，其含义由SpringEnable和CubicCurveEnable决定（SpringEnable优先级更高）。当SpringEnable为true时，数组长度为3，格式为[response, dampingRatio, blendDuration]，对应[curves.springMotion](../../../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9)的弹簧曲线参数；当SpringEnable为false且CubicCurveEnable为true时，数组长度为4，格式为[x1, y1, x2, y2]，对应[curves.cubicBezierCurve](../../../reference/apis-arkui/js-apis-curve.md#curvescubicbeziercurve9)的三次贝塞尔曲线控制点参数。<br> **说明：** SpringEnable优先级高于CubicCurveEnable，当两者同时为true时，以弹簧动画为准。当SpringEnable和CubicCurveEnable均未设置为true时，使用默认弹簧动效。<br> **dropPosition**: number[]，落位位置坐标。数组长度为2，格式为[x, y]，单位为px，表示拖拽元素落位时的目标位置坐标，取值范围为(-∞, +∞)。<br> **dropSize**: number[]，落位尺寸。数组长度为2，格式为[width, height]，单位为px，表示拖拽元素落位时的目标尺寸，取值范围为(0, +∞)。 |
 
 ## DragAnimationType
 
@@ -95,8 +95,8 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 | 名称 | 值 | 说明 |
 | --------- | ------- | ---------------------------------- |
-| DEFAULT | 0 | 使用默认拖拽动画。 |
-| FOLLOW_HAND_MORPH | 1 | 使用跟手变形拖拽动画。 |
+| DEFAULT | 0 | 使用默认拖拽动画，适用于无需自定义拖拽落位动效的常规拖拽场景。 |
+| FOLLOW_HAND_MORPH | 1 | 使用跟手变形拖拽动画，适用于需要拖拽元素跟随手势变形并执行自定义落位动效的场景。 |
 
 ## DragController<sup>11+</sup>
 
@@ -106,7 +106,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 interruptFollowHandMorphDropAnimation(): boolean
 
-中断待执行的跟手变形落位动效，并立即触发其收尾流程。
+中断由[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation)触发的待执行跟手变形落位动效，并立即触发其收尾流程，适用于用户取消拖拽、页面切换或需要终止未完成跟手变形落位动效的场景。
 
 
 **起始版本：** 26.0.0
@@ -213,9 +213,9 @@ struct FollowHandMorphDemo {
 
       // 状态显示
       Column({ space: 8 }) {
-        Text(`拖拽状态: ${this.dragInfo}`).fontSize(12)
-        Text(`动效状态: ${this.animationInfo}`).fontSize(12)
-        Text(`中断结果: ${this.interruptResult}`).fontSize(12)
+        Text(`拖拽状态：${this.dragInfo}`).fontSize(12)
+        Text(`动效状态：${this.animationInfo}`).fontSize(12)
+        Text(`中断结果：${this.interruptResult}`).fontSize(12)
       }
       .width('100%')
       .padding(12)

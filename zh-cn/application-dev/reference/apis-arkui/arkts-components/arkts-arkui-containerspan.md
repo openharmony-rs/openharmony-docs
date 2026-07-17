@@ -1,6 +1,6 @@
 # ContainerSpan
 
-提供一个用于创建ContainerSpan组件的接口。
+[Text]{@link text}组件的子组件，用于统一管理多个[Span]{@link span}、[ImageSpan]{@link image_span}的背景色及圆角弧度。
 
 
 ## ContainerSpan
@@ -15,7 +15,9 @@ ContainerSpan()
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContainerSpanInterface-(): ContainerSpanAttribute--><!--Device-ContainerSpanInterface-(): ContainerSpanAttribute-End-->
 
 **系统能力：** 
 - SystemCapability.ArkUI.ArkUI.Full

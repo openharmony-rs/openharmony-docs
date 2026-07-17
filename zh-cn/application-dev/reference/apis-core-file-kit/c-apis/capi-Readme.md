@@ -2,10 +2,13 @@
     - [oh_fileio.h](capi-oh-fileio-h.md)
     - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
     - [oh_environment.h](capi-oh-environment-h.md)
+    - [swapfs_errcode.h](capi-swapfs-errcode-h.md)
+    - [oh_swapfs.h](capi-oh-swapfs-h.md)
 - 模块
     - [FileIO](capi-fileio.md)
     - [CloudDisk](capi-clouddisk.md)
     - [Environment](capi-environment.md)
+    - [Swapfs](capi-swapfs.md)
 - 结构体
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)
@@ -15,3 +18,9 @@
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_SwapfsConfig](capi-swapfs-oh-swapfsconfig.md)
+    - [OH_SwapfsSwapOutRequest](capi-swapfs-oh-swapfsswapoutrequest.md)
+    - [OH_SwapfsSwapInRequest](capi-swapfs-oh-swapfsswapinrequest.md)
+    - [OH_SwapfsDataInfo](capi-swapfs-oh-swapfsdatainfo.md)
+    - [OH_SwapfsStats](capi-swapfs-oh-swapfsstats.md)
+    - [OH_SwapfsManager](capi-swapfs-oh-swapfsmanager.md)

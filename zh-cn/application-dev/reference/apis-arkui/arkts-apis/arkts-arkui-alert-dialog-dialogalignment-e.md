@@ -1,12 +1,10 @@
 # DialogAlignment
 
-```TypeScript
-declare enum DialogAlignment
-```
-
 警告弹窗的对齐方式。
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare enum DialogAlignment--><!--Device-unnamed-declare enum DialogAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,6 +20,8 @@ Top
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogAlignment-Top--><!--Device-DialogAlignment-Top-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Center
@@ -35,6 +35,8 @@ Center
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DialogAlignment-Center--><!--Device-DialogAlignment-Center-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +52,8 @@ Bottom
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogAlignment-Bottom--><!--Device-DialogAlignment-Bottom-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Default
@@ -63,6 +67,8 @@ Default
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DialogAlignment-Default--><!--Device-DialogAlignment-Default-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ TopStart
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogAlignment-TopStart--><!--Device-DialogAlignment-TopStart-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TopEnd
@@ -91,6 +99,8 @@ TopEnd
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DialogAlignment-TopEnd--><!--Device-DialogAlignment-TopEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +116,8 @@ CenterStart
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogAlignment-CenterStart--><!--Device-DialogAlignment-CenterStart-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CenterEnd
@@ -119,6 +131,8 @@ CenterEnd
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DialogAlignment-CenterEnd--><!--Device-DialogAlignment-CenterEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,6 +148,8 @@ BottomStart
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DialogAlignment-BottomStart--><!--Device-DialogAlignment-BottomStart-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BottomEnd
@@ -147,6 +163,8 @@ BottomEnd
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-DialogAlignment-BottomEnd--><!--Device-DialogAlignment-BottomEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

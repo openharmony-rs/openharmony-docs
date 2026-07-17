@@ -14,6 +14,8 @@ declare function fsyncSync(fd: number): void
 
 **替代接口：** [fs:fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md#fsyncsync-1)
 
+<!--Device-unnamed-declare function fsyncSync(fd: number): void--><!--Device-unnamed-declare function fsyncSync(fd: number): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **参数：**

@@ -1,17 +1,20 @@
 # EntityInfo（系统接口）
 
-EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-intententitydecoratorinfo-i.md#IntentEntityDecoratorInfo)，
-用于描述
-[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)
-装饰器定义的意图实体的信息。
+EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md)，用于描述[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-insightIntentDriver-interface EntityInfo--><!--Device-insightIntentDriver-interface EntityInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { insightIntentDriver } from '@kit.AbilityKit';
+```
 
 ## className
 
@@ -19,15 +22,15 @@ EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-intententitydecorat
 readonly className: string
 ```
 
-表示
-[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)
-装饰器修饰的类名。
+表示[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。
 
 **类型：** string
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EntityInfo-readonly className: string--><!--Device-EntityInfo-readonly className: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -47,6 +50,8 @@ readonly entityCategory: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-EntityInfo-readonly entityCategory: string--><!--Device-EntityInfo-readonly entityCategory: string-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -64,6 +69,8 @@ readonly entityId: string
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EntityInfo-readonly entityId: string--><!--Device-EntityInfo-readonly entityId: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -83,6 +90,8 @@ readonly isQueryable?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-EntityInfo-readonly isQueryable?: boolean--><!--Device-EntityInfo-readonly isQueryable?: boolean-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -101,6 +110,8 @@ readonly parameters: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-EntityInfo-readonly parameters: Record<string, Object>--><!--Device-EntityInfo-readonly parameters: Record<string, Object>-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
@@ -111,15 +122,15 @@ readonly parameters: Record<string, Object>
 readonly parentClassName: string
 ```
 
-表示
-[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)
-装饰器修饰的类的父类名。
+表示[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。
 
 **类型：** string
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EntityInfo-readonly parentClassName: string--><!--Device-EntityInfo-readonly parentClassName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -138,6 +149,8 @@ readonly supportedQueryProperties?: string[]
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EntityInfo-readonly supportedQueryProperties?: string[]--><!--Device-EntityInfo-readonly supportedQueryProperties?: string[]-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

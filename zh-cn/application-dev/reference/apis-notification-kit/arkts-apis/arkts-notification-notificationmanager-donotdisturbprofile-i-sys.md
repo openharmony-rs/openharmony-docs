@@ -4,6 +4,8 @@
 
 **起始版本：** 12
 
+<!--Device-notificationManager-export interface DoNotDisturbProfile--><!--Device-notificationManager-export interface DoNotDisturbProfile-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -11,7 +13,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@ohos.notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## id
@@ -25,6 +27,8 @@ id: number
 **类型：** number
 
 **起始版本：** 12
+
+<!--Device-DoNotDisturbProfile-id: long--><!--Device-DoNotDisturbProfile-id: long-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -42,6 +46,8 @@ name: string
 
 **起始版本：** 12
 
+<!--Device-DoNotDisturbProfile-name: string--><!--Device-DoNotDisturbProfile-name: string-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口：** 此接口为系统接口。
@@ -57,6 +63,8 @@ trustlist?: Array<BundleOption>
 **类型：** Array<BundleOption>
 
 **起始版本：** 12
+
+<!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>--><!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

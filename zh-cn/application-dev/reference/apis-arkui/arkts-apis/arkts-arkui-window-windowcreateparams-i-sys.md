@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## isWindowLimitsForcible
 
@@ -12,8 +20,7 @@
 isWindowLimitsForcible?: boolean
 ```
 
-是否覆盖系统窗口尺寸限制。
-如果为true，则当前主窗口可以设置超出系统限制的窗口尺寸限制。
+是否覆盖系统窗口尺寸限制。如果为true，则当前主窗口可以设置超出系统限制的窗口尺寸限制。
 
 **类型：** boolean
 
@@ -22,6 +29,8 @@ isWindowLimitsForcible?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean--><!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,6 +49,8 @@ systemAnimationParams?: StartAnimationSystemParams
 **类型：** StartAnimationSystemParams
 
 **起始版本：** 20
+
+<!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams--><!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

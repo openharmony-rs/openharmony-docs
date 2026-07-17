@@ -1,16 +1,24 @@
 # getDeviceFunctions（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## getDeviceFunctions
 
 ```TypeScript
 function getDeviceFunctions(): FunctionType
 ```
 
-���豸ģʽ�£���ȡ��ǰ��USB�����б�������������롣������ģʽ�ر�ʱ�����û���豸���룬�ӿڿ��ܷ���`undefined`��ע����Ҫ�Խӿڷ���ֵ���пմ�����
+在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
 **起始版本：** 12
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
+
+<!--Device-usbManager-function getDeviceFunctions(): FunctionType--><!--Device-usbManager-function getDeviceFunctions(): FunctionType-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -20,13 +28,13 @@ function getDeviceFunctions(): FunctionType
 
 | 类型 | 说明 |
 | --- | --- |
-| FunctionType | ��ǰ��USB�����б�������������롣 |
+| [FunctionType](arkts-basicservices-usb-functiontype-e-sys.md) | 当前的USB功能列表的数字组合掩码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission required to<br/>call the API.&lt;br&gt;**适用版本：** 18+ |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied. Normal application do not have permission to use system api. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 18+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Normal application do not have permission to use system api. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 

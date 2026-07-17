@@ -2,17 +2,23 @@
 
 定义组件截图的矩形区域，start和end的值在布局方向为LTR时指定为left和right，在布局方向为RTL时指定为right和left。
 
-> **说明：**
->
-> 直接使用componentSnapshot可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取
-> [UIContext](arkts-arkui-uicontext.md)实例，并使用[getComponentSnapshot](arkts-arkui-uicontext-c.md#getComponentSnapshot-1)
+> **说明：**  
+>  
+> 直接使用componentSnapshot可能导致[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取  
+> [UIContext](arkts-arkui-uicontext.md)实例，并使用[getComponentSnapshot](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentsnapshot-1)  
 > 获取绑定实例的componentSnapshot。
 
 **起始版本：** 15
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-componentSnapshot-interface LocalizedSnapshotRegion--><!--Device-componentSnapshot-interface LocalizedSnapshotRegion-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentSnapshot } from '@kit.ArkUI';
+```
 
 ## bottom
 
@@ -32,7 +38,9 @@ bottom: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LocalizedSnapshotRegion-bottom: number--><!--Device-LocalizedSnapshotRegion-bottom: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +62,9 @@ end: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LocalizedSnapshotRegion-end: number--><!--Device-LocalizedSnapshotRegion-end: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +86,9 @@ start: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LocalizedSnapshotRegion-start: number--><!--Device-LocalizedSnapshotRegion-start: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +110,9 @@ top: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LocalizedSnapshotRegion-top: number--><!--Device-LocalizedSnapshotRegion-top: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

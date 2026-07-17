@@ -1,5 +1,11 @@
 # isBuffer
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## isBuffer
 
 ```TypeScript
@@ -11,6 +17,8 @@ function isBuffer(obj: Object): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-buffer-function isBuffer(obj: Object): boolean--><!--Device-buffer-function isBuffer(obj: Object): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

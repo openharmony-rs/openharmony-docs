@@ -1,5 +1,11 @@
 # queryExtensionAbilityInfoSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -7,13 +13,17 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Extensi
     extensionAbilityFlags: number, userId?: number): Array<ExtensionAbilityInfo>
 ```
 
-��ͬ���������ݸ�����want��extensionAbilityType��extensionAbilityFlags��userId��ȡExtensionAbilityInfo��
+以同步方法根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-bundleManager-function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType,
+    extensionAbilityFlags: int, userId?: int): Array<ExtensionAbilityInfo>--><!--Device-bundleManager-function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType,
+    extensionAbilityFlags: int, userId?: int): Array<ExtensionAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -23,28 +33,28 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Extensi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | ��ʾ����Ҫ��ѯ��Ӧ��Bundle���Ƶ�Want�� |
-| extensionAbilityType | ExtensionAbilityType | 是 | ��ʶextensionAbility�����͡� |
-| extensionAbilityFlags | number | 是 | ��ʾ����ָ�������ص�ExtensionInfo�����а�������Ϣ�ı�־������ȡֵ����ͬ����ο�<br/>[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md#ExtensionAbilityFlag)�� |
-| userId | number | 否 | ��ʾ�û�ID������ͨ��<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>��ȡ��Ĭ��ֵ�����÷������û���ȡֵ��Χ�����ڵ���0�� |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
+| extensionAbilityType | [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 是 | 标识extensionAbility的类型。 |
+| extensionAbilityFlags | number | 是 | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ExtensionAbilityInfo&gt; | Array��Ϣ�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExtensionAbilityInfo> | Array&lt;ExtensionAbilityInfo&gt;信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit<br/>query. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified extensionAbility is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified userId is invalid. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例：**
 
@@ -105,13 +115,17 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
     extensionAbilityFlags: number, userId?: number): Array<ExtensionAbilityInfo>
 ```
 
-���ݸ�����want��extensionAbilityType��extensionAbilityFlags��userId��ȡExtensionAbilityInfo��ʹ��ͬ����ʽ���ؽ����
+根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo，使用同步方式返回结果。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 11
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-bundleManager-function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
+    extensionAbilityFlags: int, userId?: int): Array<ExtensionAbilityInfo>--><!--Device-bundleManager-function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
+    extensionAbilityFlags: int, userId?: int): Array<ExtensionAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -121,28 +135,28 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | Want | 是 | ��ʾ����Ҫ��ѯ��Ӧ��Bundle���Ƶ�Want�� |
-| extensionAbilityType | string | 是 | ��ʾ�Զ���extensionAbility�����͡� |
-| extensionAbilityFlags | number | 是 | ��ʾ���ص�ExtensionInfo��������Ҫ��������Ϣ��־������ȡֵ����ͬ����ο�<br/>[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md#ExtensionAbilityFlag)�� |
-| userId | number | 否 | ��ʾ�û�ID������ͨ��<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>��ȡ��Ĭ��ֵ�����÷������û���ȡֵ��Χ�����ڵ���0�� |
+| want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
+| extensionAbilityType | string | 是 | 表示自定义extensionAbility的类型。 |
+| extensionAbilityFlags | number | 是 | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ExtensionAbilityInfo&gt; | ͬ������Array�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExtensionAbilityInfo> | 同步返回Array&lt;ExtensionAbilityInfo&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit<br/>query. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified extensionAbility is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified userId is invalid. |
-| [17700026](../../errorcode-universal.md#17700026-The) | The specified bundle is disabled. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. At least one parameter(action, entity, uri or type) is required for implicit query. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
+| [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
 **示例：**
 
@@ -203,13 +217,17 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
     userId?: number): Array<ExtensionAbilityInfo>
 ```
 
-���ݸ�����extensionAbilityType��extensionAbilityFlags��userId��ȡExtensionAbilityInfo��
+根据给定的extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。
 
-��ȡ���÷���������Ϣʱ����ҪȨ�ޡ�
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 11
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+<!--Device-bundleManager-function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: int,
+    userId?: int): Array<ExtensionAbilityInfo>--><!--Device-bundleManager-function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: int,
+    userId?: int): Array<ExtensionAbilityInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -219,25 +237,25 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| extensionAbilityType | string | 是 | ��ʾ�Զ���extensionAbility�����͡� |
-| extensionAbilityFlags | number | 是 | ��ʾ���ص�ExtensionInfo��������Ҫ��������Ϣ��־������ȡֵ����ͬ����ο�<br/>[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md#ExtensionAbilityFlag)�� |
-| userId | number | 否 | ��ʾ�û�ID������ͨ��<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-1)<br/>��ȡ��Ĭ��ֵ�����÷������û�ID��ȡֵ��Χ�����ڵ���0�� |
+| extensionAbilityType | string | 是 | 表示自定义extensionAbility的类型。 |
+| extensionAbilityFlags | number | 是 | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;ExtensionAbilityInfo&gt; | ͬ������Array�� |
+| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExtensionAbilityInfo> | 同步返回Array&lt;ExtensionAbilityInfo&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br/>2. Incorrect parameter types; 3. Parameter extensionAbilityType is empty. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified extensionAbility is not found. |
-| [17700004](../../errorcode-universal.md#17700004-The) | The specified userId is invalid. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter extensionAbilityType is empty. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 
 **示例：**
 

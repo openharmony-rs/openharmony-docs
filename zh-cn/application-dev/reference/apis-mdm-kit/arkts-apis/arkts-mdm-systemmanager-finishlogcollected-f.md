@@ -1,20 +1,26 @@
 # finishLogCollected
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## finishLogCollected
 
 ```TypeScript
 function finishLogCollected(admin: Want): void
 ```
 
-ɾ����MDMӦ���ڵ�ǰ�û����ռ������豸��־��
+删除本MDM应用在当前用户下收集到的设备日志。
 
-> **˵����**
->
-> ��Ӧ�õ���[startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md#startCollectLog-1)��ʼ�ռ���־���յ�
-> [EnterpriseAdminExtensionAbility.onLogCollected](arkts-mdm-enterpriseadminextensionability-c.md#onLogCollected-1)
-> �ص�ʱ�����������������ߴ�����־�������ô˽ӿ�ɾ���ռ�������־��
->
-> ���������ӿڣ��豸��־��ռ��ϵͳ�洢�ռ䣬��Ӱ����һ�ε���[startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md#startCollectLog-1)������־�ռ�����
+> **说明：**  
+>  
+> 在应用调用[startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md#startcollectlog-1)开始收集日志后，收到  
+> [EnterpriseAdminExtensionAbility.onLogCollected](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onlogcollected-1)  
+> 回调时，建议立即拷贝或者处理日志，并调用此接口删除收集到的日志。  
+>  
+> 若不调本接口，设备日志会占用系统存储空间，不影响下一次调用[startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md#startcollectlog-1)启动日志收集任务。
 
 **起始版本：** 23
 
@@ -22,22 +28,24 @@ function finishLogCollected(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-systemManager-function finishLogCollected(admin: Want): void--><!--Device-systemManager-function finishLogCollected(admin: Want): void-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
+| admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
-| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.<br/>Failed to call the API due to limited device capabilities. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

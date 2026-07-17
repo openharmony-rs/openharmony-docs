@@ -1,11 +1,18 @@
 # LRUCache
 
-提供在缓存已满时丢弃最近最少使用的数据以腾出空间给新元素的 API。此类使用最近最少使用（LRU）算法，该算法认为最近
-使用的数据可能在不久的将来再次被访问，而最少访问的数据是最不具价值的数据，应从缓存中移除。
+提供在缓存已满时丢弃最近最少使用的数据以腾出空间给新元素的 API。此类使用最近最少使用（LRU）算法，该算法认为最近使用的数据可能在不久的将来再次被访问，而最少访问的数据是最不具价值的数据，应从缓存中移除。
 
 **起始版本：** 9
 
+<!--Device-util-class LRUCache<K, V>--><!--Device-util-class LRUCache<K, V>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+```
 
 ## [Symbol.iterator]
 
@@ -19,13 +26,15 @@
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
+| IterableIterator<[K, V]> | 返回以键值对形式的二维数组。 |
 
 **示例：**
 
@@ -49,20 +58,19 @@ for (let value of pro) {
 afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 ```
 
-在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如
-[get<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#get-1)、[put<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#put-1)、
-[remove<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#remove-1)、[clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear-1) 和
-[updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updateCapacity-1)。
+在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如[get<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#get-1)、[put<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#put-1)、[remove<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#remove-1)、[clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear-1) 和[updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updatecapacity-1)。
 
-> **NOTE**
->
-> 如果在调用 [clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear-1) 和
-> [updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updateCapacity-1) 后执行回调方法，并且输入的 **key** 和
+> **NOTE**  
+>  
+> 如果在调用 [clear<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#clear-1) 和  
+> [updateCapacity<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#updatecapacity-1) 后执行回调方法，并且输入的 **key** 和  
 > **value** 参数为 MapIterator 类型，请参考示例 2 执行后续操作。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -86,6 +94,8 @@ clear(): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-clear(): void--><!--Device-LRUCache-clear(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -116,18 +126,20 @@ constructor(capacity?: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-constructor(capacity?: number)--><!--Device-LRUCache-constructor(capacity?: number)-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capacity | number | 否 | 要创建的缓存的容量。默认值为 **64**，最大值为 **2147483647**。[since 12] |
+| capacity | number | 否 | 要创建的缓存的容量。默认值为 **64**，最大值为 **2147483647**。<br>**起始版本：** 12 |
 
 **示例：**
 
 ```TypeScript
-let pro = new util.LRUCache<number, number>();
+let lruCache = new util.LRUCache<number, number>();
 
 ```
 
@@ -142,6 +154,8 @@ contains(key: K): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-contains(key: K): boolean--><!--Device-LRUCache-contains(key: K): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -180,6 +194,8 @@ createDefault(key: K): V
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-createDefault(key: K): V--><!--Device-LRUCache-createDefault(key: K): V-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -216,13 +232,15 @@ entries(): IterableIterator<[K, V]>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-entries(): IterableIterator<[K, V]>--><!--Device-LRUCache-entries(): IterableIterator<[K, V]>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
+| IterableIterator<[K, V]> | 可迭代的数组。 |
 
 **示例：**
 
@@ -246,14 +264,13 @@ for (let value of pair) {
 get(key: K): V | undefined
 ```
 
-获取 key 对应的值。如果该 key 不在缓存中，则调用
-[createDefault<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#createDefault-1) 创建该 key。如果 **createDefault** 中指定的值
-不为 **undefined**，则调用 [afterRemoval<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#afterRemoval-1) 返回 **createDefault**
-中指定的值。
+获取 key 对应的值。如果该 key 不在缓存中，则调用[createDefault<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#createdefault-1) 创建该 key。如果 **createDefault** 中指定的值不为 **undefined**，则调用 [afterRemoval<sup>9+</sup>](arkts-arkts-util-lrucache-c.md#afterremoval-1) 返回 **createDefault**中指定的值。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-get(key: K): V | undefined--><!--Device-LRUCache-get(key: K): V | undefined-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -292,6 +309,8 @@ getCapacity(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-getCapacity(): number--><!--Device-LRUCache-getCapacity(): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -321,6 +340,8 @@ getCreateCount(): number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getCreateCount(): number--><!--Device-LRUCache-getCreateCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -365,6 +386,8 @@ getMatchCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-getMatchCount(): number--><!--Device-LRUCache-getMatchCount(): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -396,6 +419,8 @@ getMissCount(): number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getMissCount(): number--><!--Device-LRUCache-getMissCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -429,6 +454,8 @@ getPutCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-getPutCount(): number--><!--Device-LRUCache-getPutCount(): number-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -459,6 +486,8 @@ getRemovalCount(): number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-getRemovalCount(): number--><!--Device-LRUCache-getRemovalCount(): number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -493,6 +522,8 @@ isEmpty(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-isEmpty(): boolean--><!--Device-LRUCache-isEmpty(): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
@@ -523,6 +554,8 @@ keys(): K[]
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-keys(): K[]--><!--Device-LRUCache-keys(): K[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -565,6 +598,8 @@ put(key: K, value: V): V
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-put(key: K, value: V): V--><!--Device-LRUCache-put(key: K, value: V): V-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -602,6 +637,8 @@ remove(key: K): V | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-remove(key: K): V | undefined--><!--Device-LRUCache-remove(key: K): V | undefined-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -614,7 +651,7 @@ remove(key: K): V | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| V | 如果 key 存在于缓存中，则返回包含被移除键值对的 **Optional** 对象；如果 key 不存在<br/>则返回 **undefined**；如果 **key** 传入 **null**，则抛出错误。 |
+| V | 如果 key 存在于缓存中，则返回包含被移除键值对的 **Optional** 对象；如果 key 不存在则返回 **undefined**；如果 **key** 传入 **null**，则抛出错误。 |
 
 **示例：**
 
@@ -638,6 +675,8 @@ toString(): string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-toString(): string--><!--Device-LRUCache-toString(): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -672,6 +711,8 @@ updateCapacity(newCapacity: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-LRUCache-updateCapacity(newCapacity: number): void--><!--Device-LRUCache-updateCapacity(newCapacity: number): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -699,6 +740,8 @@ values(): V[]
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-values(): V[]--><!--Device-LRUCache-values(): V[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -742,6 +785,8 @@ length: number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LRUCache-length: number--><!--Device-LRUCache-length: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

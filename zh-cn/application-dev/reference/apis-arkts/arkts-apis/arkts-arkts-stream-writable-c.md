@@ -4,7 +4,15 @@
 
 **起始版本：** 12
 
+<!--Device-stream-class Writable--><!--Device-stream-class Writable-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { stream } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -16,7 +24,9 @@ constructor()
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-constructor()--><!--Device-Writable-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -37,7 +47,9 @@ cork(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-cork(): boolean--><!--Device-Writable-cork(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -76,7 +88,9 @@ doInitialize(callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-doInitialize(callback: Function): void--><!--Device-Writable-doInitialize(callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -114,7 +128,9 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void--><!--Device-Writable-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -141,7 +157,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data', 'utf8');
+writableStream.write("data", "utf8");
 
 ```
 
@@ -155,7 +171,9 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-doWritev(chunks: string[] | Uint8Array[], callback: Function): void--><!--Device-Writable-doWritev(chunks: string[] | Uint8Array[], callback: Function): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -183,8 +201,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
 
@@ -200,7 +218,9 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable--><!--Device-Writable-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -216,13 +236,13 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 | 类型 | 说明 |
 | --- | --- |
-| Writable | 当前**Writable**对象。 |
+| [Writable](arkts-arkts-stream-writable-c.md) | 当前**Writable**对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200035](../../errorcode-universal.md#10200035-The) | The doWrite method has not been implemented. |
+| [10200035](../errorcode-utils.md#10200035-dowrite接口未实现) | The doWrite method has not been implemented. |
 
 **示例：**
 
@@ -241,8 +261,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
-writableStream.end('finish', 'utf8', () => {
+writableStream.write("test", "utf8");
+writableStream.end("finish", "utf8", () => {
   console.info("Writable is end"); // Writable is end
 });
 
@@ -258,7 +278,9 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-off(event: string, callback?: Callback<emitter.EventData>): void--><!--Device-Writable-off(event: string, callback?: Callback<emitter.EventData>): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -267,7 +289,7 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件类型。支持以下事件： |
-| callback | Callback&lt;emitter.EventData&gt; | 否 | 回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<emitter.EventData> | 否 | 回调函数。 |
 
 **示例：**
 
@@ -275,7 +297,7 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 class TestWritable extends stream.Writable {
   constructor() {
     super();
- }
+  }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback();
@@ -287,9 +309,9 @@ let testListenerCalled = false;
 let testListener = () => {
   testListenerCalled = true;
 };
-writableStream.on('finish', testListener);
-writableStream.off('finish');
-writableStream.write('test');
+writableStream.on("finish", testListener);
+writableStream.off("finish");
+writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
   console.info("Writable off test", testListenerCalled.toString()); // Writable off test false
@@ -307,7 +329,9 @@ on(event: string, callback: Callback<emitter.EventData>): void
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-on(event: string, callback: Callback<emitter.EventData>): void--><!--Device-Writable-on(event: string, callback: Callback<emitter.EventData>): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -316,7 +340,7 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件类型。支持以下事件： |
-| callback | Callback&lt;emitter.EventData&gt; | 是 | 用于返回事件数据的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<emitter.EventData> | 是 | 用于返回事件数据的回调函数。 |
 
 **示例：**
 
@@ -336,7 +360,7 @@ let writable = new TestWritable();
 writable.on('error', () => {
   console.info("Writable event test", callbackCalled.toString()); // Writable event test false
 });
-writable.write('hello', 'utf8', () => {
+writable.write("hello", "utf8", () => {
 });
 
 ```
@@ -351,7 +375,9 @@ setDefaultEncoding(encoding?: string): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-setDefaultEncoding(encoding?: string): boolean--><!--Device-Writable-setDefaultEncoding(encoding?: string): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -381,7 +407,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-let result = writableStream.setDefaultEncoding('utf8');
+let result = writableStream.setDefaultEncoding("utf8");
 console.info("Writable is result", result); // Writable is result true
 
 ```
@@ -396,7 +422,9 @@ uncork(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-uncork(): boolean--><!--Device-Writable-uncork(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -421,11 +449,11 @@ class TestWritable extends stream.Writable {
 
 let writableStream = new TestWritable();
 writableStream.cork();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
-writableStream.on('finish', () => {
+writableStream.on("finish", () => {
   console.info("all Data is End"); // all Data is End
 });
 
@@ -441,7 +469,9 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean--><!--Device-Writable-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -463,9 +493,9 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200035](../../errorcode-universal.md#10200035-The) | The doWrite method has not been implemented. |
-| [10200036](../../errorcode-universal.md#10200036-The) | The stream has been ended. |
-| [10200037](../../errorcode-universal.md#10200037-The) | The callback is invoked multiple times consecutively. |
+| [10200035](../errorcode-utils.md#10200035-dowrite接口未实现) | The doWrite method has not been implemented. |
+| [10200036](../errorcode-utils.md#10200036-流已经结束仍进行写操作) | The stream has been ended. |
+| [10200037](../errorcode-utils.md#10200037-多次调用callback) | The callback is invoked multiple times consecutively. |
 
 **示例：**
 
@@ -482,7 +512,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
+writableStream.write("test", "utf8");
 
 ```
 
@@ -498,7 +528,9 @@ get writable(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writable(): boolean--><!--Device-Writable-get writable(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -514,7 +546,9 @@ get writableCorked(): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writableCorked(): int--><!--Device-Writable-get writableCorked(): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -530,7 +564,9 @@ get writableEnded(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writableEnded(): boolean--><!--Device-Writable-get writableEnded(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -546,7 +582,9 @@ get writableFinished(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writableFinished(): boolean--><!--Device-Writable-get writableFinished(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -562,7 +600,9 @@ highWatermark的值。
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writableHighWatermark(): int--><!--Device-Writable-get writableHighWatermark(): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -578,7 +618,9 @@ get writableLength(): number
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writableLength(): int--><!--Device-Writable-get writableLength(): int-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -594,7 +636,9 @@ get writableObjectMode(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Writable-get writableObjectMode(): boolean--><!--Device-Writable-get writableObjectMode(): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

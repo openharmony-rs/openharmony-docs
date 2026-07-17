@@ -1,9 +1,5 @@
 # FoldDisplayMode
 
-```TypeScript
-enum FoldDisplayMode
-```
-
 可折叠设备的显示模式枚举。
 
 > **说明：**
@@ -13,6 +9,8 @@ enum FoldDisplayMode
 > 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
 
 **起始版本：** 10
+
+<!--Device-display-enum FoldDisplayMode--><!--Device-display-enum FoldDisplayMode-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -28,6 +26,8 @@ FOLD_DISPLAY_MODE_UNKNOWN = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_UNKNOWN = 0--><!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_UNKNOWN = 0-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## FOLD_DISPLAY_MODE_FULL
@@ -41,6 +41,8 @@ FOLD_DISPLAY_MODE_FULL = 1
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_FULL = 1--><!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_FULL = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,6 +58,8 @@ FOLD_DISPLAY_MODE_MAIN = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_MAIN = 2--><!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_MAIN = 2-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## FOLD_DISPLAY_MODE_SUB
@@ -70,6 +74,8 @@ FOLD_DISPLAY_MODE_SUB = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_SUB = 3--><!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_SUB = 3-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## FOLD_DISPLAY_MODE_COORDINATION
@@ -83,6 +89,8 @@ FOLD_DISPLAY_MODE_COORDINATION
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_COORDINATION--><!--Device-FoldDisplayMode-FOLD_DISPLAY_MODE_COORDINATION-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

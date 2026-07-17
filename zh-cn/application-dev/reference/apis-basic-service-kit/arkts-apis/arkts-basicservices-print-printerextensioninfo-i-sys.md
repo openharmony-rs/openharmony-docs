@@ -4,9 +4,17 @@
 
 **起始版本：** 10
 
+<!--Device-print-interface PrinterExtensionInfo--><!--Device-print-interface PrinterExtensionInfo-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
 
 ## extensionId
 
@@ -19,6 +27,8 @@ extensionId: string
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-PrinterExtensionInfo-extensionId: string--><!--Device-PrinterExtensionInfo-extensionId: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -36,6 +46,8 @@ vendorIcon: number
 
 **起始版本：** 10
 
+<!--Device-PrinterExtensionInfo-vendorIcon: int--><!--Device-PrinterExtensionInfo-vendorIcon: int-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ vendorId: string
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-PrinterExtensionInfo-vendorId: string--><!--Device-PrinterExtensionInfo-vendorId: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -68,6 +82,8 @@ vendorName: string
 
 **起始版本：** 10
 
+<!--Device-PrinterExtensionInfo-vendorName: string--><!--Device-PrinterExtensionInfo-vendorName: string-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +99,8 @@ version: string
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-PrinterExtensionInfo-version: string--><!--Device-PrinterExtensionInfo-version: string-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

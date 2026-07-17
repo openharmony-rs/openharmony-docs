@@ -1,12 +1,20 @@
 # UninstallParam（系统接口）
 
-������ж����ָ���Ĳ�����Ϣ��
+共享包卸载需指定的参数信息。
 
 **起始版本：** 10
+
+<!--Device-installer-export interface UninstallParam--><!--Device-installer-export interface UninstallParam-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+```
 
 ## bundleName
 
@@ -14,11 +22,13 @@
 bundleName: string
 ```
 
-������������
+共享包包名。
 
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-UninstallParam-bundleName: string--><!--Device-UninstallParam-bundleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -30,11 +40,13 @@ bundleName: string
 versionCode?: number
 ```
 
-ָʾ�������İ汾�š�Ĭ��ֵ���������дversionCode����ж�ظð��������й�������
+指示共享包的版本号。默认值：如果不填写versionCode，则卸载该包名的所有共享包。
 
 **类型：** number
 
 **起始版本：** 10
+
+<!--Device-UninstallParam-versionCode?: int--><!--Device-UninstallParam-versionCode?: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

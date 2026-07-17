@@ -1,16 +1,12 @@
 # NotifyType（系统接口）
 
-```TypeScript
-enum NotifyType
-```
-
 枚举，通知类型。
 
 **起始版本：** 10
 
 **废弃版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-fileAccess-enum NotifyType--><!--Device-fileAccess-enum NotifyType-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -30,6 +26,8 @@ NOTIFY_ADD = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-NotifyType-NOTIFY_ADD = 0--><!--Device-NotifyType-NOTIFY_ADD = 0-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -48,6 +46,8 @@ NOTIFY_DELETE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-NotifyType-NOTIFY_DELETE = 1--><!--Device-NotifyType-NOTIFY_DELETE = 1-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -58,14 +58,15 @@ NOTIFY_DELETE = 1
 NOTIFY_MOVED_TO = 2
 ```
 
-表示移动至该文件（对目录下子文件或目录执行rename操作，或外部文件或目录执行move操作到本文件。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例
-1）。
+表示移动至该文件（对目录下子文件或目录执行rename操作，或外部文件或目录执行move操作到本文件。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例1）。
 
 **起始版本：** 10
 
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyType-NOTIFY_MOVED_TO = 2--><!--Device-NotifyType-NOTIFY_MOVED_TO = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -77,14 +78,15 @@ NOTIFY_MOVED_TO = 2
 NOTIFY_MOVED_FROM = 3
 ```
 
-表示自该文件移出（对目录下子文件或目录执行rename操作，或子文件（夹）执行move操作从该文件夹内移出。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口
-的示例1）。
+表示自该文件移出（对目录下子文件或目录执行rename操作，或子文件（夹）执行move操作从该文件夹内移出。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例1）。
 
 **起始版本：** 10
 
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyType-NOTIFY_MOVED_FROM = 3--><!--Device-NotifyType-NOTIFY_MOVED_FROM = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -104,6 +106,8 @@ NOTIFY_MOVE_SELF = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-NotifyType-NOTIFY_MOVE_SELF = 4--><!--Device-NotifyType-NOTIFY_MOVE_SELF = 4-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -122,6 +126,8 @@ NOTIFY_DEVICE_ONLINE = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5--><!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -139,6 +145,8 @@ NOTIFY_DEVICE_OFFLINE = 6
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6--><!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 

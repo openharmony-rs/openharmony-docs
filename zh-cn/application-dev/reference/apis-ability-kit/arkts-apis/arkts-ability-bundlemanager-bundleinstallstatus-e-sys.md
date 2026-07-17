@@ -1,12 +1,10 @@
 # BundleInstallStatus（系统接口）
 
-```TypeScript
-export enum BundleInstallStatus
-```
-
-��ʶӦ�õİ�װ״̬��
+标识应用的安装状态。
 
 **起始版本：** 23
+
+<!--Device-bundleManager-export enum BundleInstallStatus--><!--Device-bundleManager-export enum BundleInstallStatus-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,9 +16,11 @@ export enum BundleInstallStatus
 BUNDLE_NOT_EXIST = 1
 ```
 
-Ӧ��δ��װ��
+应用未安装。
 
 **起始版本：** 23
+
+<!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1--><!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,9 +32,11 @@ BUNDLE_NOT_EXIST = 1
 BUNDLE_INSTALLING = 2
 ```
 
-Ӧ�����ڰ�װ��
+应用正在安装。
 
 **起始版本：** 23
+
+<!--Device-BundleInstallStatus-BUNDLE_INSTALLING = 2--><!--Device-BundleInstallStatus-BUNDLE_INSTALLING = 2-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,9 +48,11 @@ BUNDLE_INSTALLING = 2
 BUNDLE_INSTALLED = 3
 ```
 
-Ӧ���Ѱ�װ��ɡ�
+应用已安装完成。
 
 **起始版本：** 23
+
+<!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3--><!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

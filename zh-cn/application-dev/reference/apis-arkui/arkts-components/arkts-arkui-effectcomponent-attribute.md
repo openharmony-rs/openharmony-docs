@@ -8,6 +8,8 @@
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>--><!--Device-unnamed-declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。

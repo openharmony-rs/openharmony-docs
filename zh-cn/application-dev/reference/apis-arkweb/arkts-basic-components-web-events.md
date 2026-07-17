@@ -2038,13 +2038,13 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    event.request.deny();
+                    event.request.deny(); // 拒绝权限请求
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
+                    event.request.grant(event.request.getAccessibleResource()); // 授权请求的权限资源
                   }
                 },
                 cancel: () => {
@@ -2371,7 +2371,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。
+通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。用于显示自定义的位置权限申请弹窗、实现位置服务说明、根据应用需求选择是否授权，提供更好的位置权限管理体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2397,14 +2397,14 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
 
-    // 组件的声明周期函数，创建组件实例后触发
+    // 组件的生命周期函数，创建组件实例后触发
     aboutToAppear(): void {
       let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
       if (!context) {
         console.error("context is undefined");
         return;
       }
-      // 向用户请求位置权限
+      // 请求位置权限，对整个应用生效
       atManager.requestPermissionsFromUser(context, ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
         console.info('data:' + JSON.stringify(data));
         console.info('data permissions:' + data.permissions);
@@ -2416,9 +2416,11 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
     build() {
       Column() {
+        // Web组件的geolocationAccess属性默认为true，可以显式配置为false以禁止Web组件获取地理位置信息
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .geolocationAccess(true)
           .onGeolocationShow((event) => {
+            // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
             if (event) {
               this.uiContext.showAlertDialog({
                 title: 'title',
@@ -2426,12 +2428,14 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
                 confirm: {
                   value: 'onConfirm',
                   action: () => {
-                    // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
+                    // 允许此站点位置权限请求
+                    // invoke的第三个参数表示是否记住当前弹窗的选择状态，传入true则下次不再弹出对话框
                     event.geolocation.invoke(event.origin, true, false);
                   }
                 },
                 cancel: () => {
-                  // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
+                  // 不允许此站点位置权限请求
+                  // invoke的第三个参数表示是否记住当前弹窗的选择状态，传入true则下次不再弹出对话框
                   event.geolocation.invoke(event.origin, false, false);
                 }
               })
@@ -2469,7 +2473,7 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 onGeolocationHide(callback: () => void)
 
-通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
+通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。用于清理定位相关资源，优化资源使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2574,7 +2578,7 @@ onFullScreenExit(callback: () => void)
           .onFullScreenExit(() => {
             console.info("onFullScreenExit...")
             if (this.handler) {
-              this.handler.exitFullScreen();
+              this.handler.exitFullScreen(); // 退出全屏模式
             }
           })
           .onFullScreenEnter((event) => {
@@ -3457,13 +3461,13 @@ onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    event.handler.deny();
+                    event.handler.deny(); // 拒绝屏幕捕获请求
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });
+                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN }); // 授权屏幕捕获请求，设置捕获模式为主屏幕
                   }
                 },
                 cancel: () => {
@@ -4839,13 +4843,14 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 
 onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
-网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
+网页加载遇到错误时触发该回调，可用于设置自定义错误页替换ArkWeb提供的默认错误页。默认仅mainframe加载出错时触发；启用subframe错误页功能后，subframe加载出错时也会触发。
 
 > **说明：**
 >
-> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
->
-> 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
+> - 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)<sup>20+</sup>启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)接口并将includeSubframe设置为true。
+> - 通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
+> - 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
+
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4857,32 +4862,38 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 **示例：**
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    build() {
-      Column() {
-        Web({ src: "www.error-test.com", controller: this.controller })
-         .onControllerAttached(() => {
-              this.controller.setErrorPageEnabled(true);
-              if (!this.controller.getErrorPageEnabled()) {
-                  this.controller.setErrorPageEnabled(true);
-              }
-          })
-          .onOverrideErrorPage(event => {
-                let htmlStr = "<html><h1>error occur : ";
-                htmlStr += event.error.getErrorCode();
-                htmlStr += "</h1></html>";
-                return htmlStr;
-          })
-      }
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+        .onControllerAttached(() => {
+          // 启用mainframe错误页功能，并同时启用subframe错误页功能
+          this.controller.setErrorPageEnabled(true, true);
+        })
+        .onOverrideErrorPage((event) => {
+          let errorCode: number = event.error.getErrorCode();
+          if (event.request.isMainFrame()) {
+            // mainframe加载失败，返回mainframe自定义错误页
+            return "<html><body><h1>主页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
+          }
+          // subframe加载失败，返回subframe自定义错误页
+          return "<html><body><h1>子页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
+        })
     }
   }
-  ```
+}
+```
+
+> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
 

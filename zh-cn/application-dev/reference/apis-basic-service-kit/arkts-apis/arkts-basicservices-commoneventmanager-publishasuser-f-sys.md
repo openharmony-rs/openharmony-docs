@@ -1,5 +1,11 @@
 # publishAsUser（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { commonEventManager } from '@kit.BasicServicesKit';
+```
+
 ## publishAsUser
 
 ```TypeScript
@@ -9,6 +15,8 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 向指定用户发布公共事件。使用callback异步回调。
 
 **起始版本：** 9
+
+<!--Device-commonEventManager-function publishAsUser(event: string, userId: int, callback: AsyncCallback<void>): void--><!--Device-commonEventManager-function publishAsUser(event: string, userId: int, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -20,18 +28,18 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发送的公共事件。 |
 | userId | number | 是 | 表示指定向该用户ID发送此公共事件。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [1500003](../../errorcode-universal.md#1500003-The) | The common event sending frequency too high.&lt;br&gt;**适用版本：** 20+ |
-| [1500006](../../errorcode-universal.md#1500006-Invalid) | Invalid userId.&lt;br&gt;**适用版本：** 21+ |
-| [1500007](../../errorcode-universal.md#1500007-Failed) | Failed to send the message to the common event service. |
-| [1500008](../../errorcode-universal.md#1500008-Failed) | Failed to initialize the common event service. |
-| [1500009](../../errorcode-universal.md#1500009-Failed) | Failed to obtain system parameters. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [1500003](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500003-公共事件发送频率过高) | The common event sending frequency too high.<br>**适用版本：** 20+ |
+| [1500006](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500006-无效userid) | Invalid userId.<br>**适用版本：** 21+ |
+| [1500007](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
+| [1500008](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
+| [1500009](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500009-获取系统参数失败) | Failed to obtain system parameters. |
 
 **示例：**
 
@@ -73,6 +81,18 @@ function publishAsUser(
 
 **起始版本：** 9
 
+<!--Device-commonEventManager-function publishAsUser(
+    event: string,
+    userId: int,
+    options: CommonEventPublishData,
+    callback: AsyncCallback<void>
+  ): void--><!--Device-commonEventManager-function publishAsUser(
+    event: string,
+    userId: int,
+    options: CommonEventPublishData,
+    callback: AsyncCallback<void>
+  ): void-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统接口：** 此接口为系统接口。
@@ -83,19 +103,19 @@ function publishAsUser(
 | --- | --- | --- | --- |
 | event | string | 是 | 表示要发布的公共事件。 |
 | userId | number | 是 | 表示指定向该用户ID发送此公共事件。 |
-| options | CommonEventPublishData | 是 | 表示发布公共事件的属性。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
+| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [1500003](../../errorcode-universal.md#1500003-The) | The common event sending frequency too high.&lt;br&gt;**适用版本：** 20+ |
-| [1500006](../../errorcode-universal.md#1500006-Invalid) | Invalid userId.&lt;br&gt;**适用版本：** 21+ |
-| [1500007](../../errorcode-universal.md#1500007-Failed) | Failed to send the message to the common event service. |
-| [1500008](../../errorcode-universal.md#1500008-Failed) | Failed to initialize the common event service. |
-| [1500009](../../errorcode-universal.md#1500009-Failed) | Failed to obtain system parameters. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [1500003](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500003-公共事件发送频率过高) | The common event sending frequency too high.<br>**适用版本：** 20+ |
+| [1500006](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500006-无效userid) | Invalid userId.<br>**适用版本：** 21+ |
+| [1500007](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
+| [1500008](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
+| [1500009](../../apis-basic-services-kit/errorcode-CommonEventService.md#1500009-获取系统参数失败) | Failed to obtain system parameters. |
 
 **示例：**
 
@@ -103,10 +123,10 @@ function publishAsUser(
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 公共事件相关信息
-let options:commonEventManager.CommonEventPublishData = {
+let options: commonEventManager.CommonEventPublishData = {
   code: 0,       // 公共事件的初始代码
-  data: 'initial data',// 公共事件的初始数据
-}
+  data: 'initial data', // 公共事件的初始数据
+};
 
 // 指定发送的用户
 let userId = 100;

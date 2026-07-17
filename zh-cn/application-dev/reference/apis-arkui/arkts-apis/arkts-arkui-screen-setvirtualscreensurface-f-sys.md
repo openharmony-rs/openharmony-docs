@@ -1,16 +1,24 @@
 # setVirtualScreenSurface（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+```
+
 ## setVirtualScreenSurface
 
 ```TypeScript
 function setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallback<void>): void
 ```
 
-����������Ļ��surface����ʾ��ǰ������������ʾ��Ӧsurface�е����ݣ�ʹ��callback�첽�ص���
+设置虚拟屏幕的surface，使用callback异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback<void>): void--><!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -20,18 +28,18 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string, callback: A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| screenId | number | 是 | ��Ļ��id���ò�����֧���������롣 |
-| surfaceId | string | 是 | ����������Ļ��surface��ʶ����surfaceIdֵ�����ж��壬���û�ָ��ĳһʵ�ʴ��ڵ�surface��Ӧ��surfaceId�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص�������������������Ļsurface�ɹ���errΪundefined������Ϊ������� |
+| screenId | number | 是 | 屏幕的id，该参数仅支持整数输入。 |
+| surfaceId | string | 是 | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [1400001](../../errorcode-universal.md#1400001-Invalid) | Invalid display or screen. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例：**
 
@@ -47,10 +55,11 @@ struct Index {
   setVirtualScreenSurface = () => {
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    // 设置虚拟屏幕的surface
     screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
       return;
     }
       console.info('Succeeded in setting the surface for the virtual screen.');
@@ -82,11 +91,13 @@ struct Index {
 function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<void>
 ```
 
-����������Ļ��surface����ʾ��ǰ������������ʾ��Ӧsurface�е����ݣ�ʹ��Promise�첽�ص���
+设置虚拟屏幕的surface，使用Promise异步回调。
 
 **起始版本：** 9
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string): Promise<void>--><!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -96,23 +107,23 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| screenId | number | 是 | ��Ļ��id���ò�����֧���������롣 |
-| surfaceId | string | 是 | ����������Ļ��surface��ʶ����surfaceIdֵ�����ж��壬���û�ָ��ĳһʵ�ʴ��ڵ�surface��Ӧ��surfaceId�� |
+| screenId | number | 是 | 屏幕的id，该参数仅支持整数输入。 |
+| surfaceId | string | 是 | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | �޷��ؽ����Promise���� |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [1400001](../../errorcode-universal.md#1400001-Invalid) | Invalid display or screen. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例：**
 
@@ -128,10 +139,11 @@ struct Index {
   setVirtualScreenSurface = () => {
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    // 设置虚拟屏幕的surface
     screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in setting the surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
   }
   build() {

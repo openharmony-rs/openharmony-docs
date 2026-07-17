@@ -1,12 +1,10 @@
 # StopBits
 
-```TypeScript
-enum StopBits
-```
-
 Enumerates of the number of stop bits.
 
 **起始版本：** 19
+
+<!--Device-serialManager-enum StopBits--><!--Device-serialManager-enum StopBits-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -16,9 +14,11 @@ Enumerates of the number of stop bits.
 STOPBIT_1 = 0
 ```
 
-���ĵ���Чֹͣλ��Ϊ1���ء�
+报文的有效停止位宽为1比特。
 
 **起始版本：** 19
+
+<!--Device-StopBits-STOPBIT_1 = 0--><!--Device-StopBits-STOPBIT_1 = 0-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
@@ -28,9 +28,11 @@ STOPBIT_1 = 0
 STOPBIT_2 = 1
 ```
 
-���ĵ���Чֹͣλ��Ϊ2���ء�
+报文的有效停止位宽为2比特。
 
 **起始版本：** 19
+
+<!--Device-StopBits-STOPBIT_2 = 1--><!--Device-StopBits-STOPBIT_2 = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager.Serial
 

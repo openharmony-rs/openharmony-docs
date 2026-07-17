@@ -1,10 +1,18 @@
 # CertInfo
 
-��ʾ֤����ϸ��Ϣ��
+表示证书详细信息。
 
 **起始版本：** 11
 
+<!--Device-certificateManager-export interface CertInfo--><!--Device-certificateManager-export interface CertInfo-End-->
+
 **系统能力：** SystemCapability.Security.CertificateManager
+
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+```
 
 ## cert
 
@@ -12,11 +20,13 @@
 cert: Uint8Array
 ```
 
-��ʾ֤����������ݣ���󳤶�Ϊ8196�ֽڡ�
+表示证书二进制数据，最大长度为8196字节。
 
 **类型：** Uint8Array
 
 **起始版本：** 11
+
+<!--Device-CertInfo-cert: Uint8Array--><!--Device-CertInfo-cert: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -26,11 +36,13 @@ cert: Uint8Array
 certAlias: string
 ```
 
-��ʾ֤��ı�������󳤶�Ϊ128�ֽڡ�
+表示证书的别名，最大长度为128字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-certAlias: string--><!--Device-CertInfo-certAlias: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -40,11 +52,13 @@ certAlias: string
 fingerprintSha256: string
 ```
 
-��ʾ֤���ָ��ֵ����󳤶�Ϊ128�ֽڡ�
+表示证书的指纹值，最大长度为128字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-fingerprintSha256: string--><!--Device-CertInfo-fingerprintSha256: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -54,11 +68,13 @@ fingerprintSha256: string
 issuerName: string
 ```
 
-��ʾ֤��İ䷢�����ƣ���󳤶�Ϊ256�ֽڡ�
+表示证书的颁发者名称，最大长度为256字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-issuerName: string--><!--Device-CertInfo-issuerName: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -68,11 +84,13 @@ issuerName: string
 notAfter: string
 ```
 
-��ʾ֤����Ч�ڽ�ֹ���ڣ���󳤶�Ϊ32�ֽڡ�
+表示证书有效期截止日期，最大长度为32字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-notAfter: string--><!--Device-CertInfo-notAfter: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -82,11 +100,13 @@ notAfter: string
 notBefore: string
 ```
 
-��ʾ֤����Ч����ʼ���ڣ���󳤶�Ϊ32�ֽڡ�
+表示证书有效期起始日期，最大长度为32字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-notBefore: string--><!--Device-CertInfo-notBefore: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -96,11 +116,13 @@ notBefore: string
 serial: string
 ```
 
-��ʾ֤������кţ���󳤶�Ϊ64�ֽڡ���ʽΪ16�����ַ��������磺62C2CB4DE8405E96��
+表示证书的序列号，最大长度为64字节。格式为16进制字符串，例如：62C2CB4DE8405E96。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-serial: string--><!--Device-CertInfo-serial: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -110,11 +132,13 @@ serial: string
 state: boolean
 ```
 
-��ʾ֤���״̬��trueΪ����״̬��falseΪ����״̬��
+表示证书的状态，true为启用状态、false为禁用状态。
 
 **类型：** boolean
 
 **起始版本：** 11
+
+<!--Device-CertInfo-state: boolean--><!--Device-CertInfo-state: boolean-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -124,11 +148,13 @@ state: boolean
 subjectName: string
 ```
 
-��ʾ֤���ʹ�������ƣ���󳤶�Ϊ1024�ֽڡ�
+表示证书的使用者名称，最大长度为1024字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-subjectName: string--><!--Device-CertInfo-subjectName: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -138,11 +164,13 @@ subjectName: string
 uri: string
 ```
 
-��ʾ֤���Ψһ��ʶ������󳤶�Ϊ256�ֽڡ�
+表示证书的唯一标识符，最大长度为256字节。
 
 **类型：** string
 
 **起始版本：** 11
+
+<!--Device-CertInfo-uri: string--><!--Device-CertInfo-uri: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

@@ -1,12 +1,10 @@
 # BlurStyle（系统接口）
 
-```TypeScript
-enum BlurStyle
-```
-
 窗口模糊类型枚举。
 
 **起始版本：** 9
+
+<!--Device-window-enum BlurStyle--><!--Device-window-enum BlurStyle-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -22,6 +20,8 @@ OFF = 0
 
 **起始版本：** 9
 
+<!--Device-BlurStyle-OFF = 0--><!--Device-BlurStyle-OFF = 0-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -35,6 +35,8 @@ THIN = 1
 表示较薄的模糊类型。
 
 **起始版本：** 9
+
+<!--Device-BlurStyle-THIN = 1--><!--Device-BlurStyle-THIN = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -50,6 +52,8 @@ REGULAR = 2
 
 **起始版本：** 9
 
+<!--Device-BlurStyle-REGULAR = 2--><!--Device-BlurStyle-REGULAR = 2-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -63,6 +67,8 @@ THICK = 3
 表示较厚的模糊类型。
 
 **起始版本：** 9
+
+<!--Device-BlurStyle-THICK = 3--><!--Device-BlurStyle-THICK = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

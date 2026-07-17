@@ -1,12 +1,10 @@
 # WordBreak
 
-```TypeScript
-enum WordBreak
-```
-
 断词策略枚举。
 
 **起始版本：** 12
+
+<!--Device-text-enum WordBreak--><!--Device-text-enum WordBreak-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ NORMAL = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## BREAK_ALL
@@ -35,6 +35,8 @@ BREAK_ALL = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WordBreak-BREAK_ALL = 1--><!--Device-WordBreak-BREAK_ALL = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,6 +52,8 @@ BREAK_WORD = 2
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-WordBreak-BREAK_WORD = 2--><!--Device-WordBreak-BREAK_WORD = 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## BREAK_HYPHEN
@@ -60,11 +64,13 @@ BREAK_HYPHEN = 3
 
 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。
 
-使用此断词策略时，需与[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#TextStyle)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。
+使用此断词策略时，需与[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-WordBreak-BREAK_HYPHEN = 3--><!--Device-WordBreak-BREAK_HYPHEN = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

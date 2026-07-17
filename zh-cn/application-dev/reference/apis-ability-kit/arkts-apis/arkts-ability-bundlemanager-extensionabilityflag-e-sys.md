@@ -1,12 +1,10 @@
 # ExtensionAbilityFlag（系统接口）
 
-```TypeScript
-enum ExtensionAbilityFlag
-```
-
-��չ�����Ϣ��־��ָʾ��Ҫ��ȡ����չ�����Ϣ�����ݡ�
+扩展组件信息标志，指示需要获取的扩展组件信息的内容。
 
 **起始版本：** 9
+
+<!--Device-bundleManager-enum ExtensionAbilityFlag--><!--Device-bundleManager-enum ExtensionAbilityFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -18,9 +16,11 @@ enum ExtensionAbilityFlag
 GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000
 ```
 
-���ڻ�ȡĬ��extensionAbilityInfo����ȡ��extensionAbilityInfo������permission��metadata �ͽ��õ�extensionAbilityInfo��
+用于获取默认extensionAbilityInfo。获取的extensionAbilityInfo不包含permission、metadata 和禁用的extensionAbilityInfo。
 
 **起始版本：** 9
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,9 +32,11 @@ GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000
 GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
 ```
 
-���ڻ�ȡ����permission��extensionAbilityInfo��
+用于获取包含permission的extensionAbilityInfo。
 
 **起始版本：** 9
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -46,9 +48,11 @@ GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
 GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002
 ```
 
-���ڻ�ȡ����applicationInfo��extensionAbilityInfo��
+用于获取包含applicationInfo的extensionAbilityInfo。
 
 **起始版本：** 9
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,9 +64,11 @@ GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002
 GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004
 ```
 
-���ڻ�ȡ����metadata��extensionAbilityInfo��
+用于获取包含metadata的extensionAbilityInfo。
 
 **起始版本：** 9
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -74,9 +80,11 @@ GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004
 GET_EXTENSION_ABILITY_INFO_WITH_SKILL = 0x00000010
 ```
 
-���ڻ�ȡ����skills��extensionAbilityInfo��
+用于获取包含skills的extensionAbilityInfo。
 
 **起始版本：** 12
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_SKILL = 0x00000010--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_SKILL = 0x00000010-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

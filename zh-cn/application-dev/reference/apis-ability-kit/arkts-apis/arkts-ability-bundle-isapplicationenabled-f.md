@@ -1,16 +1,24 @@
 # isApplicationEnabled
 
+## 导入模块
+
+```TypeScript
+import { bundle } from '@kit.AbilityKit';
+```
+
 ## isApplicationEnabled
 
 ```TypeScript
 function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void
 ```
 
-���ݸ�����bundleName��ѯָ��Ӧ�ó����Ƿ��Ѿ����ã�ʹ��callback�첽�ص���
+根据给定的bundleName查询指定应用程序是否已经启用，使用callback异步回调。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-bundle-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-bundle-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -18,8 +26,8 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��Ӧ��Bundle���ơ� |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | �ص�����������boolean�����Ƿ����á� |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，返回boolean代表是否启用。 |
 
 
 ## isApplicationEnabled
@@ -28,11 +36,13 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 function isApplicationEnabled(bundleName: string): Promise<boolean>
 ```
 
-���ݸ�����bundleName��ѯָ��Ӧ�ó����Ƿ��Ѿ����ã�ʹ��Promise�첽�ص���
+根据给定的bundleName查询指定应用程序是否已经启用，使用Promise异步回调。
 
 **起始版本：** 8
 
 **废弃版本：** 9
+
+<!--Device-bundle-function isApplicationEnabled(bundleName: string): Promise<boolean>--><!--Device-bundle-function isApplicationEnabled(bundleName: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -40,11 +50,11 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Ҫ��ѯ��Ӧ��Bundle���ơ� |
+| bundleName | string | 是 | 要查询的应用Bundle名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise��ʽ����boolean�����Ƿ����á� |
+| Promise<boolean> | Promise形式返回boolean代表是否启用。 |
 

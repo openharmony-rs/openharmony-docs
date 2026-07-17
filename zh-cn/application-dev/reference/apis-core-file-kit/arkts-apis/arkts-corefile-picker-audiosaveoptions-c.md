@@ -4,7 +4,15 @@
 
 **起始版本：** 9
 
+<!--Device-picker-class AudioSaveOptions--><!--Device-picker-class AudioSaveOptions-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
+
+## 导入模块
+
+```TypeScript
+import { picker } from '@kit.CoreFileKit';
+```
 
 ## newFileNames
 
@@ -19,6 +27,8 @@ newFileNames?: Array<string>
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AudioSaveOptions-newFileNames?: Array<string>--><!--Device-AudioSaveOptions-newFileNames?: Array<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 

@@ -1,5 +1,11 @@
 # createX509CRL
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## createX509CRL
 
 ```TypeScript
@@ -12,22 +18,24 @@ function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-cert-function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>): void--><!--Device-cert-function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>): void-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inStream | EncodingBlob | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
-| callback | AsyncCallback&lt;X509CRL&gt; | 是 | 回调函数。当创建X509证书吊销列表对象成功时，err为undefined，data为获取到的<br/>X509CRL实例；否则为错误对象。 |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<X509CRL> | 是 | 回调函数。当创建X509证书吊销列表对象成功时，err为undefined，data为获取到的X509CRL实例；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [801](../../errorcode-universal.md#801-不支持该操作) | 不支持该操作。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 
 **示例：**
 
@@ -82,27 +90,29 @@ function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-cert-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>--><!--Device-cert-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>-End-->
+
 **系统能力：** SystemCapability.Security.Cert
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inStream | EncodingBlob | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;X509CRL&gt; | Promise对象，返回创建的X509CRL实例。 |
+| Promise<X509CRL> | Promise对象，返回创建的X509CRL实例。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [801](../../errorcode-universal.md#801-不支持该操作) | 不支持该操作。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 
 **示例：**
 

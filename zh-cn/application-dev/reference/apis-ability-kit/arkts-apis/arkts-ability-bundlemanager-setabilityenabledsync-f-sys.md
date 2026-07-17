@@ -1,16 +1,24 @@
 # setAbilityEnabledSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## setAbilityEnabledSync
 
 ```TypeScript
 function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 ```
 
-��ͬ����������ָ������Ľ��û�ʹ��״̬��
+以同步方法设置指定组件的禁用或使能状态。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+<!--Device-bundleManager-function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void--><!--Device-bundleManager-function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,18 +28,18 @@ function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | ��Ҫ�����õ������ |
-| isEnabled | boolean | 是 | ֵΪtrue��ʾʹ�ܣ�ֵΪfalse��ʾ���á� |
+| info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 需要被设置的组件。 |
+| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700003](../../errorcode-universal.md#17700003-The) | The specified abilityInfo is not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityInfo is not found. |
 
 **示例：**
 

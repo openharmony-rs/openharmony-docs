@@ -1,14 +1,10 @@
 # UploadState（系统接口）
 
-```TypeScript
-enum UploadState
-```
-
-�ļ��ϴ�״̬��ö�١�
+文件上传状态的枚举。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-cloudSync-enum UploadState--><!--Device-cloudSync-enum UploadState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -20,11 +16,13 @@ enum UploadState
 WAITING = 0
 ```
 
-�ȴ��ϴ���
+等待上传。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-WAITING = 0--><!--Device-UploadState-WAITING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -36,11 +34,13 @@ WAITING = 0
 RUNNING = 1
 ```
 
-�����ϴ��С�
+正在上传中。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-RUNNING = 1--><!--Device-UploadState-RUNNING = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -52,11 +52,13 @@ RUNNING = 1
 COMPLETED = 2
 ```
 
-�ϴ���ɡ�
+上传完成。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-COMPLETED = 2--><!--Device-UploadState-COMPLETED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -68,11 +70,13 @@ COMPLETED = 2
 FAILED = 3
 ```
 
-�ϴ�ʧ�ܡ�
+上传失败。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-FAILED = 3--><!--Device-UploadState-FAILED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -84,11 +88,13 @@ FAILED = 3
 STOPPED = 4
 ```
 
-�ϴ���ֹͣ��
+上传已停止。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-STOPPED = 4--><!--Device-UploadState-STOPPED = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -100,11 +106,13 @@ STOPPED = 4
 PAUSED = 5
 ```
 
-�ϴ�����ͣ��
+上传已暂停。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-PAUSED = 5--><!--Device-UploadState-PAUSED = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

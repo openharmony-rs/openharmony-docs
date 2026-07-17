@@ -1,10 +1,18 @@
 # CloudFileCache
 
-�����ļ������������֧���ļ�����Ӧ��ԭ�ļ��������̡�
+云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
 
 **起始版本：** 11
 
+<!--Device-cloudSync-class CloudFileCache--><!--Device-cloudSync-class CloudFileCache-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## cleanFileCache
 
@@ -12,9 +20,11 @@
 cleanFileCache(uri: string): void
 ```
 
-ͬ������ɾ���ļ����档
+同步方法删除文件缓存。
 
 **起始版本：** 20
+
+<!--Device-CloudFileCache-cleanFileCache(uri: string): void--><!--Device-CloudFileCache-cleanFileCache(uri: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -22,19 +32,19 @@ cleanFileCache(uri: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | ��ɾ�������ļ���URI�� |
+| uri | string | 是 | 待删除缓存文件的URI。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied by the file system |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid URI. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900012 | Permission denied by the file system |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid URI. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -49,8 +59,8 @@ let uri = fileUri.getUriFromPath(path);
 try {
   fileCache.cleanFileCache(uri);
 } catch (err) {
-  let error:BusinessError = err as BusinessError;
-  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+  let error: BusinessError = err as BusinessError;
+  console.error(`clean file cache failed with error message: ${error.message}, error code: ${error.code}`);
 }
 
 
@@ -66,36 +76,21 @@ cleanFileCache(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-CloudFileCache-cleanFileCache(): Promise<void>--><!--Device-CloudFileCache-cleanFileCache(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | - Return Promise. |
+| Promise<void> | - Return Promise. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-
-**示例：**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-
-let fileCache = new cloudSync.CloudFileCache();
-
-fileCache.cleanFileCache().then(() => {
-  console.info("clean file cache successfully");
-}).catch((err: BusinessError) => {
-  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
-});
-
-
-```
+| 13900010 | Try again. |
 
 ## constructor
 
@@ -107,13 +102,15 @@ A constructor used to create a **CloudFileCache** instance. Data is not shared b
 
 **起始版本：** 11
 
+<!--Device-CloudFileCache-constructor()--><!--Device-CloudFileCache-constructor()-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
 
 **示例：**
 
@@ -132,19 +129,21 @@ getCachedTotalSize(): Promise<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-CloudFileCache-getCachedTotalSize(): Promise<long>--><!--Device-CloudFileCache-getCachedTotalSize(): Promise<long>-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | - Return the total size of cached files. |
+| Promise<number> | - Return the total size of cached files. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
+| 13900010 | Try again. |
 
 **示例：**
 
@@ -169,9 +168,11 @@ fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
 off(event: 'progress', callback?: Callback<DownloadProgress>): void
 ```
 
-�����ļ���������Ƴ�'progress'���͵�ָ��callback�ص���
+云盘文件缓存对象移除'progress'类型的指定callback回调。
 
 **起始版本：** 11
+
+<!--Device-CloudFileCache-off(event: 'progress', callback?: Callback<DownloadProgress>): void--><!--Device-CloudFileCache-off(event: 'progress', callback?: Callback<DownloadProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -179,15 +180,15 @@ off(event: 'progress', callback?: Callback<DownloadProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'progress' | 是 | ȡ�����ĵ��¼����ͣ�ȡֵΪ'progress'��ͬ�������¼����� |
-| callback | Callback&lt;DownloadProgress&gt; | 否 | �ص����������ļ����ع����¼�������д������Ϊȡ��ָ���Ļص�����������Ϊȡ����ǰ���ĵ����лص������� |
+| event | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadProgress> | 否 | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
@@ -216,11 +217,11 @@ try {
 off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void
 ```
 
-�����ļ���������Ƴ���
-[on](arkts-corefile-cloudsync-cloudfilecache-c.md#on-2)�ӿ����ӵ�����
-��������������¼��ļ�����
+云盘文件缓存对象移除由[on](arkts-corefile-cloudsync-cloudfilecache-c.md#on-2)接口添加的云文件批量缓存过程事件的监听。
 
 **起始版本：** 20
+
+<!--Device-CloudFileCache-off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void--><!--Device-CloudFileCache-off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -228,15 +229,15 @@ off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'batchDownload' | 是 | ȡ�����ĵ��¼����ͣ�ȡֵΪ'batchDownload'����ʾ������������¼��� |
-| callback | Callback&lt;MultiDownloadProgress&gt; | 否 | �ص����������ļ�������������¼��������д�˲�������ȡ��ָ���Ļص����������򣬽�ȡ����ǰ���ĵ���ͬ�¼����͵����л�<br/>�������� |
+| event | 'batchDownload' | 是 | 取消订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MultiDownloadProgress> | 否 | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -264,9 +265,11 @@ try {
 on(event: 'progress', callback: Callback<DownloadProgress>): void
 ```
 
-���������ļ���������¼�������
+添加云盘文件缓存过程事件监听。
 
 **起始版本：** 11
+
+<!--Device-CloudFileCache-on(event: 'progress', callback: Callback<DownloadProgress>): void--><!--Device-CloudFileCache-on(event: 'progress', callback: Callback<DownloadProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -274,15 +277,15 @@ on(event: 'progress', callback: Callback<DownloadProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'progress' | 是 | ���ĵ��¼����ͣ�ȡֵΪ'progress'�����ع����¼����� |
-| callback | Callback&lt;DownloadProgress&gt; | 是 | �ص����������ļ����ع����¼��� |
+| event | 'progress' | 是 | 订阅的事件类型，取值为'progress'（下载过程事件）。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadProgress> | 是 | 回调函数。云文件下载过程事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error |
 
 **示例：**
 
@@ -309,9 +312,11 @@ try {
 on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void
 ```
 
-�������ļ����������¼��ļ�����
+添加云文件批量缓存事件的监听。
 
 **起始版本：** 20
+
+<!--Device-CloudFileCache-on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void--><!--Device-CloudFileCache-on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -319,15 +324,15 @@ on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'batchDownload' | 是 | ���ĵ��¼����ͣ�ȡֵΪ'batchDownload'����ʾ������������¼��� |
-| callback | Callback&lt;MultiDownloadProgress&gt; | 是 | �ص����������ļ�������������¼��� |
+| event | 'batchDownload' | 是 | 订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MultiDownloadProgress> | 是 | 回调函数。云文件批量缓存过程事件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -359,9 +364,11 @@ try {
 start(uri: string): Promise<void>
 ```
 
-�첽�������������ļ����档ʹ��Promise�첽�ص���
+异步方法启动云盘文件缓存。使用Promise异步回调。
 
 **起始版本：** 11
+
+<!--Device-CloudFileCache-start(uri: string): Promise<void>--><!--Device-CloudFileCache-start(uri: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -369,23 +376,23 @@ start(uri: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �������ļ�uri�� |
+| uri | string | 是 | 待下载文件uri。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13900002 | No such file or directory. |
+| 13900025 | No space left on device. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -420,9 +427,11 @@ fileCache.start(uri).then(() => {
 start(uri: string, callback: AsyncCallback<void>): void
 ```
 
-�첽�������������ļ����档ʹ��callback�첽�ص���
+异步方法启动云盘文件缓存。使用callback异步回调。
 
 **起始版本：** 11
+
+<!--Device-CloudFileCache-start(uri: string, callback: AsyncCallback<void>): void--><!--Device-CloudFileCache-start(uri: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -430,18 +439,18 @@ start(uri: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �������ļ�uri�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������첽�������ļ����ء� |
+| uri | string | 是 | 待下载文件uri。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13900002 | No such file or directory. |
+| 13900025 | No space left on device. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -469,11 +478,13 @@ fileCache.start(uri, (err: BusinessError) => {
 startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<number>
 ```
 
-�������ļ��������档ʹ��Promise�첽�ص���
+启动云文件批量缓存。使用Promise异步回调。
 
-��ͬ�����������������ͨ���ӿڷ��ص�����ID���֡�
+不同的批量缓存任务可以通过接口返回的任务ID区分。
 
 **起始版本：** 20
+
+<!--Device-CloudFileCache-startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<long>--><!--Device-CloudFileCache-startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<long>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -481,24 +492,24 @@ startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array&lt;string&gt; | 是 | URI�б���һ�ε������֧�ִ���400��URI����������22400004�� |
-| fileType | DownloadFileType | 否 | �ļ����ͣ�Ĭ��ֵΪCONTENT���͡� |
+| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | URI列表，一次调用最多支持传入400个URI，超过报错22400004。 |
+| fileType | [DownloadFileType](arkts-corefile-cloudsync-downloadfiletype-e.md) | 否 | 文件类型，默认值为CONTENT类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise���󣬷������������ļ��������������ID�� |
+| Promise<number> | Promise对象，返回启动的云文件批量缓存任务的ID。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
-| [22400004](../../errorcode-universal.md#22400004-Exceed) | Exceed the maximum limit. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002 | Invalid uri. |
+| 22400004 | Exceed the maximum limit. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -532,10 +543,11 @@ stop(uri: string, needClean?: boolean): Promise<void>
 
 Stops downloading a file from the Drive Kit to the local device. This API uses a promise to return the result.
 
-When **stop()** is called, the current file download process terminates, and downloaded files are retained by
-default. You can call **start()** to resume the download.
+When **stop()** is called, the current file download process terminates, and downloaded files are retained by default. You can call **start()** to resume the download.
 
 **起始版本：** 12
+
+<!--Device-CloudFileCache-stop(uri: string, needClean?: boolean): Promise<void>--><!--Device-CloudFileCache-stop(uri: string, needClean?: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -543,23 +555,23 @@ default. You can call **start()** to resume the download.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �������ļ�uri�� |
-| needClean | boolean | 否 | �Ƿ�ɾ�������ص��ļ���Ĭ��ֵΪfalse��ʾ��ɾ����true��ʾɾ����<br/>��API version12��ʼ֧�ָò����� [since 12] |
+| uri | string | 是 | 待下载文件uri。 |
+| needClean | boolean | 否 | 是否删除已下载的文件。默认值为false表示不删除；true表示删除。<br>从API version12开始支持该参数。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13900002 | No such file or directory. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -585,11 +597,13 @@ fileCache.stop(uri, true).then(() => {
 stop(uri: string, callback: AsyncCallback<void>): void
 ```
 
-�첽����ֹͣ�����ļ����档ʹ��callback�첽�ص���
+异步方法停止云盘文件缓存。使用callback异步回调。
 
-����stop�ӿڣ���ǰ�ļ��������̻���ֹ����ɾ�������ļ����ٴε���start�ӿ������������ء�
+调用stop接口，当前文件下载流程会终止，不删除缓存文件，再次调用start接口重新启动下载。
 
 **起始版本：** 11
+
+<!--Device-CloudFileCache-stop(uri: string, callback: AsyncCallback<void>): void--><!--Device-CloudFileCache-stop(uri: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -597,17 +611,17 @@ stop(uri: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �������ļ�uri�� |
-| callback | AsyncCallback&lt;void&gt; | 是 | �ص��������첽ֹͣ���ļ����ء� |
+| uri | string | 是 | 待下载文件uri。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13900002 | No such file or directory. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -635,11 +649,13 @@ fileCache.stop(uri, (err: BusinessError) => {
 stopBatch(downloadId: number, needClean?: boolean): Promise<void>
 ```
 
-ֹͣ��[startBatch](arkts-corefile-cloudsync-cloudfilecache-c.md#startBatch-1)���������ļ�������������ʹ��Promise�첽�ص���
+停止由[startBatch](arkts-corefile-cloudsync-cloudfilecache-c.md#startbatch-1)启动的云文件批量缓存任务。使用Promise异步回调。
 
-����stopBatch�ӿڻ���ֹ��ǰ�ļ������������̣�δ������ɵĻ����ļ��Ƿ�ɾ����needClean����������
+调用stopBatch接口会终止当前文件批量缓存流程，未下载完成的缓存文件是否删除由needClean参数决定。
 
 **起始版本：** 20
+
+<!--Device-CloudFileCache-stopBatch(downloadId: long, needClean?: boolean): Promise<void>--><!--Device-CloudFileCache-stopBatch(downloadId: long, needClean?: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -647,22 +663,22 @@ stopBatch(downloadId: number, needClean?: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| downloadId | number | 是 | ��Ҫֹͣ���������ID�� |
-| needClean | boolean | 否 | �Ƿ�ɾ��δ��ɻ�����ļ���Ĭ��ֵΪfalse��ʾ��ɾ����true��ʾɾ���� |
+| downloadId | number | 是 | 需要停止缓存的任务ID。 |
+| needClean | boolean | 否 | 是否删除未完成缓存的文件。默认值为false表示不删除；true表示删除。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise�����޷��ؽ���� |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. Possible causes:<br/><br/>1.IPC failed or timed out. 2.Failed to load the service. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [22400005](../../errorcode-universal.md#22400005-Inner) | Inner error. Possible causes:<br/><br/>1.Failed to access the database or execute the SQL statement.<br/><br/>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement.<br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 

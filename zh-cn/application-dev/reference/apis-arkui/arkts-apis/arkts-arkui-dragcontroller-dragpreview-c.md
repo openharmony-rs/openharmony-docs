@@ -4,9 +4,15 @@
 
 **起始版本：** 11
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-dragController-export class DragPreview--><!--Device-dragController-export class DragPreview-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { dragController } from '@kit.ArkUI';
+```
 
 ## animate
 
@@ -14,9 +20,7 @@
 animate(options: AnimationOptions, handler: () =>void): void
 ```
 
-设置背板蒙版颜色变化动效，在OnDrop和OnDragEnd回调中使用不生效，仅支持通过
-[getDragPreview()](arkts-arkui-dragcontroller-c.md#getDragPreview-1)方法获取到的
-对象上使用。
+设置背板蒙版颜色变化动效，在OnDrop和OnDragEnd回调中使用不生效，仅支持通过[getDragPreview()](arkts-arkui-arkui-uicontext-dragcontroller-c.md#getdragpreview-1)方法获取到的对象上使用。
 
 **起始版本：** 11
 
@@ -24,14 +28,16 @@ animate(options: AnimationOptions, handler: () =>void): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DragPreview-animate(options: AnimationOptions, handler: () =>void): void--><!--Device-DragPreview-animate(options: AnimationOptions, handler: () =>void): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | AnimationOptions | 是 | 动效参数。 |
-| handler | () =&gt;void | 是 | 用于修改背板蒙版颜色等属性的回调方法。 |
+| options | [AnimationOptions](arkts-arkui-arkui-drawabledescriptor-animationoptions-i.md) | 是 | 动效参数。 |
+| handler | () =>void | 是 | 用于修改背板蒙版颜色等属性的回调方法。 |
 
 **示例：**
 
@@ -69,7 +75,7 @@ export default class EntryAbility extends UIAbility {
         `Code is ${err.code}, message is ${err.message}`);
       windowStage.getMainWindow((err, data) => {
         if (err.code) {
-          hilog.error(0x0000, `Failed to obtain the main window. Cause: ${err.message}`, '');
+          console.error(`Failed to obtain the main window. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         uiContext = data.getUIContext();
@@ -87,8 +93,7 @@ export default class EntryAbility extends UIAbility {
 
 import { unifiedDataChannel } from '@kit.ArkData';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
+import { dragController, curves, UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class DragInfo {
@@ -99,25 +104,14 @@ class DragInfo {
 @Entry()
 @Component
 struct DragControllerPage {
-  @State pixmap: image.PixelMap | null = null;
   storages = this.getUIContext().getSharedLocalStorage();
 
   @Builder
-  DraggingBuilder() {
+  draggingBuilder() {
     Column() {
-      Text("DraggingBuilder")
+      Text('DraggingBuilder')
         .fontColor(Color.White)
         .fontSize(12)
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
-
-  @Builder
-  PixmapBuilder() {
-    Column() {
-      Text("PixmapBuilder")
     }
     .width(100)
     .height(100)
@@ -163,7 +157,7 @@ struct DragControllerPage {
             this.getUIContext()
               .getDragController()
               .executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-                this.DraggingBuilder()
+                this.draggingBuilder()
               }, dragInfo, (err, eve) => {
                 hilog.info(0x0000, `${JSON.stringify(err)}`, '')
                 if (eve && eve.event) {
@@ -191,9 +185,7 @@ struct DragControllerPage {
 setForegroundColor(color: ResourceColor): void
 ```
 
-设置背板蒙版颜色，在OnDrop和OnDragEnd回调中使用不生效，仅支持通过
-[getDragPreview()](arkts-arkui-dragcontroller-c.md#getDragPreview-1)方法获取到的
-对象上使用。
+设置背板蒙版颜色，在OnDrop和OnDragEnd回调中使用不生效，仅支持通过[getDragPreview()](arkts-arkui-arkui-uicontext-dragcontroller-c.md#getdragpreview-1)方法获取到的对象上使用。
 
 **起始版本：** 11
 
@@ -201,15 +193,17 @@ setForegroundColor(color: ResourceColor): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
+<!--Device-DragPreview-setForegroundColor(color: ResourceColor): void--><!--Device-DragPreview-setForegroundColor(color: ResourceColor): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | ResourceColor | 是 | 背板蒙版颜色。 |
+| color | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 背板蒙版颜色。 |
 
 **示例：**
 
-请参考[animate](#animate11)
+请参考[animate](#animate11)。
 

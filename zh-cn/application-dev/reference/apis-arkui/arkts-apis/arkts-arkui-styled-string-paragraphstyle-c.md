@@ -6,12 +6,11 @@
 
 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。
 
-在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-styled-string-customspan-c.md#CustomSpan)或[ImageAttachment](arkts-arkui-styled-string-imageattachment-c.md#ImageAttachment)时，设置在该段落上的段落样式不生
-效。从API版本26.0.0开始，设置段落样式生效。
+在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-styled-string-customspan-c.md)或[ImageAttachment](arkts-arkui-styled-string-imageattachment-c.md)时，设置在该段落上的段落样式不生效。从API版本26.0.0开始，设置段落样式生效。
 
 **起始版本：** 12
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-unnamed-declare class ParagraphStyle--><!--Device-unnamed-declare class ParagraphStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,7 +26,9 @@ constructor(value?: ParagraphStyleInterface)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-constructor(value?: ParagraphStyleInterface)--><!--Device-ParagraphStyle-constructor(value?: ParagraphStyleInterface)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +36,7 @@ constructor(value?: ParagraphStyleInterface)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ParagraphStyleInterface | 否 | 段落样式设置项。 |
+| value | [ParagraphStyleInterface](arkts-arkui-styled-string-paragraphstyleinterface-i.md) | 否 | 段落样式设置项。 |
 
 ## leadingMargin
 
@@ -53,7 +54,9 @@ readonly leadingMargin?: number | LeadingMarginPlaceholder
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly leadingMargin?: number | LeadingMarginPlaceholder--><!--Device-ParagraphStyle-readonly leadingMargin?: number | LeadingMarginPlaceholder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +74,9 @@ readonly leadingMarginSpan?: LeadingMarginSpan
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly leadingMarginSpan?: LeadingMarginSpan--><!--Device-ParagraphStyle-readonly leadingMarginSpan?: LeadingMarginSpan-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +94,9 @@ readonly maxLines?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly maxLines?: number--><!--Device-ParagraphStyle-readonly maxLines?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +114,9 @@ readonly overflow?: TextOverflow
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly overflow?: TextOverflow--><!--Device-ParagraphStyle-readonly overflow?: TextOverflow-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +136,9 @@ readonly paragraphSpacing?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly paragraphSpacing?: number--><!--Device-ParagraphStyle-readonly paragraphSpacing?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,7 +156,9 @@ readonly shaderStyle?: ShaderStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly shaderStyle?: ShaderStyle--><!--Device-ParagraphStyle-readonly shaderStyle?: ShaderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,8 +168,7 @@ readonly shaderStyle?: ShaderStyle
 readonly tailIndents?: Array<number>
 ```
 
-获取StyledString的尾部缩进。
-单位为vp。
+获取StyledString的尾部缩进。单位为vp。
 
 **类型：** Array<number>
 
@@ -164,7 +176,9 @@ readonly tailIndents?: Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly tailIndents?: Array<number>--><!--Device-ParagraphStyle-readonly tailIndents?: Array<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,7 +196,9 @@ readonly textAlign?: TextAlign
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly textAlign?: TextAlign--><!--Device-ParagraphStyle-readonly textAlign?: TextAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,7 +216,9 @@ readonly textDirection?: TextDirection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly textDirection?: TextDirection--><!--Device-ParagraphStyle-readonly textDirection?: TextDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,7 +236,9 @@ readonly textIndent?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly textIndent?: number--><!--Device-ParagraphStyle-readonly textIndent?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,9 +250,7 @@ readonly textVerticalAlign?: TextVerticalAlign
 
 获取属性字符串文本段落在垂直方向的对齐方式。
 
-一个段落下使用同一字号必须同时设置行高[lineHeight](TextAttribute#lineHeight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效
-果。属性字符串[TextStyle](arkts-arkui-styled-string-textstyle-c.md#TextStyle)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](arkts-arkui-text-common-textverticalalign-e.md#TextVerticalAlign)属性值为
-TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
+一个段落下使用同一字号必须同时设置行高[lineHeight](TextAttribute#lineHeight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-styled-string-textstyle-c.md)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](arkts-arkui-text-common-textverticalalign-e.md)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
 
 **类型：** TextVerticalAlign
 
@@ -240,7 +258,9 @@ TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly textVerticalAlign?: TextVerticalAlign--><!--Device-ParagraphStyle-readonly textVerticalAlign?: TextVerticalAlign-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,7 +278,9 @@ readonly wordBreak?: WordBreak
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ParagraphStyle-readonly wordBreak?: WordBreak--><!--Device-ParagraphStyle-readonly wordBreak?: WordBreak-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

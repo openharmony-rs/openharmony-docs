@@ -1,5 +1,11 @@
 # getFileAccessAbilityInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
+
 ## getFileAccessAbilityInfo
 
 ```TypeScript
@@ -16,6 +22,8 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-fileAccess-function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void--><!--Device-fileAccess-function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -24,42 +32,42 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;Want&gt;&gt; | 是 | The callback is used to return a Array object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Want>> | 是 | The callback is used to return a Array&lt;Want&gt; object. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900006](../../errorcode-universal.md#13900006-No) | No such device or address |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900015](../../errorcode-universal.md#13900015-File) | File exists |
-| [13900017](../../errorcode-universal.md#13900017-No) | No such device |
-| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
-| [13900019](../../errorcode-universal.md#13900019-Is) | Is a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900022](../../errorcode-universal.md#13900022-Too) | Too many open files |
-| [13900023](../../errorcode-universal.md#13900023-Text) | Text file busy |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900027](../../errorcode-universal.md#13900027-Readonly) | Read-only file system |
-| [13900029](../../errorcode-universal.md#13900029-Resource) | Resource deadlock would occur |
-| [13900030](../../errorcode-universal.md#13900030-File) | File name too long |
-| [13900033](../../errorcode-universal.md#13900033-Too) | Too many symbolic links encountered |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [14300001](../../errorcode-universal.md#14300001-IPC) | IPC error |
-| [14300002](../../errorcode-universal.md#14300002-Invalid) | Invalid uri |
-| [14300003](../../errorcode-universal.md#14300003-Fail) | Fail to get fileextension info |
-| [14300004](../../errorcode-universal.md#14300004-Get) | Get wrong result |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900004 | Interrupted system call |
+| 13900006 | No such device or address |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900014 | Device or resource busy |
+| 13900015 | File exists |
+| 13900017 | No such device |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900022 | Too many open files |
+| 13900023 | Text file busy |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900027 | Read-only file system |
+| 13900029 | Resource deadlock would occur |
+| 13900030 | File name too long |
+| 13900033 | Too many symbolic links encountered |
+| 13900034 | Operation would block |
+| 13900038 | Value too large for defined data type |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
+| 14300001 | IPC error |
+| 14300002 | Invalid uri |
+| 14300003 | Fail to get fileextension info |
+| 14300004 | Get wrong result |
 
 **示例：**
 
@@ -100,6 +108,8 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-fileAccess-function getFileAccessAbilityInfo(): Promise<Array<Want>>--><!--Device-fileAccess-function getFileAccessAbilityInfo(): Promise<Array<Want>>-End-->
+
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
@@ -108,42 +118,42 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Want&gt;&gt; | Returns the wants. |
+| Promise<Array<Want>> | Returns the wants. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
-| [13900004](../../errorcode-universal.md#13900004-Interrupted) | Interrupted system call |
-| [13900006](../../errorcode-universal.md#13900006-No) | No such device or address |
-| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
-| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
-| [13900014](../../errorcode-universal.md#13900014-Device) | Device or resource busy |
-| [13900015](../../errorcode-universal.md#13900015-File) | File exists |
-| [13900017](../../errorcode-universal.md#13900017-No) | No such device |
-| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
-| [13900019](../../errorcode-universal.md#13900019-Is) | Is a directory |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument |
-| [13900022](../../errorcode-universal.md#13900022-Too) | Too many open files |
-| [13900023](../../errorcode-universal.md#13900023-Text) | Text file busy |
-| [13900024](../../errorcode-universal.md#13900024-File) | File too large |
-| [13900025](../../errorcode-universal.md#13900025-No) | No space left on device |
-| [13900027](../../errorcode-universal.md#13900027-Readonly) | Read-only file system |
-| [13900029](../../errorcode-universal.md#13900029-Resource) | Resource deadlock would occur |
-| [13900030](../../errorcode-universal.md#13900030-File) | File name too long |
-| [13900033](../../errorcode-universal.md#13900033-Too) | Too many symbolic links encountered |
-| [13900034](../../errorcode-universal.md#13900034-Operation) | Operation would block |
-| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
-| [13900041](../../errorcode-universal.md#13900041-Quota) | Quota exceeded |
-| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
-| [14300001](../../errorcode-universal.md#14300001-IPC) | IPC error |
-| [14300002](../../errorcode-universal.md#14300002-Invalid) | Invalid uri |
-| [14300003](../../errorcode-universal.md#14300003-Fail) | Fail to get fileextension info |
-| [14300004](../../errorcode-universal.md#14300004-Get) | Get wrong result |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory |
+| 13900004 | Interrupted system call |
+| 13900006 | No such device or address |
+| 13900008 | Bad file descriptor |
+| 13900011 | Out of memory |
+| 13900012 | Permission denied |
+| 13900013 | Bad address |
+| 13900014 | Device or resource busy |
+| 13900015 | File exists |
+| 13900017 | No such device |
+| 13900018 | Not a directory |
+| 13900019 | Is a directory |
+| 13900020 | Invalid argument |
+| 13900022 | Too many open files |
+| 13900023 | Text file busy |
+| 13900024 | File too large |
+| 13900025 | No space left on device |
+| 13900027 | Read-only file system |
+| 13900029 | Resource deadlock would occur |
+| 13900030 | File name too long |
+| 13900033 | Too many symbolic links encountered |
+| 13900034 | Operation would block |
+| 13900038 | Value too large for defined data type |
+| 13900041 | Quota exceeded |
+| 13900042 | Unknown error |
+| 14300001 | IPC error |
+| 14300002 | Invalid uri |
+| 14300003 | Fail to get fileextension info |
+| 14300004 | Get wrong result |
 
 **示例：**
 

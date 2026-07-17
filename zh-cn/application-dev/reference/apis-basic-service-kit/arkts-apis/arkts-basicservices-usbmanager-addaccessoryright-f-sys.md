@@ -1,17 +1,24 @@
 # addAccessoryRight（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.BasicServicesKit';
+```
+
 ## addAccessoryRight
 
 ```TypeScript
 function addAccessoryRight(tokenId: number, accessory: USBAccessory): void
 ```
 
-ΪӦ�ó������ӷ���USB��requestAccessoryRight��Ȩ�ޡ�
-[usbManager.]{(@link usbManager.requestAccessoryRight)}�ᴥ�����������û���Ȩ��addAccessoryRight���ᴥ������������ֱ������Ӧ�ó�������豸��Ȩ�ޡ�
+为应用程序添加访问USB配requestAccessoryRight件权限。[usbManager.]{(@link usbManager.requestAccessoryRight)}会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用程序访问设备的权限。
 
 **起始版本：** 14
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
+
+<!--Device-usbManager-function addAccessoryRight(tokenId: int, accessory: USBAccessory): void--><!--Device-usbManager-function addAccessoryRight(tokenId: int, accessory: USBAccessory): void-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -21,17 +28,17 @@ function addAccessoryRight(tokenId: number, accessory: USBAccessory): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenId | number | 是 | Ӧ�ó���tokenId�� |
-| accessory | USBAccessory | 是 | USB����� |
+| tokenId | number | 是 | 应用程序tokenId。 |
+| accessory | [USBAccessory](arkts-basicservices-usbmanager-usbaccessory-i.md) | 是 | USB配件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-The) | The permission check failed. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied. Normal application do not have permission to use system api. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
-| [14400004](../../errorcode-universal.md#14400004-Service) | Service exception. Possible causes:<br/><br/>1. No accessory is plugged in. |
-| [14400005](../../errorcode-universal.md#14400005-Database) | Database operation exception. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Normal application do not have permission to use system api. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:* <br>1. Mandatory parameters are left unspecified.* <br>2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| [14400004](../../apis-basic-services-kit/errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes:* <br>1. No accessory is plugged in. |
+| [14400005](../../apis-basic-services-kit/errorcode-usb.md#14400005-数据库操作异常) | Database operation exception. |
 

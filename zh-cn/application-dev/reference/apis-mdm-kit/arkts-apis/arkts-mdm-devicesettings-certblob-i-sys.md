@@ -1,18 +1,24 @@
 # CertBlob（系统接口）
 
-֤����Ϣ��
+证书信息。
 
 **起始版本：** 10
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [CertBlob](arkts-mdm-securitymanager-certblob-i.md#CertBlob)
+**替代接口：** [CertBlob](arkts-mdm-securitymanager-certblob-i.md)
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-deviceSettings-export interface CertBlob--><!--Device-deviceSettings-export interface CertBlob-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
 
 ## alias
 
@@ -20,7 +26,7 @@
 alias: string
 ```
 
-֤���������������С��40���ַ���
+证书别名，别名长度小于40个字符。
 
 **类型：** string
 
@@ -32,6 +38,8 @@ alias: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-CertBlob-alias: string--><!--Device-CertBlob-alias: string-End-->
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
@@ -42,7 +50,7 @@ alias: string
 inData: Uint8Array
 ```
 
-֤��Ķ��������ݡ�
+证书的二进制内容。
 
 **类型：** Uint8Array
 
@@ -53,6 +61,8 @@ inData: Uint8Array
 **替代接口：** inData
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertBlob-inData: Uint8Array--><!--Device-CertBlob-inData: Uint8Array-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

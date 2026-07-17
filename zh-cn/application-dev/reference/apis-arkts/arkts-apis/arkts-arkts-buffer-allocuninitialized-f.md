@@ -1,17 +1,24 @@
 # allocUninitialized
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## allocUninitialized
 
 ```TypeScript
 function allocUninitialized(size: number): Buffer
 ```
 
-创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。
-创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。
+创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-buffer-function allocUninitialized(size: int): Buffer--><!--Device-buffer-function allocUninitialized(size: int): Buffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -25,7 +32,7 @@ function allocUninitialized(size: number): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 未初始化的Buffer实例。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 未初始化的Buffer实例。 |
 
 **示例：**
 

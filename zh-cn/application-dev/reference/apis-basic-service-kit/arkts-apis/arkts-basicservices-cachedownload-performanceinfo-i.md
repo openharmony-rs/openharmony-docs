@@ -4,7 +4,15 @@
 
 **起始版本：** 20
 
+<!--Device-cacheDownload-interface PerformanceInfo--><!--Device-cacheDownload-interface PerformanceInfo-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
+
+## 导入模块
+
+```TypeScript
+import { cacheDownload } from '@kit.BasicServicesKit';
+```
 
 ## connectTime
 
@@ -17,6 +25,8 @@ readonly connectTime: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-PerformanceInfo-readonly connectTime: double--><!--Device-PerformanceInfo-readonly connectTime: double-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -32,6 +42,8 @@ readonly dnsTime: number
 
 **起始版本：** 20
 
+<!--Device-PerformanceInfo-readonly dnsTime: double--><!--Device-PerformanceInfo-readonly dnsTime: double-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## firstReceiveTime
@@ -45,6 +57,8 @@ readonly firstReceiveTime: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-PerformanceInfo-readonly firstReceiveTime: double--><!--Device-PerformanceInfo-readonly firstReceiveTime: double-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -60,6 +74,8 @@ readonly firstSendTime: number
 
 **起始版本：** 20
 
+<!--Device-PerformanceInfo-readonly firstSendTime: double--><!--Device-PerformanceInfo-readonly firstSendTime: double-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## redirectTime
@@ -73,6 +89,8 @@ readonly redirectTime: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-PerformanceInfo-readonly redirectTime: double--><!--Device-PerformanceInfo-readonly redirectTime: double-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
@@ -88,6 +106,8 @@ readonly tlsTime: number
 
 **起始版本：** 20
 
+<!--Device-PerformanceInfo-readonly tlsTime: double--><!--Device-PerformanceInfo-readonly tlsTime: double-End-->
+
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 ## totalTime
@@ -101,6 +121,8 @@ readonly totalTime: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-PerformanceInfo-readonly totalTime: double--><!--Device-PerformanceInfo-readonly totalTime: double-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 

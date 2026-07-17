@@ -8,6 +8,8 @@
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class ColumnAttribute extends CommonMethod<ColumnAttribute>--><!--Device-unnamed-declare class ColumnAttribute extends CommonMethod<ColumnAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignItems
@@ -20,9 +22,11 @@ alignItems(value: HorizontalAlign)
 
 **起始版本：** 7
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnAttribute-alignItems(value: HorizontalAlign): ColumnAttribute--><!--Device-ColumnAttribute-alignItems(value: HorizontalAlign): ColumnAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +34,7 @@ alignItems(value: HorizontalAlign)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | HorizontalAlign | 是 | 子组件在水平方向上的对齐格式。<br/>默认值：HorizontalAlign.Center |
+| value | [HorizontalAlign](../arkts-apis/arkts-arkui-enums-horizontalalign-e.md) | 是 | 子组件在水平方向上的对齐格式。<br/>默认值：HorizontalAlign.Center |
 
 ## justifyContent
 
@@ -42,9 +46,11 @@ justifyContent(value: FlexAlign)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnAttribute-justifyContent(value: FlexAlign): ColumnAttribute--><!--Device-ColumnAttribute-justifyContent(value: FlexAlign): ColumnAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,7 @@ justifyContent(value: FlexAlign)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | FlexAlign | 是 | 子组件在垂直方向上的对齐格式。<br/>默认值：FlexAlign.Start |
+| value | [FlexAlign](../arkts-apis/arkts-arkui-enums-flexalign-e.md) | 是 | 子组件在垂直方向上的对齐格式。<br/>默认值：FlexAlign.Start |
 
 ## reverse
 
@@ -66,9 +72,11 @@ reverse(isReversed: Optional<boolean>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnAttribute-reverse(isReversed: Optional<boolean>): ColumnAttribute--><!--Device-ColumnAttribute-reverse(isReversed: Optional<boolean>): ColumnAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,5 +84,5 @@ reverse(isReversed: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isReversed | Optional&lt;boolean&gt; | 是 | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
+| isReversed | [Optional](arkts-arkui-optional-t.md)<boolean> | 是 | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
 

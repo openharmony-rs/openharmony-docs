@@ -1,5 +1,11 @@
 # setPowerConfig（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { power } from '@kit.BasicServicesKit';
+```
+
 ## setPowerConfig
 
 ```TypeScript
@@ -14,6 +20,8 @@ function setPowerConfig(sceneName: string, value: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-power-function setPowerConfig(sceneName: string, value: string): void--><!--Device-power-function setPowerConfig(sceneName: string, value: string): void-End-->
+
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -22,18 +30,18 @@ function setPowerConfig(sceneName: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sceneName | string | 是 | 表示电源配置的场景名称。sceneName参数必须是字符串类型且最大长度128字节； |
-| value | string | 是 | 表示电源配置值。value参数必须是字符串类型且最大长度128字节。 |
+| sceneName | string | 是 | 电源配置的场景名称。最大长度128字节。 |
+| value | string | 是 | 电源配置值。最大长度128字节。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. The application does not have the permission<br/>required to call the API. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [4900101](../../errorcode-universal.md#4900101-Failed) | Failed to connect to the service. |
-| [4900400](../../errorcode-universal.md#4900400-Invalid) | Invalid parameter. Possible causes:<br/>1. The sceneName or value parameter is an empty string;<br/>2. The length of sceneName parameter exceeds 128 bytes;<br/>3. The length of value parameter exceeds 128 bytes. |
-| [4900601](../../errorcode-universal.md#4900601-Failed) | Failed to write the power configuration value. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [4900101](../../apis-basic-services-kit/errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
+| [4900400](../../apis-basic-services-kit/errorcode-power.md#4900400-接口入参无效) | Invalid parameter. Possible causes:1. The sceneName or value parameter is an empty string;2. The length of sceneName parameter exceeds 128 bytes;3. The length of value parameter exceeds 128 bytes. |
+| [4900601](../../apis-basic-services-kit/errorcode-power.md#4900601-写电源配置值失败) | Failed to write the power configuration value. |
 
 **示例：**
 
@@ -41,8 +49,8 @@ function setPowerConfig(sceneName: string, value: string): void
 try {
     power.setPowerConfig('scene_name_test', 'value_test');
     console.info('set power config success');
-} catch(err) {
-    console.error('set power config failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set power config. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```

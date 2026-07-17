@@ -9,6 +9,9 @@ FolderStack继承于[Stack]{@link stack}(层叠布局)控件，新增了<!--RP1-
 >
 > 当该组件的父组件为[if/else：条件渲染](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)节点时，折叠屏悬停能力将会失效。
 
+## 子组件
+
+可以包含多个子组件。
 
 ## FolderStack
 
@@ -20,7 +23,9 @@ FolderStack(options?: FolderStackOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FolderStackInterface-(options?: FolderStackOptions): FolderStackAttribute--><!--Device-FolderStackInterface-(options?: FolderStackOptions): FolderStackAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

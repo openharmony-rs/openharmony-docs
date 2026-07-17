@@ -1,5 +1,11 @@
 # isEmbeddedUIExtensionSupported
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## isEmbeddedUIExtensionSupported
 
 ```TypeScript
@@ -12,13 +18,15 @@ function isEmbeddedUIExtensionSupported(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-abilityManager-function isEmbeddedUIExtensionSupported(): boolean--><!--Device-abilityManager-function isEmbeddedUIExtensionSupported(): boolean-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 当前设备是否支持[EmbeddedUIExtensionAbility](../../../../application-models/embeddeduiextensionability.md)。返回<br/>true表示当前设备支持；返回false表示当前设备不支持。 |
+| boolean | 当前设备是否支持[EmbeddedUIExtensionAbility](../../../../application-models/embeddeduiextensionability.md)。返回true表示当前设备支持；返回false表示当前设备不支持。 |
 
 **示例：**
 
@@ -27,6 +35,7 @@ import { abilityManager, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 判断当前设备是否支持EmbeddedUIExtensionAbility
     let isSupported: boolean = abilityManager.isEmbeddedUIExtensionSupported();
     console.info(`isEmbeddedUIExtensionSupported is ${isSupported}`);
   }

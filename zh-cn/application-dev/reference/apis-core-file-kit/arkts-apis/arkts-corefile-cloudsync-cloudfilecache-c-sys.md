@@ -1,10 +1,18 @@
 # CloudFileCache
 
-�����ļ������������֧���ļ�����Ӧ��ԭ�ļ��������̡�
+云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
 
 **起始版本：** 11
 
+<!--Device-cloudSync-class CloudFileCache--><!--Device-cloudSync-class CloudFileCache-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
 
 ## cleanCache
 
@@ -12,11 +20,13 @@
 cleanCache(uri: string): void
 ```
 
-ͬ������ɾ���ļ����档
+同步方法删除文件缓存。
 
 **起始版本：** 11
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-CloudFileCache-cleanCache(uri: string): void--><!--Device-CloudFileCache-cleanCache(uri: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -26,18 +36,18 @@ cleanCache(uri: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | ��ɾ�������ļ���uri�� |
+| uri | string | 是 | 待删除缓存文件的uri。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed, application which is not a system application<br/>uses system API. |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13600001 | IPC error. |
+| 13900002 | No such file or directory. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -45,15 +55,15 @@ cleanCache(uri: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 
 try {
   fileCache.cleanCache(uri);
 } catch (err) {
-  let error:BusinessError = err as BusinessError;
-  console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
+  let error: BusinessError = err as BusinessError;
+  console.error(`clean cache failed with error message: ${error.message}, error code: ${error.code}`);
 } 
 
 
@@ -71,6 +81,8 @@ A constructor used to create a CloudFileCache object.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-CloudFileCache-constructor(bundleName: string)--><!--Device-CloudFileCache-constructor(bundleName: string)-End-->
+
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
@@ -79,13 +91,13 @@ A constructor used to create a CloudFileCache object.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | Name of the bundle that need to start download task and subscribes download<br/>progress. |
+| bundleName | string | 是 | Name of the bundle that need to start download task and subscribes download progress. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
 **示例：**
 
@@ -100,13 +112,15 @@ let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 ```
 
-��ȡ�ļ����ؽ����б���ʹ��Promise�첽�ص���
+获取文件下载进度列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CloudFileCache-getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>--><!--Device-CloudFileCache-getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -116,22 +130,22 @@ getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | Array&lt;string&gt; | 是 | ����ѯ���ؽ��ȵ��ļ�URI���飬���鳤��ȡֵ��Χ[1,100]�� |
+| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | - Promise���󣬷����ļ����ؽ����б��Ľ���� |
+| Promise<Array<DownloadProgress>> | - Promise对象，返回文件下载进度列表的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed. |
-| [202](../../errorcode-universal.md#202-The) | The caller is not a system application. |
-| [13900010](../../errorcode-universal.md#13900010-Try) | Try again. |
-| [13900020](../../errorcode-universal.md#13900020-Invalid) | Invalid argument. Possible causes:<br/><br/>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit.<br/><br/>3.The input parameter contains an invalid uri. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit.<br>3.The input parameter contains an invalid uri. |
 
 **示例：**
 

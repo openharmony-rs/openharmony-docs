@@ -1,12 +1,10 @@
 # CertAlgorithm
 
-```TypeScript
-export enum CertAlgorithm
-```
-
-��ʾ֤����㷨���͡�
+表示证书的算法类型。
 
 **起始版本：** 20
+
+<!--Device-certificateManager-export enum CertAlgorithm--><!--Device-certificateManager-export enum CertAlgorithm-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -16,9 +14,11 @@ export enum CertAlgorithm
 INTERNATIONAL = 1
 ```
 
-��ʾ���������㷨����RSA��NIST ECC�ȡ�
+表示国际密码算法，如RSA、NIST ECC等。
 
 **起始版本：** 20
+
+<!--Device-CertAlgorithm-INTERNATIONAL = 1--><!--Device-CertAlgorithm-INTERNATIONAL = 1-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -28,10 +28,11 @@ INTERNATIONAL = 1
 SM = 2
 ```
 
-��ʾ���������㷨����SM2��SM4�ȡ�
-�����豸��֧��ʹ�ø��㷨��֤�顣
+表示商用密码算法，如SM2、SM4等。海外设备不支持使用该算法的证书。
 
 **起始版本：** 20
+
+<!--Device-CertAlgorithm-SM = 2--><!--Device-CertAlgorithm-SM = 2-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

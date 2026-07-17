@@ -1,16 +1,24 @@
 # parsePkcs12
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## parsePkcs12
 
 ```TypeScript
 function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 ```
 
-表示从P12文件中解析证书、私钥及其他证书合集，并返回结果。
+解析P12。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-cert-function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data--><!--Device-cert-function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -18,24 +26,24 @@ function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Uint8Array | 是 | P12文件，DER格式。 |
-| config | Pkcs12ParsingConfig | 是 | P12文件的解析配置。 |
+| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | DER格式的P12文件原始数据。 |
+| config | [Pkcs12ParsingConfig](arkts-devicecertificate-cert-pkcs12parsingconfig-i.md) | 是 | P12文件的解析配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Pkcs12Data | 表示P12文件解析后的证书、私钥及其他证书合集。 |
+| [Pkcs12Data](arkts-devicecertificate-cert-pkcs12data-i.md) | 表示解析后的P12数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
-| [19030008](../../errorcode-universal.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
 
 **示例：**
 
@@ -222,11 +230,13 @@ function doTestParsePkcs12() {
 function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
 ```
 
-表示从Pkcs12文件中解析证书、私钥及其他证书合集。使用Promise方式返回结果。
+解析P12。使用Promise方式返回结果。
 
 **起始版本：** 21
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+
+<!--Device-cert-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>--><!--Device-cert-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -234,24 +244,24 @@ function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Uint8Array | 是 | Pkcs12文件，DER格式。 |
-| password | string | 是 | Pkcs12的密码。 |
+| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | DER格式的P12文件原始数据。 |
+| password | string | 是 | 密码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Pkcs12Data&gt; | Promise对象，返回Pkcs12文件解析后的证书、私钥及其他证书合集。返回的Pkcs12Data中的私钥<br/>采用PEM格式编码。 |
+| Promise<Pkcs12Data> | Promise对象，返回解析后的P12数据。返回的Pkcs12Data中的私钥采用PEM编码。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../../errorcode-universal.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br/><br/>1. 数据长度为零或过大；<br/><br/>2. 密码长度过大。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
-| [19030008](../../errorcode-universal.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. 数据长度为零或过大；<br>2. 密码长度过大。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
 
 **示例：**
 

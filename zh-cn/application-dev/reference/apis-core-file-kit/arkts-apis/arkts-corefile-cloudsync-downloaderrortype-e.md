@@ -1,12 +1,10 @@
 # DownloadErrorType
 
-```TypeScript
-enum DownloadErrorType
-```
-
-�������ش������ͣ�Ϊö�����͡�
+端云下载错误类型，为枚举类型。
 
 **起始版本：** 11
+
+<!--Device-cloudSync-enum DownloadErrorType--><!--Device-cloudSync-enum DownloadErrorType-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -16,9 +14,11 @@ enum DownloadErrorType
 NO_ERROR = 0
 ```
 
-û�д���
+没有错误。
 
 **起始版本：** 11
+
+<!--Device-DownloadErrorType-NO_ERROR = 0--><!--Device-DownloadErrorType-NO_ERROR = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -28,9 +28,11 @@ NO_ERROR = 0
 UNKNOWN_ERROR = 1
 ```
 
-δ֪����
+未知错误。
 
 **起始版本：** 11
+
+<!--Device-DownloadErrorType-UNKNOWN_ERROR = 1--><!--Device-DownloadErrorType-UNKNOWN_ERROR = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -40,9 +42,11 @@ UNKNOWN_ERROR = 1
 NETWORK_UNAVAILABLE = 2
 ```
 
-���粻���á�
+网络不可用。
 
 **起始版本：** 11
+
+<!--Device-DownloadErrorType-NETWORK_UNAVAILABLE = 2--><!--Device-DownloadErrorType-NETWORK_UNAVAILABLE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -52,9 +56,11 @@ NETWORK_UNAVAILABLE = 2
 LOCAL_STORAGE_FULL = 3
 ```
 
-���ؿռ䲻�㡣
+本地空间不足。
 
 **起始版本：** 11
+
+<!--Device-DownloadErrorType-LOCAL_STORAGE_FULL = 3--><!--Device-DownloadErrorType-LOCAL_STORAGE_FULL = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -64,9 +70,11 @@ LOCAL_STORAGE_FULL = 3
 CONTENT_NOT_FOUND = 4
 ```
 
-�ƶ˿ռ�δ�ҵ���Ӧ�ļ���
+云端空间未找到对应文件。
 
 **起始版本：** 11
+
+<!--Device-DownloadErrorType-CONTENT_NOT_FOUND = 4--><!--Device-DownloadErrorType-CONTENT_NOT_FOUND = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -76,9 +84,11 @@ CONTENT_NOT_FOUND = 4
 FREQUENT_USER_REQUESTS = 5
 ```
 
-�û��������Ƶ����
+用户请求过于频繁。
 
 **起始版本：** 11
+
+<!--Device-DownloadErrorType-FREQUENT_USER_REQUESTS = 5--><!--Device-DownloadErrorType-FREQUENT_USER_REQUESTS = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

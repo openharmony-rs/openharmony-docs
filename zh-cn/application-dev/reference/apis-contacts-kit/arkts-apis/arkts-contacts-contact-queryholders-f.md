@@ -1,12 +1,18 @@
 # queryHolders
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## queryHolders
 
 ```TypeScript
 function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 ```
 
-��ѯ���д�����ϵ�˵�Ӧ����Ϣ�ࡣʹ��callback�첽�ص���
+查询所有创建联系人的应用信息类。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -16,13 +22,15 @@ function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryHolders(callback: AsyncCallback<Array<Holder>>): void--><!--Device-contact-function queryHolders(callback: AsyncCallback<Array<Holder>>): void-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;Array&lt;Holder&gt;&gt; | 是 | �ص��������ɹ����ز�ѯ���Ĵ�����ϵ��Ӧ����Ϣ�Ķ������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Holder>> | 是 | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -47,11 +55,13 @@ contact.queryHolders((err: BusinessError, data) => {
 function queryHolders(context: Context, callback: AsyncCallback<Array<Holder>>): void
 ```
 
-��ѯ���д�����ϵ�˵�Ӧ����Ϣ�ࡣʹ��callback�첽�ص���
+查询所有创建联系人的应用信息类。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryHolders(context: Context, callback: AsyncCallback<Array<Holder>>): void--><!--Device-contact-function queryHolders(context: Context, callback: AsyncCallback<Array<Holder>>): void-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -59,15 +69,15 @@ function queryHolders(context: Context, callback: AsyncCallback<Array<Holder>>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
-| callback | AsyncCallback&lt;Array&lt;Holder&gt;&gt; | 是 | �ص��������ɹ����ز�ѯ���Ĵ�����ϵ��Ӧ����Ϣ�Ķ������飻ʧ�ܷ��ؾ���Ĵ�������Ϣ�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Holder>> | 是 | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -97,7 +107,7 @@ contact.queryHolders(context, (err: BusinessError, data) => {
 function queryHolders(): Promise<Array<Holder>>
 ```
 
-��ѯ���д�����ϵ�˵�Ӧ����Ϣ�ࡣʹ��Promise�첽�ص���
+查询所有创建联系人的应用信息类。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -107,13 +117,15 @@ function queryHolders(): Promise<Array<Holder>>
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
+<!--Device-contact-function queryHolders(): Promise<Array<Holder>>--><!--Device-contact-function queryHolders(): Promise<Array<Holder>>-End-->
+
 **系统能力：** SystemCapability.Applications.ContactsData
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Holder&gt;&gt; | Promise���󡣷��ز�ѯ���Ĵ�����ϵ��Ӧ����Ϣ�Ķ������顣 |
+| Promise<Array<Holder>> | Promise对象。返回查询到的创建联系人应用信息的对象数组。 |
 
 **示例：**
 
@@ -134,11 +146,13 @@ promise.then((data) => {
 function queryHolders(context: Context): Promise<Array<Holder>>
 ```
 
-��ѯ���д�����ϵ�˵�Ӧ����Ϣ�ࡣʹ��Promise�첽�ص���
+查询所有创建联系人的应用信息类。使用Promise异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.READ_CONTACTS
+
+<!--Device-contact-function queryHolders(context: Context): Promise<Array<Holder>>--><!--Device-contact-function queryHolders(context: Context): Promise<Array<Holder>>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -146,20 +160,20 @@ function queryHolders(context: Context): Promise<Array<Holder>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | Ӧ��������Context�� |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Holder&gt;&gt; | Promise���󡣷��ز�ѯ���Ĵ�����ϵ��Ӧ����Ϣ�Ķ������顣 |
+| Promise<Array<Holder>> | Promise对象。返回查询到的创建联系人应用信息的对象数组。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [401](../errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
 

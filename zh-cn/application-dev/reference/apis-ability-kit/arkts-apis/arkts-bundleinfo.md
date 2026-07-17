@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [BundleInfo](arkts-ability-bundleinfo-depr-i.md) | @link bundleInfo:BundleInfo}替代。 |
-| [ReqPermissionDetail](arkts-ability-reqpermissiondetail-depr-i.md) | @link bundleInfo:ReqPermissionDetail}替代。应用运行时需向系统申请的权限集合的详细信息。 |
-| [UsedScene](arkts-ability-usedscene-depr-i.md) | @link bundleInfo:UsedScene}替代。描述权限使用的场景和时机。 |
+| [BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md) |  |
+| [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md) |  |
+| [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md) |  |
 

@@ -1,5 +1,11 @@
 # mkdir
 
+## 导入模块
+
+```TypeScript
+import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
+```
+
 ## mkdir
 
 ```TypeScript
@@ -10,7 +16,9 @@ declare function mkdir(path: string): Promise<void>
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function mkdir(path: string): Promise<void>--><!--Device-unnamed-declare function mkdir(path: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -24,7 +32,7 @@ declare function mkdir(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -57,7 +65,9 @@ declare function mkdir(path: string, recursion: boolean): Promise<void>
 
 **起始版本：** 11
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function mkdir(path: string, recursion: boolean): Promise<void>--><!--Device-unnamed-declare function mkdir(path: string, recursion: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -72,7 +82,7 @@ declare function mkdir(path: string, recursion: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回值。 |
+| Promise<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -105,7 +115,9 @@ declare function mkdir(path: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function mkdir(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function mkdir(path: string, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -114,7 +126,7 @@ declare function mkdir(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步创建目录操作完成之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步创建目录操作完成之后的回调。 |
 
 **错误码：**
 
@@ -147,7 +159,9 @@ declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback
 
 **起始版本：** 11
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-unnamed-declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -157,7 +171,7 @@ declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
 | recursion | boolean | 是 | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步创建目录操作完成之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步创建目录操作完成之后的回调。 |
 
 **错误码：**
 

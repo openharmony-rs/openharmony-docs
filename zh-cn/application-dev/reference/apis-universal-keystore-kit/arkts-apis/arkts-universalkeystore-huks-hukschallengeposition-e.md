@@ -1,12 +1,10 @@
 # HuksChallengePosition
 
-```TypeScript
-export enum HuksChallengePosition
-```
-
-��ʾchallenge����Ϊ�û��Զ�������ʱ�����ɵ�challenge��Ч���Ƚ�Ϊ8�ֽ����������ݣ��ҽ�֧��4��λ�á�
+表示challenge类型为用户自定义类型时，生成的challenge有效长度仅为8字节连续的数据，且仅支持4种位置。
 
 **起始版本：** 9
+
+<!--Device-huks-export enum HuksChallengePosition--><!--Device-huks-export enum HuksChallengePosition-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -16,11 +14,13 @@ export enum HuksChallengePosition
 HUKS_CHALLENGE_POS_0 = 0
 ```
 
-��ʾ0~7�ֽ�Ϊ��ǰ��Կ����Чchallenge��
+表示0~7字节为当前密钥的有效challenge。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_0 = 0--><!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_0 = 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -30,11 +30,13 @@ HUKS_CHALLENGE_POS_0 = 0
 HUKS_CHALLENGE_POS_1 = 1
 ```
 
-��ʾ8~15�ֽ�Ϊ��ǰ��Կ����Чchallenge��
+表示8~15字节为当前密钥的有效challenge。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_1 = 1--><!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_1 = 1-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -44,11 +46,13 @@ HUKS_CHALLENGE_POS_1 = 1
 HUKS_CHALLENGE_POS_2 = 2
 ```
 
-��ʾ16~23�ֽ�Ϊ��ǰ��Կ����Чchallenge��
+表示16~23字节为当前密钥的有效challenge。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_2 = 2--><!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_2 = 2-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -58,11 +62,13 @@ HUKS_CHALLENGE_POS_2 = 2
 HUKS_CHALLENGE_POS_3 = 3
 ```
 
-��ʾ24~31�ֽ�Ϊ��ǰ��Կ����Чchallenge��
+表示24~31字节为当前密钥的有效challenge。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_3 = 3--><!--Device-HuksChallengePosition-HUKS_CHALLENGE_POS_3 = 3-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

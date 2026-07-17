@@ -113,7 +113,7 @@ try {
     }, (err: BusinessError) => {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     })
-} catch (err) {
+} catch (err: BusinessError) {
   console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
@@ -184,7 +184,7 @@ try {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     }
   });
-} catch (err) {
+} catch (err: BusinessError) {
   console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
@@ -199,6 +199,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 > **说明：**
 >
 > 调用该接口创建的子进程不会继承父进程资源，子进程创建成功会返回子进程pid，然后执行子进程的[ChildProcess.onStart](js-apis-app-ability-childProcess.md#childprocessonstart)函数。[ChildProcess.onStart](js-apis-app-ability-childProcess.md#childprocessonstart)函数执行完后子进程不会自动销毁，需要子进程调用[process.abort](../apis-arkts/js-apis-process.md#processabort)销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。
+> 调用该接口创建的子进程支持异步ArkTS API调用。
 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -211,7 +212,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
   | -------- | -------- | -------- | -------- |
   | srcEntry | string | 是 | 子进程源文件路径，不支持源文件放在HAR类型的模块中。由“模块名” + “/” + “文件路径”组成，文件路径以src/main为根目录。例如子进程文件在module1模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"module1/ets/process/DemoProcess.ets"。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
   | args | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 是 | 传递到子进程的参数。 |
-  | options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | 否 | 子进程的启动配置选项。|
+  | options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | 否 | 子进程的启动配置选项。如果不传则使用[ChildProcessOptions](js-apis-app-ability-childProcessOptions.md)中的默认配置。|
 
 **返回值：**
 
@@ -229,7 +230,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. |
+| 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
 
 **示例：**
 
@@ -292,7 +293,7 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
-            } catch (err) {
+            } catch (err: BusinessError) {
               console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
             }
           });
@@ -316,7 +317,7 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：从API version 13开始，该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。从API version 14开始，该接口在PC/2in1、Tablet中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -413,7 +414,7 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
-            } catch (err) {
+            } catch (err: BusinessError) {
               console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
             }
           });
@@ -441,12 +442,13 @@ isArkChildProcessSupported(): boolean
 
 | 类型    | 说明                                          |
 | :------ | --------------------------------------------- |
-| boolean | 是否允许调用者创建ArkTS子进程。<br>true：允许创建ArkTS子进程。<br>false：不允许创建ArkTS子进程。<br>默认值：false。|
+| boolean | 是否允许调用者创建ArkTS子进程。<br>true：允许创建ArkTS子进程。<br>false：不允许创建ArkTS子进程。|
 
 **示例：**
 
 ```ts
 import { childProcessManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -461,7 +463,7 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isArkChildProcessSupported();
               console.info(`isArkChildProcessSupported: ${isSupport}`);
-            } catch (err) {
+            } catch (err: BusinessError) {
               console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
             }
           });
@@ -489,12 +491,13 @@ isNativeChildProcessSupported(): boolean
 
 | 类型    | 说明                                          |
 | :------ | --------------------------------------------- |
-| boolean | 是否允许调用者创建Native子进程。<br>true：允许创建Native子进程。<br>false：不允许创建Native子进程。<br>默认值：false。|
+| boolean | 是否允许调用者创建Native子进程。<br>true：允许创建Native子进程。<br>false：不允许创建Native子进程。|
 
 **示例：**
 
 ```ts
 import { childProcessManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -509,7 +512,7 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
               console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err) {
+            } catch (err: BusinessError) {
               console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
             }
           });

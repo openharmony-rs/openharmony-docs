@@ -1,4 +1,4 @@
-# notificationFlags
+# notificationFlags (Some states and flags for notifications)
 
 ## 汇总
 
@@ -6,14 +6,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-i.md) | 描述通知标志位。 |
+| [NotificationFlags](arkts-notification-notificationflags-notificationflags-i.md) | 描述通知标志位。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-i-sys.md) | 描述通知标志位。 |
+| [NotificationFlags](arkts-notification-notificationflags-notificationflags-i-sys.md) | 描述通知标志位。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -21,6 +21,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationFlagStatus](arkts-notification-notificationflagstatus-e-sys.md) | 描述通知标志状态。 |
+| [NotificationFlagStatus](arkts-notification-notificationflags-notificationflagstatus-e-sys.md) | 描述通知标志状态。 |
 <!--DelEnd-->
 

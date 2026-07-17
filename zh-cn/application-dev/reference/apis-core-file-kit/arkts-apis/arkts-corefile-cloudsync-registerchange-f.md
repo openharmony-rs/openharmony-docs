@@ -1,14 +1,22 @@
 # registerChange
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+```
+
 ## registerChange
 
 ```TypeScript
 function registerChange(uri: string, recursion: boolean, callback: Callback<ChangeData>): void
 ```
 
-���ļ���ָ���ļ��ı仯֪ͨ��callback���ظ��ĵ����ݡ�
+订阅监听指定文件的变化通知。callback返回更改的数据。
 
 **起始版本：** 12
+
+<!--Device-cloudSync-function registerChange(uri: string, recursion: boolean, callback: Callback<ChangeData>): void--><!--Device-cloudSync-function registerChange(uri: string, recursion: boolean, callback: Callback<ChangeData>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -16,19 +24,19 @@ function registerChange(uri: string, recursion: boolean, callback: Callback<Chan
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | �������ļ�uri�� |
-| recursion | boolean | 是 | trueΪ������URI�Լ����ļ�����Ŀ¼��falseΪ��������URI�ļ��� |
-| callback | Callback&lt;ChangeData&gt; | 是 | �ص����������ظ��ĵ����ݡ� |
+| uri | string | 是 | 待下载文件uri。 |
+| recursion | boolean | 是 | true为监听该URI以及子文件和子目录，false为仅监听该URI文件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChangeData> | 是 | 回调函数，返回更改的数据。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left<br/>unspecified;<br/><br/>2.Incorrect parameter types. |
-| [13900001](../../errorcode-universal.md#13900001-Operation) | Operation not permitted |
-| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory. |
-| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
-| [14000002](../../errorcode-universal.md#14000002-Invalid) | Invalid uri. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| 13900001 | Operation not permitted |
+| 13900002 | No such file or directory. |
+| 13900012 | Permission denied |
+| 14000002 | Invalid uri. |
 
 **示例：**
 

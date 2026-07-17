@@ -4,9 +4,11 @@
 export type ApiVersion = _PackInfo.ApiVersion
 ```
 
-module��api�汾��
+module的api版本。
 
 **起始版本：** 9
+
+<!--Device-freeInstall-export type ApiVersion = _PackInfo.ApiVersion--><!--Device-freeInstall-export type ApiVersion = _PackInfo.ApiVersion-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

@@ -4,9 +4,17 @@
 
 **起始版本：** 18
 
+<!--Device-window-interface WindowInfo--><!--Device-window-interface WindowInfo-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+```
 
 ## displayId
 
@@ -22,6 +30,8 @@ Indicates the ID of the display where the window is located.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowInfo-displayId?: int--><!--Device-WindowInfo-displayId?: int-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## globalDisplayRect
@@ -35,6 +45,8 @@ globalDisplayRect?: Rect
 **类型：** Rect
 
 **起始版本：** 20
+
+<!--Device-WindowInfo-globalDisplayRect?: Rect--><!--Device-WindowInfo-globalDisplayRect?: Rect-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -51,6 +63,8 @@ globalRect?: Rect
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowInfo-globalRect?: Rect--><!--Device-WindowInfo-globalRect?: Rect-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

@@ -1,5 +1,11 @@
 # setEnterprisePolicy
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## setEnterprisePolicy
 
 ```TypeScript
@@ -10,13 +16,15 @@ function setEnterprisePolicy(policy: EnterprisePolicy): void
 
 该接口可用于企业管理员配置DLP安全策略，以统一管理企业数据安全防护规则。
 
-> **说明：**
->
+> **说明：**  
+>  
 > 该接口仅支持企业账号调用。
 
 **起始版本：** 21
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+<!--Device-dlpPermission-function setEnterprisePolicy(policy: EnterprisePolicy): void--><!--Device-dlpPermission-function setEnterprisePolicy(policy: EnterprisePolicy): void-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -24,16 +32,16 @@ function setEnterprisePolicy(policy: EnterprisePolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | EnterprisePolicy | 是 | 待设置的企业应用防护策略，设置后将按策略对企业DLP文件进行访问控制和行为限制。 |
+| policy | [EnterprisePolicy](arkts-dataprotection-dlppermission-enterprisepolicy-i.md) | 是 | 待设置的企业应用防护策略，设置后将按策略对企业DLP文件进行访问控制和行为限制。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [19100001](../../errorcode-universal.md#19100001-Invalid) | Invalid parameter value. |
-| [19100011](../../errorcode-universal.md#19100011-The) | The system ability works abnormally. |
-| [19100021](../../errorcode-universal.md#19100021-Failed) | Failed to set the enterprise policy. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+| [19100021](../errorcode-dlp.md#19100021-设置企业应用策略失败) | Failed to set the enterprise policy. |
 
 **示例：**
 

@@ -1,5 +1,11 @@
 # setBatteryConfig（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { batteryInfo } from '@kit.BasicServicesKit';
+```
+
 ## setBatteryConfig
 
 ```TypeScript
@@ -9,6 +15,8 @@ function setBatteryConfig(sceneName: string, sceneValue: string): number
 按场景名称设置电池配置。
 
 **起始版本：** 11
+
+<!--Device-batteryInfo-function setBatteryConfig(sceneName: string, sceneValue: string): number--><!--Device-batteryInfo-function setBatteryConfig(sceneName: string, sceneValue: string): number-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -31,20 +39,20 @@ function setBatteryConfig(sceneName: string, sceneValue: string): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Permission) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Incorrect parameter types; |
-| [5100101](../../errorcode-universal.md#5100101-Failed) | Failed to connect to the service. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types; |
+| [5100101](../../apis-basic-services-kit/errorcode-battery-info.md#5100101-连接服务失败) | Failed to connect to the service. |
 
 **示例：**
 
 ```TypeScript
-import {batteryInfo} from '@kit.BasicServicesKit';
+import { batteryInfo } from '@kit.BasicServicesKit';
 
 let sceneName = 'xxx';
 let sceneValue = '0';
 let result = batteryInfo.setBatteryConfig(sceneName, sceneValue);
 
-console.info("The result is: " + result);
+console.info('The result is: ' + result);
 
 ```
 

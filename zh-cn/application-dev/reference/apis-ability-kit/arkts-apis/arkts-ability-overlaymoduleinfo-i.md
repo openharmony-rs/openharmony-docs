@@ -1,10 +1,10 @@
 # OverlayModuleInfo
 
-OverlayModuleInfo信息，可以通过
-[overlay.getOverlayModuleInfo](arkts-ability-getoverlaymoduleinfo-f.md#getoverlaymoduleinfo-2)接口获取当
-前应用中具有overlay特征模块的OverlayModuleInfo信息。
+OverlayModuleInfo信息，可以通过[overlay.getOverlayModuleInfo](arkts-ability-overlay-getoverlaymoduleinfo-f.md#getoverlaymoduleinfo-2)接口获取当前应用中具有overlay特征模块的OverlayModuleInfo信息。
 
 **起始版本：** 10
+
+<!--Device-unnamed-export interface OverlayModuleInfo--><!--Device-unnamed-export interface OverlayModuleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -20,6 +20,8 @@ overlay特征module所属的应用的bundle名称。
 
 **起始版本：** 10
 
+<!--Device-OverlayModuleInfo-readonly bundleName: string--><!--Device-OverlayModuleInfo-readonly bundleName: string-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## moduleName
@@ -33,6 +35,8 @@ overlay特征module的名称。
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-OverlayModuleInfo-readonly moduleName: string--><!--Device-OverlayModuleInfo-readonly moduleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -48,6 +52,8 @@ overlay特征module的优先级。取值为整数，取值范围1 ~ 100，数值
 
 **起始版本：** 10
 
+<!--Device-OverlayModuleInfo-readonly priority: int--><!--Device-OverlayModuleInfo-readonly priority: int-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 ## state
@@ -56,13 +62,13 @@ overlay特征module的优先级。取值为整数，取值范围1 ~ 100，数值
 readonly state: number
 ```
 
-overlay特征module的
-[禁用使能状态](arkts-ability-setoverlayenabled-f.md#setoverlayenabled-2)。0代表禁用状态，
-1代表使能状态。
+overlay特征module的[禁用使能状态](arkts-ability-overlay-setoverlayenabled-f.md#setoverlayenabled-2)。0代表禁用状态，1代表使能状态。
 
 **类型：** number
 
 **起始版本：** 10
+
+<!--Device-OverlayModuleInfo-readonly state: int--><!--Device-OverlayModuleInfo-readonly state: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -77,6 +83,8 @@ overlay特征指定的目标module的名称，表示当前overlay包的资源需
 **类型：** string
 
 **起始版本：** 10
+
+<!--Device-OverlayModuleInfo-readonly targetModuleName: string--><!--Device-OverlayModuleInfo-readonly targetModuleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

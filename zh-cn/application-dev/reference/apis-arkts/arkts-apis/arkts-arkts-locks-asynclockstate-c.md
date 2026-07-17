@@ -4,7 +4,15 @@ AsyncLock实例上所有锁操作的信息。
 
 **起始版本：** 12
 
+<!--Device-locks-class AsyncLockState--><!--Device-locks-class AsyncLockState-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArkTSUtils } from '@kit.ArkTS';
+```
 
 ## held
 
@@ -18,7 +26,9 @@ held: AsyncLockInfo[]
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AsyncLockState-held: AsyncLockInfo[]--><!--Device-AsyncLockState-held: AsyncLockInfo[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -34,7 +44,9 @@ pending: AsyncLockInfo[]
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-AsyncLockState-pending: AsyncLockInfo[]--><!--Device-AsyncLockState-pending: AsyncLockInfo[]-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

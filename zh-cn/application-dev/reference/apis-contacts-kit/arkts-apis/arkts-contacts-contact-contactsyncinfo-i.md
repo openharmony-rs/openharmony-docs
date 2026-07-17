@@ -1,12 +1,18 @@
 # ContactSyncInfo
 
-����Ӧ�ó�����ص���ϵ��ͬ������Ϣ��
+调用应用程序相关的联系人同步的信息。
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-contact-interface ContactSyncInfo--><!--Device-contact-interface ContactSyncInfo-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## completedBatches
 
@@ -14,9 +20,9 @@
 completedBatches: Array<number>
 ```
 
-��ʾ�ѳɹ�ͬ������ϵ�˵���������ʶ�����顣
+表示已成功同步的联系人的批处理标识符数组。
 
-ֵ�ķ�Χ�Ǵ�1��totalBatches��
+值的范围是从1到totalBatches。
 
 **类型：** Array<number>
 
@@ -24,7 +30,9 @@ completedBatches: Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContactSyncInfo-completedBatches: Array<int>--><!--Device-ContactSyncInfo-completedBatches: Array<int>-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -34,7 +42,7 @@ completedBatches: Array<number>
 lastSyncTime: number
 ```
 
-ָʾ��ϵ��ͬ��������ʱ��������룩��
+指示联系人同步的最新时间戳（毫秒）。
 
 **类型：** number
 
@@ -42,7 +50,9 @@ lastSyncTime: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContactSyncInfo-lastSyncTime: int--><!--Device-ContactSyncInfo-lastSyncTime: int-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -52,7 +62,7 @@ lastSyncTime: number
 mode: ContactSyncMode
 ```
 
-��ϵ��ͬ��ģʽ��
+联系人同步模式。
 
 **类型：** ContactSyncMode
 
@@ -60,7 +70,9 @@ mode: ContactSyncMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContactSyncInfo-mode: ContactSyncMode--><!--Device-ContactSyncInfo-mode: ContactSyncMode-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -70,7 +82,7 @@ mode: ContactSyncMode
 syncId: number
 ```
 
-��ʾ����ͬ��������ϵ�˵�ͬ����ʶ����
+表示用于同步所有联系人的同步标识符。
 
 **类型：** number
 
@@ -78,7 +90,9 @@ syncId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContactSyncInfo-syncId: int--><!--Device-ContactSyncInfo-syncId: int-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
@@ -88,7 +102,7 @@ syncId: number
 totalBatches: number
 ```
 
-ָʾҪͬ������ϵ������������
+指示要同步的联系人批次总数。
 
 **类型：** number
 
@@ -96,7 +110,9 @@ totalBatches: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+
+<!--Device-ContactSyncInfo-totalBatches: int--><!--Device-ContactSyncInfo-totalBatches: int-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
 

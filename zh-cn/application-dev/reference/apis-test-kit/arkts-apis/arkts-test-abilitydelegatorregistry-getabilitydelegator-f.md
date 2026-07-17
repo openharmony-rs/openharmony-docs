@@ -1,5 +1,11 @@
 # getAbilityDelegator
 
+## 导入模块
+
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+```
+
 ## getAbilityDelegator
 
 ```TypeScript
@@ -12,13 +18,15 @@ function getAbilityDelegator(): AbilityDelegator
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-abilityDelegatorRegistry-function getAbilityDelegator(): AbilityDelegator--><!--Device-abilityDelegatorRegistry-function getAbilityDelegator(): AbilityDelegator-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| AbilityDelegator | [AbilityDelegator](application/AbilityDelegator:AbilityDelegator)对象。可以用来调度测试框架相关功能。 |
+| [AbilityDelegator](arkts-test-abilitydelegatorregistry-abilitydelegator-t.md) | [AbilityDelegator](application/AbilityDelegator:AbilityDelegator)对象。可以用来调度测试框架相关功能。 |
 
 **示例：**
 

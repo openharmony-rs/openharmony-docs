@@ -1,18 +1,24 @@
 # abort
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+```
+
 ## abort
 
 ```TypeScript
 function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-abort��ֹ��Կ������ʹ��callback�첽�ص���
+abort终止密钥操作。使用callback异步回调。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortSession-1)
-> �����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)  
+> 替代。
 
 **起始版本：** 8
 
@@ -20,15 +26,17 @@ abort��ֹ��Կ������ʹ��callback�첽�ص���
 
 **替代接口：** abortSession(handle:
 
+<!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | number | 是 | Abort������uint64���͵�handleֵ�� |
-| options | HuksOptions | 是 | Abort�����Ĳ������ϡ� |
-| callback | AsyncCallback&lt;HuksResult&gt; | 是 | �ص�����������Կ����abort�ɹ�ʱ��errΪundefined��dataΪ��ȡ����HuksResult������Ϊ������� |
+| handle | number | 是 | Abort操作的uint64类型的handle值。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Abort操作的参数集合。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<HuksResult> | 是 | 回调函数。当密钥操作abort成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 **示例：**
 
@@ -50,6 +58,7 @@ let options: huks.HuksOptions = {
 let handle: number = 0;
 let resultMessage = "";
 
+/* 生成密钥 */
 async function generateKey() {
   properties = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -79,6 +88,7 @@ function stringToUint8Array(str: string) {
   return tmpUint8Array;
 }
 
+/* 初始化密钥操作 */
 async function huksInit() {
   await huks.init(keyAlias, options).then((data) => {
     console.info(`test init data: ${JSON.stringify(data)}`);
@@ -111,6 +121,7 @@ function huksFinish() {
   });
 }
 
+/* 终止密钥操作 */
 async function huksAbort() {
   new Promise<huks.HuksResult>((resolve, reject) => {
     huks.abort(handle, options, (err, data) => {
@@ -129,12 +140,12 @@ async function huksAbort() {
 function abort(handle: number, options: HuksOptions): Promise<HuksResult>
 ```
 
-abort��ֹ��Կ������ʹ��Promise�첽�ص���
+abort终止密钥操作。使用Promise异步回调。
 
-> **˵����**
->
-> ��API version 8��ʼ֧�֣���API version 9��ʼ����������ʹ��
-> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortSession-2)�����
+> **说明：**  
+>  
+> 从API version 8开始支持，从API version 9开始废弃，建议使用  
+> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession-2)替代。
 
 **起始版本：** 8
 
@@ -142,20 +153,22 @@ abort��ֹ��Կ������ʹ��Promise�첽�ص���
 
 **替代接口：** abortSession(handle:
 
+<!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | number | 是 | Abort������uint64���͵�handleֵ�� |
-| options | HuksOptions | 是 | Abort�����Ĳ������ϡ� |
+| handle | number | 是 | Abort操作的uint64类型的handle值。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Abort操作的参数集合。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HuksResult&gt; | Promise���󣬷���HuksResult�� |
+| Promise<HuksResult> | Promise对象，返回HuksResult。 |
 
 **示例：**
 
@@ -185,6 +198,7 @@ function stringToUint8Array(str: string) {
   return tmpUint8Array;
 }
 
+/* 生成密钥 */
 async function generateKey() {
   properties = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -211,6 +225,7 @@ async function generateKey() {
   });
 }
 
+/* 初始化密钥操作 */
 async function huksInit() {
   return new Promise<huks.HuksHandle>((resolve, reject) => {
     huks.init(keyAlias, options, async (err, data) => {
@@ -252,6 +267,7 @@ async function huksFinish() {
   });
 }
 
+/* 终止密钥操作 */
 function huksAbort() {
   huks.abort(handle, options).then((data) => {
     if (data.errorCode === 0) {

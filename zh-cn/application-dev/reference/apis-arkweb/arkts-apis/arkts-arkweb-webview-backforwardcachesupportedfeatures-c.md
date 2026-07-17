@@ -4,7 +4,15 @@ This class is used to enable back forward cache supported features.
 
 **起始版本：** 12
 
+<!--Device-webview-class BackForwardCacheSupportedFeatures--><!--Device-webview-class BackForwardCacheSupportedFeatures-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## constructor
 
@@ -13,6 +21,8 @@ constructor()
 ```
 
 **起始版本：** 12
+
+<!--Device-BackForwardCacheSupportedFeatures-constructor()--><!--Device-BackForwardCacheSupportedFeatures-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -34,6 +44,8 @@ true：允许使用视频托管的页面进入前进后退缓存，false：不�
 
 **起始版本：** 12
 
+<!--Device-BackForwardCacheSupportedFeatures-mediaTakeOver: boolean--><!--Device-BackForwardCacheSupportedFeatures-mediaTakeOver: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## nativeEmbed
@@ -53,6 +65,8 @@ true：允许使用同层渲染的页面进入前进后退缓存，false：不�
 **类型：** boolean
 
 **起始版本：** 12
+
+<!--Device-BackForwardCacheSupportedFeatures-nativeEmbed: boolean--><!--Device-BackForwardCacheSupportedFeatures-nativeEmbed: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

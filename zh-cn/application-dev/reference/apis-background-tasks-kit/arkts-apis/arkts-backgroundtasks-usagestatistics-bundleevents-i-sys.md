@@ -4,9 +4,17 @@ FA模型的使用信息属性集合。
 
 **起始版本：** 9
 
+<!--Device-usageStatistics-interface BundleEvents--><!--Device-usageStatistics-interface BundleEvents-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
 
 ## appGroup
 
@@ -19,6 +27,8 @@ appGroup?: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-BundleEvents-appGroup?: int--><!--Device-BundleEvents-appGroup?: int-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -36,6 +46,8 @@ bundleName?: string
 
 **起始版本：** 9
 
+<!--Device-BundleEvents-bundleName?: string--><!--Device-BundleEvents-bundleName?: string-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +63,8 @@ eventId?: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-BundleEvents-eventId?: int--><!--Device-BundleEvents-eventId?: int-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -68,6 +82,8 @@ eventOccurredTime?: number
 
 **起始版本：** 9
 
+<!--Device-BundleEvents-eventOccurredTime?: long--><!--Device-BundleEvents-eventOccurredTime?: long-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
@@ -84,6 +100,8 @@ indexOfLink?: string
 
 **起始版本：** 9
 
+<!--Device-BundleEvents-indexOfLink?: string--><!--Device-BundleEvents-indexOfLink?: string-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
@@ -99,6 +117,8 @@ nameOfClass?: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-BundleEvents-nameOfClass?: string--><!--Device-BundleEvents-nameOfClass?: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 

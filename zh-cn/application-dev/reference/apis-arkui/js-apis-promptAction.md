@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-创建并显示即时反馈、对话框和操作菜单。
+创建并显示即时反馈、对话框和操作菜单，适用于系统通知、交互确认、菜单选择等场景。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ openToast(options: ShowToastOptions): Promise&lt;number&gt;
 
 > **说明：**
 > 
-> - 不支持在输入法类型窗口中使用子窗（showMode设置为TOP_MOST或者SYSTEM_TOP_MOST）的openToast，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+> - 不支持在输入法类型窗口中使用子窗（showMode设置为TOP_MOST）的openToast，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
 >
 > - 直接使用openToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[openToast](arkts-apis-uicontext-promptaction.md#opentoast18)实现。
 
@@ -44,7 +44,7 @@ openToast(options: ShowToastOptions): Promise&lt;number&gt;
 
 | 参数名  | 类型                                                         | 必填 | 说明           |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
-| options | [ShowToastOptions](#showtoastoptions) | 是   | Toast选项。 |
+| options | [ShowToastOptions](#showtoastoptions) | 是   | Toast选项，用于配置Toast的显示内容和样式。 |
 
 **返回值**
 
@@ -88,7 +88,7 @@ struct toastExample {
           })
             .catch((error: BusinessError) => {
               console.error(`openToast error code is ${error.code}, message is ${error.message}`);
-            })
+            });
         })
       Blank().height(50)
       Button('Close Toast')
@@ -100,7 +100,7 @@ struct toastExample {
           } catch (error) {
             let message = (error as BusinessError).message;
             let code = (error as BusinessError).code;
-            console.error(`CloseToast error code is ${code}, message is ${message}`);
+            console.error(`closeToast error code is ${code}, message is ${message}`);
           }
         })
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
@@ -130,7 +130,7 @@ closeToast(toastId: number): void
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| toastId | number | 是   | openToast返回的id。 |
+| toastId | number | 是   | openToast返回的id，用于标识要关闭的Toast实例。 |
 
 **错误码：**
 
@@ -144,7 +144,7 @@ closeToast(toastId: number): void
 
 **示例：**
 
-示例请看[promptAction.openToast18](#promptactionopentoast18)的示例。
+示例请看[promptAction.openToast](#promptactionopentoast18)的示例。
 
 ## ShowToastOptions
 
@@ -156,9 +156,9 @@ Toast的选项。
 | 名称                    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | message                 | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | 否  | 否  | 显示的文本信息。<br>**说明：** <br/>默认字体为'Harmony Sans'，不支持设置其他字体。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| duration                | number                                                       | 否   | 是  | 设置Toast弹出的持续时间。<br/>默认值：1500ms<br/>取值范围：[1500, 10000]<br/>若小于1500ms则取默认值，若大于10000ms则取上限值10000ms。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| bottom                  | string&nbsp;\|&nbsp;number                                   | 否   | 是  | 设置Toast底部边框距离导航条的高度，软键盘拉起时，如果bottom值过小，Toast要被软键盘遮挡时，会自动避让至距离软键盘80vp处。<br/>默认值：80vp<br/>**说明：** <br/>当底部没有导航条时，bottom为设置弹窗底部边框距离窗口底部的高度。<br/>设置对齐方式alignment后，bottom不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| alignment<sup>12+</sup> | [Alignment](arkui-ts/ts-appendix-enums.md#alignment)         | 否   | 是  | 对齐方式。<br/>默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。<br>**说明：** <br/>不同alignment下，Toast位置对齐效果，如下图所示。<br/>![zh-cn_image_0001](figures/toast_alignment.PNG)<br/>Toast的文本显示默认自左向右，不支持其他对齐方式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| duration                | number                                                       | 否   | 是  | 设置Toast弹出的持续时间。<br/>**单位：ms**<br/>默认值：1500ms<br/>取值范围：[1500, 10000]。若小于1500ms则取默认值，若大于10000ms则取上限值10000ms。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| bottom                  | string&nbsp;\|&nbsp;number                                   | 否   | 是  | 设置Toast底部边框距离导航条的高度。软键盘拉起时，若bottom值过小且Toast会被遮挡，则自动避让至距离软键盘80vp处。<br/>默认值：80vp<br/>**说明：** <br/>当底部没有导航条时，bottom为设置弹窗底部边框距离窗口底部的高度。<br/>设置对齐方式alignment后，bottom不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| alignment<sup>12+</sup> | [Alignment](arkui-ts/ts-appendix-enums.md#alignment)         | 否   | 是  | 对齐方式。默认值：undefined，当未设置alignment且存在导航条或软键盘时，Toast会自动根据导航条或软键盘位置进行调整，可参考bottom的说明。<br>**说明：** <br/>不同alignment下，Toast位置对齐效果，如下图所示。<br/>![zh-cn_image_0001](figures/toast_alignment.PNG)<br/>Toast的文本显示默认自左向右，不支持其他对齐方式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | offset<sup>12+</sup>    | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是  | 在对齐方式上的偏移。<br/>默认值：{ dx: 0, dy: 0 }，默认没有偏移。<br/>**说明：** <br/>仅支持设置px类型的数值。如需设置其他类型的数值，应将其他类型转换为px类型后传入。例如，若需设置vp，应将其转换为px后传入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | showMode<sup>11+</sup>  | [ToastShowMode](#toastshowmode11)                            | 否   | 是  | 设置Toast层级。<br>默认值：ToastShowMode.DEFAULT，默认显示在应用内。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | backgroundColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 是  | Toast的背板颜色。<br/>默认值：Color.Transparent<br/>**说明：** <br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -195,7 +195,7 @@ Toast的选项。
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | title                             | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | 否   | 是  | 标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | message                           | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | 否   | 是  | 内容文本。<br/>默认值：undefined，取值为undefined默认不显示内容。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| buttons                           | Array&lt;[Button](#button)&gt;                               | 否   | 是  | 对话框中按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持大于1个按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| buttons                           | Array&lt;[Button](#button)&gt;                               | 否   | 是  | 对话框中按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持1个或多个按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | alignment<sup>10+</sup>           | [DialogAlignment](arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | 否   | 是  | 对话框在竖直方向上的对齐方式。<br/>默认值：DialogAlignment.Default<br/>**说明：**<br/>若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | offset<sup>10+</sup>              | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是  | 对话框相对alignment所在位置的偏移量。<br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | maskRect<sup>10+</sup>            | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否   | 是  | 对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>maskRect在设置[Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明)中的部分属性后，若未设置其余的属性，则其余属性的默认值为0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -209,7 +209,7 @@ Toast的选项。
 | enableHoverMode<sup>14+</sup>     | boolean                                                      | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。            |
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是  | 设置悬停态下对话框的默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 对话框显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变对话框显示效果的回调事件，二次弹出生效。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 对话框弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭对话框时，onWillDisappear在onDidAppear前生效。<br/>4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 对话框弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，在对话框下次打开时生效。<br />3.在onDidAppear触发前就关闭对话框时，onWillDisappear在onDidAppear前生效。<br/>4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | onWillDisappear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 对话框退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br /> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 对话框消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | levelMode<sup>15+</sup>       | [LevelMode](#levelmode15枚举说明) | 否   | 是  | 设置对话框显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
@@ -239,7 +239,7 @@ Toast的选项。
 | 名称                          | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | title                         | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | 否   | 是  | 标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| buttons                       | [[Button](#button),[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?] | 否  | 否  | 菜单中菜单项按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持1-6个按钮。按钮数量大于6个时，仅显示前6个按钮，之后的按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| buttons                       | [[Button](#button),[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?,[Button](#button)?] | 否  | 否  | 菜单中菜单项按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持1-6个按钮。按钮数量大于6个时，仅显示buttons数组中的前6个按钮（索引0到5），数组中索引大于5的按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | showInSubWindow<sup>11+</sup> | boolean                                                      | 否   | 是  | 某操作菜单需要显示在主窗口之外时，是否在子窗口显示此菜单。值为true表示在子窗口显示菜单。<br/>默认值：false，在子窗口不显示菜单。<br/>**说明：** <br/> - showInSubWindow为true的菜单无法触发显示另一个showInSubWindow为true的菜单。 <br/> - 若在UIExtension中设置showInSubWindow为true, 菜单将基于UIExtension的宿主窗口对齐。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | isModal<sup>11+</sup>         | boolean                                                      | 否   | 是  | 菜单是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与菜单周围其他控件进行交互，即蒙层区域无法事件透传。值为false表示为非模态窗口且无蒙层，可以与菜单周围其他控件进行交互。<br/>默认值：true<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | levelMode<sup>15+</sup>       | [LevelMode](#levelmode15枚举说明) | 否   | 是  | 设置菜单显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY <br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
@@ -261,7 +261,7 @@ Toast的选项。
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| index | number | 否   | 否   | 选中按钮在buttons数组中的索引，从0开始。 |
+| index | number | 否   | 否   | 选中按钮在buttons数组中的索引，从0开始，可用于判断用户点击了哪个按钮。 |
 
 ## CommonState<sup>20+</sup>枚举说明
 
@@ -375,7 +375,7 @@ static clamp(order: number): LevelOrder
 
 | 类型  | 说明    |
 | ------ | ------ |
-| [LevelOrder](#levelorder18) | 返回当前对象实例。 |
+| [LevelOrder](#levelorder18) | 返回当前对象实例，该对象可用于设置弹窗的显示顺序。 |
 
 ### getOrder<sup>18+</sup>
 getOrder(): number
@@ -396,7 +396,7 @@ getOrder(): number
 
 ## DialogOptions<sup>18+</sup>
 
-自定义弹窗的内容，继承自[BaseDialogOptions](#basedialogoptions11)。
+自定义弹窗的内容，继承自[BaseDialogOptions](#basedialogoptions11)，用于配置自定义弹窗的显示参数和行为。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -407,11 +407,11 @@ getOrder(): number
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | backgroundColor | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)  | 否 | 是 | 设置弹窗背板颜色。<br/>默认值：Color.Transparent<br/>**说明：** <br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。 |
-| cornerRadius | [DialogOptionsCornerRadius](#dialogoptionscornerradius18) | 否 | 是 | 设置弹窗背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br /> 圆角大小受组件尺寸限制，最大值为组件宽或高的一半，若值为负，则按照默认值处理。 <br /> 百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。|
+| cornerRadius | [DialogOptionsCornerRadius](#dialogoptionscornerradius18) | 否 | 是 | 设置弹窗背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br /> 圆角大小受组件尺寸限制，最大值为组件宽和高中较小值的一半，若值为负，则按照默认值处理。 <br /> 百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。|
 | borderWidth | [DialogOptionsBorderWidth](#dialogoptionsborderwidth18) | 否 | 是 | 设置弹窗背板的边框宽度。<br />可分别设置4个边框宽度。<br />默认值：0 <br />单位：vp <br /> 百分比参数方式：以父元素弹窗宽的百分比来设置弹窗的边框宽度。<br />当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。|
 | borderColor | [DialogOptionsBorderColor](#dialogoptionsbordercolor18) | 否 | 是 | 设置弹窗背板的边框颜色。<br/>默认值：Color.Black <br/> 如果使用borderColor属性，需要和borderWidth属性一起使用。 |
 | borderStyle | [DialogOptionsBorderStyle](#dialogoptionsborderstyle18) | 否 | 是 | 设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid。<br/> 如果使用borderStyle属性，需要和borderWidth属性一起使用。 |
-| width | [Dimension](arkui-ts/ts-types.md#dimension10) | 否   | 是  | 设置弹窗背板的宽度。<br />**说明：**<br>- 默认最大值：400vp <br />- 百分比参数方式：弹窗参考宽度基于所在窗口宽度调整。|
+| width | [Dimension](arkui-ts/ts-types.md#dimension10) | 否   | 是  | 设置弹窗背板的宽度。<br />**说明：**<br>- 默认最大值：400vp <br />- 百分比参数方式：弹窗参考宽度为所在窗口宽度的百分比，即弹窗宽度=窗口宽度×百分比值。|
 | height | [Dimension](arkui-ts/ts-types.md#dimension10)  | 否   | 是  | 设置弹窗背板的高度。<br />**说明：**<br />- 默认最大值：0.9 *（窗口高度 - 安全区域）。<br />- 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。|
 | shadow | [DialogOptionsShadow](#dialogoptionsshadow18) | 否 | 是 | 设置弹窗背板的阴影。<br />当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。 |
 | backgroundBlurStyle | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9)                 | 否   | 是  | 弹窗背板模糊材质。<br/>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。<br/>**说明：** <br/>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。 |
@@ -515,7 +515,7 @@ type DialogOptionsShadow = ShadowOptions&nbsp;\|&nbsp;ShadowStyle
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 否 | 否 | 设置自定义弹窗的内容。<br/>**说明：** <br/>builder需要赋值为箭头函数，格式如下：() => { this.XXX() }，其中XXX是内部builder名。<br/>全局builder需要在组件内部创建，并在内部builder中调用。<br/>builder根节点宽高百分比相对弹窗容器大小。<br/>builder非根节点宽高百分比相对父节点大小。 |
 | backgroundColor <sup>12+</sup>| [ResourceColor](arkui-ts/ts-types.md#resourcecolor)  | 否 | 是 | 设置弹窗背板颜色。<br/>默认值：Color.Transparent<br/>**说明：** <br/>当设置了backgroundColor为非透明色时，backgroundBlurStyle需要设置为BlurStyle.NONE，否则颜色显示将不符合预期效果。 |
-| cornerRadius<sup>12+</sup>| [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9) | 否 | 是 | 设置背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br /> 圆角大小受组件尺寸限制，最大值为组件宽或高的一半，若值为负，则按照默认值处理。 <br /> 百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。|
+| cornerRadius<sup>12+</sup>| [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9) | 否 | 是 | 设置背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br /> 圆角大小受组件尺寸限制，最大值为组件宽和高中较小值的一半，若值为负，则按照默认值处理。 <br /> 百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。|
 | borderWidth<sup>12+</sup>| [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](arkui-ts/ts-types.md#edgewidths9)  | 否 | 是 | 设置弹窗背板的边框宽度。<br />可分别设置4个边框宽度。<br />默认值：0 <br />单位：vp <br /> 百分比参数方式：以父元素弹窗宽的百分比来设置弹窗的边框宽度。<br />当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。 |
 | borderColor<sup>12+</sup> | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](arkui-ts/ts-types.md#edgecolors9)  | 否 | 是 | 设置弹窗背板的边框颜色。<br/>默认值：Color.Black<br/> 如果使用borderColor属性，需要和borderWidth属性一起使用。 |
 | borderStyle<sup>12+</sup> | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9)  | 否 | 是 | 设置弹窗背板的边框样式。<br/>默认值：BorderStyle.Solid<br/> 如果使用borderStyle属性，需要和borderWidth属性一起使用。 |
@@ -546,12 +546,12 @@ type DialogOptionsShadow = ShadowOptions&nbsp;\|&nbsp;ShadowStyle
 | transition<sup>12+</sup>          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是  | 设置弹窗显示和退出的过渡效果。<br/>**说明：**<br/> 1.如果不设置，则使用默认的显示/退出动效。<br/> 2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/> 3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | dialogTransition<sup>19+</sup>          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是  | 设置弹窗内容显示的过渡效果。默认无动效。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | maskTransition<sup>19+</sup>          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是  | 设置蒙层显示的过渡效果。默认无动效。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| onDidAppear<sup>12+</sup> | () => void | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。<br />4. 当弹窗入场动效未完成时关闭弹窗，该回调不会触发。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| onDidDisappear<sup>12+</sup> | () => void | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。 <br/>当弹窗退场动画未完成时（例如：同时触发弹窗关闭和页面切换），该回调不会触发。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| onWillAppear<sup>12+</sup> | () => void | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| onWillDisappear<sup>12+</sup> | () => void | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onDidAppear<sup>12+</sup> | () => void | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。<br />4. 当弹窗入场动效未完成时关闭弹窗，该回调不会触发。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onDidDisappear<sup>12+</sup> | () => void | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 <br/>当弹窗退场动画未完成时（例如：同时触发弹窗关闭和页面切换），该回调不会触发。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onWillAppear<sup>12+</sup> | () => void | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onWillDisappear<sup>12+</sup> | () => void | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | keyboardAvoidMode<sup>12+</sup> | [KeyboardAvoidMode](./arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否 | 是 | 用于设置弹窗是否在拉起软键盘时进行自动避让。<br/>默认值：KeyboardAvoidMode.DEFAULT<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enableHoverMode<sup>14+</sup>   | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true。可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| enableHoverMode<sup>14+</sup>   | boolean | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br />默认值：false，默认不响应。<br />**说明：**<br />PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时，可以通过设置hoverModeArea参数显示在下半屏。其他设备弹窗在enableHoverMode设置为true时默认显示在下半屏，可以通过设置hoverModeArea参数显示在上半屏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>     | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br />**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
@@ -578,7 +578,7 @@ Dialog关闭的信息。
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | dismiss | Callback&lt;void&gt;                                         | 否   | 否   | Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
-| reason  | [DismissReason](./arkui-ts/ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | Dialog无法关闭原因。根据开发者需求选择不同操作下，Dialog是否关闭。 |
+| reason  | [DismissReason](./arkui-ts/ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | 触发Dialog关闭的操作类型（如点击遮障层、按返回键等）。开发者可根据reason判断用户的具体关闭操作，决定是否调用dismiss()关闭Dialog。 |
 
 ## LevelMode<sup>15+</sup>枚举说明
 
@@ -593,7 +593,7 @@ Dialog关闭的信息。
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
 | OVERLAY | 0    | 弹窗层级为应用窗口根节点，应用内路由导航切换弹窗不隐藏。 |
-| EMBEDDED    | 1    | 弹窗节点为页面内路由/导航下的节点，随路由导航切换，弹窗随页面隐藏。<br />**说明：** <br />1. 目前只支持挂载在Page或者[NavDestination](./arkui-ts/ts-basic-components-navdestination.md)节点上，优先挂载在Page节点下，只支持在这两种页面内顶层显示。<br />2. 该模式下新起的页面可以覆盖在弹窗上，页面返回后该弹窗依旧存在，弹窗内容不会丢失。 <br/>3. 该模式下需确保目标页面节点如Page节点已挂载上树，再拉起弹窗，否则弹窗将无法挂载到对应的页面节点内。|
+| EMBEDDED    | 1    | 弹窗节点为页面内路由/导航下的节点，随路由导航切换，弹窗随页面隐藏。<br />**说明：** <br />1. 仅支持挂载在Page或[NavDestination](./arkui-ts/ts-basic-components-navdestination.md)节点上，需在页面内顶层显示。<br />2. 新起页面可覆盖在弹窗上，页面返回后该弹窗仍存在，弹窗内容不丢失。<br/>3. 需确保目标页面节点（如Page节点）已挂载上树后，再拉起弹窗，否则弹窗将无法挂载到对应的页面节点内。|
 
 ## ImmersiveMode<sup>15+</sup>枚举说明
 
@@ -612,7 +612,7 @@ Dialog关闭的信息。
 
 ## Button
 
-菜单中的菜单项按钮。
+弹窗或菜单中的按钮信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -888,7 +888,7 @@ showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSucc
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | options  | [ShowDialogOptions](#showdialogoptions)                      | 是   | 页面显示对话框信息描述。 |
-| callback | AsyncCallback&lt;[ShowDialogSuccessResponse](#showdialogsuccessresponse)&gt; | 是   | 回调函数。弹出对话框成功，err为undefined，data为获取到的对话框响应结果，否则为错误对象。   |
+| callback | AsyncCallback&lt;[ShowDialogSuccessResponse](#showdialogsuccessresponse)&gt; | 是   | 回调函数。弹出对话框成功时，err为undefined，data为获取到的对话框响应结果；失败时，err为错误对象。   |
 
 **错误码：**
 
@@ -1018,7 +1018,7 @@ struct DialogExample {
           console.info("showDialog,is onDidDisappear!");
         },
         onWillAppear: () => {
-          this.log = 'Log information:#onWillAppear';
+          this.log = 'Log information:# onWillAppear';
           console.info("showDialog,is onWillAppear!");
         },
         onWillDisappear: () => {
@@ -1059,7 +1059,7 @@ showActionMenu(options: ActionMenuOptions, callback: AsyncCallback&lt;ActionMenu
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options  | [ActionMenuOptions](#actionmenuoptions)                      | 是   | 操作菜单选项。     |
-| callback | AsyncCallback&lt;[ActionMenuSuccessResponse](#actionmenusuccessresponse)> | 是   | 回调函数。弹出操作菜单成功，err为undefined，data为获取到的操作菜单响应结果，否则为错误对象。 |
+| callback | AsyncCallback&lt;[ActionMenuSuccessResponse](#actionmenusuccessresponse)> | 是   | 回调函数。弹出操作菜单成功时，err为undefined，data为获取到的操作菜单响应结果；失败时，err为错误对象。 |
 
 **错误码：**
 
@@ -1200,7 +1200,7 @@ showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse
 
 | 参数名  | 类型                                    | 必填 | 说明           |
 | ------- | --------------------------------------- | ---- | -------------- |
-| options | [ActionMenuOptions](#actionmenuoptions) | 是   | Promise对象，返回菜单的响应结果。 |
+| options | [ActionMenuOptions](#actionmenuoptions) | 是   | 操作菜单选项。 |
 
 **返回值：**
 

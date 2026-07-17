@@ -1,12 +1,10 @@
 # PrintQuality
 
-```TypeScript
-enum PrintQuality
-```
-
 打印质量的枚举。
 
 **起始版本：** 14
+
+<!--Device-print-enum PrintQuality--><!--Device-print-enum PrintQuality-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ QUALITY_DRAFT = 3
 
 **起始版本：** 14
 
+<!--Device-PrintQuality-QUALITY_DRAFT = 3--><!--Device-PrintQuality-QUALITY_DRAFT = 3-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## QUALITY_NORMAL
@@ -32,6 +32,8 @@ QUALITY_NORMAL = 4
 
 **起始版本：** 14
 
+<!--Device-PrintQuality-QUALITY_NORMAL = 4--><!--Device-PrintQuality-QUALITY_NORMAL = 4-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## QUALITY_HIGH
@@ -43,6 +45,8 @@ QUALITY_HIGH = 5
 表示最佳的打印质量。
 
 **起始版本：** 14
+
+<!--Device-PrintQuality-QUALITY_HIGH = 5--><!--Device-PrintQuality-QUALITY_HIGH = 5-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

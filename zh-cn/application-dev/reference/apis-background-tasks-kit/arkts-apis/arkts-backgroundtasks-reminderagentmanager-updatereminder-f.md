@@ -1,5 +1,11 @@
 # updateReminder
 
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## updateReminder
 
 ```TypeScript
@@ -12,28 +18,30 @@ function updateReminder(reminderId: number, reminderReq: ReminderRequest): Promi
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
+<!--Device-reminderAgentManager-function updateReminder(reminderId: int, reminderReq: ReminderRequest): Promise<void>--><!--Device-reminderAgentManager-function updateReminder(reminderId: int, reminderReq: ReminderRequest): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reminderId | number | 是 | 需要更新的代理提醒的id。<br/>代理提醒id会在<br/>[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishReminder-1)<br/>时作为返回值返回。 |
-| reminderReq | ReminderRequest | 是 | 代理提醒对象实例，用于设置提醒类型、响铃时长等具体信息。 |
+| reminderId | number | 是 | 需要更新的代理提醒的id。代理提醒id会在[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishreminder-1)时作为返回值返回。 |
+| reminderReq | [ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md) | 是 | 代理提醒对象实例，用于设置提醒类型、响铃时长等具体信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [1700003](../../errorcode-universal.md#1700003-The) | The reminder does not exist. |
-| [1700007](../../errorcode-universal.md#1700007-If) | If the input parameter is not valid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [1700003](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
+| [1700007](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700007-参数错误) | If the input parameter is not valid parameter. |
 
 **示例：**
 

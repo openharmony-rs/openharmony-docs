@@ -4,7 +4,15 @@
 
 **起始版本：** 18
 
+<!--Device-osAccount-class DomainAccountManager--><!--Device-osAccount-class DomainAccountManager-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+## 导入模块
+
+```TypeScript
+import { osAccount } from '@kit.BasicServicesKit';
+```
 
 ## auth
 
@@ -18,6 +26,8 @@ static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callba
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-DomainAccountManager-static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -26,30 +36,30 @@ static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
-| credential | Uint8Array | 是 | 指示域账号的凭据。 |
-| callback | IUserAuthCallback | 是 | 指示认证结果回调。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
+| credential | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的凭据。 |
+| callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid domainAccountInfo or credential. |
-| [12300003](../../errorcode-universal.md#12300003-Domain) | Domain account does not exist. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300101](../../errorcode-universal.md#12300101-Authentication) | Authentication failed. |
-| [12300109](../../errorcode-universal.md#12300109-The) | The authentication, enrollment, or update operation is canceled. |
-| [12300110](../../errorcode-universal.md#12300110-The) | The authentication is locked. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The authentication time out. |
-| [12300112](../../errorcode-universal.md#12300112-The) | The authentication service is busy. |
-| [12300113](../../errorcode-universal.md#12300113-The) | The account authentication service does not exist. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The account authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo or credential. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Domain account does not exist. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | Authentication failed. |
+| [12300109](../../apis-basic-services-kit/errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300110](../../apis-basic-services-kit/errorcode-account.md#12300110-认证被锁定) | The authentication is locked. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The authentication time out. |
+| [12300112](../../apis-basic-services-kit/errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -91,6 +101,16 @@ static auth(
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-DomainAccountManager-static auth(
+      domainAccountInfo: DomainAccountInfo,
+      credential: Uint8Array,
+      options: DomainAccountAuthOptions,
+      callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static auth(
+      domainAccountInfo: DomainAccountInfo,
+      credential: Uint8Array,
+      options: DomainAccountAuthOptions,
+      callback: IUserAuthCallback): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -99,30 +119,30 @@ static auth(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
-| credential | Uint8Array | 是 | 指示域账号的凭据。 |
-| options | DomainAccountAuthOptions | 是 | 表示域账号认证的选项。 |
-| callback | IUserAuthCallback | 是 | 指示认证结果回调。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
+| credential | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的凭据。 |
+| options | [DomainAccountAuthOptions](arkts-basicservices-osaccount-domainaccountauthoptions-i-sys.md) | 是 | 表示域账号认证的选项。 |
+| callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid domainAccountInfo or credential. |
-| [12300003](../../errorcode-universal.md#12300003-Domain) | Domain account does not exist. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300101](../../errorcode-universal.md#12300101-Authentication) | Authentication failed. |
-| [12300109](../../errorcode-universal.md#12300109-The) | The authentication, enrollment, or update operation is canceled. |
-| [12300110](../../errorcode-universal.md#12300110-The) | The authentication is locked. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The authentication time out. |
-| [12300112](../../errorcode-universal.md#12300112-The) | The authentication service is busy. |
-| [12300113](../../errorcode-universal.md#12300113-The) | The account authentication service does not exist. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The account authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo or credential. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Domain account does not exist. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | Authentication failed. |
+| [12300109](../../apis-basic-services-kit/errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300110](../../apis-basic-services-kit/errorcode-account.md#12300110-认证被锁定) | The authentication is locked. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The authentication time out. |
+| [12300112](../../apis-basic-services-kit/errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -165,7 +185,10 @@ static authWithPopup(callback: IUserAuthCallback): void
 
 **起始版本：** 10
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：** 
+- API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-DomainAccountManager-static authWithPopup(callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static authWithPopup(callback: IUserAuthCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -175,26 +198,26 @@ static authWithPopup(callback: IUserAuthCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | IUserAuthCallback | 是 | 指示认证结果回调。 |
+| callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied.&lt;br&gt;**适用版本：** 10 - 10 |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300003](../../errorcode-universal.md#12300003-No) | No domain account is bound. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300101](../../errorcode-universal.md#12300101-Authentication) | Authentication failed. |
-| [12300109](../../errorcode-universal.md#12300109-The) | The authentication, enrollment, or update operation is canceled. |
-| [12300110](../../errorcode-universal.md#12300110-The) | The authentication is locked. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The authentication time out. |
-| [12300112](../../errorcode-universal.md#12300112-The) | The authentication service is busy. |
-| [12300113](../../errorcode-universal.md#12300113-The) | The account authentication service does not exist. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The account authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable.&lt;br&gt;**适用版本：** 11+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 10+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | No domain account is bound. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | Authentication failed. |
+| [12300109](../../apis-basic-services-kit/errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300110](../../apis-basic-services-kit/errorcode-account.md#12300110-认证被锁定) | The authentication is locked. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The authentication time out. |
+| [12300112](../../apis-basic-services-kit/errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
+| 12300211 | Server unreachable.<br>**适用版本：** 11+ |
 
 **示例：**
 
@@ -225,7 +248,10 @@ static authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 **起始版本：** 10
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：** 
+- API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-DomainAccountManager-static authWithPopup(localId: int, callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static authWithPopup(localId: int, callback: IUserAuthCallback): void-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -236,27 +262,27 @@ static authWithPopup(localId: number, callback: IUserAuthCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | localId | number | 是 | 指示绑定域账号的系统账号的本地标识。 |
-| callback | IUserAuthCallback | 是 | 指示认证结果回调。 |
+| callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied.&lt;br&gt;**适用版本：** 10 - 10 |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid localId. |
-| [12300003](../../errorcode-universal.md#12300003-No) | No domain account is bound. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300101](../../errorcode-universal.md#12300101-Authentication) | Authentication failed. |
-| [12300109](../../errorcode-universal.md#12300109-The) | The authentication, enrollment, or update operation is canceled. |
-| [12300110](../../errorcode-universal.md#12300110-The) | The authentication is locked. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The authentication time out. |
-| [12300112](../../errorcode-universal.md#12300112-The) | The authentication service is busy. |
-| [12300113](../../errorcode-universal.md#12300113-The) | The account authentication service does not exist. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The account authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable.&lt;br&gt;**适用版本：** 11+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 10+ |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid localId. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | No domain account is bound. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300101](../../apis-basic-services-kit/errorcode-account.md#12300101-凭据不正确) | Authentication failed. |
+| [12300109](../../apis-basic-services-kit/errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
+| [12300110](../../apis-basic-services-kit/errorcode-account.md#12300110-认证被锁定) | The authentication is locked. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The authentication time out. |
+| [12300112](../../apis-basic-services-kit/errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
+| [12300113](../../apis-basic-services-kit/errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
+| 12300211 | Server unreachable.<br>**适用版本：** 11+ |
 
 **示例：**
 
@@ -287,6 +313,8 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 
 **起始版本：** 11
 
+<!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback<Uint8Array>): void--><!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback<Uint8Array>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -295,24 +323,24 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| businessParams | Record&lt;string, Object&gt; | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
-| callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 指示结果回调。如果获取成功，err返回null，否则为错误对象。 |
+| businessParams | Record<string, Object> | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Uint8Array> | 是 | 指示结果回调。如果获取成功，err返回null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid business parameters. |
-| [12300003](../../errorcode-universal.md#12300003-Domain) | Domain account not found. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300014](../../errorcode-universal.md#12300014-The) | The domain account is not authenticated. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid business parameters. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Domain account not found. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300014](../../apis-basic-services-kit/errorcode-account.md#12300014-域账号未认证) | The domain account is not authenticated. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -349,6 +377,8 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 
 **起始版本：** 11
 
+<!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Array>--><!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Array>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -357,29 +387,29 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| businessParams | Record&lt;string, Object&gt; | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
+| businessParams | Record<string, Object> | 是 | 指示业务参数，具体格式取决于域插件的实现要求。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
+| Promise<Uint8Array> | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid business parameters. |
-| [12300003](../../errorcode-universal.md#12300003-Domain) | Domain account not found. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300014](../../errorcode-universal.md#12300014-The) | The domain account is not authenticated. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid business parameters. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Domain account not found. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300014](../../apis-basic-services-kit/errorcode-account.md#12300014-域账号未认证) | The domain account is not authenticated. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -416,6 +446,8 @@ static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallb
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS
 
+<!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback<DomainAccountInfo>): void--><!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback<DomainAccountInfo>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -424,24 +456,24 @@ static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | GetDomainAccountInfoOptions | 是 | 指示域账号信息。 |
-| callback | AsyncCallback&lt;DomainAccountInfo&gt; | 是 | 指示查询结果回调。 |
+| options | [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) | 是 | 指示域账号信息。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DomainAccountInfo> | 是 | 指示查询结果回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300014](../../errorcode-universal.md#12300014-Not) | Not authenticated. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300014](../../apis-basic-services-kit/errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -480,6 +512,8 @@ static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccou
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS
 
+<!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccountInfo>--><!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccountInfo>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -488,29 +522,29 @@ static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccou
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | GetDomainAccountInfoOptions | 是 | 指示域账号信息。 |
+| options | [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) | 是 | 指示域账号信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
+| Promise<DomainAccountInfo> | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300014](../../errorcode-universal.md#12300014-Not) | Not authenticated. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300014](../../apis-basic-services-kit/errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -547,6 +581,8 @@ static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<boolean>): void--><!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -555,24 +591,24 @@ static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 指示检查结果回调。true表示指定的域账号已存在；false表示指定的域账号不存在。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 指示检查结果回调。true表示指定的域账号已存在；false表示指定的域账号不存在。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid domainAccountInfo. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300014](../../errorcode-universal.md#12300014-Not) | Not authenticated. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300014](../../apis-basic-services-kit/errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -610,6 +646,8 @@ static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>--><!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -618,29 +656,29 @@ static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
+| Promise<boolean> | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid domainAccountInfo. |
-| [12300013](../../errorcode-universal.md#12300013-Network) | Network exception. |
-| [12300014](../../errorcode-universal.md#12300014-Not) | Not authenticated. |
-| [12300111](../../errorcode-universal.md#12300111-The) | The operation time out. |
-| [12300114](../../errorcode-universal.md#12300114-The) | The authentication service works abnormally. |
-| [12300211](../../errorcode-universal.md#12300211-Server) | Server unreachable. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo. |
+| [12300013](../../apis-basic-services-kit/errorcode-account.md#12300013-网络异常) | Network exception. |
+| [12300014](../../apis-basic-services-kit/errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
+| [12300111](../../apis-basic-services-kit/errorcode-account.md#12300111-认证超时) | The operation time out. |
+| [12300114](../../apis-basic-services-kit/errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
 
 **示例：**
 
@@ -676,6 +714,8 @@ static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<bo
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<boolean>--><!--Device-DomainAccountManager-static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<boolean>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -684,24 +724,24 @@ static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<bo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
+| Promise<boolean> | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300003](../../errorcode-universal.md#12300003-Domain) | Domain account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Domain account not found. |
 
 **示例：**
 
@@ -735,6 +775,8 @@ static registerPlugin(plugin: DomainPlugin): void
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static registerPlugin(plugin: DomainPlugin): void--><!--Device-DomainAccountManager-static registerPlugin(plugin: DomainPlugin): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -743,16 +785,16 @@ static registerPlugin(plugin: DomainPlugin): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plugin | DomainPlugin | 是 | 指示域插件。 |
+| plugin | [DomainPlugin](arkts-basicservices-osaccount-domainplugin-i-sys.md) | 是 | 指示域插件。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
-| [12300201](../../errorcode-universal.md#12300201-The) | The domain plugin has been registered. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
+| 12300201 | The domain plugin has been registered. |
 
 **示例：**
 
@@ -799,6 +841,8 @@ static unregisterPlugin(): void
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static unregisterPlugin(): void--><!--Device-DomainAccountManager-static unregisterPlugin(): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -807,9 +851,9 @@ static unregisterPlugin(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [801](../../errorcode-universal.md#801-Capability) | Capability not supported.&lt;br&gt;**适用版本：** 18+ |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例：**
 
@@ -842,6 +886,16 @@ static updateAccountToken(
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static updateAccountToken(
+      domainAccountInfo: DomainAccountInfo,
+      token: Uint8Array,
+      callback: AsyncCallback<void>
+    ): void--><!--Device-DomainAccountManager-static updateAccountToken(
+      domainAccountInfo: DomainAccountInfo,
+      token: Uint8Array,
+      callback: AsyncCallback<void>
+    ): void-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -850,20 +904,20 @@ static updateAccountToken(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
-| token | Uint8Array | 是 | 指示域账号的令牌。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。如果更新成功，err为null，否则为错误对象。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
+| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的令牌。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果更新成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid token. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid token. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 
@@ -903,6 +957,8 @@ static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Arra
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Promise<void>--><!--Device-DomainAccountManager-static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -911,25 +967,25 @@ static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainAccountInfo | DomainAccountInfo | 是 | 指示域账号信息。 |
-| token | Uint8Array | 是 | 指示域账号的令牌。 |
+| domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i-sys.md) | 是 | 指示域账号信息。 |
+| token | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示域账号的令牌。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Not) | Not system application. |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types. |
-| [12300001](../../errorcode-universal.md#12300001-The) | The system service works abnormally. |
-| [12300002](../../errorcode-universal.md#12300002-Invalid) | Invalid token. |
-| [12300003](../../errorcode-universal.md#12300003-Account) | Account not found. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [12300001](../../apis-basic-services-kit/errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../../apis-basic-services-kit/errorcode-account.md#12300002-无效参数) | Invalid token. |
+| [12300003](../../apis-basic-services-kit/errorcode-account.md#12300003-账号不存在) | Account not found. |
 
 **示例：**
 

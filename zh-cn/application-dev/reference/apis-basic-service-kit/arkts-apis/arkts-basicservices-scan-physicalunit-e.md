@@ -1,12 +1,10 @@
 # PhysicalUnit
 
-```TypeScript
-enum PhysicalUnit
-```
-
 定义物理单位的枚举。
 
 **起始版本：** 20
+
+<!--Device-scan-enum PhysicalUnit--><!--Device-scan-enum PhysicalUnit-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -20,6 +18,8 @@ SCAN_UNIT_NONE = 0
 
 **起始版本：** 20
 
+<!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0--><!--Device-PhysicalUnit-SCAN_UNIT_NONE = 0-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_UNIT_PIXEL
@@ -31,6 +31,8 @@ SCAN_UNIT_PIXEL = 1
 像素单位。
 
 **起始版本：** 20
+
+<!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1--><!--Device-PhysicalUnit-SCAN_UNIT_PIXEL = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -44,6 +46,8 @@ SCAN_UNIT_BIT = 2
 
 **起始版本：** 20
 
+<!--Device-PhysicalUnit-SCAN_UNIT_BIT = 2--><!--Device-PhysicalUnit-SCAN_UNIT_BIT = 2-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_UNIT_MM
@@ -55,6 +59,8 @@ SCAN_UNIT_MM = 3
 毫米单位。
 
 **起始版本：** 20
+
+<!--Device-PhysicalUnit-SCAN_UNIT_MM = 3--><!--Device-PhysicalUnit-SCAN_UNIT_MM = 3-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -68,6 +74,8 @@ DPI单位。
 
 **起始版本：** 20
 
+<!--Device-PhysicalUnit-SCAN_UNIT_DPI = 4--><!--Device-PhysicalUnit-SCAN_UNIT_DPI = 4-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_UNIT_PERCENT
@@ -80,6 +88,8 @@ SCAN_UNIT_PERCENT = 5
 
 **起始版本：** 20
 
+<!--Device-PhysicalUnit-SCAN_UNIT_PERCENT = 5--><!--Device-PhysicalUnit-SCAN_UNIT_PERCENT = 5-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 ## SCAN_UNIT_MICROSECOND
@@ -91,6 +101,8 @@ SCAN_UNIT_MICROSECOND = 6
 微秒单位。
 
 **起始版本：** 20
+
+<!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6--><!--Device-PhysicalUnit-SCAN_UNIT_MICROSECOND = 6-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

@@ -1,16 +1,14 @@
 # FontEdging
 
-```TypeScript
-enum FontEdging
-```
-
 字型边缘效果类型枚举。
 
-> **说明：**
->
+> **说明：**  
+>  
 > FontEdging不支持位图字体（如点阵字体、emoji等）。
 
 **起始版本：** 12
+
+<!--Device-drawing-enum FontEdging--><!--Device-drawing-enum FontEdging-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -26,6 +24,8 @@ ALIAS = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontEdging-ALIAS = 0--><!--Device-FontEdging-ALIAS = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## ANTI_ALIAS
@@ -40,6 +40,8 @@ ANTI_ALIAS = 1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-FontEdging-ANTI_ALIAS = 1--><!--Device-FontEdging-ANTI_ALIAS = 1-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## SUBPIXEL_ANTI_ALIAS
@@ -53,6 +55,8 @@ SUBPIXEL_ANTI_ALIAS = 2
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-FontEdging-SUBPIXEL_ANTI_ALIAS = 2--><!--Device-FontEdging-SUBPIXEL_ANTI_ALIAS = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

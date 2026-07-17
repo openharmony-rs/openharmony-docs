@@ -4,7 +4,15 @@ Buffer对象是处理二进制数据的缓存区。
 
 **起始版本：** 9
 
+<!--Device-buffer-class Buffer--><!--Device-buffer-class Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
 
 ## compare
 
@@ -24,6 +32,20 @@ compare(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-compare(
+      target: Buffer | Uint8Array,
+      targetStart?: number,
+      targetEnd?: number,
+      sourceStart?: number,
+      sourceEnd?: number
+    ): -1 | 0 | 1--><!--Device-Buffer-compare(
+      target: Buffer | Uint8Array,
+      targetStart?: number,
+      targetEnd?: number,
+      sourceStart?: number,
+      sourceEnd?: number
+    ): -1 | 0 | 1-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -40,13 +62,13 @@ compare(
 
 | 类型 | 说明 |
 | --- | --- |
-| -1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1；<br/>如果当前对象在排序时位于目标对象之前，则返回-1。 |
+| -1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1；如果当前对象在排序时位于目标对象之前，则返回-1。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of<br/>range.<br/>It must be &gt;= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range.It must be &gt;= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -77,6 +99,8 @@ copy(target: Buffer | Uint8Array, targetStart?: number, sourceStart?: number, so
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int--><!--Device-Buffer-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -98,7 +122,7 @@ copy(target: Buffer | Uint8Array, targetStart?: number, sourceStart?: number, so
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must<br/>be &gt;= 0.<br/>Received value is: [targetStart/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be &gt;= 0.Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -130,13 +154,16 @@ entries(): IterableIterator<[number, number]>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-entries(): IterableIterator<[int, long]>--><!--Device-Buffer-entries(): IterableIterator<[int, long]>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[number, number]&gt; | 包含key和value的迭代器，同时两者皆为number类型。[since 9 - 10]<br/>@returns { IterableIterator } [since 11] |
+| IterableIterator<[number, number]> | 包含key和value的迭代器，同时两者皆为number类型。<br>**适用版本：** 9 - 10 |
+| IterableIterator<[number, number]> | <br>**适用版本：** 11+ |
 
 **示例：**
 
@@ -172,6 +199,8 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Buffer-equals(otherBuffer: Uint8Array | Buffer): boolean--><!--Device-Buffer-equals(otherBuffer: Uint8Array | Buffer): boolean-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -220,28 +249,40 @@ fill(
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-fill(
+      value: string | Buffer | Uint8Array | int | double | long,
+      offset?: int,
+      end?: int,
+      encoding?: BufferEncoding
+    ): Buffer--><!--Device-Buffer-fill(
+      value: string | Buffer | Uint8Array | int | double | long,
+      offset?: int,
+      end?: int,
+      encoding?: BufferEncoding
+    ): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| Buffer \| Uint8Array \| number \| number \| number | 是 | 用于填充的值。[since 11] |
+| value | string \| Buffer \| Uint8Array \| number \| number \| number | 是 | 用于填充的值。<br>**起始版本：** 11 |
 | offset | number | 否 | 起始偏移量。默认值：0。 |
 | end | number | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 返回填充后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回填充后的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of "[offset/end]" is out of range. It must be &gt;= 0 and &lt;=<br/>[right range]. Received value is: [offset/end] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be &gt;= 0 and &lt;=[right range]. Received value is: [offset/end] |
 
 ## includes
 
@@ -255,15 +296,17 @@ includes(value: string | number | number | number | Buffer | Uint8Array, byteOff
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean--><!--Device-Buffer-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要搜索的内容。[since 11] |
+| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -283,15 +326,17 @@ indexOf(value: string | number | number | number | Buffer | Uint8Array, byteOffs
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int--><!--Device-Buffer-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要查找的内容。[since 11] |
+| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要查找的内容。<br>**起始版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -311,13 +356,15 @@ keys(): IterableIterator<number>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-keys(): IterableIterator<int>--><!--Device-Buffer-keys(): IterableIterator<int>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 返回一个包含key值的迭代器。 |
+| IterableIterator<number> | 返回一个包含key值的迭代器。 |
 
 **示例：**
 
@@ -352,15 +399,17 @@ lastIndexOf(value: string | number | number | number | Buffer | Uint8Array, byte
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int--><!--Device-Buffer-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要搜索的内容。[since 11] |
+| value | string \| number \| number \| number \| Buffer \| Uint8Array | 是 | 要搜索的内容。<br>**起始版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -380,25 +429,27 @@ readBigInt64BE(offset?: number): bigint
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readBigInt64BE(offset?: int): bigint--><!--Device-Buffer-readBigInt64BE(offset?: int): bigint-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint |  |
+| bigint | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -429,25 +480,27 @@ readBigInt64LE(offset?: number): bigint
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readBigInt64LE(offset?: int): bigint--><!--Device-Buffer-readBigInt64LE(offset?: int): bigint-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint |  |
+| bigint | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -478,25 +531,27 @@ readBigUInt64BE(offset?: number): bigint
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readBigUInt64BE(offset?: int): bigint--><!--Device-Buffer-readBigUInt64BE(offset?: int): bigint-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint |  |
+| bigint | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -526,25 +581,27 @@ readBigUInt64LE(offset?: number): bigint
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readBigUInt64LE(offset?: int): bigint--><!--Device-Buffer-readBigUInt64LE(offset?: int): bigint-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| bigint |  |
+| bigint | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -575,25 +632,27 @@ readDoubleBE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readDoubleBE(offset?: int): double--><!--Device-Buffer-readDoubleBE(offset?: int): double-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -622,25 +681,27 @@ readDoubleLE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readDoubleLE(offset?: int): double--><!--Device-Buffer-readDoubleLE(offset?: int): double-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -669,25 +730,27 @@ readFloatBE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readFloatBE(offset?: int): double--><!--Device-Buffer-readFloatBE(offset?: int): double-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -716,25 +779,27 @@ readFloatLE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readFloatLE(offset?: int): double--><!--Device-Buffer-readFloatLE(offset?: int): double-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -763,25 +828,27 @@ readInt16BE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readInt16BE(offset?: int): long--><!--Device-Buffer-readInt16BE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 2<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -810,25 +877,27 @@ readInt16LE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readInt16LE(offset?: int): long--><!--Device-Buffer-readInt16LE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 2<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -857,25 +926,27 @@ readInt32BE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readInt32BE(offset?: int): long--><!--Device-Buffer-readInt32BE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -904,25 +975,27 @@ readInt32LE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readInt32LE(offset?: int): long--><!--Device-Buffer-readInt32LE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -951,25 +1024,27 @@ readInt8(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readInt8(offset?: int): long--><!--Device-Buffer-readInt8(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 1<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 1. Received value is: [offset] |
 
 **示例：**
 
@@ -1000,26 +1075,28 @@ readIntBE(offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readIntBE(offset: int, byteLength: int): long--><!--Device-Buffer-readIntBE(offset: int, byteLength: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1049,26 +1126,28 @@ readIntLE(offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readIntLE(offset: int, byteLength: int): long--><!--Device-Buffer-readIntLE(offset: int, byteLength: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1097,25 +1176,27 @@ readUInt16BE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUInt16BE(offset?: int): long--><!--Device-Buffer-readUInt16BE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 2<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -1146,25 +1227,27 @@ readUInt16LE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUInt16LE(offset?: int): long--><!--Device-Buffer-readUInt16LE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 2<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 2. Received value is: [offset] |
 
 **示例：**
 
@@ -1195,25 +1278,27 @@ readUInt32BE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUInt32BE(offset?: int): long--><!--Device-Buffer-readUInt32BE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -1242,25 +1327,27 @@ readUInt32LE(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUInt32LE(offset?: int): long--><!--Device-Buffer-readUInt32LE(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -1289,25 +1376,27 @@ readUInt8(offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUInt8(offset?: int): long--><!--Device-Buffer-readUInt8(offset?: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 1<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 1. Received value is: [offset] |
 
 **示例：**
 
@@ -1338,26 +1427,28 @@ readUIntBE(offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUIntBE(offset: int, byteLength: int): long--><!--Device-Buffer-readUIntBE(offset: int, byteLength: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1386,26 +1477,28 @@ readUIntLE(offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-readUIntLE(offset: int, byteLength: int): long--><!--Device-Buffer-readUIntLE(offset: int, byteLength: int): long-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 读取出的内容。当offset为小数时，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1434,6 +1527,8 @@ subarray(start?: number, end?: number): Buffer
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-subarray(start?: int, end?: int): Buffer--><!--Device-Buffer-subarray(start?: int, end?: int): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1447,7 +1542,7 @@ subarray(start?: number, end?: number): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 返回新的Buffer对象。当start &lt; 0或end &lt; 0时返回空Buffer。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start &lt; 0或end &lt; 0时返回空Buffer。 |
 
 **示例：**
 
@@ -1477,19 +1572,21 @@ swap16(): Buffer
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-swap16(): Buffer--><!--Device-Buffer-swap16(): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 交换之后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200009](../../errorcode-universal.md#10200009-The) | The buffer size must be a multiple of 16-bits |
+| [10200009](../errorcode-utils.md#10200009-buffer的长度错误) | The buffer size must be a multiple of 16-bits |
 
 **示例：**
 
@@ -1517,19 +1614,21 @@ swap32(): Buffer
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-swap32(): Buffer--><!--Device-Buffer-swap32(): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 交换之后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200009](../../errorcode-universal.md#10200009-The) | The buffer size must be a multiple of 32-bits |
+| [10200009](../errorcode-utils.md#10200009-buffer的长度错误) | The buffer size must be a multiple of 32-bits |
 
 **示例：**
 
@@ -1557,19 +1656,21 @@ swap64(): Buffer
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-swap64(): Buffer--><!--Device-Buffer-swap64(): Buffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Buffer | 交换之后的Buffer对象。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 交换之后的Buffer对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200009](../../errorcode-universal.md#10200009-The) | The buffer size must be a multiple of 64-bits |
+| [10200009](../errorcode-utils.md#10200009-buffer的长度错误) | The buffer size must be a multiple of 64-bits |
 
 **示例：**
 
@@ -1596,6 +1697,8 @@ toJSON(): Object
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Buffer-toJSON(): Object--><!--Device-Buffer-toJSON(): Object-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1628,6 +1731,8 @@ toString(encoding?: string, start?: number, end?: number): string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string--><!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1671,13 +1776,15 @@ values(): IterableIterator<number>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-values(): IterableIterator<long>--><!--Device-Buffer-values(): IterableIterator<long>-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 迭代器。 |
+| IterableIterator<number> | 迭代器。 |
 
 **示例：**
 
@@ -1714,6 +1821,8 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-write(str: string, offset?: int, length?: int, encoding?: string): int--><!--Device-Buffer-write(str: string, offset?: int, length?: int, encoding?: string): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1735,7 +1844,7 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001-The) | The value of "[offset/length]" is out of range. It must be &gt;= 0 and &lt;=<br/>buf.length. Received value is: [offset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be &gt;= 0 and &lt;=buf.length. Received value is: [offset/length] |
 
 **示例：**
 
@@ -1766,6 +1875,8 @@ writeBigInt64BE(value: bigint, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeBigInt64BE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigInt64BE(value: bigint, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1773,19 +1884,19 @@ writeBigInt64BE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1811,6 +1922,8 @@ writeBigInt64LE(value: bigint, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeBigInt64LE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigInt64LE(value: bigint, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1818,19 +1931,19 @@ writeBigInt64LE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1856,6 +1969,8 @@ writeBigUInt64BE(value: bigint, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeBigUInt64BE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigUInt64BE(value: bigint, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1863,19 +1978,19 @@ writeBigUInt64BE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1901,6 +2016,8 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeBigUInt64LE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigUInt64LE(value: bigint, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1908,19 +2025,19 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -1946,6 +2063,8 @@ writeDoubleBE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeDoubleBE(value: double, offset?: int): int--><!--Device-Buffer-writeDoubleBE(value: double, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1953,19 +2072,19 @@ writeDoubleBE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -1991,6 +2110,8 @@ writeDoubleLE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeDoubleLE(value: double, offset?: int): int--><!--Device-Buffer-writeDoubleLE(value: double, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1998,19 +2119,19 @@ writeDoubleLE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 8<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 8. Received value is: [offset] |
 
 **示例：**
 
@@ -2036,6 +2157,8 @@ writeFloatBE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeFloatBE(value: double, offset?: int): int--><!--Device-Buffer-writeFloatBE(value: double, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2043,19 +2166,19 @@ writeFloatBE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -2081,6 +2204,8 @@ writeFloatLE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeFloatLE(value: double, offset?: int): int--><!--Device-Buffer-writeFloatLE(value: double, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2088,19 +2213,19 @@ writeFloatLE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = 0 and &lt;= buf.length - 4<br/>. Received value is: [offset] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be &gt;= 0 and &lt;= buf.length - 4. Received value is: [offset] |
 
 **示例：**
 
@@ -2126,6 +2251,8 @@ writeInt16BE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeInt16BE(value: long, offset?: int): int--><!--Device-Buffer-writeInt16BE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2133,19 +2260,19 @@ writeInt16BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2171,6 +2298,8 @@ writeInt16LE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeInt16LE(value: long, offset?: int): int--><!--Device-Buffer-writeInt16LE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2178,19 +2307,19 @@ writeInt16LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2216,6 +2345,8 @@ writeInt32BE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeInt32BE(value: long, offset?: int): int--><!--Device-Buffer-writeInt32BE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2223,19 +2354,19 @@ writeInt32BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2261,6 +2392,8 @@ writeInt32LE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeInt32LE(value: long, offset?: int): int--><!--Device-Buffer-writeInt32LE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2268,19 +2401,19 @@ writeInt32LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2306,6 +2439,8 @@ writeInt8(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeInt8(value: long, offset?: int): int--><!--Device-Buffer-writeInt8(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2313,19 +2448,19 @@ writeInt8(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2354,6 +2489,8 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeIntBE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeIntBE(value: long, offset: int, byteLength: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2361,20 +2498,20 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2400,6 +2537,8 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeIntLE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeIntLE(value: long, offset: int, byteLength: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2407,20 +2546,20 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2446,6 +2585,8 @@ writeUInt16BE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUInt16BE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt16BE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2453,19 +2594,19 @@ writeUInt16BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2494,6 +2635,8 @@ writeUInt16LE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUInt16LE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt16LE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2501,19 +2644,19 @@ writeUInt16LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2542,6 +2685,8 @@ writeUInt32BE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUInt32BE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt32BE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2549,19 +2694,19 @@ writeUInt32BE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2587,6 +2732,8 @@ writeUInt32LE(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUInt32LE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt32LE(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2594,19 +2741,19 @@ writeUInt32LE(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2632,6 +2779,8 @@ writeUInt8(value: number, offset?: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUInt8(value: long, offset?: int): int--><!--Device-Buffer-writeUInt8(value: long, offset?: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2639,19 +2788,19 @@ writeUInt8(value: number, offset?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2686,6 +2835,8 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUIntBE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeUIntBE(value: long, offset: int, byteLength: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2693,20 +2844,20 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2732,6 +2883,8 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-writeUIntLE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeUIntLE(value: long, offset: int, byteLength: int): int-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -2739,20 +2892,20 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 = [left range] and &lt;=<br/>[right range]. Received value is: [param] |
-| byteLength | number | 是 |  |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| byteLength | number | 是 | 要写入的字节数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number |  |
+| number | 偏移量offset加上写入的字节数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../../errorcode-universal.md#10200001) |  |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be &gt;= [left range] and &lt;=[right range]. Received value is: [param] |
 
 **示例：**
 
@@ -2780,6 +2933,8 @@ ArrayBuffer对象。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
+<!--Device-Buffer-buffer: ArrayBuffer--><!--Device-Buffer-buffer: ArrayBuffer-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 ## byteOffset
@@ -2788,16 +2943,15 @@ ArrayBuffer对象。
 byteOffset: number
 ```
 
-当前Buffer所在内存池的偏移量。
-当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocUninitializedFromPool-1)创建Buffer，
-或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。
-当Buffer直接分配内存时（如使用[alloc](arkts-arkts-buffer-alloc-f.md#alloc-1)），返回值为0。
+当前Buffer所在内存池的偏移量。当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool-1)创建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。当Buffer直接分配内存时（如使用[alloc](arkts-arkts-buffer-alloc-f.md#alloc-1)），返回值为0。
 
 **类型：** number
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Buffer-byteOffset: number--><!--Device-Buffer-byteOffset: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2814,6 +2968,8 @@ Buffer对象的字节长度。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+
+<!--Device-Buffer-length: number--><!--Device-Buffer-length: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

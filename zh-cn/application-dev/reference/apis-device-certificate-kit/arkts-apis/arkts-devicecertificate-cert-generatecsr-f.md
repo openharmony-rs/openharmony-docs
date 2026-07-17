@@ -1,16 +1,24 @@
 # generateCsr
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+```
+
 ## generateCsr
 
 ```TypeScript
 function generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array
 ```
 
-表示使用指定的RSA私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。
+表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。
 
 **起始版本：** 18
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+
+<!--Device-cert-function generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array--><!--Device-cert-function generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array-End-->
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -18,8 +26,8 @@ function generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyInfo | PrivateKeyInfo | 是 | 包含私钥跟口令的配置参数。 |
-| config | CsrGenerationConfig | 是 | 包含生成CSR的配置参数。 |
+| keyInfo | [PrivateKeyInfo](arkts-devicecertificate-cert-privatekeyinfo-i.md) | 是 | 包含私钥跟口令的配置参数。 |
+| config | [CsrGenerationConfig](arkts-devicecertificate-cert-csrgenerationconfig-i.md) | 是 | 包含生成CSR的配置参数。 |
 
 **返回值：**
 
@@ -31,11 +39,11 @@ function generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): stri
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数错误) | 参数错误。可能的原因：<br/><br/>1. 必填参数未指定；<br/><br/>2. 参数类型不正确；<br/><br/>3. 参数校验失败。 |
-| [19020001](../../errorcode-universal.md#19020001-内存错误) | 内存错误。 |
-| [19020002](../../errorcode-universal.md#19020002-运行时外部错误) | 运行时外部错误。可能的原因：<br/><br/>1. 内存拷贝失败；<br/><br/>2. 系统内部出现空指针；<br/><br/>3. 获取Native对象失败或参数转换失败。 |
-| [19030001](../../errorcode-universal.md#19030001-调用三方算法库API出错) | 调用三方算法库API出错。 |
-| [19030008](../../errorcode-universal.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | 参数错误。可能的原因：<br>1. 必填参数未指定；<br>2. 参数类型不正确；<br>3. 参数校验失败。 |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
 
 **示例：**
 

@@ -1,5 +1,11 @@
 # setDefaultResourceUsageObserver
 
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
 ## setDefaultResourceUsageObserver
 
 ```TypeScript
@@ -16,7 +22,9 @@ function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+
+<!--Device-errorManager-function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver--><!--Device-errorManager-function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,19 +32,19 @@ function setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| defaultObserver | ResourceUsageObserver | 否 | 新注册的资源观察者，默认值为空。 |
+| defaultObserver | [ResourceUsageObserver](arkts-ability-errormanager-resourceusageobserver-t.md) | 否 | 新注册的资源观察者，默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ResourceUsageObserver | 返回上一次注册的资源观察者。 |
+| [ResourceUsageObserver](arkts-ability-errormanager-resourceusageobserver-t.md) | 返回上一次注册的资源观察者。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [16000205](../../errorcode-universal.md#16000205-API未在主线程中调用) | API未在主线程中调用。 |
+| [16000205](../errorcode-ability.md#16000205-当前接口未在主线程中调用) | API未在主线程中调用。 |
 
 **示例：**
 

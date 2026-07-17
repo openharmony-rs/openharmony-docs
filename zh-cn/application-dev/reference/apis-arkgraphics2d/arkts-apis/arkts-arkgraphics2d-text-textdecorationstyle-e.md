@@ -1,12 +1,10 @@
 # TextDecorationStyle
 
-```TypeScript
-enum TextDecorationStyle
-```
-
 装饰线样式枚举。
 
 **起始版本：** 12
+
+<!--Device-text-enum TextDecorationStyle--><!--Device-text-enum TextDecorationStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -22,6 +20,8 @@ SOLID = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## DOUBLE
@@ -35,6 +35,8 @@ DOUBLE = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,6 +52,8 @@ DOTTED = 2
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-TextDecorationStyle-DOTTED = 2--><!--Device-TextDecorationStyle-DOTTED = 2-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## DASHED
@@ -64,6 +68,8 @@ DASHED = 3
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
+<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 ## WAVY
@@ -77,6 +83,8 @@ WAVY = 4
 **起始版本：** 12
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+
+<!--Device-TextDecorationStyle-WAVY = 4--><!--Device-TextDecorationStyle-WAVY = 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

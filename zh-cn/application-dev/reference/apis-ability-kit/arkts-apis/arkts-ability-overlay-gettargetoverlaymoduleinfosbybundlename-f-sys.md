@@ -1,5 +1,11 @@
 # getTargetOverlayModuleInfosByBundleName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+```
+
 ## getTargetOverlayModuleInfosByBundleName
 
 ```TypeScript
@@ -7,13 +13,17 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string,
       callback: AsyncCallback<Array<OverlayModuleInfo>>): void
 ```
 
-��ȡָ��Ӧ��������module����������OverlayModuleInfo��Ϣ��ʹ��callback�첽�ص���
+获取指定应用中所有module关联的所有OverlayModuleInfo信息。使用callback异步回调。
 
-ָ��Ӧ���ǵ��÷�����ʱ����ҪȨ�ޡ�
+指定应用是调用方自身时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-overlay-function getTargetOverlayModuleInfosByBundleName(targetBundleName: string,
+      callback: AsyncCallback<Array<OverlayModuleInfo>>): void--><!--Device-overlay-function getTargetOverlayModuleInfosByBundleName(targetBundleName: string,
+      callback: AsyncCallback<Array<OverlayModuleInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -23,18 +33,18 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundleName | string | 是 | ָ��Ŀ��Ӧ�õ�bundle���ơ� |
-| callback | AsyncCallback&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)������ȡָ��Ӧ��������<br/>module����������[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#OverlayModuleInfo)��Ϣ�ɹ�ʱ��err����undefined����<br/>��ص��������ؾ��������� |
+| targetBundleName | string | 是 | 指定目标应用的bundle名称。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<OverlayModuleInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取指定应用中所有module关联的所有[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)信息成功时，err返回undefined。否则回调函数返回具体错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700035](../../errorcode-universal.md#17700035-The) | The specified bundle is an overlay bundle. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700035](../errorcode-bundle.md#17700035-指定的应用只包含overlay特征的module) | The specified bundle is an overlay bundle. |
 
 **示例：**
 
@@ -69,13 +79,15 @@ try {
 function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void
 ```
 
-��ȡָ��Ӧ����ָ��module����������OverlayModuleInfo��Ϣ��ʹ��callback�첽�ص���
+获取指定应用中指定module关联的所有OverlayModuleInfo信息。使用callback异步回调。
 
-ָ��Ӧ���ǵ��÷�����ʱ����ҪȨ�ޡ�
+指定应用是调用方自身时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-overlay-function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void--><!--Device-overlay-function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -85,21 +97,21 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, modul
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundleName | string | 是 | ָ��Ŀ��Ӧ�õ�bundle���ơ� |
-| moduleName | string | 是 | ָ��Ӧ���е�Ŀ��module�����ơ�ȱʡ���ֶ�ʱ����ѯ�ӿڽ���ѯָ��Ӧ��������module��������OverlayModuleInfo��Ϣ�� |
-| callback | AsyncCallback&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [�ص�����](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-i.md#AsyncCallback)������ȡָ��Ӧ����ָ��<br/>module����������[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#OverlayModuleInfo)��Ϣ�ɹ�ʱ��err����undefined����<br/>��ص��������ؾ��������� |
+| targetBundleName | string | 是 | 指定目标应用的bundle名称。 |
+| moduleName | string | 是 | 指定应用中的目标module的名称。缺省该字段时，查询接口将查询指定应用中所有module所关联的OverlayModuleInfo信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<OverlayModuleInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取指定应用中指定module关联的所有[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)信息成功时，err返回undefined。否则回调函数返回具体错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module name is not found. |
-| [17700034](../../errorcode-universal.md#17700034-The) | The specified module is an overlay module. |
-| [17700035](../../errorcode-universal.md#17700035-The) | The specified bundle is an overlay bundle. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
+| [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
+| [17700035](../errorcode-bundle.md#17700035-指定的应用只包含overlay特征的module) | The specified bundle is an overlay bundle. |
 
 **示例：**
 
@@ -135,13 +147,15 @@ try {
 function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>
 ```
 
-��ȡָ��Ӧ����ָ��module����������OverlayModuleInfo��Ϣ��ʹ��promise�첽�ص���
+获取指定应用中指定module关联的所有OverlayModuleInfo信息。使用promise异步回调。
 
-ָ��Ӧ���ǵ��÷�����ʱ����ҪȨ�ޡ�
+指定应用是调用方自身时不需要权限。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+<!--Device-overlay-function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>--><!--Device-overlay-function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -151,26 +165,26 @@ function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, modul
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundleName | string | 是 | ָ��Ŀ��Ӧ�õ�bundle���ơ� |
-| moduleName | string | 否 | ָ��Ӧ���е�Ŀ��module�����ơ�Ĭ��ֵ��ȱʡ���ֶ�ʱ����ѯ�ӿڽ���ѯָ��Ӧ��������module��������OverlayModuleInfo��Ϣ�� |
+| targetBundleName | string | 是 | 指定目标应用的bundle名称。 |
+| moduleName | string | 否 | 指定应用中的目标module的名称。默认值：缺省该字段时，查询接口将查询指定应用中所有module所关联的OverlayModuleInfo信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;OverlayModuleInfo&gt;&gt; | Promise���󣬷���&gt;�� |
+| Promise<Array<OverlayModuleInfo>> | Promise对象，返回&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)&gt;&gt;。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.<br/>Incorrect parameter types. |
-| [201](../../errorcode-universal.md#201-Permission) | Permission denied. |
-| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api. |
-| [17700001](../../errorcode-universal.md#17700001-The) | The specified bundleName is not found. |
-| [17700002](../../errorcode-universal.md#17700002-The) | The specified module name is not found. |
-| [17700034](../../errorcode-universal.md#17700034-The) | The specified module is an overlay module. |
-| [17700035](../../errorcode-universal.md#17700035-The) | The specified bundle is an overlay bundle. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
+| [17700034](../errorcode-bundle.md#17700034-指定的module是overlay特征的module) | The specified module is an overlay module. |
+| [17700035](../errorcode-bundle.md#17700035-指定的应用只包含overlay特征的module) | The specified bundle is an overlay bundle. |
 
 **示例：**
 

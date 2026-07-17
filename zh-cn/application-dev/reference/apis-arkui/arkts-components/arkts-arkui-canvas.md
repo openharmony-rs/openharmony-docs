@@ -13,9 +13,11 @@ Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 **起始版本：** 8
 
-**元服务API：** 从API版本11开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasInterface-(context?: CanvasRenderingContext2D | DrawingRenderingContext): CanvasAttribute--><!--Device-CanvasInterface-(context?: CanvasRenderingContext2D | DrawingRenderingContext): CanvasAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +39,9 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本12开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CanvasInterface-(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions): CanvasAttribute--><!--Device-CanvasInterface-(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions): CanvasAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,26 +58,27 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 Canvas(params: CanvasParams)
 ```
 
-使用CanvasParams创建不缓存指令的Canvas组件。创建Canvas组件时，最大面积不超过10000px*10000px，
-超过最大面积则无法正常创建。
+使用CanvasParams创建不缓存指令的Canvas组件。创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。
 
-> **说明：**
->
-> - 使用本接口创建的Canvas组件将在onReady回调的入参中返回一个
-> [DrawingRenderingContext](docroot://reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md)
-> 对象，可用于在该Canvas组件上进行绘制。
->
-> - 使用这个接口创建的Canvas组件在组件不可见时将不响应绘制指令。
->
-> - 不可见场景主要包括组件所在的页面进入后台、组件滑到窗口外、设置
-> [visibility](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)
+> **说明：**  
+>  
+> - 使用本接口创建的Canvas组件将在onReady回调的入参中返回一个  
+> [DrawingRenderingContext](docroot://reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md)  
+> 对象，可用于在该Canvas组件上进行绘制。  
+>  
+> - 使用这个接口创建的Canvas组件在组件不可见时将不响应绘制指令。  
+>  
+> - 不可见场景主要包括组件所在的页面进入后台、组件滑到窗口外、设置  
+> [visibility](docroot://reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)  
 > 属性为隐藏等，不包括组件被其他组件或是其他窗口遮挡导致不可见的场景。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**元服务API：** 从API版本23开始，该接口支持在元服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+
+<!--Device-CanvasInterface-(params: CanvasParams): CanvasAttribute--><!--Device-CanvasInterface-(params: CanvasParams): CanvasAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

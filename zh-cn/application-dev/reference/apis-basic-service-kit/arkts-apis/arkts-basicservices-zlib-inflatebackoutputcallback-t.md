@@ -8,7 +8,9 @@ type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: num
 
 **起始版本：** 12
 
-**原子化服务API：** 该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-zlib-type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: int) => int--><!--Device-zlib-type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: int) => int-End-->
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 

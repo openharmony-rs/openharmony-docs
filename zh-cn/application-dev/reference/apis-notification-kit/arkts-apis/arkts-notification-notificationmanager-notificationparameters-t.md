@@ -10,6 +10,8 @@ export type NotificationParameters = _NotificationParameters
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-notificationManager-export type NotificationParameters = _NotificationParameters--><!--Device-notificationManager-export type NotificationParameters = _NotificationParameters-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **属性类型：** _NotificationParameters

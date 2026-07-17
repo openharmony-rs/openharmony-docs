@@ -9,6 +9,10 @@ export type FocusCondition = 'forward' | 'backward' |
 
 **起始版本：** 23
 
+<!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |
+'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'--><!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |
+'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'-End-->
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
