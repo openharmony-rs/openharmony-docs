@@ -699,7 +699,7 @@ void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 异步跟踪任务的名字，用于标识要测量的异步操作，需与对应的结束接口的name参数相同。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
+| const char *name | 异步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int32_t taskId | 异步跟踪的ID。 异步跟踪开始和结束由于不是顺序发生的，所以需要通过name和每次执行唯一的taskId进行开始和结束的匹配。 |
 
 ### OH_HiTrace_FinishAsyncTrace()
@@ -758,7 +758,7 @@ void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const
 | -- | -- |
 | [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出级别。低于系统跟踪输出级别阈值的打点将不会生效。<br> log版本阈值为[HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level)；nolog版本阈值为[HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level)。 |
 | const char *name | 同步跟踪的名字。<br> 由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
-| const char *customArgs | 自定义键值对参数，用于附加额外的跟踪信息，多个键值对使用逗号分隔，例'key1=value1,key2=value2'。这些参数可以在性能分析时帮助过滤或标记特定的跟踪点。<br> 由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
+| const char *customArgs | 自定义键值对参数，用于附加额外的跟踪信息，多个键值对使用逗号分隔，例"key1=value1,key2=value2"。这些参数可以在性能分析时帮助过滤或标记特定的跟踪点。<br> 由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
 
 ### OH_HiTrace_FinishTraceEx()
 
