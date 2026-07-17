@@ -2210,6 +2210,7 @@ try {
 | deviceId | string      | 否    | 否    | 配对中的对端设备地址。 |
 | state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。 |
 | cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。|
+| causeMessage | string | 否 | 是 | 配对失败的具体原因，例如：本端业务主动删除配对时，返回：USER_REMOVED。<br> **起始版本**：26.0.0  |
 
 
 ## PinRequiredParam
