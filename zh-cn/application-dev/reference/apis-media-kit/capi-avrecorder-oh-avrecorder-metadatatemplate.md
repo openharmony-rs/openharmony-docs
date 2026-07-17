@@ -26,7 +26,7 @@ typedef struct OH_AVRecorder_MetadataTemplate {...} OH_AVRecorder_MetadataTempla
 
 | 名称 | 描述 |
 | -- | -- |
-| char* key | 元数据的键值。 |
+| char* key | 元数据的键。 |
 | char* value | 元数据的内容。 |
 
 

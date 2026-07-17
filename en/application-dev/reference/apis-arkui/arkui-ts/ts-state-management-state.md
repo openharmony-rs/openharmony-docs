@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:36:54.931Z pushedAt=2026-07-15T10:06:00.856Z -->
 
-**@State** is used for state management V1 to convert common variables in a custom component into state variables. When the state variables change, the UI in the component is re-rendered. It is applicable to scenarios where mutable states need to be managed within a component.
+**\@State** is used for [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to convert common variables within a custom component into state variables. When the state variables change, the UI in the component is re-rendered. It is applicable to scenarios where mutable states need to be managed within a component.
 
 For details, see [@State Decorator: State Owned by Component](../../../ui/state-management/arkts-state.md).
 

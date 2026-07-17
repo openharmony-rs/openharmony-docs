@@ -6,11 +6,11 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **CalendarPicker** component provides a drop-down calendar for users to select a date.
+The **CalendarPicker** component provides a drop-down calendar window for users to quickly select a date. It is applicable to scenarios where users need to select a specific date, such as reservation, schedule arrangements, and date filtering, and provides an intuitive calendar view to improve user experience in date input.
 
 > **NOTE**
 >
-> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
 
@@ -36,7 +36,7 @@ Creates a calendar picker.
 
 | Name | Type                                       | Mandatory| Description                      |
 | ------- | ------------------------------------------- | ---- | -------------------------- |
-| options | [CalendarOptions](#calendaroptions) | No  | Parameters of the calendar picker.|
+| options | [CalendarOptions](#calendaroptions) | No  | Parameters of the calendar picker. If this parameter is not set, the default configuration is used.|
 
 ## Attributes
 
@@ -61,7 +61,7 @@ Sets how the picker is aligned with the entry component.
 | Name   | Type                                   | Mandatory| Description                                                        |
 | --------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | alignType | [CalendarAlign](#calendaralign) | Yes  | Alignment type.<br>Default value: **CalendarAlign.END**.                |
-| offset    | [Offset](ts-types.md#offset)            | No  | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}**|
+| offset    | [Offset](ts-types.md#offset)            | No  | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}**<br>Unit: vp.|
 
 ### edgeAlign<sup>18+</sup>
 
@@ -81,8 +81,8 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CalendarAlign](#calendaralign)>| Yes  | Alignment type.<br>Default value: **CalendarAlign.END**.<br>If the value of **alignType** is **undefined**, the default value is used.|
-| offset    | [Offset](ts-types.md#offset)                                 | No  | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}**|
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CalendarAlign](#calendaralign)>| Yes| Alignment type.<br>Default value: **CalendarAlign.END**.<br>If the value of **alignType** is **undefined**, the default value is used.|
+| offset    | [Offset](ts-types.md#offset)                                 | No  | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}**<br>Unit: vp.|
 
 ### textStyle
 
@@ -122,7 +122,7 @@ Sets the font color, font size, and font weight in the entry area. Compared with
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight in the entry area.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes| Font color, font size, and font weight in the entry area.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### markToday<sup>19+</sup>
 
@@ -166,7 +166,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 | Name| Type| Mandatory| Description          |
 | ------ | ---- | ---- | -------------- |
-| callback | [Callback](ts-types.md#callback12)\<Date> | Yes  | Selected date value.|
+| callback | [Callback](ts-types.md#callback12)\<Date> | Yes| Called when a date is selected. The callback parameter is the selected date of the **Date** type. You can obtain the selected date in the callback function and perform corresponding processing.|
 
 ### onChange<sup>18+</sup>
 
@@ -190,7 +190,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<Date>> | Yes  | Selected date value.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<Date>> | Yes  | Called when a date is selected. The callback parameter is the selected date.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ##  CalendarOptions
 
@@ -204,13 +204,13 @@ Describes the parameters of the calendar picker.
 
 | Name     | Type      | Read-Only| Optional       | Description                           |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
-| hintRadius | number \| [Resource](ts-types.md#resource) | No  | Yes   | Corner radius of the background of the selected state in the calendar picker.<br>Value range: [0.0, 16.0]<br>Unit: vp.<br>Default value: **16.0** (the background is a circle).<br>**NOTE**<br>If the value is **0.0**, the background is a right-angled rectangle. If the value is in the (0.0, 16.0) range, the background is a rounded rectangle. If the value is a negative number or greater than 16.0, the default value **16.0** is used, which means the background is a circle.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected | Date | No  | Yes   | Date of the selected item. If the value is not set or does not comply with the date format specifications, the default value will be used.<br>Default value: current system date<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| start<sup>18+</sup> | Date | No  | Yes   | Start date.<br>Default value: **Date('0001-01-01')**<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| end<sup>18+</sup> | Date | No  | Yes   | End date.<br>Default value: **Date('5000-12-31')**.<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| disabledDateRange<sup>19+</sup> | [DateRange](ts-picker-common.md#daterange19)[] | No  | Yes   | Disabled date range.<br>**NOTE**<br>1. If the start date or end date within a date range is invalid or is not set, the entire date range does not take effect.<br>2. If the end date is earlier than the start date within a date range, the entire date range does not take effect.<br>3. When users select a date and adjust it with the up or down arrow keys, the system skips over all dates in the disabled date range.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| hintRadius | number \| [Resource](ts-types.md#resource) | No  | Yes   | Background style of the selected state in the calendar picker.<br>Value range: [0.0, 16.0]<br>Unit: vp.<br>Default value: **16.0** (the background is a circle).<br>**NOTE**<br>If the value of **hintRadius** is **0.0**, the background is a rectangle with square corners. If the value of **hintRadius** is within the range (0.0, 16.0), the background is a rectangle with rounded corners. If the value of **hintRadius** is **16.0**, the background is a circle. If the value of **hintRadius** is a negative number or greater than **16.0**, the default value **16.0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected | Date | No  | Yes   | Date of the selected item. This parameter is passed when the selected date needs to be preset. If the date does not need to be preset, the current system date is used. If the value is not set or does not comply with the date format specifications, the default value will be used. For details about the relationship between the selected date and the **start** and **end** parameters, see [Rules for setting start and end](#rules-for-setting-start-and-end).<br>Default value: current system date<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| start<sup>18+</sup> | Date | No  | Yes   | Start date.<br>Default value: **Date('0001-01-01')**<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>Note: If the start date is later than the end date, both the settings of **start** and **end** are invalid, and the selected date is the default value. For details, see [Rules for setting start and end](#rules-for-setting-start-and-end).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| end<sup>18+</sup> | Date | No  | Yes   | End date.<br>Default value: **Date('5000-12-31')**.<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>Note: If the start date is later than the end date, both the settings of **start** and **end** are invalid, and the selected date is the default value. For details, see [Rules for setting start and end](#rules-for-setting-start-and-end).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| disabledDateRange<sup>19+</sup> | [DateRange](ts-picker-common.md#daterange19)[] | No  | Yes   | Disabled date range. If this parameter is not passed, no date is disabled.<br>**NOTE**<br>1. If the start date or end date within a date range is invalid or is not set, the entire date range does not take effect.<br>2. If the end date is earlier than the start date within a date range, the entire date range does not take effect.<br>3. When users select a date and adjust it with the up or down arrow keys, the system skips over all dates in the disabled date range.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
-**Rules for setting start and end**
+### Rules for Setting start and end
 
 | Scenario  | Description |
 | -------- |  ------------------------------------------------------------ |
@@ -219,7 +219,7 @@ Describes the parameters of the calendar picker.
 | The selected date is later than the end date.   | The selected date is set as the end date. |
 | The start date is later than the current system date, and the selected date is not set.   | The selected date is set as the start date. |
 | The end date is earlier than the current system date, and the selected date is not set.   | The selected date is set as the end date. |
-| The set date is in invalid format, for example, **'1999-13-32'**.| The start or end date setting is invalid, and the selected date is the default value. |
+| The set date is in invalid format, for example, **1999-13-32**.| The start or end date setting is invalid, and the selected date is the default value.|
 
 ## CalendarAlign
 
@@ -256,7 +256,7 @@ struct CalendarPickerExample {
       Column() {
         CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
           .edgeAlign(CalendarAlign.END)
-          .textStyle({ color: "#ff182431", font: { size: 20, weight: FontWeight.Normal } })
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
           .margin(10)
           .onChange((value) => {
             console.info(`CalendarPicker onChange: ${value.toString()}`);
@@ -291,7 +291,7 @@ struct CalendarPickerExample {
       Column() {
         CalendarPicker({ hintRadius: 10, selected: this.selectedDate, start: this.startDate, end: this.endDate })
           .edgeAlign(CalendarAlign.END)
-          .textStyle({ color: "#ff182431", font: { size: 20, weight: FontWeight.Normal } })
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
           .margin(10)
           .onChange((value) => {
             console.info(`CalendarPicker onChange: ${value.toString()}`);

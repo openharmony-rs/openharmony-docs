@@ -6,14 +6,15 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=244626bd3ee350522bab6ea45e122f80881abd5e translatedAt=2026-07-13T11:25:28.310Z pushedAt=2026-07-15T10:17:38.570Z -->
 
 ```
-typedef struct OH_Filter OH_Filter
+typedef struct OH_Filter OH_Filter;
 ```
 
 ## Overview
 
-Defines a struct for a filter used to generate a filter PixelMap.
+Filter struct, used with effectKit module APIs to implement filter effect processing.
 
 **Since**: 12
 
