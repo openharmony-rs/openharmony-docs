@@ -217,9 +217,9 @@ import { accessibility } from '@kit.AccessibilityKit';
  	 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
