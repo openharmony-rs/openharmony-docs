@@ -3118,7 +3118,7 @@ struct Index {
         .height(100)
         .width(100)
         .onError((e)=>{
-          console.info("DownLoadErrorInfo : " + JSON.stringify(e?.downloadInfo))
+          console.info("DownloadErrorInfo : " + JSON.stringify(e?.downloadInfo))
         })
     }
     .height('100%')

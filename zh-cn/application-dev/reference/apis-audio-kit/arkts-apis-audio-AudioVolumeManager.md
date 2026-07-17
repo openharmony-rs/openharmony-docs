@@ -744,11 +744,10 @@ import { audio } from '@kit.AudioKit'
 
 try {
   let volumeInDb = audio.getAudioManager().getVolumeManager().getVolumeInUnitOfDbByStream(audio.StreamUsage.STREAM_USAGE_MUSIC, 5, audio.DeviceType.SPEAKER);
-  console.info(`Gets the volume db value that system calculate by volume stream, volume level and device type.
- success.`);
+  console.info('Succeeded in getting volume in unit of db by stream.');
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to gets the volume db value that system calculate by volume stream, volume level and device type., error: ${error}`);
+  console.error(`Failed to get volume in unit of db by stream. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

@@ -83,6 +83,7 @@
     - [@ohos.annotation (注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
+    - [@ohos.settingsLite (设置信息)](js-apis-settings-lite.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (性能功耗热融合档位)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)

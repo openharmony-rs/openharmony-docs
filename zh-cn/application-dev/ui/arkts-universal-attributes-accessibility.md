@@ -415,7 +415,7 @@ export struct AccessibilityLevelCase01 {
 
 ### 在支持多选的情况下，设置无障碍节点是否被选中
 
-[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)属性，用于表示组件在支持多选的情况下是否被勾选（如复选框、开关按钮等二态或三态组件），适用于需要明确“选中/未选中”语义的场景，支持以下值：
+[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)属性，用于表示组件是否被勾选（如复选框、开关按钮等二态或三态组件），适用于需要明确“选中/未选中”语义的场景，支持以下值：
 
 - undefined（默认）：由系统自动判断（依赖组件自身的状态，如Toggle组件的isOn属性）。
 
