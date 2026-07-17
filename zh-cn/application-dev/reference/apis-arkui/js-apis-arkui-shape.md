@@ -458,7 +458,7 @@ position(position: Position): T
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| position | [Position](arkui-ts/ts-types.md#position) | 是 | 设置形状的位置。 |
+| position | [Position](arkui-ts/ts-types.md#position) | 是 | 形状的位置。 |
 
 **返回值：**
 

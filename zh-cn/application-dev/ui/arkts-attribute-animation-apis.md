@@ -105,7 +105,7 @@ struct attrAnimationDemo3 {
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
   @State translateX: number = 0; // 组件二偏移量
-  @State opacityValue: number = 1; // 组件二透明度
+  @State opacityValue: number = 1; // 组件一、组件二透明度
 
   // 第二步：将状态变量设置到相关可动画属性接口
   build() {
@@ -130,7 +130,7 @@ struct attrAnimationDemo3 {
         this.rotateValue = this.animate ? 90 : 0;
         // 组件二的translate属性发生变化，所以会给组件二添加translate偏移动画
         this.translateX = this.animate ? 50 : 0;
-        // 父组件column的opacity属性有变化，会导致其子节点的透明度也变化，所以这里会给column和其子节点的透明度属性都添加动画
+        // 组件一、组件二的opacity属性发生变化，所以会给组件一、组件二添加透明度动画
         this.opacityValue = this.animate ? 0.6 : 1;
       })
 

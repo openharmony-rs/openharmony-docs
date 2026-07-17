@@ -19,7 +19,7 @@
 - [边框设置](ts-universal-attributes-border.md)
 - [图片边框设置](ts-universal-attributes-border-image.md)
 - [背景设置](ts-universal-attributes-background.md)
-- [透明度设置](ts-universal-attributes-opacity.md)
+- [不透明度设置](ts-universal-attributes-opacity.md)
 - [显隐控制](ts-universal-attributes-visibility.md)
 - [禁用控制](ts-universal-attributes-enable.md)
 - [浮层](ts-universal-attributes-overlay.md)
