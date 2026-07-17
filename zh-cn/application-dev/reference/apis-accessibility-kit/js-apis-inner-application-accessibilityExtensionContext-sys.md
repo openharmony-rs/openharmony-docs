@@ -970,7 +970,7 @@ updateAccessibilityElementProperty(elementId: number, windowId: number, node: Ac
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#operatevirtualnoderesult)&gt; | Promise对象，返回执行结果。 |
 
 **错误码：**
 
@@ -1060,7 +1060,7 @@ addAccessibilityVirtualNodes(elementId: number, windowId: number, nodes: Array&l
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#operatevirtualnoderesult)&gt; | Promise对象，返回执行结果。 |
 
 **错误码：**
 
@@ -1149,7 +1149,7 @@ removeAccessibilityVirtualNodes(elementId: number, windowId: number): Promise&lt
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#OperateVirtualNodeResult)&gt; | Promise对象，返回执行结果。 |
+| Promise&lt;[OperateVirtualNodeResult](./js-apis-accessibility-sys.md#operatevirtualnoderesult)&gt; | Promise对象，返回执行结果。 |
 
 **错误码：**
 
@@ -1288,7 +1288,7 @@ export default class AccessibilityManager {
 | belongTreeId             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | childrenTreeId             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | customActions             | Array\<string>                                                             | 否  | 是  | 元素支持的自定义操作列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| sourceType             | [AccessibilitySourceType](js-apis-inner-application-accessibilityExtensionContext.md#AccessibilitySourceType) | 否  | 是  | 组件来源类型，用于区分默认组件和新增、修改的虚拟组件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| sourceType             | [AccessibilitySourceType](js-apis-inner-application-accessibilityExtensionContext.md#accessibilitysourcetype) | 否  | 是  | 组件来源类型，用于区分默认组件和新增、修改的虚拟组件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **示例：**
 ```ts
