@@ -2335,7 +2335,7 @@ struct SelectExample {
 ![](figures/SelectSymbol.png)
 
 ### 示例3（自定义下拉菜单）
-该示例实现了一个自定义下拉菜选项的Select组件。自定义下拉菜单选项样式为"文本 + Symbol图片 + 空白间隔 + 文本 + 绘制三角形"，点击菜单选项后Select组件显示菜单选项的文本内容。
+该示例实现了一个自定义下拉菜单选项的Select组件。自定义下拉菜单选项样式为"文本 + Symbol图片 + 空白间隔 + 文本 + 绘制三角形"，点击菜单选项后Select组件显示菜单选项的文本内容。
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
