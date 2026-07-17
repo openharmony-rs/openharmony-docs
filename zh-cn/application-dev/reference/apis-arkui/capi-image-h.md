@@ -52,10 +52,10 @@ enum ArkUI_ImageRepeat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复。 |
-| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复铺设图片，图片按原样显示一次。 |
+| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复铺设图片，使图片横向铺满显示区域。 |
+| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复铺设图片，使图片纵向铺满显示区域。 |
+| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复铺设图片，使图片铺满整个显示区域。 |
 
 ### ArkUI_ImageSize
 
@@ -139,7 +139,7 @@ enum ArkUI_DynamicRangeMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下不会产生过暗的效果（一片黑）。 |
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（纯白），太暗的环境下不会产生过暗的效果（纯黑）。 |
 | ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | 受限的高动态范围，包含比SDR更丰富的亮度和色彩，但不是完整的HDR，一般用于需要兼容SDR的情况。 |
 | ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | 标准动态范围（Standard Dynamic Range，简称SDR），表示亮度范围有限，一般在0~100尼特（亮度单位）左右，明暗对比度较小，暗部容易糊成黑，亮部容易过曝。 |
 

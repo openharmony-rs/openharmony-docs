@@ -1018,7 +1018,7 @@ struct DialogExample {
           console.info("showDialog,is onDidDisappear!");
         },
         onWillAppear: () => {
-          this.log = 'Log information:#onWillAppear';
+          this.log = 'Log information:# onWillAppear';
           console.info("showDialog,is onWillAppear!");
         },
         onWillDisappear: () => {

@@ -40,13 +40,13 @@ type AudioCapturerChangeInfoArray = Array&lt;Readonly&lt;AudioCapturerChangeInfo
 
 type AudioEffectInfoArray = Array&lt;Readonly&lt;AudioEffectMode&gt;&gt;
 
-待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)数组，只读。
+ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)数组，只读。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
-| Array&lt;Readonly&lt;AudioEffectMode&gt;&gt; | 待查询ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)数组，只读。 |
+| Array&lt;Readonly&lt;AudioEffectMode&gt;&gt; | ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)数组，只读。 |
 
 ## AudioDeviceDescriptors
 
@@ -67,7 +67,7 @@ type AudioDeviceDescriptors = Array&lt;Readonly&lt;AudioDeviceDescriptor&gt;&gt;
 
 type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult | void
 
-回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据, 且务必保证往data填满待播放数据, 否则会导致音频服务播放杂音。
+回调函数类型，用于音频渲染器的数据写入。回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据，且务必保证往data填满待播放数据，否则会导致音频播放出现杂音。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 

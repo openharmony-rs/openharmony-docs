@@ -39,7 +39,7 @@ this.getUIContext().getPromptAction().openCustomDialog({
 })
 ```
 
-如果希望弹出框显示在某个指定页面内，需通过第二个参数[levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)来实现。此参数接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
+如果希望弹出框显示在某个指定页面内，需在options入参中设置[levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)属性来实现。此属性接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
 
 > **说明：**
 > 
@@ -59,7 +59,7 @@ Text(this.message).id('test_text')
         this.customDialogComponent();
       },
       // ···
-      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框	
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
       levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
     })
       .then((dialogId: number) => {
@@ -202,7 +202,7 @@ struct Next {
 
 ``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
- 	 
+
 let customDialogId: number = 0;
 
 @Builder

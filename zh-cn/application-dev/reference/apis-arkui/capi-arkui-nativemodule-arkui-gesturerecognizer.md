@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureRecognizer ArkUI_GestureRecognizer
 
 ## 概述
 
-提供手势组件实例对象定义。
+提供手势组件实例对象定义，用于在ArkUI手势识别相关接口中表示手势识别器对象，帮助开发者理解和使用组件手势识别能力。
 
 **起始版本：** 12
 

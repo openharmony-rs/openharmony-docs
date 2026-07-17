@@ -20,7 +20,7 @@
 
 本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCapture进行录屏，详细的API声明请参考[AVScreenCapture API参考](../../reference/apis-media-kit/capi-avscreencapture.md)。
 
-如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
+如果配置了采集麦克风音频数据，需申请对应麦克风权限ohos.permission.MICROPHONE和长时任务。配置方式请参考[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
 从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
@@ -55,7 +55,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    #include <string>
    ```
 
-2. 创建AVScreenCapture实例capture。
+2. 创建AVScreenCapture实例g_avCapture。
 
    <!-- @[screenCapture_create_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -65,77 +65,77 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 3. 配置录屏参数。
 
-   创建AVScreenCapture实例capture后，可以设置录屏所需要的参数。
+   创建AVScreenCapture实例g_avCapture后，可以设置录屏所需要的参数。
 
    其中，录屏存文件时默认录制内录，麦克风可以动态开关，可以同时内外录制。
 
    同时，录屏存文件需要设置状态回调，感知录制状态。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
-   // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
-   OH_AudioCaptureInfo micCapInfo = {
-       .audioSampleRate = 48000,
-       .audioChannels = 2,
-       .audioSource = OH_MIC
-   };
-   
-   OH_AudioCaptureInfo innerCapInfo = {
-       .audioSampleRate = 48000,
-       .audioChannels = 2,
-       .audioSource = OH_ALL_PLAYBACK
-   };
-   // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
-   // 为保证音频质量，此处音频比特率取值128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
-   OH_AudioEncInfo audioEncInfo = {
-       .audioBitrate = 128000,
-       .audioCodecformat = OH_AAC_LC
-   };
-   
-   // 获取屏幕信息。
-   uint64_t displayId = 0;
-   NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-   
-   NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
-   ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
-   if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
-       return;
+   void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
+   {
+       // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
+       OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
+
+       OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
+       // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
+       // 为保证音频质量，此处音频比特率取值128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+       OH_AudioEncInfo audioEncInfo = {
+           .audioBitrate = 128000,
+           .audioCodecformat = OH_AAC_LC
+       };
+
+       // 获取屏幕信息。
+       uint64_t displayId = 0;
+       NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+       NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+       ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+       if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+           return;
+       }
+       int32_t screenWidth = displayInfo->width;
+       int32_t screenHeight = displayInfo->height;
+       OH_NativeDisplayManager_DestroyDisplay(displayInfo);
+       displayInfo = nullptr;
+       OH_VideoCaptureInfo videoCapInfo = {
+           .videoFrameWidth = screenWidth,
+           .videoFrameHeight = screenHeight,
+           .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
+       };
+
+       OH_VideoEncInfo videoEncInfo = {
+           .videoCodec = OH_H264,
+           .videoBitrate = 2000000,
+           .videoFrameRate = 30
+       };
+
+       OH_AudioInfo audioInfo = {
+           .micCapInfo = micCapInfo,
+           .innerCapInfo = innerCapInfo,
+           .audioEncInfo = audioEncInfo
+       };
+
+       OH_VideoInfo videoInfo = {
+           .videoCapInfo = videoCapInfo,
+           .videoEncInfo = videoEncInfo
+       };
+
+       config = {
+           .captureMode = OH_CAPTURE_HOME_SCREEN,
+           .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
+           .audioInfo = audioInfo,
+           .videoInfo = videoInfo,
+           .recorderInfo = recorderInfo // 录制文件信息。
+       };
+       // 设置状态回调函数、错误回调函数和录屏屏幕ID回调函数等。
+       SetCallbackFile(g_avCapture);
    }
-   int32_t screenWidth = displayInfo->width;
-   int32_t screenHeight = displayInfo->height;
-   OH_VideoCaptureInfo videoCapInfo = {
-       .videoFrameWidth = screenWidth,
-       .videoFrameHeight = screenHeight,
-       .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
-   };
-   
-   OH_VideoEncInfo videoEncInfo = {
-       .videoCodec = OH_H264,
-       .videoBitrate = 2000000,
-       .videoFrameRate = 30
-   };
-   
-   OH_AudioInfo audioInfo = {
-       .micCapInfo = micCapInfo,
-       .innerCapInfo = innerCapInfo,
-       .audioEncInfo = audioEncInfo
-   };
-   
-   OH_VideoInfo videoInfo = {
-       .videoCapInfo = videoCapInfo,
-       .videoEncInfo = videoEncInfo
-   };
-   
-   config = {
-       .captureMode = OH_CAPTURE_HOME_SCREEN,
-       .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
-       .audioInfo = audioInfo,
-       .videoInfo = videoInfo
-   };
    ```
 
-4. 调用StartScreenRecording()方法开始进行录屏。
+4. 调用OH_AVScreenCapture_StartScreenRecording()方法开始进行录屏。
 
    <!-- @[screenCapture_startScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -143,7 +143,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
 
-5. 调用StopScreenRecording()方法停止录制。
+5. 调用OH_AVScreenCapture_StopScreenRecording()方法停止录制。
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -151,7 +151,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
 
-6. 调用Release()方法销毁实例，释放资源。
+6. 调用OH_AVScreenCapture_Release()方法销毁实例，释放资源。
 
    <!-- @[screenCapture_releaseScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    

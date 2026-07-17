@@ -20,7 +20,7 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
-| \<rect\> | 矩形 | x：x轴方向偏移分量； <br>y：y轴方向偏移分量；<br>width：宽度； <br>height：高度；<br>rx：圆角x轴半径； <br>ry：圆角y轴半径。|
+| \<rect\> | 矩形 | x：矩形左上角的x轴坐标； <br>y：矩形左上角的y轴坐标；<br>width：宽度； <br>height：高度；<br>rx：圆角x轴半径； <br>ry：圆角y轴半径。|
 | \<circle\> | 圆形 | cx：圆心x轴坐标；<br> cy：圆心y轴坐标；<br> r：圆形半径。 |
 | \<ellipse\> | 椭圆 | cx：椭圆中心的x轴坐标；<br> cy：椭圆中心的y轴坐标；<br> rx：x轴半径；<br> ry：y轴半径。 |
 | \<line\> | 线 | x1：起点x轴坐标；<br> y1：起点y轴坐标；<br> x2：终点x轴坐标；<br> y2：终点y轴坐标。 |

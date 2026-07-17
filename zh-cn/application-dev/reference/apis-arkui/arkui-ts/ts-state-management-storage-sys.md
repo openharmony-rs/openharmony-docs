@@ -1,4 +1,4 @@
-# 内置环境变量说明（系统接口）
+# Storage（系统接口）
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -13,7 +13,7 @@
 
 ## Storage
 
-持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除，支持自定义存储文件路径和跨线程安全访问。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存储的场景。
+持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存储的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -33,14 +33,14 @@ constructor(needCrossThread?: boolean, file?: string)
 
 | 参数名          | 类型    | 必填 | 说明                                   |
 | --------------- | ------- | ---- | -------------------------------------- |
-| needCrossThread | boolean | 否   | 是否需要跨线程访问存储。取值为true时，实例支持跨线程读写，框架以线程安全方式处理存储访问；取值为false时，仅在创建线程（通常为主线程）内访问。<br>默认值：false。 |
-| file            | string  | 否   | 指定存储文件名。缺省时使用应用文件目录下的persistent_storage作为存储文件。 |
+| needCrossThread | boolean | 否   | 是否需要跨线程访问存储。预留接口，暂不提供具体功能。 |
+| file            | string  | 否   | 指定存储文件名。预留接口，暂不提供具体功能。默认使用应用文件目录下的persistent_storage作为存储文件。 |
 
 ### get
 
 get(key: string): string \| undefined
 
-根据指定的key从磁盘中读取对应的存储数据。
+根据指定key从磁盘中读取对应的存储数据。
 
 **系统接口：** 此接口为系统接口。
 

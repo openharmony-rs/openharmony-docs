@@ -18,16 +18,7 @@
        return;
    }
    ```
- - 公共目录获取接口仅用于获取公共目录路径，不对公共目录访问权限进行校验。若需访问公共目录需申请对应的公共目录访问权限。三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予 Download 目录权限、Documents 目录权限或 Desktop 目录权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
-   <!--RP1-->
-   ```json
-   "requestPermissions" : [
-       "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY",
-       "ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY",
-       "ohos.permission.READ_WRITE_DESKTOP_DIRECTORY",
-   ]
-   ```
-   <!--RP1End-->
+ - 公共目录获取接口仅用于获取公共目录路径，不对公共目录访问权限进行校验。若需访问公共目录需申请对应的公共目录访问权限。三方应用需要访问公共目录时，需向用户申请授予[Download目录权限](../security/AccessToken/permissions-for-all-user.md#ohospermissionread_write_download_directory)、[Documents目录权限](../security/AccessToken/permissions-for-all-user.md#ohospermissionread_write_documents_directory)或[Desktop目录权限](../security/AccessToken/restricted-permissions.md#ohospermissionread_write_desktop_directory)，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 ### 示例
 
