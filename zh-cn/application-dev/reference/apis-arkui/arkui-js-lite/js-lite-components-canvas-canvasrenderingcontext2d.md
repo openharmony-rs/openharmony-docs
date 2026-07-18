@@ -9,6 +9,10 @@
 
 使用CanvasRenderingContext2D在canvas画布组件上进行绘制，绘制对象可以是矩形、文本。
 
+> **说明：**
+>
+> 从API version 23开始，轻量级预览器不再受JS文件大小不能超过48 KB的限制。API version 22及之前版本中，JS文件大小不能超过48 KB。
+
 **示例：**
 
 ```html
