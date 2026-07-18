@@ -39,7 +39,7 @@ function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,
 
 **示例：**
 
-其中context的获取方式参见[各类context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。
+其中context的获取方式参见[各类context的获取方式](../../../../application-models/application-context-stage.md#context的获取方式)。
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
