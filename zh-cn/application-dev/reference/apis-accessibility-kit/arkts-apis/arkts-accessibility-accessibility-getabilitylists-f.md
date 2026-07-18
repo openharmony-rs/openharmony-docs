@@ -24,15 +24,7 @@ function getAbilityLists(
 
 **替代接口：** getAccessibilityExtensionList(abilityType:
 
-<!--Device-accessibility-function getAbilityLists(
-    abilityType: AbilityType,
-    stateType: AbilityState,
-    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
-  ): void--><!--Device-accessibility-function getAbilityLists(
-    abilityType: AbilityType,
-    stateType: AbilityState,
-    callback: AsyncCallback<Array<AccessibilityAbilityInfo>>
-  ): void-End-->
+<!--Device-accessibility-function getAbilityLists(abilityType: AbilityType,stateType: AbilityState,callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void--><!--Device-accessibility-function getAbilityLists(abilityType: AbilityType,stateType: AbilityState,callback: AsyncCallback<Array<AccessibilityAbilityInfo>>): void-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

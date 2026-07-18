@@ -4,7 +4,7 @@
 
 > **说明：**  
 >  
-> 使用获取开放匿名设备标识符接口，需[向用户申请授权](../../../../security/AccessToken/request-user-authorization.md)  
+> 使用获取开放匿名设备标识符接口，需[向用户申请授权](../../../security/AccessToken/request-user-authorization.md)  
 >（默认开启权限）：ohos.permission.APP_TRACKING_CONSENT。
 
 **起始版本：** 10

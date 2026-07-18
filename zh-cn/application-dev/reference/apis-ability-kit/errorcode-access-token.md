@@ -38,7 +38,7 @@ Invalid Parameter. Error message: messageInfo.
 
 **处理步骤**
 
-检查入参，修正参数值为有效值，有效值请参考[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)中对应接口的参数说明。
+检查入参，修正参数值为有效值，有效值请参考[@ohos.abilityAccessCtrl (程序访问控制管理)]中对应接口的参数说明。
 
 <!--Del-->
 ## 12100002 tokenId不存在
@@ -108,13 +108,13 @@ The API is not used in pair with others.
 
 相关方法：
 <!--Del-->
-- 开始使用权限：[privacyManager.startUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstartusingpermission)
-- 停止使用权限：[privacyManager.stopUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstopusingpermission)
-- 订阅权限使用状态变更事件：[privacyManager.on](js-apis-privacyManager-sys.md#privacymanageron)
-- 取消订阅权限使用状态变更事件：[privacyManager.off](js-apis-privacyManager-sys.md#privacymanageroff)
+- 开始使用权限：[privacyManager.startUsingPermission]
+- 停止使用权限：[privacyManager.stopUsingPermission]
+- 订阅权限使用状态变更事件：[privacyManager.on]
+- 取消订阅权限使用状态变更事件：[privacyManager.off]
 <!--DelEnd-->
-- 订阅自身权限状态变更事件：[on](js-apis-abilityAccessCtrl.md#on18)
-- 取消订阅自身权限状态变更事件：[off](js-apis-abilityAccessCtrl.md#off18)
+- 订阅自身权限状态变更事件：[on]
+- 取消订阅自身权限状态变更事件：[off]
 
 
 ## 12100005 监听器数量超过限制
@@ -310,9 +310,9 @@ Unexpected permission.
 
 **可能原因**
 
-1. 调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
+1. 调用[requestPermissionOnSetting]再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
 2. 授权或取消授权时，传入了非user_grant和manual_settings授权方式的权限。
-3. 调用[openPermissionOnSetting](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
+3. 调用[openPermissionOnSetting]拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
 
 **处理步骤**
 
@@ -336,5 +336,5 @@ The queried data exceeds the upper limit.
 
 **处理步骤**
 
-请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考[queryStatusByPermission](js-apis-abilityAccessCtrl-sys.md#querystatusbypermission)和[queryStatusByTokenID](js-apis-abilityAccessCtrl-sys.md#querystatusbytokenid)接口的参数说明。
+请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考[queryStatusByPermission]和[queryStatusByTokenID]接口的参数说明。
 <!--DelEnd-->
