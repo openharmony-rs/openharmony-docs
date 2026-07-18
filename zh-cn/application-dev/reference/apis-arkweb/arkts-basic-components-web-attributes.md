@@ -1916,8 +1916,8 @@ layoutMode(mode: WebLayoutMode)
 >
 > Web组件高度基于前端页面自适应布局有如下限制：
 > - 当layoutMode设置为WebLayoutMode.FIT_CONTENT
->	 - [forceDisplayScrollBar](#forcedisplayscrollbar14)不支持常驻
->	 - [blankScreenDetectionConfig](#blankscreendetectionconfig22)不生效
+>    - [forceDisplayScrollBar](#forcedisplayscrollbar14)不支持常驻
+>    - [blankScreenDetectionConfig](#blankscreendetectionconfig22)不生效
 > - 如果Web组件宽或长度超过7680px，请在Web组件创建的时候指定`RenderMode.SYNC_RENDER`模式，否则会整个白屏。
 > - Web组件创建后不支持动态切换layoutMode模式。
 > - Web组件宽高规格：指定`RenderMode.ASYNC_RENDER`模式时，分别不超过7680px。
