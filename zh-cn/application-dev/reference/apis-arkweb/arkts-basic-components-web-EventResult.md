@@ -59,7 +59,7 @@ setGestureEventResult(result: boolean, stopPropagation: boolean): void
 | 参数名          | 类型 | 必填  | 说明             |
 | --------------- | -------- | ----  |------- |
 | result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>传入null或undefined时为true。 |
-| stopPropagation | boolean  | 是   | 是否阻止冒泡，在result为true时生效。<br>传入null或undefined时为true。<br>true表示阻止冒泡，false表示不阻止冒泡。 |
+| stopPropagation | boolean  | 是   | 是否阻止冒泡，在result为true时生效。<br>true表示阻止冒泡，false表示不阻止冒泡。<br>传入null或undefined时为true。 |
 
 **示例：**
 
