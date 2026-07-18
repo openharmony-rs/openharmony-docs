@@ -893,6 +893,7 @@ defaultFixedFontSize(size: number)
 
 当属性没有显式调用时，默认等宽字体大小为13。
 
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -931,6 +932,7 @@ defaultFontSize(size: number)
 
 当属性没有显式调用时，网页的默认字体大小为16。
 
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -968,6 +970,7 @@ minFontSize(size: number)
 设置网页字体大小最小值。对于html前端元素，若元素字体大小低于该接口设置值，将采用接口设置值渲染字体大小。
 
 当属性没有显式调用时，默认网页字体大小最小值为8。
+
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
