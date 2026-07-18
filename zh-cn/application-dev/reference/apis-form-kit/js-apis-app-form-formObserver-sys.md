@@ -238,7 +238,7 @@ off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | type | string | 是   | 填写'formRemove'，表示卡片删除事件。 |
-| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则取消订阅所有卡片使用方的卡片新增事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName | string | 否   | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则取消订阅所有卡片使用方的卡片新增事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否 | 回调函数。返回当前删除卡片的信息。缺省时，表示注销对应已注册事件回调。<br> 需与对应on('formRemove')的callback一致。|
 
 **错误码：**

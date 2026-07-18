@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 16500050 进程间通信连接失败
+## 16500050 进程间通信失败
 
 **错误信息**
 
@@ -214,7 +214,7 @@ Failed to set the live form background image.
 
 检查传入的背景图资源是否有效。
 
-## 16501011 卡片不支持当前操作
+## 16501011 卡片不支持调用当前接口
 
 **错误信息**
 
@@ -272,7 +272,7 @@ The system does not support the current operation.
 
 **错误信息**
 
-The half-modal form edit page is not in the foreground. The current operation is not supported.
+The form edit page is not in the foreground. The current operation is not supported.
 
 **错误描述**
 
@@ -290,7 +290,7 @@ The half-modal form edit page is not in the foreground. The current operation is
 
 **错误信息**
 
-Cannot close the half-modal form editing page opened by other apps.
+Cannot close the widget editing page opened by other apps.
 
 **错误描述**
 
@@ -308,7 +308,7 @@ Cannot close the half-modal form editing page opened by other apps.
 
 **错误信息**
 
-The location of the form is invalid.
+The location of the widget is invalid.
 
 **错误描述**
 
@@ -322,7 +322,7 @@ The location of the form is invalid.
 
 检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
 
-## 2293761 内部服务器错误
+## 2293761 内部服务错误
 
 **错误信息**
 
@@ -350,7 +350,7 @@ The requested bundle name does not exist.
 
 **错误描述**
 
-获取请求的应用包名不存在，该错误属于内部错误。
+系统执行获取请求的应用包名不存在，该错误属于内部错误。
 
 **可能原因**
 
@@ -426,7 +426,7 @@ Get fms rpc failed.
 
 **错误信息**
 
-Get system capability manager service failed.
+Get system manager service failed.
 
 **错误描述**
 
