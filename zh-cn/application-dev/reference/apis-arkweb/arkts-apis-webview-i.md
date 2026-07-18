@@ -209,7 +209,7 @@ WebViewController与Web组件的绑定状态。
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| enable | boolean | 否   | 否   | 是否启用白屏插帧。<br>true表示启用，false表示不启用。 |
+| enable | boolean | 否   | 否   | 是否启用白屏插帧。<br>true：启用，false：不启用。 |
 | duration | number | 否   | 是   | 插帧持续时间。<br>取值范围：[200, 2000] ∪ {0}，其中0表示不指定持续时间，由系统自动设置合适的持续时间。<br>单位：ms。 |
 | expirationTime | number | 否   | 是   | 历史帧失效时间，UTC时间。<br>用T表示当前UTC时间，同时已知30天为2592000000ms，取值范围：(T, T + 2592000000] ∪ {0}，其中0表示不指定失效时间，采用系统默认失效时间（7天）。<br>单位：ms。 |
 | callback | Callback<[BlanklessFrameInterpolationInfo](./arkts-apis-webview-i.md#blanklessframeinterpolationinfo23)> | 否   | 是   | 插帧成功、失败或移除后执行的回调。<br>只有在enable为true时生效。可选，不设置则不进行任何操作。 |
