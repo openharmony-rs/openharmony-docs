@@ -154,8 +154,8 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file, (err, isDLPFile) => {
- if (err != undefined) {
-    console.error('isDLPFile error,', err.code, err.message);
+ if (err) {
+    console.error(`Failed to check if file is DLP file. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isDLPFile:', isDLPFile);
   }
@@ -240,8 +240,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
     dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
-      if (err != undefined) {
-        console.error('getDLPPermissionInfo error', err.code, err.message);
+      if (err) {
+        console.error(`Failed to get DLP permission info. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('permissionInfo', JSON.stringify(permissionInfo));
       }
@@ -544,8 +544,8 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
-  if (err != undefined) {
-    console.error('getDLPSupportedFileTypes error', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP supported file types. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('fileTypes', JSON.stringify(fileTypes));
   }
@@ -632,12 +632,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
-    dlpPermission.setRetentionState([uri], (err, retentionState) => {
-      if (err != undefined) {
-        console.error('setRetentionState error,', err.code, err.message);
+    dlpPermission.setRetentionState([uri], (err) => {
+      if (err) {
+        console.error(`Failed to set retention state. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('setRetentionState success');
-        console.info('retentionState：', JSON.stringify(retentionState));
       }
     }); // 设置沙箱保留。
   }
@@ -650,7 +649,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
 
 cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-取消沙箱保留状态即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
+取消沙箱保留状态，即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
 
 该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
@@ -725,8 +724,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.cancelRetentionState([uri], (err, res) => {
-  if (err != undefined) {
-    console.error('cancelRetentionState error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to cancel retention state. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('cancelRetentionState success');
   }
@@ -812,8 +811,8 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
-  if (err != undefined) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('sandboxList', JSON.stringify(sandboxList));
   }
@@ -853,10 +852,10 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
-  if (err != undefined) {
+  if (err) {
     console.error('getRetentionSandboxList error,', err.code, err.message);
   } else {
-    console.info('res', JSON.stringify(retentionSandboxList));
+    console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }
 }); // 获取沙箱保留列表。
 ```
@@ -932,8 +931,8 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPFileAccessRecords((err, accessRecords) => {
-  if (err != undefined) {
-    console.error('getDLPFileAccessRecords error,', err.code, err.message);
+  if (err) {
+    console.error(`Failed to get DLP file access records. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('accessRecords', JSON.stringify(accessRecords));
   }
@@ -1239,7 +1238,7 @@ try {
     dlpPermission.setEnterprisePolicy(enterprisePolicy);
     console.info('set enterprise policy success'); 
 } catch (err) { 
-    console.error('error:' + err.code + err.message); // 失败报错。 
+    console.error(`Failed to set enterprise policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1407,7 +1406,7 @@ let customProperty: dlpPermission.CustomProperty = {
 dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty).then((res) => {
   console.info('Successfully generate DLP file for enterprise.');
 }).catch((error: BusinessError)=> {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to generate DLP file for enterprise. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=>{
   if (dlpFd) {
     fileIo.closeSync(dlpFd);
@@ -1587,7 +1586,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码401。 |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本**：26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本：** 26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1624,7 +1623,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码401。 |
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
-| permExpiryTime | number | 否 | 否 | 表示授权到期时间。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
+| permExpiryTime | number | 否 | 否 | 表示授权到期时间戳。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1823,7 +1822,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 表示企业DLP文件的查询选项。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1888,7 +1887,7 @@ let options: dlpPermission.DlpFileQueryOptions = {
 dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
   console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
 }).catch((error: BusinessError)=> {
-  console.error(error.message);
+  console.error(`Failed to query opened enterprise DLP files. Code: ${error.code}, message: ${error.message}`);
 }).finally(()=> {
   console.info("after querying opened enterprise dlp files");
 });
@@ -1906,7 +1905,7 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 >
 > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21)生成的企业DLP文件。
   
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1960,7 +1959,7 @@ setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&l
 
 设置受企业DLP控制的应用程序列表。使用Promise异步回调。
   
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2021,7 +2020,7 @@ getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
 >
 > 该接口仅能查询通过[setControlledAppLists](#dlppermissionsetcontrolledapplists)设置的受企业DLP控制的应用程序列表。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
