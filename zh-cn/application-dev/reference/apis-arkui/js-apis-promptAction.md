@@ -780,7 +780,8 @@ struct toastExample {
           try {
             promptAction.showToast({
               message: 'Hello World',
-              duration: 2000
+              duration: 2000,
+              showMode:promptAction.ToastShowMode.DEFAULT,
             });
           } catch (error) {
             let message = (error as BusinessError).message;
