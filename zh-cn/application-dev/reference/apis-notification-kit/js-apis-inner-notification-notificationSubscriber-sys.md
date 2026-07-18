@@ -989,25 +989,6 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | switchName | string | 是 | 否 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
 | enableStatus | [notificationManager.SwitchState](js-apis-notificationManager-sys.md#switchstate20) | 是 | 否 | 通知开关状态。 |
 
-## NotificationClassification
-
-通知分类信息。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-| 名称            | 类型   | 只读 | 可选 | 说明     |
-| --------------- | ------ | ---- | --- | -------- |
-| classification | string | 是  | 是  | 系统识别的通知分类。 |
-| subClassification | string | 是  | 是  | 系统识别的通知子分类。 |
-
 
 ## VoiceContent
 
@@ -1026,6 +1007,26 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | 名称            | 类型                                                                | 只读 | 可选 | 说明     |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
 | textContent | string                                             | 是  | 是  | 文本语音播报内容。 |
+
+
+## NotificationClassification
+
+通知分类信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称            | 类型   | 只读 | 可选 | 说明     |
+| --------------- | ------ | ---- | --- | -------- |
+| classification | string | 是  | 是  | 系统识别的通知分类。 |
+| subClassification | string | 是  | 是  | 系统识别的通知子分类。 |
 
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>

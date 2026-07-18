@@ -25,7 +25,7 @@
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | 否  | 是  | 普通实况窗类型通知内容。<br>**系统接口**：此接口为系统接口。|
+| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | 否  | 是  | 普通实况窗类型通知内容。<br>**系统接口**：此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
 
 ## NotificationBasicContent
 
@@ -55,7 +55,7 @@
 | -------------- | ------------------------------------------------------------------ | --- | --- | ------------------------------------------------------|
 | status         | [LiveViewStatus](#liveviewstatus11)                                | 否  | 否  | 通知状态。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                  |
 | version        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                             | 否  | 是  | 通知版本号（如果数据库存储版本号为0xffffffff，则本次更新和结束不校验版本号大小，否则需要校验本次版本号>数据库存储版本号）。不填默认为0xffffffff。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
-| extraInfo      | Record<string, Object\>                                               | 否  | 是  | 实况通知附加内容。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
+| extraInfo      | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>                                               | 否  | 是  | 实况通知附加内容。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。默认为空。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23     |
 | extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。默认为空。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23       |
@@ -69,11 +69,11 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**系统接口**：此接口为系统接口。
+
 **ArkTS-Dyn起始版本**：18
 
 **ArkTS-Sta起始版本**：23
-
-**系统接口**：此接口为系统接口。
 
 | 名称                         | 类型                                             | 只读| 可选 | 说明                               |
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
@@ -179,4 +179,4 @@ type IconType = Resource | image.PixelMap
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。默认为空。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER |
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。默认为空。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
