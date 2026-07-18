@@ -687,7 +687,7 @@ Web组件进入全屏回调事件的详情。
 | height            | number                              | 否    | 是 | 同层标签的高，单位为px。          |
 | url               | string                              | 否    | 是 | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。              |
-| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。 |
+| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的params标签键值对列表，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。 |
 | position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。 |
 
 ## NativeEmbedParamItem<sup>21+</sup>
@@ -899,21 +899,8 @@ Web屏幕捕获的配置。
 
 ## BlankScreenDetectionConfig<sup>22+</sup>
 
-提供白屏检测的策略配置选项，包括检测时机、方法和阈值。适用于需要自定义白屏检测行为的场景，提升白屏监控的灵活性和准确性。<br>
-白屏检测流程如下：
+提供白屏检测的策略配置选项，包括检测时机、方法和阈值。适用于需要自定义白屏检测行为的场景，提升白屏监控的灵活性和准确性。
 
-```mermaid
-graph TD
-    A[配置白屏检测] --> B[enable: 是否启用]
-    B -->|true| C[设置检测时机 detectionTiming]
-    B -->|false| D[不进行白屏检测]
-    C --> E[设置检测方法 detectionMethods]
-    E --> F[设置节点阈值 contentfulNodesCountThreshold]
-    F --> G[在指定时机执行检测]
-    G --> H{检测到内容节点数 > 阈值?}
-    H -->|是| I[正常渲染]
-    H -->|否| J[触发近似白屏事件]
-```
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -922,7 +909,7 @@ graph TD
 | enable | boolean | 否 | 否 | 是否启用白屏策略功能。true表示启用白屏策略功能，false表示不启用白屏策略功能。   |
 | detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br>默认值：[1.0,3.0,5.0]。 |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
-| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-17（检测策略最大节点数为17），如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
+| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。<br>注：检测策略最大节点依赖于所选择的检测策略。|
 
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
