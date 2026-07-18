@@ -5764,7 +5764,7 @@ With this permission, the application can always use sensors.
 
 ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
 
-Allows an system application to enable agent-related permission management features.
+Allows a system application to enable agent-related permission management features.
 
 **Permission level**: system_basic
 
