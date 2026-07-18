@@ -3,59 +3,35 @@
 - [@ohos.enterprise.EnterpriseAdminExtensionAbility](arkts-enterprise-enterpriseadminextensionability.md)
   - [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)
 - [@ohos.enterprise.accountManager](arkts-enterprise-accountmanager.md)
-  - [activateOsAccount](arkts-mdm-accountmanager-activateosaccount-f.md)<!--Del-->
-  - [addOsAccount(系统接口)](arkts-mdm-accountmanager-addosaccount-f-sys.md)<!--DelEnd-->
+  - [activateOsAccount](arkts-mdm-accountmanager-activateosaccount-f.md)
   - [addOsAccountAsync](arkts-mdm-accountmanager-addosaccountasync-f.md)
-  - [createNormalOsAccount](arkts-mdm-accountmanager-createnormalosaccount-f.md)<!--Del-->
-  - [disallowAddLocalAccount(系统接口)](arkts-mdm-accountmanager-disallowaddlocalaccount-f-sys.md)<!--DelEnd--><!--Del-->
-  - [disallowAddOsAccountByUser(系统接口)](arkts-mdm-accountmanager-disallowaddosaccountbyuser-f-sys.md)<!--DelEnd-->
+  - [createNormalOsAccount](arkts-mdm-accountmanager-createnormalosaccount-f.md)
   - [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md)
-  - [getDomainAccountPolicy](arkts-mdm-accountmanager-getdomainaccountpolicy-f.md)<!--Del-->
-  - [isAddOsAccountByUserDisallowed(系统接口)](arkts-mdm-accountmanager-isaddosaccountbyuserdisallowed-f-sys.md)<!--DelEnd-->
+  - [getDomainAccountPolicy](arkts-mdm-accountmanager-getdomainaccountpolicy-f.md)
   - [isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md)
   - [removeOsAccount](arkts-mdm-accountmanager-removeosaccount-f.md)
   - [setDomainAccountPolicy](arkts-mdm-accountmanager-setdomainaccountpolicy-f.md)
   - [DomainAccountPolicy](arkts-mdm-accountmanager-domainaccountpolicy-i.md)
-- [@ohos.enterprise.adminManager](arkts-enterprise-adminmanager.md)<!--Del-->
-  - [authorizeAdmin(系统接口)](arkts-mdm-adminmanager-authorizeadmin-f-sys.md)<!--DelEnd-->
-  - [disableAdmin](arkts-mdm-adminmanager-disableadmin-f.md)<!--Del-->
-  - [disableAdmin(系统接口)](arkts-mdm-adminmanager-disableadmin-f-sys.md)<!--DelEnd-->
-  - [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md)<!--Del-->
-  - [disableSuperAdmin(系统接口)](arkts-mdm-adminmanager-disablesuperadmin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [enableAdmin(系统接口)](arkts-mdm-adminmanager-enableadmin-f-sys.md)<!--DelEnd-->
+- [@ohos.enterprise.adminManager](arkts-enterprise-adminmanager.md)
+  - [disableAdmin](arkts-mdm-adminmanager-disableadmin-f.md)
+  - [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md)
   - [enableDeviceAdmin](arkts-mdm-adminmanager-enabledeviceadmin-f.md)
-  - [enableSelfDeviceAdmin](arkts-mdm-adminmanager-enableselfdeviceadmin-f.md)<!--Del-->
-  - [getAdmins(系统接口)](arkts-mdm-adminmanager-getadmins-f-sys.md)<!--DelEnd-->
+  - [enableSelfDeviceAdmin](arkts-mdm-adminmanager-enableselfdeviceadmin-f.md)
   - [getDelegatedBundleNames](arkts-mdm-adminmanager-getdelegatedbundlenames-f.md)
-  - [getDelegatedPolicies](arkts-mdm-adminmanager-getdelegatedpolicies-f.md)<!--Del-->
-  - [getEnterpriseInfo(系统接口)](arkts-mdm-adminmanager-getenterpriseinfo-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getEnterpriseManagedTips(系统接口)](arkts-mdm-adminmanager-getenterprisemanagedtips-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSuperAdmin(系统接口)](arkts-mdm-adminmanager-getsuperadmin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isAdminEnabled(系统接口)](arkts-mdm-adminmanager-isadminenabled-f-sys.md)<!--DelEnd-->
-  - [isByodAdmin](arkts-mdm-adminmanager-isbyodadmin-f.md)<!--Del-->
-  - [isSuperAdmin(系统接口)](arkts-mdm-adminmanager-issuperadmin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [replaceSuperAdmin(系统接口)](arkts-mdm-adminmanager-replacesuperadmin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setAdminRunningMode(系统接口)](arkts-mdm-adminmanager-setadminrunningmode-f-sys.md)<!--DelEnd-->
-  - [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md)<!--Del-->
-  - [setDelegatedPolicies(系统接口)](arkts-mdm-adminmanager-setdelegatedpolicies-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setEnterpriseInfo(系统接口)](arkts-mdm-adminmanager-setenterpriseinfo-f-sys.md)<!--DelEnd-->
-  - [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md)<!--Del-->
-  - [subscribeManagedEvent(系统接口)](arkts-mdm-adminmanager-subscribemanagedevent-f-sys.md)<!--DelEnd-->
-  - [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)<!--Del-->
-  - [unsubscribeManagedEvent(系统接口)](arkts-mdm-adminmanager-unsubscribemanagedevent-f-sys.md)<!--DelEnd-->
-  - [unsubscribeManagedEventSync](arkts-mdm-adminmanager-unsubscribemanagedeventsync-f.md)<!--Del-->
-  - [EnterpriseInfo(系统接口)](arkts-mdm-adminmanager-enterpriseinfo-i-sys.md)<!--DelEnd-->
-  - [AdminType](arkts-mdm-adminmanager-admintype-e.md)<!--Del-->
-  - [AdminType(系统接口)](arkts-mdm-adminmanager-admintype-e-sys.md)<!--DelEnd-->
+  - [getDelegatedPolicies](arkts-mdm-adminmanager-getdelegatedpolicies-f.md)
+  - [isByodAdmin](arkts-mdm-adminmanager-isbyodadmin-f.md)
+  - [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md)
+  - [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md)
+  - [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)
+  - [unsubscribeManagedEventSync](arkts-mdm-adminmanager-unsubscribemanagedeventsync-f.md)
+  - [AdminType](arkts-mdm-adminmanager-admintype-e.md)
   - [ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md)
-  - [Policy](arkts-mdm-adminmanager-policy-e.md)<!--Del-->
-  - [RunningMode(系统接口)](arkts-mdm-adminmanager-runningmode-e-sys.md)<!--DelEnd-->
+  - [Policy](arkts-mdm-adminmanager-policy-e.md)
 - [@ohos.enterprise.applicationManager](arkts-enterprise-applicationmanager.md)
   - [addAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-addalloweddistributeabilityconnbundles-f.md)
   - [addAllowedNotificationBundles](arkts-mdm-applicationmanager-addallowednotificationbundles-f.md)
   - [addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md)
-  - [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md)<!--Del-->
-  - [addDisallowedRunningBundles(系统接口)](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md)<!--DelEnd-->
+  - [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md)
   - [addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md)
   - [addDockApp](arkts-mdm-applicationmanager-adddockapp-f.md)
   - [addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md)
@@ -68,8 +44,7 @@
   - [getAllowedNotificationBundles](arkts-mdm-applicationmanager-getallowednotificationbundles-f.md)
   - [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md)
   - [getApplicationWindowStates](arkts-mdm-applicationmanager-getapplicationwindowstates-f.md)
-  - [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md)<!--Del-->
-  - [getDisallowedRunningBundles(系统接口)](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md)<!--DelEnd-->
+  - [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md)
   - [getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md)
   - [getDockApps](arkts-mdm-applicationmanager-getdockapps-f.md)
   - [getFreezeExemptedApps](arkts-mdm-applicationmanager-getfreezeexemptedapps-f.md)
@@ -86,8 +61,7 @@
   - [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md)
   - [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md)
   - [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md)
-  - [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md)<!--Del-->
-  - [removeDisallowedRunningBundles(系统接口)](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md)<!--DelEnd-->
+  - [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md)
   - [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md)
   - [removeDockApp](arkts-mdm-applicationmanager-removedockapp-f.md)
   - [removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md)
@@ -110,56 +84,41 @@
   - [getAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-getallowedbluetoothdevices-f.md)
   - [getBluetoothInfo](arkts-mdm-bluetoothmanager-getbluetoothinfo-f.md)
   - [getDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-getdisallowedbluetoothdevices-f.md)
-  - [getDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md)<!--Del-->
-  - [isBluetoothDisabled(系统接口)](arkts-mdm-bluetoothmanager-isbluetoothdisabled-f-sys.md)<!--DelEnd-->
+  - [getDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md)
   - [removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md)
   - [removeDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-removedisallowedbluetoothdevices-f.md)
-  - [removeDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-removedisallowedbluetoothprotocols-f.md)<!--Del-->
-  - [setBluetoothDisabled(系统接口)](arkts-mdm-bluetoothmanager-setbluetoothdisabled-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-removedisallowedbluetoothprotocols-f.md)
   - [turnOffBluetooth](arkts-mdm-bluetoothmanager-turnoffbluetooth-f.md)
   - [turnOnBluetooth](arkts-mdm-bluetoothmanager-turnonbluetooth-f.md)
   - [BluetoothInfo](arkts-mdm-bluetoothmanager-bluetoothinfo-i.md)
   - [Protocol](arkts-mdm-bluetoothmanager-protocol-e.md)
   - [TransferPolicy](arkts-mdm-bluetoothmanager-transferpolicy-e.md)
 - [@ohos.enterprise.browser](arkts-enterprise-browser.md)
-  - [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md)<!--Del-->
-  - [getPolicies(系统接口)](arkts-mdm-browser-getpolicies-f-sys.md)<!--DelEnd-->
+  - [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md)
   - [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md)
   - [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md)
   - [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md)
-  - [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md)<!--Del-->
-  - [setPolicies(系统接口)](arkts-mdm-browser-setpolicies-f-sys.md)<!--DelEnd-->
+  - [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md)
   - [setPolicySync](arkts-mdm-browser-setpolicysync-f.md)
-- [@ohos.enterprise.bundleManager](arkts-enterprise-bundlemanager.md)<!--Del-->
-  - [addAllowedInstallBundles(系统接口)](arkts-mdm-bundlemanager-addallowedinstallbundles-f-sys.md)<!--DelEnd-->
-  - [addAllowedInstallBundlesSync](arkts-mdm-bundlemanager-addallowedinstallbundlessync-f.md)<!--Del-->
-  - [addDisallowedInstallBundles(系统接口)](arkts-mdm-bundlemanager-adddisallowedinstallbundles-f-sys.md)<!--DelEnd-->
-  - [addDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-adddisallowedinstallbundlessync-f.md)<!--Del-->
-  - [addDisallowedUninstallBundles(系统接口)](arkts-mdm-bundlemanager-adddisalloweduninstallbundles-f-sys.md)<!--DelEnd-->
+- [@ohos.enterprise.bundleManager](arkts-enterprise-bundlemanager.md)
+  - [addAllowedInstallBundlesSync](arkts-mdm-bundlemanager-addallowedinstallbundlessync-f.md)
+  - [addDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-adddisallowedinstallbundlessync-f.md)
   - [addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md)
-  - [addInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-addinstallationallowedappdistributiontypes-f.md)<!--Del-->
-  - [getAllowedInstallBundles(系统接口)](arkts-mdm-bundlemanager-getallowedinstallbundles-f-sys.md)<!--DelEnd-->
-  - [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md)<!--Del-->
-  - [getDisallowedInstallBundles(系统接口)](arkts-mdm-bundlemanager-getdisallowedinstallbundles-f-sys.md)<!--DelEnd-->
-  - [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md)<!--Del-->
-  - [getDisallowedUninstallBundles(系统接口)](arkts-mdm-bundlemanager-getdisalloweduninstallbundles-f-sys.md)<!--DelEnd-->
+  - [addInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-addinstallationallowedappdistributiontypes-f.md)
+  - [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md)
+  - [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md)
   - [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md)
   - [getInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-getinstallationallowedappdistributiontypes-f.md)
   - [getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md)
   - [getInstalledBundleStorageStats](arkts-mdm-bundlemanager-getinstalledbundlestoragestats-f.md)
-  - [install](arkts-mdm-bundlemanager-install-f.md)<!--Del-->
-  - [install(系统接口)](arkts-mdm-bundlemanager-install-f-sys.md)<!--DelEnd-->
+  - [install](arkts-mdm-bundlemanager-install-f.md)
   - [installForResult](arkts-mdm-bundlemanager-installforresult-f.md)
-  - [installMarketApps](arkts-mdm-bundlemanager-installmarketapps-f.md)<!--Del-->
-  - [removeAllowedInstallBundles(系统接口)](arkts-mdm-bundlemanager-removeallowedinstallbundles-f-sys.md)<!--DelEnd-->
-  - [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md)<!--Del-->
-  - [removeDisallowedInstallBundles(系统接口)](arkts-mdm-bundlemanager-removedisallowedinstallbundles-f-sys.md)<!--DelEnd-->
-  - [removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md)<!--Del-->
-  - [removeDisallowedUninstallBundles(系统接口)](arkts-mdm-bundlemanager-removedisalloweduninstallbundles-f-sys.md)<!--DelEnd-->
+  - [installMarketApps](arkts-mdm-bundlemanager-installmarketapps-f.md)
+  - [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md)
+  - [removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md)
   - [removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md)
   - [removeInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-removeinstallationallowedappdistributiontypes-f.md)
-  - [uninstall](arkts-mdm-bundlemanager-uninstall-f.md)<!--Del-->
-  - [uninstall(系统接口)](arkts-mdm-bundlemanager-uninstall-f-sys.md)<!--DelEnd-->
+  - [uninstall](arkts-mdm-bundlemanager-uninstall-f.md)
   - [ApplicationInfo](arkts-mdm-bundlemanager-applicationinfo-i.md)
   - [BundleInfo](arkts-mdm-bundlemanager-bundleinfo-i.md)
   - [BundleStorageStats](arkts-mdm-bundlemanager-bundlestoragestats-i.md)
@@ -176,43 +135,22 @@
   - [ManagedPolicy](arkts-mdm-common-managedpolicy-e.md)
   - [Result](arkts-mdm-common-result-e.md)
   - [StartupScene](arkts-mdm-common-startupscene-e.md)
-- [@ohos.enterprise.dateTimeManager](arkts-enterprise-datetimemanager.md)<!--Del-->
-  - [disallowModifyDateTime(系统接口)](arkts-mdm-datetimemanager-disallowmodifydatetime-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isModifyDateTimeDisallowed(系统接口)](arkts-mdm-datetimemanager-ismodifydatetimedisallowed-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setDateTime(系统接口)](arkts-mdm-datetimemanager-setdatetime-f-sys.md)<!--DelEnd-->
-- [@ohos.enterprise.deviceControl](arkts-enterprise-devicecontrol.md)<!--Del-->
-  - [lockScreen(系统接口)](arkts-mdm-devicecontrol-lockscreen-f-sys.md)<!--DelEnd-->
-  - [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)<!--Del-->
-  - [reboot(系统接口)](arkts-mdm-devicecontrol-reboot-f-sys.md)<!--DelEnd--><!--Del-->
-  - [resetFactory(系统接口)](arkts-mdm-devicecontrol-resetfactory-f-sys.md)<!--DelEnd--><!--Del-->
-  - [shutdown(系统接口)](arkts-mdm-devicecontrol-shutdown-f-sys.md)<!--DelEnd-->
+- [@ohos.enterprise.deviceControl](arkts-enterprise-devicecontrol.md)
+  - [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)
 - [@ohos.enterprise.deviceInfo](arkts-enterprise-deviceinfo.md)
-  - [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md)<!--Del-->
-  - [getDeviceName(系统接口)](arkts-mdm-deviceinfo-getdevicename-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getDeviceSerial(系统接口)](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getDisplayVersion(系统接口)](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md)<!--DelEnd-->
+  - [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md)
 - [@ohos.enterprise.deviceSettings](arkts-enterprise-devicesettings.md)
   - [addHiddenSettingsMenu](arkts-mdm-devicesettings-addhiddensettingsmenu-f.md)
-  - [getHiddenSettingsMenu](arkts-mdm-devicesettings-gethiddensettingsmenu-f.md)<!--Del-->
-  - [getPowerPolicy(系统接口)](arkts-mdm-devicesettings-getpowerpolicy-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getScreenOffTime(系统接口)](arkts-mdm-devicesettings-getscreenofftime-f-sys.md)<!--DelEnd-->
+  - [getHiddenSettingsMenu](arkts-mdm-devicesettings-gethiddensettingsmenu-f.md)
   - [getSwitchStatus](arkts-mdm-devicesettings-getswitchstatus-f.md)
   - [getValue](arkts-mdm-devicesettings-getvalue-f.md)
-  - [getValueForAccount](arkts-mdm-devicesettings-getvalueforaccount-f.md)<!--Del-->
-  - [installUserCertificate(系统接口)](arkts-mdm-devicesettings-installusercertificate-f-sys.md)<!--DelEnd-->
+  - [getValueForAccount](arkts-mdm-devicesettings-getvalueforaccount-f.md)
   - [removeHiddenSettingsMenu](arkts-mdm-devicesettings-removehiddensettingsmenu-f.md)
-  - [setHomeWallpaper](arkts-mdm-devicesettings-sethomewallpaper-f.md)<!--Del-->
-  - [setPowerPolicy(系统接口)](arkts-mdm-devicesettings-setpowerpolicy-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setScreenOffTime(系统接口)](arkts-mdm-devicesettings-setscreenofftime-f-sys.md)<!--DelEnd-->
+  - [setHomeWallpaper](arkts-mdm-devicesettings-sethomewallpaper-f.md)
   - [setSwitchStatus](arkts-mdm-devicesettings-setswitchstatus-f.md)
   - [setUnlockWallpaper](arkts-mdm-devicesettings-setunlockwallpaper-f.md)
   - [setValue](arkts-mdm-devicesettings-setvalue-f.md)
-  - [setValueForAccount](arkts-mdm-devicesettings-setvalueforaccount-f.md)<!--Del-->
-  - [uninstallUserCertificate(系统接口)](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [CertBlob(系统接口)](arkts-mdm-devicesettings-certblob-i-sys.md)<!--DelEnd--><!--Del-->
-  - [PowerPolicy(系统接口)](arkts-mdm-devicesettings-powerpolicy-i-sys.md)<!--DelEnd--><!--Del-->
-  - [PowerPolicyAction(系统接口)](arkts-mdm-devicesettings-powerpolicyaction-e-sys.md)<!--DelEnd--><!--Del-->
-  - [PowerScene(系统接口)](arkts-mdm-devicesettings-powerscene-e-sys.md)<!--DelEnd-->
+  - [setValueForAccount](arkts-mdm-devicesettings-setvalueforaccount-f.md)
   - [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md)
   - [SettingsMenu](arkts-mdm-devicesettings-settingsmenu-e.md)
   - [SwitchKey](arkts-mdm-devicesettings-switchkey-e.md)
@@ -224,66 +162,45 @@
 - [@ohos.enterprise.networkManager](arkts-enterprise-networkmanager.md)
   - [addApn](arkts-mdm-networkmanager-addapn-f.md)
   - [addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md)
-  - [addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md)<!--Del-->
-  - [addIptablesFilterRule(系统接口)](arkts-mdm-networkmanager-addiptablesfilterrule-f-sys.md)<!--DelEnd-->
-  - [deleteApn](arkts-mdm-networkmanager-deleteapn-f.md)<!--Del-->
-  - [getAllNetworkInterfaces(系统接口)](arkts-mdm-networkmanager-getallnetworkinterfaces-f-sys.md)<!--DelEnd-->
+  - [addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md)
+  - [deleteApn](arkts-mdm-networkmanager-deleteapn-f.md)
   - [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md)
   - [getDomainFilterRules](arkts-mdm-networkmanager-getdomainfilterrules-f.md)
-  - [getFirewallRules](arkts-mdm-networkmanager-getfirewallrules-f.md)<!--Del-->
-  - [getGlobalProxy(系统接口)](arkts-mdm-networkmanager-getglobalproxy-f-sys.md)<!--DelEnd-->
+  - [getFirewallRules](arkts-mdm-networkmanager-getfirewallrules-f.md)
   - [getGlobalProxyForAccount](arkts-mdm-networkmanager-getglobalproxyforaccount-f.md)
-  - [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md)<!--Del-->
-  - [getIpAddress(系统接口)](arkts-mdm-networkmanager-getipaddress-f-sys.md)<!--DelEnd-->
-  - [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md)<!--Del-->
-  - [getMac(系统接口)](arkts-mdm-networkmanager-getmac-f-sys.md)<!--DelEnd-->
-  - [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md)<!--Del-->
-  - [isNetworkInterfaceDisabled(系统接口)](arkts-mdm-networkmanager-isnetworkinterfacedisabled-f-sys.md)<!--DelEnd-->
-  - [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md)<!--Del-->
-  - [listIptablesFilterRules(系统接口)](arkts-mdm-networkmanager-listiptablesfilterrules-f-sys.md)<!--DelEnd-->
+  - [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md)
+  - [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md)
+  - [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md)
+  - [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md)
   - [queryApn](arkts-mdm-networkmanager-queryapn-f.md)
   - [removeDomainFilterRule](arkts-mdm-networkmanager-removedomainfilterrule-f.md)
-  - [removeFirewallRule](arkts-mdm-networkmanager-removefirewallrule-f.md)<!--Del-->
-  - [removeIptablesFilterRule(系统接口)](arkts-mdm-networkmanager-removeiptablesfilterrule-f-sys.md)<!--DelEnd-->
-  - [setEthernetConfig](arkts-mdm-networkmanager-setethernetconfig-f.md)<!--Del-->
-  - [setGlobalProxy(系统接口)](arkts-mdm-networkmanager-setglobalproxy-f-sys.md)<!--DelEnd-->
+  - [removeFirewallRule](arkts-mdm-networkmanager-removefirewallrule-f.md)
+  - [setEthernetConfig](arkts-mdm-networkmanager-setethernetconfig-f.md)
   - [setGlobalProxyForAccount](arkts-mdm-networkmanager-setglobalproxyforaccount-f.md)
-  - [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md)<!--Del-->
-  - [setNetworkInterfaceDisabled(系统接口)](arkts-mdm-networkmanager-setnetworkinterfacedisabled-f-sys.md)<!--DelEnd-->
+  - [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md)
   - [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md)
   - [setPreferredApn](arkts-mdm-networkmanager-setpreferredapn-f.md)
   - [turnOffMobileData](arkts-mdm-networkmanager-turnoffmobiledata-f.md)
   - [turnOnMobileData](arkts-mdm-networkmanager-turnonmobiledata-f.md)
-  - [updateApn](arkts-mdm-networkmanager-updateapn-f.md)<!--Del-->
-  - [AddFilterRule(系统接口)](arkts-mdm-networkmanager-addfilterrule-i-sys.md)<!--DelEnd-->
+  - [updateApn](arkts-mdm-networkmanager-updateapn-f.md)
   - [DomainFilterRule](arkts-mdm-networkmanager-domainfilterrule-i.md)
   - [FirewallRule](arkts-mdm-networkmanager-firewallrule-i.md)
-  - [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md)<!--Del-->
-  - [RemoveFilterRule(系统接口)](arkts-mdm-networkmanager-removefilterrule-i-sys.md)<!--DelEnd-->
-  - [Action](arkts-mdm-networkmanager-action-e.md)<!--Del-->
-  - [AddMethod(系统接口)](arkts-mdm-networkmanager-addmethod-e-sys.md)<!--DelEnd-->
+  - [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md)
+  - [Action](arkts-mdm-networkmanager-action-e.md)
   - [Direction](arkts-mdm-networkmanager-direction-e.md)
   - [IpSetMode](arkts-mdm-networkmanager-ipsetmode-e.md)
   - [LogType](arkts-mdm-networkmanager-logtype-e.md)
   - [Protocol](arkts-mdm-networkmanager-protocol-e.md)
 - [@ohos.enterprise.restrictions](arkts-enterprise-restrictions.md)
-  - [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md)<!--Del-->
-  - [disableMicrophone(系统接口)](arkts-mdm-restrictions-disablemicrophone-f-sys.md)<!--DelEnd-->
+  - [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md)
   - [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md)
   - [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)
   - [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md)
   - [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md)
-  - [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md)<!--Del-->
-  - [isFingerprintAuthDisabled(系统接口)](arkts-mdm-restrictions-isfingerprintauthdisabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isHdcDisabled(系统接口)](arkts-mdm-restrictions-ishdcdisabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isMicrophoneDisabled(系统接口)](arkts-mdm-restrictions-ismicrophonedisabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isPrinterDisabled(系统接口)](arkts-mdm-restrictions-isprinterdisabled-f-sys.md)<!--DelEnd-->
+  - [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md)
   - [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md)
   - [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)
-  - [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)<!--Del-->
-  - [setFingerprintAuthDisabled(系统接口)](arkts-mdm-restrictions-setfingerprintauthdisabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setHdcDisabled(系统接口)](arkts-mdm-restrictions-sethdcdisabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setPrinterDisabled(系统接口)](arkts-mdm-restrictions-setprinterdisabled-f-sys.md)<!--DelEnd-->
+  - [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)
   - [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md)
   - [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md)
   - [FeatureForAccount](arkts-mdm-restrictions-featureforaccount-e.md)
@@ -295,15 +212,12 @@
   - [cancelWatermarkImage](arkts-mdm-securitymanager-cancelwatermarkimage-f.md)
   - [closeSession](arkts-mdm-securitymanager-closesession-f.md)
   - [getAllowedPermissionBundles](arkts-mdm-securitymanager-getallowedpermissionbundles-f.md)
-  - [getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md)<!--Del-->
-  - [getDeviceEncryptionStatus(系统接口)](arkts-mdm-securitymanager-getdeviceencryptionstatus-f-sys.md)<!--DelEnd-->
+  - [getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md)
   - [getDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-getdevicesecuritylevelpolicy-f.md)
   - [getDisallowedPermissions](arkts-mdm-securitymanager-getdisallowedpermissions-f.md)
   - [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md)
-  - [getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md)<!--Del-->
-  - [getPasswordPolicy(系统接口)](arkts-mdm-securitymanager-getpasswordpolicy-f-sys.md)<!--DelEnd-->
-  - [getPermissionManagedState](arkts-mdm-securitymanager-getpermissionmanagedstate-f.md)<!--Del-->
-  - [getSecurityPatchTag(系统接口)](arkts-mdm-securitymanager-getsecuritypatchtag-f-sys.md)<!--DelEnd-->
+  - [getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md)
+  - [getPermissionManagedState](arkts-mdm-securitymanager-getpermissionmanagedstate-f.md)
   - [getSecurityStatus](arkts-mdm-securitymanager-getsecuritystatus-f.md)
   - [getUnlockPolicy](arkts-mdm-securitymanager-getunlockpolicy-f.md)
   - [getUserCertificates](arkts-mdm-securitymanager-getusercertificates-f.md)
@@ -329,8 +243,7 @@
   - [uninstallUserCertificate](arkts-mdm-securitymanager-uninstallusercertificate-f.md)
   - [AddCredentialInfo](arkts-mdm-securitymanager-addcredentialinfo-i.md)
   - [ApplicationInstance](arkts-mdm-securitymanager-applicationinstance-i.md)
-  - [CertBlob](arkts-mdm-securitymanager-certblob-i.md)<!--Del-->
-  - [DeviceEncryptionStatus(系统接口)](arkts-mdm-securitymanager-deviceencryptionstatus-i-sys.md)<!--DelEnd-->
+  - [CertBlob](arkts-mdm-securitymanager-certblob-i.md)
   - [PasswordPolicy](arkts-mdm-securitymanager-passwordpolicy-i.md)
   - [WatermarkProperties](arkts-mdm-securitymanager-watermarkproperties-i.md)
   - [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md)
@@ -360,25 +273,7 @@
   - [setNTPServer](arkts-mdm-systemmanager-setntpserver-f.md)
   - [setOtaUpdateNonceEnable](arkts-mdm-systemmanager-setotaupdatenonceenable-f.md)
   - [setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md)
-  - [startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md)<!--Del-->
-  - [ErrorInfo(系统接口)](arkts-mdm-systemmanager-errorinfo-i.md)<!--DelEnd--><!--Del-->
-  - [KeyEvent(系统接口)](arkts-mdm-systemmanager-keyevent-i.md)<!--DelEnd--><!--Del-->
-  - [KeyEventPolicy(系统接口)](arkts-mdm-systemmanager-keyeventpolicy-i.md)<!--DelEnd--><!--Del-->
-  - [KeyItem(系统接口)](arkts-mdm-systemmanager-keyitem-i.md)<!--DelEnd--><!--Del-->
-  - [NotifyDescription(系统接口)](arkts-mdm-systemmanager-notifydescription-i.md)<!--DelEnd--><!--Del-->
-  - [OtaUpdatePolicy(系统接口)](arkts-mdm-systemmanager-otaupdatepolicy-i.md)<!--DelEnd--><!--Del-->
-  - [Package(系统接口)](arkts-mdm-systemmanager-package-i.md)<!--DelEnd--><!--Del-->
-  - [PackageDescription(系统接口)](arkts-mdm-systemmanager-packagedescription-i.md)<!--DelEnd--><!--Del-->
-  - [SystemUpdateInfo(系统接口)](arkts-mdm-systemmanager-systemupdateinfo-i.md)<!--DelEnd--><!--Del-->
-  - [UpdatePackageInfo(系统接口)](arkts-mdm-systemmanager-updatepackageinfo-i.md)<!--DelEnd--><!--Del-->
-  - [UpdateResult(系统接口)](arkts-mdm-systemmanager-updateresult-i.md)<!--DelEnd--><!--Del-->
-  - [KeyAction(系统接口)](arkts-mdm-systemmanager-keyaction-e.md)<!--DelEnd--><!--Del-->
-  - [KeyCode(系统接口)](arkts-mdm-systemmanager-keycode-e.md)<!--DelEnd--><!--Del-->
-  - [KeyPolicy(系统接口)](arkts-mdm-systemmanager-keypolicy-e.md)<!--DelEnd--><!--Del-->
-  - [NearLinkProtocol(系统接口)](arkts-mdm-systemmanager-nearlinkprotocol-e.md)<!--DelEnd--><!--Del-->
-  - [PackageType(系统接口)](arkts-mdm-systemmanager-packagetype-e.md)<!--DelEnd--><!--Del-->
-  - [PolicyType(系统接口)](arkts-mdm-systemmanager-policytype-e.md)<!--DelEnd--><!--Del-->
-  - [UpdateStatus(系统接口)](arkts-mdm-systemmanager-updatestatus-e.md)<!--DelEnd-->
+  - [startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md)
 - [@ohos.enterprise.telephonyManager](arkts-enterprise-telephonymanager.md)
   - [activeSim](arkts-mdm-telephonymanager-activesim-f.md)
   - [addIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-addincomingcallpolicynumbers-f.md)
@@ -402,15 +297,12 @@
   - [setSimEnabled](arkts-mdm-telephonymanager-setsimenabled-f.md)
 - [@ohos.enterprise.usbManager](arkts-enterprise-usbmanager.md)
   - [addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md)
-  - [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)<!--Del-->
-  - [disableUsb(系统接口)](arkts-mdm-usbmanager-disableusb-f-sys.md)<!--DelEnd-->
+  - [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)
   - [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md)
   - [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md)
-  - [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md)<!--Del-->
-  - [isUsbDisabled(系统接口)](arkts-mdm-usbmanager-isusbdisabled-f-sys.md)<!--DelEnd-->
+  - [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md)
   - [removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md)
-  - [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md)<!--Del-->
-  - [setUsbPolicy(系统接口)](arkts-mdm-usbmanager-setusbpolicy-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md)
   - [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md)
   - [UsbDeviceId](arkts-mdm-usbmanager-usbdeviceid-i.md)
   - [UsbDeviceType](arkts-mdm-usbmanager-usbdevicetype-i.md)
@@ -420,14 +312,10 @@
   - [addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md)
   - [addDisallowedWifiList](arkts-mdm-wifimanager-adddisallowedwifilist-f.md)
   - [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md)
-  - [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md)<!--Del-->
-  - [isWifiActive(系统接口)](arkts-mdm-wifimanager-iswifiactive-f-sys.md)<!--DelEnd-->
-  - [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md)<!--Del-->
-  - [isWifiDisabled(系统接口)](arkts-mdm-wifimanager-iswifidisabled-f-sys.md)<!--DelEnd-->
+  - [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md)
+  - [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md)
   - [removeAllowedWifiList](arkts-mdm-wifimanager-removeallowedwifilist-f.md)
-  - [removeDisallowedWifiList](arkts-mdm-wifimanager-removedisallowedwifilist-f.md)<!--Del-->
-  - [setWifiDisabled(系统接口)](arkts-mdm-wifimanager-setwifidisabled-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setWifiProfile(系统接口)](arkts-mdm-wifimanager-setwifiprofile-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedWifiList](arkts-mdm-wifimanager-removedisallowedwifilist-f.md)
   - [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md)
   - [turnOffWifi](arkts-mdm-wifimanager-turnoffwifi-f.md)
   - [turnOnWifi](arkts-mdm-wifimanager-turnonwifi-f.md)

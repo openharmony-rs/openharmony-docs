@@ -3,47 +3,36 @@
 - [@ohos.InputMethodExtensionAbility](arkts-inputmethodextensionability.md)
   - [InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md)
 - [@ohos.InputMethodExtensionContext](arkts-inputmethodextensioncontext.md)
-  - [InputMethodExtensionContext](arkts-ime-inputmethodextensioncontext-c.md)<!--Del-->
-  - [InputMethodExtensionContext(系统接口)](arkts-ime-inputmethodextensioncontext-c-sys.md)<!--DelEnd-->
+  - [InputMethodExtensionContext](arkts-ime-inputmethodextensioncontext-c.md)
 - [@ohos.InputMethodSubtype](arkts-inputmethodsubtype.md)
   - [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md)
 - [@ohos.inputMethod](arkts-inputmethod.md)
   - [getController](arkts-ime-inputmethod-getcontroller-f.md)
-  - [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)<!--Del-->
-  - [getCurrentInputMethod(系统接口)](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md)<!--DelEnd-->
-  - [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f.md)<!--Del-->
-  - [getCurrentInputMethodSubtype(系统接口)](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md)<!--DelEnd-->
-  - [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f.md)<!--Del-->
-  - [getDefaultInputMethod(系统接口)](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md)<!--DelEnd-->
+  - [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)
+  - [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f.md)
+  - [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f.md)
   - [getInputMethodController](arkts-ime-inputmethod-getinputmethodcontroller-f.md)
   - [getInputMethodSetting](arkts-ime-inputmethod-getinputmethodsetting-f.md)
   - [getSetting](arkts-ime-inputmethod-getsetting-f.md)
-  - [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f.md)<!--Del-->
-  - [getSystemInputMethodConfigAbility(系统接口)](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md)<!--DelEnd-->
+  - [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f.md)
   - [offAttachmentDidFail](arkts-ime-inputmethod-offattachmentdidfail-f.md)
   - [onAttachmentDidFail](arkts-ime-inputmethod-onattachmentdidfail-f.md)
   - [setSimpleKeyboardEnabled](arkts-ime-inputmethod-setsimplekeyboardenabled-f.md)
   - [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md)
   - [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md)
-  - [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md)<!--Del-->
-  - [switchInputMethod(系统接口)](arkts-ime-inputmethod-switchinputmethod-f-sys.md)<!--DelEnd--><!--Del-->
-  - [switchInputMethodWithUserId(系统接口)](arkts-ime-inputmethod-switchinputmethodwithuserid-f-sys.md)<!--DelEnd-->
+  - [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md)
   - [AttachOptions](arkts-ime-inputmethod-attachoptions-i.md)
   - [CursorInfo](arkts-ime-inputmethod-cursorinfo-i.md)
   - [FunctionKey](arkts-ime-inputmethod-functionkey-i.md)
   - [InputAttribute](arkts-ime-inputmethod-inputattribute-i.md)
-  - [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md)<!--Del-->
-  - [InputMethodController(系统接口)](arkts-ime-inputmethod-inputmethodcontroller-i-sys.md)<!--DelEnd-->
+  - [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md)
   - [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)
-  - [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md)<!--Del-->
-  - [InputMethodSetting(系统接口)](arkts-ime-inputmethod-inputmethodsetting-i-sys.md)<!--DelEnd-->
-  - [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)<!--Del-->
-  - [InputWindowInfo(系统接口)](arkts-ime-inputmethod-inputwindowinfo-i-sys.md)<!--DelEnd-->
+  - [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md)
+  - [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)
   - [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md)
   - [Movement](arkts-ime-inputmethod-movement-i.md)
   - [Range](arkts-ime-inputmethod-range-i.md)
-  - [TextConfig](arkts-ime-inputmethod-textconfig-i.md)<!--Del-->
-  - [ImeChangeWithUserIdCallback(系统接口)](arkts-ime-inputmethod-imechangewithuseridcallback-t-sys.md)<!--DelEnd-->
+  - [TextConfig](arkts-ime-inputmethod-textconfig-i.md)
   - [SetPreviewTextCallback](arkts-ime-inputmethod-setpreviewtextcallback-t.md)
   - [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md)
   - [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md)
@@ -68,11 +57,9 @@
   - [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md)
   - [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md)
   - [AttachOptions](arkts-ime-inputmethodengine-attachoptions-i.md)
-  - [EditorAttribute](arkts-ime-inputmethodengine-editorattribute-i.md)<!--Del-->
-  - [EditorAttribute(系统接口)](arkts-ime-inputmethodengine-editorattribute-i-sys.md)<!--DelEnd-->
+  - [EditorAttribute](arkts-ime-inputmethodengine-editorattribute-i.md)
   - [EnhancedPanelRect](arkts-ime-inputmethodengine-enhancedpanelrect-i.md)
-  - [ImmersiveEffect](arkts-ime-inputmethodengine-immersiveeffect-i.md)<!--Del-->
-  - [ImmersiveEffect(系统接口)](arkts-ime-inputmethodengine-immersiveeffect-i-sys.md)<!--DelEnd-->
+  - [ImmersiveEffect](arkts-ime-inputmethodengine-immersiveeffect-i.md)
   - [InputClient](arkts-ime-inputmethodengine-inputclient-i.md)
   - [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)
   - [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md)
@@ -82,21 +69,17 @@
   - [KeyEvent](arkts-ime-inputmethodengine-keyevent-i.md)
   - [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)
   - [Movement](arkts-ime-inputmethodengine-movement-i.md)
-  - [Panel](arkts-ime-inputmethodengine-panel-i.md)<!--Del-->
-  - [Panel(系统接口)](arkts-ime-inputmethodengine-panel-i-sys.md)<!--DelEnd-->
+  - [Panel](arkts-ime-inputmethodengine-panel-i.md)
   - [PanelInfo](arkts-ime-inputmethodengine-panelinfo-i.md)
   - [PanelRect](arkts-ime-inputmethodengine-panelrect-i.md)
-  - [Range](arkts-ime-inputmethodengine-range-i.md)<!--Del-->
-  - [SystemPanelInsets(系统接口)](arkts-ime-inputmethodengine-systempanelinsets-i.md)<!--DelEnd-->
+  - [Range](arkts-ime-inputmethodengine-range-i.md)
   - [TextInputClient](arkts-ime-inputmethodengine-textinputclient-i.md)
   - [WindowInfo](arkts-ime-inputmethodengine-windowinfo-i.md)
   - [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md)
-  - [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md)<!--Del-->
-  - [SizeUpdateCallback(系统接口)](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md)<!--DelEnd-->
+  - [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md)
   - [CapitalizeMode](arkts-ime-inputmethodengine-capitalizemode-e.md)
   - [Direction](arkts-ime-inputmethodengine-direction-e.md)
-  - [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md)<!--Del-->
-  - [FluidLightMode(系统接口)](arkts-ime-inputmethodengine-fluidlightmode-e-sys.md)<!--DelEnd-->
+  - [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md)
   - [GradientMode](arkts-ime-inputmethodengine-gradientmode-e.md)
   - [ImmersiveMode](arkts-ime-inputmethodengine-immersivemode-e.md)
   - [PanelFlag](arkts-ime-inputmethodengine-panelflag-e.md)

@@ -1,11 +1,6 @@
 # ArkTS API<!--arkts-localizationkit-->
 
-- [@ohos.fontManager](arkts-fontmanager.md)<!--Del-->
-  - [dataMigration(系统接口)](arkts-localization-fontmanager-datamigration-f-sys.md)<!--DelEnd--><!--Del-->
-  - [installFont(系统接口)](arkts-localization-fontmanager-installfont-f-sys.md)<!--DelEnd--><!--Del-->
-  - [uninstallFont(系统接口)](arkts-localization-fontmanager-uninstallfont-f-sys.md)<!--DelEnd--><!--Del-->
-  - [DataMigrationCallback(系统接口)](arkts-localization-fontmanager-datamigrationcallback-i-sys.md)<!--DelEnd--><!--Del-->
-  - [DataMigrationProgress(系统接口)](arkts-localization-fontmanager-datamigrationprogress-i-sys.md)<!--DelEnd-->
+- [@ohos.fontManager](arkts-fontmanager.md)
 - [@ohos.i18n](arkts-i18n.md)
   - [addPreferredLanguage](arkts-localization-i18n-addpreferredlanguage-f.md)
   - [getCalendar](arkts-localization-i18n-getcalendar-f.md)
@@ -44,10 +39,7 @@
   - [StyledDateTimeFormat](arkts-localization-i18n-styleddatetimeformat-c.md)
   - [StyledNumberFormat](arkts-localization-i18n-stylednumberformat-c.md)
   - [SymbolDateTimeFormat](arkts-localization-i18n-symboldatetimeformat-c.md)
-  - [SymbolNumberFormat](arkts-localization-i18n-symbolnumberformat-c.md)<!--Del-->
-  - [System(系统接口)](arkts-localization-i18n-system-c.md)<!--DelEnd--><!--Del-->
-  - [System(系统接口)](arkts-localization-i18n-system-c-sys.md)<!--DelEnd--><!--Del-->
-  - [SystemLocaleManager(系统接口)](arkts-localization-i18n-systemlocalemanager-c-sys.md)<!--DelEnd-->
+  - [SymbolNumberFormat](arkts-localization-i18n-symbolnumberformat-c.md)
   - [TimeZone](arkts-localization-i18n-timezone-c.md)
   - [Transliterator](arkts-localization-i18n-transliterator-c.md)
   - [Unicode](arkts-localization-i18n-unicode-c.md)
@@ -59,21 +51,17 @@
   - [EntityInfoItem](arkts-localization-i18n-entityinfoitem-i.md)
   - [HolidayInfoItem](arkts-localization-i18n-holidayinfoitem-i.md)
   - [HolidayLocalName](arkts-localization-i18n-holidaylocalname-i.md)
-  - [ISO8601DateTimeFormatOptions](arkts-localization-i18n-iso8601datetimeformatoptions-i.md)<!--Del-->
-  - [LocaleItem(系统接口)](arkts-localization-i18n-localeitem-i-sys.md)<!--DelEnd-->
+  - [ISO8601DateTimeFormatOptions](arkts-localization-i18n-iso8601datetimeformatoptions-i.md)
   - [PhoneNumberFormatOptions](arkts-localization-i18n-phonenumberformatoptions-i.md)
   - [ResolvedSymbolDateTimeFormatOptions](arkts-localization-i18n-resolvedsymboldatetimeformatoptions-i.md)
-  - [ResolvedSymbolNumberFormatOptions](arkts-localization-i18n-resolvedsymbolnumberformatoptions-i.md)<!--Del-->
-  - [SortOptions(系统接口)](arkts-localization-i18n-sortoptions-i-sys.md)<!--DelEnd-->
+  - [ResolvedSymbolNumberFormatOptions](arkts-localization-i18n-resolvedsymbolnumberformatoptions-i.md)
   - [StyledDateTimeFormatOptions](arkts-localization-i18n-styleddatetimeformatoptions-i.md)
   - [StyledNumberFormatOptions](arkts-localization-i18n-stylednumberformatoptions-i.md)
   - [SymbolDateTimeFormatOptions](arkts-localization-i18n-symboldatetimeformatoptions-i.md)
-  - [SymbolNumberFormatOptions](arkts-localization-i18n-symbolnumberformatoptions-i.md)<!--Del-->
-  - [TimeZoneCityItem(系统接口)](arkts-localization-i18n-timezonecityitem-i-sys.md)<!--DelEnd-->
+  - [SymbolNumberFormatOptions](arkts-localization-i18n-symbolnumberformatoptions-i.md)
   - [UnitInfo](arkts-localization-i18n-unitinfo-i.md)
   - [Util](arkts-localization-i18n-util-i.md)
-  - [NormalizerMode](arkts-localization-i18n-normalizermode-e.md)<!--Del-->
-  - [SuggestionType(系统接口)](arkts-localization-i18n-suggestiontype-e-sys.md)<!--DelEnd-->
+  - [NormalizerMode](arkts-localization-i18n-normalizermode-e.md)
   - [TemperatureType](arkts-localization-i18n-temperaturetype-e.md)
   - [UnitUsage](arkts-localization-i18n-unitusage-e.md)
   - [WeekDay](arkts-localization-i18n-weekday-e.md)

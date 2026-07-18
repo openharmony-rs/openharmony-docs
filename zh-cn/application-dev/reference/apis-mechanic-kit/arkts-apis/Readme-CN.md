@@ -1,60 +1,17 @@
 # ArkTS API<!--arkts-mechanickit-->
 
-- [@ohos.distributedHardware.mechanicManager](arkts-distributedhardware-mechanicmanager.md)<!--Del-->
-  - [doAction(系统接口)](arkts-mechanic-mechanicmanager-doaction-f-sys.md)<!--DelEnd-->
+- [@ohos.distributedHardware.mechanicManager](arkts-distributedhardware-mechanicmanager.md)
   - [getAttachedMechDevices](arkts-mechanic-mechanicmanager-getattachedmechdevices-f.md)
   - [getCameraTrackingEnabled](arkts-mechanic-mechanicmanager-getcameratrackingenabled-f.md)
-  - [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md)<!--Del-->
-  - [getCurrentAngles(系统接口)](arkts-mechanic-mechanicmanager-getcurrentangles-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getMaxRotationSpeed(系统接口)](arkts-mechanic-mechanicmanager-getmaxrotationspeed-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getMaxRotationTime(系统接口)](arkts-mechanic-mechanicmanager-getmaxrotationtime-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getRotationAxesStatus(系统接口)](arkts-mechanic-mechanicmanager-getrotationaxesstatus-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getRotationLimits(系统接口)](arkts-mechanic-mechanicmanager-getrotationlimits-f-sys.md)<!--DelEnd-->
-  - [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md)<!--Del-->
-  - [isSupportAction(系统接口)](arkts-mechanic-mechanicmanager-issupportaction-f-sys.md)<!--DelEnd--><!--Del-->
-  - [move(系统接口)](arkts-mechanic-mechanicmanager-move-f-sys.md)<!--DelEnd--><!--Del-->
-  - [moveBySpeed(系统接口)](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md)<!--DelEnd-->
-  - [off](arkts-mechanic-mechanicmanager-off-f.md)<!--Del-->
-  - [off(系统接口)](arkts-mechanic-mechanicmanager-off-f-sys.md)<!--DelEnd-->
-  - [on](arkts-mechanic-mechanicmanager-on-f.md)<!--Del-->
-  - [on(系统接口)](arkts-mechanic-mechanicmanager-on-f-sys.md)<!--DelEnd--><!--Del-->
-  - [rotate(系统接口)](arkts-mechanic-mechanicmanager-rotate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [rotateBySpeed(系统接口)](arkts-mechanic-mechanicmanager-rotatebyspeed-f-sys.md)<!--DelEnd--><!--Del-->
-  - [rotateToEulerAngles(系统接口)](arkts-mechanic-mechanicmanager-rotatetoeulerangles-f-sys.md)<!--DelEnd--><!--Del-->
-  - [searchTarget(系统接口)](arkts-mechanic-mechanicmanager-searchtarget-f-sys.md)<!--DelEnd-->
-  - [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md)<!--Del-->
-  - [setCameraTrackingLayout(系统接口)](arkts-mechanic-mechanicmanager-setcameratrackinglayout-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setUserOperation(系统接口)](arkts-mechanic-mechanicmanager-setuseroperation-f-sys.md)<!--DelEnd--><!--Del-->
-  - [stopMoving(系统接口)](arkts-mechanic-mechanicmanager-stopmoving-f-sys.md)<!--DelEnd--><!--Del-->
-  - [subscribe(系统接口)](arkts-mechanic-mechanicmanager-subscribe-f-sys.md)<!--DelEnd--><!--Del-->
-  - [turnBySpeed(系统接口)](arkts-mechanic-mechanicmanager-turnbyspeed-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unSubscribe(系统接口)](arkts-mechanic-mechanicmanager-unsubscribe-f-sys.md)<!--DelEnd-->
-  - [AttachStateChangeInfo](arkts-mechanic-mechanicmanager-attachstatechangeinfo-i.md)<!--Del-->
-  - [EulerAngles(系统接口)](arkts-mechanic-mechanicmanager-eulerangles-i-sys.md)<!--DelEnd--><!--Del-->
-  - [MechEvent(系统接口)](arkts-mechanic-mechanicmanager-mechevent-i-sys.md)<!--DelEnd-->
-  - [MechInfo](arkts-mechanic-mechanicmanager-mechinfo-i.md)<!--Del-->
-  - [MoveParams(系统接口)](arkts-mechanic-mechanicmanager-moveparams-i-sys.md)<!--DelEnd--><!--Del-->
-  - [RotationAngles(系统接口)](arkts-mechanic-mechanicmanager-rotationangles-i-sys.md)<!--DelEnd--><!--Del-->
-  - [RotationAxesStateChangeInfo(系统接口)](arkts-mechanic-mechanicmanager-rotationaxesstatechangeinfo-i-sys.md)<!--DelEnd--><!--Del-->
-  - [RotationAxesStatus(系统接口)](arkts-mechanic-mechanicmanager-rotationaxesstatus-i-sys.md)<!--DelEnd--><!--Del-->
-  - [RotationLimits(系统接口)](arkts-mechanic-mechanicmanager-rotationlimits-i-sys.md)<!--DelEnd--><!--Del-->
-  - [RotationSpeed(系统接口)](arkts-mechanic-mechanicmanager-rotationspeed-i-sys.md)<!--DelEnd--><!--Del-->
-  - [SearchParams(系统接口)](arkts-mechanic-mechanicmanager-searchparams-i-sys.md)<!--DelEnd--><!--Del-->
-  - [SearchResult(系统接口)](arkts-mechanic-mechanicmanager-searchresult-i-sys.md)<!--DelEnd--><!--Del-->
-  - [SpeedParams(系统接口)](arkts-mechanic-mechanicmanager-speedparams-i-sys.md)<!--DelEnd--><!--Del-->
-  - [TargetInfo(系统接口)](arkts-mechanic-mechanicmanager-targetinfo-i-sys.md)<!--DelEnd-->
-  - [TrackingEventInfo](arkts-mechanic-mechanicmanager-trackingeventinfo-i.md)<!--Del-->
-  - [ActionType(系统接口)](arkts-mechanic-mechanicmanager-actiontype-e-sys.md)<!--DelEnd-->
+  - [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md)
+  - [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md)
+  - [off](arkts-mechanic-mechanicmanager-off-f.md)
+  - [on](arkts-mechanic-mechanicmanager-on-f.md)
+  - [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md)
+  - [AttachStateChangeInfo](arkts-mechanic-mechanicmanager-attachstatechangeinfo-i.md)
+  - [MechInfo](arkts-mechanic-mechanicmanager-mechinfo-i.md)
+  - [TrackingEventInfo](arkts-mechanic-mechanicmanager-trackingeventinfo-i.md)
   - [AttachState](arkts-mechanic-mechanicmanager-attachstate-e.md)
-  - [CameraTrackingLayout](arkts-mechanic-mechanicmanager-cameratrackinglayout-e.md)<!--Del-->
-  - [MarchingMode(系统接口)](arkts-mechanic-mechanicmanager-marchingmode-e-sys.md)<!--DelEnd-->
-  - [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md)<!--Del-->
-  - [MechDeviceType(系统接口)](arkts-mechanic-mechanicmanager-mechdevicetype-e-sys.md)<!--DelEnd--><!--Del-->
-  - [MechEventType(系统接口)](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)<!--DelEnd--><!--Del-->
-  - [Operation(系统接口)](arkts-mechanic-mechanicmanager-operation-e-sys.md)<!--DelEnd--><!--Del-->
-  - [Result(系统接口)](arkts-mechanic-mechanicmanager-result-e-sys.md)<!--DelEnd--><!--Del-->
-  - [RotationAxisLimited(系统接口)](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)<!--DelEnd--><!--Del-->
-  - [SearchDirection(系统接口)](arkts-mechanic-mechanicmanager-searchdirection-e-sys.md)<!--DelEnd--><!--Del-->
-  - [SpeedGear(系统接口)](arkts-mechanic-mechanicmanager-speedgear-e-sys.md)<!--DelEnd--><!--Del-->
-  - [TargetType(系统接口)](arkts-mechanic-mechanicmanager-targettype-e-sys.md)<!--DelEnd-->
+  - [CameraTrackingLayout](arkts-mechanic-mechanicmanager-cameratrackinglayout-e.md)
+  - [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md)
   - [TrackingEvent](arkts-mechanic-mechanicmanager-trackingevent-e.md)

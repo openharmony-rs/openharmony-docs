@@ -9,8 +9,7 @@
   - [createImageReceiver](arkts-image-image-createimagereceiver-f.md)
   - [createImageSource](arkts-image-image-createimagesource-f.md)
   - [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md)
-  - [createPicture](arkts-image-image-createpicture-f.md)<!--Del-->
-  - [createPictureByHdrAndSdrPixelMap(系统接口)](arkts-image-image-createpicturebyhdrandsdrpixelmap-f-sys.md)<!--DelEnd-->
+  - [createPicture](arkts-image-image-createpicture-f.md)
   - [createPictureFromParcel](arkts-image-image-createpicturefromparcel-f.md)
   - [createPixelMap](arkts-image-image-createpixelmap-f.md)
   - [createPixelMapFromParcel](arkts-image-image-createpixelmapfromparcel-f.md)
@@ -24,8 +23,7 @@
   - [createPixelMapUsingAllocator](arkts-image-image-createpixelmapusingallocator-f.md)
   - [createPixelMapUsingAllocatorSync](arkts-image-image-createpixelmapusingallocatorsync-f.md)
   - [createPremultipliedPixelMap](arkts-image-image-createpremultipliedpixelmap-f.md)
-  - [createUnpremultipliedPixelMap](arkts-image-image-createunpremultipliedpixelmap-f.md)<!--Del-->
-  - [decomposeToPicture(系统接口)](arkts-image-image-decomposetopicture-f-sys.md)<!--DelEnd-->
+  - [createUnpremultipliedPixelMap](arkts-image-image-createunpremultipliedpixelmap-f.md)
   - [getImagePackerSupportedFormats](arkts-image-image-getimagepackersupportedformats-f.md)
   - [getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md)
   - [AvisMetadata](arkts-image-image-avismetadata-c.md)
@@ -43,15 +41,12 @@
   - [AuxiliaryPictureInfo](arkts-image-image-auxiliarypictureinfo-i.md)
   - [BinaryBufferInfo](arkts-image-image-binarybufferinfo-i.md)
   - [Component](arkts-image-image-component-i.md)
-  - [DecodingOptions](arkts-image-image-decodingoptions-i.md)<!--Del-->
-  - [DecodingOptions(系统接口)](arkts-image-image-decodingoptions-i-sys.md)<!--DelEnd-->
+  - [DecodingOptions](arkts-image-image-decodingoptions-i.md)
   - [DecodingOptionsForPicture](arkts-image-image-decodingoptionsforpicture-i.md)
   - [DecodingOptionsForThumbnail](arkts-image-image-decodingoptionsforthumbnail-i.md)
-  - [GainmapChannel](arkts-image-image-gainmapchannel-i.md)<!--Del-->
-  - [GainmapParams(系统接口)](arkts-image-image-gainmapparams-i-sys.md)<!--DelEnd-->
+  - [GainmapChannel](arkts-image-image-gainmapchannel-i.md)
   - [GetImagePropertyOptions](arkts-image-image-getimagepropertyoptions-i.md)
-  - [HdrComposeOptions](arkts-image-image-hdrcomposeoptions-i.md)<!--Del-->
-  - [HdrDecomposeOptions(系统接口)](arkts-image-image-hdrdecomposeoptions-i-sys.md)<!--DelEnd-->
+  - [HdrComposeOptions](arkts-image-image-hdrcomposeoptions-i.md)
   - [HdrGainmapMetadata](arkts-image-image-hdrgainmapmetadata-i.md)
   - [HdrStaticMetadata](arkts-image-image-hdrstaticmetadata-i.md)
   - [Image](arkts-image-image-image-i.md)
@@ -64,8 +59,7 @@
   - [ImageRawData](arkts-image-image-imagerawdata-i.md)
   - [ImageReceiver](arkts-image-image-imagereceiver-i.md)
   - [ImageReceiverOptions](arkts-image-image-imagereceiveroptions-i.md)
-  - [ImageSource](arkts-image-image-imagesource-i.md)<!--Del-->
-  - [ImageSource(系统接口)](arkts-image-image-imagesource-i-sys.md)<!--DelEnd-->
+  - [ImageSource](arkts-image-image-imagesource-i.md)
   - [InitializationOptions](arkts-image-image-initializationoptions-i.md)
   - [Metadata](arkts-image-image-metadata-i.md)
   - [PackingOption](arkts-image-image-packingoption-i.md)
@@ -104,9 +98,7 @@
   - [PackingDynamicRange](arkts-image-image-packingdynamicrange-e.md)
   - [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
   - [PngPropertyKey](arkts-image-image-pngpropertykey-e.md)
-  - [PropertyKey](arkts-image-image-propertykey-e.md)<!--Del-->
-  - [PropertyKey(系统接口)](arkts-image-image-propertykey-e-sys.md)<!--DelEnd--><!--Del-->
-  - [ResolutionQuality(系统接口)](arkts-image-image-resolutionquality-e-sys.md)<!--DelEnd-->
+  - [PropertyKey](arkts-image-image-propertykey-e.md)
   - [ScaleMode](arkts-image-image-scalemode-e.md)
   - [TiffPropertyKey](arkts-image-image-tiffpropertykey-e.md)
   - [WebPPropertyKey](arkts-image-image-webppropertykey-e.md)

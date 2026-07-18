@@ -1,35 +1,19 @@
 # ArkTS API<!--arkts-telephonykit-->
 
-- [@ohos.telephony.sim](arkts-telephony-sim.md)<!--Del-->
-  - [activateSim(系统接口)](arkts-telephony-sim-activatesim-f-sys.md)<!--DelEnd--><!--Del-->
-  - [addIccDiallingNumbers(系统接口)](arkts-telephony-sim-addiccdiallingnumbers-f-sys.md)<!--DelEnd--><!--Del-->
-  - [alterPin(系统接口)](arkts-telephony-sim-alterpin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [alterPin2(系统接口)](arkts-telephony-sim-alterpin2-f-sys.md)<!--DelEnd--><!--Del-->
-  - [deactivateSim(系统接口)](arkts-telephony-sim-deactivatesim-f-sys.md)<!--DelEnd--><!--Del-->
-  - [delIccDiallingNumbers(系统接口)](arkts-telephony-sim-deliccdiallingnumbers-f-sys.md)<!--DelEnd-->
-  - [getActiveSimAccountInfoList](arkts-telephony-sim-getactivesimaccountinfolist-f.md)<!--Del-->
-  - [getAllSimAccountInfoList(系统接口)](arkts-telephony-sim-getallsimaccountinfolist-f-sys.md)<!--DelEnd-->
+- [@ohos.telephony.sim](arkts-telephony-sim.md)
+  - [getActiveSimAccountInfoList](arkts-telephony-sim-getactivesimaccountinfolist-f.md)
   - [getCardType](arkts-telephony-sim-getcardtype-f.md)
   - [getCardTypeSync](arkts-telephony-sim-getcardtypesync-f.md)
   - [getDefaultVoiceSimId](arkts-telephony-sim-getdefaultvoicesimid-f.md)
-  - [getDefaultVoiceSlotId](arkts-telephony-sim-getdefaultvoiceslotid-f.md)<!--Del-->
-  - [getDsdsMode(系统接口)](arkts-telephony-sim-getdsdsmode-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getIMSI(系统接口)](arkts-telephony-sim-getimsi-f-sys.md)<!--DelEnd-->
+  - [getDefaultVoiceSlotId](arkts-telephony-sim-getdefaultvoiceslotid-f.md)
   - [getISOCountryCodeForSim](arkts-telephony-sim-getisocountrycodeforsim-f.md)
-  - [getISOCountryCodeForSimSync](arkts-telephony-sim-getisocountrycodeforsimsync-f.md)<!--Del-->
-  - [getLockState(系统接口)](arkts-telephony-sim-getlockstate-f-sys.md)<!--DelEnd-->
-  - [getMaxSimCount](arkts-telephony-sim-getmaxsimcount-f.md)<!--Del-->
-  - [getOperatorConfigs(系统接口)](arkts-telephony-sim-getoperatorconfigs-f-sys.md)<!--DelEnd-->
+  - [getISOCountryCodeForSimSync](arkts-telephony-sim-getisocountrycodeforsimsync-f.md)
+  - [getMaxSimCount](arkts-telephony-sim-getmaxsimcount-f.md)
   - [getOpKey](arkts-telephony-sim-getopkey-f.md)
   - [getOpKeySync](arkts-telephony-sim-getopkeysync-f.md)
   - [getOpName](arkts-telephony-sim-getopname-f.md)
-  - [getOpNameSync](arkts-telephony-sim-getopnamesync-f.md)<!--Del-->
-  - [getShowName(系统接口)](arkts-telephony-sim-getshowname-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getShowNumber(系统接口)](arkts-telephony-sim-getshownumber-f-sys.md)<!--DelEnd-->
-  - [getSimAccountInfo](arkts-telephony-sim-getsimaccountinfo-f.md)<!--Del-->
-  - [getSimAuthentication(系统接口)](arkts-telephony-sim-getsimauthentication-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSimGid1(系统接口)](arkts-telephony-sim-getsimgid1-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSimIccId(系统接口)](arkts-telephony-sim-getsimiccid-f-sys.md)<!--DelEnd-->
+  - [getOpNameSync](arkts-telephony-sim-getopnamesync-f.md)
+  - [getSimAccountInfo](arkts-telephony-sim-getsimaccountinfo-f.md)
   - [getSimLabel](arkts-telephony-sim-getsimlabel-f.md)
   - [getSimLabelSync](arkts-telephony-sim-getsimlabelsync-f.md)
   - [getSimOperatorNumeric](arkts-telephony-sim-getsimoperatornumeric-f.md)
@@ -37,48 +21,14 @@
   - [getSimSpn](arkts-telephony-sim-getsimspn-f.md)
   - [getSimSpnSync](arkts-telephony-sim-getsimspnsync-f.md)
   - [getSimState](arkts-telephony-sim-getsimstate-f.md)
-  - [getSimStateSync](arkts-telephony-sim-getsimstatesync-f.md)<!--Del-->
-  - [getSimTelephoneNumber(系统接口)](arkts-telephony-sim-getsimtelephonenumber-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getVoiceMailIdentifier(系统接口)](arkts-telephony-sim-getvoicemailidentifier-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getVoiceMailNumber(系统接口)](arkts-telephony-sim-getvoicemailnumber-f-sys.md)<!--DelEnd-->
+  - [getSimStateSync](arkts-telephony-sim-getsimstatesync-f.md)
   - [hasOperatorPrivileges](arkts-telephony-sim-hasoperatorprivileges-f.md)
   - [hasSimCard](arkts-telephony-sim-hassimcard-f.md)
-  - [hasSimCardSync](arkts-telephony-sim-hassimcardsync-f.md)<!--Del-->
-  - [isOperatorSimCard(系统接口)](arkts-telephony-sim-isoperatorsimcard-f-sys.md)<!--DelEnd-->
+  - [hasSimCardSync](arkts-telephony-sim-hassimcardsync-f.md)
   - [isSimActive](arkts-telephony-sim-issimactive-f.md)
-  - [isSimActiveSync](arkts-telephony-sim-issimactivesync-f.md)<!--Del-->
-  - [queryIccDiallingNumbers(系统接口)](arkts-telephony-sim-queryiccdiallingnumbers-f-sys.md)<!--DelEnd--><!--Del-->
-  - [sendEnvelopeCmd(系统接口)](arkts-telephony-sim-sendenvelopecmd-f-sys.md)<!--DelEnd--><!--Del-->
-  - [sendTerminalResponseCmd(系统接口)](arkts-telephony-sim-sendterminalresponsecmd-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setDefaultVoiceSlotId(系统接口)](arkts-telephony-sim-setdefaultvoiceslotid-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setLockState(系统接口)](arkts-telephony-sim-setlockstate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setShowName(系统接口)](arkts-telephony-sim-setshowname-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setShowNumber(系统接口)](arkts-telephony-sim-setshownumber-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setSimLabelIndex(系统接口)](arkts-telephony-sim-setsimlabelindex-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setVoiceMailInfo(系统接口)](arkts-telephony-sim-setvoicemailinfo-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unlockPin(系统接口)](arkts-telephony-sim-unlockpin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unlockPin2(系统接口)](arkts-telephony-sim-unlockpin2-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unlockPuk(系统接口)](arkts-telephony-sim-unlockpuk-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unlockPuk2(系统接口)](arkts-telephony-sim-unlockpuk2-f-sys.md)<!--DelEnd--><!--Del-->
-  - [unlockSimLock(系统接口)](arkts-telephony-sim-unlocksimlock-f-sys.md)<!--DelEnd--><!--Del-->
-  - [updateIccDiallingNumbers(系统接口)](arkts-telephony-sim-updateiccdiallingnumbers-f-sys.md)<!--DelEnd--><!--Del-->
-  - [DiallingNumbersInfo(系统接口)](arkts-telephony-sim-diallingnumbersinfo-i-sys.md)<!--DelEnd-->
-  - [IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md)<!--Del-->
-  - [IccAccountInfo(系统接口)](arkts-telephony-sim-iccaccountinfo-i-sys.md)<!--DelEnd--><!--Del-->
-  - [LockInfo(系统接口)](arkts-telephony-sim-lockinfo-i-sys.md)<!--DelEnd--><!--Del-->
-  - [LockStatusResponse(系统接口)](arkts-telephony-sim-lockstatusresponse-i-sys.md)<!--DelEnd--><!--Del-->
-  - [OperatorConfig(系统接口)](arkts-telephony-sim-operatorconfig-i-sys.md)<!--DelEnd--><!--Del-->
-  - [PersoLockInfo(系统接口)](arkts-telephony-sim-persolockinfo-i-sys.md)<!--DelEnd--><!--Del-->
-  - [SimAuthenticationResponse(系统接口)](arkts-telephony-sim-simauthenticationresponse-i-sys.md)<!--DelEnd-->
-  - [SimLabel](arkts-telephony-sim-simlabel-i.md)<!--Del-->
-  - [AuthType(系统接口)](arkts-telephony-sim-authtype-e-sys.md)<!--DelEnd-->
-  - [CardType](arkts-telephony-sim-cardtype-e.md)<!--Del-->
-  - [ContactType(系统接口)](arkts-telephony-sim-contacttype-e-sys.md)<!--DelEnd--><!--Del-->
-  - [DsdsMode(系统接口)](arkts-telephony-sim-dsdsmode-e-sys.md)<!--DelEnd--><!--Del-->
-  - [LockState(系统接口)](arkts-telephony-sim-lockstate-e-sys.md)<!--DelEnd--><!--Del-->
-  - [LockType(系统接口)](arkts-telephony-sim-locktype-e-sys.md)<!--DelEnd--><!--Del-->
-  - [OperatorConfigKey(系统接口)](arkts-telephony-sim-operatorconfigkey-e-sys.md)<!--DelEnd--><!--Del-->
-  - [OperatorSimCard(系统接口)](arkts-telephony-sim-operatorsimcard-e-sys.md)<!--DelEnd--><!--Del-->
-  - [PersoLockType(系统接口)](arkts-telephony-sim-persolocktype-e-sys.md)<!--DelEnd-->
+  - [isSimActiveSync](arkts-telephony-sim-issimactivesync-f.md)
+  - [IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md)
+  - [SimLabel](arkts-telephony-sim-simlabel-i.md)
+  - [CardType](arkts-telephony-sim-cardtype-e.md)
   - [SimState](arkts-telephony-sim-simstate-e.md)
   - [SimType](arkts-telephony-sim-simtype-e.md)

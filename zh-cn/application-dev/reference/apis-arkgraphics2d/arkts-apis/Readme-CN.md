@@ -4,15 +4,8 @@
   - [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md)
   - [createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md)
   - [Color](arkts-arkgraphics2d-effectkit-color-i.md)
-  - [ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md)<!--Del-->
-  - [ColorPicker(系统接口)](arkts-arkgraphics2d-effectkit-colorpicker-i-sys.md)<!--DelEnd-->
-  - [Filter](arkts-arkgraphics2d-effectkit-filter-i.md)<!--Del-->
-  - [Filter(系统接口)](arkts-arkgraphics2d-effectkit-filter-i-sys.md)<!--DelEnd--><!--Del-->
-  - [EllipticalMaskCenter(系统接口)](arkts-arkgraphics2d-effectkit-ellipticalmaskcenter-t-sys.md)<!--DelEnd--><!--Del-->
-  - [EllipticalMaskRadius(系统接口)](arkts-arkgraphics2d-effectkit-ellipticalmaskradius-t-sys.md)<!--DelEnd--><!--Del-->
-  - [PictureComplexityDegree(系统接口)](arkts-arkgraphics2d-effectkit-picturecomplexitydegree-e-sys.md)<!--DelEnd--><!--Del-->
-  - [PictureLightDegree(系统接口)](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md)<!--DelEnd--><!--Del-->
-  - [PictureShadeDegree(系统接口)](arkts-arkgraphics2d-effectkit-pictureshadedegree-e-sys.md)<!--DelEnd-->
+  - [ColorPicker](arkts-arkgraphics2d-effectkit-colorpicker-i.md)
+  - [Filter](arkts-arkgraphics2d-effectkit-filter-i.md)
   - [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md)
 - [@ohos.graphics.colorSpaceManager](arkts-graphics-colorspacemanager.md)
   - [create](arkts-arkgraphics2d-colorspacemanager-create-f.md)
@@ -135,8 +128,7 @@
   - [LineHeightStyle](arkts-arkgraphics2d-text-lineheightstyle-e.md)
   - [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md)
   - [RectHeightStyle](arkts-arkgraphics2d-text-rectheightstyle-e.md)
-  - [RectWidthStyle](arkts-arkgraphics2d-text-rectwidthstyle-e.md)<!--Del-->
-  - [SystemFontType(系统接口)](arkts-arkgraphics2d-text-systemfonttype-e.md)<!--DelEnd-->
+  - [RectWidthStyle](arkts-arkgraphics2d-text-rectwidthstyle-e.md)
   - [TextAlign](arkts-arkgraphics2d-text-textalign-e.md)
   - [TextBadgeType](arkts-arkgraphics2d-text-textbadgetype-e.md)
   - [TextBaseline](arkts-arkgraphics2d-text-textbaseline-e.md)
@@ -151,26 +143,8 @@
   - [TextVerticalAlign](arkts-arkgraphics2d-text-textverticalalign-e.md)
   - [WordBreak](arkts-arkgraphics2d-text-wordbreak-e.md)
 - [@ohos.graphics.uiEffect](arkts-graphics-uieffect.md)
-  - [uiEffect](arkts-arkgraphics2d-uieffect-n.md)<!--Del-->
-    - [createBrightnessBlender(系统接口)](arkts-arkgraphics2d-uieffect-createbrightnessblender-f-sys.md)<!--DelEnd-->
+  - [uiEffect](arkts-arkgraphics2d-uieffect-n.md)
     - [createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)
-    - [createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)<!--Del-->
-    - [createHdrBrightnessBlender(系统接口)](arkts-arkgraphics2d-uieffect-createhdrbrightnessblender-f-sys.md)<!--DelEnd--><!--Del-->
-    - [createHdrDarkenBlender(系统接口)](arkts-arkgraphics2d-uieffect-createhdrdarkenblender-f-sys.md)<!--DelEnd--><!--Del-->
-    - [Mask(系统接口)](arkts-arkgraphics2d-uieffect-mask-c-sys.md)<!--DelEnd--><!--Del-->
-    - [BlurBubblesRiseEffectParam(系统接口)](arkts-arkgraphics2d-uieffect-blurbubblesriseeffectparam-i-sys.md)<!--DelEnd--><!--Del-->
-    - [BrightnessBlender(系统接口)](arkts-arkgraphics2d-uieffect-brightnessblender-i-sys.md)<!--DelEnd--><!--Del-->
-    - [BrightnessParam(系统接口)](arkts-arkgraphics2d-uieffect-brightnessparam-i-sys.md)<!--DelEnd--><!--Del-->
-    - [Color(系统接口)](arkts-arkgraphics2d-uieffect-color-i-sys.md)<!--DelEnd-->
-    - [Filter](arkts-arkgraphics2d-uieffect-filter-i.md)<!--Del-->
-    - [Filter(系统接口)](arkts-arkgraphics2d-uieffect-filter-i-sys.md)<!--DelEnd-->
-    - [HdrBrightnessBlender](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i.md)<!--Del-->
-    - [HdrDarkenBlender(系统接口)](arkts-arkgraphics2d-uieffect-hdrdarkenblender-i-sys.md)<!--DelEnd--><!--Del-->
-    - [HeatDistortionEffectParam(系统接口)](arkts-arkgraphics2d-uieffect-heatdistortioneffectparam-i-sys.md)<!--DelEnd--><!--Del-->
-    - [LiquidMaterialEffectParam(系统接口)](arkts-arkgraphics2d-uieffect-liquidmaterialeffectparam-i-sys.md)<!--DelEnd--><!--Del-->
-    - [VisualEffect(系统接口)](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md)<!--DelEnd--><!--Del-->
-    - [Blender(系统接口)](arkts-arkgraphics2d-uieffect-blender-t-sys.md)<!--DelEnd--><!--Del-->
-    - [FlyMode(系统接口)](arkts-arkgraphics2d-uieffect-flymode-e-sys.md)<!--DelEnd--><!--Del-->
-    - [TileMode(系统接口)](arkts-arkgraphics2d-uieffect-tilemode-e-sys.md)<!--DelEnd--><!--Del-->
-    - [WaterRippleMode(系统接口)](arkts-arkgraphics2d-uieffect-waterripplemode-e-sys.md)<!--DelEnd--><!--Del-->
-  - [BrightnessBlenderParam(系统接口)](arkts-arkgraphics2d-graphics-uieffect-brightnessblenderparam-i-sys.md)<!--DelEnd-->
+    - [createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)
+    - [Filter](arkts-arkgraphics2d-uieffect-filter-i.md)
+    - [HdrBrightnessBlender](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i.md)

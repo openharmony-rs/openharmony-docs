@@ -16,14 +16,12 @@
   - [Advertisement](arkts-ads-advertising-advertisement-t.md)
 - [@ohos.advertising.AdComponent](arkts-advertising-adcomponent.md)
   - [AdComponent](arkts-ads-advertising-adcomponent-adcomponent-s.md)
-- [@ohos.advertising.AdsServiceExtensionAbility](arkts-advertising-adsserviceextensionability.md)<!--Del-->
-  - [AdsServiceExtensionAbility(系统接口)](arkts-ads-advertising-adsserviceextensionability-adsserviceextensionability-c-sys.md)<!--DelEnd-->
+- [@ohos.advertising.AdsServiceExtensionAbility](arkts-advertising-adsserviceextensionability.md)
   - [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md)
 - [@ohos.advertising.AutoAdComponent](arkts-advertising-autoadcomponent.md)
   - [AutoAdComponent](arkts-ads-advertising-autoadcomponent-autoadcomponent-s.md)
 - [@ohos.identifier.oaid](arkts-identifier-oaid.md)
-  - [getOAID](arkts-ads-identifier-getoaid-f.md)<!--Del-->
-  - [resetOAID(系统接口)](arkts-ads-identifier-resetoaid-f-sys.md)<!--DelEnd-->
+  - [getOAID](arkts-ads-identifier-getoaid-f.md)
 - advertising<!--arkts-adskit-advertising-->
   - [advertisement](arkts-advertisement.md)
     - [Advertisement](arkts-ads-advertisement-advertisement-i.md)
