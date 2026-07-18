@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-定义应用多开在运行态的结构信息，包含应用包名、多开模式（分身模式或多实例模式）及对应的运行实例信息。
+定义应用多开在运行态的结构信息，包含应用包名、多开模式（分身模式或多实例模式）及对应的运行实例信息，适用于需要管理和监控应用多开状态的场景，应用多开模式相关指南请参见[创建应用分身](../../quick-start/app-clone.md)和[创建应用多实例](../../quick-start/multiInstance.md)。
 
 > **说明：**
 > 
@@ -43,14 +43,13 @@ try {
   appManager.getRunningMultiAppInfo(bundleName)
     .then((info: appManager.RunningMultiAppInfo) => {
       console.info(`getRunningMultiAppInfo success, data: ${JSON.stringify(info)}`);
-    // 
     }).catch((err: BusinessError) => {
-    console.error(`getRunningMultiAppInfo failed, code: ${err.code}, msg:${err.message}`);
-  });
+      console.error(`getRunningMultiAppInfo failed, code: ${err.code}, message: ${err.message}`);
+    });
 } catch (err) {
   // 处理入参错误异常
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;
-  console.error(`getRunningMultiAppInfo error, code: ${code}, msg:${msg}`);
+  console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
 }
 ```
