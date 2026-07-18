@@ -80,8 +80,8 @@
        ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id.c_str(), provider,
            &accessibilityProviderCallbacksWithInstance_);
        if (ret != 0) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                        "InterfaceDesignTest OH_ArkUI_AccessibilityProviderRegisterCallback failed");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                         "OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance failed");
            return;
        }
        g_provider = provider;
@@ -139,9 +139,11 @@
            rect.leftTopY = NUMBER_ZERO;
            rect.rightBottomX = NUMBER_THIRD;
            rect.rightBottomY = NUMBER_THIRD;
-           ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
-           // 设置根节点不可被无障碍辅助服务所识别。
-           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
+            ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
+            OH_ArkUI_AccessibilityElementInfoSetEnabled(rootNode, true);
+            OH_ArkUI_AccessibilityElementInfoSetVisible(rootNode, true);
+            // 设置根节点不可被无障碍辅助服务所识别。
+            OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
            auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
            int64_t childNodes[1024];
            for (int i = 0; i < objects.size(); i++) {
@@ -299,7 +301,7 @@
        rect.rightBottomY = NUMBER_SECOND;
        OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
-       OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, requestId);
+        OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, nextElementId);
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
        // 本函数仅演示创建事件信息，未发送事件。若无需发送事件，请调用 OH_ArkUI_DestoryAccessibilityEventInfo
        // 释放内存；若需发送事件，请调用 OH_ArkUI_SendAccessibilityAsyncEvent，并在回调中释放内存。
@@ -414,30 +416,24 @@
        // 根据action类型执行对应的行为。
        switch (action) {
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
-               if (object) {
-                   object->OnClick();
-                   object->fillAccessibilityElement(element);
-               }
+                object->OnClick();
+                object->fillAccessibilityElement(element);
                // 向无障碍服务发送指定事件。
                AccessibilityManager::SendAccessibilityAsyncEvent(element,
                    ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
                break;
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
-               if (object) {
-                   object->SetFocus(true);
-   
-                   object->fillAccessibilityElement(element);
-               }
+                object->SetFocus(true);
+
+                object->fillAccessibilityElement(element);
                // 向无障碍服务发送指定事件。
                AccessibilityManager::SendAccessibilityAsyncEvent(element,
                    ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
                    announcedText);
                break;
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
-               if (object) {
-                   object->SetFocus(false);
-                   object->fillAccessibilityElement(element);
-               }
+                object->SetFocus(false);
+                object->fillAccessibilityElement(element);
                AccessibilityManager::SendAccessibilityAsyncEvent(
                    element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED,
                    announcedText);
@@ -519,14 +515,14 @@ provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../re
        // 获取 native 层提供的 accessibility provider，并为其注册回调
        OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
        if (accessibilityProvider_ == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
-           return 0;
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
+           return -1;
        }
 
        int32_t ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id, accessibilityProvider_,
            &AccessibilityMaker::accessibilityProviderCallbacksWithInstance_);
        if (ret != 0) {
-           return 0;
+           return ret;
        }
        return 0;
    }
