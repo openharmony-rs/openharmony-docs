@@ -966,8 +966,8 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 | 错误码ID | 错误信息 | 
 | -------- | ---------| 
 | 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 | 
-|6600101  | Session service exception.| 
-| 6600101  | The session does not exist. | 
+| 6600101  | Session service exception.| 
+| 6600102  | The session does not exist. | 
 
 **示例：** 
 
@@ -1344,12 +1344,12 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 **示例：**
 ```ts
 try {
-currentAVSession.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-  console.info(`desktop lyric isLocked : ${state.isLocked}`);
-    });
-  } catch (err) {
+  currentAVSession.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+    console.info(`desktop lyric isLocked : ${state.isLocked}`);
+  });
+} catch (err) {
+  console.error(`Failed to register desktop lyric state changed, code: ${err.code}, message: ${err.message}`);
 }
-
 ```
 
 ## offDesktopLyricStateChanged<sup>23+</sup>
@@ -1387,8 +1387,9 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 ```ts
 try {
   currentAVSession.offDesktopLyricStateChanged();
-  } catch (err) {
-};
+} catch (err) {
+  console.error(`Failed to unregister desktop lyric state changed, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## sendCustomData<sup>20+</sup>
@@ -1801,43 +1802,6 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 if (currentAVSession !== undefined) {
   (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
 }
-```
-
-## setBackgroundPlayMode<sup>24+</sup>
-
-setBackgroundPlayMode(mode: BackgroundPlayMode): Promise\<void>
-
-设置后台播放模式。使用promise异步回调。
-
-建议与应用内"是否支持后台播放开关"关联。如未设置，'audio'类型会话默认值为ENABLE_BACKGROUND_PLAY；'video'类型会话默认值为DISABLE_BACKGROUND_PLAY。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
-
-**参数：**
-
-| 参数名 | 类型                   | 必填 | 说明                            |
-| ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当事件监听取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------|
-| 6600101  | Session service exception. |
-| 6600102  | The session does not exist. |
-
-**示例：**
-
-```ts
-currentAVSession.offDesktopLyricStateChanged();
 ```
 
 ## setBackgroundPlayMode<sup>24+</sup>

@@ -2856,7 +2856,7 @@ onCastControlGenericError(callback: ErrorCallback): void
 
 ```ts
 avCastController.onCastControlGenericError((error: BusinessError) => {
-console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`);
+  console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`);
 });
 ```
 
@@ -2979,7 +2979,7 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avCastController.on('castControlIoError', (error: BusinessError) => {
-console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
+  console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -3031,7 +3031,7 @@ onCastControlIoError(callback: ErrorCallback): void
 
 ```ts
 avCastController.onCastControlIoError((error: BusinessError) => {
-console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
+  console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -3140,7 +3140,7 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avCastController.on('castControlParsingError', (error: BusinessError) => {
-console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
+  console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -3180,7 +3180,7 @@ onCastControlParsingError(callback: ErrorCallback): void
 
 ```ts
 avCastController.onCastControlParsingError((error: BusinessError) => {
-console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
+  console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -3290,7 +3290,7 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avCastController.on('castControlDecodingError', (error: BusinessError) => {
-console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
+  console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -3331,7 +3331,7 @@ onCastControlDecodingError(callback: ErrorCallback): void
 
 ```ts
 avCastController.onCastControlDecodingError((error: BusinessError) => {
-console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
+  console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -3438,7 +3438,7 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
-console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`);
+  console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`);
 });
 ```
 
@@ -3476,7 +3476,7 @@ onCastControlAudioRendererError(callback: ErrorCallback): void
 
 ```ts
 avCastController.onCastControlAudioRendererError((error: BusinessError) => {
-console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`);
+  console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`);
 });
 ```
 
@@ -3590,7 +3590,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avCastController.on('castControlDrmError', (error: BusinessError) => {
-console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`);
+  console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`);
 });
 ```
 
@@ -3635,7 +3635,7 @@ onCastControlDrmError(callback: ErrorCallback): void
 
 ```ts
 avCastController.onCastControlDrmError((error: BusinessError) => {
-console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`);
+  console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`);
 });
 ```
 

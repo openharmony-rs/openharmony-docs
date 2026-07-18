@@ -1409,12 +1409,12 @@ ArkTS-Sta: getExtras(callback: AsyncCallback<Record<string, Object>>): void
 **示例：**
 
 ```ts
-avcontroller.getExtras((err: BusinessError, extras) => {
+avcontroller.getExtras((err: BusinessError, extras: Record<string, Object>) => {
   if (err) {
     console.error(`Failed to get extras, code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting extras: ${extras}`);
+  console.info(`Succeeded in getting extras: ${JSON.stringify(extras)}`);
 });
 ```
 
@@ -3135,8 +3135,7 @@ offValidCommandChange(callback?: Callback<Array\<AVControlCommandType>>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'validCommandChange'`。         |
-| callback | (commands: Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>) => void | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
+| callback | Callback<Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>> | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
 
 **错误码：**
 
@@ -3144,14 +3143,13 @@ offValidCommandChange(callback?: Callback<Array\<AVControlCommandType>>): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avcontroller.off('validCommandChange');
+avcontroller.offValidCommandChange();
 ```
 
 ## on('outputDeviceChange')<sup>10+</sup>
@@ -4224,6 +4222,10 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 
 ```ts
 avcontroller.getAVCallState((err: BusinessError, callstate: avSession.AVCallState) => {
+  if (err) {
+    console.error(`Failed to get AV call state, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
