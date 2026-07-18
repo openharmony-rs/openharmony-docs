@@ -20,8 +20,7 @@
   - [CdsmMemberInfo](arkts-connectivity-cdsm-cdsmmemberinfo-i.md)
   - [CdsmConnectionState](arkts-connectivity-cdsm-cdsmconnectionstate-e.md)
 - [@ohos.nearlink.constant](arkts-nearlink-constant.md)
-  - [AcbState](arkts-connectivity-nearlinkconstant-acbstate-e.md)<!--Del-->
-  - [ConnectionInterval(系统接口)](arkts-connectivity-nearlinkconstant-connectioninterval-e-sys.md)<!--DelEnd-->
+  - [AcbState](arkts-connectivity-nearlinkconstant-acbstate-e.md)
   - [ConnectionState](arkts-connectivity-nearlinkconstant-connectionstate-e.md)
   - [DeviceClass](arkts-connectivity-nearlinkconstant-deviceclass-e.md)
   - [PairingState](arkts-connectivity-nearlinkconstant-pairingstate-e.md)
@@ -42,40 +41,29 @@
   - [DataParams](arkts-connectivity-datatransfer-dataparams-i.md)
   - [ConnectionState](arkts-connectivity-datatransfer-connectionstate-t.md)
   - [TransferMode](arkts-connectivity-datatransfer-transfermode-e.md)
-- [@ohos.nearlink.manager](arkts-nearlink-manager.md)<!--Del-->
-  - [disable(系统接口)](arkts-connectivity-manager-disable-f-sys.md)<!--DelEnd--><!--Del-->
-  - [enable(系统接口)](arkts-connectivity-manager-enable-f-sys.md)<!--DelEnd--><!--Del-->
-  - [factoryReset(系统接口)](arkts-connectivity-manager-factoryreset-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getLocalAddress(系统接口)](arkts-connectivity-manager-getlocaladdress-f-sys.md)<!--DelEnd-->
+- [@ohos.nearlink.manager](arkts-nearlink-manager.md)
   - [getLocalName](arkts-connectivity-manager-getlocalname-f.md)
   - [getPairedDevices](arkts-connectivity-manager-getpaireddevices-f.md)
   - [getState](arkts-connectivity-manager-getstate-f.md)
   - [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)
   - [offStateChange](arkts-connectivity-manager-offstatechange-f.md)
-  - [onStateChange](arkts-connectivity-manager-onstatechange-f.md)<!--Del-->
-  - [setConnectionMode(系统接口)](arkts-connectivity-manager-setconnectionmode-f-sys.md)<!--DelEnd--><!--Del-->
-  - [ConnectionMode(系统接口)](arkts-connectivity-manager-connectionmode-e-sys.md)<!--DelEnd-->
+  - [onStateChange](arkts-connectivity-manager-onstatechange-f.md)
   - [NearlinkState](arkts-connectivity-manager-nearlinkstate-e.md)
 - [@ohos.nearlink.remoteDevice](arkts-nearlink-remotedevice.md)
   - [createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md)
   - [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md)
-  - [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md)<!--Del-->
-  - [offPairingRequest(系统接口)](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md)<!--DelEnd-->
+  - [offConnectionStateChange](arkts-connectivity-remotedevice-offconnectionstatechange-f.md)
   - [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md)
   - [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md)
-  - [onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md)<!--Del-->
-  - [onPairingRequest(系统接口)](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md)<!--DelEnd-->
+  - [onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md)
   - [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md)
   - [AcbStateParam](arkts-connectivity-remotedevice-acbstateparam-i.md)
   - [ConnectionStateParam](arkts-connectivity-remotedevice-connectionstateparam-i.md)
-  - [DeviceInformation](arkts-connectivity-remotedevice-deviceinformation-i.md)<!--Del-->
-  - [DeviceModel(系统接口)](arkts-connectivity-remotedevice-devicemodel-i-sys.md)<!--DelEnd-->
+  - [DeviceInformation](arkts-connectivity-remotedevice-deviceinformation-i.md)
   - [PairingRequestParam](arkts-connectivity-remotedevice-pairingrequestparam-i.md)
   - [PairingStateParam](arkts-connectivity-remotedevice-pairingstateparam-i.md)
-  - [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i.md)<!--Del-->
-  - [RemoteDevice(系统接口)](arkts-connectivity-remotedevice-remotedevice-i-sys.md)<!--DelEnd-->
-  - [AcbState](arkts-connectivity-remotedevice-acbstate-t.md)<!--Del-->
-  - [ConnectionInterval(系统接口)](arkts-connectivity-remotedevice-connectioninterval-t-sys.md)<!--DelEnd-->
+  - [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i.md)
+  - [AcbState](arkts-connectivity-remotedevice-acbstate-t.md)
   - [ConnectionState](arkts-connectivity-remotedevice-connectionstate-t.md)
   - [DeviceClass](arkts-connectivity-remotedevice-deviceclass-t.md)
   - [PairingState](arkts-connectivity-remotedevice-pairingstate-t.md)
@@ -90,24 +78,19 @@
   - [ScanFilters](arkts-connectivity-scan-scanfilters-i.md)
   - [ScanOptions](arkts-connectivity-scan-scanoptions-i.md)
   - [ScanResults](arkts-connectivity-scan-scanresults-i.md)
-  - [ScanMode](arkts-connectivity-scan-scanmode-e.md)<!--Del-->
-  - [ScanMode(系统接口)](arkts-connectivity-scan-scanmode-e-sys.md)<!--DelEnd-->
+  - [ScanMode](arkts-connectivity-scan-scanmode-e.md)
 - [@ohos.nearlink.ssap](arkts-nearlink-ssap.md)
   - [createClient](arkts-connectivity-ssap-createclient-f.md)
   - [createServer](arkts-connectivity-ssap-createserver-f.md)
-  - [Client](arkts-connectivity-ssap-client-i.md)<!--Del-->
-  - [Client(系统接口)](arkts-connectivity-ssap-client-i-sys.md)<!--DelEnd-->
-  - [ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md)<!--Del-->
-  - [Event(系统接口)](arkts-connectivity-ssap-event-i-sys.md)<!--DelEnd--><!--Del-->
-  - [Method(系统接口)](arkts-connectivity-ssap-method-i-sys.md)<!--DelEnd-->
+  - [Client](arkts-connectivity-ssap-client-i.md)
+  - [ConnectionChangeState](arkts-connectivity-ssap-connectionchangestate-i.md)
   - [Property](arkts-connectivity-ssap-property-i.md)
   - [PropertyDescriptor](arkts-connectivity-ssap-propertydescriptor-i.md)
   - [PropertyReadRequest](arkts-connectivity-ssap-propertyreadrequest-i.md)
   - [PropertyWriteRequest](arkts-connectivity-ssap-propertywriterequest-i.md)
   - [Server](arkts-connectivity-ssap-server-i.md)
   - [ServerResponse](arkts-connectivity-ssap-serverresponse-i.md)
-  - [Service](arkts-connectivity-ssap-service-i.md)<!--Del-->
-  - [Service(系统接口)](arkts-connectivity-ssap-service-i-sys.md)<!--DelEnd-->
+  - [Service](arkts-connectivity-ssap-service-i.md)
   - [ConnectionState](arkts-connectivity-ssap-connectionstate-t.md)
   - [Operation](arkts-connectivity-ssap-operation-e.md)
   - [PropertyDescriptorType](arkts-connectivity-ssap-propertydescriptortype-e.md)

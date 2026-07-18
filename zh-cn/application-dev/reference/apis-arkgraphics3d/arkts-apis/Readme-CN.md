@@ -3,8 +3,7 @@
 - graphics3d<!--arkts-arkgraphics3d-graphics3d-->
   - [Scene](arkts-scene.md)
     - [PCFConfig](arkts-arkgraphics3d-scene-pcfconfig-c.md)
-    - [Scene](arkts-arkgraphics3d-scene-c.md)<!--Del-->
-    - [Scene(系统接口)](arkts-arkgraphics3d-scene-c-sys.md)<!--DelEnd-->
+    - [Scene](arkts-arkgraphics3d-scene-c.md)
     - [SoftShadowConfig](arkts-arkgraphics3d-scene-softshadowconfig-c.md)
     - [CameraParameters](arkts-arkgraphics3d-scene-cameraparameters-i.md)
     - [EffectParameters](arkts-arkgraphics3d-scene-effectparameters-i.md)
@@ -13,19 +12,12 @@
     - [RenderConfiguration](arkts-arkgraphics3d-scene-renderconfiguration-i.md)
     - [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md)
     - [RenderParameters](arkts-arkgraphics3d-scene-renderparameters-i.md)
-    - [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)<!--Del-->
-    - [RenderResourceFactory(系统接口)](arkts-arkgraphics3d-scene-renderresourcefactory-i-sys.md)<!--DelEnd-->
-    - [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md)<!--Del-->
-    - [SceneLoadParams(系统接口)](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md)<!--DelEnd-->
+    - [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)
+    - [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md)
     - [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md)
     - [SceneResourceFactory](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md)
     - [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md)
-  - [SceneBoidsSim](arkts-sceneboidssim.md)<!--Del-->
-    - [BoidsSimPlugin(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md)<!--DelEnd--><!--Del-->
-    - [BoidsSimWorld(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimworld-c-sys.md)<!--DelEnd--><!--Del-->
-    - [BoidsSimGravityParameters(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md)<!--DelEnd--><!--Del-->
-    - [BoidsSimParameters(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md)<!--DelEnd--><!--Del-->
-    - [BoidsSimRepulsionParameters(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md)<!--DelEnd-->
+  - [SceneBoidsSim](arkts-sceneboidssim.md)
   - [SceneNodes](arkts-scenenodes.md)
     - [Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)
     - [Container](arkts-arkgraphics3d-scenenodes-container-i.md)
@@ -64,12 +56,10 @@
     - [Shader](arkts-arkgraphics3d-sceneresources-shader-i.md)
     - [ShaderMaterial](arkts-arkgraphics3d-sceneresources-shadermaterial-i.md)
     - [SubMesh](arkts-arkgraphics3d-sceneresources-submesh-i.md)
-    - [UnlitMaterial](arkts-arkgraphics3d-sceneresources-unlitmaterial-i.md)<!--Del-->
-    - [UnlitShadowAlphaMaterial(系统接口)](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md)<!--DelEnd-->
+    - [UnlitMaterial](arkts-arkgraphics3d-sceneresources-unlitmaterial-i.md)
     - [CullMode](arkts-arkgraphics3d-sceneresources-cullmode-e.md)
     - [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md)
-    - [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md)<!--Del-->
-    - [MaterialType(系统接口)](arkts-arkgraphics3d-sceneresources-materialtype-e-sys.md)<!--DelEnd-->
+    - [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md)
     - [PolygonMode](arkts-arkgraphics3d-sceneresources-polygonmode-e.md)
     - [SamplerAddressMode](arkts-arkgraphics3d-sceneresources-sampleraddressmode-e.md)
     - [SamplerFilter](arkts-arkgraphics3d-sceneresources-samplerfilter-e.md)

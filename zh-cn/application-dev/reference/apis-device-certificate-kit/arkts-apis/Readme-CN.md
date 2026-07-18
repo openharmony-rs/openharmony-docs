@@ -83,39 +83,22 @@
   - [ValidationPolicyType](arkts-devicecertificate-cert-validationpolicytype-e.md)
 - [@ohos.security.certManager](arkts-security-certmanager.md)
   - [abort](arkts-devicecertificate-certificatemanager-abort-f.md)
-  - [finish](arkts-devicecertificate-certificatemanager-finish-f.md)<!--Del-->
-  - [getAllAppPrivateCertificates(系统接口)](arkts-devicecertificate-certificatemanager-getallappprivatecertificates-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getAllAppPrivateCertificatesByUid(系统接口)](arkts-devicecertificate-certificatemanager-getallappprivatecertificatesbyuid-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getAllPublicCertificates(系统接口)](arkts-devicecertificate-certificatemanager-getallpubliccertificates-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getAllSystemAppCertificates(系统接口)](arkts-devicecertificate-certificatemanager-getallsystemappcertificates-f-sys.md)<!--DelEnd-->
-  - [getAllUserTrustedCertificates](arkts-devicecertificate-certificatemanager-getallusertrustedcertificates-f.md)<!--Del-->
-  - [getAuthorizedAppList(系统接口)](arkts-devicecertificate-certificatemanager-getauthorizedapplist-f-sys.md)<!--DelEnd-->
+  - [finish](arkts-devicecertificate-certificatemanager-finish-f.md)
+  - [getAllUserTrustedCertificates](arkts-devicecertificate-certificatemanager-getallusertrustedcertificates-f.md)
   - [getCertificateStorePath](arkts-devicecertificate-certificatemanager-getcertificatestorepath-f.md)
   - [getPrivateCertificate](arkts-devicecertificate-certificatemanager-getprivatecertificate-f.md)
   - [getPrivateCertificates](arkts-devicecertificate-certificatemanager-getprivatecertificates-f.md)
-  - [getPublicCertificate](arkts-devicecertificate-certificatemanager-getpubliccertificate-f.md)<!--Del-->
-  - [getSystemAppCertificate(系统接口)](arkts-devicecertificate-certificatemanager-getsystemappcertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSystemTrustedCertificate(系统接口)](arkts-devicecertificate-certificatemanager-getsystemtrustedcertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getSystemTrustedCertificateList(系统接口)](arkts-devicecertificate-certificatemanager-getsystemtrustedcertificatelist-f-sys.md)<!--DelEnd-->
+  - [getPublicCertificate](arkts-devicecertificate-certificatemanager-getpubliccertificate-f.md)
   - [getUkeyCertificate](arkts-devicecertificate-certificatemanager-getukeycertificate-f.md)
   - [getUkeyCertificateList](arkts-devicecertificate-certificatemanager-getukeycertificatelist-f.md)
-  - [getUserTrustedCertificate](arkts-devicecertificate-certificatemanager-getusertrustedcertificate-f.md)<!--Del-->
-  - [grantPublicCertificate(系统接口)](arkts-devicecertificate-certificatemanager-grantpubliccertificate-f-sys.md)<!--DelEnd-->
+  - [getUserTrustedCertificate](arkts-devicecertificate-certificatemanager-getusertrustedcertificate-f.md)
   - [importUkeyCertificate](arkts-devicecertificate-certificatemanager-importukeycertificate-f.md)
   - [init](arkts-devicecertificate-certificatemanager-init-f.md)
-  - [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md)<!--Del-->
-  - [installPublicCertificate(系统接口)](arkts-devicecertificate-certificatemanager-installpubliccertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [installSystemAppCertificate(系统接口)](arkts-devicecertificate-certificatemanager-installsystemappcertificate-f-sys.md)<!--DelEnd-->
+  - [installPrivateCertificate](arkts-devicecertificate-certificatemanager-installprivatecertificate-f.md)
   - [installUserTrustedCertificate](arkts-devicecertificate-certificatemanager-installusertrustedcertificate-f.md)
   - [installUserTrustedCertificateSync](arkts-devicecertificate-certificatemanager-installusertrustedcertificatesync-f.md)
-  - [isAuthorizedApp](arkts-devicecertificate-certificatemanager-isauthorizedapp-f.md)<!--Del-->
-  - [removeGrantedPublicCertificate(系统接口)](arkts-devicecertificate-certificatemanager-removegrantedpubliccertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setCertificateStatus(系统接口)](arkts-devicecertificate-certificatemanager-setcertificatestatus-f-sys.md)<!--DelEnd--><!--Del-->
-  - [uninstallAllAppCertificate(系统接口)](arkts-devicecertificate-certificatemanager-uninstallallappcertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [uninstallAllUserTrustedCertificate(系统接口)](arkts-devicecertificate-certificatemanager-uninstallallusertrustedcertificate-f-sys.md)<!--DelEnd-->
-  - [uninstallPrivateCertificate](arkts-devicecertificate-certificatemanager-uninstallprivatecertificate-f.md)<!--Del-->
-  - [uninstallPublicCertificate(系统接口)](arkts-devicecertificate-certificatemanager-uninstallpubliccertificate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [uninstallSystemAppCertificate(系统接口)](arkts-devicecertificate-certificatemanager-uninstallsystemappcertificate-f-sys.md)<!--DelEnd-->
+  - [isAuthorizedApp](arkts-devicecertificate-certificatemanager-isauthorizedapp-f.md)
+  - [uninstallPrivateCertificate](arkts-devicecertificate-certificatemanager-uninstallprivatecertificate-f.md)
   - [uninstallUserTrustedCertificateSync](arkts-devicecertificate-certificatemanager-uninstallusertrustedcertificatesync-f.md)
   - [update](arkts-devicecertificate-certificatemanager-update-f.md)
   - [CertAbstract](arkts-devicecertificate-certificatemanager-certabstract-i.md)
@@ -134,8 +117,7 @@
   - [CertificatePurpose](arkts-devicecertificate-certificatemanager-certificatepurpose-e.md)
   - [CertScope](arkts-devicecertificate-certificatemanager-certscope-e.md)
   - [CertType](arkts-devicecertificate-certificatemanager-certtype-e.md)
-  - [CMErrorCode](arkts-devicecertificate-certificatemanager-cmerrorcode-e.md)<!--Del-->
-  - [CMErrorCode(系统接口)](arkts-devicecertificate-certificatemanager-cmerrorcode-e-sys.md)<!--DelEnd-->
+  - [CMErrorCode](arkts-devicecertificate-certificatemanager-cmerrorcode-e.md)
   - [CmKeyDigest](arkts-devicecertificate-certificatemanager-cmkeydigest-e.md)
   - [CmKeyPadding](arkts-devicecertificate-certificatemanager-cmkeypadding-e.md)
   - [CmKeyPurpose](arkts-devicecertificate-certificatemanager-cmkeypurpose-e.md)

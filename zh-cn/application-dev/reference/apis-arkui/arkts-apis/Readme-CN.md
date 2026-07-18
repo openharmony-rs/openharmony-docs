@@ -5,8 +5,7 @@
   - [isPiPEnabled](arkts-arkui-pipwindow-ispipenabled-f.md)
   - [ControlEventParam](arkts-arkui-pipwindow-controleventparam-i.md)
   - [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md)
-  - [PiPController](arkts-arkui-pipwindow-pipcontroller-i.md)<!--Del-->
-  - [PiPController(系统接口)](arkts-arkui-pipwindow-pipcontroller-i-sys.md)<!--DelEnd-->
+  - [PiPController](arkts-arkui-pipwindow-pipcontroller-i.md)
   - [PiPWindowInfo](arkts-arkui-pipwindow-pipwindowinfo-i.md)
   - [PiPWindowSize](arkts-arkui-pipwindow-pipwindowsize-i.md)
   - [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md)
@@ -24,21 +23,11 @@
   - [VideoLiveControlGroup](arkts-arkui-pipwindow-videolivecontrolgroup-e.md)
   - [VideoMeetingControlGroup](arkts-arkui-pipwindow-videomeetingcontrolgroup-e.md)
   - [VideoPlayControlGroup](arkts-arkui-pipwindow-videoplaycontrolgroup-e.md)
-- [@ohos.animation.windowAnimationManager](arkts-animation-windowanimationmanager.md)<!--Del-->
-  - [minimizeWindowWithAnimation(系统接口)](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setController(系统接口)](arkts-arkui-windowanimationmanager-setcontroller-f-sys.md)<!--DelEnd--><!--Del-->
-  - [RRect(系统接口)](arkts-arkui-windowanimationmanager-rrect-i-sys.md)<!--DelEnd--><!--Del-->
-  - [WindowAnimationController(系统接口)](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md)<!--DelEnd--><!--Del-->
-  - [WindowAnimationFinishedCallback(系统接口)](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)<!--DelEnd--><!--Del-->
-  - [WindowAnimationTarget(系统接口)](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md)<!--DelEnd-->
 - [@ohos.animator](arkts-animator.md)
   - [Animator](arkts-arkui-animator-animator-c.md)
   - [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)
   - [AnimatorOptions](arkts-arkui-animator-animatoroptions-i.md)
   - [AnimatorResult](arkts-arkui-animator-animatorresult-i.md)
-- [@ohos.application.WindowExtensionAbility](arkts-application-windowextensionability.md)<!--Del-->
-  - [WindowExtensionAbility(系统接口)](arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md)<!--DelEnd--><!--Del-->
-  - [WindowExtensionContext(系统接口)](arkts-arkui-windowextensioncontext-t-sys.md)<!--DelEnd-->
 - [@ohos.arkui.ArcAlphabetIndexer](arkts-arkui-arcalphabetindexer.md)
   - [ArcAlphabetIndexerAttribute](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md)
   - [ArcAlphabetIndexerInitInfo](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerinitinfo-i.md)
@@ -108,20 +97,17 @@
   - [BackPressActionProposal](arkts-arkui-arkui-uicontext-backpressactionproposal-c.md)
   - [BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md)
   - [ClickActionProposal](arkts-arkui-arkui-uicontext-clickactionproposal-c.md)
-  - [ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md)<!--Del-->
-  - [ComponentSnapshot(系统接口)](arkts-arkui-arkui-uicontext-componentsnapshot-c-sys.md)<!--DelEnd-->
+  - [ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md)
   - [ComponentUtils](arkts-arkui-arkui-uicontext-componentutils-c.md)
   - [ContextMenuController](arkts-arkui-arkui-uicontext-contextmenucontroller-c.md)
   - [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md)
   - [DialogPresenter](arkts-arkui-arkui-uicontext-dialogpresenter-c.md)
-  - [DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md)<!--Del-->
-  - [DragController(系统接口)](arkts-arkui-arkui-uicontext-dragcontroller-c-sys.md)<!--DelEnd-->
+  - [DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md)
   - [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)
   - [FocusController](arkts-arkui-arkui-uicontext-focuscontroller-c.md)
   - [Font](arkts-arkui-arkui-uicontext-font-c.md)
   - [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md)
-  - [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)<!--Del-->
-  - [LuminanceSampler(系统接口)](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md)<!--DelEnd-->
+  - [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)
   - [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md)
   - [MarqueeDynamicSyncScene](arkts-arkui-arkui-uicontext-marqueedynamicsyncscene-c.md)
   - [MeasureUtils](arkts-arkui-arkui-uicontext-measureutils-c.md)
@@ -138,12 +124,10 @@
   - [SwiperDynamicSyncScene](arkts-arkui-arkui-uicontext-swiperdynamicsyncscene-c.md)
   - [TargetedGestureProposal](arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md)
   - [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md)
-  - [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)<!--Del-->
-  - [UIContext(系统接口)](arkts-arkui-arkui-uicontext-uicontext-c-sys.md)<!--DelEnd-->
+  - [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)
   - [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md)
   - [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md)
-  - [AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md)<!--Del-->
-  - [BackgroundLuminanceSamplingConfigs(系统接口)](arkts-arkui-arkui-uicontext-backgroundluminancesamplingconfigs-i-sys.md)<!--DelEnd-->
+  - [AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md)
   - [GestureObserverConfigs](arkts-arkui-arkui-uicontext-gestureobserverconfigs-i.md)
   - [GestureTriggerInfo](arkts-arkui-arkui-uicontext-gesturetriggerinfo-i.md)
   - [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md)
@@ -339,13 +323,11 @@
 - [@ohos.arkui.advanced.SegmentButton](arkts-arkui-advanced-segmentbutton.md)
   - [SegmentButtonItemOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptions-c.md)
   - [SegmentButtonItemOptionsArray](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptionsarray-c.md)
-  - [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md)<!--Del-->
-  - [SegmentButtonOptions(系统接口)](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c-sys.md)<!--DelEnd-->
+  - [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md)
   - [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md)
   - [CapsuleSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonconstructionoptions-i.md)
   - [CapsuleSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-capsulesegmentbuttonoptions-i.md)
-  - [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md)<!--Del-->
-  - [CommonSegmentButtonOptions(系统接口)](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i-sys.md)<!--DelEnd-->
+  - [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-commonsegmentbuttonoptions-i.md)
   - [SegmentButtonIconItem](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoniconitem-i.md)
   - [SegmentButtonIconTextItem](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonicontextitem-i.md)
   - [SegmentButtonItemOptionsConstructorOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonitemoptionsconstructoroptions-i.md)
@@ -360,11 +342,9 @@
 - [@ohos.arkui.advanced.SegmentButtonV2](arkts-arkui-advanced-segmentbuttonv2.md)
   - [SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md)
   - [SegmentButtonV2Items](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2items-c.md)
-  - [CapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-capsulesegmentbuttonv2-s.md)<!--Del-->
-  - [CapsuleSegmentButtonV2(系统接口)](arkts-arkui-arkui-advanced-segmentbuttonv2-capsulesegmentbuttonv2-s-sys.md)<!--DelEnd-->
+  - [CapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-capsulesegmentbuttonv2-s.md)
   - [MultiCapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-multicapsulesegmentbuttonv2-s.md)
-  - [TabSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-tabsegmentbuttonv2-s.md)<!--Del-->
-  - [TabSegmentButtonV2(系统接口)](arkts-arkui-arkui-advanced-segmentbuttonv2-tabsegmentbuttonv2-s-sys.md)<!--DelEnd-->
+  - [TabSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-tabsegmentbuttonv2-s.md)
   - [SegmentButtonV2ItemOptions](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2itemoptions-i.md)
   - [OnSelectedIndexChange](arkts-arkui-onselectedindexchange-t.md)
   - [OnSelectedIndexesChange](arkts-arkui-onselectedindexeschange-t.md)
@@ -387,15 +367,11 @@
   - [SnapshotRegion](arkts-arkui-componentsnapshot-snapshotregion-i.md)
   - [SnapshotSizeLimitation](arkts-arkui-componentsnapshot-snapshotsizelimitation-i.md)
   - [SnapshotRegionType](arkts-arkui-componentsnapshot-snapshotregiontype-t.md)
-- [@ohos.arkui.componentUtils](arkts-arkui-componentutils.md)<!--Del-->
-  - [getItemsInShapePath(系统接口)](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md)<!--DelEnd-->
+- [@ohos.arkui.componentUtils](arkts-arkui-componentutils.md)
   - [getRectangleById](arkts-arkui-componentutils-getrectanglebyid-f.md)
-  - [ComponentInfo](arkts-arkui-componentutils-componentinfo-i.md)<!--Del-->
-  - [GetItemsInShapePathParams(系统接口)](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md)<!--DelEnd--><!--Del-->
-  - [ImageItem(系统接口)](arkts-arkui-componentutils-imageitem-i-sys.md)<!--DelEnd-->
+  - [ComponentInfo](arkts-arkui-componentutils-componentinfo-i.md)
   - [Offset](arkts-arkui-componentutils-offset-i.md)
-  - [RotateResult](arkts-arkui-componentutils-rotateresult-i.md)<!--Del-->
-  - [Rotation2D(系统接口)](arkts-arkui-componentutils-rotation2d-i-sys.md)<!--DelEnd-->
+  - [RotateResult](arkts-arkui-componentutils-rotateresult-i.md)
   - [ScaleResult](arkts-arkui-componentutils-scaleresult-i.md)
   - [Size](arkts-arkui-componentutils-size-i.md)
   - [TranslateResult](arkts-arkui-componentutils-translateresult-i.md)
@@ -425,8 +401,7 @@
   - [常量](arkts-arkui-arkui-components-containerreader-con.md)
 - [@ohos.arkui.dialog](arkts-arkui-dialog.md)
   - [dialog](arkts-arkui-dialog-n.md)
-    - [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md)<!--Del-->
-    - [DialogBaseOptions(系统接口)](arkts-arkui-dialog-dialogbaseoptions-i-sys.md)<!--DelEnd-->
+    - [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md)
     - [DialogButton](arkts-arkui-dialog-dialogbutton-i.md)
     - [DialogCustomOptions](arkts-arkui-dialog-dialogcustomoptions-i.md)
     - [DialogMessage](arkts-arkui-dialog-dialogmessage-i.md)
@@ -457,8 +432,7 @@
   - [DragStatus](arkts-arkui-dragcontroller-dragstatus-e.md)
 - [@ohos.arkui.drawableDescriptor](arkts-arkui-drawabledescriptor.md)
   - [AnimatedDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)
-  - [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)<!--Del-->
-  - [DrawableDescriptor(系统接口)](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c-sys.md)<!--DelEnd-->
+  - [DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
   - [LayeredDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md)
   - [PictureDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-picturedrawabledescriptor-c.md)
   - [PixelMapDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-pixelmapdrawabledescriptor-c.md)
@@ -488,12 +462,6 @@
   - [RouterPageState](arkts-arkui-uiobserver-routerpagestate-e.md)
   - [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md)
   - [TabContentState](arkts-arkui-uiobserver-tabcontentstate-e.md)
-- [@ohos.arkui.performanceMonitor](arkts-arkui-performancemonitor.md)<!--Del-->
-  - [begin(系统接口)](arkts-arkui-performancemonitor-begin-f-sys.md)<!--DelEnd--><!--Del-->
-  - [end(系统接口)](arkts-arkui-performancemonitor-end-f-sys.md)<!--DelEnd--><!--Del-->
-  - [recordInputEventTime(系统接口)](arkts-arkui-performancemonitor-recordinputeventtime-f-sys.md)<!--DelEnd--><!--Del-->
-  - [ActionType(系统接口)](arkts-arkui-performancemonitor-actiontype-e-sys.md)<!--DelEnd--><!--Del-->
-  - [SourceType(系统接口)](arkts-arkui-performancemonitor-sourcetype-e-sys.md)<!--DelEnd-->
 - [@ohos.arkui.shape](arkts-arkui-shape.md)
   - [BaseShape](arkts-arkui-arkui-shape-baseshape-c.md)
   - [CircleShape](arkts-arkui-arkui-shape-circleshape-c.md)
@@ -515,24 +483,20 @@
 - [@ohos.arkui.uiExtension](arkts-arkui-uiextension.md)
   - [AvoidAreaInfo](arkts-arkui-uiextension-avoidareainfo-i.md)
   - [RectChangeOptions](arkts-arkui-uiextension-rectchangeoptions-i.md)
-  - [WindowProxy](arkts-arkui-uiextension-windowproxy-i.md)<!--Del-->
-  - [WindowProxy(系统接口)](arkts-arkui-uiextension-windowproxy-i-sys.md)<!--DelEnd-->
+  - [WindowProxy](arkts-arkui-uiextension-windowproxy-i.md)
   - [WindowProxyProperties](arkts-arkui-uiextension-windowproxyproperties-i.md)
   - [EventFlag](arkts-arkui-uiextension-eventflag-e.md)
   - [RectChangeReason](arkts-arkui-uiextension-rectchangereason-e.md)
 - [@ohos.arkui.uiMaterial](arkts-arkui-uimaterial.md)
   - [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md)
   - [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)
-  - [Material](arkts-arkui-uimaterial-material-c.md)<!--Del-->
-  - [Material(系统接口)](arkts-arkui-uimaterial-material-c-sys.md)<!--DelEnd-->
+  - [Material](arkts-arkui-uimaterial-material-c.md)
   - [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)
   - [LightEffectOptions](arkts-arkui-uimaterial-lighteffectoptions-i.md)
-  - [MaterialInfo](arkts-arkui-uimaterial-materialinfo-i.md)<!--Del-->
-  - [MaterialOptions(系统接口)](arkts-arkui-uimaterial-materialoptions-i-sys.md)<!--DelEnd-->
+  - [MaterialInfo](arkts-arkui-uimaterial-materialinfo-i.md)
   - [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md)
   - [MaterialState](arkts-arkui-uimaterial-materialstate-e.md)
-  - [MaterialType](arkts-arkui-uimaterial-materialtype-e.md)<!--Del-->
-  - [MaterialType(系统接口)](arkts-arkui-uimaterial-materialtype-e-sys.md)<!--DelEnd-->
+  - [MaterialType](arkts-arkui-uimaterial-materialtype-e.md)
 - [@ohos.curves](arkts-curves.md)
   - [cubicBezier](arkts-arkui-curves-cubicbezier-f.md)
   - [cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md)
@@ -548,17 +512,7 @@
   - [stepsCurve](arkts-arkui-curves-stepscurve-f.md)
   - [ICurve](arkts-arkui-curves-icurve-i.md)
   - [Curve](arkts-arkui-curves-curve-e.md)
-- [@ohos.deviceStatus.dragInteraction](arkts-devicestatus-draginteraction.md)<!--Del-->
-  - [getDataSummary(系统接口)](arkts-arkui-draginteraction-getdatasummary-f-sys.md)<!--DelEnd--><!--Del-->
-  - [off(系统接口)](arkts-arkui-draginteraction-off-f-sys.md)<!--DelEnd--><!--Del-->
-  - [on(系统接口)](arkts-arkui-draginteraction-on-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setAppDragSwitchState(系统接口)](arkts-arkui-draginteraction-setappdragswitchstate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setDragSwitchState(系统接口)](arkts-arkui-draginteraction-setdragswitchstate-f-sys.md)<!--DelEnd--><!--Del-->
-  - [Summary(系统接口)](arkts-arkui-draginteraction-summary-i-sys.md)<!--DelEnd--><!--Del-->
-  - [DragState(系统接口)](arkts-arkui-draginteraction-dragstate-e-sys.md)<!--DelEnd-->
-- [@ohos.display](arkts-display.md)<!--Del-->
-  - [addVirtualScreenBlocklist(系统接口)](arkts-arkui-display-addvirtualscreenblocklist-f-sys.md)<!--DelEnd--><!--Del-->
-  - [addVirtualScreenSurface(系统接口)](arkts-arkui-display-addvirtualscreensurface-f-sys.md)<!--DelEnd-->
+- [@ohos.display](arkts-display.md)
   - [convertGlobalToRelativeCoordinate](arkts-arkui-display-convertglobaltorelativecoordinate-f.md)
   - [convertRelativeToGlobalCoordinate](arkts-arkui-display-convertrelativetoglobalcoordinate-f.md)
   - [createVirtualScreen](arkts-arkui-display-createvirtualscreen-f.md)
@@ -573,25 +527,17 @@
   - [getDisplayByIdSync](arkts-arkui-display-getdisplaybyidsync-f.md)
   - [getFoldDisplayMode](arkts-arkui-display-getfolddisplaymode-f.md)
   - [getFoldStatus](arkts-arkui-display-getfoldstatus-f.md)
-  - [getPrimaryDisplaySync](arkts-arkui-display-getprimarydisplaysync-f.md)<!--Del-->
-  - [hasPrivateWindow(系统接口)](arkts-arkui-display-hasprivatewindow-f-sys.md)<!--DelEnd-->
+  - [getPrimaryDisplaySync](arkts-arkui-display-getprimarydisplaysync-f.md)
   - [isCaptured](arkts-arkui-display-iscaptured-f.md)
   - [isFoldable](arkts-arkui-display-isfoldable-f.md)
   - [makeUnique](arkts-arkui-display-makeunique-f.md)
-  - [off](arkts-arkui-display-off-f.md)<!--Del-->
-  - [off(系统接口)](arkts-arkui-display-off-f-sys.md)<!--DelEnd-->
-  - [on](arkts-arkui-display-on-f.md)<!--Del-->
-  - [on(系统接口)](arkts-arkui-display-on-f-sys.md)<!--DelEnd-->
-  - [onChangeWithAttribute](arkts-arkui-display-onchangewithattribute-f.md)<!--Del-->
-  - [removeVirtualScreenBlocklist(系统接口)](arkts-arkui-display-removevirtualscreenblocklist-f-sys.md)<!--DelEnd--><!--Del-->
-  - [removeVirtualScreenSurface(系统接口)](arkts-arkui-display-removevirtualscreensurface-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setFoldDisplayMode(系统接口)](arkts-arkui-display-setfolddisplaymode-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setFoldStatusLocked(系统接口)](arkts-arkui-display-setfoldstatuslocked-f-sys.md)<!--DelEnd-->
+  - [off](arkts-arkui-display-off-f.md)
+  - [on](arkts-arkui-display-on-f.md)
+  - [onChangeWithAttribute](arkts-arkui-display-onchangewithattribute-f.md)
   - [setVirtualScreenSurface](arkts-arkui-display-setvirtualscreensurface-f.md)
   - [BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md)
   - [CutoutInfo](arkts-arkui-display-cutoutinfo-i.md)
-  - [Display](arkts-arkui-display-display-i.md)<!--Del-->
-  - [Display(系统接口)](arkts-arkui-display-display-i-sys.md)<!--DelEnd-->
+  - [Display](arkts-arkui-display-display-i.md)
   - [DisplayPhysicalResolution](arkts-arkui-display-displayphysicalresolution-i.md)
   - [FoldCreaseRegion](arkts-arkui-display-foldcreaseregion-i.md)
   - [Position](arkts-arkui-display-position-i.md)
@@ -647,15 +593,11 @@
 - [@ohos.pluginComponent](arkts-plugincomponent.md)
   - [pluginComponentManager](arkts-arkui-plugincomponentmanager-n.md)
     - [on](arkts-arkui-plugincomponentmanager-on-f.md)
-    - [push](arkts-arkui-plugincomponentmanager-push-f.md)<!--Del-->
-    - [push(系统接口)](arkts-arkui-plugincomponentmanager-push-f-sys.md)<!--DelEnd-->
-    - [request](arkts-arkui-plugincomponentmanager-request-f.md)<!--Del-->
-    - [request(系统接口)](arkts-arkui-plugincomponentmanager-request-f-sys.md)<!--DelEnd--><!--Del-->
-    - [PushParameterForStage(系统接口)](arkts-arkui-plugincomponentmanager-pushparameterforstage-i-sys.md)<!--DelEnd-->
+    - [push](arkts-arkui-plugincomponentmanager-push-f.md)
+    - [request](arkts-arkui-plugincomponentmanager-request-f.md)
     - [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md)
     - [RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)
-    - [RequestEventResult](arkts-arkui-plugincomponentmanager-requesteventresult-i.md)<!--Del-->
-    - [RequestParameterForStage(系统接口)](arkts-arkui-plugincomponentmanager-requestparameterforstage-i-sys.md)<!--DelEnd-->
+    - [RequestEventResult](arkts-arkui-plugincomponentmanager-requesteventresult-i.md)
     - [RequestParameters](arkts-arkui-plugincomponentmanager-requestparameters-i.md)
     - [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
     - [OnPushEventCallback](arkts-arkui-plugincomponentmanager-onpusheventcallback-t.md)
@@ -672,16 +614,13 @@
     - [showToast](arkts-arkui-promptaction-showtoast-f.md)
     - [CommonController](arkts-arkui-promptaction-commoncontroller-c.md)
     - [DialogController](arkts-arkui-promptaction-dialogcontroller-c.md)
-    - [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md)<!--Del-->
-    - [ActionMenuOptions(系统接口)](arkts-arkui-promptaction-actionmenuoptions-i-sys.md)<!--DelEnd-->
+    - [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md)
     - [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md)
-    - [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)<!--Del-->
-    - [BaseDialogOptions(系统接口)](arkts-arkui-promptaction-basedialogoptions-i-sys.md)<!--DelEnd-->
+    - [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)
     - [Button](arkts-arkui-promptaction-button-i.md)
     - [CustomDialogOptions](arkts-arkui-promptaction-customdialogoptions-i.md)
     - [DialogOptions](arkts-arkui-promptaction-dialogoptions-i.md)
-    - [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md)<!--Del-->
-    - [ShowDialogOptions(系统接口)](arkts-arkui-promptaction-showdialogoptions-i-sys.md)<!--DelEnd-->
+    - [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md)
     - [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md)
     - [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md)
     - [DialogOptionsBorderColor](arkts-arkui-promptaction-dialogoptionsbordercolor-t.md)
@@ -690,8 +629,7 @@
     - [DialogOptionsCornerRadius](arkts-arkui-promptaction-dialogoptionscornerradius-t.md)
     - [DialogOptionsShadow](arkts-arkui-promptaction-dialogoptionsshadow-t.md)
     - [CommonState](arkts-arkui-promptaction-commonstate-e.md)
-    - [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md)<!--Del-->
-    - [ToastShowMode(系统接口)](arkts-arkui-promptaction-toastshowmode-e-sys.md)<!--DelEnd-->
+    - [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md)
   - [LevelOrder](arkts-arkui-promptaction-levelorder-c.md)
   - [DismissDialogAction](arkts-arkui-promptaction-dismissdialogaction-i.md)
   - [ImmersiveMode](arkts-arkui-promptaction-immersivemode-e.md)
@@ -719,63 +657,15 @@
   - [RouterOptions](arkts-arkui-router-routeroptions-i.md)
   - [RouterState](arkts-arkui-router-routerstate-i.md)
   - [RouterMode](arkts-arkui-router-routermode-e.md)
-- [@ohos.screen](arkts-screen.md)<!--Del-->
-  - [createVirtualScreen(系统接口)](arkts-arkui-screen-createvirtualscreen-f-sys.md)<!--DelEnd--><!--Del-->
-  - [destroyVirtualScreen(系统接口)](arkts-arkui-screen-destroyvirtualscreen-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getAllScreens(系统接口)](arkts-arkui-screen-getallscreens-f-sys.md)<!--DelEnd--><!--Del-->
-  - [isScreenRotationLocked(系统接口)](arkts-arkui-screen-isscreenrotationlocked-f-sys.md)<!--DelEnd--><!--Del-->
-  - [makeExpand(系统接口)](arkts-arkui-screen-makeexpand-f-sys.md)<!--DelEnd--><!--Del-->
-  - [makeMirror(系统接口)](arkts-arkui-screen-makemirror-f-sys.md)<!--DelEnd--><!--Del-->
-  - [makeMirrorWithRegion(系统接口)](arkts-arkui-screen-makemirrorwithregion-f-sys.md)<!--DelEnd--><!--Del-->
-  - [makeUnique(系统接口)](arkts-arkui-screen-makeunique-f-sys.md)<!--DelEnd--><!--Del-->
-  - [off(系统接口)](arkts-arkui-screen-off-f-sys.md)<!--DelEnd--><!--Del-->
-  - [on(系统接口)](arkts-arkui-screen-on-f-sys.md)<!--DelEnd--><!--Del-->
-  - [resizeVirtualScreen(系统接口)](arkts-arkui-screen-resizevirtualscreen-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setMultiScreenMode(系统接口)](arkts-arkui-screen-setmultiscreenmode-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setMultiScreenRelativePosition(系统接口)](arkts-arkui-screen-setmultiscreenrelativeposition-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setScreenPrivacyMaskImage(系统接口)](arkts-arkui-screen-setscreenprivacymaskimage-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setScreenRotationLocked(系统接口)](arkts-arkui-screen-setscreenrotationlocked-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setVirtualScreenSurface(系统接口)](arkts-arkui-screen-setvirtualscreensurface-f-sys.md)<!--DelEnd--><!--Del-->
-  - [stopExpand(系统接口)](arkts-arkui-screen-stopexpand-f-sys.md)<!--DelEnd--><!--Del-->
-  - [stopMirror(系统接口)](arkts-arkui-screen-stopmirror-f-sys.md)<!--DelEnd--><!--Del-->
-  - [ExpandOption(系统接口)](arkts-arkui-screen-expandoption-i-sys.md)<!--DelEnd--><!--Del-->
-  - [MultiScreenPositionOptions(系统接口)](arkts-arkui-screen-multiscreenpositionoptions-i-sys.md)<!--DelEnd--><!--Del-->
-  - [OrientationOptions(系统接口)](arkts-arkui-screen-orientationoptions-i-sys.md)<!--DelEnd--><!--Del-->
-  - [Rect(系统接口)](arkts-arkui-screen-rect-i-sys.md)<!--DelEnd--><!--Del-->
-  - [Screen(系统接口)](arkts-arkui-screen-screen-i-sys.md)<!--DelEnd--><!--Del-->
-  - [ScreenModeInfo(系统接口)](arkts-arkui-screen-screenmodeinfo-i-sys.md)<!--DelEnd--><!--Del-->
-  - [VirtualScreenOption(系统接口)](arkts-arkui-screen-virtualscreenoption-i-sys.md)<!--DelEnd--><!--Del-->
-  - [MultiScreenMode(系统接口)](arkts-arkui-screen-multiscreenmode-e-sys.md)<!--DelEnd--><!--Del-->
-  - [Orientation(系统接口)](arkts-arkui-screen-orientation-e-sys.md)<!--DelEnd--><!--Del-->
-  - [ScreenSourceMode(系统接口)](arkts-arkui-screen-screensourcemode-e-sys.md)<!--DelEnd--><!--Del-->
-  - [ScreenType(系统接口)](arkts-arkui-screen-screentype-e-sys.md)<!--DelEnd-->
 - [@ohos.screenshot](arkts-screenshot.md)
   - [capture](arkts-arkui-screenshot-capture-f.md)
-  - [pick](arkts-arkui-screenshot-pick-f.md)<!--Del-->
-  - [save(系统接口)](arkts-arkui-screenshot-save-f-sys.md)<!--DelEnd--><!--Del-->
-  - [saveHdrPicture(系统接口)](arkts-arkui-screenshot-savehdrpicture-f-sys.md)<!--DelEnd-->
-  - [CaptureOption](arkts-arkui-screenshot-captureoption-i.md)<!--Del-->
-  - [HdrScreenshotOptions(系统接口)](arkts-arkui-screenshot-hdrscreenshotoptions-i-sys.md)<!--DelEnd-->
+  - [pick](arkts-arkui-screenshot-pick-f.md)
+  - [CaptureOption](arkts-arkui-screenshot-captureoption-i.md)
   - [PickInfo](arkts-arkui-screenshot-pickinfo-i.md)
-  - [Rect](arkts-arkui-screenshot-rect-i.md)<!--Del-->
-  - [ScreenshotOptions(系统接口)](arkts-arkui-screenshot-screenshotoptions-i-sys.md)<!--DelEnd--><!--Del-->
-  - [Size(系统接口)](arkts-arkui-screenshot-size-i-sys.md)<!--DelEnd--><!--Del-->
-  - [DisplayIntentType(系统接口)](arkts-arkui-screenshot-displayintenttype-e-sys.md)<!--DelEnd-->
-- [@ohos.uiAppearance](arkts-uiappearance.md)<!--Del-->
-  - [getDarkMode(系统接口)](arkts-arkui-uiappearance-getdarkmode-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getFontScale(系统接口)](arkts-arkui-uiappearance-getfontscale-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getFontWeightScale(系统接口)](arkts-arkui-uiappearance-getfontweightscale-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setDarkMode(系统接口)](arkts-arkui-uiappearance-setdarkmode-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setFontScale(系统接口)](arkts-arkui-uiappearance-setfontscale-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setFontWeightScale(系统接口)](arkts-arkui-uiappearance-setfontweightscale-f-sys.md)<!--DelEnd--><!--Del-->
-  - [DarkMode(系统接口)](arkts-arkui-uiappearance-darkmode-e-sys.md)<!--DelEnd-->
-- [@ohos.uiExtensionHost](arkts-uiextensionhost.md)<!--Del-->
-  - [UIExtensionHostWindowProxy(系统接口)](arkts-arkui-uiextensionhost-uiextensionhostwindowproxy-i-sys.md)<!--DelEnd--><!--Del-->
-  - [UIExtensionHostWindowProxyProperties(系统接口)](arkts-arkui-uiextensionhost-uiextensionhostwindowproxyproperties-i-sys.md)<!--DelEnd-->
+  - [Rect](arkts-arkui-screenshot-rect-i.md)
 - [@ohos.window](arkts-window.md)
   - [window](arkts-arkui-window-n.md)
-    - [create](arkts-arkui-window-create-f.md)<!--Del-->
-    - [createSubWindowAndBindParent(系统接口)](arkts-arkui-window-createsubwindowandbindparent-f-sys.md)<!--DelEnd-->
+    - [create](arkts-arkui-window-create-f.md)
     - [createWindow](arkts-arkui-window-createwindow-f.md)
     - [find](arkts-arkui-window-find-f.md)
     - [findWindow](arkts-arkui-window-findwindow-f.md)
@@ -783,36 +673,20 @@
     - [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md)
     - [getGlobalWindowMode](arkts-arkui-window-getglobalwindowmode-f.md)
     - [getLastWindow](arkts-arkui-window-getlastwindow-f.md)
-    - [getMainWindowSnapshot](arkts-arkui-window-getmainwindowsnapshot-f.md)<!--Del-->
-    - [getSnapshot(系统接口)](arkts-arkui-window-getsnapshot-f-sys.md)<!--DelEnd--><!--Del-->
-    - [getTopNavDestinationName(系统接口)](arkts-arkui-window-gettopnavdestinationname-f-sys.md)<!--DelEnd-->
-    - [getTopWindow](arkts-arkui-window-gettopwindow-f.md)<!--Del-->
-    - [getVisibleWindowInfo(系统接口)](arkts-arkui-window-getvisiblewindowinfo-f-sys.md)<!--DelEnd-->
-    - [getWindowsByCoordinate](arkts-arkui-window-getwindowsbycoordinate-f.md)<!--Del-->
-    - [minimizeAll(系统接口)](arkts-arkui-window-minimizeall-f-sys.md)<!--DelEnd--><!--Del-->
-    - [minimizeAllWithExclusion(系统接口)](arkts-arkui-window-minimizeallwithexclusion-f-sys.md)<!--DelEnd--><!--Del-->
-    - [moveMainWindowToTargetDisplay(系统接口)](arkts-arkui-window-movemainwindowtotargetdisplay-f-sys.md)<!--DelEnd--><!--Del-->
-    - [notifyScreenshotEvent(系统接口)](arkts-arkui-window-notifyscreenshotevent-f-sys.md)<!--DelEnd--><!--Del-->
-    - [off(系统接口)](arkts-arkui-window-off-f-sys.md)<!--DelEnd-->
-    - [offApplicationFocusStateChange](arkts-arkui-window-offapplicationfocusstatechange-f.md)<!--Del-->
-    - [on(系统接口)](arkts-arkui-window-on-f-sys.md)<!--DelEnd-->
-    - [onApplicationFocusStateChange](arkts-arkui-window-onapplicationfocusstatechange-f.md)<!--Del-->
-    - [setGestureNavigationEnabled(系统接口)](arkts-arkui-window-setgesturenavigationenabled-f-sys.md)<!--DelEnd--><!--Del-->
-    - [setSpecificSystemWindowZIndex(系统接口)](arkts-arkui-window-setspecificsystemwindowzindex-f-sys.md)<!--DelEnd-->
-    - [setStartWindowBackgroundColor](arkts-arkui-window-setstartwindowbackgroundcolor-f.md)<!--Del-->
-    - [setWaterMarkImage(系统接口)](arkts-arkui-window-setwatermarkimage-f-sys.md)<!--DelEnd-->
-    - [setWatermarkImageForAppWindows](arkts-arkui-window-setwatermarkimageforappwindows-f.md)<!--Del-->
-    - [setWindowLayoutMode(系统接口)](arkts-arkui-window-setwindowlayoutmode-f-sys.md)<!--DelEnd-->
+    - [getMainWindowSnapshot](arkts-arkui-window-getmainwindowsnapshot-f.md)
+    - [getTopWindow](arkts-arkui-window-gettopwindow-f.md)
+    - [getWindowsByCoordinate](arkts-arkui-window-getwindowsbycoordinate-f.md)
+    - [offApplicationFocusStateChange](arkts-arkui-window-offapplicationfocusstatechange-f.md)
+    - [onApplicationFocusStateChange](arkts-arkui-window-onapplicationfocusstatechange-f.md)
+    - [setStartWindowBackgroundColor](arkts-arkui-window-setstartwindowbackgroundcolor-f.md)
+    - [setWatermarkImageForAppWindows](arkts-arkui-window-setwatermarkimageforappwindows-f.md)
     - [shiftAppWindowFocus](arkts-arkui-window-shiftappwindowfocus-f.md)
     - [shiftAppWindowPointerEvent](arkts-arkui-window-shiftappwindowpointerevent-f.md)
-    - [shiftAppWindowTouchEvent](arkts-arkui-window-shiftappwindowtouchevent-f.md)<!--Del-->
-    - [toggleShownStateForAllAppWindows(系统接口)](arkts-arkui-window-toggleshownstateforallappwindows-f-sys.md)<!--DelEnd-->
+    - [shiftAppWindowTouchEvent](arkts-arkui-window-shiftappwindowtouchevent-f.md)
     - [AvoidArea](arkts-arkui-window-avoidarea-i.md)
     - [AvoidAreaOptions](arkts-arkui-window-avoidareaoptions-i.md)
-    - [Configuration](arkts-arkui-window-configuration-i.md)<!--Del-->
-    - [Configuration(系统接口)](arkts-arkui-window-configuration-i-sys.md)<!--DelEnd-->
-    - [DecorButtonStyle](arkts-arkui-window-decorbuttonstyle-i.md)<!--Del-->
-    - [ExtensionWindowConfig(系统接口)](arkts-arkui-window-extensionwindowconfig-i-sys.md)<!--DelEnd-->
+    - [Configuration](arkts-arkui-window-configuration-i.md)
+    - [DecorButtonStyle](arkts-arkui-window-decorbuttonstyle-i.md)
     - [FrameMetrics](arkts-arkui-window-framemetrics-i.md)
     - [KeyboardInfo](arkts-arkui-window-keyboardinfo-i.md)
     - [KeyFramePolicy](arkts-arkui-window-keyframepolicy-i.md)
@@ -823,59 +697,38 @@
     - [Position](arkts-arkui-window-position-i.md)
     - [Rect](arkts-arkui-window-rect-i.md)
     - [RectChangeOptions](arkts-arkui-window-rectchangeoptions-i.md)
-    - [RectInVP](arkts-arkui-window-rectinvp-i.md)<!--Del-->
-    - [RotateOptions(系统接口)](arkts-arkui-window-rotateoptions-i-sys.md)<!--DelEnd-->
+    - [RectInVP](arkts-arkui-window-rectinvp-i.md)
     - [RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md)
-    - [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md)<!--Del-->
-    - [ScaleOptions(系统接口)](arkts-arkui-window-scaleoptions-i-sys.md)<!--DelEnd-->
+    - [RotationChangeResult](arkts-arkui-window-rotationchangeresult-i.md)
     - [ShowWindowOptions](arkts-arkui-window-showwindowoptions-i.md)
     - [Size](arkts-arkui-window-size-i.md)
     - [SizeInVP](arkts-arkui-window-sizeinvp-i.md)
-    - [StartAnimationParams](arkts-arkui-window-startanimationparams-i.md)<!--Del-->
-    - [StartAnimationSystemParams(系统接口)](arkts-arkui-window-startanimationsystemparams-i-sys.md)<!--DelEnd-->
-    - [StatusBarProperty](arkts-arkui-window-statusbarproperty-i.md)<!--Del-->
-    - [SubWindowAttachOptions(系统接口)](arkts-arkui-window-subwindowattachoptions-i-sys.md)<!--DelEnd-->
-    - [SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md)<!--Del-->
-    - [SubWindowOptions(系统接口)](arkts-arkui-window-subwindowoptions-i-sys.md)<!--DelEnd--><!--Del-->
-    - [SystemBarProperties(系统接口)](arkts-arkui-window-systembarproperties-i.md)<!--DelEnd--><!--Del-->
-    - [SystemBarRegionTint(系统接口)](arkts-arkui-window-systembarregiontint-i-sys.md)<!--DelEnd--><!--Del-->
-    - [SystemBarStyle(系统接口)](arkts-arkui-window-systembarstyle-i.md)<!--DelEnd--><!--Del-->
-    - [SystemBarTintState(系统接口)](arkts-arkui-window-systembartintstate-i-sys.md)<!--DelEnd--><!--Del-->
-    - [SystemWindowOptions(系统接口)](arkts-arkui-window-systemwindowoptions-i-sys.md)<!--DelEnd-->
+    - [StartAnimationParams](arkts-arkui-window-startanimationparams-i.md)
+    - [StatusBarProperty](arkts-arkui-window-statusbarproperty-i.md)
+    - [SubWindowOptions](arkts-arkui-window-subwindowoptions-i.md)
     - [TitleButtonRect](arkts-arkui-window-titlebuttonrect-i.md)
-    - [TransitionAnimation](arkts-arkui-window-transitionanimation-i.md)<!--Del-->
-    - [TransitionContext(系统接口)](arkts-arkui-window-transitioncontext-i-sys.md)<!--DelEnd--><!--Del-->
-    - [TransitionController(系统接口)](arkts-arkui-window-transitioncontroller-i-sys.md)<!--DelEnd--><!--Del-->
-    - [TranslateOptions(系统接口)](arkts-arkui-window-translateoptions-i-sys.md)<!--DelEnd-->
+    - [TransitionAnimation](arkts-arkui-window-transitionanimation-i.md)
     - [UIEnvAvoidAreaVP](arkts-arkui-window-uienvavoidareavp-i.md)
     - [UIEnvWindowAvoidAreaInfoPX](arkts-arkui-window-uienvwindowavoidareainfopx-i.md)
     - [UIEnvWindowAvoidAreaInfoVP](arkts-arkui-window-uienvwindowavoidareainfovp-i.md)
-    - [Window](arkts-arkui-window-window-i.md)<!--Del-->
-    - [Window(系统接口)](arkts-arkui-window-window-i-sys.md)<!--DelEnd--><!--Del-->
-    - [WindowAnchorInfo(系统接口)](arkts-arkui-window-windowanchorinfo-i-sys.md)<!--DelEnd-->
+    - [Window](arkts-arkui-window-window-i.md)
     - [WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)
-    - [WindowCreateParams](arkts-arkui-window-windowcreateparams-i.md)<!--Del-->
-    - [WindowCreateParams(系统接口)](arkts-arkui-window-windowcreateparams-i-sys.md)<!--DelEnd-->
+    - [WindowCreateParams](arkts-arkui-window-windowcreateparams-i.md)
     - [WindowDensityInfo](arkts-arkui-window-windowdensityinfo-i.md)
-    - [WindowInfo](arkts-arkui-window-windowinfo-i.md)<!--Del-->
-    - [WindowInfo(系统接口)](arkts-arkui-window-windowinfo-i-sys.md)<!--DelEnd-->
+    - [WindowInfo](arkts-arkui-window-windowinfo-i.md)
     - [WindowInfoOptions](arkts-arkui-window-windowinfooptions-i.md)
     - [WindowLayoutInfo](arkts-arkui-window-windowlayoutinfo-i.md)
     - [WindowLimits](arkts-arkui-window-windowlimits-i.md)
     - [WindowProperties](arkts-arkui-window-windowproperties-i.md)
     - [WindowSnapshotAnimationConfig](arkts-arkui-window-windowsnapshotanimationconfig-i.md)
     - [WindowSnapshotConfiguration](arkts-arkui-window-windowsnapshotconfiguration-i.md)
-    - [WindowStage](arkts-arkui-window-windowstage-i.md)<!--Del-->
-    - [WindowStage(系统接口)](arkts-arkui-window-windowstage-i-sys.md)<!--DelEnd-->
+    - [WindowStage](arkts-arkui-window-windowstage-i.md)
     - [RotationChangeCallback](arkts-arkui-window-rotationchangecallback-t.md)
     - [SpecificSystemBar](arkts-arkui-window-specificsystembar-t.md)
     - [AcrossDisplayPresentation](arkts-arkui-window-acrossdisplaypresentation-e.md)
-    - [AnimationType](arkts-arkui-window-animationtype-e.md)<!--Del-->
-    - [AnimationType(系统接口)](arkts-arkui-window-animationtype-e-sys.md)<!--DelEnd-->
-    - [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)<!--Del-->
-    - [BlurStyle(系统接口)](arkts-arkui-window-blurstyle-e-sys.md)<!--DelEnd-->
-    - [ColorSpace](arkts-arkui-window-colorspace-e.md)<!--Del-->
-    - [ExtensionWindowAttribute(系统接口)](arkts-arkui-window-extensionwindowattribute-e-sys.md)<!--DelEnd-->
+    - [AnimationType](arkts-arkui-window-animationtype-e.md)
+    - [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)
+    - [ColorSpace](arkts-arkui-window-colorspace-e.md)
     - [GlobalWindowMode](arkts-arkui-window-globalwindowmode-e.md)
     - [MaximizePresentation](arkts-arkui-window-maximizepresentation-e.md)
     - [ModalityType](arkts-arkui-window-modalitytype-e.md)
@@ -891,15 +744,12 @@
     - [SplitRatioPreference](arkts-arkui-window-splitratiopreference-e.md)
     - [WindowAnchor](arkts-arkui-window-windowanchor-e.md)
     - [WindowAnimationCurve](arkts-arkui-window-windowanimationcurve-e.md)
-    - [WindowEventType](arkts-arkui-window-windoweventtype-e.md)<!--Del-->
-    - [WindowLayoutMode(系统接口)](arkts-arkui-window-windowlayoutmode-e-sys.md)<!--DelEnd--><!--Del-->
-    - [WindowMode(系统接口)](arkts-arkui-window-windowmode-e-sys.md)<!--DelEnd-->
+    - [WindowEventType](arkts-arkui-window-windoweventtype-e.md)
     - [WindowStageEventType](arkts-arkui-window-windowstageeventtype-e.md)
     - [WindowStageLifecycleEventType](arkts-arkui-window-windowstagelifecycleeventtype-e.md)
     - [WindowStatusType](arkts-arkui-window-windowstatustype-e.md)
     - [WindowTransitionType](arkts-arkui-window-windowtransitiontype-e.md)
-    - [WindowType](arkts-arkui-window-windowtype-e.md)<!--Del-->
-    - [WindowType(系统接口)](arkts-arkui-window-windowtype-e-sys.md)<!--DelEnd-->
+    - [WindowType](arkts-arkui-window-windowtype-e.md)
   - [Callback](arkts-arkui-window-callback-i.md)
   - [WindowAnimationCurveParam](arkts-arkui-windowanimationcurveparam-t.md)
   - [WindowEventListener](arkts-arkui-windoweventlistener-t.md)
@@ -946,8 +796,7 @@
   - [ActionSheet](arkts-arkui-action-sheet-actionsheet-c.md)
   - [ActionSheetButtonOptions](arkts-arkui-action-sheet-actionsheetbuttonoptions-i.md)
   - [ActionSheetOffset](arkts-arkui-action-sheet-actionsheetoffset-i.md)
-  - [ActionSheetOptions](arkts-arkui-action-sheet-actionsheetoptions-i.md)<!--Del-->
-  - [ActionSheetOptions(系统接口)](arkts-arkui-action-sheet-actionsheetoptions-i-sys.md)<!--DelEnd-->
+  - [ActionSheetOptions](arkts-arkui-action-sheet-actionsheetoptions-i.md)
   - [DismissDialogAction](arkts-arkui-action-sheet-dismissdialogaction-i.md)
   - [SheetInfo](arkts-arkui-action-sheet-sheetinfo-i.md)
   - [ImmersiveMode](arkts-arkui-immersivemode-t.md)
@@ -956,8 +805,7 @@
   - [AlertDialog](arkts-arkui-alert-dialog-alertdialog-c.md)
   - [AlertDialogButtonBaseOptions](arkts-arkui-alert-dialog-alertdialogbuttonbaseoptions-i.md)
   - [AlertDialogButtonOptions](arkts-arkui-alert-dialog-alertdialogbuttonoptions-i.md)
-  - [AlertDialogParam](arkts-arkui-alert-dialog-alertdialogparam-i.md)<!--Del-->
-  - [AlertDialogParam(系统接口)](arkts-arkui-alert-dialog-alertdialogparam-i-sys.md)<!--DelEnd-->
+  - [AlertDialogParam](arkts-arkui-alert-dialog-alertdialogparam-i.md)
   - [AlertDialogParamWithButtons](arkts-arkui-alert-dialog-alertdialogparamwithbuttons-i.md)
   - [AlertDialogParamWithConfirm](arkts-arkui-alert-dialog-alertdialogparamwithconfirm-i.md)
   - [AlertDialogParamWithOptions](arkts-arkui-alert-dialog-alertdialogparamwithoptions-i.md)
@@ -968,25 +816,16 @@
   - [DialogButtonDirection](arkts-arkui-alert-dialog-dialogbuttondirection-e.md)
 - [common_ts_ets_api](arkts-common_ts_ets_api.md)
   - [AppStorage](arkts-arkui-common-ts-ets-api-appstorage-c.md)
-  - [Environment](arkts-arkui-common-ts-ets-api-environment-c.md)<!--Del-->
-  - [Environment(系统接口)](arkts-arkui-common-ts-ets-api-environment-c-sys.md)<!--DelEnd-->
+  - [Environment](arkts-arkui-common-ts-ets-api-environment-c.md)
   - [LocalStorage](arkts-arkui-common-ts-ets-api-localstorage-c.md)
-  - [PersistentStorage](arkts-arkui-common-ts-ets-api-persistentstorage-c.md)<!--Del-->
-  - [PersistentStorage(系统接口)](arkts-arkui-common-ts-ets-api-persistentstorage-c-sys.md)<!--DelEnd--><!--Del-->
-  - [SubscribaleAbstract(系统接口)](arkts-arkui-common-ts-ets-api-subscribaleabstract-c-sys.md)<!--DelEnd-->
-  - [SubscribedAbstractProperty](arkts-arkui-common-ts-ets-api-subscribedabstractproperty-c.md)<!--Del-->
-  - [SubscribedAbstractProperty(系统接口)](arkts-arkui-common-ts-ets-api-subscribedabstractproperty-c-sys.md)<!--DelEnd--><!--Del-->
-  - [SyncedPropertyOneWay(系统接口)](arkts-arkui-common-ts-ets-api-syncedpropertyoneway-c-sys.md)<!--DelEnd--><!--Del-->
-  - [SyncedPropertyTwoWay(系统接口)](arkts-arkui-common-ts-ets-api-syncedpropertytwoway-c-sys.md)<!--DelEnd-->
+  - [PersistentStorage](arkts-arkui-common-ts-ets-api-persistentstorage-c.md)
+  - [SubscribedAbstractProperty](arkts-arkui-common-ts-ets-api-subscribedabstractproperty-c.md)
   - [AbstractProperty](arkts-arkui-common-ts-ets-api-abstractproperty-i.md)
-  - [EnvPropsOptions](arkts-arkui-common-ts-ets-api-envpropsoptions-i.md)<!--Del-->
-  - [IPropertySubscriber(系统接口)](arkts-arkui-common-ts-ets-api-ipropertysubscriber-i-sys.md)<!--DelEnd--><!--Del-->
-  - [ISinglePropertyChangeSubscriber(系统接口)](arkts-arkui-common-ts-ets-api-isinglepropertychangesubscriber-i-sys.md)<!--DelEnd-->
+  - [EnvPropsOptions](arkts-arkui-common-ts-ets-api-envpropsoptions-i.md)
   - [PersistPropsOptions](arkts-arkui-common-ts-ets-api-persistpropsoptions-i.md)
 - [custom_dialog_controller](arkts-custom_dialog_controller.md)
   - [CustomDialogController](arkts-arkui-custom-dialog-controller-customdialogcontroller-c.md)
-  - [CustomDialogControllerOptions](arkts-arkui-custom-dialog-controller-customdialogcontrolleroptions-i.md)<!--Del-->
-  - [CustomDialogControllerOptions(系统接口)](arkts-arkui-custom-dialog-controller-customdialogcontrolleroptions-i-sys.md)<!--DelEnd-->
+  - [CustomDialogControllerOptions](arkts-arkui-custom-dialog-controller-customdialogcontrolleroptions-i.md)
   - [DismissDialogAction](arkts-arkui-custom-dialog-controller-dismissdialogaction-i.md)
   - [PromptActionCommonState](arkts-arkui-promptactioncommonstate-t.md)
 - [enums](arkts-enums.md)
@@ -1006,10 +845,8 @@
   - [CheckBoxShape](arkts-arkui-enums-checkboxshape-e.md)
   - [ClickEffectLevel](arkts-arkui-enums-clickeffectlevel-e.md)
   - [Color](arkts-arkui-enums-color-e.md)
-  - [ColoringStrategy](arkts-arkui-enums-coloringstrategy-e.md)<!--Del-->
-  - [ColoringStrategy(系统接口)](arkts-arkui-enums-coloringstrategy-e-sys.md)<!--DelEnd-->
-  - [ColorSpace](arkts-arkui-enums-colorspace-e.md)<!--Del-->
-  - [ColorSpace(系统接口)](arkts-arkui-enums-colorspace-e-sys.md)<!--DelEnd-->
+  - [ColoringStrategy](arkts-arkui-enums-coloringstrategy-e.md)
+  - [ColorSpace](arkts-arkui-enums-colorspace-e.md)
   - [CompetitionStrategy](arkts-arkui-enums-competitionstrategy-e.md)
   - [CopyOptions](arkts-arkui-enums-copyoptions-e.md)
   - [CrownAction](arkts-arkui-enums-crownaction-e.md)
@@ -1020,8 +857,7 @@
   - [Direction](arkts-arkui-enums-direction-e.md)
   - [DividerMode](arkts-arkui-enums-dividermode-e.md)
   - [Edge](arkts-arkui-enums-edge-e.md)
-  - [EdgeEffect](arkts-arkui-enums-edgeeffect-e.md)<!--Del-->
-  - [EdgeLightPosition(系统接口)](arkts-arkui-enums-edgelightposition-e-sys.md)<!--DelEnd-->
+  - [EdgeEffect](arkts-arkui-enums-edgeeffect-e.md)
   - [EllipsisMode](arkts-arkui-enums-ellipsismode-e.md)
   - [EmbeddedType](arkts-arkui-enums-embeddedtype-e.md)
   - [EventQueryType](arkts-arkui-enums-eventquerytype-e.md)
@@ -1041,8 +877,7 @@
   - [HeightBreakpoint](arkts-arkui-enums-heightbreakpoint-e.md)
   - [HitTestMode](arkts-arkui-enums-hittestmode-e.md)
   - [HorizontalAlign](arkts-arkui-enums-horizontalalign-e.md)
-  - [HoverEffect](arkts-arkui-enums-hovereffect-e.md)<!--Del-->
-  - [IlluminatedType(系统接口)](arkts-arkui-enums-illuminatedtype-e-sys.md)<!--DelEnd-->
+  - [HoverEffect](arkts-arkui-enums-hovereffect-e.md)
   - [ImageFit](arkts-arkui-enums-imagefit-e.md)
   - [ImageRepeat](arkts-arkui-enums-imagerepeat-e.md)
   - [ImageSize](arkts-arkui-enums-imagesize-e.md)
@@ -1168,8 +1003,7 @@
   - [clearTimeout](arkts-arkui-global-cleartimeout-f.md)
   - [getInspectorByKey](arkts-arkui-global-getinspectorbykey-f.md)
   - [getInspectorTree](arkts-arkui-global-getinspectortree-f.md)
-  - [loadNativeModule](arkts-arkui-global-loadnativemodule-f.md)<!--Del-->
-  - [markModuleCollectable(系统接口)](arkts-arkui-global-markmodulecollectable-f-sys.md)<!--DelEnd-->
+  - [loadNativeModule](arkts-arkui-global-loadnativemodule-f.md)
   - [sendEventByKey](arkts-arkui-global-sendeventbykey-f.md)
   - [sendKeyEvent](arkts-arkui-global-sendkeyevent-f.md)
   - [sendMouseEvent](arkts-arkui-global-sendmouseevent-f.md)
@@ -1183,20 +1017,8 @@
   - [ImageAnalyzerConfig](arkts-arkui-image-common-imageanalyzerconfig-i.md)
   - [ImageAnalyzerType](arkts-arkui-image-common-imageanalyzertype-e.md)
 - [inspector](arkts-inspector.md)
-  - [Profiler](arkts-arkui-profiler-n.md)<!--Del-->
-    - [registerVsyncCallback(系统接口)](arkts-arkui-profiler-registervsynccallback-f-sys.md)<!--DelEnd--><!--Del-->
-    - [unregisterVsyncCallback(系统接口)](arkts-arkui-profiler-unregistervsynccallback-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getInspectorNodeById(系统接口)](arkts-arkui-inspector-getinspectornodebyid-f-sys.md)<!--DelEnd--><!--Del-->
-  - [getInspectorNodes(系统接口)](arkts-arkui-inspector-getinspectornodes-f-sys.md)<!--DelEnd--><!--Del-->
-  - [setAppBgColor(系统接口)](arkts-arkui-inspector-setappbgcolor-f-sys.md)<!--DelEnd-->
-- [isolated_component](arkts-isolated_component.md)<!--Del-->
-  - [IsolatedComponentAttribute(系统接口)](arkts-arkui-isolated-component-isolatedcomponentattribute-c-sys.md)<!--DelEnd--><!--Del-->
-  - [IsolatedOptions(系统接口)](arkts-arkui-isolated-component-isolatedoptions-i-sys.md)<!--DelEnd--><!--Del-->
-  - [ErrorCallback(系统接口)](arkts-arkui-errorcallback-t-sys.md)<!--DelEnd--><!--Del-->
-  - [IsolatedComponentInterface(系统接口)](arkts-arkui-isolatedcomponentinterface-t-sys.md)<!--DelEnd--><!--Del-->
-  - [RestrictedWorker(系统接口)](arkts-arkui-restrictedworker-t-sys.md)<!--DelEnd--><!--Del-->
-  - [Want(系统接口)](arkts-arkui-want-t-sys.md)<!--DelEnd--><!--Del-->
-  - [常量(系统接口)](arkts-arkui-isolated-component-con-sys.md)<!--DelEnd-->
+  - [Profiler](arkts-arkui-profiler-n.md)
+- [isolated_component](arkts-isolated_component.md)
 - [matrix2d](arkts-matrix2d.md)
   - [Matrix2D](arkts-arkui-matrix2d-matrix2d-c.md)
 - [repeat](arkts-repeat.md)
@@ -1211,12 +1033,10 @@
   - [RepeatMemOptStrategy](arkts-arkui-repeat-repeatmemoptstrategy-e.md)
   - [常量](arkts-arkui-repeat-con.md)
 - [security_component](arkts-security_component.md)
-  - [SecurityComponentMethod](arkts-arkui-security-component-securitycomponentmethod-c.md)<!--Del-->
-  - [SecurityComponentMethod(系统接口)](arkts-arkui-security-component-securitycomponentmethod-c-sys.md)<!--DelEnd-->
+  - [SecurityComponentMethod](arkts-arkui-security-component-securitycomponentmethod-c.md)
   - [SecurityComponentLayoutDirection](arkts-arkui-security-component-securitycomponentlayoutdirection-e.md)
   - [SecurityComponentRoleType](arkts-arkui-security-component-securitycomponentroletype-e.md)
-- [state_management](arkts-state_management.md)<!--Del-->
-  - [Storage(系统接口)](arkts-arkui-state-management-storage-c-sys.md)<!--DelEnd-->
+- [state_management](arkts-state_management.md)
   - [ColorMode](arkts-arkui-state-management-colormode-e.md)
   - [LayoutDirection](arkts-arkui-state-management-layoutdirection-e.md)
 - [styled_string](arkts-styled_string.md)
@@ -1232,8 +1052,7 @@
   - [LineSpacingStyle](arkts-arkui-styled-string-linespacingstyle-c.md)
   - [MutableStyledString](arkts-arkui-styled-string-mutablestyledstring-c.md)
   - [ParagraphStyle](arkts-arkui-styled-string-paragraphstyle-c.md)
-  - [StyledString](arkts-arkui-styled-string-styledstring-c.md)<!--Del-->
-  - [StyledString(系统接口)](arkts-arkui-styled-string-styledstring-c-sys.md)<!--DelEnd-->
+  - [StyledString](arkts-arkui-styled-string-styledstring-c.md)
   - [TextShadowStyle](arkts-arkui-styled-string-textshadowstyle-c.md)
   - [TextStyle](arkts-arkui-styled-string-textstyle-c.md)
   - [UrlStyle](arkts-arkui-styled-string-urlstyle-c.md)
@@ -1253,10 +1072,7 @@
   - [StyleOptions](arkts-arkui-styled-string-styleoptions-i.md)
   - [TextStyleInterface](arkts-arkui-styled-string-textstyleinterface-i.md)
   - [AttachmentType](arkts-arkui-attachmenttype-t.md)
-  - [ColorFilterType](arkts-arkui-colorfiltertype-t.md)<!--Del-->
-  - [StyledStringMarshallCallback(系统接口)](arkts-arkui-styledstringmarshallcallback-t-sys.md)<!--DelEnd--><!--Del-->
-  - [StyledStringMarshallingValue(系统接口)](arkts-arkui-styledstringmarshallingvalue-t-sys.md)<!--DelEnd--><!--Del-->
-  - [StyledStringUnmarshallCallback(系统接口)](arkts-arkui-styledstringunmarshallcallback-t-sys.md)<!--DelEnd-->
+  - [ColorFilterType](arkts-arkui-colorfiltertype-t.md)
   - [StyledStringValue](arkts-arkui-styledstringvalue-t.md)
   - [StyledStringKey](arkts-arkui-styled-string-styledstringkey-e.md)
 - [text_common](arkts-text_common.md)
@@ -1277,8 +1093,7 @@
   - [FontSettingOptions](arkts-arkui-text-common-fontsettingoptions-i.md)
   - [FontWeightConfigs](arkts-arkui-text-common-fontweightconfigs-i.md)
   - [IMEClient](arkts-arkui-text-common-imeclient-i.md)
-  - [InsertValue](arkts-arkui-text-common-insertvalue-i.md)<!--Del-->
-  - [KeyboardAppearanceConfig(系统接口)](arkts-arkui-text-common-keyboardappearanceconfig-i-sys.md)<!--DelEnd-->
+  - [InsertValue](arkts-arkui-text-common-insertvalue-i.md)
   - [LayoutManager](arkts-arkui-text-common-layoutmanager-i.md)
   - [LineSpacingOptions](arkts-arkui-text-common-linespacingoptions-i.md)
   - [MaxLinesOptions](arkts-arkui-text-common-maxlinesoptions-i.md)
@@ -1296,8 +1111,7 @@
   - [TextLayoutOptions](arkts-arkui-text-common-textlayoutoptions-i.md)
   - [TextMenuItem](arkts-arkui-text-common-textmenuitem-i.md)
   - [TextMenuOptions](arkts-arkui-text-common-textmenuoptions-i.md)
-  - [TextRange](arkts-arkui-text-common-textrange-i.md)<!--Del-->
-  - [VoiceButtonOptions(系统接口)](arkts-arkui-text-common-voicebuttonoptions-i-sys.md)<!--DelEnd-->
+  - [TextRange](arkts-arkui-text-common-textrange-i.md)
   - [Affinity](arkts-arkui-affinity-t.md)
   - [EditableTextOnChangeCallback](arkts-arkui-editabletextonchangecallback-t.md)
   - [FontVariation](arkts-arkui-fontvariation-t.md)
@@ -1313,14 +1127,11 @@
   - [AutoCapitalizationMode](arkts-arkui-text-common-autocapitalizationmode-e.md)
   - [FlipDirection](arkts-arkui-text-common-flipdirection-e.md)
   - [IncrementalUpdatePolicy](arkts-arkui-text-common-incrementalupdatepolicy-e.md)
-  - [KeyboardAppearance](arkts-arkui-text-common-keyboardappearance-e.md)<!--Del-->
-  - [KeyboardFluidLightMode(系统接口)](arkts-arkui-text-common-keyboardfluidlightmode-e-sys.md)<!--DelEnd--><!--Del-->
-  - [KeyboardGradientMode(系统接口)](arkts-arkui-text-common-keyboardgradientmode-e-sys.md)<!--DelEnd-->
+  - [KeyboardAppearance](arkts-arkui-text-common-keyboardappearance-e.md)
   - [MaxLinesMode](arkts-arkui-text-common-maxlinesmode-e.md)
   - [MenuType](arkts-arkui-text-common-menutype-e.md)
   - [StrokeJoinStyle](arkts-arkui-text-common-strokejoinstyle-e.md)
-  - [SuperscriptStyle](arkts-arkui-text-common-superscriptstyle-e.md)<!--Del-->
-  - [TextChangeReason(系统接口)](arkts-arkui-text-common-textchangereason-e-sys.md)<!--DelEnd-->
+  - [SuperscriptStyle](arkts-arkui-text-common-superscriptstyle-e.md)
   - [TextContentAlign](arkts-arkui-text-common-textcontentalign-e.md)
   - [TextDataDetectorType](arkts-arkui-text-common-textdatadetectortype-e.md)
   - [TextDeleteDirection](arkts-arkui-text-common-textdeletedirection-e.md)
@@ -1469,8 +1280,7 @@
     - [borderStyles](arkts-arkui-graphics-borderstyles-f.md)
     - [edgeColors](arkts-arkui-graphics-edgecolors-f.md)
     - [edgeWidths](arkts-arkui-graphics-edgewidths-f.md)
-    - [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)<!--Del-->
-    - [ColorMetrics(系统接口)](arkts-arkui-graphics-colormetrics-c-sys.md)<!--DelEnd-->
+    - [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
     - [DrawContext](arkts-arkui-graphics-drawcontext-c.md)
     - [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
     - [ShapeClip](arkts-arkui-graphics-shapeclip-c.md)
@@ -1529,8 +1339,7 @@
   - [XComponentNode](arkts-xcomponentnode.md)
     - [XComponentNode](arkts-arkui-xcomponentnode-c.md)
 - application<!--arkts-arkui-application-->
-  - [WindowExtensionContext](arkts-windowextensioncontext.md)<!--Del-->
-    - [WindowExtensionContext(系统接口)](arkts-arkui-windowextensioncontext-c-sys.md)<!--DelEnd-->
+  - [WindowExtensionContext](arkts-windowextensioncontext.md)
 - common<!--arkts-arkui-common-->
   - [canvaspattern](arkts-canvaspattern.md)
     - [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md)
