@@ -596,6 +596,11 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 **示例：**
 
 ```ts
+import { Key, KeyEvent } from '@kit.InputKit';
+
+let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
+let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
+
 avcontroller.sendAVKeyEvent(event).then(() => {
   console.info('Succeeded in sending AV key event.');
 });
@@ -636,8 +641,11 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+import { Key, KeyEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
+let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 avcontroller.sendAVKeyEvent(event, (err: BusinessError) => {
   if (err) {
     console.error(`Failed to send AV key event, code: ${err.code}, message: ${err.message}`);
@@ -1542,8 +1550,6 @@ onDesktopLyricEnabled(callback: Callback\<boolean>): void
 **示例：**
 
 ```ts
-// Index.ets
-
 avcontroller.onDesktopLyricEnabled((enabled: boolean) => {
   console.info(`desktop lyric enabled state : ${enabled}`);
 });
@@ -2647,7 +2653,7 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 ```ts
 avcontroller.off('callStateChange');
-``` 
+```
 
 ## offCallStateChange<sup>23+</sup>
 
@@ -3381,7 +3387,7 @@ onSessionEvent(callback: EventProcess): void
 **示例：**
 
 ```ts
-controller.onSessionEvent((sessionEvent, args) => {
+avcontroller.onSessionEvent((sessionEvent, args) => {
   console.info(`OnSessionEvent, sessionEvent is ${sessionEvent}, args: ${JSON.stringify(args)}`);
 });
 ```
@@ -3999,9 +4005,9 @@ onCustomDataChange(callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
- avcontroller!.onCustomDataChange((data: Record<string, Object>) => {
-    console.info(`on_customDataChange Successfully ${data}`);
-  });
+avcontroller.onCustomDataChange((data: Record<string, Object>) => {
+  console.info(`on_customDataChange Successfully ${data}`);
+});
 ```
 
 ## off('customDataChange')<sup>20+</sup>
@@ -4076,7 +4082,7 @@ offCustomDataChange(callback?: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-avcontroller!.offCustomDataChange();
+avcontroller.offCustomDataChange();
 ```
 
 

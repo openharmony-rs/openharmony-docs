@@ -819,36 +819,9 @@ setAVQueueTitle(title: string): Promise\<void>
 **示例：**
 
 ```ts
-let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-let imageSource = await image.createImageSource(value.buffer);
-let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-let queueItemDescription_1: avSession.AVMediaDescription = {
-  assetId: '001',
-  title: 'music_name',
-  subtitle: 'music_sub_name',
-  description: 'music_description',
-  mediaImage : imagePixel,
-  extras: {extras:'any'}
-};
-let queueItem_1: avSession.AVQueueItem = {
-  itemId: 1,
-  description: queueItemDescription_1
-} as avSession.AVQueueItem;
-let queueItemDescription_2: avSession.AVMediaDescription = {
-  assetId: '002',
-  title: 'music_name',
-  subtitle: 'music_sub_name',
-  description: 'music_description',
-  mediaImage: imagePixel,
-  extras: {extras:'any'}
-};
-let queueItem_2: avSession.AVQueueItem = {
-  itemId: 2,
-  description: queueItemDescription_2
-} as avSession.AVQueueItem;
-let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-  console.info('Succeeded in setting AVQueueItems.');
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle).then(() => {
+  console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
 
@@ -884,137 +857,106 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { image } from '@kit.ImageKit';
-import { resourceManager } from '@kit.LocalizationKit';
-import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-let imageSource = await image.createImageSource(value.buffer);
-let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-let queueItemDescription_1: avSession.AVMediaDescription = {
-  assetId: '001',
-  title: 'music_name',
-  subtitle: 'music_sub_name',
-  description: 'music_description',
-  mediaImage: imagePixel,
-  extras: { extras: 'any' }
-};
-let queueItem_1: avSession.AVQueueItem = {
-  itemId: 1,
-  description: queueItemDescription_1
-};
-let queueItemDescription_2: avSession.AVMediaDescription = {
-  assetId: '002',
-  title: 'music_name',
-  subtitle: 'music_sub_name',
-  description: 'music_description',
-  mediaImage: imagePixel,
-  extras: { extras: 'any' }
-};
-let queueItem_2: avSession.AVQueueItem = {
-  itemId: 2,
-  description: queueItemDescription_2
-};
-let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+let queueTitle = 'QUEUE_TITLE';
+currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set AVQueueItems, code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to set AVQueueTitle, code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in setting AVQueueItems.');
+  console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
 
-## setExtras<sup>10+</sup> 
+## setExtras<sup>10+</sup>
 
-ArkTS-Dyn: setExtras(extras: {[key: string]: Object}): Promise\<void> 
+ArkTS-Dyn: setExtras(extras: {[key: string]: Object}): Promise\<void>
 
-ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void> 
+ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 
-媒体提供方设置键值对形式的自定义媒体数据包。使用Promise异步回调。 
+媒体提供方设置键值对形式的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 10 
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23 
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
-| 参数名  | 类型                                          | 必填 | 说明     | 
-| ------- | --------------| ---- | ----------------------------| 
-| extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 | 
+| 参数名  | 类型                                          | 必填 | 说明     |
+| ------- | --------------| ---- | ----------------------------|
+| extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 |
 
-> **说明：** 
+> **说明：**
 >
 > 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
-**返回值：** 
+**返回值：**
 
-| 类型           | 说明                          | 
-| -------------- | ----------------------------- | 
-| Promise\<void> | Promise对象。当自定义媒体数据包设置成功，无返回结果，否则返回错误对象。 | 
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象。当自定义媒体数据包设置成功，无返回结果，否则返回错误对象。 |
 
-**错误码：** 
+**错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
-| 错误码ID | 错误信息 | 
-| -------- | ---------| 
-| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 | 
-| 6600101  | Session service exception.| 
-| 6600102  | The session does not exist. | 
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
+| 6600101  | Session service exception.|
+| 6600102  | The session does not exist. |
 
-**示例：** 
+**示例：**
 
-```ts 
-currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => { 
-  console.info('Succeeded in setting extras.'); 
+```ts
+currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => {
+  console.info('Succeeded in setting extras.');
 });
-``` 
+```
 
-## setExtras<sup>10+</sup> 
+## setExtras<sup>10+</sup>
 
-ArkTS-Dyn: setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void 
+ArkTS-Dyn: setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 
-ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<void>): void 
+ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<void>): void
 
-媒体提供方设置键值对形式的自定义媒体数据包。使用callback异步回调。 
+媒体提供方设置键值对形式的自定义媒体数据包。使用callback异步回调。
 
-**模型约束：** 此接口仅可在Stage模型下使用。 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 10 
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23 
+**ArkTS-Sta起始版本：** 23
 
-**参数：**  
+**参数：**
 
-| 参数名  | 类型                                          | 必填 | 说明     | 
-| ------- | --------------| ---- | ----------------------------| 
-| extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 | 
-| callback | AsyncCallback\<void>                          | 是   | 回调函数。<br>ArkTS-Dyn：当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当自定义媒体数据包设置成功，err为null，否则返回错误对象。 | 
- 
-> **说明：** 
+| 参数名  | 类型                                          | 必填 | 说明     |
+| ------- | --------------| ---- | ----------------------------|
+| extras | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。 |
+| callback | AsyncCallback\<void>                          | 是   | 回调函数。<br>ArkTS-Dyn：当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当自定义媒体数据包设置成功，err为null，否则返回错误对象。 |
+
+> **说明：**
 >
 > 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
- 
-**错误码：** 
- 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
- 
-| 错误码ID | 错误信息 | 
-| -------- | ---------| 
-| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 | 
-| 6600101  | Session service exception.| 
-| 6600102  | The session does not exist. | 
- 
- **示例：** 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
+| 6600101  | Session service exception.|
+| 6600102  | The session does not exist. |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1068,9 +1010,8 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **示例：**
 
 ```ts
-let queueTitle = 'QUEUE_TITLE';
-currentAVSession.setAVQueueTitle(queueTitle).then(() => {
-  console.info('Succeeded in setting AVQueueTitle.');
+currentAVSession.setDesktopLyricVisible(true).then(() => {
+  console.info('Succeeded in setting desktop lyric visible.');
 });
 ```
 
@@ -1143,36 +1084,10 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 
 **示例：**
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err, data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
-                console.info(`desktop lyric visible state: ${visible}`);
-              });
-            } catch (err) {
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
+    console.info(`desktop lyric visible state: ${visible}`);
+  });
 }
 ```
 
@@ -1209,16 +1124,9 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 **示例：**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let queueTitle = 'QUEUE_TITLE';
-currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to set AVQueueTitle, code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in setting AVQueueTitle.');
-});
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
+}
 ```
 
 ## setDesktopLyricState<sup>23+</sup>
@@ -5514,7 +5422,7 @@ onToggleCallMute(callback: NoParamCallback): void
 **示例：**
 
 ```ts
-currentAVSession.onToggleCallMute(() => {  
+currentAVSession.onToggleCallMute(() => {
   console.info('on call toggleCallMute');
 });
 ```

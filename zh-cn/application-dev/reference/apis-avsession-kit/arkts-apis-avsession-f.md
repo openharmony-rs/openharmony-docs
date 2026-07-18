@@ -144,7 +144,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           let sessionId: string;  // 供后续函数入参使用。
 
-          avSession.createAVSession(context, tag, "audio", async (err:BusinessError, data: avSession.AVSession) => {
+          avSession.createAVSession(context, tag, "audio", async (err: BusinessError, data: avSession.AVSession) => {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
