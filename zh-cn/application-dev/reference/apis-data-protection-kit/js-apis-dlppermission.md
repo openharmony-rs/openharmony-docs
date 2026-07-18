@@ -209,7 +209,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
 
 getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 
-查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限(如查看、编辑、复制等)。仅支持在DLP沙箱应用中调用。使用callback异步回调。
+查询当前DLP沙箱的权限信息。返回的权限信息包括文件的授权类型和可执行的操作权限（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用。使用callback异步回调。
 
 在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
@@ -329,7 +329,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 监听打开DLP文件。调用成功后，当DLP文件被打开时会触发回调通知当前应用。仅支持在非DLP沙箱应用中调用。
 
- 当应用需要在DLP文件打开后执行特定操作(如记录日志、更新界面)时，可注册该监听。
+ 当应用需要在DLP文件打开后执行特定操作（如记录日志、更新界面）时，可注册该监听。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -826,7 +826,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
-该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。仅支持在非DLP沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1006,7 +1006,7 @@ if (context !== undefined) {
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
 setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
-设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。
+设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。仅支持在非DLP沙箱应用中调用。
 
 该接口用于设置沙箱应用的配置信息，以便应用按需传递自定义参数。
 
@@ -1041,8 +1041,8 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.setSandboxAppConfig('configInfo').then((configInfo) => { // 设置沙箱应用配置信息。
-  console.info('configInfo：', configInfo);
+dlpPermission.setSandboxAppConfig('configInfo').then(() => { // 设置沙箱应用配置信息。
+  console.info('setSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1053,7 +1053,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 清理沙箱应用配置信息。调用成功后，沙箱应用配置将被清除，恢复默认状态。使用Promise异步回调。
 
-该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。
+该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。仅支持在非沙箱应用中调用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1079,8 +1079,8 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.cleanSandboxAppConfig().then((configInfo) => { // 清理沙箱应用配置信息。
-  console.info('configInfo：', configInfo);
+dlpPermission.cleanSandboxAppConfig().then(() => { // 清理沙箱应用配置信息。
+  console.info('cleanSandboxAppConfig success');
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1296,7 +1296,7 @@ DLP文件授权类型的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | uri | string | 否 | 否 | 表示DLP文件的uri。不超过4095字节。 |
-| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间。单位：s。 |
+| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间戳。单位：s。 |
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1610,7 +1610,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码401。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为0。无范围限制。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
-| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：秒。取值范围大于等于0。无范围限制。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：s。取值范围为[-2<sup>31</sup>, 2<sup>31</sup>-1]<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
@@ -1679,7 +1679,7 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
     let callbackJson = JSON.stringify({
       'requestId': requestId,
-    }); // 构造回调JSON数据
+    }); // 构造回调JSON数据。
     callback(callbackJson);  // 调用回调函数返回结果。
   }
 }
@@ -1745,7 +1745,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>64</sup>-1]。|
+| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>53</sup>-1]。|
 
 **错误码：**
 
