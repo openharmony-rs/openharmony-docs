@@ -79,7 +79,7 @@ struct FocusEventExample {
 
   build() {
     Column({ space: 20 }) {
-      // 通过外接键盘的Tab键激活焦点，并使用上下键让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+      // 当焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
       Button('First Button')
         .backgroundColor(this.oneButtonColor)
         .width(260)
