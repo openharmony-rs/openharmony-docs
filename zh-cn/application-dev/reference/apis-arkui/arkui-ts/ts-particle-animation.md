@@ -295,10 +295,10 @@ interface ParticlePropertyOptions<TYPE, UPDATER extends ParticleUpdater> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | range | [ParticleTuple](#particletuple18)<TYPE, TYPE> | 否 | 否 | 粒子初始属性值区间，粒子发射器生成粒子的属性值在range区间随机取值。<br/>**说明**<br/>各项属性的非法输入取默认值，当最大值小于最小值的时候取默认区间。TYPE为number。<br/>不同属性的默认值不同：<br>1、opacity属性：range:[1.0,1.0]，取值范围为[0, 1]，默认值为1.0。<br/>2、scale属性：range:[1.0,1.0]，取值范围为[0, 10000]，默认值为1.0。<br/>3、acceleration加速度speed属性：range:[0.0,0.0]，取值范围为[0, 10000]，默认值为0.0。<br/>4、acceleration加速度angle属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。<br/>5、spin属性：range:[0.0,0.0]，取值范围为[-10000, 10000]，默认值为0.0。|
-| updater | [ParticleUpdaterOptions](#particleupdateroptions18)<TYPE, [UPDATER](#particleupdater)> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机均匀变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
+| updater | [ParticleUpdaterOptions](#particleupdateroptions18)<TYPE, [UPDATER](#particleupdater)> | 否 | 是 | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机均匀变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.CURVE] <br>默认值：type默认为ParticleUpdater.NONE。 |
 
 
-## ParticlePropertyUpdaterConfigs
+## ParticlePropertyUpdaterConfigs\<T>
 ```typescript
 interface ParticlePropertyUpdaterConfigs<T> {
     [ParticleUpdater.NONE]: void;
@@ -412,7 +412,7 @@ interface ParticlePropertyAnimation<T> {
 | ------ | ------- | ---- | ------- | --------------------- |
 | strength  | number | 否 | 是   |场强，表示场从中心向外的排斥力的强度，默认值0。正数表示排斥力方向朝外，负数表示吸引力，方向朝内。<br/>取值范围：(-∞, +∞)。 |
 | shape  |   [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是   | 场的形状。<br/>默认为DisturbanceFieldShape.RECT。 |
-| size  | [SizeT\<T>](#sizett12)&lt;number&gt;| 否 | 是  |场的大小。<br/>默认值 {width:0，height:0}。<br/>width和height的取值范围：[0, +∞)。 |
+| size  | [SizeT](#sizett12)&lt;number&gt;| 否 | 是  |场的大小。<br/>默认值 {width:0，height:0}。<br/>width和height的取值范围：[0, +∞)。 |
 | position  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是   |场的位置。<br/>默认值{x:0，y:0}。<br/>x、y的取值范围：(-∞, +∞)。 |
 | feather  | number | 否 | 是   |羽化值，表示场从中心点到场边缘的衰减程度，取值范围0到100的整数，如果0则表示场是一个刚体，所有范围内的粒子都被排斥在外。羽化值越大场的缓和程度越大，场范围内出现越多靠近中心点的粒子。<br/>默认值为0。 |
 | noiseScale  | number | 否 | 是   |噪声尺度，用于控制噪声图案的整体大小，取值大于等于0。<br/>默认值1。 |
@@ -599,7 +599,7 @@ interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater> {
 | 名称    | 类型                                                | 只读 | 可选 | 说明                                                       |
 | ------ | ----------------------------------- | ---------------- | ---- | --------------------------------------------------------- |
 | type<sup>10+</sup>  | [UPDATER](#particleupdater)  | 否 | 否   | 表示颜色属性变化类型。 <br>默认值：type默认为ParticleUpdater.NONE。    **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| config<sup>10+</sup>  | [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)\<TYPE>[[UPDATER](#particleupdater)] | 否 | 否   | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE]。 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| config<sup>10+</sup>  | [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)\<TYPE>[[UPDATER](#particleupdater)] | 否 | 否   | 属性变化配置。属性变化类型type有三类：<br/>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.NONE]。<br>2、当type为ParticleUpdater.RANDOM，表示变化类型为随机变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.RANDOM]。<br>3、当type为ParticleUpdater.CURVE，表示变化类型为曲线变化，则config类型为[ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigst)[ParticleUpdater.CURVE]。 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleColorUpdaterOptions<sup>18+</sup>
 
@@ -691,7 +691,7 @@ type Vector2T\<T> = import('../api/arkui/Graphics').Vector2T\<T>
 
 ## PositionT\<T><sup>12+</sup>
 
-type PositionT\<T> = import('../api/arkui/Graphics').Position\<T>
+type PositionT\<T> = import('../api/arkui/Graphics').PositionT\<T>
 
 用于设置或返回组件的位置。
 
