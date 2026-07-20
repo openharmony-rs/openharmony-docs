@@ -1285,7 +1285,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 19）
+        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 18）
     }.cachedCount(5)
   }
 }
@@ -1586,7 +1586,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 19），避免渲染异常
+        .virtualScroll({ reusable: false }) // 关闭Repeat自身的复用功能（API 18），避免渲染异常
     }.cachedCount(5)
   }
 }
