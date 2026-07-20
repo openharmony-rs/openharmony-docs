@@ -24,6 +24,7 @@ ImageReceiver类，用于获取组件surface id、接收最新的图片和读取
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="getreceivingsurfaceid"></a>
 ## getReceivingSurfaceId
 
 ```TypeScript
@@ -42,8 +43,9 @@ getReceivingSurfaceId(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，当获取surface id成功，err为undefined，data为获取到的surface id；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，当获取surface id成功，err为undefined，data为获取到的surface id；否则为错误对象。 |
 
+<a id="getreceivingsurfaceid-1"></a>
 ## getReceivingSurfaceId
 
 ```TypeScript
@@ -62,8 +64,9 @@ getReceivingSurfaceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回surface id。 |
+| Promise&lt;string&gt; | Promise对象，返回surface id。 |
 
+<a id="off"></a>
 ## off('imageArrival')
 
 ```TypeScript
@@ -83,8 +86,9 @@ off(type: 'imageArrival', callback?: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'imageArrival' | 是 | 注册事件的类型，固定为'imageArrival'，释放buffer时触发。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 否 | 移除的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 移除的回调函数。 |
 
+<a id="on"></a>
 ## on('imageArrival')
 
 ```TypeScript
@@ -104,8 +108,9 @@ on(type: 'imageArrival', callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'imageArrival' | 是 | 注册事件的类型，固定为'imageArrival'，接收图片到达时触发。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当注册事件触发成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当注册事件触发成功，err为undefined，否则为错误对象。 |
 
+<a id="readlatestimage"></a>
 ## readLatestImage
 
 ```TypeScript
@@ -116,7 +121,7 @@ readLatestImage(callback: AsyncCallback<Image>): void
 
 > **注意**：  
 >  
-> 此接口需要在[on](arkts-image-image-imagereceiver-i.md#on-1)回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
@@ -130,8 +135,9 @@ readLatestImage(callback: AsyncCallback<Image>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Image> | 是 | 回调函数，当读取最新图片成功，err为undefined，data为获取到的最新图片；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Image&gt; | 是 | 回调函数，当读取最新图片成功，err为undefined，data为获取到的最新图片；否则为错误对象。 |
 
+<a id="readlatestimage-1"></a>
 ## readLatestImage
 
 ```TypeScript
@@ -142,7 +148,7 @@ readLatestImage(): Promise<Image>
 
 > **注意**：  
 >  
-> 此接口需要在[on](arkts-image-image-imagereceiver-i.md#on-1)回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
@@ -156,8 +162,9 @@ readLatestImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Image> | Promise对象，返回最新图片。 |
+| Promise&lt;Image&gt; | Promise对象，返回最新图片。 |
 
+<a id="readnextimage"></a>
 ## readNextImage
 
 ```TypeScript
@@ -168,7 +175,7 @@ readNextImage(callback: AsyncCallback<Image>): void
 
 > **注意**：  
 >  
-> 此接口需要在[on](arkts-image-image-imagereceiver-i.md#on-1)回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
@@ -182,8 +189,9 @@ readNextImage(callback: AsyncCallback<Image>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Image> | 是 | 回调函数，当获取下一张图片成功，err为undefined，data为获取到的下一张图片；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Image&gt; | 是 | 回调函数，当获取下一张图片成功，err为undefined，data为获取到的下一张图片；否则为错误对象。 |
 
+<a id="readnextimage-1"></a>
 ## readNextImage
 
 ```TypeScript
@@ -194,7 +202,7 @@ readNextImage(): Promise<Image>
 
 > **注意**：  
 >  
-> 此接口需要在[on](arkts-image-image-imagereceiver-i.md#on-1)回调触发后调用，才能正常的接收到数  
+> 此接口需要在[on](image.ImageReceiver.on(type: 'imageArrival', callback: AsyncCallback<void>))回调触发后调用，才能正常的接收到数  
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用  
 > [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
@@ -208,8 +216,9 @@ readNextImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Image> | Promise对象，返回下一张图片。 |
+| Promise&lt;Image&gt; | Promise对象，返回下一张图片。 |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -232,8 +241,9 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当释放ImageReceiver实例成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当释放ImageReceiver实例成功，err为undefined，否则为错误对象。 |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -256,7 +266,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 ## capacity
 

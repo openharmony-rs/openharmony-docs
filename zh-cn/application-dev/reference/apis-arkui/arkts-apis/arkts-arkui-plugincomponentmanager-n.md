@@ -20,17 +20,17 @@ import { PluginComponentTemplate } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [push](arkts-arkui-plugincomponentmanager-push-f.md#push-1) | 插件组件push方法。 |
-| [request](arkts-arkui-plugincomponentmanager-request-f.md#request-1) | 插件组件request方法。 |
-| [on](arkts-arkui-plugincomponentmanager-on-f.md#on-1) | 插件组件事件监听。 |
+| [push](arkts-arkui-plugincomponentmanager-push-f.md#push) | 插件组件push方法。 |
+| [request](arkts-arkui-plugincomponentmanager-request-f.md#request) | 插件组件request方法。 |
+| [on](arkts-arkui-plugincomponentmanager-on-f.md#on) | 插件组件事件监听。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md#push-2) | 插件组件push方法，用于发送其提供的模板信息。 |
-| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md#request-2) | 插件组件request方法，用于发送其所需模板信息的请求。 |
+| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md#push-1) | 插件组件push方法，用于发送其提供的模板信息。 |
+| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md#request-1) | 插件组件request方法，用于发送其所需模板信息的请求。 |
 <!--DelEnd-->
 
 ### 接口

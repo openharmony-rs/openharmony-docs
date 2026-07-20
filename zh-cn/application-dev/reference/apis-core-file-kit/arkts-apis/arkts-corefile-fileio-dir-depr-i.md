@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -34,7 +35,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | return Promise |
+| Promise&lt;void&gt; | return Promise |
 
 **示例：**
 
@@ -46,6 +47,7 @@ dir.close().then(() => {
 
 ```
 
+<a id="close-1"></a>
 ## close
 
 ```TypeScript
@@ -68,7 +70,7 @@ close(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | callback. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback. |
 
 **示例：**
 
@@ -80,6 +82,7 @@ dir.close((err: BusinessError) => {
 
 ```
 
+<a id="closesync"></a>
 ## closeSync
 
 ```TypeScript
@@ -105,6 +108,7 @@ dir.closeSync();
 
 ```
 
+<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -127,7 +131,7 @@ read(): Promise<Dirent>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Dirent> | Promise对象。返回表示异步读取目录项的结果。 |
+| Promise&lt;Dirent&gt; | Promise对象。返回表示异步读取目录项的结果。 |
 
 **示例：**
 
@@ -141,6 +145,7 @@ dir.read().then((dirent: fileio.Dirent) => {
 
 ```
 
+<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -163,7 +168,7 @@ read(callback: AsyncCallback<Dirent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Dirent> | 是 | 异步读取下一个目录项之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Dirent&gt; | 是 | 异步读取下一个目录项之后的回调。 |
 
 **示例：**
 
@@ -178,6 +183,7 @@ dir.read((err: BusinessError, dirent: fileio.Dirent) => {
 
 ```
 
+<a id="readsync"></a>
 ## readSync
 
 ```TypeScript

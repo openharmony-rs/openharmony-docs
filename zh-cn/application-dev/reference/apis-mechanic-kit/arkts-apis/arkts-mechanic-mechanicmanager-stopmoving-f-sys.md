@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="stopmoving"></a>
 ## stopMoving
 
 ```TypeScript
@@ -32,7 +33,7 @@ Stops a mechanical device from moving.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

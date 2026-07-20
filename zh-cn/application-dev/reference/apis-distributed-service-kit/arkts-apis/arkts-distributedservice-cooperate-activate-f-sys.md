@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="activate"></a>
 ## activate
 
 ```TypeScript
@@ -18,7 +19,7 @@ function activate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 
 **废弃版本：** 11
 
-**替代接口：** activateCooperate(targetNetworkId:
+**替代接口：** [activateCooperate(targetNetworkId:](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)
 
 <!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback<void>): void--><!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback<void>): void-End-->
 
@@ -32,7 +33,7 @@ function activate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 | --- | --- | --- | --- |
 | targetNetworkId | string | 是 | 键鼠穿越目标设备描述符。 |
 | inputDeviceId | number | 是 | 待穿越输入设备标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，键鼠穿越启动成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，键鼠穿越启动成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ try {
 ```
 
 
+<a id="activate-1"></a>
 ## activate
 
 ```TypeScript
@@ -76,7 +78,7 @@ function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** activateCooperate(targetNetworkId:
+**替代接口：** [activateCooperate(targetNetworkId:](arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate-1)
 
 <!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>--><!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>-End-->
 
@@ -95,7 +97,7 @@ function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

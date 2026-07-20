@@ -6,6 +6,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createsoundpool"></a>
 ## createSoundPool
 
 ```TypeScript
@@ -44,7 +45,7 @@ function createSoundPool(
 | --- | --- | --- | --- |
 | maxStreams | number | 是 | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
 | audioRenderInfo | audio.AudioRendererInfo | 是 | 音频播放参数信息。其中audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE，STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。SoundPool支持将rendererFlags设置为1用于低时延通路播放。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<SoundPool> | 是 | 回调函数。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SoundPool&gt; | 是 | 回调函数。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 
@@ -76,6 +77,7 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 ```
 
 
+<a id="createsoundpool-1"></a>
 ## createSoundPool
 
 ```TypeScript
@@ -107,7 +109,7 @@ function createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendere
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SoundPool> | Promise对象。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
+| Promise&lt;SoundPool&gt; | Promise对象。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 

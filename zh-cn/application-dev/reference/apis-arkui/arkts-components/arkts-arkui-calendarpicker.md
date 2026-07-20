@@ -33,7 +33,7 @@ CalendarPicker(options?: CalendarOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | CalendarOptions | 否 | 配置日历选择器组件的参数。 |
+| options | [CalendarOptions](arkts-arkui-calendaroptions-i.md) | 否 | 配置日历选择器组件的参数。  |
 
 ## 汇总
 

@@ -6,6 +6,7 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleresourceinfo"></a>
 ## getBundleResourceInfo
 
 ```TypeScript
@@ -47,6 +48,7 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: number): Bund
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
 
+<a id="getbundleresourceinfo-1"></a>
 ## getBundleResourceInfo
 
 ```TypeScript

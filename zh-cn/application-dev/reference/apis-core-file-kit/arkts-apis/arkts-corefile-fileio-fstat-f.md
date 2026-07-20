@@ -1,5 +1,6 @@
 # fstat
 
+<a id="fstat"></a>
 ## fstat
 
 ```TypeScript
@@ -28,9 +29,10 @@ declare function fstat(fd: number): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Stat> | Promise对象。返回表示文件状态的具体信息。 |
+| Promise&lt;Stat&gt; | Promise对象。返回表示文件状态的具体信息。 |
 
 
+<a id="fstat-1"></a>
 ## fstat
 
 ```TypeScript
@@ -54,5 +56,5 @@ declare function fstat(fd: number, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待获取文件状态的文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Stat> | 是 | 异步获取文件状态信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Stat&gt; | 是 | 异步获取文件状态信息之后的回调。 |
 

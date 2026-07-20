@@ -36,7 +36,7 @@ extraInfoKeys?: Array<string>
 
 筛选附加信息的键值列表。不填表示查询所有的附加信息。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 11
 

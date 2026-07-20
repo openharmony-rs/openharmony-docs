@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createblendimagefilter"></a>
 ## createBlendImageFilter
 
 ```TypeScript
@@ -40,7 +41,7 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 颜色混合模式。 |
+| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色混合模式。 |
 | background | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 是 | 在混合模式中作为目标色的滤波器。 |
 | foreground | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 是 | 在混合模式中作为源色的滤波器。 |
 
@@ -56,6 +57,7 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="createblurimagefilter"></a>
 ## createBlurImageFilter
 
 ```TypeScript
@@ -80,7 +82,7 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number,
 | sigmaX | number | 是 | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
 | sigmaY | number | 是 | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
 | tileMode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 表示在边缘处应用的平铺模式。 |
-| imageFilter | ImageFilter \| null | 否 | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
+| imageFilter | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) \| null | 否 | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
 
 **返回值：**
 
@@ -94,6 +96,7 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number,
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createcomposeimagefilter"></a>
 ## createComposeImageFilter
 
 ```TypeScript
@@ -121,6 +124,7 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 | --- | --- |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 返回创建的图像滤波器。 |
 
+<a id="createfromcolorfilter"></a>
 ## createFromColorFilter
 
 ```TypeScript
@@ -139,8 +143,8 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorFilter | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 是 | 表示颜色滤波器。 |
-| imageFilter | ImageFilter \| null | 否 | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。<br>**起始版本：** 20 |
+| colorFilter | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 是 | 表示颜色滤波器。 |
+| imageFilter | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) \| null | 否 | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。<br>**起始版本：** 20 |
 
 **返回值：**
 
@@ -154,6 +158,7 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="createfromimage"></a>
 ## createFromImage
 
 ```TypeScript
@@ -182,6 +187,7 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 | --- | --- |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 返回创建的图像滤波器。 |
 
+<a id="createfromshadereffect"></a>
 ## createFromShaderEffect
 
 ```TypeScript
@@ -208,6 +214,7 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 | --- | --- |
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 返回创建的图像滤波器。 |
 
+<a id="createoffsetimagefilter"></a>
 ## createOffsetImageFilter
 
 ```TypeScript
@@ -228,7 +235,7 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 | --- | --- | --- | --- |
 | dx | number | 是 | 水平方向的平移距离， 该参数为浮点数。 |
 | dy | number | 是 | 竖直方向的平移距离， 该参数为浮点数。 |
-| input | ImageFilter \| null | 否 | 需进行平移的滤波器。默认为空，如果为空，则将无滤波效果的绘制结果进行平移。 |
+| input | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) \| null | 否 | 需进行平移的滤波器。默认为空，如果为空，则将无滤波效果的绘制结果进行平移。 |
 
 **返回值：**
 

@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="destroystream"></a>
 ## destroyStream
 
 ```TypeScript

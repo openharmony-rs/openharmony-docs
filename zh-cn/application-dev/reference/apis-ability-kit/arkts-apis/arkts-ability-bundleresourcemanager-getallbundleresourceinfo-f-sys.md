@@ -6,6 +6,7 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallbundleresourceinfo"></a>
 ## getAllBundleResourceInfo
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resourceFlags | number | 是 | 指定返回的BundleResourceInfo所包含的信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<BundleResourceInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleResourceInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -40,6 +41,7 @@ function getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 
+<a id="getallbundleresourceinfo-1"></a>
 ## getAllBundleResourceInfo
 
 ```TypeScript
@@ -68,7 +70,7 @@ function getAllBundleResourceInfo(resourceFlags: number): Promise<Array<BundleRe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleResourceInfo>> | Promise对象，返回BundleResourceInfo数组。 |
+| Promise&lt;Array&lt;BundleResourceInfo&gt;&gt; | Promise对象，返回BundleResourceInfo数组。 |
 
 **错误码：**
 

@@ -58,7 +58,7 @@ preKeys: Array<number>
 
 例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 14
 

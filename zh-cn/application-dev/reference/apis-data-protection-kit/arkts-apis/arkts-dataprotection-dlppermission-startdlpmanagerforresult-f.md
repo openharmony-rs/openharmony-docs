@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="startdlpmanagerforresult"></a>
 ## startDLPManagerForResult
 
 ```TypeScript
@@ -39,7 +40,7 @@ function startDLPManagerForResult(context: common.UIAbilityContext, want: Want):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DLPManagerResult> | Promise对象。打开DLP权限管理应用并退出后的结果。 |
+| Promise&lt;DLPManagerResult&gt; | Promise对象。打开DLP权限管理应用并退出后的结果。 |
 
 **错误码：**
 

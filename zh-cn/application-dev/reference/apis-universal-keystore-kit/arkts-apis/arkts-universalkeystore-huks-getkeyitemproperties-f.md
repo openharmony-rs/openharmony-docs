@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="getkeyitemproperties"></a>
 ## getKeyItemProperties
 
 ```TypeScript
@@ -46,7 +47,7 @@ Obtains key properties. This API uses an asynchronous callback to return the res
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | Key alias, which must be the same as the alias used when the key was generated. |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Empty object (leave this parameter empty). |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<HuksReturnResult> | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the obtained **HuksReturnResult**. Otherwise, **err** is an error object. **properties** of **HuksReturnResult** are the parameters required for generating a key. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HuksReturnResult&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the obtained **HuksReturnResult**. Otherwise, **err** is an error object. **properties** of **HuksReturnResult** are the parameters required for generating a key. |
 
 **错误码：**
 
@@ -90,6 +91,7 @@ huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
 ```
 
 
+<a id="getkeyitemproperties-1"></a>
 ## getKeyItemProperties
 
 ```TypeScript
@@ -121,7 +123,7 @@ function getKeyItemProperties(keyAlias: string, options: HuksOptions): Promise<H
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的properties成员为获取的密钥属性信息。 |
+| Promise&lt;HuksReturnResult&gt; | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的properties成员为获取的密钥属性信息。 |
 
 **错误码：**
 

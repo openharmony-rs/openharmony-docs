@@ -1,5 +1,6 @@
 # wrapBuilder
 
+<a id="wrapbuilder"></a>
 ## wrapBuilder
 
 ```TypeScript
@@ -22,11 +23,11 @@ Defining wrapBuilder function.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | (...args: Args) => void | 是 |  |
+| builder | (...args: Args) =&gt; void | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [WrappedBuilder](arkts-arkui-common-wrappedbuilder-c.md)<Args> | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
+| [WrappedBuilder](arkts-arkui-wrappedbuilder-c.md)&lt;Args&gt; | @syscap SystemCapability.ArkUI.ArkUI.Full@stagemodelonly@crossplatform@atomicservice |
 

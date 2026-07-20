@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getringtoneinfobybundle"></a>
 ## getRingtoneInfoByBundle
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RingtoneInfo> | Promise对象，返回应用自定义铃声信息。 |
+| Promise&lt;RingtoneInfo&gt; | Promise对象，返回应用自定义铃声信息。 |
 
 **错误码：**
 

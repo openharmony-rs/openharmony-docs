@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setabilityfiletypesforself"></a>
 ## setAbilityFileTypesForSelf
 
 ```TypeScript
@@ -30,7 +31,7 @@ function setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fil
 | --- | --- | --- | --- |
 | moduleName | string | 是 | 表示模块的名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| fileTypes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示文件类型。fileTypes数组长度不能超过1024，每个元素不能超过512个字符，元素取值为[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)中的值，元素不能为空、通配符、general.object。 |
+| fileTypes | Array&lt;string&gt; | 是 | 表示文件类型。fileTypes数组长度不能超过1024，每个元素不能超过512个字符，元素取值为[UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)中的值，元素不能为空、通配符、general.object。 |
 
 **错误码：**
 

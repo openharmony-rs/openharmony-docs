@@ -6,6 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
+<a id="addosaccountasync"></a>
 ## addOsAccountAsync
 
 ```TypeScript
@@ -40,7 +41,7 @@ function addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountT
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<osAccount.OsAccountInfo> | Promise used to return the added account information. |
+| Promise&lt;osAccount.OsAccountInfo&gt; | Promise used to return the added account information. |
 
 **错误码：**
 

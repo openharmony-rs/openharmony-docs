@@ -30,7 +30,7 @@ MULTI_WINDOW = 0
 DISTRIBUTED_TRANSMISSION = 1
 ```
 
-[分布式管理服务](../../../../distributedservice/distributedservice-kit-intro.md#运作机制)。禁用后无法使用设备分布式管理服务中的发现、认证、查询、监听等功能。
+[分布式管理服务](docroot://distributedservice/distributedservice-kit-intro.md#运作机制)。禁用后无法使用设备分布式管理服务中的发现、认证、查询、监听等功能。
 
 **起始版本：** 26.0.0
 

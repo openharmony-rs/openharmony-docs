@@ -32,7 +32,7 @@ image: Image | null
 
 要使用的纹理. 如果未定义，factor定义漫反射颜色.
 
-**类型：** Image | null
+**类型：** Image \| null
 
 **起始版本：** 20
 

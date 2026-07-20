@@ -14,6 +14,7 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -57,6 +58,7 @@ try {
 
 ```
 
+<a id="begingroup"></a>
 ## beginGroup
 
 ```TypeScript
@@ -100,6 +102,7 @@ try {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -116,6 +119,7 @@ constructor()
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+<a id="deviceid"></a>
 ## deviceId
 
 ```TypeScript
@@ -178,6 +182,7 @@ try {
 
 ```
 
+<a id="endgroup"></a>
 ## endGroup
 
 ```TypeScript
@@ -221,6 +226,7 @@ try {
 
 ```
 
+<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -233,7 +239,7 @@ equalTo(field: string, value: number | number | string | boolean): Query
 >  
 > 使用equalTo时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -263,6 +269,7 @@ equalTo(field: string, value: number | number | string | boolean): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="getsqllike"></a>
 ## getSqlLike
 
 ```TypeScript
@@ -303,6 +310,7 @@ try {
 
 ```
 
+<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -315,7 +323,7 @@ greaterThan(field: string, value: number | number | string | boolean): Query
 >  
 > 使用greaterThan时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -345,6 +353,7 @@ greaterThan(field: string, value: number | number | string | boolean): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -357,7 +366,7 @@ greaterThanOrEqualTo(field: string, value: number | number | string): Query
 >  
 > 使用greaterThanOrEqualTo时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -387,6 +396,7 @@ greaterThanOrEqualTo(field: string, value: number | number | string): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="innumber"></a>
 ## inNumber
 
 ```TypeScript
@@ -399,7 +409,7 @@ inNumber(field: string, valueList: number[] | number[]): Query
 >  
 > 使用inNumber时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -429,6 +439,7 @@ inNumber(field: string, valueList: number[] | number[]): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="instring"></a>
 ## inString
 
 ```TypeScript
@@ -441,7 +452,7 @@ inString(field: string, valueList: string[]): Query
 >  
 > 使用inString时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -490,6 +501,7 @@ try {
 
 ```
 
+<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -502,7 +514,7 @@ isNotNull(field: string): Query
 >  
 > 使用isNotNull时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -550,6 +562,7 @@ try {
 
 ```
 
+<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -562,7 +575,7 @@ isNull(field: string): Query
 >  
 > 使用isNull时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -610,6 +623,7 @@ try {
 
 ```
 
+<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -622,7 +636,7 @@ lessThan(field: string, value: number | number | string): Query
 >  
 > 使用lessThan时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -652,6 +666,7 @@ lessThan(field: string, value: number | number | string): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -664,7 +679,7 @@ lessThanOrEqualTo(field: string, value: number | number | string): Query
 >  
 > 使用lessThanOrEqualTo时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -694,6 +709,7 @@ lessThanOrEqualTo(field: string, value: number | number | string): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -706,7 +722,7 @@ like(field: string, value: string): Query
 >  
 > 使用like时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -755,6 +771,7 @@ try {
 
 ```
 
+<a id="limit"></a>
 ## limit
 
 ```TypeScript
@@ -812,6 +829,7 @@ try {
 
 ```
 
+<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -824,7 +842,7 @@ notEqualTo(field: string, value: number | number | string | boolean): Query
 >  
 > 使用notEqualTo时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -854,6 +872,7 @@ notEqualTo(field: string, value: number | number | string | boolean): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="notinnumber"></a>
 ## notInNumber
 
 ```TypeScript
@@ -866,7 +885,7 @@ notInNumber(field: string, valueList: number[] | number[]): Query
 >  
 > 使用notInNumber时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -896,6 +915,7 @@ notInNumber(field: string, valueList: number[] | number[]): Query
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types;<br>3.Parameter verification failed. |
 
+<a id="notinstring"></a>
 ## notInString
 
 ```TypeScript
@@ -908,7 +928,7 @@ notInString(field: string, valueList: string[]): Query
 >  
 > 使用notInString时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -957,6 +977,7 @@ try {
 
 ```
 
+<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -1000,6 +1021,7 @@ try {
 
 ```
 
+<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -1012,7 +1034,7 @@ orderByAsc(field: string): Query
 >  
 > 使用orderByAsc时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -1061,6 +1083,7 @@ try {
 
 ```
 
+<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript
@@ -1073,7 +1096,7 @@ orderByDesc(field: string): Query
 >  
 > 使用orderByDesc时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9
@@ -1122,6 +1145,7 @@ try {
 
 ```
 
+<a id="prefixkey"></a>
 ## prefixKey
 
 ```TypeScript
@@ -1176,6 +1200,7 @@ try {
 
 ```
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -1219,6 +1244,7 @@ try {
 
 ```
 
+<a id="setsuggestindex"></a>
 ## setSuggestIndex
 
 ```TypeScript
@@ -1273,6 +1299,7 @@ try {
 
 ```
 
+<a id="unlike"></a>
 ## unlike
 
 ```TypeScript
@@ -1285,7 +1312,7 @@ unlike(field: string, value: string): Query
 >  
 > 使用unlike时需要结合[Schema](arkts-arkdata-distributedkvstore-schema-c.md)使用。  
 >  
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](docroot://database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获  
 > 取键值数据库示例。
 
 **起始版本：** 9

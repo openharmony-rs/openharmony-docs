@@ -6,6 +6,7 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="notifydatachange"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -33,7 +34,7 @@ function notifyDataChange(accountId: string, bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 ```
 
 
+<a id="notifydatachange-1"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -81,7 +83,7 @@ function notifyDataChange(accountId: string, bundleName: string, callback: Async
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
 | bundleName | string | 是 | 应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步通知端云服务应用的云数据变更之后的。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步通知端云服务应用的云数据变更之后的。 |
 
 **错误码：**
 
@@ -109,6 +111,7 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 ```
 
 
+<a id="notifydatachange-2"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -138,7 +141,7 @@ function notifyDataChange(userId: number, extraData: ExtraData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -165,6 +168,7 @@ cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
 ```
 
 
+<a id="notifydatachange-3"></a>
 ## notifyDataChange
 
 ```TypeScript
@@ -189,7 +193,7 @@ function notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncC
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户Id。 |
 | extraData | [ExtraData](arkts-corefile-cloudsyncmanager-extradata-i-sys.md) | 是 | 云端数据变更信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步通知端云服务应用的云数据变更之后。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步通知端云服务应用的云数据变更之后。 |
 
 **错误码：**
 

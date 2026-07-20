@@ -6,6 +6,7 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -46,6 +47,7 @@ console.info(buf.toString('hex'));
 ```
 
 
+<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -80,7 +82,7 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range.It must be &gt;= [left range] and &lt;= [right range]. Received value is: [byteOffset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[byteOffset/length]" is out of range.It must be >= [left range] and <= [right range]. Received value is: [byteOffset/length] |
 
 **示例：**
 
@@ -94,6 +96,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 ```
 
 
+<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -114,7 +117,7 @@ function from(buffer: Buffer | Uint8Array): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | Buffer \| Uint8Array | 是 | 对象数据。 |
+| buffer | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 对象数据。 |
 
 **返回值：**
 
@@ -141,6 +144,7 @@ console.info("uint8Array:", uint8Array);
 ```
 
 
+<a id="from-3"></a>
 ## from
 
 ```TypeScript
@@ -163,7 +167,7 @@ function from(object: Object, offsetOrEncoding: number | string, length: number)
 | --- | --- | --- | --- |
 | object | Object | 是 | 支持Symbol.toPrimitive或valueOf()的对象。 |
 | offsetOrEncoding | number \| string | 是 | 字节偏移量或编码格式。 |
-| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 &lt;= length &lt;= ArrayBuffer.byteLength，超出范围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
+| length | number | 是 | 字节长度（此入参仅在object的valueOf()返回值为ArrayBuffer时生效，取值范围：0 <= length <= ArrayBuffer.byteLength，超出范围时报错: 10200001）。其他情况下可填任意number类型值，该参数不会对结果产生影响。 |
 
 **返回值：**
 
@@ -182,6 +186,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[116,104,105,115,3
 ```
 
 
+<a id="from-4"></a>
 ## from
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="createsubwindowandbindparent"></a>
 ## createSubWindowAndBindParent
 
 ```TypeScript
@@ -44,7 +45,7 @@ function createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseC
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Window> | Promise对象。返回当前创建的子窗口对象。 |
+| Promise&lt;Window&gt; | Promise对象。返回当前创建的子窗口对象。 |
 
 **错误码：**
 

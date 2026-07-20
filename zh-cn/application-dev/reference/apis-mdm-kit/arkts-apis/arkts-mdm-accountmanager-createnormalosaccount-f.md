@@ -6,6 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
+<a id="createnormalosaccount"></a>
 ## createNormalOsAccount
 
 ```TypeScript
@@ -35,7 +36,7 @@ function createNormalOsAccount(admin: Want, name: string): Promise<osAccount.OsA
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<osAccount.OsAccountInfo> | Returns the information about the added OS account. |
+| Promise&lt;osAccount.OsAccountInfo&gt; | Returns the information about the added OS account. |
 
 **错误码：**
 

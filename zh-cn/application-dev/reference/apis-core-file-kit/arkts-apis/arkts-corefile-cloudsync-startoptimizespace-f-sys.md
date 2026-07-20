@@ -6,6 +6,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="startoptimizespace"></a>
 ## startOptimizeSpace
 
 ```TypeScript
@@ -31,13 +32,13 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | optimizePara | [OptimizeSpaceParam](arkts-corefile-cloudsync-optimizespaceparam-i-sys.md) | 是 | 优化参数。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<OptimizeSpaceProgress> | 否 | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;OptimizeSpaceProgress&gt; | 否 | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

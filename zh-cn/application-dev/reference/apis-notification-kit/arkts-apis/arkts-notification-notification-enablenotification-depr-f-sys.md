@@ -1,5 +1,6 @@
 # enableNotification（系统接口）
 
+<a id="enablenotification"></a>
 ## enableNotification
 
 ```TypeScript
@@ -28,9 +29,10 @@ function enableNotification(bundle: BundleOption, enable: boolean, callback: Asy
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
 | enable | boolean | 是 | 使能状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设定通知使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定通知使能回调函数。 |
 
 
+<a id="enablenotification-1"></a>
 ## enableNotification
 
 ```TypeScript
@@ -64,5 +66,5 @@ function enableNotification(bundle: BundleOption, enable: boolean): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 

@@ -1,5 +1,6 @@
 # unsubscribe
 
+<a id="unsubscribe"></a>
 ## unsubscribe
 
 ```TypeScript
@@ -23,7 +24,7 @@ function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md) | 是 | 表示订阅者对象。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 否 | 表示取消订阅的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 表示取消订阅的回调方法。 |
 
 **示例：**
 

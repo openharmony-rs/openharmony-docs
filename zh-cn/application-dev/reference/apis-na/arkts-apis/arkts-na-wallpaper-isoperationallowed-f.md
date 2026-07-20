@@ -1,5 +1,6 @@
 # isOperationAllowed
 
+<a id="isoperationallowed"></a>
 ## isOperationAllowed
 
 ```TypeScript
@@ -20,7 +21,7 @@ function isOperationAllowed(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 |  |
 
 **示例：**
 
@@ -38,6 +39,7 @@ wallpaper.isOperationAllowed((error: BusinessError, data: Boolean) => {
 ```
 
 
+<a id="isoperationallowed-1"></a>
 ## isOperationAllowed
 
 ```TypeScript
@@ -58,7 +60,7 @@ function isOperationAllowed(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 异步回调函数，返回是否允许用户设置壁纸。如果允许返回true，否则返回false。 |
+| Promise&lt;boolean&gt; | 异步回调函数，返回是否允许用户设置壁纸。如果允许返回true，否则返回false。 |
 
 **示例：**
 

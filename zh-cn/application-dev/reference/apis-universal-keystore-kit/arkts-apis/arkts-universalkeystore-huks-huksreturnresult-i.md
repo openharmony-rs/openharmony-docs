@@ -22,7 +22,7 @@ certChains?: Array<string>
 
 表示证书链数据。默认为undefined。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -58,7 +58,7 @@ properties?: Array<HuksParam>
 
 表示[initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)操作之后获取到的challenge信息。默认为undefined。
 
-**类型：** Array<HuksParam>
+**类型：** Array&lt;HuksParam&gt;
 
 **起始版本：** 9
 

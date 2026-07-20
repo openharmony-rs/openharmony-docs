@@ -6,6 +6,7 @@
 import { floatingBall } from '@kit.ArkUI';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -30,7 +31,7 @@ function create(config: FloatingBallConfiguration): Promise<FloatingBallControll
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FloatingBallController> | Promise对象。返回当前创建的闪控球控制器。 |
+| Promise&lt;FloatingBallController&gt; | Promise对象。返回当前创建的闪控球控制器。 |
 
 **错误码：**
 

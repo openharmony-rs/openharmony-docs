@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getrecoverableapplicationinfo"></a>
 ## getRecoverableApplicationInfo
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getRecoverableApplicationInfo(callback: AsyncCallback<Array<Recoverable
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<RecoverableApplicationInfo>> | 是 | * [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的所有可恢复的预置应用信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RecoverableApplicationInfo&gt;&gt; | 是 | * [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的所有可恢复的预置应用信息。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ try {
 ```
 
 
+<a id="getrecoverableapplicationinfo-1"></a>
 ## getRecoverableApplicationInfo
 
 ```TypeScript
@@ -82,7 +84,7 @@ function getRecoverableApplicationInfo(): Promise<Array<RecoverableApplicationIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<RecoverableApplicationInfo>> | Promise对象，返回所有可恢复的预置应用信息。 |
+| Promise&lt;Array&lt;RecoverableApplicationInfo&gt;&gt; | Promise对象，返回所有可恢复的预置应用信息。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { appMemoryOptimizer } from '@kit.AbilityKit';
 ```
 
+<a id="evictfilepages"></a>
 ## evictFilePages
 
 ```TypeScript
@@ -26,13 +27,13 @@ function evictFilePages(fileNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fileNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要释放文件页缓存的文件名数组，文件名必须以.so、.hap 或.hsp结尾。 |
+| fileNames | Array&lt;string&gt; | 是 | 需要释放文件页缓存的文件名数组，文件名必须以.so、.hap 或.hsp结尾。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

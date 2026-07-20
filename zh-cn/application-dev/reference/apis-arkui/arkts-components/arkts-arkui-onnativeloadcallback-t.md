@@ -20,5 +20,5 @@ declare type OnNativeLoadCallback = (event?: object) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | object | 否 | XComponent对象的context。context中包含的接口由开发者在native层定义。 |
+| event | object | 否 | XComponent对象的context。 context中包含的接口由开发者在native层定义。  |
 

@@ -6,6 +6,7 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="getdate"></a>
 ## getDate
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getDate(callback: AsyncCallback<Date>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Date> | 是 | 回调函数，返回当前系统日期。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Date&gt; | 是 | 回调函数，返回当前系统日期。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ try {
 ```
 
 
+<a id="getdate-1"></a>
 ## getDate
 
 ```TypeScript
@@ -79,7 +81,7 @@ function getDate(): Promise<Date>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Date> | Promise对象，返回当前系统日期。 |
+| Promise&lt;Date&gt; | Promise对象，返回当前系统日期。 |
 
 **错误码：**
 

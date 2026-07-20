@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="offbadgenumberquery"></a>
 ## offBadgeNumberQuery
 
 ```TypeScript

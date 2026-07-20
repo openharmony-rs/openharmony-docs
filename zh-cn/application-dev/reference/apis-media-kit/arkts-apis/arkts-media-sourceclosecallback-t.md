@@ -22,5 +22,5 @@ type SourceCloseCallback = (uuid: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uuid | long | 是 | 资源句柄的标识。 |
+| uuid | number | 是 | 资源句柄的标识。  |
 

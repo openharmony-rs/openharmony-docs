@@ -6,6 +6,7 @@
 import { PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -29,5 +30,5 @@ function push(param: PushParameterForStage, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [PushParameterForStage](arkts-arkui-plugincomponentmanager-pushparameterforstage-i-sys.md) | 是 | stage模型的插件组件push参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 插件组件push事件回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 插件组件push事件回调。 |
 

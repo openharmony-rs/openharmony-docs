@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setdistributedenabledbybundle"></a>
 ## setDistributedEnabledByBundle
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

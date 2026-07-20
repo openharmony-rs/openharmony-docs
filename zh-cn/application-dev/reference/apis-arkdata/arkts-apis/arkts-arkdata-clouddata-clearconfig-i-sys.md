@@ -24,7 +24,7 @@ dbInfo: Record<string, DBActionInfo>
 
 要清除数据的库信息及清除规则。键为数据库名称，值为该数据库的清除配置信息。
 
-**类型：** Record<string, DBActionInfo>
+**类型：** Record&lt;string, DBActionInfo&gt;
 
 **起始版本：** 23
 

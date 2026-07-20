@@ -32,7 +32,7 @@ PatternLock(controller?: PatternLockController)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | PatternLockController | 否 | 设置PatternLock组件控制器，可用于控制组件状态重置。 |
+| controller | [PatternLockController](arkts-arkui-patternlockcontroller-c.md) | 否 | 设置PatternLock组件控制器，可用于控制组件状态重置。  |
 
 ## 汇总
 

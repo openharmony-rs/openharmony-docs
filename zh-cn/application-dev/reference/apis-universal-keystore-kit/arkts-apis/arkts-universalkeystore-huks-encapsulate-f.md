@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="encapsulate"></a>
 ## encapsulate
 
 ```TypeScript
@@ -38,7 +39,7 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | 函数返回的promise。 |
+| Promise&lt;HuksReturnResult&gt; | 函数返回的promise。 |
 
 **错误码：**
 

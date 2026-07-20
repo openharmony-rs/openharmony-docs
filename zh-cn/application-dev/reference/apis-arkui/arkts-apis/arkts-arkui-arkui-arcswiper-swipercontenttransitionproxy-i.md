@@ -22,6 +22,7 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 import { ArcSwiperAttribute, ArcSwiper, ArcDirection, ArcSwiperController, ArcDotIndicator } from '@kit.ArkUI';
 ```
 
+<a id="finishtransition"></a>
 ## finishTransition
 
 ```TypeScript

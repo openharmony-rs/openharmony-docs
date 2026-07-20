@@ -72,7 +72,7 @@ NORMAL = 2
 CPP_CRASH = 3
 ```
 
-[进程崩溃](../../../../dfx/cppcrash-guidelines.md)导致的应用程序退出。
+[进程崩溃](docroot://dfx/cppcrash-guidelines.md)导致的应用程序退出。
 
 **起始版本：** 10
 
@@ -108,7 +108,7 @@ JS_ERROR = 4
 APP_FREEZE = 5
 ```
 
-[应用冻屏](../../../../dfx/appfreeze-guidelines.md)导致的应用程序退出。
+[应用冻屏](docroot://dfx/appfreeze-guidelines.md)导致的应用程序退出。
 
 **起始版本：** 10
 

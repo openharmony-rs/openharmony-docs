@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="getseniormodestateforself"></a>
 ## getSeniorModeStateForSelf
 
 ```TypeScript
@@ -26,7 +27,7 @@ Check if this application's senior mode is enabled.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Returns {@code true} if senior mode is enabled; returns {@code false} otherwise. |
+| Promise&lt;boolean&gt; | Returns {@code true} if senior mode is enabled; returns {@code false} otherwise. |
 
 **错误码：**
 

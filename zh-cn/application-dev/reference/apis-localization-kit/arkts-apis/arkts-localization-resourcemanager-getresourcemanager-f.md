@@ -6,6 +6,7 @@
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
+<a id="getresourcemanager"></a>
 ## getResourceManager
 
 ```TypeScript
@@ -26,7 +27,7 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ResourceManager> | 是 | 回调函数，返回资源管理ResourceManager对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResourceManager&gt; | 是 | 回调函数，返回资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -57,6 +58,7 @@ export default {
 ```
 
 
+<a id="getresourcemanager-1"></a>
 ## getResourceManager
 
 ```TypeScript
@@ -78,7 +80,7 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ResourceManager> | 是 | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ResourceManager&gt; | 是 | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -111,6 +113,7 @@ export default {
 ```
 
 
+<a id="getresourcemanager-2"></a>
 ## getResourceManager
 
 ```TypeScript
@@ -131,7 +134,7 @@ export function getResourceManager(): Promise<ResourceManager>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ResourceManager> | Promise对象，返回资源管理ResourceManager对象。 |
+| Promise&lt;ResourceManager&gt; | Promise对象，返回资源管理ResourceManager对象。 |
 
 **示例：**
 
@@ -158,6 +161,7 @@ export default {
 ```
 
 
+<a id="getresourcemanager-3"></a>
 ## getResourceManager
 
 ```TypeScript
@@ -184,7 +188,7 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ResourceManager> | Promise对象，返回应用包名对应的资源管理ResourceManager对象。 |
+| Promise&lt;ResourceManager&gt; | Promise对象，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
 

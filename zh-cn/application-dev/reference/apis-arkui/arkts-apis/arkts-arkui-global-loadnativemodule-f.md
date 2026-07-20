@@ -1,5 +1,6 @@
 # loadNativeModule
 
+<a id="loadnativemodule"></a>
 ## loadNativeModule
 
 ```TypeScript

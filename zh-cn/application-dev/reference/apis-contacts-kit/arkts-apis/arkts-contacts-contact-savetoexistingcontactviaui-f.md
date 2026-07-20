@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="savetoexistingcontactviaui"></a>
 ## saveToExistingContactViaUI
 
 ```TypeScript
@@ -33,7 +34,7 @@ function saveToExistingContactViaUI(context: Context, contact: Contact): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回添加的联系人id。 |
+| Promise&lt;number&gt; | Promise对象。返回添加的联系人id。 |
 
 **错误码：**
 

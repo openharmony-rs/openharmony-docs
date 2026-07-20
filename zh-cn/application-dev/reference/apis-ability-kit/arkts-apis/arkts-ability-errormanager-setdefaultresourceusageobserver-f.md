@@ -6,6 +6,7 @@
 import { errorManager } from '@kit.AbilityKit';
 ```
 
+<a id="setdefaultresourceusageobserver"></a>
 ## setDefaultResourceUsageObserver
 
 ```TypeScript

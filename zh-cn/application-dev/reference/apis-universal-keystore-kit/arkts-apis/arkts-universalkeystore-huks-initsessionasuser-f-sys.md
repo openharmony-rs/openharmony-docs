@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="initsessionasuser"></a>
 ## initSessionAsUser
 
 ```TypeScript
@@ -36,7 +37,7 @@ function initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksSessionHandle> | Promise对象。将initSessionAsUser操作返回的handle添加到密钥管理系统的回调。 |
+| Promise&lt;HuksSessionHandle&gt; | Promise对象。将initSessionAsUser操作返回的handle添加到密钥管理系统的回调。 |
 
 **错误码：**
 

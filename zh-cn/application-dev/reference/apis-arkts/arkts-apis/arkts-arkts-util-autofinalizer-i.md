@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="onfinalization"></a>
 ## onFinalization
 
 ```TypeScript

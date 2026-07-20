@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="getpointerstyle"></a>
 ## getPointerStyle
 
 ```TypeScript
@@ -25,7 +26,7 @@ function getPointerStyle(windowId: number, callback: AsyncCallback<PointerStyle>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | windowId | number | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PointerStyle> | 是 | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。在特定场景（在设置自定义光标样式的窗口上获取样式）下返回DEVELOPER_DEFINED_ICON。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PointerStyle&gt; | 是 | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。在特定场景（在设置自定义光标样式的窗口上获取样式）下返回DEVELOPER_DEFINED_ICON。 |
 
 **错误码：**
 
@@ -79,6 +80,7 @@ struct Index {
 ```
 
 
+<a id="getpointerstyle-1"></a>
 ## getPointerStyle
 
 ```TypeScript
@@ -97,13 +99,13 @@ function getPointerStyle(windowId: number): Promise<PointerStyle>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle-2)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| windowId | number | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PointerStyle> | Promise对象，返回鼠标样式类型。 |
+| Promise&lt;PointerStyle&gt; | Promise对象，返回鼠标样式类型。 |
 
 **错误码：**
 

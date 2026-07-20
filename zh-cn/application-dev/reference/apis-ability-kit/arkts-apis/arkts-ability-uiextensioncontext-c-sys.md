@@ -10,6 +10,7 @@ UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensiona
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="connectserviceextensionabilitywithroothosttoken"></a>
 ## connectServiceExtensionAbilityWithRootHostToken
 
 ```TypeScript
@@ -20,7 +21,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 26.0.0
 
@@ -43,7 +44,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回连接标识ID，客户端可以通过[disconnectServiceExtensionAbility](../../../../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#disconnectserviceextensionability)传入该连接标识ID来断开连接。 |
+| number | 返回连接标识ID，客户端可以通过[disconnectServiceExtensionAbility](docroot://reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#disconnectserviceextensionability)传入该连接标识ID来断开连接。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | [16000053](../errorcode-ability.md#16000053-非顶层应用) | The ability is not on the top of the UI. |
 | [16000070](../errorcode-ability.md#16000070-严格模式下不允许该类型extension启动指定serviceextensionability) | The extension cannot start the service. |
 
+<a id="sethostpageoverlayforbidden"></a>
 ## setHostPageOverlayForbidden
 
 ```TypeScript
@@ -73,7 +75,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 >  
 > 该接口需要在窗口创建之前调用。建议在[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的  
 > [onCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#oncreate-1)生命周期内调用。
@@ -101,6 +103,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 
+<a id="startabilityforresultascaller"></a>
 ## startAbilityForResultAsCaller
 
 ```TypeScript
@@ -115,7 +118,7 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 12
 
@@ -138,7 +141,7 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AbilityResult> | Promise对象，返回Ability结果对象。 |
+| Promise&lt;AbilityResult&gt; | Promise对象，返回Ability结果对象。 |
 
 **错误码：**
 
@@ -161,6 +164,7 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startserviceextensionability"></a>
 ## startServiceExtensionAbility
 
 ```TypeScript
@@ -189,7 +193,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -211,6 +215,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<a id="startserviceextensionabilitywithaccount"></a>
 ## startServiceExtensionAbilityWithAccount
 
 ```TypeScript
@@ -221,7 +226,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 >  
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -248,7 +253,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -270,6 +275,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<a id="startuiabilities"></a>
 ## startUIAbilities
 
 ```TypeScript
@@ -280,7 +286,7 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 20
 
@@ -296,13 +302,13 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Want> | 是 | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。 |
+| wantList | Array&lt;Want&gt; | 是 | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -331,6 +337,7 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 | [16000125](../errorcode-ability.md#16000125-不支持启动插件) | Starting a plugin UIAbility is not supported. |
 | [16000126](../errorcode-ability.md#16000126-不支持启动dlp文件) | Starting DLP files is not supported. |
 
+<a id="startuiabilitiesinsplitwindowmode"></a>
 ## startUIAbilitiesInSplitWindowMode
 
 ```TypeScript
@@ -343,11 +350,11 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 >  
 > 如果第一个UIAbility实例被销毁，那么第二个UIAbility将以全屏模式启动。  
 >  
-> 第二个UIAbility仅支持[显示启动](../../../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)。  
+> 第二个UIAbility仅支持[显示启动](docroot://application-models/explicit-implicit-want-mappings.md#显式want匹配原理)。  
 >  
 > 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND (该权限仅系统应用可申请)。  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 21
 
@@ -365,14 +372,14 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| primaryWindowId | number | 是 | 启动第一个UIAbility的主窗的窗口ID。窗口ID是[WindowProperties](../../../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)的属性，WindowProperties可通过[getWindowProperties()](../../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
+| primaryWindowId | number | 是 | 启动第一个UIAbility的主窗的窗口ID。窗口ID是[WindowProperties](docroot://reference/apis-arkui/arkts-apis-window-i.md#windowproperties)的属性，WindowProperties可通过[getWindowProperties()](docroot://reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
 | secondaryWant | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动第二个UIAbility所需的Want信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

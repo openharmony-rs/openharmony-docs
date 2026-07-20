@@ -1,5 +1,6 @@
 # statSync
 
+<a id="statsync"></a>
 ## statSync
 
 ```TypeScript

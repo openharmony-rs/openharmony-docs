@@ -6,7 +6,7 @@
 
 此类型表示根据焦点策略对音频会话执行的操作，包括暂停、调整音量等。
 
-详情请参阅文档[音频会话管理](../../../../media/audio/audio-session-management.md)。
+详情请参阅文档[音频会话管理](docroot://media/audio/audio-session-management.md)。
 
 **起始版本：** 20
 

@@ -1,5 +1,6 @@
 # cancelAll
 
+<a id="cancelall"></a>
 ## cancelAll
 
 ```TypeScript
@@ -22,9 +23,10 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
+<a id="cancelall-1"></a>
 ## cancelAll
 
 ```TypeScript
@@ -47,5 +49,5 @@ function cancelAll(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 

@@ -14,6 +14,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -50,6 +51,7 @@ let fileSync = new cloudSync.FileSync("com.ohos.demo")
 
 ```
 
+<a id="getuploadlist"></a>
 ## getUploadList
 
 ```TypeScript
@@ -74,13 +76,13 @@ getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待查询上传进度的文件URI数组，数组长度取值范围[1,100]。 |
+| uris | Array&lt;string&gt; | 是 | 待查询上传进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<UploadProgress>> | - Promise对象，返回上传进度信息数组。 |
+| Promise&lt;Array&lt;UploadProgress&gt;&gt; | - Promise对象，返回上传进度信息数组。 |
 
 **错误码：**
 
@@ -110,6 +112,7 @@ fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => 
 
 ```
 
+<a id="pauseupload"></a>
 ## pauseUpload
 
 ```TypeScript
@@ -166,6 +169,7 @@ try {
 
 ```
 
+<a id="registeruploadprogress"></a>
 ## registerUploadProgress
 
 ```TypeScript
@@ -190,7 +194,7 @@ registerUploadProgress(callback: Callback<UploadProgress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<UploadProgress> | 是 | 回调函数，监听文件上传进度变化。当文件上传进度发生变化时触发回调，返回上传进度信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;UploadProgress&gt; | 是 | 回调函数，监听文件上传进度变化。当文件上传进度发生变化时触发回调，返回上传进度信息。 |
 
 **错误码：**
 
@@ -222,6 +226,7 @@ try {
 
 ```
 
+<a id="resumeupload"></a>
 ## resumeUpload
 
 ```TypeScript
@@ -278,6 +283,7 @@ try {
 
 ```
 
+<a id="unregisteruploadprogress"></a>
 ## unregisterUploadProgress
 
 ```TypeScript

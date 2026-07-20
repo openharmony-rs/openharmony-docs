@@ -6,6 +6,7 @@
 import { PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="request"></a>
 ## request
 
 ```TypeScript
@@ -29,5 +30,5 @@ function request(param: RequestParameterForStage, callback: AsyncCallback<Reques
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [RequestParameterForStage](arkts-arkui-plugincomponentmanager-requestparameterforstage-i-sys.md) | 是 | stage模型的插件组件request参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RequestCallbackParameters> | 是 | 插件组件request事件回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RequestCallbackParameters&gt; | 是 | 插件组件request事件回调。 |
 

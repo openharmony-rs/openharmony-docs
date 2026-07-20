@@ -14,7 +14,7 @@
 errorCode: T
 ```
 
-错误码。errorCode的类型T为[BusinessError](../../../../reference/apis-basic-services-kit/js-apis-base.md)类型。
+错误码。errorCode的类型T为[BusinessError](docroot://reference/apis-basic-services-kit/js-apis-base.md)类型。
 
 **类型：** T
 

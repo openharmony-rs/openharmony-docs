@@ -67,7 +67,7 @@ customData?: string
 
 <!--RP3--><!--RP3End-->
 
-**类型：** number | boolean | string | undefined
+**类型：** number \| boolean \| string \| undefined
 
 **起始版本：** 11
 

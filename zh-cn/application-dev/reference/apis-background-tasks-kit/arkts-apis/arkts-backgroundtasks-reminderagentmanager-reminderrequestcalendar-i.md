@@ -42,7 +42,7 @@ daysOfWeek?: Array<number>
 
 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7，默认为空。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 11
 
@@ -74,7 +74,7 @@ repeatDays?: Array<number>
 
 指明重复提醒的日期，范围：[1, 31]，默认为空。需和repeatMonths一起使用。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 9
 
@@ -90,7 +90,7 @@ repeatMonths?: Array<number>
 
 指明重复提醒的月份，范围：[1, 12]，默认为空。需和repeatDays一起使用。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 9
 

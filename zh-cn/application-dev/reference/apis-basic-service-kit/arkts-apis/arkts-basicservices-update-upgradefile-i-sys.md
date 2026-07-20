@@ -1,6 +1,6 @@
 # UpgradeFile（系统接口）
 
-升级文件。
+升级文件，包含文件类型和文件路径，用于指定要安装的本地升级包。
 
 **起始版本：** 9
 
@@ -22,7 +22,7 @@ import { update } from '@kit.BasicServicesKit';
 filePath: string
 ```
 
-文件路径。
+文件路径，支持绝对路径或相对路径。路径长度范围[1，255]，单位：字符，超出范围时抛出异常。
 
 **类型：** string
 
@@ -40,7 +40,7 @@ filePath: string
 fileType: ComponentType
 ```
 
-文件类型。
+文件类型，用于指定升级包类型。设置为OTA表示OTA升级包，系统将根据OTA类型执行固件升级流程，包括完整性校验和系统分区写入等操作。
 
 **类型：** ComponentType
 

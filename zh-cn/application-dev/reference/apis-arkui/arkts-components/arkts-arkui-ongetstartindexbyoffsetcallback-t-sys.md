@@ -18,11 +18,11 @@ declare type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| totalOffset | double | 是 | 总滚动偏移量，即Grid当中第一个GridItem的顶部与Grid顶部之间的偏移量。<br/>单位：vp |
+| totalOffset | number | 是 | 总滚动偏移量，即Grid当中第一个GridItem的顶部与Grid顶部之间的偏移量。<br/>单位：vp  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| StartLineInfo | 用于记录Grid页面内起始行的位置信息。@systemapi@stagemodelonly |
+| [StartLineInfo](arkts-arkui-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 @systemapi @stagemodelonly  |
 

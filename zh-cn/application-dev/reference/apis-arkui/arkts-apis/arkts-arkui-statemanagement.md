@@ -12,12 +12,12 @@ import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInacti
 
 | 名称 | 说明 |
 | --- | --- |
-| [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md) | AppStorageV2具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../../../ui/state-management/arkts-new-appstoragev2.md)。 |
+| [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md) | AppStorageV2具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](docroot://ui/state-management/arkts-new-appstoragev2.md)。 |
 | [Binding](arkts-arkui-arkui-statemanagement-binding-c.md) | 只读数据绑定的泛型类，可以绑定任意类型的数据。 |
 | [ConnectOptions](arkts-arkui-arkui-statemanagement-connectoptions-c.md) | globalConnect参数类型。 |
-| [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md) | [globalConnect](PersistenceV2.globalConnect&lt;T extends CollectionType&lt;S&gt;, S extends object&gt;( type: ConnectOptionsCollections&lt;T, S&gt; \| ConnectOptions&lt;T&gt; ))接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\&lt;T\&gt;](arkts-arkui-arkui-statemanagement-connectoptions-c.md)。当开发者需要持久化容器类型数据（如`Array&lt;S&gt;`）时，需要使用`ConnectOptionsCollections`入参。如下展示`StorageDefaultCreator&lt;T&gt;`和`StorageDefaultCreator&lt;S&gt;`示例： |
+| [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md) | [globalConnect](PersistenceV2.globalConnect<T extends CollectionType<S>, S extends object>( type: ConnectOptionsCollections<T, S> \| ConnectOptions<T> ))接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\<T\>](arkts-arkui-arkui-statemanagement-connectoptions-c.md)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。  如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例： |
 | [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md) | 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器。 |
-| [PersistenceV2](arkts-arkui-arkui-statemanagement-persistencev2-c.md) | 继承自[AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)，PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../../../ui/state-management/arkts-new-persistencev2.md)。 |
+| [PersistenceV2](arkts-arkui-arkui-statemanagement-persistencev2-c.md) | 继承自[AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)，PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](docroot://ui/state-management/arkts-new-persistencev2.md)。 |
 | [UIUtils](arkts-arkui-arkui-statemanagement-uiutils-c.md) | UIUtils提供一些方法，用于处理状态管理相关的数据转换。 |
 
 ### 接口
@@ -48,7 +48,7 @@ import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInacti
 | --- | --- |
 | [CollectionType](arkts-arkui-collectiontype-t.md) | globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。 |
 | [GetterCallback](arkts-arkui-gettercallback-t.md) | 获取值的回调方法。 |
-| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-common-imonitor-i.md)类型的监听回调函数。 |
+| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-imonitor-i.md)类型的监听回调函数。 |
 | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | 持久化失败时返回错误原因的回调。 |
 | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | 复用自定义组件初始化函数。 |
 | [SetterCallback](arkts-arkui-settercallback-t.md) | 设置值的回调方法。 |

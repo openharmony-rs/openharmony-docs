@@ -58,7 +58,7 @@ SUBMODE_LIVE_VIEW_NOTIFICATION = 3
 SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4
 ```
 
-音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../../../media/avsession/avsession-overview.md)。
+音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](docroot://media/avsession/avsession-overview.md)。
 
 **起始版本：** 22
 
@@ -74,7 +74,7 @@ SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4
 SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5
 ```
 
-已接入[AVSession](../../../../media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。
+已接入[AVSession](docroot://media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。
 
 **起始版本：** 22
 

@@ -6,6 +6,7 @@
 import { dateTimeManager } from '@kit.MDMKit';
 ```
 
+<a id="disallowmodifydatetime"></a>
 ## disallowModifyDateTime
 
 ```TypeScript
@@ -18,7 +19,7 @@ function disallowModifyDateTime(admin: Want, disallow: boolean, callback: AsyncC
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -36,7 +37,7 @@ function disallowModifyDateTime(admin: Want, disallow: boolean, callback: AsyncC
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | disallow | boolean | 是 | true 表示禁止修改系统时间，false表示允许修改系统时间。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ dateTimeManager.disallowModifyDateTime(wantTemp, true, (err) => {
 ```
 
 
+<a id="disallowmodifydatetime-1"></a>
 ## disallowModifyDateTime
 
 ```TypeScript
@@ -83,7 +85,7 @@ function disallowModifyDateTime(admin: Want, disallow: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -106,7 +108,7 @@ function disallowModifyDateTime(admin: Want, disallow: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当禁止设备修改系统时间失败时，抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止设备修改系统时间失败时，抛出错误对象。 |
 
 **错误码：**
 

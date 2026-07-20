@@ -31,7 +31,7 @@ cancel: () => void
 > 使用获取到的[AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)对象调用该接口进行取消认证，此[AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)需要是正  
 > 在进行认证的对象。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 9
 
@@ -59,7 +59,7 @@ off: (name: AuthEventKey) => void
 >  
 > 需要使用已经成功订阅事件的[AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)对象调用该接口进行取消订阅。
 
-**类型：** (name: AuthEventKey) => void
+**类型：** (name: AuthEventKey) =&gt; void
 
 **起始版本：** 9
 
@@ -86,7 +86,7 @@ on: (name: AuthEventKey, callback: AuthEvent) => void
 >  
 > 使用获取到的[AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)对象调用该接口进行订阅。
 
-**类型：** (name: AuthEventKey, callback: AuthEvent) => void
+**类型：** (name: AuthEventKey, callback: AuthEvent) =&gt; void
 
 **起始版本：** 9
 
@@ -110,7 +110,7 @@ start: () => void
 >  
 > 使用获取到的[AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)对象调用该接口进行认证。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 9
 

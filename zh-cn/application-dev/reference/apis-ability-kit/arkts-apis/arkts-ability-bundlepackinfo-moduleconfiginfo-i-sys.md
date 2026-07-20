@@ -18,7 +18,7 @@ readonly abilities: Array<ModuleAbilityInfo>
 
 module包含的ability组件信息。
 
-**类型：** Array<ModuleAbilityInfo>
+**类型：** Array&lt;ModuleAbilityInfo&gt;
 
 **起始版本：** 9
 
@@ -54,7 +54,7 @@ readonly deviceTypes: Array<string>
 
 module的设备类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -90,7 +90,7 @@ readonly extensionAbilities: Array<ExtensionAbility>
 
 描述extensionAbilities的配置信息。
 
-**类型：** Array<ExtensionAbility>
+**类型：** Array&lt;ExtensionAbility&gt;
 
 **起始版本：** 9
 

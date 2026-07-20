@@ -6,13 +6,14 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="disabledeviceadmin"></a>
 ## disableDeviceAdmin
 
 ```TypeScript
 function disableDeviceAdmin(admin: Want): Promise<void>
 ```
 
-[超级设备管理应用](../../../../mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](../../../../mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
+[超级设备管理应用](docroot://mdm/mdm-kit-term.md#sda)通过该接口可以解除激活其他[普通设备管理应用](docroot://mdm/mdm-kit-term.md#da)，使用Promise异步回调。该接口仅支持超级设备管理应用调用。
 
 **起始版本：** 23
 
@@ -34,7 +35,7 @@ function disableDeviceAdmin(admin: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当解除激活设备管理应用失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当解除激活设备管理应用失败时，会抛出错误对象。 |
 
 **错误码：**
 

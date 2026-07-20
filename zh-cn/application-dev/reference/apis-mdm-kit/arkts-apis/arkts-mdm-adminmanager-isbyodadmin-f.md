@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="isbyodadmin"></a>
 ## isByodAdmin
 
 ```TypeScript

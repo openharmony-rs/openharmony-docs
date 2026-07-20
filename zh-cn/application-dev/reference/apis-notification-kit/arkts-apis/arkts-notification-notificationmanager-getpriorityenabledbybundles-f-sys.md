@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getpriorityenabledbybundles"></a>
 ## getPriorityEnabledByBundles
 
 ```TypeScript
@@ -30,13 +31,13 @@ function getPriorityEnabledByBundles(bundles: Array<BundleOption>): Promise<Map<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundles | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleOption> | 是 | 应用包信息数组。 |
+| bundles | Array&lt;BundleOption&gt; | 是 | 应用包信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Map<BundleOption, boolean>> | Promise对象，返回应用通知优先级开关状态的键值对集合的Promise对象。 |
+| Promise&lt;Map&lt;BundleOption, boolean&gt;&gt; | Promise对象，返回应用通知优先级开关状态的键值对集合的Promise对象。 |
 
 **错误码：**
 

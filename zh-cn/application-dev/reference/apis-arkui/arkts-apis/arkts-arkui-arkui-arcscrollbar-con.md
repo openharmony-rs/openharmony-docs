@@ -6,14 +6,14 @@
 export declare const ArcScrollBar: ArcScrollBarInterface
 ```
 
-弧形滚动条组件ArcScrollBar，用于配合可滚动组件使用，如[ArcList](arkts-arkui-arclist.md)、[List](../arkts-components/arkts-arkui-list.md)、[Grid](../arkts-components/arkts-arkui-grid.md)、[Scroll](../arkts-components/arkts-arkui-scroll.md)、[WaterFlow](../arkts-components/arkts-arkui-waterflow.md)。
+弧形滚动条组件ArcScrollBar，用于配合可滚动组件使用，如[ArcList](arkts-arkui-arclist.md)、[List](../../apis-arkts/arkts-apis/arkts-arkts-util-list-list-c.md)、[Grid](../arkts-components/arkts-arkui-grid.md)、[Scroll](../arkts-components/arkts-arkui-scroll.md)、[WaterFlow](../arkts-components/arkts-arkui-waterflow.md)。
 
 > **说明：**
 
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。  
 >  
 > - ArcScrollBar不设置宽高时，采用父组件[LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md)中的maxSize作为宽高。如果ArcScrollBar的  
-> 父组件存在可滚动组件，如[ArcList](arkts-arkui-arclist.md)、[List](../arkts-components/arkts-arkui-list.md)、  
+> 父组件存在可滚动组件，如[ArcList](arkts-arkui-arclist.md)、[List](../../apis-arkts/arkts-apis/arkts-arkts-util-list-list-c.md)、  
 > [Grid](../arkts-components/arkts-arkui-grid.md)、[Scroll](../arkts-components/arkts-arkui-scroll.md)、  
 > [WaterFlow](../arkts-components/arkts-arkui-waterflow.md)，建议设置ArcScrollBar宽高，否则ArcScrollBar的宽高可能为无穷大。  
 >  

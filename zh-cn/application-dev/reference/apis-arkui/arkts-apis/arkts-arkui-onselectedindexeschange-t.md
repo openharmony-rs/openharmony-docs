@@ -20,5 +20,5 @@ export type OnSelectedIndexesChange = (selectedIndexes: number[]) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectedIndexes | number[] | 是 | 分段按钮选项下标集合。 |
+| selectedIndexes | number[] | 是 | 分段按钮选项下标集合。  |
 

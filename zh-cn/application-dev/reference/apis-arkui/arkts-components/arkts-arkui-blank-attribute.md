@@ -1,8 +1,8 @@
 # Blank属性/事件
 
-除支持[通用属性](arkts-arkui-common-commonmethod-c.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性：
 
-支持[通用事件](arkts-arkui-common-commonmethod-c.md)。
+支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
 **继承/实现关系：** BlankAttribute extends [CommonMethod<BlankAttribute>](CommonMethod<BlankAttribute>)
 
@@ -12,13 +12,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="color"></a>
 ## color
 
 ```TypeScript
 color(value: ResourceColor)
 ```
 
-设置空白填充的填充颜色，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置空白填充的填充颜色，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 

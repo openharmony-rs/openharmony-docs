@@ -24,6 +24,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="enable"></a>
 ## enable
 
 ```TypeScript
@@ -50,7 +51,7 @@ enable(enable: boolean): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示功能执行成功；返回false表示功能执行失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示功能执行成功；返回false表示功能执行失败。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ enable(enable: boolean): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getequalizerpreset"></a>
 ## getEqualizerPreset
 
 ```TypeScript
@@ -79,6 +81,7 @@ getEqualizerPreset(): AudioLoopbackEqualizerPreset
 | --- | --- |
 | [AudioLoopbackEqualizerPreset](arkts-audio-audio-audioloopbackequalizerpreset-e.md) | 返回当前音频返听器的均衡器类型。<br>在没有被修改的情况下，默认的均衡器类型是FULL。 |
 
+<a id="getpreferreddevicepair"></a>
 ## getPreferredDevicePair
 
 ```TypeScript
@@ -101,6 +104,7 @@ getPreferredDevicePair(): AudioDevicePair | null
 | --- | --- |
 | [AudioDevicePair](arkts-audio-audio-audiodevicepair-i.md) | 返回系统推荐的音频输入输出设备组合。<br>如果没有可用的输入输出设备组合，则返回null。 |
 
+<a id="getreverbpreset"></a>
 ## getReverbPreset
 
 ```TypeScript
@@ -121,6 +125,7 @@ getReverbPreset(): AudioLoopbackReverbPreset
 | --- | --- |
 | [AudioLoopbackReverbPreset](arkts-audio-audio-audioloopbackreverbpreset-e.md) | 返回当前音频返听器的混响模式。<br>在没有被修改的情况下，默认的混响模式是THEATER。 |
 
+<a id="getstatus"></a>
 ## getStatus
 
 ```TypeScript
@@ -139,8 +144,9 @@ getStatus(): Promise<AudioLoopbackStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioLoopbackStatus> | Promise对象，返回音频返听状态。 |
+| Promise&lt;AudioLoopbackStatus&gt; | Promise对象，返回音频返听状态。 |
 
+<a id="getsupporteddevicepairs"></a>
 ## getSupportedDevicePairs
 
 ```TypeScript
@@ -161,8 +167,9 @@ getSupportedDevicePairs(): Array<AudioDevicePair>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AudioDevicePair> | 返回支持返听的音频输入输出设备数组。<br>如果没有可用的输入输出设备组合，则返回空数组。 |
+| Array&lt;AudioDevicePair&gt; | 返回支持返听的音频输入输出设备数组。<br>如果没有可用的输入输出设备组合，则返回空数组。 |
 
+<a id="getvolume"></a>
 ## getVolume
 
 ```TypeScript
@@ -185,6 +192,7 @@ getVolume(): number
 | --- | --- |
 | number | 返回当前音频返听输出音量，范围为[0.0, 1.0]。 |
 
+<a id="off"></a>
 ## off('statusChange')
 
 ```TypeScript
@@ -204,7 +212,7 @@ off(type: 'statusChange', callback?: Callback<AudioLoopbackStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | 事件回调类型，支持的事件为'statusChange'，当取消监听音频状态事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioLoopbackStatus> | 否 | 回调函数，返回当前音频返听的状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioLoopbackStatus&gt; | 否 | 回调函数，返回当前音频返听的状态。 |
 
 **错误码：**
 
@@ -212,6 +220,7 @@ off(type: 'statusChange', callback?: Callback<AudioLoopbackStatus>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="on"></a>
 ## on('statusChange')
 
 ```TypeScript
@@ -231,7 +240,7 @@ on(type: 'statusChange', callback: Callback<AudioLoopbackStatus>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | 事件回调类型，支持的事件为'statusChange'，当AudioLoopback的状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioLoopbackStatus> | 是 | 回调函数，返回当前音频返听的状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioLoopbackStatus&gt; | 是 | 回调函数，返回当前音频返听的状态。 |
 
 **错误码：**
 
@@ -239,6 +248,7 @@ on(type: 'statusChange', callback: Callback<AudioLoopbackStatus>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="setequalizerpreset"></a>
 ## setEqualizerPreset
 
 ```TypeScript
@@ -271,6 +281,7 @@ setEqualizerPreset(preset: AudioLoopbackEqualizerPreset): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="setreverbpreset"></a>
 ## setReverbPreset
 
 ```TypeScript
@@ -303,6 +314,7 @@ setReverbPreset(preset: AudioLoopbackReverbPreset): boolean
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -327,7 +339,7 @@ setVolume(volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

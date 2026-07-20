@@ -20,6 +20,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="addarc"></a>
 ## addArc
 
 ```TypeScript
@@ -48,6 +49,7 @@ addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="addcircle"></a>
 ## addCircle
 
 ```TypeScript
@@ -77,6 +79,7 @@ addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): 
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="addoval"></a>
 ## addOval
 
 ```TypeScript
@@ -105,6 +108,7 @@ addOval(rect: common2D.Rect, start: number, pathDirection?: PathDirection): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="addpath"></a>
 ## addPath
 
 ```TypeScript
@@ -124,7 +128,7 @@ addPath(path: Path, matrix?: Matrix | null): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 表示源路径对象。 |
-| matrix | Matrix \| null | 否 | 表示矩阵对象，默认为单位矩阵。 |
+| matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) \| null | 否 | 表示矩阵对象，默认为单位矩阵。 |
 
 **错误码：**
 
@@ -132,6 +136,7 @@ addPath(path: Path, matrix?: Matrix | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="addpolygon"></a>
 ## addPolygon
 
 ```TypeScript
@@ -150,7 +155,7 @@ addPolygon(points: Array<common2D.Point>, close: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| points | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 坐标点数组。 |
+| points | Array&lt;common2D.Point&gt; | 是 | 坐标点数组。 |
 | close | boolean | 是 | 表示是否将路径闭合，即是否添加路径起始点到终点的连线。true表示将路径闭合，false表示不将路径闭合。 |
 
 **错误码：**
@@ -159,6 +164,7 @@ addPolygon(points: Array<common2D.Point>, close: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="addrect"></a>
 ## addRect
 
 ```TypeScript
@@ -186,6 +192,7 @@ addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="addroundrect"></a>
 ## addRoundRect
 
 ```TypeScript
@@ -213,6 +220,7 @@ addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="approximate"></a>
 ## approximate
 
 ```TypeScript
@@ -245,7 +253,7 @@ approximate(acceptableError: number): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 返回包含近似路径的点的数组，至少包含两个点。每个点由三个值组成：<br>1. 该点所在的位置距离路径起点的长度比例值，范围为[0.0, 1.0]。<br>2. 点的x坐标。<br>3. 点的y坐标。 |
+| Array&lt;number&gt; | 返回包含近似路径的点的数组，至少包含两个点。每个点由三个值组成：<br>1. 该点所在的位置距离路径起点的长度比例值，范围为[0.0, 1.0]。<br>2. 点的x坐标。<br>3. 点的y坐标。 |
 
 **错误码：**
 
@@ -253,6 +261,7 @@ approximate(acceptableError: number): Array<number>
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="arcto"></a>
 ## arcTo
 
 ```TypeScript
@@ -286,6 +295,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, startDeg: number, sweepDeg
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="buildfromsvgstring"></a>
 ## buildFromSvgString
 
 ```TypeScript
@@ -318,6 +328,7 @@ buildFromSvgString(str: string): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -332,6 +343,7 @@ close(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="conicto"></a>
 ## conicTo
 
 ```TypeScript
@@ -364,6 +376,7 @@ conicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -380,6 +393,7 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -402,6 +416,7 @@ constructor(path: Path)
 | --- | --- | --- | --- |
 | path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 待复制的路径对象。 |
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -435,6 +450,7 @@ contains(x: number, y: number): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="converttosvgstring"></a>
 ## convertToSvgString
 
 ```TypeScript
@@ -457,6 +473,7 @@ convertToSvgString(): string
 | --- | --- |
 | string | 转换后的SVG字符串结果。 |
 
+<a id="cubicto"></a>
 ## cubicTo
 
 ```TypeScript
@@ -490,6 +507,7 @@ cubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: nu
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="getbounds"></a>
 ## getBounds
 
 ```TypeScript
@@ -510,6 +528,7 @@ getBounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | Minimum bounding rectangle. |
 
+<a id="getconicweightdata"></a>
 ## getConicWeightData
 
 ```TypeScript
@@ -530,8 +549,9 @@ getConicWeightData(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。 |
+| Array&lt;number&gt; | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。 |
 
+<a id="getfilltype"></a>
 ## getFillType
 
 ```TypeScript
@@ -552,6 +572,7 @@ getFillType(): PathFillType
 | --- | --- |
 | [PathFillType](arkts-arkgraphics2d-drawing-pathfilltype-e.md) | 路径填充类型。 |
 
+<a id="getlastpoint"></a>
 ## getLastPoint
 
 ```TypeScript
@@ -574,6 +595,7 @@ getLastPoint(): common2D.Point
 | --- | --- |
 | common2D.Point | Returns the last point of the path. |
 
+<a id="getlength"></a>
 ## getLength
 
 ```TypeScript
@@ -600,6 +622,7 @@ getLength(forceClosed: boolean): number
 | --- | --- |
 | number | 路径长度。 |
 
+<a id="getmatrix"></a>
 ## getMatrix
 
 ```TypeScript
@@ -635,6 +658,7 @@ getMatrix(forceClosed: boolean, distance: number, matrix: Matrix, flags: PathMea
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
+<a id="getpathiterator"></a>
 ## getPathIterator
 
 ```TypeScript
@@ -655,6 +679,7 @@ getPathIterator(): PathIterator
 | --- | --- |
 | [PathIterator](arkts-arkgraphics2d-drawing-pathiterator-c.md) | 该路径的迭代器对象。 |
 
+<a id="getpointdata"></a>
 ## getPointData
 
 ```TypeScript
@@ -675,8 +700,9 @@ getPointData(): Array<common2D.Point>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | path points array. |
+| Array&lt;common2D.Point&gt; | path points array. |
 
+<a id="getpositionandtangent"></a>
 ## getPositionAndTangent
 
 ```TypeScript
@@ -712,6 +738,7 @@ getPositionAndTangent(forceClosed: boolean, distance: number, position: common2D
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="getsegment"></a>
 ## getSegment
 
 ```TypeScript
@@ -742,6 +769,7 @@ getSegment(forceClosed: boolean, start: number, stop: number, startWithMoveTo: b
 | --- | --- |
 | boolean | 表示是否成功截取路径片段。true表示截取成功，false表示截取失败。 |
 
+<a id="getverbdata"></a>
 ## getVerbData
 
 ```TypeScript
@@ -762,8 +790,9 @@ getVerbData(): Array<PathIteratorVerb>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<PathIteratorVerb> | 类型为浮点数。理论上取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。 |
+| Array&lt;PathIteratorVerb&gt; | 类型为浮点数。理论上取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。 |
 
+<a id="interpolate"></a>
 ## interpolate
 
 ```TypeScript
@@ -798,6 +827,7 @@ interpolate(other: Path, weight: number, interpolatedPath: Path): boolean
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="isclosed"></a>
 ## isClosed
 
 ```TypeScript
@@ -818,6 +848,7 @@ isClosed(): boolean
 | --- | --- |
 | boolean | 表示当前路径是否闭合，true表示闭合，false表示不闭合。 |
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -838,6 +869,7 @@ isEmpty(): boolean
 | --- | --- |
 | boolean | 路径是否为空。true表示当前路径为空，false表示路径不为空。 |
 
+<a id="isequal"></a>
 ## isEqual
 
 ```TypeScript
@@ -866,6 +898,7 @@ Checks if two paths are equal.
 | --- | --- |
 | boolean | Returns true if the two paths are equal, otherwise returns false. |
 
+<a id="isinterpolate"></a>
 ## isInterpolate
 
 ```TypeScript
@@ -892,6 +925,7 @@ isInterpolate(other: Path): boolean
 | --- | --- |
 | boolean | 返回当前路径与另一条路径是否兼容插值的结果。true表示兼容插值，false表示不兼容插值。 |
 
+<a id="isinversefilltype"></a>
 ## isInverseFillType
 
 ```TypeScript
@@ -912,6 +946,7 @@ isInverseFillType(): boolean
 | --- | --- |
 | boolean | 检查当前路径填充类型是否是反向填充类型。true表示是反向填充类型，false表示不是反向填充类型。 |
 
+<a id="isrect"></a>
 ## isRect
 
 ```TypeScript
@@ -938,6 +973,7 @@ isRect(rect: common2D.Rect | null): boolean
 | --- | --- |
 | boolean | 返回路径是否构成矩形。true表示路径构成矩形，false表示路径不构成矩形。 |
 
+<a id="lineto"></a>
 ## lineTo
 
 ```TypeScript
@@ -967,6 +1003,7 @@ lineTo(x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="moveto"></a>
 ## moveTo
 
 ```TypeScript
@@ -996,6 +1033,7 @@ moveTo(x: number, y: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="offset"></a>
 ## offset
 
 ```TypeScript
@@ -1029,6 +1067,7 @@ offset(dx: number, dy: number): Path
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="op"></a>
 ## op
 
 ```TypeScript
@@ -1062,6 +1101,7 @@ op(path: Path, pathOp: PathOp): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="quadto"></a>
 ## quadTo
 
 ```TypeScript
@@ -1093,6 +1133,7 @@ quadTo(ctrlX: number, ctrlY: number, endX: number, endY: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rconicto"></a>
 ## rConicTo
 
 ```TypeScript
@@ -1125,6 +1166,7 @@ rConicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: numbe
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rcubicto"></a>
 ## rCubicTo
 
 ```TypeScript
@@ -1158,6 +1200,7 @@ rCubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: n
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rlineto"></a>
 ## rLineTo
 
 ```TypeScript
@@ -1187,6 +1230,7 @@ rLineTo(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rmoveto"></a>
 ## rMoveTo
 
 ```TypeScript
@@ -1216,6 +1260,7 @@ rMoveTo(dx: number, dy: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="rquadto"></a>
 ## rQuadTo
 
 ```TypeScript
@@ -1247,6 +1292,7 @@ rQuadTo(dx1: number, dy1: number, dx2: number, dy2: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -1261,6 +1307,7 @@ reset(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="rewind"></a>
 ## rewind
 
 ```TypeScript
@@ -1275,6 +1322,7 @@ rewind(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -1297,6 +1345,7 @@ set(src: Path): void
 | --- | --- | --- | --- |
 | src | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 是 | 用于更新的路径。 |
 
+<a id="setfilltype"></a>
 ## setFillType
 
 ```TypeScript
@@ -1323,6 +1372,7 @@ setFillType(pathFillType: PathFillType): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setlastpoint"></a>
 ## setLastPoint
 
 ```TypeScript
@@ -1344,6 +1394,7 @@ setLastPoint(x: number, y: number): void
 | x | number | 是 | 指定点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
 | y | number | 是 | 指定点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
+<a id="toggleinversefilltype"></a>
 ## toggleInverseFillType
 
 ```TypeScript
@@ -1358,6 +1409,7 @@ toggleInverseFillType(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="transform"></a>
 ## transform
 
 ```TypeScript

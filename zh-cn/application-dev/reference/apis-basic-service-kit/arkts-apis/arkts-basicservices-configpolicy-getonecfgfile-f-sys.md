@@ -6,6 +6,7 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
+<a id="getonecfgfile"></a>
 ## getOneCfgFile
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getOneCfgFile(relPath: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | relPath | string | 是 | 配置文件名。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
 
@@ -36,6 +37,7 @@ function getOneCfgFile(relPath: string, callback: AsyncCallback<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
+<a id="getonecfgfile-1"></a>
 ## getOneCfgFile
 
 ```TypeScript
@@ -58,7 +60,7 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, callback: Async
 | --- | --- | --- | --- |
 | relPath | string | 是 | 配置文件名。 |
 | followMode | [FollowXMode](arkts-basicservices-configpolicy-followxmode-e-sys.md) | 是 | 跟随模式。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
 
@@ -67,6 +69,7 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, callback: Async
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
+<a id="getonecfgfile-2"></a>
 ## getOneCfgFile
 
 ```TypeScript
@@ -90,7 +93,7 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, 
 | relPath | string | 是 | 配置文件名。 |
 | followMode | [FollowXMode](arkts-basicservices-configpolicy-followxmode-e-sys.md) | 是 | 跟随模式。 |
 | extra | string | 是 | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](arkts-basicservices-configpolicy-followxmode-e-sys.md#user_defined)时有效。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
 
@@ -99,6 +102,7 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, 
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
+<a id="getonecfgfile-3"></a>
 ## getOneCfgFile
 
 ```TypeScript
@@ -125,7 +129,7 @@ function getOneCfgFile(relPath: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回优先级最高的配置文件路径。 |
+| Promise&lt;string&gt; | Promise对象，返回优先级最高的配置文件路径。 |
 
 **错误码：**
 
@@ -134,6 +138,7 @@ function getOneCfgFile(relPath: string): Promise<string>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
 
+<a id="getonecfgfile-4"></a>
 ## getOneCfgFile
 
 ```TypeScript
@@ -162,7 +167,7 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回优先级最高的配置文件路径。 |
+| Promise&lt;string&gt; | Promise对象，返回优先级最高的配置文件路径。 |
 
 **错误码：**
 

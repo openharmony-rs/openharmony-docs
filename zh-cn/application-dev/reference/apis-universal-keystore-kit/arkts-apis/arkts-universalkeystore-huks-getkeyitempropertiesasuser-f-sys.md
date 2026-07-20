@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="getkeyitempropertiesasuser"></a>
 ## getKeyItemPropertiesAsUser
 
 ```TypeScript
@@ -48,7 +49,7 @@ Get properties of the key as user.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise used to return the result. If the operation is successful,**properties** in **HuksReturnResult** holds the parameters required for generating the key. |
+| Promise&lt;HuksReturnResult&gt; | Promise used to return the result. If the operation is successful,**properties** in **HuksReturnResult** holds the parameters required for generating the key. |
 
 **错误码：**
 

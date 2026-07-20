@@ -4,7 +4,7 @@
 
 > **说明：**  
 >  
-> 返回字段类型具体参考[AvisMetadata](../../../../reference/apis-image-kit/arkts-apis-image-AvisMetadata.md)。
+> 返回字段类型具体参考[AvisMetadata](docroot://reference/apis-image-kit/arkts-apis-image-AvisMetadata.md)。
 
 **起始版本：** 26.0.0
 

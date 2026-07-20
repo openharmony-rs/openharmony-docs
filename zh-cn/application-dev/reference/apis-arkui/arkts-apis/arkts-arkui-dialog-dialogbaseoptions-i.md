@@ -148,7 +148,7 @@ borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
 
 对话框的边框颜色。
 
-**类型：** ResourceColor | EdgeColors | LocalizedEdgeColors
+**类型：** ResourceColor \| EdgeColors \| LocalizedEdgeColors
 
 **默认值：** Color.Black
 
@@ -170,7 +170,7 @@ borderRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses
 
 背景的边框半径。
 
-**类型：** Dimension | BorderRadiuses | LocalizedBorderRadiuses
+**类型：** Dimension \| BorderRadiuses \| LocalizedBorderRadiuses
 
 **默认值：** { topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }
 
@@ -192,7 +192,7 @@ borderStyle?: BorderStyle | EdgeStyles
 
 对话框边框样式。
 
-**类型：** BorderStyle | EdgeStyles
+**类型：** BorderStyle \| EdgeStyles
 
 **默认值：** BorderStyle.Solid
 
@@ -214,7 +214,7 @@ borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
 
 对话框边框宽度。
 
-**类型：** Dimension | EdgeWidths | LocalizedEdgeWidths
+**类型：** Dimension \| EdgeWidths \| LocalizedEdgeWidths
 
 **默认值：** 0
 
@@ -696,7 +696,7 @@ onWillDismiss?: Callback<DialogDismissal>
 
 对话框交互关闭的回调。<br>如果注册了此回调，则用户点击后对话框不会立即关闭遮罩或返回按钮。回调中的reason参数用于判断是否可以关闭对话框。
 
-**类型：** Callback<DialogDismissal>
+**类型：** Callback&lt;DialogDismissal&gt;
 
 **起始版本：** 26.1.0
 
@@ -716,7 +716,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 对话框的阴影。
 
-**类型：** ShadowOptions | ShadowStyle
+**类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 26.1.0
 

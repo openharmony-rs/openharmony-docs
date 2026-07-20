@@ -6,6 +6,7 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="setdisposedstatus"></a>
 ## setDisposedStatus
 
 ```TypeScript
@@ -28,9 +29,9 @@ function setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | disposedWant | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 对应用的处置意图。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置处置状态成功，err为null；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置处置状态成功，err为null；否则为错误对象。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ try {
 ```
 
 
+<a id="setdisposedstatus-1"></a>
 ## setDisposedStatus
 
 ```TypeScript
@@ -91,14 +93,14 @@ function setDisposedStatus(appId: string, disposedWant: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](docroot://quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | disposedWant | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 对应用的处置意图。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -22,7 +22,7 @@ readonly headers: Map<string, Array<string>>
 
 Http响应头部。
 
-**类型：** Map<string, Array<string>>
+**类型：** Map&lt;string, Array&lt;string&gt;&gt;
 
 **起始版本：** 12
 

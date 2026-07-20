@@ -54,7 +54,7 @@ numeric?: string
 
 默认值：always。
 
-不同取值的显示效果请参考[附录表23](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表23](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -80,7 +80,7 @@ style?: string
 
 默认值：long。
 
-不同取值的显示效果请参考[附录表24](../../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
+不同取值的显示效果请参考[附录表24](docroot://reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 

@@ -1,5 +1,6 @@
 # getMissionInfos（系统接口）
 
+<a id="getmissioninfos"></a>
 ## getMissionInfos
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallba
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | numMax | number | 是 | 任务信息数量上限。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<MissionInfo>> | 是 | 回调函数，返回任务信息数组。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;MissionInfo&gt;&gt; | 是 | 回调函数，返回任务信息数组。 |
 
 **示例：**
 
@@ -48,6 +49,7 @@ missionManager.getMissionInfos('', 10, (error, missions) => {
 ```
 
 
+<a id="getmissioninfos-1"></a>
 ## getMissionInfos
 
 ```TypeScript
@@ -81,7 +83,7 @@ function getMissionInfos(deviceId: string, numMax: number): Promise<Array<Missio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<MissionInfo>> | Promise对象，返回任务信息数组。 |
+| Promise&lt;Array&lt;MissionInfo&gt;&gt; | Promise对象，返回任务信息数组。 |
 
 **示例：**
 

@@ -11,10 +11,13 @@
 
 **起始版本：** 24
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export class StackLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class StackLayoutAlgorithm implements LayoutAlgorithm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

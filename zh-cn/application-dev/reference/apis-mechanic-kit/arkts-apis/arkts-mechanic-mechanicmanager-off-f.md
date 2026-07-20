@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="off"></a>
 ## off('attachStateChange')
 
 ```TypeScript
@@ -25,7 +26,7 @@ Unsubscribes from device attachment state change events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'attachStateChange' | 是 | Event type. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AttachStateChangeInfo> | 否 | Callback used to return the state change. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AttachStateChangeInfo&gt; | 否 | Callback used to return the state change. |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ console.info('Succeeded in unregistering callback.');
 ```
 
 
+<a id="off-1"></a>
 ## off('trackingStateChange')
 
 ```TypeScript
@@ -68,7 +70,7 @@ Unsubscribes from tracking events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'trackingStateChange' | 是 | Event type. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<TrackingEventInfo> | 否 | Callback used to return the tracking event information. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;TrackingEventInfo&gt; | 否 | Callback used to return the tracking event information. |
 
 **错误码：**
 

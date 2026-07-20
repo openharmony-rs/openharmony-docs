@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="controltransfer"></a>
 ## controlTransfer
 
 ```TypeScript
@@ -18,7 +19,7 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 **废弃版本：** 12
 
-**替代接口：** usbControlTransfer(pipe:
+**替代接口：** [usbControlTransfer(pipe:](arkts-basicservices-usbmanager-usbcontroltransfer-f.md#usbcontroltransfer-1)
 
 <!--Device-usbManager-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>--><!--Device-usbManager-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>-End-->
 
@@ -36,7 +37,7 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：* - -1：驱动异常。 |
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：* - -1：驱动异常。 |
 
 **错误码：**
 

@@ -256,7 +256,7 @@ EVENT_APPLY_START = 0x0100000e
 EVENT_UPGRADE_SUCCESS = 0x0100000f
 ```
 
-更新成功。
+升级成功。
 
 **起始版本：** 9
 
@@ -272,7 +272,7 @@ EVENT_UPGRADE_SUCCESS = 0x0100000f
 EVENT_UPGRADE_FAIL = 0x01000010
 ```
 
-更新失败。
+升级失败。
 
 **起始版本：** 9
 

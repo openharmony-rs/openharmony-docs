@@ -36,7 +36,7 @@ Toggle(options: ToggleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ToggleOptions | 是 | Toggle组件的配置选项，用于配置开关的样式类型和初始状态。 |
+| options | [ToggleOptions](arkts-arkui-toggleoptions-i.md) | 是 | Toggle组件的配置选项，用于配置开关的样式类型和初始状态。 |
 
 ## 汇总
 

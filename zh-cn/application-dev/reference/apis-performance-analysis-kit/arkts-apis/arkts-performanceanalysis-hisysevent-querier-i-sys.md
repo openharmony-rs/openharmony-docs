@@ -24,7 +24,7 @@ onComplete: (reason: number, total: number) => void
 
 查询结果统计的回调方法(reason: int, total: int) => void。
 
-**类型：** (reason: number, total: number) => void
+**类型：** (reason: number, total: number) =&gt; void
 
 **起始版本：** 9
 
@@ -42,7 +42,7 @@ onQuery: (infos: SysEventInfo[]) => void
 
 返回查询到的系统事件的回调方法(infos: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)[]) => void。
 
-**类型：** (infos: SysEventInfo[]) => void
+**类型：** (infos: SysEventInfo[]) =&gt; void
 
 **起始版本：** 9
 

@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="notifyprintservice"></a>
 ## notifyPrintService
 
 ```TypeScript
@@ -33,7 +34,7 @@ function notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' 
 | --- | --- | --- | --- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | 是 | 表示spooler关闭信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ print.notifyPrintService(jobId, 'spooler_closed_for_started', (err: BusinessErro
 ```
 
 
+<a id="notifyprintservice-1"></a>
 ## notifyPrintService
 
 ```TypeScript
@@ -93,7 +95,7 @@ function notifyPrintService(jobId: string,
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

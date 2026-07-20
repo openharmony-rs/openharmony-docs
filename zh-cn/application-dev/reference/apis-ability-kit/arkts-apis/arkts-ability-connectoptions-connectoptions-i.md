@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -29,6 +30,7 @@ onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | 目标Ability的elementName。 |
 | remote | rpc.IRemoteObject | 是 | 用于与目标Ability进行IPC通信的IRemoteObject实例。 |
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -49,6 +51,7 @@ onDisconnect(elementName: ElementName): void
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | 目标Ability的elementName。 |
 
+<a id="onfailed"></a>
 ## onFailed
 
 ```TypeScript

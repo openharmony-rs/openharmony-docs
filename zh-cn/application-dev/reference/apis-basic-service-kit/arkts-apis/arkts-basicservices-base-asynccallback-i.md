@@ -14,6 +14,7 @@
 import { Callback, BusinessError, ErrorCallback, AsyncCallback } from '@kit.BasicServicesKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -34,6 +35,6 @@ import { Callback, BusinessError, ErrorCallback, AsyncCallback } from '@kit.Basi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| err | [BusinessError](arkts-basicservices-base-businesserror-i.md)<E> | 是 | 接口调用失败的公共错误信息。接口调用成功时，此参数返回null。 |
+| err | [BusinessError](arkts-basicservices-base-businesserror-i.md)&lt;E&gt; | 是 | 接口调用失败的公共错误信息。接口调用成功时，此参数返回null。 |
 | data | T | 是 | 接口调用成功时的异步返回数据，类型由开发者自定义。接口调用失败时，此参数不返回。 |
 

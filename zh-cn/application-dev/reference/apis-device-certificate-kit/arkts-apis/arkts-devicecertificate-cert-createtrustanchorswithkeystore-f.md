@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createtrustanchorswithkeystore"></a>
 ## createTrustAnchorsWithKeyStore
 
 ```TypeScript
@@ -26,14 +27,14 @@ function createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keystore | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | DER格式的P12文件原始数据。 |
+| keystore | Uint8Array | 是 | DER格式的P12文件原始数据。 |
 | pwd | string | 是 | 密码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<X509TrustAnchor>> | Promise对象，返回X509TrustAnchor对象数组。 |
+| Promise&lt;Array&lt;X509TrustAnchor&gt;&gt; | Promise对象，返回X509TrustAnchor对象数组。 |
 
 **错误码：**
 

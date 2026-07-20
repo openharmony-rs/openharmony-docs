@@ -6,6 +6,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getcurrentfoldcreaseregion"></a>
 ## getCurrentFoldCreaseRegion
 
 ```TypeScript

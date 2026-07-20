@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="querydlppolicy"></a>
 ## queryDlpPolicy
 
 ```TypeScript
@@ -34,13 +35,13 @@ function queryDlpPolicy(dlpFd: number): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回当前DLP策略的JSON字符串。长度不超过4194304字节。 |
+| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的JSON字符串。长度不超过4194304字节。 |
 
 **错误码：**
 

@@ -14,6 +14,7 @@
 import { uniformTypeDescriptor } from '@kit.ArkData';
 ```
 
+<a id="belongsto"></a>
 ## belongsTo
 
 ```TypeScript
@@ -34,7 +35,7 @@ belongsTo(type: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 所指定的标准化数据类型（即[UTD预置列表](../../../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。 |
+| type | string | 是 | 所指定的标准化数据类型（即[UTD预置列表](docroot://database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。 |
 
 **返回值：**
 
@@ -69,6 +70,7 @@ try {
 
 ```
 
+<a id="equals"></a>
 ## equals
 
 ```TypeScript
@@ -123,6 +125,7 @@ try {
 
 ```
 
+<a id="ishigherleveltype"></a>
 ## isHigherLevelType
 
 ```TypeScript
@@ -143,7 +146,7 @@ isHigherLevelType(type: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 所指定的标准化数据类型（即[UTD预置列表](../../../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。 |
+| type | string | 是 | 所指定的标准化数据类型（即[UTD预置列表](docroot://database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。 |
 
 **返回值：**
 
@@ -177,6 +180,7 @@ try {
 
 ```
 
+<a id="islowerleveltype"></a>
 ## isLowerLevelType
 
 ```TypeScript
@@ -197,7 +201,7 @@ isLowerLevelType(type: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 所指定的标准化数据类型（即[UTD预置列表](../../../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。 |
+| type | string | 是 | 所指定的标准化数据类型（即[UTD预置列表](docroot://database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。 |
 
 **返回值：**
 
@@ -239,7 +243,7 @@ set belongingToTypes(value: Array<string>)
 
 标准化数据类型所归属的类型typeId列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 11
 
@@ -275,7 +279,7 @@ set filenameExtensions(value: Array<string>)
 
 标准化数据类型所关联的文件名后缀列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -311,7 +315,7 @@ set mimeTypes(value: Array<string>)
 
 标准化数据类型所关联的多用途互联网邮件扩展类型列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 

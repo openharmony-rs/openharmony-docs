@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="getallwindowlayoutinfo"></a>
 ## getAllWindowLayoutInfo
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getAllWindowLayoutInfo(displayId: number): Promise<Array<WindowLayoutIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<WindowLayoutInfo>> | Promise对象。返回获取到的窗口布局信息对象数组。 |
+| Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt; | Promise对象。返回获取到的窗口布局信息对象数组。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ try {
 ```
 
 
+<a id="getallwindowlayoutinfo-1"></a>
 ## getAllWindowLayoutInfo
 
 ```TypeScript
@@ -93,7 +95,7 @@ function getAllWindowLayoutInfo(displayId: number, option?: WindowInfoOptions): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<WindowLayoutInfo>> | Promise对象。返回获取到的窗口布局信息对象数组。 |
+| Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt; | Promise对象。返回获取到的窗口布局信息对象数组。 |
 
 **错误码：**
 

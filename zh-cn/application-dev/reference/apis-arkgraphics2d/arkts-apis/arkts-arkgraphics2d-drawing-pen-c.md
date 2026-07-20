@@ -20,6 +20,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -34,6 +35,7 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -60,6 +62,7 @@ constructor(pen: Pen)
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="getalpha"></a>
 ## getAlpha
 
 ```TypeScript
@@ -80,6 +83,7 @@ getAlpha(): number
 | --- | --- |
 | number | 返回画笔的透明度，该返回值为0到255之间的整数。 |
 
+<a id="getcapstyle"></a>
 ## getCapStyle
 
 ```TypeScript
@@ -100,6 +104,7 @@ getCapStyle(): CapStyle
 | --- | --- |
 | [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md) | 返回画笔的线帽样式。 |
 
+<a id="getcolor"></a>
 ## getColor
 
 ```TypeScript
@@ -120,6 +125,7 @@ getColor(): common2D.Color
 | --- | --- |
 | common2D.Color | Color of the pen. |
 
+<a id="getcolor4f"></a>
 ## getColor4f
 
 ```TypeScript
@@ -140,6 +146,7 @@ getColor4f(): common2D.Color4f
 | --- | --- |
 | common2D.Color4f | Color of the pen. |
 
+<a id="getcolorfilter"></a>
 ## getColorFilter
 
 ```TypeScript
@@ -158,8 +165,9 @@ getColorFilter(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
+<a id="getfillpath"></a>
 ## getFillPath
 
 ```TypeScript
@@ -193,6 +201,7 @@ getFillPath(src: Path, dst: Path): boolean
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="gethexcolor"></a>
 ## getHexColor
 
 ```TypeScript
@@ -213,6 +222,7 @@ getHexColor(): number
 | --- | --- |
 | number | 返回画笔的颜色，以16进制ARGB格式的32位无符号整数表示。 |
 
+<a id="getjoinstyle"></a>
 ## getJoinStyle
 
 ```TypeScript
@@ -233,6 +243,7 @@ getJoinStyle(): JoinStyle
 | --- | --- |
 | [JoinStyle](arkts-arkgraphics2d-drawing-joinstyle-e.md) | 返回折线转角的样式。 |
 
+<a id="getmiterlimit"></a>
 ## getMiterLimit
 
 ```TypeScript
@@ -253,6 +264,7 @@ getMiterLimit(): number
 | --- | --- |
 | number | 返回折线尖角长度与线宽的最大比值。 |
 
+<a id="getwidth"></a>
 ## getWidth
 
 ```TypeScript
@@ -273,6 +285,7 @@ getWidth(): number
 | --- | --- |
 | number | 返回画笔的线宽，单位为物理像素px。 |
 
+<a id="isantialias"></a>
 ## isAntiAlias
 
 ```TypeScript
@@ -293,6 +306,7 @@ isAntiAlias(): boolean
 | --- | --- |
 | boolean | 返回画笔是否开启抗锯齿属性，true表示开启，false表示关闭。 |
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -307,6 +321,7 @@ reset(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="setalpha"></a>
 ## setAlpha
 
 ```TypeScript
@@ -333,6 +348,7 @@ setAlpha(alpha: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setantialias"></a>
 ## setAntiAlias
 
 ```TypeScript
@@ -359,6 +375,7 @@ setAntiAlias(aa: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setblendmode"></a>
 ## setBlendMode
 
 ```TypeScript
@@ -377,7 +394,7 @@ setBlendMode(mode: BlendMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 颜色的混合模式。 |
+| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色的混合模式。 |
 
 **错误码：**
 
@@ -385,6 +402,7 @@ setBlendMode(mode: BlendMode): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setcapstyle"></a>
 ## setCapStyle
 
 ```TypeScript
@@ -411,6 +429,7 @@ setCapStyle(style: CapStyle): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setcolor"></a>
 ## setColor
 
 ```TypeScript
@@ -437,6 +456,7 @@ setColor(color: common2D.Color): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setcolor-1"></a>
 ## setColor
 
 ```TypeScript
@@ -466,6 +486,7 @@ setColor(alpha: number, red: number, green: number, blue: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setcolor-2"></a>
 ## setColor
 
 ```TypeScript
@@ -486,6 +507,7 @@ setColor(color: number): void
 | --- | --- | --- | --- |
 | color | number | 是 | 16进制ARGB格式的颜色。 |
 
+<a id="setcolor4f"></a>
 ## setColor4f
 
 ```TypeScript
@@ -507,6 +529,7 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 | color4f | common2D.Color4f | 是 | ARGB格式的颜色，每个颜色通道的值是0.0-1.0之间的浮点数，大于1.0时，取1.0，小于0.0时，取0.0。 |
 | colorSpace | colorSpaceManager.ColorSpaceManager \| null | 是 | 标准色域对象，null表示使用SRGB色域。 |
 
+<a id="setcolorfilter"></a>
 ## setColorFilter
 
 ```TypeScript
@@ -525,7 +548,7 @@ setColorFilter(filter: ColorFilter | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | ColorFilter \| null | 是 | 颜色滤波器。null表示清空颜色滤波器。<br>**起始版本：** 20 |
+| filter | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) \| null | 是 | 颜色滤波器。null表示清空颜色滤波器。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -533,6 +556,7 @@ setColorFilter(filter: ColorFilter | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setdither"></a>
 ## setDither
 
 ```TypeScript
@@ -559,6 +583,7 @@ setDither(dither: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setimagefilter"></a>
 ## setImageFilter
 
 ```TypeScript
@@ -577,7 +602,7 @@ setImageFilter(filter: ImageFilter | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | ImageFilter \| null | 是 | 图像滤波器，null表示清空画笔的图像滤波器效果。 |
+| filter | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) \| null | 是 | 图像滤波器，null表示清空画笔的图像滤波器效果。 |
 
 **错误码：**
 
@@ -585,6 +610,7 @@ setImageFilter(filter: ImageFilter | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setjoinstyle"></a>
 ## setJoinStyle
 
 ```TypeScript
@@ -611,6 +637,7 @@ setJoinStyle(style: JoinStyle): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setmaskfilter"></a>
 ## setMaskFilter
 
 ```TypeScript
@@ -629,7 +656,7 @@ setMaskFilter(filter: MaskFilter | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filter | MaskFilter \| null | 是 | 蒙版滤镜。null表示清空蒙版滤镜。<br>**起始版本：** 20 |
+| filter | [MaskFilter](arkts-arkgraphics2d-drawing-maskfilter-c.md) \| null | 是 | 蒙版滤镜。null表示清空蒙版滤镜。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -637,6 +664,7 @@ setMaskFilter(filter: MaskFilter | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setmiterlimit"></a>
 ## setMiterLimit
 
 ```TypeScript
@@ -663,6 +691,7 @@ setMiterLimit(miter: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setpatheffect"></a>
 ## setPathEffect
 
 ```TypeScript
@@ -681,7 +710,7 @@ setPathEffect(effect: PathEffect | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| effect | PathEffect \| null | 是 | 路径效果对象。null表示清空路径效果。<br>**起始版本：** 20 |
+| effect | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) \| null | 是 | 路径效果对象。null表示清空路径效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -689,6 +718,7 @@ setPathEffect(effect: PathEffect | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setshadereffect"></a>
 ## setShaderEffect
 
 ```TypeScript
@@ -707,7 +737,7 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shaderEffect | ShaderEffect \| null | 是 | 着色器对象。null表示清空着色器效果。<br>**起始版本：** 20 |
+| shaderEffect | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) \| null | 是 | 着色器对象。null表示清空着色器效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -715,6 +745,7 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setshadowlayer"></a>
 ## setShadowLayer
 
 ```TypeScript
@@ -733,7 +764,7 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadowLayer | ShadowLayer \| null | 是 | 阴影层对象。null表示清空阴影层效果。<br>**起始版本：** 20 |
+| shadowLayer | [ShadowLayer](arkts-arkgraphics2d-drawing-shadowlayer-c.md) \| null | 是 | 阴影层对象。null表示清空阴影层效果。<br>**起始版本：** 20 |
 
 **错误码：**
 
@@ -741,6 +772,7 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setstrokewidth"></a>
 ## setStrokeWidth
 
 ```TypeScript

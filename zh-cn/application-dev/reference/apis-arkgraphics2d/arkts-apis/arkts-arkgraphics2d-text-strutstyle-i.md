@@ -40,7 +40,7 @@ fontFamilies?: Array<string>
 
 字体家族名称列表，默认为空，匹配系统字体。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 

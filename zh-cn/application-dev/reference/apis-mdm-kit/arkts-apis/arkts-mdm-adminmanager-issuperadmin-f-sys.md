@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="issuperadmin"></a>
 ## isSuperAdmin
 
 ```TypeScript
@@ -29,7 +30,7 @@ function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | String | 是 | 超级设备管理应用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，当接口调用成功，err为null，data为boolean类型值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean类型值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 ```
 
 
+<a id="issuperadmin-1"></a>
 ## isSuperAdmin
 
 ```TypeScript
@@ -86,7 +88,7 @@ function isSuperAdmin(bundleName: String): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象, 返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
+| Promise&lt;boolean&gt; | Promise对象, 返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
 
 **错误码：**
 

@@ -26,7 +26,7 @@ productIdList: Array<number>
 
 驱动支持的USB设备product ID列表。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 12
 
@@ -44,7 +44,7 @@ vendorIdList: Array<number>
 
 驱动支持的USB设备vendor ID列表。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 12
 

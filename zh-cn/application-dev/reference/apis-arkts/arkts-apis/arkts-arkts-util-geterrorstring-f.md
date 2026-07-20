@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="geterrorstring"></a>
 ## getErrorString
 
 ```TypeScript

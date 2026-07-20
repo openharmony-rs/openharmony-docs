@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="setcloudstrategy"></a>
 ## setCloudStrategy
 
 ```TypeScript
@@ -25,13 +26,13 @@ function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.Value
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | strategy | [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | 是 | 配置的策略类型。 |
-| param | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<commonType.ValueType> | 否 | 策略参数，类型为Array&lt;commonType.ValueType&gt;，实际传入值为[NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md)枚举值，取值范围为WIFI和CELLULAR，默认支持WIFI和蜂窝网络策略。 |
+| param | Array&lt;commonType.ValueType&gt; | 否 | 策略参数，类型为Array<commonType.ValueType>，实际传入值为[NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md)枚举值，取值范围为WIFI和CELLULAR，默认支持WIFI和蜂窝网络策略。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

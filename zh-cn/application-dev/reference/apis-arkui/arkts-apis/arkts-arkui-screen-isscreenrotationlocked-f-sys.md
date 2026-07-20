@@ -6,6 +6,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="isscreenrotationlocked"></a>
 ## isScreenRotationLocked
 
 ```TypeScript
@@ -26,7 +27,7 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
 ```
 
 
+<a id="isscreenrotationlocked-1"></a>
 ## isScreenRotationLocked
 
 ```TypeScript
@@ -72,7 +74,7 @@ function isScreenRotationLocked(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
 
 **错误码：**
 

@@ -18,11 +18,11 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMedi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | QueryMediaEntityParam | 是 | 查询媒体实体的参数。 |
+| params | [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md) | 是 | 查询媒体实体的参数。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的媒体实体分页对象。 |
+| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的媒体实体分页对象。  |
 

@@ -1,5 +1,6 @@
 # getWant（系统接口）
 
+<a id="getwant"></a>
 ## getWant
 
 ```TypeScript
@@ -25,9 +26,10 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | Indicates the {@link WantAgent} WantAgent信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Want> | 是 | 获取WantAgent中的Want的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 获取WantAgent中的Want的回调方法。 |
 
 
+<a id="getwant-1"></a>
 ## getWant
 
 ```TypeScript
@@ -58,5 +60,5 @@ function getWant(agent: WantAgent): Promise<Want>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Want> | 以Promise形式返回Want。 |
+| Promise&lt;Want&gt; | 以Promise形式返回Want。 |
 

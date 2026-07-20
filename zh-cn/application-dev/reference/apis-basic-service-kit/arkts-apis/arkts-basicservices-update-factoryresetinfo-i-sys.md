@@ -22,7 +22,7 @@ import { update } from '@kit.BasicServicesKit';
 duration: number
 ```
 
-恢复出厂设置所需持续时间，单位：秒 。
+恢复出厂设置所需持续时间。单位为min。取值范围[0, 86400]。超出范围时抛出异常。
 
 **类型：** number
 

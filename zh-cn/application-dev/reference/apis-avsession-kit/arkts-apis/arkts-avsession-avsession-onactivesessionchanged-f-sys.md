@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="onactivesessionchanged"></a>
 ## onActiveSessionChanged
 
 ```TypeScript
@@ -28,7 +29,7 @@ function onActiveSessionChanged(callback: Callback<Array<AVSessionDescriptor>>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Array<AVSessionDescriptor>> | 是 | 回调函数。参数为允许在系统控制入口显示的会话信息列表。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Array&lt;AVSessionDescriptor&gt;&gt; | 是 | 回调函数。参数为允许在系统控制入口显示的会话信息列表。 |
 
 **错误码：**
 

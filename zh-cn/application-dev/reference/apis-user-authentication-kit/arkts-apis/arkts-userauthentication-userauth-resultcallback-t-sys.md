@@ -20,6 +20,6 @@ type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | Uint8Array | 是 | 挑战值，可以以Uint8Array([])格式传递。 |
-| result | UserAuthResult | 是 | 身份认证结果。 |
+| challenge | Uint8Array | 是 | 挑战值，可以以Uint8Array([])格式传递。  |
+| result | [UserAuthResult](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md) | 是 | 身份认证结果。  |
 

@@ -31,16 +31,16 @@ import { inputDeviceCooperate } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [enable](arkts-input-inputdevicecooperate-enable-f-sys.md#enable-1) | 开启、关闭键鼠穿越，使用callback异步回调。 |
-| [enable](arkts-input-inputdevicecooperate-enable-f-sys.md#enable-2) | 开启、关闭键鼠穿越，使用Promise异步回调。 |
-| [getState](arkts-input-inputdevicecooperate-getstate-f-sys.md#getstate-1) | 获取键鼠穿越开关的状态，使用callback异步回调。 |
-| [getState](arkts-input-inputdevicecooperate-getstate-f-sys.md#getstate-2) | 获取键鼠穿越开关的状态，使用Promise异步回调。 |
-| [off](arkts-input-inputdevicecooperate-off-f-sys.md#off-1) | 关闭监听键鼠穿越状态，使用callback异步回调。 |
-| [on](arkts-input-inputdevicecooperate-on-f-sys.md#on-1) | 注册监听键鼠穿越状态，使用callback异步回调。 |
-| [start](arkts-input-inputdevicecooperate-start-f-sys.md#start-1) | 启动键鼠穿越，使用callback异步回调。 |
-| [start](arkts-input-inputdevicecooperate-start-f-sys.md#start-2) | 启动键鼠穿越，使用Promise异步回调。 |
-| [stop](arkts-input-inputdevicecooperate-stop-f-sys.md#stop-1) | 停止键鼠穿越，使用callback异步回调。 |
-| [stop](arkts-input-inputdevicecooperate-stop-f-sys.md#stop-2) | 停止键鼠穿越，使用Promise异步回调。 |
+| [enable](arkts-input-inputdevicecooperate-enable-f-sys.md#enable) | 开启、关闭键鼠穿越，使用callback异步回调。 |
+| [enable](arkts-input-inputdevicecooperate-enable-f-sys.md#enable-1) | 开启、关闭键鼠穿越，使用Promise异步回调。 |
+| [getState](arkts-input-inputdevicecooperate-getstate-f-sys.md#getstate) | 获取键鼠穿越开关的状态，使用callback异步回调。 |
+| [getState](arkts-input-inputdevicecooperate-getstate-f-sys.md#getstate-1) | 获取键鼠穿越开关的状态，使用Promise异步回调。 |
+| [off](arkts-input-inputdevicecooperate-off-f-sys.md#off) | 关闭监听键鼠穿越状态，使用callback异步回调。 |
+| [on](arkts-input-inputdevicecooperate-on-f-sys.md#on) | 注册监听键鼠穿越状态，使用callback异步回调。 |
+| [start](arkts-input-inputdevicecooperate-start-f-sys.md#start) | 启动键鼠穿越，使用callback异步回调。 |
+| [start](arkts-input-inputdevicecooperate-start-f-sys.md#start-1) | 启动键鼠穿越，使用Promise异步回调。 |
+| [stop](arkts-input-inputdevicecooperate-stop-f-sys.md#stop) | 停止键鼠穿越，使用callback异步回调。 |
+| [stop](arkts-input-inputdevicecooperate-stop-f-sys.md#stop-1) | 停止键鼠穿越，使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

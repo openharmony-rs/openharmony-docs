@@ -14,6 +14,7 @@
 import { curves } from '@kit.ArkUI';
 ```
 
+<a id="interpolate"></a>
 ## interpolate
 
 ```TypeScript

@@ -64,7 +64,7 @@ Navigation(pathInfos: NavPathStack)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pathInfos | NavPathStack | 是 | 导航控制器对象。 |
+| pathInfos | [NavPathStack](arkts-arkui-navpathstack-c.md) | 是 | 导航控制器对象。  |
 
 ## Navigation
 
@@ -88,8 +88,8 @@ Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pathInfos | NavPathStack | 是 | 路由栈信息。 |
-| homeDestination | HomePathInfo | 是 | 主页NavDestination信息。 |
+| pathInfos | [NavPathStack](arkts-arkui-navpathstack-c.md) | 是 | 路由栈信息。  |
+| homeDestination | [HomePathInfo](arkts-arkui-homepathinfo-i.md) | 是 | 主页NavDestination信息。  |
 
 ## 汇总
 

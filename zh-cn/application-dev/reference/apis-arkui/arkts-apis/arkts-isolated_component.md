@@ -7,7 +7,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [IsolatedComponentAttribute](arkts-arkui-isolated-component-isolatedcomponentattribute-c-sys.md) | 定义IsolatedComponent的属性方法。 |
+| [IsolatedComponentAttribute](arkts-arkui-isolatedcomponentattribute-c-sys.md) | 定义IsolatedComponent的属性方法。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -15,7 +15,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [IsolatedOptions](arkts-arkui-isolated-component-isolatedoptions-i-sys.md) | 该接口用于在构造时设置IsolatedComponentAttribute的选项。 |
+| [IsolatedOptions](arkts-arkui-isolatedoptions-i-sys.md) | 该接口用于在构造时设置IsolatedComponentAttribute的选项。 |
 <!--DelEnd-->
 
 <!--Del-->

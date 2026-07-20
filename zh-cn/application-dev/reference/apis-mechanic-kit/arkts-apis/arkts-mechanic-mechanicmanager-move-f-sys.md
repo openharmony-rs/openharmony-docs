@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="move"></a>
 ## move
 
 ```TypeScript
@@ -33,7 +34,7 @@ Move a mechanical device with the specified parameters.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result> | Promise that returns the execution result. |
+| Promise&lt;Result&gt; | Promise that returns the execution result. |
 
 **错误码：**
 

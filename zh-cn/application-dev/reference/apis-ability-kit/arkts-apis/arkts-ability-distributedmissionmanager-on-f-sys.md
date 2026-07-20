@@ -6,6 +6,7 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="on"></a>
 ## on('continueStateChange')
 
 ```TypeScript
@@ -31,7 +32,7 @@ function on(type: 'continueStateChange', callback: Callback<ContinueCallbackInfo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continueStateChange' | 是 | 当前任务流转状态，取值为'continueStateChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinueCallbackInfo> | 是 | 回调函数，返回当前任务的流转状态和流转信息。<br>**起始版本：** 11 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinueCallbackInfo&gt; | 是 | 回调函数，返回当前任务的流转状态和流转信息。<br>**起始版本：** 11 |
 
 **错误码：**
 

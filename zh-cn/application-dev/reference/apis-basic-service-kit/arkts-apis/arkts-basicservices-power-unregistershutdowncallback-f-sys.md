@@ -6,6 +6,7 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
+<a id="unregistershutdowncallback"></a>
 ## unregisterShutdownCallback
 
 ```TypeScript
@@ -28,7 +29,7 @@ function unregisterShutdownCallback(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，无返回值。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数，无返回值。 |
 
 **错误码：**
 

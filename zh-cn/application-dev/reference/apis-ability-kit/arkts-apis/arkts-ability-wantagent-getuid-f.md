@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getuid"></a>
 ## getUid
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取WantAgent实例所属应用的UID的回调方法。 |
 
 **错误码：**
 
@@ -112,6 +113,7 @@ try {
 ```
 
 
+<a id="getuid-1"></a>
 ## getUid
 
 ```TypeScript
@@ -138,7 +140,7 @@ function getUid(agent: WantAgent): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回获取WantAgent实例所属应用的UID。 |
+| Promise&lt;number&gt; | Promise对象，返回获取WantAgent实例所属应用的UID。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getusertrustedcertificate"></a>
 ## getUserTrustedCertificate
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getUserTrustedCertificate(certUri: string): Promise<CMResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回获取用户根CA证书详细信息的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certInfo属性。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回获取用户根CA证书详细信息的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的certInfo属性。 |
 
 **错误码：**
 

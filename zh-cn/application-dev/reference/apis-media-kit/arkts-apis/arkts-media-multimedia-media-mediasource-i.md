@@ -18,6 +18,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="enableofflinecache"></a>
 ## enableOfflineCache
 
 ```TypeScript
@@ -38,6 +39,7 @@ enableOfflineCache(enable: boolean): void
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否在视频播放期间启用离线缓存。true表示启用，false表示不启用。 |
 
+<a id="getid"></a>
 ## getID
 
 ```TypeScript
@@ -62,6 +64,7 @@ getID(): string
 | --- | --- |
 | string | 返回媒体源的标识符，失败时返回空字符串。 |
 
+<a id="gettrackselectionfilter"></a>
 ## getTrackSelectionFilter
 
 ```TypeScript
@@ -84,6 +87,7 @@ Obtains the configured audio and video feature filtering values.
 | --- | --- |
 | [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) | If the TrackSelectionFilter object exists,the TrackSelectionFilter object is returned. Otherwise, the TrackSelectionFilter object is returned. |
 
+<a id="setmediaresourceloaderdelegate"></a>
 ## setMediaResourceLoaderDelegate
 
 ```TypeScript
@@ -106,6 +110,7 @@ setMediaResourceLoaderDelegate(resourceLoader: MediaSourceLoader): void
 | --- | --- | --- | --- |
 | resourceLoader | [MediaSourceLoader](arkts-media-multimedia-media-mediasourceloader-i.md) | 是 | 应用实现的媒体数据获取接口，方便播放器获取数据。 |
 
+<a id="setmimetype"></a>
 ## setMimeType
 
 ```TypeScript
@@ -128,6 +133,7 @@ setMimeType(mimeType: AVMimeTypes): void
 | --- | --- | --- | --- |
 | mimeType | [AVMimeTypes](arkts-media-multimedia-media-avmimetypes-e.md) | 是 | 媒体MIME类型。 |
 
+<a id="settrackselectionfilter"></a>
 ## setTrackSelectionFilter
 
 ```TypeScript

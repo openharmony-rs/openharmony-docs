@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="abortsession"></a>
 ## abortSession
 
 ```TypeScript
@@ -28,7 +29,7 @@ abortSession终止密钥操作。使用callback异步回调。
 | --- | --- | --- | --- |
 | handle | number | 是 | abortSession操作的uint64类型的handle值。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | abortSession操作的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当密钥操作abort成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -427,6 +428,7 @@ export default {
 ```
 
 
+<a id="abortsession-1"></a>
 ## abortSession
 
 ```TypeScript
@@ -454,7 +456,7 @@ abortSession终止密钥操作。使用Promise异步回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

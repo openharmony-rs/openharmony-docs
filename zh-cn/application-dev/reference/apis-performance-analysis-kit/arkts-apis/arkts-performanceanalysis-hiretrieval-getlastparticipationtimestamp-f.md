@@ -6,6 +6,7 @@
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getlastparticipationtimestamp"></a>
 ## getLastParticipationTimestamp
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -27,7 +28,7 @@ Subscribe to the specified events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | events | [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)[] | 是 | Events to subscribe to. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MechEvent> | 是 | Callback of event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MechEvent&gt; | 是 | Callback of event. |
 
 **错误码：**
 

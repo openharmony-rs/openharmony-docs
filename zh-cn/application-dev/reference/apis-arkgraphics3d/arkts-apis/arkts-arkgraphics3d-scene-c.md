@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="clonenode"></a>
 ## cloneNode
 
 ```TypeScript
@@ -36,6 +37,7 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 | --- | --- |
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 克隆结果，如果克隆失败则返回null. |
 
+<a id="createcomponent"></a>
 ## createComponent
 
 ```TypeScript
@@ -61,8 +63,9 @@ createComponent(node: Node, name: string): Promise<SceneComponent>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SceneComponent> | - 新添加的组件. |
+| Promise&lt;SceneComponent&gt; | - 新添加的组件. |
 
+<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -77,6 +80,7 @@ destroy(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="getcomponent"></a>
 ## getComponent
 
 ```TypeScript
@@ -104,6 +108,7 @@ getComponent(node: Node, name: string): SceneComponent | null
 | --- | --- |
 | [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md) | @syscap SystemCapability.ArkUi.Graphics3D |
 
+<a id="getdefaultrendercontext"></a>
 ## getDefaultRenderContext
 
 ```TypeScript
@@ -124,6 +129,7 @@ static getDefaultRenderContext(): RenderContext | null
 | --- | --- |
 | [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) | -- 默认RenderContext实例@static |
 
+<a id="getnodebypath"></a>
 ## getNodeByPath
 
 ```TypeScript
@@ -151,6 +157,7 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 | --- | --- |
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 如果通过路径找到节点 |
 
+<a id="getresourcefactory"></a>
 ## getResourceFactory
 
 ```TypeScript
@@ -171,6 +178,7 @@ getResourceFactory(): SceneResourceFactory
 | --- | --- |
 | [SceneResourceFactory](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md) | 如果通过路径找到节点 |
 
+<a id="importnode"></a>
 ## importNode
 
 ```TypeScript
@@ -191,7 +199,7 @@ importNode(name: string, node: Node, parent: Node | null): Node
 | --- | --- | --- | --- |
 | name | string | 是 | 新创建节点的名称. |
 | node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要导入的节点. |
-| parent | Node \| null | 是 | 父节点，根节点为null |
+| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 是 | 父节点，根节点为null |
 
 **返回值：**
 
@@ -199,6 +207,7 @@ importNode(name: string, node: Node, parent: Node | null): Node
 | --- | --- |
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 新创建的节点. |
 
+<a id="importscene"></a>
 ## importScene
 
 ```TypeScript
@@ -219,7 +228,7 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 | --- | --- | --- | --- |
 | name | string | 是 | 新创建节点的名称 |
 | scene | [Scene](arkts-arkgraphics3d-scene-c.md) | 是 | The scene to be imported. |
-| parent | Node \| null | 是 | 父节点，根节点为null |
+| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 是 | 父节点，根节点为null |
 
 **返回值：**
 
@@ -227,6 +236,7 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 | --- | --- |
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 新创建的节点. |
 
+<a id="load"></a>
 ## load
 
 ```TypeScript
@@ -251,8 +261,9 @@ static load(uri? : ResourceStr): Promise<Scene>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Scene> | 返回创建的场景@static |
+| Promise&lt;Scene&gt; | 返回创建的场景@static |
 
+<a id="renderframe"></a>
 ## renderFrame
 
 ```TypeScript

@@ -8,7 +8,7 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-en
 >  
 > 本模块接口仅可在Stage模型下使用。  
 >  
-> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../../mdm/mdm-kit-guide.md)。
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](docroot://mdm/mdm-kit-guide.md)。
 
 **继承/实现关系：** EnterpriseAdminExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
@@ -18,6 +18,7 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-en
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+<a id="startabilitybyadmin"></a>
 ## startAbilityByAdmin
 
 ```TypeScript
@@ -32,7 +33,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise<void>
 >  
 > 被启动的组件需要对外可见，即module.json5中的exported字段需要为true。  
 >  
-> 不支持[隐式Want启动](../../../../application-models/ability-terminology.md#隐式want启动)。  
+> 不支持[隐式Want启动](docroot://application-models/ability-terminology.md#隐式want启动)。  
 >  
 > 如果被启动的UIAbility有权限保护，需要额外申请对应的权限。
 
@@ -57,7 +58,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当启动组件失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当启动组件失败时，会抛出错误对象。 |
 
 **错误码：**
 

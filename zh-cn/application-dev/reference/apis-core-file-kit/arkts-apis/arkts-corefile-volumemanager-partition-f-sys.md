@@ -6,6 +6,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="partition"></a>
 ## partition
 
 ```TypeScript
@@ -30,7 +31,7 @@ function partition(diskId: string, type: number, callback: AsyncCallback<void>):
 | --- | --- | --- | --- |
 | diskId | string | 是 | 卷设备所属的磁盘id。 |
 | type | number | 是 | 分区类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 对磁盘设备进行分区。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 对磁盘设备进行分区。 |
 
 **错误码：**
 
@@ -44,6 +45,7 @@ function partition(diskId: string, type: number, callback: AsyncCallback<void>):
 | 13900042 | Unknown error. |
 
 
+<a id="partition-1"></a>
 ## partition
 
 ```TypeScript
@@ -73,7 +75,7 @@ function partition(diskId: string, type: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -488,7 +488,7 @@ NOTIFICATION_SUBSCRIBER = 34
 CRYPTO = 35
 ```
 
-[CryptoExtensionAbility](../../../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。
+[CryptoExtensionAbility](docroot://security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。
 
 **起始版本：** 22
 
@@ -520,7 +520,7 @@ PARTNER_AGENT = 36
 AGENT = 37
 ```
 
-[AgentExtensionAbility](../../../../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
+[AgentExtensionAbility](docroot://reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -538,7 +538,7 @@ AGENT = 37
 AGENT_UI = 38
 ```
 
-[AgentUIExtensionAbility](../../../../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。
+[AgentUIExtensionAbility](docroot://reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -556,7 +556,7 @@ AGENT_UI = 38
 MODULAR_OBJECT = 39
 ```
 
-[ModularObjectExtensionAbility](../../../../application-models/modular-object-extension-overview.md)：提供应用自身能力开放功能。
+[ModularObjectExtensionAbility](docroot://application-models/modular-object-extension-overview.md)：提供应用自身能力开放功能。
 
 **起始版本：** 26.0.0
 
@@ -572,7 +572,7 @@ MODULAR_OBJECT = 39
 UNSPECIFIED = 255
 ```
 
-不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](arkts-ability-bundlemanager-queryextensionabilityinfo-f-sys.md#queryextensionabilityinfo-2)可以查询所有类型的ExtensionAbility<!--DelEnd-->。
+不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](arkts-ability-bundlemanager-queryextensionabilityinfo-f-sys.md#queryextensionabilityinfo-1)可以查询所有类型的ExtensionAbility<!--DelEnd-->。
 
 **起始版本：** 9
 

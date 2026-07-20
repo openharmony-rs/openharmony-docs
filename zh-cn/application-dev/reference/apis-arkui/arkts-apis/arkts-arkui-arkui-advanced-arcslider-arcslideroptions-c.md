@@ -4,6 +4,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-declare class ArcSliderOptions--><!--Device-unnamed-declare class ArcSliderOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -14,6 +16,7 @@
 import { ArcSliderLayoutOptions, ArcSliderValueOptionsConstructorOptions, ArcSliderValueOptions, ArcSliderStyleOptionsConstructorOptions, ArcSlider, ArcSliderLayoutOptionsConstructorOptions, ArcSliderOptions, ArcSliderStyleOptions, ArcSliderPosition, ArcSliderOptionsConstructorOptions } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

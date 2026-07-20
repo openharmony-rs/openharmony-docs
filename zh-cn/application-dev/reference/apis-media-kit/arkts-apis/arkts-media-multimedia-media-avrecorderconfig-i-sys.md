@@ -24,7 +24,7 @@ metaSourceTypes?: Array<MetaSourceType>
 
 元数据源类型，详见MetaSourceType。
 
-**类型：** Array<MetaSourceType>
+**类型：** Array&lt;MetaSourceType&gt;
 
 **起始版本：** 12
 

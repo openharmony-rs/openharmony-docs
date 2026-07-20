@@ -14,6 +14,7 @@ UIExtension窗口代理。
 import { uiExtension } from '@kit.ArkUI';
 ```
 
+<a id="createsubwindowwithoptions"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -43,7 +44,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<window.Window> | Promise used to return the subwindow created. |
+| Promise&lt;window.Window&gt; | Promise used to return the subwindow created. |
 
 **错误码：**
 
@@ -102,6 +103,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="createsubwindowwithoptions-1"></a>
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -133,7 +135,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<window.Window> | Promise used to return the subwindow. |
+| Promise&lt;window.Window&gt; | Promise used to return the subwindow. |
 
 **错误码：**
 
@@ -191,6 +193,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="getwindowavoidarea"></a>
 ## getWindowAvoidArea
 
 ```TypeScript
@@ -245,6 +248,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="occupyevents"></a>
 ## occupyEvents
 
 ```TypeScript
@@ -273,7 +277,7 @@ occupyEvents(eventFlags: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -311,6 +315,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="off"></a>
 ## off('avoidAreaChange')
 
 ```TypeScript
@@ -334,7 +339,7 @@ off(type: 'avoidAreaChange', callback?: Callback<AvoidAreaInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'avoidAreaChange' | 是 | 注销的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<AvoidAreaInfo> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;AvoidAreaInfo&gt; | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
 
 **错误码：**
 
@@ -359,6 +364,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="off-1"></a>
 ## off('windowSizeChange')
 
 ```TypeScript
@@ -382,7 +388,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeChange' | 是 | 注销的事件类型，固定值：'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<window.Size> | 否 | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;window.Size&gt; | 否 | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
 
 **错误码：**
 
@@ -407,6 +413,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="off-2"></a>
 ## off('rectChange')
 
 ```TypeScript
@@ -430,7 +437,7 @@ off(type: 'rectChange', callback?: Callback<RectChangeOptions>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'rectChange' | 是 | 监听事件，固定为'rectChange'，即组件（EmbeddedComponent或UIExtensionComponent）矩形变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<RectChangeOptions> | 否 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有组件（EmbeddedComponent或UIExtensionComponent）矩形变化的监听。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;RectChangeOptions&gt; | 否 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有组件（EmbeddedComponent或UIExtensionComponent）矩形变化的监听。 |
 
 **错误码：**
 
@@ -456,6 +463,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="on"></a>
 ## on('avoidAreaChange')
 
 ```TypeScript
@@ -479,7 +487,7 @@ on(type: 'avoidAreaChange', callback: Callback<AvoidAreaInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'avoidAreaChange' | 是 | 监听的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<AvoidAreaInfo> | 是 | 回调函数：入参用于接收当前避让区的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;AvoidAreaInfo&gt; | 是 | 回调函数：入参用于接收当前避让区的信息。 |
 
 **错误码：**
 
@@ -507,6 +515,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="on-1"></a>
 ## on('windowSizeChange')
 
 ```TypeScript
@@ -530,7 +539,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'windowSizeChange' | 是 | 监听的事件类型，固定为'windowSizeChange'，即组件（EmbeddedComponent或UIExtensionComponent）尺寸变化事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<window.Size> | 是 | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;window.Size&gt; | 是 | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
 
 **错误码：**
 
@@ -558,6 +567,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ```
 
+<a id="on-2"></a>
 ## on('rectChange')
 
 ```TypeScript
@@ -582,7 +592,7 @@ on(type: 'rectChange', reasons: number, callback: Callback<RectChangeOptions>): 
 | --- | --- | --- | --- |
 | type | 'rectChange' | 是 | 监听事件，固定为'rectChange'，即组件（EmbeddedComponent或UIExtensionComponent）矩形变化事件。 |
 | reasons | number | 是 | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](arkts-arkui-uiextension-rectchangereason-e.md)枚举值。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<RectChangeOptions> | 是 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;RectChangeOptions&gt; | 是 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。 |
 
 **错误码：**
 
@@ -619,7 +629,7 @@ properties: WindowProxyProperties
 
 组件（EmbeddedComponent或UIExtensionComponent）的信息。
 
-**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)阶段同步获取该值，建议在收到[on('windowSizeChange')](arkts-arkui-uiextension-windowproxy-i.md#on-2)回调之后获取。
+**约束：** 由于架构约束，不建议在[onSessionCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)阶段同步获取该值，建议在收到[on('windowSizeChange')](@ohos.arkui.uiExtension:uiExtension.WindowProxy.on(type: 'windowSizeChange', callback: Callback<window.Size>))回调之后获取。
 
 **类型：** WindowProxyProperties
 

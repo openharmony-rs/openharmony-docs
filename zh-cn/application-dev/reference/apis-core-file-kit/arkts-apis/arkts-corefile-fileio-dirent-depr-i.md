@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
+<a id="isblockdevice"></a>
 ## isBlockDevice
 
 ```TypeScript
@@ -44,6 +45,7 @@ let isBLockDevice = dir.readSync().isBlockDevice();
 
 ```
 
+<a id="ischaracterdevice"></a>
 ## isCharacterDevice
 
 ```TypeScript
@@ -76,6 +78,7 @@ let isCharacterDevice = dir.readSync().isCharacterDevice();
 
 ```
 
+<a id="isdirectory"></a>
 ## isDirectory
 
 ```TypeScript
@@ -108,6 +111,7 @@ let isDirectory = dir.readSync().isDirectory();
 
 ```
 
+<a id="isfifo"></a>
 ## isFIFO
 
 ```TypeScript
@@ -140,6 +144,7 @@ let isFIFO = dir.readSync().isFIFO();
 
 ```
 
+<a id="isfile"></a>
 ## isFile
 
 ```TypeScript
@@ -172,6 +177,7 @@ let isFile = dir.readSync().isFile();
 
 ```
 
+<a id="issocket"></a>
 ## isSocket
 
 ```TypeScript
@@ -204,6 +210,7 @@ let isSocket = dir.readSync().isSocket();
 
 ```
 
+<a id="issymboliclink"></a>
 ## isSymbolicLink
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { curves } from '@kit.ArkUI';
 ```
 
+<a id="initcurve"></a>
 ## initCurve
 
 ```TypeScript
@@ -26,11 +27,11 @@ function initCurve(curve?: Curve): ICurve
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| curve | [Curve](arkts-arkui-enums-curve-e.md) | 否 | 曲线类型。<br/>默认值：Curve.Linear |
+| curve | [Curve](arkts-arkui-curve-e.md) | 否 | 曲线类型。<br/>默认值：Curve.Linear |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ICurve](../arkts-components/arkts-arkui-common-icurve-i.md) | 曲线的插值对象。 |
+| [ICurve](../arkts-components/arkts-arkui-icurve-i.md) | 曲线的插值对象。 |
 

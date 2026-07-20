@@ -20,43 +20,43 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [acceptConnect](arkts-distributedservice-abilityconnectionmanager-acceptconnect-f.md#acceptconnect-1) | 设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。使用Promise异步回调。 |
-| [connect](arkts-distributedservice-abilityconnectionmanager-connect-f.md#connect-1) | 创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。 |
-| [createAbilityConnectionSession](arkts-distributedservice-abilityconnectionmanager-createabilityconnectionsession-f.md#createabilityconnectionsession-1) | 创建应用间的协同会话。 |
-| [destroyAbilityConnectionSession](arkts-distributedservice-abilityconnectionmanager-destroyabilityconnectionsession-f.md#destroyabilityconnectionsession-1) | 销毁应用间的协同会话。 |
-| [disconnect](arkts-distributedservice-abilityconnectionmanager-disconnect-f.md#disconnect-1) | 当协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。 |
-| [getPeerInfoById](arkts-distributedservice-abilityconnectionmanager-getpeerinfobyid-f.md#getpeerinfobyid-1) | 获取指定会话中对端应用信息。 |
-| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-1) | 取消connect事件的回调监听。 |
-| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-2) | 取消disconnect事件的回调监听。 |
-| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-3) | 取消receiveMessage事件的回调监听。 |
-| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-4) | 取消receiveData事件的回调监听。 |
-| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-1) | 注册connect事件的回调监听。使用callback异步回调。 |
-| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-2) | 注册disconnect事件的回调监听。 |
-| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-3) | 注册receiveMessage事件的回调监听。 |
-| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-4) | 注册receiveData事件的回调监听。 |
-| [reject](arkts-distributedservice-abilityconnectionmanager-reject-f.md#reject-1) | 在跨端应用协同过程中，在拒绝对端的连接请求后，向对端发送拒绝原因。 |
-| [sendData](arkts-distributedservice-abilityconnectionmanager-senddata-f.md#senddata-1) | 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../../../arkts-utils/arraybuffer-object.md)字节流。 |
-| [sendMessage](arkts-distributedservice-abilityconnectionmanager-sendmessage-f.md#sendmessage-1) | 应用连接成功后，设备A或设备B可向对端设备发送文本信息。 |
+| [acceptConnect](arkts-distributedservice-abilityconnectionmanager-acceptconnect-f.md#acceptconnect) | 设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。使用Promise异步回调。 |
+| [connect](arkts-distributedservice-abilityconnectionmanager-connect-f.md#connect) | 创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。 |
+| [createAbilityConnectionSession](arkts-distributedservice-abilityconnectionmanager-createabilityconnectionsession-f.md#createabilityconnectionsession) | 创建应用间的协同会话。 |
+| [destroyAbilityConnectionSession](arkts-distributedservice-abilityconnectionmanager-destroyabilityconnectionsession-f.md#destroyabilityconnectionsession) | 销毁应用间的协同会话。 |
+| [disconnect](arkts-distributedservice-abilityconnectionmanager-disconnect-f.md#disconnect) | 当协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。 |
+| [getPeerInfoById](arkts-distributedservice-abilityconnectionmanager-getpeerinfobyid-f.md#getpeerinfobyid) | 获取指定会话中对端应用信息。 |
+| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off) | 取消connect事件的回调监听。 |
+| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-1) | 取消disconnect事件的回调监听。 |
+| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-2) | 取消receiveMessage事件的回调监听。 |
+| [off](arkts-distributedservice-abilityconnectionmanager-off-f.md#off-3) | 取消receiveData事件的回调监听。 |
+| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on) | 注册connect事件的回调监听。使用callback异步回调。 |
+| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-1) | 注册disconnect事件的回调监听。 |
+| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-2) | 注册receiveMessage事件的回调监听。 |
+| [on](arkts-distributedservice-abilityconnectionmanager-on-f.md#on-3) | 注册receiveData事件的回调监听。 |
+| [reject](arkts-distributedservice-abilityconnectionmanager-reject-f.md#reject) | 在跨端应用协同过程中，在拒绝对端的连接请求后，向对端发送拒绝原因。 |
+| [sendData](arkts-distributedservice-abilityconnectionmanager-senddata-f.md#senddata) | 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](docroot://arkts-utils/arraybuffer-object.md)字节流。 |
+| [sendMessage](arkts-distributedservice-abilityconnectionmanager-sendmessage-f.md#sendmessage) | 应用连接成功后，设备A或设备B可向对端设备发送文本信息。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [createStream](arkts-distributedservice-abilityconnectionmanager-createstream-f-sys.md#createstream-1) | Creating a Stream. |
-| [destroyStream](arkts-distributedservice-abilityconnectionmanager-destroystream-f-sys.md#destroystream-1) | Destroy the Stream. |
-| [getSurfaceId](arkts-distributedservice-abilityconnectionmanager-getsurfaceid-f-sys.md#getsurfaceid-1) | Obtains the transmission surface. |
-| [off](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#off-5) | Unregisters receiveImage event. |
+| [createStream](arkts-distributedservice-abilityconnectionmanager-createstream-f-sys.md#createstream) | Creating a Stream. |
+| [destroyStream](arkts-distributedservice-abilityconnectionmanager-destroystream-f-sys.md#destroystream) | Destroy the Stream. |
+| [getSurfaceId](arkts-distributedservice-abilityconnectionmanager-getsurfaceid-f-sys.md#getsurfaceid) | Obtains the transmission surface. |
+| [off](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#off-4) | Unregisters receiveImage event. |
+| [off](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#off-5) | Unregisters collaborateEvent event. |
 | [off](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#off-6) | Unregisters collaborateEvent event. |
-| [off](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#off-7) | Unregisters collaborateEvent event. |
-| [on](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#on-5) | Registers receiveImage event. |
+| [on](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#on-4) | Registers receiveImage event. |
+| [on](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#on-5) | Registers collaborateEvent event. |
 | [on](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#on-6) | Registers collaborateEvent event. |
-| [on](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#on-7) | Registers collaborateEvent event. |
-| [sendImage](arkts-distributedservice-abilityconnectionmanager-sendimage-f-sys.md#sendimage-1) | Send image data. |
-| [setSurfaceId](arkts-distributedservice-abilityconnectionmanager-setsurfaceid-f-sys.md#setsurfaceid-1) | Sets the transmission surface. |
-| [startStream](arkts-distributedservice-abilityconnectionmanager-startstream-f-sys.md#startstream-1) | Start Streaming |
-| [stopStream](arkts-distributedservice-abilityconnectionmanager-stopstream-f-sys.md#stopstream-1) | Stop Streaming |
-| [updateSurfaceParam](arkts-distributedservice-abilityconnectionmanager-updatesurfaceparam-f-sys.md#updatesurfaceparam-1) | Update surface parameters. |
+| [sendImage](arkts-distributedservice-abilityconnectionmanager-sendimage-f-sys.md#sendimage) | Send image data. |
+| [setSurfaceId](arkts-distributedservice-abilityconnectionmanager-setsurfaceid-f-sys.md#setsurfaceid) | Sets the transmission surface. |
+| [startStream](arkts-distributedservice-abilityconnectionmanager-startstream-f-sys.md#startstream) | Start Streaming |
+| [stopStream](arkts-distributedservice-abilityconnectionmanager-stopstream-f-sys.md#stopstream) | Stop Streaming |
+| [updateSurfaceParam](arkts-distributedservice-abilityconnectionmanager-updatesurfaceparam-f-sys.md#updatesurfaceparam) | Update surface parameters. |
 <!--DelEnd-->
 
 ### 接口

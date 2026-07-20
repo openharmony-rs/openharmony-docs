@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getactivenotificationcount"></a>
 ## getActiveNotificationCount
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取当前应用未删除的通知数成功，err为undefined，data为当前应用未删除的通知数，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取当前应用未删除的通知数成功，err为undefined，data为当前应用未删除的通知数，否则为错误对象。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ notificationManager.getActiveNotificationCount(getActiveNotificationCountCallbac
 ```
 
 
+<a id="getactivenotificationcount-1"></a>
 ## getActiveNotificationCount
 
 ```TypeScript
@@ -71,7 +73,7 @@ function getActiveNotificationCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回当前应用未删除通知数。 |
+| Promise&lt;number&gt; | Promise对象，返回当前应用未删除通知数。 |
 
 **错误码：**
 

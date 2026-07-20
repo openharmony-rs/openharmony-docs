@@ -1,5 +1,6 @@
 # updateConfiguration（系统接口）
 
+<a id="updateconfiguration"></a>
 ## updateConfiguration
 
 ```TypeScript
@@ -26,10 +27,11 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-common-configuration-i.md) | 是 | 新的配置项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当通过修改配置来更新配置成功，err为undefined，否则为错误对象。 |
+| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 新的配置项。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当通过修改配置来更新配置成功，err为undefined，否则为错误对象。 |
 
 
+<a id="updateconfiguration-1"></a>
 ## updateConfiguration
 
 ```TypeScript
@@ -56,11 +58,11 @@ function updateConfiguration(config: Configuration): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-common-configuration-i.md) | 是 | 新的配置项。 |
+| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 新的配置项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 

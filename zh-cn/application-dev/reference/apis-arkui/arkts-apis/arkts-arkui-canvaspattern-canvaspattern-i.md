@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="settransform"></a>
 ## setTransform
 
 ```TypeScript

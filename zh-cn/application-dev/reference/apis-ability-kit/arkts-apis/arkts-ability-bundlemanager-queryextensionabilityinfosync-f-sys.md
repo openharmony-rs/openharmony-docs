@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryextensionabilityinfosync"></a>
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -42,7 +43,7 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Extensi
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExtensionAbilityInfo> | Array&lt;ExtensionAbilityInfo&gt;信息。 |
+| Array&lt;ExtensionAbilityInfo&gt; | Array<ExtensionAbilityInfo>信息。 |
 
 **错误码：**
 
@@ -108,6 +109,7 @@ try {
 ```
 
 
+<a id="queryextensionabilityinfosync-1"></a>
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -144,7 +146,7 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExtensionAbilityInfo> | 同步返回Array&lt;ExtensionAbilityInfo&gt;。 |
+| Array&lt;ExtensionAbilityInfo&gt; | 同步返回Array<ExtensionAbilityInfo>。 |
 
 **错误码：**
 
@@ -210,6 +212,7 @@ try {
 ```
 
 
+<a id="queryextensionabilityinfosync-2"></a>
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -245,7 +248,7 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ExtensionAbilityInfo> | 同步返回Array&lt;ExtensionAbilityInfo&gt;。 |
+| Array&lt;ExtensionAbilityInfo&gt; | 同步返回Array<ExtensionAbilityInfo>。 |
 
 **错误码：**
 

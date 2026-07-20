@@ -14,6 +14,7 @@
 import { ArcSwiperAttribute, ArcSwiper, ArcDirection, ArcSwiperController, ArcDotIndicator } from '@kit.ArkUI';
 ```
 
+<a id="arcdirection"></a>
 ## arcDirection
 
 ```TypeScript
@@ -34,7 +35,7 @@ arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| direction | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ArcDirection> | 是 | 设置弧形指示器的方向。<br/>默认值：ArcDirection.SIX_CLOCK_DIRECTION，6点钟方向。 |
+| direction | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ArcDirection&gt; | 是 | 设置弧形指示器的方向。<br/>默认值：ArcDirection.SIX_CLOCK_DIRECTION，6点钟方向。 |
 
 **返回值：**
 
@@ -42,6 +43,7 @@ arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
+<a id="backgroundcolor"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -62,7 +64,7 @@ backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ResourceColor> | 是 | 设置弧形指示器被长按时，弧形指示器的颜色。<br/>默认值：'#FF404040' |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ResourceColor&gt; | 是 | 设置弧形指示器被长按时，弧形指示器的颜色。<br/>默认值：'#FF404040' |
 
 **返回值：**
 
@@ -70,6 +72,7 @@ backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -86,6 +89,7 @@ ArcDotIndicator的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+<a id="itemcolor"></a>
 ## itemColor
 
 ```TypeScript
@@ -106,7 +110,7 @@ itemColor(color: Optional<ResourceColor>): ArcDotIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ResourceColor> | 是 | 设置弧形指示器中，未选中导航点的颜色。<br/>默认值：'#A9FFFFFF' |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ResourceColor&gt; | 是 | 设置弧形指示器中，未选中导航点的颜色。<br/>默认值：'#A9FFFFFF' |
 
 **返回值：**
 
@@ -114,6 +118,7 @@ itemColor(color: Optional<ResourceColor>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
+<a id="maskcolor"></a>
 ## maskColor
 
 ```TypeScript
@@ -134,7 +139,7 @@ maskColor(color: Optional<LinearGradient>): ArcDotIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<LinearGradient> | 是 | 设置弧形指示器的遮罩渐变色。<br/>起始颜色默认值：'#00000000'<br/>结束颜色默认值：'#FF000000' |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;LinearGradient&gt; | 是 | 设置弧形指示器的遮罩渐变色。<br/>起始颜色默认值：'#00000000'<br/>结束颜色默认值：'#FF000000' |
 
 **返回值：**
 
@@ -142,6 +147,7 @@ maskColor(color: Optional<LinearGradient>): ArcDotIndicator
 | --- | --- |
 | [ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
 
+<a id="selecteditemcolor"></a>
 ## selectedItemColor
 
 ```TypeScript
@@ -162,7 +168,7 @@ selectedItemColor(color: Optional<ResourceColor>): ArcDotIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)<ResourceColor> | 是 | 设置弧形指示器中，选中导航点的颜色。<br/>默认值：'#FF5EA1FF' |
+| color | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;ResourceColor&gt; | 是 | 设置弧形指示器中，选中导航点的颜色。<br/>默认值：'#FF5EA1FF' |
 
 **返回值：**
 

@@ -30,7 +30,7 @@ TextTimer(options?: TextTimerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | TextTimerOptions | 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。 |
+| options | [TextTimerOptions](arkts-arkui-texttimeroptions-i.md) | 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。  |
 
 ## 汇总
 

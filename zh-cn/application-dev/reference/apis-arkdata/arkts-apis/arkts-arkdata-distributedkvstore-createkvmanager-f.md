@@ -6,6 +6,7 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="createkvmanager"></a>
 ## createKVManager
 
 ```TypeScript

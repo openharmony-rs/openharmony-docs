@@ -64,7 +64,7 @@ ListItemGroup(options?: ListItemGroupOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ListItemGroupOptions | 否 | 列表item分组组件参数。 |
+| options | [ListItemGroupOptions](arkts-arkui-listitemgroupoptions-i.md) | 否 | 列表item分组组件参数。  |
 
 ## 汇总
 

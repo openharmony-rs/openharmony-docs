@@ -56,7 +56,7 @@ parameter?: LoopMode | string | number
 
 命令对应的参数。
 
-**类型：** LoopMode | string | number
+**类型：** LoopMode \| string \| number
 
 **起始版本：** 10
 

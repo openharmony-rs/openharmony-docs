@@ -22,7 +22,7 @@ onRequestContinued?: () => void
 
 通知请求被继续处理。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 9
 
@@ -38,7 +38,7 @@ onRequestRedirected: (request: Want) => void
 
 通知请求被跳转。
 
-**类型：** (request: Want) => void
+**类型：** (request: Want) =&gt; void
 
 **起始版本：** 9
 
@@ -54,7 +54,7 @@ onResult: (code: number, result?: AuthResult) => void
 
 通知请求结果。
 
-**类型：** (code: number, result?: AuthResult) => void
+**类型：** (code: number, result?: AuthResult) =&gt; void
 
 **起始版本：** 9
 

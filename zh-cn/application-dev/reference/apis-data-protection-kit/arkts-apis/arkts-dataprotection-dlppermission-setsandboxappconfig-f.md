@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="setsandboxappconfig"></a>
 ## setSandboxAppConfig
 
 ```TypeScript
@@ -26,13 +27,13 @@ function setSandboxAppConfig(configInfo: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2&lt;sup&gt;22&lt;/sup&gt;-1字节，超出此范围抛出错误码401。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

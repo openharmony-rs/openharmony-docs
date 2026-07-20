@@ -6,7 +6,7 @@
 
 比如，可以使用设备协同数据库实现设备间的图片分享，可以查看其他设备的图片，但无法修改和删除其他设备的图片。
 
-在调用DeviceKVStore的方法前，需要先通过[getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore-1)构建一个DeviceKVStore实例。
+在调用DeviceKVStore的方法前，需要先通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))构建一个DeviceKVStore实例。
 
 **继承/实现关系：** DeviceKVStore extends [SingleKVStore](arkts-arkdata-distributedkvstore-singlekvstore-i.md)
 
@@ -22,6 +22,7 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="getresultset"></a>
 ## getResultSet
 
 ```TypeScript
@@ -45,7 +46,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件，不允许为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KVStoreResultSet> | 是 | Promise对象。返回KVStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KVStoreResultSet&gt; | 是 | Promise对象。返回KVStoreResultSet对象。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<a id="getresultset-1"></a>
 ## getResultSet
 
 ```TypeScript
@@ -85,7 +87,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KVStoreResultSet> | Promise对象。返回KVStoreResultSet对象。 |
+| Promise&lt;KVStoreResultSet&gt; | Promise对象。返回KVStoreResultSet对象。 |
 
 **错误码：**
 
@@ -97,6 +99,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<a id="getresultset-2"></a>
 ## getResultSet
 
 ```TypeScript
@@ -121,7 +124,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | --- | --- | --- | --- |
 | deviceId | string | 是 | Indicates the ID of the device to which the results belong. |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件，不允许为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KVStoreResultSet> | 是 | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KVStoreResultSet&gt; | 是 | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**
 
@@ -133,6 +136,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
 
+<a id="getresultset-3"></a>
 ## getResultSet
 
 ```TypeScript
@@ -162,7 +166,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KVStoreResultSet> | Promise对象。返回KVStoreResultSet对象。 |
+| Promise&lt;KVStoreResultSet&gt; | Promise对象。返回KVStoreResultSet对象。 |
 
 **错误码：**
 

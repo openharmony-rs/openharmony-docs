@@ -14,6 +14,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="capacity"></a>
 ## capacity
 
 ```TypeScript
@@ -57,6 +58,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="flip"></a>
 ## flip
 
 ```TypeScript
@@ -101,6 +103,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="getlimit"></a>
 ## getLimit
 
 ```TypeScript
@@ -144,6 +147,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="getposition"></a>
 ## getPosition
 
 ```TypeScript
@@ -187,6 +191,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="msync"></a>
 ## msync
 
 ```TypeScript
@@ -207,7 +212,7 @@ msync(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象。无返回值。 |
+| Promise&lt;void&gt; | - Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -243,6 +248,7 @@ mapping.msync().then(() => {
 
 ```
 
+<a id="msync-1"></a>
 ## msync
 
 ```TypeScript
@@ -270,7 +276,7 @@ msync(position: number, length: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象。无返回值。 |
+| Promise&lt;void&gt; | - Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -306,6 +312,7 @@ mapping.msync(50, buffer.byteLength).then(() => {
 
 ```
 
+<a id="msyncsync"></a>
 ## msyncSync
 
 ```TypeScript
@@ -353,6 +360,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="msyncsync-1"></a>
 ## msyncSync
 
 ```TypeScript
@@ -407,6 +415,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -427,7 +436,7 @@ read(buffer: ArrayBuffer, length?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于保存读取到的文件数据的缓冲区。 |
+| buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | length | number | 否 | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
@@ -462,6 +471,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -483,7 +493,7 @@ read(position: number, buffer: ArrayBuffer, length?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | position | number | 是 | 期望读取的起始位置。 |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于保存读取到的文件数据的缓冲区。 |
+| buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | length | number | 否 | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
@@ -518,6 +528,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="remaining"></a>
 ## remaining
 
 ```TypeScript
@@ -564,6 +575,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="setlimit"></a>
 ## setLimit
 
 ```TypeScript
@@ -607,6 +619,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="setposition"></a>
 ## setPosition
 
 ```TypeScript
@@ -650,6 +663,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="unmap"></a>
 ## unmap
 
 ```TypeScript
@@ -670,7 +684,7 @@ unmap(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象。无返回值。 |
+| Promise&lt;void&gt; | - Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -700,6 +714,7 @@ mapping.unmap().then(() => {
 
 ```
 
+<a id="unmapsync"></a>
 ## unmapSync
 
 ```TypeScript
@@ -738,6 +753,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -758,7 +774,7 @@ write(data: ArrayBuffer, length?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 待写入文件的缓冲区数据。 |
+| data | ArrayBuffer | 是 | 待写入文件的缓冲区数据。 |
 | length | number | 否 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
@@ -795,6 +811,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -816,7 +833,7 @@ write(position: number, data: ArrayBuffer, length?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | position | number | 是 | 期望写入的起始位置，单位为Byte。 |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 待写入文件的缓冲区数据。 |
+| data | ArrayBuffer | 是 | 待写入文件的缓冲区数据。 |
 | length | number | 否 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**

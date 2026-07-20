@@ -22,7 +22,7 @@ begin: number
 
 动画插值起点。
 
-**说明:** 会影响[onFrame](../../../../reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。
+**说明:** 会影响[onFrame](docroot://reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。
 
 默认值：0
 
@@ -74,7 +74,7 @@ direction: "normal" | "reverse" | "alternate" | "alternate-reverse"
 
 默认值：'normal'
 
-**类型：** "normal" | "reverse" | "alternate" | "alternate-reverse"
+**类型：** "normal" \| "reverse" \| "alternate" \| "alternate-reverse"
 
 **起始版本：** 6
 
@@ -134,7 +134,7 @@ end: number
 
 动画插值终点。
 
-**说明:** 会影响[onFrame](../../../../reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。
+**说明:** 会影响[onFrame](docroot://reference/apis-arkui/js-apis-animator.md#属性)回调的入参值。
 
 默认值：1
 
@@ -164,7 +164,7 @@ fill: "none" | "forwards" | "backwards" | "both"
 
 'both'：动画将遵循forwards和backwards的规则，从而在两个方向上扩展动画属性。
 
-**类型：** "none" | "forwards" | "backwards" | "both"
+**类型：** "none" \| "forwards" \| "backwards" \| "both"
 
 **起始版本：** 6
 

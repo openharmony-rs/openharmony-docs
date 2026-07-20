@@ -20,6 +20,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getfamilyname"></a>
 ## getFamilyName
 
 ```TypeScript
@@ -40,6 +41,7 @@ getFamilyName(): string
 | --- | --- |
 | string | 返回字体的族名。 |
 
+<a id="isbold"></a>
 ## isBold
 
 ```TypeScript
@@ -60,6 +62,7 @@ isBold(): boolean
 | --- | --- |
 | boolean | 返回当前字体是否加粗。true表示字体加粗，false表示字体未加粗。 |
 
+<a id="isitalic"></a>
 ## isItalic
 
 ```TypeScript
@@ -80,6 +83,7 @@ isItalic(): boolean
 | --- | --- |
 | boolean | 返回当前字体是否是斜体。true表示字体是斜体，false表示字体不是斜体。 |
 
+<a id="makefromcurrent"></a>
 ## makeFromCurrent
 
 ```TypeScript
@@ -106,6 +110,7 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回字体对象（异常情况下会返回空指针）。 |
 
+<a id="makefromfile"></a>
 ## makeFromFile
 
 ```TypeScript
@@ -126,7 +131,7 @@ static makeFromFile(filePath: string): Typeface
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filePath | string | 是 | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考[应用沙箱路径和真实物理路径的对应关系](../../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
+| filePath | string | 是 | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考[应用沙箱路径和真实物理路径的对应关系](docroot://file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
 
 **返回值：**
 
@@ -140,6 +145,7 @@ static makeFromFile(filePath: string): Typeface
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="makefromfilewitharguments"></a>
 ## makeFromFileWithArguments
 
 ```TypeScript
@@ -160,7 +166,7 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filePath | string | 是 | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考[应用沙箱路径和真实物理路径的对应关系](../../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
+| filePath | string | 是 | 表示字体资源存放的路径。应用沙箱路径和真实物理路径的对应关系请参考[应用沙箱路径和真实物理路径的对应关系](docroot://file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)。 |
 | typefaceArguments | [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md) | 是 | 表示字体属性。 |
 
 **返回值：**
@@ -169,6 +175,7 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回字体对象（异常情况下会返回空指针）。 |
 
+<a id="makefromrawfile"></a>
 ## makeFromRawFile
 
 ```TypeScript
@@ -197,6 +204,7 @@ static makeFromRawFile(rawfile: Resource): Typeface
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 返回Typeface对象（异常情况下会返回空指针）。 |
 
+<a id="makefromrawfilewitharguments"></a>
 ## makeFromRawFileWithArguments
 
 ```TypeScript

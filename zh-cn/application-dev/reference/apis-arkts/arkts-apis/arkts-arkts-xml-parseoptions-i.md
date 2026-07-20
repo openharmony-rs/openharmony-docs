@@ -22,7 +22,7 @@ attributeValueCallbackFunction?: (name: string, value: string) => boolean
 
 解析属性和属性值，默认值undefined，表示不解析。
 
-**类型：** (name: string, value: string) => boolean
+**类型：** (name: string, value: string) =&gt; boolean
 
 **起始版本：** 8
 
@@ -94,7 +94,7 @@ tagValueCallbackFunction?: (name: string, value: string) => boolean
 
 解析开始标签、标签值和结束标签，默认值undefined，表示不解析。
 
-**类型：** (name: string, value: string) => boolean
+**类型：** (name: string, value: string) =&gt; boolean
 
 **起始版本：** 8
 
@@ -112,7 +112,7 @@ tokenValueCallbackFunction?: (eventType: EventType, value: ParseInfo) => boolean
 
 解析元素事件类型([EventType](arkts-arkts-xml-eventtype-e.md))和[ParseInfo](arkts-arkts-xml-parseinfo-i.md)属性，默认值undefined，表示不解析。
 
-**类型：** (eventType: EventType, value: ParseInfo) => boolean
+**类型：** (eventType: EventType, value: ParseInfo) =&gt; boolean
 
 **起始版本：** 8
 

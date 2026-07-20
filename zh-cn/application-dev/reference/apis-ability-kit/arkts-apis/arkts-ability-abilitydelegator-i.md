@@ -4,7 +4,7 @@ AbilityDelegator模块可以通过[AbilityMonitor](arkts-ability-abilitymonitor-
 
 > **说明：**  
 >  
-> 本模块接口仅可在[单元测试框架](../../../../application-test/unittest-guidelines.md)中使用。
+> 本模块接口仅可在[单元测试框架](docroot://application-test/unittest-guidelines.md)中使用。
 
 **起始版本：** 9
 
@@ -12,6 +12,7 @@ AbilityDelegator模块可以通过[AbilityMonitor](arkts-ability-abilitymonitor-
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="addabilitymonitor"></a>
 ## addAbilityMonitor
 
 ```TypeScript
@@ -33,7 +34,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityMonitor](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-abilitymonitor-t.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当添加AbilityMonitor实例成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当添加AbilityMonitor实例成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -42,6 +43,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitor failed. |
 
+<a id="addabilitymonitor-1"></a>
 ## addAbilityMonitor
 
 ```TypeScript
@@ -68,7 +70,7 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -77,6 +79,7 @@ addAbilityMonitor(monitor: AbilityMonitor): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitor failed. |
 
+<a id="addabilitymonitorsync"></a>
 ## addAbilityMonitorSync
 
 ```TypeScript
@@ -106,6 +109,7 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitorSync failed. |
 
+<a id="addabilitystagemonitor"></a>
 ## addAbilityStageMonitor
 
 ```TypeScript
@@ -127,7 +131,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当添加一个用于监视指定AbilityStage的生命周期状态更改的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当添加一个用于监视指定AbilityStage的生命周期状态更改的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -136,6 +140,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<voi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitor failed. |
 
+<a id="addabilitystagemonitor-1"></a>
 ## addAbilityStageMonitor
 
 ```TypeScript
@@ -162,7 +167,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -171,6 +176,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitor failed. |
 
+<a id="addabilitystagemonitorsync"></a>
 ## addAbilityStageMonitorSync
 
 ```TypeScript
@@ -200,6 +206,7 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitorSync failed. |
 
+<a id="addinteropabilitymonitorsync"></a>
 ## addInteropAbilityMonitorSync
 
 ```TypeScript
@@ -230,6 +237,7 @@ addInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
 | --- | --- |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling InteropAbilityMonitor failed. |
 
+<a id="doabilitybackground"></a>
 ## doAbilityBackground
 
 ```TypeScript
@@ -251,7 +259,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 指定Ability对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当调度指定Ability生命周期状态到Background状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当调度指定Ability生命周期状态到Background状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -260,6 +268,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityBackground failed. |
 
+<a id="doabilitybackground-1"></a>
 ## doAbilityBackground
 
 ```TypeScript
@@ -286,7 +295,7 @@ doAbilityBackground(ability: UIAbility): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -295,6 +304,7 @@ doAbilityBackground(ability: UIAbility): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityBackground failed. |
 
+<a id="doabilityforeground"></a>
 ## doAbilityForeground
 
 ```TypeScript
@@ -316,7 +326,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 指定Ability对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当调度指定Ability生命周期状态到Foreground状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当调度指定Ability生命周期状态到Foreground状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -325,6 +335,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityForeground failed. |
 
+<a id="doabilityforeground-1"></a>
 ## doAbilityForeground
 
 ```TypeScript
@@ -351,7 +362,7 @@ doAbilityForeground(ability: UIAbility): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -360,6 +371,7 @@ doAbilityForeground(ability: UIAbility): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityForeground failed. |
 
+<a id="executeshellcommand"></a>
 ## executeShellCommand
 
 ```TypeScript
@@ -381,8 +393,9 @@ executeShellCommand(cmd: string, callback: AsyncCallback<ShellCmdResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | cmd | string | 是 | shell命令字符串。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ShellCmdResult> | 是 | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ShellCmdResult&gt; | 是 | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。 |
 
+<a id="executeshellcommand-1"></a>
 ## executeShellCommand
 
 ```TypeScript
@@ -405,8 +418,9 @@ executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback<Sh
 | --- | --- | --- | --- |
 | cmd | string | 是 | shell命令字符串。 |
 | timeoutSecs | number | 是 | 设定命令超时时间，单位秒（s）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ShellCmdResult> | 是 | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ShellCmdResult&gt; | 是 | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。 |
 
+<a id="executeshellcommand-2"></a>
 ## executeShellCommand
 
 ```TypeScript
@@ -434,8 +448,9 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise<ShellCmdResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ShellCmdResult> | Promise对象，返回Shell命令执行结果[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)对象。 |
+| Promise&lt;ShellCmdResult&gt; | Promise对象，返回Shell命令执行结果[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)对象。 |
 
+<a id="finishtest"></a>
 ## finishTest
 
 ```TypeScript
@@ -458,7 +473,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | msg | string | 是 | 日志字符串。 |
 | code | number | 是 | 日志码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当结束测试并打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当结束测试并打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -467,6 +482,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback<void>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling FinishTest failed. |
 
+<a id="finishtest-1"></a>
 ## finishTest
 
 ```TypeScript
@@ -494,7 +510,7 @@ finishTest(msg: string, code: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -503,6 +519,7 @@ finishTest(msg: string, code: number): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling FinishTest failed. |
 
+<a id="getabilitystate"></a>
 ## getAbilityState
 
 ```TypeScript
@@ -537,6 +554,7 @@ getAbilityState(ability: UIAbility): number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
+<a id="getappcontext"></a>
 ## getAppContext
 
 ```TypeScript
@@ -559,6 +577,7 @@ getAppContext(): Context
 | --- | --- |
 | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 应用[Context](arkts-ability-context-context-depr-i.md)。 |
 
+<a id="getcurrenttopability"></a>
 ## getCurrentTopAbility
 
 ```TypeScript
@@ -579,7 +598,7 @@ getCurrentTopAbility(callback: AsyncCallback<UIAbility>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<UIAbility> | 是 | 回调函数。当获取当前应用顶部Ability成功，err为undefined，data为获取到的Ability实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;UIAbility&gt; | 是 | 回调函数。当获取当前应用顶部Ability成功，err为undefined，data为获取到的Ability实例；否则为错误对象。 |
 
 **错误码：**
 
@@ -588,6 +607,7 @@ getCurrentTopAbility(callback: AsyncCallback<UIAbility>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling GetCurrentTopAbility failed. |
 
+<a id="getcurrenttopability-1"></a>
 ## getCurrentTopAbility
 
 ```TypeScript
@@ -608,7 +628,7 @@ getCurrentTopAbility(): Promise<UIAbility>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<UIAbility> | Promise对象，返回前应用顶部Ability。 |
+| Promise&lt;UIAbility&gt; | Promise对象，返回前应用顶部Ability。 |
 
 **错误码：**
 
@@ -616,6 +636,7 @@ getCurrentTopAbility(): Promise<UIAbility>
 | --- | --- |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling GetCurrentTopAbility failed. |
 
+<a id="print"></a>
 ## print
 
 ```TypeScript
@@ -637,8 +658,9 @@ print(msg: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | msg | string | 是 | 日志字符串。字符串最大长度为10000。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当打印日志信息到单元测试终端控制台成功，err为undefined，否则为错误对象。 |
 
+<a id="print-1"></a>
 ## print
 
 ```TypeScript
@@ -665,8 +687,9 @@ print(msg: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+<a id="printsync"></a>
 ## printSync
 
 ```TypeScript
@@ -695,6 +718,7 @@ printSync(msg: string): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
+<a id="removeabilitymonitor"></a>
 ## removeAbilityMonitor
 
 ```TypeScript
@@ -716,7 +740,7 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityMonitor](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-abilitymonitor-t.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当删除已经添加的AbilityMonitor实例成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除已经添加的AbilityMonitor实例成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -725,6 +749,7 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): vo
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitor failed. |
 
+<a id="removeabilitymonitor-1"></a>
 ## removeAbilityMonitor
 
 ```TypeScript
@@ -751,7 +776,7 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -760,6 +785,7 @@ removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitor failed. |
 
+<a id="removeabilitymonitorsync"></a>
 ## removeAbilityMonitorSync
 
 ```TypeScript
@@ -789,6 +815,7 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitorSync failed. |
 
+<a id="removeabilitystagemonitor"></a>
 ## removeAbilityStageMonitor
 
 ```TypeScript
@@ -810,7 +837,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当从应用程序内存中删除指定的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当从应用程序内存中删除指定的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -819,6 +846,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitor failed. |
 
+<a id="removeabilitystagemonitor-1"></a>
 ## removeAbilityStageMonitor
 
 ```TypeScript
@@ -845,7 +873,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -854,6 +882,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitor failed. |
 
+<a id="removeabilitystagemonitorsync"></a>
 ## removeAbilityStageMonitorSync
 
 ```TypeScript
@@ -883,6 +912,7 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitorSync failed. |
 
+<a id="removeinteropabilitymonitorsync"></a>
 ## removeInteropAbilityMonitorSync
 
 ```TypeScript
@@ -913,6 +943,7 @@ removeInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
 | --- | --- |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling removeInteropAbilityMonitorSync failed. |
 
+<a id="setmocklist"></a>
 ## setMockList
 
 ```TypeScript
@@ -933,7 +964,7 @@ setMockList(mockList: Record<string, string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mockList | Record<string, string> | 是 | 模块mock替换关系的键值对象，其中key为待替换的目标路径，value为用于替换的mock实现文件的路径。 |
+| mockList | Record&lt;string, string&gt; | 是 | 模块mock替换关系的键值对象，其中key为待替换的目标路径，value为用于替换的mock实现文件的路径。 |
 
 **错误码：**
 
@@ -942,6 +973,7 @@ setMockList(mockList: Record<string, string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -963,7 +995,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动Ability参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当启动指定Ability成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动指定Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -986,6 +1018,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled.<br>**适用版本：** 10+ |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 
+<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript
@@ -1012,7 +1045,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1035,6 +1068,7 @@ startAbility(want: Want): Promise<void>
 | [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled.<br>**适用版本：** 10+ |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 
+<a id="waitabilitymonitor"></a>
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1056,7 +1090,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityMonitor](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-abilitymonitor-t.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<UIAbility> | 是 | 回调函数。当等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期成功，err为undefined，data为获取到的Ability实例，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;UIAbility&gt; | 是 | 回调函数。当等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期成功，err为undefined，data为获取到的Ability实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -1065,6 +1099,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>):
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
 
+<a id="waitabilitymonitor-1"></a>
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1087,7 +1122,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCall
 | --- | --- | --- | --- |
 | monitor | [AbilityMonitor](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-abilitymonitor-t.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
 | timeout | number | 是 | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<UIAbility> | 是 | 表示指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;UIAbility&gt; | 是 | 表示指定的回调方法。 |
 
 **错误码：**
 
@@ -1096,6 +1131,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCall
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
 
+<a id="waitabilitymonitor-2"></a>
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1123,7 +1159,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<UIAbility> | Promise对象，返回Ability实例。 |
+| Promise&lt;UIAbility&gt; | Promise对象，返回Ability实例。 |
 
 **错误码：**
 
@@ -1132,6 +1168,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
 
+<a id="waitabilitystagemonitor"></a>
 ## waitAbilityStageMonitor
 
 ```TypeScript
@@ -1153,7 +1190,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<Ab
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AbilityStage> | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityStage&gt; | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -1162,6 +1199,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<Ab
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
 
+<a id="waitabilitystagemonitor-1"></a>
 ## waitAbilityStageMonitor
 
 ```TypeScript
@@ -1184,7 +1222,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback:
 | --- | --- | --- | --- |
 | monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
 | timeout | number | 是 | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AbilityStage> | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityStage&gt; | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -1193,6 +1231,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback:
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
 
+<a id="waitabilitystagemonitor-2"></a>
 ## waitAbilityStageMonitor
 
 ```TypeScript
@@ -1220,7 +1259,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AbilityStage> | Promise对象，返回[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象。 |
+| Promise&lt;AbilityStage&gt; | Promise对象，返回[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象。 |
 
 **错误码：**
 

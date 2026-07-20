@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="hassimcardsync"></a>
 ## hasSimCardSync
 
 ```TypeScript

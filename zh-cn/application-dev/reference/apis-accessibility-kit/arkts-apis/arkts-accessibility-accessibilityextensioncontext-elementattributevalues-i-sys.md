@@ -76,7 +76,7 @@ childrenIds?: Array<number>
 
 表示元素的子组件ID。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 26.0.0
 
@@ -136,7 +136,7 @@ customActions?: Array<string>
 
 Indicates the custom actions supported by the component.
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 

@@ -6,6 +6,7 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="setabilityenabled"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -34,9 +35,10 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: Async
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | Ability信息，指示需要设置启用状态的Ability。 |
 | isEnable | boolean | 是 | 指定是否启用应用程序。true表示启用，false禁用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 为返回操作结果而调用的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 为返回操作结果而调用的回调。 |
 
 
+<a id="setabilityenabled-1"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -70,5 +72,5 @@ function setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 

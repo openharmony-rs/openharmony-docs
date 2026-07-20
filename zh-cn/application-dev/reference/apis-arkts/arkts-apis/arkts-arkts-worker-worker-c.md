@@ -20,6 +20,7 @@ Worker类包含所有Worker功能。
 import { MessageEvents, PostMessageOptions, MessageEvent, Priority, WorkerEventTarget, ThreadWorkerPriority, ThreadWorkerGlobalScope, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, WorkerOptions, EventTarget, WorkerEventListener } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -58,6 +59,7 @@ const workerInstance = new worker.Worker('entry/ets/workers/worker.ets', {name: 
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -95,6 +97,7 @@ workerInstance.off("alert");
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -133,6 +136,7 @@ workerInstance.on("alert", () => {
 
 ```
 
+<a id="once"></a>
 ## once
 
 ```TypeScript
@@ -171,6 +175,7 @@ workerInstance.once("alert", () => {
 
 ```
 
+<a id="postmessage"></a>
 ## postMessage
 
 ```TypeScript
@@ -194,7 +199,7 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | message | Object | 是 | 发送至Worker的数据。 |
-| transfer | [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md)[] | 是 | transfer 可转移的ArrayBuffer实例对象。transferList数组不可包含null。 |
+| transfer | ArrayBuffer[] | 是 | transfer 可转移的ArrayBuffer实例对象。transferList数组不可包含null。 |
 
 **示例：**
 
@@ -209,6 +214,7 @@ workerInstance.postMessage(buffer, [buffer]);
 
 ```
 
+<a id="postmessage-1"></a>
 ## postMessage
 
 ```TypeScript
@@ -249,6 +255,7 @@ workerInstance.postMessage(buffer, [buffer]);
 
 ```
 
+<a id="terminate"></a>
 ## terminate
 
 ```TypeScript
@@ -286,7 +293,7 @@ onerror?: (err: ErrorEvent) => void
 
 onerror属性用于指定Worker在执行过程中发生异常时被调用的事件处理程序，该事件处理程序在宿主线程中执行。
 
-**类型：** (err: ErrorEvent) => void
+**类型：** (err: ErrorEvent) =&gt; void
 
 **起始版本：** 7
 
@@ -306,7 +313,7 @@ onexit?: (code: number) => void
 
 当Worker销毁时被调用的事件处理程序，处理程序在宿主线程中执行。回调函数中code类型为number，异常退出为1，正常退出为0。默认值为undefined。
 
-**类型：** (code: number) => void
+**类型：** (code: number) =&gt; void
 
 **起始版本：** 7
 
@@ -326,7 +333,7 @@ onmessage?: (event: MessageEvent) => void
 
 onmessage属性用于指定当宿主线程接收到来自其创建的Worker通过parentPort.postMessage发送的消息时被调用的事件处理程序，该事件处理程序在宿主线程中执行。
 
-**类型：** (event: MessageEvent) => void
+**类型：** (event: MessageEvent) =&gt; void
 
 **起始版本：** 7
 
@@ -346,7 +353,7 @@ onmessageerror?: (event: MessageEvent) => void
 
 onmessage属性用于指定当Worker收到一条无法被序列化的消息时被调用的事件处理程序，该事件处理程序在宿主线程中执行。
 
-**类型：** (event: MessageEvent) => void
+**类型：** (event: MessageEvent) =&gt; void
 
 **起始版本：** 7
 

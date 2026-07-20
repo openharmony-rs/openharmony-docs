@@ -6,6 +6,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createmediasourcewithstreamdata"></a>
 ## createMediaSourceWithStreamData
 
 ```TypeScript
@@ -26,7 +27,7 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| streams | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<MediaStream> | 是 | 可设置MediaStream数组，支持的流媒体格式：HTTP-FLV。 |
+| streams | Array&lt;MediaStream&gt; | 是 | 可设置MediaStream数组，支持的流媒体格式：HTTP-FLV。 |
 
 **返回值：**
 

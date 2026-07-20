@@ -110,7 +110,7 @@ readonly vibrationValues?: Array<number>
 
 通知振动。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 7
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="cleanallbundlecache"></a>
 ## cleanAllBundleCache
 
 ```TypeScript
@@ -28,7 +29,7 @@ function cleanAllBundleCache(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

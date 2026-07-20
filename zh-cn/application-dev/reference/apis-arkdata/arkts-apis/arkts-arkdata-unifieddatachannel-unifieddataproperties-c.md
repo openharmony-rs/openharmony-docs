@@ -22,7 +22,7 @@ extras?: Record<string, object>
 
 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record<string, object>
+**类型：** Record&lt;string, object&gt;
 
 **起始版本：** 12
 
@@ -122,7 +122,7 @@ uriAuthorizationPolicies?: Array<UriPermission>
 
 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
-**类型：** Array<UriPermission>
+**类型：** Array&lt;UriPermission&gt;
 
 **起始版本：** 26.0.0
 

@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="divider"></a>
 ## divider
 
 ```TypeScript
@@ -34,8 +35,9 @@ divider(value: ColumnSplitDividerStyle | null)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ColumnSplitDividerStyle \| null | 是 | 分割线的margin，即设置分割线与子组件的距离。<br/>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br />非法值：按默认值处理。 |
+| value | [ColumnSplitDividerStyle](arkts-arkui-columnsplitdividerstyle-i.md) \| null | 是 | 分割线的margin，即设置分割线与子组件的距离。<br/>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br />非法值：按默认值处理。 |
 
+<a id="resizeable"></a>
 ## resizeable
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="switchinputmethod"></a>
 ## switchInputMethod
 
 ```TypeScript
@@ -35,7 +36,7 @@ function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

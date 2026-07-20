@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallbundleinstallinfo"></a>
 ## getAllBundleInstallInfo
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Record<string, Object>>> | The install information. |
+| Promise&lt;Array&lt;Record&lt;string, Object&gt;&gt;&gt; | The install information. |
 
 **错误码：**
 

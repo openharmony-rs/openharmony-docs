@@ -2,7 +2,7 @@
 
 音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md#createavrecorder-1)接口构建一个AVRecorder实例。
 
-音视频录制demo可参考：[音频录制开发指导](../../../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../../../media/media/video-recording.md)。
+音视频录制demo可参考：[音频录制开发指导](docroot://media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](docroot://media/media/video-recording.md)。
 
 > **说明：**  
 >  
@@ -22,6 +22,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="getinputmetasurface"></a>
 ## getInputMetaSurface
 
 ```TypeScript
@@ -48,7 +49,7 @@ getInputMetaSurface(type: MetaSourceType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回输入surface id字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回输入surface id字符串。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ getInputMetaSurface(type: MetaSourceType): Promise<string>
 | [5400103](../errorcode-media.md#5400103-出现io错误) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 
+<a id="iswatermarksupported"></a>
 ## isWatermarkSupported
 
 ```TypeScript
@@ -82,7 +84,7 @@ isWatermarkSupported(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回查询结果。true表示设备支持硬件数字水印，false表示不支持。 |
+| Promise&lt;boolean&gt; | Promise对象，返回查询结果。true表示设备支持硬件数字水印，false表示不支持。 |
 
 **示例：**
 
@@ -97,6 +99,7 @@ avRecorder.isWatermarkSupported().then((isWatermarkSupported: boolean) => {
 
 ```
 
+<a id="setmetadata"></a>
 ## setMetadata
 
 ```TypeScript
@@ -119,7 +122,7 @@ setMetadata(metadata: Record<string, string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| metadata | Record<string, string> | 是 | 录制的元数据信息。<br>格式为字符串键值对，其中，键需要以`com.openharmony.`开头，且值的长度不能超过256个字节。 |
+| metadata | Record&lt;string, string&gt; | 是 | 录制的元数据信息。<br>格式为字符串键值对，其中，键需要以`com.openharmony.`开头，且值的长度不能超过256个字节。 |
 
 **错误码：**
 
@@ -130,6 +133,7 @@ setMetadata(metadata: Record<string, string>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed.<br>**适用版本：** 26.0.0+ |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | Parameter check failed.<br>**适用版本：** 26.0.0+ |
 
+<a id="setwatermark"></a>
 ## setWatermark
 
 ```TypeScript
@@ -159,7 +163,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

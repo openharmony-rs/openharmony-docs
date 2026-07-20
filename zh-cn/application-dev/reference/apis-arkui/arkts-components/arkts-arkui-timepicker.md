@@ -33,7 +33,7 @@ TimePicker(options?: TimePickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | TimePickerOptions | 否 | 配置时间选择组件的参数。 |
+| options | [TimePickerOptions](arkts-arkui-timepickeroptions-i.md) | 否 | 配置时间选择组件的参数。  |
 
 ## 汇总
 

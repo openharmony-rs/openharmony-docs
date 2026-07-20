@@ -16,6 +16,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="off"></a>
 ## off('command')
 
 ```TypeScript
@@ -69,6 +70,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('command')
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="turnonmobiledata"></a>
 ## turnOnMobileData
 
 ```TypeScript

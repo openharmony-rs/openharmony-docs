@@ -1,5 +1,6 @@
 # removeStorageFromCacheSync
 
+<a id="removestoragefromcachesync"></a>
 ## removeStorageFromCacheSync
 
 ```TypeScript

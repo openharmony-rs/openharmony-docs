@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="autohide"></a>
 ## autoHide
 
 ```TypeScript
@@ -36,6 +37,7 @@ autoHide(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br/>true：会自动隐藏<br/>false：不会自动隐藏<br/>默认值：true |
 
+<a id="controlbutton"></a>
 ## controlButton
 
 ```TypeScript
@@ -56,8 +58,9 @@ controlButton(value: ButtonStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ButtonStyle](arkts-arkui-sidebar-buttonstyle-i.md) | 是 | 侧边栏控制按钮的属性。 |
+| value | [ButtonStyle](arkts-arkui-buttonstyle-i.md) | 是 | 侧边栏控制按钮的属性。 |
 
+<a id="divider"></a>
 ## divider
 
 ```TypeScript
@@ -80,8 +83,9 @@ divider(value: DividerStyle | null)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | DividerStyle \| null | 是 | 分割线的样式。<br/>默认为DividerStyle：显示分割线。<br/>- null或undefined：行为不做处理，分割线样式与默认值保持一致。<br/>**说明：** <br/>API version 11及以下版本，null效果为不显示分割线。 |
+| value | [DividerStyle](arkts-arkui-dividerstyle-i.md) \| null | 是 | 分割线的样式。<br/>默认为DividerStyle：显示分割线。<br/>- null或undefined：行为不做处理，分割线样式与默认值保持一致。<br/>**说明：** <br/>API version 11及以下版本，null效果为不显示分割线。 |
 
+<a id="maxsidebarwidth"></a>
 ## maxSideBarWidth
 
 ```TypeScript
@@ -106,6 +110,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 | --- | --- | --- | --- |
 | value | number | 是 | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 
+<a id="maxsidebarwidth-1"></a>
 ## maxSideBarWidth
 
 ```TypeScript
@@ -130,6 +135,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 
+<a id="mincontentwidth"></a>
 ## minContentWidth
 
 ```TypeScript
@@ -167,6 +173,7 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](SideBarContainerAttribute#
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp |
 
+<a id="minsidebarwidth"></a>
 ## minSideBarWidth
 
 ```TypeScript
@@ -191,6 +198,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 | --- | --- | --- | --- |
 | value | number | 是 | 侧边栏最小宽度。<br/>。<br>单位为：vp。取值范围：[0, +∞)。默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。 |
 
+<a id="minsidebarwidth-1"></a>
 ## minSideBarWidth
 
 ```TypeScript
@@ -215,6 +223,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞) |
 
+<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -239,8 +248,9 @@ onChange(callback: (value: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: boolean) => void | 是 | true表示显示，false表示隐藏。 |
+| callback | (value: boolean) =&gt; void | 是 | true表示显示，false表示隐藏。 |
 
+<a id="showcontrolbutton"></a>
 ## showControlButton
 
 ```TypeScript
@@ -263,6 +273,7 @@ showControlButton(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否显示控制按钮。<br/>true：显示控制按钮<br/>false：不显示控制按钮<br/>默认值：true |
 
+<a id="showsidebar"></a>
 ## showSideBar
 
 ```TypeScript
@@ -271,7 +282,7 @@ showSideBar(value: boolean)
 
 设置是否显示侧边栏。
 
-从API version 10开始，该属性支持[$$](../../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该属性支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **起始版本：** 8
 
@@ -287,6 +298,7 @@ showSideBar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否显示侧边栏。<br/>true：显示侧边栏<br/>false：不显示侧边栏<br/>默认值：true |
 
+<a id="showsidebarwithgesture"></a>
 ## showSideBarWithGesture
 
 ```TypeScript
@@ -323,6 +335,7 @@ showSideBarWithGesture(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 设置是否支持通过手势滑动显示或隐藏侧边栏。<br/>true：支持通过手势滑动显示或隐藏侧边栏。<br/>false：不支持通过手势滑动显示或隐藏侧边栏。 |
 
+<a id="sidebarposition"></a>
 ## sideBarPosition
 
 ```TypeScript
@@ -343,8 +356,9 @@ sideBarPosition(value: SideBarPosition)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SideBarPosition](arkts-arkui-sidebar-sidebarposition-e.md) | 是 | 侧边栏显示位置。<br/>默认值：SideBarPosition.Start |
+| value | [SideBarPosition](arkts-arkui-sidebarposition-e.md) | 是 | 侧边栏显示位置。<br/>默认值：SideBarPosition.Start |
 
+<a id="sidebarwidth"></a>
 ## sideBarWidth
 
 ```TypeScript
@@ -353,7 +367,7 @@ sideBarWidth(value: number)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。
 
-从API version 18开始，该参数支持[!!](../../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
+从API version 18开始，该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md)双向绑定变量。
 
 **起始版本：** 8
 
@@ -369,6 +383,7 @@ sideBarWidth(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 10以下版本的默认值为200vp，API version 10及以上版本的默认值为240vp。 |
 
+<a id="sidebarwidth-1"></a>
 ## sideBarWidth
 
 ```TypeScript
@@ -377,7 +392,7 @@ sideBarWidth(value: Length)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。与[sideBarWidth](SideBarContainerAttribute#sideBarWidth(value: number))相比，value参数新增了对百分比字符串和其他[像素单位](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)的支持。
 
-从API version 18开始，该参数支持[!!](../../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
+从API version 18开始，该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md)双向绑定变量。
 
 **起始版本：** 9
 

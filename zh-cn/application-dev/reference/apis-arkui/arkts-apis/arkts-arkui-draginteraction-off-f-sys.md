@@ -6,6 +6,7 @@
 import { dragInteraction } from '@kit.ArkUI';
 ```
 
+<a id="off"></a>
 ## off('drag')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function off(type: 'drag', callback?: Callback<DragState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'drag' | 是 | 监听类型，固定取值为 'drag'。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<DragState> | 否 |  |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragState&gt; | 否 |  |
 
 **错误码：**
 

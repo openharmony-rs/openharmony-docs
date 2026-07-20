@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getallowedkioskapps"></a>
 ## getAllowedKioskApps
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllowedKioskApps(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 允许在Kiosk模式下运行的应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)清单。 |
+| Array&lt;string&gt; | 允许在Kiosk模式下运行的应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)清单。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="setmagnificationstate"></a>
 ## setMagnificationState
 
 ```TypeScript

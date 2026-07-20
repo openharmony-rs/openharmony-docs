@@ -16,6 +16,7 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -32,6 +33,7 @@ clear(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -54,6 +56,7 @@ constructor(capacity?: number)
 | --- | --- | --- | --- |
 | capacity | number | 否 | SendableLruCache的容量。 |
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -82,6 +85,7 @@ contains(key: K): boolean
 | --- | --- |
 | boolean | 检查的结果。 |
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -102,8 +106,9 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[K, V]> | 新的可迭代迭代器对象。 |
+| IterableIterator&lt;[K, V]&gt; | 新的可迭代迭代器对象。 |
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -132,6 +137,7 @@ get(key: K): V | undefined
 | --- | --- |
 | V | 如果指定的键存在于缓冲区中，则返回与键关联的值；否则返回undefined。 |
 
+<a id="getcapacity"></a>
 ## getCapacity
 
 ```TypeScript
@@ -154,6 +160,7 @@ getCapacity(): number
 | --- | --- |
 | number | SendableLruCache的容量。 |
 
+<a id="getcreatecount"></a>
 ## getCreateCount
 
 ```TypeScript
@@ -176,6 +183,7 @@ getCreateCount(): number
 | --- | --- |
 | number | createDefault的调用次数。 |
 
+<a id="getmatchcount"></a>
 ## getMatchCount
 
 ```TypeScript
@@ -198,6 +206,7 @@ getMatchCount(): number
 | --- | --- |
 | number | 查询值匹配的次数。 |
 
+<a id="getmisscount"></a>
 ## getMissCount
 
 ```TypeScript
@@ -220,6 +229,7 @@ getMissCount(): number
 | --- | --- |
 | number | 查询值不匹配的次数。 |
 
+<a id="getputcount"></a>
 ## getPutCount
 
 ```TypeScript
@@ -242,6 +252,7 @@ getPutCount(): number
 | --- | --- |
 | number | 值被添加的次数。 |
 
+<a id="getremovecount"></a>
 ## getRemoveCount
 
 ```TypeScript
@@ -264,6 +275,7 @@ getRemoveCount(): number
 | --- | --- |
 | number | 值被移除的次数。 |
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -286,6 +298,7 @@ isEmpty(): boolean
 | --- | --- |
 | boolean | 如果SendableLruCache为空则返回true，否则返回false。 |
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -308,6 +321,7 @@ keys(): K[]
 | --- | --- |
 | K[] | 所有键的数组。 |
 
+<a id="put"></a>
 ## put
 
 ```TypeScript
@@ -337,6 +351,7 @@ put(key: K, value: V): V
 | --- | --- |
 | V | 返回与添加的键关联的值，或如果键已存在则返回原始值。 |
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -365,6 +380,7 @@ remove(key: K): V | undefined
 | --- | --- |
 | V | 被删除的值或undefined。 |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -387,6 +403,7 @@ toString(): string
 | --- | --- |
 | string | 包含所有元素的新字符串。 |
 
+<a id="updatecapacity"></a>
 ## updateCapacity
 
 ```TypeScript
@@ -409,6 +426,7 @@ updateCapacity(newCapacity: number): void
 | --- | --- | --- | --- |
 | newCapacity | number | 是 | SendableLruCache的新容量。 |
 
+<a id="values"></a>
 ## values
 
 ```TypeScript

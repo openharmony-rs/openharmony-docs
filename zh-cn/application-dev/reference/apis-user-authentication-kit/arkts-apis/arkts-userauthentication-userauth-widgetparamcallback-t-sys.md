@@ -20,11 +20,11 @@ type WidgetParamCallback = (challenge: Uint8Array) => WidgetParam
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | Uint8Array | 是 | 挑战值，可以以Uint8Array([])格式传递。 |
+| challenge | Uint8Array | 是 | 挑战值，可以以Uint8Array([])格式传递。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| WidgetParam | widgetParam -用户认证页面参数。 |
+| [WidgetParam](arkts-userauthentication-userauth-widgetparam-i-sys.md) | widgetParam -用户认证页面参数。  |
 

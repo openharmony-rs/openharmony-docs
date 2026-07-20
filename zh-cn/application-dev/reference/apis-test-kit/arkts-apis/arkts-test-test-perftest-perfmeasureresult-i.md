@@ -94,7 +94,7 @@ readonly roundValues: Array<number>
 
 被测性能指标的各轮测量数据值。当数据采集失败时返回-1。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 20
 

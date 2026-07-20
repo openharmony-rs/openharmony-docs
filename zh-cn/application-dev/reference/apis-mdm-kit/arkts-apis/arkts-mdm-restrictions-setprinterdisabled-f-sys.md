@@ -6,6 +6,7 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="setprinterdisabled"></a>
 ## setPrinterDisabled
 
 ```TypeScript
@@ -18,7 +19,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -36,7 +37,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallb
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | disabled | boolean | 是 | true表示禁止使用打印能力，false表示允许使用打印能力。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ restrictions.setPrinterDisabled(wantTemp, true, (err) => {
 ```
 
 
+<a id="setprinterdisabled-1"></a>
 ## setPrinterDisabled
 
 ```TypeScript
@@ -83,7 +85,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -106,7 +108,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当禁止或允许使用打印能力失败时抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止或允许使用打印能力失败时抛出错误对象。 |
 
 **错误码：**
 

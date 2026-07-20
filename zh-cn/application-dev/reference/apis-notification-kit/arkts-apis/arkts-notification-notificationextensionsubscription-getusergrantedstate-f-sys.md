@@ -6,6 +6,7 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getusergrantedstate"></a>
 ## getUserGrantedState
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getUserGrantedState(targetBundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回true表示目标应用的“允许获取本机通知”状态已启用；返回false表示目标应用的“允许获取本机通知”状态未启用。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示目标应用的“允许获取本机通知”状态已启用；返回false表示目标应用的“允许获取本机通知”状态未启用。 |
 
 **错误码：**
 

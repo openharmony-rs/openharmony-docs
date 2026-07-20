@@ -24,7 +24,7 @@ serverParams?: Record<string, Object>
 
 域账号认证服务器配置参数。默认为undefined。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 24
 

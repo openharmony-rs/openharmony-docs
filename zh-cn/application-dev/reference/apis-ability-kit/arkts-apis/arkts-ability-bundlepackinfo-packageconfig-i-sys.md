@@ -36,7 +36,7 @@ readonly deviceTypes: Array<string>
 
 包支持的设备类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

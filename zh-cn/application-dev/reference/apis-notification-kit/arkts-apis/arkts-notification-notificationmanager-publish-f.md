@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="publish"></a>
 ## publish
 
 ```TypeScript
@@ -27,7 +28,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | [NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md) | 是 | 设置发布通知的内容和相关配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当发布通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当发布通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -79,6 +80,7 @@ notificationManager.publish(notificationRequest, publishCallback);
 ```
 
 
+<a id="publish-1"></a>
 ## publish
 
 ```TypeScript
@@ -105,7 +107,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

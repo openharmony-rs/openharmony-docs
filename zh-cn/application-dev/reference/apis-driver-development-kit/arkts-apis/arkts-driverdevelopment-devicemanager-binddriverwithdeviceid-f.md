@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="binddriverwithdeviceid"></a>
 ## bindDriverWithDeviceId
 
 ```TypeScript
@@ -27,13 +28,13 @@ function bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback<nu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | number | 是 | 设备ID，通过queryDevices获得。 |
-| onDisconnect | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。 |
+| onDisconnect | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当绑定设备断开时，err为undefined，data为解绑的设备ID；否则为错误对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RemoteDeviceDriver> | Promise对象，返回RemoteDeviceDriver对象。 |
+| Promise&lt;RemoteDeviceDriver&gt; | Promise对象，返回RemoteDeviceDriver对象。 |
 
 **错误码：**
 

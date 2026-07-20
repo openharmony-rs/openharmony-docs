@@ -6,6 +6,7 @@
 import { hash } from '@kit.CoreFileKit';
 ```
 
+<a id="createhash"></a>
 ## createHash
 
 ```TypeScript

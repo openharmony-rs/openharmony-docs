@@ -14,6 +14,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="offsystemrecordcontrollerenabledchange"></a>
 ## offSystemRecordControllerEnabledChange
 
 ```TypeScript
@@ -36,7 +37,7 @@ offSystemRecordControllerEnabledChange(callback?: Callback<SystemRecordControlle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SystemRecordControllerChangeInfo> | 否 | 订阅中使用的回调取消订阅功能。如果不使用此参数，则当前订阅的所有回调之前的流程将被取消订阅 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SystemRecordControllerChangeInfo&gt; | 否 | 订阅中使用的回调取消订阅功能。如果不使用此参数，则当前订阅的所有回调之前的流程将被取消订阅 |
 
 **错误码：**
 
@@ -46,6 +47,7 @@ offSystemRecordControllerEnabledChange(callback?: Callback<SystemRecordControlle
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
 
+<a id="onsystemrecordcontrollerenabledchange"></a>
 ## onSystemRecordControllerEnabledChange
 
 ```TypeScript
@@ -68,7 +70,7 @@ onSystemRecordControllerEnabledChange(callback: Callback<SystemRecordControllerC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SystemRecordControllerChangeInfo> | 是 | 用于监听的回调系统记录控制器面板启用状态更改事件 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SystemRecordControllerChangeInfo&gt; | 是 | 用于监听的回调系统记录控制器面板启用状态更改事件 |
 
 **错误码：**
 

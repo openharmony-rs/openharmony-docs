@@ -14,6 +14,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -79,6 +80,7 @@ try {
 
 ```
 
+<a id="oncancel"></a>
 ## onCancel
 
 ```TypeScript
@@ -103,7 +105,7 @@ onCancel(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。最后一个拷贝的文件路径。 |
+| Promise&lt;string&gt; | Promise对象。最后一个拷贝的文件路径。 |
 
 **错误码：**
 

@@ -18,12 +18,12 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compilationId | string | 是 | 合集的ID。 |
-| pageIndex | int | 是 | 页面的索引。 |
+| compilationId | string | 是 | 合集的ID。  |
+| pageIndex | number | 是 | 页面的索引。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的合集媒体实体对象。 |
+| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的合集媒体实体对象。  |
 

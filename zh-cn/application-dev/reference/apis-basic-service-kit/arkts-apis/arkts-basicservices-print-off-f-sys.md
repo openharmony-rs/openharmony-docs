@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="off"></a>
 ## off('printerStateChange')
 
 ```TypeScript
@@ -29,7 +30,7 @@ function off(type: 'printerStateChange', callback?: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'printerStateChange' | 是 | 表示打印机状态改变。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 表示取消注册打印机状态变化事件是否成功。true表示成功，false表示失败。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 表示取消注册打印机状态变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ print.off('printerStateChange', (data: boolean) => {
 ```
 
 
+<a id="off-1"></a>
 ## off('jobStateChange')
 
 ```TypeScript
@@ -74,7 +76,7 @@ function off(type: 'jobStateChange', callback?: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'jobStateChange' | 是 | 表示打印任务状态改变。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 表示取消注册打印任务状态变化事件是否成功。true表示成功，false表示失败。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 表示取消注册打印任务状态变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -96,6 +98,7 @@ print.off('jobStateChange', (data: boolean) => {
 ```
 
 
+<a id="off-2"></a>
 ## off('extInfoChange')
 
 ```TypeScript
@@ -119,7 +122,7 @@ function off(type: 'extInfoChange', callback?: Callback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'extInfoChange' | 是 | 表示打印扩展信息改变。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 

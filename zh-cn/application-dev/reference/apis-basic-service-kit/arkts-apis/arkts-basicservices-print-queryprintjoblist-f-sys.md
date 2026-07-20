@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintjoblist"></a>
 ## queryPrintJobList
 
 ```TypeScript
@@ -28,7 +29,7 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<PrintJob>> | 是 | 异步查询所有打印任务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;PrintJob&gt;&gt; | 是 | 异步查询所有打印任务之后的回调。 |
 
 **错误码：**
 
@@ -54,6 +55,7 @@ print.queryPrintJobList((err: BusinessError, printJobs : print.PrintJob[]) => {
 ```
 
 
+<a id="queryprintjoblist-1"></a>
 ## queryPrintJobList
 
 ```TypeScript
@@ -76,7 +78,7 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PrintJob>> | Promise对象，返回包含所有打印任务的列表。 |
+| Promise&lt;Array&lt;PrintJob&gt;&gt; | Promise对象，返回包含所有打印任务的列表。 |
 
 **错误码：**
 

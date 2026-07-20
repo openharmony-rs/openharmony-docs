@@ -32,7 +32,7 @@ import { deviceManager } from '@kit.DistributedServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createDeviceManager](arkts-distributedservice-devicemanager-createdevicemanager-f-sys.md#createdevicemanager-1) | 创建一个设备管理器实例。 |
+| [createDeviceManager](arkts-distributedservice-devicemanager-createdevicemanager-f-sys.md#createdevicemanager) | 创建一个设备管理器实例。 |
 <!--DelEnd-->
 
 <!--Del-->

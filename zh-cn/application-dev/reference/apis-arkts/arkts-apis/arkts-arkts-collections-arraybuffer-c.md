@@ -21,6 +21,7 @@ ArkTS TypedArray（[Int8Array](arkts-collections.md)、[Uint8Array](arkts-collec
 import { collections } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -49,6 +50,7 @@ constructor(byteLength: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArrayBuffer's constructor cannot be directly invoked. |
 
+<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -69,14 +71,14 @@ slice(begin: number, end?: number): ArrayBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | 开始索引，如果`begin &lt; 0`，则会从`begin +arrayBuffer.byteLength`位置开始。 |
-| end | number | 否 | 结束索引（不包括该元素），如果`end &lt; 0`，则会到`end +arrayBuffer.byteLength`位置结束。默认为原ArkTS ArrayBuffer的长度。 |
+| begin | number | 是 | 开始索引，如果`begin < 0`，则会从`begin +arrayBuffer.byteLength`位置开始。 |
+| end | number | 否 | 结束索引（不包括该元素），如果`end < 0`，则会到`end +arrayBuffer.byteLength`位置结束。默认为原ArkTS ArrayBuffer的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md) | 新生成的ArkTS ArrayBuffer对象。 |
+| ArrayBuffer | 新生成的ArkTS ArrayBuffer对象。 |
 
 **错误码：**
 

@@ -25,6 +25,6 @@ declare type TextPickerScrollStopCallback = (value: string | string[], index: nu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| string[] | 是 | 当前选中项的文本。多列数据选择器的value为数组类型。 |
-| index | number \| number[] | 是 | 当前选中项的索引值，索引从0开始。多列数据选择器的index为数组类型。 |
+| value | string \| string[] | 是 | 当前选中项的文本。多列数据选择器的value为数组类型。  |
+| index | number \| number[] | 是 | 当前选中项的索引值，索引从0开始。多列数据选择器的index为数组类型。  |
 

@@ -22,7 +22,7 @@ axisRanges: Array<AxisRange>
 
 输入设备的轴信息。
 
-**类型：** Array<AxisRange>
+**类型：** Array&lt;AxisRange&gt;
 
 **起始版本：** 8
 
@@ -154,7 +154,7 @@ sources: Array<SourceType>
 
 输入设备的输入能力。包括键盘、鼠标、触摸屏、轨迹球、触控板、操纵杆等。
 
-**类型：** Array<SourceType>
+**类型：** Array&lt;SourceType&gt;
 
 **起始版本：** 8
 

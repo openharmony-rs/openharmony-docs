@@ -14,6 +14,7 @@
 import { InsightIntentContext } from '@kit.AbilityKit';
 ```
 
+<a id="setreturnmodeforuiabilityforeground"></a>
 ## setReturnModeForUIAbilityForeground
 
 ```TypeScript
@@ -87,6 +88,7 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
 
 ```
 
+<a id="setreturnmodeforuiextensionability"></a>
 ## setReturnModeForUIExtensionAbility
 
 ```TypeScript
@@ -159,6 +161,7 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
 
 ```
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -182,7 +185,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility组件的want信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -246,6 +249,7 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 
 ```
 
+<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript
@@ -274,7 +278,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

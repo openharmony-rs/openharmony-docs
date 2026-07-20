@@ -1,5 +1,6 @@
 # getForegroundApplications（系统接口）
 
+<a id="getforegroundapplications"></a>
 ## getForegroundApplications
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<AppStateData>> | 是 | 回调函数，返回所有当前处于前台的应用信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AppStateData&gt;&gt; | 是 | 回调函数，返回所有当前处于前台的应用信息。 |
 
 **示例：**
 
@@ -44,6 +45,7 @@ appManager.getForegroundApplications((err, data) => {
 ```
 
 
+<a id="getforegroundapplications-1"></a>
 ## getForegroundApplications
 
 ```TypeScript
@@ -70,7 +72,7 @@ function getForegroundApplications(): Promise<Array<AppStateData>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AppStateData>> | Promise对象，返回所有当前处于前台的应用信息。 |
+| Promise&lt;Array&lt;AppStateData&gt;&gt; | Promise对象，返回所有当前处于前台的应用信息。 |
 
 **示例：**
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallnewpreinstalledapplicationinfo"></a>
 ## getAllNewPreinstalledApplicationInfo
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getAllNewPreinstalledApplicationInfo(): Promise<Array<PreinstalledAppli
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PreinstalledApplicationInfo>> | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
+| Promise&lt;Array&lt;PreinstalledApplicationInfo&gt;&gt; | Promise对象，设备OTA升级期间当前用户下新增的所有预置应用信息。 |
 
 **错误码：**
 

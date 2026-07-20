@@ -1,5 +1,6 @@
 # lstat
 
+<a id="lstat"></a>
 ## lstat
 
 ```TypeScript
@@ -28,9 +29,10 @@ declare function lstat(path: string): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Stat> | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
+| Promise&lt;Stat&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
 
 
+<a id="lstat-1"></a>
 ## lstat
 
 ```TypeScript
@@ -54,5 +56,5 @@ declare function lstat(path: string, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目标文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Stat> | 是 | 回调函数，返回文件的具体信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Stat&gt; | 是 | 回调函数，返回文件的具体信息。 |
 

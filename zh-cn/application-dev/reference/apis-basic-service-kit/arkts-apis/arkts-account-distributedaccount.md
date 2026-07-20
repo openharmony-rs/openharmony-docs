@@ -20,7 +20,7 @@ import { distributedAccount } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDistributedAccountAbility](arkts-basicservices-distributedaccount-getdistributedaccountability-f.md#getdistributedaccountability-1) | 获取分布式账号单实例对象。 |
+| [getDistributedAccountAbility](arkts-basicservices-distributedaccount-getdistributedaccountability-f.md#getdistributedaccountability) | 获取分布式账号单实例对象。 |
 
 ### 接口
 

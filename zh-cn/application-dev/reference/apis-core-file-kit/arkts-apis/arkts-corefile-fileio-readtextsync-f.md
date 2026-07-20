@@ -1,5 +1,6 @@
 # readTextSync
 
+<a id="readtextsync"></a>
 ## readTextSync
 
 ```TypeScript

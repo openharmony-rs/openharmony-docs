@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createx500distinguishedname"></a>
 ## createX500DistinguishedName
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createX500DistinguishedName(nameStr: string): Promise<X500Distinguished
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<X500DistinguishedName> | Promise对象，返回X500DistinguishedName实例。 |
+| Promise&lt;X500DistinguishedName&gt; | Promise对象，返回X500DistinguishedName实例。 |
 
 **错误码：**
 
@@ -83,6 +84,7 @@ async function createX500DistinguishedName() {
 ```
 
 
+<a id="createx500distinguishedname-1"></a>
 ## createX500DistinguishedName
 
 ```TypeScript
@@ -103,13 +105,13 @@ function createX500DistinguishedName(nameDer: Uint8Array): Promise<X500Distingui
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| nameDer | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | DER格式的X.500可分辨名称。 |
+| nameDer | Uint8Array | 是 | DER格式的X.500可分辨名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<X500DistinguishedName> | Promise对象，返回X500DistinguishedName实例。 |
+| Promise&lt;X500DistinguishedName&gt; | Promise对象，返回X500DistinguishedName实例。 |
 
 **错误码：**
 

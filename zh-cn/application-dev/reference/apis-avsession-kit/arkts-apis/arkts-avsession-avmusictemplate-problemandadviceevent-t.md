@@ -24,5 +24,5 @@ type ProblemAndAdviceEvent = (advice: string) => Promise<OperResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OperResult&gt; | Promise对象，返回问题和建议的操作结果对象。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回问题和建议的操作结果对象。  |
 

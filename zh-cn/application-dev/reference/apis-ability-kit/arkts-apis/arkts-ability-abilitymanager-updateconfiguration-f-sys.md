@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="updateconfiguration"></a>
 ## updateConfiguration
 
 ```TypeScript
@@ -28,8 +29,8 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-common-configuration-i.md) | 是 | 新的配置项，仅需配置需要更新的项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当更新配置成功，err为undefined；否则为错误对象。可进行错误处理或其他自定义处理。 |
+| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 新的配置项，仅需配置需要更新的项。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当更新配置成功，err为undefined；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -41,6 +42,7 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="updateconfiguration-1"></a>
 ## updateConfiguration
 
 ```TypeScript
@@ -63,13 +65,13 @@ function updateConfiguration(config: Configuration): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-common-configuration-i.md) | 是 | 新的配置项，仅需配置需要更新的项。 |
+| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 新的配置项，仅需配置需要更新的项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

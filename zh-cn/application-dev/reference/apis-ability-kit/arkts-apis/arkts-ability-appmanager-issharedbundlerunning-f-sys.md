@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="issharedbundlerunning"></a>
 ## isSharedBundleRunning
 
 ```TypeScript
@@ -35,7 +36,7 @@ function isSharedBundleRunning(bundleName: string, versionCode: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
 ```
 
 
+<a id="issharedbundlerunning-1"></a>
 ## isSharedBundleRunning
 
 ```TypeScript
@@ -88,7 +90,7 @@ function isSharedBundleRunning(bundleName: string, versionCode: number, callback
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的共享库包名。 |
 | versionCode | number | 是 | 表示要查询的共享库版本号。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
 
 **错误码：**
 

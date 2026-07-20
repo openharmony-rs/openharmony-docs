@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpixelmapsync"></a>
 ## createPixelMapSync
 
 ```TypeScript
@@ -26,7 +27,7 @@ Starting from API 26.0.0, it is recommended to use {@link createPixelMapFromPixe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colors | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The image color buffer. |
+| colors | ArrayBuffer | 是 | The image color buffer. |
 | options | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for pixelmap. |
 
 **返回值：**
@@ -66,6 +67,7 @@ function createPixelMapSync() {
 ```
 
 
+<a id="createpixelmapsync-1"></a>
 ## createPixelMapSync
 
 ```TypeScript

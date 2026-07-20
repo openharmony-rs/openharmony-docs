@@ -18,6 +18,7 @@ Scope 接口用于描述字段的有效范围。
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="clamp"></a>
 ## clamp
 
 ```TypeScript
@@ -81,6 +82,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -137,6 +139,7 @@ console.info("range = " + range);
 
 ```
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -200,6 +203,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="contains-1"></a>
 ## contains
 
 ```TypeScript
@@ -265,6 +269,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="expand"></a>
 ## expand
 
 ```TypeScript
@@ -330,6 +335,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="expand-1"></a>
 ## expand
 
 ```TypeScript
@@ -395,6 +401,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="expand-2"></a>
 ## expand
 
 ```TypeScript
@@ -458,6 +465,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getlower"></a>
 ## getLower
 
 ```TypeScript
@@ -514,6 +522,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="getupper"></a>
 ## getUpper
 
 ```TypeScript
@@ -570,6 +579,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="intersect"></a>
 ## intersect
 
 ```TypeScript
@@ -635,6 +645,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="intersect-1"></a>
 ## intersect
 
 ```TypeScript
@@ -700,6 +711,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript

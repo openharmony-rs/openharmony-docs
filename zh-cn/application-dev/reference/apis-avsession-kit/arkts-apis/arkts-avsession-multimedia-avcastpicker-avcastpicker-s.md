@@ -10,6 +10,8 @@
 
 **起始版本：** 10
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-declare struct AVCastPicker--><!--Device-unnamed-declare struct AVCastPicker-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -30,7 +32,7 @@ activeColor?: Color | number | string
 
 未设置时，系统将优先根据normalColor的颜色匹配；如果normalColor也未设置，将采用colorMode下的颜色设置。
 
-**类型：** Color | number | string
+**类型：** Color \| number \| string
 
 **起始版本：** 11
 
@@ -95,7 +97,7 @@ normalColor?: Color | number | string
 
 未设置时，将采用colorMode下的颜色设置。
 
-**类型：** Color | number | string
+**类型：** Color \| number \| string
 
 **起始版本：** 11
 
@@ -115,7 +117,7 @@ onStateChange?: (state: AVCastPickerState) => void
 
 投播状态更改回调。
 
-**类型：** (state: AVCastPickerState) => void
+**类型：** (state: AVCastPickerState) =&gt; void
 
 **起始版本：** 11
 

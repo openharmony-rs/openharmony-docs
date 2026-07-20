@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isdistributedenabled"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -18,7 +19,7 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** isDistributedEnabled(deviceType:
+**替代接口：** [isDistributedEnabled(deviceType:](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled-1)
 
 <!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void-End-->
 
@@ -28,7 +29,7 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。返回true表示支持跨设备协同通知；返回false表示不支持跨设备协同通知；调用失败返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示支持跨设备协同通知；返回false表示不支持跨设备协同通知；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
 
+<a id="isdistributedenabled-1"></a>
 ## isDistributedEnabled
 
 ```TypeScript
@@ -70,7 +72,7 @@ function isDistributedEnabled(): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** isDistributedEnabled(deviceType:
+**替代接口：** [isDistributedEnabled(deviceType:](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled-1)
 
 <!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>--><!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>-End-->
 
@@ -80,7 +82,7 @@ function isDistributedEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示支持跨设备协同通知；返回false表示不支持跨设备协同通知。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示支持跨设备协同通知；返回false表示不支持跨设备协同通知。 |
 
 **错误码：**
 

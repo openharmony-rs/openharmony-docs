@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getwantagent"></a>
 ## getWantAgent
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | 是 | 表示创建WantAgent所需的配置信息，包括目标UIAbility、操作类型、请求码等。三方应用在WantAgentInfo中只能设置本应用的UIAbility。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<WantAgent> | 是 | 回调函数。当创建WantAgent成功，err中code为0，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;WantAgent&gt; | 是 | 回调函数。当创建WantAgent成功，err中code为0，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -93,6 +94,7 @@ wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 ```
 
 
+<a id="getwantagent-1"></a>
 ## getWantAgent
 
 ```TypeScript
@@ -119,7 +121,7 @@ function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<WantAgent> | Promise对象，返回创建的WantAgent。 |
+| Promise&lt;WantAgent&gt; | Promise对象，返回创建的WantAgent。 |
 
 **错误码：**
 

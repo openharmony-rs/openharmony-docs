@@ -14,6 +14,7 @@ PlainArray可用于存储具有关联关系的key-value键值对集合，其中k
 import { PlainArray } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -34,7 +35,7 @@ import { PlainArray } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[number, T]> | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
+| IterableIterator&lt;[number, T]&gt; | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ for(let i = 0; i < 10; i++) {
 
 ```
 
+<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -108,6 +110,7 @@ console.info("result:", plainArray.get(1));  // result: squirrel
 
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -142,6 +145,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -162,7 +166,7 @@ clone(): PlainArray<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [PlainArray](arkts-arkts-util-plainarray-plainarray-c.md)<T> | 返回新的对象实例。 |
+| [PlainArray](arkts-arkts-util-plainarray-plainarray-c.md)&lt;T&gt; | 返回新的对象实例。 |
 
 **错误码：**
 
@@ -181,6 +185,7 @@ console.info("result:", newPlainArray.get(1));  // result: squirrel
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -210,6 +215,7 @@ let plainArray = new PlainArray<string>();
 
 ```
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -230,7 +236,7 @@ forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, PlainArray?: PlainArray<T>) => void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, PlainArray?: PlainArray&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -266,6 +272,7 @@ for (let i = 0; i < 10; i++) {
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -311,6 +318,7 @@ console.info("result:", result);  // result: squirrel
 
 ```
 
+<a id="getindexofkey"></a>
 ## getIndexOfKey
 
 ```TypeScript
@@ -356,6 +364,7 @@ console.info("result:", result); // result: 1
 
 ```
 
+<a id="getindexofvalue"></a>
 ## getIndexOfValue
 
 ```TypeScript
@@ -401,6 +410,7 @@ console.info("result:", result);  // result: 0
 
 ```
 
+<a id="getkeyat"></a>
 ## getKeyAt
 
 ```TypeScript
@@ -446,6 +456,7 @@ console.info("result:", result); // result: 2
 
 ```
 
+<a id="getvalueat"></a>
 ## getValueAt
 
 ```TypeScript
@@ -492,6 +503,7 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -536,6 +548,7 @@ console.info("result:", result); // result: true
 
 ```
 
+<a id="isempty"></a>
 ## isEmpty
 
 ```TypeScript
@@ -573,6 +586,7 @@ console.info("result:", result); // result: true
 
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -618,6 +632,7 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
+<a id="removeat"></a>
 ## removeAt
 
 ```TypeScript
@@ -663,6 +678,7 @@ console.info("result:", result);  // result: sparrow
 
 ```
 
+<a id="removerangefrom"></a>
 ## removeRangeFrom
 
 ```TypeScript
@@ -711,6 +727,7 @@ console.info("result:", result);  // result: 1
 
 ```
 
+<a id="setvalueat"></a>
 ## setValueAt
 
 ```TypeScript
@@ -755,6 +772,7 @@ console.info("result:", result);  // result: 3546
 
 ```
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript

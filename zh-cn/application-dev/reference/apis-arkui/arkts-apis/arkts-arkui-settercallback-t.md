@@ -20,5 +20,5 @@ export declare type SetterCallback<T> = (newValue: T) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newValue | T | 是 | 类型为T的参数。 |
+| newValue | T | 是 | 类型为T的参数。  |
 

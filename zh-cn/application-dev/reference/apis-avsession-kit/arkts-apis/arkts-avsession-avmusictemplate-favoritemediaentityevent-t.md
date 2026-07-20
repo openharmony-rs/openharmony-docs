@@ -18,12 +18,12 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionType | MediaFavoriteType | 是 | 操作类型。 |
-| mediaEntity | MediaEntity | 是 | 媒体实体。 |
+| actionType | [MediaFavoriteType](arkts-avsession-avmusictemplate-mediafavoritetype-t.md) | 是 | 操作类型。  |
+| mediaEntity | [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md) | 是 | 媒体实体。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;OperResult&gt; | Promise对象，返回收藏媒体实体的操作结果对象。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回收藏媒体实体的操作结果对象。  |
 

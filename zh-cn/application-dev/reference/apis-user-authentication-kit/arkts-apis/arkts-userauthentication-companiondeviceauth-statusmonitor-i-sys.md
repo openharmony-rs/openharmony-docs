@@ -16,6 +16,7 @@
 import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="gettemplatestatus"></a>
 ## getTemplateStatus
 
 ```TypeScript
@@ -40,7 +41,7 @@ getTemplateStatus(): Promise<TemplateStatus[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TemplateStatus[]> | Promise对象，成功时返回当前用户下全部模板的状态列表，每个模板状态包含模板ID、有效性、设备信息等；失败时抛出相应错误码。 |
+| Promise&lt;TemplateStatus[]&gt; | Promise对象，成功时返回当前用户下全部模板的状态列表，每个模板状态包含模板ID、有效性、设备信息等；失败时抛出相应错误码。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ statusMonitor.getTemplateStatus()
 
 ```
 
+<a id="offavailabledevicechange"></a>
 ## offAvailableDeviceChange
 
 ```TypeScript
@@ -117,6 +119,7 @@ try {
 
 ```
 
+<a id="offcontinuousauthchange"></a>
 ## offContinuousAuthChange
 
 ```TypeScript
@@ -178,6 +181,7 @@ try {
 
 ```
 
+<a id="offtemplatechange"></a>
 ## offTemplateChange
 
 ```TypeScript
@@ -230,6 +234,7 @@ try {
 
 ```
 
+<a id="onavailabledevicechange"></a>
 ## onAvailableDeviceChange
 
 ```TypeScript
@@ -281,6 +286,7 @@ try {
 
 ```
 
+<a id="oncontinuousauthchange"></a>
 ## onContinuousAuthChange
 
 ```TypeScript
@@ -343,6 +349,7 @@ try {
 
 ```
 
+<a id="ontemplatechange"></a>
 ## onTemplateChange
 
 ```TypeScript

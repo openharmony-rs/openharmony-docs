@@ -24,7 +24,7 @@ onEvent: (info: SysEventInfo) => void
 
 订阅事件的回调方法(info: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)) => void。
 
-**类型：** (info: SysEventInfo) => void
+**类型：** (info: SysEventInfo) =&gt; void
 
 **起始版本：** 9
 
@@ -42,7 +42,7 @@ onServiceDied: () => void
 
 系统事件服务关闭的回调方法() => void。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 9
 

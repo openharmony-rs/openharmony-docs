@@ -22,7 +22,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 abilityName: string
 ```
 
-意图调用Ability名称。 如果通过[@InsightIntentLink](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段传空字符串即可。
+意图调用Ability名称。 如果通过[@InsightIntentLink](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段传空字符串即可。
 
 **类型：** string
 
@@ -102,7 +102,7 @@ displayId?: number
 executeMode: insightIntent.ExecuteMode
 ```
 
-意图调用执行模式。 如果通过[@InsightIntentLink](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。
+意图调用执行模式。 如果通过[@InsightIntentLink](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段需填写（可填任意符合定义的值），但实际不会生效。
 
 **类型：** insightIntent.ExecuteMode
 
@@ -168,7 +168,7 @@ insightIntentParam: Record<string, Object>
 
 意图调用参数。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 
@@ -206,9 +206,9 @@ moduleName: string
 uris?: Array<string>
 ```
 
-意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](arkts-ability-uiabilitycontext-c.md#openlink-1)的URI。
+意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](arkts-ability-uiabilitycontext-c.md#openlink-1)的URI。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 18
 

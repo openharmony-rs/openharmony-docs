@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="setshownumber"></a>
 ## setShowNumber
 
 ```TypeScript
@@ -30,7 +31,7 @@ Set the SIM card number in the specified slot.
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
 | teleNumber | string | 是 | Indicates SIM card number. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | The callback of setShowNumber. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | The callback of setShowNumber. |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ sim.setShowNumber(0, number, (err: BusinessError) => {
 ```
 
 
+<a id="setshownumber-1"></a>
 ## setShowNumber
 
 ```TypeScript
@@ -88,7 +90,7 @@ Set the SIM card number in the specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the setShowNumber. |
+| Promise&lt;void&gt; | The promise returned by the setShowNumber. |
 
 **错误码：**
 

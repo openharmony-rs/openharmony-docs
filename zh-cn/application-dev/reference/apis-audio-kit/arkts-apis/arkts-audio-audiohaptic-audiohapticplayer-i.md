@@ -14,6 +14,7 @@
 import { audioHaptic } from '@kit.AudioKit';
 ```
 
+<a id="ismuted"></a>
 ## isMuted
 
 ```TypeScript
@@ -55,6 +56,7 @@ let result: boolean = audioHapticPlayerInstance.isMuted(audioHapticType);
 
 ```
 
+<a id="off"></a>
 ## off('endOfStream')
 
 ```TypeScript
@@ -74,7 +76,7 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当取消监听流结束事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，无返回结果。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
 
 **示例：**
 
@@ -93,6 +95,7 @@ audioHapticPlayerInstance.off('endOfStream', endOfStreamCallback);
 
 ```
 
+<a id="off-1"></a>
 ## off('audioInterrupt')
 
 ```TypeScript
@@ -112,7 +115,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当取消监听音频中断事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<audio.InterruptEvent> | 否 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
 
 **示例：**
 
@@ -177,6 +180,7 @@ audioHapticPlayerInstance.off('audioInterrupt', audioInterruptCallback);
 
 ```
 
+<a id="on"></a>
 ## on('endOfStream')
 
 ```TypeScript
@@ -196,7 +200,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当音频流播放结束时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，无返回结果。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
 
 **示例：**
 
@@ -207,6 +211,7 @@ audioHapticPlayerInstance.on('endOfStream', () => {
 
 ```
 
+<a id="on-1"></a>
 ## on('audioInterrupt')
 
 ```TypeScript
@@ -226,7 +231,7 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<audio.InterruptEvent> | 是 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
 
 **示例：**
 
@@ -284,6 +289,7 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
 
 ```
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -302,7 +308,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -323,6 +329,7 @@ audioHapticPlayerInstance.release().then(() => {
 
 ```
 
+<a id="setloop"></a>
 ## setLoop
 
 ```TypeScript
@@ -351,7 +358,7 @@ setLoop(loop: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -372,6 +379,7 @@ audioHapticPlayerInstance.setLoop(true).then(() => {
 
 ```
 
+<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -400,7 +408,7 @@ setVolume(volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -423,6 +431,7 @@ audioHapticPlayerInstance.setVolume(0.5).then(() => {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -441,7 +450,7 @@ start(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -464,6 +473,7 @@ audioHapticPlayerInstance.start().then(() => {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -482,7 +492,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

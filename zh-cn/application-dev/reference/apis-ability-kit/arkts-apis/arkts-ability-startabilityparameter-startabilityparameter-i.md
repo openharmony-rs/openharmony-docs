@@ -34,7 +34,7 @@ abilityStartSettings?: Record<string, Object>
 
 启动Ability的特殊属性，当开发者启动Ability时，该属性可以作为调用中的输入参数传递。推荐使用该属性替代abilityStartSetting，设置该属性后，abilityStartSetting不再生效。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 

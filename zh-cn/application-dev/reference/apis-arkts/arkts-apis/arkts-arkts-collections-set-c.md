@@ -7,7 +7,7 @@
 > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
 > 本节使用以下标识来表示泛型的使用：
 
-- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器类型：** \@Sendable
+- T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器类型：** \@Sendable
 
 **起始版本：** 12
 
@@ -23,6 +23,7 @@
 import { collections } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -43,7 +44,7 @@ import { collections } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | 迭代器对象。 |
+| IterableIterator&lt;T&gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ import { collections } from '@kit.ArkTS';
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
+<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -77,7 +79,7 @@ add(value: T): Set<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Set](arkts-arkts-collections-set-c.md)<T> | Set对象。 |
+| Set&lt;T&gt; | Set对象。 |
 
 **错误码：**
 
@@ -86,6 +88,7 @@ add(value: T): Set<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -109,6 +112,7 @@ clear(): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -137,6 +141,7 @@ constructor(values?: readonly T[] | null)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArkTS Set's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -157,7 +162,7 @@ constructor(iterable: Iterable<T>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable<T> | 是 | 用于构造ArkTS Set的对象。 |
+| iterable | Iterable&lt;T&gt; | 是 | 用于构造ArkTS Set的对象。 |
 
 **错误码：**
 
@@ -165,6 +170,7 @@ constructor(iterable: Iterable<T>)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArkTS Set's constructor cannot be directly invoked. |
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -200,6 +206,7 @@ delete(value: T): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The delete method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -220,7 +227,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[T, T]> | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。 |
+| IterableIterator&lt;[T, T]&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。 |
 
 **错误码：**
 
@@ -229,6 +236,7 @@ entries(): IterableIterator<[T, T]>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -249,7 +257,7 @@ forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, value2: T, set: Set<T>) => void | 是 | 对每个键值对运行的回调函数。 |
+| callbackFn | (value: T, value2: T, set: Set&lt;T&gt;) =&gt; void | 是 | 对每个键值对运行的回调函数。 |
 
 **错误码：**
 
@@ -258,6 +266,7 @@ forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -293,6 +302,7 @@ has(value: T): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -313,7 +323,7 @@ keys(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。 |
+| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。 |
 
 **错误码：**
 
@@ -322,6 +332,7 @@ keys(): IterableIterator<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -342,7 +353,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。 |
+| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。 |
 
 **错误码：**
 

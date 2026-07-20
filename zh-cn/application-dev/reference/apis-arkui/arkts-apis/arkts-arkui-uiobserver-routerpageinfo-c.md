@@ -22,7 +22,7 @@ context: UIAbilityContext | UIContext
 
 触发生命周期的routerPage页面对应的上下文信息。
 
-**类型：** UIAbilityContext | UIContext
+**类型：** UIAbilityContext \| UIContext
 
 **起始版本：** 11
 

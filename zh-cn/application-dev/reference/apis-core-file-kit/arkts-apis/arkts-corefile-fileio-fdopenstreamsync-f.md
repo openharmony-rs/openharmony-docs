@@ -1,5 +1,6 @@
 # fdopenStreamSync
 
+<a id="fdopenstreamsync"></a>
 ## fdopenStreamSync
 
 ```TypeScript

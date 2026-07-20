@@ -22,7 +22,7 @@ readonly boundingRects: Array<Rect>
 
 挖孔、刘海等区域的边界矩形。如果没有挖孔、刘海等区域，数组返回为空。
 
-**类型：** Array<Rect>
+**类型：** Array&lt;Rect&gt;
 
 **起始版本：** 9
 

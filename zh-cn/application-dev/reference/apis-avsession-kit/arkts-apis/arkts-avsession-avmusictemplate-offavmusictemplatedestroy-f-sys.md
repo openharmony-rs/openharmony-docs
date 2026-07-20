@@ -6,6 +6,7 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
+<a id="offavmusictemplatedestroy"></a>
 ## offAVMusicTemplateDestroy
 
 ```TypeScript
@@ -30,7 +31,7 @@ function offAVMusicTemplateDestroy(callback?: Callback<AVMusicTemplateDescriptor
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVMusicTemplateDescriptor> | 否 | 回调函数，返回音频模板描述。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVMusicTemplateDescriptor&gt; | 否 | 回调函数，返回音频模板描述。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 

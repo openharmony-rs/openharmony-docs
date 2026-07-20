@@ -1,5 +1,6 @@
 # unlinkSync
 
+<a id="unlinksync"></a>
 ## unlinkSync
 
 ```TypeScript

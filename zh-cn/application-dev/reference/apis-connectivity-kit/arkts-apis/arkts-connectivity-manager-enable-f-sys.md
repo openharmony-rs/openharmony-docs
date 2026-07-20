@@ -6,6 +6,7 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
+<a id="enable"></a>
 ## enable
 
 ```TypeScript
@@ -34,5 +35,5 @@ function enable(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications are not allowed to use system APIs. |
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | EDM denied. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| 36100099 | Operation failed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

@@ -6,6 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="switchcurrentinputmethodsubtype"></a>
 ## switchCurrentInputMethodSubtype
 
 ```TypeScript
@@ -28,7 +29,7 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | 是 | 目标输入法子类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当输入法子类型切换成功，err为undefined，data为true；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当输入法子类型切换成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 ```
 
 
+<a id="switchcurrentinputmethodsubtype-1"></a>
 ## switchCurrentInputMethodSubtype
 
 ```TypeScript
@@ -98,7 +100,7 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise<bo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前输入法切换子类型成功，返回false表示当前输入法切换子类型失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前输入法切换子类型成功，返回false表示当前输入法切换子类型失败。 |
 
 **错误码：**
 

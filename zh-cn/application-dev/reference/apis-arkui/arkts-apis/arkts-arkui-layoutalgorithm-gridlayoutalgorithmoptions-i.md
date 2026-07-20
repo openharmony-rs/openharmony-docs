@@ -50,7 +50,7 @@ columnsTemplate?: string | ItemFillPolicy
 
 装饰器类型：@Trace
 
-**类型：** string | ItemFillPolicy
+**类型：** string \| ItemFillPolicy
 
 **默认值：** '1fr'
 

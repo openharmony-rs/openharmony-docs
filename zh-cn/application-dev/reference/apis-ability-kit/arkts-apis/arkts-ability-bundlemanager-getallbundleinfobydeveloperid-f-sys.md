@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getallbundleinfobydeveloperid"></a>
 ## getAllBundleInfoByDeveloperId
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<BundleInfo> | 同步返回Array&lt;BundleInfo&gt;。 |
+| Array&lt;BundleInfo&gt; | 同步返回Array<BundleInfo>。 |
 
 **错误码：**
 

@@ -16,6 +16,7 @@
 import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getcolorspacename"></a>
 ## getColorSpaceName
 
 ```TypeScript
@@ -50,6 +51,7 @@ let spaceName: colorSpaceManager.ColorSpace = colorSpace.getColorSpaceName();
 
 ```
 
+<a id="getgamma"></a>
 ## getGamma
 
 ```TypeScript
@@ -84,6 +86,7 @@ let gamma: number = colorSpace.getGamma();
 
 ```
 
+<a id="getwhitepoint"></a>
 ## getWhitePoint
 
 ```TypeScript
@@ -102,7 +105,7 @@ getWhitePoint(): collections.Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| collections.Array<number> | Coordinates [x, y] of the white point. |
+| collections.Array&lt;number&gt; | Coordinates [x, y] of the white point. |
 
 **错误码：**
 

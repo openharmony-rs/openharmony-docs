@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="installpubliccertificate"></a>
 ## installPublicCertificate
 
 ```TypeScript
@@ -30,14 +31,14 @@ function installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keystore | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示带有密钥对和证书的密钥库文件，仅支持P12格式。 |
+| keystore | Uint8Array | 是 | 表示带有密钥对和证书的密钥库文件，仅支持P12格式。 |
 | keystorePwd | string | 是 | 表示密钥库文件的密码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CMResult> | Promise对象，返回安装用户公共凭据的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的uri属性。 |
+| Promise&lt;CMResult&gt; | Promise对象，返回安装用户公共凭据的结果，返回值为[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的uri属性。 |
 
 **错误码：**
 

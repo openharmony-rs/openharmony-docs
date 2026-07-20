@@ -1,6 +1,6 @@
 # StartupListener
 
-本模块提供[应用启动框架](../../../../application-models/app-startup.md)任务监听器的定义。
+本模块提供[应用启动框架](docroot://application-models/app-startup.md)任务监听器的定义。
 
 **起始版本：** 12
 
@@ -14,6 +14,7 @@
 import { StartupListener } from '@kit.AbilityKit';
 ```
 
+<a id="oncompleted"></a>
 ## onCompleted
 
 ```TypeScript
@@ -34,7 +35,7 @@ onCompleted?(error: BusinessError<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| error | [BusinessError](../../apis-arkui/arkts-components/arkts-arkui-businesserror-t.md)<void> | 是 | 错误信息。 |
+| error | [BusinessError](../../apis-arkui/arkts-components/arkts-arkui-businesserror-t.md)&lt;void&gt; | 是 | 错误信息。 |
 
 **示例：**
 

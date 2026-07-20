@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setprioritystrategybybundles"></a>
 ## setPriorityStrategyByBundles
 
 ```TypeScript
@@ -30,13 +31,13 @@ function setPriorityStrategyByBundles(strategies: Map<BundleOption, number>): Pr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| strategies | [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<BundleOption, number> | 是 | 应用通知优先策略的键值对集合。与PriorityStrategyStatus的枚举进行按位或运算得到值。 |
+| strategies | Map&lt;BundleOption, number&gt; | 是 | 应用通知优先策略的键值对集合。与PriorityStrategyStatus的枚举进行按位或运算得到值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

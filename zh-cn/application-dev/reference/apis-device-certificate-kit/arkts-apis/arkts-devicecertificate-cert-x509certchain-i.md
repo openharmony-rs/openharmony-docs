@@ -14,6 +14,7 @@ X509证书链对象。
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getcertlist"></a>
 ## getCertList
 
 ```TypeScript
@@ -34,7 +35,7 @@ getCertList(): Array<X509Cert>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<X509Cert> | X509证书数组。 |
+| Array&lt;X509Cert&gt; | X509证书数组。 |
 
 **错误码：**
 
@@ -44,6 +45,7 @@ getCertList(): Array<X509Cert>
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="hashcode"></a>
 ## hashCode
 
 ```TypeScript
@@ -64,7 +66,7 @@ hashCode(): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | DER格式数据的哈希值。 |
+| Uint8Array | DER格式数据的哈希值。 |
 
 **错误码：**
 
@@ -74,6 +76,7 @@ hashCode(): Uint8Array
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -104,6 +107,7 @@ toString(): string
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因：<br>1. 内存拷贝失败；<br>2. 系统内部出现空指针；<br>3. 获取Native对象失败或参数转换失败。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="validate"></a>
 ## validate
 
 ```TypeScript
@@ -130,7 +134,7 @@ validate(param: CertChainValidationParameters): Promise<CertChainValidationResul
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CertChainValidationResult> | Promise对象，返回证书链校验结果。 |
+| Promise&lt;CertChainValidationResult&gt; | Promise对象，返回证书链校验结果。 |
 
 **错误码：**
 
@@ -147,6 +151,7 @@ validate(param: CertChainValidationParameters): Promise<CertChainValidationResul
 | [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | 证书的密钥用途不含证书签名。 |
 | [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | 证书的密钥用途不含数字签名。 |
 
+<a id="validate-1"></a>
 ## validate
 
 ```TypeScript
@@ -168,7 +173,7 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback<CertChain
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [CertChainValidationParameters](arkts-devicecertificate-cert-certchainvalidationparameters-i.md) | 是 | 表示校验X509证书链的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CertChainValidationResult> | 是 | 回调函数。当校验证书链成功时，err为undefined，data为获取到的证书链校验结果；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CertChainValidationResult&gt; | 是 | 回调函数。当校验证书链成功时，err为undefined，data为获取到的证书链校验结果；否则为错误对象。 |
 
 **错误码：**
 

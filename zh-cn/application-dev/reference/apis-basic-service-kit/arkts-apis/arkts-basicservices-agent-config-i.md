@@ -65,7 +65,7 @@ data?: string | Array<FormItem>
 - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。  
 - 上传时，data是表单项数组Array<[FormItem](arkts-basicservices-agent-formitem-i.md)>。从API version15开始，创建单个任务可以上传最多100个文件。默认为空。
 
-**类型：** string | Array<FormItem>
+**类型：** string \| Array&lt;FormItem&gt;
 
 **起始版本：** 10
 
@@ -483,7 +483,7 @@ saveas?: string
 - 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。  
 - file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。
 
-从API version 20开始，除[下载网络资源文件至用户文件](../../../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。
+从API version 20开始，除[下载网络资源文件至用户文件](docroot://basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。
 
 **类型：** string
 
@@ -555,7 +555,7 @@ token?: string
 url: string
 ```
 
-资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../../../basic-services/request/app-file-upload-download.md#http拦截)功能。
+资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](docroot://basic-services/request/app-file-upload-download.md#http拦截)功能。
 
 **类型：** string
 

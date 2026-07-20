@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="castaudio"></a>
 ## castAudio
 
 ```TypeScript
@@ -30,9 +31,9 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| session | SessionToken \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
-| audioDevices | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<audio.AudioDeviceDescriptor> | 是 | 媒体设备列表。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当投播成功，err为undefined，否则返回错误对象。 |
+| session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
+| audioDevices | Array&lt;audio.AudioDeviceDescriptor&gt; | 是 | 媒体设备列表。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当投播成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
 ```
 
 
+<a id="castaudio-1"></a>
 ## castAudio
 
 ```TypeScript
@@ -90,14 +92,14 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| session | SessionToken \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
-| audioDevices | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<audio.AudioDeviceDescriptor> | 是 | 媒体设备列表。 |
+| session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
+| audioDevices | Array&lt;audio.AudioDeviceDescriptor&gt; | 是 | 媒体设备列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当投播成功，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当投播成功，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

@@ -1,5 +1,6 @@
 # sendEventByKey
 
+<a id="sendeventbykey"></a>
 ## sendEventByKey
 
 ```TypeScript

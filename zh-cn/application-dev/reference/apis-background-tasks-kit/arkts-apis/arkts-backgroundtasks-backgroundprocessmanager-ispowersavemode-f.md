@@ -6,6 +6,7 @@
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="ispowersavemode"></a>
 ## isPowerSaveMode
 
 ```TypeScript
@@ -32,7 +33,7 @@ function isPowerSaveMode(pid: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回进程PID是否处于能效模式，返回true表示进程处于能效模式，返回false表示进程未处于能效模式。 |
+| Promise&lt;boolean&gt; | Promise对象。返回进程PID是否处于能效模式，返回true表示进程处于能效模式，返回false表示进程未处于能效模式。 |
 
 **错误码：**
 

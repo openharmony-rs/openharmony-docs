@@ -18,6 +18,7 @@ AtomicFile是一个用于对文件进行原子读写操作的类。
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -44,6 +45,7 @@ constructor(path: string)
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) |  |
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -97,6 +99,7 @@ try {
 
 ```
 
+<a id="failwrite"></a>
 ## failWrite
 
 ```TypeScript
@@ -139,6 +142,7 @@ try {
 
 ```
 
+<a id="finishwrite"></a>
 ## finishWrite
 
 ```TypeScript
@@ -180,6 +184,7 @@ try {
 
 ```
 
+<a id="getbasefile"></a>
 ## getBaseFile
 
 ```TypeScript
@@ -234,6 +239,7 @@ try {
 
 ```
 
+<a id="openread"></a>
 ## openRead
 
 ```TypeScript
@@ -295,6 +301,7 @@ try {
 
 ```
 
+<a id="readfully"></a>
 ## readFully
 
 ```TypeScript
@@ -313,7 +320,7 @@ readFully(): ArrayBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 文件的全部内容。 |
+| ArrayBuffer | 文件的全部内容。 |
 
 **错误码：**
 
@@ -350,6 +357,7 @@ try {
 
 ```
 
+<a id="startwrite"></a>
 ## startWrite
 
 ```TypeScript

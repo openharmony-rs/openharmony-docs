@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setdistributedenable"></a>
 ## setDistributedEnable
 
 ```TypeScript
@@ -18,7 +19,7 @@ function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): v
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDistributedEnabled(enable:
+**替代接口：** [setDistributedEnabled(enable:](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -33,7 +34,7 @@ function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否支持（true：支持，false：不支持）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置设备是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置设备是否支持分布式通知的回调函数。 |
 
 **错误码：**
 
@@ -66,6 +67,7 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
 
+<a id="setdistributedenable-1"></a>
 ## setDistributedEnable
 
 ```TypeScript
@@ -78,7 +80,7 @@ function setDistributedEnable(enable: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDistributedEnabled(enable:
+**替代接口：** [setDistributedEnabled(enable:](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -98,7 +100,7 @@ function setDistributedEnable(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

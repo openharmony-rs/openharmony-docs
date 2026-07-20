@@ -22,5 +22,5 @@ declare type CustomBuilderT<T> = (t: T) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| t | T | 是 | 函数参数 |
+| t | T | 是 | 函数参数  |
 

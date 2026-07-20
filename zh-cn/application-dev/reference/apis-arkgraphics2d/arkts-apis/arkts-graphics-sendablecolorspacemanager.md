@@ -20,8 +20,8 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create-1) | 创建标准可共享的色彩管理。 |
-| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create-2) | 创建用户自定义可共享的色彩管理实例。 |
+| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create) | 创建标准可共享的色彩管理。 |
+| [create](arkts-arkgraphics2d-sendablecolorspacemanager-create-f.md#create-1) | 创建用户自定义可共享的色彩管理实例。 |
 
 ### 接口
 

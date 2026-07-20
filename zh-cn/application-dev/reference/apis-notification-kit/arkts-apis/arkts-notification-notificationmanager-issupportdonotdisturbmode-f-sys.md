@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="issupportdonotdisturbmode"></a>
 ## isSupportDoNotDisturbMode
 
 ```TypeScript
@@ -28,7 +29,7 @@ function isSupportDoNotDisturbMode(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 查询是否支持免打扰功能回调函数（true：支持，false：不支持）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询是否支持免打扰功能回调函数（true：支持，false：不支持）。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ notificationManager.isSupportDoNotDisturbMode(isSupportDoNotDisturbModeCallback)
 ```
 
 
+<a id="issupportdonotdisturbmode-1"></a>
 ## isSupportDoNotDisturbMode
 
 ```TypeScript
@@ -82,7 +84,7 @@ function isSupportDoNotDisturbMode(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回获取是否支持免打扰功能的结果（true：支持，false：不支持）。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回获取是否支持免打扰功能的结果（true：支持，false：不支持）。 |
 
 **错误码：**
 

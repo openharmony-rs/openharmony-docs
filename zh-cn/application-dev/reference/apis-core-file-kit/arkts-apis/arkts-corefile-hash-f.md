@@ -6,6 +6,7 @@
 import { hash } from '@kit.CoreFileKit';
 ```
 
+<a id="hash"></a>
 ## hash
 
 ```TypeScript
@@ -33,7 +34,7 @@ function hash(path: string, algorithm: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
+| Promise&lt;string&gt; | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ hash.hash(filePath, "sha256").then((str: string) => {
 ```
 
 
+<a id="hash-1"></a>
 ## hash
 
 ```TypeScript
@@ -79,7 +81,7 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 | --- | --- | --- | --- |
 | path | string | 是 | 待计算哈希值文件的应用沙箱路径。 |
 | algorithm | string | 是 | 哈希计算采用的算法。可选?"md5"、"sha1"?或?"sha256"。建议采用安全强度更高的?"sha256"。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 异步计算文件哈希操作之后的回调函数（其中给定文件哈希值表示为十六进制数字串，所有字母均大写）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 异步计算文件哈希操作之后的回调函数（其中给定文件哈希值表示为十六进制数字串，所有字母均大写）。 |
 
 **错误码：**
 

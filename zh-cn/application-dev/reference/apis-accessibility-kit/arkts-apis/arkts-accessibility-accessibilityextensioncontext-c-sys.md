@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
+<a id="getaccessibilityfocusedelement"></a>
 ## getAccessibilityFocusedElement
 
 ```TypeScript
@@ -32,7 +33,7 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回当前获得焦点的元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回当前获得焦点的元素。 |
 
 **错误码：**
 
@@ -43,6 +44,7 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<a id="getaccessibilitywindowssync"></a>
 ## getAccessibilityWindowsSync
 
 ```TypeScript
@@ -71,7 +73,7 @@ getAccessibilityWindowsSync(displayId?: number): Array<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AccessibilityElement> | 窗口列表。 |
+| Array&lt;AccessibilityElement&gt; | 窗口列表。 |
 
 **错误码：**
 
@@ -81,6 +83,7 @@ getAccessibilityWindowsSync(displayId?: number): Array<AccessibilityElement>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getdefaultfocusedelementids"></a>
 ## getDefaultFocusedElementIds
 
 ```TypeScript
@@ -107,7 +110,7 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象，返回当前窗口下的自定义默认焦点列表。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回当前窗口下的自定义默认焦点列表。 |
 
 **错误码：**
 
@@ -117,6 +120,7 @@ getDefaultFocusedElementIds(windowId: number): Promise<Array<number>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getelements"></a>
 ## getElements
 
 ```TypeScript
@@ -144,7 +148,7 @@ getElements(windowId: number, elementId?: number): Promise<Array<AccessibilityEl
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityElement>> | Promise对象，返回当前窗口或者当前节点下的所有子节点列表。 |
+| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回当前窗口或者当前节点下的所有子节点列表。 |
 
 **错误码：**
 
@@ -154,6 +158,7 @@ getElements(windowId: number, elementId?: number): Promise<Array<AccessibilityEl
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="getrootinactivewindow"></a>
 ## getRootInActiveWindow
 
 ```TypeScript
@@ -182,7 +187,7 @@ getRootInActiveWindow(windowId?: number): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回活动窗口的根元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回活动窗口的根元素。 |
 
 **错误码：**
 
@@ -193,6 +198,7 @@ getRootInActiveWindow(windowId?: number): Promise<AccessibilityElement>
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<a id="holdrunninglocksync"></a>
 ## holdRunningLockSync
 
 ```TypeScript
@@ -218,6 +224,7 @@ holdRunningLockSync(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="notifydisconnect"></a>
 ## notifyDisconnect
 
 ```TypeScript
@@ -226,7 +233,7 @@ notifyDisconnect(): void
 
 通知无障碍服务可以关闭该无障碍扩展服务。
 
-此函数需要与注册预关闭接口[on('preDisconnect')](arkts-accessibility-accessibilityextensioncontext-c-sys.md#on-1)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
+此函数需要与注册预关闭接口[on('preDisconnect')](AccessibilityExtensionContext#on(type: 'preDisconnect', callback: Callback<void>))配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
 
 **起始版本：** 20
 
@@ -245,6 +252,7 @@ notifyDisconnect(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="off"></a>
 ## off('preDisconnect')
 
 ```TypeScript
@@ -268,7 +276,7 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preDisconnect' | 是 | 监听事件名，固定为‘preDisconnect’，即无障碍扩展服务即将关闭事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](arkts-accessibility-accessibilityextensioncontext-c-sys.md#on-1)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](AccessibilityExtensionContext#on(type: 'preDisconnect', callback: Callback<void>))的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -277,6 +285,7 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="on"></a>
 ## on('preDisconnect')
 
 ```TypeScript
@@ -302,7 +311,7 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preDisconnect' | 是 | 监听事件名，固定为‘preDisconnect’，即无障碍扩展服务即将关闭事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数，在无障碍扩展服务即将关闭时回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数，在无障碍扩展服务即将关闭时回调。 |
 
 **错误码：**
 
@@ -311,6 +320,7 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -337,7 +347,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -346,6 +356,7 @@ startAbility(want: Want): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have the permission required to call the API. |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
+<a id="unholdrunninglocksync"></a>
 ## unholdRunningLockSync
 
 ```TypeScript

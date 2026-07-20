@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="getprojectionmatrix"></a>
 ## getProjectionMatrix
 
 ```TypeScript
@@ -30,6 +31,7 @@ getProjectionMatrix(): Mat4x4
 | --- | --- |
 | [Mat4x4](arkts-arkgraphics3d-scenetypes-mat4x4-i.md) | -- 相机的投影矩阵 |
 
+<a id="getviewmatrix"></a>
 ## getViewMatrix
 
 ```TypeScript
@@ -50,6 +52,7 @@ getViewMatrix(): Mat4x4
 | --- | --- |
 | [Mat4x4](arkts-arkgraphics3d-scenetypes-mat4x4-i.md) | -- 相机的视图矩阵 |
 
+<a id="raycast"></a>
 ## raycast
 
 ```TypeScript
@@ -75,7 +78,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RaycastResult[]> | - 返回命中结果数组的Promise，按从近到远排序. 数组可能为空. |
+| Promise&lt;RaycastResult[]&gt; | - 返回命中结果数组的Promise，按从近到远排序. 数组可能为空. |
 
 ## clearColor
 
@@ -85,7 +88,7 @@ clearColor: Color | null
 
 背景清除颜色（环境背景会覆盖此颜色,需要BACKGROUND_NONE才能实际生效).
 
-**类型：** Color | null
+**类型：** Color \| null
 
 **起始版本：** 12
 
@@ -101,7 +104,7 @@ readonly effects: Container<Effect>
 
 应用于相机输出的特效.
 
-**类型：** Container<Effect>
+**类型：** Container&lt;Effect&gt;
 
 **起始版本：** 21
 
@@ -199,7 +202,7 @@ postProcess: PostProcessSettings | null
 
 相机的后处理设置.
 
-**类型：** PostProcessSettings | null
+**类型：** PostProcessSettings \| null
 
 **起始版本：** 12
 

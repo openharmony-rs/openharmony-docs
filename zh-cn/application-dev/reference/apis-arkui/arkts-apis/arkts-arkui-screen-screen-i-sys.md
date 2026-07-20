@@ -1,6 +1,6 @@
 # Screen（系统接口）
 
-[物理屏](../../../../displaymanager/display-terminology.md#物理屏)屏幕实例。
+[物理屏](docroot://displaymanager/display-terminology.md#物理屏)屏幕实例。
 
 下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens-1)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen-1)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 
@@ -18,6 +18,7 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="setdensitydpi"></a>
 ## setDensityDpi
 
 ```TypeScript
@@ -39,7 +40,7 @@ setDensityDpi(densityDpi: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | densityDpi | number | 是 | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置屏幕的像素密度成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕的像素密度成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -92,6 +93,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
+<a id="setdensitydpi-1"></a>
 ## setDensityDpi
 
 ```TypeScript
@@ -118,7 +120,7 @@ setDensityDpi(densityDpi: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -168,13 +170,14 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
+<a id="setorientation"></a>
 ## setOrientation
 
 ```TypeScript
 setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void
 ```
 
-设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](../../../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
+设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](docroot://quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **起始版本：** 9
 
@@ -189,7 +192,7 @@ setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | orientation | [Orientation](arkts-arkui-window-orientation-e.md) | 是 | 屏幕方向。orientation值必须来自Orientation枚举方向。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置屏幕方向成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕方向成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -241,13 +244,14 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
+<a id="setorientation-1"></a>
 ## setOrientation
 
 ```TypeScript
 setOrientation(orientation: Orientation): Promise<void>
 ```
 
-设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](../../../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
+设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](docroot://quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **起始版本：** 9
 
@@ -267,7 +271,7 @@ setOrientation(orientation: Orientation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -317,6 +321,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
+<a id="setorientation-2"></a>
 ## setOrientation
 
 ```TypeScript
@@ -346,7 +351,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -386,6 +391,7 @@ screensPromise.then((data: Array<screen.Screen>) => {
 
 ```
 
+<a id="setscreenactivemode"></a>
 ## setScreenActiveMode
 
 ```TypeScript
@@ -407,7 +413,7 @@ setScreenActiveMode(modeIndex: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | modeIndex | number | 是 | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md)属性的模式id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -460,6 +466,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 ```
 
+<a id="setscreenactivemode-1"></a>
 ## setScreenActiveMode
 
 ```TypeScript
@@ -486,7 +493,7 @@ setScreenActiveMode(modeIndex: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -691,7 +698,7 @@ readonly supportedModeInfo: Array<ScreenModeInfo>
 
 屏幕支持的模式集合。
 
-**类型：** Array<ScreenModeInfo>
+**类型：** Array&lt;ScreenModeInfo&gt;
 
 **起始版本：** 9
 

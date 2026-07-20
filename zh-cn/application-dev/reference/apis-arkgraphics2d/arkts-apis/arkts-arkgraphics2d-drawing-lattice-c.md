@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createimagelattice"></a>
 ## createImageLattice
 
 ```TypeScript
@@ -43,13 +44,13 @@ static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xDivs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 用于划分图像的X坐标值数组。该参数为整数。 |
-| yDivs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 用于划分图像的Y坐标值数组。该参数为整数。 |
+| xDivs | Array&lt;number&gt; | 是 | 用于划分图像的X坐标值数组。该参数为整数。 |
+| yDivs | Array&lt;number&gt; | 是 | 用于划分图像的Y坐标值数组。该参数为整数。 |
 | fXCount | number | 是 | X坐标值数组的大小。基于功能和性能的考虑，取值范围为[0, 5]。 |
 | fYCount | number | 是 | Y坐标值数组的大小。基于功能和性能的考虑，取值范围为[0, 5]。 |
 | fBounds | common2D.Rect \| null | 否 | 可选，要绘制的原始边界矩形，矩形参数须为整数，默认为原始图像矩形大小（若矩形参数为小数，会直接舍弃小数部分，转为整数）。 |
-| fRectTypes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<RectType> \| null | 否 | 可选，填充网格类型的数组，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
-| fColors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Color> \| null | 否 | 可选，填充网格的颜色数组，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| fRectTypes | Array&lt;RectType&gt; \| null | 否 | 可选，填充网格类型的数组，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| fColors | Array&lt;common2D.Color&gt; \| null | 否 | 可选，填充网格的颜色数组，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
 
 **返回值：**
 
@@ -63,6 +64,7 @@ static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: n
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createimagelattice-1"></a>
 ## createImageLattice
 
 ```TypeScript
@@ -84,13 +86,13 @@ static createImageLattice(xDivs: Array<number>, yDivs: Array<number>, fXCount: n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xDivs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 用于划分图像的X坐标值数组。该参数为整数。 |
-| yDivs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 用于划分图像的Y坐标值数组。该参数为整数。 |
+| xDivs | Array&lt;number&gt; | 是 | 用于划分图像的X坐标值数组。该参数为整数。 |
+| yDivs | Array&lt;number&gt; | 是 | 用于划分图像的Y坐标值数组。该参数为整数。 |
 | fXCount | number | 是 | X坐标值数组的大小。基于功能和性能的考虑，取值范围为[0, 5]。 |
 | fYCount | number | 是 | Y坐标值数组的大小。基于功能和性能的考虑，取值范围为[0, 5]。 |
 | fBounds | common2D.Rect \| null | 否 | 可选，要绘制的原始边界矩形，矩形参数须为整数，默认为原始图像矩形大小（若矩形参数为小数，会直接舍弃小数部分，转为整数）。 |
-| fRectTypes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<RectType> \| null | 否 | 可选，填充网格类型的数组，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
-| fColors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 否 | 可选，填充网格的颜色数组，颜色用16进制ARGB格式的32位无符号整数表示，参数默认为空。如果设置，大小必须为(fXCount + 1)* (fYCount + 1)。 |
+| fRectTypes | Array&lt;RectType&gt; \| null | 否 | 可选，填充网格类型的数组，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| fColors | Array&lt;number&gt; \| null | 否 | 可选，填充网格的颜色数组，颜色用16进制ARGB格式的32位无符号整数表示，参数默认为空。如果设置，大小必须为(fXCount + 1)* (fYCount + 1)。 |
 
 **返回值：**
 

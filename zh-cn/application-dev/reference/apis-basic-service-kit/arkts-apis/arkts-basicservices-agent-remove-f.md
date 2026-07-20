@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -27,7 +28,7 @@ function remove(id: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 任务id。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当移除指定任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当移除指定任务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -38,6 +39,7 @@ function remove(id: string, callback: AsyncCallback<void>): void
 | [21900006](../../apis-basic-services-kit/errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |
 
 
+<a id="remove-1"></a>
 ## remove
 
 ```TypeScript
@@ -64,7 +66,7 @@ function remove(id: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

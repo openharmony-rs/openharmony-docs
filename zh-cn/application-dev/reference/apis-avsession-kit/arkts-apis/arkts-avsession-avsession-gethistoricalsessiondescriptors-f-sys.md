@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="gethistoricalsessiondescriptors"></a>
 ## getHistoricalSessionDescriptors
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | maxSize | number | 是 | 指定获取描述符数量的最大值，可选范围是0-10。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Readonly<AVSessionDescriptor>>> | 是 | 回调函数。返回所有会话描述的只读对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Readonly&lt;AVSessionDescriptor&gt;&gt;&gt; | 是 | 回调函数。返回所有会话描述的只读对象。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDe
 ```
 
 
+<a id="gethistoricalsessiondescriptors-1"></a>
 ## getHistoricalSessionDescriptors
 
 ```TypeScript
@@ -85,7 +87,7 @@ function getHistoricalSessionDescriptors(maxSize?: number): Promise<Array<Readon
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Readonly<AVSessionDescriptor>>> | Promise对象。返回所有会话描述的只读对象。 |
+| Promise&lt;Array&lt;Readonly&lt;AVSessionDescriptor&gt;&gt;&gt; | Promise对象。返回所有会话描述的只读对象。 |
 
 **错误码：**
 

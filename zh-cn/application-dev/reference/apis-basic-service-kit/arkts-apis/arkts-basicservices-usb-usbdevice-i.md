@@ -66,7 +66,7 @@ configs: Array<USBConfig>
 
 设备配置描述符信息。
 
-**类型：** Array<USBConfig>
+**类型：** Array&lt;USBConfig&gt;
 
 **起始版本：** 8
 

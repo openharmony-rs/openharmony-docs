@@ -24,7 +24,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 通知调用者获取数据的回调函数。
 
-**类型：** (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void
+**类型：** (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) =&gt; void
 
 **起始版本：** 8
 

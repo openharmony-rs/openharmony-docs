@@ -6,6 +6,7 @@
 import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="startwork"></a>
 ## startWork
 
 ```TypeScript

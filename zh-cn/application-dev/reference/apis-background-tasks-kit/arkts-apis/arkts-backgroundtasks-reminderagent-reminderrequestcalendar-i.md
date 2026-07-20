@@ -48,7 +48,7 @@ repeatDays?: Array<number>
 
 指明重复提醒的日期。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 7
 
@@ -68,7 +68,7 @@ repeatMonths?: Array<number>
 
 指明重复提醒的月份。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 7
 

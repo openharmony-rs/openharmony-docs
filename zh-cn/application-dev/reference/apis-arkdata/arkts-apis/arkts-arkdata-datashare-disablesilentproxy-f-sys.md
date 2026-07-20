@@ -6,6 +6,7 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
+<a id="disablesilentproxy"></a>
 ## disableSilentProxy
 
 ```TypeScript
@@ -17,7 +18,7 @@ function disableSilentProxy(context: Context, uri?: string): Promise<void>
 使用规则：
 
 - 数据提供方调用此接口，来关闭静默访问功能。  
-- 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../../../database/share-data-by-datashareextensionability-sys.md)。  
+- 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](docroot://database/share-data-by-datashareextensionability-sys.md)。  
 - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验Datashare的关闭状态。
 
 **起始版本：** 11
@@ -41,7 +42,7 @@ function disableSilentProxy(context: Context, uri?: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

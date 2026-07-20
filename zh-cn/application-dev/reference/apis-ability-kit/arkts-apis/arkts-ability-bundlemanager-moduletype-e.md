@@ -46,7 +46,7 @@ FEATURE = 2
 SHARED = 3
 ```
 
-应用的[动态共享库](../../../../quick-start/in-app-hsp.md)模块。
+应用的[动态共享库](docroot://quick-start/in-app-hsp.md)模块。
 
 **起始版本：** 9
 

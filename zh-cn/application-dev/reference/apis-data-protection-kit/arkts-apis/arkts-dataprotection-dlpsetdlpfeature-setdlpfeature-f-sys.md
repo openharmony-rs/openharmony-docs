@@ -6,6 +6,7 @@
 import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 ```
 
+<a id="setdlpfeature"></a>
 ## setDlpFeature
 
 ```TypeScript
@@ -38,7 +39,7 @@ function setDlpFeature(status: DlpFeatureStatus): Promise<StatusInfoResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<StatusInfoResult> | Promise对象。设置DLP特性开关状态，返回DLP特性开关状态设置的结果信息。 |
+| Promise&lt;StatusInfoResult&gt; | Promise对象。设置DLP特性开关状态，返回DLP特性开关状态设置的结果信息。 |
 
 **错误码：**
 

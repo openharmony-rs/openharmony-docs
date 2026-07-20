@@ -6,6 +6,7 @@
 import { router } from '@kit.ArkUI';
 ```
 
+<a id="disablealertbeforebackpage"></a>
 ## disableAlertBeforeBackPage
 
 ```TypeScript

@@ -2,7 +2,7 @@
 
 提供自定义时间日期符号的能力。继承自[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)，支持[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)的方法。
 
-**继承/实现关系：** SymbolDateTimeFormat extends [Intl.DateTimeFormat](Intl.DateTimeFormat)
+**继承/实现关系：** SymbolDateTimeFormat extends [Intl.DateTimeFormat](arkts-localization-intl-datetimeformat-c.md)
 
 **起始版本：** 26.0.0
 
@@ -16,6 +16,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -47,6 +48,7 @@ public constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -77,6 +79,7 @@ public format(date?: Date | number): string
 | --- | --- |
 | string | 使用自定义符号的时间日期字符串。 |
 
+<a id="formatrange"></a>
 ## formatRange
 
 ```TypeScript
@@ -108,6 +111,7 @@ public formatRange(startDate: Date | number | bigint, endDate: Date | number | b
 | --- | --- |
 | string | 格式化后的时间日期范围字符串。 |
 
+<a id="formatrangetoparts"></a>
 ## formatRangeToParts
 
 ```TypeScript
@@ -142,6 +146,7 @@ public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | num
 | --- | --- |
 | Intl.DateTimeRangeFormatPart[] | 时间日期范围元素数组。 |
 
+<a id="formattoparts"></a>
 ## formatToParts
 
 ```TypeScript
@@ -172,6 +177,7 @@ public formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]
 | --- | --- |
 | Intl.DateTimeFormatPart[] | 使用自定义符号的时间日期元素数组。 |
 
+<a id="parse"></a>
 ## parse
 
 ```TypeScript
@@ -209,6 +215,7 @@ public parse(text: string, lenientMode: boolean): number
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="resolvedoptions"></a>
 ## resolvedOptions
 
 ```TypeScript

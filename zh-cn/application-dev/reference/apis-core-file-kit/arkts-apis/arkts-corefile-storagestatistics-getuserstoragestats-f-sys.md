@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getuserstoragestats"></a>
 ## getUserStorageStats
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getUserStorageStats(): Promise<StorageStats>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<StorageStats> | Promise对象，返回当前用户各类别存储空间大小（单位为Byte）。 |
+| Promise&lt;StorageStats&gt; | Promise对象，返回当前用户各类别存储空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.St
 ```
 
 
+<a id="getuserstoragestats-1"></a>
 ## getUserStorageStats
 
 ```TypeScript
@@ -75,7 +77,7 @@ function getUserStorageStats(callback: AsyncCallback<StorageStats>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<StorageStats> | 是 | 返回用户各类别存储空间大小之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;StorageStats&gt; | 是 | 返回用户各类别存储空间大小之后的回调。 |
 
 **错误码：**
 
@@ -103,6 +105,7 @@ storageStatistics.getUserStorageStats((error: BusinessError, storageStats: stora
 ```
 
 
+<a id="getuserstoragestats-2"></a>
 ## getUserStorageStats
 
 ```TypeScript
@@ -131,7 +134,7 @@ function getUserStorageStats(userId: number): Promise<StorageStats>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<StorageStats> | Promise对象，返回指定用户各类别存储空间大小（单位为Byte）。 |
+| Promise&lt;StorageStats&gt; | Promise对象，返回指定用户各类别存储空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -158,6 +161,7 @@ storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatist
 ```
 
 
+<a id="getuserstoragestats-3"></a>
 ## getUserStorageStats
 
 ```TypeScript
@@ -181,7 +185,7 @@ function getUserStorageStats(userId: number, callback: AsyncCallback<StorageStat
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<StorageStats> | 是 | 返回指定用户各类别存储空间大小之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;StorageStats&gt; | 是 | 返回指定用户各类别存储空间大小之后的回调。 |
 
 **错误码：**
 

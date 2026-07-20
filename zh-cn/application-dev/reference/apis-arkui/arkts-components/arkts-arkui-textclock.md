@@ -32,7 +32,7 @@ TextClock(options?: TextClockOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | TextClockOptions | 否 | 通过文本显示当前系统时间的组件参数。 |
+| options | [TextClockOptions](arkts-arkui-textclockoptions-i.md) | 否 | 通过文本显示当前系统时间的组件参数。 |
 
 ## 汇总
 

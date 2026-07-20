@@ -22,7 +22,7 @@ readonly abilityTypes: Array<AbilityType>
 
 辅助应用类型。
 
-**类型：** Array<AbilityType>
+**类型：** Array&lt;AbilityType&gt;
 
 **起始版本：** 7
 
@@ -62,7 +62,7 @@ readonly capabilities: Array<Capability>
 
 辅助应用能力列表。
 
-**类型：** Array<Capability>
+**类型：** Array&lt;Capability&gt;
 
 **起始版本：** 7
 
@@ -102,7 +102,7 @@ readonly eventTypes: Array<EventType>
 
 辅助应用关注的无障碍事件列表。
 
-**类型：** Array<EventType>
+**类型：** Array&lt;EventType&gt;
 
 **起始版本：** 7
 
@@ -202,7 +202,7 @@ readonly targetBundleNames: Array<string>
 
 关注的目标Bundle名称。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

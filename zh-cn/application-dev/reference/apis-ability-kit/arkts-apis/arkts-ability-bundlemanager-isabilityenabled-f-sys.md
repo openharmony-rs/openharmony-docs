@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="isabilityenabled"></a>
 ## isAbilityEnabled
 
 ```TypeScript
@@ -33,7 +34,7 @@ function isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回true表示当前应用组件为使能状态，返回false表示当前应用组件为禁用状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示当前应用组件为使能状态，返回false表示当前应用组件为禁用状态。 |
 
 **错误码：**
 
@@ -81,6 +82,7 @@ try {
 ```
 
 
+<a id="isabilityenabled-1"></a>
 ## isAbilityEnabled
 
 ```TypeScript
@@ -102,7 +104,7 @@ function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 表示关于检查ability的信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，返回true表示当前应用组件为使能状态，返回false表示应用组件为禁用状态。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，返回true表示当前应用组件为使能状态，返回false表示应用组件为禁用状态。 |
 
 **错误码：**
 
@@ -151,6 +153,7 @@ try {
 ```
 
 
+<a id="isabilityenabled-2"></a>
 ## isAbilityEnabled
 
 ```TypeScript
@@ -177,7 +180,7 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回true表示当前应用组件为使能状态，返回false表示当前应用组件为禁用状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示当前应用组件为使能状态，返回false表示当前应用组件为禁用状态。 |
 
 **错误码：**
 

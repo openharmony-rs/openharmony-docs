@@ -21,13 +21,13 @@ ArkTS TypedArray断言测试函数类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。 |
-| index | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
-| array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。 |
+| value | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。  |
+| index | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。  |
+| array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 如果值符合条件，则为true，否则为false。 |
+| boolean | 如果值符合条件，则为true，否则为false。  |
 

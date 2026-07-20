@@ -14,6 +14,7 @@ This class offers a comprehensive set of operations for handling common2D Point 
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="negate"></a>
 ## negate
 
 ```TypeScript
@@ -36,6 +37,7 @@ static negate(point: common2D.Point): void
 | --- | --- | --- | --- |
 | point | common2D.Point | 是 | 指定要取反的点。 |
 
+<a id="offset"></a>
 ## offset
 
 ```TypeScript

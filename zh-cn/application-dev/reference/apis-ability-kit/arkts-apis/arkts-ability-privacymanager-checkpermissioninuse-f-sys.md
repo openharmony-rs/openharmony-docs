@@ -6,6 +6,7 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
+<a id="checkpermissioninuse"></a>
 ## checkPermissionInUse
 
 ```TypeScript

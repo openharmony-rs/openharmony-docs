@@ -6,6 +6,7 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
+<a id="getincomingcallpolicynumbers"></a>
 ## getIncomingCallPolicyNumbers
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy):
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 通话呼入禁用或允许名单的号码数组。 |
+| Array&lt;string&gt; | 通话呼入禁用或允许名单的号码数组。 |
 
 **错误码：**
 

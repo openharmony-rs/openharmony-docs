@@ -6,9 +6,9 @@
 
 > - 本模块不支持在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-app-ability-uiability.md)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。  
 >  
-> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见  
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](docroot://ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见  
 > [UIContext](arkts-arkui-uicontext.md)说明。建议<!--Del-->在除  
-> [ServiceExtensionAbility](../../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用  
+> [ServiceExtensionAbility](docroot://application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用  
 > UIContext中的弹窗方法。
 
 **起始版本：** 9
@@ -29,22 +29,22 @@ import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [showToast](arkts-arkui-promptaction-showtoast-f.md#showtoast-1) | Creates and displays a toast.创建并显示即时反馈。 |
-| [openToast](arkts-arkui-promptaction-opentoast-f.md#opentoast-1) | 显示即时反馈并通过Promise返回其id。 |
-| [closeToast](arkts-arkui-promptaction-closetoast-f.md#closetoast-1) | 关闭即时反馈。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-2) | 创建并显示对话框，对话框通过Promise返回结果。 |
-| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#opencustomdialog-1) | 打开自定义弹窗。通过Promise返回结果。&lt;!--Del--&gt;不支持在ServiceExtension中使用。&lt;!--DelEnd--&gt;弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。 |
-| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closecustomdialog-1) | 关闭自定义弹窗。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-2) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
+| [showToast](arkts-arkui-promptaction-showtoast-f.md#showtoast) | Creates and displays a toast.  创建并显示即时反馈。 |
+| [openToast](arkts-arkui-promptaction-opentoast-f.md#opentoast) | 显示即时反馈并通过Promise返回其id。 |
+| [closeToast](arkts-arkui-promptaction-closetoast-f.md#closetoast) | 关闭即时反馈。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框通过Promise返回结果。 |
+| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#opencustomdialog) | 打开自定义弹窗。通过Promise返回结果。  <!--Del-->不支持在ServiceExtension中使用。<!--DelEnd-->  弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。 |
+| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closecustomdialog) | 关闭自定义弹窗。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
 | [CommonController](arkts-arkui-promptaction-commoncontroller-c.md) | 公共控制器，可以控制promptAction相关组件。 |
-| [DialogController](arkts-arkui-promptaction-dialogcontroller-c.md) | 自定义弹窗控制器，继承自[CommonController](#commoncontroller18)。DialogController可作为UIContext弹出自定义弹窗的成员变量，具体用法可看[openCustomDialogWithController](arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)和[presentCustomDialog](arkts-apis-uicontext-promptaction.md#presentcustomdialog18)示例。 |
+| [DialogController](arkts-arkui-promptaction-dialogcontroller-c.md) | 自定义弹窗控制器，继承自[CommonController](#commoncontroller18)。  DialogController可作为UIContext弹出自定义弹窗的成员变量，具体用法可看[openCustomDialogWithController](arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)和[presentCustomDialog](arkts-apis-uicontext-promptaction.md#presentcustomdialog18)示例。 |
 
 ### 接口
 

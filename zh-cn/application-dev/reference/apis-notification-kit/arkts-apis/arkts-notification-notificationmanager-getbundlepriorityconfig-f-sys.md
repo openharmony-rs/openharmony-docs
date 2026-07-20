@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getbundlepriorityconfig"></a>
 ## getBundlePriorityConfig
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getBundlePriorityConfig(bundle: BundleOption): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回包含应用优先功能配置的Promise对象。 |
+| Promise&lt;string&gt; | Promise对象，返回包含应用优先功能配置的Promise对象。 |
 
 **错误码：**
 

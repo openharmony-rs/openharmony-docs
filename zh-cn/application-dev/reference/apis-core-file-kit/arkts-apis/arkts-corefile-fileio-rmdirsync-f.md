@@ -1,5 +1,6 @@
 # rmdirSync
 
+<a id="rmdirsync"></a>
 ## rmdirSync
 
 ```TypeScript

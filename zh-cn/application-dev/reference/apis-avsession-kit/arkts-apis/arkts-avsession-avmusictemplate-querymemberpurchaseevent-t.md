@@ -18,11 +18,11 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| memberPurchaseType | MemberPurchaseType | 是 |  |
+| memberPurchaseType | [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;MemberPurchaseInfo[]&gt; | Promise对象，返回会员购买信息的数组。 |
+| Promise&lt;MemberPurchaseInfo[]&gt; | Promise对象，返回会员购买信息的数组。  |
 

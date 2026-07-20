@@ -6,6 +6,7 @@
 import { process } from '@kit.ArkTS';
 ```
 
+<a id="isappuid"></a>
 ## isAppUid
 
 ```TypeScript

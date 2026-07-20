@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
+<a id="querydevices"></a>
 ## queryDevices
 
 ```TypeScript
@@ -32,7 +33,7 @@ function queryDevices(busType?: number): Array<Readonly<Device>>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<Device>> | 设备信息列表。 |
+| Array&lt;Readonly&lt;Device&gt;&gt; | 设备信息列表。 |
 
 **错误码：**
 

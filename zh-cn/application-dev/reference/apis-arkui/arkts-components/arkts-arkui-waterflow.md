@@ -105,7 +105,7 @@ WaterFlow(options?: WaterFlowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | WaterFlowOptions | 否 | 瀑布流组件参数。 |
+| options | [WaterFlowOptions](arkts-arkui-waterflowoptions-i.md) | 否 | 瀑布流组件参数。  |
 
 ## 汇总
 

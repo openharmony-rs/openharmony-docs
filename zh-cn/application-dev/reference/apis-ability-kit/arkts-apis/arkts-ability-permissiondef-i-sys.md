@@ -1,6 +1,6 @@
 # PermissionDef（系统接口）
 
-[module.json5配置文件](../../../../quick-start/module-configuration-file.md)中定义的权限详细信息，通过接口[bundleManager.getPermissionDef](arkts-ability-bundlemanager-getpermissiondef-f-sys.md#getpermissiondef-1)获取。
+[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中定义的权限详细信息，通过接口[bundleManager.getPermissionDef](arkts-ability-bundlemanager-getpermissiondef-f-sys.md#getpermissiondef-1)获取。
 
 > **说明：**  
 >  
@@ -38,7 +38,7 @@ readonly descriptionId: number
 readonly grantMode: number
 ```
 
-[权限的授予方式](../../../../security/AccessToken/app-permission-mgmt-overview.md#授权方式)。0：表示用户授权，1：表示系统授权。
+[权限的授予方式](docroot://security/AccessToken/app-permission-mgmt-overview.md#授权方式)。0：表示用户授权，1：表示系统授权。
 
 **类型：** number
 

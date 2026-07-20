@@ -38,7 +38,7 @@ change: PermissionStateChangeType
 permissionName: Permissions
 ```
 
-当前授权状态发生变化的权限名，合法的权限名取值可在[应用权限列表](../../../../security/AccessToken/app-permissions.md)中查询。
+当前授权状态发生变化的权限名，合法的权限名取值可在[应用权限列表](docroot://security/AccessToken/app-permissions.md)中查询。
 
 **类型：** Permissions
 

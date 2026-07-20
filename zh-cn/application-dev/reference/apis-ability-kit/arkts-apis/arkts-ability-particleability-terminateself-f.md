@@ -6,6 +6,7 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
+<a id="terminateself"></a>
 ## terminateSelf
 
 ```TypeScript
@@ -26,7 +27,7 @@ function terminateSelf(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当销毁当前particleAbility成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当销毁当前particleAbility成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -44,6 +45,7 @@ particleAbility.terminateSelf(
 ```
 
 
+<a id="terminateself-1"></a>
 ## terminateSelf
 
 ```TypeScript
@@ -64,7 +66,7 @@ function terminateSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 

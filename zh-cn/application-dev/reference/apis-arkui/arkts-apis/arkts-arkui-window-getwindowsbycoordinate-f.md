@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="getwindowsbycoordinate"></a>
 ## getWindowsByCoordinate
 
 ```TypeScript
@@ -38,7 +39,7 @@ function getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Window>> | Promise对象。返回获取到的窗口对象数组。 |
+| Promise&lt;Array&lt;Window&gt;&gt; | Promise对象。返回获取到的窗口对象数组。 |
 
 **错误码：**
 

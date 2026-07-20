@@ -30,7 +30,7 @@ use new function to set the value.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | CircleOptions | 否 |  |
+| value | [CircleOptions](arkts-arkui-circleoptions-i.md) | 否 |  |
 
 ## Circle
 
@@ -54,7 +54,7 @@ Circle(value?: CircleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | CircleOptions | 否 | 设置圆形尺寸<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [CircleOptions](arkts-arkui-circleoptions-i.md) | 否 | 设置圆形尺寸<br/>异常值undefined和null按照无效值处理，本次设置不生效。  |
 
 ## 汇总
 

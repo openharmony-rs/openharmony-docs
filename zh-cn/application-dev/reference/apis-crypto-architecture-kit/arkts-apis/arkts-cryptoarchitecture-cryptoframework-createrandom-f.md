@@ -6,6 +6,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="createrandom"></a>
 ## createRandom
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createRandom(): Random
 
 | 类型 | 说明 |
 | --- | --- |
-| [Random](arkts-cryptoarchitecture-cryptoframework-random-i.md) | 返回由输入算法指定生成的[Random](arkts-cryptoarchitecture-cryptoframework-random-i.md)对象。<br>支持的规格详见框架概述[随机数算法规格](../../../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。 |
+| [Random](arkts-cryptoarchitecture-cryptoframework-random-i.md) | 返回由输入算法指定生成的[Random](arkts-cryptoarchitecture-cryptoframework-random-i.md)对象。<br>支持的规格详见框架概述[随机数算法规格](docroot://security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。 |
 
 **错误码：**
 

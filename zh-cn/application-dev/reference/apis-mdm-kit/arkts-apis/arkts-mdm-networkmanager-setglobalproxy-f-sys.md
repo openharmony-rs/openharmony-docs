@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="setglobalproxy"></a>
 ## setGlobalProxy
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: 
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | httpProxy | connection.HttpProxy | 是 | 网络全局Http代理配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
 
@@ -81,6 +82,7 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 ```
 
 
+<a id="setglobalproxy-1"></a>
 ## setGlobalProxy
 
 ```TypeScript
@@ -116,7 +118,7 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当设置网络全局代理失败时抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置网络全局代理失败时抛出错误对象。 |
 
 **错误码：**
 

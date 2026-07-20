@@ -122,8 +122,8 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scroller | Scroller | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList]{@link @ohos.arkui.ArcList}、[List]{@link list}、[Grid]{@link grid}、[Scroll]{@link scroll}和[WaterFlow]{@link water_flow}绑定同一个滚动控制对象。 |
-| layoutOptions | GridLayoutOptions | 否 | Grid布局选项。 |
+| scroller | [Scroller](arkts-arkui-scroller-c.md) | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如： [ArcList]{@link @ohos.arkui.ArcList}、[List]{@link list}、[Grid]{@link grid}、[Scroll]{@link scroll}和 [WaterFlow]{@link water_flow}绑定同一个滚动控制对象。  |
+| layoutOptions | [GridLayoutOptions](arkts-arkui-gridlayoutoptions-i.md) | 否 | Grid布局选项。 |
 
 ## 汇总
 

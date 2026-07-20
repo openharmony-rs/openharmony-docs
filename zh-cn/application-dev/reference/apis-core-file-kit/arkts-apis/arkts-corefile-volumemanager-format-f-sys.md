@@ -6,6 +6,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -30,7 +31,7 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 | --- | --- | --- | --- |
 | volumeId | string | 是 | 卷设备id。 |
 | fsType | string | 是 | 文件系统类型(vfat或者exfat)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 对指定卷设备格式化后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 对指定卷设备格式化后的回调。 |
 
 **错误码：**
 
@@ -46,6 +47,7 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 | 13900042 | Unknown error. |
 
 
+<a id="format-1"></a>
 ## format
 
 ```TypeScript
@@ -75,7 +77,7 @@ function format(volumeId: string, fsType: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

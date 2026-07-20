@@ -4,7 +4,7 @@
 declare type OnGetStartIndexByIndexCallback = (targetIndex: number) => StartLineInfo
 ```
 
-根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroll-scroller-c.md#scrolltoindex-1)等操作。
+根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex-1)等操作。
 
 **起始版本：** 23
 
@@ -18,11 +18,11 @@ declare type OnGetStartIndexByIndexCallback = (targetIndex: number) => StartLine
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetIndex | int | 是 | 要滚动到的目标GridItem的索引。 |
+| targetIndex | number | 是 | 要滚动到的目标GridItem的索引。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| StartLineInfo | 用于记录Grid页面内起始行的位置信息。@systemapi@stagemodelonly |
+| [StartLineInfo](arkts-arkui-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 @systemapi @stagemodelonly  |
 

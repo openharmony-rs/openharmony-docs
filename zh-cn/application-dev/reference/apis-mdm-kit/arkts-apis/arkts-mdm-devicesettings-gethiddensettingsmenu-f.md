@@ -6,6 +6,7 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
+<a id="gethiddensettingsmenu"></a>
 ## getHiddenSettingsMenu
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getHiddenSettingsMenu(admin: Want): Array<SettingsMenu>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<SettingsMenu> | 隐藏的设置项列表。 |
+| Array&lt;SettingsMenu&gt; | 隐藏的设置项列表。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createx509certchain"></a>
 ## createX509CertChain
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createX509CertChain(inStream: EncodingBlob): Promise<X509CertChain>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<X509CertChain> | Promise对象，返回创建的X509CertChain实例。 |
+| Promise&lt;X509CertChain&gt; | Promise对象，返回创建的X509CertChain实例。 |
 
 **错误码：**
 
@@ -134,6 +135,7 @@ createX509CertChain();
 ```
 
 
+<a id="createx509certchain-1"></a>
 ## createX509CertChain
 
 ```TypeScript
@@ -155,7 +157,7 @@ function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X50
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | X509证书序列化数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<X509CertChain> | 是 | 回调函数。当创建X509证书链对象成功时，err为undefined，data为获取到的X509CertChain实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;X509CertChain&gt; | 是 | 回调函数。当创建X509证书链对象成功时，err为undefined，data为获取到的X509CertChain实例；否则为错误对象。 |
 
 **错误码：**
 
@@ -252,6 +254,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
 ```
 
 
+<a id="createx509certchain-2"></a>
 ## createX509CertChain
 
 ```TypeScript
@@ -272,7 +275,7 @@ function createX509CertChain(certs: Array<X509Cert>): X509CertChain
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| certs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<X509Cert> | 是 | X509证书对象数组。 |
+| certs | Array&lt;X509Cert&gt; | 是 | X509证书对象数组。 |
 
 **返回值：**
 

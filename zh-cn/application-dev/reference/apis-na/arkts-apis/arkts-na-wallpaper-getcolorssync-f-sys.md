@@ -1,5 +1,6 @@
 # getColorsSync（系统接口）
 
+<a id="getcolorssync"></a>
 ## getColorsSync
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<RgbaColor> | 返回壁纸的主要颜色信息。 |
+| Array&lt;RgbaColor&gt; | 返回壁纸的主要颜色信息。 |
 
 **错误码：**
 

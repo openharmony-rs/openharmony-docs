@@ -106,7 +106,7 @@ action: Callback<void>
 
 自定义尾部图标的响应事件。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 26.0.0
 

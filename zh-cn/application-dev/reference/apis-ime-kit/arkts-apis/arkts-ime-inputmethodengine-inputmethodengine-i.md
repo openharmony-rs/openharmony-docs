@@ -18,6 +18,7 @@
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="off"></a>
 ## off('inputStart')
 
 ```TypeScript
@@ -50,7 +51,7 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: KeyboardController, textInputClient: TextInputClient) => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -63,6 +64,7 @@ inputMethodEngine.getInputMethodEngine()
 
 ```
 
+<a id="off-1"></a>
 ## off('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -86,7 +88,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。<br/>-'keyboardShow'表示显示输入法软键盘。<br/>-'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -96,6 +98,7 @@ inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 
 ```
 
+<a id="off-2"></a>
 ## off('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -119,7 +122,7 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。<br/>-'keyboardShow'表示显示输入法软键盘。<br/>-'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -129,6 +132,7 @@ inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 
 ```
 
+<a id="on"></a>
 ## on('inputStart')
 
 ```TypeScript
@@ -161,7 +165,7 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: KeyboardController, textInputClient: TextInputClient) => void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
+| callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
 
 **示例：**
 
@@ -174,6 +178,7 @@ inputMethodEngine.getInputMethodEngine()
 
 ```
 
+<a id="on-1"></a>
 ## on('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -197,7 +202,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。<br/>-'keyboardShow'表示显示输入法软键盘。<br/>-'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () => void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例：**
 
@@ -211,6 +216,7 @@ inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
 
 ```
 
+<a id="on-2"></a>
 ## on('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -234,7 +240,7 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyboardShow' \| 'keyboardHide' | 是 | 设置监听类型。<br/>-'keyboardShow'表示显示输入法软键盘。<br/>-'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () => void | 是 | 回调函数。 |
+| callback | () =&gt; void | 是 | 回调函数。 |
 
 **示例：**
 

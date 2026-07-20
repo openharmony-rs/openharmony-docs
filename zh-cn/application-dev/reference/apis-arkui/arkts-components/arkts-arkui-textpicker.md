@@ -36,7 +36,7 @@ TextPicker(options?: TextPickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | TextPickerOptions | 否 | 配置文本选择器的参数。参数缺省时组件无法显示。 |
+| options | [TextPickerOptions](arkts-arkui-textpickeroptions-i.md) | 否 | 配置文本选择器的参数。参数缺省时组件无法显示。  |
 
 ## 汇总
 

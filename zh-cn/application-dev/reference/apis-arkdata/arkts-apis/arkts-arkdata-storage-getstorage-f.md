@@ -1,5 +1,6 @@
 # getStorage
 
+<a id="getstorage"></a>
 ## getStorage
 
 ```TypeScript
@@ -21,9 +22,10 @@ function getStorage(path: string, callback: AsyncCallback<Storage>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 应用程序内部数据存储路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Storage> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Storage&gt; | 是 | 回调函数。 |
 
 
+<a id="getstorage-1"></a>
 ## getStorage
 
 ```TypeScript
@@ -50,5 +52,5 @@ function getStorage(path: string): Promise<Storage>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Storage> | Promise实例，用于异步获取结果。 |
+| Promise&lt;Storage&gt; | Promise实例，用于异步获取结果。 |
 

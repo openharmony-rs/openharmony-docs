@@ -24,7 +24,7 @@ complete?: () => void
 
 接口调用结束的回调函数。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 3
 
@@ -44,7 +44,7 @@ fail?: (data: any, code: number) => void
 
 接口调用失败的回调函数。返回header信息与HTTP状态码。
 
-**类型：** (data: any, code: number) => void
+**类型：** (data: any, code: number) =&gt; void
 
 **起始版本：** 3
 
@@ -64,7 +64,7 @@ success?: (data: OnDownloadCompleteResponse) => void
 
 接口调用成功的回调函数。
 
-**类型：** (data: OnDownloadCompleteResponse) => void
+**类型：** (data: OnDownloadCompleteResponse) =&gt; void
 
 **起始版本：** 3
 

@@ -16,7 +16,7 @@ readonly abilitiesInfo: Array<AbilityInfo>
 
 当前模块所有Ability的信息。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY获取。
 
-**类型：** Array<AbilityInfo>
+**类型：** Array&lt;AbilityInfo&gt;
 
 **起始版本：** 9
 
@@ -52,7 +52,7 @@ readonly dependencies: Array<Dependency>
 
 模块运行依赖的动态共享库列表。
 
-**类型：** Array<Dependency>
+**类型：** Array&lt;Dependency&gt;
 
 **起始版本：** 9
 
@@ -104,9 +104,9 @@ readonly descriptionId: number
 readonly deviceTypes: Array<string>
 ```
 
-模块支持安装运行的[设备类型](../../../../quick-start/module-configuration-file.md#devicetypes标签)的集合。
+模块支持安装运行的[设备类型](docroot://quick-start/module-configuration-file.md#devicetypes标签)的集合。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -124,7 +124,7 @@ readonly extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
 
 当前模块所有ExtensionAbility的信息。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY获取。
 
-**类型：** Array<ExtensionAbilityInfo>
+**类型：** Array&lt;ExtensionAbilityInfo&gt;
 
 **起始版本：** 9
 
@@ -176,7 +176,7 @@ readonly hashValue: string
 readonly icon: string
 ```
 
-当前模块入口Ability的[图标](../../../../quick-start/layered-image.md)，取值为图标资源文件的索引，与模块配置文件中[abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)或[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)的icon字段值一致。若未配置入口Ability，则为空。
+当前模块入口Ability的[图标](docroot://quick-start/layered-image.md)，取值为图标资源文件的索引，与模块配置文件中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)或[extensionAbilities标签](docroot://quick-start/module-configuration-file.md#extensionabilities标签)的icon字段值一致。若未配置入口Ability，则为空。
 
 **类型：** string
 
@@ -194,7 +194,7 @@ readonly icon: string
 readonly iconId: number
 ```
 
-当前模块入口Ability的图标[资源ID](../../../../quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
+当前模块入口Ability的图标[资源ID](docroot://quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
 
 **类型：** number
 
@@ -230,7 +230,7 @@ readonly installationFree: boolean
 readonly label: string
 ```
 
-当前模块入口Ability的名称，取值为字符串资源的索引，与模块配置文件中[abilities标签](../../../../quick-start/module-configuration-file.md#abilities标签)或[extensionAbilities标签](../../../../quick-start/module-configuration-file.md#extensionabilities标签)的label字段值一致。若未配置入口Ability，则为空。
+当前模块入口Ability的名称，取值为字符串资源的索引，与模块配置文件中[abilities标签](docroot://quick-start/module-configuration-file.md#abilities标签)或[extensionAbilities标签](docroot://quick-start/module-configuration-file.md#extensionabilities标签)的label字段值一致。若未配置入口Ability，则为空。
 
 **类型：** string
 
@@ -248,7 +248,7 @@ readonly label: string
 readonly labelId: number
 ```
 
-当前模块入口Ability名称的[资源ID](../../../../quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
+当前模块入口Ability名称的[资源ID](docroot://quick-start/resource-categories-and-access.md#资源目录)值。若未配置入口Ability，则为0。
 
 **类型：** number
 
@@ -286,7 +286,7 @@ readonly metadata: Array<Metadata>
 
 当前模块的元数据。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_METADATA获取。
 
-**类型：** Array<Metadata>
+**类型：** Array&lt;Metadata&gt;
 
 **起始版本：** 9
 
@@ -338,7 +338,7 @@ readonly preloads: Array<PreloadItem>
 
 原子化服务中模块的预加载列表。
 
-**类型：** Array<PreloadItem>
+**类型：** Array&lt;PreloadItem&gt;
 
 **起始版本：** 9
 
@@ -354,9 +354,9 @@ readonly preloads: Array<PreloadItem>
 readonly routerMap: Array<RouterItem>
 ```
 
-[模块的路由表配置](../../../../quick-start/module-configuration-file.md#routermap标签)。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
+[模块的路由表配置](docroot://quick-start/module-configuration-file.md#routermap标签)。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
 
-**类型：** Array<RouterItem>
+**类型：** Array&lt;RouterItem&gt;
 
 **起始版本：** 12
 

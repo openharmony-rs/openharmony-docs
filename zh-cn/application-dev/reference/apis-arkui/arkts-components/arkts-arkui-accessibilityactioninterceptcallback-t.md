@@ -22,11 +22,11 @@ declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| action | AccessibilityAction | 是 | 可访问性操作类型的枚举。 |
+| action | [AccessibilityAction](arkts-arkui-accessibilityaction-e.md) | 是 | 可访问性操作类型的枚举。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| AccessibilityActionInterceptResult | 继续执行操作、中断操作或事件冒泡的结果 |
+| [AccessibilityActionInterceptResult](arkts-arkui-accessibilityactioninterceptresult-e.md) | 继续执行操作、中断操作或事件冒泡的结果  |
 

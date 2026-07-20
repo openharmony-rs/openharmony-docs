@@ -6,6 +6,7 @@
 import { advertising } from '@kit.ConnectivityKit';
 ```
 
+<a id="startadvertising"></a>
 ## startAdvertising
 
 ```TypeScript
@@ -34,7 +35,7 @@ function startAdvertising(advertisingParams: AdvertisingParams): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回广播句柄promise对象。 |
+| Promise&lt;number&gt; | 返回广播句柄promise对象。 |
 
 **错误码：**
 
@@ -42,8 +43,8 @@ function startAdvertising(advertisingParams: AdvertisingParams): Promise<number>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| 36100003 | NearLink disabled. |
-| 36100040 | Integer out of range. |
-| 36100043 | Invalid UUID. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100040](../errorcode-nearlink.md#36100040-整数超出范围) | Integer out of range. |
+| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
+<a id="getallowedusbdevices"></a>
 ## getAllowedUsbDevices
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getAllowedUsbDevices(admin: Want): Array<UsbDeviceId>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<UsbDeviceId> | 可用USB允许名单设备ID数组。 |
+| Array&lt;UsbDeviceId&gt; | 可用USB允许名单设备ID数组。 |
 
 **错误码：**
 

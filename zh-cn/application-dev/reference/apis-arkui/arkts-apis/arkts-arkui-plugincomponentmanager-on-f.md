@@ -6,6 +6,7 @@
 import { PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(eventType: string, callback: OnPushEventCallback | OnRequestEventCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventType | string | 是 |  |
-| callback | OnPushEventCallback \| OnRequestEventCallback | 是 |  |
+| callback | [OnPushEventCallback](arkts-arkui-plugincomponentmanager-onpusheventcallback-t.md) \| OnRequestEventCallback | 是 |  |
 
 **示例：**
 

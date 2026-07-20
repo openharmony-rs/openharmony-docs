@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="setwantagentmultithreading"></a>
 ## setWantAgentMultithreading
 
 ```TypeScript

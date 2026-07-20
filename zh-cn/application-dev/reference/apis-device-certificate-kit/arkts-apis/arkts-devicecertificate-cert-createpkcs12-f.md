@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createpkcs12"></a>
 ## createPkcs12
 
 ```TypeScript
@@ -33,7 +34,7 @@ function createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise<U
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回创建的P12，DER格式。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回创建的P12，DER格式。 |
 
 **错误码：**
 

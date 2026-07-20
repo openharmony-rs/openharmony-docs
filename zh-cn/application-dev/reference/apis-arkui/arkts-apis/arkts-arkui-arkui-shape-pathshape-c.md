@@ -18,6 +18,7 @@
 import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 ```
 
+<a id="commands"></a>
 ## commands
 
 ```TypeScript
@@ -50,6 +51,7 @@ commands(commands: string): PathShape
 | --- | --- |
 | [PathShape](arkts-arkui-arkui-shape-pathshape-c.md) | 返回PathShape对象。 |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

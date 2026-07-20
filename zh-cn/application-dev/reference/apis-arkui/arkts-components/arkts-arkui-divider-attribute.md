@@ -12,13 +12,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="color"></a>
 ## color
 
 ```TypeScript
 color(value: ResourceColor)
 ```
 
-设置分割线的颜色，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置分割线的颜色，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -36,13 +37,14 @@ color(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 分割线颜色。<br/>默认值：'#33182431' <br />非法值：按默认值处理。 <br/>支持通过[WithTheme](../arkts-apis/arkts-with_theme.md)设置通用分割线颜色。 |
 
+<a id="linecap"></a>
 ## lineCap
 
 ```TypeScript
 lineCap(value: LineCapStyle)
 ```
 
-设置分割线的端点样式，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置分割线的端点样式，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 
@@ -58,22 +60,23 @@ lineCap(value: LineCapStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LineCapStyle](../arkts-apis/arkts-arkui-enums-linecapstyle-e.md) | 是 | 分割线的端点样式。<br/>默认值：LineCapStyle.Butt <br />非法值：按默认值处理。 |
+| value | [LineCapStyle](../arkts-apis/arkts-arkui-linecapstyle-e.md) | 是 | 分割线的端点样式。<br/>默认值：LineCapStyle.Butt <br />非法值：按默认值处理。 |
 
+<a id="strokewidth"></a>
 ## strokeWidth
 
 ```TypeScript
 strokeWidth(value: number | string)
 ```
 
-设置分割线的宽度，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置分割线的宽度，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 > **说明：**  
 >  
 > - 分割线的宽度不支持百分比设置。  
 >  
-> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](arkts-arkui-common-commonmethod-c.md#height-1)；使用垂直分割线时，strokeWidth控制宽度，优  
-> 先级低于通用属性[width](arkts-arkui-common-commonmethod-c.md#width-1)。  
+> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](arkts-arkui-commonmethod-c.md#height-1)；使用垂直分割线时，strokeWidth控制宽度，优  
+> 先级低于通用属性[width](arkts-arkui-commonmethod-c.md#width-1)。  
 >  
 > - 超过通用属性设置大小时，按照通用属性进行裁切。  
 >  
@@ -95,13 +98,14 @@ strokeWidth(value: number | string)
 | --- | --- | --- | --- |
 | value | number \| string | 是 | 分割线宽度。<br/>默认值：1px <br />非法值：按默认值处理。 <br/>单位：vp |
 
+<a id="vertical"></a>
 ## vertical
 
 ```TypeScript
 vertical(value: boolean)
 ```
 
-设置分割线的方向，支持[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
+设置分割线的方向，支持[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)动态设置属性方法。
 
 **起始版本：** 7
 

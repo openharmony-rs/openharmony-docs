@@ -67,7 +67,7 @@ landscapeInputRegion?: Array<window.Rect>
 - 数组大小限制为[1, 4]。默认值为横屏时的面板大小。  
 - 传入的热区位置是相对于输入法面板窗口左顶点的位置。
 
-**类型：** Array<window.Rect>
+**类型：** Array&lt;window.Rect&gt;
 
 **起始版本：** 15
 
@@ -125,7 +125,7 @@ portraitInputRegion?: Array<window.Rect>
 - 数组大小限制为[1, 4]。默认值为竖屏时的面板大小。  
 - 传入的热区位置是相对于输入法面板窗口左顶点的位置。
 
-**类型：** Array<window.Rect>
+**类型：** Array&lt;window.Rect&gt;
 
 **起始版本：** 15
 

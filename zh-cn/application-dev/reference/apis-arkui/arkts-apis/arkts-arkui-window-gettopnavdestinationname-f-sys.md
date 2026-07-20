@@ -6,13 +6,14 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="gettopnavdestinationname"></a>
 ## getTopNavDestinationName
 
 ```TypeScript
 function getTopNavDestinationName(windowId: number): Promise<string>
 ```
 
-获取指定的前台窗口当前栈顶[Navigation](./@internal/component/ets/navigation)中的[NavDestination](./@internal/component/ets/nav_destination)名称，使用Promise异步回调。
+获取指定的前台窗口当前栈顶[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-i)中的[NavDestination](../../apis-arkui/arkts-components/arkts-arkui-nav_destination-i)名称，使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -32,7 +33,7 @@ function getTopNavDestinationName(windowId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回获取到的[NavDestination](./@internal/component/ets/nav_destination)名称。<br>对于[Navigation](./@internal/component/ets/navigation)嵌套以及当前页面存在多个[Navigation](./@internal/component/ets/navigation)的场景，查询的是后创建的[Navigation](./@internal/component/ets/navigation)的信息。<br>如果页面没有[Navigation](./@internal/component/ets/navigation)或者[Navigation](./@internal/component/ets/navigation)中没有[NavDestination](./@internal/component/ets/nav_destination)，返回空字符串。 |
+| Promise&lt;string&gt; | Promise对象。返回获取到的[NavDestination](../../apis-arkui/arkts-components/arkts-arkui-nav_destination-i)名称。<br>对于[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-i)嵌套以及当前页面存在多个[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-i)的场景，查询的是后创建的[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-i)的信息。<br>如果页面没有[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-i)或者[Navigation](../../apis-arkui/arkts-components/arkts-arkui-navigation-i)中没有[NavDestination](../../apis-arkui/arkts-components/arkts-arkui-nav_destination-i)，返回空字符串。 |
 
 **错误码：**
 

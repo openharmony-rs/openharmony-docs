@@ -1,5 +1,6 @@
 # setSlotByBundle（系统接口）
 
+<a id="setslotbybundle"></a>
 ## setSlotByBundle
 
 ```TypeScript
@@ -28,9 +29,10 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
 | slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i-sys.md) | 是 | 通知通道。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设定通知通道回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定通知通道回调函数。 |
 
 
+<a id="setslotbybundle-1"></a>
 ## setSlotByBundle
 
 ```TypeScript
@@ -64,5 +66,5 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 

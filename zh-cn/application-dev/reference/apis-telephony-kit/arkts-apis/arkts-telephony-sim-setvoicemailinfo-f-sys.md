@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="setvoicemailinfo"></a>
 ## setVoiceMailInfo
 
 ```TypeScript
@@ -31,7 +32,7 @@ Sets the voice mail information.
 | slotId | number | 是 | Indicates the card slot index number,ranging from {@code 0} to the maximum card slot index number supported by the device. |
 | mailName | string | 是 | Indicates the name of voice mail. |
 | mailNumber | string | 是 | Indicates the number of voice mail. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | The callback of setVoiceMailInfo. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | The callback of setVoiceMailInfo. |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
 ```
 
 
+<a id="setvoicemailinfo-1"></a>
 ## setVoiceMailInfo
 
 ```TypeScript
@@ -90,7 +92,7 @@ Sets the voice mail information.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the setVoiceMailInfo. |
+| Promise&lt;void&gt; | The promise returned by the setVoiceMailInfo. |
 
 **错误码：**
 

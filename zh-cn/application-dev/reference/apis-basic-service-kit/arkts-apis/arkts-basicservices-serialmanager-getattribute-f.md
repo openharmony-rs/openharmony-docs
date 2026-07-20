@@ -6,6 +6,7 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="getattribute"></a>
 ## getAttribute
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getAttribute(portId: number): Readonly<SerialAttribute>
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly<SerialAttribute> | 返回串口的配置参数。 |
+| Readonly&lt;SerialAttribute&gt; | 返回串口的配置参数。 |
 
 **错误码：**
 

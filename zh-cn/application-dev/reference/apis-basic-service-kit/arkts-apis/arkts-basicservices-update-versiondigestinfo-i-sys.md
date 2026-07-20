@@ -22,7 +22,7 @@ import { update } from '@kit.BasicServicesKit';
 versionDigest: string
 ```
 
-版本摘要。
+版本摘要。长度范围[1，128]，单位：字符。从版本检查结果中获取，用于标识具体版本。超出范围时抛出异常。
 
 **类型：** string
 

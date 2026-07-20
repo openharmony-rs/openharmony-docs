@@ -6,6 +6,7 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
+<a id="getpermissionusedrecord"></a>
 ## getPermissionUsedRecord
 
 ```TypeScript
@@ -34,13 +35,13 @@ function getPermissionUsedRecord(request: PermissionUsedRequest): Promise<Permis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionUsedResponse> | Promise对象，返回查询的权限使用记录。 |
+| Promise&lt;PermissionUsedResponse&gt; | Promise对象，返回查询的权限使用记录。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The value of flag, begin, or end in request is invalid. |
@@ -73,6 +74,7 @@ privacyManager.getPermissionUsedRecord(request).then((data) => {
 ```
 
 
+<a id="getpermissionusedrecord-1"></a>
 ## getPermissionUsedRecord
 
 ```TypeScript
@@ -102,13 +104,13 @@ function getPermissionUsedRecord(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | [PermissionUsedRequest](arkts-ability-privacymanager-permissionusedrequest-i-sys.md) | 是 | 查询权限使用记录的请求。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PermissionUsedResponse> | 是 | 回调函数。当查询记录成功，err为undefined，data为获取到的权限使用记录；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PermissionUsedResponse&gt; | 是 | 回调函数。当查询记录成功，err为undefined，data为获取到的权限使用记录；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The value of flag, begin, or end in request is invalid. |

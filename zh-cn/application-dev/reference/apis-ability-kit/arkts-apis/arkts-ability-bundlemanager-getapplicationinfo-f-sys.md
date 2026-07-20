@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationinfo"></a>
 ## getApplicationInfo
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, callback: Asyn
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
 | appFlags | number | 是 | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ApplicationInfo> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的ApplicationInfo；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ApplicationInfo&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的ApplicationInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ try {
 ```
 
 
+<a id="getapplicationinfo-1"></a>
 ## getApplicationInfo
 
 ```TypeScript
@@ -97,7 +99,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId: number
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
 | appFlags | number | 是 | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md)。 |
 | userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ApplicationInfo> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的ApplicationInfo；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ApplicationInfo&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的ApplicationInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -137,6 +139,7 @@ try {
 ```
 
 
+<a id="getapplicationinfo-2"></a>
 ## getApplicationInfo
 
 ```TypeScript
@@ -169,7 +172,7 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId?: numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ApplicationInfo> | Promise对象。返回ApplicationInfo。 |
+| Promise&lt;ApplicationInfo&gt; | Promise对象。返回ApplicationInfo。 |
 
 **错误码：**
 

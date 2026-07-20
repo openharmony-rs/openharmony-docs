@@ -26,7 +26,7 @@ cancel?: (errMsg: string) => void
 
 关闭询问对话框失败时触发，errMsg表示返回信息。
 
-**类型：** (errMsg: string) => void
+**类型：** (errMsg: string) =&gt; void
 
 **起始版本：** 6
 
@@ -46,7 +46,7 @@ complete?: () => void
 
 当对话框关闭时触发该回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 6
 
@@ -66,7 +66,7 @@ success?: (errMsg: string) => void
 
 关闭询问对话框成功时触发，errMsg表示返回信息。
 
-**类型：** (errMsg: string) => void
+**类型：** (errMsg: string) =&gt; void
 
 **起始版本：** 6
 

@@ -6,10 +6,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [borderRadiuses](arkts-arkui-graphics-borderradiuses-f.md#borderradiuses-1) | 用于生成边框圆角均设置为传入值的边框圆角对象。 |
-| [borderStyles](arkts-arkui-graphics-borderstyles-f.md#borderstyles-1) | 用于生成边框样式均设置为传入值的边框样式对象。 |
-| [edgeColors](arkts-arkui-graphics-edgecolors-f.md#edgecolors-1) | 用于生成边框颜色均设置为传入值的边框颜色对象。 |
-| [edgeWidths](arkts-arkui-graphics-edgewidths-f.md#edgewidths-1) | 用于生成边框宽度均设置为传入值的边框宽度对象。 |
+| [borderRadiuses](arkts-arkui-graphics-borderradiuses-f.md#borderradiuses) | 用于生成边框圆角均设置为传入值的边框圆角对象。 |
+| [borderStyles](arkts-arkui-graphics-borderstyles-f.md#borderstyles) | 用于生成边框样式均设置为传入值的边框样式对象。 |
+| [edgeColors](arkts-arkui-graphics-edgecolors-f.md#edgecolors) | 用于生成边框颜色均设置为传入值的边框颜色对象。 |
+| [edgeWidths](arkts-arkui-graphics-edgewidths-f.md#edgewidths) | 用于生成边框宽度均设置为传入值的边框宽度对象。 |
 
 ### 类
 
@@ -62,7 +62,7 @@
 | --- | --- |
 | [BorderRadiuses](arkts-arkui-borderradiuses-t.md) | 设置四个角的圆角半径。 |
 | [CornerRadius](arkts-arkui-cornerradius-t.md) | 设置四个角的圆角x轴与y轴的半轴长。 |
-| [Matrix4](arkts-arkui-matrix4-t.md) | 设置四阶矩阵。用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示，各number取值范围：(-∞, +∞)。例如：```const transform: Matrix4 = [1, 0, 45, 0,0, 1, 0, 0,0, 0, 1, 0,0, 0, 0, 1]```。 |
+| [Matrix4](arkts-arkui-matrix4-t.md) | 设置四阶矩阵。用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示，各number取值范围：(-∞, +∞)。例如：``` const transform: Matrix4 = [ 1, 0, 45, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ] ```。 |
 | [Offset](arkts-arkui-offset-t.md) | 用于设置组件或效果的偏移。 |
 | [Pivot](arkts-arkui-pivot-t.md) | 用于设置组件的轴心坐标，轴心会作为组件的旋转/缩放中心点，影响旋转和缩放效果。轴心的x和y轴坐标为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。 |
 | [Position](arkts-arkui-position-t.md) | 用于设置或返回组件的位置。 |

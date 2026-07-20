@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="usbcanceltransfer"></a>
 ## usbCancelTransfer
 
 ```TypeScript

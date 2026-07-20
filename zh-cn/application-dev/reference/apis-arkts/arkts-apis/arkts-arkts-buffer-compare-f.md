@@ -6,6 +6,7 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="compare"></a>
 ## compare
 
 ```TypeScript
@@ -26,8 +27,8 @@ function compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): -1 | 0 |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf1 | Buffer \| Uint8Array | 是 | 待比较数组。 |
-| buf2 | Buffer \| Uint8Array | 是 | 待比较数组。 |
+| buf1 | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 待比较数组。 |
+| buf2 | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 待比较数组。 |
 
 **返回值：**
 

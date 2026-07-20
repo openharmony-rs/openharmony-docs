@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="on"></a>
 ## on('applicationState')
 
 ```TypeScript
@@ -36,7 +37,7 @@ function on(type: 'applicationState', observer: ApplicationStateObserver, filter
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 已注册监听器ID，可用于[off](arkts-ability-appmanager-off-f.md#off-2)接口注销监听器。 |
+| number | 已注册监听器ID，可用于[off](@ohos.app.ability.appManager:appManager.off(type: 'applicationState', observerId: int))接口注销监听器。 |
 
 **错误码：**
 
@@ -100,6 +101,7 @@ try {
 ```
 
 
+<a id="on-1"></a>
 ## on('appForegroundState')
 
 ```TypeScript
@@ -157,6 +159,7 @@ try {
 ```
 
 
+<a id="on-2"></a>
 ## on('abilityFirstFrameState')
 
 ```TypeScript

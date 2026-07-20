@@ -24,7 +24,7 @@ data: Array<string>
 
 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 

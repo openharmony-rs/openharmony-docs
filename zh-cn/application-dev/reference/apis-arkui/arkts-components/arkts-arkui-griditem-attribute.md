@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="columnend"></a>
 ## columnEnd
 
 ```TypeScript
@@ -28,8 +29,9 @@ columnEnd(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-grid-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
+| value | number | 是 | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
 
+<a id="columnstart"></a>
 ## columnStart
 
 ```TypeScript
@@ -50,8 +52,9 @@ columnStart(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 当前元素起始列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-grid-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
+| value | number | 是 | 当前元素起始列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
 
+<a id="forcerebuild"></a>
 ## forceRebuild
 
 ```TypeScript
@@ -78,6 +81,7 @@ forceRebuild(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 在触发组件build时是否重新创建此节点。<br/>默认值：false |
 
+<a id="onselect"></a>
 ## onSelect
 
 ```TypeScript
@@ -98,8 +102,9 @@ GridItem元素被鼠标框选的状态改变时触发回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (isSelected: boolean) => void | 是 | 回调函数。进入鼠标框选范围即被选中返回true，移出鼠标框选范围即未被选中返回false。 |
+| event | (isSelected: boolean) =&gt; void | 是 | 回调函数。进入鼠标框选范围即被选中返回true，移出鼠标框选范围即未被选中返回false。 |
 
+<a id="rowend"></a>
 ## rowEnd
 
 ```TypeScript
@@ -120,8 +125,9 @@ rowEnd(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-grid-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
+| value | number | 是 | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
 
+<a id="rowstart"></a>
 ## rowStart
 
 ```TypeScript
@@ -142,8 +148,9 @@ rowStart(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 当前元素起始行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-grid-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](../../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
+| value | number | 是 | 当前元素起始行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用Grid的[GridLayoutOptions](arkts-arkui-gridlayoutoptions-i.md)参数，详细可参考Grid的[示例1（固定行列Grid）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例1固定行列grid)和[示例3（可滚动Grid设置跨行跨列节点）](docroot://reference/apis-arkui/arkui-ts/ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
 
+<a id="selectable"></a>
 ## selectable
 
 ```TypeScript
@@ -168,13 +175,14 @@ selectable(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当前GridItem元素是否可以被鼠标框选。设置为true时可以被鼠标框选，设置为false时无法被鼠标框选。<br/>默认值：true |
 
+<a id="selected"></a>
 ## selected
 
 ```TypeScript
 selected(value: boolean)
 ```
 
-设置当前GridItem选中状态。该属性支持[$$](../../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+设置当前GridItem选中状态。该属性支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 该属性需要在设置[多态样式](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)前使用才能生效选中态样式。
 

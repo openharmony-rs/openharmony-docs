@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="synccontacts"></a>
 ## syncContacts
 
 ```TypeScript
@@ -35,13 +36,13 @@ function syncContacts(context: Context, mode: ContactSyncMode, progress: Contact
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 | mode | [ContactSyncMode](arkts-contacts-contact-contactsyncmode-e.md) | 是 | 表示联系人同步模式的类型。 |
 | progress | [ContactSyncProgress](arkts-contacts-contact-contactsyncprogress-i.md) | 是 | 表示联系人同步进度的相关信息。 |
-| contacts | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Contact> | 是 | 表示需要同步至数据库的联系人信息数组。 |
+| contacts | Array&lt;Contact&gt; | 是 | 表示需要同步至数据库的联系人信息数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | 返回联系人创建结果的数组。有效的联系人ID (可为通过 {@link Contact#getId()})获得的值表示创建成功。{@link Contact#INVALID_CONTACT_ID} 表示创建失败。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 返回联系人创建结果的数组。有效的联系人ID (可为通过 {@link Contact#getId()})获得的值表示创建成功。{@link Contact#INVALID_CONTACT_ID} 表示创建失败。 |
 
 **错误码：**
 

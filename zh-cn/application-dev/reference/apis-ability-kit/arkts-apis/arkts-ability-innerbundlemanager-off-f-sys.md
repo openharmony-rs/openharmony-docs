@@ -6,6 +6,7 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off('BundleStatusChange')
 
 ```TypeScript
@@ -17,7 +18,7 @@ function off(type: 'BundleStatusChange', callback: AsyncCallback<string>): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [off](arkts-ability-bundlemonitor-off-f-sys.md#off-1)  
+> [off](@ohos.bundle.bundleMonitor:bundleMonitor.off(type: BundleChangedEvent, callback?: Callback<BundleChangedInfo>))  
 > 替代。
 
 **起始版本：** 8
@@ -39,9 +40,10 @@ function off(type: 'BundleStatusChange', callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'BundleStatusChange' | 是 | 指示应执行命令，只支持BundleStatusChange。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
 
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
@@ -53,7 +55,7 @@ function off(type: 'BundleStatusChange'): Promise<string>
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [off](arkts-ability-bundlemonitor-off-f-sys.md#off-1)  
+> [off](@ohos.bundle.bundleMonitor:bundleMonitor.off(type: BundleChangedEvent, callback?: Callback<BundleChangedInfo>))  
 > 替代。
 
 **起始版本：** 8
@@ -80,5 +82,5 @@ function off(type: 'BundleStatusChange'): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise形式返回正确结果或错误信息。 |
+| Promise&lt;string&gt; | Promise形式返回正确结果或错误信息。 |
 

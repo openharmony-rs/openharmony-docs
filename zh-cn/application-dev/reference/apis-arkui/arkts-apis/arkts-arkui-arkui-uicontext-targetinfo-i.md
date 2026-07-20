@@ -42,7 +42,7 @@ id: string | number
 
 ID of target node.
 
-**类型：** string | number
+**类型：** string \| number
 
 **起始版本：** 18
 

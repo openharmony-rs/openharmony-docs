@@ -16,7 +16,7 @@
 AUTO_REQUEST = 0
 ```
 
-自动拉起自动填充服务，可通过[TextInput](@internal/component/ets/text_input)控件获焦后自动拉起。
+自动拉起自动填充服务，可通过[TextInput](../../apis-arkui/arkts-components/arkts-arkui-text_input-i)控件获焦后自动拉起。
 
 **起始版本：** 23
 

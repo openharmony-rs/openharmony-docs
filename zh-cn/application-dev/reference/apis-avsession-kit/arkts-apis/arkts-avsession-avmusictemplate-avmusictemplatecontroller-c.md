@@ -18,6 +18,7 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
+<a id="clearsearchhistory"></a>
 ## clearSearchHistory
 
 ```TypeScript
@@ -38,7 +39,7 @@ clearSearchHistory(): Promise<OperResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OperResult> | Promise对象，返回清除搜索历史的操作结果。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回清除搜索历史的操作结果。 |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ clearSearchHistory(): Promise<OperResult>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="destroy"></a>
 ## destroy
 
 ```TypeScript
@@ -69,7 +71,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -77,6 +79,7 @@ destroy(): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | capability not supported. |
 
+<a id="downloadmediaentity"></a>
 ## downloadMediaEntity
 
 ```TypeScript
@@ -104,7 +107,7 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OperResult> | Promise对象，返回下载媒体实体的操作结果。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回下载媒体实体的操作结果。 |
 
 **错误码：**
 
@@ -115,6 +118,7 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="executeaction"></a>
 ## executeAction
 
 ```TypeScript
@@ -142,7 +146,7 @@ executeAction(actionType: string, params: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回执行动作的结果。 |
+| Promise&lt;string&gt; | Promise对象，返回执行动作的结果。 |
 
 **错误码：**
 
@@ -153,6 +157,7 @@ executeAction(actionType: string, params: string): Promise<string>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="favoritemediaentity"></a>
 ## favoriteMediaEntity
 
 ```TypeScript
@@ -180,7 +185,7 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OperResult> | Promise对象，返回收藏媒体的操作结果。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回收藏媒体的操作结果。 |
 
 **错误码：**
 
@@ -191,6 +196,7 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="handlememberpurchase"></a>
 ## handleMemberPurchase
 
 ```TypeScript
@@ -217,7 +223,7 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise<DialogInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DialogInfo> | Promise对象，返回对话框信息。 |
+| Promise&lt;DialogInfo&gt; | Promise对象，返回对话框信息。 |
 
 **错误码：**
 
@@ -228,6 +234,7 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise<DialogInfo>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="login"></a>
 ## login
 
 ```TypeScript
@@ -255,7 +262,7 @@ login(controlType: LoginType, id?: string): Promise<QrCodeInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<QrCodeInfo[]> | Promise对象，返回二维码信息的数组。 |
+| Promise&lt;QrCodeInfo[]&gt; | Promise对象，返回二维码信息的数组。 |
 
 **错误码：**
 
@@ -266,6 +273,7 @@ login(controlType: LoginType, id?: string): Promise<QrCodeInfo[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="offcurrentsinglechange"></a>
 ## offCurrentSingleChange
 
 ```TypeScript
@@ -286,7 +294,7 @@ offCurrentSingleChange(callback?: Callback<Single>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Single> | 否 | 回调函数，返回当前单曲的信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Single&gt; | 否 | 回调函数，返回当前单曲的信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -296,6 +304,7 @@ offCurrentSingleChange(callback?: Callback<Single>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offcustomelementschange"></a>
 ## offCustomElementsChange
 
 ```TypeScript
@@ -326,6 +335,7 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offdialogcommandchange"></a>
 ## offDialogCommandChange
 
 ```TypeScript
@@ -356,6 +366,7 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offdownloadmediaentitystatuschange"></a>
 ## offDownloadMediaEntityStatusChange
 
 ```TypeScript
@@ -376,7 +387,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback<MediaEntity>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MediaEntity> | 否 | 回调函数，返回媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MediaEntity&gt; | 否 | 回调函数，返回媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -386,6 +397,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback<MediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offextensionabilitychange"></a>
 ## offExtensionAbilityChange
 
 ```TypeScript
@@ -416,6 +428,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offmediaentitieschange"></a>
 ## offMediaEntitiesChange
 
 ```TypeScript
@@ -436,7 +449,7 @@ offMediaEntitiesChange(callback?: Callback<MediaEntity[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MediaEntity[]> | 否 | 回调函数，返回媒体实体数组。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MediaEntity[]&gt; | 否 | 回调函数，返回媒体实体数组。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -446,6 +459,7 @@ offMediaEntitiesChange(callback?: Callback<MediaEntity[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offplaylistchange"></a>
 ## offPlaylistChange
 
 ```TypeScript
@@ -466,7 +480,7 @@ offPlaylistChange(callback?: Callback<PageMediaEntity>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PageMediaEntity> | 否 | 回调函数，返回标签页媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PageMediaEntity&gt; | 否 | 回调函数，返回标签页媒体实体信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -476,6 +490,7 @@ offPlaylistChange(callback?: Callback<PageMediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offreportexecuteaction"></a>
 ## offReportExecuteAction
 
 ```TypeScript
@@ -506,6 +521,7 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offsettingschange"></a>
 ## offSettingsChange
 
 ```TypeScript
@@ -526,7 +542,7 @@ offSettingsChange(callback?: Callback<SettingItem[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SettingItem[]> | 否 | 回调函数，用于接收并处理设置项数组。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SettingItem[]&gt; | 否 | 回调函数，用于接收并处理设置项数组。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -536,6 +552,7 @@ offSettingsChange(callback?: Callback<SettingItem[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offtabcontentchange"></a>
 ## offTabContentChange
 
 ```TypeScript
@@ -566,6 +583,7 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="offuserinfochange"></a>
 ## offUserInfoChange
 
 ```TypeScript
@@ -586,7 +604,7 @@ offUserInfoChange(callback?: Callback<UserInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<UserInfo> | 否 | 回调函数，返回用户信息。不填该参数则注销该类型对应的所有回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;UserInfo&gt; | 否 | 回调函数，返回用户信息。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
@@ -596,6 +614,7 @@ offUserInfoChange(callback?: Callback<UserInfo>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="oncurrentsinglechange"></a>
 ## onCurrentSingleChange
 
 ```TypeScript
@@ -616,7 +635,7 @@ onCurrentSingleChange(callback: Callback<Single>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Single> | 是 | 回调函数，返回当前单曲的信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Single&gt; | 是 | 回调函数，返回当前单曲的信息。 |
 
 **错误码：**
 
@@ -626,6 +645,7 @@ onCurrentSingleChange(callback: Callback<Single>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="oncustomelementschange"></a>
 ## onCustomElementsChange
 
 ```TypeScript
@@ -656,6 +676,7 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="ondialogcommandchange"></a>
 ## onDialogCommandChange
 
 ```TypeScript
@@ -686,6 +707,7 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="ondownloadmediaentitystatuschange"></a>
 ## onDownloadMediaEntityStatusChange
 
 ```TypeScript
@@ -706,7 +728,7 @@ onDownloadMediaEntityStatusChange(callback: Callback<MediaEntity>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MediaEntity> | 是 | 回调函数，返回媒体实体信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MediaEntity&gt; | 是 | 回调函数，返回媒体实体信息。 |
 
 **错误码：**
 
@@ -716,6 +738,7 @@ onDownloadMediaEntityStatusChange(callback: Callback<MediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="onextensionabilitychange"></a>
 ## onExtensionAbilityChange
 
 ```TypeScript
@@ -746,6 +769,7 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="onmediaentitieschange"></a>
 ## onMediaEntitiesChange
 
 ```TypeScript
@@ -766,7 +790,7 @@ onMediaEntitiesChange(callback: Callback<MediaEntity[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MediaEntity[]> | 是 | 回调函数，返回媒体实体数组。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MediaEntity[]&gt; | 是 | 回调函数，返回媒体实体数组。 |
 
 **错误码：**
 
@@ -776,6 +800,7 @@ onMediaEntitiesChange(callback: Callback<MediaEntity[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="onplaylistchange"></a>
 ## onPlaylistChange
 
 ```TypeScript
@@ -796,7 +821,7 @@ onPlaylistChange(callback: Callback<PageMediaEntity>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PageMediaEntity> | 是 | 回调函数，返回标签页媒体实体信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PageMediaEntity&gt; | 是 | 回调函数，返回标签页媒体实体信息。 |
 
 **错误码：**
 
@@ -806,6 +831,7 @@ onPlaylistChange(callback: Callback<PageMediaEntity>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="onreportexecuteaction"></a>
 ## onReportExecuteAction
 
 ```TypeScript
@@ -836,6 +862,7 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="onsettingschange"></a>
 ## onSettingsChange
 
 ```TypeScript
@@ -856,7 +883,7 @@ onSettingsChange(callback: Callback<SettingItem[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SettingItem[]> | 是 | 回调函数，返回设置项数组。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SettingItem[]&gt; | 是 | 回调函数，返回设置项数组。 |
 
 **错误码：**
 
@@ -866,6 +893,7 @@ onSettingsChange(callback: Callback<SettingItem[]>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="ontabcontentchange"></a>
 ## onTabContentChange
 
 ```TypeScript
@@ -896,6 +924,7 @@ onTabContentChange(callback: ReportTabContentEvent): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="onuserinfochange"></a>
 ## onUserInfoChange
 
 ```TypeScript
@@ -916,7 +945,7 @@ onUserInfoChange(callback: Callback<UserInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<UserInfo> | 是 | 回调函数，参数为用户信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;UserInfo&gt; | 是 | 回调函数，参数为用户信息。 |
 
 **错误码：**
 
@@ -926,6 +955,7 @@ onUserInfoChange(callback: Callback<UserInfo>): void
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+<a id="playforsearch"></a>
 ## playForSearch
 
 ```TypeScript
@@ -953,7 +983,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise<OperRe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OperResult> | Promise对象，返回操作结果。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回操作结果。 |
 
 **错误码：**
 
@@ -964,6 +994,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise<OperRe
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="playmediaentity"></a>
 ## playMediaEntity
 
 ```TypeScript
@@ -990,7 +1021,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1001,6 +1032,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise<void>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querycompilation"></a>
 ## queryCompilation
 
 ```TypeScript
@@ -1028,7 +1060,7 @@ queryCompilation(compilationId: string, pageIndex: number): Promise<PageMediaEnt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PageMediaEntity> | Promise对象，返回查询的合集的分页对象。 |
+| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的合集的分页对象。 |
 
 **错误码：**
 
@@ -1039,6 +1071,7 @@ queryCompilation(compilationId: string, pageIndex: number): Promise<PageMediaEnt
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querycompilationbykeyword"></a>
 ## queryCompilationByKeyword
 
 ```TypeScript
@@ -1065,7 +1098,7 @@ queryCompilationByKeyword(keyword: string): Promise<Compilation[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Compilation[]> | Promise对象，返回合集数组。 |
+| Promise&lt;Compilation[]&gt; | Promise对象，返回合集数组。 |
 
 **错误码：**
 
@@ -1076,6 +1109,7 @@ queryCompilationByKeyword(keyword: string): Promise<Compilation[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querycurrentsingle"></a>
 ## queryCurrentSingle
 
 ```TypeScript
@@ -1096,7 +1130,7 @@ queryCurrentSingle(): Promise<Single>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Single> | Promise对象，返回当前单曲。 |
+| Promise&lt;Single&gt; | Promise对象，返回当前单曲。 |
 
 **错误码：**
 
@@ -1107,6 +1141,7 @@ queryCurrentSingle(): Promise<Single>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querycustomcontent"></a>
 ## queryCustomContent
 
 ```TypeScript
@@ -1133,7 +1168,7 @@ queryCustomContent(queryType: CustomType[]): Promise<CustomElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CustomElement> | Promise对象，返回查询的自定义元素。 |
+| Promise&lt;CustomElement&gt; | Promise对象，返回查询的自定义元素。 |
 
 **错误码：**
 
@@ -1144,6 +1179,7 @@ queryCustomContent(queryType: CustomType[]): Promise<CustomElement>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="queryhotwords"></a>
 ## queryHotWords
 
 ```TypeScript
@@ -1164,7 +1200,7 @@ queryHotWords(): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise对象，返回热词数组。 |
+| Promise&lt;string[]&gt; | Promise对象，返回热词数组。 |
 
 **错误码：**
 
@@ -1175,6 +1211,7 @@ queryHotWords(): Promise<string[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querymaintabs"></a>
 ## queryMainTabs
 
 ```TypeScript
@@ -1195,7 +1232,7 @@ queryMainTabs(): Promise<MediaTab[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<MediaTab[]> | Promise对象，返回查询的主标签页数组。 |
+| Promise&lt;MediaTab[]&gt; | Promise对象，返回查询的主标签页数组。 |
 
 **错误码：**
 
@@ -1206,6 +1243,7 @@ queryMainTabs(): Promise<MediaTab[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querymediaentity"></a>
 ## queryMediaEntity
 
 ```TypeScript
@@ -1232,7 +1270,7 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise<PageMediaEntity>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PageMediaEntity> | Promise对象，返回查询的媒体实体分页对象。 |
+| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的媒体实体分页对象。 |
 
 **错误码：**
 
@@ -1243,6 +1281,7 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise<PageMediaEntity>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querymediaentitybykeyword"></a>
 ## queryMediaEntityByKeyword
 
 ```TypeScript
@@ -1271,7 +1310,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PageMediaEntity> | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
+| Promise&lt;PageMediaEntity&gt; | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
 
 **错误码：**
 
@@ -1282,6 +1321,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querymediatabcontent"></a>
 ## queryMediaTabContent
 
 ```TypeScript
@@ -1308,7 +1348,7 @@ queryMediaTabContent(tabId: string): Promise<MediaTabContent>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<MediaTabContent> | Promise对象，返回媒体标签页内容。 |
+| Promise&lt;MediaTabContent&gt; | Promise对象，返回媒体标签页内容。 |
 
 **错误码：**
 
@@ -1319,6 +1359,7 @@ queryMediaTabContent(tabId: string): Promise<MediaTabContent>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querymemberpurchase"></a>
 ## queryMemberPurchase
 
 ```TypeScript
@@ -1345,7 +1386,7 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise<MemberPurch
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<MemberPurchaseInfo[]> | Promise对象，返回购买会员信息的数组。 |
+| Promise&lt;MemberPurchaseInfo[]&gt; | Promise对象，返回购买会员信息的数组。 |
 
 **错误码：**
 
@@ -1356,6 +1397,7 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise<MemberPurch
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="queryplaylist"></a>
 ## queryPlaylist
 
 ```TypeScript
@@ -1383,7 +1425,7 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise<PageMediaEntity>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PageMediaEntity> | Promise对象，返回查询的播放列表的分页对象。 |
+| Promise&lt;PageMediaEntity&gt; | Promise对象，返回查询的播放列表的分页对象。 |
 
 **错误码：**
 
@@ -1394,6 +1436,7 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise<PageMediaEntity>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="queryrecommendmediaentitylist"></a>
 ## queryRecommendMediaEntityList
 
 ```TypeScript
@@ -1414,7 +1457,7 @@ queryRecommendMediaEntityList(): Promise<MediaEntity[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<MediaEntity[]> | Promise对象，返回推荐的媒体实体数组。 |
+| Promise&lt;MediaEntity[]&gt; | Promise对象，返回推荐的媒体实体数组。 |
 
 **错误码：**
 
@@ -1425,6 +1468,7 @@ queryRecommendMediaEntityList(): Promise<MediaEntity[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="querysearchhistory"></a>
 ## querySearchHistory
 
 ```TypeScript
@@ -1445,7 +1489,7 @@ querySearchHistory(): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise对象，返回历史搜索词数组。 |
+| Promise&lt;string[]&gt; | Promise对象，返回历史搜索词数组。 |
 
 **错误码：**
 
@@ -1456,6 +1500,7 @@ querySearchHistory(): Promise<string[]>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="reportproblemandadvice"></a>
 ## reportProblemAndAdvice
 
 ```TypeScript
@@ -1482,7 +1527,7 @@ reportProblemAndAdvice(advice: string): Promise<OperResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<OperResult> | Promise对象，返回报告问题和建议的操作结果。 |
+| Promise&lt;OperResult&gt; | Promise对象，返回报告问题和建议的操作结果。 |
 
 **错误码：**
 
@@ -1493,6 +1538,7 @@ reportProblemAndAdvice(advice: string): Promise<OperResult>
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="requestdialoginfo"></a>
 ## requestDialogInfo
 
 ```TypeScript
@@ -1520,7 +1566,7 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DialogInfo> | Promise对象，返回对话框信息。 |
+| Promise&lt;DialogInfo&gt; | Promise对象，返回对话框信息。 |
 
 **错误码：**
 
@@ -1531,6 +1577,7 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+<a id="updatesettings"></a>
 ## updateSettings
 
 ```TypeScript
@@ -1557,7 +1604,7 @@ updateSettings(settingItem: SettingItem): Promise<SettingItem>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SettingItem> | Promise对象，返回更新后的设置项。 |
+| Promise&lt;SettingItem&gt; | Promise对象，返回更新后的设置项。 |
 
 **错误码：**
 

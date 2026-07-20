@@ -6,6 +6,7 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="getuserextcredential"></a>
 ## getUserExtCredential
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getUserExtCredential(admin: Want, accountId: number): Promise<UserExtCr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<UserExtCredentialInfo[]> | Returns the list of extended user credential information. |
+| Promise&lt;UserExtCredentialInfo[]&gt; | Returns the list of extended user credential information. |
 
 **错误码：**
 

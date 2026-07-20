@@ -16,7 +16,7 @@ readonly grantedBundleInfos?: Array<GrantedBundleInfo>
 
 “已获取的本机通知”通知开关开启的应用列表。
 
-**类型：** Array<GrantedBundleInfo>
+**类型：** Array&lt;GrantedBundleInfo&gt;
 
 **起始版本：** 26.0.0
 

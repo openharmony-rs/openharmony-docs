@@ -14,6 +14,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="addserverconfig"></a>
 ## addServerConfig
 
 ```TypeScript
@@ -34,13 +35,13 @@ static addServerConfig(parameters: Record<string, Object>): Promise<DomainServer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameters | Record<string, Object> | 是 | 表示域服务器配置参数。 |
+| parameters | Record&lt;string, Object&gt; | 是 | 表示域服务器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DomainServerConfig> | Promise对象，返回新添加的域服务器配置。 |
+| Promise&lt;DomainServerConfig&gt; | Promise对象，返回新添加的域服务器配置。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
+<a id="getaccountserverconfig"></a>
 ## getAccountServerConfig
 
 ```TypeScript
@@ -98,7 +100,7 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<Dom
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DomainServerConfig> | Promise对象，返回目标账号的域服务器配置。 |
+| Promise&lt;DomainServerConfig&gt; | Promise对象，返回目标账号的域服务器配置。 |
 
 **错误码：**
 
@@ -127,6 +129,7 @@ osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo).then((
 
 ```
 
+<a id="getallserverconfigs"></a>
 ## getAllServerConfigs
 
 ```TypeScript
@@ -147,7 +150,7 @@ static getAllServerConfigs(): Promise<Array<DomainServerConfig>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DomainServerConfig>> | Promise对象，返回获取的所有域服务器配置。 |
+| Promise&lt;Array&lt;DomainServerConfig&gt;&gt; | Promise对象，返回获取的所有域服务器配置。 |
 
 **错误码：**
 
@@ -180,6 +183,7 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
+<a id="getserverconfig"></a>
 ## getServerConfig
 
 ```TypeScript
@@ -206,7 +210,7 @@ static getServerConfig(configId: string): Promise<DomainServerConfig>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DomainServerConfig> | Promise对象，返回获取的域服务器配置。 |
+| Promise&lt;DomainServerConfig&gt; | Promise对象，返回获取的域服务器配置。 |
 
 **错误码：**
 
@@ -240,6 +244,7 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
+<a id="removeserverconfig"></a>
 ## removeServerConfig
 
 ```TypeScript
@@ -266,7 +271,7 @@ static removeServerConfig(configId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -298,6 +303,7 @@ osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
 
 ```
 
+<a id="updateserverconfig"></a>
 ## updateServerConfig
 
 ```TypeScript
@@ -319,13 +325,13 @@ static updateServerConfig(configId: string, parameters: Record<string, Object>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | configId | string | 是 | 表示服务器配置标识。 |
-| parameters | Record<string, Object> | 是 | 表示域服务器配置参数。 |
+| parameters | Record&lt;string, Object&gt; | 是 | 表示域服务器配置参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DomainServerConfig> | Promise对象，返回更新后的域服务器配置。 |
+| Promise&lt;DomainServerConfig&gt; | Promise对象，返回更新后的域服务器配置。 |
 
 **错误码：**
 

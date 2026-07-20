@@ -14,6 +14,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="cleancache"></a>
 ## cleanCache
 
 ```TypeScript
@@ -69,6 +70,7 @@ try {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -106,6 +108,7 @@ let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 
 ```
 
+<a id="getdownloadlist"></a>
 ## getDownloadList
 
 ```TypeScript
@@ -130,13 +133,13 @@ getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
+| uris | Array&lt;string&gt; | 是 | 待查询下载进度的文件URI数组，数组长度取值范围[1,100]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DownloadProgress>> | - Promise对象，返回文件下载进度列表的结果。 |
+| Promise&lt;Array&lt;DownloadProgress&gt;&gt; | - Promise对象，返回文件下载进度列表的结果。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="removeautostartapps"></a>
 ## removeAutoStartApps
 
 ```TypeScript
@@ -29,7 +30,7 @@ function removeAutoStartApps(admin: Want, autoStartApps: Array<Want>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| autoStartApps | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Want> | 是 | 开机自启动应用数组。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。 |
+| autoStartApps | Array&lt;Want&gt; | 是 | 开机自启动应用数组。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](docroot://quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ try {
 ```
 
 
+<a id="removeautostartapps-1"></a>
 ## removeAutoStartApps
 
 ```TypeScript
@@ -92,8 +94,8 @@ function removeAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| autoStartApps | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Want> | 是 | 开机自启动应用名单数组。Want中必须包含bundleName和abilityName。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。 |
+| autoStartApps | Array&lt;Want&gt; | 是 | 开机自启动应用名单数组。Want中必须包含bundleName和abilityName。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。 |
 
 **错误码：**
 

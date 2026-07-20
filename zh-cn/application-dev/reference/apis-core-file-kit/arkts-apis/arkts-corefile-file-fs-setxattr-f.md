@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="setxattr"></a>
 ## setxattr
 
 ```TypeScript
@@ -32,7 +33,7 @@ declare function setxattr(path: string, key: string, value: string): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 

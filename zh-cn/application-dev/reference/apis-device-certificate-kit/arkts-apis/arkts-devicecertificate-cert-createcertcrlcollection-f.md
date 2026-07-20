@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createcertcrlcollection"></a>
 ## createCertCRLCollection
 
 ```TypeScript
@@ -26,8 +27,8 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| certs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<X509Cert> | 是 | X509Cert数组。 |
-| crls | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<X509CRL> | 否 | X509CRL数组。 |
+| certs | Array&lt;X509Cert&gt; | 是 | X509Cert数组。 |
+| crls | Array&lt;X509CRL&gt; | 否 | X509CRL数组。 |
 
 **返回值：**
 

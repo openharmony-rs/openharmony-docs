@@ -1,5 +1,6 @@
 # lstatSync
 
+<a id="lstatsync"></a>
 ## lstatSync
 
 ```TypeScript

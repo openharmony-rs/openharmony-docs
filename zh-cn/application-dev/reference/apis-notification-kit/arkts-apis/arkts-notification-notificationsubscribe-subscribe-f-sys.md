@@ -6,6 +6,7 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
+<a id="subscribe"></a>
 ## subscribe
 
 ```TypeScript
@@ -33,7 +34,7 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 订阅动作回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
 
+<a id="subscribe-1"></a>
 ## subscribe
 
 ```TypeScript
@@ -110,7 +112,7 @@ function subscribe(
 | --- | --- | --- | --- |
 | subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-notificationsubscribeinfo-i-sys.md) | 是 | 通知订阅信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 订阅动作回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
 **错误码：**
 
@@ -152,6 +154,7 @@ notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
 
+<a id="subscribe-2"></a>
 ## subscribe
 
 ```TypeScript
@@ -185,7 +188,7 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

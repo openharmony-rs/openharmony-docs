@@ -20,6 +20,7 @@ StaticSubscriberExtensionContext模块提供StaticSubscriberExtensionAbility具�
 import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 ```
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -50,7 +51,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动Ability的want信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | callback形式返回启动结果。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback形式返回启动结果。 |
 
 **错误码：**
 
@@ -109,6 +110,7 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 
 ```
 
+<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript
@@ -144,7 +146,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise形式返回启动结果。 |
+| Promise&lt;void&gt; | Promise形式返回启动结果。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="isopentouchguidesync"></a>
 ## isOpenTouchGuideSync
 
 ```TypeScript

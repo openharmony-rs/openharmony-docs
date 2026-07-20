@@ -54,7 +54,7 @@ docUris: Array<string>
 
 表示DLP文件的URI列表。不对Array长度进行限制，每个string长度不超过4095字节。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 

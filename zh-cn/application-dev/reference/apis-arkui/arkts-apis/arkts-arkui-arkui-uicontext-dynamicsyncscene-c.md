@@ -14,6 +14,7 @@ Represents a dynamic synchronization scene.
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="getframeraterange"></a>
 ## getFrameRateRange
 
 ```TypeScript
@@ -36,8 +37,9 @@ Gets the FrameRateRange of the DynamicSyncScene.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ExpectedFrameRateRange](../arkts-components/arkts-arkui-common-expectedframeraterange-i.md) | The range of frameRate. |
+| [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | The range of frameRate. |
 
+<a id="setframeraterange"></a>
 ## setFrameRateRange
 
 ```TypeScript
@@ -60,5 +62,5 @@ Sets the FrameRateRange of the DynamicSyncScene.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-common-expectedframeraterange-i.md) | 是 | The range of frameRate. |
+| range | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | 是 | The range of frameRate. |
 

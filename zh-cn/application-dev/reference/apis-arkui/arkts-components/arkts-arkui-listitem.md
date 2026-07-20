@@ -38,7 +38,7 @@ ListItem(value?: ListItemOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ListItemOptions | 否 |  |
+| value | [ListItemOptions](arkts-arkui-listitemoptions-i.md) | 否 |  |
 
 ## ListItem
 

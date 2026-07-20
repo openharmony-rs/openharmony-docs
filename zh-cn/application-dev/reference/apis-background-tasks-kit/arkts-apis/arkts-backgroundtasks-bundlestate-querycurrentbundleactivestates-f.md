@@ -6,6 +6,7 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querycurrentbundleactivestates"></a>
 ## queryCurrentBundleActiveStates
 
 ```TypeScript
@@ -40,7 +41,7 @@ Queries state data of the current bundle within a specified period.
 | --- | --- | --- | --- |
 | begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
 | end | number | 是 | Indicates the end time of the query period, in milliseconds. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<BundleActiveState>> | 是 | the state data of the current bundle. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleActiveState&gt;&gt; | 是 | the state data of the current bundle. |
 
 **示例：**
 
@@ -63,6 +64,7 @@ bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessErro
 ```
 
 
+<a id="querycurrentbundleactivestates-1"></a>
 ## queryCurrentBundleActiveStates
 
 ```TypeScript
@@ -90,7 +92,7 @@ Queries state data of the current bundle within a specified period.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleActiveState>> | the state data of the current bundle. |
+| Promise&lt;Array&lt;BundleActiveState&gt;&gt; | the state data of the current bundle. |
 
 **示例：**
 

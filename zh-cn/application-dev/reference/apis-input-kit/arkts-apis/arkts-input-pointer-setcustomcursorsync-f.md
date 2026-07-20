@@ -6,13 +6,14 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setcustomcursorsync"></a>
 ## setCustomCursorSync
 
 ```TypeScript
 function setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 ```
 
-设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../../../../reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。
+设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](docroot://reference/apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。
 
 **起始版本：** 11
 

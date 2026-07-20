@@ -18,6 +18,7 @@
 import { ArcAlphabetIndexerAttribute, ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

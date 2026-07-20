@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpicture"></a>
 ## createPicture
 
 ```TypeScript

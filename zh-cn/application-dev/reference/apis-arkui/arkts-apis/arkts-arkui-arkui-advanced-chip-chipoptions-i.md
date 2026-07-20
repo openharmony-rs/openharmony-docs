@@ -170,7 +170,7 @@ Chip激活时的背景颜色。
 activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-common-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-common-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
 
 默认值：undefined
 
@@ -244,7 +244,7 @@ Chip背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-common-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-common-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
 
 默认值：undefined
 
@@ -415,7 +415,7 @@ maxFontScale?: number | Resource
 
 Chip组件文本与图标的最大的字体缩放倍数。取值范围：[1, +∞)。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 23
 
@@ -435,7 +435,7 @@ minFontScale?: number | Resource
 
 Chip组件文本与图标的最小的字体缩放倍数。取值范围：[0, 1]。
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 23
 
@@ -457,7 +457,7 @@ Chip点击事件。
 
 值为undefined时，Chip不能被点击。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 
@@ -479,7 +479,7 @@ onClose?: () => void
 
 值为undefined时，关闭图标点击事件。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 11
 
@@ -587,9 +587,9 @@ Chip尺寸。
 
 SizeOptions类型参数不支持百分比设置，异常值按默认值处理。
 
-**说明**：[适老化](../../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
+**说明**：[适老化](docroot://ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
 
-**类型：** ChipSize | SizeOptions
+**类型：** ChipSize \| SizeOptions
 
 **起始版本：** 11
 

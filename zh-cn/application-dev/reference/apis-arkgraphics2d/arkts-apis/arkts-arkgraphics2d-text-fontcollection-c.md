@@ -14,6 +14,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="clearcaches"></a>
 ## clearCaches
 
 ```TypeScript
@@ -51,6 +52,7 @@ struct Index {
 
 ```
 
+<a id="getglobalinstance"></a>
 ## getGlobalInstance
 
 ```TypeScript
@@ -97,6 +99,7 @@ struct Index {
 
 ```
 
+<a id="getlocalinstance"></a>
 ## getLocalInstance
 
 ```TypeScript
@@ -129,6 +132,7 @@ let fontCollection = text.FontCollection.getLocalInstance();
 
 ```
 
+<a id="loadfont"></a>
 ## loadFont
 
 ```TypeScript
@@ -158,7 +162,7 @@ loadFont(name: string, path: string | Resource): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -194,6 +198,7 @@ struct RenderTest {
 
 ```
 
+<a id="loadfontsync"></a>
 ## loadFontSync
 
 ```TypeScript
@@ -256,6 +261,7 @@ struct RenderTest {
 
 ```
 
+<a id="loadfontsyncwithcheck"></a>
 ## loadFontSyncWithCheck
 
 ```TypeScript
@@ -334,6 +340,7 @@ struct Index {
 
 ```
 
+<a id="loadfontwithcheck"></a>
 ## loadFontWithCheck
 
 ```TypeScript
@@ -364,7 +371,7 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -422,6 +429,7 @@ struct Index {
 
 ```
 
+<a id="setparagraphcachesenabled"></a>
 ## setParagraphCachesEnabled
 
 ```TypeScript
@@ -468,6 +476,7 @@ struct Index {
 
 ```
 
+<a id="unloadfont"></a>
 ## unloadFont
 
 ```TypeScript
@@ -504,7 +513,7 @@ unloadFont(name: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -539,6 +548,7 @@ struct UnloadFontTest {
 
 ```
 
+<a id="unloadfontsync"></a>
 ## unloadFontSync
 
 ```TypeScript

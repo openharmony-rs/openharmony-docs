@@ -1,6 +1,6 @@
 # DisplayOrientation
 
-标识该Ability的显示模式。仅适用于FA模型的[PageAbility](../../../../application-models/pageability-overview.md)。
+标识该Ability的显示模式。仅适用于FA模型的[PageAbility](docroot://application-models/pageability-overview.md)。
 
 <!--Table: 40%; 10%; 50%-->
 

@@ -6,6 +6,7 @@
 import { router } from '@kit.ArkUI';
 ```
 
+<a id="showalertbeforebackpage"></a>
 ## showAlertBeforeBackPage
 
 ```TypeScript
@@ -19,11 +20,11 @@ function showAlertBeforeBackPage(options: EnableAlertOptions): void
 > - 从API version 9开始支持，从API version 18开始废弃，建议使用  
 > [showAlertBeforeBackPage](arkts-arkui-arkui-uicontext-router-c.md#showalertbeforebackpage-1)替代。showAlertBeforeBackPage需先  
 > 通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9

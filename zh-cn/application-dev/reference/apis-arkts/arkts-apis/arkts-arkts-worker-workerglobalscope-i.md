@@ -48,7 +48,7 @@ onerror?: (ev: ErrorEvent) => void
 
 onerror属性用于指定Worker在执行过程中发生异常被调用的回调函数，该回调函数在Worker线程中执行。
 
-**类型：** (ev: ErrorEvent) => void
+**类型：** (ev: ErrorEvent) =&gt; void
 
 **起始版本：** 7
 

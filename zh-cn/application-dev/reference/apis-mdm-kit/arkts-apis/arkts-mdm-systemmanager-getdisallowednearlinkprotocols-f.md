@@ -6,6 +6,7 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowednearlinkprotocols"></a>
 ## getDisallowedNearLinkProtocols
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array<N
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<NearLinkProtocol> | 指定用户下禁用的星闪协议名单。 |
+| Array&lt;NearLinkProtocol&gt; | 指定用户下禁用的星闪协议名单。 |
 
 **错误码：**
 

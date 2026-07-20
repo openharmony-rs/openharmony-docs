@@ -16,6 +16,7 @@
 import { cloudExtension } from '@kit.ArkData';
 ```
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -46,13 +47,13 @@ delete(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 表名。 |
-| extensions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Record<string, CloudType>> | 是 | 表示当前数据的扩展信息。 |
+| extensions | Array&lt;Record&lt;string, CloudType&gt;&gt; | 是 | 表示当前数据的扩展信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Result<Record<string, CloudType>>>> | Promise对象，返回被删除的数据和删除结果。 |
+| Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt; | Promise对象，返回被删除的数据和删除结果。 |
 
 **示例：**
 
@@ -71,6 +72,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="generateid"></a>
 ## generateId
 
 ```TypeScript
@@ -97,7 +99,7 @@ generateId(count: number): Promise<Result<Array<string>>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<Array<string>>> | Promise对象，以Result结构将生成的ID以数组形式返回。 |
+| Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt; | Promise对象，以Result结构将生成的ID以数组形式返回。 |
 
 **示例：**
 
@@ -118,6 +120,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="heartbeat"></a>
 ## heartbeat
 
 ```TypeScript
@@ -144,7 +147,7 @@ heartbeat(lockId: number): Promise<Result<LockInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<LockInfo>> | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
+| Promise&lt;Result&lt;LockInfo&gt;&gt; | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
 
 **示例：**
 
@@ -171,6 +174,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="insert"></a>
 ## insert
 
 ```TypeScript
@@ -204,14 +208,14 @@ insert(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 表名。 |
-| values | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Record<string, CloudType>> | 是 | 表示要插入的数据。 |
-| extensions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Record<string, CloudType>> | 是 | 表示当前数据的扩展信息。 |
+| values | Array&lt;Record&lt;string, CloudType&gt;&gt; | 是 | 表示要插入的数据。 |
+| extensions | Array&lt;Record&lt;string, CloudType&gt;&gt; | 是 | 表示当前数据的扩展信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Result<Record<string, CloudType>>>> | Promise对象，返回插入的数据和插入结果。 |
+| Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt; | Promise对象，返回插入的数据和插入结果。 |
 
 **示例：**
 
@@ -230,6 +234,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="lock"></a>
 ## lock
 
 ```TypeScript
@@ -250,7 +255,7 @@ lock(): Promise<Result<LockInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<LockInfo>> | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
+| Promise&lt;Result&lt;LockInfo&gt;&gt; | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
 
 **示例：**
 
@@ -277,6 +282,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="query"></a>
 ## query
 
 ```TypeScript
@@ -298,7 +304,7 @@ query(table: string, fields: Array<string>, queryCount: number, queryCursor: str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 表名。 |
-| fields | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示要查询的字段名数组。 |
+| fields | Array&lt;string&gt; | 是 | 表示要查询的字段名数组。 |
 | queryCount | number | 是 | 表示要查询的数据记录条数。取值范围大于等于1。 |
 | queryCursor | string | 是 | 表示要查询的游标。 |
 
@@ -306,7 +312,7 @@ query(table: string, fields: Array<string>, queryCount: number, queryCursor: str
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<CloudData>> | Promise对象，返回被查询的数据和查询结果。 |
+| Promise&lt;Result&lt;CloudData&gt;&gt; | Promise对象，返回被查询的数据和查询结果。 |
 
 **示例：**
 
@@ -332,6 +338,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="unlock"></a>
 ## unlock
 
 ```TypeScript
@@ -358,7 +365,7 @@ unlock(lockId: number): Promise<Result<boolean>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result<boolean>> | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
+| Promise&lt;Result&lt;boolean&gt;&gt; | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
 
 **示例：**
 
@@ -380,6 +387,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 ```
 
+<a id="update"></a>
 ## update
 
 ```TypeScript
@@ -413,14 +421,14 @@ update(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | table | string | 是 | 表名。 |
-| values | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Record<string, CloudType>> | 是 | 表示要更新的数据。 |
-| extensions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Record<string, CloudType>> | 是 | 表示当前数据的扩展信息。 |
+| values | Array&lt;Record&lt;string, CloudType&gt;&gt; | 是 | 表示要更新的数据。 |
+| extensions | Array&lt;Record&lt;string, CloudType&gt;&gt; | 是 | 表示当前数据的扩展信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Result<Record<string, CloudType>>>> | Promise对象，返回更新的数据和更新结果。 |
+| Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt; | Promise对象，返回更新的数据和更新结果。 |
 
 **示例：**
 

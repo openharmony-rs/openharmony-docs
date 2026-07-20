@@ -26,9 +26,9 @@ import { cloudData } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy-1) | 设置应用自身的云同步策略，使用Promise异步回调。 |
-| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger-1) | 在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知。当满足自动触发条件时，回调函数会被调用。 |
-| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger-1) | 取消订阅自动同步触发事件通知。 |
+| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy) | 设置应用自身的云同步策略，使用Promise异步回调。 |
+| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger) | 在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知。当满足自动触发条件时，回调函数会被调用。 |
+| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger) | 取消订阅自动同步触发事件通知。 |
 
 <!--Del-->
 ### 类（系统接口）

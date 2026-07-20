@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="attestkeyitemasuser"></a>
 ## attestKeyItemAsUser
 
 ```TypeScript
@@ -36,7 +37,7 @@ function attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: Huks
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise对象。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
+| Promise&lt;HuksReturnResult&gt; | Promise对象。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
 
 **错误码：**
 

@@ -23,20 +23,20 @@ import { config } from '@kit.AccessibilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability-1) | 关闭辅助扩展。使用Promise异步回调。 |
-| [disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability-2) | 关闭辅助扩展，使用callback异步回调。 |
-| [enableAbility](arkts-accessibility-config-enableability-f-sys.md#enableability-1) | 启用辅助扩展。使用Promise异步回调。 |
-| [enableAbility](arkts-accessibility-config-enableability-f-sys.md#enableability-2) | 启用辅助扩展，使用callback异步回调。 |
-| [enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback-1) | 启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。 |
-| [getSeniorModeStateForApp](arkts-accessibility-config-getseniormodestateforapp-f-sys.md#getseniormodestateforapp-1) | Get the senior mode state for app. |
-| [off](arkts-accessibility-config-off-f-sys.md#off-1) | 取消启用的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [off](arkts-accessibility-config-off-f-sys.md#off-2) | 取消已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [offSeniorModeStateChangeForApp](arkts-accessibility-config-offseniormodestatechangeforapp-f-sys.md#offseniormodestatechangeforapp-1) | Unregister the observer for application's senior mode state changes. |
-| [on](arkts-accessibility-config-on-f-sys.md#on-1) | 添加启用的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [on](arkts-accessibility-config-on-f-sys.md#on-2) | 添加已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
-| [onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md#onseniormodestatechangeforapp-1) | Register an observer for anyone application's senior mode state changes. |
-| [setMagnificationState](arkts-accessibility-config-setmagnificationstate-f-sys.md#setmagnificationstate-1) | 触发或者关闭放大手势功能的放大效果，使用前需要保证放大手势功能已开启。 |
-| [setSeniorModeStateForApp](arkts-accessibility-config-setseniormodestateforapp-f-sys.md#setseniormodestateforapp-1) | Set the senior mode state for app. |
+| [disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability) | 关闭辅助扩展。使用Promise异步回调。 |
+| [disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability-1) | 关闭辅助扩展，使用callback异步回调。 |
+| [enableAbility](arkts-accessibility-config-enableability-f-sys.md#enableability) | 启用辅助扩展。使用Promise异步回调。 |
+| [enableAbility](arkts-accessibility-config-enableability-f-sys.md#enableability-1) | 启用辅助扩展，使用callback异步回调。 |
+| [enableAbilityWithCallback](arkts-accessibility-config-enableabilitywithcallback-f-sys.md#enableabilitywithcallback) | 启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。 |
+| [getSeniorModeStateForApp](arkts-accessibility-config-getseniormodestateforapp-f-sys.md#getseniormodestateforapp) | Get the senior mode state for app. |
+| [off](arkts-accessibility-config-off-f-sys.md#off) | 取消启用的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [off](arkts-accessibility-config-off-f-sys.md#off-1) | 取消已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [offSeniorModeStateChangeForApp](arkts-accessibility-config-offseniormodestatechangeforapp-f-sys.md#offseniormodestatechangeforapp) | Unregister the observer for application's senior mode state changes. |
+| [on](arkts-accessibility-config-on-f-sys.md#on) | 添加启用的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [on](arkts-accessibility-config-on-f-sys.md#on-1) | 添加已安装的辅助扩展的列表变化监听，使用callback异步回调。 |
+| [onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md#onseniormodestatechangeforapp) | Register an observer for anyone application's senior mode state changes. |
+| [setMagnificationState](arkts-accessibility-config-setmagnificationstate-f-sys.md#setmagnificationstate) | 触发或者关闭放大手势功能的放大效果，使用前需要保证放大手势功能已开启。 |
+| [setSeniorModeStateForApp](arkts-accessibility-config-setseniormodestateforapp-f-sys.md#setseniormodestateforapp) | Set the senior mode state for app. |
 <!--DelEnd-->
 
 <!--Del-->

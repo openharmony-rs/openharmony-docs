@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="createavsession"></a>
 ## createAVSession
 
 ```TypeScript
@@ -31,7 +32,7 @@ function createAVSession(context: Context, tag: string, type: AVSessionType, cal
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 需要使用UIAbilityContext，用于系统获取应用组件的相关信息。 |
 | tag | string | 是 | 会话的自定义名称。 |
 | type | [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | 是 | 会话类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVSession> | 是 | 回调函数。回调返回会话实例对象，可用于获取会话ID，以及设置元数据、播放状态，发送按键事件等操作。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVSession&gt; | 是 | 回调函数。回调返回会话实例对象，可用于获取会话ID，以及设置元数据、播放状态，发送按键事件等操作。 |
 
 **错误码：**
 
@@ -76,6 +77,7 @@ struct Index {
 ```
 
 
+<a id="createavsession-1"></a>
 ## createAVSession
 
 ```TypeScript
@@ -108,7 +110,7 @@ function createAVSession(context: Context, tag: string, type: AVSessionType): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVSession> | Promise对象。回调返回会话实例对象，可用于获取会话ID，以及设置元数据、播放状态，发送按键事件等操作。 |
+| Promise&lt;AVSession&gt; | Promise对象。回调返回会话实例对象，可用于获取会话ID，以及设置元数据、播放状态，发送按键事件等操作。 |
 
 **错误码：**
 

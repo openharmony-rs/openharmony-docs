@@ -14,6 +14,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="cleanfilecache"></a>
 ## cleanFileCache
 
 ```TypeScript
@@ -66,6 +67,7 @@ try {
 
 ```
 
+<a id="cleanfilecache-1"></a>
 ## cleanFileCache
 
 ```TypeScript
@@ -84,7 +86,7 @@ cleanFileCache(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Return Promise. |
+| Promise&lt;void&gt; | - Return Promise. |
 
 **错误码：**
 
@@ -92,6 +94,7 @@ cleanFileCache(): Promise<void>
 | --- | --- |
 | 13900010 | Try again. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -119,6 +122,7 @@ let fileCache = new cloudSync.CloudFileCache();
 
 ```
 
+<a id="getcachedtotalsize"></a>
 ## getCachedTotalSize
 
 ```TypeScript
@@ -137,7 +141,7 @@ getCachedTotalSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | - Return the total size of cached files. |
+| Promise&lt;number&gt; | - Return the total size of cached files. |
 
 **错误码：**
 
@@ -162,6 +166,7 @@ fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -181,7 +186,7 @@ off(event: 'progress', callback?: Callback<DownloadProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadProgress> | 否 | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DownloadProgress&gt; | 否 | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
 
 **错误码：**
 
@@ -211,13 +216,14 @@ try {
 
 ```
 
+<a id="off-1"></a>
 ## off
 
 ```TypeScript
 off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void
 ```
 
-云盘文件缓存对象移除由[on](arkts-corefile-cloudsync-cloudfilecache-c.md#on-2)接口添加的云文件批量缓存过程事件的监听。
+云盘文件缓存对象移除由[on](cloudSync.CloudFileCache#on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>))接口添加的云文件批量缓存过程事件的监听。
 
 **起始版本：** 20
 
@@ -230,7 +236,7 @@ off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'batchDownload' | 是 | 取消订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MultiDownloadProgress> | 否 | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MultiDownloadProgress&gt; | 否 | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
 
 **错误码：**
 
@@ -259,6 +265,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -278,7 +285,7 @@ on(event: 'progress', callback: Callback<DownloadProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'progress' | 是 | 订阅的事件类型，取值为'progress'（下载过程事件）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DownloadProgress> | 是 | 回调函数。云文件下载过程事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DownloadProgress&gt; | 是 | 回调函数。云文件下载过程事件。 |
 
 **错误码：**
 
@@ -306,6 +313,7 @@ try {
 
 ```
 
+<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -325,7 +333,7 @@ on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'batchDownload' | 是 | 订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MultiDownloadProgress> | 是 | 回调函数。云文件批量缓存过程事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MultiDownloadProgress&gt; | 是 | 回调函数。云文件批量缓存过程事件。 |
 
 **错误码：**
 
@@ -358,6 +366,7 @@ try {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -382,7 +391,7 @@ start(uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -421,6 +430,7 @@ fileCache.start(uri).then(() => {
 
 ```
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -440,7 +450,7 @@ start(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步启动云文件下载。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
@@ -472,6 +482,7 @@ fileCache.start(uri, (err: BusinessError) => {
 
 ```
 
+<a id="startbatch"></a>
 ## startBatch
 
 ```TypeScript
@@ -492,14 +503,14 @@ startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | URI列表，一次调用最多支持传入400个URI，超过报错22400004。 |
+| uris | Array&lt;string&gt; | 是 | URI列表，一次调用最多支持传入400个URI，超过报错22400004。 |
 | fileType | [DownloadFileType](arkts-corefile-cloudsync-downloadfiletype-e.md) | 否 | 文件类型，默认值为CONTENT类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回启动的云文件批量缓存任务的ID。 |
+| Promise&lt;number&gt; | Promise对象，返回启动的云文件批量缓存任务的ID。 |
 
 **错误码：**
 
@@ -535,6 +546,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -562,7 +574,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -591,6 +603,7 @@ fileCache.stop(uri, true).then(() => {
 
 ```
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -612,7 +625,7 @@ stop(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步停止云文件下载。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
@@ -643,6 +656,7 @@ fileCache.stop(uri, (err: BusinessError) => {
 
 ```
 
+<a id="stopbatch"></a>
 ## stopBatch
 
 ```TypeScript
@@ -670,7 +684,7 @@ stopBatch(downloadId: number, needClean?: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

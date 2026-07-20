@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
+<a id="enablescreencurtain"></a>
 ## enableScreenCurtain
 
 ```TypeScript
@@ -38,6 +39,7 @@ enableScreenCurtain(isEnable: boolean): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
+<a id="executeaction"></a>
 ## executeAction
 
 ```TypeScript
@@ -60,14 +62,14 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| action | [AccessibilityAction](../../apis-arkui/arkts-components/arkts-arkui-common-accessibilityaction-e.md) | 是 | 无障碍节点可执行的操作。 |
+| action | [AccessibilityAction](../../apis-arkui/arkts-components/arkts-arkui-accessibilityaction-e.md) | 是 | 无障碍节点可执行的操作。 |
 | parameters | [Parameter](arkts-accessibility-parameter-t-sys.md) | 否 | 执行操作时设置的参数值，默认为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -77,6 +79,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
+<a id="findelement"></a>
 ## findElement
 
 ```TypeScript
@@ -104,7 +107,7 @@ findElement(type: 'textType', condition: string): Promise<Array<AccessibilityEle
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityElement>> | Promise对象，返回满足指定查询关键字的所有节点元素。 |
+| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
 
 **错误码：**
 
@@ -112,6 +115,7 @@ findElement(type: 'textType', condition: string): Promise<Array<AccessibilityEle
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
+<a id="findelement-1"></a>
 ## findElement
 
 ```TypeScript
@@ -139,7 +143,7 @@ findElement(type: 'elementId', condition: number): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回满足指定查询条件的节点元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回满足指定查询条件的节点元素。 |
 
 **错误码：**
 
@@ -147,6 +151,7 @@ findElement(type: 'elementId', condition: number): Promise<AccessibilityElement>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
+<a id="findelementbycontent"></a>
 ## findElementByContent
 
 ```TypeScript
@@ -175,7 +180,7 @@ findElementByContent(condition: string): Promise<Array<AccessibilityElement>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityElement>> | Promise对象，返回包含指定内容的元素列表。 |
+| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回包含指定内容的元素列表。 |
 
 **错误码：**
 
@@ -185,6 +190,7 @@ findElementByContent(condition: string): Promise<Array<AccessibilityElement>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<a id="findelementbyfocusdirection"></a>
 ## findElementByFocusDirection
 
 ```TypeScript
@@ -213,7 +219,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回指定焦点方向的元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回指定焦点方向的元素。 |
 
 **错误码：**
 
@@ -223,6 +229,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<a id="findelementbyid"></a>
 ## findElementById
 
 ```TypeScript
@@ -251,7 +258,7 @@ findElementById(condition: number): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回指定 ID 的元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回指定 ID 的元素。 |
 
 **错误码：**
 
@@ -261,6 +268,7 @@ findElementById(condition: number): Promise<AccessibilityElement>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<a id="findelementsbyaccessibilityhinttext"></a>
 ## findElementsByAccessibilityHintText
 
 ```TypeScript
@@ -289,7 +297,7 @@ findElementsByAccessibilityHintText(condition: string): Promise<Array<Accessibil
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityElement>> | Promise对象，返回包含指定提示文本的元素列表。 |
+| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回包含指定提示文本的元素列表。 |
 
 **错误码：**
 
@@ -299,6 +307,7 @@ findElementsByAccessibilityHintText(condition: string): Promise<Array<Accessibil
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 
+<a id="findelementsbycondition"></a>
 ## findElementsByCondition
 
 ```TypeScript
@@ -328,7 +337,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FocusMoveResult> | Promise对象，返回查询结果对象。 |
+| Promise&lt;FocusMoveResult&gt; | Promise对象，返回查询结果对象。 |
 
 **错误码：**
 
@@ -337,6 +346,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="getchildren"></a>
 ## getChildren
 
 ```TypeScript
@@ -359,7 +369,7 @@ getChildren(): Promise<Array<AccessibilityElement>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AccessibilityElement>> | Promise对象，返回当前元素的子元素列表。 |
+| Promise&lt;Array&lt;AccessibilityElement&gt;&gt; | Promise对象，返回当前元素的子元素列表。 |
 
 **错误码：**
 
@@ -368,6 +378,7 @@ getChildren(): Promise<Array<AccessibilityElement>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="getcursorposition"></a>
 ## getCursorPosition
 
 ```TypeScript
@@ -388,8 +399,9 @@ getCursorPosition(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，表示文本组件中光标位置。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，表示文本组件中光标位置。 |
 
+<a id="getcursorposition-1"></a>
 ## getCursorPosition
 
 ```TypeScript
@@ -410,8 +422,9 @@ getCursorPosition(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回当前光标所处位置。 |
+| Promise&lt;number&gt; | Promise对象，返回当前光标所处位置。 |
 
+<a id="getparent"></a>
 ## getParent
 
 ```TypeScript
@@ -434,7 +447,7 @@ getParent(): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回当前元素的父元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回当前元素的父元素。 |
 
 **错误码：**
 
@@ -443,6 +456,7 @@ getParent(): Promise<AccessibilityElement>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="getroot"></a>
 ## getRoot
 
 ```TypeScript
@@ -465,7 +479,7 @@ getRoot(): Promise<AccessibilityElement>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AccessibilityElement> | Promise对象，返回活动窗口中的根元素。 |
+| Promise&lt;AccessibilityElement&gt; | Promise对象，返回活动窗口中的根元素。 |
 
 **错误码：**
 
@@ -744,7 +758,7 @@ childrenIds?: Array<number>
 
 组件的子元素ID列表。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 20
 
@@ -858,7 +872,7 @@ contents?: Array<string>
 
 元素显示内容。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 20
 
@@ -914,7 +928,7 @@ customActions?: Array<string>
 
 Indicates the custom actions supported by the component.
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 
@@ -1602,7 +1616,7 @@ supportedActionNames?: Array<string>
 
 支持的操作名称。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 20
 

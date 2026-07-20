@@ -6,6 +6,7 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="isprinterdisabled"></a>
 ## isPrinterDisabled
 
 ```TypeScript
@@ -18,7 +19,7 @@ function isPrinterDisabled(admin: Want, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** getDisallowedPolicy(admin:
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -35,7 +36,7 @@ function isPrinterDisabled(admin: Want, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，callback方式返回设备打印能力是否被禁用，true表示设备打印能力被禁用，false表示设备打印能力未被禁用。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，callback方式返回设备打印能力是否被禁用，true表示设备打印能力被禁用，false表示设备打印能力未被禁用。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ restrictions.isPrinterDisabled(wantTemp, (err, result) => {
 ```
 
 
+<a id="isprinterdisabled-1"></a>
 ## isPrinterDisabled
 
 ```TypeScript
@@ -82,7 +84,7 @@ function isPrinterDisabled(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** getDisallowedPolicy(admin:
+**替代接口：** [getDisallowedPolicy(admin:](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -104,7 +106,7 @@ function isPrinterDisabled(admin: Want): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。Promise方式返回设备打印能力是否被禁用，true表示设备打印能力被禁用，false表示设备打印能力未被禁用。 |
+| Promise&lt;boolean&gt; | Promise对象。Promise方式返回设备打印能力是否被禁用，true表示设备打印能力被禁用，false表示设备打印能力未被禁用。 |
 
 **错误码：**
 

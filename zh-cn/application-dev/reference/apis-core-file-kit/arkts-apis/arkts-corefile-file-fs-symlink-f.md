@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="symlink"></a>
 ## symlink
 
 ```TypeScript
@@ -35,7 +36,7 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 | 13900042 | Unknown error |
 
 
+<a id="symlink-1"></a>
 ## symlink
 
 ```TypeScript
@@ -81,7 +83,7 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | target | string | 是 | 要链接的目标文件的应用沙箱路径。 |
 | srcPath | string | 是 | 符号链接文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步创建符号链接信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
 
 **错误码：**
 

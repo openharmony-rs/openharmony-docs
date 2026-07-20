@@ -1,6 +1,6 @@
 # Stream
 
-文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](docroot://reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 **起始版本：** 9
 
@@ -14,6 +14,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -34,7 +35,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -62,6 +63,7 @@ stream.close().then(() => {
 
 ```
 
+<a id="close-1"></a>
 ## close
 
 ```TypeScript
@@ -82,7 +84,7 @@ close(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步关闭文件流之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步关闭文件流之后的回调。 |
 
 **错误码：**
 
@@ -112,6 +114,7 @@ stream.close((err: BusinessError) => {
 
 ```
 
+<a id="closesync"></a>
 ## closeSync
 
 ```TypeScript
@@ -148,6 +151,7 @@ stream.closeSync();
 
 ```
 
+<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -168,7 +172,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。返回表示异步刷新文件流的结果。 |
+| Promise&lt;void&gt; | Promise对象。返回表示异步刷新文件流的结果。 |
 
 **错误码：**
 
@@ -203,6 +207,7 @@ stream.flush().then(() => {
 
 ```
 
+<a id="flush-1"></a>
 ## flush
 
 ```TypeScript
@@ -223,7 +228,7 @@ flush(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步刷新文件流后的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步刷新文件流后的回调函数。 |
 
 **错误码：**
 
@@ -260,6 +265,7 @@ stream.flush((err: BusinessError) => {
 
 ```
 
+<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -303,6 +309,7 @@ stream.close();
 
 ```
 
+<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -332,14 +339,14 @@ read(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于读取文件的缓冲区。 |
+| buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
 | options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回读取的结果，单位为Byte。 |
+| Promise&lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -380,6 +387,7 @@ stream.read(arrayBuffer, readOption).then((readLen: number) => {
 
 ```
 
+<a id="read-1"></a>
 ## read
 
 ```TypeScript
@@ -400,8 +408,8 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于读取文件的缓冲区。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 异步读取完成后的回调。返回读取的结果，单位为Byte。 |
+| buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步读取完成后的回调。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -438,6 +446,7 @@ stream.read(arrayBuffer, (err: BusinessError, readLen: number) => {
 
 ```
 
+<a id="read-2"></a>
 ## read
 
 ```TypeScript
@@ -470,9 +479,9 @@ read(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于读取文件的缓冲区。 |
+| buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
 | options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 是 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 异步读取完成后的回调。返回读取的结果，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步读取完成后的回调。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -514,6 +523,7 @@ stream.read(arrayBuffer, readOption, (err: BusinessError, readLen: number) => {
 
 ```
 
+<a id="readsync"></a>
 ## readSync
 
 ```TypeScript
@@ -543,7 +553,7 @@ readSync(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于读取文件的缓冲区。 |
+| buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
 | options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 否 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/><br>**起始版本：** 11 |
 
 **返回值：**
@@ -584,6 +594,7 @@ stream.close();
 
 ```
 
+<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -620,7 +631,7 @@ write(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回实际写入的长度，单位为Byte。 |
+| Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -661,6 +672,7 @@ stream.write("hello, world", writeOption).then((number: number) => {
 
 ```
 
+<a id="write-1"></a>
 ## write
 
 ```TypeScript
@@ -682,7 +694,7 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 异步写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -721,6 +733,7 @@ stream.write("hello, world", (err: BusinessError, bytesWritten: number) => {
 
 ```
 
+<a id="write-2"></a>
 ## write
 
 ```TypeScript
@@ -755,7 +768,7 @@ write(
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
 | options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。仅支持?'utf-8'。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 异步写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -800,6 +813,7 @@ stream.write("hello, world", writeOption, (err: BusinessError, bytesWritten: num
 
 ```
 
+<a id="writesync"></a>
 ## writeSync
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="on"></a>
 ## on('checkNotification')
 
 ```TypeScript
@@ -31,7 +32,7 @@ function on(type: 'checkNotification', callback: (checkInfo: NotificationCheckIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'checkNotification' | 是 | 回调函数类型名，固定为'checkNotification'。 |
-| callback | (checkInfo: NotificationCheckInfo) => NotificationCheckResult | 是 | 消息验证函数指针。 |
+| callback | (checkInfo: NotificationCheckInfo) =&gt; NotificationCheckResult | 是 | 消息验证函数指针。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ try{
 ```
 
 
+<a id="on-1"></a>
 ## on('checkNotification')
 
 ```TypeScript
@@ -94,7 +96,7 @@ function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
 | --- | --- | --- | --- |
 | type | 'checkNotification' | 是 | 回调函数类型名，固定为'checkNotification'。 |
 | checkRequest | [NotificationCheckRequest](arkts-notification-notificationrequest-notificationcheckrequest-i-sys.md) | 是 | 通知请求验证内容。 |
-| callback | (checkInfo: NotificationCheckInfo) => Promise<NotificationCheckResult> | 是 | 消息验证函数指针。 |
+| callback | (checkInfo: NotificationCheckInfo) =&gt; Promise&lt;NotificationCheckResult&gt; | 是 | 消息验证函数指针。 |
 
 **错误码：**
 

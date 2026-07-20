@@ -92,7 +92,7 @@ readonly installTime: number
 readonly minCompatibleVersionCode: number
 ```
 
-分布式场景下的应用包兼容的最低版本，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。
+分布式场景下的应用包兼容的最低版本，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。
 
 **类型：** number
 
@@ -110,7 +110,7 @@ readonly minCompatibleVersionCode: number
 readonly name: string
 ```
 
-应用包的名称，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的bundleName字段。
+应用包的名称，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的bundleName字段。
 
 **类型：** string
 
@@ -146,7 +146,7 @@ readonly signatureInfo: SignatureInfo
 readonly targetVersion: number
 ```
 
-应用运行目标版本，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。
+应用运行目标版本，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。
 
 **类型：** number
 
@@ -182,7 +182,7 @@ readonly updateTime: number
 readonly vendor: string
 ```
 
-应用包的供应商，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的vendor字段。
+应用包的供应商，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的vendor字段。
 
 **类型：** string
 
@@ -200,7 +200,7 @@ readonly vendor: string
 readonly versionCode: number
 ```
 
-应用包的版本号，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的versionCode字段。
+应用包的版本号，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的versionCode字段。
 
 **类型：** number
 
@@ -218,7 +218,7 @@ readonly versionCode: number
 readonly versionName: string
 ```
 
-应用包的版本文本描述信息，对应[app.json5](../../../../quick-start/app-configuration-file.md)中配置的versionName字段。
+应用包的版本文本描述信息，对应[app.json5](docroot://quick-start/app-configuration-file.md)中配置的versionName字段。
 
 **类型：** string
 

@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryallactiveprintjobs"></a>
 ## queryAllActivePrintJobs
 
 ```TypeScript
@@ -28,7 +29,7 @@ function queryAllActivePrintJobs(): Promise<PrintJob[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrintJob[]> | Promise used to return a list of all active print jobs. |
+| Promise&lt;PrintJob[]&gt; | Promise used to return a list of all active print jobs. |
 
 **错误码：**
 

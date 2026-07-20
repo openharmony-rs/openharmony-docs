@@ -20,5 +20,5 @@ declare type PasteEventCallback = (event?: PasteEvent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | PasteEvent | 否 | 定义用户粘贴事件。省略时，不接收粘贴事件信息。 |
+| event | [PasteEvent](arkts-arkui-pasteevent-i.md) | 否 | 定义用户粘贴事件。省略时，不接收粘贴事件信息。  |
 

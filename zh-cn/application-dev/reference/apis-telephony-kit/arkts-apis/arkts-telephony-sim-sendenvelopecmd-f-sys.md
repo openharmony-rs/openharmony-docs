@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="sendenvelopecmd"></a>
 ## sendEnvelopeCmd
 
 ```TypeScript
@@ -30,7 +31,7 @@ Send envelope command to SIM card.
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from 0 to the maximum card slot index number supported by the device. |
 | cmd | string | 是 | Indicates sending command. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | The callback of sendEnvelopeCmd. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | The callback of sendEnvelopeCmd. |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ sim.sendEnvelopeCmd(0, "ls", (err: BusinessError) => {
 ```
 
 
+<a id="sendenvelopecmd-1"></a>
 ## sendEnvelopeCmd
 
 ```TypeScript
@@ -87,7 +89,7 @@ Send envelope command to SIM card.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the sendEnvelopeCmd. |
+| Promise&lt;void&gt; | The promise returned by the sendEnvelopeCmd. |
 
 **错误码：**
 

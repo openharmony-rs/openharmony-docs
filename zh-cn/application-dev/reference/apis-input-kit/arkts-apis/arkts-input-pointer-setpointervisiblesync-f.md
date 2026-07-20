@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setpointervisiblesync"></a>
 ## setPointerVisibleSync
 
 ```TypeScript

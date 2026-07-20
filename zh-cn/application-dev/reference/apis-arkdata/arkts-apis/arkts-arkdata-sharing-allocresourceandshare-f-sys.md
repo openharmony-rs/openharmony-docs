@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="allocresourceandshare"></a>
 ## allocResourceAndShare
 
 ```TypeScript
@@ -43,14 +44,14 @@ function allocResourceAndShare(
 | --- | --- | --- | --- |
 | storeId | string | 是 | 数据库名称。 |
 | predicates | relationalStore.RdbPredicates | 是 | 表示查找共享资源标识的数据的谓词条件。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Participant> | 是 | 端云共享的参与者。 |
-| columns | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 否 | 表示要查找的列字段名。默认为undefined，不返回列字段。 |
+| participants | Array&lt;Participant&gt; | 是 | 端云共享的参与者。 |
+| columns | Array&lt;string&gt; | 否 | 表示要查找的列字段名。默认为undefined，不返回列字段。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<relationalStore.ResultSet> | Promise对象，返回查询并共享的共享资源标识结果集。 |
+| Promise&lt;relationalStore.ResultSet&gt; | Promise对象，返回查询并共享的共享资源标识结果集。 |
 
 **错误码：**
 
@@ -98,6 +99,7 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 ```
 
 
+<a id="allocresourceandshare-1"></a>
 ## allocResourceAndShare
 
 ```TypeScript
@@ -135,8 +137,8 @@ function allocResourceAndShare(
 | --- | --- | --- | --- |
 | storeId | string | 是 | 数据库名称。 |
 | predicates | relationalStore.RdbPredicates | 是 | 表示查找共享资源标识的数据的谓词条件。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Participant> | 是 | 端云共享的参与者。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<relationalStore.ResultSet> | 是 | 回调函数。返回查询并共享的共享资源标识结果集。 |
+| participants | Array&lt;Participant&gt; | 是 | 端云共享的参与者。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;relationalStore.ResultSet&gt; | 是 | 回调函数。返回查询并共享的共享资源标识结果集。 |
 
 **错误码：**
 
@@ -186,6 +188,7 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
 ```
 
 
+<a id="allocresourceandshare-2"></a>
 ## allocResourceAndShare
 
 ```TypeScript
@@ -226,9 +229,9 @@ function allocResourceAndShare(
 | --- | --- | --- | --- |
 | storeId | string | 是 | 数据库名称。 |
 | predicates | relationalStore.RdbPredicates | 是 | 表示查找共享资源标识的数据的谓词条件。 |
-| participants | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Participant> | 是 | 端云共享的参与者。 |
-| columns | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示要查找的列字段名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<relationalStore.ResultSet> | 是 | 回调函数。返回查询并共享的共享资源标识结果集。 |
+| participants | Array&lt;Participant&gt; | 是 | 端云共享的参与者。 |
+| columns | Array&lt;string&gt; | 是 | 表示要查找的列字段名。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;relationalStore.ResultSet&gt; | 是 | 回调函数。返回查询并共享的共享资源标识结果集。 |
 
 **错误码：**
 

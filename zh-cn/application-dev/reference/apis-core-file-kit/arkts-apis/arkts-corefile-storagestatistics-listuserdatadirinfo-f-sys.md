@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="listuserdatadirinfo"></a>
 ## listUserdataDirInfo
 
 ```TypeScript
@@ -30,7 +31,7 @@ function listUserdataDirInfo(): Promise<Array<UserdataDirInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<UserdataDirInfo>> | Promise对象，返回用户设备中/data目录下的空间占用详情。 |
+| Promise&lt;Array&lt;UserdataDirInfo&gt;&gt; | Promise对象，返回用户设备中/data目录下的空间占用详情。 |
 
 **错误码：**
 

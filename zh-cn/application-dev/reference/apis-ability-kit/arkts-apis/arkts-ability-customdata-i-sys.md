@@ -18,7 +18,7 @@ data: Record<string, Object>
 
 拉起模态页面时传递的自定义数据，该数据为Record类型。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 13
 

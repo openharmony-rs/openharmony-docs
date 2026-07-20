@@ -8,7 +8,7 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 当作为[JSON.parse](arkts-arkts-json-parse-f.md#parse-1)的参数时，对象的每个成员都会调用此函数，可在解析期间进行自定义数据处理或转换。
 
-当作为[JSON.stringify](arkts-arkts-json-stringify-f.md#stringify-2)的参数时，在序列化期间用于转换和处理每个属性。
+当作为[JSON.stringify](arkts-arkts-json-stringify-f.md#stringify-1)的参数时，在序列化期间用于转换和处理每个属性。
 
 **起始版本：** 12
 
@@ -22,13 +22,13 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| this | Object | 是 | 待解析键值对所属的对象。 |
-| key | string | 是 | 待解析的键。 |
-| value | Object | 是 | 键对应的值。 |
+| this | Object | 是 | 待解析键值对所属的对象。  |
+| key | string | 是 | 待解析的键。  |
+| value | Object | 是 | 键对应的值。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object \| undefined \| null | 返回Object、undefined或null值。 |
+| Object \| undefined \| null | 返回Object、undefined或null值。  |
 

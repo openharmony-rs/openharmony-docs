@@ -1,0 +1,28 @@
+# OnPageBeginEvent
+
+定义网页加载开始时触发的函数。
+
+**起始版本：** 12
+
+<!--Device-unnamed-declare interface OnPageBeginEvent--><!--Device-unnamed-declare interface OnPageBeginEvent-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## url
+
+```TypeScript
+url: string
+```
+
+页面的URL地址。
+
+**类型：** string
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-OnPageBeginEvent-url: string--><!--Device-OnPageBeginEvent-url: string-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+

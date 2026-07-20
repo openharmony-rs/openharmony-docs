@@ -1,6 +1,6 @@
 # HapModuleInfo
 
-Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-3)获取。
+Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-1)获取。
 
 > **说明：**  
 >  
@@ -24,7 +24,7 @@ readonly abilityInfo: Array<AbilityInfo>
 
 Ability信息。
 
-**类型：** Array<AbilityInfo>
+**类型：** Array&lt;AbilityInfo&gt;
 
 **默认值：** Obtains configuration information about ability
 
@@ -110,7 +110,7 @@ readonly deviceTypes: Array<string>
 
 支持运行的设备类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** The device types that this hapmodule can run on
 
@@ -306,7 +306,7 @@ readonly reqCapabilities: Array<string>
 
 模块运行需要的能力。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** Indicates the req capabilities of this hapmodule
 

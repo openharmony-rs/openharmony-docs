@@ -20,6 +20,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="getasykeyspec"></a>
 ## getAsyKeySpec
 
 ```TypeScript
@@ -99,6 +100,7 @@ async function testgetAsyKeySpec() {
 
 ```
 
+<a id="getencodedder"></a>
 ## getEncodedDer
 
 ```TypeScript
@@ -159,6 +161,7 @@ async function testGetEncodedDer() {
 
 ```
 
+<a id="getencodedpem"></a>
 ## getEncodedPem
 
 ```TypeScript
@@ -218,6 +221,7 @@ function TestPubKeyPkcs1ToX509BySync1024() {
 
 ```
 
+<a id="getkeydata"></a>
 ## getKeyData
 
 ```TypeScript
@@ -246,7 +250,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回指定密钥数据项类型的公钥数据。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回指定密钥数据项类型的公钥数据。 |
 
 **错误码：**
 
@@ -271,6 +275,7 @@ async function eccGetKeyDataTest() {
 
 ```
 
+<a id="getkeydatasync"></a>
 ## getKeyDataSync
 
 ```TypeScript
@@ -301,7 +306,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回指定密钥数据项类型的公钥数据。 |
+| Uint8Array | 返回指定密钥数据项类型的公钥数据。 |
 
 **错误码：**
 

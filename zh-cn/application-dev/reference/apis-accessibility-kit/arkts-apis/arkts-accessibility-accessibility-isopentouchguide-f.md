@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="isopentouchguide"></a>
 ## isOpenTouchGuide
 
 ```TypeScript
@@ -28,7 +29,7 @@ function isOpenTouchGuide(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
 
 **示例：**
 
@@ -47,6 +48,7 @@ accessibility.isOpenTouchGuide((err: BusinessError, data: boolean) => {
 ```
 
 
+<a id="isopentouchguide-1"></a>
 ## isOpenTouchGuide
 
 ```TypeScript
@@ -69,7 +71,7 @@ function isOpenTouchGuide(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
+| Promise&lt;boolean&gt; | Promise对象，如果触摸浏览模式已开启，则返回 true；否则返回 false。 |
 
 **示例：**
 

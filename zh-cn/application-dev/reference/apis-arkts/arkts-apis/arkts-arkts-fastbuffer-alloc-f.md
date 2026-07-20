@@ -6,6 +6,7 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
+<a id="alloc"></a>
 ## alloc
 
 ```TypeScript
@@ -26,7 +27,7 @@ function alloc(size: number, fill?: string | FastBuffer | number, encoding?: Buf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | number | 是 | 指定的FastBuffer对象长度，单位：字节。取值范围：0 &lt;= size &lt;= UINT32_MAX。 |
+| size | number | 是 | 指定的FastBuffer对象长度，单位：字节。取值范围：0 <= size <= UINT32_MAX。 |
 | fill | string \| FastBuffer \| number | 否 | 填充至新缓存区的值，默认值：0。 |
 | encoding | [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md) | 否 | 编码格式（当`fill`为string时，才有意义）。默认值：'utf8'。传入无法识别的encoding会抛出TypeError。 |
 

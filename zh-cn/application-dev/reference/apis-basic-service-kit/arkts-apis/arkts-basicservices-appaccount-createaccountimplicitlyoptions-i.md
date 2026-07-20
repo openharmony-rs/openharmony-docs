@@ -38,7 +38,7 @@ parameters?: Record<string, Object>
 
 自定义参数对象，默认为空。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 9
 
@@ -54,7 +54,7 @@ requiredLabels?: Array<string>
 
 所需的标签，默认为空。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

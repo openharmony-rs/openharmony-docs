@@ -1,6 +1,6 @@
 # NetType（系统接口）
 
-网络类型。
+网络类型，用于指定下载的网络类型。设置CELLULAR仅允许数据网络下载，设置WIFI仅允许WIFI下载，设置CELLULAR_AND_WIFI允许两者均可下载。
 
 **起始版本：** 9
 

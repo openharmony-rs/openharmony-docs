@@ -14,6 +14,7 @@
 import { Context, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
 ```
 
+<a id="checkaccesstoken"></a>
 ## checkAccessToken
 
 ```TypeScript
@@ -43,7 +44,7 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSta
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GrantStatus> | Promise对象，返回授权状态结果。 |
+| Promise&lt;GrantStatus&gt; | Promise对象，返回授权状态结果。 |
 
 **错误码：**
 
@@ -75,6 +76,7 @@ atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtr
 
 ```
 
+<a id="checkaccesstokensync"></a>
 ## checkAccessTokenSync
 
 ```TypeScript
@@ -134,6 +136,7 @@ console.info(`Result: ${data}`);
 
 ```
 
+<a id="getselfpermissionstatus"></a>
 ## getSelfPermissionStatus
 
 ```TypeScript
@@ -190,6 +193,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('selfPermissionStateChange')
 
 ```TypeScript
@@ -229,8 +233,8 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'selfPermissionStateChange' | 是 | 取消订阅事件类型，固定为'selfPermissionStateChange'，权限状态变更事件。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on订阅时的权限列表匹配（不区分顺序）。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PermissionStateChangeInfo> | 否 | 回调函数。取消订阅指定权限名状态变更事件的回调。不传入此参数时，将批量删除与permissionList相关联的所有回调函数。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on订阅时的权限列表匹配（不区分顺序）。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PermissionStateChangeInfo&gt; | 否 | 回调函数。取消订阅指定权限名状态变更事件的回调。不传入此参数时，将批量删除与permissionList相关联的所有回调函数。 |
 
 **错误码：**
 
@@ -260,6 +264,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('selfPermissionStateChange')
 
 ```TypeScript
@@ -302,8 +307,8 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'selfPermissionStateChange' | 是 | 订阅事件类型，固定为'selfPermissionStateChange'，自身权限状态变更事件。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PermissionStateChangeInfo> | 是 | 回调函数。订阅指定权限名状态变更事件的回调。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PermissionStateChangeInfo&gt; | 是 | 回调函数。订阅指定权限名状态变更事件的回调。 |
 
 **错误码：**
 
@@ -338,6 +343,7 @@ try {
 
 ```
 
+<a id="openpermissiononsetting"></a>
 ## openPermissionOnSetting
 
 ```TypeScript
@@ -346,7 +352,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 
 用于[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)/[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)拉起权限设置页面。调用成功后会打开权限设置页面，用户在页面中操作后，返回用户在设置页面中的选择结果。使用Promise异步回调。
 
-适用于 [manual_settings](../../../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型权限无法通过普通授权弹窗申请、必须引导用户进入系统设置完成授权的场景。manual_settings类型权限是指只能由用户在系统设置中手动开启的权限，无法通过普通授权弹窗直接申请。
+适用于 [manual_settings](docroot://security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型权限无法通过普通授权弹窗申请、必须引导用户进入系统设置完成授权的场景。manual_settings类型权限是指只能由用户在系统设置中手动开启的权限，无法通过普通授权弹窗直接申请。
 
 **起始版本：** 22
 
@@ -361,13 +367,13 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise<Sele
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
-| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
+| permission | Permissions | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](docroot://security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SelectedResult> | Promise对象，返回用户在设置页面中的选择结果。 |
+| Promise&lt;SelectedResult&gt; | Promise对象，返回用户在设置页面中的选择结果。 |
 
 **错误码：**
 
@@ -398,6 +404,7 @@ atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').the
 
 ```
 
+<a id="requestglobalswitch"></a>
 ## requestGlobalSwitch
 
 ```TypeScript
@@ -412,7 +419,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 <!--RP5-->
 
-![requestGlobalSwitch](../../../../reference/apis-ability-kit/figures/requestGlobalSwitch.png)
+![requestGlobalSwitch](docroot://reference/apis-ability-kit/figures/requestGlobalSwitch.png)
 
 <!--RP5End-->
 
@@ -437,14 +444,14 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示当前全局开关处于开启状态；返回false表示当前全局开关仍处于关闭状态。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前全局开关处于开启状态；返回false表示当前全局开关仍处于关闭状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not support. |
+| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not supported. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | [12100013](../errorcode-access-token.md#12100013-全局开关已开启) | The specific global switch is already open. |
 
@@ -469,6 +476,7 @@ atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then
 
 ```
 
+<a id="requestpermissiononsetting"></a>
 ## requestPermissionOnSetting
 
 ```TypeScript
@@ -483,7 +491,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 
 <!--RP4-->
 
-![requestPermissionOnSetting](../../../../reference/apis-ability-kit/figures/requestPermissionOnSetting.png)
+![requestPermissionOnSetting](docroot://reference/apis-ability-kit/figures/requestPermissionOnSetting.png)
 
 <!--RP4End-->
 
@@ -502,13 +510,13 @@ requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](../../../../security/AccessToken/app-permission-group-list.md)。<br>取值约束：权限名长度不能超过256个字符。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](docroot://security/AccessToken/app-permission-group-list.md)。<br>取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<GrantStatus>> | Promise对象，返回授权状态数组，数组中每个元素对应permissionList中相应权限的授权结果。 |
+| Promise&lt;Array&lt;GrantStatus&gt;&gt; | Promise对象，返回授权状态数组，数组中每个元素对应permissionList中相应权限的授权结果。 |
 
 **错误码：**
 
@@ -542,21 +550,22 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 
 ```
 
+<a id="requestpermissionsfromuser"></a>
 ## requestPermissionsFromUser
 
 ```TypeScript
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void
 ```
 
-用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](../../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
+用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](docroot://security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](docroot://security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissiononsetting-1)拉起权限设置弹窗，引导用户完成授权。
 
 <!--RP3-->
 
-![requestPermissionsFromUser](../../../../reference/apis-ability-kit/figures/requestPermissionsFromUser.png)
+![requestPermissionsFromUser](docroot://reference/apis-ability-kit/figures/requestPermissionsFromUser.png)
 
 <!--RP3End-->
 
@@ -574,9 +583,9 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的&lt;!--RP1--&gt;UIAbility&lt;!--RP1End--&gt;的Context。<br>若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
-| requestCallback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PermissionRequestResult> | 是 | 回调函数。调用完成后通过err返回错误信息，通过data返回权限请求结果对象。开发者可根据权限请求结果判断用户是否授权、是否展示过弹窗以及失败原因。 |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。<br>若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
+| requestCallback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PermissionRequestResult&gt; | 是 | 回调函数。调用完成后通过err返回错误信息，通过data返回权限请求结果对象。开发者可根据权限请求结果判断用户是否授权、是否展示过弹窗以及失败原因。 |
 
 **错误码：**
 
@@ -613,13 +622,14 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
 
 ```
 
+<a id="requestpermissionsfromuser-1"></a>
 ## requestPermissionsFromUser
 
 ```TypeScript
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>
 ```
 
-用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](../../../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
+用于<!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End-->拉起弹窗请求[用户授权](docroot://security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
 
 适用于应用首次访问受保护资源前主动向用户申请user_grant权限的场景。
 
@@ -641,14 +651,14 @@ requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的&lt;!--RP1--&gt;UIAbility&lt;!--RP1End--&gt;的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
+| context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前业务场景必要的敏感权限，避免一次申请过多权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionRequestResult> | Promise对象，返回权限请求结果对象，包含权限数组、每个权限的授权结果、是否展示弹窗以及失败原因等信息。 |
+| Promise&lt;PermissionRequestResult&gt; | Promise对象，返回权限请求结果对象，包含权限数组、每个权限的授权结果、是否展示弹窗以及失败原因等信息。 |
 
 **错误码：**
 
@@ -683,6 +693,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
 
 ```
 
+<a id="verifyaccesstoken"></a>
 ## verifyAccessToken
 
 ```TypeScript
@@ -713,7 +724,7 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise<GrantSt
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GrantStatus> | Promise对象，返回授权状态结果。 |
+| Promise&lt;GrantStatus&gt; | Promise对象，返回授权状态结果。 |
 
 **示例：**
 
@@ -738,6 +749,7 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 ```
 
+<a id="verifyaccesstoken-1"></a>
 ## verifyAccessToken
 
 ```TypeScript
@@ -770,7 +782,7 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GrantStatus> | Promise对象，返回授权状态结果。 |
+| Promise&lt;GrantStatus&gt; | Promise对象，返回授权状态结果。 |
 
 **示例：**
 
@@ -795,6 +807,7 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 ```
 
+<a id="verifyaccesstokensync"></a>
 ## verifyAccessTokenSync
 
 ```TypeScript

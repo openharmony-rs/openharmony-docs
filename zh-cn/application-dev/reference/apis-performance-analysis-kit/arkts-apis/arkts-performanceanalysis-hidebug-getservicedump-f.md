@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getservicedump"></a>
 ## getServiceDump
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getServiceDump(serviceid : number, fd : number, args : Array<string>) :
 | --- | --- | --- | --- |
 | serviceid | number | 是 | ϵͳ����ID�����ڱ�ʶҪ��ȡ��Ϣ��ϵͳ����ȡֵ��ϵͳ���壬ȡֵ��Χ[0, 255]��������Чֵʱ���ش�����401�� |
 | fd | number | 是 | �ļ����������ӿڻ����fdд�����ݡ�������Ч�ļ�������ʱ���ش�����401�� |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | ϵͳ�����dump�ӿڲ����б���string���ȵ����ֵΪ254���������ֽ��ᱻ�ضϡ� |
+| args | Array&lt;string&gt; | 是 | ϵͳ�����dump�ӿڲ����б���string���ȵ����ֵΪ254���������ֽ��ᱻ�ضϡ� |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="uninstall"></a>
 ## uninstall
 
 ```TypeScript
@@ -24,7 +25,7 @@ function uninstall(admin: Want, bundleName: string, callback: AsyncCallback<void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** uninstall(admin:
+**替代接口：** [uninstall(admin:](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -42,7 +43,7 @@ function uninstall(admin: Want, bundleName: string, callback: AsyncCallback<void
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 ```
 
 
+<a id="uninstall-1"></a>
 ## uninstall
 
 ```TypeScript
@@ -95,7 +97,7 @@ function uninstall(admin: Want, bundleName: string, userId: number, callback: As
 
 **废弃版本：** 26.0.0
 
-**替代接口：** uninstall(admin:
+**替代接口：** [uninstall(admin:](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -114,7 +116,7 @@ function uninstall(admin: Want, bundleName: string, userId: number, callback: As
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 包名。 |
 | userId | number | 是 | 用户ID，指定具体用户。取值范围：大于等于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -149,6 +151,7 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, (err) => {
 ```
 
 
+<a id="uninstall-2"></a>
 ## uninstall
 
 ```TypeScript
@@ -167,7 +170,7 @@ function uninstall(admin: Want, bundleName: string, isKeepData: boolean, callbac
 
 **废弃版本：** 26.0.0
 
-**替代接口：** uninstall(admin:
+**替代接口：** [uninstall(admin:](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -186,7 +189,7 @@ function uninstall(admin: Want, bundleName: string, isKeepData: boolean, callbac
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 包名。 |
 | isKeepData | boolean | 是 | 是否保留包数据，true表示保留，false表示不保留。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -221,6 +224,7 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 ```
 
 
+<a id="uninstall-3"></a>
 ## uninstall
 
 ```TypeScript
@@ -239,7 +243,7 @@ function uninstall(admin: Want, bundleName: string, userId: number, isKeepData: 
 
 **废弃版本：** 26.0.0
 
-**替代接口：** uninstall(admin:
+**替代接口：** [uninstall(admin:](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -259,7 +263,7 @@ function uninstall(admin: Want, bundleName: string, userId: number, isKeepData: 
 | bundleName | string | 是 | 包名。 |
 | userId | number | 是 | 用户ID，指定具体用户。取值范围：大于等于0。 |
 | isKeepData | boolean | 是 | 是否保留包数据，true表示保留，false表示不保留。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 

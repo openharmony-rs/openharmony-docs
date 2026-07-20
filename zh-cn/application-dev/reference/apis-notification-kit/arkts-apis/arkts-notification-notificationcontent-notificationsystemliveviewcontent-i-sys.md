@@ -22,7 +22,7 @@ cardButtons?: Array<NotificationIconButton>
 
 实况窗按钮（最多支持3个）。默认为空。
 
-**类型：** Array<NotificationIconButton>
+**类型：** Array&lt;NotificationIconButton&gt;
 
 **起始版本：** 18
 

@@ -6,6 +6,7 @@
 import { thermal } from '@kit.BasicServicesKit';
 ```
 
+<a id="unregisterthermallevelcallback"></a>
 ## unregisterThermalLevelCallback
 
 ```TypeScript
@@ -24,7 +25,7 @@ function unregisterThermalLevelCallback(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 可选参数，回调函数，无返回值。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 可选参数，回调函数，无返回值。 |
 
 **错误码：**
 

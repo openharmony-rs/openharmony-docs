@@ -38,7 +38,7 @@ isoPacketDescs: Array<Readonly<UsbIsoPacketDescriptor>>
 
 实时传输的分包信息。
 
-**类型：** Array<Readonly<UsbIsoPacketDescriptor>>
+**类型：** Array&lt;Readonly&lt;UsbIsoPacketDescriptor&gt;&gt;
 
 **起始版本：** 18
 

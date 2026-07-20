@@ -242,7 +242,7 @@ List(options?: ListOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ListOptions | 否 | 设置List组件参数。 |
+| options | [ListOptions](arkts-arkui-listoptions-i.md) | 否 | 设置List组件参数。 |
 
 ## 汇总
 

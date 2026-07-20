@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getavcastcontroller"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -31,7 +32,7 @@ function getAVCastController(sessionId: string, callback: AsyncCallback<AVCastCo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 用于指定要获取的投播控制器的sessionId。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVCastController> | 是 | 回调函数，返回投播控制器实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVCastController&gt; | 是 | 回调函数，返回投播控制器实例。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ struct Index {
 ```
 
 
+<a id="getavcastcontroller-1"></a>
 ## getAVCastController
 
 ```TypeScript
@@ -107,7 +109,7 @@ function getAVCastController(sessionId: string): Promise<AVCastController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVCastController> | Promise对象。返回投播控制器实例。 |
+| Promise&lt;AVCastController&gt; | Promise对象。返回投播控制器实例。 |
 
 **错误码：**
 

@@ -14,6 +14,7 @@ This class is used to set adblock config.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="addadsblockallowedlist"></a>
 ## addAdsBlockAllowedList
 
 ```TypeScript
@@ -41,7 +42,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 一组域名列表，如果网页URL与列表中的某个条目匹配，则该网页将被允许使用广告拦截功能。 |
+| domainSuffixes | Array&lt;string&gt; | 是 | 一组域名列表，如果网页URL与列表中的某个条目匹配，则该网页将被允许使用广告拦截功能。 |
 
 **错误码：**
 
@@ -50,6 +51,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+<a id="addadsblockdisallowedlist"></a>
 ## addAdsBlockDisallowedList
 
 ```TypeScript
@@ -77,7 +79,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 一组域名列表，如果网页URL与列表中的某个域名匹配，则该网页将被禁止使用广告拦截功能。 |
+| domainSuffixes | Array&lt;string&gt; | 是 | 一组域名列表，如果网页URL与列表中的某个域名匹配，则该网页将被禁止使用广告拦截功能。 |
 
 **错误码：**
 
@@ -86,6 +88,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+<a id="clearadsblockallowedlist"></a>
 ## clearAdsBlockAllowedList
 
 ```TypeScript
@@ -108,6 +111,7 @@ clear Ads Block Allowed list.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+<a id="clearadsblockdisallowedlist"></a>
 ## clearAdsBlockDisallowedList
 
 ```TypeScript
@@ -130,6 +134,7 @@ clear Ads Block Disallowed list.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+<a id="removeadsblockallowedlist"></a>
 ## removeAdsBlockAllowedList
 
 ```TypeScript
@@ -150,7 +155,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要从允许列表中移除的域名后缀列表。 |
+| domainSuffixes | Array&lt;string&gt; | 是 | 需要从允许列表中移除的域名后缀列表。 |
 
 **错误码：**
 
@@ -159,6 +164,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+<a id="removeadsblockdisallowedlist"></a>
 ## removeAdsBlockDisallowedList
 
 ```TypeScript
@@ -179,7 +185,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| domainSuffixes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要从禁止列表中移除的域名后缀列表。 |
+| domainSuffixes | Array&lt;string&gt; | 是 | 需要从禁止列表中移除的域名后缀列表。 |
 
 **错误码：**
 
@@ -188,6 +194,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 18+ |
 
+<a id="setadsblockrules"></a>
 ## setAdsBlockRules
 
 ```TypeScript

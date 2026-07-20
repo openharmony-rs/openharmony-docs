@@ -6,6 +6,7 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getlaunchwantforbundle"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -29,9 +30,10 @@ function getLaunchWantForBundle(bundleName: string, callback: AsyncCallback<Want
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Want> | 是 | 程序启动作为入参的回调函数，返回拉起指定应用的want对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 程序启动作为入参的回调函数，返回拉起指定应用的want对象。 |
 
 
+<a id="getlaunchwantforbundle-1"></a>
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -60,5 +62,5 @@ function getLaunchWantForBundle(bundleName: string): Promise<Want>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Want> | Returns the Want for starting the application's main ability if any. |
+| Promise&lt;Want&gt; | Returns the Want for starting the application's main ability if any. |
 

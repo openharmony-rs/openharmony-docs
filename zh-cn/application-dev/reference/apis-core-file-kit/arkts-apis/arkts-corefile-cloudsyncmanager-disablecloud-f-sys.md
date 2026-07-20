@@ -6,6 +6,7 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="disablecloud"></a>
 ## disableCloud
 
 ```TypeScript
@@ -34,7 +35,7 @@ function disableCloud(accountId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ cloudSyncManager.disableCloud(accountId).then(() => {
 ```
 
 
+<a id="disablecloud-1"></a>
 ## disableCloud
 
 ```TypeScript
@@ -82,7 +84,7 @@ function disableCloud(accountId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步去使能端云协同能力之后。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步去使能端云协同能力之后。 |
 
 **错误码：**
 

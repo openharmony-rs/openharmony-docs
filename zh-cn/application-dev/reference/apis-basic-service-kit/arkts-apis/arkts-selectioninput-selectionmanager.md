@@ -27,11 +27,11 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel-1) | 创建划词面板。使用Promise异步回调。单个划词应用仅允许创建一个[MENU_PANEL](arkts-selectioninput-selectionpanel.md)和一个[MAIN_PANEL](arkts-selectioninput-selectionpanel.md)。 |
-| [destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroypanel-1) | 销毁划词面板。使用Promise异步回调。 |
-| [getSelectionContent](arkts-basicservices-selectionmanager-getselectioncontent-f-sys.md#getselectioncontent-1) | 获取选中文本的内容。使用Promise异步回调。 |
-| [off](arkts-basicservices-selectionmanager-off-f-sys.md#off-1) | 取消订阅划词完成事件。使用callback异步回调。 |
-| [on](arkts-basicservices-selectionmanager-on-f-sys.md#on-1) | 订阅划词完成事件。使用callback异步回调。 |
+| [createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel) | 创建划词面板。使用Promise异步回调。单个划词应用仅允许创建一个[MENU_PANEL](arkts-selectioninput-selectionpanel.md)和一个[MAIN_PANEL](arkts-selectioninput-selectionpanel.md)。 |
+| [destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroypanel) | 销毁划词面板。使用Promise异步回调。 |
+| [getSelectionContent](arkts-basicservices-selectionmanager-getselectioncontent-f-sys.md#getselectioncontent) | 获取选中文本的内容。使用Promise异步回调。 |
+| [off](arkts-basicservices-selectionmanager-off-f-sys.md#off) | 取消订阅划词完成事件。使用callback异步回调。 |
+| [on](arkts-basicservices-selectionmanager-on-f-sys.md#on) | 订阅划词完成事件。使用callback异步回调。 |
 <!--DelEnd-->
 
 ### 接口

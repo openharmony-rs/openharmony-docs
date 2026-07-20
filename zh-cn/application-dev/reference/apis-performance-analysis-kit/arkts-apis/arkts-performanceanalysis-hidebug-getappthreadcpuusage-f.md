@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getappthreadcpuusage"></a>
 ## getAppThreadCpuUsage
 
 ```TypeScript

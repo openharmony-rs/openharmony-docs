@@ -16,6 +16,7 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
+<a id="onheartbeat"></a>
 ## onHeartBeat
 
 ```TypeScript
@@ -59,6 +60,7 @@ async function dataMigration() {
 
 ```
 
+<a id="onprogress"></a>
 ## onProgress
 
 ```TypeScript
@@ -108,6 +110,7 @@ async function dataMigration() {
 
 ```
 
+<a id="onresult"></a>
 ## onResult
 
 ```TypeScript

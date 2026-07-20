@@ -33,13 +33,13 @@ import { drawing } from '@kit.ArkGraphics2D';
 | [ImageFilter](arkts-arkgraphics2d-drawing-imagefilter-c.md) | 图像滤波器。 |
 | [Lattice](arkts-arkgraphics2d-drawing-lattice-c.md) | 矩形网格对象。该对象用于将图片按照矩形网格进行划分。 |
 | [MaskFilter](arkts-arkgraphics2d-drawing-maskfilter-c.md) | 蒙版滤镜对象。 |
-| [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](../../../../reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;)为源坐标点，(x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](../../../../reference/apis-arkgraphics2d/figures/matrix_xy.PNG) |
+| [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 矩阵对象。表示为3*3的矩阵，如下图所示：![matrix_3x3](docroot://reference/apis-arkgraphics2d/figures/matrix3X3.PNG)矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：![matrix_xy](docroot://reference/apis-arkgraphics2d/figures/matrix_xy.PNG) |
 | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 由直线、圆弧、二阶贝塞尔、三阶贝塞尔组成的复合几何路径。 |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | 路径效果对象。 |
 | [PathIterator](arkts-arkgraphics2d-drawing-pathiterator-c.md) | 表示路径操作迭代器，可通过遍历迭代器读取path的操作指令。 |
 | [Pen](arkts-arkgraphics2d-drawing-pen-c.md) | 画笔对象，描述所绘制图形形状的轮廓信息。 |
 | [PointUtils](arkts-arkgraphics2d-drawing-pointutils-c.md) | This class offers a comprehensive set of operations for handling common2D Point objects. |
-| [RectUtils](arkts-arkgraphics2d-drawing-rectutils-c.md) | 提供了处理矩形的工具。主要的使用场景：1. 矩形快速构建与获取基本属性，如构造新矩形、拷贝矩形、获取矩形的宽高以及中心点等。2. 边界计算与调整，如获取包含关系、计算与更新矩形之间交集和并集，更新边界值等。 |
+| [RectUtils](arkts-arkgraphics2d-drawing-rectutils-c.md) | 提供了处理矩形的工具。主要的使用场景：  1. 矩形快速构建与获取基本属性，如构造新矩形、拷贝矩形、获取矩形的宽高以及中心点等。2. 边界计算与调整，如获取包含关系、计算与更新矩形之间交集和并集，更新边界值等。 |
 | [Region](arkts-arkgraphics2d-drawing-region-c.md) | 区域对象，用于描述所绘制图形的区域信息。 |
 | [RoundRect](arkts-arkgraphics2d-drawing-roundrect-c.md) | 圆角矩形对象。 |
 | [SamplingOptions](arkts-arkgraphics2d-drawing-samplingoptions-c.md) | 采样选项对象。 |
@@ -62,8 +62,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md) | 混合模式枚举。混合模式会将两种颜色（源色、目标色）以特定的方式混合生成一种新的颜色，通常用于叠加、滤镜和遮罩等图形操作场景。混合操作会分别作用于红、绿、蓝三个颜色通道，采用相同的混合逻辑，而透明度（Alpha通道）则根据各模式的定义另行处理。为简洁起见，我们使用以下缩写：s : source 源的缩写。d : destination 目标的缩写。sa : source alpha 源透明度的缩写。da : destination alpha 目标透明度的缩写。计算结果用如下缩写表示：r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用r表示。ra : 如果只操作透明度通道，用ra表示。rc : 如果操作3个颜色通道，用rc表示。以黄色矩形为源图像，蓝色圆形为目标图像，各混合模式枚举生成的效果示意图请参考下表。 |
-| [BlurType](arkts-arkgraphics2d-drawing-blurtype-e.md) | 定义蒙版滤镜模糊中操作类型的枚举。 \| 名称 \| 值 \| 说明 \| 示意图 \| \| ------ \| - \| ------------------ \| -------- \| \| NORMAL \| 0 \| 全面模糊，外圈边缘和内部实体一起模糊。 \| ![image_BlueType_Normal.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Normal.png) \| \| SOLID \| 1 \| 内部实体不变，只模糊外圈边缘部分。 \| ![image_BlueType_Solid.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Solid.png) \| \| OUTER \| 2 \| 只有外圈边缘模糊，内部实体完全透明。 \| ![image_BlueType_Outer.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Outer.png) \| \| INNER \| 3 \| 只有内部实体模糊，外圈边缘清晰。 \| ![image_BlueType_Inner.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Inner.png) \| |
+| [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md) | 混合模式枚举。混合模式会将两种颜色（源色、目标色）以特定的方式混合生成一种新的颜色，通常用于叠加、滤镜和遮罩等图形操作场景。混合操作会分别作用于红、绿、蓝三个颜色通道，采用相同的混合逻辑，而透明度（Alpha通道）则根据各模式的定义另行处理。为简洁起见，我们使用以下缩写：  s : source 源的缩写。d : destination 目标的缩写。sa : source alpha 源透明度的缩写。da : destination alpha 目标透明度的缩写。  计算结果用如下缩写表示：  r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用r表示。ra : 如果只操作透明度通道，用ra表示。rc : 如果操作3个颜色通道，用rc表示。  以黄色矩形为源图像，蓝色圆形为目标图像，各混合模式枚举生成的效果示意图请参考下表。 |
+| [BlurType](arkts-arkgraphics2d-drawing-blurtype-e.md) | 定义蒙版滤镜模糊中操作类型的枚举。  \| 名称 \| 值 \| 说明 \| 示意图 \|  \| ------ \| - \| ------------------ \| -------- \|  \| NORMAL \| 0 \| 全面模糊，外圈边缘和内部实体一起模糊。 \| ![image_BlueType_Normal.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Normal.png) \|  \| SOLID \| 1 \| 内部实体不变，只模糊外圈边缘部分。 \| ![image_BlueType_Solid.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Solid.png) \|  \| OUTER \| 2 \| 只有外圈边缘模糊，内部实体完全透明。 \| ![image_BlueType_Outer.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Outer.png) \|  \| INNER \| 3 \| 只有内部实体模糊，外圈边缘清晰。 \| ![image_BlueType_Inner.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_BlueType_Inner.png) \| |
 | [CapStyle](arkts-arkgraphics2d-drawing-capstyle-e.md) | 定义线帽样式的枚举，即画笔在绘制线段时，在线段头尾端点的样式。 |
 | [ClipOp](arkts-arkgraphics2d-drawing-clipop-e.md) | 画布裁剪方式的枚举。 |
 | [CornerPos](arkts-arkgraphics2d-drawing-cornerpos-e.md) | 圆角位置枚举。 |
@@ -72,7 +72,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 | [FontHinting](arkts-arkgraphics2d-drawing-fonthinting-e.md) | 字型轮廓效果类型枚举。 |
 | [FontMetricsFlags](arkts-arkgraphics2d-drawing-fontmetricsflags-e.md) | 字体度量标志枚举，指示字体度量中的各字段数据是否有效。 |
 | [JoinStyle](arkts-arkgraphics2d-drawing-joinstyle-e.md) | 定义线条转角样式的枚举，即画笔在绘制折线段时，在折线转角处的样式。 |
-| [PathDashStyle](arkts-arkgraphics2d-drawing-pathdashstyle-e.md) | 路径效果的绘制样式枚举。 \| 名称 \| 值 \| 说明 \| \| ------ \| - \| ------------------ \| \| TRANSLATE \| 0 \| 不会随着路径旋转，只会平移。 \| \| ROTATE \| 1 \| 随着路径的旋转而旋转。 \| \| MORPH \| 2 \| 随着路径的旋转而旋转，并在转折处进行拉伸或压缩等操作以增加平滑度。 \| |
+| [PathDashStyle](arkts-arkgraphics2d-drawing-pathdashstyle-e.md) | 路径效果的绘制样式枚举。  \| 名称 \| 值 \| 说明 \|  \| ------ \| - \| ------------------ \|  \| TRANSLATE \| 0 \| 不会随着路径旋转，只会平移。 \|  \| ROTATE \| 1 \| 随着路径的旋转而旋转。 \|  \| MORPH \| 2 \| 随着路径的旋转而旋转，并在转折处进行拉伸或压缩等操作以增加平滑度。 \| |
 | [PathDirection](arkts-arkgraphics2d-drawing-pathdirection-e.md) | 添加闭合轮廓方向的枚举。 |
 | [PathFillType](arkts-arkgraphics2d-drawing-pathfilltype-e.md) | 定义路径的填充类型枚举。 |
 | [PathIteratorVerb](arkts-arkgraphics2d-drawing-pathiteratorverb-e.md) | 迭代器包含的路径操作类型枚举，可用于读取path的操作指令。 |

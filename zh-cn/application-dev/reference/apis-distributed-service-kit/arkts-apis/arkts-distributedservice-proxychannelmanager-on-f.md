@@ -6,6 +6,7 @@
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="on"></a>
 ## on('receiveData')
 
 ```TypeScript
@@ -30,7 +31,7 @@ function on(type: 'receiveData', channelId: number, callback: Callback<DataInfo>
 | --- | --- | --- | --- |
 | type | 'receiveData' | 是 | 设置订阅类型，固定取值为'receiveData'。 |
 | channelId | number | 是 | 打开代理通道时获取的channelId。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DataInfo> | 是 | 回调函数，返回接收到的数据。多次注册回调函数，最后一次注册的回调函数生效。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DataInfo&gt; | 是 | 回调函数，返回接收到的数据。多次注册回调函数，最后一次注册的回调函数生效。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ struct Index {
 ```
 
 
+<a id="on-1"></a>
 ## on('channelStateChange')
 
 ```TypeScript
@@ -97,7 +99,7 @@ function on(type: 'channelStateChange', channelId: number, callback: Callback<Ch
 | --- | --- | --- | --- |
 | type | 'channelStateChange' | 是 | 设置订阅类型，固定取值为'channelStateChange'。 |
 | channelId | number | 是 | 打开代理通道时获取的channelId。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChannelStateInfo> | 是 | 回调函数，返回接收到的通道状态。多次注册callback，最后一次注册的callback生效 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ChannelStateInfo&gt; | 是 | 回调函数，返回接收到的通道状态。多次注册callback，最后一次注册的callback生效 |
 
 **错误码：**
 

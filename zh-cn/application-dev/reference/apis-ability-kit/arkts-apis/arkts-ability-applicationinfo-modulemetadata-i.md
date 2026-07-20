@@ -16,7 +16,7 @@ readonly metadata: Array<Metadata>
 
 该模块下的元数据信息列表。
 
-**类型：** Array<Metadata>
+**类型：** Array&lt;Metadata&gt;
 
 **起始版本：** 10
 

@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="wrapkeyitem"></a>
 ## wrapKeyItem
 
 ```TypeScript
@@ -39,7 +40,7 @@ function wrapKeyItem(keyAlias: string, params: HuksOptions): Promise<HuksReturnR
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的outData成员为导出的密钥密文。 |
+| Promise&lt;HuksReturnResult&gt; | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的outData成员为导出的密钥密文。 |
 
 **错误码：**
 

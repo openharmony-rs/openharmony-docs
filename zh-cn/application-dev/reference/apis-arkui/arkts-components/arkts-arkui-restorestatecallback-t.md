@@ -20,5 +20,5 @@ declare type RestoreStateCallback = (savedState: Record<string, Object> | null) 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| savedState | Record&lt;string, Object&gt; \| null | 是 | onSaveState保存的自定义页面状态。 |
+| savedState | Record&lt;string, Object&gt; \| null | 是 | onSaveState保存的自定义页面状态。  |
 

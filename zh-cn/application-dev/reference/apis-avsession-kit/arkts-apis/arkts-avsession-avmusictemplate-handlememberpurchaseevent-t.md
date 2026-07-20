@@ -18,11 +18,11 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | MemberPurchaseInfo | 是 |  |
+| info | [MemberPurchaseInfo](arkts-avsession-avmusictemplate-memberpurchaseinfo-i.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DialogInfo&gt; | Promise对象，返回对话框信息。 |
+| Promise&lt;DialogInfo&gt; | Promise对象，返回对话框信息。  |
 

@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getsystemsize"></a>
 ## getSystemSize
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getSystemSize(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取系统数据的空间大小之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取系统数据的空间大小之后的回调。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ storageStatistics.getSystemSize((error: BusinessError, number: number) => {
 ```
 
 
+<a id="getsystemsize-1"></a>
 ## getSystemSize
 
 ```TypeScript
@@ -79,7 +81,7 @@ function getSystemSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回系统数据的空间大小（单位为Byte）。 |
+| Promise&lt;number&gt; | Promise对象，返回系统数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 

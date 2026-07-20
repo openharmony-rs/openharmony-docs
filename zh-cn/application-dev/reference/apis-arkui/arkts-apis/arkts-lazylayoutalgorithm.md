@@ -14,7 +14,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [LazyCustomLayoutAlgorithmOptions](arkts-arkui-lazylayoutalgorithm-lazycustomlayoutalgorithmoptions-i.md) | 自定义懒加载布局算法的构造入参，设置布局算法的主轴方向。 |
-| [LazyLayoutAlgorithm](arkts-arkui-lazylayoutalgorithm-i.md) | [LazyDynamicLayout](../../../../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md)组件支持的懒加载布局算法详细信息。 |
+| [LazyLayoutAlgorithm](arkts-arkui-lazylayoutalgorithm-i.md) | [LazyDynamicLayout](docroot://reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md)组件支持的懒加载布局算法详细信息。 |
 
 ### 枚举
 

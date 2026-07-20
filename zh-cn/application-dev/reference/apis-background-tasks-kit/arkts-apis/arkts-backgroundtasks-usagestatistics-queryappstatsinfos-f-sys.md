@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="queryappstatsinfos"></a>
 ## queryAppStatsInfos
 
 ```TypeScript
@@ -35,7 +36,7 @@ function queryAppStatsInfos(begin: number, end: number): Promise<AppStatsMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AppStatsMap> | Promise对象。返回指定时间段内应用使用的具体信息。 |
+| Promise&lt;AppStatsMap&gt; | Promise对象。返回指定时间段内应用使用的具体信息。 |
 
 **错误码：**
 

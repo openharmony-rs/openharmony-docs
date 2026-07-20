@@ -6,6 +6,7 @@
 import { thermal } from '@kit.BasicServicesKit';
 ```
 
+<a id="getlevel"></a>
 ## getLevel
 
 ```TypeScript

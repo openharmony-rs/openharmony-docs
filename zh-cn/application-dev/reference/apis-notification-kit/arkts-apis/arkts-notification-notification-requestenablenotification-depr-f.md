@@ -1,5 +1,6 @@
 # requestEnableNotification
 
+<a id="requestenablenotification"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -22,9 +23,10 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 应用请求通知使能的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用请求通知使能的回调函数。 |
 
 
+<a id="requestenablenotification-1"></a>
 ## requestEnableNotification
 
 ```TypeScript
@@ -47,5 +49,5 @@ function requestEnableNotification(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 

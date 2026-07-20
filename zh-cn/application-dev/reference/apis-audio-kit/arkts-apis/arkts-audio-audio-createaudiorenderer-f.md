@@ -6,6 +6,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="createaudiorenderer"></a>
 ## createAudioRenderer
 
 ```TypeScript
@@ -25,7 +26,7 @@ function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md) | 是 | 配置渲染器。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AudioRenderer> | 是 | 回调函数。当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioRenderer&gt; | 是 | 回调函数。当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。 |
 
 **示例：**
 
@@ -63,6 +64,7 @@ audio.createAudioRenderer(audioRendererOptions,(err, data) => {
 ```
 
 
+<a id="createaudiorenderer-1"></a>
 ## createAudioRenderer
 
 ```TypeScript
@@ -87,7 +89,7 @@ function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRender
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioRenderer> | Promise对象，返回音频渲染器对象。 |
+| Promise&lt;AudioRenderer&gt; | Promise对象，返回音频渲染器对象。 |
 
 **示例：**
 

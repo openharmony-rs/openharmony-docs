@@ -22,6 +22,6 @@ On scroll callback using in scrollable onDidScroll.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scrollOffset | number | 是 | offset this frame did scroll. |
-| scrollState | ScrollState | 是 | current scroll state. |
+| scrollOffset | number | 是 | offset this frame did scroll.  |
+| scrollState | [ScrollState](arkts-arkui-scrollstate-e.md) | 是 | current scroll state.  |
 

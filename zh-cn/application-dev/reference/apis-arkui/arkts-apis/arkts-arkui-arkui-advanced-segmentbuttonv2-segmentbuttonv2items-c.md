@@ -8,6 +8,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>--><!--Device-unnamed-export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,6 +20,7 @@
 import { OnSelectedIndexesChange, TabSegmentButtonV2, SegmentButtonV2Items, MultiCapsuleSegmentButtonV2, OnSelectedIndexChange, SegmentButtonV2ItemOptions, SegmentButtonV2Item, CapsuleSegmentButtonV2 } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

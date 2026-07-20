@@ -6,6 +6,7 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="registermissionlistener"></a>
 ## registerMissionListener
 
 ```TypeScript
@@ -32,7 +33,7 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 | --- | --- | --- | --- |
 | parameter | [MissionDeviceInfo](arkts-ability-missiondeviceinfo-i-sys.md) | 是 | 注册监听时的设备信息。 |
 | options | [MissionCallback](arkts-ability-missioncallbacks-missioncallback-i-sys.md) | 是 | 注册的回调方法。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -82,6 +83,7 @@ try {
 ```
 
 
+<a id="registermissionlistener-1"></a>
 ## registerMissionListener
 
 ```TypeScript
@@ -113,7 +115,7 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

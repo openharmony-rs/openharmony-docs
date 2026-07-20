@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -40,6 +41,7 @@ console.info('retStr = ' + retStr);
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -72,6 +74,7 @@ let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
 
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -115,6 +118,7 @@ console.info('retStr = ' + retStr);
 
 ```
 
+<a id="decode"></a>
 ## decode
 
 ```TypeScript
@@ -137,7 +141,7 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要解码的 Uint8Array 对象。 |
+| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
 | options | { stream?: false } | 否 | 解码相关的选项。 |
 
 **返回值：**
@@ -164,6 +168,7 @@ console.info("retStr = " + retStr);
 
 ```
 
+<a id="decodetostring"></a>
 ## decodeToString
 
 ```TypeScript
@@ -184,7 +189,7 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要解码的 Uint8Array 对象。 |
+| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
 | options | [DecodeToStringOptions](arkts-arkts-util-decodetostringoptions-i.md) | 否 | 解码相关的选项。默认值为 **undefined**。 |
 
 **返回值：**
@@ -232,6 +237,7 @@ console.info("retJson = " + retJson);
 
 ```
 
+<a id="decodewithstream"></a>
 ## decodeWithStream
 
 ```TypeScript
@@ -256,7 +262,7 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要解码的 Uint8Array 对象。 |
+| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
 | options | [DecodeWithStreamOptions](arkts-arkts-util-decodewithstreamoptions-i.md) | 否 | 解码相关的选项。<br>**起始版本：** 11 |
 
 **返回值：**

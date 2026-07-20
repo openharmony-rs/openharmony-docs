@@ -1,5 +1,6 @@
 # setVideo（系统接口）
 
+<a id="setvideo"></a>
 ## setVideo
 
 ```TypeScript
@@ -24,7 +25,7 @@ function setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncC
 | --- | --- | --- | --- |
 | source | string | 是 | mp4文件的Uri路径。 |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 | 壁纸类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
 
@@ -56,6 +57,7 @@ try {
 ```
 
 
+<a id="setvideo-1"></a>
 ## setVideo
 
 ```TypeScript
@@ -85,7 +87,7 @@ function setVideo(source: string, wallpaperType: WallpaperType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

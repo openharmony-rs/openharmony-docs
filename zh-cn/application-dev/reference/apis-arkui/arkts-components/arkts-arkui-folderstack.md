@@ -33,7 +33,7 @@ FolderStack(options?: FolderStackOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | FolderStackOptions | 否 | FolderStack的配置项。 |
+| options | [FolderStackOptions](arkts-arkui-folderstackoptions-i.md) | 否 | FolderStack的配置项。 |
 
 ## 汇总
 

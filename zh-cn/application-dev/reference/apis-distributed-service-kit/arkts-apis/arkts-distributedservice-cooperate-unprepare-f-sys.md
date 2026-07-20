@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="unprepare"></a>
 ## unprepare
 
 ```TypeScript
@@ -18,7 +19,7 @@ function unprepare(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** unprepareCooperate(callback:
+**替代接口：** [unprepareCooperate(callback:](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate-1)
 
 <!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void-End-->
 
@@ -30,7 +31,7 @@ function unprepare(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，取消键鼠穿越准备成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，取消键鼠穿越准备成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ try {
 ```
 
 
+<a id="unprepare-1"></a>
 ## unprepare
 
 ```TypeScript
@@ -71,7 +73,7 @@ function unprepare(): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [unprepareCooperate()](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate-2)
+**替代接口：** [unprepareCooperate()](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate-1)
 
 <!--Device-cooperate-function unprepare(): Promise<void>--><!--Device-cooperate-function unprepare(): Promise<void>-End-->
 
@@ -83,7 +85,7 @@ function unprepare(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

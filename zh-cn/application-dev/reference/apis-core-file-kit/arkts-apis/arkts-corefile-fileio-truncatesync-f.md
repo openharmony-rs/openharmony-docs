@@ -1,5 +1,6 @@
 # truncateSync
 
+<a id="truncatesync"></a>
 ## truncateSync
 
 ```TypeScript

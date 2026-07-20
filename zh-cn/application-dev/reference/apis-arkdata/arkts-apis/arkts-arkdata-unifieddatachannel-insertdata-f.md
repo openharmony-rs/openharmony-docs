@@ -6,6 +6,7 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
+<a id="insertdata"></a>
 ## insertData
 
 ```TypeScript
@@ -32,7 +33,7 @@ function insertData(options: Options, data: UnifiedData, callback: AsyncCallback
 | --- | --- | --- | --- |
 | options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 配置项参数，参数中intention字段必填，且不支持DRAG，不填时会返回401错误码；其他字段是否填写均不影响接口的使用。 |
 | data | [UnifiedData](../../apis-arkui/arkts-components/arkts-arkui-unifieddata-t.md) | 是 | 要写入或更新的统一数据对象，用于存储数据记录及其属性信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数，返回写入UDMF的数据的唯一标识符key的值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数，返回写入UDMF的数据的唯一标识符key的值。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ try {
 ```
 
 
+<a id="insertdata-1"></a>
 ## insertData
 
 ```TypeScript
@@ -102,7 +104,7 @@ function insertData(options: Options, data: UnifiedData): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回写入UDMF的数据的唯一标识符key的值。 |
+| Promise&lt;string&gt; | Promise对象，返回写入UDMF的数据的唯一标识符key的值。 |
 
 **错误码：**
 

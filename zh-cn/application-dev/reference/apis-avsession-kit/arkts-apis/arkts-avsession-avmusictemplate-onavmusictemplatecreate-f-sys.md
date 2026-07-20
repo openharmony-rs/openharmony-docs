@@ -6,6 +6,7 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
+<a id="onavmusictemplatecreate"></a>
 ## onAVMusicTemplateCreate
 
 ```TypeScript
@@ -30,7 +31,7 @@ function onAVMusicTemplateCreate(callback: Callback<AVMusicTemplateDescriptor>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVMusicTemplateDescriptor> | 是 | 回调函数，参数为音频模板描述。用于监听音频模板创建事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVMusicTemplateDescriptor&gt; | 是 | 回调函数，参数为音频模板描述。用于监听音频模板创建事件。 |
 
 **错误码：**
 

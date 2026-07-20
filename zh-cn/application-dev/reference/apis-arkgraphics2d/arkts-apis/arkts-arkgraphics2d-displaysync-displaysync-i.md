@@ -14,6 +14,7 @@
 import { displaySync } from '@kit.ArkGraphics2D';
 ```
 
+<a id="off"></a>
 ## off('frame')
 
 ```TypeScript
@@ -33,7 +34,7 @@ off(type: 'frame', callback?: Callback<IntervalInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'frame' | 是 | 设置注册回调的类型（只能是'frame'类型）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<IntervalInfo> | 否 | 订阅函数，参数不填时，默认取消全部订阅函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;IntervalInfo&gt; | 否 | 订阅函数，参数不填时，默认取消全部订阅函数。 |
 
 **示例：**
 
@@ -51,6 +52,7 @@ backDisplaySync?.off("frame", callback)
 
 ```
 
+<a id="on"></a>
 ## on('frame')
 
 ```TypeScript
@@ -70,7 +72,7 @@ on(type: 'frame', callback: Callback<IntervalInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'frame' | 是 | 设置注册回调的类型（只能是'frame'类型）。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<IntervalInfo> | 是 | 订阅函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;IntervalInfo&gt; | 是 | 订阅函数。 |
 
 **示例：**
 
@@ -88,6 +90,7 @@ backDisplaySync?.start()
 
 ```
 
+<a id="setexpectedframeraterange"></a>
 ## setExpectedFrameRateRange
 
 ```TypeScript
@@ -106,7 +109,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rateRange | [ExpectedFrameRateRange](../../apis-arkui/arkts-components/arkts-arkui-common-expectedframeraterange-i.md) | 是 | 设置DisplaySync期望的帧率。 |
+| rateRange | [ExpectedFrameRateRange](../../apis-arkui/arkts-components/arkts-arkui-expectedframeraterange-i.md) | 是 | 设置DisplaySync期望的帧率。 |
 
 **错误码：**
 
@@ -132,6 +135,7 @@ backDisplaySync?.start()
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -199,6 +203,7 @@ struct Index {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript

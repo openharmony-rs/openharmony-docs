@@ -20,5 +20,5 @@ declare type OnRatingChangeCallback = (rating: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rating | number | 是 | 评分条的评分。 |
+| rating | number | 是 | 评分条的评分。  |
 

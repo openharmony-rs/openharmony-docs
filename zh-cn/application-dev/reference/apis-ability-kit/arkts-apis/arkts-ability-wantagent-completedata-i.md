@@ -22,7 +22,7 @@ extraInfo?: Record<string, Object>
 
 额外数据。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 9
 

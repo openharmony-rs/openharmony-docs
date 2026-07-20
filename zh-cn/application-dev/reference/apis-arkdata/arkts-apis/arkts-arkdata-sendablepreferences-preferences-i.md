@@ -1,6 +1,6 @@
 # Preferences
 
-Preferences继承自[ISendable](../../../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，提供获取和修改存储数据的接口。
+Preferences继承自[ISendable](docroot://arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，提供获取和修改存储数据的接口。
 
 下列接口都需先使用[sendablePreferences.getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1)获取到Preferences实例，再通过此实例调用对应接口。
 
@@ -18,6 +18,7 @@ Preferences继承自[ISendable](../../../../arkts-utils/arkts-sendable.md#isenda
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -38,7 +39,7 @@ clear(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ promise.then(() => {
 
 ```
 
+<a id="clearsync"></a>
 ## clearSync
 
 ```TypeScript
@@ -89,6 +91,7 @@ preferences.clearSync();
 
 ```
 
+<a id="delete"></a>
 ## delete
 
 ```TypeScript
@@ -109,13 +112,13 @@ delete(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -138,6 +141,7 @@ promise.then(() => {
 
 ```
 
+<a id="deletesync"></a>
 ## deleteSync
 
 ```TypeScript
@@ -158,7 +162,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **错误码：**
 
@@ -174,6 +178,7 @@ preferences.deleteSync('startup');
 
 ```
 
+<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -198,7 +203,7 @@ flush(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -220,6 +225,7 @@ promise.then(() => {
 
 ```
 
+<a id="flushsync"></a>
 ## flushSync
 
 ```TypeScript
@@ -253,6 +259,7 @@ preferences.flushSync();
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -273,14 +280,14 @@ get(key: string, defValue: lang.ISendable): Promise<lang.ISendable>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | lang.ISendable | 是 | 默认返回值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<lang.ISendable> | Promise对象，返回键对应的值。 |
+| Promise&lt;lang.ISendable&gt; | Promise对象，返回键对应的值。 |
 
 **错误码：**
 
@@ -305,6 +312,7 @@ promise.then((data: lang.ISendable) => {
 
 ```
 
+<a id="getall"></a>
 ## getAll
 
 ```TypeScript
@@ -325,7 +333,7 @@ getAll(): Promise<lang.ISendable>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<lang.ISendable> | Promise对象，返回所有包含的键值数据。 |
+| Promise&lt;lang.ISendable&gt; | Promise对象，返回所有包含的键值数据。 |
 
 **错误码：**
 
@@ -350,6 +358,7 @@ promise.then((keyValues: lang.ISendable) => {
 
 ```
 
+<a id="getallsync"></a>
 ## getAllSync
 
 ```TypeScript
@@ -390,6 +399,7 @@ for (let value of Object.keys(keyValues)) {
 
 ```
 
+<a id="getsync"></a>
 ## getSync
 
 ```TypeScript
@@ -410,7 +420,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | defValue | lang.ISendable | 是 | 默认返回值。 |
 
 **返回值：**
@@ -435,6 +445,7 @@ let value: lang.ISendable = preferences.getSync('startup', 'default');
 
 ```
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -455,13 +466,13 @@ has(key: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -488,6 +499,7 @@ promise.then((val: boolean) => {
 
 ```
 
+<a id="hassync"></a>
 ## hasSync
 
 ```TypeScript
@@ -508,7 +520,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 
 **返回值：**
 
@@ -535,6 +547,7 @@ if (isExist) {
 
 ```
 
+<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -556,7 +569,7 @@ off(type: 'change', callback?: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定值'change'，表示数据变更。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -584,6 +597,7 @@ preferences.flush().then(() => {
 
 ```
 
+<a id="off-1"></a>
 ## off('multiProcessChange')
 
 ```TypeScript
@@ -607,7 +621,7 @@ off(type: 'multiProcessChange', callback?: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'multiProcessChange' | 是 | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -635,6 +649,7 @@ preferences.flush().then(() => {
 
 ```
 
+<a id="off-2"></a>
 ## off('dataChange')
 
 ```TypeScript
@@ -656,8 +671,8 @@ off(type: 'dataChange', keys: Array<string>, callback?: Callback<lang.ISendable>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataChange' | 是 | 事件类型，固定值'dataChange'，表示精确的数据变更。 |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<lang.ISendable> | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
+| keys | Array&lt;string&gt; | 是 | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;lang.ISendable&gt; | 否 | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -688,6 +703,7 @@ preferences.flush().then(() => {
 
 ```
 
+<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -722,7 +738,7 @@ on(type: 'change', callback: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定值'change'，表示数据变更。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 是 | 回调函数。返回发生变更的Key。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 是 | 回调函数。返回发生变更的Key。 |
 
 **错误码：**
 
@@ -749,6 +765,7 @@ preferences.flush().then(() => {
 
 ```
 
+<a id="on-1"></a>
 ## on('multiProcessChange')
 
 ```TypeScript
@@ -780,7 +797,7 @@ on(type: 'multiProcessChange', callback: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'multiProcessChange' | 是 | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 是 | 回调函数。返回发生变更的Key。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 是 | 回调函数。返回发生变更的Key。 |
 
 **错误码：**
 
@@ -808,6 +825,7 @@ preferences.flush().then(() => {
 
 ```
 
+<a id="on-2"></a>
 ## on('dataChange')
 
 ```TypeScript
@@ -835,8 +853,8 @@ on(type: 'dataChange', keys: Array<string>, callback: Callback<lang.ISendable>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataChange' | 是 | 事件类型，固定值'dataChange'，表示精确的数据变更。 |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要订阅的Key集合。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<lang.ISendable> | 是 | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，值为变更后的数据：支持number、string、boolean、bigint以及可序列化的object。 |
+| keys | Array&lt;string&gt; | 是 | 需要订阅的Key集合。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;lang.ISendable&gt; | 是 | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，值为变更后的数据：支持number、string、boolean、bigint以及可序列化的object。 |
 
 **错误码：**
 
@@ -866,6 +884,7 @@ preferences.flush().then(() => {
 
 ```
 
+<a id="put"></a>
 ## put
 
 ```TypeScript
@@ -892,14 +911,14 @@ put(key: string, value: lang.ISendable): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | lang.ISendable | 是 | 存储的新值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -922,6 +941,7 @@ promise.then(() => {
 
 ```
 
+<a id="putsync"></a>
 ## putSync
 
 ```TypeScript
@@ -948,7 +968,7 @@ putSync(key: string, value: lang.ISendable): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](docroot://reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
 | value | lang.ISendable | 是 | 存储的新值。 |
 
 **错误码：**

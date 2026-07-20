@@ -6,6 +6,7 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="showad"></a>
 ## showAd
 
 ```TypeScript
@@ -40,7 +41,7 @@ function showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.U
 
 **示例：**
 
-其中context的获取方式参见[各类Context的获取方式](../../../../application-models/application-context-stage.md#context的获取方式)。
+其中context的获取方式参见[各类Context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';

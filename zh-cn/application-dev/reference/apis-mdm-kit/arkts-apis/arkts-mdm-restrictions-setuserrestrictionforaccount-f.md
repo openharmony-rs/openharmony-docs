@@ -6,6 +6,7 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="setuserrestrictionforaccount"></a>
 ## setUserRestrictionForAccount
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="getrunningprocessinfobybundlename"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<ProcessInformation>> | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ try {
 ```
 
 
+<a id="getrunningprocessinfobybundlename-1"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -85,7 +87,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: number, c
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
 | userId | number | 是 | 表示用户Id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<ProcessInformation>> | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;ProcessInformation&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -122,6 +124,7 @@ try {
 ```
 
 
+<a id="getrunningprocessinfobybundlename-2"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -148,7 +151,7 @@ function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ProcessInformation>> | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise&lt;Array&lt;ProcessInformation&gt;&gt; | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -181,6 +184,7 @@ try {
 ```
 
 
+<a id="getrunningprocessinfobybundlename-3"></a>
 ## getRunningProcessInfoByBundleName
 
 ```TypeScript
@@ -208,7 +212,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: number): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ProcessInformation>> | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise&lt;Array&lt;ProcessInformation&gt;&gt; | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

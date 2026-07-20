@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="isspatializationenabledforcurrentdevice"></a>
 ## isSpatializationEnabledForCurrentDevice
 
 ```TypeScript
@@ -40,6 +41,7 @@ isSpatializationEnabledForCurrentDevice(): boolean
 | --- | --- |
 | boolean | 当前设备空间音频渲染是否开启。true表示开启，false表示未开启。 |
 
+<a id="off"></a>
 ## off('spatializationEnabledChangeForCurrentDevice')
 
 ```TypeScript
@@ -59,7 +61,7 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChangeForCurrentDevice' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'，当取消订阅当前设备空间音频渲染开关状态变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。 |
 
 **错误码：**
 
@@ -67,6 +69,7 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="on"></a>
 ## on('spatializationEnabledChangeForCurrentDevice')
 
 ```TypeScript
@@ -86,7 +89,7 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'spatializationEnabledChangeForCurrentDevice' | 是 | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'，当空间音频渲染开关状态变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 是 | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。 |
 
 **错误码：**
 

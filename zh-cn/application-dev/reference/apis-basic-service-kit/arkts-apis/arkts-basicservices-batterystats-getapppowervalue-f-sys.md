@@ -6,6 +6,7 @@
 import { batteryStats } from '@kit.BasicServicesKit';
 ```
 
+<a id="getapppowervalue"></a>
 ## getAppPowerValue
 
 ```TypeScript

@@ -1,5 +1,6 @@
 # openSync
 
+<a id="opensync"></a>
 ## openSync
 
 ```TypeScript

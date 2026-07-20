@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="updatesync"></a>
 ## updateSync
 
 ```TypeScript

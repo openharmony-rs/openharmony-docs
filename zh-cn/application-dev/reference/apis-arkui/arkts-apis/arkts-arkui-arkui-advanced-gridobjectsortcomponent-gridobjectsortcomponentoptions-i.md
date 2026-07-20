@@ -70,7 +70,7 @@ imageSize?: number | Resource
 
 默认值：56vp
 
-**类型：** number | Resource
+**类型：** number \| Resource
 
 **起始版本：** 11
 

@@ -6,6 +6,7 @@
 import { installer } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleinstaller"></a>
 ## getBundleInstaller
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleInstaller> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，获取BundleInstaller对象，err为undefined，data为获取到的BundleInstaller对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInstaller&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，获取BundleInstaller对象，err为undefined，data为获取到的BundleInstaller对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -36,6 +37,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 
+<a id="getbundleinstaller-1"></a>
 ## getBundleInstaller
 
 ```TypeScript
@@ -56,7 +58,7 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleInstaller> | BundleInstaller object. |
+| Promise&lt;BundleInstaller&gt; | BundleInstaller object. |
 
 **错误码：**
 

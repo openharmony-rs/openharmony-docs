@@ -1,5 +1,6 @@
 # unregisterVsyncCallback（系统接口）
 
+<a id="unregistervsynccallback"></a>
 ## unregisterVsyncCallback
 
 ```TypeScript

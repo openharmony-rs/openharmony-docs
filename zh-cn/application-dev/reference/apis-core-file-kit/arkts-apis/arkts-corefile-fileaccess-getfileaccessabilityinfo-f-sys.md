@@ -6,6 +6,7 @@
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
+<a id="getfileaccessabilityinfo"></a>
 ## getFileAccessAbilityInfo
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Want>> | 是 | The callback is used to return a Array&lt;Want&gt; object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Want&gt;&gt; | 是 | The callback is used to return a Array<Want> object. |
 
 **错误码：**
 
@@ -92,6 +93,7 @@ async function getFileAccessAbilityInfo() {
 ```
 
 
+<a id="getfileaccessabilityinfo-1"></a>
 ## getFileAccessAbilityInfo
 
 ```TypeScript
@@ -118,7 +120,7 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Want>> | Returns the wants. |
+| Promise&lt;Array&lt;Want&gt;&gt; | Returns the wants. |
 
 **错误码：**
 

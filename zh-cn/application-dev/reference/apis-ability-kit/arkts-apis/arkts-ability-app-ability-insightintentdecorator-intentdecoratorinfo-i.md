@@ -190,7 +190,7 @@ parameters?: Record<string, Object>
 
 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713)
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 
@@ -210,7 +210,7 @@ result?: Record<string, Object>
 
 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 
@@ -228,7 +228,7 @@ result?: Record<string, Object>
 schema?: string
 ```
 
-表示接入的标准意图的名称。开发者[接入标准意图](../../../../application-models/insight-intent-definition.md#接入标准意图)时，需要配置该字段，[创建自定义意图](../../../../application-models/insight-intent-definition.md#创建自定义意图)时，无需配置该字段。标准意图列表参见[附录：标准意图接入规范](../../../../application-models/insight-intent-access-specifications.md)。
+表示接入的标准意图的名称。开发者[接入标准意图](docroot://application-models/insight-intent-definition.md#接入标准意图)时，需要配置该字段，[创建自定义意图](docroot://application-models/insight-intent-definition.md#创建自定义意图)时，无需配置该字段。标准意图列表参见[附录：标准意图接入规范](docroot://application-models/insight-intent-access-specifications.md)。
 
 **类型：** string
 

@@ -6,6 +6,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="matchfontdescriptors"></a>
 ## matchFontDescriptors
 
 ```TypeScript
@@ -32,7 +33,7 @@ function matchFontDescriptors(desc: FontDescriptor): Promise<Array<FontDescripto
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<FontDescriptor>> | Promise对象，返回所有匹配到的系统字体描述符。 |
+| Promise&lt;Array&lt;FontDescriptor&gt;&gt; | Promise对象，返回所有匹配到的系统字体描述符。 |
 
 **错误码：**
 

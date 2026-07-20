@@ -6,17 +6,18 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="downloadfile"></a>
 ## downloadFile
 
 ```TypeScript
 function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void
 ```
 
-创建并启动一个下载任务，使用callback异步回调，支持HTTP协议。通过[on('complete'|'pause'|'remove')](arkts-basicservices-request-downloadtask-i.md#on-2)可获取任务下载时的状态信息，包括任务完成、暂停或移除。通过[on('fail')](arkts-basicservices-request-downloadtask-i.md#on-5)可获取任务下载时的错误信息。
+创建并启动一个下载任务，使用callback异步回调，支持HTTP协议。通过[on('complete'|'pause'|'remove')](request.DownloadTask.on(type: 'complete' | 'pause' | 'remove', callback: () => void))可获取任务下载时的状态信息，包括任务完成、暂停或移除。通过[on('fail')](request.DownloadTask.on(type: 'fail', callback: (err: int) => void))可获取任务下载时的错误信息。
 
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 9
 
@@ -32,7 +33,7 @@ function downloadFile(context: BaseContext, config: DownloadConfig, callback: As
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-basecontext-t.md) | 是 | 基于应用程序的上下文。 |
 | config | [DownloadConfig](arkts-basicservices-request-downloadconfig-i.md) | 是 | 下载的配置信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DownloadTask> | 是 | 回调函数。当下载任务成功，err为undefined，data为获取到的DownloadTask对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;DownloadTask&gt; | 是 | 回调函数。当下载任务成功，err为undefined，data为获取到的DownloadTask对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -70,17 +71,18 @@ try {
 ```
 
 
+<a id="downloadfile-1"></a>
 ## downloadFile
 
 ```TypeScript
 function downloadFile(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>
 ```
 
-创建并启动一个下载任务，使用Promise异步回调，支持HTTP协议。通过[on('complete'|'pause'|'remove')](arkts-basicservices-request-downloadtask-i.md#on-2)可以获取任务下载时的状态信息，包括任务完成、暂停或移除。通过[on('fail')](arkts-basicservices-request-downloadtask-i.md#on-5)可以获取任务下载时的错误信息。
+创建并启动一个下载任务，使用Promise异步回调，支持HTTP协议。通过[on('complete'|'pause'|'remove')](request.DownloadTask.on(type: 'complete' | 'pause' | 'remove', callback: () => void))可以获取任务下载时的状态信息，包括任务完成、暂停或移除。通过[on('fail')](request.DownloadTask.on(type: 'fail', callback: (err: int) => void))可以获取任务下载时的错误信息。
 
 > **说明：**  
 >  
-> 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+> 示例中context的获取方式请参见[获取UIAbility的上下文信息](docroot://application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 **起始版本：** 9
 
@@ -101,7 +103,7 @@ function downloadFile(context: BaseContext, config: DownloadConfig): Promise<Dow
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DownloadTask> | 使用Promise方式，异步返回下载任务DownloadTask的Promise对象。 |
+| Promise&lt;DownloadTask&gt; | 使用Promise方式，异步返回下载任务DownloadTask的Promise对象。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { router } from '@kit.ArkUI';
 ```
 
+<a id="replaceurl"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -19,18 +20,18 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 > - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用  
 > [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)  
 > 替代。replaceUrl需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** replaceUrl(options:
+**替代接口：** [replaceUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -43,7 +44,7 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 替换页面描述信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异常响应回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
 
 **错误码：**
 
@@ -80,31 +81,32 @@ router.replaceUrl({
 ```
 
 
+<a id="replaceurl-1"></a>
 ## replaceUrl
 
 ```TypeScript
 function replaceUrl(options: RouterOptions): Promise<void>
 ```
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../../ui/arkts-navigation-architecture.md)。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](docroot://ui/arkts-navigation-architecture.md)。
 
 > **说明：**  
 >  
 > - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用  
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-2)替代。replaceUrl需先通过  
+> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)替代。replaceUrl需先通过  
 > [UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** replaceUrl(options:
+**替代接口：** [replaceUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -122,7 +124,7 @@ function replaceUrl(options: RouterOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 异常返回结果。 |
+| Promise&lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
@@ -161,6 +163,7 @@ router.replaceUrl({
 ```
 
 
+<a id="replaceurl-2"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -172,20 +175,20 @@ function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCal
 > **说明：**  
 >  
 > - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用  
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-3)  
+> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)  
 > 替代。replaceUrl需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** replaceUrl(options:
+**替代接口：** [replaceUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -199,7 +202,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCal
 | --- | --- | --- | --- |
 | options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 替换页面描述信息。 |
 | mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异常响应回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
 
 **错误码：**
 
@@ -236,6 +239,7 @@ router.replaceUrl({
 ```
 
 
+<a id="replaceurl-3"></a>
 ## replaceUrl
 
 ```TypeScript
@@ -247,20 +251,20 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 > **说明：**  
 >  
 > - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用  
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-4)  
+> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)  
 > 替代。replaceUrl需先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取  
 > [Router](arkts-arkui-uicontext.md)实例，然后通过该实例进行调用。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getRouter](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
+> [getRouter](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的  
 > [Router](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** replaceUrl(options:
+**替代接口：** [replaceUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -279,7 +283,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 异常返回结果。 |
+| Promise&lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 

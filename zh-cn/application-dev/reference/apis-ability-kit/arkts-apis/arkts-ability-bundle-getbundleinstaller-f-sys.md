@@ -6,6 +6,7 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleinstaller"></a>
 ## getBundleInstaller
 
 ```TypeScript
@@ -32,9 +33,10 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleInstaller> | 是 | 回调函数，返回安装接口对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInstaller&gt; | 是 | 回调函数，返回安装接口对象。 |
 
 
+<a id="getbundleinstaller-1"></a>
 ## getBundleInstaller
 
 ```TypeScript
@@ -61,5 +63,5 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleInstaller> | Promise对象，返回安装接口对象。 |
+| Promise&lt;BundleInstaller&gt; | Promise对象，返回安装接口对象。 |
 

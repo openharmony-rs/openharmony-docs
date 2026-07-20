@@ -18,6 +18,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tabId | string | 是 | 标签页的ID。 |
-| tabContent | MediaTabContent | 是 | 标签页的内容。 |
+| tabId | string | 是 | 标签页的ID。  |
+| tabContent | [MediaTabContent](arkts-avsession-avmusictemplate-mediatabcontent-i.md) | 是 | 标签页的内容。  |
 

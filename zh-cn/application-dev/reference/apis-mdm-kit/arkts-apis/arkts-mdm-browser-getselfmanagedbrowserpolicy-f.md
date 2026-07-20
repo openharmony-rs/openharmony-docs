@@ -6,6 +6,7 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="getselfmanagedbrowserpolicy"></a>
 ## getSelfManagedBrowserPolicy
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getSelfManagedBrowserPolicy(): ArrayBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 浏览器策略。 |
+| ArrayBuffer | 浏览器策略。 |
 
 **示例：**
 

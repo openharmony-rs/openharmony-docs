@@ -30,7 +30,7 @@ TextInput(value?: TextInputOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | TextInputOptions | 否 | TextInput组件参数。 |
+| value | [TextInputOptions](arkts-arkui-textinputoptions-i.md) | 否 | TextInput组件参数。  |
 
 ## 汇总
 

@@ -14,6 +14,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -44,6 +45,7 @@ let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -81,6 +83,7 @@ let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
 
 ```
 
+<a id="execute"></a>
 ## execute
 
 ```TypeScript
@@ -124,7 +127,7 @@ execute(task: Task, priority?: Priority): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Object> | Promise对象，返回任务执行的结果。 |
+| Promise&lt;Object&gt; | Promise对象，返回任务执行的结果。 |
 
 **错误码：**
 

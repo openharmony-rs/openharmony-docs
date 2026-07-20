@@ -6,6 +6,7 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="getportlist"></a>
 ## getPortList
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getPortList(): Readonly<SerialPort>[]
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly<SerialPort>[] | Serial port information list. |
+| Readonly&lt;SerialPort&gt;[] | Serial port information list. |
 
 **示例：**
 

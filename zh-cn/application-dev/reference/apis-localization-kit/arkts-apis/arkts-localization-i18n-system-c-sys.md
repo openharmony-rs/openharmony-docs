@@ -14,6 +14,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="addpreferredlanguage"></a>
 ## addPreferredLanguage
 
 ```TypeScript
@@ -66,6 +67,7 @@ try {
 
 ```
 
+<a id="getsystemcollations"></a>
 ## getSystemCollations
 
 ```TypeScript
@@ -86,7 +88,7 @@ static getSystemCollations(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<string, string> | 系统支持的排序方式及名称。其中Map的key为表示排序方式的字符串，value为表示排序方式对应名称的字符串。支持的范围和系统语言相关。 |
+| Map&lt;string, string&gt; | 系统支持的排序方式及名称。其中Map的key为表示排序方式的字符串，value为表示排序方式对应名称的字符串。支持的范围和系统语言相关。 |
 
 **错误码：**
 
@@ -109,6 +111,7 @@ try {
 
 ```
 
+<a id="getsystemmeasurements"></a>
 ## getSystemMeasurements
 
 ```TypeScript
@@ -129,7 +132,7 @@ static getSystemMeasurements(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<string, string> | 系统支持的度量衡及其名称。其中Map的key表示度量衡的标识，value表示度量衡的名称。支持的度量衡如下：  - metric：公制。  - uksystem：英制。  - ussystem：美制。 |
+| Map&lt;string, string&gt; | 系统支持的度量衡及其名称。其中Map的key表示度量衡的标识，value表示度量衡的名称。支持的度量衡如下：   - metric：公制。   - uksystem：英制。   - ussystem：美制。 |
 
 **错误码：**
 
@@ -152,6 +155,7 @@ try {
 
 ```
 
+<a id="getsystemnumberpatterns"></a>
 ## getSystemNumberPatterns
 
 ```TypeScript
@@ -172,7 +176,7 @@ static getSystemNumberPatterns(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<string, string> | 系统支持的数字格式及示例。其中Map的key表示数字格式，是千分符和小数分隔符的unicode编码，value表示数字格式对应的示例。支持的范围和系统语言地区相关。 |
+| Map&lt;string, string&gt; | 系统支持的数字格式及示例。其中Map的key表示数字格式，是千分符和小数分隔符的unicode编码，value表示数字格式对应的示例。支持的范围和系统语言地区相关。 |
 
 **错误码：**
 
@@ -195,6 +199,7 @@ try {
 
 ```
 
+<a id="getsystemnumberingsystems"></a>
 ## getSystemNumberingSystems
 
 ```TypeScript
@@ -215,7 +220,7 @@ static getSystemNumberingSystems(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<string, string> | 系统支持的数字系统及示例。其中Map的key为表示数字系统的字符串，value为表示数字系统对应的示例。支持的范围和系统语言相关。 |
+| Map&lt;string, string&gt; | 系统支持的数字系统及示例。其中Map的key为表示数字系统的字符串，value为表示数字系统对应的示例。支持的范围和系统语言相关。 |
 
 **错误码：**
 
@@ -238,6 +243,7 @@ try {
 
 ```
 
+<a id="getsystemnumericaldatepatterns"></a>
 ## getSystemNumericalDatePatterns
 
 ```TypeScript
@@ -258,7 +264,7 @@ static getSystemNumericalDatePatterns(): Map<string, string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<string, string> | 获取系统支持的数字日期格式及其示例。其中Map的key表示数字日期格式，形如dd/MM/y；value表示数字日期示例，形如18/07/2025。 |
+| Map&lt;string, string&gt; | 获取系统支持的数字日期格式及其示例。其中Map的key表示数字日期格式，形如dd/MM/y；value表示数字日期示例，形如18/07/2025。 |
 
 **错误码：**
 
@@ -281,6 +287,7 @@ try {
 
 ```
 
+<a id="getusingcollation"></a>
 ## getUsingCollation
 
 ```TypeScript
@@ -324,6 +331,7 @@ try {
 
 ```
 
+<a id="getusingmeasurement"></a>
 ## getUsingMeasurement
 
 ```TypeScript
@@ -344,7 +352,7 @@ static getUsingMeasurement(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 系统当前使用的度量衡，取值及对应含义如下：  - metric：公制。  - uksystem：英制。  - ussystem：美制。 |
+| string | 系统当前使用的度量衡，取值及对应含义如下：   - metric：公制。   - uksystem：英制。   - ussystem：美制。 |
 
 **错误码：**
 
@@ -367,6 +375,7 @@ try {
 
 ```
 
+<a id="getusingnumberpattern"></a>
 ## getUsingNumberPattern
 
 ```TypeScript
@@ -410,6 +419,7 @@ try {
 
 ```
 
+<a id="getusingnumberingsystem"></a>
 ## getUsingNumberingSystem
 
 ```TypeScript
@@ -438,6 +448,7 @@ static getUsingNumberingSystem(): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
+<a id="getusingnumericaldatepattern"></a>
 ## getUsingNumericalDatePattern
 
 ```TypeScript
@@ -481,6 +492,7 @@ try {
 
 ```
 
+<a id="removepreferredlanguage"></a>
 ## removePreferredLanguage
 
 ```TypeScript
@@ -531,6 +543,7 @@ try {
 
 ```
 
+<a id="set24hourclock"></a>
 ## set24HourClock
 
 ```TypeScript
@@ -580,6 +593,7 @@ try {
 
 ```
 
+<a id="setfirstdayofweek"></a>
 ## setFirstDayOfWeek
 
 ```TypeScript
@@ -627,6 +641,7 @@ try {
 
 ```
 
+<a id="setsystemcollation"></a>
 ## setSystemCollation
 
 ```TypeScript
@@ -674,13 +689,14 @@ try {
 
 ```
 
+<a id="setsystemlanguage"></a>
 ## setSystemLanguage
 
 ```TypeScript
 static setSystemLanguage(language: string): void
 ```
 
-设置系统语言。若要监听系统语言变化，可以监听[公共事件](../../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](../../../../internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemLanguage()](../../../../reference/apis-localization-kit/js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。<br>从API version 21开始，也可以使用[param工具](../../../../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
+设置系统语言。若要监听系统语言变化，可以监听[公共事件](docroot://reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](docroot://internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemLanguage()](docroot://reference/apis-localization-kit/js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。<br>从API version 21开始，也可以使用[param工具](docroot://tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
 
 **起始版本：** 9
 
@@ -696,7 +712,7 @@ static setSystemLanguage(language: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| language | string | 是 | [合法的语言ID](../../../../internationalization/i18n-locale-culture.md#实现原理)。 |
+| language | string | 是 | [合法的语言ID](docroot://internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -723,6 +739,7 @@ try {
 
 ```
 
+<a id="setsystemlocale"></a>
 ## setSystemLocale
 
 ```TypeScript
@@ -747,7 +764,7 @@ static setSystemLocale(locale: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | [表示区域ID的字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家或地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家或地区组成。 |
 
 **错误码：**
 
@@ -772,6 +789,7 @@ try {
 
 ```
 
+<a id="setsystemmeasurement"></a>
 ## setSystemMeasurement
 
 ```TypeScript
@@ -819,6 +837,7 @@ try {
 
 ```
 
+<a id="setsystemnumberpattern"></a>
 ## setSystemNumberPattern
 
 ```TypeScript
@@ -866,6 +885,7 @@ try {
 
 ```
 
+<a id="setsystemnumberingsystem"></a>
 ## setSystemNumberingSystem
 
 ```TypeScript
@@ -913,6 +933,7 @@ try {
 
 ```
 
+<a id="setsystemnumericaldatepattern"></a>
 ## setSystemNumericalDatePattern
 
 ```TypeScript
@@ -960,13 +981,14 @@ try {
 
 ```
 
+<a id="setsystemregion"></a>
 ## setSystemRegion
 
 ```TypeScript
 static setSystemRegion(region: string): void
 ```
 
-设置系统地区。若要监听系统地区变化，可以监听[公共事件](../../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](../../../../internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemRegion()](../../../../reference/apis-localization-kit/js-apis-i18n.md#getsystemregion9)接口获取系统地区。
+设置系统地区。若要监听系统地区变化，可以监听[公共事件](docroot://reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED，具体可参考[系统语言与区域](docroot://internationalization/i18n-system-language-region.md#开发步骤)。<br>**说明：**<br>可以通过[i18n.System.getSystemRegion()](docroot://reference/apis-localization-kit/js-apis-i18n.md#getsystemregion9)接口获取系统地区。
 
 **起始版本：** 9
 
@@ -982,7 +1004,7 @@ static setSystemRegion(region: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| region | string | 是 | [合法的地区ID](../../../../internationalization/i18n-locale-culture.md#实现原理)。 |
+| region | string | 是 | [合法的地区ID](docroot://internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -1008,6 +1030,7 @@ try {
 
 ```
 
+<a id="settemperaturetype"></a>
 ## setTemperatureType
 
 ```TypeScript
@@ -1055,6 +1078,7 @@ try {
 
 ```
 
+<a id="setusinglocaldigit"></a>
 ## setUsingLocalDigit
 
 ```TypeScript

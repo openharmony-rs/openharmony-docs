@@ -14,7 +14,7 @@
 LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'
 ```
 
-作为[setExtras](avSession.AVSession.setExtras(extras: {[key: string]: Object))}接口传入的键，值传入bool类型列表，用于通知系统在锁屏时是否隐藏实况窗卡片。
+作为[setExtras](arkts-avsession-avsession-avsession-i.md#setextras-1))}接口传入的键，值传入bool类型列表，用于通知系统在锁屏时是否隐藏实况窗卡片。
 
 **起始版本：** 26.0.0
 

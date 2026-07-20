@@ -14,6 +14,7 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="closekvstore"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -36,7 +37,7 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): voi
 | --- | --- | --- | --- |
 | appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
 | storeId | string | 是 | 要关闭的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -87,6 +88,7 @@ try {
 
 ```
 
+<a id="closekvstore-1"></a>
 ## closeKVStore
 
 ```TypeScript
@@ -115,7 +117,7 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -165,6 +167,7 @@ try {
 
 ```
 
+<a id="deletekvstore"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -187,7 +190,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): vo
 | --- | --- | --- | --- |
 | appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
 | storeId | string | 是 | 要删除的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -240,6 +243,7 @@ try {
 
 ```
 
+<a id="deletekvstore-1"></a>
 ## deleteKVStore
 
 ```TypeScript
@@ -268,7 +272,7 @@ deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -319,13 +323,14 @@ try {
 
 ```
 
+<a id="getallkvstoreid"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过[getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore-1)方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore-1)方法删除的分布式键值数据库的storeId，使用callback异步回调。
+获取所有通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore-1)方法删除的分布式键值数据库的storeId，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -340,7 +345,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string[]> | 是 | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
 
@@ -370,13 +375,14 @@ try {
 
 ```
 
+<a id="getallkvstoreid-1"></a>
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过[getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore-1)方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore-1)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
+获取所有通过[getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))方法创建的且没有调用[deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore-1)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -396,7 +402,7 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise对象。返回所有创建的分布式键值数据库的storeId。 |
+| Promise&lt;string[]&gt; | Promise对象。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
 
@@ -425,6 +431,7 @@ try {
 
 ```
 
+<a id="getkvstore"></a>
 ## getKVStore
 
 ```TypeScript
@@ -436,7 +443,7 @@ getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>): vo
 > **注意：**  
 >  
 > 在获取已有的分布式键值数据库时，如果数据库文件无法打开（例如文件头损坏），将触发自动重建逻辑，并返回新创建的分布式键值数据库实例。建议对重要且无法重新生成的数据使用备份恢复功能，以防止数据丢失。有关备份恢复的使用方法，请参  
-> 阅[数据库备份与恢复](../../../../database/data-backup-and-restore.md)。
+> 阅[数据库备份与恢复](docroot://database/data-backup-and-restore.md)。
 
 **起始版本：** 9
 
@@ -452,7 +459,7 @@ getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>): vo
 | --- | --- | --- | --- |
 | storeId | string | 是 | 数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
 | options | [Options](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-zlib-options-i.md) | 是 | 创建分布式键值实例的配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<T> | 是 | 回调函数。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | 是 | 回调函数。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
 
 **错误码：**
 
@@ -496,6 +503,7 @@ try {
 
 ```
 
+<a id="getkvstore-1"></a>
 ## getKVStore
 
 ```TypeScript
@@ -507,7 +515,7 @@ getKVStore<T>(storeId: string, options: Options): Promise<T>
 > **注意：**  
 >  
 > 获取已有的分布式键值数据库时，如果数据库文件无法打开（如文件头损坏），将触发自动重建逻辑，并返回新创建的分布式键值数据库实例。建议对重要且无法重新生成的数据使用备份恢复功能，防止数据丢失。备份恢复的使用方法详见  
-> [数据库备份与恢复](../../../../database/data-backup-and-restore.md)。
+> [数据库备份与恢复](docroot://database/data-backup-and-restore.md)。
 
 **起始版本：** 9
 
@@ -528,7 +536,7 @@ getKVStore<T>(storeId: string, options: Options): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<T> | Promise对象。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
+| Promise&lt;T&gt; | Promise对象。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
 
 **错误码：**
 
@@ -568,13 +576,14 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
 off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 ```
 
-取消订阅服务状态变更通知。必须先调用[on('distributedDataServiceDie')](arkts-arkdata-distributedkvstore-kvmanager-i.md#on-1)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
+取消订阅服务状态变更通知。必须先调用[on('distributedDataServiceDie')](distributedKVStore.KVManager.on(event: 'distributedDataServiceDie', deathCallback: Callback<void>))订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
 
 **起始版本：** 9
 
@@ -587,7 +596,7 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'distributedDataServiceDie' | 是 | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
-| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 回调函数。如果该参数不填，那么会将之前订阅过的所有的deathCallback取消订阅。 |
+| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 回调函数。如果该参数不填，那么会将之前订阅过的所有的deathCallback取消订阅。 |
 
 **错误码：**
 
@@ -613,13 +622,14 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
 on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 ```
 
-订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on-1)和[on('syncComplete')](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on-2)注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](arkts-arkdata-distributedkvstore-kvmanager-i.md#off-1)取消订阅。
+订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](distributedKVStore.SingleKVStore.on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>))和[on('syncComplete')](distributedKVStore.SingleKVStore.on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>))注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](distributedKVStore.KVManager.off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>))取消订阅。
 
 **起始版本：** 9
 
@@ -632,7 +642,7 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'distributedDataServiceDie' | 是 | 订阅的事件名，固定为'distributedDataServiceDie'，即服务终止事件。 |
-| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。订阅成功，err为undefined，否则为错误对象。 |
+| deathCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。订阅成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

@@ -18,5 +18,5 @@ type OnContinueDoneCallback = (result: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | int | 是 | The result code of continue mission. |
+| result | number | 是 | The result code of continue mission.  |
 

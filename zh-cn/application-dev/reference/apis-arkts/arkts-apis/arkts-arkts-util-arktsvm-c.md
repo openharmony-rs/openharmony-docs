@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="enablelocalhandledetection"></a>
 ## enableLocalHandleDetection
 
 ```TypeScript
@@ -110,6 +111,7 @@ napi_value dangerous_function(napi_env env, napi_callback_info info) {
 
 ```
 
+<a id="getallvmheapmemoryinfo"></a>
 ## getAllVMHeapMemoryInfo
 
 ```TypeScript
@@ -130,7 +132,7 @@ static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HeapMemoryInfo[]> | 返回一个 promise，包含 ArkTS-VM 的 local 堆和共享堆中的所有堆内存信息。 |
+| Promise&lt;HeapMemoryInfo[]&gt; | 返回一个 promise，包含 ArkTS-VM 的 local 堆和共享堆中的所有堆内存信息。 |
 
 **示例：**
 
@@ -150,6 +152,7 @@ util.ArkTSVM.getAllVMHeapMemoryInfo().then(
 
 ```
 
+<a id="offvmheapmemorypressure"></a>
 ## offVMHeapMemoryPressure
 
 ```TypeScript
@@ -175,6 +178,7 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 
 ```
 
+<a id="onvmheapmemorypressure"></a>
 ## onVMHeapMemoryPressure
 
 ```TypeScript
@@ -197,7 +201,7 @@ NOTE:无法保证在 OOM（内存溢出）前一定会触发该回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<string> | 是 | 在 GC 后内存达到阈值时触发的回调。字符串参数表示内存压力事件的类型："LocalHeapMemPressure"、"SharedHeapMemPressure" 或 "ProcessHeapMemPressure"。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;string&gt; | 是 | 在 GC 后内存达到阈值时触发的回调。字符串参数表示内存压力事件的类型："LocalHeapMemPressure"、"SharedHeapMemPressure" 或 "ProcessHeapMemPressure"。 |
 | heapMemoryThreshold | [HeapMemoryThreshold](arkts-arkts-util-heapmemorythreshold-i.md) | 是 | 表示 GC 后触发回调的堆内存百分比阈值。取值范围为 [70, 95]。 |
 
 **返回值：**
@@ -226,6 +230,7 @@ console.info('Registration result: ' + result);
 
 ```
 
+<a id="setmultithreadingdetectionenabled"></a>
 ## setMultithreadingDetectionEnabled
 
 ```TypeScript
@@ -273,6 +278,7 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
 
 ```
 
+<a id="settrackglobalref"></a>
 ## setTrackGlobalRef
 
 ```TypeScript

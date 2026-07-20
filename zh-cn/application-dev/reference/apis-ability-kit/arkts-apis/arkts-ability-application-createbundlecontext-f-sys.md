@@ -6,6 +6,7 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+<a id="createbundlecontext"></a>
 ## createBundleContext
 
 ```TypeScript
@@ -17,7 +18,7 @@ export function createBundleContext(context: Context, bundleName: string): Promi
 > **说明：**  
 >  
 > 从API version 18开始，Context支持获取当前应用的进程名  
-> [processName](../../../../reference/apis-ability-kit/js-apis-inner-application-context.md#context)。  
+> [processName](docroot://reference/apis-ability-kit/js-apis-inner-application-context.md#context)。  
 > createBundleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应  
 > 的属性值。
 
@@ -44,7 +45,7 @@ export function createBundleContext(context: Context, bundleName: string): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Context> | Promise对象。返回创建的Context。 |
+| Promise&lt;Context&gt; | Promise对象。返回创建的Context。 |
 
 **错误码：**
 

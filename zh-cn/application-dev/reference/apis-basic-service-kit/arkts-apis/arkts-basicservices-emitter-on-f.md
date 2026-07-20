@@ -6,6 +6,7 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(event: InnerEvent, callback: Callback<EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [InnerEvent](arkts-basicservices-emitter-innerevent-i.md) | 是 | 持续订阅的事件，其中[EventPriority](arkts-basicservices-emitter-eventpriority-e.md)，在订阅事件时无需指定，也不生效。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 接收到该事件时需要执行的回调处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventData&gt; | 是 | 接收到该事件时需要执行的回调处理函数。 |
 
 **示例：**
 
@@ -48,6 +49,7 @@ emitter.on(innerEvent, callback);
 ```
 
 
+<a id="on-1"></a>
 ## on
 
 ```TypeScript
@@ -69,7 +71,7 @@ function on(eventId: string, callback: Callback<EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 持续订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<EventData> | 是 | 接收到该事件时需要执行的回调处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;EventData&gt; | 是 | 接收到该事件时需要执行的回调处理函数。 |
 
 **示例：**
 
@@ -85,6 +87,7 @@ emitter.on('eventId', callback);
 ```
 
 
+<a id="on-2"></a>
 ## on
 
 ```TypeScript
@@ -106,7 +109,7 @@ function on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventId | string | 是 | 持续订阅的事件。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<GenericEventData<T>> | 是 | 接收到该事件时需要执行的回调处理函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;GenericEventData&lt;T&gt;&gt; | 是 | 接收到该事件时需要执行的回调处理函数。 |
 
 **示例：**
 

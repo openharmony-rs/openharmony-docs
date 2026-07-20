@@ -6,6 +6,7 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="setactivationlockdisabled"></a>
 ## setActivationLockDisabled
 
 ```TypeScript
@@ -30,13 +31,13 @@ function setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | isDisabled | boolean | 是 | 是否禁用激活锁。true表示禁用，false表示启用。 |
-| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据&lt;!--RP6--&gt;&lt;!--RP6End--&gt;，设置启用时为空。 |
+| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据<!--RP6--><!--RP6End-->，设置启用时为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
 
 **错误码：**
 

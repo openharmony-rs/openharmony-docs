@@ -20,13 +20,13 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getcurrentconfig-1) | 获取当前应用灰度活动配置。 |
-| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getlastparticipationtimestamp-1) | 查询此设备上次参与应用灰度活动的UNIX时间戳，如果此设备从未参与则返回0。 |
-| [init](arkts-performanceanalysis-hiretrieval-init-f.md#init-1) | 初始化应用灰度模块。多实例应用不支持调用此接口。 |
-| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isparticipant-1) | 查询此设备是否正在参与应用灰度活动。 |
-| [participate](arkts-performanceanalysis-hiretrieval-participate-f.md#participate-1) | 设置此设备参与应用灰度活动。调用后向服务器发送参与灰度消息和应用灰度活动配置，服务器标记此设备为可圈选并记录该应用灰度活动配置作为算法参数。多次调用将更新为最新的应用灰度活动配置。 |
-| [quit](arkts-performanceanalysis-hiretrieval-quit-f.md#quit-1) | 设置此设备退出应用灰度活动，退出后此设备将无法在云端被圈选。 |
-| [run](arkts-performanceanalysis-hiretrieval-run-f.md#run-1) | 若此设备正在参与应用灰度活动（即已调用participate接口且未调用quit接口），则应用灰度模块开始工作，否则调用该接口不会产生任何效果。 |
+| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getcurrentconfig) | 获取当前应用灰度活动配置。 |
+| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getlastparticipationtimestamp) | 查询此设备上次参与应用灰度活动的UNIX时间戳，如果此设备从未参与则返回0。 |
+| [init](arkts-performanceanalysis-hiretrieval-init-f.md#init) | 初始化应用灰度模块。多实例应用不支持调用此接口。 |
+| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isparticipant) | 查询此设备是否正在参与应用灰度活动。 |
+| [participate](arkts-performanceanalysis-hiretrieval-participate-f.md#participate) | 设置此设备参与应用灰度活动。调用后向服务器发送参与灰度消息和应用灰度活动配置，服务器标记此设备为可圈选并记录该应用灰度活动配置作为算法参数。多次调用将更新为最新的应用灰度活动配置。 |
+| [quit](arkts-performanceanalysis-hiretrieval-quit-f.md#quit) | 设置此设备退出应用灰度活动，退出后此设备将无法在云端被圈选。 |
+| [run](arkts-performanceanalysis-hiretrieval-run-f.md#run) | 若此设备正在参与应用灰度活动（即已调用participate接口且未调用quit接口），则应用灰度模块开始工作，否则调用该接口不会产生任何效果。 |
 
 ### 接口
 

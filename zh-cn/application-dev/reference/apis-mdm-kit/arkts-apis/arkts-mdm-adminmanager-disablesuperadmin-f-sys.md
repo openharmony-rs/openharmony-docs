@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="disablesuperadmin"></a>
 ## disableSuperAdmin
 
 ```TypeScript
@@ -31,7 +32,7 @@ function disableSuperAdmin(bundleName: String, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | String | 是 | 超级设备管理应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -62,6 +63,7 @@ adminManager.disableSuperAdmin(bundleName, (err) => {
 ```
 
 
+<a id="disablesuperadmin-1"></a>
 ## disableSuperAdmin
 
 ```TypeScript
@@ -92,7 +94,7 @@ function disableSuperAdmin(bundleName: String): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当解除激活超级设备管理应用失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当解除激活超级设备管理应用失败时，会抛出错误对象。 |
 
 **错误码：**
 

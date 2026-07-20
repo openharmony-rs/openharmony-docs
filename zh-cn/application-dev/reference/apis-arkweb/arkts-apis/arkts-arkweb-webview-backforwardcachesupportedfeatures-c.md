@@ -14,6 +14,7 @@ This class is used to enable back forward cache supported features.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

@@ -56,7 +56,7 @@ PasteButton(options: PasteButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | PasteButtonOptions | 是 | 粘贴控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br>建议至少显式设置icon或text中的一项，以便用户清楚识别控件用途。<br/>若icon和text都未传入，则options不生效，控件显示为默认样式：<br/>{<br/>icon: PasteIconStyle.LINES,<br/>text: PasteDescription.PASTE,<br/>buttonType: ButtonType.Capsule <br/>} |
+| options | [PasteButtonOptions](arkts-arkui-pastebuttonoptions-i.md) | 是 | 粘贴控件的配置选项，用于指定图标、文本和按钮类型等元素属性。 <br>建议至少显式设置icon或text中的一项，以便用户清楚识别控件用途。<br/>若icon和text都未传入，则options不生效，控件显示为默认样式：<br/>{<br/>icon: PasteIconStyle.LINES,<br/>text: PasteDescription.PASTE,<br/>buttonType: ButtonType.Capsule <br/>}  |
 
 ## 汇总
 

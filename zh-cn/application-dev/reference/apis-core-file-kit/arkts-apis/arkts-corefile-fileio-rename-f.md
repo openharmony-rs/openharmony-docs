@@ -1,5 +1,6 @@
 # rename
 
+<a id="rename"></a>
 ## rename
 
 ```TypeScript
@@ -29,9 +30,10 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
+<a id="rename-1"></a>
 ## rename
 
 ```TypeScript
@@ -56,5 +58,5 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | oldPath | string | 是 | 目标文件的当前应用沙箱路径。 |
 | newPath | string | 是 | 目标文件的新应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步重命名文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
 

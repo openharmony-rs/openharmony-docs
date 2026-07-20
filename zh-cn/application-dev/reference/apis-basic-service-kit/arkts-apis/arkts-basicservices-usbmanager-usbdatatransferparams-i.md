@@ -38,7 +38,7 @@ callback: AsyncCallback<SubmitTransferCallback>
 
 传输完成时的回调信息。
 
-**类型：** AsyncCallback<SubmitTransferCallback>
+**类型：** AsyncCallback&lt;SubmitTransferCallback&gt;
 
 **起始版本：** 18
 

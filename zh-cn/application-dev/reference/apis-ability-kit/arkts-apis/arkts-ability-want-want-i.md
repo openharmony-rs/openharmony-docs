@@ -38,7 +38,7 @@ abilityName?: string
 action?: string
 ```
 
-表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考：[action说明](arkts-ability-wantconstant-action-depr-e.md)。隐式Want定义及匹配规则参考：[显式Want与隐式Want匹配规则](../../../../application-models/explicit-implicit-want-mappings.md)。
+表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。具体参考：[action说明](arkts-ability-wantconstant-action-depr-e.md)。隐式Want定义及匹配规则参考：[显式Want与隐式Want匹配规则](docroot://application-models/explicit-implicit-want-mappings.md)。
 
 **类型：** string
 
@@ -100,7 +100,7 @@ entities?: Array<string>
 
 表示目标Ability额外的类别信息（如：浏览器、视频播放器），在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 6
 

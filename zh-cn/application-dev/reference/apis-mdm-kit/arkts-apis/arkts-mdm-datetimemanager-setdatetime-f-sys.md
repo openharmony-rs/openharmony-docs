@@ -6,6 +6,7 @@
 import { dateTimeManager } from '@kit.MDMKit';
 ```
 
+<a id="setdatetime"></a>
 ## setDateTime
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setDateTime(admin: Want, time: number, callback: AsyncCallback<void>): 
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | time | number | 是 | 时间戳(ms)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ dateTimeManager.setDateTime(wantTemp, 1526003846000, (err) => {
 ```
 
 
+<a id="setdatetime-1"></a>
 ## setDateTime
 
 ```TypeScript
@@ -107,7 +109,7 @@ function setDateTime(admin: Want, time: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当设置系统时间失败时，抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置系统时间失败时，抛出错误对象。 |
 
 **错误码：**
 

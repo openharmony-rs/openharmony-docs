@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="notifyprintserviceevent"></a>
 ## notifyPrintServiceEvent
 
 ```TypeScript
@@ -34,7 +35,7 @@ function notifyPrintServiceEvent(event: ApplicationEvent): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ print.notifyPrintServiceEvent(event).then(() => {
 ```
 
 
+<a id="notifyprintserviceevent-1"></a>
 ## notifyPrintServiceEvent
 
 ```TypeScript
@@ -89,7 +91,7 @@ function notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

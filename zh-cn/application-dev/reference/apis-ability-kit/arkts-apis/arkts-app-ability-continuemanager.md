@@ -22,8 +22,8 @@ import { continueManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-ability-continuemanager-off-f.md#off-1) | 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。 |
-| [on](arkts-ability-continuemanager-on-f.md#on-1) | 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。 |
+| [off](arkts-ability-continuemanager-off-f.md#off) | 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。 |
+| [on](arkts-ability-continuemanager-on-f.md#on) | 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。 |
 
 ### 接口
 

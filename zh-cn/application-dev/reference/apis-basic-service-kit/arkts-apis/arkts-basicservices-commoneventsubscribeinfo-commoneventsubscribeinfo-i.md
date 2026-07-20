@@ -20,7 +20,7 @@ events: Array<string>
 
 表示要订阅的公共事件。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 7
 

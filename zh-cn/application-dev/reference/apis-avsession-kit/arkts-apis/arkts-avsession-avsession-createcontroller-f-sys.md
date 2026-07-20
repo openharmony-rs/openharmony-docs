@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="createcontroller"></a>
 ## createController
 
 ```TypeScript
@@ -29,7 +30,7 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 会话ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AVSessionController> | 是 | 回调函数。返回会话控制器实例，可查看会话ID，<br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AVSessionController&gt; | 是 | 回调函数。返回会话控制器实例，可查看会话ID，<br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.A
 ```
 
 
+<a id="createcontroller-1"></a>
 ## createController
 
 ```TypeScript
@@ -103,7 +105,7 @@ function createController(sessionId: string): Promise<AVSessionController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AVSessionController> | Promise对象。返回会话控制器实例，可查看会话ID，<br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| Promise&lt;AVSessionController&gt; | Promise对象。返回会话控制器实例，可查看会话ID，<br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 

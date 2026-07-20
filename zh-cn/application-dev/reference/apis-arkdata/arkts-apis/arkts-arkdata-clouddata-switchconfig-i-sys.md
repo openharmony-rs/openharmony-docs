@@ -24,7 +24,7 @@ dbInfo: Record<string, DBSwitchInfo>
 
 数据库级别的开关配置信息。键为库名称，值为该库的配置信息。
 
-**类型：** Record<string, DBSwitchInfo>
+**类型：** Record&lt;string, DBSwitchInfo&gt;
 
 **起始版本：** 23
 

@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getdefaultvoicesimid"></a>
 ## getDefaultVoiceSimId
 
 ```TypeScript
@@ -24,7 +25,7 @@ Obtains the default SIM ID for the voice service.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | Returns the SIM ID of the default voice sim and SIM ID will increase from 1. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | Returns the SIM ID of the default voice sim and SIM ID will increase from 1. |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
 ```
 
 
+<a id="getdefaultvoicesimid-1"></a>
 ## getDefaultVoiceSimId
 
 ```TypeScript
@@ -69,7 +71,7 @@ Obtains the default SIM ID for the voice service.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Returns the SIM ID of the default voice sim and SIM ID will increase from 1. |
+| Promise&lt;number&gt; | Returns the SIM ID of the default voice sim and SIM ID will increase from 1. |
 
 **错误码：**
 

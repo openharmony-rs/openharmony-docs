@@ -6,6 +6,7 @@
 import { floatView } from '@kit.ArkUI';
 ```
 
+<a id="isfloatviewenabled"></a>
 ## isFloatViewEnabled
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="createverify"></a>
 ## createVerify
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createVerify(algName: string): Verify
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algName | string | 是 | 指定签名验证算法。当前支持RSA、ECC、DSA、SM2&lt;sup&gt;10+&lt;/sup&gt;，Ed25519&lt;sup&gt;11+&lt;/sup&gt;和ML-DSA&lt;sup&gt;26.0.0+&lt;/sup&gt;。<br>使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
+| algName | string | 是 | 指定签名验证算法。当前支持RSA、ECC、DSA、SM2<sup>10+</sup>，Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。<br>使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](docroot://security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值：**
 

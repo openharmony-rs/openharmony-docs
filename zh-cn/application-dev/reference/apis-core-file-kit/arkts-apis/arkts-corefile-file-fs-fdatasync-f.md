@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="fdatasync"></a>
 ## fdatasync
 
 ```TypeScript
@@ -30,7 +31,7 @@ declare function fdatasync(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -45,6 +46,7 @@ declare function fdatasync(fd: number): Promise<void>
 | 13900042 | Unknown error |
 
 
+<a id="fdatasync-1"></a>
 ## fdatasync
 
 ```TypeScript
@@ -64,7 +66,7 @@ declare function fdatasync(fd: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 已打开的文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步将文件内容数据同步之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步将文件内容数据同步之后的回调。 |
 
 **错误码：**
 

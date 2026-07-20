@@ -78,7 +78,7 @@ readonly hapModuleQuickFixInfo: Array<HapModuleQuickFixInfo>
 
 hap级别的快速修复信息。
 
-**类型：** Array<HapModuleQuickFixInfo>
+**类型：** Array&lt;HapModuleQuickFixInfo&gt;
 
 **起始版本：** 9
 

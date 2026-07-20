@@ -6,6 +6,7 @@
 import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="finishtask"></a>
 ## finishTask
 
 ```TypeScript

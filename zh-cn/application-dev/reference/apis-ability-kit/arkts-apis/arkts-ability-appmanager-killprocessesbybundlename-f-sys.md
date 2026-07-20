@@ -6,6 +6,7 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="killprocessesbybundlename"></a>
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -36,7 +37,7 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | The Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ try {
 ```
 
 
+<a id="killprocessesbybundlename-1"></a>
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -95,7 +97,7 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

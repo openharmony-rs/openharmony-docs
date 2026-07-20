@@ -1,6 +1,6 @@
 # ContinueMissionInfo（系统接口）
 
-表示发起按照包名迁移时所需参数的枚举，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission-3)
+表示发起按照包名迁移时所需参数的枚举，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission-1)
 
 **起始版本：** 10
 
@@ -118,7 +118,7 @@ wantParam: Record<string, Object>
 
 表示扩展参数。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 

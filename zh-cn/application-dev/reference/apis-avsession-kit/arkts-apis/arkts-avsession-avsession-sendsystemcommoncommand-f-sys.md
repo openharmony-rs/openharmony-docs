@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="sendsystemcommoncommand"></a>
 ## sendSystemCommonCommand
 
 ```TypeScript
@@ -37,7 +38,7 @@ function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<stri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | callback info for sync command |
+| Promise&lt;string&gt; | callback info for sync command |
 
 **错误码：**
 

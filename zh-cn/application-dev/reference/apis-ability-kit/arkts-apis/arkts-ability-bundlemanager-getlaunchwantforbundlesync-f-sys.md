@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getlaunchwantforbundlesync"></a>
 ## getLaunchWantForBundleSync
 
 ```TypeScript

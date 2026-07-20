@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="enabledynamicicon"></a>
 ## enableDynamicIcon
 
 ```TypeScript
@@ -35,7 +36,7 @@ function enableDynamicIcon(bundleName: string, moduleName: string): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ try {
 ```
 
 
+<a id="enabledynamicicon-1"></a>
 ## enableDynamicIcon
 
 ```TypeScript
@@ -107,7 +109,7 @@ function enableDynamicIcon(bundleName: string, moduleName: string, option?: Bund
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -37,6 +37,6 @@ import { SourceType, ToolType, TouchEvent, FixedMode, KeyAction, Touch } from '@
 
 | 名称 | 说明 |
 | --- | --- |
-| [FixedMode](arkts-input-multimodalinput-touchevent-fixedmode-e-sys.md) | 修正坐标的模式。**系统API**: 此接口为系统接口。 |
+| [FixedMode](arkts-input-multimodalinput-touchevent-fixedmode-e-sys.md) | 修正坐标的模式。  **系统API**: 此接口为系统接口。 |
 <!--DelEnd-->
 

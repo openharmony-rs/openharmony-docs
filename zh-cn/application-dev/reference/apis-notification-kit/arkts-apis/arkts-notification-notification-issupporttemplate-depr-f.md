@@ -1,5 +1,6 @@
 # isSupportTemplate
 
+<a id="issupporttemplate"></a>
 ## isSupportTemplate
 
 ```TypeScript
@@ -23,9 +24,10 @@ function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | templateName | string | 是 | 模板名称。当前仅支持'downloadTemplate'。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 查询模板是否存在的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询模板是否存在的回调函数。 |
 
 
+<a id="issupporttemplate-1"></a>
 ## isSupportTemplate
 
 ```TypeScript
@@ -54,5 +56,5 @@ function isSupportTemplate(templateName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise方式返回模板是否存在的结果。 |
+| Promise&lt;boolean&gt; | Promise方式返回模板是否存在的结果。 |
 

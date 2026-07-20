@@ -18,5 +18,5 @@ declare type IndexChangedHandler = (index: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 当前显示元素的索引。index序列从0开始。 |
+| index | number | 是 | 当前显示元素的索引。index序列从0开始。  |
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityinfo"></a>
 ## getAbilityInfo
 
 ```TypeScript
@@ -28,14 +29,14 @@ function getAbilityInfo(uri: string, abilityFlags: number): Promise<Array<Abilit
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 表示统一资源标识符URI，取值与[module.json5配置文件中skills下的uris字段](../../../../quick-start/module-configuration-file.md#skills标签)相对应。 |
+| uri | string | 是 | 表示统一资源标识符URI，取值与[module.json5配置文件中skills下的uris字段](docroot://quick-start/module-configuration-file.md#skills标签)相对应。 |
 | abilityFlags | number | 是 | 表示[Ability组件信息标志](arkts-ability-bundlemanager-abilityflag-e-sys.md)，指示需要获取的Ability组件信息的内容。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AbilityInfo>> | Promise对象，返回获取到的Ability信息数组。 |
+| Promise&lt;Array&lt;AbilityInfo&gt;&gt; | Promise对象，返回获取到的Ability信息数组。 |
 
 **错误码：**
 

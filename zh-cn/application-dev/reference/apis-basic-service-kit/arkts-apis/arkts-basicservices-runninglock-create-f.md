@@ -6,6 +6,7 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -28,7 +29,7 @@ function create(name: string, type: RunningLockType, callback: AsyncCallback<Run
 | --- | --- | --- | --- |
 | name | string | 是 | 锁的名字；该参数必须为字符串类型。 |
 | type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 要创建的锁的类型；该参数必须是一个枚举类。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<RunningLock> | 是 | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象；AsyncCallback封装了一个RunningLock类型的类。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;RunningLock&gt; | 是 | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象；AsyncCallback封装了一个RunningLock类型的类。 |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 ```
 
 
+<a id="create-1"></a>
 ## create
 
 ```TypeScript
@@ -79,7 +81,7 @@ function create(name: string, type: RunningLockType): Promise<RunningLock>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RunningLock> | Promise对象，返回RunningLock锁对象。 |
+| Promise&lt;RunningLock&gt; | Promise对象，返回RunningLock锁对象。 |
 
 **错误码：**
 

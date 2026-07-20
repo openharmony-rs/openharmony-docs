@@ -22,7 +22,7 @@ tag: huksExternalCrypto.HuksExternalCryptoTag | huks.HuksTag | number
 
 参数标签，用于区分参数。
 
-**类型：** huksExternalCrypto.HuksExternalCryptoTag | huks.HuksTag | number
+**类型：** huksExternalCrypto.HuksExternalCryptoTag \| huks.HuksTag \| number
 
 **起始版本：** 26.0.0
 
@@ -40,7 +40,7 @@ value: boolean | number | bigint | Uint8Array
 
 标签的值。
 
-**类型：** boolean | number | bigint | Uint8Array
+**类型：** boolean \| number \| bigint \| Uint8Array
 
 **起始版本：** 26.0.0
 

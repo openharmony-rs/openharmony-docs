@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="setportroles"></a>
 ## setPortRoles
 
 ```TypeScript
@@ -38,7 +39,7 @@ function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
+| Promise&lt;boolean&gt; | Promise对象，返回设置成功与否的结果。true表示设置成功，false表示设置失败。 |
 
 **示例：**
 

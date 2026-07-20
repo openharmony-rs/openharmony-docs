@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
+<a id="setusbstoragedeviceaccesspolicy"></a>
 ## setUsbStorageDeviceAccessPolicy
 
 ```TypeScript

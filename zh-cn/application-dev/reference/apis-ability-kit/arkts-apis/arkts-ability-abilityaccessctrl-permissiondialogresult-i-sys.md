@@ -24,7 +24,7 @@ detailList: Array<PermissionDialogDetail>
 
 权限弹窗的信息列表。
 
-**类型：** Array<PermissionDialogDetail>
+**类型：** Array&lt;PermissionDialogDetail&gt;
 
 **起始版本：** 26.0.0
 

@@ -6,6 +6,7 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="getkeyeventpolicies"></a>
 ## getKeyEventPolicies
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getKeyEventPolicies(admin: Want): Array<KeyEventPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<KeyEventPolicy> | 返回当前配置的按键事件策略列表。 |
+| Array&lt;KeyEventPolicy&gt; | 返回当前配置的按键事件策略列表。 |
 
 **错误码：**
 

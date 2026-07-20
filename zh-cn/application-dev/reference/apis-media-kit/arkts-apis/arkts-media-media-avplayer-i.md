@@ -6,7 +6,7 @@
 
 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
-Audio/Video播放demo可参考：[音频播放开发指导](../../../../media/media/using-avplayer-for-playback.md)、[视频播放开发指导](../../../../media/media/video-playback.md)。
+Audio/Video播放demo可参考：[音频播放开发指导](docroot://media/media/using-avplayer-for-playback.md)、[视频播放开发指导](docroot://media/media/video-playback.md)。
 
 > **说明：**  
 >  
@@ -14,7 +14,7 @@ Audio/Video播放demo可参考：[音频播放开发指导](../../../../media/me
 
 **起始版本：** 9
 
-<!--Device-media-interface AVPlayer {      /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用callback方式异步获取返回值。     *     *********/    prepare(callback: AsyncCallback<void>): void;    /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用Promise异步回调。     *      * 如果应用使用到多个短视频频繁切换的场景，为了提升切换性能，可以考虑创建多个AVPlayer对象，提前准备下一个视频，详情参见     * [在线短视频流畅切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-smooth-switching)。     *     *********/    prepare(): Promise<void>;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    play(callback: AsyncCallback<void>): void;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用Promise异步回调。     *     ********/    play(): Promise<void>;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用callback方式异步获取返回值。     *     ********/    pause(callback: AsyncCallback<void>): void;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用Promise异步回调。     *     ********/    pause(): Promise<void>;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    stop(callback: AsyncCallback<void>): void;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用Promise异步回调。     *     ********/    stop(): Promise<void>;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback方式异步获取返回值。     *     ********/    reset(callback: AsyncCallback<void>): void;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用Promise异步回调。     *     ********/    reset(): Promise<void>;    /**     * 销毁播放资源，除released状态外，均可以调用。使用callback方式异步获取返回值。     *     ********/    release(callback: AsyncCallback<void>): void;    /**     * 销毁播放资源，除released状态，都可以调用。使用Promise异步回调。     *     ********/    release(): Promise<void>;    /**     * 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('seekDone')]{*      * > **注意：**     * >     * > 从API版本26.0.0开始，直播场景支持seek。     *     **     [0, [duration](../../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为     *     [SEEK_CONTINUOUS]{********/    seek(timeMs: int, mode?: SeekMode): void;    /**     * 设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('volumeChange')]{*     *******/    setVolume(volume: double): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。     *     **     MediaDescription数组；否则为错误对象。     *******/    getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     ********/    getTrackDescription(): Promise<Array<MediaDescription>>;    /**     * 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *******/    getSelectedTracks(): Promise<Array<int>>;    /**     * 使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。     *     **     [getTrackDescription]{*     [MediaDescription]{*     key值的Object类型和范围，请参考[MediaDescriptionKey]{**     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。      **     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 [since 26.0.0]     *********/    selectTrack(index: int, mode?: SwitchMode): Promise<void>;    /**     * 使用AVPlayer播放多音轨视频时取消指定音视频轨道播放，使用Promise异步回调。     *     **     [MediaDescription]{********/    deselectTrack(index: int): Promise<void>;    /**     * Obtains the selected track by the specified media type. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ************/    getCurrentTrack(trackType: MediaType): Promise<int>;    /**     * 流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。     *     *****     <br>2. Incorrect parameter types. 3.Parameter verification failed.     ******/    setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>;    /**     * 获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。     *     ******/    getTrackSelectionFilter(): Promise<TrackSelectionFilter>;	    /**     * 为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。     *     *******/    setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>;    /**     * 依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     **     [resourceManager.getRawFd]{*     获取。     **********/    addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise<void>;    /**     * 依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     *********/    addSubtitleFromUrl(url: string): Promise<void>;    /**     * 获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *****/    getPlaybackInfo(): Promise<PlaybackInfo>;    /**     * 获取当前播放器的播放速率。使用Promise异步回调。     *     ****/    getPlaybackRate(): Promise<double>;    /**     * 获取已加载的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getLoadedTimeRanges(): Promise<Array<Range>>;    /**     * 获取可跳转的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getSeekableTimeRanges(): Promise<Array<Range>>;    /**     * 跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。     *     *****/    seekToDefaultPosition(): void;    /**     * 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。     *     ****/    getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>;    /**     * 设置播放策略，只能在initialized状态下调用。使用Promise异步回调。     *     ****     verification failed.     ******/    setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>;    /**     * 设置音频静音/取消音频静音，从API version 20开始，增加支持设置画面显示/不显示。使用Promise异步回调。     *      * 只能在prepared/playing/paused/completed状态下调用。     *     **     加支持设置MEDIA_TYPE_VID。     **     **API version 20及以后**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。     ********/    setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>;    /**     * Specifies whether to forcibly load the video. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ********/    forceLoadVideo(force: boolean): Promise<void>--><!--Device-media-interface AVPlayer {      /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用callback方式异步获取返回值。     *     *********/    prepare(callback: AsyncCallback<void>): void;    /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用Promise异步回调。     *      * 如果应用使用到多个短视频频繁切换的场景，为了提升切换性能，可以考虑创建多个AVPlayer对象，提前准备下一个视频，详情参见     * [在线短视频流畅切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-smooth-switching)。     *     *********/    prepare(): Promise<void>;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    play(callback: AsyncCallback<void>): void;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用Promise异步回调。     *     ********/    play(): Promise<void>;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用callback方式异步获取返回值。     *     ********/    pause(callback: AsyncCallback<void>): void;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用Promise异步回调。     *     ********/    pause(): Promise<void>;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    stop(callback: AsyncCallback<void>): void;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用Promise异步回调。     *     ********/    stop(): Promise<void>;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback方式异步获取返回值。     *     ********/    reset(callback: AsyncCallback<void>): void;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用Promise异步回调。     *     ********/    reset(): Promise<void>;    /**     * 销毁播放资源，除released状态外，均可以调用。使用callback方式异步获取返回值。     *     ********/    release(callback: AsyncCallback<void>): void;    /**     * 销毁播放资源，除released状态，都可以调用。使用Promise异步回调。     *     ********/    release(): Promise<void>;    /**     * 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('seekDone')]{*      * > **注意：**     * >     * > 从API版本26.0.0开始，直播场景支持seek。     *     **     [0, [duration](../../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为     *     [SEEK_CONTINUOUS]{********/    seek(timeMs: int, mode?: SeekMode): void;    /**     * 设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('volumeChange')]{*     *******/    setVolume(volume: double): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。     *     **     MediaDescription数组；否则为错误对象。     *******/    getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     ********/    getTrackDescription(): Promise<Array<MediaDescription>>;    /**     * 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *******/    getSelectedTracks(): Promise<Array<int>>;    /**     * 使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。     *     **     [getTrackDescription]{*     [MediaDescription]{*     key值的Object类型和范围，请参考[MediaDescriptionKey]{**     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。      **     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 [since 26.0.0]     *********/    selectTrack(index: int, mode?: SwitchMode): Promise<void>;    /**     * 使用AVPlayer播放多音轨视频时取消指定音视频轨道播放，使用Promise异步回调。     *     **     [MediaDescription]{********/    deselectTrack(index: int): Promise<void>;    /**     * Obtains the selected track by the specified media type. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ************/    getCurrentTrack(trackType: MediaType): Promise<int>;    /**     * 流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。     *     *****     <br>2. Incorrect parameter types. 3.Parameter verification failed.     ******/    setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>;    /**     * 获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。     *     ******/    getTrackSelectionFilter(): Promise<TrackSelectionFilter>;	    /**     * 为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。     *     *******/    setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>;    /**     * 依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     **     [resourceManager.getRawFd]{*     获取。     **********/    addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise<void>;    /**     * 依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     *********/    addSubtitleFromUrl(url: string): Promise<void>;    /**     * 获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *****/    getPlaybackInfo(): Promise<PlaybackInfo>;    /**     * 获取当前播放器的播放速率。使用Promise异步回调。     *     ****/    getPlaybackRate(): Promise<double>;    /**     * 获取已加载的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getLoadedTimeRanges(): Promise<Array<Range>>;    /**     * 获取可跳转的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getSeekableTimeRanges(): Promise<Array<Range>>;    /**     * 跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。     *     *****/    seekToDefaultPosition(): void;    /**     * 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。     *     ****/    getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>;    /**     * 设置播放策略，只能在initialized状态下调用。使用Promise异步回调。     *     ****     verification failed.     ******/    setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>;    /**     * 设置音频静音/取消音频静音，从API version 20开始，增加支持设置画面显示/不显示。使用Promise异步回调。     *      * 只能在prepared/playing/paused/completed状态下调用。     *     **     加支持设置MEDIA_TYPE_VID。     **     **API version 20及以后**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。     ********/    setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>;    /**     * Specifies whether to forcibly load the video. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ********/    forceLoadVideo(force: boolean): Promise<void>-End-->
+<!--Device-media-interface AVPlayer {      /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用callback方式异步获取返回值。     *     *********/    prepare(callback: AsyncCallback<void>): void;    /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用Promise异步回调。     *      * 如果应用使用到多个短视频频繁切换的场景，为了提升切换性能，可以考虑创建多个AVPlayer对象，提前准备下一个视频，详情参见     * [在线短视频流畅切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-smooth-switching)。     *     *********/    prepare(): Promise<void>;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    play(callback: AsyncCallback<void>): void;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用Promise异步回调。     *     ********/    play(): Promise<void>;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用callback方式异步获取返回值。     *     ********/    pause(callback: AsyncCallback<void>): void;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用Promise异步回调。     *     ********/    pause(): Promise<void>;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    stop(callback: AsyncCallback<void>): void;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用Promise异步回调。     *     ********/    stop(): Promise<void>;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback方式异步获取返回值。     *     ********/    reset(callback: AsyncCallback<void>): void;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用Promise异步回调。     *     ********/    reset(): Promise<void>;    /**     * 销毁播放资源，除released状态外，均可以调用。使用callback方式异步获取返回值。     *     ********/    release(callback: AsyncCallback<void>): void;    /**     * 销毁播放资源，除released状态，都可以调用。使用Promise异步回调。     *     ********/    release(): Promise<void>;    /**     * 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('seekDone')]{*      * > **注意：**     * >     * > 从API版本26.0.0开始，直播场景支持seek。     *     **     [0, [duration](docroot://reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为     *     [SEEK_CONTINUOUS]{********/    seek(timeMs: int, mode?: SeekMode): void;    /**     * 设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('volumeChange')]{*     *******/    setVolume(volume: double): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。     *     **     MediaDescription数组；否则为错误对象。     *******/    getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     ********/    getTrackDescription(): Promise<Array<MediaDescription>>;    /**     * 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *******/    getSelectedTracks(): Promise<Array<int>>;    /**     * 使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。     *     **     [getTrackDescription]{*     [MediaDescription]{*     key值的Object类型和范围，请参考[MediaDescriptionKey]{**     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。      **     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 [since 26.0.0]     *********/    selectTrack(index: int, mode?: SwitchMode): Promise<void>;    /**     * 使用AVPlayer播放多音轨视频时取消指定音视频轨道播放，使用Promise异步回调。     *     **     [MediaDescription]{********/    deselectTrack(index: int): Promise<void>;    /**     * Obtains the selected track by the specified media type. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ************/    getCurrentTrack(trackType: MediaType): Promise<int>;    /**     * 流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。     *     *****     <br>2. Incorrect parameter types. 3.Parameter verification failed.     ******/    setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>;    /**     * 获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。     *     ******/    getTrackSelectionFilter(): Promise<TrackSelectionFilter>;	    /**     * 为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。     *     *******/    setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>;    /**     * 依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     **     [resourceManager.getRawFd]{*     获取。     **********/    addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise<void>;    /**     * 依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     *********/    addSubtitleFromUrl(url: string): Promise<void>;    /**     * 获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *****/    getPlaybackInfo(): Promise<PlaybackInfo>;    /**     * 获取当前播放器的播放速率。使用Promise异步回调。     *     ****/    getPlaybackRate(): Promise<double>;    /**     * 获取已加载的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getLoadedTimeRanges(): Promise<Array<Range>>;    /**     * 获取可跳转的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getSeekableTimeRanges(): Promise<Array<Range>>;    /**     * 跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。     *     *****/    seekToDefaultPosition(): void;    /**     * 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。     *     ****/    getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>;    /**     * 设置播放策略，只能在initialized状态下调用。使用Promise异步回调。     *     ****     verification failed.     ******/    setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>;    /**     * 设置音频静音/取消音频静音，从API version 20开始，增加支持设置画面显示/不显示。使用Promise异步回调。     *      * 只能在prepared/playing/paused/completed状态下调用。     *     **     加支持设置MEDIA_TYPE_VID。     **     **API version 20及以后**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。     ********/    setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>;    /**     * Specifies whether to forcibly load the video. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ********/    forceLoadVideo(force: boolean): Promise<void>--><!--Device-media-interface AVPlayer {      /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用callback方式异步获取返回值。     *     *********/    prepare(callback: AsyncCallback<void>): void;    /**     * 准备播放音频/视频，需在[stateChange]{* 功触发至initialized状态后，才能调用。使用Promise异步回调。     *      * 如果应用使用到多个短视频频繁切换的场景，为了提升切换性能，可以考虑创建多个AVPlayer对象，提前准备下一个视频，详情参见     * [在线短视频流畅切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-smooth-switching)。     *     *********/    prepare(): Promise<void>;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    play(callback: AsyncCallback<void>): void;    /**     * 开始播放音视频资源，只能在prepared/paused/completed状态调用。使用Promise异步回调。     *     ********/    play(): Promise<void>;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用callback方式异步获取返回值。     *     ********/    pause(callback: AsyncCallback<void>): void;    /**     * 暂停播放音视频资源，只能在playing状态调用。使用Promise异步回调。     *     ********/    pause(): Promise<void>;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用callback方式异步获取返回值。     *     ********/    stop(callback: AsyncCallback<void>): void;    /**     * 停止播放音视频资源，只能在prepared/playing/paused/completed状态调用。使用Promise异步回调。     *     ********/    stop(): Promise<void>;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用callback方式异步获取返回值。     *     ********/    reset(callback: AsyncCallback<void>): void;    /**     * 重置播放，只能在initialized/prepared/playing/paused/completed/stopped/error状态调用。使用Promise异步回调。     *     ********/    reset(): Promise<void>;    /**     * 销毁播放资源，除released状态外，均可以调用。使用callback方式异步获取返回值。     *     ********/    release(callback: AsyncCallback<void>): void;    /**     * 销毁播放资源，除released状态，都可以调用。使用Promise异步回调。     *     ********/    release(): Promise<void>;    /**     * 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('seekDone')]{*      * > **注意：**     * >     * > 从API版本26.0.0开始，直播场景支持seek。     *     **     [0, [duration](docroot://reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为     *     [SEEK_CONTINUOUS]{********/    seek(timeMs: int, mode?: SeekMode): void;    /**     * 设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过     * [on('volumeChange')]{*     *******/    setVolume(volume: double): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。获取所有音视轨道信息，应在数据加载回调后调用。使用callback方式异步获取返回值。     *     **     MediaDescription数组；否则为错误对象。     *******/    getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void;    /**     * 获取音视频轨道信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     ********/    getTrackDescription(): Promise<Array<MediaDescription>>;    /**     * 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *******/    getSelectedTracks(): Promise<Array<int>>;    /**     * 使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。     *     **     [getTrackDescription]{*     [MediaDescription]{*     key值的Object类型和范围，请参考[MediaDescriptionKey]{**     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。      **     **仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 [since 26.0.0]     *********/    selectTrack(index: int, mode?: SwitchMode): Promise<void>;    /**     * 使用AVPlayer播放多音轨视频时取消指定音视频轨道播放，使用Promise异步回调。     *     **     [MediaDescription]{********/    deselectTrack(index: int): Promise<void>;    /**     * Obtains the selected track by the specified media type. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ************/    getCurrentTrack(trackType: MediaType): Promise<int>;    /**     * 流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。     *     *****     <br>2. Incorrect parameter types. 3.Parameter verification failed.     ******/    setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>;    /**     * 获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。     *     ******/    getTrackSelectionFilter(): Promise<TrackSelectionFilter>;	    /**     * 为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。     *     *******/    setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>;    /**     * 依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     **     [resourceManager.getRawFd]{*     获取。     **********/    addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise<void>;    /**     * 依据url为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。     *     *********/    addSubtitleFromUrl(url: string): Promise<void>;    /**     * 获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。     *     *****/    getPlaybackInfo(): Promise<PlaybackInfo>;    /**     * 获取当前播放器的播放速率。使用Promise异步回调。     *     ****/    getPlaybackRate(): Promise<double>;    /**     * 获取已加载的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getLoadedTimeRanges(): Promise<Array<Range>>;    /**     * 获取可跳转的时间区间段的列表。使用Promise异步回调。     *      * > **说明：**     * >     * > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。     * >     * > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。     *     **     <br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。     ****/    getSeekableTimeRanges(): Promise<Array<Range>>;    /**     * 跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。     *     *****/    seekToDefaultPosition(): void;    /**     * 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。     *     ****/    getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>;    /**     * 设置播放策略，只能在initialized状态下调用。使用Promise异步回调。     *     ****     verification failed.     ******/    setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>;    /**     * 设置音频静音/取消音频静音，从API version 20开始，增加支持设置画面显示/不显示。使用Promise异步回调。     *      * 只能在prepared/playing/paused/completed状态下调用。     *     **     加支持设置MEDIA_TYPE_VID。     **     **API version 20及以后**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。     ********/    setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>;    /**     * Specifies whether to forcibly load the video. This API can be called only when the AVPlayer     * is in the prepared, playing, or paused state. This API uses a promise to return the result.     *     ********/    forceLoadVideo(force: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -24,6 +24,7 @@ Audio/Video播放demo可参考：[音频播放开发指导](../../../../media/me
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="addsubtitlefromfd"></a>
 ## addSubtitleFromFd
 
 ```TypeScript
@@ -52,7 +53,7 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="addsubtitlefromurl"></a>
 ## addSubtitleFromUrl
 
 ```TypeScript
@@ -87,7 +89,7 @@ addSubtitleFromUrl(url: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -96,6 +98,7 @@ addSubtitleFromUrl(url: string): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="deselecttrack"></a>
 ## deselectTrack
 
 ```TypeScript
@@ -116,13 +119,13 @@ deselectTrack(index: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 多音视频资源的轨道索引，来自[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-2)接口所获取的轨道信息[MediaDescription](@ohos.multimedia.media:media.MediaDescription)。 |
+| index | number | 是 | 多音视频资源的轨道索引，来自[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)接口所获取的轨道信息[MediaDescription](@ohos.multimedia.media:media.MediaDescription)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -131,6 +134,7 @@ deselectTrack(index: number): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="getloadedtimeranges"></a>
 ## getLoadedTimeRanges
 
 ```TypeScript
@@ -157,8 +161,9 @@ getLoadedTimeRanges(): Promise<Array<Range>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Range>> | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
+| Promise&lt;Array&lt;Range&gt;&gt; | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
 
+<a id="getplaybackinfo"></a>
 ## getPlaybackInfo
 
 ```TypeScript
@@ -177,8 +182,9 @@ getPlaybackInfo(): Promise<PlaybackInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PlaybackInfo> | Promise对象，返回播放器信息PlaybackInfo。 |
+| Promise&lt;PlaybackInfo&gt; | Promise对象，返回播放器信息PlaybackInfo。 |
 
+<a id="getplaybackrate"></a>
 ## getPlaybackRate
 
 ```TypeScript
@@ -197,8 +203,9 @@ getPlaybackRate(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回播放倍速速率。 |
+| Promise&lt;number&gt; | Promise对象，返回播放倍速速率。 |
 
+<a id="getplaybackstatisticmetrics"></a>
 ## getPlaybackStatisticMetrics
 
 ```TypeScript
@@ -217,8 +224,9 @@ getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PlaybackMetrics> | Promise对象，返回当前播放器的指标信息PlaybackMetrics。 |
+| Promise&lt;PlaybackMetrics&gt; | Promise对象，返回当前播放器的指标信息PlaybackMetrics。 |
 
+<a id="getseekabletimeranges"></a>
 ## getSeekableTimeRanges
 
 ```TypeScript
@@ -245,8 +253,9 @@ getSeekableTimeRanges(): Promise<Array<Range>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Range>> | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
+| Promise&lt;Array&lt;Range&gt;&gt; | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
 
+<a id="getselectedtracks"></a>
 ## getSelectedTracks
 
 ```TypeScript
@@ -267,7 +276,7 @@ getSelectedTracks(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象，返回已选择音视频轨道索引数组。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回已选择音视频轨道索引数组。 |
 
 **错误码：**
 
@@ -275,6 +284,7 @@ getSelectedTracks(): Promise<Array<number>>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+<a id="gettrackdescription"></a>
 ## getTrackDescription
 
 ```TypeScript
@@ -295,7 +305,7 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<MediaDescription>> | 是 | 回调函数，当获取音视频轨道信息成功，err为undefined，data为获取到的MediaDescription数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;MediaDescription&gt;&gt; | 是 | 回调函数，当获取音视频轨道信息成功，err为undefined，data为获取到的MediaDescription数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -303,6 +313,7 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="gettrackdescription-1"></a>
 ## getTrackDescription
 
 ```TypeScript
@@ -323,7 +334,7 @@ getTrackDescription(): Promise<Array<MediaDescription>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<MediaDescription>> | Promise对象，返回音视频轨道信息MediaDescription数组。 |
+| Promise&lt;Array&lt;MediaDescription&gt;&gt; | Promise对象，返回音视频轨道信息MediaDescription数组。 |
 
 **错误码：**
 
@@ -331,6 +342,7 @@ getTrackDescription(): Promise<Array<MediaDescription>>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="gettrackselectionfilter"></a>
 ## getTrackSelectionFilter
 
 ```TypeScript
@@ -351,7 +363,7 @@ getTrackSelectionFilter(): Promise<TrackSelectionFilter>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TrackSelectionFilter> | Promise对象，返回当前配置的轨道选择过滤器。 |
+| Promise&lt;TrackSelectionFilter&gt; | Promise对象，返回当前配置的轨道选择过滤器。 |
 
 **错误码：**
 
@@ -359,6 +371,7 @@ getTrackSelectionFilter(): Promise<TrackSelectionFilter>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -379,7 +392,7 @@ pause(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 暂停播放的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 暂停播放的回调方法。 |
 
 **错误码：**
 
@@ -387,6 +400,7 @@ pause(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="pause-1"></a>
 ## pause
 
 ```TypeScript
@@ -407,7 +421,7 @@ pause(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -415,6 +429,7 @@ pause(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="play"></a>
 ## play
 
 ```TypeScript
@@ -435,7 +450,7 @@ play(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 开始播放的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 开始播放的回调方法。 |
 
 **错误码：**
 
@@ -443,6 +458,7 @@ play(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="play-1"></a>
 ## play
 
 ```TypeScript
@@ -463,7 +479,7 @@ play(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -471,6 +487,7 @@ play(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="prepare"></a>
 ## prepare
 
 ```TypeScript
@@ -491,7 +508,7 @@ prepare(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 准备播放的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 准备播放的回调方法。 |
 
 **错误码：**
 
@@ -500,6 +517,7 @@ prepare(callback: AsyncCallback<void>): void
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Return by callback. |
 
+<a id="prepare-1"></a>
 ## prepare
 
 ```TypeScript
@@ -522,7 +540,7 @@ prepare(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -531,6 +549,7 @@ prepare(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Return by promise. |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -551,7 +570,7 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 销毁播放的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 销毁播放的回调方法。 |
 
 **错误码：**
 
@@ -559,6 +578,7 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -579,7 +599,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -587,6 +607,7 @@ release(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -607,7 +628,7 @@ reset(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 重置播放的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 重置播放的回调方法。 |
 
 **错误码：**
 
@@ -615,6 +636,7 @@ reset(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="reset-1"></a>
 ## reset
 
 ```TypeScript
@@ -635,7 +657,7 @@ reset(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -643,6 +665,7 @@ reset(): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="seek"></a>
 ## seek
 
 ```TypeScript
@@ -669,9 +692,10 @@ seek(timeMs: number, mode?: SeekMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](../../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为[SEEK_CONTINUOUS](@ohos.multimedia.media:media.SeekMode)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
+| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](docroot://reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为[SEEK_CONTINUOUS](@ohos.multimedia.media:media.SeekMode)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode | [SeekMode](arkts-media-multimedia-media-seekmode-e.md) | 否 | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
+<a id="seektodefaultposition"></a>
 ## seekToDefaultPosition
 
 ```TypeScript
@@ -694,6 +718,7 @@ seekToDefaultPosition(): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="selecttrack"></a>
 ## selectTrack
 
 ```TypeScript
@@ -716,14 +741,14 @@ selectTrack(index: number, mode?: SwitchMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-2)接口返回的音视频轨道信息[MediaDescription](@ohos.multimedia.media:media.MediaDescription)中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考[MediaDescriptionKey](@ohos.multimedia.media:media.MediaDescriptionKey)对应Key值的说明。 |
+| index | number | 是 | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)接口返回的音视频轨道信息[MediaDescription](@ohos.multimedia.media:media.MediaDescription)中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考[MediaDescriptionKey](@ohos.multimedia.media:media.MediaDescriptionKey)对应Key值的说明。 |
 | mode | [SwitchMode](arkts-media-multimedia-media-switchmode-e.md) | 否 | 切换轨道的模式。<br>取值约束：该模式仅适用于视频轨道的切换。<br>默认值：SMOOTH模式，在片段末尾进行切换，以确保视频播放的连续性。**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。<br>**起始版本：** 26.0.0 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -732,6 +757,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="setmediamuted"></a>
 ## setMediaMuted
 
 ```TypeScript
@@ -761,7 +787,7 @@ setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -770,6 +796,7 @@ setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="setmediasource"></a>
 ## setMediaSource
 
 ```TypeScript
@@ -797,7 +824,7 @@ setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -806,6 +833,7 @@ setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="setplaybackstrategy"></a>
 ## setPlaybackStrategy
 
 ```TypeScript
@@ -832,7 +860,7 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -841,6 +869,7 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+<a id="settrackselectionfilter"></a>
 ## setTrackSelectionFilter
 
 ```TypeScript
@@ -867,7 +896,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -875,6 +904,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -897,6 +927,7 @@ setVolume(volume: number): void
 | --- | --- | --- | --- |
 | volume | number | 是 | 指定的相对音量大小，取值范围为[0.00-1.00]，1表示最大音量，即100%。 |
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -917,7 +948,7 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 停止播放的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 停止播放的回调方法。 |
 
 **错误码：**
 
@@ -925,6 +956,7 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -945,7 +977,7 @@ stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

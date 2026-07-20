@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="triggersystemliveview"></a>
 ## triggerSystemLiveView
 
 ```TypeScript
@@ -30,13 +31,13 @@ function triggerSystemLiveView(bundle: BundleOption, notificationId: number, but
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
 | notificationId | number | 是 | 通知ID。 |
-| buttonOptions | [ButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-button-buttonoptions-i.md) | 是 | 按钮信息。 |
+| buttonOptions | [ButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-buttonoptions-i.md) | 是 | 按钮信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

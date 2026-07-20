@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="minimizeallwithexclusion"></a>
 ## minimizeAllWithExclusion
 
 ```TypeScript
@@ -29,13 +30,13 @@ function minimizeAllWithExclusion(displayId: number, excludeWindowId: number): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | displayId | number | 是 | 屏幕ID，该参数仅支持整数输入，输入浮点数会向下取整。 |
-| excludeWindowId | number | 是 | 窗口ID。可通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到相关窗口属性，其中属性id即对应为窗口ID。窗口ID小于等于0，或窗口ID为null或者undefined时，会抛出[401错误码](../../../../reference/errorcode-universal.md#401-参数检查失败)；窗口ID大于0但是不存在会抛出1300002错误码；窗口ID大于0且窗口存在但是不在该屏幕，最小化指定屏幕上的所有主窗口。该参数仅支持整数输入，输入浮点数会向下取整。 |
+| excludeWindowId | number | 是 | 窗口ID。可通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties-1)接口获取到相关窗口属性，其中属性id即对应为窗口ID。窗口ID小于等于0，或窗口ID为null或者undefined时，会抛出[401错误码](docroot://reference/errorcode-universal.md#401-参数检查失败)；窗口ID大于0但是不存在会抛出1300002错误码；窗口ID大于0且窗口存在但是不在该屏幕，最小化指定屏幕上的所有主窗口。该参数仅支持整数输入，输入浮点数会向下取整。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

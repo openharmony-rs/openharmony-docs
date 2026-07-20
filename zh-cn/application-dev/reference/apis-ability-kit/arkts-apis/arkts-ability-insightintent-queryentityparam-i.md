@@ -22,7 +22,7 @@ parameters?: Record<string, Object>
 
 根据属性查询实体时的参数。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 26.0.0
 

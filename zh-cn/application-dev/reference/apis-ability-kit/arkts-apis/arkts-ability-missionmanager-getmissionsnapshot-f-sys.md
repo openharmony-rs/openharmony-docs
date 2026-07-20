@@ -6,6 +6,7 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
+<a id="getmissionsnapshot"></a>
 ## getMissionSnapShot
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getMissionSnapShot(deviceId: string, missionId: number, callback: Async
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<MissionSnapshot> | 是 | 执行结果回调函数，返回任务快照信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;MissionSnapshot&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ try {
 ```
 
 
+<a id="getmissionsnapshot-1"></a>
 ## getMissionSnapShot
 
 ```TypeScript
@@ -94,7 +96,7 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<MissionSnapshot> | Promise对象，返回任务快照信息。 |
+| Promise&lt;MissionSnapshot&gt; | Promise对象，返回任务快照信息。 |
 
 **错误码：**
 

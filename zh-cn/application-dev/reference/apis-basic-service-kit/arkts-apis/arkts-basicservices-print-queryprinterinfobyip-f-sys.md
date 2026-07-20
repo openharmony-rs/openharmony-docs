@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprinterinfobyip"></a>
 ## queryPrinterInfoByIp
 
 ```TypeScript
@@ -36,7 +37,7 @@ function queryPrinterInfoByIp(printerIp: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | the promise returned by the function. |
+| Promise&lt;void&gt; | the promise returned by the function. |
 
 **错误码：**
 

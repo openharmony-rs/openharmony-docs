@@ -14,6 +14,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="getfailedfiles"></a>
 ## getFailedFiles
 
 ```TypeScript
@@ -32,7 +33,7 @@ getFailedFiles(): Array<FailedFileInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<FailedFileInfo> | 返回缓存失败的文件URI列表及其对应的错误类型。 |
+| Array&lt;FailedFileInfo&gt; | 返回缓存失败的文件URI列表及其对应的错误类型。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 ```
 
+<a id="getsuccessfulfiles"></a>
 ## getSuccessfulFiles
 
 ```TypeScript
@@ -91,7 +93,7 @@ getSuccessfulFiles(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 数组类型，返回缓存成功的文件URI列表。 |
+| Array&lt;string&gt; | 数组类型，返回缓存成功的文件URI列表。 |
 
 **错误码：**
 

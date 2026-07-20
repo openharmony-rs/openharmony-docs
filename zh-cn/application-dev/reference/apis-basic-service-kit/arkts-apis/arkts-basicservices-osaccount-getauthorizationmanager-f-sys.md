@@ -6,6 +6,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="getauthorizationmanager"></a>
 ## getAuthorizationManager
 
 ```TypeScript

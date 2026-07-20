@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
+<a id="setusbpolicy"></a>
 ## setUsbPolicy
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | usbPolicy | [UsbPolicy](arkts-mdm-usbmanager-usbpolicy-e.md) | 是 | USB读写策略（此接口只支持READ_WRITE和READ_ONLY）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ usbManager.setUsbPolicy(wantTemp, policy, (err) => {
 ```
 
 
+<a id="setusbpolicy-1"></a>
 ## setUsbPolicy
 
 ```TypeScript
@@ -107,7 +109,7 @@ function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当设置USB策略失败时抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置USB策略失败时抛出错误对象。 |
 
 **错误码：**
 

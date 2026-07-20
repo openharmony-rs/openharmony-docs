@@ -1,5 +1,6 @@
 # ftruncateSync
 
+<a id="ftruncatesync"></a>
 ## ftruncateSync
 
 ```TypeScript

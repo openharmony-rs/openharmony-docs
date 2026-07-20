@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="unwrapkeyitem"></a>
 ## unwrapKeyItem
 
 ```TypeScript
@@ -34,13 +35,13 @@ function unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8A
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，指定导入密钥的密钥别名。 |
 | params | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于指定导入密钥时的加密类型。 |
-| wrappedKey | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 加密导出密钥的密文。 |
+| wrappedKey | Uint8Array | 是 | 加密导出密钥的密文。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<HuksReturnResult> | Promise对象，返回调用接口的结果。 |
+| Promise&lt;HuksReturnResult&gt; | Promise对象，返回调用接口的结果。 |
 
 **错误码：**
 

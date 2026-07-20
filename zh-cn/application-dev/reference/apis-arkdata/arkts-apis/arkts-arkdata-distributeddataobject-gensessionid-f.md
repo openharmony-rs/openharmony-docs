@@ -6,6 +6,7 @@
 import { distributedDataObject } from '@kit.ArkData';
 ```
 
+<a id="gensessionid"></a>
 ## genSessionId
 
 ```TypeScript

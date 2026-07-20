@@ -6,6 +6,7 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
+<a id="movemissionstobackground"></a>
 ## moveMissionsToBackground
 
 ```TypeScript
@@ -28,8 +29,8 @@ function moveMissionsToBackground(missionIds: Array<number>, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 任务ID数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<number>> | 是 | 执行结果回调函数。 |
+| missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -76,6 +77,7 @@ try {
 ```
 
 
+<a id="movemissionstobackground-1"></a>
 ## moveMissionsToBackground
 
 ```TypeScript
@@ -98,13 +100,13 @@ function moveMissionsToBackground(missionIds: Array<number>): Promise<Array<numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 任务ID数组。 |
+| missionIds | Array&lt;number&gt; | 是 | 任务ID数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象，返回任务ID。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回任务ID。 |
 
 **错误码：**
 

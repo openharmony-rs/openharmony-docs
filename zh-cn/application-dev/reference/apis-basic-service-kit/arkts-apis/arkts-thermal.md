@@ -20,12 +20,12 @@ import { thermal } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel-1) | 获取当前热档位信息。 |
-| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md#getthermallevel-1) | 获取当前热档位信息。 |
-| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
-| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md#subscribethermallevel-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
-| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
-| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md#unsubscribethermallevel-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel) | 获取当前热档位信息。 |
+| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md#getthermallevel) | 获取当前热档位信息。 |
+| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md#subscribethermallevel) | 订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
+| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md#unsubscribethermallevel) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。 |
 
 ### 枚举
 

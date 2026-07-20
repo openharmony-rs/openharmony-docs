@@ -6,6 +6,7 @@
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="enableleakwatcher"></a>
 ## enableLeakWatcher
 
 ```TypeScript
@@ -27,8 +28,8 @@ function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isEnabled | boolean | 是 | �Ƿ�ʹ��ArkTS�����ڴ�й©��⹦�ܡ�true������ArkTS�ڴ�й©��⹦�ܣ�false���ر�ArkTS�ڴ�й©��⹦�ܡ� |
-| configs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | �����������ÿ��Ԫ��Ϊ�������������͡�<br>�������������XComponent��NodeContainer��Window��CustomComponent��Ability��<br>**˵��**���������������������ȫ������ |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<Array<string>> | 是 | �ص����������ڽ���jsLeakWatcher.enableLeakWatcher�ӿڷ��ص��ڴ�й©�ļ��б���������ڴ�����ļ���<br>�ص������д���һ��������������0Ϊй©�б��ļ�������׺Ϊ.jsleaklist������1Ϊ������ڴ�����ļ�������׺Ϊ.rawheap�� |
+| configs | Array&lt;string&gt; | 是 | �����������ÿ��Ԫ��Ϊ�������������͡�<br>�������������XComponent��NodeContainer��Window��CustomComponent��Ability��<br>**˵��**���������������������ȫ������ |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | �ص����������ڽ���jsLeakWatcher.enableLeakWatcher�ӿڷ��ص��ڴ�й©�ļ��б���������ڴ�����ļ���<br>�ص������д���һ��������������0Ϊй©�б��ļ�������׺Ϊ.jsleaklist������1Ϊ������ڴ�����ļ�������׺Ϊ.rawheap�� |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath: Array<string>) => {
 ```
 
 
+<a id="enableleakwatcher-1"></a>
 ## enableLeakWatcher
 
 ```TypeScript
@@ -78,7 +80,7 @@ function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callb
 | --- | --- | --- | --- |
 | isEnabled | boolean | 是 | �Ƿ�ʹ��ArkTS�����ڴ�й©��⹦�ܡ�<br>true������ArkTS�ڴ�й©��⹦�ܡ�<br>false���ر�ArkTS�ڴ�й©��⹦�ܡ� |
 | configs | [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md) | 是 | LeakWatcherConfig�������ͣ������а�����������ڴ�й©���Ŀ��������ԡ�<br>**˵��**�������в������ʹ����ֵ���ֵ��������������ΪĬ��ֵ�� |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<Array<string>> | 是 | �ص����������ڽ���й©���ĵ����ļ�·����<br>�ص������д���һ��������������0Ϊй©�б��ļ�������׺Ϊ.jsleaklist������1Ϊ������ڴ�����ļ�������׺Ϊ.rawheap�� |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | �ص����������ڽ���й©���ĵ����ļ�·����<br>�ص������д���һ��������������0Ϊй©�б��ļ�������׺Ϊ.jsleaklist������1Ϊ������ڴ�����ļ�������׺Ϊ.rawheap�� |
 
 **错误码：**
 

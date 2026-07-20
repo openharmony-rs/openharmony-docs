@@ -30,9 +30,9 @@ readonly appIndex: number
 readonly applicationInfo: ApplicationInfo
 ```
 
-应用程序的配置信息<!--Del-->，可以通过调用[queryExtensionAbilityInfo](arkts-ability-bundlemanager-queryextensionabilityinfo-f-sys.md#queryextensionabilityinfo-2)接口，extensionAbilityFlags参数传入GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION获取<!--DelEnd-->。
+应用程序的配置信息<!--Del-->，可以通过调用[queryExtensionAbilityInfo](arkts-ability-bundlemanager-queryextensionabilityinfo-f-sys.md#queryextensionabilityinfo-1)接口，extensionAbilityFlags参数传入GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION获取<!--DelEnd-->。
 
-[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)或者[getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-2)接口获取ExtensionAbilityInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).appInfo对象来获取相关信息。
+[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)或者[getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-1)接口获取ExtensionAbilityInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).appInfo对象来获取相关信息。
 
 **类型：** ApplicationInfo
 
@@ -140,7 +140,7 @@ ExtensionAbility类型。
 readonly extensionAbilityTypeName: string
 ```
 
-ExtensionAbility的类型名称，取值请参考[extensionabilities标签下的type字段](../../../../quick-start/module-configuration-file.md#extensionabilities标签)。
+ExtensionAbility的类型名称，取值请参考[extensionabilities标签下的type字段](docroot://quick-start/module-configuration-file.md#extensionabilities标签)。
 
 **类型：** string
 
@@ -196,7 +196,7 @@ readonly metadata: Array<Metadata>
 
 ExtensionAbility的元信息。通过调用[getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself-1)接口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY和GET_BUNDLE_INFO_WITH_METADATA获取。
 
-**类型：** Array<Metadata>
+**类型：** Array&lt;Metadata&gt;
 
 **起始版本：** 9
 
@@ -250,7 +250,7 @@ readonly permissions: Array<string>
 
 被其他应用ExtensionAbility调用时需要申请的权限集合。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 
@@ -286,7 +286,7 @@ readonly skills: Array<Skill>
 
 ExtensionAbility的Skills信息。
 
-**类型：** Array<Skill>
+**类型：** Array&lt;Skill&gt;
 
 **起始版本：** 12
 

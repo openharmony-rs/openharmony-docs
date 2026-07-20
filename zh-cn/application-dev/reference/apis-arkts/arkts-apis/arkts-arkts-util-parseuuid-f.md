@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="parseuuid"></a>
 ## parseUUID
 
 ```TypeScript
@@ -32,7 +33,7 @@ function parseUUID(uuid: string): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 表示解析后 UUID 的 Uint8Array 值。如果解析失败，则抛出 **SyntaxError**。 |
+| Uint8Array | 表示解析后 UUID 的 Uint8Array 值。如果解析失败，则抛出 **SyntaxError**。 |
 
 **错误码：**
 

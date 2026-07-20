@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryallprinterextensioninfos"></a>
 ## queryAllPrinterExtensionInfos
 
 ```TypeScript
@@ -28,7 +29,7 @@ function queryAllPrinterExtensionInfos(callback: AsyncCallback<Array<PrinterExte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<Array<PrinterExtensionInfo>> | 是 | 异步查询所有已安装的打印机扩展服务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;PrinterExtensionInfo&gt;&gt; | 是 | 异步查询所有已安装的打印机扩展服务之后的回调。 |
 
 **错误码：**
 
@@ -54,6 +55,7 @@ print.queryAllPrinterExtensionInfos((err: BusinessError, extensionInfos: print.P
 ```
 
 
+<a id="queryallprinterextensioninfos-1"></a>
 ## queryAllPrinterExtensionInfos
 
 ```TypeScript
@@ -76,7 +78,7 @@ function queryAllPrinterExtensionInfos(): Promise<Array<PrinterExtensionInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PrinterExtensionInfo>> | Promise对象，返回包含所有已安装的打印机扩展服务信息的列表。 |
+| Promise&lt;Array&lt;PrinterExtensionInfo&gt;&gt; | Promise对象，返回包含所有已安装的打印机扩展服务信息的列表。 |
 
 **错误码：**
 

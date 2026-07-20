@@ -2,9 +2,11 @@
 
 ChipGroupV2组件提供操作块群组，用于文件或资源内容的分类等场景。
 
-该组件基于[状态管理（V2）](../../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以更灵活地控制组件的数据和状态，实现更高效的用户界面刷新。
+该组件基于[状态管理（V2）](docroot://ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](docroot://ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以更灵活地控制组件的数据和状态，实现更高效的用户界面刷新。
 
 **起始版本：** 26.0.0
+
+**装饰器类型：** @ComponentV2
 
 <!--Device-unnamed-export declare struct ChipGroupV2--><!--Device-unnamed-export declare struct ChipGroupV2-End-->
 
@@ -16,6 +18,7 @@ ChipGroupV2组件提供操作块群组，用于文件或资源内容的分类等
 import { ChipGroupV2ItemConfig, ChipGroupV2ItemStyleConfig, ChipGroupV2SpaceConfig, ChipGroupV2IconGroupSuffix, ChipGroupV2Items, ChipGroupV2Padding, ChipGroupV2Item, ChipGroupV2ItemStyle, ChipGroupV2, ChipGroupV2PaddingConfig, ChipGroupV2IconItemConfig, ChipGroupV2SymbolItemConfig, ChipGroupV2Space } from '@kit.ArkUI';
 ```
 
+<a id="build"></a>
 ## build
 
 ```TypeScript
@@ -44,7 +47,7 @@ ChipV2项的双向绑定回调方法。
 
 默认值：undefined，不触发回调。
 
-**类型：** Callback<ChipGroupV2Items>
+**类型：** Callback&lt;ChipGroupV2Items&gt;
 
 **起始版本：** 26.0.0
 
@@ -66,7 +69,7 @@ $selectedIndexes?: Callback<Array<number>>
 
 默认值：undefined，不触发回调。
 
-**类型：** Callback<Array<number>>
+**类型：** Callback&lt;Array&lt;number&gt;&gt;
 
 **起始版本：** 26.0.0
 
@@ -96,6 +99,8 @@ chipGroupPadding?: ChipGroupV2Padding
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Param
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -122,6 +127,8 @@ chipGroupSpace?: ChipGroupV2Space
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Param
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -144,11 +151,13 @@ ChipV2的style属性，如颜色，大小等，参考[ChipGroupV2ItemStyle](arkt
 
 值为undefined时，按默认值处理。
 
-图标填充色（[fillColor](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)和[activatedFillColor](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)）的设置与字体颜色（[fontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md)）保持一致。如果需要设置不同的颜色，可以在传入items时使用[prefixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)和[suffixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)。
+图标填充色（[fillColor](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)和[activatedFillColor](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)）的设置与字体颜色（[fontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md)）保持一致。如果需要设置不同的颜色，可以在传入items时使用[prefixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)和[suffixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)。
 
 **类型：** ChipGroupV2ItemStyle
 
 **起始版本：** 26.0.0
+
+**装饰器类型：** @Param
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -166,11 +175,13 @@ items: ChipGroupV2Items
 
 每个ChipV2的特定属性，参考[ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)类型。
 
-值为undefined或空数组时，ChipGroupV2不渲染内部的[ChipV2](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md)。
+值为undefined或空数组时，ChipGroupV2不渲染内部的[ChipV2](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipV2.md)。
 
 **类型：** ChipGroupV2Items
 
 **起始版本：** 26.0.0
+
+**装饰器类型：** @Require、@Param
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -198,6 +209,8 @@ true：支持多个ChipV2选中；false：仅支持单个ChipV2选中。
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Param
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -216,7 +229,7 @@ ChipV2状态改变时的回调方法。
 
 默认值：undefined，不触发事件。
 
-**类型：** Callback<Array<number>>
+**类型：** Callback&lt;Array&lt;number&gt;&gt;
 
 **起始版本：** 26.0.0
 
@@ -242,9 +255,11 @@ selectedIndexes?: Array<number>
 
 当multiple等于false时，如果没有传入selectedIndexes，默认是第一个ChipV2被选中，如果传入的selectedIndexes有多个元素时，默认第一个索引的ChipV2被选中。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 26.0.0
+
+**装饰器类型：** @Param
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,7 +279,7 @@ suffix?: Callback<void>
 
 默认值：undefined，不在最右侧显示自定义内容。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 26.0.0
 

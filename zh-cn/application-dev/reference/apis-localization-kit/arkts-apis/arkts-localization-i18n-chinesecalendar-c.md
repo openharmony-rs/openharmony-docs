@@ -16,6 +16,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="checkleapmonth"></a>
 ## checkLeapMonth
 
 ```TypeScript
@@ -54,6 +55,7 @@ public static checkLeapMonth(gregorianYear: number, cyclicalYear: number, month:
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="setchinesecalendartime"></a>
 ## setChineseCalendarTime
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript

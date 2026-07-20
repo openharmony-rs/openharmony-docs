@@ -6,6 +6,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="onautosynctrigger"></a>
 ## onAutoSyncTrigger
 
 ```TypeScript
@@ -26,7 +27,7 @@ function onAutoSyncTrigger(observer: Callback<AutoSyncTriggerInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observer | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AutoSyncTriggerInfo> | 是 | 回调函数。 |
+| observer | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AutoSyncTriggerInfo&gt; | 是 | 回调函数。 |
 
 **错误码：**
 

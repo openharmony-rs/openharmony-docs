@@ -14,6 +14,7 @@
 import { linkEnhance } from '@kit.DistributedServiceKit';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -65,6 +66,7 @@ try {
 
 ```
 
+<a id="connect"></a>
 ## connect
 
 ```TypeScript
@@ -119,6 +121,7 @@ try {
 
 ```
 
+<a id="disconnect"></a>
 ## disconnect
 
 ```TypeScript
@@ -170,6 +173,7 @@ try {
 
 ```
 
+<a id="getpeerdeviceid"></a>
 ## getPeerDeviceId
 
 ```TypeScript
@@ -221,6 +225,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('connectResult')
 
 ```TypeScript
@@ -244,7 +249,7 @@ off(type: 'connectResult', callback?: Callback<ConnectResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectResult' | 是 | 事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ConnectResult> | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ConnectResult&gt; | 否 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -280,6 +285,7 @@ try {
 
 ```
 
+<a id="off-1"></a>
 ## off('disconnected')
 
 ```TypeScript
@@ -303,7 +309,7 @@ off(type: 'disconnected', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'disconnected' | 是 | 事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
@@ -339,6 +345,7 @@ try {
 
 ```
 
+<a id="off-2"></a>
 ## off('dataReceived')
 
 ```TypeScript
@@ -362,7 +369,7 @@ off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataReceived' | 是 | 事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ArrayBuffer> | 否 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ArrayBuffer&gt; | 否 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -399,6 +406,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('connectResult')
 
 ```TypeScript
@@ -422,7 +430,7 @@ on(type: 'connectResult', callback: Callback<ConnectResult>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'connectResult' | 是 | 事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ConnectResult> | 是 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ConnectResult&gt; | 是 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -458,6 +466,7 @@ try {
 
 ```
 
+<a id="on-1"></a>
 ## on('disconnected')
 
 ```TypeScript
@@ -481,7 +490,7 @@ on(type: 'disconnected', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'disconnected' | 是 | 事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 注册的回调函数，number为返回的错误码。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 注册的回调函数，number为返回的错误码。 |
 
 **错误码：**
 
@@ -514,6 +523,7 @@ try {
 
 ```
 
+<a id="on-2"></a>
 ## on('dataReceived')
 
 ```TypeScript
@@ -537,7 +547,7 @@ on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'dataReceived' | 是 | 事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ArrayBuffer> | 是 | 注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ArrayBuffer&gt; | 是 | 注册的回调函数。 |
 
 **错误码：**
 
@@ -572,6 +582,7 @@ try {
 
 ```
 
+<a id="senddata"></a>
 ## sendData
 
 ```TypeScript
@@ -594,7 +605,7 @@ sendData(data: ArrayBuffer): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 需要发送的数据，最大发送长度为1024字节。 |
+| data | ArrayBuffer | 是 | 需要发送的数据，最大发送长度为1024字节。 |
 
 **错误码：**
 

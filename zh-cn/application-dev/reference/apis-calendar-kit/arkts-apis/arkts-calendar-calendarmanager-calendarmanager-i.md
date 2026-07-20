@@ -14,6 +14,7 @@
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
+<a id="createcalendar"></a>
 ## createCalendar
 
 ```TypeScript
@@ -40,7 +41,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Calendar> | Promise对象，返回创建的Calendar对象。 |
+| Promise&lt;Calendar&gt; | Promise对象，返回创建的Calendar对象。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
+<a id="createcalendar-1"></a>
 ## createCalendar
 
 ```TypeScript
@@ -94,7 +96,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calenda
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | calendarAccount | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 是 | 日历账户信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Calendar> | 是 | 回调函数，当创建账户成功时，err为undefined，data为创建成功的Calendar；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Calendar&gt; | 是 | 回调函数，当创建账户成功时，err为undefined，data为创建成功的Calendar；否则为错误对象。 |
 
 **错误码：**
 
@@ -132,6 +134,7 @@ try {
 
 ```
 
+<a id="deletecalendar"></a>
 ## deleteCalendar
 
 ```TypeScript
@@ -158,7 +161,7 @@ deleteCalendar(calendar: Calendar): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -202,6 +205,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
+<a id="deletecalendar-1"></a>
 ## deleteCalendar
 
 ```TypeScript
@@ -223,7 +227,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | calendar | [Calendar](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-calendar-c.md) | 是 | 即将删除的Calendar对象。无法删除默认账户。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当删除账户成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当删除账户成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -270,6 +274,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
+<a id="editevent"></a>
 ## editEvent
 
 ```TypeScript
@@ -296,7 +301,7 @@ editEvent(event: Event): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回日程的id，日程id是日程的唯一标识符，是数据库的自增主键。创建失败时没有返回值；当返回值小于0时代表用户取消创建；当返回值大于0时代表日程创建成功；没有等于0的情况。 |
+| Promise&lt;number&gt; | Promise对象，返回日程的id，日程id是日程的唯一标识符，是数据库的自增主键。创建失败时没有返回值；当返回值小于0时代表用户取消创建；当返回值大于0时代表日程创建成功；没有等于0的情况。 |
 
 **示例：**
 
@@ -318,6 +323,7 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 
 ```
 
+<a id="getallcalendars"></a>
 ## getAllCalendars
 
 ```TypeScript
@@ -338,7 +344,7 @@ getAllCalendars(): Promise<Calendar[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Calendar[]> | Promise对象，返回查询到的Calendar对象数组。 |
+| Promise&lt;Calendar[]&gt; | Promise对象，返回查询到的Calendar对象数组。 |
 
 **错误码：**
 
@@ -371,6 +377,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 ```
 
+<a id="getallcalendars-1"></a>
 ## getAllCalendars
 
 ```TypeScript
@@ -391,7 +398,7 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Calendar[]> | 是 | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Calendar[]&gt; | 是 | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -424,6 +431,7 @@ calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar
 
 ```
 
+<a id="getcalendar"></a>
 ## getCalendar
 
 ```TypeScript
@@ -452,7 +460,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Calendar> | Promise对象，返回查询到的Calendar对象。 |
+| Promise&lt;Calendar&gt; | Promise对象，返回查询到的Calendar对象。 |
 
 **错误码：**
 
@@ -481,6 +489,7 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
 
 ```
 
+<a id="getcalendar-1"></a>
 ## getCalendar
 
 ```TypeScript
@@ -504,7 +513,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | calendarAccount | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 是 | 指定日历账户信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Calendar> | 是 | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Calendar&gt; | 是 | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar；否则为错误对象。 |
 
 **错误码：**
 
@@ -545,6 +554,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 ```
 
+<a id="getcalendar-2"></a>
 ## getCalendar
 
 ```TypeScript
@@ -567,7 +577,7 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Calendar> | 是 | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Calendar&gt; | 是 | 回调函数，当查询账户成功时，err为undefined，data为查询到的Calendar；否则为错误对象。 |
 
 **错误码：**
 

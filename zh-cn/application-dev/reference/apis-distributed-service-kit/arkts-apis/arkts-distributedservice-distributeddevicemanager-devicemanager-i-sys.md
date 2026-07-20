@@ -14,6 +14,7 @@
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="getdeviceiconinfo"></a>
 ## getDeviceIconInfo
 
 ```TypeScript
@@ -42,7 +43,7 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise<DeviceIco
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DeviceIconInfo> | Promise实例，返回设备图标信息。 |
+| Promise&lt;DeviceIconInfo&gt; | Promise实例，返回设备图标信息。 |
 
 **错误码：**
 
@@ -85,6 +86,7 @@ try {
 
 ```
 
+<a id="getdevicenetworkidlist"></a>
 ## getDeviceNetworkIdList
 
 ```TypeScript
@@ -113,7 +115,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise实例，返回设备网络ID的列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise实例，返回设备网络ID的列表。 |
 
 **错误码：**
 
@@ -149,6 +151,7 @@ try {
 
 ```
 
+<a id="getdeviceprofileinfolist"></a>
 ## getDeviceProfileInfoList
 
 ```TypeScript
@@ -177,7 +180,7 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DeviceProfileInfo>> | Promise实例，返回设备列表。 |
+| Promise&lt;Array&lt;DeviceProfileInfo&gt;&gt; | Promise实例，返回设备列表。 |
 
 **错误码：**
 
@@ -210,6 +213,7 @@ try {
 
 ```
 
+<a id="getidentificationbydeviceids"></a>
 ## getIdentificationByDeviceIds
 
 ```TypeScript
@@ -234,13 +238,13 @@ getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentificati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用程序可以获取的设备ID列表。 |
+| deviceIds | Array&lt;string&gt; | 是 | 应用程序可以获取的设备ID列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DeviceIdentification> | DeviceIdentification列表。 |
+| Array&lt;DeviceIdentification&gt; | DeviceIdentification列表。 |
 
 **错误码：**
 
@@ -268,6 +272,7 @@ try {
 
 ```
 
+<a id="getlocaldisplaydevicename"></a>
 ## getLocalDisplayDeviceName
 
 ```TypeScript
@@ -296,7 +301,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 指定名称长度最大字节数的本机设备显示名。 |
+| Promise&lt;string&gt; | 指定名称长度最大字节数的本机设备显示名。 |
 
 **错误码：**
 
@@ -328,6 +333,7 @@ try {
 
 ```
 
+<a id="getostypebynetworkid"></a>
 ## getOsTypeByNetworkId
 
 ```TypeScript
@@ -369,6 +375,7 @@ getOsTypeByNetworkId(networkId: string): number
 | [11600102](../../apis-distributedservice-kit/errorcode-device-manager.md#11600102-获取服务失败) | Failed to obtain service. |
 | 11600110 | Invalid network ID. |
 
+<a id="off"></a>
 ## off('replyResult')
 
 ```TypeScript
@@ -392,7 +399,7 @@ off(type: 'replyResult', callback?: Callback<{ param: string; }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'replyResult' | 是 | 取消注册的设备管理器 UI 状态回调，固定为replyResult。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<{ param: string; }> | 否 |  |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;{ param: string; }&gt; | 否 |  |
 
 **错误码：**
 
@@ -418,6 +425,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('replyResult')
 
 ```TypeScript
@@ -441,7 +449,7 @@ on(type: 'replyResult', callback: Callback<{ param: string; }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'replyResult' | 是 | 注册的设备管理器 UI 状态回调，以便在状态改变时通知应用，固定为replyResult。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<{ param: string; }> | 是 |  |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;{ param: string; }&gt; | 是 |  |
 
 **错误码：**
 
@@ -480,6 +488,7 @@ try {
 
 ```
 
+<a id="putdeviceprofileinfolist"></a>
 ## putDeviceProfileInfoList
 
 ```TypeScript
@@ -502,13 +511,13 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceProfileInfoList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DeviceProfileInfo> | 是 | 需要更新的设备列表。 |
+| deviceProfileInfoList | Array&lt;DeviceProfileInfo&gt; | 是 | 需要更新的设备列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 操作结果，0表示本次调用成功。 |
+| Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -540,6 +549,7 @@ try {
 
 ```
 
+<a id="replyuiaction"></a>
 ## replyUiAction
 
 ```TypeScript
@@ -598,6 +608,7 @@ try {
 
 ```
 
+<a id="restorelocaldeivcename"></a>
 ## restoreLocalDeivceName
 
 ```TypeScript
@@ -644,6 +655,7 @@ try {
 
 ```
 
+<a id="restorelocaldevicename"></a>
 ## restoreLocalDeviceName
 
 ```TypeScript
@@ -688,6 +700,7 @@ try {
 
 ```
 
+<a id="setheartbeatpolicy"></a>
 ## setHeartbeatPolicy
 
 ```TypeScript
@@ -740,6 +753,7 @@ try {
 
 ```
 
+<a id="setlocaldevicename"></a>
 ## setLocalDeviceName
 
 ```TypeScript
@@ -768,7 +782,7 @@ setLocalDeviceName(deviceName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 操作结果，0表示本次调用成功。 |
+| Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -803,6 +817,7 @@ try {
 
 ```
 
+<a id="setremotedevicename"></a>
 ## setRemoteDeviceName
 
 ```TypeScript
@@ -832,7 +847,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 操作结果，0表示本次调用成功。 |
+| Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 

@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="enabledec"></a>
 ## enableDec
 
 ```TypeScript
@@ -36,6 +37,7 @@ enableDec(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | “减少”按钮禁用或使能。<br/>默认值：true，true表示使能“减少”按钮，false表示禁用“减少”按钮。 |
 
+<a id="enableinc"></a>
 ## enableInc
 
 ```TypeScript
@@ -60,6 +62,7 @@ enableInc(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | “增加”按钮禁用或使能。<br/>默认值：true，true表示使能“增加”按钮，false表示禁用“增加”按钮。 |
 
+<a id="ondec"></a>
 ## onDec
 
 ```TypeScript
@@ -84,6 +87,7 @@ onDec(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | Counter数值减少的回调函数。<br>**起始版本：** 18 |
 
+<a id="oninc"></a>
 ## onInc
 
 ```TypeScript

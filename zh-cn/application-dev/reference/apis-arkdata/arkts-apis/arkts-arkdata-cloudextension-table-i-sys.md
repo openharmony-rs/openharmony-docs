@@ -42,7 +42,7 @@ fields: Array<Field>
 
 数据库表中的字段结构信息。
 
-**类型：** Array<Field>
+**类型：** Array&lt;Field&gt;
 
 **起始版本：** 11
 

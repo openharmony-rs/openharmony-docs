@@ -198,7 +198,7 @@ wants?: Array<ShortcutWant>
 
 快捷方式内定义的目标wants信息集合。
 
-**类型：** Array<ShortcutWant>
+**类型：** Array&lt;ShortcutWant&gt;
 
 **起始版本：** 20
 

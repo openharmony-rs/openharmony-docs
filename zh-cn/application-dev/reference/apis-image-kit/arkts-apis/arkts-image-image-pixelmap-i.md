@@ -1,6 +1,6 @@
 # PixelMap
 
-The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-2)to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width x Height x [Bytes per pixel](arkts-image-image-pixelmapformat-e.md).Since API version 11, PixelMap supports cross-thread calls through [Worker](../../apis-arkts/arkts-apis/arkts-worker.md). If a PixelMap object is invoked by another thread through [Worker](../../apis-arkts/arkts-apis/arkts-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request.Before calling any API in PixelMap, you can use [image.createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-2)to pass pixel data to create a PixelMap object, or use [ImageSource](arkts-multimedia-image.md) to decode an image to a PixelMap object.To develop an atomic service, use [ImageSource](arkts-multimedia-image.md) to create a PixelMap object.Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](arkts-image-image-pixelmap-i.md#release-2) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-1)to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width x Height x [Bytes per pixel](arkts-image-image-pixelmapformat-e.md).Since API version 11, PixelMap supports cross-thread calls through [Worker](../../apis-arkts/arkts-apis/arkts-worker.md). If a PixelMap object is invoked by another thread through [Worker](../../apis-arkts/arkts-apis/arkts-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request.Before calling any API in PixelMap, you can use [image.createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-1)to pass pixel data to create a PixelMap object, or use [ImageSource](arkts-multimedia-image.md) to decode an image to a PixelMap object.To develop an atomic service, use [ImageSource](arkts-multimedia-image.md) to create a PixelMap object.Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](arkts-image-image-pixelmap-i.md#release-1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **起始版本：** 7
 
@@ -14,6 +14,7 @@ The **PixelMap** class provides APIs to read or write image data and obtain imag
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="applycolorspace"></a>
 ## applyColorSpace
 
 ```TypeScript
@@ -33,7 +34,7 @@ Performs color space conversion (CSC) on the image pixel color based on a given 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetColorSpace | colorSpaceManager.ColorSpaceManager | 是 | Target color space. SRGB, DCI_P3, DISPLAY_P3,and ADOBE_RGB_1998 are supported. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
 **错误码：**
 
@@ -44,6 +45,7 @@ Performs color space conversion (CSC) on the image pixel color based on a given 
 | [62980108](../errorcode-image.md#62980108-图片颜色转换错误) | Failed to convert the color space. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 
+<a id="applycolorspace-1"></a>
 ## applyColorSpace
 
 ```TypeScript
@@ -68,7 +70,7 @@ Performs Color Space Converters (CSC) on the image pixel color based on a given 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -79,6 +81,7 @@ Performs Color Space Converters (CSC) on the image pixel color based on a given 
 | [62980108](../errorcode-image.md#62980108-图片颜色转换错误) | Failed to convert the color space. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 
+<a id="applycrop"></a>
 ## applyCrop
 
 ```TypeScript
@@ -109,7 +112,7 @@ Crops the PixelMap.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -122,6 +125,7 @@ Crops the PixelMap.
 | [7600204](../errorcode-image.md#7600204-无效的区域) | The specified region is invalid or out of range. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. Failed to process pixel data. 2. The system is out of memory. |
 
+<a id="applycropsync"></a>
 ## applyCropSync
 
 ```TypeScript
@@ -159,6 +163,7 @@ Crops the PixelMap.
 | [7600204](../errorcode-image.md#7600204-无效的区域) | The specified region is invalid or out of range. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. Failed to process pixel data. 2. The system is out of memory. |
 
+<a id="applyflip"></a>
 ## applyFlip
 
 ```TypeScript
@@ -190,7 +195,7 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -203,6 +208,7 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory. Possible cause: The system is out of memory. |
 
+<a id="applyflipsync"></a>
 ## applyFlipSync
 
 ```TypeScript
@@ -241,6 +247,7 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory. Possible cause: The system is out of memory. |
 
+<a id="applyrotate"></a>
 ## applyRotate
 
 ```TypeScript
@@ -273,7 +280,7 @@ Note: YUV format PixelMaps only support rotation angles that are multiples of 90
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -286,6 +293,7 @@ Note: YUV format PixelMaps only support rotation angles that are multiples of 90
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
+<a id="applyrotatesync"></a>
 ## applyRotateSync
 
 ```TypeScript
@@ -325,6 +333,7 @@ Note: YUV format PixelMaps only support rotation angles that are multiples of 90
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
+<a id="applyscale"></a>
 ## applyScale
 
 ```TypeScript
@@ -357,7 +366,7 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -370,6 +379,7 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
+<a id="applyscalesync"></a>
 ## applyScaleSync
 
 ```TypeScript
@@ -409,6 +419,7 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
+<a id="applytranslate"></a>
 ## applyTranslate
 
 ```TypeScript
@@ -440,7 +451,7 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -453,6 +464,7 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
+<a id="applytranslatesync"></a>
 ## applyTranslateSync
 
 ```TypeScript
@@ -491,6 +503,7 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory.Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
+<a id="clone"></a>
 ## clone
 
 ```TypeScript
@@ -509,7 +522,7 @@ Copies this PixelMap object. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -521,6 +534,7 @@ Copies this PixelMap object. This API uses a promise to return the result.
 | [62980104](../errorcode-image.md#62980104-图片初始化错误) | Image initialization abnormal.This status code is thrown when an error occurs during the process of creating empty pixelmap. |
 | [62980106](../errorcode-image.md#62980106-图片数据太大) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
+<a id="clonesync"></a>
 ## cloneSync
 
 ```TypeScript
@@ -551,6 +565,7 @@ Copies this PixelMap object. This API returns the result synchronously.
 | [62980104](../errorcode-image.md#62980104-图片初始化错误) | Image initialization abnormal.This status code is thrown when an error occurs during the process of creating empty pixelmap. |
 | [62980106](../errorcode-image.md#62980106-图片数据太大) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
+<a id="convertpixelformat"></a>
 ## convertPixelFormat
 
 ```TypeScript
@@ -575,7 +590,7 @@ The method is used for the transformation of the image formats. Pixel data will 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -587,6 +602,7 @@ The method is used for the transformation of the image formats. Pixel data will 
 | [62980276](../errorcode-image.md#62980276-不支持图片转换目标类型) | The type to be converted is an unsupported target pixel format. |
 | [62980178](../errorcode-image.md#62980178-pixelmap创建失败) | Failed to create the pixelmap. |
 
+<a id="createalphapixelmap"></a>
 ## createAlphaPixelmap
 
 ```TypeScript
@@ -611,8 +627,9 @@ Starting from API 26.0.0, it is recommended to use {@link extractAlphaPixelMap} 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
+<a id="createalphapixelmap-1"></a>
 ## createAlphaPixelmap
 
 ```TypeScript
@@ -637,8 +654,9 @@ Starting from API 26.0.0, it is recommended to use {@link extractAlphaPixelMap} 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PixelMap> | 是 | Callback used to return the result. If the operation is successful,**err** is undefined and **data** is the PixelMap object obtained; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PixelMap&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is undefined and **data** is the PixelMap object obtained; otherwise, **err** is an error object. |
 
+<a id="createalphapixelmapsync"></a>
 ## createAlphaPixelmapSync
 
 ```TypeScript
@@ -670,6 +688,7 @@ Starting from API 26.0.0, it is recommended to use {@link extractAlphaPixelMapSy
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="createcroppedandscaledpixelmap"></a>
 ## createCroppedAndScaledPixelMap
 
 ```TypeScript
@@ -697,7 +716,7 @@ Creates an image that has been cropped and resized based on the specified croppi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -708,6 +727,7 @@ Creates an image that has been cropped and resized based on the specified croppi
 | [7600205](../errorcode-image.md#7600205-不支持的内存格式或像素格式) | Unsupported memory format or pixel format. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Memory alloc failed. |
 
+<a id="createcroppedandscaledpixelmapsync"></a>
 ## createCroppedAndScaledPixelMapSync
 
 ```TypeScript
@@ -746,6 +766,7 @@ Creates an image that has been cropped and resized based on the specified croppi
 | [7600205](../errorcode-image.md#7600205-不支持的内存格式或像素格式) | Unsupported memory format or pixel format. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Memory alloc failed. |
 
+<a id="createscaledpixelmap"></a>
 ## createScaledPixelMap
 
 ```TypeScript
@@ -772,7 +793,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -781,6 +802,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="createscaledpixelmapsync"></a>
 ## createScaledPixelMapSync
 
 ```TypeScript
@@ -816,6 +838,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="crop"></a>
 ## crop
 
 ```TypeScript
@@ -841,8 +864,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyCrop} instead for
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | region | [Region](arkts-image-image-region-i.md) | 是 | Size of the image after cropping. The value cannot exceed the width or height of the image. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="crop-1"></a>
 ## crop
 
 ```TypeScript
@@ -873,8 +897,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyCrop} instead for
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="cropsync"></a>
 ## cropSync
 
 ```TypeScript
@@ -906,6 +931,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyCropSync} instead
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="extractalphapixelmap"></a>
 ## extractAlphaPixelMap
 
 ```TypeScript
@@ -930,7 +956,7 @@ Extracts the alpha channel from the current PixelMap to create a new ALPHA_U8 fo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | A Promise of the new ALPHA_U8 format PixelMap. |
+| Promise&lt;PixelMap&gt; | A Promise of the new ALPHA_U8 format PixelMap. |
 
 **错误码：**
 
@@ -942,6 +968,7 @@ Extracts the alpha channel from the current PixelMap to create a new ALPHA_U8 fo
 | [7600305](../errorcode-image.md#7600305-创建pixelmap失败) | Failed to create the PixelMap.Possible cause: Current PixelMap data is corrupted. |
 | [7600306](../errorcode-image.md#7600306-数据转换失败) | Failed to convert the data.Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
+<a id="extractalphapixelmapsync"></a>
 ## extractAlphaPixelMapSync
 
 ```TypeScript
@@ -978,6 +1005,7 @@ Extracts the alpha channel from the current PixelMap to create a new ALPHA_U8 fo
 | [7600305](../errorcode-image.md#7600305-创建pixelmap失败) | Failed to create the PixelMap.Possible cause: Current PixelMap data is corrupted. |
 | [7600306](../errorcode-image.md#7600306-数据转换失败) | Failed to convert the data.Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
+<a id="flip"></a>
 ## flip
 
 ```TypeScript
@@ -1004,8 +1032,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyFlip} instead for
 | --- | --- | --- | --- |
 | horizontal | boolean | 是 | Whether to flip the image horizontally. **true** to flip the image horizontally,**false** otherwise. |
 | vertical | boolean | 是 | Whether to flip the image vertically. **true** to flip the image vertically,**false** otherwise. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="flip-1"></a>
 ## flip
 
 ```TypeScript
@@ -1037,8 +1066,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyFlip} instead for
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="flipsync"></a>
 ## flipSync
 
 ```TypeScript
@@ -1071,6 +1101,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyFlipSync} instead
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="getbytesnumberperrow"></a>
 ## getBytesNumberPerRow
 
 ```TypeScript
@@ -1095,6 +1126,7 @@ Obtains the number of bytes per row of this image. Unit: bytes.
 | --- | --- |
 | number | Number of bytes per row. |
 
+<a id="getcolorspace"></a>
 ## getColorSpace
 
 ```TypeScript
@@ -1123,6 +1155,7 @@ Obtains the color space of this image.
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 
+<a id="getdensity"></a>
 ## getDensity
 
 ```TypeScript
@@ -1147,6 +1180,7 @@ Obtains the pixel density of this image. Unit: ppi (pixels/inch)
 | --- | --- |
 | number | Pixel density, in ppi. |
 
+<a id="getimageinfo"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -1169,8 +1203,9 @@ Obtains the image information of a PixelMap. This API uses a promise to return t
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ImageInfo> | Promise used to return the image information. |
+| Promise&lt;ImageInfo&gt; | Promise used to return the image information. |
 
+<a id="getimageinfo-1"></a>
 ## getImageInfo
 
 ```TypeScript
@@ -1193,8 +1228,9 @@ Obtains the image information. This API uses an asynchronous callback to return 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ImageInfo> | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the image information obtained; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ImageInfo&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the image information obtained; otherwise, **err** is an error object. |
 
+<a id="getimageinfosync"></a>
 ## getImageInfoSync
 
 ```TypeScript
@@ -1225,6 +1261,7 @@ Obtains the image information. This API returns the result synchronously.
 | --- | --- |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="getmetadata"></a>
 ## getMetadata
 
 ```TypeScript
@@ -1260,6 +1297,7 @@ Obtains the value of the metadata with a given key in this PixelMap.
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980302](../errorcode-image.md#62980302-内存拷贝失败) | Memory copy failed. Possibly caused by invalid metadata value. |
 
+<a id="getpixelbytesnumber"></a>
 ## getPixelBytesNumber
 
 ```TypeScript
@@ -1284,6 +1322,7 @@ Obtains the total number of bytes of this image. Unit: bytes.
 | --- | --- |
 | number | Total number of bytes. |
 
+<a id="getuniqueid"></a>
 ## getUniqueId
 
 ```TypeScript
@@ -1310,6 +1349,7 @@ Obtains the unique ID of this PixelMap.
 | --- | --- |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | The PixelMap has been released. |
 
+<a id="isreleased"></a>
 ## isReleased
 
 ```TypeScript
@@ -1335,6 +1375,7 @@ Checks whether this PixelMap object is released. If released, any attempt to acc
 | --- | --- |
 | boolean | Check result for whether the PixelMap object is released. **true** if released; **false** otherwise. |
 
+<a id="marshalling"></a>
 ## marshalling
 
 ```TypeScript
@@ -1362,6 +1403,7 @@ Marshals this PixelMap object and writes it to a MessageSequence object.
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
 | [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.3. Decode process exception. 4. Insufficient memory. |
 
+<a id="opacity"></a>
 ## opacity
 
 ```TypeScript
@@ -1387,8 +1429,9 @@ Starting from API 26.0.0, it is recommended to use {@link setOpacity} instead fo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | rate | number | 是 | Opacity rate. The value range is (0,1]. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="opacity-1"></a>
 ## opacity
 
 ```TypeScript
@@ -1419,8 +1462,9 @@ Starting from API 26.0.0, it is recommended to use {@link setOpacity} instead fo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="opacitysync"></a>
 ## opacitySync
 
 ```TypeScript
@@ -1452,6 +1496,7 @@ Starting from API 26.0.0, it is recommended to use {@link setOpacitySync} instea
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="readallpixelstobuffer"></a>
 ## readAllPixelsToBuffer
 
 ```TypeScript
@@ -1476,13 +1521,13 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer.The r
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The buffer to receive the pixel data from the PixelMap. |
+| dst | ArrayBuffer | 是 | The buffer to receive the pixel data from the PixelMap. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -1494,6 +1539,7 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer.The r
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: Size of the buffer is too small. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="readallpixelstobuffersync"></a>
 ## readAllPixelsToBufferSync
 
 ```TypeScript
@@ -1518,7 +1564,7 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer.The r
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The buffer to receive the pixel data from the PixelMap. |
+| dst | ArrayBuffer | 是 | The buffer to receive the pixel data from the PixelMap. |
 
 **错误码：**
 
@@ -1530,6 +1576,7 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer.The r
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: Size of the buffer is too small. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="readpixels"></a>
 ## readPixels
 
 ```TypeScript
@@ -1560,8 +1607,9 @@ Starting from API 26.0.0, it is recommended to use {@link readPixelsToArea} inst
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="readpixels-1"></a>
 ## readPixels
 
 ```TypeScript
@@ -1587,8 +1635,9 @@ Starting from API 26.0.0, it is recommended to use {@link readPixelsToArea} inst
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | area | [PositionArea](arkts-image-image-positionarea-i.md) | 是 | Area from which the pixels will be read. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="readpixelssync"></a>
 ## readPixelsSync
 
 ```TypeScript
@@ -1620,6 +1669,7 @@ Starting from API 26.0.0, it is recommended to use {@link readPixelsToAreaSync} 
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="readpixelstoarea"></a>
 ## readPixelsToArea
 
 ```TypeScript
@@ -1650,7 +1700,7 @@ Reads pixel data from a certain area of the PixelMap to a buffer. The resulting 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -1662,6 +1712,7 @@ Reads pixel data from a certain area of the PixelMap to a buffer. The resulting 
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter.Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="readpixelstoareasync"></a>
 ## readPixelsToAreaSync
 
 ```TypeScript
@@ -1698,6 +1749,7 @@ Reads pixel data from a certain area of the PixelMap to a buffer. The resulting 
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter.Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="readpixelstobuffer"></a>
 ## readPixelsToBuffer
 
 ```TypeScript
@@ -1722,14 +1774,15 @@ Starting from API 26.0.0, it is recommended to use {@link readAllPixelsToBuffer}
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | Buffer to which the pixels will be written. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
+| dst | ArrayBuffer | 是 | Buffer to which the pixels will be written. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="readpixelstobuffer-1"></a>
 ## readPixelsToBuffer
 
 ```TypeScript
@@ -1754,9 +1807,10 @@ Starting from API 26.0.0, it is recommended to use {@link readAllPixelsToBuffer}
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | Buffer to which the pixels will be written. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| dst | ArrayBuffer | 是 | Buffer to which the pixels will be written. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="readpixelstobuffersync"></a>
 ## readPixelsToBufferSync
 
 ```TypeScript
@@ -1781,7 +1835,7 @@ Starting from API 26.0.0, it is recommended to use {@link readAllPixelsToBufferS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dst | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | Buffer to which the pixels will be written. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
+| dst | ArrayBuffer | 是 | Buffer to which the pixels will be written. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
 
 **错误码：**
 
@@ -1790,6 +1844,7 @@ Starting from API 26.0.0, it is recommended to use {@link readAllPixelsToBufferS
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -1817,8 +1872,9 @@ Releases this PixelMap instance. After the release, any attempt to access the in
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -1846,8 +1902,9 @@ Releases this PixelMap instance. After the release, any attempt to access the in
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="rotate"></a>
 ## rotate
 
 ```TypeScript
@@ -1873,8 +1930,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyRotate} instead f
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | angle | number | 是 | Angle to rotate. Unit: degrees. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="rotate-1"></a>
 ## rotate
 
 ```TypeScript
@@ -1905,8 +1963,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyRotate} instead f
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="rotatesync"></a>
 ## rotateSync
 
 ```TypeScript
@@ -1938,6 +1997,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyRotateSync} inste
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="scale"></a>
 ## scale
 
 ```TypeScript
@@ -1964,8 +2024,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyScale} instead fo
 | --- | --- | --- | --- |
 | x | number | 是 | Scale factor of the width. |
 | y | number | 是 | Scale factor of the height. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="scale-1"></a>
 ## scale
 
 ```TypeScript
@@ -1997,8 +2058,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyScale} instead fo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="scale-2"></a>
 ## scale
 
 ```TypeScript
@@ -2031,7 +2093,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyScale} instead fo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -2040,6 +2102,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyScale} instead fo
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="scalesync"></a>
 ## scaleSync
 
 ```TypeScript
@@ -2072,6 +2135,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyScaleSync} instea
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="scalesync-1"></a>
 ## scaleSync
 
 ```TypeScript
@@ -2105,6 +2169,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyScaleSync} instea
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="setcolorspace"></a>
 ## setColorSpace
 
 ```TypeScript
@@ -2134,6 +2199,7 @@ This method is only used to set the colorspace property of pixelmap, while all p
 | [62980111](../errorcode-image.md#62980111-图片源数据不完整) | The image source data is incomplete. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | If the image parameter invalid. |
 
+<a id="setmemorynamesync"></a>
 ## setMemoryNameSync
 
 ```TypeScript
@@ -2162,6 +2228,7 @@ Sets a memory name for this PixelMap.
 | [501](../errorcode-image.md#501-无法调用接口) | Resource unavailable. |
 | [62980286](../errorcode-image.md#62980286-pixelmap设置内存标识符失败) | Memory format not supported. |
 
+<a id="setmetadata"></a>
 ## setMetadata
 
 ```TypeScript
@@ -2187,7 +2254,7 @@ Sets the value for the metadata with a given key in this PixelMap. This API uses
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -2198,6 +2265,7 @@ Sets the value for the metadata with a given key in this PixelMap. This API uses
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980302](../errorcode-image.md#62980302-内存拷贝失败) | Memory copy failed. Possibly caused by invalid metadata value. |
 
+<a id="setopacity"></a>
 ## setOpacity
 
 ```TypeScript
@@ -2228,7 +2296,7 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -2241,6 +2309,7 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: The specified value is out of range. |
 | [7600207](../errorcode-image.md#7600207-不支持的数据格式) | Unsupported data format. Possible cause: Alpha type is not supported. |
 
+<a id="setopacitysync"></a>
 ## setOpacitySync
 
 ```TypeScript
@@ -2278,6 +2347,7 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: The specified value is out of range. |
 | [7600207](../errorcode-image.md#7600207-不支持的数据格式) | Unsupported data format. Possible cause: Alpha type is not supported. |
 
+<a id="settransferdetached"></a>
 ## setTransferDetached
 
 ```TypeScript
@@ -2304,6 +2374,7 @@ Sets whether to detach from the original thread when this PixelMap is transmitte
 | --- | --- |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="tosdr"></a>
 ## toSdr
 
 ```TypeScript
@@ -2322,7 +2393,7 @@ Convert pixelmap to standard dynamic range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -2330,6 +2401,7 @@ Convert pixelmap to standard dynamic range.
 | --- | --- |
 | [62980137](../errorcode-image.md#62980137-图片操作无效) | Invalid image operation. |
 
+<a id="translate"></a>
 ## translate
 
 ```TypeScript
@@ -2356,8 +2428,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyTranslate} instea
 | --- | --- | --- | --- |
 | x | number | 是 | X coordinate to translate, in px. |
 | y | number | 是 | Y coordinate to translate, in px. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="translate-1"></a>
 ## translate
 
 ```TypeScript
@@ -2389,8 +2462,9 @@ Starting from API 26.0.0, it is recommended to use {@link applyTranslate} instea
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="translatesync"></a>
 ## translateSync
 
 ```TypeScript
@@ -2423,6 +2497,7 @@ Starting from API 26.0.0, it is recommended to use {@link applyTranslateSync} in
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="unmarshalling"></a>
 ## unmarshalling
 
 ```TypeScript
@@ -2447,7 +2522,7 @@ Unmarshals a MessageSequence object to obtain a PixelMap object. To create a Pix
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | Promise used to return the PixelMap object. |
 
 **错误码：**
 
@@ -2457,6 +2532,7 @@ Unmarshals a MessageSequence object to obtain a PixelMap object. To create a Pix
 | [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.3. Decode process exception. 4. Insufficient memory. |
 | [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
 
+<a id="writeallpixelsfrombuffer"></a>
 ## writeAllPixelsFromBuffer
 
 ```TypeScript
@@ -2481,13 +2557,13 @@ Reads the pixel data from a buffer and writes the data to the PixelMap.The sourc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The buffer that contains pixel data to be written to the PixelMap. |
+| src | ArrayBuffer | 是 | The buffer that contains pixel data to be written to the PixelMap. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -2500,6 +2576,7 @@ Reads the pixel data from a buffer and writes the data to the PixelMap.The sourc
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: Size of the buffer is too small. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="writeallpixelsfrombuffersync"></a>
 ## writeAllPixelsFromBufferSync
 
 ```TypeScript
@@ -2524,7 +2601,7 @@ Reads the pixel data from a buffer and writes the data to the PixelMap.The sourc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The buffer that contains pixel data to be written to the PixelMap. |
+| src | ArrayBuffer | 是 | The buffer that contains pixel data to be written to the PixelMap. |
 
 **错误码：**
 
@@ -2537,6 +2614,7 @@ Reads the pixel data from a buffer and writes the data to the PixelMap.The sourc
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: Size of the buffer is too small. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="writebuffertopixels"></a>
 ## writeBufferToPixels
 
 ```TypeScript
@@ -2561,14 +2639,15 @@ Starting from API 26.0.0, it is recommended to use {@link writeAllPixelsFromBuff
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | Buffer from which the pixels are read. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
+| src | ArrayBuffer | 是 | Buffer from which the pixels are read. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="writebuffertopixels-1"></a>
 ## writeBufferToPixels
 
 ```TypeScript
@@ -2593,9 +2672,10 @@ Starting from API 26.0.0, it is recommended to use {@link writeAllPixelsFromBuff
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | Buffer from which the pixels are read. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the pixels in the buffer are successfully written to the PixelMap, **err** is **undefined**; otherwise, **err** is an error object. |
+| src | ArrayBuffer | 是 | Buffer from which the pixels are read. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the pixels in the buffer are successfully written to the PixelMap, **err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="writebuffertopixelssync"></a>
 ## writeBufferToPixelsSync
 
 ```TypeScript
@@ -2618,7 +2698,7 @@ Starting from API 26.0.0, it is recommended to use {@link writeAllPixelsFromBuff
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | Buffer from which the pixels are read. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
+| src | ArrayBuffer | 是 | Buffer from which the pixels are read. The buffer size is obtained by calling [getPixelBytesNumber](arkts-image-image-pixelmap-i.md#getpixelbytesnumber-1). |
 
 **错误码：**
 
@@ -2627,6 +2707,7 @@ Starting from API 26.0.0, it is recommended to use {@link writeAllPixelsFromBuff
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [501](../errorcode-image.md#501-无法调用接口) | Resource Unavailable. |
 
+<a id="writepixels"></a>
 ## writePixels
 
 ```TypeScript
@@ -2657,8 +2738,9 @@ Starting from API 26.0.0, it is recommended to use {@link writePixelsFromArea} i
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
+<a id="writepixels-1"></a>
 ## writePixels
 
 ```TypeScript
@@ -2684,8 +2766,9 @@ Starting from API 26.0.0, it is recommended to use {@link writePixelsFromArea} i
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | area | [PositionArea](arkts-image-image-positionarea-i.md) | 是 | Area to which the pixels will be written. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful,**err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="writepixelsfromarea"></a>
 ## writePixelsFromArea
 
 ```TypeScript
@@ -2716,7 +2799,7 @@ Writes data from a buffer to a certain area of the PixelMap. The source data mus
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | A Promise that resolves when the operation completes. |
+| Promise&lt;void&gt; | A Promise that resolves when the operation completes. |
 
 **错误码：**
 
@@ -2729,6 +2812,7 @@ Writes data from a buffer to a certain area of the PixelMap. The source data mus
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter.Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="writepixelsfromareasync"></a>
 ## writePixelsFromAreaSync
 
 ```TypeScript
@@ -2766,6 +2850,7 @@ Writes data from a buffer to a certain area of the PixelMap. The source data mus
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter.Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy the memory. |
 
+<a id="writepixelssync"></a>
 ## writePixelsSync
 
 ```TypeScript

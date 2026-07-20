@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancelasbundle"></a>
 ## cancelAsBundle
 
 ```TypeScript
@@ -46,7 +47,7 @@ function cancelAsBundle(
 | id | number | 是 | 通知ID。 |
 | representativeBundle | string | 是 | 被代理应用的包名。 |
 | userId | number | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 取消代理通知的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 取消代理通知的回调方法。 |
 
 **错误码：**
 
@@ -84,6 +85,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 ```
 
 
+<a id="cancelasbundle-1"></a>
 ## cancelAsBundle
 
 ```TypeScript
@@ -114,7 +116,7 @@ function cancelAsBundle(id: number, representativeBundle: string, userId: number
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -148,6 +150,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 ```
 
 
+<a id="cancelasbundle-2"></a>
 ## cancelAsBundle
 
 ```TypeScript
@@ -177,7 +180,7 @@ function cancelAsBundle(representativeBundle: BundleOption, id: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

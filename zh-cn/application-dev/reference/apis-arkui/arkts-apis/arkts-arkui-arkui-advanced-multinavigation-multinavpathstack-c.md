@@ -2,7 +2,7 @@
 
 当前，MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用[NavDestination](../arkts-components/arkts-arkui-navdestination.md)的[onReady](NavDestinationAttribute#onReady)等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
 
-**继承/实现关系：** MultiNavPathStack extends [NavPathStack](../arkts-components/arkts-arkui-navigation-navpathstack-c.md)
+**继承/实现关系：** MultiNavPathStack extends [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md)
 
 **起始版本：** 14
 
@@ -16,6 +16,7 @@
 import { MultiNavPathStack, MultiNavigation, SplitPolicy } from '@kit.ArkUI';
 ```
 
+<a id="clear"></a>
 ## clear
 
 ```TypeScript
@@ -44,6 +45,7 @@ clear(animated?: boolean): void
 | --- | --- | --- | --- |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -62,6 +64,7 @@ Creates an instance of MultiNavPathStack.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="disableanimation"></a>
 ## disableAnimation
 
 ```TypeScript
@@ -86,6 +89,7 @@ disableAnimation(disable: boolean): void
 | --- | --- | --- | --- |
 | disable | boolean | 是 | 是否关闭转场动画。<br/>默认值：false<br/>true：关闭转场动画。<br/>false：不关闭转场动画。 |
 
+<a id="getallpathname"></a>
 ## getAllPathName
 
 ```TypeScript
@@ -108,8 +112,9 @@ getAllPathName(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回栈中所有NavDestination页面的名称。 |
+| Array&lt;string&gt; | 返回栈中所有NavDestination页面的名称。 |
 
+<a id="getindexbyname"></a>
 ## getIndexByName
 
 ```TypeScript
@@ -138,8 +143,9 @@ getIndexByName(name: string): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | Indexes of all the matching navigation destination pages.<br>Value range of the number type: [0, +∞). |
+| Array&lt;number&gt; | Indexes of all the matching navigation destination pages.<br>Value range of the number type: [0, +∞). |
 
+<a id="getparambyindex"></a>
 ## getParamByIndex
 
 ```TypeScript
@@ -170,6 +176,7 @@ getParamByIndex(index: number): Object | undefined
 | --- | --- |
 | Object | **Object**: parameter information of the matching navigation destination page.<br>**undefined**: returned when an invalid index is provided. |
 
+<a id="getparambyname"></a>
 ## getParamByName
 
 ```TypeScript
@@ -198,8 +205,9 @@ getParamByName(name: string): Array<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Object> | 返回全部名为name的NavDestination页面的参数信息。 |
+| Array&lt;Object&gt; | 返回全部名为name的NavDestination页面的参数信息。 |
 
+<a id="keepbottompage"></a>
 ## keepBottomPage
 
 ```TypeScript
@@ -229,6 +237,7 @@ keepBottomPage(keepBottom: boolean): void
 | --- | --- | --- | --- |
 | keepBottom | boolean | 是 | 是否保留栈底页面。<br/>默认值：false<br/>true：保留栈底页面。<br/>false：不保留栈底页面。 |
 
+<a id="moveindextotop"></a>
 ## moveIndexToTop
 
 ```TypeScript
@@ -268,6 +277,7 @@ moveIndexToTop(index: number, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
+<a id="movetotop"></a>
 ## moveToTop
 
 ```TypeScript
@@ -313,6 +323,7 @@ moveToTop(name: string, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
+<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -345,8 +356,9 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | Information about the navigation destination page at the top of the stack. |
+| [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | Information about the navigation destination page at the top of the stack. |
 
+<a id="pop-1"></a>
 ## pop
 
 ```TypeScript
@@ -380,8 +392,9 @@ pop(result?: Object, animated?: boolean): NavPathInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | Information about the navigation destination page at the top of the stack. |
+| [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | Information about the navigation destination page at the top of the stack. |
 
+<a id="poptoindex"></a>
 ## popToIndex
 
 ```TypeScript
@@ -407,6 +420,7 @@ popToIndex(index: number, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。<br/>取值范围：[0, +∞) |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
+<a id="poptoindex-1"></a>
 ## popToIndex
 
 ```TypeScript
@@ -433,6 +447,7 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 | result | Object | 是 | 页面自定义处理结果。 |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
+<a id="poptoname"></a>
 ## popToName
 
 ```TypeScript
@@ -464,6 +479,7 @@ popToName(name: string, animated?: boolean): number
 | --- | --- |
 | number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
+<a id="poptoname-1"></a>
 ## popToName
 
 ```TypeScript
@@ -496,6 +512,7 @@ popToName(name: string, result: Object, animated?: boolean): number
 | --- | --- |
 | number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞). |
 
+<a id="pushpath"></a>
 ## pushPath
 
 ```TypeScript
@@ -518,10 +535,11 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
+<a id="pushpath-1"></a>
 ## pushPath
 
 ```TypeScript
@@ -544,10 +562,11 @@ pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
+<a id="pushpathbyname"></a>
 ## pushPathByName
 
 ```TypeScript
@@ -575,6 +594,7 @@ pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPo
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
+<a id="pushpathbyname-1"></a>
 ## pushPathByName
 
 ```TypeScript
@@ -602,10 +622,11 @@ pushPathByName(
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | NavDestination页面详细参数。 |
-| onPop | base.Callback<PopInfo> | 否 | Callback回调，用于页面出栈时触发该回调处理返回结果。 |
+| onPop | base.Callback&lt;PopInfo&gt; | 否 | Callback回调，用于页面出栈时触发该回调处理返回结果。 |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 | policy | [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | 否 | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
+<a id="removebyindexes"></a>
 ## removeByIndexes
 
 ```TypeScript
@@ -628,7 +649,7 @@ removeByIndexes(indexes: Array<number>): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indexes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 待删除NavDestination页面的索引值数组。<br/>number类型的取值范围：[0, +∞) |
+| indexes | Array&lt;number&gt; | 是 | 待删除NavDestination页面的索引值数组。<br/>number类型的取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -636,6 +657,7 @@ removeByIndexes(indexes: Array<number>): number
 | --- | --- |
 | number | 返回删除的NavDestination页面数量。 |
 
+<a id="removebyname"></a>
 ## removeByName
 
 ```TypeScript
@@ -666,6 +688,7 @@ removeByName(name: string): number
 | --- | --- |
 | number | 返回删除的NavDestination页面数量。 |
 
+<a id="replacepath"></a>
 ## replacePath
 
 ```TypeScript
@@ -688,9 +711,10 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
+<a id="replacepath-1"></a>
 ## replacePath
 
 ```TypeScript
@@ -713,9 +737,10 @@ replacePath(info: NavPathInfo, options?: NavigationOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。仅支持其中的animated字段。 |
 
+<a id="replacepathbyname"></a>
 ## replacePathByName
 
 ```TypeScript
@@ -742,6 +767,7 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 | param | Object | 是 | NavDestination页面详细参数。 |
 | animated | boolean | 否 | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。 |
 
+<a id="sethomewidthrange"></a>
 ## setHomeWidthRange
 
 ```TypeScript
@@ -767,6 +793,7 @@ setHomeWidthRange(minPercent: number, maxPercent: number): void
 | minPercent | number | 是 | 最小主页宽度百分比。<br/>取值范围：[0, 100] |
 | maxPercent | number | 是 | 最大主页宽度百分比。<br/>取值范围：[0, 100] |
 
+<a id="setplaceholderpage"></a>
 ## setPlaceholderPage
 
 ```TypeScript
@@ -796,8 +823,9 @@ setPlaceholderPage(info: NavPathInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-navpathinfo-c.md) | 是 | 占位页页面信息。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | 占位页页面信息。 |
 
+<a id="size"></a>
 ## size
 
 ```TypeScript
@@ -822,6 +850,7 @@ size(): number
 | --- | --- |
 | number | Stack size.<br>Value range: [0, +∞). |
 
+<a id="switchfullscreenstate"></a>
 ## switchFullScreenState
 
 ```TypeScript

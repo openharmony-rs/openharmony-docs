@@ -18,7 +18,7 @@ AI会话执行操作回调函数类型。用于自定义实现AI模型执行。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 会话任务ID。 |
-| params | string | 是 | 执行期间传递的上下文数据（以JSON字符串格式）。 |
-| result | OnAISessionCallback | 是 | 通知执行结果的回调函数。 |
+| id | string | 是 | 会话任务ID。  |
+| params | string | 是 | 执行期间传递的上下文数据（以JSON字符串格式）。  |
+| result | [OnAISessionCallback](arkts-arkweb-onaisessioncallback-t.md) | 是 | 通知执行结果的回调函数。  |
 

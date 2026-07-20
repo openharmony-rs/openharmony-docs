@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getvoicemailidentifier"></a>
 ## getVoiceMailIdentifier
 
 ```TypeScript
@@ -29,7 +30,7 @@ Obtains the alpha identifier of the voice mailbox of the SIM card in a specified
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from {@code 0} to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | Indicates the callback for getting the voice mailbox alpha identifier;returns an empty string if no voice mailbox alpha identifier is written into the SIM card. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | Indicates the callback for getting the voice mailbox alpha identifier;returns an empty string if no voice mailbox alpha identifier is written into the SIM card. |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ sim.getVoiceMailIdentifier(0, (err: BusinessError, data: string) => {
 ```
 
 
+<a id="getvoicemailidentifier-1"></a>
 ## getVoiceMailIdentifier
 
 ```TypeScript
@@ -85,7 +87,7 @@ Obtains the alpha identifier of the voice mailbox of the SIM card in a specified
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Returns the voice mailbox alpha identifier;returns an empty string if no voice mailbox alpha identifier is written into the SIM card. |
+| Promise&lt;string&gt; | Returns the voice mailbox alpha identifier;returns an empty string if no voice mailbox alpha identifier is written into the SIM card. |
 
 **错误码：**
 

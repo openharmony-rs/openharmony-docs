@@ -22,5 +22,5 @@ Defines the callback type used in accessibility focus. The value of isFocus indi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isFocus | boolean | 是 | if component is focused,isFocus will be true. else isFocus is false. |
+| isFocus | boolean | 是 | if component is focused,isFocus will be true. else isFocus is false.  |
 

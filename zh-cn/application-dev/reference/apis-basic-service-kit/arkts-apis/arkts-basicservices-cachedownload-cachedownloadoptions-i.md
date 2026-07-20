@@ -54,7 +54,7 @@ headers?: Record<string, string>
 
 缓存下载任务在HTTP传输时使用的请求头。默认值为空。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 18
 

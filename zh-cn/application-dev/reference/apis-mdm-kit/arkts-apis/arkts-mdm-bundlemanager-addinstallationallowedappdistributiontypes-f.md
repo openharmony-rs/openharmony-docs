@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="addinstallationallowedappdistributiontypes"></a>
 ## addInstallationAllowedAppDistributionTypes
 
 ```TypeScript
@@ -31,7 +32,7 @@ function addInstallationAllowedAppDistributionTypes(admin: Want, appDistribution
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| appDistributionTypes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AppDistributionType> | 是 | 应用程序签名证书的分发类型数组。 |
+| appDistributionTypes | Array&lt;AppDistributionType&gt; | 是 | 应用程序签名证书的分发类型数组。 |
 
 **错误码：**
 

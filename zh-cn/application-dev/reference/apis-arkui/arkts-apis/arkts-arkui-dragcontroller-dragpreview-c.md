@@ -14,6 +14,7 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
+<a id="animate"></a>
 ## animate
 
 ```TypeScript
@@ -37,7 +38,7 @@ animate(options: AnimationOptions, handler: () =>void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [AnimationOptions](arkts-arkui-arkui-drawabledescriptor-animationoptions-i.md) | 是 | 动效参数。 |
-| handler | () =>void | 是 | 用于修改背板蒙版颜色等属性的回调方法。 |
+| handler | () =&gt;void | 是 | 用于修改背板蒙版颜色等属性的回调方法。 |
 
 **示例：**
 
@@ -179,6 +180,7 @@ struct DragControllerPage {
 
 ```
 
+<a id="setforegroundcolor"></a>
 ## setForegroundColor
 
 ```TypeScript

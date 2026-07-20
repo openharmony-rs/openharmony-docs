@@ -6,6 +6,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="executeperiodically"></a>
 ## executePeriodically
 
 ```TypeScript
@@ -83,6 +84,7 @@ taskpoolTest();
 ```
 
 
+<a id="executeperiodically-1"></a>
 ## executePeriodically
 
 ```TypeScript
@@ -104,7 +106,7 @@ function executePeriodically<A extends Array<Object>, R>(period: number, task: G
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | period | number | 是 | 周期时长，单位为ms。period值必须要大于等于0。该值应为整数。<br>单位：毫秒。 |
-| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)<A, R> | 是 | 需要周期执行的泛型任务。 |
+| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | 是 | 需要周期执行的泛型任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 周期执行的任务的优先级，该参数默认值为**taskpool.Priority.MEDIUM**。 |
 
 **错误码：**

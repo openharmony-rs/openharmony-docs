@@ -88,7 +88,7 @@ value：当前显示的数值。
 
 值为undefined时，按默认值处理。
 
-**类型：** (value: number) => void
+**类型：** (value: number) =&gt; void
 
 **起始版本：** 11
 

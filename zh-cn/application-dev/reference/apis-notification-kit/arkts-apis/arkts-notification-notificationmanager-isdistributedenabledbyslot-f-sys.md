@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isdistributedenabledbyslot"></a>
 ## isDistributedEnabledBySlot
 
 ```TypeScript
@@ -35,7 +36,7 @@ function isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回true表示指定渠道的通知支持通知跨设备协同至指定类型设备；返回false表示指定渠道的通知不支持通知跨设备协同至指定类型设备。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示指定渠道的通知支持通知跨设备协同至指定类型设备；返回false表示指定渠道的通知不支持通知跨设备协同至指定类型设备。 |
 
 **错误码：**
 

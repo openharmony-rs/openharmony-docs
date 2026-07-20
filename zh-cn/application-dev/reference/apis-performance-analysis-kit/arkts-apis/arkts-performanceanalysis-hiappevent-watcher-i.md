@@ -66,7 +66,7 @@ domain：回调事件的领域名称；
 
 appEventGroups：回调事件集合。
 
-**类型：** (domain: string, appEventGroups: Array<AppEventGroup>) => void
+**类型：** (domain: string, appEventGroups: Array&lt;AppEventGroup&gt;) =&gt; void
 
 **起始版本：** 11
 
@@ -90,7 +90,7 @@ curSize：在本次回调触发时的订阅事件总大小，单位为byte；
 
 holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。
 
-**类型：** (curRow: number, curSize: number, holder: AppEventPackageHolder) => void
+**类型：** (curRow: number, curSize: number, holder: AppEventPackageHolder) =&gt; void
 
 **起始版本：** 9
 

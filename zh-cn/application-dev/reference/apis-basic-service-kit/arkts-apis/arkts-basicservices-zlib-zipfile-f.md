@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="zipfile"></a>
 ## zipFile
 
 ```TypeScript
@@ -24,7 +25,7 @@ function zipFile(inFile: string, outFile: string, options: Options): Promise<voi
 
 **废弃版本：** 9
 
-**替代接口：** compressFile(inFile:
+**替代接口：** [compressFile(inFile:](arkts-basicservices-zlib-compressfile-f.md#compressfile-1)
 
 <!--Device-zlib-function zipFile(inFile: string, outFile: string, options: Options): Promise<void>--><!--Device-zlib-function zipFile(inFile: string, outFile: string, options: Options): Promise<void>-End-->
 
@@ -42,7 +43,7 @@ function zipFile(inFile: string, outFile: string, options: Options): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **示例：**
 

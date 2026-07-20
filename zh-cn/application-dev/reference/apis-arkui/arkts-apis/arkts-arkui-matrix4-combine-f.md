@@ -6,6 +6,7 @@
 import { matrix4 } from '@kit.ArkUI';
 ```
 
+<a id="combine"></a>
 ## combine
 
 ```TypeScript

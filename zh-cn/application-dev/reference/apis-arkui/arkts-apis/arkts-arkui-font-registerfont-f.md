@@ -6,6 +6,7 @@
 import { font } from '@kit.ArkUI';
 ```
 
+<a id="registerfont"></a>
 ## registerFont
 
 ```TypeScript
@@ -19,12 +20,12 @@ function registerFont(options: FontOptions): void
 > **说明：**  
 >  
 > -registerFont需要先通过[UIContext](arkts-arkui-uicontext.md)中的  
-> [getFont](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取  
+> [getFont](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取  
 > [Font](arkts-arkui-uicontext.md)对象，然后通过该对象进行调用。且直接使用registerFont可能导致  
-> [UI上下文不明确](../../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。  
+> [UI上下文不明确](docroot://ui/arkts-global-interface.md#ui上下文不明确)的问题。  
 >  
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-uicontext.md)中的  
-> [getFont](../../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的  
+> [getFont](docroot://reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的  
 > [Font](arkts-arkui-uicontext.md)对象。
 
 **起始版本：** 9

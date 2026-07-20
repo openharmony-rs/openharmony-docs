@@ -6,6 +6,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="createkeyagreement"></a>
 ## createKeyAgreement
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createKeyAgreement(algName: string): KeyAgreement
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algName | string | 是 | 指定密钥协商算法：目前仅支持ECDH，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
+| algName | string | 是 | 指定密钥协商算法：目前仅支持ECDH，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](docroot://security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
 
 **返回值：**
 

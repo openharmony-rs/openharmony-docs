@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="createzipsync"></a>
 ## createZipSync
 
 ```TypeScript

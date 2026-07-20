@@ -14,6 +14,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="load"></a>
 ## load
 
 ```TypeScript
@@ -35,7 +36,7 @@ Loads tone. This method uses an asynchronous callback to return the result.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 是 | Tone type to play. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -53,6 +54,7 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 
 ```
 
+<a id="load-1"></a>
 ## load
 
 ```TypeScript
@@ -79,7 +81,7 @@ Loads tone. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -92,6 +94,7 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
 
 ```
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -112,7 +115,7 @@ Releases the player. This method uses an asynchronous callback to return the res
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -130,6 +133,7 @@ tonePlayer.release((err: BusinessError) => {
 
 ```
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -150,7 +154,7 @@ Releases the player. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -163,6 +167,7 @@ tonePlayer.release().then(() => {
 
 ```
 
+<a id="start"></a>
 ## start
 
 ```TypeScript
@@ -183,7 +188,7 @@ Starts player. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -201,6 +206,7 @@ tonePlayer.start((err: BusinessError) => {
 
 ```
 
+<a id="start-1"></a>
 ## start
 
 ```TypeScript
@@ -221,7 +227,7 @@ Starts player. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> |  |
+| Promise&lt;void&gt; |  |
 
 **示例：**
 
@@ -234,6 +240,7 @@ tonePlayer.start().then(() => {
 
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -254,7 +261,7 @@ Stops player. This method uses an asynchronous callback to return the result.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -272,6 +279,7 @@ tonePlayer.stop((err: BusinessError) => {
 
 ```
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -292,7 +300,7 @@ Stops player. This method uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 

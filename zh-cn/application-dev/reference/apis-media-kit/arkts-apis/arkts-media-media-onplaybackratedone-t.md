@@ -18,5 +18,5 @@ type OnPlaybackRateDone = (rate: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rate | double | 是 | 播放速率。 |
+| rate | number | 是 | 播放速率。  |
 

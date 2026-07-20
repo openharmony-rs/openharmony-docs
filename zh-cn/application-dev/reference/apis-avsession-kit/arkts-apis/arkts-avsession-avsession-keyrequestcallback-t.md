@@ -18,6 +18,6 @@ type KeyRequestCallback = (assetId: string, requestData: Uint8Array) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetId | string | 是 | 媒体ID。 |
-| requestData | Uint8Array | 是 | 媒体许可证请求数据。 |
+| assetId | string | 是 | 媒体ID。  |
+| requestData | Uint8Array | 是 | 媒体许可证请求数据。  |
 

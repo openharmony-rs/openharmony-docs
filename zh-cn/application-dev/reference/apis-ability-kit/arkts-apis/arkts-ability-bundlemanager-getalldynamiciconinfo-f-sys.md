@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getalldynamiciconinfo"></a>
 ## getAllDynamicIconInfo
 
 ```TypeScript
@@ -38,7 +39,7 @@ function getAllDynamicIconInfo(userId?: number): Promise<Array<DynamicIconInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DynamicIconInfo>> | Promise对象，返回查询到的动态图标信息。 |
+| Promise&lt;Array&lt;DynamicIconInfo&gt;&gt; | Promise对象，返回查询到的动态图标信息。 |
 
 **错误码：**
 

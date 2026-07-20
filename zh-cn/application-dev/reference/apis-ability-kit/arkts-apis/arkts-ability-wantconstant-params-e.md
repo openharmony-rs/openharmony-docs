@@ -202,7 +202,7 @@ PAGE_PATH = 'ohos.param.atomicservice.pagePath'
 
 表示原子化服务的页面路径。
 
-如果原子化服务的页面跳转是通过[router](../../../../ui/arkts-routing.md)实现的，可以使用该参数指定跳转的页面，例如"library/ets/pages/menu"。
+如果原子化服务的页面跳转是通过[router](docroot://ui/arkts-routing.md)实现的，可以使用该参数指定跳转的页面，例如"library/ets/pages/menu"。
 
 **起始版本：** 12
 
@@ -220,7 +220,7 @@ ROUTER_NAME = 'ohos.param.atomicservice.routerName'
 
 表示原子化服务的页面路由名称，即进行页面跳转时指定的页面名称。
 
-如果原子化服务的页面跳转是通过[Navigation](../../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
+如果原子化服务的页面跳转是通过[Navigation](docroot://ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
 
 **起始版本：** 12
 
@@ -238,7 +238,7 @@ PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'
 
 表示原子化服务的页面源文件。
 
-如果原子化服务的页面跳转是通过[Navigation](../../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
+如果原子化服务的页面跳转是通过[Navigation](docroot://ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
 
 **起始版本：** 12
 
@@ -256,7 +256,7 @@ BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'
 
 表示原子化服务的生成函数。
 
-如果原子化服务的页面跳转是通过[Navigation](../../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
+如果原子化服务的页面跳转是通过[Navigation](docroot://ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
 
 **起始版本：** 12
 
@@ -292,7 +292,7 @@ APP_INSTANCE_KEY = 'ohos.extra.param.key.appInstance'
 
 表示具体的应用实例。
 
-在[应用创建多实例](../../../../quick-start/multiInstance.md)时，系统会为每个实例分配唯一的标识。应用跳转时，开发者可以通过设置该参数指定希望跳转到的已创建的应用实例。
+在[应用创建多实例](docroot://quick-start/multiInstance.md)时，系统会为每个实例分配唯一的标识。应用跳转时，开发者可以通过设置该参数指定希望跳转到的已创建的应用实例。
 
 **起始版本：** 14
 
@@ -308,7 +308,7 @@ CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'
 
 表示是否创建新应用实例。默认为false，表示不创建新应用实例。
 
-开发者可以通过设置该参数为true拉起新的应用实例。需要注意的是，被拉起的应用需要支持多实例，参考[应用创建多实例](../../../../quick-start/multiInstance.md)。
+开发者可以通过设置该参数为true拉起新的应用实例。需要注意的是，被拉起的应用需要支持多实例，参考[应用创建多实例](docroot://quick-start/multiInstance.md)。
 
 **起始版本：** 14
 

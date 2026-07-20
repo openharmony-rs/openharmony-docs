@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -32,8 +33,9 @@ Sets the color of the fill area.An invalid value is handled as the default value
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor \| ColorMetrics | 是 | Color of the fill area<br>Default value : Color.Black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) \| ColorMetrics | 是 | Color of the fill area<br>Default value : Color.Black. |
 
+<a id="stroke"></a>
 ## stroke
 
 ```TypeScript
@@ -56,5 +58,5 @@ Sets the stroke color.If this attribute is not set, the component does not have 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor \| ColorMetrics | 是 | Stroke color. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) \| ColorMetrics | 是 | Stroke color. |
 

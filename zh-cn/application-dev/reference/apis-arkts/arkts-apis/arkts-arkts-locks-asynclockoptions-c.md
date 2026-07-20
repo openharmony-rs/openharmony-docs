@@ -14,6 +14,7 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -56,7 +57,7 @@ signal: AbortSignal<T> | null
 
 用于终止异步操作的对象。如果signal.aborted为true，回调将不会被调用。
 
-**类型：** AbortSignal<T> | null
+**类型：** AbortSignal&lt;T&gt; \| null
 
 **起始版本：** 12
 

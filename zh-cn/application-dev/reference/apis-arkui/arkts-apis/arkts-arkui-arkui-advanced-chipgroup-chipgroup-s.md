@@ -12,6 +12,8 @@
 
 **起始版本：** 12
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-export declare struct ChipGroup--><!--Device-unnamed-export declare struct ChipGroup-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -28,7 +30,7 @@ import { ChipItemLabelOptions, ChipGroupSpaceOptions, SymbolItemOptions, SuffixI
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-common-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-common-commonmethod-c.md#shadow-1)等视觉属性。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-commonmethod-c.md#border-1)、[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)等视觉属性。
 
 默认值：undefined
 
@@ -146,7 +148,7 @@ items: ChipGroupItemOptions[]
 
 **起始版本：** 12
 
-**装饰器类型：** @Prop
+**装饰器类型：** @Require、@Prop
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,7 +196,7 @@ Chip状态改变时的回调方法。
 
 若为undefined，表示解绑事件。
 
-**类型：** Callback<Array<number>>
+**类型：** Callback&lt;Array&lt;number&gt;&gt;
 
 **起始版本：** 12
 
@@ -240,7 +242,7 @@ selectedIndexes?: Array<number>
 
 值为undefined时，按默认值处理。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 12
 
@@ -266,7 +268,7 @@ suffix?: Callback<void>
 
 值为undefined时，没有suffix。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 

@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="onsystemcommonevent"></a>
 ## onSystemCommonEvent
 
 ```TypeScript

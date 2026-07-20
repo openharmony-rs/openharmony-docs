@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="listfile"></a>
 ## listFile
 
 ```TypeScript
@@ -44,7 +45,7 @@ declare function listFile(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise对象。返回文件名数组，默认以'utf-8'编码。default. |
+| Promise&lt;string[]&gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。default. |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ declare function listFile(
 | 13900042 | Unknown error |
 
 
+<a id="listfile-1"></a>
 ## listFile
 
 ```TypeScript
@@ -80,7 +82,7 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string[]> | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
 
 **错误码：**
 
@@ -93,6 +95,7 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 | 13900042 | Unknown error |
 
 
+<a id="listfile-2"></a>
 ## listFile
 
 ```TypeScript
@@ -129,7 +132,7 @@ declare function listFile(
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
 | options | [ListFileOptions](arkts-corefile-file-fs-listfileoptions-i.md) | 是 | 文件过滤选项。默认不进行过滤。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string[]> | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
 
 **错误码：**
 

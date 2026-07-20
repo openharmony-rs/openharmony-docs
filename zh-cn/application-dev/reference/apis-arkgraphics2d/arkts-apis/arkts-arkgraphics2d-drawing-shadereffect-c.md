@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createcolorshader"></a>
 ## createColorShader
 
 ```TypeScript
@@ -54,6 +55,7 @@ static createColorShader(color: number): ShaderEffect
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="createcomposeshader"></a>
 ## createComposeShader
 
 ```TypeScript
@@ -77,7 +79,7 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 | --- | --- | --- | --- |
 | dstShaderEffect | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) | 是 | 在混合模式中作为目标色的着色器。 |
 | srcShaderEffect | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) | 是 | 在混合模式中作为源色的着色器。 |
-| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 混合模式。 |
+| blendMode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 混合模式。 |
 
 **返回值：**
 
@@ -91,6 +93,7 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="createconicalgradient"></a>
 ## createConicalGradient
 
 ```TypeScript
@@ -119,10 +122,10 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | startRadius | number | 是 | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。 |
 | endPt | common2D.Point | 是 | 表示渐变的结束圆的圆心。 |
 | endRadius | number | 是 | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。 |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
+| colors | Array&lt;number&gt; | 是 | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 着色器效果平铺模式。 |
-| pos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。 |
-| matrix | Matrix \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
+| pos | Array&lt;number&gt; \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。 |
+| matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
 **返回值：**
 
@@ -136,6 +139,7 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createimageshader"></a>
 ## createImageShader
 
 ```TypeScript
@@ -161,7 +165,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 | tileX | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 水平方向的平铺模式。 |
 | tileY | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 竖直方向的平铺模式。 |
 | samplingOptions | [SamplingOptions](arkts-arkgraphics2d-drawing-samplingoptions-c.md) | 是 | 图片采样参数。 |
-| matrix | Matrix \| null | 否 | 可选参数，对图片施加的矩阵变换，如果为空，则不施加任何变换。 |
+| matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) \| null | 否 | 可选参数，对图片施加的矩阵变换，如果为空，则不施加任何变换。 |
 
 **返回值：**
 
@@ -175,6 +179,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="createlineargradient"></a>
 ## createLinearGradient
 
 ```TypeScript
@@ -198,10 +203,10 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 | --- | --- | --- | --- |
 | startPt | common2D.Point | 是 | 表示渐变的起点。 |
 | endPt | common2D.Point | 是 | 表示渐变的终点。 |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 表示在两个点之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
+| colors | Array&lt;number&gt; | 是 | 表示在两个点之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 着色器效果平铺模式。 |
-| pos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起点和终点之间。 |
-| matrix | Matrix \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
+| pos | Array&lt;number&gt; \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起点和终点之间。 |
+| matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
 **返回值：**
 
@@ -215,6 +220,7 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createradialgradient"></a>
 ## createRadialGradient
 
 ```TypeScript
@@ -238,10 +244,10 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 | --- | --- | --- | --- |
 | centerPt | common2D.Point | 是 | 表示渐变的圆心。 |
 | radius | number | 是 | 表示渐变的半径，小于等于0时无效，该参数为浮点数。 |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 表示在圆心和圆边界之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
+| colors | Array&lt;number&gt; | 是 | 表示在圆心和圆边界之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 着色器效果平铺模式。 |
-| pos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在圆心和圆边界之间。 |
-| matrix | Matrix \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
+| pos | Array&lt;number&gt; \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在圆心和圆边界之间。 |
+| matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
 **返回值：**
 
@@ -255,6 +261,7 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createsweepgradient"></a>
 ## createSweepGradient
 
 ```TypeScript
@@ -280,12 +287,12 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | centerPt | common2D.Point | 是 | 表示渐变的圆心。 |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 表示在起始角度和结束角度之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
+| colors | Array&lt;number&gt; | 是 | 表示在起始角度和结束角度之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 着色器效果平铺模式。 |
 | startAngle | number | 是 | 表示扇形渐变的起始角度，单位为度。0度时为x轴正方向，正数往顺时针方向偏移，负数往逆时针方向偏移。该参数为浮点数。 |
 | endAngle | number | 是 | 表示扇形渐变的结束角度，单位为度。0度时为x轴正方向，正数往顺时针方向偏移，负数往逆时针方向偏移。小于起始角度时无效。该参数为浮点数。 |
-| pos | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始角度和结束角度之间。 |
-| matrix | Matrix \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
+| pos | Array&lt;number&gt; \| null | 否 | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始角度和结束角度之间。 |
+| matrix | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) \| null | 否 | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
 **返回值：**
 

@@ -36,7 +36,7 @@ target: Array<AccessibilityElement>
 
 查询返回的无障碍节点。
 
-**类型：** Array<AccessibilityElement>
+**类型：** Array&lt;AccessibilityElement&gt;
 
 **起始版本：** 23
 

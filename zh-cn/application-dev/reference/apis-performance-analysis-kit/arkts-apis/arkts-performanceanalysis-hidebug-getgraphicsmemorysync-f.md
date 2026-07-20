@@ -6,6 +6,7 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="getgraphicsmemorysync"></a>
 ## getGraphicsMemorySync
 
 ```TypeScript

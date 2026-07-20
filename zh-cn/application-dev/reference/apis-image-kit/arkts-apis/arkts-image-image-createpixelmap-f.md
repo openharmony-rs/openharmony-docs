@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpixelmap"></a>
 ## createPixelMap
 
 ```TypeScript
@@ -26,9 +27,9 @@ Starting from API 26.0.0, it is recommended to use {@link createPixelMapFromPixe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colors | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The image color buffer. |
+| colors | ArrayBuffer | 是 | The image color buffer. |
 | options | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for pixelmap. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<PixelMap> | 是 | Callback used to return the PixelMap object. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;PixelMap&gt; | 是 | Callback used to return the PixelMap object. |
 
 **示例：**
 
@@ -55,6 +56,7 @@ function createPixelMap() {
 ```
 
 
+<a id="createpixelmap-1"></a>
 ## createPixelMap
 
 ```TypeScript
@@ -75,14 +77,14 @@ Starting from API 26.0.0, it is recommended to use {@link createPixelMapFromPixe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colors | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The image color buffer. |
+| colors | ArrayBuffer | 是 | The image color buffer. |
 | options | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for pixelmap. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | A Promise instance used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
 
 **示例：**
 

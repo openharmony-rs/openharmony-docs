@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querybundleevents"></a>
 ## queryBundleEvents
 
 ```TypeScript
@@ -30,7 +31,7 @@ function queryBundleEvents(begin: number, end: number, callback: AsyncCallback<A
 | --- | --- | --- | --- |
 | begin | number | 是 | 起始时间，单位：ms。 |
 | end | number | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<BundleEvents>> | 是 | 回调方法。当查询成功，err为undefined，data为起始和结束时间段内，所有应用的事件集合；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleEvents&gt;&gt; | 是 | 回调方法。当查询成功，err为undefined，data为起始和结束时间段内，所有应用的事件集合；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: A
 ```
 
 
+<a id="querybundleevents-1"></a>
 ## queryBundleEvents
 
 ```TypeScript
@@ -97,7 +99,7 @@ function queryBundleEvents(begin: number, end: number): Promise<Array<BundleEven
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleEvents>> | Promise对象。返回起始和结束时间段内，所有应用的事件集合。 |
+| Promise&lt;Array&lt;BundleEvents&gt;&gt; | Promise对象。返回起始和结束时间段内，所有应用的事件集合。 |
 
 **错误码：**
 
@@ -133,6 +135,7 @@ usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStati
 ```
 
 
+<a id="querybundleevents-2"></a>
 ## queryBundleEvents
 
 ```TypeScript
@@ -165,7 +168,7 @@ function queryBundleEvents(begin: number, end: number, maxNum: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleEvents>> | Promise对象，返回起始和结束时间段内，所有应用的事件集合。 |
+| Promise&lt;Array&lt;BundleEvents&gt;&gt; | Promise对象，返回起始和结束时间段内，所有应用的事件集合。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
+<a id="getpicturescanprogress"></a>
 ## getPictureScanProgress
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getPictureScanProgress(scannerId: string): Promise<PictureScanProgress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PictureScanProgress> | Promise对象，返回图片扫描进度信息。 |
+| Promise&lt;PictureScanProgress&gt; | Promise对象，返回图片扫描进度信息。 |
 
 **错误码：**
 

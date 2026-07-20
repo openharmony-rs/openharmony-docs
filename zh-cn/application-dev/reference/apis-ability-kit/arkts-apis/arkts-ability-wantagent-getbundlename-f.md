@@ -6,6 +6,7 @@
 import { WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getbundlename"></a>
 ## getBundleName
 
 ```TypeScript
@@ -27,7 +28,7 @@ function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -108,6 +109,7 @@ try {
 ```
 
 
+<a id="getbundlename-1"></a>
 ## getBundleName
 
 ```TypeScript
@@ -134,7 +136,7 @@ function getBundleName(agent: WantAgent): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回获取WantAgent实例的包名。 |
+| Promise&lt;string&gt; | Promise对象，返回获取WantAgent实例的包名。 |
 
 **错误码：**
 

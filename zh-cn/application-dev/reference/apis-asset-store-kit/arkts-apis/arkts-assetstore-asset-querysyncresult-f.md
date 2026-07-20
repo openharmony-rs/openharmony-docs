@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="querysyncresult"></a>
 ## querySyncResult
 
 ```TypeScript
@@ -30,7 +31,7 @@ function querySyncResult(query: AssetMap): Promise<SyncResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SyncResult> | Promise对象，返回同步执行结果。 |
+| Promise&lt;SyncResult&gt; | Promise对象，返回同步执行结果。 |
 
 **错误码：**
 

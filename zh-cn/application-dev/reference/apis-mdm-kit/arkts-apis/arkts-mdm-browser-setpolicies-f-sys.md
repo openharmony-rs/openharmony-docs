@@ -6,6 +6,7 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="setpolicies"></a>
 ## setPolicies
 
 ```TypeScript
@@ -37,7 +38,7 @@ function setPolicies(admin: Want, appId: string, policies: string, callback: Asy
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | appId | string | 是 | 应用ID，用于指定浏览器。 |
 | policies | string | 是 | 浏览器策略，当参数policies为空字符串时，表示取消指定浏览器的策略。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -74,6 +75,7 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 ```
 
 
+<a id="setpolicies-1"></a>
 ## setPolicies
 
 ```TypeScript
@@ -110,7 +112,7 @@ function setPolicies(admin: Want, appId: string, policies: string): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当设置浏览器策略失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置浏览器策略失败时，会抛出错误对象。 |
 
 **错误码：**
 

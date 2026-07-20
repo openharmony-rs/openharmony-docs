@@ -1,5 +1,6 @@
 # lchownSync
 
+<a id="lchownsync"></a>
 ## lchownSync
 
 ```TypeScript

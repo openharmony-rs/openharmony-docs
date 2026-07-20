@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="listfileext"></a>
 ## listFileExt
 
 ```TypeScript
@@ -42,7 +43,7 @@ declare function listFileExt(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise used to return the file names listed. |
+| Promise&lt;string[]&gt; | Promise used to return the file names listed. |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { uniformTypeDescriptor } from '@kit.ArkData';
 ```
 
+<a id="unregistertypedescriptors"></a>
 ## unregisterTypeDescriptors
 
 ```TypeScript
@@ -32,13 +33,13 @@ function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| typeIds | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待注销的typeId列表。列表不可为空，其中元素个数不超过50。每项长度不超过127。 |
+| typeIds | Array&lt;string&gt; | 是 | 待注销的typeId列表。列表不可为空，其中元素个数不超过50。每项长度不超过127。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

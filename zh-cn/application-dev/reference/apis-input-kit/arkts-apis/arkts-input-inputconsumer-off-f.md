@@ -6,6 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
+<a id="off"></a>
 ## off('hotkeyChange')
 
 ```TypeScript
@@ -26,7 +27,7 @@ function off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Call
 | --- | --- | --- | --- |
 | type | 'hotkeyChange' | 是 | 事件类型，固定取值为'hotkeyChange'。 |
 | hotkeyOptions | [HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md) | 是 | 快捷键选项。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<HotkeyOptions> | 否 | 需要取消订阅的回调函数。若缺省，则取消当前应用快捷键选项已订阅的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;HotkeyOptions&gt; | 否 | 需要取消订阅的回调函数。若缺省，则取消当前应用快捷键选项已订阅的所有回调函数。 |
 
 **错误码：**
 
@@ -106,6 +107,7 @@ struct Index {
 ```
 
 
+<a id="off-1"></a>
 ## off('keyPressed')
 
 ```TypeScript
@@ -125,7 +127,7 @@ function off(type: 'keyPressed', callback?: Callback<KeyEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyPressed' | 是 | 事件类型，固定取值为'keyPressed'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<KeyEvent> | 否 | 需要取消订阅的回调函数。若缺省，则取消当前已订阅的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;KeyEvent&gt; | 否 | 需要取消订阅的回调函数。若缺省，则取消当前已订阅的所有回调函数。 |
 
 **错误码：**
 

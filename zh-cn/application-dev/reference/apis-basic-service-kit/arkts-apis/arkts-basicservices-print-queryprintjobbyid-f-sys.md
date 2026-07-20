@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintjobbyid"></a>
 ## queryPrintJobById
 
 ```TypeScript
@@ -29,7 +30,7 @@ function queryPrintJobById(jobId: string, callback: AsyncCallback<PrintJob>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | jobId | string | 是 | 表示打印任务ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<PrintJob> | 是 | 异步按打印任务ID查询打印任务之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;PrintJob&gt; | 是 | 异步按打印任务ID查询打印任务之后的回调。 |
 
 **错误码：**
 
@@ -57,6 +58,7 @@ print.queryPrintJobById(jobId, (err: BusinessError, printJob : print.PrintJob) =
 ```
 
 
+<a id="queryprintjobbyid-1"></a>
 ## queryPrintJobById
 
 ```TypeScript
@@ -85,7 +87,7 @@ function queryPrintJobById(jobId: string): Promise<PrintJob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrintJob> | Promise对象，返回查询到的打印任务。 |
+| Promise&lt;PrintJob&gt; | Promise对象，返回查询到的打印任务。 |
 
 **错误码：**
 

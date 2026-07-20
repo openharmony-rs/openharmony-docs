@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getadditionalinfo"></a>
 ## getAdditionalInfo
 
 ```TypeScript

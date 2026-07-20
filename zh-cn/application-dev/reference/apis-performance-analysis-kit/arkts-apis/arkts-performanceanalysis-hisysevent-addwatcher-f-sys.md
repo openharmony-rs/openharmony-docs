@@ -6,6 +6,7 @@
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="addwatcher"></a>
 ## addWatcher
 
 ```TypeScript

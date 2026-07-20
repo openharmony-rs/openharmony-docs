@@ -6,6 +6,7 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="requestserialright"></a>
 ## requestSerialRight
 
 ```TypeScript
@@ -30,7 +31,7 @@ function requestSerialRight(portId: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，true表示请求权限成功，false表示请求权限失败。 |
+| Promise&lt;boolean&gt; | Promise对象，true表示请求权限成功，false表示请求权限失败。 |
 
 **错误码：**
 

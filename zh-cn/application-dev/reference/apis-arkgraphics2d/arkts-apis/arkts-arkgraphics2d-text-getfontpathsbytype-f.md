@@ -6,6 +6,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getfontpathsbytype"></a>
 ## getFontPathsByType
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 字体文件路径列表。 |
+| Array&lt;string&gt; | 字体文件路径列表。 |
 
 **示例：**
 

@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="requestsuspenddelay"></a>
 ## requestSuspendDelay
 
 ```TypeScript
@@ -16,7 +17,7 @@ function requestSuspendDelay(reason: string, callback: Callback<void>): DelaySus
 
 > **说明：**  
 >  
-> 短时任务的申请和使用过程中的约束与限制请参考[指南](../../../../task-management/transient-task.md#约束与限制)。
+> 短时任务的申请和使用过程中的约束与限制请参考[指南](docroot://task-management/transient-task.md#约束与限制)。
 
 **起始版本：** 9
 
@@ -29,7 +30,7 @@ function requestSuspendDelay(reason: string, callback: Callback<void>): DelaySus
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reason | string | 是 | 申请短时任务的原因。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 短时任务即将超时的回调函数，一般在超时前6秒，通过此回调通知应用。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 短时任务即将超时的回调函数，一般在超时前6秒，通过此回调通知应用。 |
 
 **返回值：**
 

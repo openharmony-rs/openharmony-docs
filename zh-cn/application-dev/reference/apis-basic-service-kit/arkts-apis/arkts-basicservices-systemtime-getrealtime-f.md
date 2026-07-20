@@ -6,6 +6,7 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="getrealtime"></a>
 ## getRealTime
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isNano | boolean | 是 | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ try {
 ```
 
 
+<a id="getrealtime-1"></a>
 ## getRealTime
 
 ```TypeScript
@@ -80,7 +82,7 @@ function getRealTime(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。 |
 
 **错误码：**
 
@@ -109,6 +111,7 @@ try {
 ```
 
 
+<a id="getrealtime-2"></a>
 ## getRealTime
 
 ```TypeScript
@@ -137,7 +140,7 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回自系统启动以来经过的时间，包括深度睡眠时间。 |
+| Promise&lt;number&gt; | Promise对象，返回自系统启动以来经过的时间，包括深度睡眠时间。 |
 
 **错误码：**
 

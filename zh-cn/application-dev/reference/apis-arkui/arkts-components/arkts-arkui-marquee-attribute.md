@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="allowscale"></a>
 ## allowScale
 
 ```TypeScript
@@ -34,6 +35,7 @@ allowScale(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否允许文本缩放。<br/>true：允许文本缩放；false：不允许文本缩放。<br/>默认值：false<br/>**说明：**<br/>仅当[fontSize](MarqueeAttribute#fontSize)为fp单位时生效。 |
 
+<a id="fontcolor"></a>
 ## fontColor
 
 ```TypeScript
@@ -58,6 +60,7 @@ fontColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 字体颜色。<br />Wearable设备上默认值为：'#c5ffffff'，显示为淡蓝色，其他设备默认值为：'e6182431'，显示为黑色。 |
 
+<a id="fontfamily"></a>
 ## fontFamily
 
 ```TypeScript
@@ -82,6 +85,7 @@ fontFamily(value: string | Resource)
 | --- | --- | --- | --- |
 | value | string \| Resource | 是 | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync-1)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
+<a id="fontsize"></a>
 ## fontSize
 
 ```TypeScript
@@ -106,6 +110,7 @@ fontSize(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
 
+<a id="fontweight"></a>
 ## fontWeight
 
 ```TypeScript
@@ -130,6 +135,7 @@ fontWeight(value: number | FontWeight | string)
 | --- | --- | --- | --- |
 | value | number \| FontWeight \| string | 是 | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
 
+<a id="marqueeupdatestrategy"></a>
 ## marqueeUpdateStrategy
 
 ```TypeScript
@@ -152,8 +158,9 @@ marqueeUpdateStrategy(value: MarqueeUpdateStrategy)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [MarqueeUpdateStrategy](../arkts-apis/arkts-arkui-enums-marqueeupdatestrategy-e.md) | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>默认值: MarqueeUpdateStrategy.DEFAULT |
+| value | [MarqueeUpdateStrategy](../arkts-apis/arkts-arkui-marqueeupdatestrategy-e.md) | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>默认值: MarqueeUpdateStrategy.DEFAULT |
 
+<a id="onbounce"></a>
 ## onBounce
 
 ```TypeScript
@@ -176,8 +183,9 @@ onBounce(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () => void | 是 | 完成一次滚动时触发的回调。 |
+| event | () =&gt; void | 是 | 完成一次滚动时触发的回调。 |
 
+<a id="onfinish"></a>
 ## onFinish
 
 ```TypeScript
@@ -200,8 +208,9 @@ onFinish(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () => void | 是 | 滚动全部循环次数完成时的回调。 |
+| event | () =&gt; void | 是 | 滚动全部循环次数完成时的回调。 |
 
+<a id="onstart"></a>
 ## onStart
 
 ```TypeScript
@@ -224,8 +233,9 @@ onStart(event: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | () => void | 是 | 当滚动的文本内容变化或者开始滚动时的回调。 |
+| event | () =&gt; void | 是 | 当滚动的文本内容变化或者开始滚动时的回调。 |
 
+<a id="onstop"></a>
 ## onStop
 
 ```TypeScript
@@ -252,5 +262,5 @@ onStop(event: Callback<void> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<void> \| undefined | 是 |  |
+| event | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; \| undefined | 是 |  |
 

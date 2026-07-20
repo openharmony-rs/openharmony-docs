@@ -22,7 +22,7 @@ displayPrimariesX: Array<number>
 
 The X-coordinate of the primary colors. Specifies the normalized X-coordinates of the display device's three primary colors. The values are stored in an array of length 3, in the order of red, green, and blue (r, g, b).Each value is represented in units of 0.00002 and must fall within the range [0.0, 1.0].
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 12
 
@@ -38,7 +38,7 @@ displayPrimariesY: Array<number>
 
 The Y-coordinate of the primary colors. Specifies the normalized Y-coordinates of the display device's three primary colors. The values are stored in an array of length 3, in the order of red, green, and blue (r, g, b).Each value is represented in units of 0.00002 and must fall within the range [0.0, 1.0].
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 12
 

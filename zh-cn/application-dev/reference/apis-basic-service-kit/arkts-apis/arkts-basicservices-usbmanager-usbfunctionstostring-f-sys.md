@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="usbfunctionstostring"></a>
 ## usbFunctionsToString
 
 ```TypeScript
@@ -18,7 +19,7 @@ function usbFunctionsToString(funcs: FunctionType): string
 
 **废弃版本：** 12
 
-**替代接口：** getStringFromFunctions(funcs:
+**替代接口：** [getStringFromFunctions(funcs:](arkts-basicservices-usbmanager-getstringfromfunctions-f-sys.md#getstringfromfunctions-1)
 
 <!--Device-usbManager-function usbFunctionsToString(funcs: FunctionType): string--><!--Device-usbManager-function usbFunctionsToString(funcs: FunctionType): string-End-->
 

@@ -42,7 +42,7 @@ fitStrRange: Array<Range>
 
 文本布局计算完成后能够完整显示的字符范围数组。
 
-**类型：** Array<Range>
+**类型：** Array&lt;Range&gt;
 
 **起始版本：** 24
 

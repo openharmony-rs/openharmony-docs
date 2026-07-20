@@ -6,6 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
+<a id="isaddosaccountbyuserdisallowed"></a>
 ## isAddOsAccountByUserDisallowed
 
 ```TypeScript

@@ -14,6 +14,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -51,6 +52,7 @@ let eventInfo: accessibility.EventInfo = ({
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -159,7 +161,7 @@ contents?: Array<string>
 
 内容列表，根据实际场景设置，无特殊限制，默认值为空。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 7
 

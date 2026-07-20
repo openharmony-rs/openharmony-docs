@@ -22,6 +22,7 @@ ImagePacker类，用于图片压缩和编码。
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="packbinaryimagetotiffdata"></a>
 ## packBinaryImageToTiffData
 
 ```TypeScript
@@ -49,7 +50,7 @@ packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回编码后的数据。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptions
 | [7800202](../errorcode-image.md#7800202-imagepacker无效参数) | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
+<a id="packbinaryimagetotifffile"></a>
 ## packBinaryImageToTiffFile
 
 ```TypeScript
@@ -86,7 +88,7 @@ packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: Pa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -95,6 +97,7 @@ packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: Pa
 | [7800202](../errorcode-image.md#7800202-imagepacker无效参数) | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
+<a id="packtodata"></a>
 ## packToData
 
 ```TypeScript
@@ -122,7 +125,7 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回压缩或编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **错误码：**
 
@@ -138,6 +141,7 @@ packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+<a id="packtodata-1"></a>
 ## packToData
 
 ```TypeScript
@@ -169,7 +173,7 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回压缩或编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **错误码：**
 
@@ -185,6 +189,7 @@ packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+<a id="packtodatafrompixelmapsequence"></a>
 ## packToDataFromPixelmapSequence
 
 ```TypeScript
@@ -203,14 +208,14 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: Packi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixelmapSequence | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<PixelMap> | 是 | 待编码的PixelMap序列。 |
+| pixelmapSequence | Array&lt;PixelMap&gt; | 是 | 待编码的PixelMap序列。 |
 | options | [PackingOptionsForSequence](arkts-image-image-packingoptionsforsequence-i.md) | 是 | 动图编码参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回编码后的数据。 |
 
 **错误码：**
 
@@ -219,6 +224,7 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: Packi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types;3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
 
+<a id="packtofile"></a>
 ## packToFile
 
 ```TypeScript
@@ -240,7 +246,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | source | [ImageSource](arkts-image-sendableimage-imagesource-i.md) | 是 | 编码的ImageSource。 |
 | fd | number | 是 | 文件描述符。取值范围为[0，65535]。 |
 | options | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -256,6 +262,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+<a id="packtofile-1"></a>
 ## packToFile
 
 ```TypeScript
@@ -282,7 +289,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -298,6 +305,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<voi
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+<a id="packtofile-2"></a>
 ## packToFile
 
 ```TypeScript
@@ -323,7 +331,7 @@ packToFile(source: PixelMap, fd: number, options: PackingOption, callback: Async
 | source | [PixelMap](arkts-image-image-pixelmap-i.md) | 是 | 编码的PixelMap资源。 |
 | fd | number | 是 | 文件描述符。取值范围为[0，65535]。 |
 | options | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -339,6 +347,7 @@ packToFile(source: PixelMap, fd: number, options: PackingOption, callback: Async
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+<a id="packtofile-3"></a>
 ## packToFile
 
 ```TypeScript
@@ -369,7 +378,7 @@ packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -385,6 +394,7 @@ packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>
 | [62980172](../errorcode-image.md#62980172-编码icc失败) | Failed to encode icc. |
 | [62980252](../errorcode-image.md#62980252-创建surface失败) | Failed to create surface. |
 
+<a id="packtofile-4"></a>
 ## packToFile
 
 ```TypeScript
@@ -411,7 +421,7 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -420,6 +430,7 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
+<a id="packtofilefrompixelmapsequence"></a>
 ## packToFileFromPixelmapSequence
 
 ```TypeScript
@@ -438,7 +449,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pixelmapSequence | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<PixelMap> | 是 | 待编码的PixelMap序列。 |
+| pixelmapSequence | Array&lt;PixelMap&gt; | 是 | 待编码的PixelMap序列。 |
 | fd | number | 是 | 文件描述符。取值范围为[0，65535]。 |
 | options | [PackingOptionsForSequence](arkts-image-image-packingoptionsforsequence-i.md) | 是 | 动图编码参数。 |
 
@@ -446,7 +457,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -455,6 +466,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: number, op
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types;3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Failed to encode image. |
 
+<a id="packing"></a>
 ## packing
 
 ```TypeScript
@@ -485,8 +497,9 @@ packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<Arra
 | --- | --- | --- | --- |
 | source | [ImageSource](arkts-image-sendableimage-imagesource-i.md) | 是 | 编码的ImageSource。 |
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ArrayBuffer> | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
 
+<a id="packing-1"></a>
 ## packing
 
 ```TypeScript
@@ -522,8 +535,9 @@ packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回压缩或编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
+<a id="packing-2"></a>
 ## packing
 
 ```TypeScript
@@ -557,8 +571,9 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBu
 | --- | --- | --- | --- |
 | source | [PixelMap](arkts-image-image-pixelmap-i.md) | 是 | 编码的PixelMap资源。 |
 | option | [PackingOption](arkts-image-image-packingoption-i.md) | 是 | 设置编码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ArrayBuffer> | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | 是 | 回调函数，当图片编码成功，err为undefined，data为获取到的压缩或编码数据；否则为错误对象。 |
 
+<a id="packing-3"></a>
 ## packing
 
 ```TypeScript
@@ -597,8 +612,9 @@ packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回压缩或编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
+<a id="packing-4"></a>
 ## packing
 
 ```TypeScript
@@ -624,7 +640,7 @@ packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回压缩或编码后的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回压缩或编码后的数据。 |
 
 **错误码：**
 
@@ -633,6 +649,7 @@ packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7800301](../errorcode-image.md#7800301-编码失败) | Encode failed. |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -655,8 +672,9 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当释放图片编码实例成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当释放图片编码实例成功，err为undefined，否则为错误对象。 |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -679,7 +697,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 ## supportedFormats
 
@@ -689,7 +707,7 @@ readonly supportedFormats: Array<string>
 
 图片编码支持的格式，包括：JPEG、WebP、PNG、HEIC<sup>12+</sup>、GIF<sup>18+</sup>、从API版本26.0.0开始支持TIFF格式（不同硬件设备支持情况不同）。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 6
 

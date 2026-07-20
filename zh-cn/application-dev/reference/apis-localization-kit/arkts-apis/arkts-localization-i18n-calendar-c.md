@@ -14,6 +14,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="add"></a>
 ## add
 
 ```TypeScript
@@ -62,6 +63,7 @@ try {
 
 ```
 
+<a id="comparedays"></a>
 ## compareDays
 
 ```TypeScript
@@ -114,6 +116,7 @@ try {
 
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -153,6 +156,7 @@ let hourOfDay: number = calendar.get('hour_of_day'); // hourOfDay = 8
 
 ```
 
+<a id="getdisplayname"></a>
 ## getDisplayName
 
 ```TypeScript
@@ -173,7 +177,7 @@ getDisplayName(locale: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | [表示区域ID的字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
+| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
 
 **返回值：**
 
@@ -191,6 +195,7 @@ let calendarName: string = calendar.getDisplayName('zh'); // calendarName = '佛
 
 ```
 
+<a id="getfirstdayofweek"></a>
 ## getFirstDayOfWeek
 
 ```TypeScript
@@ -223,6 +228,7 @@ let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 1
 
 ```
 
+<a id="getminimaldaysinfirstweek"></a>
 ## getMinimalDaysInFirstWeek
 
 ```TypeScript
@@ -255,6 +261,7 @@ let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // mi
 
 ```
 
+<a id="gettimeinmillis"></a>
 ## getTimeInMillis
 
 ```TypeScript
@@ -288,6 +295,7 @@ let millisecond: number = calendar.getTimeInMillis(); // millisecond = 5000
 
 ```
 
+<a id="gettimezone"></a>
 ## getTimeZone
 
 ```TypeScript
@@ -321,6 +329,7 @@ let timezone: string = calendar.getTimeZone(); // timezone = 'Asia/Shanghai'
 
 ```
 
+<a id="isweekend"></a>
 ## isWeekend
 
 ```TypeScript
@@ -362,6 +371,7 @@ isWeekend = calendar.isWeekend(date); // isWeekend = false
 
 ```
 
+<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -399,6 +409,7 @@ calendar.set(2021, 10, 1, 8, 0, 0); // 设置时间日期为2021.11.1 08:00:00
 
 ```
 
+<a id="setfirstdayofweek"></a>
 ## setFirstDayOfWeek
 
 ```TypeScript
@@ -432,6 +443,7 @@ let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 3
 
 ```
 
+<a id="setminimaldaysinfirstweek"></a>
 ## setMinimalDaysInFirstWeek
 
 ```TypeScript
@@ -465,6 +477,7 @@ let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // mi
 
 ```
 
+<a id="settime"></a>
 ## setTime
 
 ```TypeScript
@@ -498,6 +511,7 @@ calendar.setTime(date);
 
 ```
 
+<a id="settime-1"></a>
 ## setTime
 
 ```TypeScript
@@ -530,6 +544,7 @@ calendar.setTime(10540800000);
 
 ```
 
+<a id="settimezone"></a>
 ## setTimeZone
 
 ```TypeScript

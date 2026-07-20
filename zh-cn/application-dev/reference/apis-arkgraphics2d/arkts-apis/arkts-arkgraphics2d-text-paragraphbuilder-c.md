@@ -14,6 +14,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="addplaceholder"></a>
 ## addPlaceholder
 
 ```TypeScript
@@ -72,6 +73,7 @@ struct Index {
 
 ```
 
+<a id="addsymbol"></a>
 ## addSymbol
 
 ```TypeScript
@@ -129,6 +131,7 @@ struct Index {
 
 ```
 
+<a id="addtext"></a>
 ## addText
 
 ```TypeScript
@@ -185,6 +188,7 @@ struct Index {
 
 ```
 
+<a id="build"></a>
 ## build
 
 ```TypeScript
@@ -242,6 +246,7 @@ struct Index {
 
 ```
 
+<a id="buildlinetypeset"></a>
 ## buildLineTypeset
 
 ```TypeScript
@@ -294,6 +299,7 @@ struct Index {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -350,6 +356,7 @@ struct Index {
 
 ```
 
+<a id="popstyle"></a>
 ## popStyle
 
 ```TypeScript
@@ -401,6 +408,7 @@ struct Index {
 
 ```
 
+<a id="pushstyle"></a>
 ## pushStyle
 
 ```TypeScript

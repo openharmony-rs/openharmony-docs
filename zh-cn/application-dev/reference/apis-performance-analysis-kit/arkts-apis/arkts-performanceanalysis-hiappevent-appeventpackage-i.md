@@ -24,7 +24,7 @@ appEventInfos: Array<AppEventInfo>
 
 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
-**类型：** Array<AppEventInfo>
+**类型：** Array&lt;AppEventInfo&gt;
 
 **起始版本：** 12
 

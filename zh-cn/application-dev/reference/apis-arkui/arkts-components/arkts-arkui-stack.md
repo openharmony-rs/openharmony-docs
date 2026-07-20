@@ -37,7 +37,7 @@ Stack(options?: StackOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | StackOptions | 否 | 设置子组件在容器内的对齐方式。 |
+| options | [StackOptions](arkts-arkui-stackoptions-i.md) | 否 | 设置子组件在容器内的对齐方式。 |
 
 ## 汇总
 

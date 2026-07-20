@@ -6,6 +6,7 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="opensession"></a>
 ## openSession
 
 ```TypeScript
@@ -35,7 +36,7 @@ function openSession(admin: Want, accountId: number): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | promise回调 |
+| Promise&lt;Uint8Array&gt; | promise回调 |
 
 **错误码：**
 

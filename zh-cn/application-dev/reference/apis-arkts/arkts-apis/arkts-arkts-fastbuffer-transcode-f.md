@@ -6,6 +6,7 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
+<a id="transcode"></a>
 ## transcode
 
 ```TypeScript
@@ -26,7 +27,7 @@ function transcode(source: FastBuffer | Uint8Array, fromEnc: string, toEnc: stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | FastBuffer \| Uint8Array | 是 | 实例对象。 |
+| source | [FastBuffer](arkts-arkts-fastbuffer-fastbuffer-c.md) \| Uint8Array | 是 | 实例对象。 |
 | fromEnc | string | 是 | 当前编码格式。支持的格式范围为BufferEncoding。传入空字符串时，表示使用编码格式'utf8'。 |
 | toEnc | string | 是 | 目标编码。支持的格式范围为BufferEncoding。 |
 

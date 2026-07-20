@@ -1,5 +1,6 @@
 # getDoNotDisturbDate（系统接口）
 
+<a id="getdonotdisturbdate"></a>
 ## getDoNotDisturbDate
 
 ```TypeScript
@@ -26,9 +27,10 @@ function getDoNotDisturbDate(callback: AsyncCallback<DoNotDisturbDate>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DoNotDisturbDate> | 是 | 查询免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DoNotDisturbDate&gt; | 是 | 查询免打扰时间回调函数。 |
 
 
+<a id="getdonotdisturbdate-1"></a>
 ## getDoNotDisturbDate
 
 ```TypeScript
@@ -55,9 +57,10 @@ function getDoNotDisturbDate(): Promise<DoNotDisturbDate>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DoNotDisturbDate> | 以Promise形式返回查询到的免打扰时间。 |
+| Promise&lt;DoNotDisturbDate&gt; | 以Promise形式返回查询到的免打扰时间。 |
 
 
+<a id="getdonotdisturbdate-2"></a>
 ## getDoNotDisturbDate
 
 ```TypeScript
@@ -85,9 +88,10 @@ function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDistur
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DoNotDisturbDate> | 是 | 查询免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DoNotDisturbDate&gt; | 是 | 查询免打扰时间回调函数。 |
 
 
+<a id="getdonotdisturbdate-3"></a>
 ## getDoNotDisturbDate
 
 ```TypeScript
@@ -120,5 +124,5 @@ function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DoNotDisturbDate> | 以Promise形式返回查询到的免打扰时间。 |
+| Promise&lt;DoNotDisturbDate&gt; | 以Promise形式返回查询到的免打扰时间。 |
 

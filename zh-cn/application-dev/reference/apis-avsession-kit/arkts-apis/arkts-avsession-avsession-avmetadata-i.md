@@ -60,7 +60,7 @@ assetId: string
 
 - 该属性发生变化则其他元数据属性都将被刷新。  
 - 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。  
-- 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setavmetadata-2)方法将失败，返回错误码6600101。
+- 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setavmetadata-1)方法将失败，返回错误码6600101。
 
 **类型：** string
 
@@ -119,7 +119,7 @@ avQueueImage?: image.PixelMap | string
 - 设置的数据类型为PixelMap时，通过getAVMetadata获取的将为PixelMap。  
 - 设置为url图片路径，获取的为url图片路径。
 
-**类型：** image.PixelMap | string
+**类型：** image.PixelMap \| string
 
 **起始版本：** 11
 
@@ -217,7 +217,7 @@ drmSchemes?: Array<string>
 
 当前session支持的DRM方案，取值为DRM方案uuid。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -316,7 +316,7 @@ mediaImage?: image.PixelMap | string
 - 设置的数据类型为PixelMap时，通过getAVMetadata获取的将为PixelMap。  
 - 设置为url图片路径，获取的为url图片路径。
 
-**类型：** image.PixelMap | string
+**类型：** image.PixelMap \| string
 
 **起始版本：** 10
 

@@ -20,6 +20,6 @@ declare type PageTransitionCallback = (type: RouteType, progress: number) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | RouteType | 是 | transition route type |
-| progress | number | 是 | transition progess |
+| type | [RouteType](arkts-arkui-routetype-e.md) | 是 | transition route type  |
+| progress | number | 是 | transition progess  |
 

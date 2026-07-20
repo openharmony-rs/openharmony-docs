@@ -11,10 +11,13 @@
 
 **起始版本：** 24
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export class GridLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class GridLayoutAlgorithm implements LayoutAlgorithm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -81,7 +84,7 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 装饰器类型：@Trace
 
-**类型：** string | ItemFillPolicy
+**类型：** string \| ItemFillPolicy
 
 **默认值：** '1fr'
 

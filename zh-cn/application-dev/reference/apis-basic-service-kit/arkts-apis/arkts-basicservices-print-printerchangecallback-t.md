@@ -16,6 +16,6 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | PrinterEvent | 是 | 表示打印机事件。 |
-| printerInformation | PrinterInformation | 是 | 表示打印机信息。 |
+| event | [PrinterEvent](arkts-basicservices-print-printerevent-e.md) | 是 | 表示打印机事件。  |
+| printerInformation | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | 是 | 表示打印机信息。  |
 

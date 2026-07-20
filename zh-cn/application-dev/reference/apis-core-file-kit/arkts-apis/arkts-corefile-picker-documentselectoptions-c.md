@@ -84,7 +84,7 @@ fileSuffixFilters?: Array<string>
 
 仅对具有该系统能力的设备开放。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 
@@ -186,7 +186,7 @@ multiUriArray?: Array<string>
 
 该参数在Phone设备中可正常使用，在其他设备中无效果。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 15
 

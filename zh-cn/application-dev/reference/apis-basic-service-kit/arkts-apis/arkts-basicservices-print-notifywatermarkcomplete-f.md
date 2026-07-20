@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="notifywatermarkcomplete"></a>
 ## notifyWatermarkComplete
 
 ```TypeScript

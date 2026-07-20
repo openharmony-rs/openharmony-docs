@@ -6,7 +6,7 @@
 >  
 > - 从API version 8开始，从API version 9开始废弃，建议使用[HuksReturnResult<sup>9+</sup>](arkts-universalkeystore-huks-huksreturnresult-i.md)替代。  
 >  
-> - errorCode的具体信息，请参考[HUKS错误码](../../../../reference/apis-universal-keystore-kit/errorcode-huks.md)。
+> - errorCode的具体信息，请参考[HUKS错误码](docroot://reference/apis-universal-keystore-kit/errorcode-huks.md)。
 
 **起始版本：** 8
 
@@ -34,7 +34,7 @@ certChains?: Array<string>
 
 **说明：** 从API version 9开始废弃，无替代接口。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 8
 
@@ -94,7 +94,7 @@ properties?: Array<HuksParam>
 
 **说明：** 从API version 9开始废弃，无替代接口。
 
-**类型：** Array<HuksParam>
+**类型：** Array&lt;HuksParam&gt;
 
 **起始版本：** 8
 

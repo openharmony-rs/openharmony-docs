@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="checkpreferencesconflicts"></a>
 ## checkPreferencesConflicts
 
 ```TypeScript
@@ -38,7 +39,7 @@ function checkPreferencesConflicts(printerId: string, changedType: string, prefe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string[]> | Promise that resolves with the conflicting field names. |
+| Promise&lt;string[]&gt; | Promise that resolves with the conflicting field names. |
 
 **错误码：**
 

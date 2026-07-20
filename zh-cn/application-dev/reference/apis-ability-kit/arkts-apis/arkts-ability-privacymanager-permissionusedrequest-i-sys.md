@@ -144,7 +144,7 @@ permissionNames?: Array<Permissions>
 
 需要查询的权限集合。默认值：空，表示查询所有权限的使用记录。
 
-**类型：** Array<Permissions>
+**类型：** Array&lt;Permissions&gt;
 
 **起始版本：** 9
 

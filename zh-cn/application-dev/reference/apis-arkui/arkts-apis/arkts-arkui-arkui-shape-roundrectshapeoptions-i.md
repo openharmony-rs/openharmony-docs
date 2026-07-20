@@ -32,7 +32,7 @@ radiusHeight?: number | string
 
 取值为异常值时按照0vp处理。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 12
 
@@ -60,7 +60,7 @@ radiusWidth?: number | string
 
 取值为异常值时按照0vp处理。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 12
 

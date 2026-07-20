@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="getinstallationallowedappdistributiontypes"></a>
 ## getInstallationAllowedAppDistributionTypes
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getInstallationAllowedAppDistributionTypes(admin: Want): Array<AppDistr
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AppDistributionType> | 应用程序签名证书的分发类型数组。 |
+| Array&lt;AppDistributionType&gt; | 应用程序签名证书的分发类型数组。 |
 
 **错误码：**
 

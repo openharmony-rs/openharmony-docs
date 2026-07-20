@@ -14,6 +14,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="decapsulate"></a>
 ## decapsulate
 
 ```TypeScript
@@ -37,13 +38,13 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | 是 | 接收方的私钥。 |
-| wrappedKey | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | KEM封装的密钥。 |
+| wrappedKey | Uint8Array | 是 | KEM封装的密钥。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回共享密钥。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回共享密钥。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ async function kemDecapsulate() {
 
 ```
 
+<a id="decapsulatesync"></a>
 ## decapsulateSync
 
 ```TypeScript
@@ -102,13 +104,13 @@ decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | priKey | [PriKey](arkts-cryptoarchitecture-cryptoframework-prikey-i.md) | 是 | 接收方的私钥。 |
-| wrappedKey | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | KEM封装的密钥。 |
+| wrappedKey | Uint8Array | 是 | KEM封装的密钥。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 共享密钥。 |
+| Uint8Array | 共享密钥。 |
 
 **错误码：**
 
@@ -142,6 +144,7 @@ function kemDecapsulateSync() {
 
 ```
 
+<a id="encapsulate"></a>
 ## encapsulate
 
 ```TypeScript
@@ -171,7 +174,7 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KemEncapResult> | Promise对象，返回KEM封装结果。 |
+| Promise&lt;KemEncapResult&gt; | Promise对象，返回KEM封装结果。 |
 
 **错误码：**
 
@@ -205,6 +208,7 @@ async function kemEncapsulate() {
 
 ```
 
+<a id="encapsulatesync"></a>
 ## encapsulateSync
 
 ```TypeScript

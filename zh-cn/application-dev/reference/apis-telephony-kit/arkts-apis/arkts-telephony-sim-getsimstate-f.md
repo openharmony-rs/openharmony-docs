@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getsimstate"></a>
 ## getSimState
 
 ```TypeScript
@@ -25,7 +26,7 @@ Obtains the state of the SIM card in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the card slot index number,ranging from {@code 0} to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<SimState> | 是 | Indicates the callback for getting one of the following SIM card states:&lt;ul&gt;&lt;li&gt;{@code SimState#SIM_STATE_UNKNOWN}&lt;li&gt;{@code SimState#SIM_STATE_NOT_PRESENT}&lt;li&gt;{@code SimState#SIM_STATE_LOCKED}&lt;li&gt;{@code SimState#SIM_STATE_NOT_READY}&lt;li&gt;{@code SimState#SIM_STATE_READY}&lt;li&gt;{@code SimState#SIM_STATE_LOADED}&lt;/ul&gt; |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;SimState&gt; | 是 | Indicates the callback for getting one of the following SIM card states:<ul><li>{@code SimState#SIM_STATE_UNKNOWN}<li>{@code SimState#SIM_STATE_NOT_PRESENT}<li>{@code SimState#SIM_STATE_LOCKED}<li>{@code SimState#SIM_STATE_NOT_READY}<li>{@code SimState#SIM_STATE_READY}<li>{@code SimState#SIM_STATE_LOADED}</ul> |
 
 **错误码：**
 
@@ -50,6 +51,7 @@ sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
 ```
 
 
+<a id="getsimstate-1"></a>
 ## getSimState
 
 ```TypeScript
@@ -74,7 +76,7 @@ Obtains the state of the SIM card in a specified slot.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SimState> | Returns one of the following SIM card states:&lt;ul&gt;&lt;li&gt;{@code SimState#SIM_STATE_UNKNOWN}&lt;li&gt;{@code SimState#SIM_STATE_NOT_PRESENT}&lt;li&gt;{@code SimState#SIM_STATE_LOCKED}&lt;li&gt;{@code SimState#SIM_STATE_NOT_READY}&lt;li&gt;{@code SimState#SIM_STATE_READY}&lt;li&gt;{@code SimState#SIM_STATE_LOADED}&lt;/ul&gt; |
+| Promise&lt;SimState&gt; | Returns one of the following SIM card states:<ul><li>{@code SimState#SIM_STATE_UNKNOWN}<li>{@code SimState#SIM_STATE_NOT_PRESENT}<li>{@code SimState#SIM_STATE_LOCKED}<li>{@code SimState#SIM_STATE_NOT_READY}<li>{@code SimState#SIM_STATE_READY}<li>{@code SimState#SIM_STATE_LOADED}</ul> |
 
 **错误码：**
 

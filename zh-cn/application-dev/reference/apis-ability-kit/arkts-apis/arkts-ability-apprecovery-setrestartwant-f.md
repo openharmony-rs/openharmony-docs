@@ -6,6 +6,7 @@
 import { appRecovery } from '@kit.AbilityKit';
 ```
 
+<a id="setrestartwant"></a>
 ## setRestartWant
 
 ```TypeScript

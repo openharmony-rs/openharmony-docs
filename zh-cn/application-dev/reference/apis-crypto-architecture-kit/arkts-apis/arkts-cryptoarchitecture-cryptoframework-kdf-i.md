@@ -16,6 +16,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="generatesecret"></a>
 ## generateSecret
 
 ```TypeScript
@@ -39,7 +40,7 @@ generateSecret(params: KdfSpec, callback: AsyncCallback<DataBlob>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | params | [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md) | 是 | 设置密钥派生函数的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataBlob> | 是 | 回调函数。当密钥派生成功时，err为undefined，data为派生的密钥；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataBlob&gt; | 是 | 回调函数。当密钥派生成功时，err为undefined，data为派生的密钥；否则为错误对象。 |
 
 **错误码：**
 
@@ -98,6 +99,7 @@ kdf.generateSecret(spec, (err, secret) => {
 
 ```
 
+<a id="generatesecret-1"></a>
 ## generateSecret
 
 ```TypeScript
@@ -126,7 +128,7 @@ generateSecret(params: KdfSpec): Promise<DataBlob>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataBlob> | Promise对象，返回派生的密钥。 |
+| Promise&lt;DataBlob&gt; | Promise对象，返回派生的密钥。 |
 
 **错误码：**
 
@@ -185,6 +187,7 @@ kdfPromise.then(secret => {
 
 ```
 
+<a id="generatesecretsync"></a>
 ## generateSecretSync
 
 ```TypeScript

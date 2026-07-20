@@ -6,6 +6,7 @@
 import { continueManager } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off('prepareContinue')
 
 ```TypeScript
@@ -28,7 +29,7 @@ function off(type: 'prepareContinue', context: Context, callback?: AsyncCallback
 | --- | --- | --- | --- |
 | type | 'prepareContinue' | 是 | 固定值：prepareContinue。 |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | Ability的Context。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ContinueResultInfo> | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获回调函数注销结果。否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ContinueResultInfo&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获回调函数注销结果。否则为错误对象。 |
 
 **错误码：**
 

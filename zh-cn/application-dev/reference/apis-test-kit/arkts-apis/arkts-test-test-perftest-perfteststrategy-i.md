@@ -27,7 +27,7 @@ actionCode: Callback<Callback<boolean>>
 
 测试代码段。
 
-**类型：** Callback<Callback<boolean>>
+**类型：** Callback&lt;Callback&lt;boolean&gt;&gt;
 
 **起始版本：** 20
 
@@ -81,7 +81,7 @@ metrics: Array<PerfMetric>
 
 被测性能指标列表。
 
-**类型：** Array<PerfMetric>
+**类型：** Array&lt;PerfMetric&gt;
 
 **起始版本：** 20
 
@@ -99,7 +99,7 @@ resetCode?: Callback<Callback<boolean>>
 
 测试结束环境重置代码段。默认为空，框架运行时不执行此代码段。
 
-**类型：** Callback<Callback<boolean>>
+**类型：** Callback&lt;Callback&lt;boolean&gt;&gt;
 
 **起始版本：** 20
 

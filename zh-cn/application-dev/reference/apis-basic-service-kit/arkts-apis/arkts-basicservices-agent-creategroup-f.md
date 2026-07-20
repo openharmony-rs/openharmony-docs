@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="creategroup"></a>
 ## createGroup
 
 ```TypeScript
@@ -30,7 +31,7 @@ function createGroup(config: GroupConfig): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回创建完成的分组id。 |
+| Promise&lt;string&gt; | Promise对象。返回创建完成的分组id。 |
 
 **错误码：**
 

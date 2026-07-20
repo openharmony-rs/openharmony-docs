@@ -30,7 +30,7 @@ TextArea(value?: TextAreaOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | TextAreaOptions | 否 | TextArea组件参数。 |
+| value | [TextAreaOptions](arkts-arkui-textareaoptions-i.md) | 否 | TextArea组件参数。  |
 
 ## 汇总
 

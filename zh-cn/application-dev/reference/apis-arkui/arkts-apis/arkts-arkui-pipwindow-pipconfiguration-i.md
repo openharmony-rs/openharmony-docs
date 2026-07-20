@@ -20,7 +20,7 @@ import { PiPWindow } from '@kit.ArkUI';
 componentController: XComponentController
 ```
 
-表示原始[XComponent](./@internal/component/ets/xcomponent)控制器。
+表示原始[XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-i)控制器。
 
 **类型：** XComponentController
 
@@ -38,7 +38,7 @@ componentController: XComponentController
 contentHeight?: number
 ```
 
-原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-2)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为[XComponent](XComponent)组件的高度。
+原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为[XComponent](XComponent)组件的高度。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ contentHeight?: number
 contentWidth?: number
 ```
 
-原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-2)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为[XComponent](XComponent)组件的宽度。
+原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create-1)创建PiPController时，不传值则默认为[XComponent](XComponent)组件的宽度。
 
 **类型：** number
 
@@ -94,7 +94,7 @@ controlGroups?: Array<PiPControlGroup>
 
 画中画控制面板的可选控件组列表，应用可以对此进行配置以决定是否显示。应用未配置时，面板显示基础控件（如视频播放控件组的播放/暂停控件）；应用选择配置时，则最多可以选择三个控件，超出三个create接口抛出401错误码。
 
-**类型：** Array<PiPControlGroup>
+**类型：** Array&lt;PiPControlGroup&gt;
 
 **起始版本：** 12
 
@@ -182,7 +182,7 @@ defaultWindowSizeType?: number
 handleId?: number
 ```
 
-navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](Navigation)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](../arkts-components/arkts-arkui-common-basecustomcomponent-c.md#getuniqueid-1)获取页面ID。使用[Navigation](Navigation)模块内页面路由时，推荐使用[系统路由表](../../../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](../arkts-components/arkts-arkui-common-basecustomcomponent-c.md#getuniqueid-1)获取页面ID不准确的情况。
+navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](Navigation)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](../arkts-components/arkts-arkui-basecustomcomponent-c.md#getuniqueid-1)获取页面ID。使用[Navigation](Navigation)模块内页面路由时，推荐使用[系统路由表](docroot://ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](../arkts-components/arkts-arkui-basecustomcomponent-c.md#getuniqueid-1)获取页面ID不准确的情况。
 
 **类型：** number
 

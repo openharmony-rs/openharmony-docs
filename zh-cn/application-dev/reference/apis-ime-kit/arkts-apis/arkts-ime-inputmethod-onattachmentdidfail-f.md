@@ -6,6 +6,7 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="onattachmentdidfail"></a>
 ## onAttachmentDidFail
 
 ```TypeScript
@@ -24,7 +25,7 @@ function onAttachmentDidFail(callback: Callback<AttachFailureReason>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AttachFailureReason> | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AttachFailureReason&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。 |
 
 **示例：**
 

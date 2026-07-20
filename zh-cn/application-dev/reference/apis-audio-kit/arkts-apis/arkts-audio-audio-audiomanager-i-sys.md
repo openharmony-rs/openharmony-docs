@@ -16,6 +16,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="disablesafemediavolume"></a>
 ## disableSafeMediaVolume
 
 ```TypeScript
@@ -38,7 +39,7 @@ user disable the safe media volume state.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ audioManager.disableSafeMediaVolume().then(() => {
 
 ```
 
+<a id="getcollaborativemanager"></a>
 ## getCollaborativeManager
 
 ```TypeScript
@@ -88,6 +90,7 @@ getCollaborativeManager(): AudioCollaborativeManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
+<a id="geteffectmanager"></a>
 ## getEffectManager
 
 ```TypeScript
@@ -125,6 +128,7 @@ let audioEffectManager: audio.AudioEffectManager = audioManager.getEffectManager
 
 ```
 
+<a id="getextraparameters"></a>
 ## getExtraParameters
 
 ```TypeScript
@@ -146,13 +150,13 @@ Obtains the values of a certain key. This method uses a promise to return the qu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainKey | string | 是 | Main key of the audio parameters to get. |
-| subKeys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 否 | Sub keys of the audio parameters to get. |
+| subKeys | Array&lt;string&gt; | 否 | Sub keys of the audio parameters to get. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Record<string, string>> | Promise used to return the key-value pairs. |
+| Promise&lt;Record&lt;string, string&gt;&gt; | Promise used to return the key-value pairs. |
 
 **错误码：**
 
@@ -176,6 +180,7 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
 
 ```
 
+<a id="getrecordingmanager"></a>
 ## getRecordingManager
 
 ```TypeScript
@@ -206,6 +211,7 @@ getRecordingManager(): AudioRecordingManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 
+<a id="on"></a>
 ## on('volumeChange')
 
 ```TypeScript
@@ -231,7 +237,7 @@ Listens for system volume change events. This method uses a callback to get volu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'volumeChange' | 是 | Type of the event to listen for. Only the volumeChange event is supported. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<VolumeEvent> | 是 | Callback used to get the system volume change event. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;VolumeEvent&gt; | 是 | Callback used to get the system volume change event. |
 
 **示例：**
 
@@ -244,6 +250,7 @@ audioManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
 
 ```
 
+<a id="on-1"></a>
 ## on('ringerModeChange')
 
 ```TypeScript
@@ -269,7 +276,7 @@ Listens for ringer mode change events. This method uses a callback to get ringer
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'ringerModeChange' | 是 | Type of the event to listen for. Only the ringerModeChange event is supported. |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioRingMode> | 是 | Callback used to get the updated ringer mode. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioRingMode&gt; | 是 | Callback used to get the updated ringer mode. |
 
 **示例：**
 
@@ -280,6 +287,7 @@ audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
 
 ```
 
+<a id="setaudioscene"></a>
 ## setAudioScene
 
 ```TypeScript
@@ -301,7 +309,7 @@ Sets the audio scene mode to change audio strategies. This method uses an asynch
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | scene | [AudioScene](arkts-audio-audio-audioscene-e.md) | 是 | Audio scene mode. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | Callback used to return the result. |
 
 **示例：**
 
@@ -318,6 +326,7 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: Busine
 
 ```
 
+<a id="setaudioscene-1"></a>
 ## setAudioScene
 
 ```TypeScript
@@ -344,7 +353,7 @@ Sets the audio scene mode to change audio strategies. This method uses a promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **示例：**
 
@@ -359,6 +368,7 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
 
 ```
 
+<a id="setextraparameters"></a>
 ## setExtraParameters
 
 ```TypeScript
@@ -382,13 +392,13 @@ Sets extra audio parameters. This method uses a promise to return the result.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mainKey | string | 是 | Main key of the audio parameters to set. |
-| kvpairs | Record<string, string> | 是 | Key-value pairs with subkeys and values to set. |
+| kvpairs | Record&lt;string, string&gt; | 是 | Key-value pairs with subkeys and values to set. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

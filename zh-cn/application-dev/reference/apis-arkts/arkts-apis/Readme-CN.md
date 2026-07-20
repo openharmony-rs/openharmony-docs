@@ -90,6 +90,10 @@
   - [BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md)
 - [@ohos.process](arkts-process.md)
   - [abort](arkts-arkts-process-abort-f.md)
+  <!--Del-->
+  - [chdir(系统接口)](arkts-arkts-process-chdir-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [cwd(系统接口)](arkts-arkts-process-cwd-f-sys.md)<!--DelEnd-->
   - [exit](arkts-arkts-process-exit-f.md)
   - [getEnvironmentVar](arkts-arkts-process-getenvironmentvar-f.md)
   - [getPastCpuTime](arkts-arkts-process-getpastcputime-f.md)
@@ -101,10 +105,22 @@
   - [isAppUid](arkts-arkts-process-isappuid-f.md)
   - [isIsolatedProcess](arkts-arkts-process-isisolatedprocess-f.md)
   - [kill](arkts-arkts-process-kill-f.md)
+  <!--Del-->
+  - [off(系统接口)](arkts-arkts-process-off-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [on(系统接口)](arkts-arkts-process-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [runCmd(系统接口)](arkts-arkts-process-runcmd-f-sys.md)<!--DelEnd-->
   - [uptime](arkts-arkts-process-uptime-f.md)
   - [ProcessManager](arkts-arkts-process-processmanager-c.md)
+  <!--Del-->
+  - [ChildProcess(系统接口)](arkts-arkts-process-childprocess-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ConditionType(系统接口)](arkts-arkts-process-conditiontype-i-sys.md)<!--DelEnd-->
   - [EventListener](arkts-arkts-process-eventlistener-t.md)
   - [常量](arkts-arkts-process-con.md)
+  <!--Del-->
+  - [常量(系统接口)](arkts-arkts-process-con-sys.md)<!--DelEnd-->
 - [@ohos.taskpool](arkts-taskpool.md)
   - [cancel](arkts-arkts-taskpool-cancel-f.md)
   - [execute](arkts-arkts-taskpool-execute-f.md)
@@ -220,6 +236,8 @@
   - [ReadableOptions](arkts-arkts-stream-readableoptions-i.md)
 - [@ohos.worker](arkts-worker.md)
   - [worker](arkts-arkts-worker-n.md)
+    <!--Del-->
+    - [RestrictedWorker(系统接口)](arkts-arkts-worker-restrictedworker-c-sys.md)<!--DelEnd-->
     - [ThreadWorker](arkts-arkts-worker-threadworker-c.md)
     - [Worker](arkts-arkts-worker-worker-c.md)
     - [常量](arkts-arkts-worker-con.md)

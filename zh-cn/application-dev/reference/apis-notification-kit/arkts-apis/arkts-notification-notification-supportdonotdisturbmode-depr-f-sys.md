@@ -1,5 +1,6 @@
 # supportDoNotDisturbMode（系统接口）
 
+<a id="supportdonotdisturbmode"></a>
 ## supportDoNotDisturbMode
 
 ```TypeScript
@@ -26,9 +27,10 @@ function supportDoNotDisturbMode(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 查询是否支持免打扰功能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询是否支持免打扰功能回调函数。 |
 
 
+<a id="supportdonotdisturbmode-1"></a>
 ## supportDoNotDisturbMode
 
 ```TypeScript
@@ -55,5 +57,5 @@ function supportDoNotDisturbMode(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回获取是否支持免打扰功能的结果。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回获取是否支持免打扰功能的结果。 |
 

@@ -24,25 +24,25 @@ import { collections } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md) | 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。推荐使用引用传递以提升传递性能。&gt; **说明** &gt; &gt; - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; 本节使用以下标识来表示泛型的使用：- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable |
-| [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md) | ArkTS TypedArray（[Int8Array](arkts-collections.md)、[Uint8Array](arkts-collections.md)、[Int16Array](arkts-collections.md)、[Uint16Array](arkts-collections.md)、[Int32Array](arkts-collections.md)、[Uint32Array](arkts-collections.md)、[Uint8ClampedArray](arkts-collections.md)、[Float32Array](arkts-collections.md)）的底层数据结构。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器类型**：\@Sendable |
-| [BitVector](arkts-arkts-collections-bitvector-c.md) | 一种线性数据结构，底层基于数组实现。BitVector 中存储的元素为 bit 值，能够存储和处理 bit 级别的操作。@Sendable |
-| [Float32Array](arkts-arkts-collections-float32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。@Sendable |
-| [Int16Array](arkts-arkts-collections-int16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器类型：** \@Sendable |
-| [Int32Array](arkts-arkts-collections-int32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器**：\@Sendable |
-| [Int8Array](arkts-arkts-collections-int8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器类型**：\@Sendable |
-| [Map](arkts-arkts-collections-map-c.md) | 一种基于键值对存储的非线性数据结构。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; 本节使用以下标识符来表示泛型的使用：- K：键。 - V：值。K和V类型都需为[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器类型**：\@Sendable |
-| [Set](arkts-arkts-collections-set-c.md) | 一种非线性数据结构。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; 本节使用以下标识来表示泛型的使用：- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器类型：** \@Sendable |
-| [Uint16Array](arkts-arkts-collections-uint16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器类型**：\@Sendable |
-| [Uint32Array](arkts-arkts-collections-uint32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器**：\@Sendable |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器类型：** \@Sendable |
-| [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; **装饰器类型**：\@Sendable |
+| [Array](arkts-arkts-collections-array-c.md) | 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。推荐使用引用传递以提升传递性能。  > **说明**  >  > - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > 本节使用以下标识来表示泛型的使用：  - T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable |
+| [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md) | ArkTS TypedArray（[Int8Array](arkts-collections.md)、[Uint8Array](arkts-collections.md)、[Int16Array](arkts-collections.md)、[Uint16Array](arkts-collections.md)、[Int32Array](arkts-collections.md)、[Uint32Array](arkts-collections.md)、[Uint8ClampedArray](arkts-collections.md)、[Float32Array](arkts-collections.md)）的底层数据结构。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器类型**：\@Sendable |
+| [BitVector](arkts-arkts-collections-bitvector-c.md) | 一种线性数据结构，底层基于数组实现。BitVector 中存储的元素为 bit 值，能够存储和处理 bit 级别的操作。  @Sendable |
+| [Float32Array](arkts-arkts-collections-float32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  @Sendable |
+| [Int16Array](arkts-arkts-collections-int16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器类型：** \@Sendable |
+| [Int32Array](arkts-arkts-collections-int32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器**：\@Sendable |
+| [Int8Array](arkts-arkts-collections-int8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器类型**：\@Sendable |
+| [Map](arkts-arkts-collections-map-c.md) | 一种基于键值对存储的非线性数据结构。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > 本节使用以下标识符来表示泛型的使用：  - K：键。  - V：值。K和V类型都需为[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器类型**：\@Sendable |
+| [Set](arkts-arkts-collections-set-c.md) | 一种非线性数据结构。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > 本节使用以下标识来表示泛型的使用：  - T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器类型：** \@Sendable |
+| [Uint16Array](arkts-arkts-collections-uint16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器类型**：\@Sendable |
+| [Uint32Array](arkts-arkts-collections-uint32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器**：\@Sendable |
+| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器类型：** \@Sendable |
+| [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-collections.md)实现。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > **装饰器类型**：\@Sendable |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ConcatArray](arkts-arkts-collections-concatarray-i.md) | 该接口定义了支持数组连接操作的对象，并继承了`ISendable`接口，使其兼具高效数组拼接和跨线程传递能力。&gt; **说明** &gt; &gt; - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 &gt; 文档中存在泛型的使用，涉及以下泛型标记符：- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 |
+| [ConcatArray](arkts-arkts-collections-concatarray-i.md) | 该接口定义了支持数组连接操作的对象，并继承了`ISendable`接口，使其兼具高效数组拼接和跨线程传递能力。  > **说明**  >  > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  > 文档中存在泛型的使用，涉及以下泛型标记符：  - T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。 |
 
 ### 类型
 

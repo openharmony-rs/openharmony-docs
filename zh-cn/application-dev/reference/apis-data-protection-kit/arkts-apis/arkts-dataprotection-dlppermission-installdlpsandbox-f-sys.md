@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="installdlpsandbox"></a>
 ## installDLPSandbox
 
 ```TypeScript
@@ -34,14 +35,14 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码401。 |
 | access | [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围。 |
-| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
+| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
 | uri | string | 是 | DLP文件的URI。不超过4095字节。超出范围时抛出错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DLPSandboxInfo> | Promise对象。安装沙箱应用，返回应用沙箱信息。 |
+| Promise&lt;DLPSandboxInfo&gt; | Promise对象。安装沙箱应用，返回应用沙箱信息。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 ```
 
 
+<a id="installdlpsandbox-1"></a>
 ## installDLPSandbox
 
 ```TypeScript
@@ -97,9 +99,9 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码401。 |
 | access | [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围。 |
-| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
+| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
 | uri | string | 是 | DLP文件的URI。不超过4095字节。 超出范围时抛出错误码401。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DLPSandboxInfo> | 是 | 回调函数。当安装DLP沙箱成功，err为undefined，data为获取到的沙箱信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DLPSandboxInfo&gt; | 是 | 回调函数。当安装DLP沙箱成功，err为undefined，data为获取到的沙箱信息；否则为错误对象。 |
 
 **错误码：**
 

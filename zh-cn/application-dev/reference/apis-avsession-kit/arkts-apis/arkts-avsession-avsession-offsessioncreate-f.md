@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="offsessioncreate"></a>
 ## offSessionCreate
 
 ```TypeScript
@@ -26,7 +27,7 @@ Unregister session create callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AVSessionDescriptor> | 否 | 会话创建回调函数 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AVSessionDescriptor&gt; | 否 | 会话创建回调函数 |
 
 **错误码：**
 

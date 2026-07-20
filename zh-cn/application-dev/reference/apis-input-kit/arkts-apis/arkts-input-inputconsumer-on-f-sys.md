@@ -6,6 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
+<a id="on"></a>
 ## on('key')
 
 ```TypeScript
@@ -34,7 +35,7 @@ function on(type: 'key', keyOptions: KeyOptions, callback: Callback<KeyOptions>)
 | --- | --- | --- | --- |
 | type | 'key' | 是 | 事件类型，目前仅支持'key'。 |
 | keyOptions | [KeyOptions](../../apis-test-kit/arkts-apis/arkts-test-uitest-keyoptions-i.md) | 是 | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md)，本接口无需关注此参数。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<KeyOptions> | 是 | 回调函数，返回组合按键数据。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;KeyOptions&gt; | 是 | 回调函数，返回组合按键数据。 |
 
 **错误码：**
 

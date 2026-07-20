@@ -14,6 +14,7 @@ Used to intercept url requests. Response headers and body can be sent through We
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="didfail"></a>
 ## didFail
 
 ```TypeScript
@@ -43,6 +44,7 @@ didFail(code: WebNetErrorList): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
+<a id="didfail-1"></a>
 ## didFail
 
 ```TypeScript
@@ -71,6 +73,7 @@ Notify that this request should be failed.
 | [17100101](../errorcode-webview.md#17100101-使用了错误的网络错误码) | The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
+<a id="didfail-2"></a>
 ## didFail
 
 ```TypeScript
@@ -99,6 +102,7 @@ Notify that this request should be failed.
 | --- | --- |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
+<a id="didfinish"></a>
 ## didFinish
 
 ```TypeScript
@@ -121,6 +125,7 @@ didFinish(): void
 | --- | --- |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
+<a id="didreceiveresponse"></a>
 ## didReceiveResponse
 
 ```TypeScript
@@ -150,6 +155,7 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler已经失效) | The resource handler is invalid. |
 
+<a id="didreceiveresponsebody"></a>
 ## didReceiveResponseBody
 
 ```TypeScript
@@ -170,7 +176,7 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 响应体数据。 |
+| data | ArrayBuffer | 是 | 响应体数据。 |
 
 **错误码：**
 

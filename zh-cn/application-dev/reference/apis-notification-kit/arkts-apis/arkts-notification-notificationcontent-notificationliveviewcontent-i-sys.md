@@ -38,7 +38,7 @@ extraInfo?: Record<string, Object>
 
 实况通知附加内容。默认为空。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 11
 
@@ -77,7 +77,7 @@ pictureInfo?: Record<string, Array<image.PixelMap>>
 
 实况通知附加内容中的图片信息。默认为空。
 
-**类型：** Record<string, Array<image.PixelMap>>
+**类型：** Record&lt;string, Array&lt;image.PixelMap&gt;&gt;
 
 **起始版本：** 11
 

@@ -18,11 +18,11 @@ The callback of onInterceptKeyboardAttach event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyboardCallbackInfo | WebKeyboardCallbackInfo | 是 | callback information of onInterceptKeyboardAttach. |
+| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-webkeyboardcallbackinfo-i.md) | 是 | callback information of onInterceptKeyboardAttach.  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| WebKeyboardOptions | Return the web keyboard options of this web component. |
+| [WebKeyboardOptions](arkts-arkweb-webkeyboardoptions-i.md) | Return the web keyboard options of this web component.  |
 

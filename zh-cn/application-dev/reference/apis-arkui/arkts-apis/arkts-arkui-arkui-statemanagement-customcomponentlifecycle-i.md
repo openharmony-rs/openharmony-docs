@@ -14,6 +14,7 @@ CustomComponentLifecycle用于监控自定义组件生命周期的变化。
 import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInactive, PersistenceV2, ComponentDisappear, MutableBinding, CustomComponentLifecycleObserver, AppStorageV2, Type, ConnectOptionsCollections, CollectionType, CustomComponentContext, IReusePool, ConnectOptions, UIUtils, ComponentActive, CustomComponentLifecycle, ComponentInit, ComponentAppear, ComponentBuilt, ComponentRecycle, IReusableInfo } from '@kit.ArkUI';
 ```
 
+<a id="addobserver"></a>
 ## addObserver
 
 ```TypeScript
@@ -38,6 +39,7 @@ addObserver函数用于注册自定义组件生命周期监听器。当自定义
 | --- | --- | --- | --- |
 | observer | [CustomComponentLifecycleObserver](arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md) | 是 | 监听自定义组件的监听器。 |
 
+<a id="getcurrentstate"></a>
 ## getCurrentState
 
 ```TypeScript
@@ -62,6 +64,7 @@ getCurrentState函数用于获得自定义组件当前的生命周期状态。
 | --- | --- |
 | [CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md) | - 自定义组件当前的生命周期状态。 |
 
+<a id="removeobserver"></a>
 ## removeObserver
 
 ```TypeScript

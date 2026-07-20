@@ -14,6 +14,7 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -54,6 +55,7 @@ let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHo
 
 ```
 
+<a id="setrow"></a>
 ## setRow
 
 ```TypeScript
@@ -93,6 +95,7 @@ holder3.setRow(1000);
 
 ```
 
+<a id="setsize"></a>
 ## setSize
 
 ```TypeScript
@@ -132,6 +135,7 @@ holder2.setSize(1000);
 
 ```
 
+<a id="takenext"></a>
 ## takeNext
 
 ```TypeScript

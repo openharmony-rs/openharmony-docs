@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="unsubscribemanagedevent"></a>
 ## unsubscribeManagedEvent
 
 ```TypeScript
@@ -35,8 +36,8 @@ function unsubscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| managedEvents | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ManagedEvent> | 是 | 取消订阅事件数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| managedEvents | Array&lt;ManagedEvent&gt; | 是 | 取消订阅事件数组。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
 ```
 
 
+<a id="unsubscribemanagedevent-1"></a>
 ## unsubscribeManagedEvent
 
 ```TypeScript
@@ -101,13 +103,13 @@ function unsubscribeManagedEvent(admin: Want, managedEvents: Array<ManagedEvent>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| managedEvents | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ManagedEvent> | 是 | 取消订阅事件数组。 |
+| managedEvents | Array&lt;ManagedEvent&gt; | 是 | 取消订阅事件数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当取消订阅系统管理事件失败时，会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当取消订阅系统管理事件失败时，会抛出错误对象。 |
 
 **错误码：**
 

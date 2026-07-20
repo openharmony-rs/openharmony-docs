@@ -16,6 +16,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth"></a>
 ## auth
 
 ```TypeScript
@@ -53,7 +54,7 @@ auth(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示挑战值，挑战值为一个随机数，用于提升安全性。 |
+| challenge | Uint8Array | 是 | 指示挑战值，挑战值为一个随机数，用于提升安全性。 |
 | authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 指示认证类型。 |
 | authTrustLevel | [AuthTrustLevel](arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 指示认证结果的信任级别。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 回调对象，返回认证结果。 |
@@ -62,7 +63,7 @@ auth(
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回取消的上下文ID。 |
+| Uint8Array | 返回取消的上下文ID。 |
 
 **错误码：**
 
@@ -114,6 +115,7 @@ try {
 
 ```
 
+<a id="auth-1"></a>
 ## auth
 
 ```TypeScript
@@ -154,7 +156,7 @@ auth(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示挑战值，挑战值为一个随机数，用于防止重放攻击，提升安全性。 |
+| challenge | Uint8Array | 是 | 指示挑战值，挑战值为一个随机数，用于防止重放攻击，提升安全性。 |
 | authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 指示认证类型。 |
 | authTrustLevel | [AuthTrustLevel](arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 指示认证结果的信任级别。 |
 | options | [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 是 | 指示认证用户的可选参数集合。 |
@@ -164,7 +166,7 @@ auth(
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回取消的上下文ID。 |
+| Uint8Array | 返回取消的上下文ID。 |
 
 **错误码：**
 
@@ -220,6 +222,7 @@ try {
 
 ```
 
+<a id="authuser"></a>
 ## authUser
 
 ```TypeScript
@@ -261,7 +264,7 @@ authUser(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | number | 是 | 指示用户身份。 |
-| challenge | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示挑战值，挑战值为一个随机数，用于提升安全性。 |
+| challenge | Uint8Array | 是 | 指示挑战值，挑战值为一个随机数，用于提升安全性。 |
 | authType | [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md) | 是 | 指示认证类型。 |
 | authTrustLevel | [AuthTrustLevel](arkts-basicservices-osaccount-authtrustlevel-e-sys.md) | 是 | 指示认证结果的信任级别。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 回调对象，返回认证结果。 |
@@ -270,7 +273,7 @@ authUser(
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 返回取消的上下文ID。 |
+| Uint8Array | 返回取消的上下文ID。 |
 
 **错误码：**
 
@@ -324,6 +327,7 @@ try {
 
 ```
 
+<a id="cancelauth"></a>
 ## cancelAuth
 
 ```TypeScript
@@ -346,7 +350,7 @@ cancelAuth(contextID: Uint8Array): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contextID | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
+| contextID | Uint8Array | 是 | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
 
 **错误码：**
 
@@ -381,6 +385,7 @@ try {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -410,6 +415,7 @@ let userAuth = new osAccount.UserAuth();
 
 ```
 
+<a id="getavailablestatus"></a>
 ## getAvailableStatus
 
 ```TypeScript
@@ -470,6 +476,7 @@ try {
 
 ```
 
+<a id="getproperty"></a>
 ## getProperty
 
 ```TypeScript
@@ -493,7 +500,7 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback<ExecutorPropert
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | [GetPropertyRequest](arkts-basicservices-osaccount-getpropertyrequest-i-sys.md) | 是 | 请求信息，包括认证类型和属性类型列表。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<ExecutorProperty> | 是 | 回调函数。如果获取成功，err为null，data为执行器属性信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;ExecutorProperty&gt; | 是 | 回调函数。如果获取成功，err为null，data为执行器属性信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -536,6 +543,7 @@ try {
 
 ```
 
+<a id="getproperty-1"></a>
 ## getProperty
 
 ```TypeScript
@@ -564,7 +572,7 @@ getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ExecutorProperty> | Promise对象，返回执行器属性信息。 |
+| Promise&lt;ExecutorProperty&gt; | Promise对象，返回执行器属性信息。 |
 
 **错误码：**
 
@@ -605,6 +613,7 @@ try {
 
 ```
 
+<a id="getpropertybycredentialid"></a>
 ## getPropertyByCredentialId
 
 ```TypeScript
@@ -627,14 +636,14 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array<GetPropertyType>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| credentialId | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 指示凭据索引。 |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<GetPropertyType> | 是 | 指示要查询的属性类型数组。 |
+| credentialId | Uint8Array | 是 | 指示凭据索引。 |
+| keys | Array&lt;GetPropertyType&gt; | 是 | 指示要查询的属性类型数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ExecutorProperty> | Promise对象，返回执行器的属性信息。 |
+| Promise&lt;ExecutorProperty&gt; | Promise对象，返回执行器的属性信息。 |
 
 **错误码：**
 
@@ -687,6 +696,7 @@ async function getProperty() {
 
 ```
 
+<a id="getversion"></a>
 ## getVersion
 
 ```TypeScript
@@ -724,6 +734,7 @@ console.info('getVersion version = ' + version);
 
 ```
 
+<a id="prepareremoteauth"></a>
 ## prepareRemoteAuth
 
 ```TypeScript
@@ -752,7 +763,7 @@ prepareRemoteAuth(remoteNetworkId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -792,6 +803,7 @@ distributedDeviceMgr.getAvailableDeviceList().then((data: Array<distributedDevic
 
 ```
 
+<a id="setproperty"></a>
 ## setProperty
 
 ```TypeScript
@@ -815,7 +827,7 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | [SetPropertyRequest](arkts-basicservices-osaccount-setpropertyrequest-i-sys.md) | 是 | 请求信息，包括认证类型和要设置的密钥值。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -853,6 +865,7 @@ try {
 
 ```
 
+<a id="setproperty-1"></a>
 ## setProperty
 
 ```TypeScript
@@ -881,7 +894,7 @@ setProperty(request: SetPropertyRequest): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 

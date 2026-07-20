@@ -16,6 +16,7 @@
 import { process } from '@kit.ArkTS';
 ```
 
+<a id="exit"></a>
 ## exit
 
 ```TypeScript
@@ -48,6 +49,7 @@ processManager.exit(0);
 
 ```
 
+<a id="getenvironmentvar"></a>
 ## getEnvironmentVar
 
 ```TypeScript
@@ -90,6 +92,7 @@ let pres = processManager.getEnvironmentVar("PATH");
 
 ```
 
+<a id="getsystemconfig"></a>
 ## getSystemConfig
 
 ```TypeScript
@@ -130,6 +133,7 @@ let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 
 ```
 
+<a id="getthreadpriority"></a>
 ## getThreadPriority
 
 ```TypeScript
@@ -170,6 +174,7 @@ let pres = processManager.getThreadPriority(tid);
 
 ```
 
+<a id="getuidforname"></a>
 ## getUidForName
 
 ```TypeScript
@@ -208,6 +213,7 @@ let pres = processManager.getUidForName("tool");
 
 ```
 
+<a id="isappuid"></a>
 ## isAppUid
 
 ```TypeScript
@@ -249,6 +255,7 @@ console.info("result:", result); // result: true
 
 ```
 
+<a id="kill"></a>
 ## kill
 
 ```TypeScript
@@ -269,7 +276,7 @@ kill(signal: number, pid: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| signal | number | 是 | 发送特定的信号给目标进程。取值范围：1 &lt;= signal &lt;= 64。 |
+| signal | number | 是 | 发送特定的信号给目标进程。取值范围：1 <= signal <= 64。 |
 | pid | number | 是 | 进程的 id。 |
 
 **返回值：**

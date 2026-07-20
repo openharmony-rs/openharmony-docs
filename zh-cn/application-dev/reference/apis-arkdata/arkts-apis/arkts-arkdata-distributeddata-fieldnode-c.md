@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+<a id="appendchild"></a>
 ## appendChild
 
 ```TypeScript
@@ -65,6 +66,7 @@ try {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

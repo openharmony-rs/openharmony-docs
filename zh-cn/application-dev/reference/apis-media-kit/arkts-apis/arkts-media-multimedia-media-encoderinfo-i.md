@@ -102,7 +102,7 @@ sampleRate?: Array<number>
 
 音频采样率，包含所有可用的音频采样率，单位为Hz。仅在音频编码器中可用。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 11
 

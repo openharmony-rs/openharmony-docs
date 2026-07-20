@@ -8,6 +8,8 @@
 
 **起始版本：** 11
 
+**装饰器类型：** @Observed
+
 <!--Device-unnamed-declare class SegmentButtonOptions--><!--Device-unnamed-declare class SegmentButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,6 +20,7 @@
 import { CommonSegmentButtonOptions, SegmentButtonItemOptionsConstructorOptions, SegmentButtonIconTextItem, SegmentButtonItemOptions, SegmentButtonTextItem, CapsuleSegmentButtonOptions, SegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonItemTuple, SegmentButton, SegmentButtonItemArray, SegmentButtonItemOptionsArray, SegmentButtonIconItem, BorderRadiusMode, TabSegmentButtonConstructionOptions, TabSegmentButtonOptions, ItemRestriction, DimensionNoPercentage } from '@kit.ArkUI';
 ```
 
+<a id="capsule"></a>
 ## capsule
 
 ```TypeScript
@@ -48,6 +51,7 @@ static capsule(options: CapsuleSegmentButtonConstructionOptions): SegmentButtonO
 | --- | --- |
 | [SegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md) | 分段按钮选项。 |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -70,8 +74,9 @@ constructor(options: TabSegmentButtonOptions | CapsuleSegmentButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | TabSegmentButtonOptions \| CapsuleSegmentButtonOptions | 是 | 页签类或者胶囊类分段按钮信息。 |
+| options | [TabSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonoptions-i.md) \| CapsuleSegmentButtonOptions | 是 | 页签类或者胶囊类分段按钮信息。 |
 
+<a id="tab"></a>
 ## tab
 
 ```TypeScript
@@ -218,7 +223,7 @@ buttonPadding: Padding | Dimension
 
 单位：vp
 
-**类型：** Padding | Dimension
+**类型：** Padding \| Dimension
 
 **起始版本：** 11
 
@@ -580,7 +585,7 @@ textPadding: Padding | Dimension
 
 单位：vp
 
-**类型：** Padding | Dimension
+**类型：** Padding \| Dimension
 
 **起始版本：** 11
 
@@ -606,7 +611,7 @@ type: "tab" | "capsule"
 
 "capsule"：胶囊类分段按钮，适用于单选或多选的选择场景。
 
-**类型：** "tab" | "capsule"
+**类型：** "tab" \| "capsule"
 
 **起始版本：** 11
 

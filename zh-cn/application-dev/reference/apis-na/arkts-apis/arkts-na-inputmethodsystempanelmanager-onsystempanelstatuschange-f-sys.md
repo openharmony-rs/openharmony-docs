@@ -1,5 +1,6 @@
 # onSystemPanelStatusChange（系统接口）
 
+<a id="onsystempanelstatuschange"></a>
 ## onSystemPanelStatusChange
 
 ```TypeScript
@@ -22,7 +23,7 @@ function onSystemPanelStatusChange(callback: Callback<SystemPanelStatus>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SystemPanelStatus> | 是 | 当系统面板状态改变时触发的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SystemPanelStatus&gt; | 是 | 当系统面板状态改变时触发的回调。 |
 
 **错误码：**
 

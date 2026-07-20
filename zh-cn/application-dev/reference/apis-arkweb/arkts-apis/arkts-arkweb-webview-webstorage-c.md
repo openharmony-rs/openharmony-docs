@@ -11,7 +11,7 @@
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。  
 >  
 > - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介  
-> [约束与限制](../../../../web/web-component-overview.md#约束与限制)。
+> [约束与限制](docroot://web/web-component-overview.md#约束与限制)。
 
 **起始版本：** 9
 
@@ -25,6 +25,7 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="deletealldata"></a>
 ## deleteAllData
 
 ```TypeScript
@@ -47,6 +48,7 @@ static deleteAllData(incognito?: boolean): void
 | --- | --- | --- | --- |
 | incognito | boolean | 否 | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined或null时为false。<br>**起始版本：** 11 |
 
+<a id="deleteorigin"></a>
 ## deleteOrigin
 
 ```TypeScript
@@ -67,7 +69,7 @@ static deleteOrigin(origin: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](arkts-arkweb-webview-webstorage-c.md#getorigins-2)。 |
+| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](webview.WebStorage.static getOrigins(callback: AsyncCallback<Array<WebStorageOrigin>>))。 |
 
 **错误码：**
 
@@ -76,6 +78,7 @@ static deleteOrigin(origin: string): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
+<a id="getoriginquota"></a>
 ## getOriginQuota
 
 ```TypeScript
@@ -102,7 +105,7 @@ static getOriginQuota(origin: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise实例，用于获取指定源的存储配额。<br>单位：byte。 |
+| Promise&lt;number&gt; | Promise实例，用于获取指定源的存储配额。<br>单位：byte。 |
 
 **错误码：**
 
@@ -111,6 +114,7 @@ static getOriginQuota(origin: string): Promise<number>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
+<a id="getoriginquota-1"></a>
 ## getOriginQuota
 
 ```TypeScript
@@ -132,7 +136,7 @@ static getOriginQuota(origin: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | origin | string | 是 | 指定源的字符串索引。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 指定源的存储配额。<br>number是long型整数，范围为[-2147483648, 2147483647]。<br>单位：byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 指定源的存储配额。<br>number是long型整数，范围为[-2147483648, 2147483647]。<br>单位：byte。 |
 
 **错误码：**
 
@@ -141,6 +145,7 @@ static getOriginQuota(origin: string, callback: AsyncCallback<number>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
+<a id="getoriginusage"></a>
 ## getOriginUsage
 
 ```TypeScript
@@ -167,7 +172,7 @@ static getOriginUsage(origin: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise实例，用于获取指定源的存储量。<br>单位：byte。 |
+| Promise&lt;number&gt; | Promise实例，用于获取指定源的存储量。<br>单位：byte。 |
 
 **错误码：**
 
@@ -176,6 +181,7 @@ static getOriginUsage(origin: string): Promise<number>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
+<a id="getoriginusage-1"></a>
 ## getOriginUsage
 
 ```TypeScript
@@ -197,7 +203,7 @@ static getOriginUsage(origin: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | origin | string | 是 | 指定源的字符串索引 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 指定源的存储量。<br>单位：byte。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 指定源的存储量。<br>单位：byte。 |
 
 **错误码：**
 
@@ -206,6 +212,7 @@ static getOriginUsage(origin: string, callback: AsyncCallback<number>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
+<a id="getorigins"></a>
 ## getOrigins
 
 ```TypeScript
@@ -226,7 +233,7 @@ static getOrigins(): Promise<Array<WebStorageOrigin>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<WebStorageOrigin>> | Promise used to return the information about the origins. |
+| Promise&lt;Array&lt;WebStorageOrigin&gt;&gt; | Promise used to return the information about the origins. |
 
 **错误码：**
 
@@ -235,6 +242,7 @@ static getOrigins(): Promise<Array<WebStorageOrigin>>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100012](../errorcode-webview.md#17100012-无可获取的webstorage源) | Invalid web storage origin. |
 
+<a id="getorigins-1"></a>
 ## getOrigins
 
 ```TypeScript
@@ -255,7 +263,7 @@ static getOrigins(callback: AsyncCallback<Array<WebStorageOrigin>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<WebStorageOrigin>> | 是 | 以数组方式返回源的信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;WebStorageOrigin&gt;&gt; | 是 | 以数组方式返回源的信息。 |
 
 **错误码：**
 

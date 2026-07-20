@@ -16,6 +16,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="disablewindowdecor"></a>
 ## disableWindowDecor
 
 ```TypeScript
@@ -61,6 +62,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="removeimageforrecent"></a>
 ## removeImageForRecent
 
 ```TypeScript
@@ -86,7 +88,7 @@ removeImageForRecent(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -98,6 +100,7 @@ removeImageForRecent(): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+<a id="setimageforrecent"></a>
 ## setImageForRecent
 
 ```TypeScript
@@ -128,13 +131,13 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | imageResource | number \| image.PixelMap | 是 | 应用自定义的图片资源，可传入资源id或PixelMap位图。传入资源id时，图片资源需放在resources/base/media目录下，通过$r资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：$r("app.media.startIcon").id。 |
-| value | [ImageFit](arkts-arkui-enums-imagefit-e.md) | 是 | 应用自定义图片的填充方式。 |
+| value | [ImageFit](arkts-arkui-imagefit-e.md) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -147,6 +150,7 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:1. Invalid parameter range. 2. Invalid parameter length. |
 
+<a id="setimageforrecent-1"></a>
 ## setImageForRecent
 
 ```TypeScript
@@ -174,13 +178,13 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | imgResourceId | number | 是 | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。 |
-| value | [ImageFit](arkts-arkui-enums-imagefit-e.md) | 是 | 应用自定义图片的填充方式。 |
+| value | [ImageFit](arkts-arkui-imagefit-e.md) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -219,6 +223,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
+<a id="setshowonlockscreen"></a>
 ## setShowOnLockScreen
 
 ```TypeScript

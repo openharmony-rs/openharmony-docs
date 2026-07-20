@@ -21,6 +21,7 @@ SelectionExtensionContext是[SelectionExtensionAbility](arkts-basicservices-sele
 import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 ```
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -49,7 +50,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

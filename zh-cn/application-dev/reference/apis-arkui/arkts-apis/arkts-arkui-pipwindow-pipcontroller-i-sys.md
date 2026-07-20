@@ -16,6 +16,7 @@
 import { PiPWindow } from '@kit.ArkUI';
 ```
 
+<a id="ispipsupported"></a>
 ## isPiPSupported
 
 ```TypeScript

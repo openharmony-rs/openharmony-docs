@@ -22,7 +22,7 @@ coordinates: Array<FontVariation>
 
 可变字体属性数组。
 
-**类型：** Array<FontVariation>
+**类型：** Array&lt;FontVariation&gt;
 
 **起始版本：** 24
 

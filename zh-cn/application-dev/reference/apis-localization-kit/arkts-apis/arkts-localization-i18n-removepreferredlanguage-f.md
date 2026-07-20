@@ -6,6 +6,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="removepreferredlanguage"></a>
 ## removePreferredLanguage
 
 ```TypeScript

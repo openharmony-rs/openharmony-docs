@@ -23,8 +23,8 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [off](arkts-ability-bundlemonitor-off-f-sys.md#off-1) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
-| [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
+| [off](arkts-ability-bundlemonitor-off-f-sys.md#off) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
+| [on](arkts-ability-bundlemonitor-on-f-sys.md#on) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -32,7 +32,7 @@ radius?: number | string | Array<number | string>
 
 取值为异常值时按照0vp处理。
 
-**类型：** number | string | Array<number | string>
+**类型：** number \| string \| Array&lt;number \| string&gt;
 
 **起始版本：** 12
 

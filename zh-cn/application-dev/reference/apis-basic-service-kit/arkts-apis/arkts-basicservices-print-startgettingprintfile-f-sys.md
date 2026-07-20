@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="startgettingprintfile"></a>
 ## startGettingPrintFile
 
 ```TypeScript
@@ -34,7 +35,7 @@ function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, 
 | jobId | string | 是 | 表示打印任务ID。 |
 | printAttributes | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | 是 | 表示打印参数。 |
 | fd | number | 是 | 表示打印文件描述符。 |
-| onFileStateChanged | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PrintFileCreationState> | 是 | 表示更新文件状态的回调。 |
+| onFileStateChanged | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PrintFileCreationState&gt; | 是 | 表示更新文件状态的回调。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="connectprinter"></a>
 ## connectPrinter
 
 ```TypeScript
@@ -31,7 +32,7 @@ function connectPrinter(printerId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | printerId | string | 是 | 打印机ID。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 通过打印机ID异步连接打印机的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 通过打印机ID异步连接打印机的回调。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ print.connectPrinter(printerId, (err: BusinessError) => {
 ```
 
 
+<a id="connectprinter-1"></a>
 ## connectPrinter
 
 ```TypeScript
@@ -88,7 +90,7 @@ function connectPrinter(printerId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

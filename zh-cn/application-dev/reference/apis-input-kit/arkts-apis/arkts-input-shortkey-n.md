@@ -27,7 +27,7 @@ import { shortKey } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setkeydownduration-1) | 设置快捷键拉起Ability的延迟时间，使用callback异步回调。 |
-| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setkeydownduration-2) | 设置快捷键拉起Ability的延迟时间，使用Promise异步回调。 |
+| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setkeydownduration) | 设置快捷键拉起Ability的延迟时间，使用callback异步回调。 |
+| [setKeyDownDuration](arkts-input-shortkey-setkeydownduration-f-sys.md#setkeydownduration-1) | 设置快捷键拉起Ability的延迟时间，使用Promise异步回调。 |
 <!--DelEnd-->
 

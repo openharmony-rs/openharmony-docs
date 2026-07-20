@@ -20,6 +20,6 @@ Defines the onMove callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | Index number for moving elements. |
-| to | number | 是 | Target index number for moving elements. |
+| from | number | 是 | Index number for moving elements.  |
+| to | number | 是 | Target index number for moving elements.  |
 

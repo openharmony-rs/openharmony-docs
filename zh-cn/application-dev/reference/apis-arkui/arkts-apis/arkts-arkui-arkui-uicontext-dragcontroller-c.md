@@ -18,13 +18,14 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="canceldataloading"></a>
 ## cancelDataLoading
 
 ```TypeScript
 cancelDataLoading(key: string): void
 ```
 
-当使用[startDataLoading](../arkts-components/arkts-arkui-common-dragevent-i.md#startdataloading-1)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
+当使用[startDataLoading](../arkts-components/arkts-arkui-dragevent-i.md#startdataloading-1)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
 
 **起始版本：** 15
 
@@ -49,6 +50,7 @@ cancelDataLoading(key: string): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. |
 | [190004](../errorcode-drag-event.md#190004-操作失败) | Operation failed. |
 
+<a id="createdragaction"></a>
 ## createDragAction
 
 ```TypeScript
@@ -75,7 +77,7 @@ createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: dra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| customArray | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<CustomBuilder \| DragItemInfo> | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
+| customArray | Array&lt;CustomBuilder \| DragItemInfo&gt; | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
 | dragInfo | dragController.DragInfo | 是 | 拖拽信息。 |
 
 **返回值：**
@@ -91,13 +93,14 @@ createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: dra
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
+<a id="enabledropdisallowedbadge"></a>
 ## enableDropDisallowedBadge
 
 ```TypeScript
 enableDropDisallowedBadge(enabled: boolean): void
 ```
 
-当组件的类型与配置的[allowDrop](../arkts-components/arkts-arkui-common-commonmethod-c.md#allowdrop-1)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当目标进行拖拽时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法检查是否应显示拖拽禁止角标。该接口暂不支持[UIExtension](arkts-arkui-uiextension.md)。
+当组件的类型与配置的[allowDrop](../arkts-components/arkts-arkui-commonmethod-c.md#allowdrop-1)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当目标进行拖拽时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法检查是否应显示拖拽禁止角标。该接口暂不支持[UIExtension](arkts-arkui-uiextension.md)。
 
 **起始版本：** 20
 
@@ -113,8 +116,9 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 当组件的类型与配置的[allowDrop](../arkts-components/arkts-arkui-common-commonmethod-c.md#allowdrop-1)无交集时可显示禁用角标，当目标进行拖拽时，通过enableDropDisallowedBadge方法检查是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。默认值为false。 |
+| enabled | boolean | 是 | 当组件的类型与配置的[allowDrop](../arkts-components/arkts-arkui-commonmethod-c.md#allowdrop-1)无交集时可显示禁用角标，当目标进行拖拽时，通过enableDropDisallowedBadge方法检查是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。默认值为false。 |
 
+<a id="executedrag"></a>
 ## executeDrag
 
 ```TypeScript
@@ -140,9 +144,9 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| custom | CustomBuilder \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 <br/> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ImageAttribute#syncLoad)为true。该builder只用于生成当次拖拽中显示的图片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
+| custom | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 <br/> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ImageAttribute#syncLoad)为true。该builder只用于生成当次拖拽中显示的图片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
 | dragInfo | dragController.DragInfo | 是 | 拖拽信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<dragController.DragEventParam> | 是 | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>-extraParams：拖拽事件额外信息。<br>**起始版本：** 12 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;dragController.DragEventParam&gt; | 是 | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>-extraParams：拖拽事件额外信息。<br>**起始版本：** 12 |
 
 **错误码：**
 
@@ -151,6 +155,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
+<a id="executedrag-1"></a>
 ## executeDrag
 
 ```TypeScript
@@ -176,14 +181,14 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| custom | CustomBuilder \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
+| custom | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| DragItemInfo | 是 | 拖拽发起后跟手效果所拖拽的对象。 |
 | dragInfo | dragController.DragInfo | 是 | 拖拽信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<dragController.DragEventParam> | A Promise with the drag event information. |
+| Promise&lt;dragController.DragEventParam&gt; | A Promise with the drag event information. |
 
 **错误码：**
 
@@ -192,6 +197,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal handling failed. |
 
+<a id="getdragpreview"></a>
 ## getDragPreview
 
 ```TypeScript
@@ -216,6 +222,7 @@ getDragPreview(): dragController.DragPreview
 | --- | --- |
 | dragController.DragPreview | **DragPreview** object. It provides the API for setting the preview style.It does not work in the **OnDrop** and **OnDragEnd** callbacks. |
 
+<a id="notifydragstartrequest"></a>
 ## notifyDragStartRequest
 
 ```TypeScript
@@ -240,6 +247,7 @@ notifyDragStartRequest(requestStatus: dragController.DragStartRequestStatus): vo
 | --- | --- | --- | --- |
 | requestStatus | dragController.DragStartRequestStatus | 是 | 定义应用是否可以发起拖拽。 |
 
+<a id="setdrageventstrictreportingenabled"></a>
 ## setDragEventStrictReportingEnabled
 
 ```TypeScript

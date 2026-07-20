@@ -14,6 +14,7 @@
 import { Context, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
 ```
 
+<a id="generatecliauthresult"></a>
 ## generateCliAuthResult
 
 ```TypeScript
@@ -49,13 +50,13 @@ generateCliAuthResult(
 | --- | --- | --- | --- |
 | hostTokenID | number | 是 | 访问CLI指令的应用的tokenID。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
 | agentID | string | 是 | 用于标识发起CLI相关操作的智能体体标识。传入无效值时返回错误码12100001。<br>取值约束：长度不能超过48个字符。 |
-| authInfoList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<CliAuthInfo> | 是 | CLI授权信息列表，每项包含CLI信息（主命令和子命令名称）、待授权的权限名称列表和对应的授权结果列表。传入无效值时返回错误码12100001。<br>最大长度为99且不能为空。 |
+| authInfoList | Array&lt;CliAuthInfo&gt; | 是 | CLI授权信息列表，每项包含CLI信息（主命令和子命令名称）、待授权的权限名称列表和对应的授权结果列表。传入无效值时返回错误码12100001。<br>最大长度为99且不能为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToolAuthResult> | Promise对象，返回生成的授权结果，包含授权结果字符串列表，可用于传递给CLI工具执行命令。 |
+| Promise&lt;ToolAuthResult&gt; | Promise对象，返回生成的授权结果，包含授权结果字符串列表，可用于传递给CLI工具执行命令。 |
 
 **错误码：**
 
@@ -94,6 +95,7 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 ```
 
+<a id="getclipermissionrequestinfo"></a>
 ## getCliPermissionRequestInfo
 
 ```TypeScript
@@ -119,13 +121,13 @@ getCliPermissionRequestInfo(agentID: string, cliInfoList: Array<CliInfo>): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agentID | string | 是 | 用于标识发起CLI相关操作的智能体标识。传入无效值时返回错误码12100001。<br>取值约束：长度不能超过48个字符。 |
-| cliInfoList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<CliInfo> | 是 | 待查询的CLI信息列表。每项包含一条命令及其子命令信息；建议按实际即将执行的命令集合传入，避免无关命令扩大判定范围。传入无效值时返回错误码12100001。<br>最大长度为99且不能为空。 |
+| cliInfoList | Array&lt;CliInfo&gt; | 是 | 待查询的CLI信息列表。每项包含一条命令及其子命令信息；建议按实际即将执行的命令集合传入，避免无关命令扩大判定范围。传入无效值时返回错误码12100001。<br>最大长度为99且不能为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionDialogResult> | Promise对象，返回每条CLI命令的权限弹窗判定结果，包含是否需要弹窗、未满足的权限列表及决策状态等信息。 |
+| Promise&lt;PermissionDialogResult&gt; | Promise对象，返回每条CLI命令的权限弹窗判定结果，包含是否需要弹窗、未满足的权限列表及决策状态等信息。 |
 
 **错误码：**
 
@@ -157,6 +159,7 @@ atManager.getCliPermissionRequestInfo(agentID, cliInfoList).then((data: abilityA
 
 ```
 
+<a id="getclipermissions"></a>
 ## getCliPermissions
 
 ```TypeScript
@@ -192,13 +195,13 @@ getCliPermissions(
 | --- | --- | --- | --- |
 | hostTokenID | number | 是 | 访问CLI指令的应用的tokenID。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
 | agentID | string | 是 | 用于标识发起CLI相关操作的智能体标识。传入无效值时返回错误码12100001。<br>取值约束：长度不能超过48个字符。 |
-| cliInfoList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<CliInfo> | 是 | 待查询的CLI信息列表。每项包含一条命令及其子命令信息。传入无效值时返回错误码12100001。<br>最大长度为99且不能为空。 |
+| cliInfoList | Array&lt;CliInfo&gt; | 是 | 待查询的CLI信息列表。每项包含一条命令及其子命令信息。传入无效值时返回错误码12100001。<br>最大长度为99且不能为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CliPermissionsResult> | Promise对象，返回每条CLI命令依赖的CLI权限及其对应的运行时权限映射信息。 |
+| Promise&lt;CliPermissionsResult&gt; | Promise对象，返回每条CLI命令依赖的CLI权限及其对应的运行时权限映射信息。 |
 
 **错误码：**
 
@@ -232,6 +235,7 @@ atManager.getCliPermissions(hostTokenID, agentID, cliInfoList).then((data: abili
 
 ```
 
+<a id="getpermissionflags"></a>
 ## getPermissionFlags
 
 ```TypeScript
@@ -261,7 +265,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise<number
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回查询到的权限标记值。标记值的含义请参见[PermissionStatusInfo](arkts-ability-abilityaccessctrl-permissionstatusinfo-i-sys.md)中的grantFlags字段说明。 |
+| Promise&lt;number&gt; | Promise对象，返回查询到的权限标记值。标记值的含义请参见[PermissionStatusInfo](arkts-ability-abilityaccessctrl-permissionstatusinfo-i-sys.md)中的grantFlags字段说明。 |
 
 **错误码：**
 
@@ -292,6 +296,7 @@ atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIO
 
 ```
 
+<a id="getpermissionrequesttogglestatus"></a>
 ## getPermissionRequestToggleStatus
 
 ```TypeScript
@@ -320,7 +325,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise<Permissio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionRequestToggleStatus> | Promise对象，返回指定权限的弹窗开关状态值。 |
+| Promise&lt;PermissionRequestToggleStatus&gt; | Promise对象，返回指定权限的弹窗开关状态值。 |
 
 **错误码：**
 
@@ -331,6 +336,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise<Permissio
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#setpermissionrequesttogglestatus-1).<br>**适用版本：** 26.1.0+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 **示例：**
@@ -354,6 +360,59 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
 
 ```
 
+<a id="getpermissionrequesttogglestatus-1"></a>
+## getPermissionRequestToggleStatus
+
+```TypeScript
+getPermissionRequestToggleStatus(
+      permissionName: Permissions,
+      subProfileId: number): Promise<PermissionRequestToggleStatus>
+```
+
+获取指定子身份资料下指定权限的弹窗开关状态。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AtManager-getPermissionRequestToggleStatus(
+      permissionName: Permissions,
+      subProfileId: int): Promise<PermissionRequestToggleStatus>--><!--Device-AtManager-getPermissionRequestToggleStatus(
+      permissionName: Permissions,
+      subProfileId: int): Promise<PermissionRequestToggleStatus>-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | Permissions | 是 | 待查询弹窗开关状态的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字。 |
+| subProfileId | number | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;PermissionRequestToggleStatus&gt; | Promise对象，返回指定权限的弹窗开关状态值 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the specified subProfileId does not exist for the current user. |
+| [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
+| [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
+| [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
+
+<a id="getpermissionsstatus"></a>
 ## getPermissionsStatus
 
 ```TypeScript
@@ -377,13 +436,13 @@ getPermissionsStatus(tokenID: number, permissionList: Array<Permissions>): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 待获取权限状态的权限名列表。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：权限名长度不能超过256个字符。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 待获取权限状态的权限名列表。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PermissionStatus>> | Promise对象，返回查询到的权限状态列表。 |
+| Promise&lt;Array&lt;PermissionStatus&gt;&gt; | Promise对象，返回查询到的权限状态列表。 |
 
 **错误码：**
 
@@ -412,6 +471,7 @@ atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: 
 
 ```
 
+<a id="getversion"></a>
 ## getVersion
 
 ```TypeScript
@@ -432,7 +492,7 @@ getVersion(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回查询到的版本号。 |
+| Promise&lt;number&gt; | Promise对象，返回查询到的版本号。 |
 
 **错误码：**
 
@@ -456,6 +516,7 @@ promise.then((data: number) => {
 
 ```
 
+<a id="grantpermission"></a>
 ## grantPermission
 
 ```TypeScript
@@ -486,7 +547,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -518,6 +579,7 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
 
 ```
 
+<a id="grantusergrantedpermission"></a>
 ## grantUserGrantedPermission
 
 ```TypeScript
@@ -550,7 +612,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -582,6 +644,7 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 
 ```
 
+<a id="grantusergrantedpermission-1"></a>
 ## grantUserGrantedPermission
 
 ```TypeScript
@@ -622,7 +685,7 @@ grantUserGrantedPermission(
 | tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
 | permissionName | Permissions | 是 | 被授予的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 | permissionFlags | number | 是 | 授权选项。<br>取值限定为整数。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在系统设置的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当授予权限成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当授予权限成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -656,6 +719,7 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 
 ```
 
+<a id="off"></a>
 ## off('permissionStateChange')
 
 ```TypeScript
@@ -699,9 +763,9 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'permissionStateChange' | 是 | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。 |
-| tokenIDList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 取消订阅的tokenID列表，为空时表示取消订阅所有的应用的权限状态变化，必须与on的输入一致。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PermissionStateChangeInfo> | 否 | 回调函数。返回取消订阅指定tokenID与指定权限名状态变更事件的对象，需与on注册时的callback一致。不传入此参数时，将取消与tokenIDList和permissionList完全匹配的所有监听回调。 |
+| tokenIDList | Array&lt;number&gt; | 是 | 取消订阅的tokenID列表，为空时表示取消订阅所有的应用的权限状态变化，必须与on的输入一致。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PermissionStateChangeInfo&gt; | 否 | 回调函数。返回取消订阅指定tokenID与指定权限名状态变更事件的对象，需与on注册时的callback一致。不传入此参数时，将取消与tokenIDList和permissionList完全匹配的所有监听回调。 |
 
 **错误码：**
 
@@ -732,6 +796,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('permissionStateChange')
 
 ```TypeScript
@@ -776,9 +841,9 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'permissionStateChange' | 是 | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。 |
-| tokenIDList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<PermissionStateChangeInfo> | 是 | 回调函数。订阅指定tokenID与指定权限名状态变更事件的回调。 |
+| tokenIDList | Array&lt;number&gt; | 是 | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;PermissionStateChangeInfo&gt; | 是 | 回调函数。订阅指定tokenID与指定权限名状态变更事件的回调。 |
 
 **错误码：**
 
@@ -815,6 +880,7 @@ try {
 
 ```
 
+<a id="querystatusbypermission"></a>
 ## queryStatusByPermission
 
 ```TypeScript
@@ -842,13 +908,13 @@ queryStatusByPermission(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 待查询的权限名称列表。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：权限名长度不能超过256个字符。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 待查询的权限名称列表。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PermissionStatusInfo>> | Promise对象，返回查询到的权限状态信息列表。 |
+| Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt; | Promise对象，返回查询到的权限状态信息列表。 |
 
 **错误码：**
 
@@ -877,6 +943,7 @@ atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAcces
 
 ```
 
+<a id="querystatusbytokenid"></a>
 ## queryStatusByTokenID
 
 ```TypeScript
@@ -901,13 +968,13 @@ queryStatusByTokenID(tokenIDList: Array<number>): Promise<Array<PermissionStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenIDList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 待查询的应用tokenID列表。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
+| tokenIDList | Array&lt;number&gt; | 是 | 待查询的应用tokenID列表。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<PermissionStatusInfo>> | Promise对象，返回查询到的权限状态信息列表。 |
+| Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt; | Promise对象，返回查询到的权限状态信息列表。 |
 
 **错误码：**
 
@@ -937,6 +1004,7 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 
 ```
 
+<a id="requestpermissiononapplicationsetting"></a>
 ## requestPermissionOnApplicationSetting
 
 ```TypeScript
@@ -965,7 +1033,7 @@ requestPermissionOnApplicationSetting(tokenID: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -991,6 +1059,7 @@ atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
 
 ```
 
+<a id="requestpermissionsfromuserwithwindowid"></a>
 ## requestPermissionsFromUserWithWindowId
 
 ```TypeScript
@@ -1028,13 +1097,13 @@ requestPermissionsFromUserWithWindowId(
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | windowId | number | 是 | 应用窗口的ID。可通过[window.findWindow](../../apis-arkui/arkts-apis/arkts-arkui-window-findwindow-f.md#findwindow-1)(窗口名).[getWindowProperties()](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties-1).id获取。该参数必须对应当前有效窗口，传入已销毁、不可见或无效窗口ID时将返回12100001。<br>取值限定为整数。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 权限名列表。建议仅传入当前窗口场景下真正需要的敏感权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 权限名列表。建议仅传入当前窗口场景下真正需要的敏感权限。<br>最小长度为1。取值约束：权限名长度不能超过256个字符。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionRequestResult> | Promise对象，返回本次权限申请结果，包含权限数组、授权结果、是否展示弹窗以及失败原因等信息。 |
+| Promise&lt;PermissionRequestResult&gt; | Promise对象，返回本次权限申请结果，包含权限数组、授权结果、是否展示弹窗以及失败原因等信息。 |
 
 **错误码：**
 
@@ -1069,6 +1138,7 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
 
 ```
 
+<a id="revokepermission"></a>
 ## revokePermission
 
 ```TypeScript
@@ -1114,7 +1184,7 @@ revokePermission(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1153,6 +1223,7 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
 
 ```
 
+<a id="revokeusergrantedpermission"></a>
 ## revokeUserGrantedPermission
 
 ```TypeScript
@@ -1187,7 +1258,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1219,6 +1290,7 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 
 ```
 
+<a id="revokeusergrantedpermission-1"></a>
 ## revokeUserGrantedPermission
 
 ```TypeScript
@@ -1259,7 +1331,7 @@ revokeUserGrantedPermission(
 | tokenID | number | 是 | 目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。传入无效值时返回错误码12100001。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md#getbundleinfosync-1)。 |
 | permissionName | Permissions | 是 | 被撤销的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
 | permissionFlags | number | 是 | 授权选项。<br>取值限定为整数。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在系统设置的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当撤销权限成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当撤销权限成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1293,6 +1365,7 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 
 ```
 
+<a id="setpermissionrequesttogglestatus"></a>
 ## setPermissionRequestToggleStatus
 
 ```TypeScript
@@ -1322,7 +1395,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1333,6 +1406,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
+| [12100006](../errorcode-access-token.md#12100006-指定的应用不支持被授予或被取消授予指定的权限) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#setpermissionrequesttogglestatus-1).<br>**适用版本：** 26.1.0+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 
@@ -1352,4 +1426,61 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
 });
 
 ```
+
+<a id="setpermissionrequesttogglestatus-1"></a>
+## setPermissionRequestToggleStatus
+
+```TypeScript
+setPermissionRequestToggleStatus(
+      permissionName: Permissions,
+      status: PermissionRequestToggleStatus,
+      subProfileId: number): Promise<void>
+```
+
+设置指定子身份资料下指定权限的弹窗开关状态。调用成功后，该权限的弹窗开关状态将被设置为指定值。当状态为CLOSED时，应用请求该权限时不会弹出权限弹窗；当状态为OPEN时，应用请求该权限时会正常弹出权限弹窗。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AtManager-setPermissionRequestToggleStatus(
+      permissionName: Permissions,
+      status: PermissionRequestToggleStatus,
+      subProfileId: int): Promise<void>--><!--Device-AtManager-setPermissionRequestToggleStatus(
+      permissionName: Permissions,
+      status: PermissionRequestToggleStatus,
+      subProfileId: int): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| permissionName | Permissions | 是 | 待设置弹窗开关状态的权限名称。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。 |
+| status | [PermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-permissionrequesttogglestatus-e-sys.md) | 是 | 指定权限的弹窗开关状态值。 |
+| subProfileId | number | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, the status value is invalid, or the specified subProfileId does not exist for the current user. |
+| [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
+| [12100006](../errorcode-access-token.md#12100006-指定的应用不支持被授予或被取消授予指定的权限) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-atmanager-i-sys.md#setpermissionrequesttogglestatus-1). |
+| [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
+| [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 

@@ -1,6 +1,6 @@
 # @ohos.i18n
 
-本模块提供系统相关的以及增强的[国际化](../../../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[国际化-Intl](arkts-intl.md)模块提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整的国际化能力。接口中使用的名词定义如下：
+本模块提供系统相关的以及增强的[国际化](docroot://internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[国际化-Intl](arkts-intl.md)模块提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整的国际化能力。接口中使用的名词定义如下：
 
 - 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。  
 - 框架字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)自由组合而成的字符串，不支持自定义文本。
@@ -31,29 +31,29 @@ import { i18n } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addPreferredLanguage](arkts-localization-i18n-addpreferredlanguage-f.md#addpreferredlanguage-1) | 在系统偏好语言列表的指定位置添加偏好语言。 |
-| [getCalendar](arkts-localization-i18n-getcalendar-f.md#getcalendar-1) | 获取指定区域和历法的日历对象。 |
-| [getChineseCalendar](arkts-localization-i18n-getchinesecalendar-f.md#getchinesecalendar-1) | 获取指定区域的农历对象。 |
-| [getDisplayCountry](arkts-localization-i18n-getdisplaycountry-f.md#getdisplaycountry-1) | 获取指定国家的本地化名称。 |
-| [getDisplayLanguage](arkts-localization-i18n-getdisplaylanguage-f.md#getdisplaylanguage-1) | 获取指定语言的本地化显示文本。 |
-| [getFirstPreferredLanguage](arkts-localization-i18n-getfirstpreferredlanguage-f.md#getfirstpreferredlanguage-1) | 获取偏好语言列表中的第一个语言。 |
-| [getInstance](arkts-localization-i18n-getinstance-f.md#getinstance-1) | 创建并返回IndexUtil对象。 |
-| [getLineInstance](arkts-localization-i18n-getlineinstance-f.md#getlineinstance-1) | 获取用于定位文本可换行点的BreakIterator对象。该对象内部维护一个换行迭代器，可以用于访问各个可换行点。 |
-| [getPreferredLanguageList](arkts-localization-i18n-getpreferredlanguagelist-f.md#getpreferredlanguagelist-1) | 获取系统偏好语言列表。 |
+| [addPreferredLanguage](arkts-localization-i18n-addpreferredlanguage-f.md#addpreferredlanguage) | 在系统偏好语言列表的指定位置添加偏好语言。 |
+| [getCalendar](arkts-localization-i18n-getcalendar-f.md#getcalendar) | 获取指定区域和历法的日历对象。 |
+| [getChineseCalendar](arkts-localization-i18n-getchinesecalendar-f.md#getchinesecalendar) | 获取指定区域的农历对象。 |
+| [getDisplayCountry](arkts-localization-i18n-getdisplaycountry-f.md#getdisplaycountry) | 获取指定国家的本地化名称。 |
+| [getDisplayLanguage](arkts-localization-i18n-getdisplaylanguage-f.md#getdisplaylanguage) | 获取指定语言的本地化显示文本。 |
+| [getFirstPreferredLanguage](arkts-localization-i18n-getfirstpreferredlanguage-f.md#getfirstpreferredlanguage) | 获取偏好语言列表中的第一个语言。 |
+| [getInstance](arkts-localization-i18n-getinstance-f.md#getinstance) | 创建并返回IndexUtil对象。 |
+| [getLineInstance](arkts-localization-i18n-getlineinstance-f.md#getlineinstance) | 获取用于定位文本可换行点的BreakIterator对象。该对象内部维护一个换行迭代器，可以用于访问各个可换行点。 |
+| [getPreferredLanguageList](arkts-localization-i18n-getpreferredlanguagelist-f.md#getpreferredlanguagelist) | 获取系统偏好语言列表。 |
+| [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern) | 通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format-1)的示例。 |
 | [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1) | 通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format-1)的示例。 |
-| [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-2) | 通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format-1)的示例。 |
+| [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton) | 通过框架字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format-1)的示例。 |
 | [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1) | 通过框架字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format-1)的示例。 |
-| [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-2) | 通过框架字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format-1)的示例。 |
+| [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton) | 通过框架字符串获取SimpleNumberFormat对象。 |
 | [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton-1) | 通过框架字符串获取SimpleNumberFormat对象。 |
-| [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton-2) | 通过框架字符串获取SimpleNumberFormat对象。 |
-| [getSystemLanguage](arkts-localization-i18n-getsystemlanguage-f.md#getsystemlanguage-1) | 获取系统语言。 |
-| [getSystemLocale](arkts-localization-i18n-getsystemlocale-f.md#getsystemlocale-1) | &gt; [System.getSystemLocale](arkts-localization-i18n-system-c.md#getsystemlocaleinstance-1)代替。 &gt; 获取系统区域ID。 |
-| [getSystemRegion](arkts-localization-i18n-getsystemregion-f.md#getsystemregion-1) | 获取系统地区。 |
-| [getTimeZone](arkts-localization-i18n-gettimezone-f.md#gettimezone-1) | 获取时区ID对应的时区对象。 |
-| [is24HourClock](arkts-localization-i18n-is24hourclock-f.md#is24hourclock-1) | 判断系统时间是否为24小时制。 |
-| [isRTL](arkts-localization-i18n-isrtl-f.md#isrtl-1) | 判断语言是否为镜像语言。在镜像语言下，UI界面需要[镜像显示](../../../../internationalization/i18n-ui-design.md#界面镜像)。 |
-| [removePreferredLanguage](arkts-localization-i18n-removepreferredlanguage-f.md#removepreferredlanguage-1) | 从系统偏好语言列表中移除指定位置的偏好语言。 |
-| [set24HourClock](arkts-localization-i18n-set24hourclock-f.md#set24hourclock-1) | 修改系统时间的24小时制设置。 |
+| [getSystemLanguage](arkts-localization-i18n-getsystemlanguage-f.md#getsystemlanguage) | 获取系统语言。 |
+| [getSystemLocale](arkts-localization-i18n-getsystemlocale-f.md#getsystemlocale) | > [System.getSystemLocale](arkts-localization-i18n-system-c.md#getsystemlocaleinstance-1)代替。  > 获取系统区域ID。 |
+| [getSystemRegion](arkts-localization-i18n-getsystemregion-f.md#getsystemregion) | 获取系统地区。 |
+| [getTimeZone](arkts-localization-i18n-gettimezone-f.md#gettimezone) | 获取时区ID对应的时区对象。 |
+| [is24HourClock](arkts-localization-i18n-is24hourclock-f.md#is24hourclock) | 判断系统时间是否为24小时制。 |
+| [isRTL](arkts-localization-i18n-isrtl-f.md#isrtl) | 判断语言是否为镜像语言。在镜像语言下，UI界面需要[镜像显示](docroot://internationalization/i18n-ui-design.md#界面镜像)。 |
+| [removePreferredLanguage](arkts-localization-i18n-removepreferredlanguage-f.md#removepreferredlanguage) | 从系统偏好语言列表中移除指定位置的偏好语言。 |
+| [set24HourClock](arkts-localization-i18n-set24hourclock-f.md#set24hourclock) | 修改系统时间的24小时制设置。 |
 
 ### 类
 
@@ -77,6 +77,7 @@ import { i18n } from '@kit.LocalizationKit';
 | [StyledNumberFormat](arkts-localization-i18n-stylednumberformat-c.md) | 提供富文本数字格式化的能力。 |
 | [SymbolDateTimeFormat](arkts-localization-i18n-symboldatetimeformat-c.md) | 提供自定义时间日期符号的能力。继承自[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)，支持[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)的方法。 |
 | [SymbolNumberFormat](arkts-localization-i18n-symbolnumberformat-c.md) | 提供自定义数字符号的能力。继承自[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)，支持[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)的方法。 |
+| [System](arkts-localization-i18n-system-c.md) | 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。 |
 | [TimeZone](arkts-localization-i18n-timezone-c.md) | 提供时区相关的能力，包括时区名称翻译、偏移量获取和跳变规则获取等。 |
 | [Transliterator](arkts-localization-i18n-transliterator-c.md) | 提供文本音译相关的能力，包括音译支持范围获取和文本音译等。 |
 | [Unicode](arkts-localization-i18n-unicode-c.md) | 提供字符属性相关的能力，包括判断字符是否为空格、数字和字母等。 |
@@ -88,7 +89,6 @@ import { i18n } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [System](arkts-localization-i18n-system-c.md) | 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。 |
 | [System](arkts-localization-i18n-system-c-sys.md) | 提供系统属性相关的能力，包括语言地区名称翻译、支持的语言地区列表获取和系统语言地区获取等。 |
 | [SystemLocaleManager](arkts-localization-i18n-systemlocalemanager-c-sys.md) | 提供语言、地区和时区信息排序的能力。 |
 <!--DelEnd-->

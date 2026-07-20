@@ -18,7 +18,7 @@ authInfo?: Record<string, Object>
 
 表示认证的信息。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 8
 
@@ -84,7 +84,7 @@ deviceType?: Array<string>
 
 表示设备类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 8
 

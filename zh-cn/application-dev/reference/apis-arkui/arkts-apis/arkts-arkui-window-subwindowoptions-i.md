@@ -58,7 +58,7 @@ maximizeSupported?: boolean
 
 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。
 
-该参数在支持并处于[自由窗口](../../../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错；在支持但不处于[自由窗口](../../../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错，切换到[自由窗口](../../../../windowmanager/window-terminology.md#自由窗口)状态后生效。
+该参数在支持并处于[自由窗口](docroot://windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](docroot://windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错；在支持但不处于[自由窗口](docroot://windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错，切换到[自由窗口](docroot://windowmanager/window-terminology.md#自由窗口)状态后生效。
 
 **类型：** boolean
 
@@ -132,7 +132,7 @@ title: string
 windowRect?: Rect
 ```
 
-子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-arkui-window-window-i.md#resize-2)方法。不设置且未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)显示前，则默认为{left: 0,top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。
+子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-arkui-window-window-i.md#resize-1)方法。不设置且未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)显示前，则默认为{left: 0,top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](docroot://windowmanager/application-window-stage.md#设置应用子窗口)开发指南。
 
 **类型：** Rect
 

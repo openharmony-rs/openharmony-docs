@@ -6,6 +6,7 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfosync"></a>
 ## getShortcutInfoSync
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ShortcutInfo> | Array形式返回当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Array&lt;ShortcutInfo&gt; | Array形式返回当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ try {
 ```
 
 
+<a id="getshortcutinfosync-1"></a>
 ## getShortcutInfoSync
 
 ```TypeScript
@@ -98,7 +100,7 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ShortcutInfo> | Array形式返回指定用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Array&lt;ShortcutInfo&gt; | Array形式返回指定用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 

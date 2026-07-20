@@ -28,7 +28,7 @@ string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。
 
 例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 8
 
@@ -54,7 +54,7 @@ string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。
 
 例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 8
 
@@ -140,7 +140,7 @@ string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。
 
 例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 8
 

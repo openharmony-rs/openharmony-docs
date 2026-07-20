@@ -148,7 +148,7 @@ supportedDrmCapabilities?: Array<string>
 
 播放设备支持的DRM能力。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -188,7 +188,7 @@ supportedPullClients?: Array<number>
 
 支持拉端客户端的ID集合（只有支持4K投播的设备会返回此字段）。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 20
 

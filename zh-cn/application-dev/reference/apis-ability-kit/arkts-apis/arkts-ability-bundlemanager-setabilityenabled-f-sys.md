@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setabilityenabled"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -36,7 +37,7 @@ function setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boole
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -85,6 +86,7 @@ try {
 ```
 
 
+<a id="setabilityenabled-1"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -109,7 +111,7 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: Asyn
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-abilityinfo-i.md) | 是 | 需要被设置的组件。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置组件禁用或使能状态成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置组件禁用或使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -159,6 +161,7 @@ try {
 ```
 
 
+<a id="setabilityenabled-2"></a>
 ## setAbilityEnabled
 
 ```TypeScript
@@ -188,7 +191,7 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

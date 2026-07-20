@@ -6,6 +6,7 @@
 import { inputEventClient } from '@kit.InputKit';
 ```
 
+<a id="createkeyboardcontroller"></a>
 ## createKeyboardController
 
 ```TypeScript
@@ -28,7 +29,7 @@ function createKeyboardController(): Promise<KeyboardController>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KeyboardController> | Promise对象，返回键盘控制器实例。 |
+| Promise&lt;KeyboardController&gt; | Promise对象，返回键盘控制器实例。 |
 
 **错误码：**
 

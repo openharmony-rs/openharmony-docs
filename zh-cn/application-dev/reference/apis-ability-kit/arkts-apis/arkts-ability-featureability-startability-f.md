@@ -6,6 +6,7 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -16,7 +17,7 @@ function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（FA模型）](../../../../application-models/component-startup-rules-fa.md)。
+> 组件启动规则详见：[组件启动规则（FA模型）](docroot://application-models/component-startup-rules-fa.md)。
 
 **起始版本：** 6
 
@@ -31,7 +32,7 @@ function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | parameter | [StartAbilityParameter](arkts-ability-ability-startabilityparameter-t.md) | 是 | 表示被启动的Ability。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当启动Ability成功，err为undefined，data为0表示启动成功，data为其他表示启动失败；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，data为0表示启动成功，data为其他表示启动失败；否则为错误对象。 |
 
 **示例：**
 
@@ -66,6 +67,7 @@ featureAbility.startAbility(
 ```
 
 
+<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript
@@ -76,7 +78,7 @@ function startAbility(parameter: StartAbilityParameter): Promise<number>
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（FA模型）](../../../../application-models/component-startup-rules-fa.md)。
+> 组件启动规则详见：[组件启动规则（FA模型）](docroot://application-models/component-startup-rules-fa.md)。
 
 **起始版本：** 6
 
@@ -96,7 +98,7 @@ function startAbility(parameter: StartAbilityParameter): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回0表示启动成功，返回其他表示启动失败。 |
+| Promise&lt;number&gt; | Promise对象。返回0表示启动成功，返回其他表示启动失败。 |
 
 **示例：**
 

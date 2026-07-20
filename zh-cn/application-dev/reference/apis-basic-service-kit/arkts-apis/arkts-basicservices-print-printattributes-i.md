@@ -102,7 +102,7 @@ pageSize?: PrintPageSize | PrintPageType
 
 表示待打印文件的纸张类型。
 
-**类型：** PrintPageSize | PrintPageType
+**类型：** PrintPageSize \| PrintPageType
 
 **起始版本：** 11
 

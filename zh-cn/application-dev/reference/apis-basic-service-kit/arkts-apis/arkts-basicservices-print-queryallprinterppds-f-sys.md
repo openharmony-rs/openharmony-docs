@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryallprinterppds"></a>
 ## queryAllPrinterPpds
 
 ```TypeScript
@@ -30,7 +31,7 @@ function queryAllPrinterPpds(): Promise<PpdInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PpdInfo[]> | - Promise that resolves with all printer ppd info. |
+| Promise&lt;PpdInfo[]&gt; | - Promise that resolves with all printer ppd info. |
 
 **错误码：**
 

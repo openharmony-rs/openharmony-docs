@@ -6,6 +6,7 @@
 import { performanceMonitor } from '@kit.ArkUI';
 ```
 
+<a id="begin"></a>
 ## begin
 
 ```TypeScript

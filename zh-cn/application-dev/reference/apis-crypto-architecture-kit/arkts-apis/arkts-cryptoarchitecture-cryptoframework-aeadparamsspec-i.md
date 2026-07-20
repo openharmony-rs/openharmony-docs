@@ -1,8 +1,8 @@
 # AeadParamsSpec
 
-用于AEAD（带附加数据的认证加密）对称加解密的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)方法参数，继承自[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)。
+用于AEAD（带附加数据的认证加密）对称加解密的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)方法参数，继承自[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)。
 
-适用于[AES算法](../../../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM和GCM分组模式。适用于[SM4算法](../../../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#sm4)的GCM分组模式。适用于[ChaCha20-Poly1305算法](../../../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)分组模式。
+适用于[AES算法](docroot://security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM和GCM分组模式。适用于[SM4算法](docroot://security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#sm4)的GCM分组模式。适用于[ChaCha20-Poly1305算法](docroot://security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)分组模式。
 
 > **说明：**  
 >  

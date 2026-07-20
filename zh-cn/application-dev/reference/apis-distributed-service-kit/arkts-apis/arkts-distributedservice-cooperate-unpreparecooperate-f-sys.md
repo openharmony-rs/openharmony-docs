@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="unpreparecooperate"></a>
 ## unprepareCooperate
 
 ```TypeScript
@@ -28,7 +29,7 @@ function unprepareCooperate(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，取消键鼠穿越准备成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，取消键鼠穿越准备成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -36,7 +37,7 @@ function unprepareCooperate(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.  **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
 
 **示例：**
 
@@ -60,6 +61,7 @@ try {
 ```
 
 
+<a id="unpreparecooperate-1"></a>
 ## unprepareCooperate
 
 ```TypeScript
@@ -82,7 +84,7 @@ function unprepareCooperate(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

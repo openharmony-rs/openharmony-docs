@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="gettouchpadscrollswitch"></a>
 ## getTouchpadScrollSwitch
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getTouchpadScrollSwitch(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当获取触控板滚轴能力开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取触控板滚轴能力开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ struct Index {
 ```
 
 
+<a id="gettouchpadscrollswitch-1"></a>
 ## getTouchpadScrollSwitch
 
 ```TypeScript
@@ -88,7 +90,7 @@ function getTouchpadScrollSwitch(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示触控板滚轴能力开启；返回false表示触控板滚轴能力关闭。默认为开启。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示触控板滚轴能力开启；返回false表示触控板滚轴能力关闭。默认为开启。 |
 
 **错误码：**
 

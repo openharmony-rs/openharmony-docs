@@ -14,6 +14,7 @@
 import { ssap } from '@kit.ConnectivityKit';
 ```
 
+<a id="addservice"></a>
 ## addService
 
 ```TypeScript
@@ -43,11 +44,12 @@ addService(service: Service): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID. |
-| 36100044 | NearLink standard UUID not allowed. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID. |
+| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -71,9 +73,10 @@ close(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="notifypropertychanged"></a>
 ## notifyPropertyChanged
 
 ```TypeScript
@@ -103,19 +106,20 @@ notifyPropertyChanged(address: string, property: Property): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 返回promise对象。 |
+| Promise&lt;void&gt; | 返回promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100041 | Invalid address. |
-| 36100043 | Invalid UUID in property. |
-| 36100044 | NearLink standard UUID not allowed. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100041](../errorcode-nearlink.md#36100041-无效地址) | Invalid address. |
+| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID in property. |
+| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="offconnectionstatechange"></a>
 ## offConnectionStateChange
 
 ```TypeScript
@@ -136,8 +140,9 @@ offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<ConnectionChangeState> | 否 | 用于监听连接状态改变事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ConnectionChangeState&gt; | 否 | 用于监听连接状态改变事件的回调。 |
 
+<a id="offmtuchange"></a>
 ## offMtuChange
 
 ```TypeScript
@@ -158,8 +163,9 @@ offMtuChange(callback?: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<number> | 否 | 用于监听mtu变化事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 用于监听mtu变化事件的回调。 |
 
+<a id="offpropertyread"></a>
 ## offPropertyRead
 
 ```TypeScript
@@ -180,8 +186,9 @@ offPropertyRead(callback?: Callback<PropertyReadRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<PropertyReadRequest> | 否 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;PropertyReadRequest&gt; | 否 | 用于监听属性操作事件的回调。 |
 
+<a id="offpropertywrite"></a>
 ## offPropertyWrite
 
 ```TypeScript
@@ -202,8 +209,9 @@ offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<PropertyWriteRequest> | 否 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;PropertyWriteRequest&gt; | 否 | 用于监听属性操作事件的回调。 |
 
+<a id="onconnectionstatechange"></a>
 ## onConnectionStateChange
 
 ```TypeScript
@@ -226,8 +234,9 @@ onConnectionStateChange(callback: Callback<ConnectionChangeState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<ConnectionChangeState> | 是 | 用于监听连接状态改变事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ConnectionChangeState&gt; | 是 | 用于监听连接状态改变事件的回调。 |
 
+<a id="onmtuchange"></a>
 ## onMtuChange
 
 ```TypeScript
@@ -250,8 +259,9 @@ onMtuChange(callback: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<number> | 是 | 用于监听mtu变化事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 用于监听mtu变化事件的回调。 |
 
+<a id="onpropertyread"></a>
 ## onPropertyRead
 
 ```TypeScript
@@ -274,8 +284,9 @@ onPropertyRead(callback: Callback<PropertyReadRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<PropertyReadRequest> | 是 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;PropertyReadRequest&gt; | 是 | 用于监听属性操作事件的回调。 |
 
+<a id="onpropertywrite"></a>
 ## onPropertyWrite
 
 ```TypeScript
@@ -298,8 +309,9 @@ onPropertyWrite(callback: Callback<PropertyWriteRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)<PropertyWriteRequest> | 是 | 用于监听属性操作事件的回调。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;PropertyWriteRequest&gt; | 是 | 用于监听属性操作事件的回调。 |
 
+<a id="removeservice"></a>
 ## removeService
 
 ```TypeScript
@@ -329,11 +341,12 @@ removeService(serviceUuid: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100043 | Invalid UUID. |
-| 36100044 | NearLink standard UUID not allowed. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100043](../errorcode-nearlink.md#36100043-无效uuid) | Invalid UUID. |
+| [36100044](../errorcode-nearlink.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 
+<a id="sendresponse"></a>
 ## sendResponse
 
 ```TypeScript
@@ -363,7 +376,7 @@ sendResponse(response: ServerResponse): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| 36100003 | NearLink disabled. |
-| 36100041 | Invalid address. |
-| 36100099 | Operation failed. |
+| [36100003](../errorcode-nearlink.md#36100003--星闪关闭) | NearLink disabled. |
+| [36100041](../errorcode-nearlink.md#36100041-无效地址) | Invalid address. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

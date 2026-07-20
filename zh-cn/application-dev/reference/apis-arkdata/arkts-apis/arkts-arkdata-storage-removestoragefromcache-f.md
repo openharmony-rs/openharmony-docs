@@ -1,5 +1,6 @@
 # removeStorageFromCache
 
+<a id="removestoragefromcache"></a>
 ## removeStorageFromCache
 
 ```TypeScript
@@ -21,9 +22,10 @@ function removeStorageFromCache(path: string, callback: AsyncCallback<void>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 应用程序内部数据存储路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 
+<a id="removestoragefromcache-1"></a>
 ## removeStorageFromCache
 
 ```TypeScript
@@ -50,5 +52,5 @@ function removeStorageFromCache(path: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步获取结果。 |
+| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 

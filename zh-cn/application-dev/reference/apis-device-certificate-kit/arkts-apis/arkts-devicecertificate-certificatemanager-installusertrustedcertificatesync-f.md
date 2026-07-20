@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="installusertrustedcertificatesync"></a>
 ## installUserTrustedCertificateSync
 
 ```TypeScript
@@ -26,7 +27,7 @@ function installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScop
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示CA证书数据，<br>最大长度为8196字节。 |
+| cert | Uint8Array | 是 | 表示CA证书数据，<br>最大长度为8196字节。 |
 | certScope | [CertScope](arkts-devicecertificate-certificatemanager-certscope-e.md) | 是 | 表示CA证书安装的位置。 |
 
 **返回值：**

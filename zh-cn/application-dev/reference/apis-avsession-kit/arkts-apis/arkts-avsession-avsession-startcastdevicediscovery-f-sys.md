@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="startcastdevicediscovery"></a>
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -26,7 +27,7 @@ function startCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -45,6 +46,7 @@ avSession.startCastDeviceDiscovery(() => {
 ```
 
 
+<a id="startcastdevicediscovery-1"></a>
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -66,7 +68,7 @@ function startCastDeviceDiscovery(filter: number, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | number | 是 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -87,6 +89,7 @@ avSession.startCastDeviceDiscovery(filter, () => {
 ```
 
 
+<a id="startcastdevicediscovery-2"></a>
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -108,13 +111,13 @@ function startCastDeviceDiscovery(filter?: number, drmSchemes?: Array<string>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。<br>**起始版本：** 12 |
-| drmSchemes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 <br/>从API version 12开始支持该可选参数。<br>**起始版本：** 12 |
+| drmSchemes | Array&lt;string&gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 <br/>从API version 12开始支持该可选参数。<br>**起始版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。当命令发送成功并开始搜索，无返回结果，否则返回错误对象。 |
+| Promise&lt;void&gt; | Promise对象。当命令发送成功并开始搜索，无返回结果，否则返回错误对象。 |
 
 **错误码：**
 

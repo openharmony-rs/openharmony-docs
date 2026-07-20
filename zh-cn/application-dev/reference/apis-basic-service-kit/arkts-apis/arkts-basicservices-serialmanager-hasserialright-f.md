@@ -6,6 +6,7 @@
 import { serialManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="hasserialright"></a>
 ## hasSerialRight
 
 ```TypeScript

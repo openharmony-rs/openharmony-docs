@@ -6,6 +6,7 @@
 import { scan } from '@kit.BasicServicesKit';
 ```
 
+<a id="getscannercurrentsetting"></a>
 ## getScannerCurrentSetting
 
 ```TypeScript
@@ -33,7 +34,7 @@ function getScannerCurrentSetting(scannerId: string, optionIndex: number): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ScannerOptionValue> | Promise对象，返回扫描仪选项值。 |
+| Promise&lt;ScannerOptionValue&gt; | Promise对象，返回扫描仪选项值。 |
 
 **错误码：**
 

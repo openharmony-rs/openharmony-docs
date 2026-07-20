@@ -18,6 +18,6 @@ type OnVideoSizeChangeHandler = (width: number, height: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | int | 是 | 视频宽度，单位为像素（px）。 |
-| height | int | 是 | 视频高度，单位为像素（px）。 |
+| width | number | 是 | 视频宽度，单位为像素（px）。  |
+| height | number | 是 | 视频高度，单位为像素（px）。  |
 

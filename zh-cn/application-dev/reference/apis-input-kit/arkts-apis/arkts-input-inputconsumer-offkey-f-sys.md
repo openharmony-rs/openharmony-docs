@@ -6,6 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
+<a id="offkey"></a>
 ## offKey
 
 ```TypeScript

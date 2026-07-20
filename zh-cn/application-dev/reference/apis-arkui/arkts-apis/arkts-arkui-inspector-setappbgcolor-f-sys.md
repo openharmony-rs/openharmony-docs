@@ -1,5 +1,6 @@
 # setAppBgColor（系统接口）
 
+<a id="setappbgcolor"></a>
 ## setAppBgColor
 
 ```TypeScript

@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+<a id="and"></a>
 ## and
 
 ```TypeScript
@@ -52,6 +53,7 @@ try {
 
 ```
 
+<a id="begingroup"></a>
 ## beginGroup
 
 ```TypeScript
@@ -92,6 +94,7 @@ try {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -110,6 +113,7 @@ constructor()
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+<a id="deviceid"></a>
 ## deviceId
 
 ```TypeScript
@@ -160,6 +164,7 @@ try {
 
 ```
 
+<a id="endgroup"></a>
 ## endGroup
 
 ```TypeScript
@@ -200,6 +205,7 @@ try {
 
 ```
 
+<a id="equalto"></a>
 ## equalTo
 
 ```TypeScript
@@ -245,6 +251,7 @@ try {
 
 ```
 
+<a id="getsqllike"></a>
 ## getSqlLike
 
 ```TypeScript
@@ -282,6 +289,7 @@ try {
 
 ```
 
+<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -327,6 +335,7 @@ try {
 
 ```
 
+<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -372,6 +381,7 @@ try {
 
 ```
 
+<a id="innumber"></a>
 ## inNumber
 
 ```TypeScript
@@ -417,6 +427,7 @@ try {
 
 ```
 
+<a id="instring"></a>
 ## inString
 
 ```TypeScript
@@ -462,6 +473,7 @@ try {
 
 ```
 
+<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -506,6 +518,7 @@ try {
 
 ```
 
+<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -550,6 +563,7 @@ try {
 
 ```
 
+<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -595,6 +609,7 @@ try {
 
 ```
 
+<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -640,6 +655,7 @@ try {
 
 ```
 
+<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -685,6 +701,7 @@ try {
 
 ```
 
+<a id="limit"></a>
 ## limit
 
 ```TypeScript
@@ -733,6 +750,7 @@ try {
 
 ```
 
+<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -778,6 +796,7 @@ try {
 
 ```
 
+<a id="notinnumber"></a>
 ## notInNumber
 
 ```TypeScript
@@ -823,6 +842,7 @@ try {
 
 ```
 
+<a id="notinstring"></a>
 ## notInString
 
 ```TypeScript
@@ -868,6 +888,7 @@ try {
 
 ```
 
+<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -908,6 +929,7 @@ try {
 
 ```
 
+<a id="orderbyasc"></a>
 ## orderByAsc
 
 ```TypeScript
@@ -953,6 +975,7 @@ try {
 
 ```
 
+<a id="orderbydesc"></a>
 ## orderByDesc
 
 ```TypeScript
@@ -998,6 +1021,7 @@ try {
 
 ```
 
+<a id="prefixkey"></a>
 ## prefixKey
 
 ```TypeScript
@@ -1043,6 +1067,7 @@ try {
 
 ```
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -1083,6 +1108,7 @@ try {
 
 ```
 
+<a id="setsuggestindex"></a>
 ## setSuggestIndex
 
 ```TypeScript
@@ -1128,6 +1154,7 @@ try {
 
 ```
 
+<a id="unlike"></a>
 ## unlike
 
 ```TypeScript

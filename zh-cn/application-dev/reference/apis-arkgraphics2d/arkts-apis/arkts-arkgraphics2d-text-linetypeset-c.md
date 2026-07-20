@@ -16,6 +16,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createline"></a>
 ## createLine
 
 ```TypeScript
@@ -61,6 +62,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ```
 
+<a id="getlinebreak"></a>
 ## getLineBreak
 
 ```TypeScript

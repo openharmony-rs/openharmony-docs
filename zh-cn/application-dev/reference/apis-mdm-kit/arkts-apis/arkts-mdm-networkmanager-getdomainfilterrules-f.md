@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="getdomainfilterrules"></a>
 ## getDomainFilterRules
 
 ```TypeScript
@@ -38,7 +39,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DomainFilterRule> | 返回当前设备配置的域名过滤规则列表，当方法调用错误时会抛出异常。 |
+| Array&lt;DomainFilterRule&gt; | 返回当前设备配置的域名过滤规则列表，当方法调用错误时会抛出异常。 |
 
 **错误码：**
 

@@ -20,14 +20,14 @@ import { serial } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getserialportlist-1) | 获取串口列表。使用Promise异步回调。 |
+| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getserialportlist) | 获取串口列表。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addportauthorization-1) | 添加应用访问串口端口的权限仅面向串口授权弹窗系统应用开放 |
+| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addportauthorization) | 添加应用访问串口端口的权限仅面向串口授权弹窗系统应用开放 |
 <!--DelEnd-->
 
 ### 接口

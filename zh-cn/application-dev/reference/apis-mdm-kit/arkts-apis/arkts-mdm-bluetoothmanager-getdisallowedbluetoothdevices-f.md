@@ -6,6 +6,7 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedbluetoothdevices"></a>
 ## getDisallowedBluetoothDevices
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getDisallowedBluetoothDevices(admin: Want): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 禁用名单中蓝牙设备MAC地址的数组。 |
+| Array&lt;string&gt; | 禁用名单中蓝牙设备MAC地址的数组。 |
 
 **错误码：**
 

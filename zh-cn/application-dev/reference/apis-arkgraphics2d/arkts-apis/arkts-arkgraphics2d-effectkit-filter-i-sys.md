@@ -14,6 +14,7 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
+<a id="ellipticalgradientblur"></a>
 ## ellipticalGradientBlur
 
 ```TypeScript

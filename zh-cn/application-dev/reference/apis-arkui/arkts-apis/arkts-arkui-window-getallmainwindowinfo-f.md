@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="getallmainwindowinfo"></a>
 ## getAllMainWindowInfo
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<MainWindowInfo>> | Promise对象。返回主窗口信息列表。 |
+| Promise&lt;Array&lt;MainWindowInfo&gt;&gt; | Promise对象。返回主窗口信息列表。 |
 
 **错误码：**
 

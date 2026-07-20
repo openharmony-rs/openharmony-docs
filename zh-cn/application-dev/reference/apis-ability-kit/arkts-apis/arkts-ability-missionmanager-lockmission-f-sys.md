@@ -6,6 +6,7 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
+<a id="lockmission"></a>
 ## lockMission
 
 ```TypeScript
@@ -29,7 +30,7 @@ function lockMission(missionId: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | missionId | number | 是 | 任务ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 执行结果回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ try {
 ```
 
 
+<a id="lockmission-1"></a>
 ## lockMission
 
 ```TypeScript
@@ -93,7 +95,7 @@ function lockMission(missionId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

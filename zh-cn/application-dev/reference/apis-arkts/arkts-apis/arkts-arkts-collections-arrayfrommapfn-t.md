@@ -18,12 +18,12 @@ ArkTS Array归约函数类型，被Array类的'from'接口使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | FromElementType | 是 | 当前正在处理的元素。 |
-| index | number | 是 | 当前遍历的ArkTS Array元素索引。 |
+| value | FromElementType | 是 | 当前正在处理的元素。  |
+| index | number | 是 | 当前遍历的ArkTS Array元素索引。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ToElementType | 归约函数的结果，该结果会作为数组的新元素。 |
+| ToElementType | 归约函数的结果，该结果会作为数组的新元素。  |
 

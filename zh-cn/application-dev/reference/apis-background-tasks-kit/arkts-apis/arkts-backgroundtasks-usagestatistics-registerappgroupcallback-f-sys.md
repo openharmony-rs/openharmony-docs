@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="registerappgroupcallback"></a>
 ## registerAppGroupCallBack
 
 ```TypeScript
@@ -28,8 +29,8 @@ function registerAppGroupCallBack(groupCallback: Callback<AppGroupCallbackInfo>,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| groupCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AppGroupCallbackInfo> | 是 | 返回的应用分组变化信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当注册监听成功，err为undefined；否则为错误对象。 |
+| groupCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AppGroupCallbackInfo&gt; | 是 | 返回的应用分组变化信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当注册监听成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ usageStatistics.registerAppGroupCallBack(onBundleGroupChanged, (err: BusinessErr
 ```
 
 
+<a id="registerappgroupcallback-1"></a>
 ## registerAppGroupCallBack
 
 ```TypeScript
@@ -92,13 +94,13 @@ function registerAppGroupCallBack(groupCallback: Callback<AppGroupCallbackInfo>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| groupCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AppGroupCallbackInfo> | 是 | 返回的应用分组变化信息。 |
+| groupCallback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AppGroupCallbackInfo&gt; | 是 | 返回的应用分组变化信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

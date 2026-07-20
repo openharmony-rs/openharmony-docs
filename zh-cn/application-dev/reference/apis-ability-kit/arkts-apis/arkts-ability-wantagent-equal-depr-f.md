@@ -1,5 +1,6 @@
 # equal
 
+<a id="equal"></a>
 ## equal
 
 ```TypeScript
@@ -26,7 +27,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | agent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
 | otherAgent | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
 **示例：**
 
@@ -86,6 +87,7 @@ wantAgent.getWantAgent({
 ```
 
 
+<a id="equal-1"></a>
 ## equal
 
 ```TypeScript
@@ -117,7 +119,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回获取判断两个WantAgent实例是否相等的结果。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回获取判断两个WantAgent实例是否相等的结果。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
 **示例：**
 

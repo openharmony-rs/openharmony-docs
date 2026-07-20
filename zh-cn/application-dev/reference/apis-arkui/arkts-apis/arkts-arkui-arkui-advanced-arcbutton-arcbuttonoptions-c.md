@@ -14,6 +14,7 @@
 import { ArcButtonPosition, ArcButton, ArcButtonStatus, ArcButtonStyleMode, ArcButtonOptions, ArcButtonProgressConfig } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -108,7 +109,7 @@ fontFamily: string | Resource
 
 弧形按钮字体名。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 18
 
@@ -204,7 +205,7 @@ onClick?: Callback<ClickEvent>
 
 弧形按钮点击动作触发该回调。
 
-**类型：** Callback<ClickEvent>
+**类型：** Callback&lt;ClickEvent&gt;
 
 **起始版本：** 18
 
@@ -222,7 +223,7 @@ onTouch?: Callback<TouchEvent>
 
 弧形按钮手指触摸动作触发该回调。
 
-**类型：** Callback<TouchEvent>
+**类型：** Callback&lt;TouchEvent&gt;
 
 **起始版本：** 18
 
@@ -280,7 +281,7 @@ ArcButtonStyleMode需要设置为CUSTOM。
 progressConfig?: ArcButtonProgressConfig
 ```
 
-ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（[示例1](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#示例1-设置弧形按钮)），设置后表现为进度条样式（[示例2](../../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#示例2-设置设备进度条按钮)），进度条样式不受[ArcButtonStyleMode](arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md)属性设置影响。
+ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（[示例1](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#示例1-设置弧形按钮)），设置后表现为进度条样式（[示例2](docroot://reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#示例2-设置设备进度条按钮)），进度条样式不受[ArcButtonStyleMode](arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md)属性设置影响。
 
 默认值：[ArcButtonProgressConfig](arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md) 的各项子属性均取其默认值。
 

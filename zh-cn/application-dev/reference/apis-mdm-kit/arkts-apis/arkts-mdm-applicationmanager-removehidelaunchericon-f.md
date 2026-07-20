@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="removehidelaunchericon"></a>
 ## removeHideLauncherIcon
 
 ```TypeScript
@@ -33,7 +34,7 @@ function removeHideLauncherIcon(admin: Want, bundleNames: Array<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| bundleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 应用包名数组，指定需要取消隐藏的应用，最大支持500个。 |
+| bundleNames | Array&lt;string&gt; | 是 | 应用包名数组，指定需要取消隐藏的应用，最大支持500个。 |
 
 **错误码：**
 

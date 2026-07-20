@@ -4,6 +4,8 @@
 
 **起始版本：** 11
 
+**装饰器类型：** @Observed
+
 <!--Device-unnamed-declare class SegmentButtonItemOptions--><!--Device-unnamed-declare class SegmentButtonItemOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -14,6 +16,7 @@
 import { CommonSegmentButtonOptions, SegmentButtonItemOptionsConstructorOptions, SegmentButtonIconTextItem, SegmentButtonItemOptions, SegmentButtonTextItem, CapsuleSegmentButtonOptions, SegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonItemTuple, SegmentButton, SegmentButtonItemArray, SegmentButtonItemOptionsArray, SegmentButtonIconItem, BorderRadiusMode, TabSegmentButtonConstructionOptions, TabSegmentButtonOptions, ItemRestriction, DimensionNoPercentage } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

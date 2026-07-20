@@ -6,6 +6,7 @@
 import { recent } from '@kit.CoreFileKit';
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript

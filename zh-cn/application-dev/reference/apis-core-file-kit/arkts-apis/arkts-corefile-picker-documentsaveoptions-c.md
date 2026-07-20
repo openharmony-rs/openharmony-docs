@@ -60,7 +60,7 @@ fileSuffixChoices?: Array<string>
 
 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"|"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"|"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 
@@ -78,7 +78,7 @@ newFileNames?: Array<string>
 
 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 9
 

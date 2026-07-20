@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getabilitylabel"></a>
 ## getAbilityLabel
 
 ```TypeScript
@@ -33,7 +34,7 @@ function getAbilityLabel(bundleName: string, moduleName: string, abilityName: st
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
 | moduleName | string | 是 | 表示Module名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获指定组件的Label值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获指定组件的Label值；否则为错误对象。 |
 
 **错误码：**
 
@@ -76,6 +77,7 @@ try {
 ```
 
 
+<a id="getabilitylabel-1"></a>
 ## getAbilityLabel
 
 ```TypeScript
@@ -108,7 +110,7 @@ function getAbilityLabel(bundleName: string, moduleName: string, abilityName: st
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回指定组件的label值。 |
+| Promise&lt;string&gt; | Promise对象，返回指定组件的label值。 |
 
 **错误码：**
 

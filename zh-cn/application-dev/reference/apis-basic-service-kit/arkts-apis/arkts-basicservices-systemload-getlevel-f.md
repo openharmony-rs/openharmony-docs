@@ -6,6 +6,7 @@
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 
+<a id="getlevel"></a>
 ## getLevel
 
 ```TypeScript
@@ -24,5 +25,5 @@ function getLevel(): Promise<SystemLoadLevel>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SystemLoadLevel> | Promise对象，返回系统负载融合档位。 |
+| Promise&lt;SystemLoadLevel&gt; | Promise对象，返回系统负载融合档位。 |
 

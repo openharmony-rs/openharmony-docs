@@ -6,6 +6,7 @@
 import { kioskManager } from '@kit.AbilityKit';
 ```
 
+<a id="enterkioskmode"></a>
 ## enterKioskMode
 
 ```TypeScript
@@ -32,7 +33,7 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

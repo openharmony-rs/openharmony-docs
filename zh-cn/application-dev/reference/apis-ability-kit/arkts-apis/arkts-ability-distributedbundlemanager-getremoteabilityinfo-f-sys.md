@@ -6,6 +6,7 @@
 import { distributedBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getremoteabilityinfo"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | ElementName信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RemoteAbilityInfo> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RemoteAbilityInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-1"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -100,7 +102,7 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RemoteAbilityInfo> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise&lt;RemoteAbilityInfo&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -141,6 +143,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-2"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -163,8 +166,8 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息,最大数组长度为10。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<RemoteAbilityInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| elementNames | Array&lt;ElementName&gt; | 是 | ElementName信息,最大数组长度为10。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
@@ -214,6 +217,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-3"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -236,13 +240,13 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息，最大数组长度为10。 |
+| elementNames | Array&lt;ElementName&gt; | 是 | ElementName信息，最大数组长度为10。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<RemoteAbilityInfo>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -290,6 +294,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-4"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -314,7 +319,7 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-bundlemanager-elementname-t.md) | 是 | ElementName信息。 |
 | locale | string | 是 | 语言地区。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RemoteAbilityInfo> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RemoteAbilityInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
@@ -357,6 +362,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-5"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -386,7 +392,7 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RemoteAbilityInfo> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise&lt;RemoteAbilityInfo&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -427,6 +433,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-6"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -449,9 +456,9 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息,最大数组长度为10。 |
+| elementNames | Array&lt;ElementName&gt; | 是 | ElementName信息,最大数组长度为10。 |
 | locale | string | 是 | 语言地区。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<RemoteAbilityInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
 
 **错误码：**
 
@@ -501,6 +508,7 @@ try {
 ```
 
 
+<a id="getremoteabilityinfo-7"></a>
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -523,14 +531,14 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ElementName> | 是 | ElementName信息,最大数组长度为10。 |
+| elementNames | Array&lt;ElementName&gt; | 是 | ElementName信息,最大数组长度为10。 |
 | locale | string | 是 | 语言地区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<RemoteAbilityInfo>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
 
 **错误码：**
 

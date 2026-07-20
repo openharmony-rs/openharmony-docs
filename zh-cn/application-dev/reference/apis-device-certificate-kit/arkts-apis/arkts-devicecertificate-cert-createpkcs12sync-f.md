@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="createpkcs12sync"></a>
 ## createPkcs12Sync
 
 ```TypeScript
@@ -33,7 +34,7 @@ function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 表示创建的P12，DER格式。 |
+| Uint8Array | 表示创建的P12，DER格式。 |
 
 **错误码：**
 

@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="nextlabel"></a>
 ## nextLabel
 
 ```TypeScript
@@ -22,7 +23,7 @@ nextLabel(value: string)
 
 > **说明：**
 
-> 从API version 8开始支持，从API version 22开始废弃，建议使用[showNext](arkts-arkui-swiper-swipercontroller-c.md#shownext-1)替代。
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[showNext](arkts-arkui-swipercontroller-c.md#shownext-1)替代。
 
 **起始版本：** 8
 
@@ -42,6 +43,7 @@ nextLabel(value: string)
 | --- | --- | --- | --- |
 | value | string | 是 | 右侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。 |
 
+<a id="prevlabel"></a>
 ## prevLabel
 
 ```TypeScript
@@ -52,7 +54,7 @@ prevLabel(value: string)
 
 > **说明：**
 
-> 从API version 8开始支持，从API version 22开始废弃，建议使用[showPrevious](arkts-arkui-swiper-swipercontroller-c.md#showprevious-1)替代。
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[showPrevious](arkts-arkui-swipercontroller-c.md#showprevious-1)替代。
 
 **起始版本：** 8
 
@@ -72,6 +74,7 @@ prevLabel(value: string)
 | --- | --- | --- | --- |
 | value | string | 是 | 左侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。 |
 
+<a id="status"></a>
 ## status
 
 ```TypeScript
@@ -100,5 +103,5 @@ status(value?: ItemState)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ItemState](arkts-arkui-stepper-item-itemstate-e.md) | 否 | 步骤导航器nextLabel的显示状态。<br/>默认值：ItemState.Normal |
+| value | [ItemState](arkts-arkui-itemstate-e.md) | 否 | 步骤导航器nextLabel的显示状态。<br/>默认值：ItemState.Normal |
 

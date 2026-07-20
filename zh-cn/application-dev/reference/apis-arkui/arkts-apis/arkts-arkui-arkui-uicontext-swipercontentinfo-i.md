@@ -42,7 +42,7 @@ swiperItemInfos: Array<SwiperItemInfo>
 
 当前处于显示状态的Swiper子组件的信息。
 
-**类型：** Array<SwiperItemInfo>
+**类型：** Array&lt;SwiperItemInfo&gt;
 
 **起始版本：** 22
 

@@ -33,7 +33,7 @@ Uses new to create the line.Anonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | LineOptions | 否 | Line options |
+| options | [LineOptions](arkts-arkui-lineoptions-i.md) | 否 | Line options |
 
 ## Line
 
@@ -57,7 +57,7 @@ Line(options?: LineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | LineOptions | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| options | [LineOptions](arkts-arkui-lineoptions-i.md) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 

@@ -22,7 +22,7 @@ appUidList?: Array<string>
 
 表示授权应用列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 11
 
@@ -54,7 +54,7 @@ certList?: Array<CertAbstract>
 
 表示证书简要信息的列表。
 
-**类型：** Array<CertAbstract>
+**类型：** Array&lt;CertAbstract&gt;
 
 **起始版本：** 11
 
@@ -86,7 +86,7 @@ credentialDetailList?: Array<Credential>
 
 表示凭据详细信息。
 
-**类型：** Array<Credential>
+**类型：** Array&lt;Credential&gt;
 
 **起始版本：** 22
 
@@ -102,7 +102,7 @@ credentialList?: Array<CredentialAbstract>
 
 表示凭据简要信息的列表。
 
-**类型：** Array<CredentialAbstract>
+**类型：** Array&lt;CredentialAbstract&gt;
 
 **起始版本：** 11
 
@@ -150,7 +150,7 @@ uriList?: Array<string>
 
 表示证书URI列表。26.0.0
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 

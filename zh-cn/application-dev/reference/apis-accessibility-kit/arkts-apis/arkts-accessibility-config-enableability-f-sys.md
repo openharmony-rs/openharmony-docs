@@ -6,6 +6,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="enableability"></a>
 ## enableAbility
 
 ```TypeScript
@@ -29,13 +30,13 @@ function enableAbility(name: string, capability: Array<accessibility.Capability>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<accessibility.Capability> | 是 | 辅助应用的能力属性。 |
+| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助应用的能力属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ config.enableAbility(name, capability).then(() => {
 ```
 
 
+<a id="enableability-1"></a>
 ## enableAbility
 
 ```TypeScript
@@ -100,8 +102,8 @@ function enableAbility(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 辅助应用的名称，格式为：'bundleName/abilityName'。 |
-| capability | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<accessibility.Capability> | 是 | 辅助应用的能力属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| capability | Array&lt;accessibility.Capability&gt; | 是 | 辅助应用的能力属性。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 

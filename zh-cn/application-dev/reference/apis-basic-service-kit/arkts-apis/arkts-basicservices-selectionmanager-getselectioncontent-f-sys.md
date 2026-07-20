@@ -6,6 +6,7 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="getselectioncontent"></a>
 ## getSelectionContent
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getSelectionContent(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回当前选中文本的内容。 |
+| Promise&lt;string&gt; | Promise对象，返回当前选中文本的内容。 |
 
 **错误码：**
 

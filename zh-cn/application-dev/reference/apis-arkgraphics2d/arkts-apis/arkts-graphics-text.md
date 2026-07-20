@@ -32,27 +32,27 @@ import { text } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount-1) | 根据字体文件路径获取包含的字体文件数。如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回0。 |
-| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname-1) | 根据字体名称和类型获取字体描述符，使用Promise异步回调。字体描述符是描述字体特征的数据结构，包含字体外观和属性的详细信息。 |
-| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath-1) | 根据字体文件路径获取字体描述符数组。使用Promise异步回调。 |
-| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype-1) | 获取指定字体类型的所有字体文件路径。 |
-| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset-1) | 根据字体文件路径获取字体unicode数组。使用Promise异步回调。如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。 |
-| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype-1) | 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。 |
-| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported-1) | 检查系统是否支持指定的字体文件。 |
-| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors-1) | 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。 |
-| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast-1) | 用于设置文字渲染高对比度模式。该接口设置后整个进程都会生效，进程内所有页面共用相同模式。可调用此接口设置，也可通过系统设置界面中**高对比度文字配置开关**进行开启/关闭。使用此接口设置开启/关闭文字渲染高对比度配置的优先级高于系统开关设置。该接口针对应用的文字自绘制场景不生效。 |
-| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay-1) | 设置字符映射到.notdef（未定义）字形时要使用的字形类型。影响此调用后呈现的所有文本。此配置会影响显示字体中未定义字符的方式：- 默认行为遵循字体的内部.notdef字形设计。 - 开启后将强制使缺失字形的字符以豆腐块形式显示。 |
+| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount) | 根据字体文件路径获取包含的字体文件数。  如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回0。 |
+| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname) | 根据字体名称和类型获取字体描述符，使用Promise异步回调。  字体描述符是描述字体特征的数据结构，包含字体外观和属性的详细信息。 |
+| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath) | 根据字体文件路径获取字体描述符数组。使用Promise异步回调。 |
+| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype) | 获取指定字体类型的所有字体文件路径。 |
+| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset) | 根据字体文件路径获取字体unicode数组。使用Promise异步回调。  如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。 |
+| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype) | 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。 |
+| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported) | 检查系统是否支持指定的字体文件。 |
+| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors) | 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。 |
+| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast) | 用于设置文字渲染高对比度模式。  该接口设置后整个进程都会生效，进程内所有页面共用相同模式。  可调用此接口设置，也可通过系统设置界面中**高对比度文字配置开关**进行开启/关闭。使用此接口设置开启/关闭文字渲染高对比度配置的优先级高于系统开关设置。  该接口针对应用的文字自绘制场景不生效。 |
+| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay) | 设置字符映射到.notdef（未定义）字形时要使用的字形类型。  影响此调用后呈现的所有文本。  此配置会影响显示字体中未定义字符的方式：  - 默认行为遵循字体的内部.notdef字形设计。  - 开启后将强制使缺失字形的字符以豆腐块形式显示。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
 | [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 字体集。 |
-| [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md) | 保存着文本内容以及样式的载体，可以用于计算单行排版信息。下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset-1)接口获取到LineTypeset对象实例，再通过此实例调用对应方法。 |
-| [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md) | 保存文本内容及样式的载体，支持排版与绘制操作。下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build-1)接口获取到Paragraph对象实例，再通过此实例调用对应方法。 |
+| [LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md) | 保存着文本内容以及样式的载体，可以用于计算单行排版信息。  下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[buildLineTypeset()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#buildlinetypeset-1)接口获取到LineTypeset对象实例，再通过此实例调用对应方法。 |
+| [Paragraph](arkts-arkgraphics2d-text-paragraph-c.md) | 保存文本内容及样式的载体，支持排版与绘制操作。  下列API示例中都需先使用[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)类的[build()](arkts-arkgraphics2d-text-paragraphbuilder-c.md#build-1)接口获取到Paragraph对象实例，再通过此实例调用对应方法。 |
 | [ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md) | 段落生成器。 |
-| [Run](arkts-arkgraphics2d-text-run-c.md) | 文本排版单元。下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns-1)接口获取Run对象实例，再通过此实例调用对应方法。 |
-| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 描述段落基础文本行结构的载体。下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraphstyle-i.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines-1)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline-1)接口获取到TextLine对象实例，再通过此实例调用对应方法。 |
+| [Run](arkts-arkgraphics2d-text-run-c.md) | 文本排版单元。  下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns-1)接口获取Run对象实例，再通过此实例调用对应方法。 |
+| [TextLine](arkts-arkgraphics2d-text-textline-c.md) | 描述段落基础文本行结构的载体。  下列API示例中都需先使用[Paragraph](arkts-arkgraphics2d-text-paragraphstyle-i.md)类的[getTextLines()](arkts-arkgraphics2d-text-paragraph-c.md#gettextlines-1)接口或者[LineTypeset](arkts-arkgraphics2d-text-linetypeset-c.md)类的[createLine()](arkts-arkgraphics2d-text-linetypeset-c.md#createline-1)接口获取到TextLine对象实例，再通过此实例调用对应方法。 |
 
 ### 接口
 
@@ -86,14 +86,15 @@ import { text } from '@kit.ArkGraphics2D';
 | --- | --- |
 | [Affinity](arkts-arkgraphics2d-text-affinity-e.md) | 位置亲和度枚举。 |
 | [BreakStrategy](arkts-arkgraphics2d-text-breakstrategy-e.md) | 断行策略枚举。 |
-| [EllipsisMode](arkts-arkgraphics2d-text-ellipsismode-e.md) | 省略号类型枚举。EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。 |
+| [EllipsisMode](arkts-arkgraphics2d-text-ellipsismode-e.md) | 省略号类型枚举。  EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。 |
 | [FontStyle](arkts-arkgraphics2d-text-fontstyle-e.md) | 字体样式枚举。 |
 | [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md) | 字重枚举。 |
 | [FontWidth](arkts-arkgraphics2d-text-fontwidth-e.md) | 字体宽度的枚举。 |
 | [LineHeightStyle](arkts-arkgraphics2d-text-lineheightstyle-e.md) | 行高缩放基数枚举。 |
-| [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md) | 占位符相对于周围文本的纵向对齐方式。![zh-ch_image_PlaceholderAlignment.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png) |
+| [PlaceholderAlignment](arkts-arkgraphics2d-text-placeholderalignment-e.md) | 占位符相对于周围文本的纵向对齐方式。  ![zh-ch_image_PlaceholderAlignment.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_PlaceholderAlignment.png) |
 | [RectHeightStyle](arkts-arkgraphics2d-text-rectheightstyle-e.md) | 矩形区域高度规格枚举。 |
 | [RectWidthStyle](arkts-arkgraphics2d-text-rectwidthstyle-e.md) | 矩形区域宽度规格枚举。 |
+| [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 字体类型枚举，通过位或运算可实现组合类型。 |
 | [TextAlign](arkts-arkgraphics2d-text-textalign-e.md) | 文本对齐方式枚举。 |
 | [TextBadgeType](arkts-arkgraphics2d-text-textbadgetype-e.md) | 文本上下标枚举。 |
 | [TextBaseline](arkts-arkgraphics2d-text-textbaseline-e.md) | 文本基线类型枚举。 |
@@ -107,14 +108,6 @@ import { text } from '@kit.ArkGraphics2D';
 | [TextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-textundefinedglyphdisplay-e.md) | 文本未定义字形时的显示方式枚举。 |
 | [TextVerticalAlign](arkts-arkgraphics2d-text-textverticalalign-e.md) | 文本垂直对齐方式枚举。 |
 | [WordBreak](arkts-arkgraphics2d-text-wordbreak-e.md) | 断词策略枚举。 |
-
-<!--Del-->
-### 枚举（系统接口）
-
-| 名称 | 说明 |
-| --- | --- |
-| [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 字体类型枚举，通过位或运算可实现组合类型。 |
-<!--DelEnd-->
 
 ### 类型
 

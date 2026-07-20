@@ -6,6 +6,7 @@
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="off"></a>
 ## off('receiveData')
 
 ```TypeScript
@@ -30,7 +31,7 @@ function off(type: 'receiveData', channelId: number, callback?: Callback<DataInf
 | --- | --- | --- | --- |
 | type | 'receiveData' | 是 | 设置订阅类型，固定取值为'receiveData'。 |
 | channelId | number | 是 | 打开代理通道时获取的channelId。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<DataInfo> | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;DataInfo&gt; | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ struct Index {
 ```
 
 
+<a id="off-1"></a>
 ## off('channelStateChange')
 
 ```TypeScript
@@ -95,7 +97,7 @@ function off(type: 'channelStateChange', channelId: number, callback?: Callback<
 | --- | --- | --- | --- |
 | type | 'channelStateChange' | 是 | 设置订阅类型为'channelStateChange'。 |
 | channelId | number | 是 | 打开代理通道时获取的channelId。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ChannelStateInfo> | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ChannelStateInfo&gt; | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
 
 **错误码：**
 

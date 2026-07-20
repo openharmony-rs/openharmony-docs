@@ -6,6 +6,7 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getfreesizeofvolume"></a>
 ## getFreeSizeOfVolume
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeUuid | string | 是 | 卷设备uuid。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 获取指定卷可用空间之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取指定卷可用空间之后的回调。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
 ```
 
 
+<a id="getfreesizeofvolume-1"></a>
 ## getFreeSizeOfVolume
 
 ```TypeScript
@@ -97,7 +99,7 @@ function getFreeSizeOfVolume(volumeUuid: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
+| Promise&lt;number&gt; | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
 
 **错误码：**
 

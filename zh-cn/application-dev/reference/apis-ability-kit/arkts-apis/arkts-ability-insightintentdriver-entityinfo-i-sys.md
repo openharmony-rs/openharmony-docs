@@ -1,6 +1,6 @@
 # EntityInfo（系统接口）
 
-EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md)，用于描述[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
+EntityInfo继承自[IntentEntityDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intententitydecoratorinfo-i.md)，用于描述[@InsightIntentEntity](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
 
 **起始版本：** 20
 
@@ -22,7 +22,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 readonly className: string
 ```
 
-表示[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。
+表示[@InsightIntentEntity](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。
 
 **类型：** string
 
@@ -104,7 +104,7 @@ readonly parameters: Record<string, Object>
 
 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 
@@ -122,7 +122,7 @@ readonly parameters: Record<string, Object>
 readonly parentClassName: string
 ```
 
-表示[@InsightIntentEntity](../../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。
+表示[@InsightIntentEntity](docroot://reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。
 
 **类型：** string
 

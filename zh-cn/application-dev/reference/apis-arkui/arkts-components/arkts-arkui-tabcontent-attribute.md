@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="onwillhide"></a>
 ## onWillHide
 
 ```TypeScript
@@ -22,7 +23,7 @@ onWillHide(event: VoidCallback)
 
 > **˵����**
 
-> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)�е��á�
+> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)�е��á�
 
 **起始版本：** 12
 
@@ -40,6 +41,7 @@ onWillHide(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent��Ҫ���صĻص������� |
 
+<a id="onwillshow"></a>
 ## onWillShow
 
 ```TypeScript
@@ -50,7 +52,7 @@ onWillShow(event: VoidCallback)
 
 > **˵����**
 
-> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-common-commonmethod-c.md#attributemodifier-1)�е��á�
+> ��API version 20��ʼ���ýӿ�֧����[attributeModifier](arkts-arkui-commonmethod-c.md#attributemodifier-1)�е��á�
 
 **起始版本：** 12
 
@@ -68,6 +70,7 @@ onWillShow(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent��Ҫ��ʾ�Ļص������� |
 
+<a id="tabbar"></a>
 ## tabBar
 
 ```TypeScript
@@ -94,6 +97,7 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 | --- | --- | --- | --- |
 | options | string \| Resource \| CustomBuilder \| TabBarOptions | 是 | TabBar����ʾ���ݡ�<br/>CustomBuilder��?���������ڲ����Դ��������API version 8�汾�������ã���<br>**起始版本：** 18 |
 
+<a id="tabbar-1"></a>
 ## tabBar
 
 ```TypeScript
@@ -104,10 +108,10 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 > **˵����**
 
-> - ��ҳǩ��[SubTabBarStyle](arkts-arkui-tab-content-subtabbarstyle-c.md)����ʽ��ͨ��Ϊ����+�»��ߣ�����+�����ҳǩ������������ı���ʽ����������ڶ������ߵײ�ʹ�á��л�ҳǩʱĬ��֧�ֶ�����תЧ������������Ѷ  
+> - ��ҳǩ��[SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md)����ʽ��ͨ��Ϊ����+�»��ߣ�����+�����ҳǩ������������ı���ʽ����������ڶ������ߵײ�ʹ�á��л�ҳǩʱĬ��֧�ֶ�����תЧ������������Ѷ  
 > ��Ӧ�õĶ������ࣨ��"��ע����Ƶ������"��������ģ��Ķ�������������  
 >  
-> - �ײ�ҳǩ/���ҳǩ��[BottomTabBarStyle](arkts-arkui-tab-content-bottomtabbarstyle-c.md)����ʽ�����»��ߺͱ���Ч����ҳǩ��ʽͨ��Ϊͼ��+���ֵ���Ϸ�ʽ���л�ҳǩʱĬ���޶�����תЧ�����ײ�ҳǩͨ������Ӧ��  
+> - �ײ�ҳǩ/���ҳǩ��[BottomTabBarStyle](arkts-arkui-bottomtabbarstyle-c.md)����ʽ�����»��ߺͱ���Ч����ҳǩ��ʽͨ��Ϊͼ��+���ֵ���Ϸ�ʽ���л�ҳǩʱĬ���޶�����תЧ�����ײ�ҳǩͨ������Ӧ��  
 > ������������ҳ�����֡��Ƽ��������ҳǩ�����ڿ���������������vertical(true)�������򲼾֣���ҳǩ�ڲ����ʾ��Ĭ�������ʾ��
 
 **起始版本：** 9
@@ -122,8 +126,9 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | SubTabBarStyle \| BottomTabBarStyle | 是 | TabBar����ʾ���ݡ�<br/>SubTabBarStyle��?��ҳǩ��ʽ��<br/>BottomTabBarStyle��?�ײ�ҳǩ�Ͳ��ҳǩ��ʽ�� |
+| value | [SubTabBarStyle](arkts-arkui-subtabbarstyle-c.md) \| BottomTabBarStyle | 是 | TabBar����ʾ���ݡ�<br/>SubTabBarStyle��?��ҳǩ��ʽ��<br/>BottomTabBarStyle��?�ײ�ҳǩ�Ͳ��ҳǩ��ʽ�� |
 
+<a id="tabbar-2"></a>
 ## tabBar
 
 ```TypeScript
@@ -153,5 +158,5 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | ComponentContent \| SubTabBarStyle \| BottomTabBarStyle \| string \| Resource \| CustomBuilder \| TabBarOptions | 是 | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content,which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**:resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs. |
+| content | [ComponentContent](../arkts-apis/arkts-arkui-componentcontent-c.md) \| SubTabBarStyle \| BottomTabBarStyle \| string \| Resource \| CustomBuilder \| TabBarOptions | 是 | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content,which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**:resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs. |
 

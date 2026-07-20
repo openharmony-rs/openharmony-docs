@@ -6,6 +6,7 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="execute"></a>
 ## execute
 
 ```TypeScript
@@ -26,15 +27,15 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | Function | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](docroot://arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<unknown> | <br>**适用版本：** 9 - 11 |
-| Promise<Object> | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
+| Promise&lt;unknown&gt; | <br>**适用版本：** 9 - 11 |
+| Promise&lt;Object&gt; | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ taskpool.execute(printArgs, 100).then((value: Object) => { // 100: test number
 ```
 
 
+<a id="execute-1"></a>
 ## execute
 
 ```TypeScript
@@ -80,14 +82,14 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | (...args: A) => R \| Promise<R> | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](../../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](../../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R \| Promise&lt;R&gt; | 是 | 执行的逻辑需要传入函数，该函数必须使用[@Concurrent装饰器](docroot://arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | A | 是 | 任务执行传入函数的入参，支持的参数类型请参考[序列化支持类型](docroot://reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<R> | Promise对象，返回任务函数的执行结果。 |
+| Promise&lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -130,6 +132,7 @@ taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then(
 ```
 
 
+<a id="execute-2"></a>
 ## execute
 
 ```TypeScript
@@ -157,8 +160,8 @@ function execute(task: Task, priority?: Priority): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<unknown> | <br>**适用版本：** 9 - 17 |
-| Promise<Object> | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
+| Promise&lt;unknown&gt; | <br>**适用版本：** 9 - 17 |
+| Promise&lt;Object&gt; | Promise对象，返回任务函数的执行结果。<br>**适用版本：** 11+ |
 
 **错误码：**
 
@@ -195,6 +198,7 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 ```
 
 
+<a id="execute-3"></a>
 ## execute
 
 ```TypeScript
@@ -215,14 +219,14 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)<A, R> | 是 | 需要在任务池中执行的泛型任务。 |
+| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | 是 | 需要在任务池中执行的泛型任务。 |
 | priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 等待执行的任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<R> | Promise对象，返回任务函数的执行结果。 |
+| Promise&lt;R&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -258,6 +262,7 @@ taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: n
 ```
 
 
+<a id="execute-4"></a>
 ## execute
 
 ```TypeScript
@@ -285,7 +290,7 @@ function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Object[]> | Promise对象数组，返回任务函数的执行结果。 |
+| Promise&lt;Object[]&gt; | Promise对象数组，返回任务函数的执行结果。 |
 
 **错误码：**
 
@@ -325,6 +330,7 @@ taskpool.execute(taskGroup2).then((res: Array<Object>) => {
 ```
 
 
+<a id="execute-5"></a>
 ## execute
 
 ```TypeScript
@@ -352,7 +358,7 @@ function execute(task: Task, configs: Configs): Promise<Object>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Object> | @throws { BusinessError } 10200006 - An exception occurred during serialization. |
+| Promise&lt;Object&gt; | @throws { BusinessError } 10200006 - An exception occurred during serialization. |
 
 **错误码：**
 
@@ -392,6 +398,7 @@ try {
 ```
 
 
+<a id="execute-6"></a>
 ## execute
 
 ```TypeScript
@@ -412,14 +419,14 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)<A, R> | 是 | 需要执行的泛型任务。 |
+| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | 是 | 需要执行的泛型任务。 |
 | configs | [Configs](arkts-arkts-taskpool-configs-i.md) | 是 | 任务的配置项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<R> | @throws { BusinessError } 10200006 - An exception occurred during serialization. |
+| Promise&lt;R&gt; | @throws { BusinessError } 10200006 - An exception occurred during serialization. |
 
 **错误码：**
 
@@ -459,6 +466,7 @@ try {
 ```
 
 
+<a id="execute-7"></a>
 ## execute
 
 ```TypeScript
@@ -486,7 +494,7 @@ function execute(group: TaskGroup, configs: Configs): Promise<Object[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Object[]> | @throws { BusinessError } 10200006 - An exception occurred during serialization. |
+| Promise&lt;Object[]&gt; | @throws { BusinessError } 10200006 - An exception occurred during serialization. |
 
 **错误码：**
 

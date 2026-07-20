@@ -18,6 +18,7 @@ The ResourceManager callback.
 import { resourceManager } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

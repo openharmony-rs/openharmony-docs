@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querycontactsyncinfo"></a>
 ## queryContactSyncInfo
 
 ```TypeScript
@@ -38,7 +39,7 @@ function queryContactSyncInfo(context: Context): Promise<Array<ContactSyncInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<ContactSyncInfo>> | 返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
+| Promise&lt;Array&lt;ContactSyncInfo&gt;&gt; | 返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
 
 **错误码：**
 

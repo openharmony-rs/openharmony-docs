@@ -42,7 +42,7 @@ avQueueImage: image.PixelMap | string
 
 歌单（歌曲列表）封面图，图片的像素数据或者图片路径地址（本地路径或网络路径）。
 
-**类型：** image.PixelMap | string
+**类型：** image.PixelMap \| string
 
 **起始版本：** 11
 

@@ -16,5 +16,5 @@ type ProgressListener = (progress: Progress) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| progress | Progress | 是 | 拷贝进度监听。 |
+| progress | [Progress](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-agent-progress-i.md) | 是 | 拷贝进度监听。  |
 

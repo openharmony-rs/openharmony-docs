@@ -19,6 +19,7 @@ CmsParser对象用于对CMS签名或封装数据进行验签或解封装。
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="decryptenvelopeddata"></a>
 ## decryptEnvelopedData
 
 ```TypeScript
@@ -45,7 +46,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回解封装结果。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回解封装结果。 |
 
 **错误码：**
 
@@ -141,6 +142,7 @@ async function testCmsDecryptTest() {
 
 ```
 
+<a id="getcerts"></a>
 ## getCerts
 
 ```TypeScript
@@ -167,7 +169,7 @@ getCerts(type: CmsCertType): Promise<Array<X509Cert>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<X509Cert>> | Promise对象，返回证书集合。 |
+| Promise&lt;Array&lt;X509Cert&gt;&gt; | Promise对象，返回证书集合。 |
 
 **错误码：**
 
@@ -178,6 +180,7 @@ getCerts(type: CmsCertType): Promise<Array<X509Cert>>
 | [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因：<br>1. type类型无效或不支持。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
+<a id="getcontentdata"></a>
 ## getContentData
 
 ```TypeScript
@@ -198,7 +201,7 @@ getContentData(): Promise<Uint8Array>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Uint8Array> | Promise对象，返回CMS内容数据。 |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回CMS内容数据。 |
 
 **错误码：**
 
@@ -324,6 +327,7 @@ async function testCmsVerifyTest() {
 
 ```
 
+<a id="getcontenttype"></a>
 ## getContentType
 
 ```TypeScript
@@ -471,6 +475,7 @@ async function testCmsVerifyTest() {
 
 ```
 
+<a id="setrawdata"></a>
 ## setRawData
 
 ```TypeScript
@@ -502,7 +507,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -628,6 +633,7 @@ async function testCmsVerifyTest() {
 
 ```
 
+<a id="verifysigneddata"></a>
 ## verifySignedData
 
 ```TypeScript
@@ -654,7 +660,7 @@ verifySignedData(config: CmsVerificationConfig): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

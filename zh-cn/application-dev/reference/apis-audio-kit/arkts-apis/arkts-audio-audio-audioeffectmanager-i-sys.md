@@ -16,6 +16,7 @@ Implements audio effect management.
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="getaudioeffectproperty"></a>
 ## getAudioEffectProperty
 
 ```TypeScript
@@ -38,7 +39,7 @@ Gets current audio effect properties.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AudioEffectProperty> | Array of current audio effect properties. |
+| Array&lt;AudioEffectProperty&gt; | Array of current audio effect properties. |
 
 **错误码：**
 
@@ -63,6 +64,7 @@ try {
 
 ```
 
+<a id="getsupportedaudioeffectproperty"></a>
 ## getSupportedAudioEffectProperty
 
 ```TypeScript
@@ -85,7 +87,7 @@ Gets supported audio effect properties based on current devices.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AudioEffectProperty> | Array of supported audio effect properties. |
+| Array&lt;AudioEffectProperty&gt; | Array of supported audio effect properties. |
 
 **错误码：**
 
@@ -110,6 +112,7 @@ try {
 
 ```
 
+<a id="isaudioseparationeffectsupported"></a>
 ## isAudioSeparationEffectSupported
 
 ```TypeScript
@@ -150,6 +153,7 @@ console.info(`Audio separation effect is supported: ${isSupported}`);
 
 ```
 
+<a id="offaudioseparationeffectenabledchange"></a>
 ## offAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -172,7 +176,7 @@ offAudioSeparationEffectEnabledChange(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 否 | 订阅函数中用于取消订阅的回调。如果不使用此参数，则之前在当前进程中订阅的所有回调都将被取消订阅 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 否 | 订阅函数中用于取消订阅的回调。如果不使用此参数，则之前在当前进程中订阅的所有回调都将被取消订阅 |
 
 **错误码：**
 
@@ -190,6 +194,7 @@ audioEffectManager.offAudioSeparationEffectEnabledChange();
 
 ```
 
+<a id="onaudioseparationeffectenabledchange"></a>
 ## onAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -212,7 +217,7 @@ onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<boolean> | 是 | 监听系统音频分离效果的回调启用状态更改事件 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;boolean&gt; | 是 | 监听系统音频分离效果的回调启用状态更改事件 |
 
 **错误码：**
 
@@ -231,6 +236,7 @@ audioEffectManager.onAudioSeparationEffectEnabledChange((isEnabled: boolean) => 
 
 ```
 
+<a id="setaudioeffectproperty"></a>
 ## setAudioEffectProperty
 
 ```TypeScript
@@ -253,7 +259,7 @@ Sets current audio effect properties.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| propertyArray | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AudioEffectProperty> | 是 | array of audio effect property to be set.Notice that only one effect property name in each effect property category should be set. |
+| propertyArray | Array&lt;AudioEffectProperty&gt; | 是 | array of audio effect property to be set.Notice that only one effect property name in each effect property category should be set. |
 
 **错误码：**
 
@@ -280,6 +286,7 @@ try {
 
 ```
 
+<a id="setaudioseparationeffectenabled"></a>
 ## setAudioSeparationEffectEnabled
 
 ```TypeScript
@@ -312,7 +319,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 不会返回任何值的Promise。 |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -338,6 +345,7 @@ audioEffectManager.setAudioSeparationEffectEnabled(true, 10001).then(() => {
 
 ```
 
+<a id="setaudioseparationeffectvolume"></a>
 ## setAudioSeparationEffectVolume
 
 ```TypeScript
@@ -369,7 +377,7 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

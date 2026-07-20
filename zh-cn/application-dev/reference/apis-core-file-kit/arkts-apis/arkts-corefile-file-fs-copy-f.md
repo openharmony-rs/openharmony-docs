@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="copy"></a>
 ## copy
 
 ```TypeScript
@@ -30,13 +31,13 @@ declare function copy(srcUri: string, destUri: string, options?: CopyOptions): P
 | --- | --- | --- | --- |
 | srcUri | string | 是 | 待复制文件或目录的URI。 |
 | destUri | string | 是 | 目标文件或目录的URI。 |
-| options | [CopyOptions](../../apis-arkui/arkts-apis/arkts-arkui-enums-copyoptions-e.md) | 否 | options中提供拷贝进度回调。不填该参数则无拷贝进度回调。 |
+| options | [CopyOptions](../../apis-arkui/arkts-apis/arkts-arkui-copyoptions-e.md) | 否 | options中提供拷贝进度回调。不填该参数则无拷贝进度回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ declare function copy(srcUri: string, destUri: string, options?: CopyOptions): P
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
+<a id="copy-1"></a>
 ## copy
 
 ```TypeScript
@@ -94,7 +96,7 @@ declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<v
 | --- | --- | --- | --- |
 | srcUri | string | 是 | 待复制文件或目录的URI。 |
 | destUri | string | 是 | 目标文件或目录的URI。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步拷贝之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步拷贝之后的回调。 |
 
 **错误码：**
 
@@ -127,6 +129,7 @@ declare function copy(srcUri: string, destUri: string, callback: AsyncCallback<v
 | 13900042 | Unknown error |
 
 
+<a id="copy-2"></a>
 ## copy
 
 ```TypeScript
@@ -151,8 +154,8 @@ declare function copy(srcUri: string, destUri: string, options: CopyOptions, cal
 | --- | --- | --- | --- |
 | srcUri | string | 是 | 待复制文件或目录的URI。 |
 | destUri | string | 是 | 目标文件或目录的URI。 |
-| options | [CopyOptions](../../apis-arkui/arkts-apis/arkts-arkui-enums-copyoptions-e.md) | 是 | 拷贝进度回调。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步拷贝之后的回调。 |
+| options | [CopyOptions](../../apis-arkui/arkts-apis/arkts-arkui-copyoptions-e.md) | 是 | 拷贝进度回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步拷贝之后的回调。 |
 
 **错误码：**
 

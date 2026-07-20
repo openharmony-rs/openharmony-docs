@@ -16,6 +16,7 @@ class MeasureUtils
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="getparagraphs"></a>
 ## getParagraphs
 
 ```TypeScript
@@ -36,15 +37,16 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array<Pa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | [StyledString](arkts-arkui-styled-string-styledstring-c.md) | 是 | 样式化的字符串值。 |
-| options | [TextLayoutOptions](arkts-arkui-text-common-textlayoutoptions-i.md) | 否 | 布局选项。 |
+| styledString | [StyledString](arkts-arkui-styledstring-c.md) | 是 | 样式化的字符串值。 |
+| options | [TextLayoutOptions](arkts-arkui-textlayoutoptions-i.md) | 否 | 布局选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Paragraph> | 段落结果 |
+| Array&lt;Paragraph&gt; | 段落结果 |
 
+<a id="measuretext"></a>
 ## measureText
 
 ```TypeScript
@@ -75,6 +77,7 @@ Obtains the width of the specified text in a single line layout.
 | --- | --- |
 | number | - The unit is px. |
 
+<a id="measuretextsize"></a>
 ## measureTextSize
 
 ```TypeScript
@@ -103,5 +106,5 @@ Obtains the width and height of the specified text in a single line layout.
 
 | 类型 | 说明 |
 | --- | --- |
-| [SizeOptions](arkts-arkui-units-sizeoptions-i.md) | width and height for text to display.The return values for text width and height are both in px. |
+| [SizeOptions](arkts-arkui-sizeoptions-i.md) | width and height for text to display.The return values for text width and height are both in px. |
 

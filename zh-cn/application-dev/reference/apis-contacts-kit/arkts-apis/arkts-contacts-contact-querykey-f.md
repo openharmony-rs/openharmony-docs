@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querykey"></a>
 ## queryKey
 
 ```TypeScript
@@ -18,7 +19,7 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 10
 
-**替代接口：** queryKey(context:
+**替代接口：** [queryKey(context:](arkts-contacts-contact-querykey-f.md#querykey-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -31,7 +32,7 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -50,6 +51,7 @@ contact.queryKey(1, (err: BusinessError, data) => {
 ```
 
 
+<a id="querykey-1"></a>
 ## queryKey
 
 ```TypeScript
@@ -72,7 +74,7 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性，是联系人对象在数据库中的唯一标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -103,6 +105,7 @@ contact.queryKey(context, 1, (err: BusinessError, data) => {
 ```
 
 
+<a id="querykey-2"></a>
 ## queryKey
 
 ```TypeScript
@@ -115,7 +118,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **废弃版本：** 10
 
-**替代接口：** queryKey(context:
+**替代接口：** [queryKey(context:](arkts-contacts-contact-querykey-f.md#querykey-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -129,7 +132,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -152,6 +155,7 @@ contact.queryKey(1, {
 ```
 
 
+<a id="querykey-3"></a>
 ## queryKey
 
 ```TypeScript
@@ -175,7 +179,7 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -210,6 +214,7 @@ contact.queryKey(context, 1, {
 ```
 
 
+<a id="querykey-4"></a>
 ## queryKey
 
 ```TypeScript
@@ -222,7 +227,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **废弃版本：** 10
 
-**替代接口：** queryKey(context:
+**替代接口：** [queryKey(context:](arkts-contacts-contact-querykey-f.md#querykey-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -241,7 +246,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回查询到的联系人对应的key。 |
+| Promise&lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
 
 **示例：**
 
@@ -260,6 +265,7 @@ promise.then((data) => {
 ```
 
 
+<a id="querykey-5"></a>
 ## queryKey
 
 ```TypeScript
@@ -288,7 +294,7 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回查询到的联系人对应的key。 |
+| Promise&lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
 
 **错误码：**
 

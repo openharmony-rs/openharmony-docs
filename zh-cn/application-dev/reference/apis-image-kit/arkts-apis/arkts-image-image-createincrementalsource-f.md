@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createincrementalsource"></a>
 ## CreateIncrementalSource
 
 ```TypeScript
@@ -18,9 +19,9 @@ function CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 以增量方式创建的ImageSource实例，仅支持使用以下功能，同步、异步callback、异步Promise均支持。
 
-- 获取图片信息：指定序号-[getImageInfo](arkts-image-image-imagesource-i.md#getimageinfo-1)、直接获取-[getImageInfo](arkts-image-image-imagesource-i.md#getimageinfo-3)  
+- 获取图片信息：指定序号-[getImageInfo](arkts-image-image-imagesource-i.md#getimageinfo-1)、直接获取-[getImageInfo](arkts-image-image-imagesource-i.md#getimageinfo-1)  
 - 获取图片中给定索引处图像的指定属性键的值：[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)  
-- 批量获取图片中的指定属性键的值：[getImageProperties](image.ImageSource.getImageProperties(key: Array<PropertyKey>))  
+- 批量获取图片中的指定属性键的值：[getImageProperties](arkts-image-image-imagesource-i.md#getimageproperties-1)  
 - 更新增量数据：[updateData](arkts-image-image-imagesource-i.md#updatedata-1)  
 - 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-1)、通过默认参数创建-[createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-1) 、通过图片解码参数-[createPixelMap](arkts-image-image-createpixelmap-f.md#createpixelmap-1)  
 - 释放ImageSource实例：[release](arkts-image-image-imagesource-i.md#release-1)
@@ -35,7 +36,7 @@ function CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 增量数据。 |
+| buf | ArrayBuffer | 是 | 增量数据。 |
 
 **返回值：**
 
@@ -69,6 +70,7 @@ async function CreateIncrementalImageSource(context : Context) {
 ```
 
 
+<a id="createincrementalsource-1"></a>
 ## CreateIncrementalSource
 
 ```TypeScript
@@ -91,7 +93,7 @@ function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): Ima
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 增量数据。 |
+| buf | ArrayBuffer | 是 | 增量数据。 |
 | options | [SourceOptions](arkts-image-image-sourceoptions-i.md) | 否 | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
 
 **返回值：**

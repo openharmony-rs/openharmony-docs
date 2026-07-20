@@ -6,6 +6,7 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -41,7 +42,7 @@ function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: Snap
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 目标组件的[组件标识](../../apis-ability-kit/arkts-apis/arkts-app-ability-common.md)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<image.PixelMap> | 是 | 截图返回结果的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 截图返回结果的回调。 |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。<br>**起始版本：** 12 |
 
 **错误码：**
@@ -96,6 +97,7 @@ struct SnapshotExample {
 ```
 
 
+<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -137,7 +139,7 @@ function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | 截图返回的结果。 |
+| Promise&lt;image.PixelMap&gt; | 截图返回的结果。 |
 
 **错误码：**
 

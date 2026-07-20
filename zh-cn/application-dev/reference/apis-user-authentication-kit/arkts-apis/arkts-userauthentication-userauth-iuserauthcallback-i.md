@@ -30,7 +30,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void
 - **acquire**: 认证执过程中的提示信息。  
 - **extraInfo**: 预留字段。
 
-**类型：** (module: number, acquire: number, extraInfo: any) => void
+**类型：** (module: number, acquire: number, extraInfo: any) =&gt; void
 
 **起始版本：** 8
 
@@ -53,7 +53,7 @@ onResult: (result: number, extraInfo: AuthResult) => void
 - **result**: 认证结果，参见[ResultCode](arkts-userauthentication-userauth-resultcode-e.md)。  
 - **extraInfo**: 扩展信息，不同情况下的具体信息。如果身份验证通过，则在extraInfo中返回用户认证令牌；如果身份验证失败，则在extraInfo中返回剩余的用户认证次数；如果身份验证执行器被锁定，则在extraInfo中返回冻结时间，类型为[AuthResult](arkts-userauthentication-userauth-authresult-i.md)。
 
-**类型：** (result: number, extraInfo: AuthResult) => void
+**类型：** (result: number, extraInfo: AuthResult) =&gt; void
 
 **起始版本：** 8
 

@@ -1,6 +1,6 @@
 # AbilityInfo
 
-Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-2)获取。
+Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-1)获取。
 
 > **说明：**  
 >  
@@ -24,7 +24,7 @@ readonly applicationInfo: ApplicationInfo
 
 应用程序的配置信息。
 
-通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-2)接口时，传入GET_ABILITY_INFO_WITH_APPLICATION获取。
+通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-1)接口时，传入GET_ABILITY_INFO_WITH_APPLICATION获取。
 
 **类型：** ApplicationInfo
 
@@ -138,7 +138,7 @@ readonly deviceCapabilities: Array<string>
 
 Ability需要的设备能力。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** The device capability that this ability needs
 
@@ -158,7 +158,7 @@ readonly deviceTypes: Array<string>
 
 Ability支持的设备类型。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** The device types that this ability can run on
 
@@ -358,9 +358,9 @@ readonly metaData: Array<CustomizeData>
 
 Ability的元信息。
 
-通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-2)接口时，传入GET_ABILITY_INFO_WITH_METADATA获取。
+通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-1)接口时，传入GET_ABILITY_INFO_WITH_METADATA获取。
 
-**类型：** Array<CustomizeData>
+**类型：** Array&lt;CustomizeData&gt;
 
 **默认值：** Indicates the metadata of ability
 
@@ -448,9 +448,9 @@ readonly permissions: Array<string>
 
 被其他应用Ability调用时需要申请的权限集合。
 
-通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-2)接口时，传入GET_ABILITY_INFO_WITH_PERMISSION获取。
+通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-1)接口时，传入GET_ABILITY_INFO_WITH_PERMISSION获取。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **默认值：** The permissions that others need to launch this ability
 

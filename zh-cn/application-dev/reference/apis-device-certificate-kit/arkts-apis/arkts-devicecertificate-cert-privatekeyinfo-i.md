@@ -22,7 +22,7 @@ key: string | Uint8Array
 
 未加密或加密的私钥，支持PEM或DER格式。
 
-**类型：** string | Uint8Array
+**类型：** string \| Uint8Array
 
 **起始版本：** 18
 

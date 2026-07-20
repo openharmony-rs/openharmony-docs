@@ -14,6 +14,7 @@ The http body stream of the request.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="getposition"></a>
 ## getPosition
 
 ```TypeScript
@@ -36,6 +37,7 @@ getPosition(): number
 | --- | --- |
 | number | WebHttpBodyStream中当前的读取位置。单位：字节。 |
 
+<a id="getsize"></a>
 ## getSize
 
 ```TypeScript
@@ -58,6 +60,7 @@ getSize(): number
 | --- | --- |
 | number | 获取WebHttpBodyStream中的数据大小。单位：字节。 |
 
+<a id="initialize"></a>
 ## initialize
 
 ```TypeScript
@@ -78,7 +81,7 @@ initialize(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于获取WebHttpBodyStream是否初始化成功。 |
+| Promise&lt;void&gt; | Promise实例，用于获取WebHttpBodyStream是否初始化成功。 |
 
 **错误码：**
 
@@ -86,6 +89,7 @@ initialize(): Promise<void>
 | --- | --- |
 | [17100022](../errorcode-webview.md#17100022-webhttpbodystream初始化失败) | Failed to initialize the HTTP body stream. |
 
+<a id="ischunked"></a>
 ## isChunked
 
 ```TypeScript
@@ -108,6 +112,7 @@ WebHttpBodyStream是否采用分块传输。
 | --- | --- |
 | boolean | WebHttpBodyStream是否采用分块传输，如果采用分块传输则返回true，否则返回false。 |
 
+<a id="iseof"></a>
 ## isEof
 
 ```TypeScript
@@ -130,6 +135,7 @@ isEof(): boolean
 | --- | --- |
 | boolean | WebHttpBodyStream中的所有数据是否都已被读取。<br>如果所有数据都已被读取，则返回true。对于分块传输类型的WebHttpBodyStream，在第一次读取尝试之前返回false。 |
 
+<a id="isinmemory"></a>
 ## isInMemory
 
 ```TypeScript
@@ -152,6 +158,7 @@ isInMemory(): boolean
 | --- | --- |
 | boolean | WebHttpBodyStream中的上传数据是否在内存中。<br>如果WebHttpBodyStream中的上传数据完全在内存中，并且所有读取请求都将同步成功，则返回true。对于分块传输类型的数据，预期返回false。 |
 
+<a id="read"></a>
 ## read
 
 ```TypeScript
@@ -178,7 +185,7 @@ read(size: number): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise实例，用于获取WebHttpBodyStream中读取的数据。 |
+| Promise&lt;ArrayBuffer&gt; | Promise实例，用于获取WebHttpBodyStream中读取的数据。 |
 
 **错误码：**
 

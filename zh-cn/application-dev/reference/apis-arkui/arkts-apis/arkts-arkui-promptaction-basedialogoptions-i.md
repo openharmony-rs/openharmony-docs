@@ -442,7 +442,7 @@ onDidAppear?: () => void
 
 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。<br />4. 当弹窗入场动效未完成时关闭弹窗，该回调不会触发。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -462,7 +462,7 @@ onDidDisappear?: () => void
 
 弹窗消失后的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br/>当弹窗退场动画未完成时（例如：同时触发弹窗关闭和页面切换），该回调不会触发。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -482,7 +482,7 @@ onWillAppear?: () => void
 
 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -502,7 +502,7 @@ onWillDisappear?: () => void
 
 弹窗退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 
@@ -522,7 +522,7 @@ onWillDismiss?: Callback<DismissDialogAction>
 
 交互式关闭回调函数。<br/>**说明：**<br/>1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。<br/>2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-**类型：** Callback<DismissDialogAction>
+**类型：** Callback&lt;DismissDialogAction&gt;
 
 **起始版本：** 12
 

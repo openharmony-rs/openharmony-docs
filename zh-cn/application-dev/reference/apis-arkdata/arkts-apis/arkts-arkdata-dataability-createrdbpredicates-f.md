@@ -6,6 +6,7 @@
 import { dataAbility } from '@kit.ArkData';
 ```
 
+<a id="createrdbpredicates"></a>
 ## createRdbPredicates
 
 ```TypeScript

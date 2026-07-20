@@ -40,7 +40,7 @@ certTypes: Array<CertificateType>
 
 表示证书类型的列表。
 
-**类型：** Array<CertificateType>
+**类型：** Array&lt;CertificateType&gt;
 
 **起始版本：** 22
 
@@ -64,7 +64,7 @@ issuers?: Array<Uint8Array>
 
 26.0.0
 
-**类型：** Array<Uint8Array>
+**类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 26.0.0
 
@@ -82,7 +82,7 @@ keyAlgIDs?: Array<string>
 
 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA（区分大小写）。若不传此参数，则不按算法类型筛选证书。若 keyAlgIDs包含不支持的算法，则该筛选器无效。最大长度为20，26.0.0。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
 

@@ -32,7 +32,7 @@ attributes?: Array<CsrAttribute>
 
 属性的集合。
 
-**类型：** Array<CsrAttribute>
+**类型：** Array&lt;CsrAttribute&gt;
 
 **起始版本：** 18
 

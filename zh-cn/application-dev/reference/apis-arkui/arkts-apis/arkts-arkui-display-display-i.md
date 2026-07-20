@@ -16,6 +16,7 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getavailablearea"></a>
 ## getAvailableArea
 
 ```TypeScript
@@ -38,7 +39,7 @@ getAvailableArea(): Promise<Rect>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Rect> | Promise对象。返回当前屏幕可用矩形区域。 |
+| Promise&lt;Rect&gt; | Promise对象。返回当前屏幕可用矩形区域。 |
 
 **错误码：**
 
@@ -67,6 +68,7 @@ try {
 
 ```
 
+<a id="getcutoutinfo"></a>
 ## getCutoutInfo
 
 ```TypeScript
@@ -87,7 +89,7 @@ getCutoutInfo(callback: AsyncCallback<CutoutInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<CutoutInfo> | 是 | 回调函数。返回不可用屏幕区域对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;CutoutInfo&gt; | 是 | 回调函数。返回不可用屏幕区域对象。 |
 
 **错误码：**
 
@@ -114,6 +116,7 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
 
 ```
 
+<a id="getcutoutinfo-1"></a>
 ## getCutoutInfo
 
 ```TypeScript
@@ -134,7 +137,7 @@ getCutoutInfo(): Promise<CutoutInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CutoutInfo> | Promise对象。返回描述不可用屏幕区域的CutoutInfo对象。 |
+| Promise&lt;CutoutInfo&gt; | Promise对象。返回描述不可用屏幕区域的CutoutInfo对象。 |
 
 **错误码：**
 
@@ -158,6 +161,7 @@ promise.then((data: display.CutoutInfo) => {
 
 ```
 
+<a id="getdisplaycapability"></a>
 ## getDisplayCapability
 
 ```TypeScript
@@ -188,6 +192,7 @@ Get current display capability, including foldstatus, displaymode, rotation, and
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<a id="getlivecreaseregion"></a>
 ## getLiveCreaseRegion
 
 ```TypeScript
@@ -229,6 +234,7 @@ try {
 
 ```
 
+<a id="getroundedcorner"></a>
 ## getRoundedCorner
 
 ```TypeScript
@@ -249,7 +255,7 @@ getRoundedCorner(): Array<RoundedCorner>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<RoundedCorner> | 返回当前屏幕的圆角信息。 |
+| Array&lt;RoundedCorner&gt; | 返回当前屏幕的圆角信息。 |
 
 **错误码：**
 
@@ -275,6 +281,7 @@ try {
 
 ```
 
+<a id="off"></a>
 ## off('availableAreaChange')
 
 ```TypeScript
@@ -296,7 +303,7 @@ off(type: 'availableAreaChange', callback?: Callback<Rect>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'availableAreaChange' | 是 | 监听事件，固定为'availableAreaChange'，表示屏幕可用区域变更。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<Rect> | 否 | 需要取消注册的回调函数。返回改变后的可用区域。若无此参数，则取消注册屏幕可用区域变化监听的所有回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Rect&gt; | 否 | 需要取消注册的回调函数。返回改变后的可用区域。若无此参数，则取消注册屏幕可用区域变化监听的所有回调函数。 |
 
 **错误码：**
 
@@ -324,6 +331,7 @@ try {
 
 ```
 
+<a id="on"></a>
 ## on('availableAreaChange')
 
 ```TypeScript
@@ -345,7 +353,7 @@ on(type: 'availableAreaChange', callback: Callback<Rect>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'availableAreaChange' | 是 | 监听事件。固定为'availableAreaChange'，表示屏幕可用区域变更。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<Rect> | 是 | 回调函数。返回改变后的可用区域。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;Rect&gt; | 是 | 回调函数。返回改变后的可用区域。 |
 
 **错误码：**
 
@@ -447,7 +455,7 @@ colorSpaces: Array<colorSpaceManager.ColorSpace>
 
 SystemCapability.WindowManager.WindowManager.Core
 
-**类型：** Array<colorSpaceManager.ColorSpace>
+**类型：** Array&lt;colorSpaceManager.ColorSpace&gt;
 
 **起始版本：** 11
 
@@ -483,7 +491,7 @@ SystemCapability.WindowManager.WindowManager.Core
 densityPixels: number
 ```
 
-显示设备逻辑像素的密度，代表物理像素与逻辑像素的缩放系数，计算方式为：![densityPixels](../../../../reference/apis-arkui/figures/densityPixels.jpg)
+显示设备逻辑像素的密度，代表物理像素与逻辑像素的缩放系数，计算方式为：![densityPixels](docroot://reference/apis-arkui/figures/densityPixels.jpg)
 
 该参数为浮点数，受densityDPI范围限制，取值范围在[0.5，4.0]。一般取值1.0、3.0等，实际取值取决于不同设备提供的densityDPI。
 
@@ -509,7 +517,7 @@ hdrFormats: Array<hdrCapability.HDRFormat>
 
 SystemCapability.WindowManager.WindowManager.Core
 
-**类型：** Array<hdrCapability.HDRFormat>
+**类型：** Array&lt;hdrCapability.HDRFormat&gt;
 
 **起始版本：** 11
 
@@ -737,7 +745,7 @@ supportedRefreshRates?: Array<number>
 
 SystemCapability.Window.SessionManager
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 20
 

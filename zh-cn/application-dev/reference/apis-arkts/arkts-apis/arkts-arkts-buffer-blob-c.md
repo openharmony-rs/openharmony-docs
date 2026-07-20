@@ -14,6 +14,7 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="arraybuffer"></a>
 ## arrayBuffer
 
 ```TypeScript
@@ -34,7 +35,7 @@ arrayBuffer(): Promise<ArrayBuffer>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ArrayBuffer> | Promise对象，返回包含Blob数据的ArrayBuffer。 |
+| Promise&lt;ArrayBuffer&gt; | Promise对象，返回包含Blob数据的ArrayBuffer。 |
 
 **示例：**
 
@@ -51,6 +52,7 @@ pro.then((val: ArrayBuffer) => {
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -72,7 +74,7 @@ Blob的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sources | string[] \| ArrayBuffer[] \| TypedArray[] \| DataView[] \| Blob[] | 是 | Blob实例的数据源。 |
-| options | Object | 否 | options：<br/>- **endings**：含义为结束符'\n'的字符串如何被输出，值为'native'或'transparent'。'native'代表行结束符会跟随系统。'transparent'代表会保持Blob中保存的结束符不变。默认值：'transparent'。<br/>  - **type**：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格式的验证。默认值：''。 |
+| options | Object | 否 | options：<br/>- **endings**：含义为结束符'\n'的字符串如何被输出，值为'native'或'transparent'。'native'代表行结束符会跟随系统。'transparent'代表会保持Blob中保存的结束符不变。默认值：'transparent'。<br/>   - **type**：Blob内容类型。其目的是让类型传达数据的MIME媒体类型，但是不执行类型格式的验证。默认值：''。 |
 
 **示例：**
 
@@ -90,6 +92,7 @@ let blob1: buffer.Blob = new buffer.Blob(['a', 'b', 'c'], o1);
 
 ```
 
+<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -132,6 +135,7 @@ console.info("type:", blob3.type); // type: MIME
 
 ```
 
+<a id="text"></a>
 ## text
 
 ```TypeScript
@@ -152,7 +156,7 @@ text(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回以utf8解码后的字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回以utf8解码后的字符串。 |
 
 **示例：**
 

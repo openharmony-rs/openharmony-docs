@@ -6,6 +6,7 @@
 import { uriPermissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="revokeuripermission"></a>
 ## revokeUriPermission
 
 ```TypeScript
@@ -38,7 +39,7 @@ function revokeUriPermission(uri: string, targetBundleName: string, callback: As
 | --- | --- | --- | --- |
 | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](@ohos.file.fileuri:fileUri.FileUri#constructor)。 |
 | targetBundleName | string | 是 | 被撤销授权uri的应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
 ```
 
 
+<a id="revokeuripermission-1"></a>
 ## revokeUriPermission
 
 ```TypeScript
@@ -108,7 +110,7 @@ function revokeUriPermission(uri: string, targetBundleName: string): Promise<num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回0表示有权限，返回-1表示无权限。 |
+| Promise&lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 |
 
 **错误码：**
 
@@ -141,6 +143,7 @@ uriPermissionManager.revokeUriPermission(uri, targetBundleName)
 ```
 
 
+<a id="revokeuripermission-2"></a>
 ## revokeUriPermission
 
 ```TypeScript
@@ -178,7 +181,7 @@ function revokeUriPermission(uri: string, targetBundleName: string, appCloneInde
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setabilityenabledsync"></a>
 ## setAbilityEnabledSync
 
 ```TypeScript

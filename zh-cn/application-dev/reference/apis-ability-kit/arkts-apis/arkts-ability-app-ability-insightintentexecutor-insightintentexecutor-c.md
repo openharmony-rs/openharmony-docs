@@ -1,8 +1,8 @@
 # InsightIntentExecutor
 
-本模块提供意图执行基类，开发者通过本模块对接端侧[意图框架](../../../../application-models/insight-intent-overview.md)，[通过配置文件开发意图][configuration files](../../../../application-models/insight-intent-config-development.md)实现意图的业务逻辑。
+本模块提供意图执行基类，开发者通过本模块对接端侧[意图框架](docroot://application-models/insight-intent-overview.md)，[通过配置文件开发意图][configuration files](docroot://application-models/insight-intent-config-development.md)实现意图的业务逻辑。
 
-除了可以通过配置文件开发意图，还可以通过装饰器开发意图。对于API version 20及以后的版本，推荐使用[通过装饰器开发意图](../../../../application-models/insight-intent-decorator-development.md)。
+除了可以通过配置文件开发意图，还可以通过装饰器开发意图。对于API version 20及以后的版本，推荐使用[通过装饰器开发意图](docroot://application-models/insight-intent-decorator-development.md)。
 
 **起始版本：** 11
 
@@ -16,6 +16,7 @@
 import { InsightIntentExecutor } from '@kit.AbilityKit';
 ```
 
+<a id="onexecuteinserviceextensionability"></a>
 ## onExecuteInServiceExtensionAbility
 
 ```TypeScript
@@ -42,7 +43,7 @@ onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record<string, Object> | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record&lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 
 **返回值：**
 
@@ -127,6 +128,7 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 
 ```
 
+<a id="onexecuteinuiabilitybackgroundmode"></a>
 ## onExecuteInUIAbilityBackgroundMode
 
 ```TypeScript
@@ -156,7 +158,7 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record<string, Object> | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record&lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 
 **返回值：**
 
@@ -224,6 +226,7 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 
 ```
 
+<a id="onexecuteinuiabilityforegroundmode"></a>
 ## onExecuteInUIAbilityForegroundMode
 
 ```TypeScript
@@ -254,7 +257,7 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record<string, Object> | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record&lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 | pageLoader | window.WindowStage | 是 | 表示windowStage实例对象，和[onWindowStageCreate](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate-1)接口的windowStage实例是同一个，可用于加载意图执行的页面。 |
 
 **返回值：**
@@ -352,6 +355,7 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 
 ```
 
+<a id="onexecuteinuiextensionability"></a>
 ## onExecuteInUIExtensionAbility
 
 ```TypeScript
@@ -378,7 +382,7 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 意图名称。 |
-| param | Record<string, Object> | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
+| param | Record&lt;string, Object&gt; | 是 | 意图参数，表示本次意图执行由系统入口传递给应用的数据。 |
 | pageLoader | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | 表示UIExtensionContentSession实例对象，和[onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate-1)接口的UIExtensionContentSession实例是同一个，可用于加载意图执行的页面。 |
 
 **返回值：**

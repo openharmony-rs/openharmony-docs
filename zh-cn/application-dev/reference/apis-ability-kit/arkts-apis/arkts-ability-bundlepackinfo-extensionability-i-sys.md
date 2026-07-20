@@ -18,7 +18,7 @@ readonly forms: Array<AbilityFormInfo>
 
 卡片信息。
 
-**类型：** Array<AbilityFormInfo>
+**类型：** Array&lt;AbilityFormInfo&gt;
 
 **起始版本：** 9
 

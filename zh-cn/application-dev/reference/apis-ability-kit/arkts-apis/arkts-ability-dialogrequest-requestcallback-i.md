@@ -14,6 +14,7 @@
 import { dialogRequest } from '@kit.AbilityKit';
 ```
 
+<a id="setrequestresult"></a>
 ## setRequestResult
 
 ```TypeScript

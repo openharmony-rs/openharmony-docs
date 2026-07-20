@@ -40,7 +40,7 @@ certPolicy?: Array<string>
 
 指定证书策略。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -58,7 +58,7 @@ extendedKeyUsage?: Array<string>
 
 指定扩展密钥用途。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
@@ -94,7 +94,7 @@ keyUsage?: Array<boolean>
 
 指定是否需要匹配密钥用途。true为需要，false为不需要。
 
-**类型：** Array<boolean>
+**类型：** Array&lt;boolean&gt;
 
 **起始版本：** 11
 
@@ -166,7 +166,7 @@ privateKey?: string | Uint8Array
 
 指定证书私钥，string表示PEM格式私钥，Uint8Array表示DER格式私钥。
 
-**类型：** string | Uint8Array
+**类型：** string \| Uint8Array
 
 **起始版本：** 26.0.0
 
@@ -276,7 +276,7 @@ subjectAlternativeNames?: Array<GeneralName>
 
 指定证书主体名称。
 
-**类型：** Array<GeneralName>
+**类型：** Array&lt;GeneralName&gt;
 
 **起始版本：** 12
 

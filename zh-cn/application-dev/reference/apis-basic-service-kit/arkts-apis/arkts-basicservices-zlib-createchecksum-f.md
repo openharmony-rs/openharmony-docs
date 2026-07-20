@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="createchecksum"></a>
 ## createChecksum
 
 ```TypeScript
@@ -26,7 +27,7 @@ function createChecksum(): Promise<Checksum>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Checksum> | Promise对象。返回校验对象实例。 |
+| Promise&lt;Checksum&gt; | Promise对象。返回校验对象实例。 |
 
 **示例：**
 

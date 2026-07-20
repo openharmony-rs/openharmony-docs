@@ -14,6 +14,7 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="onadloadfailure"></a>
 ## onAdLoadFailure
 
 ```TypeScript
@@ -54,6 +55,7 @@ const multiSlotsAdLoadListener: advertising.MultiSlotsAdLoadListener = {
 
 ```
 
+<a id="onadloadsuccess"></a>
 ## onAdLoadSuccess
 
 ```TypeScript
@@ -74,7 +76,7 @@ onAdLoadSuccess(adsMap: Map<string, Array<Advertisement>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adsMap | [Map](../../apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)<string, Array<Advertisement>> | 是 | 广告数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 |
+| adsMap | Map&lt;string, Array&lt;Advertisement&gt;&gt; | 是 | 广告数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 |
 
 **示例：**
 

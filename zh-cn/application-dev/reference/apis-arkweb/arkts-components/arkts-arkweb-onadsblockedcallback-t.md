@@ -18,5 +18,5 @@ The callback of ads block
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| details | AdsBlockedDetails | 是 | details of OnAdsBlockedCallback. |
+| details | [AdsBlockedDetails](arkts-arkweb-adsblockeddetails-i.md) | 是 | details of OnAdsBlockedCallback.  |
 

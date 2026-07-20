@@ -18,6 +18,7 @@ UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[Extens
 import { UIServiceExtensionAbility } from '@kit.AbilityKit';
 ```
 
+<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -56,6 +57,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="oncreate"></a>
 ## onCreate
 
 ```TypeScript
@@ -94,6 +96,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="ondata"></a>
 ## onData
 
 ```TypeScript
@@ -117,7 +120,7 @@ onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | proxy | [UIServiceHostProxy](arkts-ability-common-uiservicehostproxy-t-sys.md) | 是 | 往客户端发送数据的Proxy。 |
-| data | Record<string, Object> | 是 | 表示接收到的数据。 |
+| data | Record&lt;string, Object&gt; | 是 | 表示接收到的数据。 |
 
 **示例：**
 
@@ -132,6 +135,7 @@ class ServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="ondestroy"></a>
 ## onDestroy
 
 ```TypeScript
@@ -163,6 +167,7 @@ class ServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -201,6 +206,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="onrequest"></a>
 ## onRequest
 
 ```TypeScript
@@ -239,6 +245,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="onwindowdidcreate"></a>
 ## onWindowDidCreate
 
 ```TypeScript
@@ -277,6 +284,7 @@ class ServiceExt extends UIServiceExtensionAbility {
 
 ```
 
+<a id="onwindowwillcreate"></a>
 ## onWindowWillCreate
 
 ```TypeScript

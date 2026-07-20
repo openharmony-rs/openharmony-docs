@@ -6,6 +6,7 @@
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
+<a id="getpreferences"></a>
 ## getPreferences
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getPreferences(context: Context, options: Options): Promise<Preferences
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Preferences> | Promise对象，返回Preferences实例。 |
+| Promise&lt;Preferences&gt; | Promise对象，返回Preferences实例。 |
 
 **错误码：**
 

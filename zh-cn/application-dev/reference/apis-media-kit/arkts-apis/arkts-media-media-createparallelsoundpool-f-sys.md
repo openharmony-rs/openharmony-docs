@@ -6,6 +6,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createparallelsoundpool"></a>
 ## createParallelSoundPool
 
 ```TypeScript
@@ -35,7 +36,7 @@ If a **SoundPool** instance created using [createSoundPool](#createSoundPool) is
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SoundPool> | Promise used to return the result. If the operation is successful, a **SoundPool** instance is returned; otherwise, **null** is returned. The instance is used for loading and playback. |
+| Promise&lt;SoundPool&gt; | Promise used to return the result. If the operation is successful, a **SoundPool** instance is returned; otherwise, **null** is returned. The instance is used for loading and playback. |
 
 **错误码：**
 

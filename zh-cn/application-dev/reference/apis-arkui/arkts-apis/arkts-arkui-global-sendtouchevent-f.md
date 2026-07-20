@@ -1,5 +1,6 @@
 # sendTouchEvent
 
+<a id="sendtouchevent"></a>
 ## sendTouchEvent
 
 ```TypeScript
@@ -20,7 +21,7 @@ Send touch event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [TouchObject](../arkts-components/arkts-arkui-common-touchobject-i.md) | 是 | TouchObject to be sent. |
+| event | [TouchObject](../arkts-components/arkts-arkui-touchobject-i.md) | 是 | TouchObject to be sent. |
 
 **返回值：**
 

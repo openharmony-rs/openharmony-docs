@@ -1,5 +1,6 @@
 # readSync
 
+<a id="readsync"></a>
 ## readSync
 
 ```TypeScript
@@ -47,8 +48,8 @@ declare function readSync(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 待读取文件的文件描述符。 |
-| buffer | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于保存读取到的文件数据的缓冲区。 |
-| options | {     offset?: number;     length?: number;     position?: number;   } | 否 | 支持如下选项：<br/>-?offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-?length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-?position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length&lt;=buffer.size。 |
+| buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
+| options | {     offset?: number;     length?: number;     position?: number;   } | 否 | 支持如下选项：<br/>-?offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-?length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-?position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 

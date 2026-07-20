@@ -6,6 +6,7 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="cancelallreminders"></a>
 ## cancelAllReminders
 
 ```TypeScript
@@ -28,7 +29,7 @@ function cancelAllReminders(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步回调。 |
 
 **示例：**
 
@@ -43,6 +44,7 @@ reminderAgent.cancelAllReminders((err: BusinessError, data: void) =>{
 ```
 
 
+<a id="cancelallreminders-1"></a>
 ## cancelAllReminders
 
 ```TypeScript
@@ -65,7 +67,7 @@ function cancelAllReminders(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise类型异步回调。 |
+| Promise&lt;void&gt; | Promise类型异步回调。 |
 
 **示例：**
 

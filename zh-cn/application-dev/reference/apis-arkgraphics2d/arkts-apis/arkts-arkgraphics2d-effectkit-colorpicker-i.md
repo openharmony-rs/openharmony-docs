@@ -14,6 +14,7 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getaveragecolor"></a>
 ## getAverageColor
 
 ```TypeScript
@@ -72,6 +73,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="gethighestsaturationcolor"></a>
 ## getHighestSaturationColor
 
 ```TypeScript
@@ -130,6 +132,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="getlargestproportioncolor"></a>
 ## getLargestProportionColor
 
 ```TypeScript
@@ -188,6 +191,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="getmaincolor"></a>
 ## getMainColor
 
 ```TypeScript
@@ -210,7 +214,7 @@ getMainColor(): Promise<Color>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Color> | Promise对象。返回图像主色对应的颜色值，失败时返回错误信息。 |
+| Promise&lt;Color&gt; | Promise对象。返回图像主色对应的颜色值，失败时返回错误信息。 |
 
 **示例：**
 
@@ -248,6 +252,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="getmaincolorsync"></a>
 ## getMainColorSync
 
 ```TypeScript
@@ -306,6 +311,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="gettopproportioncolors"></a>
 ## getTopProportionColors
 
 ```TypeScript
@@ -334,7 +340,7 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Color \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。  - 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。  - 取色失败或取色个数小于1返回`[null]`。 |
+| Array&lt;Color \| null&gt; | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。   - 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。   - 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例：**
 
@@ -374,6 +380,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="isblackorwhiteorgraycolor"></a>
 ## isBlackOrWhiteOrGrayColor
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="download"></a>
 ## download
 
 ```TypeScript
@@ -18,7 +19,7 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 
 **废弃版本：** 9
 
-**替代接口：** downloadFile(context:
+**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -33,7 +34,7 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [DownloadConfig](arkts-basicservices-request-downloadconfig-i.md) | 是 | 下载的配置信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<DownloadTask> | 是 | 回调函数。当下载任务成功，err为undefined，data为获取到的DownloadTask对象；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;DownloadTask&gt; | 是 | 回调函数。当下载任务成功，err为undefined，data为获取到的DownloadTask对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ filePath: 'xxx/xxxxx.hap'}, (err: BusinessError, data: request.DownloadTask) => 
 ```
 
 
+<a id="download-1"></a>
 ## download
 
 ```TypeScript
@@ -70,7 +72,7 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 **废弃版本：** 9
 
-**替代接口：** downloadFile(context:
+**替代接口：** [downloadFile(context:](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -90,7 +92,7 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DownloadTask> | 使用Promise方式，异步返回下载任务DownloadTask的Promise对象。 |
+| Promise&lt;DownloadTask&gt; | 使用Promise方式，异步返回下载任务DownloadTask的Promise对象。 |
 
 **错误码：**
 

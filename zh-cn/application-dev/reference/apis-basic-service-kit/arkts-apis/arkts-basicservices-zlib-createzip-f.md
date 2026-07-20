@@ -6,6 +6,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="createzip"></a>
 ## createZip
 
 ```TypeScript
@@ -26,7 +27,7 @@ function createZip(): Promise<Zip>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Zip> | Promise对象。返回压缩解压缩对象实例。 |
+| Promise&lt;Zip&gt; | Promise对象。返回压缩解压缩对象实例。 |
 
 **示例：**
 

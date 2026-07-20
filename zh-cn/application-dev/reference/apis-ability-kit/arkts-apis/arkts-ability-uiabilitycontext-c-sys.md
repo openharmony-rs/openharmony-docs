@@ -10,6 +10,7 @@ UIAbilityContext是需要保存状态的[UIAbility](arkts-app-ability-uiability.
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="connectserviceextensionabilitywithaccount"></a>
 ## connectServiceExtensionAbilityWithAccount
 
 ```TypeScript
@@ -20,7 +21,7 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -69,6 +70,7 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | [16000053](../errorcode-ability.md#16000053-非顶层应用) | The ability is not on the top of the UI.<br>**适用版本：** 10+ |
 | [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out.<br>**适用版本：** 10+ |
 
+<a id="requestmodaluiextension"></a>
 ## requestModalUIExtension
 
 ```TypeScript
@@ -79,7 +81,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 11
 
@@ -96,7 +98,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pickerWant | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 拉起UIExtension的Want信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当拉起UIExtension成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当拉起UIExtension成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -111,6 +113,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released.<br>**适用版本：** 11+ |
 
+<a id="requestmodaluiextension-1"></a>
 ## requestModalUIExtension
 
 ```TypeScript
@@ -121,7 +124,7 @@ requestModalUIExtension(pickerWant: Want): Promise<void>
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 11
 
@@ -143,7 +146,7 @@ requestModalUIExtension(pickerWant: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -158,6 +161,7 @@ requestModalUIExtension(pickerWant: Want): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released.<br>**适用版本：** 11+ |
 
+<a id="requestmodaluiextensionwithaccount"></a>
 ## requestModalUIExtensionWithAccount
 
 ```TypeScript
@@ -168,7 +172,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 > **说明**  
 > >  
 > 关于stage模型中组件的启动规则，请参见  
-> 【组件启动规则（阶段模型）】(../../../../application-models/component-startup-rules.md)。
+> 【组件启动规则（阶段模型）】(docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 26.0.0
 
@@ -193,7 +197,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 不会返回任何值的Promise。 |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 
@@ -203,6 +207,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground. |
 
+<a id="setmissionicon"></a>
 ## setMissionIcon
 
 ```TypeScript
@@ -226,7 +231,7 @@ setMissionIcon(icon: image.PixelMap, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | icon | image.PixelMap | 是 | 在最近的任务中显示的UIAbility图标。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当设置当前UIAbility在任务中显示的图标成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当设置当前UIAbility在任务中显示的图标成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -237,6 +242,7 @@ setMissionIcon(icon: image.PixelMap, callback: AsyncCallback<void>): void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api.<br>**适用版本：** 10+ |
 
+<a id="setmissionicon-1"></a>
 ## setMissionIcon
 
 ```TypeScript
@@ -265,7 +271,7 @@ setMissionIcon(icon: image.PixelMap): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -276,6 +282,7 @@ setMissionIcon(icon: image.PixelMap): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api.<br>**适用版本：** 10+ |
 
+<a id="startabilityascaller"></a>
 ## startAbilityAsCaller
 
 ```TypeScript
@@ -286,7 +293,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -303,7 +310,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -336,6 +343,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityascaller-1"></a>
 ## startAbilityAsCaller
 
 ```TypeScript
@@ -346,7 +354,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -364,7 +372,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 是 | 启动UIAbility所携带的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -395,6 +403,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityascaller-2"></a>
 ## startAbilityAsCaller
 
 ```TypeScript
@@ -405,7 +414,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -428,7 +437,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -461,18 +470,19 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilitybycallwithaccount"></a>
 ## startAbilityByCallWithAccount
 
 ```TypeScript
 startAbilityByCallWithAccount(want: Want, accountId: number): Promise<Caller>
 ```
 
-根据accountId对指定的UIAbility进行call调用，并且可以使用返回的Caller通信接口与被调用方进行通信。仅支持在主线程调用。使用Promise异步回调。该接口不支持拉起启动模式为[specified模式](../../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility。使用规则：
+根据accountId对指定的UIAbility进行call调用，并且可以使用返回的Caller通信接口与被调用方进行通信。仅支持在主线程调用。使用Promise异步回调。该接口不支持拉起启动模式为[specified模式](docroot://application-models/uiability-launch-type.md#specified启动模式)的UIAbility。使用规则：
 
 - 跨用户场景下，Call调用目标UIAbility时，调用方应用需同时申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`与`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。  
 - 调用方应用位于后台时，使用该接口启动UIAbility需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。  
 - 跨应用场景下，目标UIAbility的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。  
-- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 10
 
@@ -497,7 +507,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise<Caller>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Caller> | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;Caller&gt; | Promise对象，返回要通讯的caller对象。 |
 
 **错误码：**
 
@@ -526,6 +536,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise<Caller>
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityforresultwithaccount"></a>
 ## startAbilityForResultWithAccount
 
 ```TypeScript
@@ -536,7 +547,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -557,7 +568,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AbilityResult> | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起的UIAbility销毁时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityResult&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起的UIAbility销毁时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -591,6 +602,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityforresultwithaccount-1"></a>
 ## startAbilityForResultWithAccount
 
 ```TypeScript
@@ -606,7 +618,7 @@ startAbilityForResultWithAccount(
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -638,7 +650,7 @@ startAbilityForResultWithAccount(
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 是 | 启动UIAbility所携带的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -672,6 +684,7 @@ startAbilityForResultWithAccount(
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilityforresultwithaccount-2"></a>
 ## startAbilityForResultWithAccount
 
 ```TypeScript
@@ -682,7 +695,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -709,7 +722,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AbilityResult> | Promise对象，包含AbilityResult参数。 |
+| Promise&lt;AbilityResult&gt; | Promise对象，包含AbilityResult参数。 |
 
 **错误码：**
 
@@ -743,6 +756,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilitywithaccount"></a>
 ## startAbilityWithAccount
 
 ```TypeScript
@@ -753,7 +767,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -774,7 +788,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -808,6 +822,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilitywithaccount-1"></a>
 ## startAbilityWithAccount
 
 ```TypeScript
@@ -818,7 +833,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -840,7 +855,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 是 | 启动UIAbility所携带的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -874,6 +889,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startabilitywithaccount-2"></a>
 ## startAbilityWithAccount
 
 ```TypeScript
@@ -884,7 +900,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -911,7 +927,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -945,6 +961,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startrecentability"></a>
 ## startRecentAbility
 
 ```TypeScript
@@ -962,7 +979,7 @@ startRecentAbility(want: Want, callback: AsyncCallback<void>): void
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。  
 >  
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。  
-> 更多的组件启动规则详见[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 更多的组件启动规则详见[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
@@ -979,7 +996,7 @@ startRecentAbility(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 需要启动UIAbility的Want信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1012,6 +1029,7 @@ startRecentAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startrecentability-1"></a>
 ## startRecentAbility
 
 ```TypeScript
@@ -1029,7 +1047,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<vo
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。  
 >  
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。  
-> 更多的组件启动规则详见[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 更多的组件启动规则详见[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
@@ -1047,7 +1065,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<vo
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 需要启动UIAbility的Want信息。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 是 | 启动UIAbility所携带的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1080,6 +1098,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<vo
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startrecentability-2"></a>
 ## startRecentAbility
 
 ```TypeScript
@@ -1097,7 +1116,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise<void>
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。  
 >  
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。  
-> 更多的组件启动规则详见[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。
+> 更多的组件启动规则详见[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
@@ -1120,7 +1139,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1153,6 +1172,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise<void>
 | [16000079](../errorcode-ability.md#16000079-不支持指定appinstancekey) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
+<a id="startserviceextensionability"></a>
 ## startServiceExtensionAbility
 
 ```TypeScript
@@ -1176,7 +1196,7 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1198,6 +1218,7 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 | [16000019](../errorcode-ability.md#16000019-隐式启动未查找到匹配应用) | No matching ability is found.<br>**适用版本：** 12+ |
 
+<a id="startserviceextensionability-1"></a>
 ## startServiceExtensionAbility
 
 ```TypeScript
@@ -1226,7 +1247,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1248,6 +1269,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 | [16000019](../errorcode-ability.md#16000019-隐式启动未查找到匹配应用) | No matching ability is found.<br>**适用版本：** 12+ |
 
+<a id="startserviceextensionabilitywithaccount"></a>
 ## startServiceExtensionAbilityWithAccount
 
 ```TypeScript
@@ -1258,7 +1280,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -1279,7 +1301,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1301,6 +1323,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 | [16000019](../errorcode-ability.md#16000019-隐式启动未查找到匹配应用) | No matching ability is found.<br>**适用版本：** 12+ |
 
+<a id="startserviceextensionabilitywithaccount-1"></a>
 ## startServiceExtensionAbilityWithAccount
 
 ```TypeScript
@@ -1311,7 +1334,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 > **说明：**  
 >  
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[组件启动规则（Stage模型）](docroot://application-models/component-startup-rules.md)。  
 > > 当accountId为当前用户时，无需进行权限校验。
 
 **起始版本：** 9
@@ -1337,7 +1360,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1359,6 +1382,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 | [16000019](../errorcode-ability.md#16000019-隐式启动未查找到匹配应用) | No matching ability is found.<br>**适用版本：** 12+ |
 
+<a id="stopserviceextensionability"></a>
 ## stopServiceExtensionAbility
 
 ```TypeScript
@@ -1382,7 +1406,7 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1402,6 +1426,7 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled.<br>**适用版本：** 10+ |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
 
+<a id="stopserviceextensionability-1"></a>
 ## stopServiceExtensionAbility
 
 ```TypeScript
@@ -1430,7 +1455,7 @@ stopServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1448,6 +1473,7 @@ stopServiceExtensionAbility(want: Want): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 10+ |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 10+ |
 
+<a id="stopserviceextensionabilitywithaccount"></a>
 ## stopServiceExtensionAbilityWithAccount
 
 ```TypeScript
@@ -1478,7 +1504,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 | --- | --- | --- | --- |
 | want | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1496,6 +1522,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 10+ |
 
+<a id="stopserviceextensionabilitywithaccount-1"></a>
 ## stopServiceExtensionAbilityWithAccount
 
 ```TypeScript
@@ -1531,7 +1558,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

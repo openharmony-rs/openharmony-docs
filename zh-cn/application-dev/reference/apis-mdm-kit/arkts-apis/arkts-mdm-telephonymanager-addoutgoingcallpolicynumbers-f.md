@@ -6,6 +6,7 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
+<a id="addoutgoingcallpolicynumbers"></a>
 ## addOutgoingCallPolicyNumbers
 
 ```TypeScript
@@ -34,7 +35,7 @@ function addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, 
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | adminManager.Policy | 是 | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。 |
-| numbers | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。 |
+| numbers | Array&lt;string&gt; | 是 | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。 |
 
 **错误码：**
 

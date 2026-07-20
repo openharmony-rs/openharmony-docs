@@ -6,6 +6,7 @@
 import { manager } from '@kit.ConnectivityKit';
 ```
 
+<a id="getstate"></a>
 ## getState
 
 ```TypeScript
@@ -33,5 +34,5 @@ function getState(): NearlinkState
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the chip does not support it. |
-| 36100099 | Operation failed. |
+| [36100099](../errorcode-nearlink.md#36100099-操作失败) | Operation failed. |
 

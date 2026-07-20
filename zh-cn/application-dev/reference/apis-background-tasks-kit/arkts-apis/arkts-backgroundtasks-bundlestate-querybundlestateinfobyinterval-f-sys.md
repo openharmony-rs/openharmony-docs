@@ -6,6 +6,7 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querybundlestateinfobyinterval"></a>
 ## queryBundleStateInfoByInterval
 
 ```TypeScript
@@ -48,7 +49,7 @@ Queries usage information about each bundle within a specified period at a speci
 | byInterval | [IntervalType](arkts-backgroundtasks-bundlestate-intervaltype-e.md) | 是 | Indicates the interval at which the usage statistics are queried. |
 | begin | number | 是 | Indicates the start time of the query period, in milliseconds. |
 | end | number | 是 | Indicates the end time of the query period, in milliseconds. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<BundleStateInfo>> | 是 | the callback of usage information about each bundle. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BundleStateInfo&gt;&gt; | 是 | the callback of usage information about each bundle. |
 
 **示例：**
 
@@ -71,6 +72,7 @@ bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED
 ```
 
 
+<a id="querybundlestateinfobyinterval-1"></a>
 ## queryBundleStateInfoByInterval
 
 ```TypeScript
@@ -115,7 +117,7 @@ Queries usage information about each bundle within a specified period at a speci
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<BundleStateInfo>> | the usage information about each bundle. |
+| Promise&lt;Array&lt;BundleStateInfo&gt;&gt; | the usage information about each bundle. |
 
 **示例：**
 

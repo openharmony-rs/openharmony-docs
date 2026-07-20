@@ -14,6 +14,7 @@
 import { serial } from '@kit.BasicServicesKit';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -34,7 +35,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象，无返回结果 |
+| Promise&lt;void&gt; | - Promise对象，无返回结果 |
 
 **错误码：**
 
@@ -43,6 +44,7 @@ close(): Promise<void>
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="drain"></a>
 ## drain
 
 ```TypeScript
@@ -63,7 +65,7 @@ drain(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象，无返回结果 |
+| Promise&lt;void&gt; | - Promise对象，无返回结果 |
 
 **错误码：**
 
@@ -73,6 +75,7 @@ drain(): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="flush"></a>
 ## flush
 
 ```TypeScript
@@ -93,7 +96,7 @@ flush串口缓冲区。使用Promise异步回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象，无返回结果 |
+| Promise&lt;void&gt; | - Promise对象，无返回结果 |
 
 **错误码：**
 
@@ -103,6 +106,7 @@ flush串口缓冲区。使用Promise异步回调。
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="getcts"></a>
 ## getCts
 
 ```TypeScript
@@ -123,7 +127,7 @@ getCts(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | - Promise对象，返回CTS信号状态，表示是否允许发送数据 |
+| Promise&lt;boolean&gt; | - Promise对象，返回CTS信号状态，表示是否允许发送数据 |
 
 **错误码：**
 
@@ -133,6 +137,7 @@ getCts(): Promise<boolean>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="getdsr"></a>
 ## getDsr
 
 ```TypeScript
@@ -153,7 +158,7 @@ getDsr(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | DSR信号状态，true表示对端已就绪，false表示对端未就绪 |
+| Promise&lt;boolean&gt; | DSR信号状态，true表示对端已就绪，false表示对端未就绪 |
 
 **错误码：**
 
@@ -163,6 +168,7 @@ getDsr(): Promise<boolean>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="offdataread"></a>
 ## offDataRead
 
 ```TypeScript
@@ -183,7 +189,7 @@ offDataRead(callback?: Callback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Uint8Array> | 否 | 回调函数，返回串口端口接收到的数据<br>默认值:缺省行为：清除串口端口接收数据事件的所有监听。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Uint8Array&gt; | 否 | 回调函数，返回串口端口接收到的数据<br>默认值:缺省行为：清除串口端口接收数据事件的所有监听。 |
 
 **错误码：**
 
@@ -192,6 +198,7 @@ offDataRead(callback?: Callback<Uint8Array>): void
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="offdisconnect"></a>
 ## offDisconnect
 
 ```TypeScript
@@ -212,7 +219,7 @@ offDisconnect(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | USB虚拟串口断开的回调函数。<br>默认值：清除所有USB虚拟串口断开事件的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | USB虚拟串口断开的回调函数。<br>默认值：清除所有USB虚拟串口断开事件的回调函数。 |
 
 **错误码：**
 
@@ -221,6 +228,7 @@ offDisconnect(callback?: Callback<void>): void
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="ondataread"></a>
 ## onDataRead
 
 ```TypeScript
@@ -241,7 +249,7 @@ onDataRead(callback: Callback<Uint8Array>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Uint8Array> | 是 | 回调函数，返回串口端口接收到的数据 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回串口端口接收到的数据 |
 
 **错误码：**
 
@@ -251,6 +259,7 @@ onDataRead(callback: Callback<Uint8Array>): void
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -271,7 +280,7 @@ onDisconnect(callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | USB虚拟串口断开事件的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | USB虚拟串口断开事件的回调函数。 |
 
 **错误码：**
 
@@ -280,6 +289,7 @@ onDisconnect(callback: Callback<void>): void
 | [35700001](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="open"></a>
 ## open
 
 ```TypeScript
@@ -306,7 +316,7 @@ open(config?: SerialConfigs): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象，无返回结果 |
+| Promise&lt;void&gt; | - Promise对象，无返回结果 |
 
 **错误码：**
 
@@ -318,6 +328,7 @@ open(config?: SerialConfigs): Promise<void>
 | [35700004](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700004-端口已被占用) | Port already in use. |
 | [35700007](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700007-需要用户授权) | User authorization required. |
 
+<a id="sendbrk"></a>
 ## sendBrk
 
 ```TypeScript
@@ -338,7 +349,7 @@ sendBrk(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象，无返回结果 |
+| Promise&lt;void&gt; | - Promise对象，无返回结果 |
 
 **错误码：**
 
@@ -348,6 +359,7 @@ sendBrk(): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="setdtr"></a>
 ## setDtr
 
 ```TypeScript
@@ -374,7 +386,7 @@ setDtr(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - 不返回任何值的Promise。 |
+| Promise&lt;void&gt; | - 不返回任何值的Promise。 |
 
 **错误码：**
 
@@ -384,6 +396,7 @@ setDtr(enable: boolean): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="setrts"></a>
 ## setRts
 
 ```TypeScript
@@ -410,7 +423,7 @@ setRts(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | - Promise对象，无返回结果 |
+| Promise&lt;void&gt; | - Promise对象，无返回结果 |
 
 **错误码：**
 
@@ -420,6 +433,7 @@ setRts(enable: boolean): Promise<void>
 | [35700003](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
 | [35700005](../../apis-basic-services-kit/errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
 
+<a id="write"></a>
 ## write
 
 ```TypeScript
@@ -440,14 +454,14 @@ write(data: Uint8Array, timeout?: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 要发送的数据<br>长度范围:(0,4096]。 |
+| data | Uint8Array | 是 | 要发送的数据<br>长度范围:(0,4096]。 |
 | timeout | number | 否 | 超时时间<br>长度范围:[0,300000]。取值限定为整数。单位:毫秒。默认值:0。<br>表示端口无法写入数据时不等待，直接返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | - Promise对象，返回成功写入的长度 |
+| Promise&lt;number&gt; | - Promise对象，返回成功写入的长度 |
 
 **错误码：**
 

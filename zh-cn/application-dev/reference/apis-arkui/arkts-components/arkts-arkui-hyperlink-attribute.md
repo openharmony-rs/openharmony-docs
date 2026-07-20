@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="color"></a>
 ## color
 
 ```TypeScript
@@ -30,5 +31,5 @@ color(value: Color | number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Color \| number \| string \| Resource | 是 | 超链接文本的颜色。<br/>&lt;!--RP1--&gt;默认值：'#ff007dff'，显示为蓝色。&lt;!--RP1End--&gt; |
+| value | [Color](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenetypes-color-i.md) \| number \| string \| Resource | 是 | 超链接文本的颜色。<br/><!--RP1-->默认值：'#ff007dff'，显示为蓝色。<!--RP1End--> |
 

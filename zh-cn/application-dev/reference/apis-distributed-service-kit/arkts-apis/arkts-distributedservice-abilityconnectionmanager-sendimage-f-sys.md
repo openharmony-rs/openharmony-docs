@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="sendimage"></a>
 ## sendImage
 
 ```TypeScript
@@ -36,7 +37,7 @@ Send image data.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the function. |
+| Promise&lt;void&gt; | The promise returned by the function. |
 
 **错误码：**
 

@@ -42,7 +42,7 @@ transition: Callback<SwiperContentTransitionProxy>
 
 自定义切换动画具体内容。
 
-**类型：** Callback<SwiperContentTransitionProxy>
+**类型：** Callback&lt;SwiperContentTransitionProxy&gt;
 
 **起始版本：** 18
 

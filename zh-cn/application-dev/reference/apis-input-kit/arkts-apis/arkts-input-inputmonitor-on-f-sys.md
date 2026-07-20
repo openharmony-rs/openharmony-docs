@@ -6,6 +6,7 @@
 import { inputMonitor } from '@kit.InputKit';
 ```
 
+<a id="on"></a>
 ## on('touch')
 
 ```TypeScript
@@ -70,6 +71,7 @@ struct Index {
 ```
 
 
+<a id="on-1"></a>
 ## on('mouse')
 
 ```TypeScript
@@ -93,7 +95,7 @@ function on(type: 'mouse', receiver: Callback<MouseEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mouse' | 是 | 输入设备事件类型，取值'mouse'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MouseEvent> | 是 | 回调函数，返回鼠标输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MouseEvent&gt; | 是 | 回调函数，返回鼠标输入事件。 |
 
 **错误码：**
 
@@ -134,6 +136,7 @@ struct Index {
 ```
 
 
+<a id="on-2"></a>
 ## on('mouse')
 
 ```TypeScript
@@ -158,7 +161,7 @@ function on(type: 'mouse', rect: display.Rect[], receiver: Callback<MouseEvent>)
 | --- | --- | --- | --- |
 | type | 'mouse' | 是 | 输入设备事件类型，取值'mouse'。 |
 | rect | display.Rect[] | 是 | 可以触发回调任务的矩形区域，可传入1至2个。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MouseEvent> | 是 | 回调函数，返回鼠标输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MouseEvent&gt; | 是 | 回调函数，返回鼠标输入事件。 |
 
 **错误码：**
 
@@ -223,6 +226,7 @@ struct Index {
 ```
 
 
+<a id="on-3"></a>
 ## on('pinch')
 
 ```TypeScript
@@ -246,7 +250,7 @@ function on(type: 'pinch', receiver: Callback<Pinch>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'pinch' | 是 | 输入设备事件类型，取值'pinch'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Pinch> | 是 | 回调函数，返回捏合输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Pinch&gt; | 是 | 回调函数，返回捏合输入事件。 |
 
 **错误码：**
 
@@ -286,6 +290,7 @@ struct Index {
 ```
 
 
+<a id="on-4"></a>
 ## on('pinch')
 
 ```TypeScript
@@ -310,7 +315,7 @@ function on(type: 'pinch', fingers: number, receiver: Callback<Pinch>): void
 | --- | --- | --- | --- |
 | type | 'pinch' | 是 | 输入设备事件类型，取值'pinch'。 |
 | fingers | number | 是 | 捏合的手指数，取值范围：大于等于2。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Pinch> | 是 | 回调函数，返回捏合输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Pinch&gt; | 是 | 回调函数，返回捏合输入事件。 |
 
 **错误码：**
 
@@ -351,6 +356,7 @@ struct Index {
 ```
 
 
+<a id="on-5"></a>
 ## on('rotate')
 
 ```TypeScript
@@ -375,7 +381,7 @@ function on(type: 'rotate', fingers: number, receiver: Callback<Rotate>): void
 | --- | --- | --- | --- |
 | type | 'rotate' | 是 | 输入设备事件类型，取值'rotate'。 |
 | fingers | number | 是 | 旋转的手指数，目前支持监听手指数是2。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<Rotate> | 是 | 回调函数，返回旋转输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;Rotate&gt; | 是 | 回调函数，返回旋转输入事件。 |
 
 **错误码：**
 
@@ -416,6 +422,7 @@ struct Index {
 ```
 
 
+<a id="on-6"></a>
 ## on('threeFingersSwipe')
 
 ```TypeScript
@@ -439,7 +446,7 @@ function on(type: 'threeFingersSwipe', receiver: Callback<ThreeFingersSwipe>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'threeFingersSwipe' | 是 | 输入设备事件类型，取值'threeFingersSwipe'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ThreeFingersSwipe> | 是 | 回调函数，返回三指滑动输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ThreeFingersSwipe&gt; | 是 | 回调函数，返回三指滑动输入事件。 |
 
 **错误码：**
 
@@ -479,6 +486,7 @@ struct Index {
 ```
 
 
+<a id="on-7"></a>
 ## on('fourFingersSwipe')
 
 ```TypeScript
@@ -502,7 +510,7 @@ function on(type: 'fourFingersSwipe', receiver: Callback<FourFingersSwipe>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fourFingersSwipe' | 是 | 输入设备事件类型，取值'fourFingersSwipe'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<FourFingersSwipe> | 是 | 回调函数，返回四指滑动输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;FourFingersSwipe&gt; | 是 | 回调函数，返回四指滑动输入事件。 |
 
 **错误码：**
 
@@ -542,6 +550,7 @@ struct Index {
 ```
 
 
+<a id="on-8"></a>
 ## on('threeFingersTap')
 
 ```TypeScript
@@ -565,7 +574,7 @@ function on(type: 'threeFingersTap', receiver: Callback<ThreeFingersTap>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'threeFingersTap' | 是 | 输入设备事件类型，取值'threeFingersTap'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ThreeFingersTap> | 是 | 回调函数，返回三指轻点输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ThreeFingersTap&gt; | 是 | 回调函数，返回三指轻点输入事件。 |
 
 **错误码：**
 
@@ -605,6 +614,7 @@ struct Index {
 ```
 
 
+<a id="on-9"></a>
 ## on('fingerprint')
 
 ```TypeScript
@@ -628,7 +638,7 @@ function on(type: 'fingerprint', receiver: Callback<FingerprintEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fingerprint' | 是 | 输入事件类型，取唯一值'fingerprint'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<FingerprintEvent> | 是 | 回调函数，返回指纹器件手势输入事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;FingerprintEvent&gt; | 是 | 回调函数，返回指纹器件手势输入事件。 |
 
 **错误码：**
 
@@ -668,6 +678,7 @@ struct Index {
 ```
 
 
+<a id="on-10"></a>
 ## on('swipeInward')
 
 ```TypeScript
@@ -691,7 +702,7 @@ function on(type: 'swipeInward', receiver: Callback<SwipeInward>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'swipeInward' | 是 | 输入事件类型，取唯一值'SwipeInward'。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SwipeInward> | 是 | 回调函数，返回向内滑动事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SwipeInward&gt; | 是 | 回调函数，返回向内滑动事件。 |
 
 **错误码：**
 
@@ -731,6 +742,7 @@ struct Index {
 ```
 
 
+<a id="on-11"></a>
 ## on('touchscreenSwipe')
 
 ```TypeScript
@@ -755,7 +767,7 @@ function on(type: 'touchscreenSwipe', fingers: number, receiver: Callback<TouchG
 | --- | --- | --- | --- |
 | type | 'touchscreenSwipe' | 是 | 输入设备事件类型，取值'touchscreenSwipe'。 |
 | fingers | number | 是 | 滑动手势的手指数，取值范围：[3,5]。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<TouchGestureEvent> | 是 | 回调函数，返回触摸屏滑动手势事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;TouchGestureEvent&gt; | 是 | 回调函数，返回触摸屏滑动手势事件。 |
 
 **错误码：**
 
@@ -796,6 +808,7 @@ struct Index {
 ```
 
 
+<a id="on-12"></a>
 ## on('touchscreenPinch')
 
 ```TypeScript
@@ -820,7 +833,7 @@ function on(type: 'touchscreenPinch', fingers: number, receiver: Callback<TouchG
 | --- | --- | --- | --- |
 | type | 'touchscreenPinch' | 是 | 输入设备事件类型，取值'touchscreenPinch'。 |
 | fingers | number | 是 | 捏合手势的手指数，取值范围：[4,5]。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<TouchGestureEvent> | 是 | 回调函数，返回触摸屏捏合手势事件。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;TouchGestureEvent&gt; | 是 | 回调函数，返回触摸屏捏合手势事件。 |
 
 **错误码：**
 
@@ -861,6 +874,7 @@ struct Index {
 ```
 
 
+<a id="on-13"></a>
 ## on('keyPressed')
 
 ```TypeScript
@@ -884,8 +898,8 @@ function on(type: 'keyPressed', keys: Array<KeyCode>, receiver: Callback<KeyEven
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'keyPressed' | 是 | 按键事件类型，取唯一值'keyPressed'。 |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<KeyCode> | 是 | 键值，支持如下键值：KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_POWER、KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP。 |
-| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<KeyEvent> | 是 | 回调函数，返回按键输入事件。 |
+| keys | Array&lt;KeyCode&gt; | 是 | 键值，支持如下键值：KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_POWER、KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP。 |
+| receiver | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;KeyEvent&gt; | 是 | 回调函数，返回按键输入事件。 |
 
 **错误码：**
 

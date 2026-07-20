@@ -6,6 +6,7 @@
 import { errorManager } from '@kit.AbilityKit';
 ```
 
+<a id="on"></a>
 ## on('error')
 
 ```TypeScript
@@ -75,6 +76,7 @@ try {
 ```
 
 
+<a id="on-1"></a>
 ## on('loopObserver')
 
 ```TypeScript
@@ -130,6 +132,7 @@ try {
 ```
 
 
+<a id="on-2"></a>
 ## on('unhandledRejection')
 
 ```TypeScript
@@ -187,6 +190,7 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 ```
 
 
+<a id="on-3"></a>
 ## on('globalUnhandledRejectionDetected')
 
 ```TypeScript
@@ -243,6 +247,7 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 ```
 
 
+<a id="on-4"></a>
 ## on('freeze')
 
 ```TypeScript
@@ -299,6 +304,7 @@ try {
 ```
 
 
+<a id="on-5"></a>
 ## on('globalErrorOccurred')
 
 ```TypeScript

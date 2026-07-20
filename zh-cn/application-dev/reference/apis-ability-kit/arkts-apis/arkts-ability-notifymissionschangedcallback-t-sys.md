@@ -20,5 +20,5 @@ type NotifyMissionsChangedCallback = (deviceId: string) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | Indicates the deviceId mission changed. |
+| deviceId | string | 是 | Indicates the deviceId mission changed.  |
 

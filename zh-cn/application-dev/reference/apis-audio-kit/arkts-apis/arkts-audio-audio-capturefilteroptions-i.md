@@ -26,7 +26,7 @@ usages: Array<StreamUsage>
 
 Filter by stream usages. But not allow to capture voice streams.
 
-**类型：** Array<StreamUsage>
+**类型：** Array&lt;StreamUsage&gt;
 
 **起始版本：** 11
 

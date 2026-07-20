@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="subscribesystemliveview"></a>
 ## subscribeSystemLiveView
 
 ```TypeScript
@@ -32,7 +33,7 @@ function subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

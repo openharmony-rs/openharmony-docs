@@ -6,6 +6,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getvolumebyuuid"></a>
 ## getVolumeByUuid
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getVolumeByUuid(uuid: string, callback: AsyncCallback<Volume>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uuid | string | 是 | 卷设备uuid。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Volume> | 是 | 获取卷设备信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Volume&gt; | 是 | 获取卷设备信息之后的回调。 |
 
 **错误码：**
 
@@ -43,6 +44,7 @@ function getVolumeByUuid(uuid: string, callback: AsyncCallback<Volume>): void
 | 13900042 | Unknown error. |
 
 
+<a id="getvolumebyuuid-1"></a>
 ## getVolumeByUuid
 
 ```TypeScript
@@ -71,7 +73,7 @@ function getVolumeByUuid(uuid: string): Promise<Volume>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Volume> | Promise对象，返回当前uuid的卷设备信息。 |
+| Promise&lt;Volume&gt; | Promise对象，返回当前uuid的卷设备信息。 |
 
 **错误码：**
 

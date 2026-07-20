@@ -20,5 +20,5 @@ import { customConfig } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md#getchannelid-1) | 获取应用的预装渠道号。 |
+| [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md#getchannelid) | 获取应用的预装渠道号。 |
 

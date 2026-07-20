@@ -6,6 +6,7 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getextensionabilityresourceinfo"></a>
 ## getExtensionAbilityResourceInfo
 
 ```TypeScript
@@ -37,7 +38,7 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<LauncherAbilityResourceInfo> | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
+| Array&lt;LauncherAbilityResourceInfo&gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
 
 **错误码：**
 

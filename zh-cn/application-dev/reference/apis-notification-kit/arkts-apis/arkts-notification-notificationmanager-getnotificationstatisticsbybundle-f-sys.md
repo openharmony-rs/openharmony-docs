@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getnotificationstatisticsbybundle"></a>
 ## getNotificationStatisticsByBundle
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise<Bun
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleNotificationStatistics[]> | Promise对象。返回指定应用列表的通知统计信息。 |
+| Promise&lt;BundleNotificationStatistics[]&gt; | Promise对象。返回指定应用列表的通知统计信息。 |
 
 **错误码：**
 

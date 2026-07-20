@@ -6,6 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
+<a id="onkey"></a>
 ## onKey
 
 ```TypeScript
@@ -14,7 +15,7 @@ function onKey(keyOptions: KeyOptions, callback:KeyCommandCallback): void
 
 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。
 
-与[inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#on-1)现有接口的区别：
+与[inputConsumer.on('key')](inputConsumer.on(type: 'key', keyOptions: KeyOptions, callback: Callback<KeyOptions>))现有接口的区别：
 
 - 本接口的keyOptions支持triggerType参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。  
 - 本接口回调参数为KeyCommandCallback类型，同时接收KeyOptions和KeyEvent对象。  

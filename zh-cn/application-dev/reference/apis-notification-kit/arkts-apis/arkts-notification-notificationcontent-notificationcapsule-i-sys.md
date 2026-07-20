@@ -20,7 +20,7 @@ capsuleButtons?: Array<NotificationIconButton>
 
 即时任务类实况胶囊的按钮（最多支持2个）。默认为空。
 
-**类型：** Array<NotificationIconButton>
+**类型：** Array&lt;NotificationIconButton&gt;
 
 **起始版本：** 18
 

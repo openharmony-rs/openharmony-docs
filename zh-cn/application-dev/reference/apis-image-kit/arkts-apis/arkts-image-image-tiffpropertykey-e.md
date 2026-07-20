@@ -4,7 +4,7 @@
 
 > **说明：**  
 >  
-> 返回字段类型具体参考[TiffMetadata](../../../../reference/apis-image-kit/arkts-apis-image-TiffMetadata.md)。  
+> 返回字段类型具体参考[TiffMetadata](docroot://reference/apis-image-kit/arkts-apis-image-TiffMetadata.md)。  
 > | 名称 | 值 | 说明 |  
 > | ---- | -- | ---- |  
 > | DOCUMENT_NAME | 'TiffDocumentName' | 文档或图像的名称。 |  

@@ -64,7 +64,7 @@ values: Array<ValuesBucket>
 
 更新的数据。
 
-**类型：** Array<ValuesBucket>
+**类型：** Array&lt;ValuesBucket&gt;
 
 **起始版本：** 12
 

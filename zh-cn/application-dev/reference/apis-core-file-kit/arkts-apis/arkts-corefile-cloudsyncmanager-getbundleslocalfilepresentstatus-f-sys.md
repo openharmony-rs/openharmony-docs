@@ -6,6 +6,7 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getbundleslocalfilepresentstatus"></a>
 ## getBundlesLocalFilePresentStatus
 
 ```TypeScript
@@ -28,13 +29,13 @@ function getBundlesLocalFilePresentStatus(bundleNames: Array<string>): Promise<A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNames | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 需要检测的应用包名数组。每个元素为应用的包名字符串。 |
+| bundleNames | Array&lt;string&gt; | 是 | 需要检测的应用包名数组。每个元素为应用的包名字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<LocalFilePresentStatus>> | Promise对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
+| Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt; | Promise对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
 
 **错误码：**
 

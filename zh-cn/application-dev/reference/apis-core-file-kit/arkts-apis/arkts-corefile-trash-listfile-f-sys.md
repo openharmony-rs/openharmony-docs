@@ -6,6 +6,7 @@
 import { trash } from '@kit.CoreFileKit';
 ```
 
+<a id="listfile"></a>
 ## listFile
 
 ```TypeScript
@@ -32,7 +33,7 @@ Lists the files and directories in the **Recently deleted** list.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<FileInfo> | Returns the next level FileInfo Object. |
+| Array&lt;FileInfo&gt; | Returns the next level FileInfo Object. |
 
 **错误码：**
 

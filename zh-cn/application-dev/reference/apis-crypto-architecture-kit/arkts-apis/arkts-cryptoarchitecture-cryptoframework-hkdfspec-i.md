@@ -50,7 +50,7 @@ key: string | Uint8Array
 
 密钥材料。
 
-**类型：** string | Uint8Array
+**类型：** string \| Uint8Array
 
 **起始版本：** 12
 

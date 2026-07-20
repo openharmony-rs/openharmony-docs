@@ -1,8 +1,8 @@
 # AVImageGenerator
 
-视频缩略图获取类，用于从视频资源中获取缩略图。在调用AVImageGenerator的方法前，需要先通过[createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator-3)构建一个AVImageGenerator实例。
+视频缩略图获取类，用于从视频资源中获取缩略图。在调用AVImageGenerator的方法前，需要先通过[createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator-1)构建一个AVImageGenerator实例。
 
-获取视频缩略图的demo可参考：[获取视频缩略图开发指导](../../../../media/media/avimagegenerator.md)。
+获取视频缩略图的demo可参考：[获取视频缩略图开发指导](docroot://media/media/avimagegenerator.md)。
 
 > **说明：**  
 >  
@@ -20,6 +20,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="fetchframebytime"></a>
 ## fetchFrameByTime
 
 ```TypeScript
@@ -44,7 +45,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | timeUs | number | 是 | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-media-media-avimagequeryoptions-e.md) | 是 | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-media-media-pixelmapparams-i.md) | 是 | 需要获取的缩略图的格式参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<image.PixelMap> | 是 | 回调函数。获取缩略图成功时，err为undefined，data为PixelMap实例，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数。获取缩略图成功时，err为undefined，data为PixelMap实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 
+<a id="fetchframebytime-1"></a>
 ## fetchFrameByTime
 
 ```TypeScript
@@ -79,7 +81,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | Promise对象，返回视频缩略图对象。 |
+| Promise&lt;image.PixelMap&gt; | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -88,6 +90,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by promise. |
 
+<a id="fetchscaledframebytime"></a>
 ## fetchScaledFrameByTime
 
 ```TypeScript
@@ -117,7 +120,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<image.PixelMap> | Promise对象。返回视频缩略图对象。 |
+| Promise&lt;image.PixelMap&gt; | Promise对象。返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -126,6 +129,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) |  |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) |  |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -144,7 +148,7 @@ release(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当释放资源成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放资源成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -152,6 +156,7 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 
+<a id="release-1"></a>
 ## release
 
 ```TypeScript
@@ -170,7 +175,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 异步方式释放资源release方法的Promise返回值。 |
+| Promise&lt;void&gt; | 异步方式释放资源release方法的Promise返回值。 |
 
 **错误码：**
 

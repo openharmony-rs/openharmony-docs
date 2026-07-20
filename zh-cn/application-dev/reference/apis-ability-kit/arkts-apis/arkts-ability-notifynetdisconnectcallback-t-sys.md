@@ -20,6 +20,6 @@ type NotifyNetDisconnectCallback = (deviceId: string, state: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | Indicates the deviceId network disconnect. |
-| state | int | 是 | Indicates the state of network. |
+| deviceId | string | 是 | Indicates the deviceId network disconnect.  |
+| state | number | 是 | Indicates the state of network.  |
 

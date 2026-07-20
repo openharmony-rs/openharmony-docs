@@ -40,7 +40,7 @@ parameter?: media.PlaybackSpeed | number | string | LoopMode
 
 命令对应的参数。
 
-**类型：** media.PlaybackSpeed | number | string | LoopMode
+**类型：** media.PlaybackSpeed \| number \| string \| LoopMode
 
 **起始版本：** 10
 

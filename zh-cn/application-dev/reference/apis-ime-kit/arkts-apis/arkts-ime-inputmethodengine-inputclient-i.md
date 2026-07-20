@@ -1,6 +1,6 @@
 # InputClient
 
-InputClient是输入法客户端对象，代表当前绑定到输入法应用的编辑框客户端。InputClient实例通过InputMethodAbility的[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#on-1)事件回调获取，每个绑定事件对应一个InputClient实例，输入法应用通过该实例与编辑框进行文本交互。**核心功能概述：**
+InputClient是输入法客户端对象，代表当前绑定到输入法应用的编辑框客户端。InputClient实例通过InputMethodAbility的[on('inputStart')](inputMethodEngine.InputMethodAbility.on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void))事件回调获取，每个绑定事件对应一个InputClient实例，输入法应用通过该实例与编辑框进行文本交互。**核心功能概述：**
 
 - **文本获取**：通过[getForward](arkts-ime-inputmethodengine-inputclient-i.md#getforward-1)/[getForwardSync](arkts-ime-inputmethodengine-inputclient-i.md#getforwardsync-1)获取光标前的文本，通过[getBackward](arkts-ime-inputmethodengine-inputclient-i.md#getbackward-1)/[getBackwardSync](arkts-ime-inputmethodengine-inputclient-i.md#getbackwardsync-1)获取光标后的文本，用于分析已输入内容并提供智能补全。  
 - **文本编辑**：通过[insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-1)/[insertTextSync](arkts-ime-inputmethodengine-inputclient-i.md#inserttextsync-1)插入文本，通过[deleteForward](arkts-ime-inputmethodengine-inputclient-i.md#deleteforward-1)/[deleteForwardSync](arkts-ime-inputmethodengine-inputclient-i.md#deleteforwardsync-1)删除光标前的文本，通过[deleteBackward](arkts-ime-inputmethodengine-inputclient-i.md#deletebackward-1)/[deleteBackwardSync](arkts-ime-inputmethodengine-inputclient-i.md#deletebackwardsync-1)删除光标后的文本。  
@@ -10,7 +10,7 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 - **文本预览**：通过[setPreviewText](arkts-ime-inputmethodengine-inputclient-i.md#setpreviewtext-1)/[setPreviewTextSync](arkts-ime-inputmethodengine-inputclient-i.md#setpreviewtextsync-1)设置预览文本，通过[finishTextPreview](arkts-ime-inputmethodengine-inputclient-i.md#finishtextpreview-1)/[finishTextPreviewSync](arkts-ime-inputmethodengine-inputclient-i.md#finishtextpreviewsync-1)结束文本预览。  
 - **私有通信**：通过[sendPrivateCommand](arkts-ime-inputmethodengine-inputclient-i.md#sendprivatecommand-1)向应用发送私有命令，通过[sendMessage](arkts-ime-inputmethodengine-inputclient-i.md#sendmessage-1)/[recvMessage](arkts-ime-inputmethodengine-inputclient-i.md#recvmessage-1)进行消息通信。
 
-下列API均需使用[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#on-1)获取到InputClient实例后，通过实例调用。
+下列API均需使用[on('inputStart')](inputMethodEngine.InputMethodAbility.on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void))获取到InputClient实例后，通过实例调用。
 
 **起始版本：** 9
 
@@ -24,6 +24,7 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="deletebackward"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -47,7 +48,7 @@ deleteBackward(length: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当光标后固定长度的文本删除成功，err为undefined，data为true；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当光标后固定长度的文本删除成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
 
 ```
 
+<a id="deletebackward-1"></a>
 ## deleteBackward
 
 ```TypeScript
@@ -101,7 +103,7 @@ deleteBackward(length: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。resolve返回true表示删除光标后固定长度的文本成功；resolve返回false表示删除光标后固定长度的文本失败；reject时抛出错误对象，表示执行过程中发生错误。 |
+| Promise&lt;boolean&gt; | Promise对象。resolve返回true表示删除光标后固定长度的文本成功；resolve返回false表示删除光标后固定长度的文本失败；reject时抛出错误对象，表示执行过程中发生错误。 |
 
 **错误码：**
 
@@ -129,6 +131,7 @@ inputClient.deleteBackward(length).then((result: boolean) => {
 
 ```
 
+<a id="deletebackwardsync"></a>
 ## deleteBackwardSync
 
 ```TypeScript
@@ -165,6 +168,7 @@ inputClient.deleteBackwardSync(length);
 
 ```
 
+<a id="deleteforward"></a>
 ## deleteForward
 
 ```TypeScript
@@ -188,7 +192,7 @@ deleteForward(length: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当光标前固定长度的文本删除成功，err为undefined，data为true；当光标前固定长度的文本删除失败，err为undefined，data为false；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当光标前固定长度的文本删除成功，err为undefined，data为true；当光标前固定长度的文本删除失败，err为undefined，data为false；否则为错误对象。 |
 
 **错误码：**
 
@@ -218,6 +222,7 @@ inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
 
 ```
 
+<a id="deleteforward-1"></a>
 ## deleteForward
 
 ```TypeScript
@@ -242,7 +247,7 @@ deleteForward(length: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。resolve返回true表示删除光标前固定长度的文本成功；resolve返回false表示删除光标前固定长度的文本失败；reject时抛出错误对象，表示执行过程中发生错误。 |
+| Promise&lt;boolean&gt; | Promise对象。resolve返回true表示删除光标前固定长度的文本成功；resolve返回false表示删除光标前固定长度的文本失败；reject时抛出错误对象，表示执行过程中发生错误。 |
 
 **错误码：**
 
@@ -270,6 +275,7 @@ inputClient.deleteForward(length).then((result: boolean) => {
 
 ```
 
+<a id="deleteforwardsync"></a>
 ## deleteForwardSync
 
 ```TypeScript
@@ -306,6 +312,7 @@ inputClient.deleteForwardSync(length);
 
 ```
 
+<a id="finishtextpreview"></a>
 ## finishTextPreview
 
 ```TypeScript
@@ -324,7 +331,7 @@ finishTextPreview(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -346,6 +353,7 @@ inputClient.finishTextPreview().then(() => {
 
 ```
 
+<a id="finishtextpreviewsync"></a>
 ## finishTextPreviewSync
 
 ```TypeScript
@@ -374,6 +382,7 @@ inputClient.finishTextPreviewSync();
 
 ```
 
+<a id="getattachoptions"></a>
 ## getAttachOptions
 
 ```TypeScript
@@ -408,6 +417,7 @@ console.info(`Succeeded in getting AttachOptions, AttachOptions is ${attachOptio
 
 ```
 
+<a id="getbackward"></a>
 ## getBackward
 
 ```TypeScript
@@ -427,7 +437,7 @@ getBackward(length: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当光标后固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当光标后固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。 |
 
 **错误码：**
 
@@ -453,6 +463,7 @@ inputClient.getBackward(length, (err: BusinessError, text: string) => {
 
 ```
 
+<a id="getbackward-1"></a>
 ## getBackward
 
 ```TypeScript
@@ -477,7 +488,7 @@ getBackward(length: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回光标后固定长度的文本。 |
+| Promise&lt;string&gt; | Promise对象，返回光标后固定长度的文本。 |
 
 **错误码：**
 
@@ -501,6 +512,7 @@ inputClient.getBackward(length).then((text: string) => {
 
 ```
 
+<a id="getbackwardsync"></a>
 ## getBackwardSync
 
 ```TypeScript
@@ -544,6 +556,7 @@ console.info(`Succeeded in getting backward, text: ${text}`);
 
 ```
 
+<a id="getcallingwindowinfo"></a>
 ## getCallingWindowInfo
 
 ```TypeScript
@@ -562,7 +575,7 @@ getCallingWindowInfo(): Promise<WindowInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<WindowInfo> | Promise对象，返回拉起输入法的输入框所在应用窗口信息。 |
+| Promise&lt;WindowInfo&gt; | Promise对象，返回拉起输入法的输入框所在应用窗口信息。 |
 
 **错误码：**
 
@@ -586,6 +599,7 @@ inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInf
 
 ```
 
+<a id="geteditorattribute"></a>
 ## getEditorAttribute
 
 ```TypeScript
@@ -608,7 +622,7 @@ getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<EditorAttribute> | 是 | 回调函数。当编辑框属性值获取成功，err为undefined，data为编辑框属性值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;EditorAttribute&gt; | 是 | 回调函数。当编辑框属性值获取成功，err为undefined，data为编辑框属性值；否则为错误对象。 |
 
 **错误码：**
 
@@ -616,6 +630,7 @@ getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void
 | --- | --- |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons. |
 
+<a id="geteditorattribute-1"></a>
 ## getEditorAttribute
 
 ```TypeScript
@@ -634,7 +649,7 @@ getEditorAttribute(): Promise<EditorAttribute>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<EditorAttribute> | Promise对象，返回编辑框属性值。 |
+| Promise&lt;EditorAttribute&gt; | Promise对象，返回编辑框属性值。 |
 
 **错误码：**
 
@@ -656,6 +671,7 @@ inputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Editor
 
 ```
 
+<a id="geteditorattributesync"></a>
 ## getEditorAttributeSync
 
 ```TypeScript
@@ -691,6 +707,7 @@ console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
 
 ```
 
+<a id="getforward"></a>
 ## getForward
 
 ```TypeScript
@@ -710,7 +727,7 @@ getForward(length: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | length | number | 是 | 文本长度。不能小于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当光标前固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当光标前固定长度的文本获取成功，err为undefined，data为获取到的文本；否则为错误对象。 |
 
 **错误码：**
 
@@ -736,6 +753,7 @@ inputClient.getForward(length, (err: BusinessError, text: string) => {
 
 ```
 
+<a id="getforward-1"></a>
 ## getForward
 
 ```TypeScript
@@ -760,7 +778,7 @@ getForward(length: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回光标前固定长度的文本。 |
+| Promise&lt;string&gt; | Promise对象，返回光标前固定长度的文本。 |
 
 **错误码：**
 
@@ -784,6 +802,7 @@ inputClient.getForward(length).then((text: string) => {
 
 ```
 
+<a id="getforwardsync"></a>
 ## getForwardSync
 
 ```TypeScript
@@ -827,6 +846,7 @@ console.info(`Succeeded in getting forward, text: ${text}`);
 
 ```
 
+<a id="gettextindexatcursor"></a>
 ## getTextIndexAtCursor
 
 ```TypeScript
@@ -845,7 +865,7 @@ getTextIndexAtCursor(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当文本索引获取成功，err为undefined，index为光标所在处的文本索引；否则err为错误对象，index为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当文本索引获取成功，err为undefined，index为光标所在处的文本索引；否则err为错误对象，index为undefined。 |
 
 **错误码：**
 
@@ -869,6 +889,7 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
 
 ```
 
+<a id="gettextindexatcursor-1"></a>
 ## getTextIndexAtCursor
 
 ```TypeScript
@@ -887,7 +908,7 @@ getTextIndexAtCursor(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回光标所在处的文本索引。 |
+| Promise&lt;number&gt; | Promise对象，返回光标所在处的文本索引。 |
 
 **错误码：**
 
@@ -909,6 +930,7 @@ inputClient.getTextIndexAtCursor().then((index: number) => {
 
 ```
 
+<a id="gettextindexatcursorsync"></a>
 ## getTextIndexAtCursorSync
 
 ```TypeScript
@@ -944,6 +966,7 @@ console.info(`Succeeded in getTextIndexAtCursorSync, index: ${index}`);
 
 ```
 
+<a id="inserttext"></a>
 ## insertText
 
 ```TypeScript
@@ -967,7 +990,7 @@ insertText(text: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 文本内容。建议长度不超过1KB。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当文本插入成功，err为undefined，data为true；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当文本插入成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
 
@@ -997,6 +1020,7 @@ inputClient.insertText('test', (err: BusinessError, result: boolean) => {
 
 ```
 
+<a id="inserttext-1"></a>
 ## insertText
 
 ```TypeScript
@@ -1021,7 +1045,7 @@ insertText(text: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。resolve返回true表示插入文本成功；resolve返回false表示插入文本失败；reject时抛出错误对象，表示执行过程中发生错误。 |
+| Promise&lt;boolean&gt; | Promise对象。resolve返回true表示插入文本成功；resolve返回false表示插入文本失败；reject时抛出错误对象，表示执行过程中发生错误。 |
 
 **错误码：**
 
@@ -1048,6 +1072,7 @@ inputClient.insertText('test').then((result: boolean) => {
 
 ```
 
+<a id="inserttextsync"></a>
 ## insertTextSync
 
 ```TypeScript
@@ -1083,6 +1108,7 @@ inputClient.insertTextSync('test');
 
 ```
 
+<a id="movecursor"></a>
 ## moveCursor
 
 ```TypeScript
@@ -1106,7 +1132,7 @@ moveCursor(direction: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | direction | number | 是 | 光标移动方向。<br/>- 当值为1时，表示向上。<br/>- 当值为2时，表示向下。<br/>- 当值为3时，表示向左。<br/>- 当值为4时，表示向右。不能小于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当光标移动成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当光标移动成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1130,6 +1156,7 @@ inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP, (err: BusinessErro
 
 ```
 
+<a id="movecursor-1"></a>
 ## moveCursor
 
 ```TypeScript
@@ -1154,7 +1181,7 @@ moveCursor(direction: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1176,6 +1203,7 @@ inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP).then(() => {
 
 ```
 
+<a id="movecursorsync"></a>
 ## moveCursorSync
 
 ```TypeScript
@@ -1210,6 +1238,7 @@ inputClient.moveCursorSync(inputMethodEngine.Direction.CURSOR_UP);
 
 ```
 
+<a id="off"></a>
 ## off('attachOptionsDidChange')
 
 ```TypeScript
@@ -1229,7 +1258,7 @@ off(type: 'attachOptionsDidChange', callback?: Callback<AttachOptions>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'attachOptionsDidChange' | 是 | 绑定输入法时的附加选项变更事件，固定取值为'attachOptionsDidChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AttachOptions> | 否 | 取消订阅的回调函数。参数不填写时，默认取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AttachOptions&gt; | 否 | 取消订阅的回调函数。参数不填写时，默认取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -1246,6 +1275,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 ```
 
+<a id="on"></a>
 ## on('attachOptionsDidChange')
 
 ```TypeScript
@@ -1265,7 +1295,7 @@ on(type: 'attachOptionsDidChange', callback: Callback<AttachOptions>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'attachOptionsDidChange' | 是 | 绑定输入法时的附加选项变更事件，固定取值为'attachOptionsDidChange'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AttachOptions> | 是 | 回调函数，返回绑定输入法时的附加选项。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AttachOptions&gt; | 是 | 回调函数，返回绑定输入法时的附加选项。 |
 
 **错误码：**
 
@@ -1291,6 +1321,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 ```
 
+<a id="recvmessage"></a>
 ## recvMessage
 
 ```TypeScript
@@ -1338,6 +1369,7 @@ inputMethodEngine.getInputMethodAbility()
 
 ```
 
+<a id="selectbymovement"></a>
 ## selectByMovement
 
 ```TypeScript
@@ -1357,7 +1389,7 @@ selectByMovement(movement: Movement, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | movement | [Movement](arkts-ime-inputmethod-movement-i.md) | 是 | 选中时光标移动的方向。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当成功发送选中事件后，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当成功发送选中事件后，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1383,6 +1415,7 @@ inputClient.selectByMovement(movement, (err: BusinessError) => {
 
 ```
 
+<a id="selectbymovement-1"></a>
 ## selectByMovement
 
 ```TypeScript
@@ -1407,7 +1440,7 @@ selectByMovement(movement: Movement): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1431,6 +1464,7 @@ inputClient.selectByMovement(movement).then(() => {
 
 ```
 
+<a id="selectbymovementsync"></a>
 ## selectByMovementSync
 
 ```TypeScript
@@ -1467,6 +1501,7 @@ inputClient.selectByMovementSync(movement);
 
 ```
 
+<a id="selectbyrange"></a>
 ## selectByRange
 
 ```TypeScript
@@ -1486,7 +1521,7 @@ selectByRange(range: Range, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | range | [Range](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-scan-range-i.md) | 是 | 选中文本的范围。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当成功发送选中事件后，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当成功发送选中事件后，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1513,6 +1548,7 @@ inputClient.selectByRange(range, (err: BusinessError) => {
 
 ```
 
+<a id="selectbyrange-1"></a>
 ## selectByRange
 
 ```TypeScript
@@ -1537,7 +1573,7 @@ selectByRange(range: Range): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1562,6 +1598,7 @@ inputClient.selectByRange(range).then(() => {
 
 ```
 
+<a id="selectbyrangesync"></a>
 ## selectByRangeSync
 
 ```TypeScript
@@ -1599,6 +1636,7 @@ inputClient.selectByRangeSync(range);
 
 ```
 
+<a id="sendextendaction"></a>
 ## sendExtendAction
 
 ```TypeScript
@@ -1618,7 +1656,7 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | action | [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md) | 是 | 要发送的扩展操作。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。发送成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。发送成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1643,6 +1681,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY, (err: Business
 
 ```
 
+<a id="sendextendaction-1"></a>
 ## sendExtendAction
 
 ```TypeScript
@@ -1667,7 +1706,7 @@ sendExtendAction(action: ExtendAction): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1690,6 +1729,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 
 ```
 
+<a id="sendkeyfunction"></a>
 ## sendKeyFunction
 
 ```TypeScript
@@ -1709,7 +1749,7 @@ sendKeyFunction(action: number, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | action | number | 是 | 功能键键值。<br/>- 当值为0时，表示无效按键。<br/>- 当值为1时，表示确认键（即回车键）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当功能键发送成功，err为undefined，data为true；当功能键发送失败，err为undefined，data为false；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当功能键发送成功，err为undefined，data为true；当功能键发送失败，err为undefined，data为false；否则为错误对象。 |
 
 **错误码：**
 
@@ -1739,6 +1779,7 @@ inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
 
 ```
 
+<a id="sendkeyfunction-1"></a>
 ## sendKeyFunction
 
 ```TypeScript
@@ -1763,7 +1804,7 @@ sendKeyFunction(action: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。resolve返回true表示功能键发送成功；resolve返回false表示功能键发送失败；reject时抛出错误对象，表示执行过程中发生错误。 |
+| Promise&lt;boolean&gt; | Promise对象。resolve返回true表示功能键发送成功；resolve返回false表示功能键发送失败；reject时抛出错误对象，表示执行过程中发生错误。 |
 
 **错误码：**
 
@@ -1790,6 +1831,7 @@ inputClient.sendKeyFunction(action).then((result: boolean) => {
 
 ```
 
+<a id="sendmessage"></a>
 ## sendMessage
 
 ```TypeScript
@@ -1809,13 +1851,13 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | msgId | string | 是 | 需要发送至已绑定当前输入法应用的编辑框应用的自定义数据的标识符。最大长度256字节。最大长度256字节。 |
-| msgParam | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 否 | 需要发送至已绑定当前输入法应用的编辑框应用的自定义数据的消息体。 |
+| msgParam | ArrayBuffer | 否 | 需要发送至已绑定当前输入法应用的编辑框应用的自定义数据的消息体。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1843,6 +1885,7 @@ inputClient.sendMessage(msgId, msgParam).then(() => {
 
 ```
 
+<a id="sendprivatecommand"></a>
 ## sendPrivateCommand
 
 ```TypeScript
@@ -1861,13 +1904,13 @@ sendPrivateCommand(commandData: Record<string, CommandDataType>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| commandData | Record<string, CommandDataType> | 是 | 私有数据。 |
+| commandData | Record&lt;string, CommandDataType&gt; | 是 | 私有数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1898,6 +1941,7 @@ inputMethodEngine.getInputMethodAbility().on('inputStart', (kbController, textIn
 
 ```
 
+<a id="setpreviewtext"></a>
 ## setPreviewText
 
 ```TypeScript
@@ -1923,7 +1967,7 @@ setPreviewText(text: string, range: Range): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1949,6 +1993,7 @@ inputClient.setPreviewText('test', range).then(() => {
 
 ```
 
+<a id="setpreviewtextsync"></a>
 ## setPreviewTextSync
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
+<a id="turnonwifi"></a>
 ## turnOnWifi
 
 ```TypeScript

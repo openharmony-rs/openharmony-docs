@@ -6,6 +6,7 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
+<a id="updateconnectstatus"></a>
 ## updateConnectStatus
 
 ```TypeScript
@@ -48,7 +49,7 @@ function updateConnectStatus(
 | token | number | 是 | 注册后的token。 |
 | deviceId | string | 是 | 设备ID。 |
 | status | [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 是 | 设备连接状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **示例：**
 
@@ -68,6 +69,7 @@ continuationManager.updateConnectStatus(token, deviceId, continuationManager.Dev
 ```
 
 
+<a id="updateconnectstatus-1"></a>
 ## updateConnectStatus
 
 ```TypeScript
@@ -100,7 +102,7 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise形式返回接口调用结果。 |
+| Promise&lt;void&gt; | Promise形式返回接口调用结果。 |
 
 **示例：**
 

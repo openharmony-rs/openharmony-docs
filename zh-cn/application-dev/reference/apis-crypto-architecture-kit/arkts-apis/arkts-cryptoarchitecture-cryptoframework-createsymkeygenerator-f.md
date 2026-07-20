@@ -6,6 +6,7 @@
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
 
+<a id="createsymkeygenerator"></a>
 ## createSymKeyGenerator
 
 ```TypeScript
@@ -14,7 +15,7 @@ function createSymKeyGenerator(algName: string): SymKeyGenerator
 
 通过指定算法名称获取相应的对称密钥生成器实例。
 
-支持的规格详见[对称密钥生成和转换规格](../../../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)。
+支持的规格详见[对称密钥生成和转换规格](docroot://security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)。
 
 **起始版本：** 9
 
@@ -30,7 +31,7 @@ function createSymKeyGenerator(algName: string): SymKeyGenerator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algName | string | 是 | 待生成对称密钥生成器的算法名称。<br>具体取值详见[对称密钥生成和转换规格](../../../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。 |
+| algName | string | 是 | 待生成对称密钥生成器的算法名称。<br>具体取值详见[对称密钥生成和转换规格](docroot://security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。 |
 
 **返回值：**
 

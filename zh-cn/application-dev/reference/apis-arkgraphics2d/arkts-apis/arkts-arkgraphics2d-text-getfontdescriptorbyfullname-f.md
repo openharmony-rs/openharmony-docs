@@ -6,6 +6,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="getfontdescriptorbyfullname"></a>
 ## getFontDescriptorByFullName
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FontDescriptor> | Promise对象，返回指定的字体描述符。 |
+| Promise&lt;FontDescriptor&gt; | Promise对象，返回指定的字体描述符。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="off"></a>
 ## off('checkNotification')
 
 ```TypeScript
@@ -38,7 +39,7 @@ function off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'checkNotification' | 是 | 回调函数类型名，固定为'checkNotification'。 |
-| callback | (checkInfo: NotificationCheckInfo) => NotificationCheckResult | 否 | 消息验证函数指针。 |
+| callback | (checkInfo: NotificationCheckInfo) =&gt; NotificationCheckResult | 否 | 消息验证函数指针。 |
 
 **错误码：**
 

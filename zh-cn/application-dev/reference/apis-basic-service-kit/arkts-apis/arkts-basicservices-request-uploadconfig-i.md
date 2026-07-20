@@ -38,7 +38,7 @@ data: Array<RequestData>
 
 请求的表单数据。
 
-**类型：** Array<RequestData>
+**类型：** Array&lt;RequestData&gt;
 
 **起始版本：** 6
 
@@ -70,7 +70,7 @@ files: Array<File>
 
 要上传的文件列表。文件以HTTP的multipart/form-data格式提交。
 
-**类型：** Array<File>
+**类型：** Array&lt;File&gt;
 
 **起始版本：** 6
 
@@ -132,7 +132,7 @@ HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用P
 url: string
 ```
 
-资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../../../basic-services/request/app-file-upload-download.md#http拦截)功能。
+资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](docroot://basic-services/request/app-file-upload-download.md#http拦截)功能。
 
 **类型：** string
 

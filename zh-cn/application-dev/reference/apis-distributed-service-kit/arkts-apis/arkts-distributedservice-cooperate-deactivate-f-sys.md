@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="deactivate"></a>
 ## deactivate
 
 ```TypeScript
@@ -18,7 +19,7 @@ function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** deactivateCooperate(isUnchained:
+**替代接口：** [deactivateCooperate(isUnchained:](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)
 
 <!--Device-cooperate-function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void--><!--Device-cooperate-function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -31,7 +32,7 @@ function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isUnchained | boolean | 是 | 是否关闭跨设备链路。<br> true表示关闭跨设备链路，false表示不关闭。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，键鼠穿越停止成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，键鼠穿越停止成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ try {
 ```
 
 
+<a id="deactivate-1"></a>
 ## deactivate
 
 ```TypeScript
@@ -72,7 +74,7 @@ function deactivate(isUnchained: boolean): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** deactivateCooperate(isUnchained:
+**替代接口：** [deactivateCooperate(isUnchained:](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)
 
 <!--Device-cooperate-function deactivate(isUnchained: boolean): Promise<void>--><!--Device-cooperate-function deactivate(isUnchained: boolean): Promise<void>-End-->
 
@@ -90,7 +92,7 @@ function deactivate(isUnchained: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

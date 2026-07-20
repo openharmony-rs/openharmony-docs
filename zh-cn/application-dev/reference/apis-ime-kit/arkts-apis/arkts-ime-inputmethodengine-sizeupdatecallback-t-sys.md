@@ -18,6 +18,6 @@ export type SizeUpdateCallback = (size: window.Size, keyboardArea: KeyboardArea)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | window.Size | 是 | 当前面板大小，包含宽度和高度。 |
-| keyboardArea | KeyboardArea | 是 | 当前面板的键盘区域大小。 |
+| size | window.Size | 是 | 当前面板大小，包含宽度和高度。  |
+| keyboardArea | [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md) | 是 | 当前面板的键盘区域大小。  |
 

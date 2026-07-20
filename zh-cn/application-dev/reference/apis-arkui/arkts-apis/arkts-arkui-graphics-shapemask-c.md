@@ -8,6 +8,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -26,6 +27,7 @@ ShapeMask的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="setcircleshape"></a>
 ## setCircleShape
 
 ```TypeScript
@@ -50,6 +52,7 @@ setCircleShape(circle: Circle): void
 | --- | --- | --- | --- |
 | circle | [Circle](arkts-arkui-graphics-circle-i.md) | 是 | 圆形的形状。 |
 
+<a id="setcommandpath"></a>
 ## setCommandPath
 
 ```TypeScript
@@ -74,6 +77,7 @@ setCommandPath(path: CommandPath): void
 | --- | --- | --- | --- |
 | path | [CommandPath](arkts-arkui-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
 
+<a id="setovalshape"></a>
 ## setOvalShape
 
 ```TypeScript
@@ -98,6 +102,7 @@ setOvalShape(oval: Rect): void
 | --- | --- | --- | --- |
 | oval | [Rect](../../apis-test-kit/arkts-apis/arkts-test-uitest-rect-i.md) | 是 | 椭圆形的形状。 |
 
+<a id="setrectshape"></a>
 ## setRectShape
 
 ```TypeScript
@@ -122,6 +127,7 @@ setRectShape(rect: Rect): void
 | --- | --- | --- | --- |
 | rect | [Rect](../../apis-test-kit/arkts-apis/arkts-test-uitest-rect-i.md) | 是 | 矩形的形状。 |
 
+<a id="setroundrectshape"></a>
 ## setRoundRectShape
 
 ```TypeScript

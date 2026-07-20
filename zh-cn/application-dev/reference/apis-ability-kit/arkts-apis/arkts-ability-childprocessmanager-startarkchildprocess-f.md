@@ -6,13 +6,14 @@
 import { childProcessManager } from '@kit.AbilityKit';
 ```
 
+<a id="startarkchildprocess"></a>
 ## startArkChildProcess
 
 ```TypeScript
 function startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<number>
 ```
 
-启动[ArkTS子进程](../../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+启动[ArkTS子进程](docroot://application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
 > **说明：**  
 >  
@@ -41,7 +42,7 @@ function startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回子进程pid。 |
+| Promise&lt;number&gt; | Promise对象，返回子进程pid。 |
 
 **错误码：**
 

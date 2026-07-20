@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedrunningbundlessync"></a>
 ## getDisallowedRunningBundlesSync
 
 ```TypeScript
@@ -29,13 +30,13 @@ function getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| accountId | number | 否 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)等接口来获取。<br/>  - 调用接口时，若传入accountId，表示指定用户。<br/> - 调用接口时，若未传入accountId，表示当前用户。 |
+| accountId | number | 否 | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)等接口来获取。<br/>   - 调用接口时，若传入accountId，表示指定用户。<br/> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 返回当前/指定用户下的应用运行禁止名单。<br/>**说明：** API version 20及之前版本，返回值为应用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)列表。从API version 21版本开始，返回值为应用[appId](../../../../quick-start/common-problem-of-application.md#什么是appid)或[appIdentifier](../../../../quick-start/common-problem-of-application.md#什么是appidentifier)列表。 |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用运行禁止名单。<br/>**说明：** API version 20及之前版本，返回值为应用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)列表。从API version 21版本开始，返回值为应用[appId](docroot://quick-start/common-problem-of-application.md#什么是appid)或[appIdentifier](docroot://quick-start/common-problem-of-application.md#什么是appidentifier)列表。 |
 
 **错误码：**
 

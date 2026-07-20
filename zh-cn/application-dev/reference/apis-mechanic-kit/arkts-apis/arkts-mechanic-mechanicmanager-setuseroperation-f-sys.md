@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="setuseroperation"></a>
 ## setUserOperation
 
 ```TypeScript

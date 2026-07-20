@@ -14,6 +14,7 @@ class PromptAction
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="closecustomdialog"></a>
 ## closeCustomDialog
 
 ```TypeScript
@@ -36,13 +37,13 @@ Closes a custom dialog box corresponding to dialogContent. This API uses a promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content of the custom dialog box. |
+| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content of the custom dialog box. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -52,6 +53,7 @@ Closes a custom dialog box corresponding to dialogContent. This API uses a promi
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
+<a id="closecustomdialog-1"></a>
 ## closeCustomDialog
 
 ```TypeScript
@@ -83,6 +85,7 @@ Close the custom dialog.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="closemenu"></a>
 ## closeMenu
 
 ```TypeScript
@@ -105,13 +108,13 @@ Close menu with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content displayed in the menu. |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the menu. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -121,6 +124,7 @@ Close menu with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | The ComponentContent cannot be found. |
 
+<a id="closepopup"></a>
 ## closePopup
 
 ```TypeScript
@@ -143,13 +147,13 @@ Close popup with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content displayed in the popup. |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the popup. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -159,6 +163,7 @@ Close popup with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | The ComponentContent cannot be found. |
 
+<a id="closetoast"></a>
 ## closeToast
 
 ```TypeScript
@@ -191,6 +196,7 @@ Close the notification text.
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [103401](../errorcode-promptAction.md#103401-无法找到对应的文本提示框) | Cannot find the toast. |
 
+<a id="getbottomorder"></a>
 ## getBottomOrder
 
 ```TypeScript
@@ -215,6 +221,7 @@ Get order value of bottom dialog.
 | --- | --- |
 | [LevelOrder](arkts-arkui-levelorder-t.md) | Order of the topmost dialog box. |
 
+<a id="gettoporder"></a>
 ## getTopOrder
 
 ```TypeScript
@@ -239,6 +246,7 @@ Get order value of top dialog.
 | --- | --- |
 | [LevelOrder](arkts-arkui-levelorder-t.md) | Order of the topmost dialog box. |
 
+<a id="opencustomdialog"></a>
 ## openCustomDialog
 
 ```TypeScript
@@ -261,14 +269,14 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | 自定义对话框的内容。 |
+| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | 自定义对话框的内容。 |
 | options | promptAction.BaseDialogOptions | 否 | 选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 函数返回的promise。 |
+| Promise&lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 
@@ -278,6 +286,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103302](../errorcode-promptAction.md#103302-内容节点对应自定义弹窗已存在) | Dialog content already exist. The ComponentContent has already been opened. |
 
+<a id="opencustomdialog-1"></a>
 ## openCustomDialog
 
 ```TypeScript
@@ -308,7 +317,7 @@ isModal = true和showInSubWindow = true不能同时使用。* @param { promptAct
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | 返回将由closeCustomDialog使用的对话框ID。 |
+| Promise&lt;number&gt; | 返回将由closeCustomDialog使用的对话框ID。 |
 
 **错误码：**
 
@@ -317,6 +326,7 @@ isModal = true和showInSubWindow = true不能同时使用。* @param { promptAct
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="opencustomdialogwithcontroller"></a>
 ## openCustomDialogWithController
 
 ```TypeScript
@@ -344,7 +354,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | 自定义对话框的内容。 |
+| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | 自定义对话框的内容。 |
 | controller | promptAction.DialogController | 是 | 对话框控制器。 |
 | options | promptAction.BaseDialogOptions | 否 | 选项。 |
 
@@ -352,7 +362,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 函数返回的promise。 |
+| Promise&lt;void&gt; | 函数返回的promise。 |
 
 **错误码：**
 
@@ -362,6 +372,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103302](../errorcode-promptAction.md#103302-内容节点对应自定义弹窗已存在) | Dialog content already exist. The ComponentContent has already been opened. |
 
+<a id="openmenu"></a>
 ## openMenu
 
 ```TypeScript
@@ -384,15 +395,15 @@ Open menu with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content displayed in the menu. |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the menu. |
 | target | [TargetInfo](arkts-arkui-arkui-uicontext-targetinfo-i.md) | 是 | Information about the target component to bind. |
-| options | [MenuOptions](../arkts-components/arkts-arkui-common-menuoptions-i.md) | 否 | Style of the menu.<br>**NOTE**<br>The **title** property is not effective.<br>The **preview** parameter supports only the **MenuPreviewMode** type. |
+| options | [MenuOptions](../arkts-components/arkts-arkui-menuoptions-i.md) | 否 | Style of the menu.<br>**NOTE**<br>The **title** property is not effective.<br>The **preview** parameter supports only the **MenuPreviewMode** type. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -404,6 +415,7 @@ Open menu with frameNode.
 | [103304](../errorcode-promptAction.md#103304-指定的targetid不存在) | The targetId does not exist. |
 | [103305](../errorcode-promptAction.md#103305-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 
+<a id="openpopup"></a>
 ## openPopup
 
 ```TypeScript
@@ -426,15 +438,15 @@ Open popup with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content displayed in the popup. |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the popup. |
 | target | [TargetInfo](arkts-arkui-arkui-uicontext-targetinfo-i.md) | 是 | Information about the target component to bind. |
-| options | [PopupCommonOptions](../arkts-components/arkts-arkui-common-popupcommonoptions-i.md) | 否 | Style of the popup. |
+| options | [PopupCommonOptions](../arkts-components/arkts-arkui-popupcommonoptions-i.md) | 否 | Style of the popup. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -446,6 +458,7 @@ Open popup with frameNode.
 | [103304](../errorcode-promptAction.md#103304-指定的targetid不存在) | The targetId does not exist. |
 | [103305](../errorcode-promptAction.md#103305-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 
+<a id="opentoast"></a>
 ## openToast
 
 ```TypeScript
@@ -474,7 +487,7 @@ Displays the notification text.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise that returns the toast ID for use with **closeToast**. |
+| Promise&lt;number&gt; | Promise that returns the toast ID for use with **closeToast**. |
 
 **错误码：**
 
@@ -483,6 +496,7 @@ Displays the notification text.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="presentcustomdialog"></a>
 ## presentCustomDialog
 
 ```TypeScript
@@ -510,7 +524,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | CustomBuilder \| CustomBuilderWithId | 是 | 对话框生成器。 |
+| builder | [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) \| CustomBuilderWithId | 是 | 对话框生成器。 |
 | controller | promptAction.DialogController | 否 | Controller of the custom dialog box.<br>**起始版本：** 26.0.0 |
 | options | promptAction.DialogOptions | 否 | Style of the custom dialog box.<br>Note: If both [isModal](arkts-arkui-promptaction-basedialogoptions-i.md)and [showInSubWindow](arkts-arkui-promptaction-basedialogoptions-i.md) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.<br>**起始版本：** 26.0.0 |
 
@@ -518,7 +532,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise Promise used to return the custom dialog box ID. |
+| Promise&lt;number&gt; | Promise Promise used to return the custom dialog box ID. |
 
 **错误码：**
 
@@ -527,6 +541,7 @@ isModal = true和showInSubWindow = true不能同时使用。
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="showactionmenu"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -559,6 +574,7 @@ Shows an action menu in the given settings. This API uses an asynchronous callba
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="showactionmenu-1"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -582,7 +598,7 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | promptAction.ActionMenuOptions | 是 | 操作菜单选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<promptAction.ActionMenuSuccessResponse> | 是 | 用于返回操作的回调菜单响应结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;promptAction.ActionMenuSuccessResponse&gt; | 是 | 用于返回操作的回调菜单响应结果。 |
 
 **错误码：**
 
@@ -591,6 +607,7 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="showactionmenu-2"></a>
 ## showActionMenu
 
 ```TypeScript
@@ -619,7 +636,7 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.Ac
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<promptAction.ActionMenuSuccessResponse> | callback - Promise that returns the action menu response. |
+| Promise&lt;promptAction.ActionMenuSuccessResponse&gt; | callback - Promise that returns the action menu response. |
 
 **错误码：**
 
@@ -628,6 +645,7 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.Ac
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="showdialog"></a>
 ## showDialog
 
 ```TypeScript
@@ -651,7 +669,7 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | promptAction.ShowDialogOptions | 是 | 选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<promptAction.ShowDialogSuccessResponse> | 是 | showDialog的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;promptAction.ShowDialogSuccessResponse&gt; | 是 | showDialog的回调。 |
 
 **错误码：**
 
@@ -660,6 +678,7 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<prom
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="showdialog-1"></a>
 ## showDialog
 
 ```TypeScript
@@ -688,7 +707,7 @@ showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<promptAction.ShowDialogSuccessResponse> | Promise that returns the dialog box response. |
+| Promise&lt;promptAction.ShowDialogSuccessResponse&gt; | Promise that returns the dialog box response. |
 
 **错误码：**
 
@@ -697,6 +716,7 @@ showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDi
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="showtoast"></a>
 ## showToast
 
 ```TypeScript
@@ -728,6 +748,7 @@ Displays the notification text.
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
+<a id="updatecustomdialog"></a>
 ## updateCustomDialog
 
 ```TypeScript
@@ -750,14 +771,14 @@ Update the custom dialog with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content of the custom dialog box. |
+| dialogContent | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content of the custom dialog box. |
 | options | promptAction.BaseDialogOptions | 是 | Dialog box style. Currently,only **alignment**, **offset**, **autoCancel**, and **maskColor** can be updated. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -767,6 +788,7 @@ Update the custom dialog with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
+<a id="updatemenu"></a>
 ## updateMenu
 
 ```TypeScript
@@ -789,15 +811,15 @@ Update menu with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content displayed in the menu. |
-| options | [MenuOptions](../arkts-components/arkts-arkui-common-menuoptions-i.md) | 是 | Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported:**showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**,**onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](../arkts-components/arkts-arkui-common-menumasktype-i.md).However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value. |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the menu. |
+| options | [MenuOptions](../arkts-components/arkts-arkui-menuoptions-i.md) | 是 | Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported:**showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**,**onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](../arkts-components/arkts-arkui-menumasktype-i.md).However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value. |
 | partialUpdate | boolean | 否 | Whether to update the menu in incremental mode. Default value: **false**.<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -807,6 +829,7 @@ Update menu with frameNode.
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | The ComponentContent cannot be found. |
 
+<a id="updatepopup"></a>
 ## updatePopup
 
 ```TypeScript
@@ -829,15 +852,15 @@ Update popup with frameNode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)<T> | 是 | Content displayed in the popup. |
-| options | [PopupCommonOptions](../arkts-components/arkts-arkui-common-popupcommonoptions-i.md) | 是 | Style of the popup.<br>**NOTE**<br>Updating the following properties is not supported: **showInSubWindow**, **focusable**, **onStateChange**,**onWillDismiss**, and **transition**. |
+| content | [ComponentContent](../arkts-components/arkts-arkui-componentcontent-t.md)&lt;T&gt; | 是 | Content displayed in the popup. |
+| options | [PopupCommonOptions](../arkts-components/arkts-arkui-popupcommonoptions-i.md) | 是 | Style of the popup.<br>**NOTE**<br>Updating the following properties is not supported: **showInSubWindow**, **focusable**, **onStateChange**,**onWillDismiss**, and **transition**. |
 | partialUpdate | boolean | 否 | Whether to update the popup in incremental mode.<br>Default value: **false**<br>**NOTE**<br>**true**: Incremental update. Only specified attributes in **options** are updated, and the other attributes retain their current values. If the attribute value passed in **options** is invalid or **undefined**,the attribute is not updated.<br>**false**: Full update. Specified attributes in **options** are updated,and the other attributes are restored to their default values. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

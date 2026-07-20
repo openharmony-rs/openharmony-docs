@@ -6,6 +6,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getallvolumes"></a>
 ## getAllVolumes
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAllVolumes(callback: AsyncCallback<Array<Volume>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Volume>> | 是 | 获取当前所有可获得的卷设备信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Volume&gt;&gt; | 是 | 获取当前所有可获得的卷设备信息之后的回调。 |
 
 **错误码：**
 
@@ -41,6 +42,7 @@ function getAllVolumes(callback: AsyncCallback<Array<Volume>>): void
 | 13900042 | Unknown error. |
 
 
+<a id="getallvolumes-1"></a>
 ## getAllVolumes
 
 ```TypeScript
@@ -63,7 +65,7 @@ function getAllVolumes(): Promise<Array<Volume>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Volume>> | Promise对象，返回当前所有可获得的卷设备信息。 |
+| Promise&lt;Array&lt;Volume&gt;&gt; | Promise对象，返回当前所有可获得的卷设备信息。 |
 
 **错误码：**
 

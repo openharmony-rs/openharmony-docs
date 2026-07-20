@@ -6,6 +6,7 @@
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 
+<a id="off"></a>
 ## off('systemLoadChange')
 
 ```TypeScript
@@ -25,7 +26,7 @@ function off(type: 'systemLoadChange', callback?: Callback<SystemLoadLevel>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'systemLoadChange' | 是 | 固定取值'systemLoadChange'，系统负载变化类型。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<SystemLoadLevel> | 否 | 回调函数，返回本次取消注册系统负载时的系统负载融合档位。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;SystemLoadLevel&gt; | 否 | 回调函数，返回本次取消注册系统负载时的系统负载融合档位。 |
 
 **错误码：**
 

@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -57,6 +58,7 @@ static create(blurRadius: number, x: number, y: number, color: common2D.Color): 
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="create-1"></a>
 ## create
 
 ```TypeScript

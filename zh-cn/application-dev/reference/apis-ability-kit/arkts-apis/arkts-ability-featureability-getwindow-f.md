@@ -6,6 +6,7 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="getwindow"></a>
 ## getWindow
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getWindow(callback: AsyncCallback<window.Window>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<window.Window> | 是 | 回调函数，返回当前Ability对应的窗口。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;window.Window&gt; | 是 | 回调函数，返回当前Ability对应的窗口。 |
 
 **示例：**
 
@@ -47,6 +48,7 @@ featureAbility.getWindow((error: BusinessError, data: window.Window) => {
 ```
 
 
+<a id="getwindow-1"></a>
 ## getWindow
 
 ```TypeScript
@@ -67,7 +69,7 @@ function getWindow(): Promise<window.Window>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<window.Window> | Promise对象，返回当前Ability对应的窗口。 |
+| Promise&lt;window.Window&gt; | Promise对象，返回当前Ability对应的窗口。 |
 
 **示例：**
 

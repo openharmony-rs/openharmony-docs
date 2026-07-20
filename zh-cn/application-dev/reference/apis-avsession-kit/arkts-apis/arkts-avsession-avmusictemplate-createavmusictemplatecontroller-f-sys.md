@@ -6,6 +6,7 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
+<a id="createavmusictemplatecontroller"></a>
 ## createAVMusicTemplateController
 
 ```TypeScript

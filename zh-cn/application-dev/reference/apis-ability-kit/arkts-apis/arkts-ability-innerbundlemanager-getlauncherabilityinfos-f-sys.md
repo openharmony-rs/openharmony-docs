@@ -6,6 +6,7 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
+<a id="getlauncherabilityinfos"></a>
 ## getLauncherAbilityInfos
 
 ```TypeScript
@@ -25,7 +26,7 @@ function getLauncherAbilityInfos(bundleName: string,
 
 **废弃版本：** 9
 
-**替代接口：** getLauncherAbilityInfo(bundleName:
+**替代接口：** [getLauncherAbilityInfo(bundleName:](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md#getlauncherabilityinfo-1)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -43,9 +44,10 @@ function getLauncherAbilityInfos(bundleName: string,
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
 | userId | number | 是 | 用户ID。取值范围：大于等于0。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<LauncherAbilityInfo>> | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
 
 
+<a id="getlauncherabilityinfos-1"></a>
 ## getLauncherAbilityInfos
 
 ```TypeScript
@@ -64,7 +66,7 @@ function getLauncherAbilityInfos(bundleName: string, userId: number): Promise<Ar
 
 **废弃版本：** 9
 
-**替代接口：** getLauncherAbilityInfo(bundleName:
+**替代接口：** [getLauncherAbilityInfo(bundleName:](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md#getlauncherabilityinfo-1)
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -85,5 +87,5 @@ function getLauncherAbilityInfos(bundleName: string, userId: number): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<LauncherAbilityInfo>> | Promise形式返回程序信息。 |
+| Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt; | Promise形式返回程序信息。 |
 

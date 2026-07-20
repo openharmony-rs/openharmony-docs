@@ -18,11 +18,11 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise<CustomElemen
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| queryType | CustomType[] | 是 | 自定义类型：包含用户基本信息、界面选项卡配置、代码编译选项和系统设置项。 |
+| queryType | [CustomType](arkts-avsession-avmusictemplate-customtype-t.md)[] | 是 | 自定义类型：包含用户基本信息、界面选项卡配置、代码编译选项和系统设置项。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;CustomElement&gt; | Promise对象，返回我的页面的自定义元素。 |
+| Promise&lt;CustomElement&gt; | Promise对象，返回我的页面的自定义元素。  |
 

@@ -6,6 +6,7 @@
 import { securityLabel } from '@kit.CoreFileKit';
 ```
 
+<a id="setsecuritylabel"></a>
 ## setSecurityLabel
 
 ```TypeScript
@@ -31,7 +32,7 @@ function setSecurityLabel(path: string, type: DataLevel): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise实例，用于异步获取结果。本调用将返回空值。 |
+| Promise&lt;void&gt; | Promise实例，用于异步获取结果。本调用将返回空值。 |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ securityLabel.setSecurityLabel(filePath, "s0").then(() => {
 ```
 
 
+<a id="setsecuritylabel-1"></a>
 ## setSecurityLabel
 
 ```TypeScript
@@ -80,7 +82,7 @@ function setSecurityLabel(path: string, type: DataLevel, callback: AsyncCallback
 | --- | --- | --- | --- |
 | path | string | 是 | 文件路径。 |
 | type | [DataLevel](arkts-corefile-securitylabel-datalevel-t.md) | 是 | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置数据安全等级之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置数据安全等级之后的回调。 |
 
 **错误码：**
 

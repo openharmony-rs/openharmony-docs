@@ -1,6 +1,6 @@
 # Curve
 
-插值曲线和动效请参考<!--RP1-->[贝塞尔曲线](../../../../../design/ux-design/animation-attributes.md)<!--RP1End-->。
+插值曲线和动效请参考<!--RP1-->[贝塞尔曲线](docroot://../design/ux-design/animation-attributes.md)<!--RP1End-->。
 
 | 名称 | 值 | 说明 |  
 | ------------------- | -- | ------------------------------------------------------------ |  

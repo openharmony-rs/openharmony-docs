@@ -20,8 +20,8 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create-1) | 创建标准色域对象。 |
-| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create-2) | 创建用户自定义色域对象。 |
+| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create) | 创建标准色域对象。 |
+| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create-1) | 创建用户自定义色域对象。 |
 
 ### 接口
 

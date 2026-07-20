@@ -14,7 +14,7 @@
 UNSPECIFIED = 0
 ```
 
-未指定类型，表示[multiAppMode配置](../../../../quick-start/app-configuration-file.md#multiappmode标签)未配置时的默认状态。
+未指定类型，表示[multiAppMode配置](docroot://quick-start/app-configuration-file.md#multiappmode标签)未配置时的默认状态。
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ UNSPECIFIED = 0
 MULTI_INSTANCE = 1
 ```
 
-[多实例模式](../../../../quick-start/multiInstance.md)。常驻进程不支持该字段。
+[多实例模式](docroot://quick-start/multiInstance.md)。常驻进程不支持该字段。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ MULTI_INSTANCE = 1
 APP_CLONE = 2
 ```
 
-[分身模式](../../../../quick-start/app-clone.md)。
+[分身模式](docroot://quick-start/app-clone.md)。
 
 **起始版本：** 12
 

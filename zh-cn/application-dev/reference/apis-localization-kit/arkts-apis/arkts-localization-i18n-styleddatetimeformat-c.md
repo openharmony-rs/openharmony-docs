@@ -14,6 +14,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -78,6 +79,7 @@ try {
 
 ```
 
+<a id="format"></a>
 ## format
 
 ```TypeScript
@@ -104,7 +106,7 @@ format(date: Date): StyledString
 
 | 类型 | 说明 |
 | --- | --- |
-| [StyledString](../../apis-arkui/arkts-apis/arkts-arkui-styled-string-styledstring-c.md) | 格式化后的富文本对象。 |
+| [StyledString](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-c.md) | 格式化后的富文本对象。 |
 
 **示例：**
 

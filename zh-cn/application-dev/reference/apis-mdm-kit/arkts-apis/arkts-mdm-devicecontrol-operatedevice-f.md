@@ -6,6 +6,7 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
+<a id="operatedevice"></a>
 ## operateDevice
 
 ```TypeScript
@@ -29,8 +30,8 @@ function operateDevice(admin: Want, operate: string, addition?: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| operate | string | 是 | 要执行的操作。<br/>- resetFactory：设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。<br/>- reboot：设备重启。<br/>- shutDown：设备关机。<br/>- lockScreen：设备锁屏。 &lt;!--RP1--&gt;&lt;!--RP1End--&gt; |
-| addition | string | 否 | &lt;!--RP2--&gt;执行时附加参数。目前无需传入。&lt;!--RP2End--&gt; |
+| operate | string | 是 | 要执行的操作。<br/>- resetFactory：设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。<br/>- reboot：设备重启。<br/>- shutDown：设备关机。<br/>- lockScreen：设备锁屏。 <!--RP1--><!--RP1End--> |
+| addition | string | 否 | <!--RP2-->执行时附加参数。目前无需传入。<!--RP2End--> |
 
 **错误码：**
 

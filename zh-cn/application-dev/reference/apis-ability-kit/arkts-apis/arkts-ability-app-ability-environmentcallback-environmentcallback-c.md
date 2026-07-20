@@ -14,13 +14,14 @@ EnvironmentCallback模块提供对系统环境变化监听回调的能力。
 import { EnvironmentCallback } from '@kit.AbilityKit';
 ```
 
+<a id="onconfigurationupdated"></a>
 ## onConfigurationUpdated
 
 ```TypeScript
 onConfigurationUpdated(config: Configuration): void
 ```
 
-[注册系统环境变化的监听](arkts-ability-applicationcontext-c.md#on-2)后，在系统环境变化时触发回调。
+[注册系统环境变化的监听](./application/ApplicationContext:ApplicationContext.on(type: 'environment', callback: EnvironmentCallback))后，在系统环境变化时触发回调。
 
 **起始版本：** 9
 
@@ -36,19 +37,20 @@ onConfigurationUpdated(config: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-common-configuration-i.md) | 是 | 变化后的Configuration对象。 |
+| config | [Configuration](../../apis-arkui/arkts-components/arkts-arkui-configuration-i.md) | 是 | 变化后的Configuration对象。 |
 
 **示例：**
 
 参见[EnvironmentCallback使用](#environmentcallback使用)。
 
+<a id="onmemorylevel"></a>
 ## onMemoryLevel
 
 ```TypeScript
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 ```
 
-[注册系统环境变化的监听](arkts-ability-applicationcontext-c.md#on-2)后，在系统内存变化时触发回调。
+[注册系统环境变化的监听](./application/ApplicationContext:ApplicationContext.on(type: 'environment', callback: EnvironmentCallback))后，在系统内存变化时触发回调。
 
 **起始版本：** 9
 

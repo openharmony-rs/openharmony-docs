@@ -14,6 +14,7 @@ Deque（double ended queue）是基于队列数据结构实现的序列容器，
 import { Deque } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -34,7 +35,7 @@ import { Deque } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
+| IterableIterator&lt;T&gt; | @throws { BusinessError } 10200011 - The Symbol.iterator method cannot be bound. |
 
 **错误码：**
 
@@ -80,6 +81,7 @@ value:2
 
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -110,6 +112,7 @@ let deque = new Deque<string | number | boolean | Object>();
 
 ```
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -130,7 +133,7 @@ forEach(callbackFn: (value: T, index?: number, deque?: Deque<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, deque?: Deque<T>) => void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, deque?: Deque&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**
@@ -161,6 +164,7 @@ deque.forEach((value: number, index: number): void => {
 
 ```
 
+<a id="getfirst"></a>
 ## getFirst
 
 ```TypeScript
@@ -188,7 +192,7 @@ getFirst(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirst method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -205,6 +209,7 @@ console.info("result:", result);  // result: 4
 
 ```
 
+<a id="getlast"></a>
 ## getLast
 
 ```TypeScript
@@ -232,7 +237,7 @@ getLast(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLast method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -249,6 +254,7 @@ console.info("result:", result);  // result: 2
 
 ```
 
+<a id="has"></a>
 ## has
 
 ```TypeScript
@@ -296,6 +302,7 @@ console.info("result:", result);  // result: true
 
 ```
 
+<a id="insertend"></a>
 ## insertEnd
 
 ```TypeScript
@@ -347,6 +354,7 @@ console.info("result:", deque[0]);  // result: a
 
 ```
 
+<a id="insertfront"></a>
 ## insertFront
 
 ```TypeScript
@@ -398,6 +406,7 @@ console.info("result:", deque[0]);  // result: false
 
 ```
 
+<a id="popfirst"></a>
 ## popFirst
 
 ```TypeScript
@@ -425,7 +434,7 @@ popFirst(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The popFirst method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -443,6 +452,7 @@ console.info("result:", result);  // result: 4
 
 ```
 
+<a id="poplast"></a>
 ## popLast
 
 ```TypeScript
@@ -470,7 +480,7 @@ popLast(): T
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The popLast method cannot be bound. |
-| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 

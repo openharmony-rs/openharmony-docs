@@ -18,6 +18,7 @@
 import { distributedDataObject } from '@kit.ArkData';
 ```
 
+<a id="off"></a>
 ## off('change')
 
 ```TypeScript
@@ -41,7 +42,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
-| callback | (sessionId: string, fields: Array<string>) => void | 否 | 需要删除的数据变更回调，若不设置则删除该对象所有的数据变更回调。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
+| callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 否 | 需要删除的数据变更回调，若不设置则删除该对象所有的数据变更回调。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
 
 **示例：**
 
@@ -74,6 +75,7 @@ g_object.off('change');
 
 ```
 
+<a id="off-1"></a>
 ## off('status')
 
 ```TypeScript
@@ -106,7 +108,7 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **示例：**
 
@@ -134,6 +136,7 @@ g_object.off('status');
 
 ```
 
+<a id="on"></a>
 ## on('change')
 
 ```TypeScript
@@ -157,7 +160,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
-| callback | (sessionId: string, fields: Array<string>) => void | 是 | 变更回调对象实例。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
+| callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 是 | 变更回调对象实例。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
 
 **示例：**
 
@@ -187,6 +190,7 @@ g_object.on('change', (sessionId: string, fields: Array<string>) => {
 
 ```
 
+<a id="on-1"></a>
 ## on('status')
 
 ```TypeScript
@@ -219,7 +223,7 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) =&gt; void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：标识对象设备；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **示例：**
 
@@ -245,6 +249,7 @@ g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 
 
 ```
 
+<a id="setsessionid"></a>
 ## setSessionId
 
 ```TypeScript
@@ -257,7 +262,7 @@ setSessionId(sessionId?: string): boolean
 
 **废弃版本：** 9
 
-**替代接口：** setSessionId(sessionId:
+**替代接口：** [setSessionId(sessionId:](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid-1)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 

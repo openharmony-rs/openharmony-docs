@@ -22,7 +22,7 @@ readonly creaseRects: Array<Rect>
 
 折痕区域。
 
-**类型：** Array<Rect>
+**类型：** Array&lt;Rect&gt;
 
 **起始版本：** 10
 

@@ -20,11 +20,11 @@ Define the function of WithThemeInterface.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | WithThemeOptions | 是 |  |
+| options | [WithThemeOptions](arkts-arkui-withthemeoptions-i.md) | 是 |  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| WithThemeAttribute | withThemeAttribute object |
+| [WithThemeAttribute](arkts-arkui-withthemeattribute-c.md) | withThemeAttribute object  |
 

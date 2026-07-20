@@ -30,7 +30,7 @@ Search(options?: SearchOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | SearchOptions | 否 | 搜索框组件初始化选项 |
+| options | [SearchOptions](arkts-arkui-searchoptions-i.md) | 否 | 搜索框组件初始化选项 |
 
 ## 汇总
 

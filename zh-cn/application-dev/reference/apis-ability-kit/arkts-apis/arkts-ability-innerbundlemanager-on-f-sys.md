@@ -6,6 +6,7 @@
 import { BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
+<a id="on"></a>
 ## on('BundleStatusChange')
 
 ```TypeScript
@@ -18,7 +19,7 @@ function on(type: 'BundleStatusChange',
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1)  
+> [on](@ohos.bundle.bundleMonitor:bundleMonitor.on(type: BundleChangedEvent, callback: Callback<BundleChangedInfo>))  
 > 替代。
 
 **起始版本：** 8
@@ -43,9 +44,10 @@ function on(type: 'BundleStatusChange',
 | --- | --- | --- | --- |
 | type | 'BundleStatusChange' | 是 | 指示应执行命令，只支持BundleStatusChange。 |
 | bundleStatusCallback | [BundleStatusCallback](arkts-ability-bundlestatuscallback-t-sys.md) | 是 | 指示要注册的回调。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
 
 
+<a id="on-1"></a>
 ## on('BundleStatusChange')
 
 ```TypeScript
@@ -57,7 +59,7 @@ function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallba
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [on](arkts-ability-bundlemonitor-on-f-sys.md#on-1)  
+> [on](@ohos.bundle.bundleMonitor:bundleMonitor.on(type: BundleChangedEvent, callback: Callback<BundleChangedInfo>))  
 > 替代。
 
 **起始版本：** 8
@@ -85,5 +87,5 @@ function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallba
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | - Promise形式返回正确结果或错误信息。 |
+| Promise&lt;string&gt; | - Promise形式返回正确结果或错误信息。 |
 

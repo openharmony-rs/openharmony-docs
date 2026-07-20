@@ -6,6 +6,7 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
+<a id="setdownloadinfolistsize"></a>
 ## setDownloadInfoListSize
 
 ```TypeScript

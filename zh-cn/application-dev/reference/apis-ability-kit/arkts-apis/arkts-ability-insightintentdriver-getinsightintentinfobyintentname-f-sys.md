@@ -6,6 +6,7 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
+<a id="getinsightintentinfobyintentname"></a>
 ## getInsightIntentInfoByIntentName
 
 ```TypeScript
@@ -39,7 +40,7 @@ function getInsightIntentInfoByIntentName(bundleName: string, moduleName: string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<InsightIntentInfo> | Promise对象，返回意图信息对象。 |
+| Promise&lt;InsightIntentInfo&gt; | Promise对象，返回意图信息对象。 |
 
 **错误码：**
 

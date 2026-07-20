@@ -1,5 +1,6 @@
 # mkdirSync
 
+<a id="mkdirsync"></a>
 ## mkdirSync
 
 ```TypeScript

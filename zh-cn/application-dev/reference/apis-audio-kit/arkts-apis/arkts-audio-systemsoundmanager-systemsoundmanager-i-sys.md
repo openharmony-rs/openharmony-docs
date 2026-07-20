@@ -16,6 +16,7 @@
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
+<a id="addcustomizedtone"></a>
 ## addCustomizedTone
 
 ```TypeScript
@@ -46,7 +47,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回铃音在铃音库中的uri。 |
+| Promise&lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
 
 **错误码：**
 
@@ -89,6 +90,7 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 
 ```
 
+<a id="addcustomizedtone-1"></a>
 ## addCustomizedTone
 
 ```TypeScript
@@ -124,7 +126,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回铃音在铃音库中的uri。 |
+| Promise&lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
 
 **错误码：**
 
@@ -169,6 +171,7 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, len
 
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -195,7 +198,7 @@ close(fd: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -224,6 +227,7 @@ systemSoundManagerInstance.close(fd).then(() => {
 
 ```
 
+<a id="getalarmtoneattrlist"></a>
 ## getAlarmToneAttrList
 
 ```TypeScript
@@ -250,7 +254,7 @@ getAlarmToneAttrList(context: BaseContext): Promise<ToneAttrsArray>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrsArray> | Promise对象，返回全部闹铃属性列表。 |
+| Promise&lt;ToneAttrsArray&gt; | Promise对象，返回全部闹铃属性列表。 |
 
 **错误码：**
 
@@ -278,6 +282,7 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
 
 ```
 
+<a id="getalarmtoneuri"></a>
 ## getAlarmToneUri
 
 ```TypeScript
@@ -304,7 +309,7 @@ getAlarmToneUri(context: BaseContext): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回系统当前闹铃uri。 |
+| Promise&lt;string&gt; | Promise对象，返回系统当前闹铃uri。 |
 
 **错误码：**
 
@@ -332,6 +337,7 @@ systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
 
 ```
 
+<a id="getcurrentringtoneattribute"></a>
 ## getCurrentRingtoneAttribute
 
 ```TypeScript
@@ -358,7 +364,7 @@ getCurrentRingtoneAttribute(type: RingtoneType): Promise<ToneAttrs>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrs> | Promise对象，返回系统铃声的属性。 |
+| Promise&lt;ToneAttrs&gt; | Promise对象，返回系统铃声的属性。 |
 
 **错误码：**
 
@@ -383,6 +389,7 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: system
 
 ```
 
+<a id="getdefaultalarmtoneattrs"></a>
 ## getDefaultAlarmToneAttrs
 
 ```TypeScript
@@ -409,7 +416,7 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise<ToneAttrs>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrs> | Promise对象，返回系统闹铃的属性。 |
+| Promise&lt;ToneAttrs&gt; | Promise对象，返回系统闹铃的属性。 |
 
 **错误码：**
 
@@ -437,6 +444,7 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
 
 ```
 
+<a id="getdefaultringtoneattrs"></a>
 ## getDefaultRingtoneAttrs
 
 ```TypeScript
@@ -464,7 +472,7 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise<ToneA
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrs> | Promise对象，返回系统铃声的属性。 |
+| Promise&lt;ToneAttrs&gt; | Promise对象，返回系统铃声的属性。 |
 
 **错误码：**
 
@@ -493,6 +501,7 @@ systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: s
 
 ```
 
+<a id="getdefaultsystemtoneattrs"></a>
 ## getDefaultSystemToneAttrs
 
 ```TypeScript
@@ -520,7 +529,7 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise<T
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrs> | Promise对象，返回系统提示音的属性。 |
+| Promise&lt;ToneAttrs&gt; | Promise对象，返回系统提示音的属性。 |
 
 **错误码：**
 
@@ -549,6 +558,7 @@ systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value:
 
 ```
 
+<a id="gethapticsattrssyncedwithtone"></a>
 ## getHapticsAttrsSyncedWithTone
 
 ```TypeScript
@@ -576,7 +586,7 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise<To
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneHapticsAttrs> | Promise对象，返回与指定铃音同步的振动属性。 |
+| Promise&lt;ToneHapticsAttrs&gt; | Promise对象，返回与指定铃音同步的振动属性。 |
 
 **错误码：**
 
@@ -607,6 +617,7 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 
 ```
 
+<a id="getmockhapticringtoneplayer"></a>
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
@@ -647,7 +658,7 @@ getMockHapticRingtonePlayer(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RingtonePlayer \| null> | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+| Promise&lt;RingtonePlayer \| null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
 
 **错误码：**
 
@@ -681,6 +692,7 @@ systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUr
 
 ```
 
+<a id="getmockhapticringtoneplayer-1"></a>
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
@@ -717,7 +729,7 @@ getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<Ri
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RingtonePlayer \| null> | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
+| Promise&lt;RingtonePlayer \| null&gt; | Promise对象，成功返回模拟触觉铃声播放器实例，发生错误时返回null。 |
 
 **错误码：**
 
@@ -750,6 +762,7 @@ systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then(
 
 ```
 
+<a id="getringtoneattrlist"></a>
 ## getRingtoneAttrList
 
 ```TypeScript
@@ -777,7 +790,7 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise<ToneAttrs
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrsArray> | Promise对象，返回系统铃声的属性列表。 |
+| Promise&lt;ToneAttrsArray&gt; | Promise对象，返回系统铃声的属性列表。 |
 
 **错误码：**
 
@@ -806,6 +819,7 @@ systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: syste
 
 ```
 
+<a id="getringtoneplayer"></a>
 ## getRingtonePlayer
 
 ```TypeScript
@@ -833,7 +847,7 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise<RingtonePla
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RingtonePlayer> | Promise对象，返回获取的系统铃声播放器。 |
+| Promise&lt;RingtonePlayer&gt; | Promise对象，返回获取的系统铃声播放器。 |
 
 **错误码：**
 
@@ -863,6 +877,7 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
 
 ```
 
+<a id="getringtoneuri"></a>
 ## getRingtoneUri
 
 ```TypeScript
@@ -890,7 +905,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回获取的系统铃声uri。 |
+| Promise&lt;string&gt; | Promise对象，返回获取的系统铃声uri。 |
 
 **错误码：**
 
@@ -919,6 +934,7 @@ systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) =>
 
 ```
 
+<a id="getsystemringtoneplayer"></a>
 ## getSystemRingtonePlayer
 
 ```TypeScript
@@ -945,7 +961,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 当前应用的上下文。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 待获取播放器的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<RingtonePlayer> | 是 | 回调函数。当获取系统铃声播放器成功，err为undefined data为获取到的系统铃声播放器；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;RingtonePlayer&gt; | 是 | 回调函数。当获取系统铃声播放器成功，err为undefined data为获取到的系统铃声播放器；否则为错误对象。 |
 
 **示例：**
 
@@ -970,6 +986,7 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type, (err: Business
 
 ```
 
+<a id="getsystemringtoneplayer-1"></a>
 ## getSystemRingtonePlayer
 
 ```TypeScript
@@ -1001,7 +1018,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RingtonePlayer> | Promise对象，返回获取的系统铃声播放器。 |
+| Promise&lt;RingtonePlayer&gt; | Promise对象，返回获取的系统铃声播放器。 |
 
 **示例：**
 
@@ -1024,6 +1041,7 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: s
 
 ```
 
+<a id="getsystemringtoneuri"></a>
 ## getSystemRingtoneUri
 
 ```TypeScript
@@ -1050,7 +1068,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 当前应用的上下文。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 待获取的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当获取系统铃声uri成功，err为undefined，data为获取到的系统铃声uri；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取系统铃声uri成功，err为undefined，data为获取到的系统铃声uri；否则为错误对象。 |
 
 **示例：**
 
@@ -1073,6 +1091,7 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type, (err: BusinessErr
 
 ```
 
+<a id="getsystemringtoneuri-1"></a>
 ## getSystemRingtoneUri
 
 ```TypeScript
@@ -1104,7 +1123,7 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回获取的系统铃声uri。 |
+| Promise&lt;string&gt; | Promise对象，返回获取的系统铃声uri。 |
 
 **示例：**
 
@@ -1125,6 +1144,7 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: stri
 
 ```
 
+<a id="getsystemtoneattrlist"></a>
 ## getSystemToneAttrList
 
 ```TypeScript
@@ -1152,7 +1172,7 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise<ToneA
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneAttrsArray> | Promise对象，返回系统提示音的属性列表。 |
+| Promise&lt;ToneAttrsArray&gt; | Promise对象，返回系统提示音的属性列表。 |
 
 **错误码：**
 
@@ -1181,6 +1201,7 @@ systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: sys
 
 ```
 
+<a id="getsystemtoneplayer"></a>
 ## getSystemTonePlayer
 
 ```TypeScript
@@ -1208,7 +1229,7 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise<SystemT
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SystemTonePlayer> | Promise对象，返回获取的系统提示音播放器。 |
+| Promise&lt;SystemTonePlayer&gt; | Promise对象，返回获取的系统提示音播放器。 |
 
 **错误码：**
 
@@ -1238,6 +1259,7 @@ systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: syste
 
 ```
 
+<a id="getsystemtoneuri"></a>
 ## getSystemToneUri
 
 ```TypeScript
@@ -1265,7 +1287,7 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回获取的系统提示音uri。 |
+| Promise&lt;string&gt; | Promise对象，返回获取的系统提示音uri。 |
 
 **错误码：**
 
@@ -1294,6 +1316,7 @@ systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) 
 
 ```
 
+<a id="gettonehapticslist"></a>
 ## getToneHapticsList
 
 ```TypeScript
@@ -1321,7 +1344,7 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise<ToneHaptics
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneHapticsAttrsArray> | Promise对象，返回同步或者非同步的系统铃音的振动属性列表。 |
+| Promise&lt;ToneHapticsAttrsArray&gt; | Promise对象，返回同步或者非同步的系统铃音的振动属性列表。 |
 
 **错误码：**
 
@@ -1350,6 +1373,7 @@ systemSoundManagerInstance.getToneHapticsList(context, false).then((value: syste
 
 ```
 
+<a id="gettonehapticssettings"></a>
 ## getToneHapticsSettings
 
 ```TypeScript
@@ -1377,7 +1401,7 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise<Ton
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ToneHapticsSettings> | Promise对象，返回铃声的振动设置。 |
+| Promise&lt;ToneHapticsSettings&gt; | Promise对象，返回铃声的振动设置。 |
 
 **错误码：**
 
@@ -1407,6 +1431,7 @@ systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: sy
 
 ```
 
+<a id="openalarmtone"></a>
 ## openAlarmTone
 
 ```TypeScript
@@ -1434,7 +1459,7 @@ openAlarmTone(context: BaseContext, uri: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回fd。 |
+| Promise&lt;number&gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
@@ -1464,6 +1489,7 @@ systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
 
 ```
 
+<a id="opentonehaptics"></a>
 ## openToneHaptics
 
 ```TypeScript
@@ -1491,7 +1517,7 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回fd。 |
+| Promise&lt;number&gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
@@ -1522,6 +1548,7 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: num
 
 ```
 
+<a id="opentonelist"></a>
 ## openToneList
 
 ```TypeScript
@@ -1542,13 +1569,13 @@ openToneList(uriList: Array<string>): Promise<Array<[string, number, SystemSound
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 要打开的uri列表，不能超过1024个。 |
+| uriList | Array&lt;string&gt; | 是 | 要打开的uri列表，不能超过1024个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<[string, number, SystemSoundError]>> | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数fd，第三个参数为此uri打开的结果。 |
+| Promise&lt;Array&lt;[string, number, SystemSoundError]&gt;&gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数fd，第三个参数为此uri打开的结果。 |
 
 **错误码：**
 
@@ -1578,6 +1605,7 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) =>
 
 ```
 
+<a id="removecustomizedtone"></a>
 ## removeCustomizedTone
 
 ```TypeScript
@@ -1607,7 +1635,7 @@ removeCustomizedTone(context: BaseContext, uri:string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1638,6 +1666,7 @@ systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
 
 ```
 
+<a id="removecustomizedtonelist"></a>
 ## removeCustomizedToneList
 
 ```TypeScript
@@ -1660,13 +1689,13 @@ removeCustomizedToneList(uriList: Array<string>): Promise<Array<[string, SystemS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uriList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 要删除的uri列表，不能超过1024个。 |
+| uriList | Array&lt;string&gt; | 是 | 要删除的uri列表，不能超过1024个。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<[string, SystemSoundError]>> | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数为此uri删除结果。 |
+| Promise&lt;Array&lt;[string, SystemSoundError]&gt;&gt; | Promise对象，Promise用于返回此操作的结果，返回Array内第一个参数uri，第二个参数为此uri删除结果。 |
 
 **错误码：**
 
@@ -1697,6 +1726,7 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) =>
 
 ```
 
+<a id="setalarmtoneuri"></a>
 ## setAlarmToneUri
 
 ```TypeScript
@@ -1724,7 +1754,7 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1754,6 +1784,7 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
 
 ```
 
+<a id="setringtoneuri"></a>
 ## setRingtoneUri
 
 ```TypeScript
@@ -1782,7 +1813,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<v
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1812,6 +1843,7 @@ systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
 
 ```
 
+<a id="setsystemringtoneuri"></a>
 ## setSystemRingtoneUri
 
 ```TypeScript
@@ -1839,7 +1871,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 当前应用的上下文。 |
 | uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置系统铃声uri成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置系统铃声uri成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -1863,6 +1895,7 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type, (err: Busine
 
 ```
 
+<a id="setsystemringtoneuri-1"></a>
 ## setSystemRingtoneUri
 
 ```TypeScript
@@ -1895,7 +1928,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -1917,6 +1950,7 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
 
 ```
 
+<a id="setsystemtoneuri"></a>
 ## setSystemToneUri
 
 ```TypeScript
@@ -1945,7 +1979,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1975,6 +2009,7 @@ systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
 
 ```
 
+<a id="settonehapticssettings"></a>
 ## setToneHapticsSettings
 
 ```TypeScript
@@ -2003,7 +2038,7 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

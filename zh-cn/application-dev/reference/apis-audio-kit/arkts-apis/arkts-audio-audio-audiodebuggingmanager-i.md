@@ -14,6 +14,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="printappinfo"></a>
 ## printAppInfo
 
 ```TypeScript
@@ -36,6 +37,7 @@ printAppInfo(fd: number): void
 | --- | --- | --- | --- |
 | fd | number | 是 | fd为文件句柄，表示快照信息将要写入的位置。如果fd小于0，则将快照信息打印到运行日志中，否则快照将写入文件。取值限定为整数。 |
 
+<a id="printcapturerinfo"></a>
 ## printCapturerInfo
 
 ```TypeScript
@@ -59,6 +61,7 @@ printCapturerInfo(capturer: AudioCapturer, fd: number): void
 | capturer | [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) | 是 | 目标音频捕获程序实例以打印快照。取值限定为整数。 |
 | fd | number | 是 | fd是文件描述符，表示快照信息的位置写入到。如果fd小于0或无可写，则快照信息将打印到运行日志，否则快照将写入文件。取值限定为整数。 |
 
+<a id="printloopbackinfo"></a>
 ## printLoopbackInfo
 
 ```TypeScript
@@ -82,6 +85,7 @@ printLoopbackInfo(loopback: AudioLoopback, fd: number): void
 | loopback | [AudioLoopback](arkts-audio-audio-audioloopback-i.md) | 是 | 目标音频环回实例以打印快照。取值限定为整数。 |
 | fd | number | 是 | fd是文件描述符，表示快照信息的位置写入到。如果fd小于0或无可写，则快照信息将打印到运行日志，否则快照将写入文件。取值限定为整数。 |
 
+<a id="printrendererinfo"></a>
 ## printRendererInfo
 
 ```TypeScript
@@ -105,6 +109,7 @@ printRendererInfo(renderer: AudioRenderer, fd: number): void
 | renderer | [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) | 是 | 目标音频渲染器实例以打印快照。取值限定为整数。 |
 | fd | number | 是 | fd是文件描述符，表示快照信息的位置写入到。如果fd小于0或无可写，则快照信息将打印到运行日志，否则快照将写入文件。取值限定为整数。 |
 
+<a id="printsessioninfo"></a>
 ## printSessionInfo
 
 ```TypeScript

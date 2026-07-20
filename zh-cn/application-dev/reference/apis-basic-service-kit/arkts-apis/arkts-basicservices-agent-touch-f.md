@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="touch"></a>
 ## touch
 
 ```TypeScript
@@ -26,7 +27,7 @@ function touch(id: string, token: string, callback: AsyncCallback<TaskInfo>): vo
 | --- | --- | --- | --- |
 | id | string | 是 | 任务id。 |
 | token | string | 是 | 任务查询token。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<TaskInfo> | 是 | 回调函数。当查询任务操作成功，err为undefined，data为查询到的任务TaskInfo信息；否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;TaskInfo&gt; | 是 | 回调函数。当查询任务操作成功，err为undefined，data为查询到的任务TaskInfo信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -37,6 +38,7 @@ function touch(id: string, token: string, callback: AsyncCallback<TaskInfo>): vo
 | [21900006](../../apis-basic-services-kit/errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |
 
 
+<a id="touch-1"></a>
 ## touch
 
 ```TypeScript
@@ -62,7 +64,7 @@ function touch(id: string, token: string): Promise<TaskInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TaskInfo> | Promise对象。返回任务详细信息TaskInfo的Promise对象。 |
+| Promise&lt;TaskInfo&gt; | Promise对象。返回任务详细信息TaskInfo的Promise对象。 |
 
 **错误码：**
 

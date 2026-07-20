@@ -6,6 +6,7 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="subscribetoevent"></a>
 ## subscribeToEvent
 
 ```TypeScript
@@ -27,13 +28,13 @@ function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-commoneventsubscriber-i.md) | 是 | 表示订阅者对象。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CommonEventData> | 是 | 表示接收公共事件数据的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CommonEventData&gt; | 是 | 表示接收公共事件数据的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { serial } from '@kit.BasicServicesKit';
 ```
 
+<a id="getserialportlist"></a>
 ## getSerialPortList
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getSerialPortList(): Promise<SerialPort[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<SerialPort[]> | - Promise used to return the list of serial port devices. |
+| Promise&lt;SerialPort[]&gt; | - Promise used to return the list of serial port devices. |
 
 **错误码：**
 

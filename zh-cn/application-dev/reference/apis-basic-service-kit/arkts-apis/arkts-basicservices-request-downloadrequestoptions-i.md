@@ -24,7 +24,7 @@ complete?: () => void
 
 接口调用结束的回调函数。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 3
 
@@ -64,7 +64,7 @@ fail?: (data: any, code: number) => void
 
 Called when downloading fails.
 
-**类型：** (data: any, code: number) => void
+**类型：** (data: any, code: number) =&gt; void
 
 **起始版本：** 3
 
@@ -124,7 +124,7 @@ success?: (data: DownloadResponse) => void
 
 Called when the files are successfully downloaded.
 
-**类型：** (data: DownloadResponse) => void
+**类型：** (data: DownloadResponse) =&gt; void
 
 **起始版本：** 3
 

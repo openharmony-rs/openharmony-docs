@@ -16,6 +16,7 @@
 import { insightIntent } from '@kit.AbilityKit';
 ```
 
+<a id="onqueryentity"></a>
 ## onQueryEntity
 
 ```TypeScript
@@ -44,7 +45,7 @@ abstract onQueryEntity(params: QueryEntityParam): Promise<Array<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<T>> | - Returns an array of subclasses of the AppIntentEntity class, support promise. |
+| Promise&lt;Array&lt;T&gt;&gt; | - Returns an array of subclasses of the AppIntentEntity class, support promise. |
 
 **示例：**
 

@@ -1,5 +1,6 @@
 # createKVManager
 
+<a id="createkvmanager"></a>
 ## createKVManager
 
 ```TypeScript
@@ -23,7 +24,7 @@ function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVMana
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [KVManagerConfig](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md) | 是 | 提供KVManager实例的配置信息，包括调用方的Bundle名称和用户信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<KVManager> | 是 | 回调函数。返回创建的KVManager对象实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;KVManager&gt; | 是 | 回调函数。返回创建的KVManager对象实例。 |
 
 **示例：**
 
@@ -53,6 +54,7 @@ try {
 ```
 
 
+<a id="createkvmanager-1"></a>
 ## createKVManager
 
 ```TypeScript
@@ -81,7 +83,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<KVManager> | Promise对象。返回创建的KVManager对象实例。 |
+| Promise&lt;KVManager&gt; | Promise对象。返回创建的KVManager对象实例。 |
 
 **示例：**
 

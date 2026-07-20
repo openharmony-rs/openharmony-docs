@@ -76,7 +76,7 @@ keyItems: Array<KeyItem>
 
 其他按键信息，当前按键事件发生时，其他正在被按下的按键信息。
 
-**类型：** Array<KeyItem>
+**类型：** Array&lt;KeyItem&gt;
 
 **起始版本：** 23
 

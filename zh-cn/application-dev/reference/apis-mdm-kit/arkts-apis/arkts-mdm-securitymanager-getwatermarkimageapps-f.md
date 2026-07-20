@@ -6,6 +6,7 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="getwatermarkimageapps"></a>
 ## getWatermarkImageApps
 
 ```TypeScript
@@ -35,7 +36,7 @@ function getWatermarkImageApps(admin: Want, accountId: number): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 设置水印的应用列表 |
+| Array&lt;string&gt; | 设置水印的应用列表 |
 
 **错误码：**
 

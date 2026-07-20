@@ -6,6 +6,7 @@
 import { dragInteraction } from '@kit.ArkUI';
 ```
 
+<a id="getdatasummary"></a>
 ## getDataSummary
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getDataSummary(): Array<Summary>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Summary> | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
+| Array&lt;Summary&gt; | 所有拖拽对象的数据摘要，包含拖拽对象的类型和数据长度。 |
 
 **错误码：**
 

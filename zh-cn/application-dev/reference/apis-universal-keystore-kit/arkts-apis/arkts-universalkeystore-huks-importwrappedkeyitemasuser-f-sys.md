@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="importwrappedkeyitemasuser"></a>
 ## importWrappedKeyItemAsUser
 
 ```TypeScript
@@ -49,7 +50,7 @@ Import Wrapped Key As User.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

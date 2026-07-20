@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setpointercolorsync"></a>
 ## setPointerColorSync
 
 ```TypeScript

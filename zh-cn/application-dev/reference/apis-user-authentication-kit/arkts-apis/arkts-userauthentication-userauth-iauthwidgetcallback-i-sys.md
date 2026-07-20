@@ -16,6 +16,7 @@
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
+<a id="sendcommand"></a>
 ## sendCommand
 
 ```TypeScript

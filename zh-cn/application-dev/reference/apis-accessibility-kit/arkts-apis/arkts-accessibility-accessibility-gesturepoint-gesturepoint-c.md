@@ -16,6 +16,7 @@ GesturePoint表示手势触摸点。
 import { GesturePoint } from '@kit.AccessibilityKit';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

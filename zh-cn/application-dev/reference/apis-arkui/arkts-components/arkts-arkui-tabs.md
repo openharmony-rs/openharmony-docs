@@ -42,7 +42,7 @@ Tabs(options?: TabsOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | TabsOptions | 否 | Tabs组件参数。 |
+| options | [TabsOptions](arkts-arkui-tabsoptions-i.md) | 否 | Tabs组件参数。 |
 
 ## 汇总
 

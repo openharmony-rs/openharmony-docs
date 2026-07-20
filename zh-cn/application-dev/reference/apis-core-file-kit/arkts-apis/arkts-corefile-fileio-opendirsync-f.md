@@ -1,5 +1,6 @@
 # opendirSync
 
+<a id="opendirsync"></a>
 ## opendirSync
 
 ```TypeScript

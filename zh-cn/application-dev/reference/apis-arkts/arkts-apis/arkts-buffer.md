@@ -20,20 +20,20 @@ import { buffer } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [alloc](arkts-arkts-buffer-alloc-f.md#alloc-1) | 创建指定字节长度的Buffer对象并初始化。 |
-| [allocUninitialized](arkts-arkts-buffer-allocuninitialized-f.md#allocuninitialized-1) | 创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。 |
-| [allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool-1) | 创建指定大小未初始化的Buffer对象。内存从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。 |
-| [byteLength](arkts-arkts-buffer-bytelength-f.md#bytelength-1) | 根据不同的编码格式，返回指定字符串的字节数。 |
-| [compare](arkts-arkts-buffer-compare-f.md#compare-1) | 返回两个Buffer对象的比较结果，通常用于对Buffer对象数组进行排序。 |
-| [concat](arkts-arkts-buffer-concat-f.md#concat-1) | 将数组中的内容复制指定字节长度到新的Buffer对象中并返回。 |
-| [from](arkts-arkts-buffer-from-f.md#from-1) | 根据指定数组创建新的Buffer对象。 |
-| [from](arkts-arkts-buffer-from-f.md#from-2) | 创建与arrayBuffer共享内存的指定长度的Buffer对象。 |
-| [from](arkts-arkts-buffer-from-f.md#from-3) | 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的Buffer对象并返回，保持数据的内存关联。 |
-| [from](arkts-arkts-buffer-from-f.md#from-4) | 根据指定的object类型数据，创建新的Buffer对象。 |
-| [from](arkts-arkts-buffer-from-f.md#from-5) | 根据指定编码格式的字符串，创建新的Buffer对象。 |
-| [isBuffer](arkts-arkts-buffer-isbuffer-f.md#isbuffer-1) | 判断obj是否为Buffer。 |
-| [isEncoding](arkts-arkts-buffer-isencoding-f.md#isencoding-1) | 判断encoding是否为支持的编码格式。 |
-| [transcode](arkts-arkts-buffer-transcode-f.md#transcode-1) | 将Buffer或Uint8Array对象从一种字符编码重新编码为另一种。 |
+| [alloc](arkts-arkts-buffer-alloc-f.md#alloc) | 创建指定字节长度的Buffer对象并初始化。 |
+| [allocUninitialized](arkts-arkts-buffer-allocuninitialized-f.md#allocuninitialized) | 创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。 |
+| [allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool) | 创建指定大小未初始化的Buffer对象。内存从缓冲池分配。创建的Buffer内容未知，需要使用[fill()](arkts-arkts-buffer-buffer-c.md#fill-1)函数来初始化Buffer对象。 |
+| [byteLength](arkts-arkts-buffer-bytelength-f.md#bytelength) | 根据不同的编码格式，返回指定字符串的字节数。 |
+| [compare](arkts-arkts-buffer-compare-f.md#compare) | 返回两个Buffer对象的比较结果，通常用于对Buffer对象数组进行排序。 |
+| [concat](arkts-arkts-buffer-concat-f.md#concat) | 将数组中的内容复制指定字节长度到新的Buffer对象中并返回。 |
+| [from](arkts-arkts-buffer-from-f.md#from) | 根据指定数组创建新的Buffer对象。 |
+| [from](arkts-arkts-buffer-from-f.md#from-1) | 创建与arrayBuffer共享内存的指定长度的Buffer对象。 |
+| [from](arkts-arkts-buffer-from-f.md#from-2) | 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的Buffer对象并返回，保持数据的内存关联。 |
+| [from](arkts-arkts-buffer-from-f.md#from-3) | 根据指定的object类型数据，创建新的Buffer对象。 |
+| [from](arkts-arkts-buffer-from-f.md#from-4) | 根据指定编码格式的字符串，创建新的Buffer对象。 |
+| [isBuffer](arkts-arkts-buffer-isbuffer-f.md#isbuffer) | 判断obj是否为Buffer。 |
+| [isEncoding](arkts-arkts-buffer-isencoding-f.md#isencoding) | 判断encoding是否为支持的编码格式。 |
+| [transcode](arkts-arkts-buffer-transcode-f.md#transcode) | 将Buffer或Uint8Array对象从一种字符编码重新编码为另一种。 |
 
 ### 类
 

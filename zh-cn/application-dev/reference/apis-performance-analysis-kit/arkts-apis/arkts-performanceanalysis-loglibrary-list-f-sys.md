@@ -6,6 +6,7 @@
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="list"></a>
 ## list
 
 ```TypeScript

@@ -6,6 +6,7 @@
 import { screenshot } from '@kit.ArkUI';
 ```
 
+<a id="pick"></a>
 ## pick
 
 ```TypeScript
@@ -26,7 +27,7 @@ function pick(): Promise<PickInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PickInfo> | Promise对象。返回一个PickInfo对象。 |
+| Promise&lt;PickInfo&gt; | Promise对象。返回一个PickInfo对象。 |
 
 **错误码：**
 

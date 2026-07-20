@@ -6,6 +6,7 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="clean"></a>
 ## clean
 
 ```TypeScript
@@ -29,13 +30,13 @@ function clean(accountId: string, appActions: Record<string, Action>): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| appActions | Record<string, Action> | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md)为清理动作类型。 |
+| appActions | Record&lt;string, Action&gt; | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md)为清理动作类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -64,6 +65,7 @@ cloudSyncManager.clean(accountId, appActions).then(() => {
 ```
 
 
+<a id="clean-1"></a>
 ## clean
 
 ```TypeScript
@@ -87,8 +89,8 @@ function clean(accountId: string, appActions: Record<string, Action>, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| appActions | Record<string, Action> | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md)为清理动作类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。异步方法清理本地云相关数据。 |
+| appActions | Record&lt;string, Action&gt; | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md)为清理动作类型。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。异步方法清理本地云相关数据。 |
 
 **错误码：**
 

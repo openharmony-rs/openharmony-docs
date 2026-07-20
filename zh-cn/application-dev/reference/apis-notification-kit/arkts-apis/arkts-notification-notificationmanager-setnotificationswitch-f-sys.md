@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setnotificationswitch"></a>
 ## setNotificationSwitch
 
 ```TypeScript
@@ -31,14 +32,14 @@ function setNotificationSwitch(switchName: string, switchState: boolean, userId:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
-| switchState | boolean | 是 | 是否开启通知开关。  - true：表示开启。  - false：表示关闭。 |
+| switchState | boolean | 是 | 是否开启通知开关。   - true：表示开启。   - false：表示关闭。 |
 | userId | number | 是 | 用户ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

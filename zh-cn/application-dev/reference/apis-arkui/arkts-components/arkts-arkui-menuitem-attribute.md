@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="contentfont"></a>
 ## contentFont
 
 ```TypeScript
@@ -34,6 +35,7 @@ contentFont(value: Font)
 | --- | --- | --- | --- |
 | value | [Font](../arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 菜单项中内容信息的字体样式。 |
 
+<a id="contentfontcolor"></a>
 ## contentFontColor
 
 ```TypeScript
@@ -58,6 +60,7 @@ contentFontColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 菜单项中内容信息的字体颜色。<br />默认值：'#E5000000' |
 
+<a id="labelfont"></a>
 ## labelFont
 
 ```TypeScript
@@ -82,6 +85,7 @@ labelFont(value: Font)
 | --- | --- | --- | --- |
 | value | [Font](../arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | 是 | 菜单项中标签信息的字体样式。 |
 
+<a id="labelfontcolor"></a>
 ## labelFontColor
 
 ```TypeScript
@@ -106,6 +110,7 @@ labelFontColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 菜单项中标签信息的字体颜色。<br />默认值：'#99000000' |
 
+<a id="onchange"></a>
 ## onChange
 
 ```TypeScript
@@ -126,8 +131,9 @@ onChange(callback: (selected: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (selected: boolean) => void | 是 | 选中状态发生变化时，触发该回调。<br />true：未选中切换为选中；false：选中切换为未选中。 |
+| callback | (selected: boolean) =&gt; void | 是 | 选中状态发生变化时，触发该回调。<br />true：未选中切换为选中；false：选中切换为未选中。 |
 
+<a id="selecticon"></a>
 ## selectIcon
 
 ```TypeScript
@@ -150,6 +156,7 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
 | --- | --- | --- | --- |
 | value | boolean \| ResourceStr \| SymbolGlyphModifier | 是 | 菜单项被选中时，是否显示被选中的图标。<br/>true：显示默认的对勾图标；false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。<br/>默认值：false<br>**起始版本：** 12 |
 
+<a id="selected"></a>
 ## selected
 
 ```TypeScript
@@ -158,9 +165,9 @@ selected(value: boolean)
 
 设置菜单项是否选中。
 
-从API version 10开始，该参数支持[$$](../../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](docroot://ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
-从API version 18开始，该参数支持[!!](../../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+从API version 18开始，该参数支持[!!](docroot://ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 9
 
@@ -176,6 +183,7 @@ selected(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 菜单项是否选中。<br/>true：菜单项被选中；false：菜单项不被选中。<br />默认值：false |
 
+<a id="submenubuilder"></a>
 ## subMenuBuilder
 
 ```TypeScript

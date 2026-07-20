@@ -14,6 +14,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="getparent"></a>
 ## getParent
 
 ```TypeScript
@@ -52,6 +53,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="lock"></a>
 ## lock
 
 ```TypeScript
@@ -76,7 +78,7 @@ lock(exclusive?: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回值。 |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -106,6 +108,7 @@ file.lock(true).then(() => {
 
 ```
 
+<a id="lock-1"></a>
 ## lock
 
 ```TypeScript
@@ -124,7 +127,7 @@ lock(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步文件上锁之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
 
 **错误码：**
 
@@ -155,6 +158,7 @@ file.lock((err: BusinessError) => {
 
 ```
 
+<a id="lock-2"></a>
 ## lock
 
 ```TypeScript
@@ -174,7 +178,7 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | exclusive | boolean | 是 | 是否施加独占锁，默认false。true：施加独占锁；false：不施加独占锁。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步文件上锁之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
 
 **错误码：**
 
@@ -205,6 +209,7 @@ file.lock(true, (err: BusinessError) => {
 
 ```
 
+<a id="trylock"></a>
 ## tryLock
 
 ```TypeScript
@@ -247,6 +252,7 @@ fileIo.closeSync(file);
 
 ```
 
+<a id="unlock"></a>
 ## unlock
 
 ```TypeScript

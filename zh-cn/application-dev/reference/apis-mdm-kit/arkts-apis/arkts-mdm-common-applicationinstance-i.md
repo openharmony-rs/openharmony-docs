@@ -22,7 +22,7 @@ import { common } from '@kit.MDMKit';
 accountId: number
 ```
 
-用户ID。取值范围：大于等于0的整数。accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-2)接口获取。取值应为≥0的整数。
+用户ID。取值范围：大于等于0的整数。accountId可以通过[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid-1)接口获取。取值应为≥0的整数。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ accountId: number
 appIdentifier: string
 ```
 
-应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)，可以通过接口[bundleManager.getBundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-3)获取bundleInfo.signatureInfo.appIdentifier。
+应用[唯一标识符](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-signatureinfo-i.md)，可以通过接口[bundleManager.getBundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo-1)获取bundleInfo.signatureInfo.appIdentifier。
 
 **类型：** string
 

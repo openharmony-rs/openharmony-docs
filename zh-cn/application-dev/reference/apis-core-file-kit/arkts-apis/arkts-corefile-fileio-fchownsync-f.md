@@ -1,5 +1,6 @@
 # fchownSync
 
+<a id="fchownsync"></a>
 ## fchownSync
 
 ```TypeScript

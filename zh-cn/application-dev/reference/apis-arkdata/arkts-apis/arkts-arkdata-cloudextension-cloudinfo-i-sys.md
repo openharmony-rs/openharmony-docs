@@ -24,7 +24,7 @@ apps: Record<string, AppBriefInfo>
 
 简要应用信息。
 
-**类型：** Record<string, AppBriefInfo>
+**类型：** Record&lt;string, AppBriefInfo&gt;
 
 **起始版本：** 11
 

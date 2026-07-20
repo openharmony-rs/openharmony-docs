@@ -4,6 +4,8 @@ ChipGroupV2Space定义了ChipGroupV2左右内边距，以及Chip与Chip之间的
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export declare class ChipGroupV2Space--><!--Device-unnamed-export declare class ChipGroupV2Space-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -14,6 +16,7 @@ ChipGroupV2Space定义了ChipGroupV2左右内边距，以及Chip与Chip之间的
 import { ChipGroupV2ItemConfig, ChipGroupV2ItemStyleConfig, ChipGroupV2SpaceConfig, ChipGroupV2IconGroupSuffix, ChipGroupV2Items, ChipGroupV2Padding, ChipGroupV2Item, ChipGroupV2ItemStyle, ChipGroupV2, ChipGroupV2PaddingConfig, ChipGroupV2IconItemConfig, ChipGroupV2SymbolItemConfig, ChipGroupV2Space } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -84,7 +87,7 @@ ChipV2与ChipV2之间的间距（不支持百分比）。
 
 值为undefined时，按默认值处理。
 
-**类型：** string | number
+**类型：** string \| number
 
 **起始版本：** 26.0.0
 

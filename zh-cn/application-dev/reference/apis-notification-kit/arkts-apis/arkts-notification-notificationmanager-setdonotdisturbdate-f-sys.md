@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setdonotdisturbdate"></a>
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -29,7 +30,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | date | [DoNotDisturbDate](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md) | 是 | 免打扰时间选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 **错误码：**
 
@@ -68,6 +69,7 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate, setDoNotDisturbDateCal
 ```
 
 
+<a id="setdonotdisturbdate-1"></a>
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -96,7 +98,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -130,6 +132,7 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
 ```
 
 
+<a id="setdonotdisturbdate-2"></a>
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -154,7 +157,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: A
 | --- | --- | --- | --- |
 | date | [DoNotDisturbDate](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md) | 是 | 免打扰时间选项。 |
 | userId | number | 是 | 设置免打扰时间的用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 设置免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 **错误码：**
 
@@ -197,6 +200,7 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId, setDoNotDistur
 ```
 
 
+<a id="setdonotdisturbdate-3"></a>
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -226,7 +230,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

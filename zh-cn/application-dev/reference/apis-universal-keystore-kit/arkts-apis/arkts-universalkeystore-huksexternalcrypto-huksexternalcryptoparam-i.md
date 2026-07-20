@@ -38,7 +38,7 @@ value: boolean | number | bigint | Uint8Array
 
 标签对应值。
 
-**类型：** boolean | number | bigint | Uint8Array
+**类型：** boolean \| number \| bigint \| Uint8Array
 
 **起始版本：** 22
 

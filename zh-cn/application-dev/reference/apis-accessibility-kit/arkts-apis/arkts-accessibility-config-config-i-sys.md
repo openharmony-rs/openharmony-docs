@@ -16,6 +16,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="get"></a>
 ## get
 
 ```TypeScript
@@ -36,7 +37,7 @@ get(): Promise<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<T> | Promise对象，返回对应属性值。 |
+| Promise&lt;T&gt; | Promise对象，返回对应属性值。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ config.highContrastText.get().then((data: boolean) => {
 
 ```
 
+<a id="get-1"></a>
 ## get
 
 ```TypeScript
@@ -79,7 +81,7 @@ get(callback: AsyncCallback<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<T> | 是 | 回调函数，返回属性值。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | 是 | 回调函数，返回属性值。 |
 
 **错误码：**
 
@@ -103,6 +105,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
 
 ```
 
+<a id="off"></a>
 ## off
 
 ```TypeScript
@@ -125,7 +128,7 @@ off(callback?: Callback<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<T> | 否 | 回调函数，取消指定callback对象的事件响应。需与on()的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;T&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与on()的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -145,6 +148,7 @@ config.highContrastText.off((data: boolean) => {
 
 ```
 
+<a id="on"></a>
 ## on
 
 ```TypeScript
@@ -167,7 +171,7 @@ on(callback: Callback<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<T> | 是 | 回调函数，在属性变化时通过此函数进行通知。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;T&gt; | 是 | 回调函数，在属性变化时通过此函数进行通知。 |
 
 **错误码：**
 
@@ -188,6 +192,7 @@ config.highContrastText.on((data: boolean) => {
 
 ```
 
+<a id="set"></a>
 ## set
 
 ```TypeScript
@@ -216,7 +221,7 @@ set(value: T): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -242,6 +247,7 @@ config.highContrastText.set(value).then(() => {
 
 ```
 
+<a id="set-1"></a>
 ## set
 
 ```TypeScript
@@ -265,7 +271,7 @@ set(value: T, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | T | 是 | 设置的属性值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 

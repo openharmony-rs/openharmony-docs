@@ -6,6 +6,7 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getsubscribeinfo"></a>
 ## getSubscribeInfo
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<NotificationExtensionSubscriptionInfo[]> | Promise对象，返回一个[NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md)对象数组，表示应用的订阅信息。 |
+| Promise&lt;NotificationExtensionSubscriptionInfo[]&gt; | Promise对象，返回一个[NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md)对象数组，表示应用的订阅信息。 |
 
 **错误码：**
 

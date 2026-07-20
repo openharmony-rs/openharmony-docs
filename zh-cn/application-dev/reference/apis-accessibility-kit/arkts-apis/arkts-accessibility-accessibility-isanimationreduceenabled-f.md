@@ -6,6 +6,7 @@
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+<a id="isanimationreduceenabled"></a>
 ## isAnimationReduceEnabled
 
 ```TypeScript
@@ -26,7 +27,7 @@ function isAnimationReduceEnabled(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
 
 **示例：**
 

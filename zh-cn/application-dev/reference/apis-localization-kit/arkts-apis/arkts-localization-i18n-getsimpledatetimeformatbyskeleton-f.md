@@ -6,6 +6,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getsimpledatetimeformatbyskeleton"></a>
 ## getSimpleDateTimeFormatBySkeleton
 
 ```TypeScript
@@ -42,6 +43,7 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Int
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
 
+<a id="getsimpledatetimeformatbyskeleton-1"></a>
 ## getSimpleDateTimeFormatBySkeleton
 
 ```TypeScript
@@ -54,7 +56,7 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: int
 
 **废弃版本：** 20
 
-**替代接口：** getSimpleDateTimeFormatBySkeleton(skeleton:
+**替代接口：** [getSimpleDateTimeFormatBySkeleton(skeleton:](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

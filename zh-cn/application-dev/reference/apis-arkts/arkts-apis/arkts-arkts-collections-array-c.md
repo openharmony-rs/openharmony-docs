@@ -7,7 +7,7 @@
 > - 本模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
 > 本节使用以下标识来表示泛型的使用：
 
-- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable
+- T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。**装饰器**：\@Sendable
 
 **继承/实现关系：** Array implements [ConcatArray<T>](ConcatArray<T>)
 
@@ -25,6 +25,7 @@
 import { collections } from '@kit.ArkTS';
 ```
 
+<a id="[symbol.iterator]"></a>
 ## [Symbol.iterator]
 
 ```TypeScript
@@ -45,7 +46,7 @@ import { collections } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | 迭代器对象。 |
+| IterableIterator&lt;T&gt; | 迭代器对象。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ import { collections } from '@kit.ArkTS';
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
+<a id="at"></a>
 ## at
 
 ```TypeScript
@@ -88,6 +90,7 @@ at(index: number): T | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="concat"></a>
 ## concat
 
 ```TypeScript
@@ -108,13 +111,13 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | [ConcatArray](arkts-arkts-collections-concatarray-i.md)<T>[] | 是 | 用于拼接ArkTS Array的一个或多个数组。 |
+| items | [ConcatArray](arkts-arkts-collections-concatarray-i.md)&lt;T&gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 拼接后生成的新Array。 |
+| Array&lt;T&gt; | 拼接后生成的新Array。 |
 
 **错误码：**
 
@@ -123,6 +126,7 @@ concat(...items: ConcatArray<T>[]): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The concat method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -145,6 +149,7 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -174,6 +179,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
+<a id="constructor-2"></a>
 ## constructor
 
 ```TypeScript
@@ -202,6 +208,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
+<a id="copywithin"></a>
 ## copyWithin
 
 ```TypeScript
@@ -230,7 +237,7 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 修改后的ArkTS Array。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
+| Array&lt;T&gt; | 修改后的ArkTS Array。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
 **错误码：**
 
@@ -239,6 +246,7 @@ copyWithin(target: number, start: number, end?: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The copyWithin method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -266,7 +274,7 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
@@ -274,6 +282,7 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The create method cannot be bound.<br>**适用版本：** 12 - 17 |
 
+<a id="entries"></a>
 ## entries
 
 ```TypeScript
@@ -294,7 +303,7 @@ entries(): IterableIterator<[number, T]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<[number, T]> | 包含Array中每个元素的键值对的迭代器对象。 |
+| IterableIterator&lt;[number, T]&gt; | 包含Array中每个元素的键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -303,6 +312,7 @@ entries(): IterableIterator<[number, T]>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="every"></a>
 ## every
 
 ```TypeScript
@@ -323,7 +333,7 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)<T, Array<T>> | 是 | 用于测试的断言函数。 |
+| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
@@ -338,6 +348,7 @@ every(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The every method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="extendto"></a>
 ## extendTo
 
 ```TypeScript
@@ -368,6 +379,7 @@ extendTo(arrayLength: number, initialValue: T): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The extendTo method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="fill"></a>
 ## fill
 
 ```TypeScript
@@ -396,7 +408,7 @@ fill(value: T, start?: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 填充后的Array。 |
+| Array&lt;T&gt; | 填充后的Array。 |
 
 **错误码：**
 
@@ -405,6 +417,7 @@ fill(value: T, start?: number, end?: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The fill method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="filter"></a>
 ## filter
 
 ```TypeScript
@@ -425,13 +438,13 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, array: Array<T>) => boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过测试，应被排除在新数组外。 |
+| predicate | (value: T, index: number, array: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素通过测试，应保留在新数组中；返回值为**false**表示当前元素未通过测试，应被排除在新数组外。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 包含通过测试的元素的新Array。 |
+| Array&lt;T&gt; | 包含通过测试的元素的新Array。 |
 
 **错误码：**
 
@@ -440,6 +453,7 @@ filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The filter method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="find"></a>
 ## find
 
 ```TypeScript
@@ -460,7 +474,7 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array<T>) => boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
+| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并将该元素作为结果返回；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
 
 **返回值：**
 
@@ -475,6 +489,7 @@ find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefi
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The find method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="findindex"></a>
 ## findIndex
 
 ```TypeScript
@@ -495,7 +510,7 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | (value: T, index: number, obj: Array<T>) => boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
+| predicate | (value: T, index: number, obj: Array&lt;T&gt;) =&gt; boolean | 是 | 一个接受三个参数的函数，用于筛选元素。返回值为**true**表示当前元素满足条件，会立即停止遍历，并返回该元素的索引；返回值为**false**表示当前元素不满足条件，会继续检查下一个元素，直到找到符合条件的元素或遍历完整个数组。 |
 
 **返回值：**
 
@@ -510,6 +525,7 @@ findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): numbe
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The findIndex method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="foreach"></a>
 ## forEach
 
 ```TypeScript
@@ -530,7 +546,7 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index: number, array: Array<T>) => void | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index: number, array: Array&lt;T&gt;) =&gt; void | 是 | 用于对每个元素执行的回调函数。 |
 
 **错误码：**
 
@@ -539,6 +555,7 @@ forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="from"></a>
 ## from
 
 ```TypeScript
@@ -559,13 +576,13 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike<T> | 是 | 用于构造ArkTS Array的对象。 |
+| arrayLike | ArrayLike&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
@@ -573,6 +590,7 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
+<a id="from-1"></a>
 ## from
 
 ```TypeScript
@@ -593,13 +611,13 @@ static from<T>(iterable: Iterable<T>): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iterable | Iterable<T> | 是 | 用于构造ArkTS Array的对象。 |
+| iterable | Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
 **错误码：**
 
@@ -607,6 +625,7 @@ static from<T>(iterable: Iterable<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
+<a id="from-2"></a>
 ## from
 
 ```TypeScript
@@ -627,15 +646,16 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike<T> \| Iterable<T> | 是 | 用于构造ArkTS Array的对象。 |
-| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)<T, T> | 是 | 用于处理数组元素的函数。 |
+| arrayLike | ArrayLike&lt;T&gt; \| Iterable&lt;T&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)&lt;T, T&gt; | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
+<a id="from-3"></a>
 ## from
 
 ```TypeScript
@@ -656,15 +676,16 @@ static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLike | ArrayLike<U> \| Iterable<U> | 是 | 用于构造ArkTS Array的对象。 |
-| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)<U, T> | 是 | 用于处理数组元素的函数。 |
+| arrayLike | ArrayLike&lt;U&gt; \| Iterable&lt;U&gt; | 是 | 用于构造ArkTS Array的对象。 |
+| mapFn | [ArrayFromMapFn](arkts-arkts-collections-arrayfrommapfn-t.md)&lt;U, T&gt; | 是 | 用于处理数组元素的函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
 
+<a id="includes"></a>
 ## includes
 
 ```TypeScript
@@ -701,6 +722,7 @@ includes(searchElement: T, fromIndex?: number): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The includes method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="indexof"></a>
 ## indexOf
 
 ```TypeScript
@@ -737,6 +759,7 @@ indexOf(searchElement: T, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The indexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="isarray"></a>
 ## isArray
 
 ```TypeScript
@@ -765,6 +788,7 @@ static isArray(value: Object | undefined | null): boolean
 | --- | --- |
 | boolean | 检查结果。如果传入的参数是ArkTS Array，则返回**true**；否则返回**false**。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
+<a id="join"></a>
 ## join
 
 ```TypeScript
@@ -800,6 +824,7 @@ join(separator?: string): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The join method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="keys"></a>
 ## keys
 
 ```TypeScript
@@ -820,7 +845,7 @@ keys(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<number> | 包含Array中每个元素的索引的迭代器对象。 |
+| IterableIterator&lt;number&gt; | 包含Array中每个元素的索引的迭代器对象。 |
 
 **错误码：**
 
@@ -829,6 +854,7 @@ keys(): IterableIterator<number>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="lastindexof"></a>
 ## lastIndexOf
 
 ```TypeScript
@@ -865,6 +891,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The lastIndexOf method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="map"></a>
 ## map
 
 ```TypeScript
@@ -885,13 +912,13 @@ map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index: number, array: Array<T>) => U | 是 | 用于对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index: number, array: Array&lt;T&gt;) =&gt; U | 是 | 用于对每个元素执行的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<U> | 包含回调函数结果的新Array。 |
+| Array&lt;U&gt; | 包含回调函数结果的新Array。 |
 
 **错误码：**
 
@@ -900,6 +927,7 @@ map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The map method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="of"></a>
 ## of
 
 ```TypeScript
@@ -926,8 +954,9 @@ static of<T>(...items: T[]): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 新创建的ArkTS Array实例。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
+| Array&lt;T&gt; | 新创建的ArkTS Array实例。可能的原因：1. 必填参数未指定。2. 参数类型不正确。3. 参数校验失败。 |
 
+<a id="pop"></a>
 ## pop
 
 ```TypeScript
@@ -957,6 +986,7 @@ pop(): T | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -992,6 +1022,7 @@ push(...items: T[]): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce"></a>
 ## reduce
 
 ```TypeScript
@@ -1012,7 +1043,7 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: T, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; T | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
@@ -1027,6 +1058,7 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce-1"></a>
 ## reduce
 
 ```TypeScript
@@ -1056,7 +1088,7 @@ reduce<U>(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | (previousValue: U, currentValue: T, currentIndex: number, array: Array&lt;T&gt;) =&gt; U | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
@@ -1072,13 +1104,14 @@ reduce<U>(
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright"></a>
 ## reduceRight
 
 ```TypeScript
 reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U
 ```
 
-此API与[reduceRight](arkts-arkts-collections-array-c.md#reduceright-2)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
+此API与[reduceRight](arkts-arkts-collections-array-c.md#reduceright-1)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
 **起始版本：** 18
 
@@ -1092,7 +1125,7 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)<U, T, Array<T>> | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)&lt;U, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 | initialValue | U | 是 | 用于初始化累加器的值。 |
 
 **返回值：**
@@ -1108,6 +1141,7 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright-1"></a>
 ## reduceRight
 
 ```TypeScript
@@ -1128,7 +1162,7 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)<T, T, Array<T>> | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
+| callbackFn | [ArrayReduceCallback](arkts-arkts-collections-arrayreducecallback-t.md)&lt;T, T, Array&lt;T&gt;&gt; | 是 | 一个接受四个参数的函数，用于对每个元素执行操作，并将结果作为累加值传递给下一个元素。 |
 
 **返回值：**
 
@@ -1143,6 +1177,7 @@ reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reverse"></a>
 ## reverse
 
 ```TypeScript
@@ -1163,7 +1198,7 @@ reverse(): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 反转后的ArkTS Array对象。 |
+| Array&lt;T&gt; | 反转后的ArkTS Array对象。 |
 
 **错误码：**
 
@@ -1172,6 +1207,7 @@ reverse(): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reverse method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="shift"></a>
 ## shift
 
 ```TypeScript
@@ -1201,6 +1237,7 @@ shift(): T | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The shift method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="shrinkto"></a>
 ## shrinkTo
 
 ```TypeScript
@@ -1230,6 +1267,7 @@ shrinkTo(arrayLength: number): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The shrinkTo method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -1257,7 +1295,7 @@ slice(start?: number, end?: number): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 包含选取元素的新Array。 |
+| Array&lt;T&gt; | 包含选取元素的新Array。 |
 
 **错误码：**
 
@@ -1266,6 +1304,7 @@ slice(start?: number, end?: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The slice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="some"></a>
 ## some
 
 ```TypeScript
@@ -1286,7 +1325,7 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)<T, Array<T>> | 是 | 用于测试的断言函数。 |
+| predicate | [ArrayPredicateFn](arkts-arkts-collections-arraypredicatefn-t.md)&lt;T, Array&lt;T&gt;&gt; | 是 | 用于测试的断言函数。 |
 
 **返回值：**
 
@@ -1301,6 +1340,7 @@ some(predicate: ArrayPredicateFn<T, Array<T>>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The some method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="sort"></a>
 ## sort
 
 ```TypeScript
@@ -1321,13 +1361,13 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| compareFn | (a: T, b: T) => number | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
+| compareFn | (a: T, b: T) =&gt; number | 否 | 用于确定元素顺序的函数。默认使用升序排序。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 排序后的Array。 |
+| Array&lt;T&gt; | 排序后的Array。 |
 
 **错误码：**
 
@@ -1336,6 +1376,7 @@ sort(compareFn?: (a: T, b: T) => number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The sort method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="splice"></a>
 ## splice
 
 ```TypeScript
@@ -1356,13 +1397,13 @@ splice(start: number): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 开始索引。如果`-array.length =&lt; start &lt; 0`，则从`start + array.length`开始删除。如果`start &lt; -array.length`，则从0开始删除。 |
+| start | number | 是 | 开始索引。如果`-array.length =< start < 0`，则从`start + array.length`开始删除。如果`start < -array.length`，则从0开始删除。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1371,6 +1412,7 @@ splice(start: number): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="splice-1"></a>
 ## splice
 
 ```TypeScript
@@ -1391,7 +1433,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 是 | 开始索引。如果`-array.length =&lt; start &lt; 0`，则从`start + array.length`开始删除。如果`start &lt; -array.length`，则从0开始删除。 |
+| start | number | 是 | 开始索引。如果`-array.length =< start < 0`，则从`start + array.length`开始删除。如果`start < -array.length`，则从0开始删除。 |
 | deleteCount | number | 是 | 删除元素的个数。 |
 | items | T[] | 是 | 从start位置开始插入的新元素。如果未传入，则仅删除Array内的元素。 |
 
@@ -1399,7 +1441,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](arkts-arkts-collections-array-c.md)<T> | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| Array&lt;T&gt; | 返回一个新的包含被删除元素的**Array**对象。如果没有元素被删除，返回一个空的**Array**对象。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
 
 **错误码：**
 
@@ -1408,6 +1450,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array<T>
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="tolocalestring"></a>
 ## toLocaleString
 
 ```TypeScript
@@ -1437,6 +1480,7 @@ toLocaleString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toLocaleString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="tostring"></a>
 ## toString
 
 ```TypeScript
@@ -1466,6 +1510,7 @@ toString(): string
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="unshift"></a>
 ## unshift
 
 ```TypeScript
@@ -1501,6 +1546,7 @@ unshift(...items: T[]): number
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The unshift method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="values"></a>
 ## values
 
 ```TypeScript
@@ -1521,7 +1567,7 @@ values(): IterableIterator<T>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator<T> | 包含Array中每个元素的值的迭代器对象。 |
+| IterableIterator&lt;T&gt; | 包含Array中每个元素的值的迭代器对象。 |
 
 **错误码：**
 

@@ -43,11 +43,11 @@ import { intl } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 创建排序对象时可设置的配置项。从API version 9开始，CollatorOptions中的属性改为可选。 |
+| [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 创建排序对象时可设置的配置项。  从API version 9开始，CollatorOptions中的属性改为可选。 |
 | [DateTimeOptions](arkts-localization-intl-datetimeoptions-i.md) | 时间日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。 |
-| [LocaleOptions](arkts-localization-intl-localeoptions-i.md) | &gt; 从API version 6开始支持，从API version 20开始废弃，以calendar为例， &gt; 区域初始化配置项。从API version 9开始，LocaleOptions属性由必填改为可选。 |
+| [LocaleOptions](arkts-localization-intl-localeoptions-i.md) | > 从API version 6开始支持，从API version 20开始废弃，以calendar为例，  > 区域初始化配置项。从API version 9开始，LocaleOptions属性由必填改为可选。 |
 | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | 创建数字格式化对象时可设置的配置项。从API version 9开始，NumberOptions的属性由必填改为可选。 |
 | [PluralRulesOptions](arkts-localization-intl-pluralrulesoptions-i.md) | 创建单复数对象时可设置的配置项。从API version 9开始，PluralRulesOptions的属性由必填改为可选。 |
-| [RelativeTimeFormatInputOptions](arkts-localization-intl-relativetimeformatinputoptions-i.md) | 创建相对时间格式化对象时可设置的配置项。从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。 |
+| [RelativeTimeFormatInputOptions](arkts-localization-intl-relativetimeformatinputoptions-i.md) | 创建相对时间格式化对象时可设置的配置项。  从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。 |
 | [RelativeTimeFormatResolvedOptions](arkts-localization-intl-relativetimeformatresolvedoptions-i.md) | 相对时间格式化对象的格式化配置项。 |
 

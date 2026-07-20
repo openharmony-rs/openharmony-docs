@@ -6,6 +6,7 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfobyappindex"></a>
 ## getShortcutInfoByAppIndex
 
 ```TypeScript
@@ -37,7 +38,7 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ShortcutInfo> | Array形式返回当前用户下指定分身应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
+| Array&lt;ShortcutInfo&gt; | Array形式返回当前用户下指定分身应用的[ShortcutInfo](arkts-ability-shortcutinfo-i-sys.md)。 |
 
 **错误码：**
 

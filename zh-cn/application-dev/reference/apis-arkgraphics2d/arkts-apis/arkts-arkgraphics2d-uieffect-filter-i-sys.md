@@ -12,6 +12,7 @@
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
+<a id="bezierwarp"></a>
 ## bezierWarp
 
 ```TypeScript
@@ -32,7 +33,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controlPoints | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 12个贝塞尔形变控制点，更改控制点的位置可改变形成边缘的曲线的形状，从而扭曲图像。控制点坐标为0-1坐标系，且坐标值可大于1或小于0。 |
+| controlPoints | Array&lt;common2D.Point&gt; | 是 | 12个贝塞尔形变控制点，更改控制点的位置可改变形成边缘的曲线的形状，从而扭曲图像。控制点坐标为0-1坐标系，且坐标值可大于1或小于0。 |
 
 **返回值：**
 
@@ -71,6 +72,7 @@ struct BezierWarpExample {
 
 ```
 
+<a id="blurbubblesrise"></a>
 ## blurBubblesRise
 
 ```TypeScript
@@ -154,6 +156,7 @@ struct BlurBubblesRiseExample {
 
 ```
 
+<a id="colorgradient"></a>
 ## colorGradient
 
 ```TypeScript
@@ -177,9 +180,9 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colors | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Color> | 是 | 颜色数组，多个颜色的渐变。数组长度取值范围[0, 12], 每一个颜色值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。 |
-| positions | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Point> | 是 | 位置数组，颜色对应的分布位置。数组长度取值范围[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。 |
-| strengths | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 强度数组，颜色对应的扩散强度。数组长度取值范围[0, 12], 每一个强度值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。 |
+| colors | Array&lt;Color&gt; | 是 | 颜色数组，多个颜色的渐变。数组长度取值范围[0, 12], 每一个颜色值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。 |
+| positions | Array&lt;common2D.Point&gt; | 是 | 位置数组，颜色对应的分布位置。数组长度取值范围[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。 |
+| strengths | Array&lt;number&gt; | 是 | 强度数组，颜色对应的扩散强度。数组长度取值范围[0, 12], 每一个强度值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。 |
 | alphaMask | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 否 | 遮罩alpha，颜色对应的alpha显示遮罩。不设置时，默认组件内容全部有颜色渐变效果。 |
 
 **返回值：**
@@ -226,6 +229,7 @@ struct ColorGradientExample {
 
 ```
 
+<a id="contentlight"></a>
 ## contentLight
 
 ```TypeScript
@@ -307,6 +311,7 @@ struct Index {
 
 ```
 
+<a id="directionlight"></a>
 ## directionLight
 
 ```TypeScript
@@ -384,6 +389,7 @@ struct Index {
 
 ```
 
+<a id="displacementdistort"></a>
 ## displacementDistort
 
 ```TypeScript
@@ -443,6 +449,7 @@ struct DisplacementDistortExample {
 
 ```
 
+<a id="distort"></a>
 ## distort
 
 ```TypeScript
@@ -486,6 +493,7 @@ filter.distort(-0.5)
 
 ```
 
+<a id="edgelight"></a>
 ## edgeLight
 
 ```TypeScript
@@ -549,6 +557,7 @@ struct EdgeLightExample {
 
 ```
 
+<a id="flyinflyouteffect"></a>
 ## flyInFlyOutEffect
 
 ```TypeScript
@@ -593,6 +602,7 @@ filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP)
 
 ```
 
+<a id="hdrbrightnessratio"></a>
 ## hdrBrightnessRatio
 
 ```TypeScript
@@ -641,6 +651,7 @@ filter.hdrBrightnessRatio(2.0);
 
 ```
 
+<a id="heatdistortion"></a>
 ## heatDistortion
 
 ```TypeScript
@@ -704,6 +715,7 @@ struct HeatDistortionExample {
 
 ```
 
+<a id="maskdispersion"></a>
 ## maskDispersion
 
 ```TypeScript
@@ -745,6 +757,7 @@ maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], g
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
+<a id="masktransition"></a>
 ## maskTransition
 
 ```TypeScript
@@ -828,6 +841,7 @@ struct Index {
 
 ```
 
+<a id="pixelstretch"></a>
 ## pixelStretch
 
 ```TypeScript
@@ -848,7 +862,7 @@ pixelStretch(stretchSizes: Array<number>, tileMode: TileMode): Filter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| stretchSizes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 上下左右四个方向边缘像素扩展的百分比比例，取值范围为[-1, 1]。正值表示向外扩展，上下左右四个方向分别用指定原图比例的边缘像素填充。负值表示内缩，但是最终图像大小不变。注意四个方向对应的参数需统一为非正值或非负值。 |
+| stretchSizes | Array&lt;number&gt; | 是 | 上下左右四个方向边缘像素扩展的百分比比例，取值范围为[-1, 1]。正值表示向外扩展，上下左右四个方向分别用指定原图比例的边缘像素填充。负值表示内缩，但是最终图像大小不变。注意四个方向对应的参数需统一为非正值或非负值。 |
 | tileMode | [TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md) | 是 | 边缘像素扩展的像素填充模式。 |
 
 **返回值：**
@@ -866,6 +880,7 @@ filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP)
 
 ```
 
+<a id="radiusgradientblur"></a>
 ## radiusGradientBlur
 
 ```TypeScript
@@ -887,7 +902,7 @@ radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Fi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | radius | number | 是 | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。 |
-| gradientParam | [LinearGradientBlurOptions](../../apis-arkui/arkts-components/arkts-arkui-common-lineargradientbluroptions-i.md) | 是 | 线性渐变参数，包含两个部分fractionStops和direction。 |
+| gradientParam | [LinearGradientBlurOptions](../../apis-arkui/arkts-components/arkts-arkui-lineargradientbluroptions-i.md) | 是 | 线性渐变参数，包含两个部分fractionStops和direction。 |
 
 **返回值：**
 
@@ -901,6 +916,7 @@ radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Fi
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
+<a id="variableradiusblur"></a>
 ## variableRadiusBlur
 
 ```TypeScript
@@ -960,6 +976,7 @@ struct VariableRadiusBlurExample {
 
 ```
 
+<a id="waterripple"></a>
 ## waterRipple
 
 ```TypeScript

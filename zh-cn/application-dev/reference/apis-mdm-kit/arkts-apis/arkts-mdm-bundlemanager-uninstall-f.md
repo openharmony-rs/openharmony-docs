@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="uninstall"></a>
 ## uninstall
 
 ```TypeScript
@@ -43,7 +44,7 @@ function uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当包卸载失败时抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当包卸载失败时抛出错误对象。 |
 
 **错误码：**
 

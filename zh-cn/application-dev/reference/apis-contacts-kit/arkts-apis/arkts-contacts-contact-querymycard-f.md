@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="querymycard"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -18,7 +19,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** queryMyCard(context:
+**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -30,7 +31,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -50,6 +51,7 @@ contact.queryMyCard((err: BusinessError, data) => {
 ```
 
 
+<a id="querymycard-1"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -71,7 +73,7 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -102,6 +104,7 @@ function queryMyCard(context: Context, callback: AsyncCallback<Contact>): void
 ```
 
 
+<a id="querymycard-2"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -114,7 +117,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **废弃版本：** 10
 
-**替代接口：** queryMyCard(context:
+**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -127,7 +130,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -149,6 +152,7 @@ contact.queryMyCard({
 ```
 
 
+<a id="querymycard-3"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -171,7 +175,7 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Contact> | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Contact&gt; | 是 | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -204,6 +208,7 @@ function queryMyCard(context: Context, attrs: ContactAttributes, callback: Async
 ```
 
 
+<a id="querymycard-4"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -216,7 +221,7 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **废弃版本：** 10
 
-**替代接口：** queryMyCard(context:
+**替代接口：** [queryMyCard(context:](arkts-contacts-contact-querymycard-f.md#querymycard-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -234,7 +239,7 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Contact> | Promise对象。返回“我的名片”联系人对象。 |
+| Promise&lt;Contact&gt; | Promise对象。返回“我的名片”联系人对象。 |
 
 **示例：**
 
@@ -252,6 +257,7 @@ promise.then((data) => {
 ```
 
 
+<a id="querymycard-5"></a>
 ## queryMyCard
 
 ```TypeScript
@@ -279,7 +285,7 @@ function queryMyCard(context: Context, attrs?: ContactAttributes): Promise<Conta
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Contact> | Promise对象。返回“我的名片”联系人对象。 |
+| Promise&lt;Contact&gt; | Promise对象。返回“我的名片”联系人对象。 |
 
 **错误码：**
 

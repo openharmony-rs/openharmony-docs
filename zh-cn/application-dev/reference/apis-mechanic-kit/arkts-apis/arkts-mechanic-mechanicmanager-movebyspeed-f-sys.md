@@ -6,6 +6,7 @@
 import { mechanicManager } from '@kit.MechanicKit';
 ```
 
+<a id="movebyspeed"></a>
 ## moveBySpeed
 
 ```TypeScript
@@ -34,7 +35,7 @@ Move a mechanical device at the specified speed.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Result> | Promise that returns the execution result. |
+| Promise&lt;Result&gt; | Promise that returns the execution result. |
 
 **错误码：**
 

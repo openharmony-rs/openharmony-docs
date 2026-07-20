@@ -20,8 +20,8 @@ import { ssap } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient-1) | 创建SSAP客户端实例。 |
-| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver-1) | 创建SSAP服务端实例。 |
+| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient) | 创建SSAP客户端实例。 |
+| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver) | 创建SSAP服务端实例。 |
 
 ### 接口
 

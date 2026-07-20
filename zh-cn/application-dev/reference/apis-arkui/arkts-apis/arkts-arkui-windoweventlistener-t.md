@@ -18,6 +18,6 @@ declare type WindowEventListener = (windowId: number, event: window.WindowEventT
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | int | 是 | 触发事件的窗口id |
-| event | window.WindowEventType | 是 | 窗口回调的事件类型 |
+| windowId | number | 是 | 触发事件的窗口id  |
+| event | window.WindowEventType | 是 | 窗口回调的事件类型  |
 

@@ -14,6 +14,7 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="adler32"></a>
 ## adler32
 
 ```TypeScript
@@ -35,13 +36,13 @@ adler32(adler: number, buf: ArrayBuffer): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | adler | number | 是 | Adler-32校验和的初始值。 |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 计算校验和数据缓冲区。 |
+| buf | ArrayBuffer | 是 | 计算校验和数据缓冲区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回计算后的Adler-32校验和。 |
+| Promise&lt;number&gt; | Promise对象。返回计算后的Adler-32校验和。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ checksum.adler32(0, arrayBufferIn).then(data => {
 
 ```
 
+<a id="adler32combine"></a>
 ## adler32Combine
 
 ```TypeScript
@@ -98,7 +100,7 @@ adler32Combine(adler1: number, adler2: number, len2: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回合并后的Adler-32校验和。 |
+| Promise&lt;number&gt; | Promise对象。返回合并后的Adler-32校验和。 |
 
 **错误码：**
 
@@ -138,6 +140,7 @@ async function demo() {
 
 ```
 
+<a id="crc32"></a>
 ## crc32
 
 ```TypeScript
@@ -159,13 +162,13 @@ crc32(crc: number, buf: ArrayBuffer): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | crc | number | 是 | CRC-32校验的初始值。 |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 计算校验数据缓冲区。 |
+| buf | ArrayBuffer | 是 | 计算校验数据缓冲区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回更新后的CRC-32校验。 |
+| Promise&lt;number&gt; | Promise对象。返回更新后的CRC-32校验。 |
 
 **错误码：**
 
@@ -196,6 +199,7 @@ checksum.crc32(0, arrayBufferIn).then((data) => {
 
 ```
 
+<a id="crc32combine"></a>
 ## crc32Combine
 
 ```TypeScript
@@ -224,7 +228,7 @@ crc32Combine(crc1: number, crc2: number, len2: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回合并后的CRC-32校验。 |
+| Promise&lt;number&gt; | Promise对象。返回合并后的CRC-32校验。 |
 
 **错误码：**
 
@@ -264,6 +268,7 @@ async function demo() {
 
 ```
 
+<a id="crc64"></a>
 ## crc64
 
 ```TypeScript
@@ -285,13 +290,13 @@ crc64(crc: number, buf: ArrayBuffer): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | crc | number | 是 | CRC-64校验的初始值。 |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 计算校验数据缓冲区。 |
+| buf | ArrayBuffer | 是 | 计算校验数据缓冲区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象。返回更新后的CRC-64校验。 |
+| Promise&lt;number&gt; | Promise对象。返回更新后的CRC-64校验。 |
 
 **错误码：**
 
@@ -322,6 +327,7 @@ checksum.crc64(0, arrayBufferIn).then((data) => {
 
 ```
 
+<a id="getcrc64table"></a>
 ## getCrc64Table
 
 ```TypeScript
@@ -342,7 +348,7 @@ getCrc64Table(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象。返回CRC-64校验表。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回CRC-64校验表。 |
 
 **示例：**
 
@@ -359,6 +365,7 @@ checksum.getCrc64Table().then((data) => {
 
 ```
 
+<a id="getcrctable"></a>
 ## getCrcTable
 
 ```TypeScript
@@ -379,7 +386,7 @@ getCrcTable(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象。返回CRC-32校验表。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回CRC-32校验表。 |
 
 **示例：**
 

@@ -16,6 +16,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createtruncatedline"></a>
 ## createTruncatedLine
 
 ```TypeScript
@@ -80,6 +81,7 @@ struct Index {
 
 ```
 
+<a id="enumeratecaretoffsets"></a>
 ## enumerateCaretOffsets
 
 ```TypeScript
@@ -112,6 +114,7 @@ lines[0].enumerateCaretOffsets((offset: number, index: number, leadingEdge: bool
 
 ```
 
+<a id="getalignmentoffset"></a>
 ## getAlignmentOffset
 
 ```TypeScript
@@ -148,6 +151,7 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 
 ```
 
+<a id="getglyphcount"></a>
 ## getGlyphCount
 
 ```TypeScript
@@ -177,6 +181,7 @@ let glyphCount = lines[0].getGlyphCount();
 
 ```
 
+<a id="getglyphruns"></a>
 ## getGlyphRuns
 
 ```TypeScript
@@ -197,7 +202,7 @@ getGlyphRuns(): Array<Run>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Run> | 该文本行中的文本排版单元数组。 |
+| Array&lt;Run&gt; | 该文本行中的文本排版单元数组。 |
 
 **示例：**
 
@@ -206,6 +211,7 @@ let runs = lines[0].getGlyphRuns();
 
 ```
 
+<a id="getimagebounds"></a>
 ## getImageBounds
 
 ```TypeScript
@@ -218,12 +224,12 @@ getImageBounds(): common2D.Rect
 >  
 > 示意图展示了字符串为" a b "的图像边界。  
 >  
-> ![zh-ch_image_ImageBounds.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
+> ![zh-ch_image_ImageBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的图像边界。  
 >  
 > !  
-> [zh-ch_image_ImageBounds_Character.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
+> [zh-ch_image_ImageBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_ImageBounds_Character.png)
 
 **起始版本：** 18
 
@@ -246,6 +252,7 @@ let imageBounds = lines[0].getImageBounds();
 
 ```
 
+<a id="getoffsetforstringindex"></a>
 ## getOffsetForStringIndex
 
 ```TypeScript
@@ -281,6 +288,7 @@ let offset = lines[0].getOffsetForStringIndex(3);
 
 ```
 
+<a id="getstringindexforposition"></a>
 ## getStringIndexForPosition
 
 ```TypeScript
@@ -317,6 +325,7 @@ let index = lines[0].getStringIndexForPosition(point);
 
 ```
 
+<a id="gettextrange"></a>
 ## getTextRange
 
 ```TypeScript
@@ -346,6 +355,7 @@ let textRange = lines[0].getTextRange();
 
 ```
 
+<a id="gettrailingspacewidth"></a>
 ## getTrailingSpaceWidth
 
 ```TypeScript
@@ -375,6 +385,7 @@ let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
 
 ```
 
+<a id="gettypographicbounds"></a>
 ## getTypographicBounds
 
 ```TypeScript
@@ -388,12 +399,12 @@ getTypographicBounds(): TypographicBounds
 > 示意图展示了字符串为" a b "的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
+> [zh-ch_image_TypographicBounds.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds.png)  
 >  
 > 示意图展示了字符串为"j"或"E"的排版边界。  
 >  
 > !  
-> [zh-ch_image_TypographicBounds_Character.png](../../../../reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
+> [zh-ch_image_TypographicBounds_Character.png](docroot://reference/apis-arkgraphics2d/figures/zh-ch_image_TypographicBounds_Character.png)
 
 **起始版本：** 18
 
@@ -417,6 +428,7 @@ console.info('textLine ascent:' + bounds.ascent + ', descent:' + bounds.descent 
 
 ```
 
+<a id="paint"></a>
 ## paint
 
 ```TypeScript

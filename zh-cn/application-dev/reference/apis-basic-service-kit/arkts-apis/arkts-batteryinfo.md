@@ -21,9 +21,9 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md#getbatteryconfig-1) | 按场景名称查询电池配置。 |
-| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported-1) | 检查是否按场景名称启用电池配置。 |
-| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md#setbatteryconfig-1) | 按场景名称设置电池配置。 |
+| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md#getbatteryconfig) | 按场景名称查询电池配置。 |
+| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported) | 检查是否按场景名称启用电池配置。 |
+| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md#setbatteryconfig) | 按场景名称设置电池配置。 |
 <!--DelEnd-->
 
 ### 枚举

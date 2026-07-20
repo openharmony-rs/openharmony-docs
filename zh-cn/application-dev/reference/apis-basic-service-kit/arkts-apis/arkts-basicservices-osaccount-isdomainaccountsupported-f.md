@@ -6,6 +6,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="isdomainaccountsupported"></a>
 ## isDomainAccountSupported
 
 ```TypeScript
@@ -26,7 +27,7 @@ function isDomainAccountSupported(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示支持域账号；返回false表示不支持。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示支持域账号；返回false表示不支持。 |
 
 **错误码：**
 

@@ -1,5 +1,6 @@
 # cancel
 
+<a id="cancel"></a>
 ## cancel
 
 ```TypeScript
@@ -23,9 +24,10 @@ function cancel(id: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 通知ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
+<a id="cancel-1"></a>
 ## cancel
 
 ```TypeScript
@@ -50,9 +52,10 @@ function cancel(id: number, label: string, callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | id | number | 是 | 通知ID。 |
 | label | string | 是 | 通知标签。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 表示被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
 
+<a id="cancel-2"></a>
 ## cancel
 
 ```TypeScript
@@ -82,5 +85,5 @@ function cancel(id: number, label?: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 

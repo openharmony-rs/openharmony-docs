@@ -24,7 +24,7 @@ parameters?: Array<Parameters>
 
 指定安装、卸载插件程序的扩展参数，默认值为空。
 
-**类型：** Array<Parameters>
+**类型：** Array&lt;Parameters&gt;
 
 **起始版本：** 19
 

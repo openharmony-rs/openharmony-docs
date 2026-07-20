@@ -20,6 +20,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="counttext"></a>
 ## countText
 
 ```TypeScript
@@ -54,6 +55,7 @@ countText(text: string): number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="createpathforglyph"></a>
 ## createPathForGlyph
 
 ```TypeScript
@@ -82,6 +84,7 @@ createPathForGlyph(index: number): Path
 | --- | --- |
 | [Path](arkts-arkgraphics2d-drawing-path-c.md) | 返回指定字形的路径轮廓。 |
 
+<a id="enableembolden"></a>
 ## enableEmbolden
 
 ```TypeScript
@@ -110,6 +113,7 @@ enableEmbolden(isEmbolden: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="enablelinearmetrics"></a>
 ## enableLinearMetrics
 
 ```TypeScript
@@ -138,6 +142,7 @@ enableLinearMetrics(isLinearMetrics: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="enablesubpixel"></a>
 ## enableSubpixel
 
 ```TypeScript
@@ -166,6 +171,7 @@ enableSubpixel(isSubpixel: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="getbounds"></a>
 ## getBounds
 
 ```TypeScript
@@ -186,14 +192,15 @@ getBounds(glyphs: Array<number>): Array<common2D.Rect>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| glyphs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 字形索引数组，可由[textToGlyphs](arkts-arkgraphics2d-drawing-font-c.md#texttoglyphs-1)生成。 |
+| glyphs | Array&lt;number&gt; | 是 | 字形索引数组，可由[textToGlyphs](arkts-arkgraphics2d-drawing-font-c.md#texttoglyphs-1)生成。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<common2D.Rect> | Array that holds the rectangular bounding boxes. |
+| Array&lt;common2D.Rect&gt; | Array that holds the rectangular bounding boxes. |
 
+<a id="getedging"></a>
 ## getEdging
 
 ```TypeScript
@@ -216,6 +223,7 @@ getEdging(): FontEdging
 | --- | --- |
 | [FontEdging](arkts-arkgraphics2d-drawing-fontedging-e.md) | 返回字型边缘效果。 |
 
+<a id="gethinting"></a>
 ## getHinting
 
 ```TypeScript
@@ -238,6 +246,7 @@ getHinting(): FontHinting
 | --- | --- |
 | [FontHinting](arkts-arkgraphics2d-drawing-fonthinting-e.md) | 返回字型轮廓效果。 |
 
+<a id="getmetrics"></a>
 ## getMetrics
 
 ```TypeScript
@@ -260,6 +269,7 @@ getMetrics(): FontMetrics
 | --- | --- |
 | [FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md) | FontMetrics属性。 |
 
+<a id="getscalex"></a>
 ## getScaleX
 
 ```TypeScript
@@ -282,6 +292,7 @@ getScaleX(): number
 | --- | --- |
 | number | 返回字型在x轴方向上的缩放比例。 |
 
+<a id="getsize"></a>
 ## getSize
 
 ```TypeScript
@@ -304,6 +315,7 @@ getSize(): number
 | --- | --- |
 | number | 字型大小，浮点数。 |
 
+<a id="getskewx"></a>
 ## getSkewX
 
 ```TypeScript
@@ -326,6 +338,7 @@ getSkewX(): number
 | --- | --- |
 | number | 返回字型在x轴方向上的倾斜度。 |
 
+<a id="gettextpath"></a>
 ## getTextPath
 
 ```TypeScript
@@ -363,6 +376,7 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="gettypeface"></a>
 ## getTypeface
 
 ```TypeScript
@@ -385,6 +399,7 @@ getTypeface(): Typeface
 | --- | --- |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | 字体。 |
 
+<a id="getwidths"></a>
 ## getWidths
 
 ```TypeScript
@@ -405,13 +420,13 @@ getWidths(glyphs: Array<number>): Array<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| glyphs | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 字形索引数组，可由[textToGlyphs](arkts-arkgraphics2d-drawing-font-c.md#texttoglyphs-1)生成。 |
+| glyphs | Array&lt;number&gt; | 是 | 字形索引数组，可由[textToGlyphs](arkts-arkgraphics2d-drawing-font-c.md#texttoglyphs-1)生成。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 返回字形宽度数组。 |
+| Array&lt;number&gt; | 返回字形宽度数组。 |
 
 **错误码：**
 
@@ -419,6 +434,7 @@ getWidths(glyphs: Array<number>): Array<number>
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="isbaselinesnap"></a>
 ## isBaselineSnap
 
 ```TypeScript
@@ -441,6 +457,7 @@ isBaselineSnap(): boolean
 | --- | --- |
 | boolean | 返回字型基线是否与像素对齐，true为对齐，false为没有对齐。 |
 
+<a id="isembeddedbitmaps"></a>
 ## isEmbeddedBitmaps
 
 ```TypeScript
@@ -463,6 +480,7 @@ isEmbeddedBitmaps(): boolean
 | --- | --- |
 | boolean | 返回字型是否转换成位图处理结果，true表示转换成位图处理，false表示不转换成位图处理。 |
 
+<a id="isembolden"></a>
 ## isEmbolden
 
 ```TypeScript
@@ -485,6 +503,7 @@ isEmbolden(): boolean
 | --- | --- |
 | boolean | 返回字型是否设置粗体效果的结果，true表示设置了粗体效果，false表示未设置粗体效果。 |
 
+<a id="isforceautohinting"></a>
 ## isForceAutoHinting
 
 ```TypeScript
@@ -507,6 +526,7 @@ isForceAutoHinting(): boolean
 | --- | --- |
 | boolean | 返回字型轮廓是否自动调整，true为自动调整，false为不自动调整。 |
 
+<a id="islinearmetrics"></a>
 ## isLinearMetrics
 
 ```TypeScript
@@ -529,6 +549,7 @@ isLinearMetrics(): boolean
 | --- | --- |
 | boolean | 返回字型是否可线性缩放的结果，true表示可线性缩放，false表示不可线性缩放。 |
 
+<a id="issubpixel"></a>
 ## isSubpixel
 
 ```TypeScript
@@ -551,6 +572,7 @@ isSubpixel(): boolean
 | --- | --- |
 | boolean | 返回字型是否使用次像素渲染的结果，true表示使用，false表示不使用。 |
 
+<a id="isthemefontfollowed"></a>
 ## isThemeFontFollowed
 
 ```TypeScript
@@ -573,6 +595,7 @@ isThemeFontFollowed(): boolean
 | --- | --- |
 | boolean | 返回字型中的字体是否跟随主题字体的结果，true表示跟随主题字体，false表示不跟随主题字体。 |
 
+<a id="measuresinglecharacter"></a>
 ## measureSingleCharacter
 
 ```TypeScript
@@ -607,6 +630,7 @@ measureSingleCharacter(text: string): number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="measuresinglecharacterwithfeatures"></a>
 ## measureSingleCharacterWithFeatures
 
 ```TypeScript
@@ -628,7 +652,7 @@ measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 待测量的单个字符。字符串长度必须为1。 |
-| features | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<FontFeature> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。 |
+| features | Array&lt;FontFeature&gt; | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。 |
 
 **返回值：**
 
@@ -642,6 +666,7 @@ measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): 
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+<a id="measuretext"></a>
 ## measureText
 
 ```TypeScript
@@ -653,7 +678,7 @@ measureText(text: string, encoding: TextEncoding): number
 > **说明：**  
 >  
 > 此接口用于测量原始字符串的文本宽度，若想测量排版后的文本宽度，建议使用  
-> [measure.measureText](../../../../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12)替代。
+> [measure.measureText](docroot://reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12)替代。
 
 **起始版本：** 11
 
@@ -682,6 +707,7 @@ measureText(text: string, encoding: TextEncoding): number
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setbaselinesnap"></a>
 ## setBaselineSnap
 
 ```TypeScript
@@ -710,6 +736,7 @@ setBaselineSnap(isBaselineSnap: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setedging"></a>
 ## setEdging
 
 ```TypeScript
@@ -738,6 +765,7 @@ setEdging(edging: FontEdging): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setembeddedbitmaps"></a>
 ## setEmbeddedBitmaps
 
 ```TypeScript
@@ -766,6 +794,7 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setforceautohinting"></a>
 ## setForceAutoHinting
 
 ```TypeScript
@@ -794,6 +823,7 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="sethinting"></a>
 ## setHinting
 
 ```TypeScript
@@ -822,6 +852,7 @@ setHinting(hinting: FontHinting): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setscalex"></a>
 ## setScaleX
 
 ```TypeScript
@@ -850,6 +881,7 @@ setScaleX(scaleX: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setsize"></a>
 ## setSize
 
 ```TypeScript
@@ -878,6 +910,7 @@ setSize(textSize: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="setskewx"></a>
 ## setSkewX
 
 ```TypeScript
@@ -906,6 +939,7 @@ setSkewX(skewX: number): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="setthemefontfollowed"></a>
 ## setThemeFontFollowed
 
 ```TypeScript
@@ -934,6 +968,7 @@ setThemeFontFollowed(followed: boolean): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="settypeface"></a>
 ## setTypeface
 
 ```TypeScript
@@ -962,6 +997,7 @@ setTypeface(typeface: Typeface): void
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="texttoglyphs"></a>
 ## textToGlyphs
 
 ```TypeScript
@@ -989,7 +1025,7 @@ textToGlyphs(text: string, glyphCount?: number): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | Array that holds the glyph indexes. |
+| Array&lt;number&gt; | Array that holds the glyph indexes. |
 
 **错误码：**
 

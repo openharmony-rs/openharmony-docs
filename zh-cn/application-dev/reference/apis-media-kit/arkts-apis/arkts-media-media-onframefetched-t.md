@@ -18,6 +18,6 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameInfo | FrameInfo | 是 | 返回的缩略图信息。 |
-| err | BusinessError&lt;void&gt; | 否 | 获取缩略图时发生错误，默认值为null。 |
+| frameInfo | [FrameInfo](arkts-media-media-frameinfo-i.md) | 是 | 返回的缩略图信息。  |
+| err | [BusinessError](../../apis-arkui/arkts-components/arkts-arkui-businesserror-t.md)&lt;void&gt; | 否 | 获取缩略图时发生错误，默认值为null。  |
 

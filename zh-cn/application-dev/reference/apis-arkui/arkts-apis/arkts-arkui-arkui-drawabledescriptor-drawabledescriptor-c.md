@@ -14,6 +14,7 @@
 import { DrawableDescriptor, AnimatedDrawableDescriptor, AnimationStopMode, AnimationOptions, AnimationController, DrawableDescriptorLoadedResult, LayeredDrawableDescriptor, PictureDrawableDescriptor, PixelMapDrawableDescriptor, HdrCompositionConfig } from '@kit.ArkUI';
 ```
 
+<a id="getpixelmap"></a>
 ## getPixelMap
 
 ```TypeScript
@@ -48,6 +49,7 @@ getPixelMap(): image.PixelMap
 
 示例请参考[LayeredDrawableDescriptor](#layereddrawabledescriptor)中的示例代码。
 
+<a id="invalidate"></a>
 ## invalidate
 
 ```TypeScript
@@ -66,6 +68,7 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="isreleased"></a>
 ## isReleased
 
 ```TypeScript
@@ -90,6 +93,7 @@ isReleased(): boolean
 | --- | --- |
 | boolean | DrawableDescriptor是否已被释放。true表示已释放，false表示未释放。 |
 
+<a id="load"></a>
 ## load
 
 ```TypeScript
@@ -110,7 +114,7 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DrawableDescriptorLoadedResult> | 图片资源的加载结果。 |
+| Promise&lt;DrawableDescriptorLoadedResult&gt; | 图片资源的加载结果。 |
 
 **错误码：**
 
@@ -123,6 +127,7 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
+<a id="loadsync"></a>
 ## loadSync
 
 ```TypeScript
@@ -156,6 +161,7 @@ loadSync(): DrawableDescriptorLoadedResult
 
 示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
+<a id="release"></a>
 ## release
 
 ```TypeScript

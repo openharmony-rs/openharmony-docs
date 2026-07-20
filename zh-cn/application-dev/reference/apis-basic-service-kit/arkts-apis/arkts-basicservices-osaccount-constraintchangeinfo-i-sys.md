@@ -22,7 +22,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 constraint: string
 ```
 
-发生变更的[约束](../../../../reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。
+发生变更的[约束](docroot://reference/apis-basic-services-kit/js-apis-osAccount.md#系统账号约束列表)。
 
 **类型：** string
 

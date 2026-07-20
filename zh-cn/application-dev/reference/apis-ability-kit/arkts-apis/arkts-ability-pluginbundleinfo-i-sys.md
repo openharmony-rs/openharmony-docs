@@ -108,7 +108,7 @@ readonly pluginModuleInfos: Array<PluginModuleInfo>
 
 插件的模块信息。
 
-**类型：** Array<PluginModuleInfo>
+**类型：** Array&lt;PluginModuleInfo&gt;
 
 **起始版本：** 26.0.0
 

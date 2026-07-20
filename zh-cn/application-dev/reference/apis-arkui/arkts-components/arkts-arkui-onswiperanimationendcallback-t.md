@@ -22,6 +22,6 @@ declare type OnSwiperAnimationEndCallback = (index: number, extraInfo: SwiperAni
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 当前显示元素的索引。多列Swiper时，index为最左侧组件的索引。 |
-| extraInfo | SwiperAnimationEvent | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Swiper起始位置的位移。 |
+| index | number | 是 | 当前显示元素的索引。多列Swiper时，index为最左侧组件的索引。  |
+| extraInfo | [SwiperAnimationEvent](arkts-arkui-swiperanimationevent-i.md) | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Swiper起始位置的位移。  |
 

@@ -6,6 +6,7 @@
 import { reminderAgent } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="removenotificationslot"></a>
 ## removeNotificationSlot
 
 ```TypeScript
@@ -29,7 +30,7 @@ function removeNotificationSlot(slotType: notification.SlotType, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotType | notification.SlotType | 是 | 目标notification.slot的类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步回调。 |
 
 **示例：**
 
@@ -45,6 +46,7 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION, 
 ```
 
 
+<a id="removenotificationslot-1"></a>
 ## removeNotificationSlot
 
 ```TypeScript
@@ -73,7 +75,7 @@ function removeNotificationSlot(slotType: notification.SlotType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise类型异步回调。 |
+| Promise&lt;void&gt; | Promise类型异步回调。 |
 
 **示例：**
 

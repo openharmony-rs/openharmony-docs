@@ -6,6 +6,7 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
+<a id="remove"></a>
 ## remove
 
 ```TypeScript
@@ -46,7 +47,7 @@ function remove(
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 指定应用的包信息。 |
 | notificationKey | [NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md) | 是 | 通知键值。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 删除指定通知回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 **错误码：**
 
@@ -87,6 +88,7 @@ notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
 ```
 
 
+<a id="remove-1"></a>
 ## remove
 
 ```TypeScript
@@ -117,7 +119,7 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -155,6 +157,7 @@ notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
 ```
 
 
+<a id="remove-2"></a>
 ## remove
 
 ```TypeScript
@@ -179,7 +182,7 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | hashCode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 删除指定通知回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 **错误码：**
 
@@ -212,6 +215,7 @@ notificationSubscribe.remove(hashCode, reason, removeCallback);
 ```
 
 
+<a id="remove-3"></a>
 ## remove
 
 ```TypeScript
@@ -234,9 +238,9 @@ function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<String> | 是 | 通知唯一ID数组集合。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
+| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)对象中的hashCode。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 删除指定通知回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
 **错误码：**
 
@@ -268,6 +272,7 @@ notificationSubscribe.remove(hashCodes, reason, removeCallback);
 ```
 
 
+<a id="remove-4"></a>
 ## remove
 
 ```TypeScript
@@ -297,7 +302,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -327,6 +332,7 @@ notificationSubscribe.remove(hashCode, reason).then(() => {
 ```
 
 
+<a id="remove-5"></a>
 ## remove
 
 ```TypeScript
@@ -349,14 +355,14 @@ function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<String> | 是 | 通知唯一ID数组集合。 |
+| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

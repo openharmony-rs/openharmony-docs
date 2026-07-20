@@ -14,6 +14,7 @@ AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能�
 import { Rect, TouchPosition, AccessibilityVirtualNode, ElementAttributeKeys, FocusCondition, AccessibilityExtensionContext, ElementAttributeValues, AccessibilityEventInfo, AccessibilityEvent, AccessibilityElement, FocusRule, FocusMoveResult, FocusType, Parameter, FocusDirection, WindowType } from '@kit.AccessibilityKit';
 ```
 
+<a id="onaccessibilityevent"></a>
 ## onAccessibilityEvent
 
 ```TypeScript
@@ -52,6 +53,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ```
 
+<a id="onconnect"></a>
 ## onConnect
 
 ```TypeScript
@@ -81,6 +83,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ```
 
+<a id="ondisconnect"></a>
 ## onDisconnect
 
 ```TypeScript
@@ -110,6 +113,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ```
 
+<a id="onkeyevent"></a>
 ## onKeyEvent
 
 ```TypeScript
@@ -130,7 +134,7 @@ onKeyEvent(keyEvent: KeyEvent): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyEvent | [KeyEvent](../../apis-arkui/arkts-components/arkts-arkui-common-keyevent-i.md) | 是 | 按键事件回调函数。返回true表示拦截此按键。 |
+| keyEvent | [KeyEvent](../../apis-arkui/arkts-components/arkts-arkui-keyevent-i.md) | 是 | 按键事件回调函数。返回true表示拦截此按键。 |
 
 **返回值：**
 

@@ -71,7 +71,7 @@ password: string | Uint8Array
 
 用户输入的原始密码。
 
-**类型：** string | Uint8Array
+**类型：** string \| Uint8Array
 
 **起始版本：** 11
 

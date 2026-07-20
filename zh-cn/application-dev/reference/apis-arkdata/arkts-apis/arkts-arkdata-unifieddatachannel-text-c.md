@@ -34,7 +34,7 @@ details?: Record<string, string>
 
 的数据对象，用于描述一篇文章。非必填字段，默认值为空字典对象。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 10
 

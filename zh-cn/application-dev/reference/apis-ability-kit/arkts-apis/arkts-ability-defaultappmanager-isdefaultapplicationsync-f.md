@@ -6,6 +6,7 @@
 import { defaultAppManager } from '@kit.AbilityKit';
 ```
 
+<a id="isdefaultapplicationsync"></a>
 ## isDefaultApplicationSync
 
 ```TypeScript

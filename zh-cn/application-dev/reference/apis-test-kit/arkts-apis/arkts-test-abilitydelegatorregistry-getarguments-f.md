@@ -6,6 +6,7 @@
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
 
+<a id="getarguments"></a>
 ## getArguments
 
 ```TypeScript

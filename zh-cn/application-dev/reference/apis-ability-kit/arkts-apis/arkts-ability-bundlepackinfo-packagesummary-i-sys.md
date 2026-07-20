@@ -36,7 +36,7 @@ readonly modules: Array<ModuleConfigInfo>
 
 包的module配置信息。
 
-**类型：** Array<ModuleConfigInfo>
+**类型：** Array&lt;ModuleConfigInfo&gt;
 
 **起始版本：** 9
 

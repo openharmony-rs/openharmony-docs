@@ -20,6 +20,6 @@ declare type OnVisibleIndexesChangeCallback = (start: number, end: number) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | int | 是 | 可见区域的第一个索引号。 |
-| end | int | 是 | 可见区域的最后一个索引号。 |
+| start | number | 是 | 可见区域的第一个索引号。  |
+| end | number | 是 | 可见区域的最后一个索引号。  |
 

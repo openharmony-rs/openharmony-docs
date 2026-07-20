@@ -58,7 +58,7 @@ ratioLimits: Array<RatioLimit>
 
 标准悬浮窗的宽高比限制范围。
 
-**类型：** Array<RatioLimit>
+**类型：** Array&lt;RatioLimit&gt;
 
 **起始版本：** 26.0.0
 

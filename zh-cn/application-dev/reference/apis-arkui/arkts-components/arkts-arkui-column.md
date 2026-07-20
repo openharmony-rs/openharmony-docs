@@ -37,7 +37,7 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ColumnOptions | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
+| options | [ColumnOptions](arkts-arkui-columnoptions-i.md) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
 
 ## Column
 
@@ -63,7 +63,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ColumnOptions \| ColumnOptionsV2 | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
+| options | [ColumnOptions](arkts-arkui-columnoptions-i.md) \| ColumnOptionsV2 | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。  |
 
 ## 汇总
 

@@ -20,5 +20,5 @@ onHoverStatusChange事件处理。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | HoverModeStatus | 是 | 折叠屏进入或退出悬停模式时触发的回调函数。 |
+| status | [HoverModeStatus](arkts-na-arkui-advanced-foldsplitcontainer-hovermodestatus-i.md) | 是 | 折叠屏进入或退出悬停模式时触发的回调函数。  |
 

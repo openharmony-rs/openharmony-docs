@@ -6,6 +6,7 @@
 import { certificateManager } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="abort"></a>
 ## abort
 
 ```TypeScript
@@ -26,8 +27,8 @@ function abort(handle: Uint8Array, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示初始化操作返回的句柄，。<br>最大长度为8。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当中止签名、验签成功时，err为null，否则为错误对象。 |
+| handle | Uint8Array | 是 | 表示初始化操作返回的句柄，。<br>最大长度为8。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当中止签名、验签成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ try {
 ```
 
 
+<a id="abort-1"></a>
 ## abort
 
 ```TypeScript
@@ -81,13 +83,13 @@ function abort(handle: Uint8Array): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | 表示初始化操作返回的句柄，。<br>最大长度为8。 |
+| handle | Uint8Array | 是 | 表示初始化操作返回的句柄，。<br>最大长度为8。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

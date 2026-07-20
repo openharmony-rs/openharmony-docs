@@ -14,6 +14,7 @@ Defines the PrefetchOptions class.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

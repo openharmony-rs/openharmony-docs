@@ -6,6 +6,7 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getdockapps"></a>
 ## getDockApps
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getDockApps(admin: Want): Array<DockInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DockInfo> | 快捷栏中的应用信息数组。 |
+| Array&lt;DockInfo&gt; | 快捷栏中的应用信息数组。 |
 
 **错误码：**
 

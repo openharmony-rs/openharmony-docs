@@ -6,6 +6,7 @@
 import { securityLabel } from '@kit.CoreFileKit';
 ```
 
+<a id="setsecuritylabelsync"></a>
 ## setSecurityLabelSync
 
 ```TypeScript

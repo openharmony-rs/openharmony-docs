@@ -6,6 +6,7 @@
 import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="closecustomdialog"></a>
 ## closeCustomDialog
 
 ```TypeScript

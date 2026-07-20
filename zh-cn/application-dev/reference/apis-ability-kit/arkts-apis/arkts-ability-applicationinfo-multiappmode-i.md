@@ -1,6 +1,6 @@
 # MultiAppMode
 
-表示[应用多开](../../../../quick-start/multiInstance.md)模式。
+表示[应用多开](docroot://quick-start/multiInstance.md)模式。
 
 **起始版本：** 12
 

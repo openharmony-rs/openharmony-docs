@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="updateasuser"></a>
 ## updateAsUser
 
 ```TypeScript
@@ -36,7 +37,7 @@ function updateAsUser(userId: number, query: AssetMap, attributesToUpdate: Asset
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

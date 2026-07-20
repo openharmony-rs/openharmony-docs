@@ -6,6 +6,7 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
+<a id="createdatasharehelper"></a>
 ## createDataShareHelper
 
 ```TypeScript
@@ -30,7 +31,7 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用的上下文环境。 |
 | uri | string | 是 | 要连接的服务端应用的路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataShareHelper> | 是 | 回调函数。当创建DataShareHelper实例成功，err为undefined，data为获取到的DataShareHelper实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataShareHelper&gt; | 是 | 回调函数。当创建DataShareHelper实例成功，err为undefined，data为获取到的DataShareHelper实例；否则为错误对象。 |
 
 **错误码：**
 
@@ -71,6 +72,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="createdatasharehelper-1"></a>
 ## createDataShareHelper
 
 ```TypeScript
@@ -111,7 +113,7 @@ function createDataShareHelper(
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | Indicates the application context. |
 | uri | string | 是 | Indicates the path of the file to open. |
 | options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | 是 | Indicates the optional config. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DataShareHelper> | 是 | {DataShareHelper}: The dataShareHelper for consumer. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DataShareHelper&gt; | 是 | {DataShareHelper}: The dataShareHelper for consumer. |
 
 **错误码：**
 
@@ -152,6 +154,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="createdatasharehelper-2"></a>
 ## createDataShareHelper
 
 ```TypeScript
@@ -194,7 +197,7 @@ function createDataShareHelper(
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<DataShareHelper> | Promise对象。返回DataShareHelper实例。 |
+| Promise&lt;DataShareHelper&gt; | Promise对象。返回DataShareHelper实例。 |
 
 **错误码：**
 

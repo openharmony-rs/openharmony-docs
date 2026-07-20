@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="hasmatchedcalllog"></a>
 ## hasMatchedCallLog
 
 ```TypeScript
@@ -38,7 +39,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
+| Promise&lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 ```
 
 
+<a id="hasmatchedcalllog-1"></a>
 ## hasMatchedCallLog
 
 ```TypeScript
@@ -102,7 +104,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
+| Promise&lt;boolean&gt; | Promise对象，返回是否有符合条件的通话记录，true代表有符合条件的，false代表没有。 |
 
 **错误码：**
 

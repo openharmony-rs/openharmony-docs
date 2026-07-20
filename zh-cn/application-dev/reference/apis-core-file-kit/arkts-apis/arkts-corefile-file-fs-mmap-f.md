@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="mmap"></a>
 ## mmap
 
 ```TypeScript
@@ -38,7 +39,7 @@ declare function mmap(file: number | File, mode: MappingMode, offset: number, si
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<FileMapping> | Promise对象。返回FileMapping对象。 |
+| Promise&lt;FileMapping&gt; | Promise对象。返回FileMapping对象。 |
 
 **错误码：**
 

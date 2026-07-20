@@ -6,6 +6,7 @@
 import { shortcutManager } from '@kit.AbilityKit';
 ```
 
+<a id="isshortcutsupported"></a>
 ## isShortcutSupported
 
 ```TypeScript

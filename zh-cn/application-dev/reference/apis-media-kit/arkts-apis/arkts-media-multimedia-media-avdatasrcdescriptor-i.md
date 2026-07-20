@@ -22,7 +22,7 @@ callback: (buffer: ArrayBuffer, length: number, pos?: number) => number
 
 Callback function implemented by users, which is used to fill data.buffer - The buffer need to fill.length - The stream length player want to get.pos - The stream position player want get start, and is an optional parameter.When fileSize set to -1, this parameter is not used.Returns length of the data to be filled, Return -1 to indicate that the end of the stream is reached,Return -2 to indicate that an unrecoverable error has been encountered.
 
-**类型：** (buffer: ArrayBuffer, length: number, pos?: number) => number
+**类型：** (buffer: ArrayBuffer, length: number, pos?: number) =&gt; number
 
 **起始版本：** 10
 

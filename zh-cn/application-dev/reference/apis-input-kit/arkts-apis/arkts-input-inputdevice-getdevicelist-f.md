@@ -6,6 +6,7 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="getdevicelist"></a>
 ## getDeviceList
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getDeviceList(callback: AsyncCallback<Array<number>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<number>> | 是 | 回调函数。当获取成功，err为undefined，data为所有输入设备的ID列表（ID是输入设备的唯一标识）；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。当获取成功，err为undefined，data为所有输入设备的ID列表（ID是输入设备的唯一标识）；否则为错误对象。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ struct Index {
 ```
 
 
+<a id="getdevicelist-1"></a>
 ## getDeviceList
 
 ```TypeScript
@@ -83,7 +85,7 @@ function getDeviceList(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<number>> | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
 
 **示例：**
 

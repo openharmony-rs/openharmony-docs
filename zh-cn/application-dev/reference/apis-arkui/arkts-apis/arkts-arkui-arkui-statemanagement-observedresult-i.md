@@ -22,7 +22,7 @@ decoratorInfo: Array<DecoratorInfo>
 
 对象可被观察时，数组中内容为对象关联的装饰器和组件信息。对象不可被观察时，此数组为空。
 
-**类型：** Array<DecoratorInfo>
+**类型：** Array&lt;DecoratorInfo&gt;
 
 **起始版本：** 23
 
@@ -70,7 +70,7 @@ reason: string
 
 可被观察原因或使用场景：
 
-1. V1对象被[@Observed](../../../../ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](arkts-arkui-arkui-statemanagement-uiutils-c.md#makev1observed-1)方法转换的。2. V1对象被[@Observed](../../../../ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](arkts-arkui-arkui-statemanagement-uiutils-c.md#makev1observed-1)方法转换的，但对象没有被UI组件使用。3. V1对象被[enableV2Compatibility](arkts-arkui-arkui-statemanagement-uiutils-c.md#enablev2compatibility-1)方法转换后传入V2组件。4. V1对象被[enableV2Compatibility](arkts-arkui-arkui-statemanagement-uiutils-c.md#enablev2compatibility-1)方法转换后传入V2组件，但没有被V2组件使用。5. V2对象是被[@ObservedV2/@Trace](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的。6. V2对象是被[makeObserved](arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved-1)方法转换的。7. V2对象属于Array/Map/Set/Date类型。8. V2对象是被[@ObservedV2/@Trace](../../../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的，但对象没有被UI组件使用。9. V2对象是被[makeObserved](arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved-1)方法转换的，但没有被UI组件使用。10. V2对象属于Array/Map/Set/Date类型，但没有被UI组件使用。
+1. V1对象被[@Observed](docroot://ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](arkts-arkui-arkui-statemanagement-uiutils-c.md#makev1observed-1)方法转换的。2. V1对象被[@Observed](docroot://ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](arkts-arkui-arkui-statemanagement-uiutils-c.md#makev1observed-1)方法转换的，但对象没有被UI组件使用。3. V1对象被[enableV2Compatibility](arkts-arkui-arkui-statemanagement-uiutils-c.md#enablev2compatibility-1)方法转换后传入V2组件。4. V1对象被[enableV2Compatibility](arkts-arkui-arkui-statemanagement-uiutils-c.md#enablev2compatibility-1)方法转换后传入V2组件，但没有被V2组件使用。5. V2对象是被[@ObservedV2/@Trace](docroot://ui/state-management/arkts-new-observedV2-and-trace.md)装饰的。6. V2对象是被[makeObserved](arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved-1)方法转换的。7. V2对象属于Array/Map/Set/Date类型。8. V2对象是被[@ObservedV2/@Trace](docroot://ui/state-management/arkts-new-observedV2-and-trace.md)装饰的，但对象没有被UI组件使用。9. V2对象是被[makeObserved](arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved-1)方法转换的，但没有被UI组件使用。10. V2对象属于Array/Map/Set/Date类型，但没有被UI组件使用。
 
 **类型：** string
 

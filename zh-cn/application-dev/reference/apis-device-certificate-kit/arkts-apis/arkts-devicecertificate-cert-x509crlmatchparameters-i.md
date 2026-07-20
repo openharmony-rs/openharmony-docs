@@ -22,7 +22,7 @@ issuer?: Array<Uint8Array>
 
 指定CRL颁发者，为DER编码格式。
 
-**类型：** Array<Uint8Array>
+**类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 11
 

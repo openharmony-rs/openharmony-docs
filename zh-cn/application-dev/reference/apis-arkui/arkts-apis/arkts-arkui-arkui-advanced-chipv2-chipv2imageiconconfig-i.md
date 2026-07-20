@@ -82,7 +82,7 @@ size?: SizeT<LengthMetrics>
 
 图片大小选项。
 
-**类型：** SizeT<LengthMetrics>
+**类型：** SizeT&lt;LengthMetrics&gt;
 
 **起始版本：** 26.0.0
 

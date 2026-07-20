@@ -6,6 +6,7 @@
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="offseniormodestatechangeforapp"></a>
 ## offSeniorModeStateChangeForApp
 
 ```TypeScript
@@ -30,7 +31,7 @@ Unregister the observer for application's senior mode state changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AppSeniorModeInfo> | 否 | Asynchronous callback interface. |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AppSeniorModeInfo&gt; | 否 | Asynchronous callback interface. |
 
 **错误码：**
 

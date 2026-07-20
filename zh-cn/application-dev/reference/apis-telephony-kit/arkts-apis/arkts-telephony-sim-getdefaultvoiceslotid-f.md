@@ -6,6 +6,7 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getdefaultvoiceslotid"></a>
 ## getDefaultVoiceSlotId
 
 ```TypeScript
@@ -24,7 +25,7 @@ Obtains the default card slot for the voice service.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | Indicates the callback for getting the default card slot for the voice service.Returns {@code 0} if card 1 is used as the default card slot for the voice service;returns {@code 1} if card 2 is used as the default card slot for the voice service;returns {@code -1} if no card is available for the voice service. |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | Indicates the callback for getting the default card slot for the voice service.Returns {@code 0} if card 1 is used as the default card slot for the voice service;returns {@code 1} if card 2 is used as the default card slot for the voice service;returns {@code -1} if no card is available for the voice service. |
 
 **示例：**
 
@@ -39,6 +40,7 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 ```
 
 
+<a id="getdefaultvoiceslotid-1"></a>
 ## getDefaultVoiceSlotId
 
 ```TypeScript
@@ -57,7 +59,7 @@ Obtains the default card slot for the voice service.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Returns {@code 0} if card 1 is used as the default card slot for the voice service;returns {@code 1} if card 2 is used as the default card slot for the voice service;returns {@code -1} if no card is available for the voice service. |
+| Promise&lt;number&gt; | Returns {@code 0} if card 1 is used as the default card slot for the voice service;returns {@code 1} if card 2 is used as the default card slot for the voice service;returns {@code -1} if no card is available for the voice service. |
 
 **示例：**
 

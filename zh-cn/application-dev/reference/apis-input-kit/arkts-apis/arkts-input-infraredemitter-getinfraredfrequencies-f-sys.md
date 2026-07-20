@@ -6,6 +6,7 @@
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
+<a id="getinfraredfrequencies"></a>
 ## getInfraredFrequencies
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getInfraredFrequencies(): Array<InfraredFrequency>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<InfraredFrequency> | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
+| Array&lt;InfraredFrequency&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 

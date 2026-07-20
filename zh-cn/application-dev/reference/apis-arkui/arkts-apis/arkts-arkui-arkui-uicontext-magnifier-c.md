@@ -14,6 +14,7 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="bind"></a>
 ## bind
 
 ```TypeScript
@@ -38,6 +39,7 @@ bind(id: string): void
 | --- | --- | --- | --- |
 | id | string | 是 | 组件id |
 
+<a id="show"></a>
 ## show
 
 ```TypeScript
@@ -63,6 +65,7 @@ show(x: number, y: number): void
 | x | number | 是 | 放大镜显示内容相对组件水平方向坐标。单位为vp。 |
 | y | number | 是 | 放大镜显示内容相对组件垂直方向坐标。单位为vp。 |
 
+<a id="unbind"></a>
 ## unbind
 
 ```TypeScript

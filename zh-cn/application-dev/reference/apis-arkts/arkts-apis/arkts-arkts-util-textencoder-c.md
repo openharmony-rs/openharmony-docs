@@ -14,6 +14,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -37,6 +38,7 @@ let textEncoder = new util.TextEncoder();
 
 ```
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript
@@ -66,6 +68,7 @@ let textEncoder = new util.TextEncoder("utf-8");
 
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -101,6 +104,7 @@ let textEncoder = util.TextEncoder.create("utf-8");
 
 ```
 
+<a id="encode"></a>
 ## encode
 
 ```TypeScript
@@ -129,7 +133,7 @@ encode(input?: string): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 获取到的 Uint8Array 对象。 |
 
 **示例：**
 
@@ -141,6 +145,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="encodeinto"></a>
 ## encodeInto
 
 ```TypeScript
@@ -167,7 +172,7 @@ encodeInto(input?: string): Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 获取到的 Uint8Array 对象。 |
 
 **示例：**
 
@@ -179,6 +184,7 @@ console.info("result = " + result);
 
 ```
 
+<a id="encodeinto-1"></a>
 ## encodeInto
 
 ```TypeScript
@@ -202,7 +208,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | input | string | 是 | 要编码的字符串。 |
-| dest | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 用于存储 UTF-8 编码文本的 Uint8Array 对象。 |
+| dest | Uint8Array | 是 | 用于存储 UTF-8 编码文本的 Uint8Array 对象。 |
 
 **返回值：**
 
@@ -222,6 +228,7 @@ console.info("uint8 = " + uint8);
 
 ```
 
+<a id="encodeintouint8array"></a>
 ## encodeIntoUint8Array
 
 ```TypeScript
@@ -243,7 +250,7 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | input | string | 是 | 要编码的字符串。 |
-| dest | [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 用于存储 UTF-8 编码文本的 Uint8Array 对象。 |
+| dest | Uint8Array | 是 | 用于存储 UTF-8 编码文本的 Uint8Array 对象。 |
 
 **返回值：**
 

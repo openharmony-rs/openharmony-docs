@@ -6,6 +6,7 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="cancelreminder"></a>
 ## cancelReminder
 
 ```TypeScript
@@ -25,7 +26,7 @@ function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reminderId | number | 是 | 需要取消的代理提醒的id。代理提醒id会在[发布代理提醒](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md#publishreminder-1)时作为返回值返回。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当取消代理提醒成功，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当取消代理提醒成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ reminderAgentManager.cancelReminder(reminderId, (err: BusinessError) => {
 ```
 
 
+<a id="cancelreminder-1"></a>
 ## cancelReminder
 
 ```TypeScript
@@ -77,7 +79,7 @@ function cancelReminder(reminderId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

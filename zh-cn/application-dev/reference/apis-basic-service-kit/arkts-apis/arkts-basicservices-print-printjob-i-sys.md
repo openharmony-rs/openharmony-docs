@@ -78,7 +78,7 @@ fdList: Array<number>
 
 表示待打印文件fd列表。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 24
 

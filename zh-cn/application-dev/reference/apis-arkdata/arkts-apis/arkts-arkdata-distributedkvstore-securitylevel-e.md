@@ -9,7 +9,7 @@
 > * 该操作不支持跨设备同步的数据库。不同安全等级的数据库之间不能进行数据同步。若需升级数据库的安全等级，建议重新创建更高安全等级的数据库。  
 >  
 > * 关闭当前数据库后，修改securityLevel参数以重新设置数据库的安全等级，然后调用  
-> [getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore-1)  
+> [getKVStore](distributedKVStore.KVManager.getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>))  
 > 接口重新打开数据库。  
 >  
 > * 该操作仅支持升级，例如从S2到S3，不支持降级，例如从S3到S2。

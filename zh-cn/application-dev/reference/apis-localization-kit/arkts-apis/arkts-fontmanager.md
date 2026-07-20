@@ -23,9 +23,9 @@ import { fontManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md#datamigration-1) | 设备升级时使用的数据迁移接口，用于拉起迁移任务。 |
-| [installFont](arkts-localization-fontmanager-installfont-f-sys.md#installfont-1) | 安装指定路径下的字体，使用promise异步回调。 |
-| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md#uninstallfont-1) | 卸载指定名称的字体，使用promise异步回调。 |
+| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md#datamigration) | 设备升级时使用的数据迁移接口，用于拉起迁移任务。 |
+| [installFont](arkts-localization-fontmanager-installfont-f-sys.md#installfont) | 安装指定路径下的字体，使用promise异步回调。 |
+| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md#uninstallfont) | 卸载指定名称的字体，使用promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

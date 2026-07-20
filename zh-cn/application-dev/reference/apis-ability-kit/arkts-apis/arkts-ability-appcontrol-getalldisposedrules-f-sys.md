@@ -6,6 +6,7 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="getalldisposedrules"></a>
 ## getAllDisposedRules
 
 ```TypeScript
@@ -28,7 +29,7 @@ function getAllDisposedRules(): Array<DisposedRuleConfiguration>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<DisposedRuleConfiguration> | 应用已设置的拦截规则。 |
+| Array&lt;DisposedRuleConfiguration&gt; | 应用已设置的拦截规则。 |
 
 **错误码：**
 

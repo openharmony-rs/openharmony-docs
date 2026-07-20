@@ -22,6 +22,7 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="gettrackdescription"></a>
 ## getTrackDescription
 
 ```TypeScript
@@ -39,7 +40,7 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 
 **废弃版本：** 9
 
-**替代接口：** getTrackDescription(callback:
+**替代接口：** [getTrackDescription(callback:](arkts-media-media-avplayer-i.md#gettrackdescription-1)
 
 <!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
@@ -49,8 +50,9 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<MediaDescription>> | 是 | 回调函数。获取音频轨道信息成功时，err为undefined，data为获取到的MediaDescription数组，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;MediaDescription&gt;&gt; | 是 | 回调函数。获取音频轨道信息成功时，err为undefined，data为获取到的MediaDescription数组，否则为错误对象。 |
 
+<a id="gettrackdescription-1"></a>
 ## getTrackDescription
 
 ```TypeScript
@@ -61,13 +63,13 @@ getTrackDescription(): Promise<Array<MediaDescription>>
 
 > **说明：**  
 > > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-2)替代。
+> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getTrackDescription()](arkts-media-media-avplayer-i.md#gettrackdescription-2)
+**替代接口：** [getTrackDescription()](arkts-media-media-avplayer-i.md#gettrackdescription-1)
 
 <!--Device-AudioPlayer-getTrackDescription(): Promise<Array<MediaDescription>>--><!--Device-AudioPlayer-getTrackDescription(): Promise<Array<MediaDescription>>-End-->
 
@@ -77,8 +79,9 @@ getTrackDescription(): Promise<Array<MediaDescription>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<MediaDescription>> | 音频轨道信息MediaDescription数组Promise返回值。 |
+| Promise&lt;Array&lt;MediaDescription&gt;&gt; | 音频轨道信息MediaDescription数组Promise返回值。 |
 
+<a id="on"></a>
 ## on('bufferingUpdate')
 
 ```TypeScript
@@ -107,8 +110,9 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 音频缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
-| callback | (infoType: BufferingInfoType, value: number) => void | 是 | 音频缓存事件回调方法。<br>[BufferingInfoType](@ohos.multimedia.media:media.BufferingInfoType)value值固定为0。 |
+| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 音频缓存事件回调方法。<br>[BufferingInfoType](@ohos.multimedia.media:media.BufferingInfoType)value值固定为0。 |
 
+<a id="on-1"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -137,8 +141,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-2"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -167,8 +172,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-3"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -197,8 +203,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-4"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -227,8 +234,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-5"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -257,8 +265,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-6"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -287,8 +296,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-7"></a>
 ## on('play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange')
 
 ```TypeScript
@@ -317,8 +327,9 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成[play()](media.AudioPlayer.play)调用，音频开始播放，触发该事件。<br>- 'pause'：完成[pause()](media.AudioPlayer.pause)调用，音频暂停播放，触发该事件。<br>- 'stop'：完成[stop()](media.AudioPlayer.stop)调用，音频停止播放，触发该事件。<br>- 'reset'：完成[reset()](media.AudioPlayer.reset)调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成[setVolume()](media.AudioPlayer.setVolume)调用，播放音量改变后触发该事件。 |
-| callback | () => void | 是 | 播放事件回调方法。 |
+| callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
+<a id="on-8"></a>
 ## on('timeUpdate')
 
 ```TypeScript
@@ -347,8 +358,9 @@ on(type: 'timeUpdate', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'timeUpdate' | 是 | 播放事件回调类型，支持的事件包括：'timeUpdate'。<br>- 'timeUpdate'：音频播放时间戳更新，开始播放后自动触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 播放事件回调方法。回调方法入参为更新后的时间戳。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 播放事件回调方法。回调方法入参为更新后的时间戳。 |
 
+<a id="on-9"></a>
 ## on('audioInterrupt')
 
 ```TypeScript
@@ -377,8 +389,9 @@ on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 音频焦点变化事件回调类型，支持的事件：'audioInterrupt'。 |
-| callback | (info: audio.InterruptEvent) => void | 是 | 音频焦点变化事件回调方法。 |
+| callback | (info: audio.InterruptEvent) =&gt; void | 是 | 音频焦点变化事件回调方法。 |
 
+<a id="on-10"></a>
 ## on('error')
 
 ```TypeScript
@@ -409,6 +422,7 @@ on(type: 'error', callback: ErrorCallback): void
 | type | 'error' | 是 | 播放错误事件回调类型，支持的事件包括：'error'。<br>- 'error'：音频播放中发生错误，触发该事件。 |
 | callback | [ErrorCallback](../../apis-arkui/arkts-components/arkts-arkui-errorcallback-t-sys.md) | 是 | 播放错误事件回调方法。 |
 
+<a id="pause"></a>
 ## pause
 
 ```TypeScript
@@ -425,12 +439,13 @@ pause(): void
 
 **废弃版本：** 9
 
-**替代接口：** pause(callback:
+**替代接口：** [pause(callback:](arkts-media-media-avplayer-i.md#pause-1)
 
 <!--Device-AudioPlayer-pause(): void--><!--Device-AudioPlayer-pause(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
 
+<a id="play"></a>
 ## play
 
 ```TypeScript
@@ -447,12 +462,13 @@ play(): void
 
 **废弃版本：** 9
 
-**替代接口：** play(callback:
+**替代接口：** [play(callback:](arkts-media-media-avplayer-i.md#play-1)
 
 <!--Device-AudioPlayer-play(): void--><!--Device-AudioPlayer-play(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -469,12 +485,13 @@ release(): void
 
 **废弃版本：** 9
 
-**替代接口：** release(callback:
+**替代接口：** [release(callback:](arkts-media-media-avplayer-i.md#release-1)
 
 <!--Device-AudioPlayer-release(): void--><!--Device-AudioPlayer-release(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
 
+<a id="reset"></a>
 ## reset
 
 ```TypeScript
@@ -491,12 +508,13 @@ reset(): void
 
 **废弃版本：** 9
 
-**替代接口：** reset(callback:
+**替代接口：** [reset(callback:](arkts-media-media-avplayer-i.md#reset-1)
 
 <!--Device-AudioPlayer-reset(): void--><!--Device-AudioPlayer-reset(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
 
+<a id="seek"></a>
 ## seek
 
 ```TypeScript
@@ -525,6 +543,7 @@ seek(timeMs: number): void
 | --- | --- | --- | --- |
 | timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围[0, duration]。 |
 
+<a id="setvolume"></a>
 ## setVolume
 
 ```TypeScript
@@ -553,6 +572,7 @@ setVolume(vol: number): void
 | --- | --- | --- | --- |
 | vol | number | 是 | 指定的相对音量大小，取值范围为[0.00-1.00]，1表示最大音量，即100%。 |
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -569,7 +589,7 @@ stop(): void
 
 **废弃版本：** 9
 
-**替代接口：** stop(callback:
+**替代接口：** [stop(callback:](arkts-media-media-avplayer-i.md#stop-1)
 
 <!--Device-AudioPlayer-stop(): void--><!--Device-AudioPlayer-stop(): void-End-->
 
@@ -701,7 +721,7 @@ src: string
 
 1. fd类型播放：fd://xx
 
-![](../../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
+![](docroot://reference/apis-media-kit/figures/zh-cn_image_url.png)
 
 2. http网络播放: http://xx3. https网络播放: https://xx4. hls网络播放路径：http://xx或者https://xx
 

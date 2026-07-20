@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="isapplicationdisableforbidden"></a>
 ## isApplicationDisableForbidden
 
 ```TypeScript

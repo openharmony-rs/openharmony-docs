@@ -34,7 +34,7 @@ DatePicker(options?: DatePickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | DatePickerOptions | 否 | 配置日期选择器组件的参数。 |
+| options | [DatePickerOptions](arkts-arkui-datepickeroptions-i.md) | 否 | 配置日期选择器组件的参数。  |
 
 ## 汇总
 

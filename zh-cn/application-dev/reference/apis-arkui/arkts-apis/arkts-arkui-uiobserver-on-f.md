@@ -6,13 +6,14 @@
 import { uiObserver } from '@kit.ArkUI';
 ```
 
+<a id="on"></a>
 ## on('navDestinationUpdate')
 
 ```TypeScript
 export function on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<NavDestinationInfo>): void
 ```
 
-监听NavDestination组件的状态变化。与* [uiObserver.on](arkts-arkui-uiobserver-on-f.md#on-2)相比，新增了options参数，即支持指定监听的Navigation的id。
+监听NavDestination组件的状态变化。与* [uiObserver.on](uiObserver.on(type: 'navDestinationUpdate', callback:Callback<NavDestinationInfo>))相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
 
@@ -30,7 +31,7 @@ export function on(type: 'navDestinationUpdate', options: { navigationId: Resour
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
 | options | { navigationId: ResourceStr } | 是 | 指定监听的Navigation的id。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<NavDestinationInfo> | 是 | 回调函数。返回当前的NavDestination组件状态。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationInfo&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 
 **示例：**
 
@@ -90,6 +91,7 @@ struct Index {
 ```
 
 
+<a id="on-1"></a>
 ## on('navDestinationUpdate')
 
 ```TypeScript
@@ -113,7 +115,7 @@ export function on(type: 'navDestinationUpdate', callback: Callback<NavDestinati
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<NavDestinationInfo> | 是 | 回调函数。返回当前的NavDestination组件状态。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationInfo&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 
 **示例：**
 
@@ -172,6 +174,7 @@ struct Index {
 ```
 
 
+<a id="on-2"></a>
 ## on('scrollEvent')
 
 ```TypeScript
@@ -196,9 +199,10 @@ Registers a callback function to be called when the scroll event start or stop.
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
 | options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<ScrollEventInfo> | 是 | The callback function to be called when the scroll event start or stop. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
 
 
+<a id="on-3"></a>
 ## on('scrollEvent')
 
 ```TypeScript
@@ -222,9 +226,10 @@ Registers a callback function to be called when the scroll event start or stop.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<ScrollEventInfo> | 是 | The callback function to be called when the scroll event start or stop. |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;ScrollEventInfo&gt; | 是 | The callback function to be called when the scroll event start or stop. |
 
 
+<a id="on-4"></a>
 ## on('routerPageUpdate')
 
 ```TypeScript
@@ -248,8 +253,8 @@ export function on(type: 'routerPageUpdate', context: UIAbilityContext | UIConte
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'routerPageUpdate' | 是 | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
-| context | UIAbilityContext \| UIContext | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<RouterPageInfo> | 是 | 回调函数。携带pageInfo，返回当前的page页面状态。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) \| UIContext | 是 | 上下文信息，用以指定监听页面的范围。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;RouterPageInfo&gt; | 是 | 回调函数。携带pageInfo，返回当前的page页面状态。 |
 
 **示例：**
 
@@ -289,6 +294,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="on-5"></a>
 ## on('densityUpdate')
 
 ```TypeScript
@@ -313,7 +319,7 @@ export function on(type: 'densityUpdate', context: UIContext, callback: Callback
 | --- | --- | --- | --- |
 | type | 'densityUpdate' | 是 | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
 | context | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<DensityInfo> | 是 | 回调函数。携带DensityInfo，返回变化后的屏幕像素密度。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DensityInfo&gt; | 是 | 回调函数。携带DensityInfo，返回变化后的屏幕像素密度。 |
 
 **示例：**
 
@@ -348,6 +354,7 @@ struct Index {
 ```
 
 
+<a id="on-6"></a>
 ## on('willDraw')
 
 ```TypeScript
@@ -372,7 +379,7 @@ export function on(type: 'willDraw', context: UIContext, callback: Callback<void
 | --- | --- | --- | --- |
 | type | 'willDraw' | 是 | 监听事件，固定为'willDraw'，即是否将要绘制。 |
 | context | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -398,6 +405,7 @@ struct Index {
 ```
 
 
+<a id="on-7"></a>
 ## on('didLayout')
 
 ```TypeScript
@@ -422,7 +430,7 @@ export function on(type: 'didLayout', context: UIContext, callback: Callback<voi
 | --- | --- | --- | --- |
 | type | 'didLayout' | 是 | 监听事件，固定为'didLayout'，即是否布局完成。 |
 | context | [UIContext](../arkts-components/arkts-arkui-uicontext-t.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<void> | 是 | 回调函数。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例：**
 
@@ -448,13 +456,14 @@ struct Index {
 ```
 
 
+<a id="on-8"></a>
 ## on('tabContentUpdate')
 
 ```TypeScript
 export function on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback<TabContentInfo>): void
 ```
 
-监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on-23)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange',callback: Callback<observer.TabContentInfo>))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -472,7 +481,7 @@ export function on(type: 'tabContentUpdate', options: ObserverOptions, callback:
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
 | options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的Tabs组件的id。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<TabContentInfo> | 是 | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;TabContentInfo&gt; | 是 | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
 
 **示例：**
 
@@ -527,13 +536,14 @@ struct TabsExample {
 ```
 
 
+<a id="on-9"></a>
 ## on('tabContentUpdate')
 
 ```TypeScript
 export function on(type: 'tabContentUpdate', callback: Callback<TabContentInfo>): void
 ```
 
-监听TabContent页面的切换事件。相比[on('tabChange')](arkts-arkui-arkui-uicontext-uiobserver-c.md#on-23)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听TabContent页面的切换事件。相比[on('tabChange')](@ohos.arkui.UIContext:UIObserver#on(type: 'tabChange', callback:Callback<observer.TabContentInfo>))，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -550,7 +560,7 @@ export function on(type: 'tabContentUpdate', callback: Callback<TabContentInfo>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<TabContentInfo> | 是 | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;TabContentInfo&gt; | 是 | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
 
 **示例：**
 
@@ -605,6 +615,7 @@ struct TabsExample {
 ```
 
 
+<a id="on-10"></a>
 ## on('navDestinationSwitch')
 
 ```TypeScript
@@ -640,8 +651,8 @@ export function on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context | UIAbilityContext \| UIContext | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<NavDestinationSwitchInfo> | 是 | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) \| UIContext | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationSwitchInfo&gt; | 是 | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。 |
 
 **示例：**
 
@@ -754,6 +765,7 @@ struct Index {
 ```
 
 
+<a id="on-11"></a>
 ## on('navDestinationSwitch')
 
 ```TypeScript
@@ -765,7 +777,7 @@ export function on(
   ): void
 ```
 
-监听Navigation的页面切换事件。与[uiObserver.on](arkts-arkui-uiobserver-on-f.md#on-11)相比，新增了observerOptions参数，即支持设置监听选项。
+监听Navigation的页面切换事件。与[uiObserver.on](uiObserver.on( type: 'navDestinationSwitch', context: UIAbilityContext |UIContext, callback: Callback<NavDestinationSwitchInfo> ))相比，新增了observerOptions参数，即支持设置监听选项。
 
 **起始版本：** 12
 
@@ -792,9 +804,9 @@ export function on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context | UIAbilityContext \| UIContext | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) \| UIContext | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | 是 | 监听选项。 |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<NavDestinationSwitchInfo> | 是 | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。 |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;NavDestinationSwitchInfo&gt; | 是 | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。 |
 
 **示例：**
 

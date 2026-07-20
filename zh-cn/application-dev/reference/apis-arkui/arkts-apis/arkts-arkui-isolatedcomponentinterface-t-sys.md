@@ -20,11 +20,11 @@ declare type IsolatedComponentInterface = (options: IsolatedOptions) => Isolated
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | IsolatedOptions | 是 | IsolatedComponentAttribute的构造配置 |
+| options | [IsolatedOptions](arkts-arkui-isolatedoptions-i-sys.md) | 是 | IsolatedComponentAttribute的构造配置  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| IsolatedComponentAttribute | IsolatedComponent的属性 |
+| [IsolatedComponentAttribute](arkts-arkui-isolatedcomponentattribute-c-sys.md) | IsolatedComponent的属性  |
 

@@ -102,7 +102,7 @@ isSticky?: boolean
 
 仅系统应用或系统服务允许发送粘性事件。
 
-[ohos.permission.COMMONEVENT_STICKY](../../../../security/AccessToken/permissions-for-all.md#ohospermissioncommonevent_sticky)
+[ohos.permission.COMMONEVENT_STICKY](docroot://security/AccessToken/permissions-for-all.md#ohospermissioncommonevent_sticky)
 
 **类型：** boolean
 
@@ -142,7 +142,7 @@ subscriberPermissions?: Array<string>
 
 表示订阅者的权限。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 7
 

@@ -64,7 +64,7 @@ usedPermissions: Array<Permissions>
 
 由requiredCliPermission映射出的运行时权限列表。
 
-**类型：** Array<Permissions>
+**类型：** Array&lt;Permissions&gt;
 
 **起始版本：** 26.0.0
 

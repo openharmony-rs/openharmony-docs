@@ -15,9 +15,9 @@ declare type InputEventListener = (
 > - 系统会在事件触发时自动创建实例并通过此参数传递给回调函数。  
 >  
 > - 当前回调参数event仅会封装以下原始输入事件类型：  
-> [MouseEvent](arkts-arkui-common-mouseevent-i.md)、[TouchEvent](arkts-arkui-common-touchevent-i.md)、[KeyEvent](arkts-arkui-common-keyevent-i.md)。开发者可通过  
-> [asMouseEvent](arkts-arkui-common-rawinputeventwrapper-c.md#asmouseevent-1)、[asTouchEvent](arkts-arkui-common-rawinputeventwrapper-c.md#astouchevent-1)、  
-> [asKeyEvent](arkts-arkui-common-rawinputeventwrapper-c.md#askeyevent-1)获取对应事件对象。  
+> [MouseEvent](arkts-arkui-mouseevent-i.md)、[TouchEvent](arkts-arkui-touchevent-i.md)、[KeyEvent](arkts-arkui-keyevent-i.md)。开发者可通过  
+> [asMouseEvent](arkts-arkui-rawinputeventwrapper-c.md#asmouseevent-1)、[asTouchEvent](arkts-arkui-rawinputeventwrapper-c.md#astouchevent-1)、  
+> [asKeyEvent](arkts-arkui-rawinputeventwrapper-c.md#askeyevent-1)获取对应事件对象。  
 >  
 > - 请勿在回调中执行耗时操作（如复杂计算或网络请求），否则可能导致应用卡顿。  
 >  
@@ -41,11 +41,11 @@ declare type InputEventListener = (
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | RawInputEventWrapper | 是 | 输入事件包装器，系统自动创建和传递，开发者无需手动创建。 |
+| event | [RawInputEventWrapper](arkts-arkui-rawinputeventwrapper-c.md) | 是 | 输入事件包装器，系统自动创建和传递，开发者无需手动创建。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| InputEventInterceptResult | 事件拦截结果。 |
+| [InputEventInterceptResult](arkts-arkui-inputeventinterceptresult-i.md) | 事件拦截结果。  |
 

@@ -6,6 +6,7 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="getwant"></a>
 ## getWant
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getWant(callback: AsyncCallback<Want>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Want> | 是 | 回调函数，返回want信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Want&gt; | 是 | 回调函数，返回want信息。 |
 
 **示例：**
 
@@ -45,6 +46,7 @@ featureAbility.getWant((error, data) => {
 ```
 
 
+<a id="getwant-1"></a>
 ## getWant
 
 ```TypeScript
@@ -65,7 +67,7 @@ function getWant(): Promise<Want>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Want> | Promise对象，返回want信息。 |
+| Promise&lt;Want&gt; | Promise对象，返回want信息。 |
 
 **示例：**
 

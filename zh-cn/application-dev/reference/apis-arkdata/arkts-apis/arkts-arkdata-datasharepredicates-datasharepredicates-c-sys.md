@@ -16,6 +16,7 @@
 import { dataSharePredicates } from '@kit.ArkData';
 ```
 
+<a id="beginwrap"></a>
 ## beginWrap
 
 ```TypeScript
@@ -55,6 +56,7 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="beginswith"></a>
 ## beginsWith
 
 ```TypeScript
@@ -96,6 +98,7 @@ predicates.beginsWith("NAME", "os");
 
 ```
 
+<a id="between"></a>
 ## between
 
 ```TypeScript
@@ -138,6 +141,7 @@ predicates.between("AGE", 10, 50);
 
 ```
 
+<a id="contains"></a>
 ## contains
 
 ```TypeScript
@@ -179,6 +183,7 @@ predicates.contains("NAME", "os");
 
 ```
 
+<a id="distinct"></a>
 ## distinct
 
 ```TypeScript
@@ -213,6 +218,7 @@ predicates.equalTo("NAME", "Rose").distinct();
 
 ```
 
+<a id="endwrap"></a>
 ## endWrap
 
 ```TypeScript
@@ -252,6 +258,7 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="endswith"></a>
 ## endsWith
 
 ```TypeScript
@@ -293,6 +300,7 @@ predicates.endsWith("NAME", "os");
 
 ```
 
+<a id="glob"></a>
 ## glob
 
 ```TypeScript
@@ -334,6 +342,7 @@ predicates.glob("NAME", "?h*g");
 
 ```
 
+<a id="greaterthan"></a>
 ## greaterThan
 
 ```TypeScript
@@ -375,6 +384,7 @@ predicates.greaterThan("AGE", 10);
 
 ```
 
+<a id="greaterthanorequalto"></a>
 ## greaterThanOrEqualTo
 
 ```TypeScript
@@ -416,6 +426,7 @@ predicates.greaterThanOrEqualTo("AGE", 10);
 
 ```
 
+<a id="groupby"></a>
 ## groupBy
 
 ```TypeScript
@@ -440,7 +451,7 @@ groupBy(fields: Array<string>): DataSharePredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fields | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 指定分组依赖的列名。 |
+| fields | Array&lt;string&gt; | 是 | 指定分组依赖的列名。 |
 
 **返回值：**
 
@@ -456,6 +467,7 @@ predicates.groupBy(["AGE", "NAME"]);
 
 ```
 
+<a id="inkeys"></a>
 ## inKeys
 
 ```TypeScript
@@ -480,7 +492,7 @@ inKeys(keys: Array<string>): DataSharePredicates
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 指定范围的键数组。 |
+| keys | Array&lt;string&gt; | 是 | 指定范围的键数组。 |
 
 **返回值：**
 
@@ -496,6 +508,7 @@ predicates.inKeys(["Lisa", "Rose"]);
 
 ```
 
+<a id="indexedby"></a>
 ## indexedBy
 
 ```TypeScript
@@ -536,6 +549,7 @@ predicates.indexedBy("SALARY_INDEX");
 
 ```
 
+<a id="isnotnull"></a>
 ## isNotNull
 
 ```TypeScript
@@ -576,6 +590,7 @@ predicates.isNotNull("NAME");
 
 ```
 
+<a id="isnull"></a>
 ## isNull
 
 ```TypeScript
@@ -616,6 +631,7 @@ predicates.isNull("NAME");
 
 ```
 
+<a id="lessthan"></a>
 ## lessThan
 
 ```TypeScript
@@ -657,6 +673,7 @@ predicates.lessThan("AGE", 50);
 
 ```
 
+<a id="lessthanorequalto"></a>
 ## lessThanOrEqualTo
 
 ```TypeScript
@@ -698,6 +715,7 @@ predicates.lessThanOrEqualTo("AGE", 50);
 
 ```
 
+<a id="like"></a>
 ## like
 
 ```TypeScript
@@ -739,6 +757,7 @@ predicates.like("NAME", "%os%");
 
 ```
 
+<a id="notbetween"></a>
 ## notBetween
 
 ```TypeScript
@@ -781,6 +800,7 @@ predicates.notBetween("AGE", 10, 50);
 
 ```
 
+<a id="notequalto"></a>
 ## notEqualTo
 
 ```TypeScript
@@ -822,6 +842,7 @@ predicates.notEqualTo("NAME", "Rose");
 
 ```
 
+<a id="notin"></a>
 ## notIn
 
 ```TypeScript
@@ -847,7 +868,7 @@ notIn(field: string, value: Array<ValueType>): DataSharePredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 数据库表中的列名。field为undefined或null时，此次调用接口配置的谓词无效。当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。 |
-| value | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<ValueType> | 是 | 以ValueType型数组形式指定的要匹配的值。value为undefined或null时，此次调用接口配置的谓词无效。 |
+| value | Array&lt;ValueType&gt; | 是 | 以ValueType型数组形式指定的要匹配的值。value为undefined或null时，此次调用接口配置的谓词无效。 |
 
 **返回值：**
 
@@ -863,6 +884,7 @@ predicates.notIn("NAME", ["Lisa", "Rose"]);
 
 ```
 
+<a id="or"></a>
 ## or
 
 ```TypeScript
@@ -899,6 +921,7 @@ predicates.equalTo("NAME", "lisi")
 
 ```
 
+<a id="prefixkey"></a>
 ## prefixKey
 
 ```TypeScript
@@ -939,6 +962,7 @@ predicates.prefixKey("NAME");
 
 ```
 
+<a id="unlike"></a>
 ## unlike
 
 ```TypeScript

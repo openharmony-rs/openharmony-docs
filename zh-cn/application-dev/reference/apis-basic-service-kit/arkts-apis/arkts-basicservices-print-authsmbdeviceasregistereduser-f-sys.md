@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="authsmbdeviceasregistereduser"></a>
 ## authSmbDeviceAsRegisteredUser
 
 ```TypeScript
@@ -38,7 +39,7 @@ function authSmbDeviceAsRegisteredUser(host: SharedHost, username: string, passw
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PrinterInformation[]> | Promise that resolves with the list of available printers. |
+| Promise&lt;PrinterInformation[]&gt; | Promise that resolves with the list of available printers. |
 
 **错误码：**
 

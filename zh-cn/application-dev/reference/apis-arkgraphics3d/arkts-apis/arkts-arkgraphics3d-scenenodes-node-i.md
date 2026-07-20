@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<a id="getnodebypath"></a>
 ## getNodeByPath
 
 ```TypeScript
@@ -44,7 +45,7 @@ readonly children: Container<Node>
 
 节点的子节点.
 
-**类型：** Container<Node>
+**类型：** Container&lt;Node&gt;
 
 **起始版本：** 12
 
@@ -92,7 +93,7 @@ readonly parent: Node | null
 
 节点的父节点.
 
-**类型：** Node | null
+**类型：** Node \| null
 
 **起始版本：** 12
 

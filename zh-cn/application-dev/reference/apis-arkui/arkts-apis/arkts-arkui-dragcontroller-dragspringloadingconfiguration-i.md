@@ -1,6 +1,6 @@
 # DragSpringLoadingConfiguration
 
-定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](../arkts-components/arkts-arkui-common-commonmethod-c.md#ondragspringloading-1)时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](arkts-arkui-dragcontroller-springloadingcontext-c.md#updateconfiguration-1)方法动态修改的方式以自定义该配置参数。
+定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](../arkts-components/arkts-arkui-commonmethod-c.md#ondragspringloading-1)时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](arkts-arkui-dragcontroller-springloadingcontext-c.md#updateconfiguration-1)方法动态修改的方式以自定义该配置参数。
 
 **起始版本：** 20
 

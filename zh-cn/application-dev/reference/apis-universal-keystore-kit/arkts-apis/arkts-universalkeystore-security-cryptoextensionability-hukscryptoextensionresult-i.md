@@ -38,7 +38,7 @@ certs?: Array<HuksCryptoExtensionCertInfo>
 
 /**证书。
 
-**类型：** Array<HuksCryptoExtensionCertInfo>
+**类型：** Array&lt;HuksCryptoExtensionCertInfo&gt;
 
 **起始版本：** 22
 
@@ -104,7 +104,7 @@ property?: Array<huksExternalCrypto.HuksExternalCryptoParam>
 
 返回的属性信息。
 
-**类型：** Array<huksExternalCrypto.HuksExternalCryptoParam>
+**类型：** Array&lt;huksExternalCrypto.HuksExternalCryptoParam&gt;
 
 **起始版本：** 22
 

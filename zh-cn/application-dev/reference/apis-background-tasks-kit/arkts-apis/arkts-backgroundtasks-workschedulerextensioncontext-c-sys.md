@@ -12,6 +12,7 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
+<a id="startserviceextensionability"></a>
 ## startServiceExtensionAbility
 
 ```TypeScript
@@ -40,7 +41,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<a id="stopserviceextensionability"></a>
 ## stopServiceExtensionAbility
 
 ```TypeScript
@@ -89,7 +91,7 @@ stopServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

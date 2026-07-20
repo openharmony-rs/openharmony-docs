@@ -24,7 +24,7 @@ baselineOffset?: number | string
 
 默认值：0
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 10
 
@@ -48,7 +48,7 @@ constraintWidth?: number | string | Resource
 
 默认单位为vp，不支持设置百分比字符串。若不设置，则文本SizeOptions宽度为单行布局所占最大宽度值，若设置则为设置值。
 
-**类型：** number | string | Resource
+**类型：** number \| string \| Resource
 
 **起始版本：** 10
 
@@ -68,7 +68,7 @@ fontFamily?: string | Resource
 
 设置被计算文本字体列表。默认字体'HarmonyOS Sans'，且当前只支持这种字体。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 9
 
@@ -94,7 +94,7 @@ fontSize?: number | string | Resource
 
 从API version 12开始，fontSize为number类型时，使用fp单位。
 
-**类型：** number | string | Resource
+**类型：** number \| string \| Resource
 
 **起始版本：** 9
 
@@ -116,7 +116,7 @@ fontStyle?: number | FontStyle
 
 number类型取值范围为[0,1]，取值间隔为1，依次对应FontStyle中的枚举值。
 
-**类型：** number | FontStyle
+**类型：** number \| FontStyle
 
 **起始版本：** 9
 
@@ -136,7 +136,7 @@ fontWeight?: number | string | FontWeight
 
 默认值：FontWeight.Normal
 
-**类型：** number | string | FontWeight
+**类型：** number \| string \| FontWeight
 
 **起始版本：** 9
 
@@ -156,7 +156,7 @@ letterSpacing?: number | string
 
 默认值：0
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 9
 
@@ -174,7 +174,7 @@ lineHeight?: number | string | Resource
 
 设置被计算文本行高。
 
-**类型：** number | string | Resource
+**类型：** number \| string \| Resource
 
 **起始版本：** 10
 
@@ -220,7 +220,7 @@ overflow?: number | TextOverflow
 
 number类型取值范围为[0,3]，取值间隔为1，依次对应TextOverflow中的枚举值。
 
-**类型：** number | TextOverflow
+**类型：** number \| TextOverflow
 
 **起始版本：** 10
 
@@ -244,7 +244,7 @@ textAlign?: number | TextAlign
 
 number类型取值范围为[0,3]，取值间隔为1，依次对应TextAlign中的枚举值。
 
-**类型：** number | TextAlign
+**类型：** number \| TextAlign
 
 **起始版本：** 10
 
@@ -268,7 +268,7 @@ textCase?: number | TextCase
 
 number类型取值范围为[0,2]，取值间隔为1，依次对应TextCase中的枚举值。
 
-**类型：** number | TextCase
+**类型：** number \| TextCase
 
 **起始版本：** 10
 
@@ -288,7 +288,7 @@ textContent: string | Resource
 
 设置被计算文本内容。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 9
 
@@ -306,7 +306,7 @@ textIndent?: number | string
 
 设置首行文本缩进，默认值为0。
 
-**类型：** number | string
+**类型：** number \| string
 
 **起始版本：** 11
 

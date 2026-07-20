@@ -20,7 +20,7 @@ import { dataAbility } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md#createrdbpredicates-1) | 通过表名和DataAbility谓词对象创建Rdb谓词对象。 |
+| [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md#createrdbpredicates) | 通过表名和DataAbility谓词对象创建Rdb谓词对象。 |
 
 ### 类
 

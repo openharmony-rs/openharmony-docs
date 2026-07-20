@@ -6,6 +6,7 @@
 import { Options, ReaderIteratorResult, Watcher, ReadTextOptions, WatchEventListener, TaskSignal, WriteOptions, ListFileExtOptions, DfsListeners, Filter, ReadOptions, ListFileOptions, WatchEvent, FileFilter, ConflictFiles } from '@kit.CoreFileKit';
 ```
 
+<a id="stat"></a>
 ## stat
 
 ```TypeScript
@@ -32,7 +33,7 @@ declare function stat(file: string | number): Promise<Stat>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Stat> | Promise对象。返回文件或目录的具体信息。 |
+| Promise&lt;Stat&gt; | Promise对象。返回文件或目录的具体信息。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ declare function stat(file: string | number): Promise<Stat>
 | 13900042 | Unknown error |
 
 
+<a id="stat-1"></a>
 ## stat
 
 ```TypeScript
@@ -74,7 +76,7 @@ declare function stat(file: string | number, callback: AsyncCallback<Stat>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | file | string \| number | 是 | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Stat> | 是 | 异步获取文件或目录的信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Stat&gt; | 是 | 异步获取文件或目录的信息之后的回调。 |
 
 **错误码：**
 

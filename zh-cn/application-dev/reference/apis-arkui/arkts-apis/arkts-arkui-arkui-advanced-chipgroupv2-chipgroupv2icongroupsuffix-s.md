@@ -4,6 +4,8 @@
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ComponentV2
+
 <!--Device-unnamed-export declare struct ChipGroupV2IconGroupSuffix--><!--Device-unnamed-export declare struct ChipGroupV2IconGroupSuffix-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -14,6 +16,7 @@
 import { ChipGroupV2ItemConfig, ChipGroupV2ItemStyleConfig, ChipGroupV2SpaceConfig, ChipGroupV2IconGroupSuffix, ChipGroupV2Items, ChipGroupV2Padding, ChipGroupV2Item, ChipGroupV2ItemStyle, ChipGroupV2, ChipGroupV2PaddingConfig, ChipGroupV2IconItemConfig, ChipGroupV2SymbolItemConfig, ChipGroupV2Space } from '@kit.ArkUI';
 ```
 
+<a id="build"></a>
 ## build
 
 ```TypeScript
@@ -38,13 +41,15 @@ build函数用于构造ChipGroupV2IconGroupSuffix组件。
 iconBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-commonmethod-c.md#backgroundcolor-1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-commonmethod-c.md#borderwidth-1)、阴影[shadow](../arkts-components/arkts-arkui-common-commonmethod-c.md#shadow-1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-commonmethod-c.md#materialfilter-1)。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-commonmethod-c.md#backgroundcolor-1)、边框颜色[borderColor](../arkts-components/arkts-arkui-commonmethod-c.md#bordercolor-1)、边框宽度[borderWidth](../arkts-components/arkts-arkui-commonmethod-c.md#borderwidth-1)、阴影[shadow](../arkts-components/arkts-arkui-commonmethod-c.md#shadow-1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-commonmethod-c.md#materialfilter-1)。
 
 默认值：undefined，不应用材质样式。
 
 **类型：** uiMaterial.Material
 
 **起始版本：** 26.0.0
+
+**装饰器类型：** @Param
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,9 +69,11 @@ items: Array<ChipGroupV2IconItemConfig | SymbolGlyphModifier | ChipGroupV2Symbol
 
 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](SymbolGlyphAttribute#effectStrategy)设置动效。
 
-**类型：** Array<ChipGroupV2IconItemConfig | SymbolGlyphModifier | ChipGroupV2SymbolItemConfig>
+**类型：** Array&lt;ChipGroupV2IconItemConfig \| SymbolGlyphModifier \| ChipGroupV2SymbolItemConfig&gt;
 
 **起始版本：** 26.0.0
+
+**装饰器类型：** @Require、@Param
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

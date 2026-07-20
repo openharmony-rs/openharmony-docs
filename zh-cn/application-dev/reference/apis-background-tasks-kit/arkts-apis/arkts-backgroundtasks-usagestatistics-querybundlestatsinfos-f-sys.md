@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querybundlestatsinfos"></a>
 ## queryBundleStatsInfos
 
 ```TypeScript
@@ -30,7 +31,7 @@ function queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallba
 | --- | --- | --- | --- |
 | begin | number | 是 | 起始时间，单位：ms。 |
 | end | number | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<BundleStatsMap> | 是 | 回调函数。当查询成功，err为undefined，data为指定时间段内应用使用时长的具体信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleStatsMap&gt; | 是 | 回调函数。当查询成功，err为undefined，data为指定时间段内应用使用时长的具体信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, re
 ```
 
 
+<a id="querybundlestatsinfos-1"></a>
 ## queryBundleStatsInfos
 
 ```TypeScript
@@ -94,7 +96,7 @@ function queryBundleStatsInfos(begin: number, end: number): Promise<BundleStatsM
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BundleStatsMap> | Promise对象。返回指定时间段内应用使用时长的具体信息。 |
+| Promise&lt;BundleStatsMap&gt; | Promise对象。返回指定时间段内应用使用时长的具体信息。 |
 
 **错误码：**
 

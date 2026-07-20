@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="getaccessorylist"></a>
 ## getAccessoryList
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getAccessoryList(): Array<Readonly<USBAccessory>>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Readonly<USBAccessory>> | 只读的USB配件列表。当前仅支持列表中包含1个USB配件。 |
+| Array&lt;Readonly&lt;USBAccessory&gt;&gt; | 只读的USB配件列表。当前仅支持列表中包含1个USB配件。 |
 
 **错误码：**
 

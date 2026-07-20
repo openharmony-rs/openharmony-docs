@@ -18,5 +18,5 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | WantAgent | 是 | 媒体应用页面启动信息。 |
+| want | [WantAgent](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-reminderagent-wantagent-i.md) | 是 | 媒体应用页面启动信息。  |
 

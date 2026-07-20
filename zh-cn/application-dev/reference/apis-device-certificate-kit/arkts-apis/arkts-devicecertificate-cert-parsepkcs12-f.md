@@ -6,6 +6,7 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="parsepkcs12"></a>
 ## parsePkcs12
 
 ```TypeScript
@@ -26,7 +27,7 @@ function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | DER格式的P12文件原始数据。 |
+| data | Uint8Array | 是 | DER格式的P12文件原始数据。 |
 | config | [Pkcs12ParsingConfig](arkts-devicecertificate-cert-pkcs12parsingconfig-i.md) | 是 | P12文件的解析配置。 |
 
 **返回值：**
@@ -224,6 +225,7 @@ function doTestParsePkcs12() {
 ```
 
 
+<a id="parsepkcs12-1"></a>
 ## parsePkcs12
 
 ```TypeScript
@@ -244,14 +246,14 @@ function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [Uint8Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-uint8array-c.md) | 是 | DER格式的P12文件原始数据。 |
+| data | Uint8Array | 是 | DER格式的P12文件原始数据。 |
 | password | string | 是 | 密码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Pkcs12Data> | Promise对象，返回解析后的P12数据。返回的Pkcs12Data中的私钥采用PEM编码。 |
+| Promise&lt;Pkcs12Data&gt; | Promise对象，返回解析后的P12数据。返回的Pkcs12Data中的私钥采用PEM编码。 |
 
 **错误码：**
 

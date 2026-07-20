@@ -20,6 +20,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createblendmodecolorfilter"></a>
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -39,13 +40,13 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | common2D.Color | 是 | ARGB格式的颜色，每个颜色通道的值是0到255之间的整数。 |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 颜色的混合模式。 |
+| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色的混合模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
 **错误码：**
 
@@ -53,6 +54,7 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createblendmodecolorfilter-1"></a>
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -72,13 +74,13 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | common2D.Color \| number | 是 | 颜色，可以用16进制ARGB格式的无符号整数表示。 |
-| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-common-blendmode-e.md) | 是 | 颜色的混合模式。 |
+| mode | [BlendMode](../../apis-arkui/arkts-components/arkts-arkui-blendmode-e.md) | 是 | 颜色的混合模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
 **错误码：**
 
@@ -86,6 +88,7 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createcomposecolorfilter"></a>
 ## createComposeColorFilter
 
 ```TypeScript
@@ -104,14 +107,14 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outer | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 是 | 组合滤波器中后生效的颜色滤波器。 |
-| inner | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 是 | 组合滤波器中先生效的颜色滤波器。 |
+| outer | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 是 | 组合滤波器中后生效的颜色滤波器。 |
+| inner | [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 是 | 组合滤波器中先生效的颜色滤波器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
 **错误码：**
 
@@ -119,6 +122,7 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+<a id="createlightingcolorfilter"></a>
 ## createLightingColorFilter
 
 ```TypeScript
@@ -144,8 +148,9 @@ static createLightingColorFilter(mutColor: common2D.Color | number, addColor: co
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回一个颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回一个颜色滤波器。 |
 
+<a id="createlineartosrgbgamma"></a>
 ## createLinearToSRGBGamma
 
 ```TypeScript
@@ -164,8 +169,9 @@ static createLinearToSRGBGamma(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
+<a id="createlumacolorfilter"></a>
 ## createLumaColorFilter
 
 ```TypeScript
@@ -184,8 +190,9 @@ static createLumaColorFilter(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
+<a id="creatematrixcolorfilter"></a>
 ## createMatrixColorFilter
 
 ```TypeScript
@@ -204,13 +211,13 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| matrix | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<number> | 是 | 长度为20的数组，表示用于颜色变换的4*5矩阵。 |
+| matrix | Array&lt;number&gt; | 是 | 长度为20的数组，表示用于颜色变换的4*5矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 
 **错误码：**
 
@@ -218,6 +225,7 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="createsrgbgammatolinear"></a>
 ## createSRGBGammaToLinear
 
 ```TypeScript
@@ -236,5 +244,5 @@ static createSRGBGammaToLinear(): ColorFilter
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-units-colorfilter-c.md) | 返回颜色滤波器。 |
+| [ColorFilter](../../apis-arkui/arkts-apis/arkts-arkui-colorfilter-c.md) | 返回颜色滤波器。 |
 

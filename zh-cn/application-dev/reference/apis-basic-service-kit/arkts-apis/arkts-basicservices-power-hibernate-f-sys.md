@@ -6,6 +6,7 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
+<a id="hibernate"></a>
 ## hibernate
 
 ```TypeScript

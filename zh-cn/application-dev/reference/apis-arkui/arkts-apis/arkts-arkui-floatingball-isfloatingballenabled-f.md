@@ -6,6 +6,7 @@
 import { floatingBall } from '@kit.ArkUI';
 ```
 
+<a id="isfloatingballenabled"></a>
 ## isFloatingBallEnabled
 
 ```TypeScript

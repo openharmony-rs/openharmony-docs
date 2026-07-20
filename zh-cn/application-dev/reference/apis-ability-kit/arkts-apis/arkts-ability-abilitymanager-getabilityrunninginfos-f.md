@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityrunninginfos"></a>
 ## getAbilityRunningInfos
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getAbilityRunningInfos(): Promise<Array<AbilityRunningInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<AbilityRunningInfo>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise&lt;Array&lt;AbilityRunningInfo&gt;&gt; | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

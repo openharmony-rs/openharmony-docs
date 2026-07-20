@@ -100,7 +100,7 @@ settingValue?: string | boolean | SettingContent[] | WantAgent
 - 当settingType为SettingType.LIST时，该值为SettingContent数组。  
 - 当settingType为SettingType.JUMP时，该值为string类型。
 
-**类型：** string | boolean | SettingContent[] | WantAgent
+**类型：** string \| boolean \| SettingContent[] \| WantAgent
 
 **起始版本：** 23
 

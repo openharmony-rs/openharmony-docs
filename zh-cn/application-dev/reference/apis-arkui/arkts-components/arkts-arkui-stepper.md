@@ -35,7 +35,7 @@ Called when the stepper component is used.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { index?: number } | 否 | Index of the **StepperItem** that is currently displayed.<br>Default value: **0**<br>Since API version 10, this parameter supports two-way binding through[$$](docroot://ui/state-management/arkts-two-way-sync.md). |
+| value | { index?: number } | 否 | Index of the **StepperItem** that is currently displayed.<br>Default value: **0**<br> Since API version 10, this parameter supports two-way binding through [$$](docroot://ui/state-management/arkts-two-way-sync.md).  |
 
 ## 汇总
 

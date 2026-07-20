@@ -27,23 +27,23 @@ import { appControl } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [deleteDisposedStatus](arkts-ability-appcontrol-deletedisposedstatus-f-sys.md#deletedisposedstatus-1) | 删除应用的处置状态。使用callback异步回调，成功返回null，失败返回对应错误信息。 |
-| [deleteDisposedStatus](arkts-ability-appcontrol-deletedisposedstatus-f-sys.md#deletedisposedstatus-2) | 删除应用的处置状态。使用promise异步回调，成功返回null，失败返回对应错误信息。 |
-| [deleteDisposedStatusSync](arkts-ability-appcontrol-deletedisposedstatussync-f-sys.md#deletedisposedstatussync-1) | 以同步方法删除指定应用或分身应用的处置状态。成功返回null，失败抛出对应异常。 |
-| [deleteUninstallDisposedRule](arkts-ability-appcontrol-deleteuninstalldisposedrule-f-sys.md#deleteuninstalldisposedrule-1) | 删除指定应用或分身应用的卸载处置规则。 |
-| [getAllDisposedRules](arkts-ability-appcontrol-getalldisposedrules-f-sys.md#getalldisposedrules-1) | 获取当前用户下已设置的所有拦截规则。 |
-| [getDisposedRule](arkts-ability-appcontrol-getdisposedrule-f-sys.md#getdisposedrule-1) | 获取指定应用或分身应用已设置的拦截规则。 |
-| [getDisposedRulesByBundle](arkts-ability-appcontrol-getdisposedrulesbybundle-f-sys.md#getdisposedrulesbybundle-1) | 获取指定应用程序包设置的所有拦截规则。 |
-| [getDisposedStatus](arkts-ability-appcontrol-getdisposedstatus-f-sys.md#getdisposedstatus-1) | 获取指定应用的处置状态。使用callback异步回调，成功返回应用的处置状态，失败返回对应错误信息。 |
-| [getDisposedStatus](arkts-ability-appcontrol-getdisposedstatus-f-sys.md#getdisposedstatus-2) | 获取指定应用已设置的处置状态。使用Promise异步回调，成功返回应用的处置状态，失败返回对应错误信息。 |
-| [getDisposedStatusSync](arkts-ability-appcontrol-getdisposedstatussync-f-sys.md#getdisposedstatussync-1) | 以同步方法获取指定应用已设置的处置状态。成功返回应用的处置状态，失败抛出对应异常。 |
-| [getUninstallDisposedRule](arkts-ability-appcontrol-getuninstalldisposedrule-f-sys.md#getuninstalldisposedrule-1) | 获取指定应用或分身应用已设置的优先级最高的卸载处置规则。 |
-| [setDisposedRule](arkts-ability-appcontrol-setdisposedrule-f-sys.md#setdisposedrule-1) | 设置指定应用或分身应用的拦截规则。 |
-| [setDisposedRules](arkts-ability-appcontrol-setdisposedrules-f-sys.md#setdisposedrules-1) | 批量设置指定应用或分身应用的拦截规则。 |
-| [setDisposedStatus](arkts-ability-appcontrol-setdisposedstatus-f-sys.md#setdisposedstatus-1) | 设置应用的处置状态。使用callback异步回调。成功返回null，失败返回对应错误信息。 |
-| [setDisposedStatus](arkts-ability-appcontrol-setdisposedstatus-f-sys.md#setdisposedstatus-2) | 设置应用的处置状态。使用Promise异步回调。成功返回null，失败返回对应错误信息。 |
-| [setDisposedStatusSync](arkts-ability-appcontrol-setdisposedstatussync-f-sys.md#setdisposedstatussync-1) | 以同步方法设置应用的处置状态。成功返回null，失败抛出对应异常。 |
-| [setUninstallDisposedRule](arkts-ability-appcontrol-setuninstalldisposedrule-f-sys.md#setuninstalldisposedrule-1) | 设置指定应用或分身应用的卸载处置规则。 |
+| [deleteDisposedStatus](arkts-ability-appcontrol-deletedisposedstatus-f-sys.md#deletedisposedstatus) | 删除应用的处置状态。使用callback异步回调，成功返回null，失败返回对应错误信息。 |
+| [deleteDisposedStatus](arkts-ability-appcontrol-deletedisposedstatus-f-sys.md#deletedisposedstatus-1) | 删除应用的处置状态。使用promise异步回调，成功返回null，失败返回对应错误信息。 |
+| [deleteDisposedStatusSync](arkts-ability-appcontrol-deletedisposedstatussync-f-sys.md#deletedisposedstatussync) | 以同步方法删除指定应用或分身应用的处置状态。成功返回null，失败抛出对应异常。 |
+| [deleteUninstallDisposedRule](arkts-ability-appcontrol-deleteuninstalldisposedrule-f-sys.md#deleteuninstalldisposedrule) | 删除指定应用或分身应用的卸载处置规则。 |
+| [getAllDisposedRules](arkts-ability-appcontrol-getalldisposedrules-f-sys.md#getalldisposedrules) | 获取当前用户下已设置的所有拦截规则。 |
+| [getDisposedRule](arkts-ability-appcontrol-getdisposedrule-f-sys.md#getdisposedrule) | 获取指定应用或分身应用已设置的拦截规则。 |
+| [getDisposedRulesByBundle](arkts-ability-appcontrol-getdisposedrulesbybundle-f-sys.md#getdisposedrulesbybundle) | 获取指定应用程序包设置的所有拦截规则。 |
+| [getDisposedStatus](arkts-ability-appcontrol-getdisposedstatus-f-sys.md#getdisposedstatus) | 获取指定应用的处置状态。使用callback异步回调，成功返回应用的处置状态，失败返回对应错误信息。 |
+| [getDisposedStatus](arkts-ability-appcontrol-getdisposedstatus-f-sys.md#getdisposedstatus-1) | 获取指定应用已设置的处置状态。使用Promise异步回调，成功返回应用的处置状态，失败返回对应错误信息。 |
+| [getDisposedStatusSync](arkts-ability-appcontrol-getdisposedstatussync-f-sys.md#getdisposedstatussync) | 以同步方法获取指定应用已设置的处置状态。成功返回应用的处置状态，失败抛出对应异常。 |
+| [getUninstallDisposedRule](arkts-ability-appcontrol-getuninstalldisposedrule-f-sys.md#getuninstalldisposedrule) | 获取指定应用或分身应用已设置的优先级最高的卸载处置规则。 |
+| [setDisposedRule](arkts-ability-appcontrol-setdisposedrule-f-sys.md#setdisposedrule) | 设置指定应用或分身应用的拦截规则。 |
+| [setDisposedRules](arkts-ability-appcontrol-setdisposedrules-f-sys.md#setdisposedrules) | 批量设置指定应用或分身应用的拦截规则。 |
+| [setDisposedStatus](arkts-ability-appcontrol-setdisposedstatus-f-sys.md#setdisposedstatus) | 设置应用的处置状态。使用callback异步回调。成功返回null，失败返回对应错误信息。 |
+| [setDisposedStatus](arkts-ability-appcontrol-setdisposedstatus-f-sys.md#setdisposedstatus-1) | 设置应用的处置状态。使用Promise异步回调。成功返回null，失败返回对应错误信息。 |
+| [setDisposedStatusSync](arkts-ability-appcontrol-setdisposedstatussync-f-sys.md#setdisposedstatussync) | 以同步方法设置应用的处置状态。成功返回null，失败抛出对应异常。 |
+| [setUninstallDisposedRule](arkts-ability-appcontrol-setuninstalldisposedrule-f-sys.md#setuninstalldisposedrule) | 设置指定应用或分身应用的卸载处置规则。 |
 <!--DelEnd-->
 
 <!--Del-->

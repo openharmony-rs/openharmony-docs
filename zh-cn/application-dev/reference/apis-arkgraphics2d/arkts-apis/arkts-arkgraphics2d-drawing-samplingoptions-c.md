@@ -22,6 +22,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript
@@ -36,6 +37,7 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+<a id="constructor-1"></a>
 ## constructor
 
 ```TypeScript

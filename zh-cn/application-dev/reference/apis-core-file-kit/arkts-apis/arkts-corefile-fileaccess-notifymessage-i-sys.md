@@ -52,7 +52,7 @@ uris: Array<string>
 
 所变更文件的uri集合，目前仅支持单条通知，后序支持多条通知。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 10
 

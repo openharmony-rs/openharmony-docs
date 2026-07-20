@@ -14,6 +14,7 @@
 import { Binding, ComponentReuse, CustomComponentLifecycleState, ComponentInactive, PersistenceV2, ComponentDisappear, MutableBinding, CustomComponentLifecycleObserver, AppStorageV2, Type, ConnectOptionsCollections, CollectionType, CustomComponentContext, IReusePool, ConnectOptions, UIUtils, ComponentActive, CustomComponentLifecycle, ComponentInit, ComponentAppear, ComponentBuilt, ComponentRecycle, IReusableInfo } from '@kit.ArkUI';
 ```
 
+<a id="getreusableinfo"></a>
 ## getReusableInfo
 
 ```TypeScript
@@ -46,7 +47,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 | 类型 | 说明 |
 | --- | --- |
-| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**. |
+| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array<IReusableInfo>** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**. |
 
 **示例：**
 
@@ -116,6 +117,7 @@ struct PoolOwner {
 
 ```
 
+<a id="prerender"></a>
 ## preRender
 
 ```TypeScript
@@ -138,14 +140,14 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-wrappedbuilder-c.md)<[]> | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
 | times | number | 是 | 执行@Builder函数的次数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。 |
+| Promise&lt;void&gt; | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。 |
 
 **示例：**
 

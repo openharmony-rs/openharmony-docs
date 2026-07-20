@@ -6,6 +6,7 @@
 import { asset } from '@kit.AssetStoreKit';
 ```
 
+<a id="batchupdate"></a>
 ## batchUpdate
 
 ```TypeScript
@@ -28,14 +29,14 @@ function batchUpdate(sourceAttributes: Array<AssetMap>, destAttributes: Array<As
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourceAttributes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AssetMap> | 是 | 待更新关键资产的搜索条件数组。 |
-| destAttributes | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AssetMap> | 是 | 待更新关键资产的属性集合数组。 |
+| sourceAttributes | Array&lt;AssetMap&gt; | 是 | 待更新关键资产的搜索条件数组。 |
+| destAttributes | Array&lt;AssetMap&gt; | 是 | 待更新关键资产的属性集合数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<BatchResult> | Promise对象，返回批量操作结果，包含失败关键资产的错误信息。 |
+| Promise&lt;BatchResult&gt; | Promise对象，返回批量操作结果，包含失败关键资产的错误信息。 |
 
 **错误码：**
 

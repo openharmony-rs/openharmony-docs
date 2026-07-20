@@ -6,6 +6,7 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="issupported"></a>
 ## isSupported
 
 ```TypeScript

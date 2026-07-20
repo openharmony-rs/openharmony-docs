@@ -6,6 +6,7 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="createsubscriber"></a>
 ## createSubscriber
 
 ```TypeScript
@@ -36,7 +37,7 @@ function createSubscriber(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventmanager-commoneventsubscribeinfo-t.md) | 是 | 表示订阅信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<CommonEventSubscriber> | 是 | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;CommonEventSubscriber&gt; | 是 | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -75,6 +76,7 @@ try {
 ```
 
 
+<a id="createsubscriber-1"></a>
 ## createSubscriber
 
 ```TypeScript
@@ -101,7 +103,7 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<CommonEventSubscriber> | Promise对象，返回创建成功的订阅者对象。 |
+| Promise&lt;CommonEventSubscriber&gt; | Promise对象，返回创建成功的订阅者对象。 |
 
 **错误码：**
 

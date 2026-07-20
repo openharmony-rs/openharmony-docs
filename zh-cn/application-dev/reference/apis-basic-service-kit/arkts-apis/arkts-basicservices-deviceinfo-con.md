@@ -238,7 +238,7 @@ const deviceColor: string
 const deviceType: string
 ```
 
-设备类型。详细请参考[deviceTypes标签](../../../../quick-start/module-configuration-file.md#devicetypes标签)。
+设备类型。详细请参考[deviceTypes标签](docroot://quick-start/module-configuration-file.md#devicetypes标签)。
 
 示例：<!--RP1-->wearable<!--RP1End-->
 
@@ -424,7 +424,7 @@ const hardwareProfile: string
 
 **说明：**
 
-从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](../../../../reference/syscap.md)替代。
+从API version 6 开始支持，从API version 9 开始废弃，建议使用[系统能力SystemCapability](docroot://reference/syscap.md)替代。
 
 示例：default
 

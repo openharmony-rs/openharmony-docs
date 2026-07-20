@@ -14,7 +14,7 @@
 REQUIRE_ABILITY_LIST = 'requireAbilityList'
 ```
 
-作为[setExtras](avSession.AVSession.setExtras(extras: {[key: string]: Object))}接口传入的键，用于向系统设置应用所需的能力列表。
+作为[setExtras](arkts-avsession-avsession-avsession-i.md#setextras-1))}接口传入的键，用于向系统设置应用所需的能力列表。
 
 **起始版本：** 26.0.0
 
@@ -32,9 +32,9 @@ REQUIRE_ABILITY_LIST = 'requireAbilityList'
 SUPPORT_URL_CASTING = 'url-cast'
 ```
 
-作为[setExtras](avSession.AVSession.setExtras(extras: {[key: string]: Object))}接口，给REQUIRE_ABILITY_LIST键传入能力列表的值，用于通知系统当前应用支持URL投播功能。
+作为[setExtras](arkts-avsession-avsession-avsession-i.md#setextras-1))}接口，给REQUIRE_ABILITY_LIST键传入能力列表的值，用于通知系统当前应用支持URL投播功能。
 
-[setExtras](avSession.AVSession.setExtras(extras: {[key: string]: Object))}接口传入入参`{[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]}`表示当前应用支持投播功能。
+[setExtras](arkts-avsession-avsession-avsession-i.md#setextras-1))}接口传入入参`{[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]}`表示当前应用支持投播功能。
 
 **起始版本：** 26.0.0
 

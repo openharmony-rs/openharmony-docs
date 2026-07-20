@@ -1,5 +1,6 @@
 # edgeWidths
 
+<a id="edgewidths"></a>
 ## edgeWidths
 
 ```TypeScript
@@ -28,5 +29,5 @@ export function edgeWidths(all: number): Edges<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Edges](arkts-arkui-graphics-edges-i.md)<number> | 边框宽度均设置为传入值的边框宽度对象。 |
+| [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt; | 边框宽度均设置为传入值的边框宽度对象。 |
 

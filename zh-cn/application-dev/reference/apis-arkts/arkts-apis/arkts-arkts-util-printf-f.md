@@ -6,6 +6,7 @@
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="printf"></a>
 ## printf
 
 ```TypeScript

@@ -14,6 +14,7 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="convertcanonicallocaleidentifier"></a>
 ## convertCanonicalLocaleIdentifier
 
 ```TypeScript
@@ -44,6 +45,7 @@ static convertCanonicalLocaleIdentifier(locale: string): string
 | --- | --- |
 | string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47/)标准格式的区域ID。无效的区域ID会返回空字符串。 |
 
+<a id="getbestmatchlocale"></a>
 ## getBestMatchLocale
 
 ```TypeScript
@@ -64,7 +66,7 @@ static getBestMatchLocale(locale: string, localeList: string[]): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | 待匹配的[区域ID字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，如：zh-Hans-CN。 |
+| locale | string | 是 | 待匹配的[区域ID字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，如：zh-Hans-CN。 |
 | localeList | string[] | 是 | 指定的区域ID字符串列表。 |
 
 **返回值：**
@@ -80,6 +82,7 @@ static getBestMatchLocale(locale: string, localeList: string[]): string
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="getdateorder"></a>
 ## getDateOrder
 
 ```TypeScript
@@ -100,7 +103,7 @@ static getDateOrder(locale: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 是 | [表示区域ID的字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，如：zh-Hans-CN。 |
+| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，如：zh-Hans-CN。 |
 
 **返回值：**
 
@@ -108,6 +111,7 @@ static getDateOrder(locale: string): string
 | --- | --- |
 | string | 该区域年、月、日的排列顺序。“y”表示年，“L”表示月，“d”表示日。 |
 
+<a id="getthreeletterlanguage"></a>
 ## getThreeLetterLanguage
 
 ```TypeScript
@@ -145,6 +149,7 @@ static getThreeLetterLanguage(locale: string): string
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="getthreeletterregion"></a>
 ## getThreeLetterRegion
 
 ```TypeScript
@@ -182,6 +187,7 @@ static getThreeLetterRegion(locale: string): string
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="gettimeperiodname"></a>
 ## getTimePeriodName
 
 ```TypeScript
@@ -203,7 +209,7 @@ static getTimePeriodName(hour:number, locale?: string): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hour | number | 是 | 指定的时间，例如16。 |
-| locale | string | 否 | [表示区域ID的字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。如：zh-Hans-CN。<br>默认值：系统当前区域ID。 |
+| locale | string | 否 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。如：zh-Hans-CN。<br>默认值：系统当前区域ID。 |
 
 **返回值：**
 
@@ -218,6 +224,7 @@ static getTimePeriodName(hour:number, locale?: string): string
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="getunicodewrappedfilepath"></a>
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -256,6 +263,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="getunicodewrappedfilepath-1"></a>
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -270,7 +278,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 **废弃版本：** 20
 
-**替代接口：** getUnicodeWrappedFilePath(path:
+**替代接口：** [getUnicodeWrappedFilePath(path:](arkts-localization-i18n-i18nutil-c.md#getunicodewrappedfilepath-1)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -298,6 +306,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 | --- | --- |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
+<a id="setunicodewrappedbididirection"></a>
 ## setUnicodeWrappedBidiDirection
 
 ```TypeScript
@@ -333,6 +342,7 @@ static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): s
 | --- | --- |
 | string | 设置方向后的文本。 |
 
+<a id="unitconvert"></a>
 ## unitConvert
 
 ```TypeScript
@@ -356,8 +366,8 @@ static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: 
 | fromUnit | [UnitInfo](arkts-localization-i18n-unitinfo-i.md) | 是 | 需要转换的单位。 |
 | toUnit | [UnitInfo](arkts-localization-i18n-unitinfo-i.md) | 是 | 转换成的目标单位。 |
 | value | number | 是 | 需要转换的单位的数量值。 |
-| locale | string | 是 | [表示区域ID的字符串](../../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，如：zh-Hans-CN。 |
-| style | string | 否 | 格式化使用的风格，取值包括：'long', 'short', 'narrow'。默认值：short。<br>不同取值显示效果请参考[数字与度量衡国际化](../../../../internationalization/i18n-numbers-weights-measures.md)。 |
+| locale | string | 是 | [表示区域ID的字符串](docroot://internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成，如：zh-Hans-CN。 |
+| style | string | 否 | 格式化使用的风格，取值包括：'long', 'short', 'narrow'。默认值：short。<br>不同取值显示效果请参考[数字与度量衡国际化](docroot://internationalization/i18n-numbers-weights-measures.md)。 |
 
 **返回值：**
 

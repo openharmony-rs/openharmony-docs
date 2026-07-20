@@ -6,6 +6,7 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
+<a id="getstate"></a>
 ## getState
 
 ```TypeScript
@@ -37,7 +38,7 @@ function getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceDescriptor | string | 是 | 键鼠穿越目标设备描述符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<{ state: boolean }> | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;{ state: boolean }&gt; | 是 |  |
 
 **错误码：**
 
@@ -79,6 +80,7 @@ struct Index {
 ```
 
 
+<a id="getstate-1"></a>
 ## getState
 
 ```TypeScript
@@ -90,7 +92,7 @@ function getState(deviceDescriptor: string): Promise<{ state: boolean }>
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate-2)替  
+> [cooperate.getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate-1)替  
 > 代。
 
 **起始版本：** 9
@@ -115,7 +117,7 @@ function getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<{ state: boolean }> |  |
+| Promise&lt;{ state: boolean }&gt; |  |
 
 **错误码：**
 

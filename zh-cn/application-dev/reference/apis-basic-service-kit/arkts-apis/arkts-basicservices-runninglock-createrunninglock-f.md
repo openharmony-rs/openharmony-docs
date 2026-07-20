@@ -6,6 +6,7 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="createrunninglock"></a>
 ## createRunningLock
 
 ```TypeScript
@@ -32,7 +33,7 @@ function createRunningLock(name: string, type: RunningLockType, callback: AsyncC
 | --- | --- | --- | --- |
 | name | string | 是 | 锁的名字。建议使用包名或类名加后缀的方式命名。 |
 | type | [RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md) | 是 | 要创建的锁的类型。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<RunningLock> | 是 | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象；AsyncCallback封装了一个RunningLock类型的类。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;RunningLock&gt; | 是 | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象；AsyncCallback封装了一个RunningLock类型的类。 |
 
 **示例：**
 
@@ -48,6 +49,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 ```
 
 
+<a id="createrunninglock-1"></a>
 ## createRunningLock
 
 ```TypeScript
@@ -79,7 +81,7 @@ function createRunningLock(name: string, type: RunningLockType): Promise<Running
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<RunningLock> | Promise对象，返回RunningLock锁对象。 |
+| Promise&lt;RunningLock&gt; | Promise对象，返回RunningLock锁对象。 |
 
 **示例：**
 

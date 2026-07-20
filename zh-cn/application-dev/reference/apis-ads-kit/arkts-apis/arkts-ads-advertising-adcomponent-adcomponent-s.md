@@ -4,6 +4,8 @@
 
 **起始版本：** 11
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-declare struct AdComponent--><!--Device-unnamed-declare struct AdComponent-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -14,6 +16,7 @@
 import { AdComponent } from '@kit.AdsKit';
 ```
 
+<a id="build"></a>
 ## build
 
 ```TypeScript
@@ -38,7 +41,7 @@ adRenderer?: () => void
 
 应用自渲染广告样式。应用自渲染广告样式为受限使用能力，具体请前往[流量变现官网客服支持](https://developer.huawei.com/consumer/cn/doc/monetize/kefuzhichi-0000001104461922)进行咨询。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 12
 

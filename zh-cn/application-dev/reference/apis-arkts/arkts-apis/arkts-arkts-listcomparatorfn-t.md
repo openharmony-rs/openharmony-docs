@@ -18,12 +18,12 @@ List排序比较器的类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| firstValue | T | 是 | firstValue（必填）前一项元素。 |
-| secondValue | T | 是 | secondValue（必填）后一项元素。 |
+| firstValue | T | 是 | firstValue（必填）前一项元素。  |
+| secondValue | T | 是 | secondValue（必填）后一项元素。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 数值类型。 |
+| number | 数值类型。  |
 

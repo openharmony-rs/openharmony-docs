@@ -112,7 +112,7 @@ extendInfo?: Record<string, Object>
 
 系统应用发布通知时的自定义扩展参数。默认为空。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 20
 

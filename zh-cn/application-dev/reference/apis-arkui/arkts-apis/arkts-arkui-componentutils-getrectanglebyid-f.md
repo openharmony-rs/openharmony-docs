@@ -6,6 +6,7 @@
 import { componentUtils } from '@kit.ArkUI';
 ```
 
+<a id="getrectanglebyid"></a>
 ## getRectangleById
 
 ```TypeScript

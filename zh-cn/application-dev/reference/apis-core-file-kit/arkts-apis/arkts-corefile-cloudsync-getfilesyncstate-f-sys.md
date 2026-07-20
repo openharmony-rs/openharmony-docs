@@ -6,6 +6,7 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="getfilesyncstate"></a>
 ## getFileSyncState
 
 ```TypeScript
@@ -28,13 +29,13 @@ function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待获取同步状态的uri。 |
+| uri | Array&lt;string&gt; | 是 | 待获取同步状态的uri。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<FileSyncState>> | Promise对象，返回文件同步状态的结果。 |
+| Promise&lt;Array&lt;FileSyncState&gt;&gt; | Promise对象，返回文件同步状态的结果。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState
 ```
 
 
+<a id="getfilesyncstate-1"></a>
 ## getFileSyncState
 
 ```TypeScript
@@ -87,8 +89,8 @@ function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<File
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 待获取同步状态的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<FileSyncState>> | 是 | 回调函数。异步获取文件状态。 |
+| uri | Array&lt;string&gt; | 是 | 待获取同步状态的uri。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;FileSyncState&gt;&gt; | 是 | 回调函数。异步获取文件状态。 |
 
 **错误码：**
 
@@ -120,6 +122,7 @@ cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSyn
 ```
 
 
+<a id="getfilesyncstate-2"></a>
 ## getFileSyncState
 
 ```TypeScript

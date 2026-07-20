@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="on"></a>
 ## on('cooperate')
 
 ```TypeScript
@@ -18,7 +19,7 @@ function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: Coop
 
 **废弃版本：** 11
 
-**替代接口：** on(type:
+**替代接口：** [on(type:](../../apis-test-kit/arkts-apis/arkts-test-uitest-on-c.md)
 
 <!--Device-cooperate-function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: CooperateMsg }>): void--><!--Device-cooperate-function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: CooperateMsg }>): void-End-->
 
@@ -31,7 +32,7 @@ function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: Coop
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cooperate' | 是 | 监听类型，取值为'cooperate' |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<{ networkId: string, msg: CooperateMsg }> | 是 |  |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;{ networkId: string, msg: CooperateMsg }&gt; | 是 |  |
 
 **错误码：**
 
@@ -60,6 +61,7 @@ try {
 ```
 
 
+<a id="on-1"></a>
 ## on('cooperateMessage')
 
 ```TypeScript
@@ -83,7 +85,7 @@ function on(type: 'cooperateMessage', callback: Callback<CooperateMessage>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cooperateMessage' | 是 | 监听类型，取值为'cooperateMessage' |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CooperateMessage> | 是 | 回调函数，异步返回键鼠穿越状态消息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CooperateMessage&gt; | 是 | 回调函数，异步返回键鼠穿越状态消息。 |
 
 **错误码：**
 
@@ -110,6 +112,7 @@ try {
 ```
 
 
+<a id="on-2"></a>
 ## on('cooperateMouse')
 
 ```TypeScript
@@ -134,7 +137,7 @@ function on(type: 'cooperateMouse', networkId: string, callback: Callback<MouseL
 | --- | --- | --- | --- |
 | type | 'cooperateMouse' | 是 | 监听类型，取值为'cooperateMouse' |
 | networkId | string | 是 | 目标设备描述符 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MouseLocation> | 是 | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MouseLocation&gt; | 是 | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
 
 **错误码：**
 

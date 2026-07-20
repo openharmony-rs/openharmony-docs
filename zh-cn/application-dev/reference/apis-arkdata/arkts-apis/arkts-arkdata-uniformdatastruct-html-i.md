@@ -32,7 +32,7 @@ details?: Record<string, string>
 
 的数据对象。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
 
@@ -104,7 +104,7 @@ uriAuthorizationPolicies?: Array<number>
 
 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
-**类型：** Array<number>
+**类型：** Array&lt;number&gt;
 
 **起始版本：** 26.0.0
 

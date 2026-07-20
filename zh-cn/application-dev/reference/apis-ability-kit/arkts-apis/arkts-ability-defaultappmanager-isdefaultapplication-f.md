@@ -6,6 +6,7 @@
 import { defaultAppManager } from '@kit.AbilityKit';
 ```
 
+<a id="isdefaultapplication"></a>
 ## isDefaultApplication
 
 ```TypeScript
@@ -25,7 +26,7 @@ function isDefaultApplication(type: string, callback: AsyncCallback<boolean>) : 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 要查询的应用类型，取[ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-data-uniformtypedescriptor.md)类型中的值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为bool值，true表示是默认应用，false表示不是默认应用；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为bool值，true表示是默认应用，false表示不是默认应用；否则为错误对象。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
 ```
 
 
+<a id="isdefaultapplication-1"></a>
 ## isDefaultApplication
 
 ```TypeScript
@@ -75,7 +77,7 @@ function isDefaultApplication(type: string) : Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回当前应用是否是默认应用，true表示是默认应用，false表示不是默认应用。 |
+| Promise&lt;boolean&gt; | Promise对象，返回当前应用是否是默认应用，true表示是默认应用，false表示不是默认应用。 |
 
 **错误码：**
 

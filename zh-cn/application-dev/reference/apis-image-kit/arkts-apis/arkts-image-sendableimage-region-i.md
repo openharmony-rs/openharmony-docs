@@ -2,7 +2,7 @@
 
 表示区域信息。
 
-继承自[lang.ISendable](../../../../arkts-utils/arkts-sendable.md#isendable)。
+继承自[lang.ISendable](docroot://arkts-utils/arkts-sendable.md#isendable)。
 
 **继承/实现关系：** Region extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 

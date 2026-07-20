@@ -6,6 +6,7 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="deletegroup"></a>
 ## deleteGroup
 
 ```TypeScript
@@ -32,7 +33,7 @@ function deleteGroup(gid: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

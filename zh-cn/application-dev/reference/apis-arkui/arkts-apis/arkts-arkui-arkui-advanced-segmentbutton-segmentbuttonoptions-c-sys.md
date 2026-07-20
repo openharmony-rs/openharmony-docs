@@ -8,6 +8,8 @@
 
 **起始版本：** 11
 
+**装饰器类型：** @Observed
+
 <!--Device-unnamed-declare class SegmentButtonOptions--><!--Device-unnamed-declare class SegmentButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

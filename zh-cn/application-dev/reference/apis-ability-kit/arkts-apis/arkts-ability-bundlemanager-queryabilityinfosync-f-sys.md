@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="queryabilityinfosync"></a>
 ## queryAbilityInfoSync
 
 ```TypeScript
@@ -38,7 +39,7 @@ function queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number)
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<AbilityInfo> | Array&lt;AbilityInfo&gt;信息。 |
+| Array&lt;AbilityInfo&gt; | Array<AbilityInfo>信息。 |
 
 **错误码：**
 

@@ -82,7 +82,7 @@ bottom?: string | number
 
 设置Toast底部边框距离导航条的高度，软键盘拉起时，如果bottom值过小，Toast要被软键盘遮挡时，会自动避让至距离软键盘80vp处。<br/>默认值：80vp<br/>**说明：**<br/>当底部没有导航条时，bottom为设置弹窗底部边框距离窗口底部的高度。<br/>设置对齐方式alignment后，bottom不生效。
 
-**类型：** string | number
+**类型：** string \| number
 
 **起始版本：** 9
 
@@ -162,7 +162,7 @@ message: string | Resource
 
 显示的文本信息。<br>**说明：**<br/>默认字体为'Harmony Sans'，不支持设置其他字体。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 9
 
@@ -200,7 +200,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 Toast的背板阴影。<br/>默认值：ShadowStyle.OUTER_DEFAULT_MD
 
-**类型：** ShadowOptions | ShadowStyle
+**类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 12
 

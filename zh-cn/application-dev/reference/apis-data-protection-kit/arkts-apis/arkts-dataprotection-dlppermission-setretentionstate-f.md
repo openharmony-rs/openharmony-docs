@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="setretentionstate"></a>
 ## setRetentionState
 
 ```TypeScript
@@ -24,13 +25,13 @@ function setRetentionState(docUris: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| docUris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码401。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -58,6 +59,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => {
 ```
 
 
+<a id="setretentionstate-1"></a>
 ## setRetentionState
 
 ```TypeScript
@@ -76,8 +78,8 @@ function setRetentionState(docUris: Array<string>, callback: AsyncCallback<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| docUris | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string> | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码401。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
 

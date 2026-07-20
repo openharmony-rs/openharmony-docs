@@ -6,6 +6,7 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="closeresource"></a>
 ## closeResource
 
 ```TypeScript
@@ -14,7 +15,7 @@ function closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): 
 
 关闭指定资源ID的资源。使用Promise异步回调。
 
-该接口会回调[onClearUkeyPinAuthState](../../../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](../../../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
+该接口会回调[onClearUkeyPinAuthState](docroot://reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](docroot://reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
 
 **起始版本：** 26.0.0
 
@@ -28,14 +29,14 @@ function closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | 资源ID。可通过[证书选择接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-2)获取keyUri作为resourceId，或通过[getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid-1)获取外部密钥管理扩展的资源ID。 |
+| resourceId | string | 是 | 资源ID。可通过[证书选择接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog-1)获取keyUri作为resourceId，或通过[getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid-1)获取外部密钥管理扩展的资源ID。 |
 | params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 否 | 需要传递给[Extension Ability](arkts-security-cryptoextensionability.md)的输入参数。不传入时，不向Extension Ability传递额外参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

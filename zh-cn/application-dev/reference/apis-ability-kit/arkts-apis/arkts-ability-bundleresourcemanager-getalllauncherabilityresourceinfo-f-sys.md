@@ -6,6 +6,7 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getalllauncherabilityresourceinfo"></a>
 ## getAllLauncherAbilityResourceInfo
 
 ```TypeScript
@@ -29,7 +30,7 @@ function getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: Asyn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resourceFlags | number | 是 | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<LauncherAbilityResourceInfo>> | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;LauncherAbilityResourceInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -40,6 +41,7 @@ function getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: Asyn
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 
+<a id="getalllauncherabilityresourceinfo-1"></a>
 ## getAllLauncherAbilityResourceInfo
 
 ```TypeScript
@@ -68,7 +70,7 @@ function getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<LauncherAbilityResourceInfo>> | Promise对象，返回LauncherAbilityResourceInfo数组。 |
+| Promise&lt;Array&lt;LauncherAbilityResourceInfo&gt;&gt; | Promise对象，返回LauncherAbilityResourceInfo数组。 |
 
 **错误码：**
 

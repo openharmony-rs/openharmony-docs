@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="on"></a>
 ## on('continuousTaskCancel')
 
 ```TypeScript
@@ -27,7 +28,7 @@ function on(type: 'continuousTaskCancel', callback: Callback<ContinuousTaskCance
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continuousTaskCancel' | 是 | 事件回调类型，固定取值为'continuousTaskCancel'，表示长时任务取消。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinuousTaskCancelInfo> | 是 | 回调函数，返回长时任务取消原因等信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuousTaskCancelInfo&gt; | 是 | 回调函数，返回长时任务取消原因等信息。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="on-1"></a>
 ## on('continuousTaskSuspend')
 
 ```TypeScript
@@ -84,7 +86,7 @@ function on(type: 'continuousTaskSuspend', callback: Callback<ContinuousTaskSusp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continuousTaskSuspend' | 是 | 事件回调类型，固定取值为'continuousTaskSuspend'，表示长时任务暂停。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinuousTaskSuspendInfo> | 是 | 回调函数，返回长时任务暂停原因等信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuousTaskSuspendInfo&gt; | 是 | 回调函数，返回长时任务暂停原因等信息。 |
 
 **错误码：**
 
@@ -119,6 +121,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
+<a id="on-2"></a>
 ## on('continuousTaskActive')
 
 ```TypeScript
@@ -140,7 +143,7 @@ function on(type: 'continuousTaskActive', callback: Callback<ContinuousTaskActiv
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'continuousTaskActive' | 是 | 事件回调类型，固定取值为'continuousTaskActive'，表示长时任务激活。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ContinuousTaskActiveInfo> | 是 | 回调函数，返回长时任务激活相关信息。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ContinuousTaskActiveInfo&gt; | 是 | 回调函数，返回长时任务激活相关信息。 |
 
 **错误码：**
 

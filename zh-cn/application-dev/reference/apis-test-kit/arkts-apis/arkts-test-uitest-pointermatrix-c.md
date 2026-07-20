@@ -14,6 +14,7 @@
 import { ResizeDirection, WindowMode, PenMode, PenKeyOperation, Driver, MatchPattern, UiDirection, TouchOptions, ComponentEventType, PointerMatrix, WindowChangeType, Component, ON, PenKey, Rect, InputTextMode, UIEventObserver, WindowFilter, WindowChangeOptions, UiWindow, TouchPadSwipeOptions, Point, KeyOptions, DisplayRotation, UIElementInfo, PenKeyOperationOptions, ComponentEventOptions, MouseButton, On } from '@kit.TestKit';
 ```
 
+<a id="create"></a>
 ## create
 
 ```TypeScript
@@ -61,6 +62,7 @@ async function demo() {
 
 ```
 
+<a id="setpoint"></a>
 ## setPoint
 
 ```TypeScript

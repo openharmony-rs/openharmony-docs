@@ -22,7 +22,7 @@ parameters?: Record<string, Object>
 
 自定义参数对象，默认为空。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 9
 
@@ -38,7 +38,7 @@ properties?: Record<string, Object>
 
 属性对象，默认为空。
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 9
 

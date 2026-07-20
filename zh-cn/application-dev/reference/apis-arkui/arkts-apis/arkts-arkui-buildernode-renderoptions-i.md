@@ -36,7 +36,7 @@ selfIdealSize?: Size
 surfaceId?: string
 ```
 
-纹理接收方的surfaceId。纹理接收方一般为[OH_NativeImage](../../../../reference/apis-arkgraphics2d/capi-oh-nativeimage-oh-nativeimage.md)。
+纹理接收方的surfaceId。纹理接收方一般为[OH_NativeImage](docroot://reference/apis-arkgraphics2d/capi-oh-nativeimage-oh-nativeimage.md)。
 
 surfaceId仅当type为NodeRenderType.RENDER_TYPE_TEXTURE时生效。
 

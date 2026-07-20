@@ -14,6 +14,7 @@ ApplicationContext作为应用上下文，继承自[Context](arkts-ability-conte
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+<a id="preloaduiextensionability"></a>
 ## preloadUIExtensionAbility
 
 ```TypeScript
@@ -44,7 +45,7 @@ Preload UIExtensionAbility.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | The promise returned by the function. |
+| Promise&lt;void&gt; | The promise returned by the function. |
 
 **错误码：**
 

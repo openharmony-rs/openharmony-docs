@@ -1,5 +1,6 @@
 # requestToolPermissions（系统接口）
 
+<a id="requesttoolpermissions"></a>
 ## requestToolPermissions
 
 ```TypeScript
@@ -28,7 +29,7 @@ export function requestToolPermissions(permissionQuery: PermissionQuery): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PermissionQueryResult> | Promise用于返回${PermissionQueryResult}。 |
+| Promise&lt;PermissionQueryResult&gt; | Promise用于返回${PermissionQueryResult}。 |
 
 **错误码：**
 

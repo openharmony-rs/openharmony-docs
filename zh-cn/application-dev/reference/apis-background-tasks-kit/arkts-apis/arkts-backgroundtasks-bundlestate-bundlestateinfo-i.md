@@ -14,6 +14,7 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="merge"></a>
 ## merge
 
 ```TypeScript

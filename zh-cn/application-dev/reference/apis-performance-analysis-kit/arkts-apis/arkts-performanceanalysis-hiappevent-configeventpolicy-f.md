@@ -6,6 +6,7 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="configeventpolicy"></a>
 ## configEventPolicy
 
 ```TypeScript
@@ -34,7 +35,7 @@ function configEventPolicy(policy: EventPolicy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](arkts-performanceanalysis-hiappevent-eventpolicy-i.md)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数类型设置有误，则返回401通用错误信息；<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](arkts-performanceanalysis-hiappevent-eventpolicy-i.md)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数类型设置有误，则返回401通用错误信息；<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
 
 **示例：**
 

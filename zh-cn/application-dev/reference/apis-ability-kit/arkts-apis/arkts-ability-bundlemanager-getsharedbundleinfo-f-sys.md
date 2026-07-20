@@ -6,6 +6,7 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getsharedbundleinfo"></a>
 ## getSharedBundleInfo
 
 ```TypeScript
@@ -32,7 +33,7 @@ function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: 
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
 | moduleName | string | 是 | 表示被查询的module的name。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<SharedBundleInfo>> | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取的指定共享包信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取的指定共享包信息。 |
 
 **错误码：**
 
@@ -70,6 +71,7 @@ try {
 ```
 
 
+<a id="getsharedbundleinfo-1"></a>
 ## getSharedBundleInfo
 
 ```TypeScript
@@ -101,7 +103,7 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<SharedBundleInfo>> | Promise对象，返回指定的共享包信息。 |
+| Promise&lt;Array&lt;SharedBundleInfo&gt;&gt; | Promise对象，返回指定的共享包信息。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
+<a id="off"></a>
 ## off('activeStateChange')
 
 ```TypeScript
@@ -43,14 +44,14 @@ function off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'activeStateChange' | 是 | 取消订阅事件类型，固定为'activeStateChange'，权限使用状态变更事件。 |
-| permissionList | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Permissions> | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致。<br>取值约束：数组长度不能超过1024。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ActiveChangeResponse> | 否 | 回调函数，返回取消订阅指定tokenId与指定权限名状态变更事件的对象。需与[on](arkts-ability-privacymanager-on-f-sys.md#on-1)传入的callback一致；不传入此参数时，将批量删除permissionList下的所有回调函数。<br>取值约束：数组长度不能超过1024。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致。<br>取值约束：数组长度不能超过1024。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ActiveChangeResponse&gt; | 否 | 回调函数，返回取消订阅指定tokenId与指定权限名状态变更事件的对象。需与[on](privacyManager.on(type: 'activeStateChange', permissionList: Array<Permissions>, callback:Callback<ActiveChangeResponse>))传入的callback一致；不传入此参数时，将批量删除permissionList下的所有回调函数。<br>取值约束：数组长度不能超过1024。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionList is not in the listening list. |

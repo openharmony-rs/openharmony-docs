@@ -10,7 +10,7 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 
 | 名称 | 说明 |
 | --- | --- |
-| [typeNode](arkts-arkui-typenode-n.md) | typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础接口进行自定义的挂载，使用占位容器进行显示。使用typeNode创建[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)、[Image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)、[Select](../arkts-components/arkts-arkui-select.md)、[Toggle](../arkts-components/arkts-arkui-toggle.md)节点时，当传入的[UIContext](arkts-arkui-uicontext.md)对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
+| [typeNode](arkts-arkui-typenode-n.md) | typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础接口进行自定义的挂载，使用占位容器进行显示。  使用typeNode创建[Text](../../apis-arkgraphics2d/arkts-apis/arkts-graphics-text.md)、[Image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)、[Select](../arkts-components/arkts-arkui-select.md)、[Toggle](../arkts-components/arkts-arkui-toggle.md)节点时，当传入的[UIContext](arkts-arkui-uicontext.md)对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
 
 ### 类
 

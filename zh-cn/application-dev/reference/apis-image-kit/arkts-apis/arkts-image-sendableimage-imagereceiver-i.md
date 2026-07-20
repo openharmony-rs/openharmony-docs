@@ -16,6 +16,7 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
+<a id="getreceivingsurfaceid"></a>
 ## getReceivingSurfaceId
 
 ```TypeScript
@@ -34,7 +35,7 @@ getReceivingSurfaceId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | 异步返回Surface ID。 |
+| Promise&lt;string&gt; | 异步返回Surface ID。 |
 
 **示例：**
 
@@ -58,6 +59,7 @@ async function GetReceivingSurfaceId() {
 
 ```
 
+<a id="on"></a>
 ## on('imageArrival')
 
 ```TypeScript
@@ -77,7 +79,7 @@ on(type: 'imageArrival', callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'imageArrival' | 是 | 注册事件的类型，固定为'imageArrival'，接收图片时触发。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 注册的事件回调。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 注册的事件回调。 |
 
 **示例：**
 
@@ -98,6 +100,7 @@ async function On() {
 
 ```
 
+<a id="readlatestimage"></a>
 ## readLatestImage
 
 ```TypeScript
@@ -121,7 +124,7 @@ readLatestImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Image> | 异步返回最新图片。 |
+| Promise&lt;Image&gt; | 异步返回最新图片。 |
 
 **示例：**
 
@@ -145,6 +148,7 @@ async function ReadLatestImage() {
 
 ```
 
+<a id="readnextimage"></a>
 ## readNextImage
 
 ```TypeScript
@@ -168,7 +172,7 @@ readNextImage(): Promise<Image>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Image> | 异步返回下一张图片。 |
+| Promise&lt;Image&gt; | 异步返回下一张图片。 |
 
 **示例：**
 
@@ -192,6 +196,7 @@ async function ReadNextImage() {
 
 ```
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -214,7 +219,7 @@ release(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 异步返回操作结果。 |
+| Promise&lt;void&gt; | 异步返回操作结果。 |
 
 **示例：**
 

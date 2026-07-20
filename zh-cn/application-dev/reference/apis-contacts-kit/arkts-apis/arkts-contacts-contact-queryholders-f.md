@@ -6,6 +6,7 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="queryholders"></a>
 ## queryHolders
 
 ```TypeScript
@@ -18,7 +19,7 @@ function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 
 **废弃版本：** 10
 
-**替代接口：** queryHolders(context:
+**替代接口：** [queryHolders(context:](arkts-contacts-contact-queryholders-f.md#queryholders-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -30,7 +31,7 @@ function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Holder>> | 是 | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Holder&gt;&gt; | 是 | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -49,6 +50,7 @@ contact.queryHolders((err: BusinessError, data) => {
 ```
 
 
+<a id="queryholders-1"></a>
 ## queryHolders
 
 ```TypeScript
@@ -70,7 +72,7 @@ function queryHolders(context: Context, callback: AsyncCallback<Array<Holder>>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-arkui/arkts-components/arkts-arkui-context-t.md) | 是 | 应用上下文Context。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Holder>> | 是 | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Holder&gt;&gt; | 是 | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -101,6 +103,7 @@ contact.queryHolders(context, (err: BusinessError, data) => {
 ```
 
 
+<a id="queryholders-2"></a>
 ## queryHolders
 
 ```TypeScript
@@ -113,7 +116,7 @@ function queryHolders(): Promise<Array<Holder>>
 
 **废弃版本：** 10
 
-**替代接口：** queryHolders(context:
+**替代接口：** [queryHolders(context:](arkts-contacts-contact-queryholders-f.md#queryholders-1)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -125,7 +128,7 @@ function queryHolders(): Promise<Array<Holder>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Holder>> | Promise对象。返回查询到的创建联系人应用信息的对象数组。 |
+| Promise&lt;Array&lt;Holder&gt;&gt; | Promise对象。返回查询到的创建联系人应用信息的对象数组。 |
 
 **示例：**
 
@@ -140,6 +143,7 @@ promise.then((data) => {
 ```
 
 
+<a id="queryholders-3"></a>
 ## queryHolders
 
 ```TypeScript
@@ -166,7 +170,7 @@ function queryHolders(context: Context): Promise<Array<Holder>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Holder>> | Promise对象。返回查询到的创建联系人应用信息的对象数组。 |
+| Promise&lt;Array&lt;Holder&gt;&gt; | Promise对象。返回查询到的创建联系人应用信息的对象数组。 |
 
 **错误码：**
 

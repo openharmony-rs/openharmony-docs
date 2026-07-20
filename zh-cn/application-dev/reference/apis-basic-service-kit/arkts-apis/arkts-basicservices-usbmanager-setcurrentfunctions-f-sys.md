@@ -6,6 +6,7 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="setcurrentfunctions"></a>
 ## setCurrentFunctions
 
 ```TypeScript
@@ -18,7 +19,7 @@ function setCurrentFunctions(funcs: FunctionType): Promise<void>
 
 **废弃版本：** 12
 
-**替代接口：** setDeviceFunctions(funcs:
+**替代接口：** [setDeviceFunctions(funcs:](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md#setdevicefunctions-1)
 
 <!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>--><!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>-End-->
 
@@ -36,7 +37,7 @@ function setCurrentFunctions(funcs: FunctionType): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。 |
 
 **错误码：**
 

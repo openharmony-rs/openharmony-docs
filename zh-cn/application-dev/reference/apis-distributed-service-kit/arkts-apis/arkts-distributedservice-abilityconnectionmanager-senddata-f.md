@@ -6,13 +6,14 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="senddata"></a>
 ## sendData
 
 ```TypeScript
 function sendData(sessionId: number, data: ArrayBuffer): Promise<void>
 ```
 
-应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../../../arkts-utils/arraybuffer-object.md)字节流。
+应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](docroot://arkts-utils/arraybuffer-object.md)字节流。
 
 **起始版本：** 18
 
@@ -27,13 +28,13 @@ function sendData(sessionId: number, data: ArrayBuffer): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | number | 是 | 协同会话ID。 |
-| data | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 字节流信息。 |
+| data | ArrayBuffer | 是 | 字节流信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的promise对象。 |
 
 **错误码：**
 

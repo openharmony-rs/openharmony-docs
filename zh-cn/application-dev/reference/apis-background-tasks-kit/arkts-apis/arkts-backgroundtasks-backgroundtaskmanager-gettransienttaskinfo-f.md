@@ -6,6 +6,7 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="gettransienttaskinfo"></a>
 ## getTransientTaskInfo
 
 ```TypeScript
@@ -24,7 +25,7 @@ function getTransientTaskInfo(): Promise<TransientTaskInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TransientTaskInfo> | Promise对象，返回所有短时任务信息。 |
+| Promise&lt;TransientTaskInfo&gt; | Promise对象，返回所有短时任务信息。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="gettaskinfo"></a>
 ## getTaskInfo
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<TaskInfo> | Promise对象， 返回任务信息。 |
+| Promise&lt;TaskInfo&gt; | Promise对象， 返回任务信息。 |
 
 **错误码：**
 

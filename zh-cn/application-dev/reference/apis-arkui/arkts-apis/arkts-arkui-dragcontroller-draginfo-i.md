@@ -30,7 +30,7 @@ autoHideComponentUniqueIds?: number | number[]
 
 开发者需要在拖拽结束回调中按需恢复组件显示状态。
 
-**类型：** number | number[]
+**类型：** number \| number[]
 
 **起始版本：** 26.0.0
 

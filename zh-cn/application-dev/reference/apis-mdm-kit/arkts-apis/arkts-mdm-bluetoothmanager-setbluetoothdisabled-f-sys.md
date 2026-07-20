@@ -6,6 +6,7 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
+<a id="setbluetoothdisabled"></a>
 ## setBluetoothDisabled
 
 ```TypeScript
@@ -18,7 +19,7 @@ function setBluetoothDisabled(admin: Want, disabled: boolean): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** setDisallowedPolicy(admin:
+**替代接口：** [setDisallowedPolicy(admin:](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 

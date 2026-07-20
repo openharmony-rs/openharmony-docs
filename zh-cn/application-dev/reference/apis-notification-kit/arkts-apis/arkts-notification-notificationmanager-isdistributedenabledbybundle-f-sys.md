@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="isdistributedenabledbybundle"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -18,7 +19,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** isDistributedEnabledByBundle(bundle:
+**替代接口：** [isDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle-1)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -33,7 +34,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md) | 是 | 应用的包。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 查询指定应用是否支持分布式通知的回调函数（true：支持，false：不支持）。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 查询指定应用是否支持分布式通知的回调函数（true：支持，false：不支持）。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 ```
 
 
+<a id="isdistributedenabledbybundle-1"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -81,7 +83,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** isDistributedEnabledByBundle(bundle:
+**替代接口：** [isDistributedEnabledByBundle(bundle:](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle-1)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -101,7 +103,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise方式返回指定应用是否支持分布式通知的结果（true：支持，false：不支持）。 |
+| Promise&lt;boolean&gt; | Promise方式返回指定应用是否支持分布式通知的结果（true：支持，false：不支持）。 |
 
 **错误码：**
 
@@ -134,6 +136,7 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 ```
 
 
+<a id="isdistributedenabledbybundle-2"></a>
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -163,7 +166,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | 以Promise形式返回指定应用是否支持跨设备协同的开关是否开启的结果（true：开启，false：未开启）。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回指定应用是否支持跨设备协同的开关是否开启的结果（true：开启，false：未开启）。 |
 
 **错误码：**
 

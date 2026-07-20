@@ -22,7 +22,7 @@ details: Record<string, Object>
 
 The detailed information of the event.
 
-**类型：** Record<string, Object>
+**类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 23
 

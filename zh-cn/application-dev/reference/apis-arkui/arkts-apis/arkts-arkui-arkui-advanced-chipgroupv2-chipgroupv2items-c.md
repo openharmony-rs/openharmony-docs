@@ -6,6 +6,8 @@ ChipGroupV2Items定义了芯片组项的数组类，继承自Array<[ChipGroupV2I
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 <!--Device-unnamed-export declare class ChipGroupV2Items extends Array<ChipGroupV2Item>--><!--Device-unnamed-export declare class ChipGroupV2Items extends Array<ChipGroupV2Item>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -16,6 +18,7 @@ ChipGroupV2Items定义了芯片组项的数组类，继承自Array<[ChipGroupV2I
 import { ChipGroupV2ItemConfig, ChipGroupV2ItemStyleConfig, ChipGroupV2SpaceConfig, ChipGroupV2IconGroupSuffix, ChipGroupV2Items, ChipGroupV2Padding, ChipGroupV2Item, ChipGroupV2ItemStyle, ChipGroupV2, ChipGroupV2PaddingConfig, ChipGroupV2IconItemConfig, ChipGroupV2SymbolItemConfig, ChipGroupV2Space } from '@kit.ArkUI';
 ```
 
+<a id="constructor"></a>
 ## constructor
 
 ```TypeScript

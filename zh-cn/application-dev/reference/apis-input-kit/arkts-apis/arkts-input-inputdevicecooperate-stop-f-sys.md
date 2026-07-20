@@ -6,6 +6,7 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
+<a id="stop"></a>
 ## stop
 
 ```TypeScript
@@ -36,7 +37,7 @@ function stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当停止键鼠穿越成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当停止键鼠穿越成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ struct Index {
 ```
 
 
+<a id="stop-1"></a>
 ## stop
 
 ```TypeScript
@@ -88,7 +90,7 @@ function stop(): Promise<void>
 > **说明：**  
 >  
 > 从 API version 9开始支持，从API version 23开始废弃。建议使用  
-> [cooperate.deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-2)替代。
+> [cooperate.deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)替代。
 
 **起始版本：** 9
 
@@ -106,7 +108,7 @@ function stop(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

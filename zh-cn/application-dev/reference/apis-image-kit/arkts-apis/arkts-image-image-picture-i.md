@@ -20,6 +20,7 @@ Picture类，一些包含特殊信息的图片可以解码为Picture（也可以
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="getauxiliarypicture"></a>
 ## getAuxiliaryPicture
 
 ```TypeScript
@@ -52,6 +53,7 @@ getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 
+<a id="getgainmappixelmap"></a>
 ## getGainmapPixelmap
 
 ```TypeScript
@@ -72,6 +74,7 @@ getGainmapPixelmap(): PixelMap | null
 | --- | --- |
 | [PixelMap](arkts-image-image-pixelmap-i.md) | 返回Pixelmap对象，如果没有则返回null。 |
 
+<a id="gethdrcomposedpixelmap"></a>
 ## getHdrComposedPixelmap
 
 ```TypeScript
@@ -90,7 +93,7 @@ getHdrComposedPixelmap(): Promise<PixelMap>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | Promise对象，返回PixelMap。 |
+| Promise&lt;PixelMap&gt; | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -99,6 +102,7 @@ getHdrComposedPixelmap(): Promise<PixelMap>
 | [7600901](../errorcode-image.md#7600901-未知错误) | Inner unknown error. Please check the logs for detailed information. |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. e.g.,1. The picture does not has a gainmap.2. MainPixelMap's allocator type is not DMA. |
 
+<a id="gethdrcomposedpixelmapwithoptions"></a>
 ## getHdrComposedPixelmapWithOptions
 
 ```TypeScript
@@ -127,7 +131,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise<PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap \| undefined> | Promise对象，返回PixelMap或undefined。 |
+| Promise&lt;PixelMap \| undefined&gt; | Promise对象，返回PixelMap或undefined。 |
 
 **错误码：**
 
@@ -135,6 +139,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise<PixelMap
 | --- | --- |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. |
 
+<a id="getmainpixelmap"></a>
 ## getMainPixelmap
 
 ```TypeScript
@@ -155,6 +160,7 @@ getMainPixelmap(): PixelMap
 | --- | --- |
 | [PixelMap](arkts-image-image-pixelmap-i.md) | 同步返回PixelMap对象。 |
 
+<a id="getmetadata"></a>
 ## getMetadata
 
 ```TypeScript
@@ -179,7 +185,7 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Metadata> | Promise对象。返回元数据。 |
+| Promise&lt;Metadata&gt; | Promise对象。返回元数据。 |
 
 **错误码：**
 
@@ -188,6 +194,7 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 | [7600202](../errorcode-image.md#7600202-不支持的元数据读写) | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
+<a id="hdrcomposetomainpixelmap"></a>
 ## hdrComposeToMainPixelmap
 
 ```TypeScript
@@ -210,7 +217,7 @@ hdrComposeToMainPixelmap(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -218,6 +225,7 @@ hdrComposeToMainPixelmap(): Promise<void>
 | --- | --- |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. e.g.,1. The picture does not have a gainmap.2. pixelMap's allocator type is not DMA. |
 
+<a id="marshalling"></a>
 ## marshalling
 
 ```TypeScript
@@ -245,6 +253,7 @@ marshalling(sequence: rpc.MessageSequence): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
 | [62980097](../errorcode-image.md#62980097-pixelmap序列化传输失败) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.3. Decode process exception. 4. Insufficient memory. |
 
+<a id="release"></a>
 ## release
 
 ```TypeScript
@@ -263,6 +272,7 @@ release(): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+<a id="setauxiliarypicture"></a>
 ## setAuxiliaryPicture
 
 ```TypeScript
@@ -290,6 +300,7 @@ setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPictu
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 
+<a id="setmetadata"></a>
 ## setMetadata
 
 ```TypeScript
@@ -315,7 +326,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

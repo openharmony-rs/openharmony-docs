@@ -16,6 +16,7 @@
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+<a id="didexceedmaxlines"></a>
 ## didExceedMaxLines
 
 ```TypeScript
@@ -45,6 +46,7 @@ let didExceed = paragraph.didExceedMaxLines();
 
 ```
 
+<a id="forcereuserasterresult"></a>
 ## forceReuseRasterResult
 
 ```TypeScript
@@ -117,6 +119,7 @@ struct Index {
 
 ```
 
+<a id="getactualtextrange"></a>
 ## getActualTextRange
 
 ```TypeScript
@@ -153,6 +156,7 @@ let rang = paragraph.getActualTextRange(0, true);
 
 ```
 
+<a id="getalphabeticbaseline"></a>
 ## getAlphabeticBaseline
 
 ```TypeScript
@@ -182,6 +186,7 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 ```
 
+<a id="getcharacterpositionatcoordinate"></a>
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
@@ -212,7 +217,7 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEnc
 
 | 类型 | 说明 |
 | --- | --- |
-| [PositionWithAffinity](../../apis-arkui/arkts-apis/arkts-arkui-text-common-positionwithaffinity-i.md) | 字符位置信息。 |
+| [PositionWithAffinity](../../apis-arkui/arkts-apis/arkts-arkui-positionwithaffinity-i.md) | 字符位置信息。 |
 
 **错误码：**
 
@@ -257,6 +262,7 @@ struct Index {
 
 ```
 
+<a id="getcharacterrangeforglyphrange"></a>
 ## getCharacterRangeForGlyphRange
 
 ```TypeScript
@@ -286,7 +292,7 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Range> | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。 |
+| Array&lt;Range&gt; | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。 |
 
 **错误码：**
 
@@ -330,6 +336,7 @@ struct Index {
 
 ```
 
+<a id="getglyphpositionatcoordinate"></a>
 ## getGlyphPositionAtCoordinate
 
 ```TypeScript
@@ -357,7 +364,7 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 类型 | 说明 |
 | --- | --- |
-| [PositionWithAffinity](../../apis-arkui/arkts-apis/arkts-arkui-text-common-positionwithaffinity-i.md) | 字形位置信息。 |
+| [PositionWithAffinity](../../apis-arkui/arkts-apis/arkts-arkui-positionwithaffinity-i.md) | 字形位置信息。 |
 
 **示例：**
 
@@ -366,6 +373,7 @@ let positionWithAffinity = paragraph.getGlyphPositionAtCoordinate(0, 0);
 
 ```
 
+<a id="getglyphrangeforcharacterrange"></a>
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -395,7 +403,7 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Range> | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
+| Array&lt;Range&gt; | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
 
 **错误码：**
 
@@ -439,6 +447,7 @@ struct Index {
 
 ```
 
+<a id="getheight"></a>
 ## getHeight
 
 ```TypeScript
@@ -468,6 +477,7 @@ let height = paragraph.getHeight();
 
 ```
 
+<a id="getideographicbaseline"></a>
 ## getIdeographicBaseline
 
 ```TypeScript
@@ -497,6 +507,7 @@ let ideographicBaseline = paragraph.getIdeographicBaseline();
 
 ```
 
+<a id="getlinecount"></a>
 ## getLineCount
 
 ```TypeScript
@@ -526,6 +537,7 @@ let lineCount = paragraph.getLineCount();
 
 ```
 
+<a id="getlineheight"></a>
 ## getLineHeight
 
 ```TypeScript
@@ -561,6 +573,7 @@ let lineHeight = paragraph.getLineHeight(0);
 
 ```
 
+<a id="getlinemetrics"></a>
 ## getLineMetrics
 
 ```TypeScript
@@ -581,7 +594,7 @@ getLineMetrics(): Array<LineMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<LineMetrics> | 文本行的行度量数组。 |
+| Array&lt;LineMetrics&gt; | 文本行的行度量数组。 |
 
 **示例：**
 
@@ -590,6 +603,7 @@ let arrLineMetric =  paragraph.getLineMetrics();
 
 ```
 
+<a id="getlinemetrics-1"></a>
 ## getLineMetrics
 
 ```TypeScript
@@ -625,6 +639,7 @@ let lineMetrics =  paragraph.getLineMetrics(0);
 
 ```
 
+<a id="getlinewidth"></a>
 ## getLineWidth
 
 ```TypeScript
@@ -660,6 +675,7 @@ let lineWidth = paragraph.getLineWidth(0);
 
 ```
 
+<a id="getlongestline"></a>
 ## getLongestLine
 
 ```TypeScript
@@ -689,6 +705,7 @@ let longestLine = paragraph.getLongestLine();
 
 ```
 
+<a id="getlongestlinewithindent"></a>
 ## getLongestLineWithIndent
 
 ```TypeScript
@@ -718,6 +735,7 @@ let longestLineWithIndent = paragraph.getLongestLineWithIndent();
 
 ```
 
+<a id="getmaxintrinsicwidth"></a>
 ## getMaxIntrinsicWidth
 
 ```TypeScript
@@ -747,6 +765,7 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 ```
 
+<a id="getmaxwidth"></a>
 ## getMaxWidth
 
 ```TypeScript
@@ -776,6 +795,7 @@ let maxWidth = paragraph.getMaxWidth();
 
 ```
 
+<a id="getminintrinsicwidth"></a>
 ## getMinIntrinsicWidth
 
 ```TypeScript
@@ -805,6 +825,7 @@ let minIntrinsicWidth = paragraph.getMinIntrinsicWidth();
 
 ```
 
+<a id="getparagraphstyle"></a>
 ## getParagraphStyle
 
 ```TypeScript
@@ -878,6 +899,7 @@ function numberToRGBA(colorNum: number): common2D.Color {
 
 ```
 
+<a id="getprocessstate"></a>
 ## getProcessState
 
 ```TypeScript
@@ -938,6 +960,7 @@ struct Index {
 
 ```
 
+<a id="getrectsforplaceholders"></a>
 ## getRectsForPlaceholders
 
 ```TypeScript
@@ -958,7 +981,7 @@ getRectsForPlaceholders(): Array<TextBox>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextBox> | 矩形区域数组。 |
+| Array&lt;TextBox&gt; | 矩形区域数组。 |
 
 **示例：**
 
@@ -967,6 +990,7 @@ let placeholderRects = paragraph.getRectsForPlaceholders();
 
 ```
 
+<a id="getrectsforrange"></a>
 ## getRectsForRange
 
 ```TypeScript
@@ -995,7 +1019,7 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextBox> | 矩形区域数组。 |
+| Array&lt;TextBox&gt; | 矩形区域数组。 |
 
 **示例：**
 
@@ -1005,6 +1029,7 @@ let rects = paragraph.getRectsForRange(range, text.RectWidthStyle.TIGHT, text.Re
 
 ```
 
+<a id="gettextdisplaystate"></a>
 ## getTextDisplayState
 
 ```TypeScript
@@ -1065,6 +1090,7 @@ struct Index {
 
 ```
 
+<a id="gettextlines"></a>
 ## getTextLines
 
 ```TypeScript
@@ -1085,7 +1111,7 @@ getTextLines(): Array<TextLine>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<TextLine> | 文本行载体数组。 |
+| Array&lt;TextLine&gt; | 文本行载体数组。 |
 
 **示例：**
 
@@ -1094,6 +1120,7 @@ let lines = paragraph.getTextLines();
 
 ```
 
+<a id="getvisibletextranges"></a>
 ## getVisibleTextRanges
 
 ```TypeScript
@@ -1116,7 +1143,7 @@ getVisibleTextRanges(): Array<Range>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<Range> | 段落可见文本范围数组，范围为UTF-16编码单元索引。 |
+| Array&lt;Range&gt; | 段落可见文本范围数组，范围为UTF-16编码单元索引。 |
 
 **示例：**
 
@@ -1125,6 +1152,7 @@ let visibleRanges = paragraph.getVisibleTextRanges();
 
 ```
 
+<a id="getwordboundary"></a>
 ## getWordBoundary
 
 ```TypeScript
@@ -1160,6 +1188,7 @@ let wordRange = paragraph.getWordBoundary(0);
 
 ```
 
+<a id="layout"></a>
 ## layout
 
 ```TypeScript
@@ -1186,7 +1215,7 @@ layout(width: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1268,6 +1297,7 @@ async prepareLayoutPromise() {
 
 ```
 
+<a id="layoutsync"></a>
 ## layoutSync
 
 ```TypeScript
@@ -1297,6 +1327,7 @@ paragraph.layoutSync(100);
 
 ```
 
+<a id="layoutwithconstraints"></a>
 ## layoutWithConstraints
 
 ```TypeScript
@@ -1339,6 +1370,7 @@ for (let i = 0; i < result.fitStrRange.length; ++i) {
 
 ```
 
+<a id="paint"></a>
 ## paint
 
 ```TypeScript
@@ -1374,6 +1406,7 @@ paragraph.paint(canvas, 0, 0);
 
 ```
 
+<a id="paintonpath"></a>
 ## paintOnPath
 
 ```TypeScript
@@ -1412,6 +1445,7 @@ paragraph.paintOnPath(canvas, path, 0, 0);
 
 ```
 
+<a id="updatecolor"></a>
 ## updateColor
 
 ```TypeScript
@@ -1441,6 +1475,7 @@ paragraph.updateColor({ alpha: 255, red: 255, green: 0, blue: 0 });
 
 ```
 
+<a id="updatedecoration"></a>
 ## updateDecoration
 
 ```TypeScript

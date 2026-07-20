@@ -230,7 +230,7 @@ ScrollBar(value: ScrollBarOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ScrollBarOptions | 是 | @returns { ScrollBarAttribute } |
+| value | [ScrollBarOptions](arkts-arkui-scrollbaroptions-i.md) | 是 | @returns { ScrollBarAttribute }  |
 
 ## 汇总
 

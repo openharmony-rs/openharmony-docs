@@ -8,6 +8,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-export declare struct ArcButton--><!--Device-unnamed-export declare struct ArcButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -29,6 +31,8 @@ readonly options: ArcButtonOptions
 **类型：** ArcButtonOptions
 
 **起始版本：** 18
+
+**装饰器类型：** @Require
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

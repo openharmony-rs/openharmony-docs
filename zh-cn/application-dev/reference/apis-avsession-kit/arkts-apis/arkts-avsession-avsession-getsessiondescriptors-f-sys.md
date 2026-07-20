@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getsessiondescriptors"></a>
 ## getSessionDescriptors
 
 ```TypeScript
@@ -34,7 +35,7 @@ function getSessionDescriptors(category: SessionCategory): Promise<Array<Readonl
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Readonly<AVSessionDescriptor>>> | Promise对象。返回对应类别的会话描述的只读对象。 |
+| Promise&lt;Array&lt;Readonly&lt;AVSessionDescriptor&gt;&gt;&gt; | Promise对象。返回对应类别的会话描述的只读对象。 |
 
 **错误码：**
 

@@ -20,6 +20,7 @@
 import { OverlayManager, FrameCallback, ResolvedUIContext, NodeRenderStateChangeCallback, MediaQuery, OverlayManagerOptions, TextMenuController, UIObserver, Font, KeyboardAvoidMode, MarqueeDynamicSyncScene, PromptAction, NodeRenderState, UIContext, TextSelectionClearPolicy, SwiperDynamicSyncScene, Router, MarqueeDynamicSyncSceneType, DialogPresenter, Magnifier, ContextMenuController, UIInspector, CursorController, SwiperDynamicSyncSceneType, AtomicServiceBar, PageInfo, TargetInfo, ComponentUtils, DragController, MeasureUtils, NodeIdentity } from '@kit.ArkUI';
 ```
 
+<a id="offbackgroundluminancechange"></a>
 ## offBackgroundLuminanceChange
 
 ```TypeScript
@@ -42,8 +43,9 @@ offBackgroundLuminanceChange(samplingCallback?: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| samplingCallback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 否 | 监听回调。 |
+| samplingCallback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 否 | 监听回调。 |
 
+<a id="onbackgroundluminancechange"></a>
 ## onBackgroundLuminanceChange
 
 ```TypeScript
@@ -68,8 +70,9 @@ onBackgroundLuminanceChange(samplingCallback: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| samplingCallback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<number> | 是 | 监听回调。触发同时返回当前背景亮度。<br/>**说明**：监听回调里不能调用[offBackgroundLuminanceChange](LuminanceSampler#off)。 |
+| samplingCallback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;number&gt; | 是 | 监听回调。触发同时返回当前背景亮度。<br/>**说明**：监听回调里不能调用[offBackgroundLuminanceChange](LuminanceSampler#off)。 |
 
+<a id="setbackgroundluminancesamplingconfigs"></a>
 ## setBackgroundLuminanceSamplingConfigs
 
 ```TypeScript

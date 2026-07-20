@@ -20,7 +20,7 @@ import { displaySync } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkgraphics2d-displaysync-create-f.md#create-1) | 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。 |
+| [create](arkts-arkgraphics2d-displaysync-create-f.md#create) | 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。 |
 
 ### 接口
 

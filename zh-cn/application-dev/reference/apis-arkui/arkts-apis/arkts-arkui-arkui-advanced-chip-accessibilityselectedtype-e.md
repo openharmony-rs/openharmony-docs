@@ -32,7 +32,7 @@ CLICKED = 0
 CHECKED = 1
 ```
 
-复选型。组件通过 [accessibilityChecked](../arkts-components/arkts-arkui-common-commonmethod-c.md#accessibilitychecked-1) 属性向无障碍服务报告选中状态。适用于多选场景，如标签筛选、属性选择等。
+复选型。组件通过 [accessibilityChecked](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilitychecked-1) 属性向无障碍服务报告选中状态。适用于多选场景，如标签筛选、属性选择等。
 
 **起始版本：** 14
 
@@ -50,7 +50,7 @@ CHECKED = 1
 SELECTED = 2
 ```
 
-单选型。组件通过 [accessibilitySelected](../arkts-components/arkts-arkui-common-commonmethod-c.md#accessibilityselected-1) 属性向无障碍服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表项等。
+单选型。组件通过 [accessibilitySelected](../arkts-components/arkts-arkui-commonmethod-c.md#accessibilityselected-1) 属性向无障碍服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表项等。
 
 **起始版本：** 14
 

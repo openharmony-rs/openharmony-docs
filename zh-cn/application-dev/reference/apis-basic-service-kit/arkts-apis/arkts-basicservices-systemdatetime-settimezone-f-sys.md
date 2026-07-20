@@ -6,6 +6,7 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="settimezone"></a>
 ## setTimezone
 
 ```TypeScript
@@ -28,8 +29,8 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。 具体可见[支持的系统时区](../../../../reference/apis-basic-services-kit/js-apis-system-date-time-sys.md#支持的系统时区) 。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。 |
+| timezone | string | 是 | 系统时区。 具体可见[支持的系统时区](docroot://reference/apis-basic-services-kit/js-apis-system-date-time-sys.md#支持的系统时区) 。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ try {
 ```
 
 
+<a id="settimezone-1"></a>
 ## setTimezone
 
 ```TypeScript
@@ -83,13 +85,13 @@ function setTimezone(timezone: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timezone | string | 是 | 系统时区。具体可见[支持的系统时区](../../../../reference/apis-basic-services-kit/js-apis-system-date-time-sys.md#支持的系统时区) 。 |
+| timezone | string | 是 | 系统时区。具体可见[支持的系统时区](docroot://reference/apis-basic-services-kit/js-apis-system-date-time-sys.md#支持的系统时区) 。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

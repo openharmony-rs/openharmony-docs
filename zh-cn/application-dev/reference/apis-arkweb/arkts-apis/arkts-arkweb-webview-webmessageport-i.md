@@ -14,6 +14,7 @@ Define html web message port.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="close"></a>
 ## close
 
 ```TypeScript
@@ -30,6 +31,7 @@ close(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+<a id="onmessageevent"></a>
 ## onMessageEvent
 
 ```TypeScript
@@ -50,7 +52,7 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (result: WebMessage) => void | 是 | 用于接收消息的回调函数。 |
+| callback | (result: WebMessage) =&gt; void | 是 | 用于接收消息的回调函数。 |
 
 **错误码：**
 
@@ -59,6 +61,7 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100006](../errorcode-webview.md#17100006-无法注册message-port回调) | Failed to register a message event for the port. |
 
+<a id="onmessageeventext"></a>
 ## onMessageEventExt
 
 ```TypeScript
@@ -79,7 +82,7 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (result: WebMessageExt) => void | 是 | 接收到的消息。 |
+| callback | (result: WebMessageExt) =&gt; void | 是 | 接收到的消息。 |
 
 **错误码：**
 
@@ -88,6 +91,7 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100006](../errorcode-webview.md#17100006-无法注册message-port回调) | Failed to register a message event for the port. |
 
+<a id="postmessageevent"></a>
 ## postMessageEvent
 
 ```TypeScript
@@ -117,6 +121,7 @@ postMessageEvent(message: WebMessage): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100010](../errorcode-webview.md#17100010-无法使用该端口发送消息) | Failed to post messages through the port. |
 
+<a id="postmessageeventext"></a>
 ## postMessageEventExt
 
 ```TypeScript

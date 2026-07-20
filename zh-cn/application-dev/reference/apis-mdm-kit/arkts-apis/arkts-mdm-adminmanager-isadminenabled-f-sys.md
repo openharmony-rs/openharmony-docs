@@ -6,6 +6,7 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="isadminenabled"></a>
 ## isAdminEnabled
 
 ```TypeScript
@@ -29,7 +30,7 @@ function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
 
 **错误码：**
 
@@ -61,6 +62,7 @@ adminManager.isAdminEnabled(wantTemp, (err, result) => {
 ```
 
 
+<a id="isadminenabled-1"></a>
 ## isAdminEnabled
 
 ```TypeScript
@@ -85,7 +87,7 @@ function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boo
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | userId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。<br> 默认值：当前用户。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用户下指定的设备管理应用未激活，否则err为错误对象。 |
 
 **错误码：**
 
@@ -118,6 +120,7 @@ adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
 ```
 
 
+<a id="isadminenabled-2"></a>
 ## isAdminEnabled
 
 ```TypeScript
@@ -147,7 +150,7 @@ function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象, 返回true表示指定的设备管理应用被激活，返回false表示指定的设备管理应用未激活。 |
+| Promise&lt;boolean&gt; | Promise对象, 返回true表示指定的设备管理应用被激活，返回false表示指定的设备管理应用未激活。 |
 
 **错误码：**
 

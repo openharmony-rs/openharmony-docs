@@ -6,6 +6,7 @@
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
+<a id="getcalendarmanager"></a>
 ## getCalendarManager
 
 ```TypeScript

@@ -14,6 +14,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="isenhancedroutingsupported"></a>
 ## isEnhancedRoutingSupported
 
 ```TypeScript
@@ -36,6 +37,7 @@ isEnhancedRoutingSupported(): boolean
 | --- | --- |
 | boolean | The value true indicates that the system supports enhanced routing functions. |
 
+<a id="selectinputdevice"></a>
 ## selectInputDevice
 
 ```TypeScript
@@ -62,7 +64,7 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -71,6 +73,7 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, for example,the selected device does not exist. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs, such as the service died. |
 
+<a id="selectinputdeviceforaudiocapturer"></a>
 ## selectInputDeviceForAudioCapturer
 
 ```TypeScript
@@ -98,7 +101,7 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -107,6 +110,7 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, for example,the selected device does not exist. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs, such as the service died. |
 
+<a id="selectoutputdevice"></a>
 ## selectOutputDevice
 
 ```TypeScript
@@ -133,7 +137,7 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 
@@ -142,6 +146,7 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, for example,the selected device does not exist. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs, such as the service died. |
 
+<a id="selectoutputdeviceforaudiorenderer"></a>
 ## selectOutputDeviceForAudioRenderer
 
 ```TypeScript
@@ -169,7 +174,7 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise used to return the result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **错误码：**
 

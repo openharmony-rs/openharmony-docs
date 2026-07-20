@@ -9,10 +9,10 @@
 > 本模块接口从API version 18开始废弃使用, 该接口不再维护。后续版本推荐使用  
 > [@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md)订阅APP_CRASH，APP_FREEZE事件。  
 >  
-> 查阅[从Faultlogger接口迁移崩溃事件](../../../../dfx/hiappevent-watcher-crash-events-arkts.md#从faultlogger接口迁移崩溃事件)，  
+> 查阅[从Faultlogger接口迁移崩溃事件](docroot://dfx/hiappevent-watcher-crash-events-arkts.md#从faultlogger接口迁移崩溃事件)，  
 > 了解使用hiAppEvent订阅APP_CRASH的具体信息。  
 >  
-> 查阅[从Faultlogger接口迁移应用冻屏事件](../../../../dfx/hiappevent-watcher-freeze-events-arkts.md#从faultlogger接口迁移应用冻屏事件)，  
+> 查阅[从Faultlogger接口迁移应用冻屏事件](docroot://dfx/hiappevent-watcher-freeze-events-arkts.md#从faultlogger接口迁移应用冻屏事件)，  
 > 了解使用hiAppEvent订阅APP_FREEZE的具体信息。
 
 **起始版本：** 8
@@ -37,10 +37,10 @@ import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [query](arkts-performanceanalysis-faultlogger-query-f.md#query-1) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
-| [query](arkts-performanceanalysis-faultlogger-query-f.md#query-2) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
-| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#queryselffaultlog-1) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
-| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#queryselffaultlog-2) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [query](arkts-performanceanalysis-faultlogger-query-f.md#query) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [query](arkts-performanceanalysis-faultlogger-query-f.md#query-1) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#queryselffaultlog) | 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。 |
+| [querySelfFaultLog](arkts-performanceanalysis-faultlogger-queryselffaultlog-f.md#queryselffaultlog-1) | 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。 |
 
 ### 接口
 

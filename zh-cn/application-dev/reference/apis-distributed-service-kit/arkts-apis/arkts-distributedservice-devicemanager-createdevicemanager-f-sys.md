@@ -6,6 +6,7 @@
 import { deviceManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="createdevicemanager"></a>
 ## createDeviceManager
 
 ```TypeScript
@@ -31,7 +32,7 @@ function createDeviceManager(bundleName: string, callback: AsyncCallback<DeviceM
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指示应用程序的Bundle名称。长度范围1~255字符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<DeviceManager> | 是 | DeviceManager实例创建时调用的回调，返回设备管理器对象实例。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceManager&gt; | 是 | DeviceManager实例创建时调用的回调，返回设备管理器对象实例。 |
 
 **错误码：**
 

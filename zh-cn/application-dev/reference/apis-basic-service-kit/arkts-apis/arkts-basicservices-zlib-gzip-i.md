@@ -14,6 +14,7 @@ Gzip相关接口。
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="gzbuffer"></a>
 ## gzbuffer
 
 ```TypeScript
@@ -40,7 +41,7 @@ gzbuffer(size: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，成功时，返回0。 |
+| Promise&lt;number&gt; | Promise对象，成功时，返回0。 |
 
 **错误码：**
 
@@ -91,6 +92,7 @@ struct Index {
 
 ```
 
+<a id="gzclearerr"></a>
 ## gzclearerr
 
 ```TypeScript
@@ -111,7 +113,7 @@ gzclearerr(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **示例：**
 
@@ -165,6 +167,7 @@ struct Index {
 
 ```
 
+<a id="gzclose"></a>
 ## gzclose
 
 ```TypeScript
@@ -185,7 +188,7 @@ gzclose(): Promise<ReturnStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReturnStatus> | Promise对象，返回结果状态。 |
+| Promise&lt;ReturnStatus&gt; | Promise对象，返回结果状态。 |
 
 **错误码：**
 
@@ -233,6 +236,7 @@ struct Index {
 
 ```
 
+<a id="gzcloser"></a>
 ## gzcloser
 
 ```TypeScript
@@ -253,7 +257,7 @@ gzcloser(): Promise<ReturnStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReturnStatus> | Promise对象，返回结果状态。 |
+| Promise&lt;ReturnStatus&gt; | Promise对象，返回结果状态。 |
 
 **错误码：**
 
@@ -302,6 +306,7 @@ struct Index {
 
 ```
 
+<a id="gzclosew"></a>
 ## gzclosew
 
 ```TypeScript
@@ -322,7 +327,7 @@ gzclosew(): Promise<ReturnStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReturnStatus> | Promise对象，返回结果状态。 |
+| Promise&lt;ReturnStatus&gt; | Promise对象，返回结果状态。 |
 
 **错误码：**
 
@@ -370,6 +375,7 @@ struct Index {
 
 ```
 
+<a id="gzdirect"></a>
 ## gzdirect
 
 ```TypeScript
@@ -390,7 +396,7 @@ gzdirect(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，如果直接访问原始未压缩数据，则返回1。 |
+| Promise&lt;number&gt; | Promise对象，如果直接访问原始未压缩数据，则返回1。 |
 
 **示例：**
 
@@ -432,6 +438,7 @@ struct Index {
 
 ```
 
+<a id="gzdopen"></a>
 ## gzdopen
 
 ```TypeScript
@@ -459,7 +466,7 @@ gzdopen(fd: number, mode: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -508,6 +515,7 @@ struct Index {
 
 ```
 
+<a id="gzeof"></a>
 ## gzeof
 
 ```TypeScript
@@ -528,7 +536,7 @@ gzeof(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，如果在读取时设置了文件的文件结束指示符，则返回1。 |
+| Promise&lt;number&gt; | Promise对象，如果在读取时设置了文件的文件结束指示符，则返回1。 |
 
 **示例：**
 
@@ -580,6 +588,7 @@ struct Index {
 
 ```
 
+<a id="gzerror"></a>
 ## gzerror
 
 ```TypeScript
@@ -600,7 +609,7 @@ gzerror(): Promise<GzErrorOutputInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<GzErrorOutputInfo> | Promise对象，返回结果状态和出现的最后一个状态的状态消息。 |
+| Promise&lt;GzErrorOutputInfo&gt; | Promise对象，返回结果状态和出现的最后一个状态的状态消息。 |
 
 **错误码：**
 
@@ -660,6 +669,7 @@ struct Index {
 
 ```
 
+<a id="gzflush"></a>
 ## gzflush
 
 ```TypeScript
@@ -686,7 +696,7 @@ gzflush(flush: CompressFlushMode): Promise<ReturnStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReturnStatus> | Promise对象，返回结果状态。 |
+| Promise&lt;ReturnStatus&gt; | Promise对象，返回结果状态。 |
 
 **错误码：**
 
@@ -735,6 +745,7 @@ struct Index {
 
 ```
 
+<a id="gzfread"></a>
 ## gzfread
 
 ```TypeScript
@@ -755,7 +766,7 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 用于存储读取结果的目标缓冲区。 |
+| buf | ArrayBuffer | 是 | 用于存储读取结果的目标缓冲区。 |
 | size | number | 是 | 单个数据块中的字节数。 |
 | nitems | number | 是 | 要写入的数据块数。 |
 
@@ -763,7 +774,7 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回读取大小为size的完整数据块的数目。 |
+| Promise&lt;number&gt; | Promise对象，返回读取大小为size的完整数据块的数目。 |
 
 **错误码：**
 
@@ -821,6 +832,7 @@ struct Index {
 
 ```
 
+<a id="gzfwrite"></a>
 ## gzfwrite
 
 ```TypeScript
@@ -841,7 +853,7 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 要将数据写入的缓冲区。 |
+| buf | ArrayBuffer | 是 | 要将数据写入的缓冲区。 |
 | size | number | 是 | 单个数据块中的字节数。 |
 | nitems | number | 是 | 要写入的数据块数。 |
 
@@ -849,7 +861,7 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回写入大小为size的完整数据块的数目。 |
+| Promise&lt;number&gt; | Promise对象，返回写入大小为size的完整数据块的数目。 |
 
 **错误码：**
 
@@ -903,6 +915,7 @@ struct Index {
 
 ```
 
+<a id="gzgetc"></a>
 ## gzgetc
 
 ```TypeScript
@@ -923,7 +936,7 @@ gzgetc(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回读取字符的ASCII值。 |
+| Promise&lt;number&gt; | Promise对象，返回读取字符的ASCII值。 |
 
 **错误码：**
 
@@ -974,6 +987,7 @@ struct Index {
 
 ```
 
+<a id="gzgets"></a>
 ## gzgets
 
 ```TypeScript
@@ -994,13 +1008,13 @@ gzgets(buf: ArrayBuffer): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 存储读取的行数据。 |
+| buf | ArrayBuffer | 是 | 存储读取的行数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象，返回以null结尾的字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回以null结尾的字符串。 |
 
 **错误码：**
 
@@ -1053,6 +1067,7 @@ struct Index {
 
 ```
 
+<a id="gzoffset"></a>
 ## gzoffset
 
 ```TypeScript
@@ -1073,7 +1088,7 @@ gzoffset(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回文件的当前压缩（实际）读或写偏移量。 |
+| Promise&lt;number&gt; | Promise对象，返回文件的当前压缩（实际）读或写偏移量。 |
 
 **错误码：**
 
@@ -1121,6 +1136,7 @@ struct Index {
 
 ```
 
+<a id="gzopen"></a>
 ## gzopen
 
 ```TypeScript
@@ -1148,7 +1164,7 @@ gzopen(path: string, mode: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
 
 **错误码：**
 
@@ -1196,6 +1212,7 @@ struct Index {
 
 ```
 
+<a id="gzprintf"></a>
 ## gzprintf
 
 ```TypeScript
@@ -1217,13 +1234,13 @@ gzprintf(format: string, ...args: Array<string | number>): Promise<number>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | format | string | 是 | 格式化描述符和纯文本。 |
-| args | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<string \| number> | 是 | 可变参数列表。传入可变参数，例如gzprintf("name is %s, age is %d", "Tom", 23)，写入内容为“name is Tom, age is 23”。不传可变参数，例如gzprintf("name is %s, age is %d")，写入内容为“name is %s, age is %d”。 |
+| args | Array&lt;string \| number&gt; | 是 | 可变参数列表。传入可变参数，例如gzprintf("name is %s, age is %d", "Tom", 23)，写入内容为“name is Tom, age is 23”。不传可变参数，例如gzprintf("name is %s, age is %d")，写入内容为“name is %s, age is %d”。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回实际写入的未压缩字节数。 |
+| Promise&lt;number&gt; | Promise对象，返回实际写入的未压缩字节数。 |
 
 **错误码：**
 
@@ -1273,6 +1290,7 @@ struct Index {
 
 ```
 
+<a id="gzputc"></a>
 ## gzputc
 
 ```TypeScript
@@ -1299,7 +1317,7 @@ gzputc(ch: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回已写入的值。 |
+| Promise&lt;number&gt; | Promise对象，返回已写入的值。 |
 
 **错误码：**
 
@@ -1348,6 +1366,7 @@ struct Index {
 
 ```
 
+<a id="gzputs"></a>
 ## gzputs
 
 ```TypeScript
@@ -1374,7 +1393,7 @@ gzputs(str: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回写入的字符数。 |
+| Promise&lt;number&gt; | Promise对象，返回写入的字符数。 |
 
 **错误码：**
 
@@ -1423,6 +1442,7 @@ struct Index {
 
 ```
 
+<a id="gzread"></a>
 ## gzread
 
 ```TypeScript
@@ -1443,13 +1463,13 @@ gzread(buf: ArrayBuffer): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 目标偏移位置。 |
+| buf | ArrayBuffer | 是 | 目标偏移位置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回实际读取的未压缩字节数。 |
+| Promise&lt;number&gt; | Promise对象，返回实际读取的未压缩字节数。 |
 
 **错误码：**
 
@@ -1507,6 +1527,7 @@ struct Index {
 
 ```
 
+<a id="gzrewind"></a>
 ## gzrewind
 
 ```TypeScript
@@ -1527,7 +1548,7 @@ gzrewind(): Promise<ReturnStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReturnStatus> | Promise对象，返回结果状态。 |
+| Promise&lt;ReturnStatus&gt; | Promise对象，返回结果状态。 |
 
 **错误码：**
 
@@ -1577,6 +1598,7 @@ struct Index {
 
 ```
 
+<a id="gzseek"></a>
 ## gzseek
 
 ```TypeScript
@@ -1604,7 +1626,7 @@ gzseek(offset: number, whence: OffsetReferencePoint): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回从未压缩流开始以字节为单位测量的结果偏移位置。 |
+| Promise&lt;number&gt; | Promise对象，返回从未压缩流开始以字节为单位测量的结果偏移位置。 |
 
 **错误码：**
 
@@ -1653,6 +1675,7 @@ struct Index {
 
 ```
 
+<a id="gzsetparams"></a>
 ## gzsetparams
 
 ```TypeScript
@@ -1680,7 +1703,7 @@ gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise<ReturnSta
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ReturnStatus> | Promise对象，返回结果状态。 |
+| Promise&lt;ReturnStatus&gt; | Promise对象，返回结果状态。 |
 
 **错误码：**
 
@@ -1730,6 +1753,7 @@ struct Index {
 
 ```
 
+<a id="gztell"></a>
 ## gztell
 
 ```TypeScript
@@ -1750,7 +1774,7 @@ gztell(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回文件种下一个gzread或gzwrite的起始位置。 |
+| Promise&lt;number&gt; | Promise对象，返回文件种下一个gzread或gzwrite的起始位置。 |
 
 **错误码：**
 
@@ -1798,6 +1822,7 @@ struct Index {
 
 ```
 
+<a id="gzungetc"></a>
 ## gzungetc
 
 ```TypeScript
@@ -1824,7 +1849,7 @@ gzungetc(c: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回推送的字符。 |
+| Promise&lt;number&gt; | Promise对象，返回推送的字符。 |
 
 **错误码：**
 
@@ -1876,6 +1901,7 @@ struct Index {
 
 ```
 
+<a id="gzwrite"></a>
 ## gzwrite
 
 ```TypeScript
@@ -1896,14 +1922,14 @@ gzwrite(buf: ArrayBuffer, len: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| buf | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | 对象指向要写入的数据缓冲区。 |
+| buf | ArrayBuffer | 是 | 对象指向要写入的数据缓冲区。 |
 | len | number | 是 | 未压缩字节长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回写入的未压缩字节数。 |
+| Promise&lt;number&gt; | Promise对象，返回写入的未压缩字节数。 |
 
 **错误码：**
 

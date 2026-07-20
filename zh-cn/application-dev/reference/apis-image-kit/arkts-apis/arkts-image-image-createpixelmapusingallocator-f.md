@@ -6,6 +6,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpixelmapusingallocator"></a>
 ## createPixelMapUsingAllocator
 
 ```TypeScript
@@ -27,7 +28,7 @@ Create pixelmap by data buffer based on opts, the memory type used by the PixelM
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colors | [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 是 | The image color buffer. |
+| colors | ArrayBuffer | 是 | The image color buffer. |
 | param | [InitializationOptions](arkts-image-image-initializationoptions-i.md) | 是 | Initialization options for pixelmap. |
 | allocatorType | [AllocatorType](arkts-image-image-allocatortype-e.md) | 否 | Indicate which memory type will be used by the returned PixelMap. |
 
@@ -35,7 +36,7 @@ Create pixelmap by data buffer based on opts, the memory type used by the PixelM
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<PixelMap> | A Promise instance used to return the PixelMap object. |
+| Promise&lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
 
 **错误码：**
 

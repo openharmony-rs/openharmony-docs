@@ -6,6 +6,7 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getlauncherabilityinfosync"></a>
 ## getLauncherAbilityInfoSync
 
 ```TypeScript
@@ -33,7 +34,7 @@ function getLauncherAbilityInfoSync(bundleName: string, userId: number): Array<L
 
 | 类型 | 说明 |
 | --- | --- |
-| [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<LauncherAbilityInfo> | Array形式返回bundle包含的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)信息。 |
+| Array&lt;LauncherAbilityInfo&gt; | Array形式返回bundle包含的[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)信息。 |
 
 **错误码：**
 

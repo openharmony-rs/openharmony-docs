@@ -14,6 +14,7 @@ This class is used to intercept requests for a specified scheme.
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="onrequeststart"></a>
 ## onRequestStart
 
 ```TypeScript
@@ -37,7 +38,7 @@ onRequestStart(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值表示该请求是否拦截。it means no interception. |
+| callback | (request: WebSchemeHandlerRequest, handler: WebResourceHandler) =&gt; boolean | 是 | 拦截对应scheme请求开始时触发的回调。request为请求，handler用于提供自定义的返回头以及返回体给Web组件，返回值表示该请求是否拦截。it means no interception. |
 
 **错误码：**
 
@@ -45,6 +46,7 @@ onRequestStart(
 | --- | --- |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+<a id="onrequeststop"></a>
 ## onRequestStop
 
 ```TypeScript
@@ -65,7 +67,7 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<WebSchemeHandlerRequest> | 是 | 对应请求结束的回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebSchemeHandlerRequest&gt; | 是 | 对应请求结束的回调函数。 |
 
 **错误码：**
 

@@ -6,6 +6,7 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getnotificationparameters"></a>
 ## getNotificationParameters
 
 ```TypeScript
@@ -33,7 +34,7 @@ function getNotificationParameters(id: number, label?: string): Promise<Notifica
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<NotificationParameters> | Promise对象，返回wantAgent的部分信息。 |
+| Promise&lt;NotificationParameters&gt; | Promise对象，返回wantAgent的部分信息。 |
 
 **错误码：**
 

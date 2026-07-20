@@ -14,6 +14,7 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
+<a id="abort"></a>
 ## abort
 
 ```TypeScript
@@ -32,13 +33,14 @@ abort(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="updateconfiguration"></a>
 ## updateConfiguration
 
 ```TypeScript
 updateConfiguration(config: DragSpringLoadingConfiguration): void
 ```
 
-更新悬停检测的配置，仅在悬停检测状态为BEGIN时生效。应用程序通常在绑定[onDragSpringLoading](../arkts-components/arkts-arkui-common-commonmethod-c.md#ondragspringloading-1)时设置悬停检测配置或使用默认配置。该方法不会修改绑定时的原始配置，而是在后续悬停检测中更新动态的配置信息。请谨慎使用本方法，因为不同的拖拽数据类型可能需要不同的UX时间。
+更新悬停检测的配置，仅在悬停检测状态为BEGIN时生效。应用程序通常在绑定[onDragSpringLoading](../arkts-components/arkts-arkui-commonmethod-c.md#ondragspringloading-1)时设置悬停检测配置或使用默认配置。该方法不会修改绑定时的原始配置，而是在后续悬停检测中更新动态的配置信息。请谨慎使用本方法，因为不同的拖拽数据类型可能需要不同的UX时间。
 
 **起始版本：** 20
 

@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="getsandboxappconfig"></a>
 ## getSandboxAppConfig
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getSandboxAppConfig(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise对象。返回沙箱应用配置信息。长度小于4194304字节。 |
+| Promise&lt;string&gt; | Promise对象。返回沙箱应用配置信息。长度小于4194304字节。 |
 
 **错误码：**
 

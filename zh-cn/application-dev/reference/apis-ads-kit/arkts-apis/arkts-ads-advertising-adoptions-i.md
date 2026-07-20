@@ -46,7 +46,7 @@ W：3+，所有受众。PI：7+，家长指导。J：12+，青少年。A：16+/1
 
 <!--RP1--><!--RP1End-->
 
-**类型：** number | boolean | string | undefined
+**类型：** number \| boolean \| string \| undefined
 
 **起始版本：** 11
 

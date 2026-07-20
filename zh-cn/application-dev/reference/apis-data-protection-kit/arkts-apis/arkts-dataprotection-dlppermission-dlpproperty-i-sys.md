@@ -42,7 +42,7 @@ authUserList?: Array<AuthUser>
 
 表示授权用户列表，默认为空。
 
-**类型：** Array<AuthUser>
+**类型：** Array&lt;AuthUser&gt;
 
 **起始版本：** 21
 
@@ -78,7 +78,7 @@ everyoneAccessList?: Array<DLPFileAccess>
 
 表示授予所有人的权限，默认为空。
 
-**类型：** Array<DLPFileAccess>
+**类型：** Array&lt;DLPFileAccess&gt;
 
 **起始版本：** 21
 

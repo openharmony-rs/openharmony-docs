@@ -26,6 +26,6 @@ newValue表示目标元素变化之后的宽高。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldValue | SizeOptions | 是 |  |
-| newValue | SizeOptions | 是 |  |
+| oldValue | [SizeOptions](../arkts-apis/arkts-arkui-sizeoptions-i.md) | 是 |  |
+| newValue | [SizeOptions](../arkts-apis/arkts-arkui-sizeoptions-i.md) | 是 |  |
 

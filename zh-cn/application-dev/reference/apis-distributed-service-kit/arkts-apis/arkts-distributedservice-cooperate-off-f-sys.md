@@ -6,6 +6,7 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
+<a id="off"></a>
 ## off('cooperate')
 
 ```TypeScript
@@ -31,7 +32,7 @@ function off(type: 'cooperate', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cooperate' | 是 | 监听类型，取值为'cooperate'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<void> | 否 | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;void&gt; | 否 | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
 
@@ -84,6 +85,7 @@ try {
 ```
 
 
+<a id="off-1"></a>
 ## off('cooperateMessage')
 
 ```TypeScript
@@ -107,7 +109,7 @@ function off(type: 'cooperateMessage', callback?: Callback<CooperateMessage>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cooperateMessage' | 是 | 监听类型，取值为'cooperate'。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<CooperateMessage> | 否 | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;CooperateMessage&gt; | 否 | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
 
@@ -158,6 +160,7 @@ try {
 ```
 
 
+<a id="off-2"></a>
 ## off('cooperateMouse')
 
 ```TypeScript
@@ -182,7 +185,7 @@ function off(type: 'cooperateMouse', networkId: string, callback?: Callback<Mous
 | --- | --- | --- | --- |
 | type | 'cooperateMouse' | 是 | 监听类型，取值为'cooperateMouse'。 |
 | networkId | string | 是 | 目标设备描述符 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MouseLocation> | 否 | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MouseLocation&gt; | 否 | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
 

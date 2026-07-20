@@ -126,7 +126,7 @@ buttons?: Array<Button>
 
 对话框中按钮的数组，结构为：{text:'button',&nbsp;color:&nbsp;'\#666666'}，支持大于1个按钮。
 
-**类型：** Array<Button>
+**类型：** Array&lt;Button&gt;
 
 **起始版本：** 9
 
@@ -316,7 +316,7 @@ message?: string | Resource
 
 内容文本。<br/>默认值：undefined，取值为undefined默认不显示内容。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 9
 
@@ -354,7 +354,7 @@ onDidAppear?: Callback<void>
 
 对话框弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭对话框时，onWillDisappear在onDidAppear前生效。<br/>4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
@@ -374,7 +374,7 @@ onDidDisappear?: Callback<void>
 
 对话框消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
@@ -394,7 +394,7 @@ onWillAppear?: Callback<void>
 
 对话框显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变对话框显示效果的回调事件，二次弹出生效。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
@@ -414,7 +414,7 @@ onWillDisappear?: Callback<void>
 
 对话框退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。
 
-**类型：** Callback<void>
+**类型：** Callback&lt;void&gt;
 
 **起始版本：** 19
 
@@ -434,7 +434,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 设置对话框背板的阴影。<br /> 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
-**类型：** ShadowOptions | ShadowStyle
+**类型：** ShadowOptions \| ShadowStyle
 
 **起始版本：** 12
 
@@ -496,7 +496,7 @@ title?: string | Resource
 
 标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。
 
-**类型：** string | Resource
+**类型：** string \| Resource
 
 **起始版本：** 9
 

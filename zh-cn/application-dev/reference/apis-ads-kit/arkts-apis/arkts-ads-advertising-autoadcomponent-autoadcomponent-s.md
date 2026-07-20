@@ -4,6 +4,8 @@
 
 **起始版本：** 11
 
+**装饰器类型：** @Component
+
 <!--Device-unnamed-declare struct AutoAdComponent--><!--Device-unnamed-declare struct AutoAdComponent-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
@@ -14,6 +16,7 @@
 import { AutoAdComponent } from '@kit.AdsKit';
 ```
 
+<a id="build"></a>
 ## build
 
 ```TypeScript

@@ -24,6 +24,7 @@ WindowExtensionContext模块提供[WindowExtensionAbility](arkts-application-win
 
 **系统接口：** 此接口为系统接口。
 
+<a id="startability"></a>
 ## startAbility
 
 ```TypeScript
@@ -35,7 +36,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 21开始废弃，推荐使用  
-> [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-2)  
+> [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-1)  
 > 。
 
 **起始版本：** 9
@@ -56,7 +57,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 | --- | --- | --- | --- |
 | want | [Want](arkts-arkui-want-t-sys.md) | 是 | 启动Ability的want信息。 |
 | options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md) | 是 | 启动Ability所携带的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | callback形式返回启动结果。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | callback形式返回启动结果。 |
 
 **错误码：**
 
@@ -65,6 +66,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
+<a id="startability-1"></a>
 ## startAbility
 
 ```TypeScript
@@ -76,7 +78,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 > **说明：**  
 >  
 > - 从API version 9开始支持，从API version 21开始废弃，推荐使用  
-> [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-3)  
+> [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability-1)  
 > 。
 
 **起始版本：** 9
@@ -102,7 +104,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

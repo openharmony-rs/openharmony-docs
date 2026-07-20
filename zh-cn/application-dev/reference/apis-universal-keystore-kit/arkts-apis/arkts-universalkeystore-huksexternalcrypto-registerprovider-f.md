@@ -6,6 +6,7 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="registerprovider"></a>
 ## registerProvider
 
 ```TypeScript
@@ -42,13 +43,13 @@ function registerProvider(providerName: string, params: Array<HuksExternalCrypto
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | providerName | string | 是 | provider名称，最大长度为128。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。<br>最多支持注册10个provider。 |
-| params | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<HuksExternalCryptoParam> | 是 | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)，表示ability的名字，根据业务自己内部定义按照实际填写。<br>从API版本26.0.0开始，可选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)，以JSON列表的形式传入PIN码认证自定义弹窗UIExtensionAbility的名字以及包名。 |
+| params | Array&lt;HuksExternalCryptoParam&gt; | 是 | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)，表示ability的名字，根据业务自己内部定义按照实际填写。<br>从API版本26.0.0开始，可选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)，以JSON列表的形式传入PIN码认证自定义弹窗UIExtensionAbility的名字以及包名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

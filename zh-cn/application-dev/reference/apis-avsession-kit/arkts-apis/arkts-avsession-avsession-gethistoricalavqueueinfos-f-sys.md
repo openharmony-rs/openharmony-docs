@@ -6,6 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="gethistoricalavqueueinfos"></a>
 ## getHistoricalAVQueueInfos
 
 ```TypeScript
@@ -30,7 +31,7 @@ function getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback
 | --- | --- | --- | --- |
 | maxSize | number | 是 | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。 |
 | maxAppSize | number | 是 | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<Readonly<AVQueueInfo>>> | 是 | 回调函数。返回所有历史播放歌单的只读对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;Readonly&lt;AVQueueInfo&gt;&gt;&gt; | 是 | 回调函数。返回所有历史播放歌单的只读对象。 |
 
 **错误码：**
 
@@ -51,6 +52,7 @@ avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]
 ```
 
 
+<a id="gethistoricalavqueueinfos-1"></a>
 ## getHistoricalAVQueueInfos
 
 ```TypeScript
@@ -80,7 +82,7 @@ function getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<Readonly<AVQueueInfo>>> | Promise对象。返回所有历史播放歌单的只读对象。 |
+| Promise&lt;Array&lt;Readonly&lt;AVQueueInfo&gt;&gt;&gt; | Promise对象。返回所有历史播放歌单的只读对象。 |
 
 **错误码：**
 

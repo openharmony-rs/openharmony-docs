@@ -16,6 +16,7 @@ Mask效果类，作为Filter以及VisualEffect的输入使用。
 import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
+<a id="createpixelmapmask"></a>
 ## createPixelMapMask
 
 ```TypeScript
@@ -98,6 +99,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 ```
 
+<a id="createpixelmapmask-1"></a>
 ## createPixelMapMask
 
 ```TypeScript
@@ -224,6 +226,7 @@ struct Index {
 
 ```
 
+<a id="createradialgradientmask"></a>
 ## createRadialGradientMask
 
 ```TypeScript
@@ -250,7 +253,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 | center | common2D.Point | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
 | radiusX | number | 是 | 设置椭圆的长轴，半径为1等于组件的高度。取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
 | radiusY | number | 是 | 设置椭圆的短轴，半径为1等于组件的高度。取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| gradients | [Array](../../apis-arkts/arkts-apis/arkts-arkts-collections-array-c.md)<[number, number]> | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。位置参数值须严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+| gradients | Array&lt;[number, number]&gt; | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。位置参数值须严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 
@@ -264,6 +267,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
+<a id="createripplemask"></a>
 ## createRippleMask
 
 ```TypeScript
@@ -308,6 +312,7 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 
 ```
 
+<a id="createuseeffectmask"></a>
 ## createUseEffectMask
 
 ```TypeScript
@@ -401,6 +406,7 @@ struct Index {
 
 ```
 
+<a id="createwavegradientmask"></a>
 ## createWaveGradientMask
 
 ```TypeScript

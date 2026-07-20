@@ -6,6 +6,7 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querynotificationeventstats"></a>
 ## queryNotificationEventStats
 
 ```TypeScript
@@ -42,7 +43,7 @@ function queryNotificationEventStats(
 | --- | --- | --- | --- |
 | begin | number | 是 | 起始时间，单位：ms。 |
 | end | number | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<DeviceEventStats>> | 是 | 回调函数。当查询成功，err为undefined，data为指定起始和结束时间段内，所有应用的通知次数；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;DeviceEventStats&gt;&gt; | 是 | 回调函数。当查询成功，err为undefined，data为指定起始和结束时间段内，所有应用的通知次数；否则为错误对象。 |
 
 **错误码：**
 
@@ -77,6 +78,7 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
 ```
 
 
+<a id="querynotificationeventstats-1"></a>
 ## queryNotificationEventStats
 
 ```TypeScript
@@ -106,7 +108,7 @@ function queryNotificationEventStats(begin: number, end: number): Promise<Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<DeviceEventStats>> | Promise对象。返回指定起始和结束时间段内，所有应用的通知次数。 |
+| Promise&lt;Array&lt;DeviceEventStats&gt;&gt; | Promise对象。返回指定起始和结束时间段内，所有应用的通知次数。 |
 
 **错误码：**
 

@@ -16,6 +16,7 @@
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="acquireauthorization"></a>
 ## acquireAuthorization
 
 ```TypeScript
@@ -47,7 +48,7 @@ acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AcquireAuthorizationResult> | Promise对象，返回获取授权的结果。 |
+| Promise&lt;AcquireAuthorizationResult&gt; | Promise对象，返回获取授权的结果。 |
 
 **错误码：**
 
@@ -83,6 +84,7 @@ try {
 
 ```
 
+<a id="hasauthorization"></a>
 ## hasAuthorization
 
 ```TypeScript
@@ -111,7 +113,7 @@ hasAuthorization(privilege: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
 
 **错误码：**
 
@@ -143,6 +145,7 @@ try {
 
 ```
 
+<a id="releaseauthorization"></a>
 ## releaseAuthorization
 
 ```TypeScript
@@ -171,7 +174,7 @@ releaseAuthorization(privilege: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

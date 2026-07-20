@@ -10,6 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="editable"></a>
 ## editable
 
 ```TypeScript
@@ -32,6 +33,7 @@ editable(value: boolean | EditMode)
 | --- | --- | --- | --- |
 | value | boolean \| EditMode | 是 |  |
 
+<a id="onselect"></a>
 ## onSelect
 
 ```TypeScript
@@ -54,8 +56,9 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (isSelected: boolean) => void | 是 |  |
+| event | (isSelected: boolean) =&gt; void | 是 |  |
 
+<a id="selectable"></a>
 ## selectable
 
 ```TypeScript
@@ -80,6 +83,7 @@ selectable(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 |  |
 
+<a id="selected"></a>
 ## selected
 
 ```TypeScript
@@ -106,6 +110,7 @@ selected(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 当前ListItem选中状态。设置为true时为选中状态，设置为false时为默认状态。默认值：false |
 
+<a id="sticky"></a>
 ## sticky
 
 ```TypeScript
@@ -128,8 +133,9 @@ sticky(value: Sticky)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Sticky](arkts-arkui-list-item-sticky-e.md) | 是 |  |
+| value | [Sticky](arkts-arkui-sticky-e.md) | 是 |  |
 
+<a id="swipeaction"></a>
 ## swipeAction
 
 ```TypeScript
@@ -150,5 +156,5 @@ swipeAction(value: SwipeActionOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [SwipeActionOptions](arkts-arkui-list-item-swipeactionoptions-i.md) | 是 | ListItem的划出组件。 |
+| value | [SwipeActionOptions](arkts-arkui-swipeactionoptions-i.md) | 是 | ListItem的划出组件。 |
 

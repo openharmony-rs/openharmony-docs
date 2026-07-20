@@ -4,7 +4,7 @@ AbilityDelegatorArgs模块提供在应用程序执行测试用例期间，获取
 
 > **说明：**  
 >  
-> 本模块接口仅可在[单元测试框架](../../../../application-test/unittest-guidelines.md)中使用。
+> 本模块接口仅可在[单元测试框架](docroot://application-test/unittest-guidelines.md)中使用。
 
 **起始版本：** 8
 
@@ -38,7 +38,7 @@ parameters: Record<string, string>
 
 当前启动单元测试的参数。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 8
 

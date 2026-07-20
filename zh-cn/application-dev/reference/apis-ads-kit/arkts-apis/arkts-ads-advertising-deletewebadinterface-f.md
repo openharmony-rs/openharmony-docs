@@ -6,6 +6,7 @@
 import { advertising } from '@kit.AdsKit';
 ```
 
+<a id="deletewebadinterface"></a>
 ## deleteWebAdInterface
 
 ```TypeScript

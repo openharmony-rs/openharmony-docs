@@ -6,6 +6,7 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="shiftappwindowfocus"></a>
 ## shiftAppWindowFocus
 
 ```TypeScript
@@ -14,7 +15,7 @@ function shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Pr
 
 在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
 
-目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-arkui-window-window-i.md#setwindowfocusable-2)设置），并确保调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)成功且执行完毕。
+目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-arkui-window-window-i.md#setwindowfocusable-1)设置），并确保调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)成功且执行完毕。
 
 > **说明：**  
 >  
@@ -42,7 +43,7 @@ function shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

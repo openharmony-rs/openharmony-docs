@@ -6,6 +6,7 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
+<a id="uninstallusercertificate"></a>
 ## uninstallUserCertificate
 
 ```TypeScript
@@ -36,7 +37,7 @@ function uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncC
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | certUri | string | 是 | 证书uri，由安装用户证书接口[installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate-1)设置返回。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -73,6 +74,7 @@ deviceSettings.uninstallUserCertificate(wantTemp, aliasStr, (err) => {
 ```
 
 
+<a id="uninstallusercertificate-1"></a>
 ## uninstallUserCertificate
 
 ```TypeScript
@@ -102,13 +104,13 @@ function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certUri | string | 是 | 证书uri，由安装用户证书接口[installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate-2)设置返回。 |
+| certUri | string | 是 | 证书uri，由安装用户证书接口[installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate-1)设置返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | 无返回结果的Promise对象。当卸载用户证书失败时会抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当卸载用户证书失败时会抛出错误对象。 |
 
 **错误码：**
 

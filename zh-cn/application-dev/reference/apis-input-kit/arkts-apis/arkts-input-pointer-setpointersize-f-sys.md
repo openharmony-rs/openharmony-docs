@@ -6,6 +6,7 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setpointersize"></a>
 ## setPointerSize
 
 ```TypeScript
@@ -27,7 +28,7 @@ function setPointerSize(size: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | size | number | 是 | 鼠标光标大小，范围为[1-7]，默认为1。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -69,6 +70,7 @@ struct Index {
 ```
 
 
+<a id="setpointersize-1"></a>
 ## setPointerSize
 
 ```TypeScript
@@ -95,7 +97,7 @@ function setPointerSize(size: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

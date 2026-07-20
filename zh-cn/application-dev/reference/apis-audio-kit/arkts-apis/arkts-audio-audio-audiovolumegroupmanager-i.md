@@ -20,6 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="getmaxamplitudeforinputdevice"></a>
 ## getMaxAmplitudeForInputDevice
 
 ```TypeScript
@@ -44,7 +45,7 @@ getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
+| Promise&lt;number&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
 
 **错误码：**
 
@@ -54,6 +55,7 @@ getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Promise<numbe
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
+<a id="getmaxamplitudeforoutputdevice"></a>
 ## getMaxAmplitudeForOutputDevice
 
 ```TypeScript
@@ -78,7 +80,7 @@ getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
+| Promise&lt;number&gt; | Promise对象，返回对应设备的电平值，大小在[0, 1]之间。 |
 
 **错误码：**
 
@@ -88,6 +90,7 @@ getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<num
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
+<a id="getmaxvolume"></a>
 ## getMaxVolume
 
 ```TypeScript
@@ -111,8 +114,9 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
 
+<a id="getmaxvolume-1"></a>
 ## getMaxVolume
 
 ```TypeScript
@@ -141,8 +145,9 @@ getMaxVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回最大音量等级。 |
+| Promise&lt;number&gt; | Promise对象，返回最大音量等级。 |
 
+<a id="getmaxvolumesync"></a>
 ## getMaxVolumeSync
 
 ```TypeScript
@@ -180,6 +185,7 @@ getMaxVolumeSync(volumeType: AudioVolumeType): number
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getminvolume"></a>
 ## getMinVolume
 
 ```TypeScript
@@ -203,8 +209,9 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
 
+<a id="getminvolume-1"></a>
 ## getMinVolume
 
 ```TypeScript
@@ -233,8 +240,9 @@ getMinVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回最小音量等级。 |
+| Promise&lt;number&gt; | Promise对象，返回最小音量等级。 |
 
+<a id="getminvolumesync"></a>
 ## getMinVolumeSync
 
 ```TypeScript
@@ -272,6 +280,7 @@ getMinVolumeSync(volumeType: AudioVolumeType): number
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getringermode"></a>
 ## getRingerMode
 
 ```TypeScript
@@ -290,8 +299,9 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<AudioRingMode> | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AudioRingMode&gt; | 是 | 回调函数。当获取铃声模式成功，err为undefined，data为获取到的铃声模式；否则为错误对象。 |
 
+<a id="getringermode-1"></a>
 ## getRingerMode
 
 ```TypeScript
@@ -310,8 +320,9 @@ getRingerMode(): Promise<AudioRingMode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<AudioRingMode> | Promise对象，返回系统的铃声模式。 |
+| Promise&lt;AudioRingMode&gt; | Promise对象，返回系统的铃声模式。 |
 
+<a id="getringermodesync"></a>
 ## getRingerModeSync
 
 ```TypeScript
@@ -332,6 +343,7 @@ getRingerModeSync(): AudioRingMode
 | --- | --- |
 | [AudioRingMode](arkts-audio-audio-audioringmode-e.md) | 返回系统的铃声模式。 |
 
+<a id="getsystemvolumeindb"></a>
 ## getSystemVolumeInDb
 
 ```TypeScript
@@ -357,7 +369,7 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | volumeLevel | number | 是 | 音量等级。 |
 | device | [DeviceType](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-devicetype-e.md) | 是 | 设备类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。 |
 
 **错误码：**
 
@@ -367,6 +379,7 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by callback. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by callback. |
 
+<a id="getsystemvolumeindb-1"></a>
 ## getSystemVolumeInDb
 
 ```TypeScript
@@ -397,7 +410,7 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回对应的音量增益dB值。 |
+| Promise&lt;number&gt; | Promise对象，返回对应的音量增益dB值。 |
 
 **错误码：**
 
@@ -407,6 +420,7 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Return by promise. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. Return by promise. |
 
+<a id="getsystemvolumeindbsync"></a>
 ## getSystemVolumeInDbSync
 
 ```TypeScript
@@ -446,6 +460,7 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="getvolume"></a>
 ## getVolume
 
 ```TypeScript
@@ -469,8 +484,9 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume-1)获取。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume-1)获取。 |
 
+<a id="getvolume-1"></a>
 ## getVolume
 
 ```TypeScript
@@ -499,8 +515,9 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume-1)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume-1)和[getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume-1)获取。 |
 
+<a id="getvolumesync"></a>
 ## getVolumeSync
 
 ```TypeScript
@@ -538,6 +555,7 @@ getVolumeSync(volumeType: AudioVolumeType): number
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="ismicrophonemute"></a>
 ## isMicrophoneMute
 
 ```TypeScript
@@ -556,8 +574,9 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取麦克风静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
+<a id="ismicrophonemute-1"></a>
 ## isMicrophoneMute
 
 ```TypeScript
@@ -576,8 +595,9 @@ isMicrophoneMute(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示麦克风被静音；返回false表示麦克风未被静音。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示麦克风被静音；返回false表示麦克风未被静音。 |
 
+<a id="ismicrophonemutesync"></a>
 ## isMicrophoneMuteSync
 
 ```TypeScript
@@ -598,6 +618,7 @@ isMicrophoneMuteSync(): boolean
 | --- | --- |
 | boolean | 系统麦克风静音状态。返回true表示静音，返回false表示非静音。 |
 
+<a id="ismute"></a>
 ## isMute
 
 ```TypeScript
@@ -621,8 +642,9 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<boolean> | 是 | 回调函数。当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。 |
 
+<a id="ismute-1"></a>
 ## isMute
 
 ```TypeScript
@@ -651,8 +673,9 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<boolean> | Promise对象。返回true表示静音；返回false表示非静音。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示静音；返回false表示非静音。 |
 
+<a id="ismutesync"></a>
 ## isMuteSync
 
 ```TypeScript
@@ -690,6 +713,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="isvolumeunadjustable"></a>
 ## isVolumeUnadjustable
 
 ```TypeScript
@@ -710,6 +734,7 @@ isVolumeUnadjustable(): boolean
 | --- | --- |
 | boolean | 固定音量模式开关状态。返回true表示固定音量模式，返回false表示非固定音量模式。 |
 
+<a id="off"></a>
 ## off('ringerModeChange')
 
 ```TypeScript
@@ -729,7 +754,7 @@ off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当取消监听铃声模式变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioRingMode> | 否 | 回调函数，返回变化后的铃音模式。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioRingMode&gt; | 否 | 回调函数，返回变化后的铃音模式。 |
 
 **错误码：**
 
@@ -737,6 +762,7 @@ off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 | --- | --- |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="off-1"></a>
 ## off('micStateChange')
 
 ```TypeScript
@@ -756,7 +782,7 @@ off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当取消监听系统麦克风状态更改事件时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MicStateChangeEvent> | 否 | 回调函数，返回变更后的麦克风状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MicStateChangeEvent&gt; | 否 | 回调函数，返回变更后的麦克风状态。 |
 
 **错误码：**
 
@@ -765,6 +791,7 @@ off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters missing;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="on"></a>
 ## on('ringerModeChange')
 
 ```TypeScript
@@ -784,7 +811,7 @@ on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当铃声模式发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<AudioRingMode> | 是 | 回调函数，返回变化后的铃音模式。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;AudioRingMode&gt; | 是 | 回调函数，返回变化后的铃音模式。 |
 
 **错误码：**
 
@@ -793,6 +820,7 @@ on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="on-1"></a>
 ## on('micStateChange')
 
 ```TypeScript
@@ -814,7 +842,7 @@ on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'，当检测到系统麦克风状态发生改变时，触发该事件。 |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<MicStateChangeEvent> | 是 | 回调函数，返回变更后的麦克风状态。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;MicStateChangeEvent&gt; | 是 | 回调函数，返回变更后的麦克风状态。 |
 
 **错误码：**
 
@@ -823,6 +851,7 @@ on(type: 'micStateChange', callback: Callback<MicStateChangeEvent>): void
 | [401](../../apis-contacts-kit/errorcode-contacts.md#401-系统内部错误) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<a id="setmicrophonemute"></a>
 ## setMicrophoneMute
 
 ```TypeScript
@@ -850,8 +879,9 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mute | boolean | 是 | 是否设置麦克风为静音状态。true表示静音，false表示非静音。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置麦克风静音状态成功，err为undefined，否则为错误对象。 |
 
+<a id="setmicrophonemute-1"></a>
 ## setMicrophoneMute
 
 ```TypeScript
@@ -884,5 +914,5 @@ setMicrophoneMute(mute: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 

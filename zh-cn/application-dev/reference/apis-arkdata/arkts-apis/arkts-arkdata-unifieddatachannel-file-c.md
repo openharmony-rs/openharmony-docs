@@ -34,7 +34,7 @@ details?: Record<string, string>
 
 的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。
 
-**类型：** Record<string, string>
+**类型：** Record&lt;string, string&gt;
 
 **起始版本：** 10
 
@@ -74,7 +74,7 @@ set uriAuthorizationPolicies(value: Array<UriPermission> | undefined)
 
 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
-**类型：** Array<UriPermission>
+**类型：** Array&lt;UriPermission&gt;
 
 **起始版本：** 26.0.0
 

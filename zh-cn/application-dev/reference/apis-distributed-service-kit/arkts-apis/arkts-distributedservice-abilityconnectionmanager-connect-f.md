@@ -6,6 +6,7 @@
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
+<a id="connect"></a>
 ## connect
 
 ```TypeScript
@@ -32,7 +33,7 @@ function connect(sessionId: number): Promise<ConnectResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ConnectResult> | 以Promise形式返回[连接结果](arkts-distributedservice-abilityconnectionmanager-connectresult-i.md)。 |
+| Promise&lt;ConnectResult&gt; | 以Promise形式返回[连接结果](arkts-distributedservice-abilityconnectionmanager-connectresult-i.md)。 |
 
 **错误码：**
 

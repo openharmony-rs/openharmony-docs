@@ -20,6 +20,6 @@ export declare type NodeRenderStateChangeCallback = (state: NodeRenderState, nod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | NodeRenderState | 是 | 触发事件监听的手势事件的相关信息。 |
-| node | FrameNode | 否 | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。 |
+| state | [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | 是 | 触发事件监听的手势事件的相关信息。  |
+| node | [FrameNode](../arkts-components/arkts-arkui-framenode-t.md) | 否 | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。  |
 

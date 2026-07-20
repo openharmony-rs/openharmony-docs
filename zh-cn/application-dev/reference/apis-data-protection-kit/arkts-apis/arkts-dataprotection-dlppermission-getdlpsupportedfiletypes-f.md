@@ -6,6 +6,7 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="getdlpsupportedfiletypes"></a>
 ## getDLPSupportedFileTypes
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getDLPSupportedFileTypes(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<Array<string>> | Promise对象。返回当前可支持权限设置和校验的文件扩展名类型列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回当前可支持权限设置和校验的文件扩展名类型列表。 |
 
 **错误码：**
 
@@ -49,6 +50,7 @@ dlpPermission.getDLPSupportedFileTypes().then((fileTypes) => { // 获取支持DL
 ```
 
 
+<a id="getdlpsupportedfiletypes-1"></a>
 ## getDLPSupportedFileTypes
 
 ```TypeScript
@@ -69,7 +71,7 @@ function getDLPSupportedFileTypes(callback: AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<Array<string>> | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 

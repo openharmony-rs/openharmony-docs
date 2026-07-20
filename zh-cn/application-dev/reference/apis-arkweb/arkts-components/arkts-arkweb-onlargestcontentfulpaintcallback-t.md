@@ -18,5 +18,5 @@ type OnLargestContentfulPaintCallback = (largestContentfulPaint: LargestContentf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| largestContentfulPaint | LargestContentfulPaint | 是 | 网页绘制页面最大内容度量的详细信息。 |
+| largestContentfulPaint | [LargestContentfulPaint](arkts-arkweb-largestcontentfulpaint-i.md) | 是 | 网页绘制页面最大内容度量的详细信息。  |
 

@@ -6,6 +6,7 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="setloglevel"></a>
 ## setLogLevel
 
 ```TypeScript

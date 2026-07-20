@@ -6,6 +6,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="getsdkversion"></a>
 ## getSdkVersion
 
 ```TypeScript

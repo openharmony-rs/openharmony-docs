@@ -6,6 +6,7 @@
 import { floatView } from '@kit.ArkUI';
 ```
 
+<a id="getfloatviewlimits"></a>
 ## getFloatViewLimits
 
 ```TypeScript

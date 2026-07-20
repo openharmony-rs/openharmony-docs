@@ -6,6 +6,7 @@
 import { router } from '@kit.ArkUI';
 ```
 
+<a id="push"></a>
 ## push
 
 ```TypeScript
@@ -17,13 +18,13 @@ function push(options: RouterOptions): void
 > **说明：**  
 >  
 > 从API version 8开始支持，从API version 9开始废弃，建议使用  
-> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-2)替代。
+> [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** pushUrl(options:
+**替代接口：** [pushUrl(options:](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)
 
 <!--Device-router-function push(options: RouterOptions): void--><!--Device-router-function push(options: RouterOptions): void-End-->
 

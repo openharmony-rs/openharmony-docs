@@ -18,7 +18,7 @@ onBadgeChanged?:(data: BadgeNumberCallbackData) => void
 
 回调返回监听到的应用角标数量变化。
 
-**类型：** (data: BadgeNumberCallbackData) => void
+**类型：** (data: BadgeNumberCallbackData) =&gt; void
 
 **起始版本：** 10
 
@@ -54,7 +54,7 @@ onBatchCancel?: (data: Array<SubscribeCallbackData>) => void
 
 批量删除的通知信息。
 
-**类型：** (data: Array<SubscribeCallbackData>) => void
+**类型：** (data: Array&lt;SubscribeCallbackData&gt;) =&gt; void
 
 **起始版本：** 11
 
@@ -72,7 +72,7 @@ onCancel?:(data: SubscribeCallbackData) => void
 
 需要取消的通知信息。
 
-**类型：** (data: SubscribeCallbackData) => void
+**类型：** (data: SubscribeCallbackData) =&gt; void
 
 **起始版本：** 7
 
@@ -90,7 +90,7 @@ onConnect?:() => void
 
 订阅完成的回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 7
 
@@ -108,7 +108,7 @@ onConsume?:(data: SubscribeCallbackData) => void
 
 新接收到的通知信息。
 
-**类型：** (data: SubscribeCallbackData) => void
+**类型：** (data: SubscribeCallbackData) =&gt; void
 
 **起始版本：** 7
 
@@ -126,7 +126,7 @@ onDestroy?:() => void
 
 服务失联的回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 7
 
@@ -144,7 +144,7 @@ onDisconnect?:() => void
 
 取消订阅的回调。
 
-**类型：** () => void
+**类型：** () =&gt; void
 
 **起始版本：** 7
 
@@ -162,7 +162,7 @@ onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
 回调返回免打扰时间选项变更。
 
-**类型：** (mode: notificationManager.DoNotDisturbDate) => void
+**类型：** (mode: notificationManager.DoNotDisturbDate) =&gt; void
 
 **起始版本：** 11
 
@@ -180,7 +180,7 @@ onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
 回调返回免打扰时间选项变更。
 
-**类型：** (mode: notification.DoNotDisturbDate) => void
+**类型：** (mode: notification.DoNotDisturbDate) =&gt; void
 
 **起始版本：** 8
 
@@ -202,7 +202,7 @@ onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) =>
 
 回调返回监听到的应用信息。
 
-**类型：** (callbackData: EnabledNotificationCallbackData) => void
+**类型：** (callbackData: EnabledNotificationCallbackData) =&gt; void
 
 **起始版本：** 8
 
@@ -220,7 +220,7 @@ onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByB
 
 返回应用通知优先级开关状态。
 
-**类型：** (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
+**类型：** (callbackData: EnabledPriorityNotificationByBundleCallbackData) =&gt; void
 
 **起始版本：** 23
 
@@ -238,7 +238,7 @@ onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackDat
 
 返回通知优先级总开关状态。
 
-**类型：** (callbackData: EnabledPriorityNotificationCallbackData) => void
+**类型：** (callbackData: EnabledPriorityNotificationCallbackData) =&gt; void
 
 **起始版本：** 23
 
@@ -316,7 +316,7 @@ onUpdate?:(data: NotificationSortingMap) => void
 
 最新的通知排序列表。
 
-**类型：** (data: NotificationSortingMap) => void
+**类型：** (data: NotificationSortingMap) =&gt; void
 
 **起始版本：** 7
 

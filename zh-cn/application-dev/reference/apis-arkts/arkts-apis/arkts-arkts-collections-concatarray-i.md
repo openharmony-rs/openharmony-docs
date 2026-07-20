@@ -7,7 +7,7 @@
 > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。  
 > 文档中存在泛型的使用，涉及以下泛型标记符：
 
-- T：Type，支持[Sendable支持的数据类型](../../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。
+- T：Type，支持[Sendable支持的数据类型](docroot://arkts-utils/arkts-sendable.md#sendable支持的数据类型)。
 
 **继承/实现关系：** ConcatArray extends [ISendable](arkts-arkts-collections-isendable-t.md)
 
@@ -23,6 +23,7 @@
 import { collections } from '@kit.ArkTS';
 ```
 
+<a id="join"></a>
 ## join
 
 ```TypeScript
@@ -51,6 +52,7 @@ join(separator?: string): string
 | --- | --- |
 | string | 包含所有ConcatArray元素连接成的字符串。如果ConcatArray为空，则返回空字符串。 |
 
+<a id="slice"></a>
 ## slice
 
 ```TypeScript
@@ -71,14 +73,14 @@ slice(start?: number, end?: number): ConcatArray<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 否 | 开始索引。如果`start &lt; 0`，则会从`start + array.length`位置开始。默认值为0。 |
-| end | number | 否 | 结束索引（不包括该元素）。如果`end &lt; 0`，则会到`end + array.length`位置结束。默认为ArkTS Array的长度。 |
+| start | number | 否 | 开始索引。如果`start < 0`，则会从`start + array.length`位置开始。默认值为0。 |
+| end | number | 否 | 结束索引（不包括该元素）。如果`end < 0`，则会到`end + array.length`位置结束。默认为ArkTS Array的长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ConcatArray](arkts-arkts-collections-concatarray-i.md)<T> | 包含原始ConcatArray切片的新ConcatArray。 |
+| [ConcatArray](arkts-arkts-collections-concatarray-i.md)&lt;T&gt; | 包含原始ConcatArray切片的新ConcatArray。 |
 
 ## index
 

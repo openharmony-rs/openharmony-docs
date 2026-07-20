@@ -1,6 +1,6 @@
 # AuthOptions（系统接口）
 
-表示[认证用户](arkts-basicservices-osaccount-userauth-c-sys.md#auth-2)的可选参数集合。
+表示[认证用户](arkts-basicservices-osaccount-userauth-c-sys.md#auth-1)的可选参数集合。
 
 **起始版本：** 12
 

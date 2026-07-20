@@ -23,9 +23,9 @@ import { windowAnimationManager } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation-1) | 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。 |
-| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation-2) | 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。 |
-| [setController](arkts-arkui-windowanimationmanager-setcontroller-f-sys.md#setcontroller-1) | 设置窗口动画控制器。窗口动画控制器的说明请参考[WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md)。在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。 |
+| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation) | 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。 |
+| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation-1) | 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。 |
+| [setController](arkts-arkui-windowanimationmanager-setcontroller-f-sys.md#setcontroller) | 设置窗口动画控制器。窗口动画控制器的说明请参考[WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md)。  在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。 |
 <!--DelEnd-->
 
 <!--Del-->

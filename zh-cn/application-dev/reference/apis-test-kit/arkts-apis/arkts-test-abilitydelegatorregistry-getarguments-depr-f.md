@@ -1,5 +1,6 @@
 # getArguments
 
+<a id="getarguments"></a>
 ## getArguments
 
 ```TypeScript

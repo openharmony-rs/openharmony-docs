@@ -64,7 +64,7 @@ set uriAuthorizationPolicies(value: Array<UriPermission> | undefined)
 
 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
-**类型：** Array<UriPermission>
+**类型：** Array&lt;UriPermission&gt;
 
 **起始版本：** 26.0.0
 

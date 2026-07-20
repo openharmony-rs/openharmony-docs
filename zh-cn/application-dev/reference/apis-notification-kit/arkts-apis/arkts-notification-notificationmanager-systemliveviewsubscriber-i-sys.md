@@ -24,7 +24,7 @@ onResponse?: (notificationId: number, buttonOptions: ButtonOptions) => void
 
 点击按钮的回调。
 
-**类型：** (notificationId: number, buttonOptions: ButtonOptions) => void
+**类型：** (notificationId: number, buttonOptions: ButtonOptions) =&gt; void
 
 **起始版本：** 11
 

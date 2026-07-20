@@ -14,6 +14,7 @@
 import { dragController } from '@kit.ArkUI';
 ```
 
+<a id="off"></a>
 ## off('statusChange')
 
 ```TypeScript
@@ -37,8 +38,9 @@ off(type: 'statusChange', callback?: Callback<DragAndDropInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | for status changing |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<DragAndDropInfo> | 否 | with drag event and status information |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragAndDropInfo&gt; | 否 | with drag event and status information |
 
+<a id="on"></a>
 ## on('statusChange')
 
 ```TypeScript
@@ -62,8 +64,9 @@ on(type: 'statusChange', callback: Callback<DragAndDropInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'statusChange' | 是 | for status changing |
-| callback | [Callback](../arkts-components/arkts-arkui-common-callback-i.md)<DragAndDropInfo> | 是 | with drag event and status information |
+| callback | [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;DragAndDropInfo&gt; | 是 | with drag event and status information |
 
+<a id="startdrag"></a>
 ## startDrag
 
 ```TypeScript
@@ -86,7 +89,7 @@ startDrag(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

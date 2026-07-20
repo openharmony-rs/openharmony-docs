@@ -6,6 +6,7 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="getmanagedbrowserpolicy"></a>
 ## getManagedBrowserPolicy
 
 ```TypeScript
@@ -33,7 +34,7 @@ function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [ArrayBuffer](../../apis-arkts/arkts-apis/arkts-arkts-collections-arraybuffer-c.md) | 浏览器策略。 |
+| ArrayBuffer | 浏览器策略。 |
 
 **错误码：**
 

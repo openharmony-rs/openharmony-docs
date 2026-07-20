@@ -6,6 +6,7 @@
 import { usb } from '@kit.BasicServicesKit';
 ```
 
+<a id="connectdevice"></a>
 ## connectDevice
 
 ```TypeScript
@@ -36,7 +37,7 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 | 类型 | 说明 |
 | --- | --- |
-| Readonly<USBDevicePipe> | 指定的传输通道对象。 |
+| Readonly&lt;USBDevicePipe&gt; | 指定的传输通道对象。 |
 
 **示例：**
 

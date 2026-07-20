@@ -38,7 +38,7 @@ supportedColorModes: Array<PrintColorMode>
 
 表示打印机支持的色彩模式列表。
 
-**类型：** Array<PrintColorMode>
+**类型：** Array&lt;PrintColorMode&gt;
 
 **起始版本：** 14
 
@@ -54,7 +54,7 @@ supportedDuplexModes: Array<PrintDuplexMode>
 
 表示打印机支持的单双面模式列表。
 
-**类型：** Array<PrintDuplexMode>
+**类型：** Array&lt;PrintDuplexMode&gt;
 
 **起始版本：** 14
 
@@ -70,7 +70,7 @@ supportedMediaTypes?: Array<string>
 
 表示打印机支持的纸张类型列表。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 14
 
@@ -86,7 +86,7 @@ supportedOrientations?: Array<PrintOrientationMode>
 
 表示打印机支持的打印方向列表。
 
-**类型：** Array<PrintOrientationMode>
+**类型：** Array&lt;PrintOrientationMode&gt;
 
 **起始版本：** 14
 
@@ -102,7 +102,7 @@ supportedPageSizes: Array<PrintPageSize>
 
 表示打印机支持的纸张尺寸列表。
 
-**类型：** Array<PrintPageSize>
+**类型：** Array&lt;PrintPageSize&gt;
 
 **起始版本：** 14
 
@@ -118,7 +118,7 @@ supportedQualities?: Array<PrintQuality>
 
 表示打印机支持的打印质量列表。
 
-**类型：** Array<PrintQuality>
+**类型：** Array&lt;PrintQuality&gt;
 
 **起始版本：** 14
 

@@ -6,6 +6,7 @@
 import { thermal } from '@kit.BasicServicesKit';
 ```
 
+<a id="registerthermallevelcallback"></a>
 ## registerThermalLevelCallback
 
 ```TypeScript
@@ -24,7 +25,7 @@ function registerThermalLevelCallback(callback: Callback<ThermalLevel>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<ThermalLevel> | 是 | 回调函数，返回变化后的热档位；该参数是一个函数类型。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;ThermalLevel&gt; | 是 | 回调函数，返回变化后的热档位；该参数是一个函数类型。 |
 
 **错误码：**
 

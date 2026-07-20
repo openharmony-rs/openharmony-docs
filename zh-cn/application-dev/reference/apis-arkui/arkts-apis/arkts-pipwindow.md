@@ -28,9 +28,9 @@ import { PiPWindow } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkui-pipwindow-create-f.md#create-1) | 创建画中画控制器，使用Promise异步回调。 |
-| [create](arkts-arkui-pipwindow-create-f.md#create-2) | 创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。 |
-| [isPiPEnabled](arkts-arkui-pipwindow-ispipenabled-f.md#ispipenabled-1) | 判断当前设备是否支持画中画功能。 |
+| [create](arkts-arkui-pipwindow-create-f.md#create) | 创建画中画控制器，使用Promise异步回调。 |
+| [create](arkts-arkui-pipwindow-create-f.md#create-1) | 创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。 |
+| [isPiPEnabled](arkts-arkui-pipwindow-ispipenabled-f.md#ispipenabled) | 判断当前设备是否支持画中画功能。 |
 
 ### 接口
 
@@ -38,7 +38,7 @@ import { PiPWindow } from '@kit.ArkUI';
 | --- | --- |
 | [ControlEventParam](arkts-arkui-pipwindow-controleventparam-i.md) | 画中画控制面板控件动作回调的参数。 |
 | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 创建画中画控制器时的参数。 |
-| [PiPController](arkts-arkui-pipwindow-pipcontroller-i.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create-1)方法获取到PiPController实例，再通过此实例调用对应方法。 |
+| [PiPController](arkts-arkui-pipwindow-pipcontroller-i.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。  下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create-1)方法获取到PiPController实例，再通过此实例调用对应方法。 |
 | [PiPWindowInfo](arkts-arkui-pipwindow-pipwindowinfo-i.md) | 画中画窗口信息。 |
 | [PiPWindowSize](arkts-arkui-pipwindow-pipwindowsize-i.md) | 画中画窗口大小。 |
 
@@ -47,7 +47,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [PiPController](arkts-arkui-pipwindow-pipcontroller-i-sys.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create-1)方法获取到PiPController实例，再通过此实例调用对应方法。 |
+| [PiPController](arkts-arkui-pipwindow-pipcontroller-i-sys.md) | 画中画控制器实例。用于启动、停止画中画以及更新回调注册等。  下列API示例中都需先使用[PiPWindow.create()](arkts-arkui-pipwindow-create-f.md#create-1)方法获取到PiPController实例，再通过此实例调用对应方法。 |
 <!--DelEnd-->
 
 ### 枚举

@@ -22,7 +22,7 @@ context: UIAbilityContext | UIContext
 
 The context of the navigation operation.
 
-**类型：** UIAbilityContext | UIContext
+**类型：** UIAbilityContext \| UIContext
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ from: NavDestinationInfo | NavBar
 
 From navigation content info.
 
-**类型：** NavDestinationInfo | NavBar
+**类型：** NavDestinationInfo \| NavBar
 
 **起始版本：** 12
 
@@ -82,7 +82,7 @@ to: NavDestinationInfo | NavBar
 
 To navigation content info.
 
-**类型：** NavDestinationInfo | NavBar
+**类型：** NavDestinationInfo \| NavBar
 
 **起始版本：** 12
 

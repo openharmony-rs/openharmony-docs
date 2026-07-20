@@ -14,6 +14,7 @@
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="onbeforedownload"></a>
 ## onBeforeDownload
 
 ```TypeScript
@@ -40,8 +41,9 @@ onBeforeDownload(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<WebDownloadItem> | 是 | 触发下载的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 触发下载的回调。 |
 
+<a id="ondownloadfailed"></a>
 ## onDownloadFailed
 
 ```TypeScript
@@ -62,8 +64,9 @@ onDownloadFailed(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<WebDownloadItem> | 是 | 下载失败的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载失败的回调。 |
 
+<a id="ondownloadfinish"></a>
 ## onDownloadFinish
 
 ```TypeScript
@@ -84,8 +87,9 @@ onDownloadFinish(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<WebDownloadItem> | 是 | 下载完成的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载完成的回调。 |
 
+<a id="ondownloadupdated"></a>
 ## onDownloadUpdated
 
 ```TypeScript
@@ -106,5 +110,5 @@ onDownloadUpdated(callback: Callback<WebDownloadItem>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-common-callback-i.md)<WebDownloadItem> | 是 | 下载更新的回调。 |
+| callback | [Callback](../../apis-arkui/arkts-components/arkts-arkui-callback-i.md)&lt;WebDownloadItem&gt; | 是 | 下载更新的回调。 |
 

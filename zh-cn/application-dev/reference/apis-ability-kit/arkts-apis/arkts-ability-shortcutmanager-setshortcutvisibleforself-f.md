@@ -6,6 +6,7 @@
 import { shortcutManager } from '@kit.AbilityKit';
 ```
 
+<a id="setshortcutvisibleforself"></a>
 ## setShortcutVisibleForSelf
 
 ```TypeScript
@@ -24,14 +25,14 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 快捷方式的ID，通过[module.json5配置文件](../../../../quick-start/module-configuration-file.md)中的shortcuts标签下的shortcutId字段获取，取值为长度不超过63字节的字符串。 |
+| id | string | 是 | 快捷方式的ID，通过[module.json5配置文件](docroot://quick-start/module-configuration-file.md)中的shortcuts标签下的shortcutId字段获取，取值为长度不超过63字节的字符串。 |
 | visible | boolean | 是 | 快捷方式是否显示。true：快捷方式显示；false：快捷方式不显示。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

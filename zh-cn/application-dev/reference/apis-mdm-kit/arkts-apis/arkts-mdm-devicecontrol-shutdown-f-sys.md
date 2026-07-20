@@ -6,6 +6,7 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
+<a id="shutdown"></a>
 ## shutdown
 
 ```TypeScript
@@ -18,7 +19,7 @@ function shutdown(admin: Want): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** operateDevice(admin:
+**替代接口：** [operateDevice(admin:](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)
 
 **需要权限：** ohos.permission.ENTERPRISE_REBOOT
 

@@ -64,7 +64,7 @@ ocspRequestExtension?: Array<Uint8Array>
 
 表示发送OCSP请求的扩展字段。
 
-**类型：** Array<Uint8Array>
+**类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 12
 
@@ -140,7 +140,7 @@ options?: Array<RevocationCheckOptions>
 
 表示证书吊销状态查询的策略组合。
 
-**类型：** Array<RevocationCheckOptions>
+**类型：** Array&lt;RevocationCheckOptions&gt;
 
 **起始版本：** 12
 

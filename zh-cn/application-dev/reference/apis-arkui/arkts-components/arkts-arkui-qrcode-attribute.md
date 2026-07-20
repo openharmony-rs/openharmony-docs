@@ -1,8 +1,8 @@
 # QRCode属性/事件
 
-除支持[通用属性](../../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)外，还支持以下属性。
+除支持[通用属性](docroot://reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)外，还支持以下属性。
 
-支持[通用事件](../../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
+支持[通用事件](docroot://reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
 **继承/实现关系：** QRCodeAttribute extends [CommonMethod<QRCodeAttribute>](CommonMethod<QRCodeAttribute>)
 
@@ -12,6 +12,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="backgroundcolor"></a>
 ## backgroundColor
 
 ```TypeScript
@@ -36,6 +37,7 @@ backgroundColor(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 二维码背景颜色。<br/>默认值：Color.White <br/>从API version 11开始，默认值改为'#ffffffff'，且不跟随系统深浅色模式切换而修改。 |
 
+<a id="color"></a>
 ## color
 
 ```TypeScript
@@ -60,6 +62,7 @@ color(value: ResourceColor)
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 二维码颜色。默认值：'#ff000000'，且不跟随系统深浅色模式切换而修改。<br/> |
 
+<a id="contentopacity"></a>
 ## contentOpacity
 
 ```TypeScript

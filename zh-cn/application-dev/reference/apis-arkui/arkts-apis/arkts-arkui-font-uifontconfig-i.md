@@ -22,7 +22,7 @@ fallbackGroups: Array<UIFontFallbackGroupInfo>
 
 备用字体集。
 
-**类型：** Array<UIFontFallbackGroupInfo>
+**类型：** Array&lt;UIFontFallbackGroupInfo&gt;
 
 **起始版本：** 11
 
@@ -42,7 +42,7 @@ fontDir: Array<string>
 
 系统字体文件所在的路径。
 
-**类型：** Array<string>
+**类型：** Array&lt;string&gt;
 
 **起始版本：** 11
 
@@ -62,7 +62,7 @@ generic: Array<UIFontGenericInfo>
 
 系统所支持的通用字体集列表。
 
-**类型：** Array<UIFontGenericInfo>
+**类型：** Array&lt;UIFontGenericInfo&gt;
 
 **起始版本：** 11
 

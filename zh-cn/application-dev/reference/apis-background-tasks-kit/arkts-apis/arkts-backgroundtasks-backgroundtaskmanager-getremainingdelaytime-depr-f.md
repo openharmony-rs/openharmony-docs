@@ -1,5 +1,6 @@
 # getRemainingDelayTime
 
+<a id="getremainingdelaytime"></a>
 ## getRemainingDelayTime
 
 ```TypeScript
@@ -12,7 +13,7 @@ function getRemainingDelayTime(requestId: number, callback: AsyncCallback<number
 
 **废弃版本：** 9
 
-**替代接口：** getRemainingDelayTime(requestId:
+**替代接口：** [getRemainingDelayTime(requestId:](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-f.md#getremainingdelaytime-1)
 
 <!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: number, callback: AsyncCallback<number>): void--><!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: number, callback: AsyncCallback<number>): void-End-->
 
@@ -23,7 +24,7 @@ function getRemainingDelayTime(requestId: number, callback: AsyncCallback<number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay-1)方法获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<number> | 是 | 回调函数，返回本次短时任务的剩余时间，单位：ms。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，返回本次短时任务的剩余时间，单位：ms。 |
 
 **示例：**
 
@@ -43,6 +44,7 @@ backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessE
 ```
 
 
+<a id="getremainingdelaytime-1"></a>
 ## getRemainingDelayTime
 
 ```TypeScript
@@ -55,7 +57,7 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** getRemainingDelayTime(requestId:
+**替代接口：** [getRemainingDelayTime(requestId:](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-f.md#getremainingdelaytime-1)
 
 <!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: number): Promise<number>--><!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: number): Promise<number>-End-->
 
@@ -71,7 +73,7 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<number> | Promise对象，返回本次短时任务的剩余时间，单位：ms。 |
+| Promise&lt;number&gt; | Promise对象，返回本次短时任务的剩余时间，单位：ms。 |
 
 **示例：**
 

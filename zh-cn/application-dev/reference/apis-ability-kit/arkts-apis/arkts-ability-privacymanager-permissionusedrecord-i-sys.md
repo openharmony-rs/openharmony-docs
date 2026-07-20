@@ -44,7 +44,7 @@ accessRecords: Array<UsedRecordDetail>
 
 默认值：查询最近10条成功访问记录。
 
-**类型：** Array<UsedRecordDetail>
+**类型：** Array&lt;UsedRecordDetail&gt;
 
 **起始版本：** 9
 
@@ -174,7 +174,7 @@ rejectRecords: Array<UsedRecordDetail>
 
 默认值：查询最近10条失败或拒绝记录。
 
-**类型：** Array<UsedRecordDetail>
+**类型：** Array&lt;UsedRecordDetail&gt;
 
 **起始版本：** 9
 

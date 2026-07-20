@@ -6,6 +6,7 @@
 import { cacheDownload } from '@kit.BasicServicesKit';
 ```
 
+<a id="clearmemorycache"></a>
 ## clearMemoryCache
 
 ```TypeScript

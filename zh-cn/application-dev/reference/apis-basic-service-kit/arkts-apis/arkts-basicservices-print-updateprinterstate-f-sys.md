@@ -6,6 +6,7 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="updateprinterstate"></a>
 ## updatePrinterState
 
 ```TypeScript
@@ -30,7 +31,7 @@ function updatePrinterState(printerId: string, state: PrinterState, callback: As
 | --- | --- | --- | --- |
 | printerId | string | 是 | 表示打印机ID。 |
 | state | [PrinterState](arkts-basicservices-print-printerstate-e.md) | 是 | 表示打印机状态。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)<void> | 是 | 异步更新打印机状态之后的回调。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步更新打印机状态之后的回调。 |
 
 **错误码：**
 
@@ -59,6 +60,7 @@ print.updatePrinterState(printerId, state, (err: BusinessError) => {
 ```
 
 
+<a id="updateprinterstate-1"></a>
 ## updatePrinterState
 
 ```TypeScript
@@ -88,7 +90,7 @@ function updatePrinterState(printerId: string, state: PrinterState): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

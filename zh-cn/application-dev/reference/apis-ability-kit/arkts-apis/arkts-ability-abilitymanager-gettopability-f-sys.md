@@ -6,6 +6,7 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
+<a id="gettopability"></a>
 ## getTopAbility
 
 ```TypeScript
@@ -26,7 +27,7 @@ function getTopAbility(): Promise<ElementName>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<ElementName> | Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise&lt;ElementName&gt; | Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -36,6 +37,7 @@ function getTopAbility(): Promise<ElementName>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="gettopability-1"></a>
 ## getTopAbility
 
 ```TypeScript
@@ -56,7 +58,7 @@ function getTopAbility(callback: AsyncCallback<ElementName>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<ElementName> | 是 | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ElementName&gt; | 是 | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 

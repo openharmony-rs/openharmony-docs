@@ -41,52 +41,52 @@ RENDER_TYPE_TEXTURE = 1
 > > [XComponentNode](arkts-arkui-xcomponentnode-c.md)中设置生效。  
 > >  
 > > - 在[BuilderNode](arkts-arkui-buildernode-c.md)的情况下，目前在作为根节点的自定义组件中支持纹理导出的有以下组件：  
-> > [Badge](./../@internal/component/ets/badge)、[Blank](./../@internal/component/ets/blank)、  
-> > [Button](./../@internal/component/ets/button)、[CanvasGradient](./../@internal/component/ets/canvas)、  
-> > [CanvasPattern](./../@internal/component/ets/canvas)、  
-> > [CanvasRenderingContext2D](./../@internal/component/ets/canvas)、  
-> > [Canvas](./../@internal/component/ets/canvas)、  
-> > [CheckboxGroup](./../@internal/component/ets/checkboxgroup)、  
-> > [Checkbox](./../@internal/component/ets/checkbox)、[Circle](./../@internal/component/ets/circle)、  
-> > [ColumnSplit](./../@internal/component/ets/column_split)、[Column](./../@internal/component/ets/column)、  
-> > [ContainerSpan](./../@internal/component/ets/container_span)、  
-> > [Counter](./../@internal/component/ets/counter)、[DataPanel](./../@internal/component/ets/data_panel)、  
-> > [Divider](./../@internal/component/ets/divider)、[Ellipse](./../@internal/component/ets/ellipse)、  
-> > [Flex](./../@internal/component/ets/flex)、[Gauge](./../@internal/component/ets/gauge)、  
-> > [Hyperlink](./../@internal/component/ets/hyperlink)、[ImageBitmap](./../@internal/component/ets/canvas)、  
-> > [ImageData](./../@internal/component/ets/canvas)、[Image](./../@internal/component/ets/image)、  
-> > [Line](./../@internal/component/ets/line)、  
-> > [LoadingProgress](./../@internal/component/ets/loading_progress)、  
-> > [Marquee](./../@internal/component/ets/marquee)、[Matrix2D](./../@internal/component/ets/canvas)、  
-> > [OffscreenCanvasRenderingContext2D](./../@internal/component/ets/canvas)、  
-> > [OffscreenCanvas](./../@internal/component/ets/canvas)、[Path2D](./../@internal/component/ets/canvas)、  
-> > [Path](./../@internal/component/ets/path)、[PatternLock](./../@internal/component/ets/pattern_lock)、  
-> > [Polygon](./../@internal/component/ets/polygon)、[Polyline](./../@internal/component/ets/polyline)、  
-> > [Progress](./../@internal/component/ets/progress)、[QRCode](./../@internal/component/ets/qrcode)、  
-> > [Radio](./../@internal/component/ets/radio)、[Rating](./../@internal/component/ets/rating)、  
-> > [Rect](./../@internal/component/ets/rect)、  
-> > [RelativeContainer](./../@internal/component/ets/relative_container)、  
-> > [RowSplit](./../@internal/component/ets/row_split)、[Row](./../@internal/component/ets/row)、  
-> > [Shape](./../@internal/component/ets/shape)、[Slider](./../@internal/component/ets/slider)、  
-> > [Span](./../@internal/component/ets/span)、[Stack](./../@internal/component/ets/stack)、  
-> > [TextArea](./../@internal/component/ets/text_area)、[TextClock](./../@internal/component/ets/text_clock)  
-> > 、[TextInput](./../@internal/component/ets/text_input)、  
-> > [TextTimer](./../@internal/component/ets/text_timer)、[Text](./../@internal/component/ets/text)、  
-> > [Toggle](./../@internal/component/ets/toggle)、[Video](./../@internal/component/ets/video)（不含全屏播放能力）、  
-> > [Web](./../@internal/component/ets/web)、[XComponent](./../@internal/component/ets/xcomponent)。  
+> > [Badge](../../apis-arkui/arkts-components/arkts-arkui-badge-i)、[Blank](../../apis-arkui/arkts-components/arkts-arkui-blank-i)、  
+> > [Button](../../apis-arkui/arkts-components/arkts-arkui-button-i)、[CanvasGradient](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [CanvasPattern](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [CanvasRenderingContext2D](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [Canvas](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [CheckboxGroup](../../apis-arkui/arkts-components/arkts-arkui-checkboxgroup-i)、  
+> > [Checkbox](../../apis-arkui/arkts-components/arkts-arkui-checkbox-i)、[Circle](../../apis-arkui/arkts-components/arkts-arkui-circle-i)、  
+> > [ColumnSplit](../../apis-arkui/arkts-components/arkts-arkui-column_split-i)、[Column](../../apis-arkui/arkts-components/arkts-arkui-column-i)、  
+> > [ContainerSpan](../../apis-arkui/arkts-components/arkts-arkui-container_span-i)、  
+> > [Counter](../../apis-arkui/arkts-components/arkts-arkui-counter-i)、[DataPanel](../../apis-arkui/arkts-components/arkts-arkui-data_panel-i)、  
+> > [Divider](../../apis-arkui/arkts-components/arkts-arkui-divider-i)、[Ellipse](../../apis-arkui/arkts-components/arkts-arkui-ellipse-i)、  
+> > [Flex](../../apis-arkui/arkts-components/arkts-arkui-flex-i)、[Gauge](../../apis-arkui/arkts-components/arkts-arkui-gauge-i)、  
+> > [Hyperlink](../../apis-arkui/arkts-components/arkts-arkui-hyperlink-i)、[ImageBitmap](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [ImageData](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、[Image](../../apis-arkui/arkts-components/arkts-arkui-image-i)、  
+> > [Line](../../apis-arkui/arkts-components/arkts-arkui-line-i)、  
+> > [LoadingProgress](../../apis-arkui/arkts-components/arkts-arkui-loading_progress-i)、  
+> > [Marquee](../../apis-arkui/arkts-components/arkts-arkui-marquee-i)、[Matrix2D](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [OffscreenCanvasRenderingContext2D](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [OffscreenCanvas](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、[Path2D](../../apis-arkui/arkts-components/arkts-arkui-canvas-i)、  
+> > [Path](../../apis-arkui/arkts-components/arkts-arkui-path-i)、[PatternLock](../../apis-arkui/arkts-components/arkts-arkui-pattern_lock-i)、  
+> > [Polygon](../../apis-arkui/arkts-components/arkts-arkui-polygon-i)、[Polyline](../../apis-arkui/arkts-components/arkts-arkui-polyline-i)、  
+> > [Progress](../../apis-arkui/arkts-components/arkts-arkui-progress-i)、[QRCode](../../apis-arkui/arkts-components/arkts-arkui-qrcode-i)、  
+> > [Radio](../../apis-arkui/arkts-components/arkts-arkui-radio-i)、[Rating](../../apis-arkui/arkts-components/arkts-arkui-rating-i)、  
+> > [Rect](../../apis-arkui/arkts-components/arkts-arkui-rect-i)、  
+> > [RelativeContainer](../../apis-arkui/arkts-components/arkts-arkui-relative_container-i)、  
+> > [RowSplit](../../apis-arkui/arkts-components/arkts-arkui-row_split-i)、[Row](../../apis-arkui/arkts-components/arkts-arkui-row-i)、  
+> > [Shape](../../apis-arkui/arkts-components/arkts-arkui-shape-i)、[Slider](../../apis-arkui/arkts-components/arkts-arkui-slider-i)、  
+> > [Span](../../apis-arkui/arkts-components/arkts-arkui-span-i)、[Stack](../../apis-arkui/arkts-components/arkts-arkui-stack-i)、  
+> > [TextArea](../../apis-arkui/arkts-components/arkts-arkui-text_area-i)、[TextClock](../../apis-arkui/arkts-components/arkts-arkui-text_clock-i)  
+> > 、[TextInput](../../apis-arkui/arkts-components/arkts-arkui-text_input-i)、  
+> > [TextTimer](../../apis-arkui/arkts-components/arkts-arkui-text_timer-i)、[Text](../../apis-arkui/arkts-components/arkts-arkui-text-i)、  
+> > [Toggle](../../apis-arkui/arkts-components/arkts-arkui-toggle-i)、[Video](../../apis-arkui/arkts-components/arkts-arkui-video-i)（不含全屏播放能力）、  
+> > [Web](../../apis-arkui/arkts-components/arkts-arkui-web-i)、[XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-i)。  
 > >  
-> > - 从API version 12开始，新增以下组件支持纹理导出：[DatePicker](./../@internal/component/ets/date_picker)、  
-> > [ForEach](./../@internal/component/ets/for_each)、[Grid](./../@internal/component/ets/grid)、  
-> > [if/else](../../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、  
-> > [LazyForEach](./../@internal/component/ets/lazy_for_each)、[List](./../@internal/component/ets/list)、  
-> > [Scroll](./../@internal/component/ets/scroll)、[Swiper](./../@internal/component/ets/swiper)、  
-> > [TimePicker](./../@internal/component/ets/time_picker)、  
-> > [@Component](../../../../ui/state-management/arkts-create-custom-components.md#component)修饰的自定义组件、  
-> > [NodeContainer](./../@internal/component/ets/node_container)以及  
-> > [NodeContainer](./../@internal/component/ets/node_container)下挂载的[FrameNode](arkts-arkui-framenode-c.md)和  
+> > - 从API version 12开始，新增以下组件支持纹理导出：[DatePicker](../../apis-arkui/arkts-components/arkts-arkui-date_picker-i)、  
+> > [ForEach](../../apis-arkui/arkts-components/arkts-arkui-for_each-i)、[Grid](../../apis-arkui/arkts-components/arkts-arkui-grid-i)、  
+> > [if/else](docroot://ui/rendering-control/arkts-rendering-control-ifelse.md)、  
+> > [LazyForEach](../../apis-arkui/arkts-components/arkts-arkui-lazy_for_each-i)、[List](../../apis-arkui/arkts-components/arkts-arkui-list-i)、  
+> > [Scroll](../../apis-arkui/arkts-components/arkts-arkui-scroll-i)、[Swiper](../../apis-arkui/arkts-components/arkts-arkui-swiper-i)、  
+> > [TimePicker](../../apis-arkui/arkts-components/arkts-arkui-time_picker-i)、  
+> > [@Component](docroot://ui/state-management/arkts-create-custom-components.md#component)修饰的自定义组件、  
+> > [NodeContainer](../../apis-arkui/arkts-components/arkts-arkui-node_container-i)以及  
+> > [NodeContainer](../../apis-arkui/arkts-components/arkts-arkui-node_container-i)下挂载的[FrameNode](arkts-arkui-framenode-c.md)和  
 > > [RenderNode](arkts-arkui-rendernode-c.md)。  
 > >  
-> > - 使用方式可参考[同层渲染绘制](../../../../web/web-same-layer.md)。
+> > - 使用方式可参考[同层渲染绘制](docroot://web/web-same-layer.md)。
 
 **起始版本：** 11
 

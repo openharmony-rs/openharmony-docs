@@ -6,6 +6,7 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
+<a id="getipaddress"></a>
 ## getIpAddress
 
 ```TypeScript
@@ -36,7 +37,7 @@ function getIpAddress(admin: Want, networkInterface: string, callback: AsyncCall
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-arkui/arkts-apis/arkts-arkui-want-t-sys.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface | string | 是 | 指定网络接口。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)<string> | 是 | 回调函数。当接口调用成功，err为null，data为IP地址，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当接口调用成功，err为null，data为IP地址，否则err为错误对象。 |
 
 **错误码：**
 
@@ -72,6 +73,7 @@ networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
 ```
 
 
+<a id="getipaddress-1"></a>
 ## getIpAddress
 
 ```TypeScript
@@ -107,7 +109,7 @@ function getIpAddress(admin: Want, networkInterface: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise<string> | Promise结果，返回设备IP地址。 |
+| Promise&lt;string&gt; | Promise结果，返回设备IP地址。 |
 
 **错误码：**
 
