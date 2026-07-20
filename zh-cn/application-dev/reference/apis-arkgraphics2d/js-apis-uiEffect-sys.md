@@ -23,7 +23,7 @@
 ## 导入模块
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 ```
 
 ## uiEffect.createBrightnessBlender
@@ -52,9 +52,9 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 ```ts
 // 创建BrightnessBlender实例用于给组件添加提亮效果
-let blender : uiEffect.BrightnessBlender =
+let blender: uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 ```
 
 ## uiEffect.createHdrBrightnessBlender<sup>20+</sup>
@@ -88,21 +88,21 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 **示例：**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 // 创建支持HDR的BrightnessBlender实例
-let blender : uiEffect.HdrBrightnessBlender =
+let blender: uiEffect.HdrBrightnessBlender =
   uiEffect.createHdrBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 
 @Entry
 @Component
 struct Example {
   build() {
     RelativeContainer() {
-      Image($r("app.media.screenshot"))
-        .width("100%")
-        .height("100%")
+      Image($r('app.media.screenshot'))
+        .width('100%')
+        .height('100%')
         .advancedBlendMode(blender)
     }
   }
@@ -145,26 +145,26 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 **示例：**
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 // 创建HDR压暗混合器实例
-let blender : uiEffect.HdrDarkenBlender = 
-  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114])
+let blender: uiEffect.HdrDarkenBlender =
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]);
 
 @Entry
 @Component
 struct Example {
-  build() { 
-    RelativeContainer() { 
-      Stack(){ 
-          Text("TextWord") 
-          Image($r("app.media.screenshot")) 
-            .width("100%") 
-            .height("100%") 
-            .advancedBlendMode(blender) 
-      } 
-    } 
-  } 
+  build() {
+    RelativeContainer() {
+      Stack(){
+          Text('TextWord')
+          Image($r('app.media.screenshot'))
+            .width('100%')
+            .height('100%')
+            .advancedBlendMode(blender)
+      }
+    }
+  }
 }
 ```
 
@@ -198,8 +198,8 @@ pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
 
 ```ts
 // 将边缘像素扩展效果添加至组件上
-let filter = uiEffect.createFilter()
-filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP)
+let filter = uiEffect.createFilter();
+filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP);
 ```
 
 ### waterRipple
@@ -239,8 +239,8 @@ waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMod
 
 ```ts
 // 将水波纹效果添加至组件上
-let filter = uiEffect.createFilter()
-filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL)
+let filter = uiEffect.createFilter();
+filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL);
 ```
 
 ### flyInFlyOutEffect
@@ -277,8 +277,8 @@ flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 
 ```ts
 // 将飞入飞出形变效果添加至组件上
-let filter = uiEffect.createFilter()
-filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP)
+let filter = uiEffect.createFilter();
+filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP);
 ```
 
 ### distort<sup>13+</sup>
@@ -317,8 +317,8 @@ distort(distortionK: number): Filter
 
 ```ts
 // 将透镜畸变效果添加至组件上
-let filter = uiEffect.createFilter()
-filter.distort(-0.5)
+let filter = uiEffect.createFilter();
+filter.distort(-0.5);
 ```
 
 
@@ -354,14 +354,14 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct RadiusGradientBlurExample {
-  @State blurRadiusExample: number = 64
+  @State blurRadiusExample: number = 64;
   @State linearGradientBlurOptionsExample: LinearGradientBlurOptions =
-    {fractionStops: [[0.0, 0.0], [1.0, 1.0]], direction: GradientDirection.Bottom}
+    {fractionStops: [[0.0, 0.0], [1.0, 1.0]], direction: GradientDirection.Bottom};
 
   build() {
     Column() {
@@ -405,7 +405,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
@@ -414,7 +414,7 @@ struct BezierWarpExample {
     { x: 0, y: 0 }, { x: 1 / 3, y: 0 }, { x: 2 / 3, y: 0 }, // top edge
     { x: 0.5, y: 0 }, { x: 0.5, y: 1 / 3 }, { x: 1, y: 2 / 3 }, // right edge
     { x: 1, y: 1 }, { x: 2 / 3, y: 1 }, { x: 1 / 3, y: 1 }, // bottom edge
-    { x: 0, y: 1 }, { x: 0, y: 2 / 3 }, { x: 0, y: 1 / 3 }] // left edge
+    { x: 0, y: 1 }, { x: 0, y: 2 / 3 }, { x: 0, y: 1 / 3 }]; // left edge
 
   build() {
     Column() {
@@ -460,7 +460,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 **示例：**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
@@ -468,19 +468,20 @@ struct ColorGradientExample {
   @State gradientColors: Array<uiEffect.Color> = [
     {red: 1.0, green: 0.8, blue: 0.5, alpha: 0.8},
     {red: 1.0, green: 1.5, blue: 0.5, alpha: 1.0}
-  ]
+  ];
 
   @State gradientPositions: Array<common2D.Point> = [
     {x: 0.2, y: 0.2},
-    {x: 0.8, y: 0.6}]
+    {x: 0.8, y: 0.6}
+  ];
 
-  @State gradientStrengths: Array<number> = [0.3, 0.3]
+  @State gradientStrengths: Array<number> = [0.3, 0.3];
 
   build() {
     Column() {
       Row()
-        .width("100%")
-        .height("100%")
+        .width('100%')
+        .height('100%')
         // 为组件内容添加颜色渐变效果
         .backgroundFilter(uiEffect.createFilter().colorGradient(this.gradientColors, this.gradientPositions, this.gradientStrengths))
     }
@@ -522,21 +523,21 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 **示例：**
 
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
   @State contentLightPosition: common2D.Point3d = {
     x: 0, y: 0, z: 2
-  }
+  };
   @State contentLightColor: common2D.Color = {
     red: 1,
     green: 1,
     blue: 1,
     alpha: 1
-  }
-  @State lightIntensity: number = 1
+  };
+  @State lightIntensity: number = 1;
 
   build() {
     Column() {
@@ -593,21 +594,21 @@ edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct EdgeLightExample {
-  @State edgeLightColor: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0}
-  
-  @State edgeLightMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5)
-  
+  @State edgeLightColor: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0};
+
+  @State edgeLightMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5);
+
   build() {
     Stack() {
       Image($rawfile('test.png'))
-      Row()  
-        .width("100%")
-        .height("100%")
+      Row()
+        .width('100%')
+        .height('100%')
         // 为组件内容检测边缘，并添加边缘高亮效果
         .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, this.edgeLightColor, this.edgeLightMask, false))
     }
@@ -647,19 +648,19 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 **示例：**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct DisplacementDistortExample {
-  @State distortMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0)
-  
+  @State distortMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0);
+
   build() {
     Stack() {
       Image($rawfile('test.png'))
-      Row()  
-        .width("100%")
-        .height("100%")
+      Row()
+        .width('100%')
+        .height('100%')
         // 为组件内容添加扭曲效果
         .backgroundFilter(uiEffect.createFilter().displacementDistort(this.distortMask, [5.0, 5.0]))
     }
@@ -702,34 +703,34 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **示例：**
 
 ```ts
-import {image} from '@kit.ImageKit'
-import {common2D, uiEffect} from '@kit.ArkGraphics2D'
-import {common} from '@kit.AbilityKit'
+import {image} from '@kit.ImageKit';
+import {common2D, uiEffect} from '@kit.ArkGraphics2D';
+import {common} from '@kit.AbilityKit';
 
 @Entry
 @Component
 struct MaskDispersion {
-  @State pixelMap: PixelMap | null = null
-  @State src: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 }
-  @State dst: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 }
-  @State fillColor: uiEffect.Color = { red: 0, green: 0, blue: 0, alpha: 0 }
+  @State pixelMap: PixelMap | null = null;
+  @State src: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 };
+  @State dst: common2D.Rect = { left: 0, top: 0, right: 1.0, bottom: 1.0 };
+  @State fillColor: uiEffect.Color = { red: 0, green: 0, blue: 0, alpha: 0 };
 
   onPageShow(): void {
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext
-    context.resourceManager.getMediaByName("mask_alpha").then(val => {
-      let buffer = val.buffer.slice(0, val.buffer.byteLength)
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    context.resourceManager.getMediaByName('mask_alpha').then(val => {
+      let buffer = val.buffer.slice(0, val.buffer.byteLength);
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
-        this.pixelMap = pixelMap
+        this.pixelMap = pixelMap;
       })
     })
   }
-  
+
   build() {
     if (this.pixelMap) {
       Stack() {
         Image($rawfile('test.png'))
-        Row()  
+        Row()
           .width('100%')
           .height('100%')
           // 为组件内容添加由置换贴图控制的色散效果
@@ -784,23 +785,23 @@ maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 **示例：**
 
 ```ts
-import { uiEffect, common2D } from "@kit.ArkGraphics2D";
+import { uiEffect, common2D } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
-  context = this.getUIContext()
-  @State alpha: number = 0
-  @State enterNewPage:boolean = false
-  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5}
-  @State rippleMaskRadius: number = 0.1
+  context = this.getUIContext();
+  @State alpha: number = 0;
+  @State enterNewPage:boolean = false;
+  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5};
+  @State rippleMaskRadius: number = 0.1;
   build() {
     Stack() {
       // 转场前页面
-      Image($r("app.media.before")).width("100%").height("100%")
+      Image($r('app.media.before')).width('100%').height('100%')
         if (this.enterNewPage) {
           // 转场后页面
-          Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
+          Column().width('100%').height('100%').backgroundImage($r('app.media.after'))
             // 为组件内容提供基于Mask的转场效果
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
@@ -808,19 +809,19 @@ struct Index {
                 this.alpha))
             .onAppear(() => {
               this.context.animateTo({ duration: 1000 }, () => {
-                this.rippleMaskRadius = 1.3
+                this.rippleMaskRadius = 1.3;
               })
               this.context.animateTo({ duration: 800 }, () => {
-                this.alpha = 1
+                this.alpha = 1;
               })
             })
         }
     }.borderWidth(2)
     .onClick(()=>{
-      this.enterNewPage=!this.enterNewPage;
+      this.enterNewPage = !this.enterNewPage;
       if (this.enterNewPage) {
-        this.alpha=0;
-        this.rippleMaskRadius=0.1;
+        this.alpha = 0;
+        this.rippleMaskRadius = 0.1;
       }
     })
   }
@@ -862,23 +863,23 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 **示例：**
 
 ```ts
-import { uiEffect, common2D } from "@kit.ArkGraphics2D";
+import { uiEffect, common2D } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
-  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5}
-  @State rippleMaskRadius: number = 0.0
-  @State rippleMaskWidth: number = 0.0
-  @State color: Color = Color.Transparent
+  @State rippleMaskCenter: common2D.Point = {x:0.5, y:0.5};
+  @State rippleMaskRadius: number = 0.0;
+  @State rippleMaskWidth: number = 0.0;
+  @State color: Color = Color.Transparent;
 
   build() {
     Column() {
       RelativeContainer() {
-        Image($r("app.media.back")).width("100%").height("100%")
+        Image($r('app.media.back')).width('100%').height('100%')
         Stack()
-          .width("100%")
-          .height("100%")
+          .width('100%')
+          .height('100%')
           .backgroundColor(this.color)
           // 为组件内容提供基于Mask和平行光的光照效果
           .backgroundFilter(uiEffect.createFilter()
@@ -934,7 +935,7 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 @Entry
 @Component
 struct VariableRadiusBlurExample {
-  @State blurMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
+  @State blurMask: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1);
 
   build() {
     Stack() {
@@ -1058,12 +1059,12 @@ struct BlurBubblesRiseExample {
     let resourceMgr = context.resourceManager;
     resourceMgr?.getMediaContent($r('app.media.drawBlurMask').id)
       .then((val: Uint8Array) => {
-        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength)
+        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
-        })
-      })
+        });
+      });
   }
 
   build() {
@@ -1151,13 +1152,13 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 **示例：**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
-let blender : uiEffect.BrightnessBlender =
+import { uiEffect } from '@kit.ArkGraphics2D';
+let blender: uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+    positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0});
 let visualEffect = uiEffect.createEffect();
 // 将混合器添加至组件上以改变组件背景颜色
-visualEffect.backgroundColorBlender(blender)
+visualEffect.backgroundColorBlender(blender);
 ```
 
 ### borderLight<sup>20+</sup>
@@ -1193,19 +1194,19 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 
 **示例：**
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
 struct Index {
   @State borderLightPosition: common2D.Point3d = {
     x: 0, y: 0, z: 2
-  }
+  };
   @State borderLightColor: common2D.Color = {
     red: 1, green: 1, blue: 1, alpha: 1
-  }
-  @State lightIntensity: number = 1
-  @State borderWidth_: number = 20
+  };
+  @State lightIntensity: number = 1;
+  @State borderWidth_: number = 20;
 
   build() {
     Column() {
@@ -1266,7 +1267,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 
 **示例：**
 ```ts
-import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
@@ -1293,11 +1294,11 @@ struct ColorGradientExample {
           uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
         )
       )
-      .width("1024px")
-      .height("1024px")
+      .width('1024px')
+      .height('1024px')
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -1357,13 +1358,13 @@ struct Index {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
     effect.liquidMaterial({
       enable: true,
-      distortProgress : this.distortProgress,
+      distortProgress: this.distortProgress,
       rippleProgress: this.rippleProgress,
       distortFactor: this.distortFactor,
-      materialFactor : this.materialFactor,
-      refractionFactor : this.refractionFactor,
+      materialFactor: this.materialFactor,
+      refractionFactor: this.refractionFactor,
       reflectionFactor: this.reflectionFactor,
-      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      tintColor: [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
       ripplePosition: undefined,
     },
       uiEffect.Mask.createUseEffectMask(true),
@@ -1384,10 +1385,10 @@ struct Index {
       .backgroundEffect({
         radius: 15,
       }, { disableSystemAdaptation: true })
-      .width("100%").height("100%").align(Alignment.Center)
+      .width('100%').height('100%').align(Alignment.Center)
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
-    .width("100%").height("100%").align(Alignment.Center)
+    .width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1638,40 +1639,40 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 ```ts
 import { image } from '@kit.ImageKit';
 import { uiEffect, common2D } from '@kit.ArkGraphics2D';
-import { BusinessError } from '@kit.BasicServicesKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const colorBuffer = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
+let opts: image.InitializationOptions = {
   editable: true,
   pixelFormat: 3,
   size: {
     height: 4,
     width: 6
   }
-}
+};
 image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  let srcRect : common2D.Rect = {
+  let srcRect: common2D.Rect = {
     left: 0,
     top: 0,
     right: 1,
     bottom: 1
-  }
-  let dstRect : common2D.Rect = {
+  };
+  let dstRect: common2D.Rect = {
     left: 0,
     top: 0,
     right: 1,
     bottom: 1
-  }
-  let fillColor : uiEffect.Color = {
+  };
+  let fillColor: uiEffect.Color = {
     red: 0,
     green: 0,
     blue: 0,
     alpha: 1
-  }
+  };
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
   console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
-})
+});
 ```
 
 ### createPixelMapMask<sup>22+</sup>
@@ -1734,7 +1735,7 @@ struct Index {
     try {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       // this path should be created in local
-      const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
+      const path: string = context.resourceDir + '/perlin_worley_noise_3d_64.bmp';
       const imageSource: image.ImageSource = image.createImageSource(path);
       if (!imageSource) {
         return undefined;
@@ -1759,13 +1760,13 @@ struct Index {
     }
     effect.liquidMaterial({
       enable: true,
-      distortProgress : this.distortProgress,
+      distortProgress: this.distortProgress,
       rippleProgress: this.rippleProgress,
       distortFactor: this.distortFactor,
-      materialFactor : this.materialFactor,
-      refractionFactor : this.refractionFactor,
+      materialFactor: this.materialFactor,
+      refractionFactor: this.refractionFactor,
       reflectionFactor: this.reflectionFactor,
-      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      tintColor: [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
       ripplePosition: undefined,
     },
       uiEffect.Mask.createUseEffectMask(true),
@@ -1787,10 +1788,10 @@ struct Index {
       .backgroundEffect({
         radius: 15,
       }, { disableSystemAdaptation: true })
-      .width("100%").height("100%").align(Alignment.Center)
+      .width('100%').height('100%').align(Alignment.Center)
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat) // the image should be created in local
-    .width("100%").height("100%").align(Alignment.Center)
+    .width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1829,7 +1830,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import { uiEffect } from '@kit.ArkGraphics2D'
+import { uiEffect } from '@kit.ArkGraphics2D';
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1882,7 +1883,7 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D";
+import { uiEffect } from '@kit.ArkGraphics2D';
 // center: [0.5, 0.5]；width: 0.01; propagationRadius: 0.5; blurRadius: 0.1; turbulenceStrength: 0.1
 let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1, 0.1);
 @Entry
@@ -1953,13 +1954,13 @@ struct Index {
     let effect: uiEffect.VisualEffect = uiEffect.createEffect();
     effect.liquidMaterial({
         enable: true,
-        distortProgress : this.distortProgress,
+        distortProgress: this.distortProgress,
         rippleProgress: this.rippleProgress,
         distortFactor: this.distortFactor,
-        materialFactor : this.materialFactor,
-        refractionFactor : this.refractionFactor,
+        materialFactor: this.materialFactor,
+        refractionFactor: this.refractionFactor,
         reflectionFactor: this.reflectionFactor,
-        tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+        tintColor: [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
         ripplePosition: undefined,
       },
       uiEffect.Mask.createUseEffectMask(true), // useEffectMask使用示例
@@ -1980,10 +1981,10 @@ struct Index {
       .backgroundEffect({
         radius: 15,
       }, { disableSystemAdaptation: true })
-      .width("100%").height("100%").align(Alignment.Center)
+      .width('100%').height('100%').align(Alignment.Center)
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
-    .width("100%").height("100%").align(Alignment.Center)
+    .width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
