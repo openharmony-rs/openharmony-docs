@@ -134,6 +134,45 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 根据error表示的音频异常信息，做出相应的处理。
    }
+   
+   void MyOnPlaybackCaptureReadData(
+       OH_AudioCapturer* capturer,
+       void* userData,
+       void* audioData,
+       int32_t audioDataSize)
+   {
+       if (audioData == nullptr || audioDataSize <= 0) {
+           return;
+       }
+       g_playbackCaptureReadBytes.fetch_add(static_cast<uint64_t>(audioDataSize));
+   }
+   
+   void MyOnPlaybackCaptureStart(
+       OH_AudioCapturer* capturer,
+       void* userData,
+       OH_AudioStream_PlaybackCaptureStartState state)
+   {
+       int32_t stateValue = static_cast<int32_t>(state);
+       g_playbackCaptureStartState.store(stateValue);
+       OH_LOG_Print(LOG_APP, LOG_INFO, AUDIO_CAPTURE_LOG_DOMAIN, AUDIO_CAPTURE_LOG_TAG,
+           "Playback capture start callback state=%{public}d", stateValue);
+   
+       if (state == AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS) {
+           return;
+       }
+   
+       OH_AudioCapturer* capturerToRelease = nullptr;
+       {
+           std::lock_guard<std::mutex> lock(g_playbackCaptureMutex);
+           if (g_playbackCaptureCapturer == capturer) {
+               capturerToRelease = g_playbackCaptureCapturer;
+               g_playbackCaptureCapturer = nullptr;
+           }
+       }
+       if (capturerToRelease != nullptr) {
+           OH_AudioCapturer_Release(capturerToRelease);
+       }
+   }
    // ...
        // 配置音频中断事件回调函数。
        OH_AudioCapturer_OnInterruptCallback OnInterruptCb = MyOnInterruptEvent_NewAPI;
