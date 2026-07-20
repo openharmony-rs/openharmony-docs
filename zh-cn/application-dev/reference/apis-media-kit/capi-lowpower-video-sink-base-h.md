@@ -47,7 +47,7 @@
 ### OH_LowPowerVideoSink_OnDataNeeded()
 
 ```c
-typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink,OH_AVSamplesBuffer* buffer,void *userData)
+typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData)
 ```
 
 **描述**
@@ -68,7 +68,7 @@ LowPowerVideoSink需要数据时调用该方法。
 ### OH_LowPowerVideoSink_OnError()
 
 ```c
-typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink,OH_AVErrCode errCode,const char* errMsg,void* userData)
+typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData)
 ```
 
 **描述**
@@ -90,7 +90,7 @@ LowPowerVideoSink发生错误时调用该方法。
 ### OH_LowPowerVideoSink_OnTargetArrived()
 
 ```c
-typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,const int64_t targetPts,const bool isTimeout,void* userData)
+typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData)
 ```
 
 **描述**
@@ -127,7 +127,7 @@ LowPowerVideoSink开始渲染时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-|  void* userData | 用户执行回调所依赖的数据。 |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnStreamChanged()
 
@@ -148,7 +148,7 @@ LowPowerVideoSink流切换调用该方法。
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 | [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | 包含变化的参数和对应的值。 |
-|  void* userData | 用户执行回调所依赖的数据。 |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()
 
@@ -168,7 +168,7 @@ LowPowerVideoSink第一帧解码成功时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-|  void* userData | 用户执行回调所依赖的数据。 |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnEos()
 

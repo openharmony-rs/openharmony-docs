@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UIContext实例对象。
+UIContext实例对象，用于提供与当前UI实例关联的上下文能力，支持获取UI相关控制器、管理弹窗与动画、查询节点和窗口信息、进行像素单位转换等，适用于在指定UI实例中管理页面、组件和交互行为的场景。
 
 > **说明：**
 >
@@ -32,29 +32,26 @@ import { UIContext } from '@kit.ArkUI';
 struct Index {
   build() {
     Column() {
-      Button("Button")
-          .onClick(()=>{
+      Button('Button')
+          .onClick(() => {
             // 通过自定义组件内置方法获取
-            this.getUIContext()
+            this.getUIContext();
             // 通过UIContext类的静态方法获取
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
-    }  
+    }
   }
 }
 
 // EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
+    windowStage.getMainWindowSync().getUIContext();
     // 其他运行逻辑
   }
 }
@@ -80,7 +77,7 @@ constructor()
 import { UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function GetUIContextByAtomicInterface(): UIContext {
+function getUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
@@ -132,7 +129,7 @@ struct Index {
         })
         .onClick(() => {
           let resolvedUIContext = UIContext.resolveUIContext();
-          let contextByAtomicInterface = GetUIContextByAtomicInterface();
+          let contextByAtomicInterface = getUIContextByAtomicInterface();
           hilog.info(0x00, 'testTag',
             `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
           this.message = 'Welcome';
@@ -377,7 +374,7 @@ struct Index {
     Column() {
       Button('click').onClick(() => {
         let resolvedUIContext = UIContext.resolveUIContext();
-        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}`);
       })
     }
     .width(UIContext.resolveUIContext().px2vp(100))
@@ -405,28 +402,28 @@ isAvailable(): boolean
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct UIContextCompare {
-  @State result1: string = ""
-  @State result2: string = ""
+  @State result1: string = '';
+  @State result2: string = '';
 
   build() {
     Column() {
-      Text("getUIContext() 结果: " + this.result1)
+      Text('getUIContext() 结果: ' + this.result1)
         .fontSize(20)
         .margin(10)
 
-      Text("new UIContext() 结果: " + this.result2)
+      Text('new UIContext() 结果: ' + this.result2)
         .fontSize(20)
         .margin(10)
 
       Divider().margin(20)
 
-      Button("getUIContext()")
-        .width("70%")
+      Button('getUIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -434,14 +431,14 @@ struct UIContextCompare {
             const ctx: UIContext = this.getUIContext();
             const available: boolean = ctx.isAvailable();
             this.result1 = `可用状态: ${available} UI实例有效 `;
-            console.info("getUIContext测试:", available);
-          } catch (e) {
-            this.result1 = "错误: " + (e instanceof Error ? e.message : String(e));
+            console.info('getUIContext测试:', available);
+          } catch (error) {
+            this.result1 = '错误: ' + (error instanceof Error ? error.message : String(error));
           }
         })
 
-      Button("new UIContext()")
-        .width("70%")
+      Button('new UIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -449,14 +446,14 @@ struct UIContextCompare {
             const ctx: UIContext = new UIContext();
             const available: boolean = ctx.isAvailable();
             this.result2 = `可用状态: ${available} UI实例无效`;
-            console.info("new UIContext测试:", available);
-          } catch (e) {
-            this.result2 = "错误: " + (e instanceof Error ? e.message : String(e));
+            console.info('new UIContext测试:', available);
+          } catch (error) {
+            this.result2 = '错误: ' + (error instanceof Error ? error.message : String(error));
           }
         })
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .padding(20)
   }
 }
@@ -536,7 +533,7 @@ getUIObserver(): UIObserver
 
 | 类型                          | 说明                 |
 | --------------------------- | ------------------ |
-| [UIObserver](./arkts-apis-uicontext-uiobserver.md) | 返回UIObserver实例对象。 |
+| [UIObserver](./arkts-apis-uicontext-uiobserver.md) | 返回UIObserver实例对象，用于监听UI相关状态变化。 |
 
 **示例：**
 
@@ -679,6 +676,28 @@ getPromptAction(): PromptAction
 
 完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
+## getDialogPresenter
+
+getDialogPresenter(): DialogPresenter
+
+获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                            | 说明                  |
+| ----------------------------- | ------------------- |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象，可用于管理和展示Dialog。 |
+
+**示例：**
+
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
+
 ## getOverlayManager<sup>12+</sup>
 
 getOverlayManager(): OverlayManager
@@ -687,7 +706,7 @@ getOverlayManager(): OverlayManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -707,7 +726,7 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -733,7 +752,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**: SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
@@ -1126,7 +1145,7 @@ struct MyComponent {
 
 getFrameNodeByUniqueId(id: number): FrameNode | null
 
-提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
+通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
 2. 当uniqueId对应的是自定义组件时：
    - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
@@ -1175,7 +1194,7 @@ struct MyComponent {
 
 getPageInfoByUniqueId(id: number): PageInfo
 
-提供getPageInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
+通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
 1. 当uniqueId对应的节点在Page节点中，routerPageInfo属性为其对应的Router信息；
 2. 当uniqueId对应的节点在NavDestination节点中，navDestinationInfo属性为其对应的NavDestination信息；
 3. 当uniqueId对应的节点无对应的Router或NavDestination信息时，对应的属性为undefined；
@@ -1653,7 +1672,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1719,7 +1738,7 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -1771,17 +1790,17 @@ export default class EntryAbility extends UIAbility {
 
 runScopedTask(callback: () => void): void
 
-在当前UI上下文执行传入的回调函数。
+在当前UIContext对应的UI实例作用域内执行传入的回调函数，适用于[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)但需要将业务行为绑定到指定UI实例的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| callback | () => void | 是    | 回调函数 |
+| callback | () => void | 是    | 需要在当前UIContext对应的UI实例作用域内执行的回调函数。 |
 
 **示例：**
 
@@ -1789,20 +1808,18 @@ runScopedTask(callback: () => void): void
 @Entry
 @Component
 struct Index {
-  uiContext = this.getUIContext();
+  private selectedDate: Date = new Date('2025-10-01');
 
   build() {
-    Row() {
-      Column() {
-        Button("run task").onClick(() => {
-          this.uiContext.runScopedTask(() => {
-            // do something
-          })
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
+    Button('Show CalendarPicker Dialog')
+      .onClick(() => {
+        const uiContext = this.getUIContext();
+        uiContext.runScopedTask(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate
+          });
+        });
+      });
   }
 }
 ```
@@ -1906,7 +1923,7 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 | 类型                                              | 说明                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServerBar类型，否则返回undefined。 |
+| Nullable<[AtomicServiceBar](arkts-apis-uicontext-atomicservicebar.md)> | 如果是原子化服务则返回AtomicServiceBar类型，否则返回undefined。 |
 
 **示例：**
 
@@ -2343,7 +2360,7 @@ vp2px(value : number) : number
 
 > **说明：**
 >
-> 1. getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2355,13 +2372,13 @@ vp2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2401,7 +2418,7 @@ px2vp(value : number) : number
 
 > **说明：**
 >
-> 1. getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2413,13 +2430,13 @@ px2vp(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2461,7 +2478,7 @@ fp2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2471,13 +2488,13 @@ fp2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2519,7 +2536,7 @@ px2fp(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2529,13 +2546,13 @@ px2fp(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2573,7 +2590,7 @@ lpx2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2583,13 +2600,13 @@ lpx2px(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2627,7 +2644,7 @@ px2lpx(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 应在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)完成后调用getUIContext，确保UIContext已初始化；否则本接口无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2637,13 +2654,13 @@ px2lpx(value : number) : number
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2700,9 +2717,11 @@ struct Index {
   aboutToAppear() {
     const windowName = this.getUIContext().getWindowName();
     console.info('WindowName ' + windowName);
-    const currWindow = window.findWindow(windowName);
-    const windowProperties = currWindow.getWindowProperties();
-    console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    if (windowName) {
+      const currWindow = window.findWindow(windowName);
+      const windowProperties = currWindow.getWindowProperties();
+      console.info(`Window width ${windowProperties.windowRect.width}, height ${windowProperties.windowRect.height}`);
+    }
   }
 
   build() {
@@ -2751,7 +2770,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId ?? -1);
   }
 
   build() {
@@ -2908,7 +2927,7 @@ struct Index {
     Row() {
       Button('点击触发postFrameCallback')
         .onClick(() => {
-          this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+          this.getUIContext().postFrameCallback(new MyFrameCallback('normTask'));
         })
     }
   }
@@ -2957,7 +2976,7 @@ struct Index {
     Row() {
       Button('点击触发postDelayedFrameCallback')
         .onClick(() => {
-          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback('delayTask'), 5);
         })
     }
   }
@@ -2984,7 +3003,7 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 
 | 类型   | 说明                                         |
 | ------ | -------------------------------------------- |
-| Array&lt;DynamicSyncScene&gt; | 获取DynamicSyncScene对象数组。 |
+| Array&lt;DynamicSyncScene&gt; | 获取DynamicSyncScene对象数组，用于自定义场景相关帧率配置。 |
 
 **示例：**
 
@@ -2994,14 +3013,14 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Entry
 @Component
 struct Frame {
-  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  @State animationFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State gestureFrameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
-      Text("动画" + JSON.stringify(this.ANIMATION))
-      Text("跟手" + JSON.stringify(this.GESTURE))
+      Text("动画" + JSON.stringify(this.animationFrameRateRange))
+      Text("跟手" + JSON.stringify(this.gestureFrameRateRange))
       Row() {
         Swiper() {
           Text("one")
@@ -3023,11 +3042,11 @@ struct Frame {
           this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
 
             if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
-              scenes.setFrameRateRange(this.ANIMATION);
+              scenes.setFrameRateRange(this.animationFrameRateRange);
             }
 
             if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
-              scenes.setFrameRateRange(this.GESTURE);
+              scenes.setFrameRateRange(this.gestureFrameRateRange);
             }
           });
         })
@@ -3956,7 +3975,7 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 >  **说明：**
 >
-> 如果缓存上限设置的太大，有内存开销过大的风险，建议合理配置。
+> 如果缓存上限设置得太大，有内存开销过大的风险，建议合理配置。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -4274,18 +4293,18 @@ getPageRootNode(): FrameNode | null
 @Entry
 @Component
 struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
   private arr: number[] = [1, 2, 3];
   @State pageRootNode: FrameNode | null = null;
 
   @Builder
   pageMap(name: string) {
     if (name === 'NavDestinationTitle1') {
-      pageOneTmp();
+      PageOne();
     } else if (name === 'NavDestinationTitle2') {
-      pageTwoTmp();
+      PageTwo();
     } else if (name === 'NavDestinationTitle3') {
-      pageThreeTmp();
+      PageThree();
     }
   }
 
@@ -4293,7 +4312,7 @@ struct NavigationExample {
     setTimeout(() => {
       this.pageRootNode = this.getUIContext()?.getPageRootNode();
       console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
-    })
+    });
   }
 
   build() {
@@ -4334,17 +4353,17 @@ struct NavigationExample {
 }
 
 @Component
-export struct pageOneTmp {
+export struct PageOne {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   aboutToDisappear(): void {
-    console.info('pageOneTmp', 'aboutToDisappear')
+    console.info('PageOne', 'aboutToDisappear');
   }
 
   build() {
     NavDestination() {
       Column() {
-        Text('pageOneTmp')
+        Text('PageOne')
         Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
       }.width('100%').height('100%')
     }.title('NavDestinationTitle1')
@@ -4357,13 +4376,13 @@ export struct pageOneTmp {
 }
 
 @Component
-export struct pageTwoTmp {
+export struct PageTwo {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   build() {
     NavDestination() {
       Column() {
-        Text('pageTwoTmp')
+        Text('PageTwo')
         Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
       }.width('100%').height('100%')
     }.title('NavDestinationTitle2')
@@ -4376,13 +4395,13 @@ export struct pageTwoTmp {
 }
 
 @Component
-export struct pageThreeTmp {
+export struct PageThree {
   @Consume('pageInfos') pageInfos: NavPathStack;
 
   build() {
     NavDestination() {
       Column() {
-        Text('pageThreeTmp')
+        Text('PageThree')
         Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
       }.width('100%').height('100%')
     }.title('NavDestinationTitle3')

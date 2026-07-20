@@ -25,7 +25,7 @@
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
 | incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。<!--RP1--><!--RP1End--> |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
-| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成触摸事件。<br> 默认值：false。 |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否转换为触摸事件。true表示转换成触摸事件，适用于需要统一触摸和鼠标交互行为的场景；false表示不转换成触摸事件。<br>默认值：false。 |
 
 ## WebMediaOptions<sup>10+</sup>
 
@@ -66,7 +66,7 @@ Web媒体策略的配置。
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
-通过NestedScrollOptionsExt可以设置上下左右四个方向的嵌套滚动规则。
+用于设置Web组件嵌套滚动规则，支持上下左右四个方向的滚动选项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -90,10 +90,11 @@ Web媒体策略的配置。
 
 ## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+自定义菜单扩展项。
+
 > **说明：**
 >
-> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
-自定义菜单扩展项。
+> 从API version 12开始支持，从API version 20开始废弃。建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -101,7 +102,7 @@ Web媒体策略的配置。
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
 | content   | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 否     | 显示内容。     |
 | startIcon | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否     | 是     | 显示图标。默认值为空，不显示图标。     |
-| action    | (selectedText: {plainText: string}) => void                    | 否     | 否     | 选中的文本信息。|
+| action    | (selectedText: {plainText: string}) => void                    | 否     | 否     | 回调函数，用于接收用户选择菜单扩展项后的操作。回调参数selectedText包含plainText字段，表示用户选中的文本内容。|
 
 ## AdsBlockedDetails<sup>12+</sup>
 
@@ -132,7 +133,7 @@ Web媒体策略的配置。
 
 ## PreviewMenuOptions<sup>20+</sup>
 
-预览菜单选项。
+用于配置预览菜单选项，支持设置菜单弹出时的振动效果。适用于需要增强菜单交互反馈的场景，提升用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -271,7 +272,7 @@ Web同层渲染的配置。
 
 ## OnShowFileSelectorEvent<sup>12+</sup>
 
-定义文件选择器结果。
+定义文件选择器结果的回调信息，包括结果和参数详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -345,7 +346,7 @@ Web同层渲染的配置。
 
 ## OnContextMenuShowEvent<sup>12+</sup>
 
-定义调用时触发的回调，以允许自定义显示上下文菜单。
+定义调用时触发的回调信息，以允许自定义显示上下文菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -368,7 +369,7 @@ Web同层渲染的配置。
 
 ## OnScrollEvent<sup>12+</sup>
 
-定义滚动条滑动到指定位置时触发。
+定义滚动条滑动到指定位置时触发的回调信息，包括水平和垂直偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -546,7 +547,7 @@ Web同层渲染的配置。
 
 ## OnOverScrollEvent<sup>12+</sup>
 
-定义网页过度滚动时触发的回调。
+定义网页过度滚动时触发的回调信息，包括水平和垂直偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -613,13 +614,13 @@ Web同层渲染的配置。
 
 ## OnGeolocationShowEvent<sup>12+</sup>
 
-定义通知用户收到地理位置信息获取请求。
+定义收到地理位置获取请求时触发的回调信息，包括源信息和地理对象。适用于需要处理地理位置权限的场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选    | 说明                                       |
 | -------------- | ---- | ---- | -------------|--------------------------- |
-| origin | string | 否 | 否 | 指定源的字符串索引。                       |
+| origin | string | 否 | 否 | 发起地理位置权限请求的网页源，用于标识特定网站的地理位置请求来源。 |
 | geolocation | [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md) | 否 | 否 | 通知Web组件用户操作行为。                       |
 
 ## NativeEmbedVisibilityInfo<sup>12+</sup>
@@ -715,7 +716,7 @@ Web组件进入全屏回调事件的详情。
 
 ## WebKeyboardCallbackInfo<sup>12+</sup>
 
-拦截网页可编辑元素拉起软键盘的回调入参，其中包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)、可编辑元素的属性。
+拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -726,7 +727,7 @@ Web组件进入全屏回调事件的详情。
 
 ## WebKeyboardOptions<sup>12+</sup>
 
-拦截网页可编辑元素拉起软键盘的回调返回值，可以指定使用的键盘类型，并返回给web内核，以控制拉起不同类型的软键盘；
+拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -933,7 +934,7 @@ Web屏幕捕获的配置。
 
 ## AcceptableFileType<sup>23+</sup>
 
-定义文件选择器拉取文件时网页推荐的文件类型信息。
+提供文件选择器推荐的文件类型信息，包括MIME类型和类型数组。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -956,7 +957,7 @@ Web屏幕捕获的配置。
 
 ## AISessionEvent
 
-自定义AI会话配置对象，用于定义AI会话的生命周期回调。
+自定义AI会话配置对象，用于定义AI会话的生命周期回调，包括创建、执行和销毁。
 
 **起始版本：** 26.0.0
 

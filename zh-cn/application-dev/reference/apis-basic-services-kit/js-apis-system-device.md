@@ -164,6 +164,12 @@ export default {
 | fail | (data: any, code: number) => void | 否 | 接口调用失败的回调函数，在接口调用失败时执行。data为失败时返回的错误信息对象或错误描述字符串，code为失败返回的错误码。<br>code:200，表示返回结果中存在无法获取的信息。建议设置此回调以处理错误情况。 |
 | complete | () => void | 否 | 接口调用结束的回调函数，在接口调用完成后（无论成功或失败）执行，适用于需执行清理或收尾工作的场景。不传入时不执行结束回调。 |
 
+**错误码**：
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 200 | 返回结果中存在无法获取的信息。可能原因包括：设备不支持部分信息字段、系统权限受限或设备配置缺失。解决措施：建议检查设备兼容性、确认应用权限配置，并设置此回调以处理错误情况。 |
+
 ## DeviceResponse<sup>(deprecated)</sup>
 
 设备信息。
@@ -184,3 +190,5 @@ export default {
 | screenShape<sup>4+</sup> | string | 屏幕形状。可取值：<br>-&nbsp;rect：方形屏；<br>-&nbsp;circle：圆形屏。 |
 | apiVersion<sup>4+</sup> | number | 系统API版本号。 |
 | deviceType<sup>4+</sup> | string | 设备类型。常见取值：phone（手机）、tablet（平板）、tv（电视）、wearable（可穿戴设备）等。 |
+| sdkMinorApiVersion | number  | 系统软件Minor API版本。**从** API 26.0.0 版本开始，系统API版本格式：apiVersion.sdkMinorApiVersion.sdkPatchApiVersion。该值获取失败时填充 -1，且不影响 getInfo 接口的整体返回状态。<br/>**模型约束：** 此接口仅可在FA模型下使用。<br/>**起始版本**：26.0.0<br/>示例：0 |
+| sdkPatchApiVersion  | number  | 系统软件Patch API版本。**从** API 26.0.0 版本开始，系统API版本格式：apiVersion.sdkMinorApiVersion.sdkPatchApiVersion。该值获取失败时填充 -1，且不影响 getInfo 接口的整体返回状态。<br/>**模型约束：** 此接口仅可在FA模型下使用。<br/>**起始版本**：26.0.0<br/>示例：0 |

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 Decimal用于提供任意精度数学运算的能力，支持任意精度浮点计算。
 
@@ -77,7 +77,7 @@ type Modulo = Rounding | 9
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
 | [Rounding](#rounding) | 模运算下的舍入类型。与[Rounding](#rounding)表示的舍入模式相同。  |
-| 9                      | 余模运算下，余数始终为正。欧几里得除法，与[Decimal.EUCLIDEAN](#常量)一致。 |
+| 9                      | 模运算下，余数始终为正。欧几里得除法，与[Decimal.EUCLIDEAN](#常量)一致。 |
 
 ## DecimalConfig
 
@@ -202,7 +202,7 @@ floor(): Decimal
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| [Decimal](#decimal) | 返回舍入之后的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回向负无穷方向舍入后的Decimal对象实例。 |
 
 **示例：**
 
@@ -225,7 +225,7 @@ ceil(): Decimal
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| [Decimal](#decimal) | 返回舍入之后的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回向正无穷方向舍入后的Decimal对象实例。 |
 
 **示例：**
 
@@ -471,13 +471,13 @@ mod(n: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明             |
 | ------ | --------------- | ---- | ---------------- |
-| n      | [Value](#value) | 是   | 取模运算的除数。 |
+| n      | [Value](#value) | 是   | 模运算的除数。 |
 
 **返回值：**
 
 | 类型    | 说明                            |
 | ------- | ------------------------------- |
-| [Decimal](#decimal) | 返回取模运算后的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回模运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -557,7 +557,7 @@ pow(n: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明             |
 | ------ | --------------- | ---- | ---------------- |
-| n      | [Value](#value) | 是   | 幂运算的幂的值。 |
+| n      | [Value](#value) | 是   | 幂运算的指数值。 |
 
 **返回值：**
 
@@ -617,7 +617,7 @@ console.info("test Decimal exp:" + data.toString()); // 'test Decimal exp:7.3890
 
 log(n: Value): Decimal
 
-返回一个对数运算后的Decimal对象，其值是以n为底的对数值。
+返回一个对数运算后的Decimal对象，其值是以n为底的此Decimal的对数值。
 
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
@@ -688,7 +688,7 @@ console.info("test Decimal ln:" + data.toString()); // 'test Decimal ln:69.28456
 
 cos(): Decimal
 
-返回一个新的Decimal对象，其值是此Decimal的余弦值。
+返回一个新的Decimal对象，其值是此Decimal的余弦值。输入值以弧度为单位。
 
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
@@ -1024,7 +1024,7 @@ console.info("test Decimal atanh:" + data.toString()); // 'test Decimal atanh:0.
 
 comparedTo(n: Value): number
 
-Decimal的比较方法。
+返回该Decimal与比较值的比较结果。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1210,7 +1210,7 @@ lessThan(n: Value): boolean
 
 ```ts
 let data: Decimal = new Decimal(0.3).sub(0.2);
-let data1: boolean = data.lessThan(0.1)
+let data1: boolean = data.lessThan(0.1);
 console.info("test Decimal lessThan:" + data1); // 'test Decimal lessThan:false'
 ```
 
@@ -1248,7 +1248,7 @@ lessThanOrEqualTo(n: Value): boolean
 
 ```ts
 let data: Decimal = new Decimal(0.1);
-let data1: boolean = data.lessThanOrEqualTo(new Decimal(0.3).sub(0.2))
+let data1: boolean = data.lessThanOrEqualTo(new Decimal(0.3).sub(0.2));
 console.info("test Decimal lessThanOrEqualTo:" + data1); // 'test Decimal lessThanOrEqualTo:true'
 ```
 
@@ -1448,7 +1448,7 @@ console.info("test Decimal dividedToIntegerBy:" + data2.toString()); // 'test De
 
 negate(): Decimal
 
-对Decimal值进行取反操作。
+对Decimal值进行取负操作（乘以-1）。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -1881,7 +1881,7 @@ toDecimalPlaces(decimalPlaces: number, rounding: Rounding): Decimal
 let data: Decimal = new Decimal(9876.54321);
 let data1: Decimal = data.toDecimalPlaces(1, 0);
 console.info("test Decimal toDecimalPlaces:" + data1.toString()); // 'test Decimal toDecimalPlaces:9876.6'
-data1 = data.toDecimalPlaces(1, Decimal.ROUND_DOWN) // data1：'9876.5'
+data1 = data.toDecimalPlaces(1, Decimal.ROUND_DOWN); // data1：'9876.5'
 ```
 
 ### toExponential
@@ -2049,9 +2049,9 @@ toFixed(decimalPlaces: number): string
 
 ```ts
 let data: Decimal = new Decimal(3.456);
-let data1: string = data.toFixed(0)
+let data1: string = data.toFixed(0);
 console.info("test Decimal toFixed:" + data1); // 'test Decimal toFixed:3'
-data1 = data.toFixed(2) // data1：'3.46'
+data1 = data.toFixed(2); // data1：'3.46'
 data1 = data.toFixed(5) // data1：'3.45600'
 ```
 
@@ -2091,7 +2091,7 @@ toFixed(decimalPlaces: number, rounding: Rounding): string
 ```ts
 let data: Decimal = new Decimal(3.456);
 let data1: string = data.toFixed(2, Decimal.ROUND_DOWN);
-console.info("test Decimal toFixed:" + data1); // b：'test Decimal toFixed:3.45'
+console.info("test Decimal toFixed:" + data1); // data1：'test Decimal toFixed:3.45'
 ```
 
 ### toFraction
@@ -2164,7 +2164,7 @@ data1 = pi.toFraction(1); // data1：'3, 1'
 
 toNearest(n: Value): Decimal
 
-返回一个新的Decimal对象，此Decimal为指定值乘以一个倍数后与原Decimal最接近的值。
+返回一个新的Decimal对象，其值为指定值n的整数倍中最接近原Decimal值的值。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2202,7 +2202,7 @@ console.info("test Decimal toNearest:" + data1.toString()); // 'test Decimal toN
 
 toNearest(n: Value, rounding: Rounding): Decimal
 
-返回一个新的Decimal对象，此Decimal为指定值乘以一个倍数后与原Decimal最接近的值，可按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值为指定值n的整数倍中最接近原Decimal值的值，可按照rounding设置舍入模式。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2656,7 +2656,7 @@ console.info("test Decimal abs:" + data.toString()); // 'test Decimal abs:0.5'
 
 static floor(n: Value): Decimal
 
-返回一个新的Decimal对象，其值为该Decimal向负无穷方向舍入得到的结果。
+返回一个新的Decimal对象，其值为参数n向负无穷方向舍入得到的结果。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2693,7 +2693,7 @@ console.info("test Decimal floor:" + data.toString()); // 'test Decimal floor:1'
 
 static ceil(n: Value): Decimal
 
-返回一个新的Decimal对象，其值为该Decimal向正无穷方向舍入得到的结果。
+返回一个新的Decimal对象，其值为参数n向正无穷方向舍入得到的结果。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2730,7 +2730,7 @@ console.info("test Decimal ceil:" + data.toString()); // 'test Decimal ceil:2'
 
 static trunc(n: Value): Decimal
 
-返回一个新的Decimal对象，其值是将此Decimal截断为整数部分。
+返回一个新的Decimal对象，其值是将参数n截断为整数部分。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -2767,7 +2767,7 @@ console.info("test Decimal trunc:" + data.toString()); // 'test Decimal trunc:2'
 
 static clamp(n: Value, min: Value, max: Value): Decimal
 
-返回一个值为将该Decimal的值限制在min到max范围内的Decimal对象，当大于限制的最大值时返回max，小于限制的最小值时返回min，在范围内返回值不变。
+返回一个值为将参数n的值限制在min到max范围内的Decimal对象，当n大于max时返回max，当n小于min时返回min，在范围内返回值不变。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -3013,14 +3013,14 @@ static mod(x: Value, y: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明               |
 | ------ | --------------- | ---- | ------------------ |
-| x      | [Value](#value) | 是   | 模除运算的被除数。 |
-| y      | [Value](#value) | 是   | 模除运算的除数。   |
+| x      | [Value](#value) | 是   | 模运算的被除数。 |
+| y      | [Value](#value) | 是   | 模运算的除数。   |
 
 **返回值：**
 
 | 类型                | 说明                              |
 | ------------------- | --------------------------------- |
-| [Decimal](#decimal) | 返回模除运算后的Decimal对象实例。 |
+| [Decimal](#decimal) | 返回模运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -3128,7 +3128,7 @@ static pow(base: Value, exponent: Value): Decimal
 | 参数名   | 类型            | 必填 | 说明               |
 | -------- | --------------- | ---- | ------------------ |
 | base     | [Value](#value) | 是   | 幂运算的底数的值。 |
-| exponent | [Value](#value) | 是   | 幂运算的幂的值。   |
+| exponent | [Value](#value) | 是   | 幂运算的指数值。   |
 
 **返回值：**
 
@@ -3825,8 +3825,8 @@ static atan2(y: Value, x: Value): Decimal
 
 | 参数名 | 类型            | 必填 | 说明           |
 | ------ | --------------- | ---- | -------------- |
-| y      | [Value](#value) | 是   | 除法的被除数。 |
-| x      | [Value](#value) | 是   | 除法的除数。   |
+| y      | [Value](#value) | 是   | y坐标值，用于计算y/x的反正切值并确定象限。 |
+| x      | [Value](#value) | 是   | x坐标值，用于计算y/x的反正切值并确定象限。   |
 
 **返回值：**
 
@@ -4211,7 +4211,7 @@ let d1 : Decimal = new Decimal(100000); // d1:'Infinity'
 <!--code_no_check-->
 ```ts
 // /entry/src/main/ets/pages/test.ets
-export function test(){
+export function test() {
   let data : Decimal = new Decimal(1.2345678901234567);
   Decimal.set({
     precision: 5,

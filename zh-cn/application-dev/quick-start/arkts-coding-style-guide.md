@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 目标和适用范围
 
@@ -143,7 +143,7 @@ function findUser(userName: string) {
 
 **【描述】**
 
-常量命名，应该由全大写单词与下划线组成，单词间用下划线分割。常量命名要尽量表达完整的语义。
+常量命名，应该由全大写单词与下划线组成，单词间用下划线分隔。常量命名要尽量表达完整的语义。
 
 **【正例】**
 

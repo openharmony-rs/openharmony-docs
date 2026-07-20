@@ -5,7 +5,6 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:35:20.531Z pushedAt=2026-06-29T02:15:43.565Z -->
 
 ```c
 typedef struct Rdb_DistributedConfig {...} Rdb_DistributedConfig

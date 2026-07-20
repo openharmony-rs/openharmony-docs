@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## TaskPool任务不执行快速定位指导
 
@@ -61,7 +61,7 @@
 
    调用taskpool.execute接口会打印TaskPool**调用态日志**（Task Allocation: taskId:）。 
 
-   **日志输出格式可能与示例有差异, 重点关注日志信息中taskId参数。**
+   **日志输出格式可能与示例有差异，重点关注日志信息中taskId参数。**
    
    定位到目标任务对应的Task Allocation: taskId日志后，在日志中搜索Task Allocation:后跟随的Id号，正常情况会打印**执行态日志**（Task Perform: name）和**结束态日志**（Task PerformTask End: taskId）。
 

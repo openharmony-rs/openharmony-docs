@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在[@ohos.router (页面路由)](../js-apis-router.md)跳转时。
+共享元素转场（sharedTransition）用于在页面跳转时实现共享元素的平滑过渡动画，使同一元素在不同页面间保持视觉连续性，提升用户体验和转场流畅度。可以通过设置组件的sharedTransition属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在[@ohos.router (页面路由)](../js-apis-router.md)跳转时。
 
 > **说明：**
 >
@@ -76,7 +76,7 @@ struct SharedTransitionExample {
         .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 }) 
     }.width('100%').height('100%').alignItems(HorizontalAlign.Start)
     .onClick(() => {
-      this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' })
+      this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' });
     })
   }
 

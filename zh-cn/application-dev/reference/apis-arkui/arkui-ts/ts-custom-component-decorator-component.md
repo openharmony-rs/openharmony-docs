@@ -7,7 +7,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Component装饰器能装饰struct关键字声明的结构体。struct被\@Component装饰后具备组件化的能力，可实现UI的封装与复用，适用于构建可复用的自定义组件、拆分复杂界面等场景。使用时需要实现build方法描述UI，一个struct只能被一个\@Component装饰。开发指南参考：[创建自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。
+\@Component装饰器能装饰struct关键字声明的结构体。struct被\@Component装饰后具备组件化的能力，可实现UI的封装与复用，适用于构建可复用的自定义组件、拆分复杂界面等场景。使用时需要实现build方法描述UI，一个struct只能被一个\@Component装饰。
+
+开发指南参考：[创建自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。
 
 > **说明：**
 >
@@ -31,14 +33,19 @@ const Component: ClassDecorator & ((options: ComponentOptions) => ClassDecorator
 
 | 名称                  | 类型    | 必填  | 说明                                                         |
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
-| options<sup>11+</sup> | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@Component装饰器选项，用于配置组件冻结和全局复用。可通过freezeWhenInactive控制组件冻结，通过reusePool和poolAccepts配置全局复用池，具体属性详见ComponentOptions。缺省时关闭组件冻结和全局复用功能。 |
+| options<sup>11+</sup> | [ComponentOptions](./ts-custom-component-parameter.md#componentoptions) | 否 | \@Component装饰器选项，用于配置组件冻结和全局复用。可通过freezeWhenInactive控制组件冻结（适用于页面路由、TabContent、LazyForEach、Navigation等组件非激活时冻结UI刷新以减少不必要刷新、优化性能的场景），通过reusePool和poolAccepts配置全局复用池（适用于多个父组件共用同类可复用组件、通过if等切换时需跨父组件复用已回收实例的场景），具体属性详见ComponentOptions。缺省时关闭组件冻结和全局复用功能。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| ClassDecorator | 类装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 
 ```ts
 @Entry
-@Component({ freezeWhenInactive: true })
+@Component({ freezeWhenInactive: true }) // 开启组件冻结功能
 struct MyComponent {
   build() {
     Column() {

@@ -262,7 +262,7 @@ up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dia
 
 **Permission level**: system_basic
 
-**Authorization mode**: user_grant
+**Authorization mode**: system_grant
 
 **Since**: 12
 
@@ -625,6 +625,27 @@ Peripherals connected to the host via a USB bus and:
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Since**: 18
+
+## ohos.permission.ACCESS_DDK_USB_SERIAL
+
+Allows a peripheral extension driver to access the USB Serial DDK APIs.
+
+The USB Serial DDK APIs can be used to develop the following types of peripheral extension drivers:
+
+Peripherals connected to the host via a USB bus and:
+
+1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
+2. The peripheral can simulate traditional serial communication through a USB interface.
+
+<!--RP101--><!--RP101End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices: ** PCs/2-in-1 devices | tablets
 
 **Since**: 18
 
@@ -1375,6 +1396,20 @@ Allows an application to install and load self-distributed plug-ins.
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+Allows an application to register audio accessories with the system.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 26.0.0
+
 ## ohos.permission.ALLOW_USE_BM
 
 Allows an application to call BM tools in developer mode.
@@ -1444,5 +1479,19 @@ Allows an application to invoke the smart diagnosis service to obtain data.
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_SE_KEY
+
+Allows an application to generate, use, and delete secure element keys.
+
+<!--RP100--><!--RP100End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0

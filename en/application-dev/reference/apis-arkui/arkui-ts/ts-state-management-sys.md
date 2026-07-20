@@ -1,14 +1,14 @@
 # State Management with Application-level Variables (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhushilin0206-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=79e4597a11fe0470e85a7a6ec526decbb0cbcff4 translatedAt=2026-07-15T07:41:45.810Z pushedAt=2026-07-16T02:15:38.271Z -->
 
-
-The state management module provides data storage, persistent data management, UIAbility data storage, and environment state required by applications.
-
+The state management module provides data storage, persistent data management, UIAbility data storage, and environment state management capabilities required by applications, which is suitable to scenarios such as cross-component state sharing, persistent data storage, and UIAbility data management.
 
 >**NOTE**
 >
@@ -18,6 +18,8 @@ The state management module provides data storage, persistent data management, U
 
 ## SubscribedAbstractProperty\<T\>
 
+An abstract property base class of the state management module, providing property change notification and subscriber management capabilities and supporting the creation of one-way/two-way synchronized properties.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -26,7 +28,7 @@ The state management module provides data storage, persistent data management, U
 
 ### subscribers\_
 
-protected subscribers_: Set\<number\>;
+protected subscribers_: Set\<number\>
 
 A set of subscribers.
 
@@ -36,11 +38,11 @@ A set of subscribers.
 
 |Type  |Description      |
 |-----------|--------------|
-|Set\<number\>  |A set of subscribers.|
+|Set\<number\>  |Set of subscriber IDs. |
 
 ### id\_
 
-private id_;
+private id_
 
 Private member variable ID.
 
@@ -48,7 +50,7 @@ Private member variable ID.
 
 ### info\_
 
-private info\_\?;
+private info_?
 
 Variable information.
 
@@ -56,7 +58,7 @@ Variable information.
 
 ### constructor
 
-constructor(subscribeMe?: IPropertySubscriber,info?: string,);
+constructor(subscribeMe?: IPropertySubscriber,info?: string)
 
 Constructor.
 
@@ -66,14 +68,14 @@ Constructor.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Variable properties.   |
-|info   |string   |No  |Variable information.  |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber used to receive property change notifications. If not passed, no subscription relationship is established.    |
+|info   |string   |No   |Variable information used to identify the subscription relationship. Defaults to **undefined** if not passed.   |
 
 ### id
 
-id(): number;
+id(): number
 
-Obtains the ID.
+Called when obtaining the ID.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,13 +83,13 @@ Obtains the ID.
 
 |Type  |Description      |
 |-----------|--------------|
-|number  |Obtained ID.|
+|number  |Unique ID of the subscription property. |
 
 ### createTwoWaySync
 
-createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay\<T\>;
+createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyTwoWay\<T\>
 
-Creates two-way synchronization.
+Creates two-way synchronization. Data changes are transferred bidirectionally between the data source and the subscriber. When the subscription relationship is no longer needed, call [unlinkSuscriber()](#unlinksuscriber) to cancel the subscription (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)), or call [aboutToBeDeleted()](#abouttobedeleted-1) of the returned [SyncedPropertyTwoWay](#syncedpropertytwowayt) object to cancel the subscription.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,8 +97,8 @@ Creates two-way synchronization.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Variable properties.   |
-|info   |string   |No  |Variable information.  |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber used to receive property change notifications. If not passed, no subscription relationship is established.    |
+|info   |string   |No   |Variable information used to identify the subscription relationship. Defaults to **undefined** if not passed.   |
 
 **Return value**
 
@@ -106,9 +108,9 @@ Creates two-way synchronization.
 
 ### createOneWaySync
 
-createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyOneWay\<T\>;
+createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedPropertyOneWay\<T\>
 
-Creates one-way synchronization.
+Creates one-way synchronization. Data changes are transferred only from the data source to the subscriber. When the subscription relationship is no longer needed, call [unlinkSuscriber()](#unlinksuscriber) to cancel the subscription (the subscriber ID is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1)), or call [aboutToBeDeleted()](#abouttobedeleted-2) of the returned [SyncedPropertyOneWay](#syncedpropertyonewayt) object to cancel the subscription.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,18 +118,18 @@ Creates one-way synchronization.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Variable properties.   |
-|info   |string   |No  |Variable information.  |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber used to receive property change notifications. If not passed, no subscription relationship is established.    |
+|info   |string   |No   |Variable information used to identify the subscription relationship. Defaults to **undefined** if not passed.   |
 
 **Return value**
 
 |Type  |Description      |
 |-----------|--------------|
-|[SyncedPropertyOneWay\<T\>](#syncedpropertytwowayt)  |One-way synchronized property.|
+|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |One-way synchronized property. |
 
 ### unlinkSuscriber
 
-unlinkSuscriber(subscriberId: number): void;
+unlinkSuscriber(subscriberId: number): void
 
 Removes a subscriber.
 
@@ -137,11 +139,11 @@ Removes a subscriber.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscriberId   |number   |Yes  |ID of the subscriber to remove.   |
+|subscriberId   |number   |Yes   |ID of the subscriber to remove, obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1).    |
 
 ### notifyHasChanged
 
-protected notifyHasChanged(newValue: T): void;
+protected notifyHasChanged(newValue: T): void
 
 Notifies subscribers that the value has changed.
 
@@ -155,7 +157,7 @@ Notifies subscribers that the value has changed.
 
 ### notifyPropertyRead
 
-protected notifyPropertyRead(): void;
+protected notifyPropertyRead(): void
 
 Notifies subscribers that the property has been read.
 
@@ -163,7 +165,7 @@ Notifies subscribers that the property has been read.
 
 ### numberOfSubscrbers
 
-numberOfSubscrbers(): number;
+numberOfSubscrbers(): number
 
 Obtains the number of subscribers.
 
@@ -177,11 +179,13 @@ Obtains the number of subscribers.
 
 ## IPropertySubscriber
 
+A property subscriber API, which defines the methods that the subscriber needs to implement to receive property change notifications and lifecycle callbacks.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### id
 
-id(): number;
+id(): number
 
 Obtains the ID.
 
@@ -191,11 +195,11 @@ Obtains the ID.
 
 |Type  |Description      |
 |-----------|--------------|
-|number  |Variable ID obtained.|
+|number  |Unique ID of the subscriber. |
 
 ### aboutToBeDeleted
 
-aboutToBeDeleted(owningView?: IPropertySubscriber): void;
+aboutToBeDeleted(owningView?: IPropertySubscriber): void
 
 Called when the object is about to be destroyed.
 
@@ -205,17 +209,17 @@ Called when the object is about to be destroyed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|owningView   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Component that owns the current property.   |
+|owningView   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Custom component that owns the current property. If not passed, no associated custom component is specified.    |
 
 ## SyncedPropertyTwoWay\<T\>
 
-Inherits from [SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt). Represents a property with two-way synchronization.
+Inherits from [SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt) to implement two-way state data synchronization between parent and child components.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### source\_
 
-private source_;
+private source_
 
 Data source for the two-way synchronized property.
 
@@ -223,7 +227,7 @@ Data source for the two-way synchronized property.
 
 ### constructor
 
-constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string);
+constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string)
 
 Constructor.
 
@@ -234,12 +238,12 @@ Constructor.
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
 |source   |[SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt)   |Yes  |Data source for the two-way synchronized property.   |
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Subscriber.  |
-|info  |string   |No  |Additional information about the subscriber.  |
+|subscribeMe|[IPropertySubscriber](#ipropertysubscriber)|No|Subscriber used to receive property change notifications. If not passed, no subscription relationship is established.|
+|info|string|No|Variable information used to identify the subscription relationship. If not passed, the default value is **undefined**.|
 
 ### aboutToBeDeleted
 
-aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void;
+aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 Called when the object is about to be destroyed.
 
@@ -249,11 +253,11 @@ Called when the object is about to be destroyed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Subscriber to remove.   |
+|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber to remove. If not passed, all subscribers are removed.    |
 
 ### hasChanged
 
-hasChanged(newValue: T): void;
+hasChanged(newValue: T): void
 
 Notifies subscribers that the property value has changed.
 
@@ -263,11 +267,11 @@ Notifies subscribers that the property value has changed.
 
 |Name  |Type  |Mandatory  |Description  |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |Instance of the T type.    |
+|newValue   |T   |Yes   |New value after the change.     |
 
 ### get
 
-get(): T;
+get(): T
 
 Obtains the current value of the property.
 
@@ -277,11 +281,11 @@ Obtains the current value of the property.
 
 |Type  |Description    |
 |------|------------|
-|T   |Instance of the T type.   |
+|T   |Current data value of the two-way synchronized property.    |
 
 ### set
 
-set(newValue: T): void;
+set(newValue: T): void
 
 Sets a new value for the property.
 
@@ -291,17 +295,17 @@ Sets a new value for the property.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |Instance of the T type.   |
+|newValue   |T   |Yes   |New value to set.    |
 
 ## SyncedPropertyOneWay\<T\>
 
-Inherits from [SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt). Represents a property with one-way synchronization.
+Inherits from [SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt) to receive one-way synchronization of the parent component's state value. The value is updated when the parent component state changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### wrappedValue\_
 
-private wrappedValue_;
+private wrappedValue_
 
 Value used for one-way binding.
 
@@ -309,15 +313,15 @@ Value used for one-way binding.
 
 ### source\_
 
-private source_;
+private source_
 
-Data source for the two-way synchronized property.
+A data source for the one-way synchronized property.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor
 
-constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string);
+constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string)
 
 Constructor.
 
@@ -328,12 +332,12 @@ Constructor.
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
 |source   |[SubscribedAbstractProperty\<T\>](#subscribedabstractpropertyt)   |Yes  |Data source for the one-way synchronized property.   |
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Subscriber.  |
-|info  |string   |No  |Additional information about the subscriber.  |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber used to receive property change notifications. If not passed, no subscription relationship is established.   |
+|info  |string   |No   |Variable information used to identify the subscription relationship. Defaults to **undefined** if not passed.   |
 
 ### aboutToBeDeleted
 
-aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void;
+aboutToBeDeleted(unsubscribeMe?: IPropertySubscriber): void
 
 Called when the object is about to be destroyed.
 
@@ -343,11 +347,11 @@ Called when the object is about to be destroyed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No  |Subscriber to remove.   |
+|unsubscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |No   |Subscriber to remove. If not passed, all subscribers are removed.    |
 
 ### hasChanged
 
-hasChanged(newValue: T): void;
+hasChanged(newValue: T): void
 
 Notifies subscribers that the property value has changed.
 
@@ -357,13 +361,13 @@ Notifies subscribers that the property value has changed.
 
 |Name  |Type  |Mandatory  |Description  |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |Instance of the T type.    |
+|newValue   |T   |Yes   |New value after the change.     |
 
 ### get
 
-get(): T;
+get(): T
 
-Obtains the current value of the property.
+Obtains data.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -371,11 +375,11 @@ Obtains the current value of the property.
 
 |Type  |Description    |
 |------|------------|
-|T   |Instance of the T type.   |
+|T   |Current data value of the one-way synchronized property.    |
 
 ### set
 
-set(newValue: T): void;
+set(newValue: T): void
 
 Sets a new value for the property.
 
@@ -385,17 +389,17 @@ Sets a new value for the property.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |Instance of the T type.   |
+|newValue   |T   |Yes   |New value to set.    |
 
 ## ISinglePropertyChangeSubscriber\<T\>
 
-Inherits from [IPropertySubscriber](#ipropertysubscriber). Represents a subscriber that subscribes to changes in a property value.
+Inherits from [IPropertySubscriber](#ipropertysubscriber) to subscribe to changes of a single property value. Notifications are received when the subscribed property changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### hasChanged
 
-hasChanged(newValue: T): void;
+hasChanged(newValue: T): void
 
 Notifies subscribers that the property value has changed.
 
@@ -405,17 +409,19 @@ Notifies subscribers that the property value has changed.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|newValue   |T   |Yes  |Instance of the T type.   |
+|newValue   |T   |Yes   |New value after the change.    |
 
 ## SubscribaleAbstract
+
+A subscribable abstract class used to manage a collection of owned properties, providing the capabilities to add, remove, and notify property changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### owningProperties\_
 
-private owningProperties_: Set\<number\>;
+private owningProperties_: Set\<number\>
 
-A set of property IDs that this instance owns.
+A collection of owned properties.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -423,21 +429,21 @@ A set of property IDs that this instance owns.
 
 |Type  |Description    |
 |------|------------|
-|Set\<number\>   |A set of property IDs.   |
+|Set\<number\>   |Set of the IDs of the subscribers who own properties.    |
 
 ### constructor
 
-constructor();
+constructor()
 
-Constructor.
+A constructor.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### notifyPropertyHasChanged
 
-protected notifyPropertyHasChanged(propName: string, newValue: any): void;
+protected notifyPropertyHasChanged(propName: string, newValue: any): void
 
-Notify subscribers that a property value has changed.
+Called when notifying a property change.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -446,13 +452,13 @@ Notify subscribers that a property value has changed.
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
 |propName   |string   |Yes  |Property name.   |
-|newValue   |any   |No  |New value after the change.  |
+|newValue   |any   |Yes   |New value after the change.   |
 
 ### addOwningProperty
 
-public addOwningProperty(subscriber: IPropertySubscriber): void;
+public addOwningProperty(subscriber: IPropertySubscriber): void
 
-Adds a subscriber to the list of owned properties.
+Adds a subscriber to the list of owned properties. When the property is no longer needed, call [removeOwningProperty](#removeowningproperty) or [removeOwningPropertyById](#removeowningpropertybyid) to remove the subscriber from the property list.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,11 +466,11 @@ Adds a subscriber to the list of owned properties.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscriber   |[IPropertySubscriber](#ipropertysubscriber)   |Yes  |Subscriber.   |
+|subscriber   |[IPropertySubscriber](#ipropertysubscriber)   |Yes   |Subscriber to add, which will receive property change notifications.    |
 
 ### removeOwningProperty
 
-public removeOwningProperty(property: IPropertySubscriber): void;
+public removeOwningProperty(property: IPropertySubscriber): void
 
 Removes a subscriber from the list of owned properties.
 
@@ -474,11 +480,11 @@ Removes a subscriber from the list of owned properties.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|property   |[IPropertySubscriber](#ipropertysubscriber)   |Yes  |Subscriber to remove.   |
+|property|[IPropertySubscriber](#ipropertysubscriber)|Yes|Subscriber to remove, which must have been added through [addOwningProperty](#addowningproperty).|
 
 ### removeOwningPropertyById
 
-public removeOwningPropertyById(subscriberId: number): void;
+public removeOwningPropertyById(subscriberId: number): void
 
 Removes a subscriber from the list of owned properties by ID.
 
@@ -488,21 +494,25 @@ Removes a subscriber from the list of owned properties by ID.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|subscriberId   |number   |Yes  |ID of the subscriber to remove.   |
+|subscriberId   |number   |Yes   |ID of the subscriber to remove. It must be the ID of the subscriber added through [addOwningProperty](#addowningproperty) and is obtained through [IPropertySubscriber](#ipropertysubscriber).[id()](#id-1).    |
 
 ## Environment
+
+An environment class used to manage the environment state during application runtime, providing access to device environment properties.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor
 
-constructor();
+constructor()
 
-Constructor.
+A constructor.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## PersistentStorage
+
+A persistent storage class used to manage persistent data of applications. It can associate specified AppStorage properties with persistent storage to persistently save and restore data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -510,9 +520,9 @@ Constructor.
 
 ### constructor
 
-constructor(appStorage: AppStorage, storage: Storage);
+constructor(appStorage: AppStorage, storage: Storage)
 
-Constructor.
+A constructor.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -520,17 +530,17 @@ Constructor.
 
 |Name  |Type  |Mandatory  |Description            |
 |---------|-----------|------------|--------------|
-|appStorage   |AppStorage   |Yes  |Application-level storage.   |
-|storage   |Storage   |Yes  |Storage.   |
+|appStorage   |AppStorage   |Yes   |Application-level storage object. PersistentStorage performs persistent management based on this object.    |
+|storage   |Storage   |Yes   |Persistent storage object, used to actually read and write persistent data.    |
 
 ## appStorage
 
-declare const appStorage: AppStorage;
+declare const appStorage: AppStorage
 
-Defines the application-level storage.
+An application-level global state storage instance that provides state data storage and access capabilities within the application scope.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 |Type   |Description         |
 |----------|------------|
-|AppStorage   |Application-level storage. |
+|AppStorage   |Application-level global state storage instance.  |

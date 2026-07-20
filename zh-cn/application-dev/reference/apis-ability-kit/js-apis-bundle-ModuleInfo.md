@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 应用程序的模块信息。
@@ -24,4 +24,4 @@
 | 名称            | 类型   | 只读 | 可选 | 说明     |
 | --------------- | ------ | ---- | ---- | -------- |
 | moduleName      | string | 是   | 否   | 模块名称。 |
-| moduleSourceDir | string | 是   | 否   | 安装目录。不能拼接路径访问资源文件，请使用[资源管理接口](../apis-localization-kit/js-apis-resource-manager.md)访问资源。 |
+| moduleSourceDir | string | 是   | 否   | 安装目录。不能拼接路径访问资源文件，请使用[@ohos.resourceManager (资源管理)](../apis-localization-kit/js-apis-resource-manager.md)访问资源。 |
