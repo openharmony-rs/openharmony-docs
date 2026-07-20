@@ -36,15 +36,19 @@ Manager::nodeAPI_->setAttribute(text, NODE_HEIGHT, &textHeightItem);
 
 ### 设置文本内容
 
-通过[NODE_TEXT_CONTENT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content)属性设置Text组件的基本文本内容。
+- 通过[NODE_TEXT_CONTENT](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content)属性设置Text组件的基本文本内容。
 
-<!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
+  <!-- @[text_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
-``` C++
-const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
-ArkUI_AttributeItem contentItem = {.string = textContent};
-Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_CONTENT, &contentItem);
-```
+  ``` C++
+  const char *textContent = "this is text 2 this is text 2 this is text 2!!!! ";
+  ArkUI_AttributeItem contentItem = {.string = textContent};
+  Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_CONTENT, &contentItem);
+  ```
+
+- 通过[NODE_TEXT_CONTENT_WITH_STYLED_STRING](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)属性设置文本内容。
+
+  StyledString提供了更高级的文本排版功能，支持为文本的不同部分设置不同样式，包括字体大小、颜色、占位符等。关于StyledString的详细使用方法，请参考[使用属性字符串](./ndk-styled-string.md)文档。
 
 ## 设置文本样式
 
@@ -353,10 +357,6 @@ void setText6(ArkUI_NodeHandle &text6)
     Manager::nodeAPI_->addChild(text6, imageSpan);
 }
 ```
-
-### 使用StyledString
-
-StyledString提供了更高级的文本排版功能，支持为文本的不同部分设置不同样式，包括字体大小、颜色、占位符等。关于StyledString的详细使用方法，请参考[使用属性字符串](./ndk-styled-string.md)文档。
 
 ## 设置高级文本效果
 
