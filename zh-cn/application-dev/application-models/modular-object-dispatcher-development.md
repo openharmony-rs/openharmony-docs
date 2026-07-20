@@ -34,11 +34,11 @@ ModularObjectDispatcher的调用流程分为以下几个阶段：
 
 3. 获取类型描述符：建议先调用[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)确认远端服务支持元数据，再通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取TypeDescriptor句柄。该调用会触发类型库元数据通过IPC从远端拉取并缓存在本地，后续查询直接命中缓存。
 
-4. 查询接口元数据：基于类型描述符，客户端可在运行时遍历服务端定义的全部接口与方法（并解析每个方法对应的MemberID）、结构体（含字段名与字段类型）、枚举（含枚举值名称与取值），以及类型库版本、主服务接口名等。
+4. 查询接口元数据：基于类型描述符，客户端可在运行时遍历服务端定义的全部接口、方法、结构体（含字段名与字段类型）、枚举（含枚举值名称与取值），以及类型库版本、主服务接口名等。
 
-5. 获取方法参数类型：调用某个方法前，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)与[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)查询返回值与各入参的类型信息，以便严格按照类型构造Variant，避免类型不匹配错误。
+5. 获取方法参数类型与MemberID：调用某个方法前，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)与[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)查询返回值与各入参的类型信息，并通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，以便严格按照类型构造Variant，避免类型不匹配错误。
 
-6. 构造参数并发起动态调用：先用[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，再通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。分发器将参数序列化后经IPC发往远端，再将返回值反序列化到出参Variant。
+6. 构造Variant参数并动态调用：通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)传入MemberID和构造的Variant参数发起调用。分发器将参数序列化后经IPC发往远端，再将返回值反序列化到出参Variant。
 
 7. 释放资源：分发器、类型描述符、各类容器句柄、Variant和TypeInfo对象均需按所有权规则调用对应的接口释放。
 
@@ -332,7 +332,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 ## 获取方法的参数类型
 
-动态调用方法前，客户端必须严格按照服务端定义的类型构造参数，否则将返回类型不匹配错误。此场景用于在调用前获取方法的返回值类型和每个入参的类型与名称，确保传入的Variant与期望类型完全匹配，适用于需要构造合规参数以发起调用的场景。
+动态调用方法前，需先查询方法的返回值类型及各入参的类型与名称，据此构造合规的Variant参数，避免类型不匹配导致调用失败。
 
 ### 获取方法入参类型和名称
 
@@ -429,7 +429,7 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 
 ## 通过动态接口执行动态调用
 
-此场景是动态调用的核心环节。客户端只需提供方法对应的MemberID和构造好的参数，即可在运行时发起IPC调用并获取返回值，整个过程无需编译期绑定服务端接口，适用于接口在运行时才能确定的通用调用框架、脚本引擎、动态测试工具等场景。
+此场景是动态调用的核心环节。客户端通过方法对应的MemberID与已构造的参数，即可在运行时发起IPC调用并获取返回值，无需编译期绑定服务端接口，适用于通用调用框架、脚本引擎、动态测试工具等运行时才能确定接口的场景。
 
 通过方法名解析MemberID，构造参数后发起动态调用。MemberID可通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)接口从TypeDescriptor查询，具体参见[查询所有接口和接口下的方法信息](#查询所有接口和接口下的方法信息)。
 
@@ -471,12 +471,12 @@ OH_LOG_INFO(LOG_APP, "addResult :%{public}d", addResult);
 > **说明**
 >
 > CallMethod采用双层错误处理机制：
-> - **框架级错误**（返回值）：IPC通信、元数据加载、参数类型校验等框架层面的问题。
-> - **方法级错误**（pMethodErrCode输出参数）：远端方法执行返回的业务错误码，0表示方法执行成功。
+> - 框架级错误（返回值）：IPC通信、元数据加载、参数类型校验等框架层面的问题。
+> - 方法级错误（pMethodErrCode输出参数）：远端方法执行返回的业务错误码，0表示方法执行成功。
 
 ## 传递复杂类型参数
 
-当服务端方法涉及数组、向量、集合、映射等容器类型或结构体参数时，简单的标量Variant无法满足需求。此场景用于在动态调用中构造和传递复杂类型数据，使客户端能够调用服务端定义的任意签名的接口，适用于需要传递批量数据、键值对或复合结构体的场景。
+当服务端方法参数为数组、向量、集合、映射或结构体等复杂类型时，需构造对应的复合Variant进行传递，以支持调用任意签名的接口，适用于需传递批量数据、键值对或复合结构体的场景。
 
 当方法参数包含容器类型（数组、向量、集合、映射）或结构体时，需先创建对应的容器实例并填充数据，再将容器句柄包装为Variant参数。
 
