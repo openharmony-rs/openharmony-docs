@@ -127,12 +127,12 @@ let length: number = (<string>value).length;
 <!-- @[as_keyword_type_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
-let asertValue: Object = 'Hello, ArkTS';
+let assertValueObj: Object = 'Hello, ArkTS';
 
 // 使用as关键字进行类型断言
-if (typeof asertValue === 'string') {
-  let asertLength: number = (asertValue as string).length;
-  console.info(`${asertLength}`); // 13
+if (typeof assertValueObj === 'string') {
+  let assertLength: number = (assertValueObj as string).length;
+  console.info(`${assertLength}`); // 13
 }
 
 // 断言为联合类型
@@ -140,20 +140,20 @@ let mixedValue: Object = 42;
 let numValue: number | string = mixedValue as number | string;
 
 // 断言为自定义类型
-interface AsertUser {
+interface AssertUser {
   id: number;
   name: string;
   email: string;
 }
 
-let userData: AsertUser = {
+let userData: AssertUser = {
   id: 1,
   name: 'Alice',
   email: 'alice@example.com'
 };
 
-let asertUser: AsertUser = userData as AsertUser;
-console.info(`${asertUser.name}`); // Alice
+let assertUser: AssertUser = userData as AssertUser;
+console.info(`${assertUser.name}`); // Alice
 ```
 
 ### 类型断言的使用限制
@@ -166,7 +166,7 @@ console.info(`${asertUser.name}`); // Alice
 let runtimeTypeValue: Object = 123;
 
 // 类型断言不会将数字转换为字符串
-let assertedString = runtimeTypeValue as string;
+let assertedString: string = runtimeTypeValue as string;
 
 console.info(`${typeof assertedString}`); // "number"（运行时类型仍然是number）
 assertedString.toUpperCase(); // 运行时错误：toUpperCase is not a function
@@ -238,17 +238,17 @@ interface MockDocument {
   getElementById: (id: string) => HTMLInputElement;
 }
 
-let document: MockDocument = {
+let mockDoc: MockDocument = {
   getElementById: (id: string): HTMLInputElement => {
     let element: HTMLInputElement = { value: '' };
     return element;
   }
 };
-let inputElement = document.getElementById('username') as HTMLInputElement;
+let inputElement = mockDoc.getElementById('username') as HTMLInputElement;
 inputElement.value = 'Alice';
 
 // 或者使用可选链
-let element = document.getElementById('password') as HTMLInputElement | null;
+let element = mockDoc.getElementById('password') as HTMLInputElement | null;
 if (element) {
   console.info(`${element.value}`);
 }

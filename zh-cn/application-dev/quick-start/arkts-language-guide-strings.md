@@ -500,7 +500,8 @@ let slice2: string = extractText.slice(-5);        // "World"（负索引）
 let slice3: string = extractText.slice(6, -1);     // "Worl"
 
 // substring vs slice
-// substring自动调整参数顺序，slice支持负索引
+// substring自动调整参数顺序，负数视为0；slice不调整参数顺序，支持负索引
+let subNeg: string = extractText.substring(-2, 3);  // "Hel"（-2被视为0）
 let reversed: string = extractText.substring(5, 0);  // "Hello"（自动调整）
 let reversedSlice: string = extractText.slice(5, 0);  // ""（不调整）
 ```
@@ -576,8 +577,8 @@ let startsWithWorld: boolean = startsWithText.startsWith('World');  // false
 let startsWithWorld2: boolean = startsWithText.startsWith('World', 6);  // true
 
 // 手动前缀检查
-function hasPrefix(startsWithText: string, prefix: string): boolean {
-  return startsWithText.indexOf(prefix) === 0;
+function hasPrefix(text: string, prefix: string): boolean {
+  return text.indexOf(prefix) === 0;
 }
 ```
 
@@ -598,9 +599,9 @@ let endsWithHello: boolean = endsWithText.endsWith('Hello');  // false
 let endsWithOrld: boolean = endsWithText.endsWith('orld', 11);  // true
 
 // 手动后缀检查
-function hasSuffix(endsWithText: string, suffix: string): boolean {
-  let startPos: number = endsWithText.length - suffix.length;
-  return startPos >= 0 && endsWithText.indexOf(suffix, startPos) === startPos;
+function hasSuffix(text: string, suffix: string): boolean {
+  let startPos: number = text.length - suffix.length;
+  return startPos >= 0 && text.indexOf(suffix, startPos) === startPos;
 }
 ```
 
@@ -718,18 +719,18 @@ let commonMethodsText: string = 'Hello World';
 // replace：替换
 let commonMethodsReplaced: string = commonMethodsText.replace('World', 'ArkTS');  // "Hello ArkTS"
 
-// replaceAll：替换所有（ES2021）
+// replaceAll：替换所有（ES2021，ArkTS支持）
 let multiple: string = 'aa bb aa';
 let allReplaced: string = multiple.replaceAll('aa', 'xx');  // "xx bb xx"
 
 // trim：去除首尾空格
-let trimmed: string = '  commonMethodsText  '.trim();  // "commonMethodsText"
+let trimmed: string = '  Hello ArkTS  '.trim();  // "Hello ArkTS"
 
 // trimStart：去除开头空格
-let trimStart: string = '  commonMethodsText  '.trimStart();  // "commonMethodsText  "
+let trimStart: string = '  Hello ArkTS  '.trimStart();  // "Hello ArkTS  "
 
 // trimEnd：去除结尾空格
-let trimEnd: string = '  commonMethodsText  '.trimEnd();  // "  commonMethodsText"
+let trimEnd: string = '  Hello ArkTS  '.trimEnd();  // "  Hello ArkTS"
 
 // padStart：左侧填充
 let padded: string = '5'.padStart(3, '0');  // "005"
@@ -791,7 +792,7 @@ let regexReplaced: string = regexText.replace(/fox/, 'cat');  // "The quick brow
 let regexParts: string[] = 'a1b2c3'.split(/\d/);
 console.info(`[${regexParts.join(', ')}]`);  // a, b, c, 
 
-// matchAll：全局匹配（ES2020）
+// matchAll：全局匹配（ES2020，ArkTS支持）
 let allMatches: IterableIterator<RegExpMatchArray> = regexText.matchAll(/\w+/g);
 ```
 

@@ -102,7 +102,7 @@ let outputName: string = 'ArkTS';
 const version: number = 1.0;
 
 console.info(`${outputName}`);              // ArkTS
-console.info(`${version.toString()}`);      // 1
+console.info(`${version}`);      // 1
 console.info(`Name: ${outputName}`);   // Name: ArkTS
 console.info(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
 console.warn(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS

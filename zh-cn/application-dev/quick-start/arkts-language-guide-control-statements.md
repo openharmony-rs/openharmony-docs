@@ -850,7 +850,7 @@ interface User {
 
 ``` TypeScript
 // 参数验证后提前退出
-function processData(data: string): void {
+function processData(data: string | null | undefined): void {
   if (data === null || data === undefined) {
     console.info('数据无效');
     return;  // 提前退出
