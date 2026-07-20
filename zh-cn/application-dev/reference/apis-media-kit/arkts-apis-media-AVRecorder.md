@@ -58,7 +58,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 | -------- | --------------------------------------- |
 | 201      | Permission denied. Return by callback.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.    |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operate not permit. Return by callback. |
 | 5400105  | Service died. Return by callback.       |
 
 **示例：**
@@ -135,7 +135,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 | -------- | -------------------------------------- |
 | 201      | Permission denied. Return by promise.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.    |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400105  | Service died. Return by promise.       |
 
 **示例：**
@@ -264,8 +264,8 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 5400102  | Operation not allowed. Return by callback. |
-| 5400103  | I/O error. Return by callback.           |
+| 5400102  | Operate not permit. Return by callback. |
+| 5400103  | IO error. Return by callback.           |
 | 5400105  | Service died. Return by callback.       |
 
 **示例：**
@@ -312,7 +312,7 @@ getInputSurface(): Promise\<string>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400103  | IO error. Return by promise.           |
 | 5400105  | Service died. Return by promise.       |
 
@@ -493,7 +493,7 @@ start(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operate not permit. Return by callback. |
 | 5400103  | IO error. Return by callback.           |
 | 5400105  | Service died. Return by callback.       |
 
@@ -535,7 +535,7 @@ start(): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400103  | IO error. Return by promise.           |
 | 5400105  | Service died. Return by promise.       |
 
@@ -574,7 +574,7 @@ pause(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operate not permit. Return by callback. |
 | 5400103  | IO error. Return by callback.           |
 | 5400105  | Service died. Return by callback.       |
 
@@ -616,7 +616,7 @@ pause(): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400103  | IO error. Return by promise.           |
 | 5400105  | Service died. Return by promise.       |
 
@@ -655,7 +655,7 @@ resume(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operate not permit. Return by callback. |
 | 5400103  | IO error. Return by callback.           |
 | 5400105  | Service died. Return by callback.       |
 
@@ -697,7 +697,7 @@ resume(): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400103  | IO error. Return by promise.           |
 | 5400105  | Service died. Return by promise.       |
 
@@ -738,7 +738,7 @@ stop(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operate not permit. Return by callback. |
 | 5400103  | IO error. Return by callback.           |
 | 5400105  | Service died. Return by callback.       |
 
@@ -782,7 +782,7 @@ stop(): Promise\<void>
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400103  | IO error. Return by promise.           |
 | 5400105  | Service died. Return by promise.       |
 
@@ -821,7 +821,7 @@ reset(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 5400103  | I/O error. Return by callback.     |
+| 5400103  | IO error. Return by callback.     |
 | 5400105  | Service died. Return by callback. |
 
 **示例：**
@@ -860,7 +860,7 @@ reset(): Promise\<void>
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 5400103  | I/O error. Return by promise.     |
+| 5400103  | IO error. Return by promise.     |
 | 5400105  | Service died. Return by promise. |
 
 **示例：**
@@ -938,7 +938,7 @@ release(): Promise\<void>
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 5400105  | Service died. Return by promise. |
+| 5400105  | Service died. Return by callback. |
 
 **示例：**
 
@@ -975,8 +975,8 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
-| 5400103  | I/O error. Return by callback.             |
+| 5400102  | Operation not allowed. |
+| 5400103  | I/O error.             |
 | 5400105  | Service died. Return by callback.          |
 
 **示例**：
@@ -1019,8 +1019,8 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
-| 5400103  | I/O error. Return by promise.    |
+| 5400102  | Operation not allowed.           |
+| 5400103  | I/O error.                       |
 | 5400105  | Service died. Return by promise. |
 
 **示例**：
@@ -1064,7 +1064,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operation not allowed. |
 | 5400105  | Service died. Return by callback.          |
 
 **示例**：
@@ -1108,7 +1108,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operation not allowed.           |
 | 5400105  | Service died. Return by promise. |
 
 **示例**：
@@ -1147,7 +1147,7 @@ getAvailableEncoder(callback: AsyncCallback\<Array\<EncoderInfo>>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operation not allowed. |
 | 5400105  | Service died. Return by callback.          |
 
 **示例**：
@@ -1191,7 +1191,7 @@ getAvailableEncoder(): Promise\<Array\<EncoderInfo>>
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operation not allowed.           |
 | 5400105  | Service died. Return by promise. |
 
 **示例**：
@@ -1236,7 +1236,7 @@ getAVRecorderConfig(callback: AsyncCallback\<AVRecorderConfig>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operate not permit. Return by callback. |
 | 5400103  | IO error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
 
@@ -1279,7 +1279,7 @@ getAVRecorderConfig(): Promise\<AVRecorderConfig>;
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. Return by promise. |
+| 5400102  | Operate not permit. Return by promise. |
 | 5400103  | IO error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
 
@@ -1507,7 +1507,7 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400103  | I/O error. Return by callback.             |
+| 5400103  | IO error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
 
 **示例：**
