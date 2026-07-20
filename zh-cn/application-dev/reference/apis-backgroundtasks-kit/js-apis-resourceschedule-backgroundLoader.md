@@ -1,4 +1,4 @@
-# @ohos.resourceschedule.workScheduler (延迟任务调度)
+# @ohos.resourceschedule.backgroundLoader (后台加载任务)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供后台加载任务的注册、取消、查询的能力。在开发过程中，期望通过后台预先加载应用数据实现优化应用启动体验的厂家，可以调用本模块接口注册的后台加载任务，在系统空闲时根据内存、电量、壳温等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
+本模块提供后台加载任务的注册、取消、查询的能力。在开发过程中，期望通过后台预先加载应用数据实现优化应用启动体验的开发者，可以调用本模块接口注册的后台加载任务，在系统空闲时根据内存、电量、壳温等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
 >  **说明：**
 >
@@ -56,17 +56,17 @@ registerTask(taskInfo: TaskInfo): void
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         console.info('Callee onCreate is called');
         try {
-            // 01.声明后台预取的回调方法，参数名使用后台预取定义好的回调方法
+            // 01.声明后台加载的回调方法，参数名使用后台加载定义好的回调方法
             this.callee.on(backgroundLoader.ON_START, BackgroundPrefetchOnStart);
             this.callee.on(backgroundLoader.ON_STOP, BackgroundPrefetchOnStop);
 
-            // 02.定义后台预取任务的参数
+            // 02.定义后台加载任务的参数
             let taskInfo: backgroundLoader.TaskInfo = {
                 taskId: 1,
                 abilityName: 'TestAppMainUIAbility'
             }
 
-            // 03.注册启动后台预取任务，系统将任务记录持久化保存，用于后续调度
+            // 03.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
             backgroundLoader.registerTask(taskInfo);
             console.info('registerTask success');
         } catch (error) {
@@ -111,17 +111,17 @@ unregisterTask(taskInfo: TaskInfo): void
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         console.info('Callee onCreate is called');
         try {
-            // 01.声明后台预取的回调方法，参数名使用后台预取定义好的回调方法
+            // 01.声明后台加载的回调方法，参数名使用后台加载定义好的回调方法
             this.callee.on(backgroundLoader.ON_START, BackgroundPrefetchOnStart);
             this.callee.on(backgroundLoader.ON_STOP, BackgroundPrefetchOnStop);
 
-            // 02.定义后台预取任务的参数
+            // 02.定义后台加载任务的参数
             let taskInfo: backgroundLoader.TaskInfo = {
                 taskId: 1,
                 abilityName: 'TestAppMainUIAbility'
             }
 
-            // 03.注册启动后台预取任务，系统将任务记录持久化保存，用于后续调度
+            // 03.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
@@ -181,14 +181,14 @@ getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 const ON_START: string
 
-应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee).
+应用需要实现后台加载任务onStart的回调方法， 在这个回调方法中实现后台处理应用页面数据的加载逻辑。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 
 代码示例参考finishTask函数的完整实例。
 
 ## backgroundLoader.ON_STOP
 
 const ON_STOP: string
 
-应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee).
+应用需要实现后台加载任务onStop的回调方法，处理后台加载任务被异常终止的情况。应用需要将回调方法使用ON_START作为方法名通过Callee注册给系统。系统会通过Caller实现该回调。Callee/Caller回调机制的介绍请参考[Callee](../apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)。 
 代码示例参考finishTask函数的完整实例。
 
 ## backgroundLoader.finishTask
@@ -231,7 +231,7 @@ finishTask(taskInfo: TaskInfo): void
     let taskInfo =  new backgroundLoader.TaskInfo();
     pdata.readParcelable(taskInfo);
 
-    console.info(`background Prefetch Task OnStart, taskInfo `${taskInfo.taskId});
+    console.info(`background loader Task OnStart, taskInfo `${taskInfo.taskId});
     // TODO：执行应用后台加载的业务逻辑
 
     // 通知系统预取任务处理完成，可以提前冻结应用。
@@ -243,14 +243,14 @@ finishTask(taskInfo: TaskInfo): void
     let taskStopInfo = new backgroundLoader.TaskStopInfo();
     pdata.readParcelable(taskStopInfo);
 
-    console.info(`background Prefetch Task OnStop, taskInfo `${taskInfo.taskId});
+    console.info(`background loader Task OnStop, taskInfo `${taskInfo.taskId});
   }
 
   export default class TestAppMainUIAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         console.info('Callee onCreate is called');
         try {
-            // 03.声明后台预取的回调方法，参数名使用后台预取定义好的回调方法
+            // 03.声明后台加载的回调方法，参数名使用后台加载定义好的回调方法
             this.callee.on(backgroundLoader.ON_START, BackgroundPrefetchOnStart);
             this.callee.on(backgroundLoader.ON_STOP, BackgroundPrefetchOnStop);
 
@@ -259,7 +259,7 @@ finishTask(taskInfo: TaskInfo): void
                 abilityName: 'TestAppMainUIAbility'
             }
 
-            // 04.注册启动后台预取任务，系统将任务记录持久化保存，用于后续调度
+            // 04.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
