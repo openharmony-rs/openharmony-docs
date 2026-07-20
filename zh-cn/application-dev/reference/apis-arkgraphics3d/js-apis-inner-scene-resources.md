@@ -819,7 +819,7 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 流ID，仅包含数字。对应大于0的整数。 |
+| surfaceId | string | 是 | 否 | 流ID，由数字字符组成，数字取值必须为大于0的整数。 |
 
 ## Effect<sup>21+</sup>
 
