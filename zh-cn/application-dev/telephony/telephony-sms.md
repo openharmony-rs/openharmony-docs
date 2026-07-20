@@ -122,7 +122,7 @@ struct JumpMessage {
             bundleName: "com.ohos.mms",
             abilityName: "com.ohos.mms.MainAbility",
             parameters: {
-                contactObjects: JSON.stringify(params),
+                contactObjects: JSON.stringify(params),  //开启混淆后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称
                 pageFlag: "conversation",
                 // 这里填写短信内容。
                 content: "我是短信具体内容"
