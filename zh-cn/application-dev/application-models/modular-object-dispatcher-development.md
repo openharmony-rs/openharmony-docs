@@ -340,7 +340,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 <!-- @[modular_object_extension_dispatcher_getMethodParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C
+``` C++
 static void QueryMethodParamInfo(const char *interfaceName, const char *methodName)
 {
     // 获取方法的参数数量，逐个遍历参数名和参数类型
@@ -370,7 +370,7 @@ static void QueryMethodParamInfo(const char *interfaceName, const char *methodNa
         if (!CheckApiErr(err, "GetMethodParamType")) {
             return;
         }
-        // 处理参数类型信息
+        //...
         OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(&paramTypeInfo);
     }
 }
