@@ -104,7 +104,7 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
         reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_CALENDAR,  // The reminder type is calendar event.
         dateTime: {  // Reminder time.
           year: date.getFullYear(),
-          month: date.getUTCMonth() + 1,
+          month: date.getMonth() + 1,
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),
