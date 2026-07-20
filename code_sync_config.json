@@ -43108,9 +43108,9 @@
 						"start_line":75
 					},
 					{
-						"end_line":130,
+						"end_line":131,
 						"name":"ts_no_ctor_signatures_type",
-						"start_line":105
+						"start_line":106
 					},
 					{
 						"end_line":139,
@@ -43128,9 +43128,9 @@
 						"start_line":152
 					},
 					{
-						"end_line":189,
+						"end_line":190,
 						"name":"ts_no_ctor_signatures_iface",
-						"start_line":164
+						"start_line":165
 					},
 					{
 						"end_line":197,
@@ -43138,9 +43138,9 @@
 						"start_line":192
 					},
 					{
-						"end_line":210,
+						"end_line":211,
 						"name":"ts_no_inferred_generic_params",
-						"start_line":200
+						"start_line":201
 					},
 					{
 						"end_line":216,
@@ -43253,9 +43253,9 @@
 						"start_line":431
 					},
 					{
-						"end_line":464,
+						"end_line":465,
 						"name":"ts_no_ctor_signatures_funcs",
-						"start_line":442
+						"start_line":443
 					},
 					{
 						"end_line":471,
@@ -43438,9 +43438,9 @@
 						"start_line":241
 					},
 					{
-						"end_line":263,
+						"end_line":265,
 						"name":"no_polymorphic",
-						"start_line":258
+						"start_line":260
 					},
 					{
 						"end_line":274,
@@ -61065,7 +61065,7 @@
 						"start_line":300
 					},
 					{
-						"end_line":344,
+						"end_line":342,
 						"name":"set_array_conversion",
 						"start_line":327
 					},
@@ -61160,9 +61160,9 @@
 						"start_line":749
 					},
 					{
-						"end_line":721,
+						"end_line":724,
 						"name":"flat_flatmap_usage",
-						"start_line":709
+						"start_line":707
 					},
 					{
 						"end_line":686,
@@ -62480,7 +62480,7 @@
 						"start_line":1107
 					},
 					{
-						"end_line":1082,
+						"end_line":1094,
 						"name":"init_order",
 						"start_line":1060
 					},
@@ -63570,7 +63570,7 @@
 						"start_line":285
 					},
 					{
-						"end_line":322,
+						"end_line":323,
 						"name":"substring_extraction",
 						"start_line":305
 					},
@@ -63585,14 +63585,14 @@
 						"start_line":345
 					},
 					{
-						"end_line":379,
+						"end_line":380,
 						"name":"starts_with_check",
-						"start_line":365
+						"start_line":366
 					},
 					{
-						"end_line":397,
+						"end_line":398,
 						"name":"ends_with_check",
-						"start_line":382
+						"start_line":383
 					},
 					{
 						"end_line":418,
@@ -63615,9 +63615,9 @@
 						"start_line":457
 					},
 					{
-						"end_line":501,
+						"end_line":502,
 						"name":"string_common_methods",
-						"start_line":474
+						"start_line":475
 					},
 					{
 						"end_line":525,
@@ -63625,9 +63625,9 @@
 						"start_line":504
 					},
 					{
-						"end_line":545,
+						"end_line":546,
 						"name":"string_regex",
-						"start_line":528
+						"start_line":529
 					},
 					{
 						"end_line":607,
