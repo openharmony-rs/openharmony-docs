@@ -45,7 +45,7 @@ ModularObjectDispatcher的调用流程分为以下几个阶段：
 ## 约束与限制
 
 - 使用ModularObjectDispatcher前，需确保客户端已与ModularObjectExtensionAbility建立连接，连接相关约束与限制请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md#约束与限制)。
-- 服务端的Stub必须通过[Taihe工具](modular-object-extension-ability-taihe.md)生成。ModularObjectDispacherDispatcher依赖类型库元数据完成动态调用，只有Taihe工具生成的Stub才会嵌入类型库元数据，手动编写的Stub无法支持动态调用。
+- 服务端的Stub必须通过[Taihe工具](modular-object-extension-ability-taihe.md)生成。ModularObjectDispatcher依赖类型库元数据完成动态调用，只有Taihe工具生成的Stub才会嵌入类型库元数据，手动编写的Stub无法支持动态调用。
 - 方法的参数和返回值类型由服务端定义，客户端须通过元数据查询获取后，严格按照类型构造Variant，否则将返回类型不匹配错误。
 - 主动断开连接或者对端死亡的时候，ModularObjectDispatcher将不再可用。
 
