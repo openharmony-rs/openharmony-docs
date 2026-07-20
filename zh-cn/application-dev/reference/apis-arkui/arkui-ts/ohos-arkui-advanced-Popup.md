@@ -261,7 +261,6 @@ import { Popup, PopupTextOptions, PopupButtonOptions, PopupIconOptions } from '@
 @Entry
 @Component
 struct PopupPage {
-  @State currentDirection: Direction = Direction.Rtl;
 
   build() {
     Row() {
