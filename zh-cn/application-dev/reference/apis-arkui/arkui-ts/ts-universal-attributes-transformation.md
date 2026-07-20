@@ -377,7 +377,7 @@ struct TransformExample {
 
       Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(14)
       Row()
-        .translate({ x: 100, y: 10 })// x轴方向平移100，y轴方向平移10
+        .translate({ x: 100, y: 10 }) // x轴方向平移100，y轴方向平移10
         .width(100)
         .height(100)
         .backgroundColor(0xAFEEEE)
@@ -385,7 +385,7 @@ struct TransformExample {
 
       Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
       Row()
-        .scale({ x: 2, y: 0.5 })// 高度缩小一倍，宽度放大一倍，z轴在2D下无效果
+        .scale({ x: 2, y: 0.5 }) // 高度缩小一倍，宽度放大一倍，z轴在2D下无效果
         .width(100).height(100).backgroundColor(0xAFEEEE)
 
       Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
@@ -435,7 +435,7 @@ struct Index {
                 console.info('play end');
               }
             }, () => {
-              this.prep = 500 // 组件视距从10变换到500
+              this.prep = 500; // 组件视距从10变换到500
             })
           })
       }
@@ -511,7 +511,7 @@ struct MatrixExample {
           y: 1,
           centerX: 100,
           centerY: 60
-        })// transform的rotate不指定centerX、centerY，此次旋转的中心相对于组件本身锚点没有额外偏移
+        }) // transform的rotate不指定centerX、centerY，此次旋转的中心相对于组件本身锚点没有额外偏移
           // 该组件通过scale设置的锚点，绕(100vp,60vp)进行旋转，和"Hello2"实现同样的旋转效果
         .transform(matrix4.identity().rotate({ z: 1, angle: 90 }))
     }.width('100%')
@@ -534,7 +534,7 @@ let matrix: matrix4.Matrix4Transit = matrix4.init([
   0, 0.75, 0, 0,
   0.707107, 0, 0.707107, -0.000707107,
   0, 0, 0, 1
-])
+]);
 
 @Entry
 @Component

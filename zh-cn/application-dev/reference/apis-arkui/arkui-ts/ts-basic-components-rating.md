@@ -42,7 +42,7 @@ Rating(options?: RatingOptions)
 
 stars(value: number)
 
-设置评分总数。设置为小于等于0的值时，按默认值显示。
+设置评分总数。默认值：5。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -54,13 +54,13 @@ stars(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | number | 是   | 设置评分总数。<br/>默认值：5<br/>取值范围：大于0，小于等于0时按默认值显示。 |
+| value  | number | 是   | 设置评分总数。<br/>取值范围：大于0，小于等于0时按5显示。 |
 
 ### stars<sup>18+</sup>
 
 stars(starCount: Optional\<number>)
 
-设置评分总数。设置为小于等于0的值时，按默认值显示。与[stars](#stars)相比，starCount参数新增了对undefined类型的支持。当starCount的值为undefined时，默认值：5。
+设置评分总数。与[stars](#stars)相比，starCount参数新增了对undefined类型的支持。当starCount的值为undefined时，默认值：5。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -74,13 +74,13 @@ stars(starCount: Optional\<number>)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                       |
 | --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置评分总数。<br/>当starCount的值为undefined时，默认值：5<br/>取值范围：大于0，小于等于0时按默认值显示。 |
+| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置评分总数。<br/>取值范围：大于0，小于等于0或undefined时按5显示。 |
 
 ### stepSize
 
 stepSize(value: number)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。取值范围：[0.1, stars]。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。默认值：0.5。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -92,7 +92,7 @@ stepSize(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                        |
 | ------ | ------ | ---- | ----------------------------------------------------------- |
-| value  | number | 是   | 操作评级的步长。<br/>默认值：0.5<br/>取值范围：[0.1, stars] |
+| value  | number | 是   | 操作评级的步长。<br/>取值范围：[0.1, stars] |
 
 ### stepSize<sup>18+</sup>
 

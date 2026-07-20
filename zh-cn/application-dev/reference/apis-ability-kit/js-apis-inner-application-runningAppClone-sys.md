@@ -26,7 +26,7 @@
 
 | 名称                      | 类型   | 只读  | 可选  | 说明       |
 | ------------------------- | ------ | ---- |  ---- | --------- |
-| appCloneIndex | number | 否  | 否  | 分身应用的索引。 |
+| appCloneIndex | number | 否  | 否  | 分身应用的索引。取值从0开始，0表示主应用实例，1及以上表示分身实例。 |
 | uid | number | 否  | 否  | 表示应用程序的UID。 |
 | pids | Array\<number> | 否  | 否  | 应用的进程ID集合。 |
 
@@ -42,9 +42,9 @@ try {
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
       hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
     }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
-    })
+      hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg: ${err.message}`);
+    });
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg: ${err.message}`);
 }
 ```

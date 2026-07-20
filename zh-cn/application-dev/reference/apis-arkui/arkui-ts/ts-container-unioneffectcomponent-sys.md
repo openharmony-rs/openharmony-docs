@@ -132,7 +132,7 @@ unionMode(mode: UnionMode)
 该示例主要演示如何使用[UnionEffectContainer](#unioneffectcontainer)组件，通过改变spacing值或后代组件的距离，产生融合形变效果。
 
 ```ts
-//UnionEffectContainerPage.ets
+// UnionEffectContainerPage.ets
 @Entry
 @Component
 struct UnionEffectContainerPage {
@@ -161,10 +161,10 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('80%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
 
         Row({ space: 30 }) {
-          Text("translate:")
+          Text('translate:')
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
@@ -204,10 +204,10 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('80%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
 
         Row({ space: 30 }) {
-          Text("spacing:")
+          Text('spacing:')
           Button('+20')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
@@ -258,7 +258,7 @@ struct UnionEffectContainerPage {
   build() {
     Column() {
       Column() {
-        Text("UnionMode.SMOOTH_UNION")
+        Text('UnionMode.SMOOTH_UNION')
         UnionEffectContainer({ spacing: 10 }) {
           Column({ space: 50 }) {
             Column()
@@ -278,11 +278,11 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('75%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
         .unionMode(UnionMode.SMOOTH_UNION)
 
         Row({ space: 30 }) {
-          Text("translate:")
+          Text('translate:')
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
@@ -304,7 +304,7 @@ struct UnionEffectContainerPage {
       .margin({ top: 10 })
 
       Column() {
-        Text("UnionMode.GRAVITY_UNION")
+        Text('UnionMode.GRAVITY_UNION')
         UnionEffectContainer({ spacing: 1000 }) {
           Column({ space: 50 }) {
             Column()
@@ -324,11 +324,11 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('75%')
-        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .backgroundColor('#2787d9') // 设置融合效果支持的属性，如背景色
         .unionMode(UnionMode.GRAVITY_UNION)
 
         Row({ space: 30 }) {
-          Text("translate:")
+          Text('translate:')
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {

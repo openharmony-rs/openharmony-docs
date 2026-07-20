@@ -27,7 +27,7 @@ import Want from '@ohos.application.Want';
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | deviceId    | string               | 否   | 是   | 表示运行指定Ability的设备ID。如果未设置该字段，则表明指定本设备。                                |
 | bundleName   | string               | 否   | 是   | 表示Bundle名称。 |
-| abilityName  | string               | 否   | 是   | 表示待启动的Ability名称。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。AbilityName需要在一个应用的范围内保证唯一。 |
+| abilityName  | string               | 否   | 是   | 表示待启动的Ability名称。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。如需进一步精确匹配，还可配合moduleName字段使用。AbilityName需要在一个应用的范围内保证唯一。 |
 | uri          | string               | 否   | 是   | 表示Uri描述。如果在Want中指定了Uri，则Want将匹配指定的Uri信息，包括scheme、schemeSpecificPart、authority和path信息。 |
 | type         | string               | 否   | 是   | 表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如：'text/xml' 、 'image/*'等，MIME定义参考：https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com。   |
 | flags        | number               | 否   | 是   | 表示处理Want的方式。默认传数字，具体参考：[flags说明](js-apis-ability-wantConstant.md#flags)。 |
@@ -50,8 +50,8 @@ import Want from '@ohos.application.Want';
     'bundleName': 'com.example.myapplication',
     'abilityName': 'EntryAbility',
     };
-    class MyAbility extends UIAbility{
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
+    class MyAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         this.context.startAbility(want, (error: BusinessError) => {
         // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
         console.error(`error.code = ${error.code}`);

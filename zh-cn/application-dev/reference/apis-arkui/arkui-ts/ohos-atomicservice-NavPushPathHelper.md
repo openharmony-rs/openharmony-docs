@@ -69,7 +69,7 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<vo
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -103,7 +103,7 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -136,7 +136,7 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -170,7 +170,7 @@ pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -240,7 +240,7 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -277,7 +277,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -315,7 +315,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Ca
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -351,7 +351,7 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -385,7 +385,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -418,7 +418,7 @@ replacePathByName(moduleName: string, name: string, param: Object, animated?: bo
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise\<void\> | 异常返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 

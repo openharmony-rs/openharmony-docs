@@ -54,7 +54,7 @@ import { dialogSession } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | callerAbilityInfo | [DialogAbilityInfo](#dialogabilityinfo)| 否 | 否 | 表示请求方组件信息。 |
 | targetAbilityInfos | Array\<[DialogAbilityInfo](#dialogabilityinfo)\> | 否 | 否 | 表示目标组件信息列表。 |
-| parameters | Record<string, Object> | 否 | 是 | 表示其他参数，用于传递会话相关的自定义数据。 |
+| parameters | Record<string, Object> | 否 | 是 | 表示其他参数，用于传递会话相关的自定义数据，不传入时默认为空。 |
 
 ## getDialogSessionInfo
 

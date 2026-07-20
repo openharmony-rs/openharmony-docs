@@ -20,9 +20,9 @@
 
 ### show
 
-显示日历选择器弹窗，供用户选择日期。
+static show(options?: CalendarDialogOptions): void
 
-显示日历选择器弹窗。
+显示日历选择器弹窗，供用户选择日期。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

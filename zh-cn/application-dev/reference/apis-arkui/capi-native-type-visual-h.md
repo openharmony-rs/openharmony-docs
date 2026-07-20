@@ -26,15 +26,15 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md) | ArkUI_TranslationOptions | 定义组件转场时的平移效果对象。 |
+| [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md) | ArkUI_TranslationOptions | 定义组件转场时平移效果的配置选项。 |
 | [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md) | ArkUI_ScaleOptions | 定义组件转场时的缩放效果对象。 |
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | 定义组件转场时的旋转效果对象。 |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | 定义路径动画的运动路径配置项。 |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) | ArkUI_Matrix4 | 定义四阶矩阵对象。 |
-| [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)|ArkUI_PointF|定义一个二维坐标点结构体，坐标以浮点类型存储。|
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)|ArkUI_Matrix4RotationOptions|定义矩阵旋转的旋转对象。|
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)|ArkUI_Matrix4ScaleOptions|定义矩阵缩放的缩放对象。|
-| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)|ArkUI_Matrix4TranslationOptions|定义矩阵平移的平移对象。|
+| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) | ArkUI_Matrix4 | 四阶矩阵对象，用于矩阵变换操作。 |
+| [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)|ArkUI_PointF|定义一个二维坐标点结构体，用于描述组件位置或偏移等坐标信息，坐标以浮点类型存储。|
+| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)|ArkUI_Matrix4RotationOptions|定义矩阵旋转变换的参数配置对象。|
+| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)|ArkUI_Matrix4ScaleOptions|定义矩阵缩放变换的参数配置对象。|
+| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)|ArkUI_Matrix4TranslationOptions|定义矩阵平移变换的参数配置对象。|
 | [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | 定义阴影选项。 |
 
 ### 枚举
@@ -92,12 +92,12 @@
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4RotationOptions* options, float* centerY)](#oh_arkui_matrix4rotationoptions_getcentery) | - | 获取单次矩阵变换中心点相对于组件变换中心点的y轴偏移值。 |
 | [ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()](#oh_arkui_matrix4translationoptions_create) | - | 创建指向矩阵运算的平移对象的指针。在新创建的对象中，x轴的平移距离x、y轴的平移距离y和z轴的平移距离z的默认值为0。 |
 | [void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions* options)](#oh_arkui_matrix4translationoptions_dispose) | - | 销毁指向矩阵运算的平移对象的指针。 |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4TranslationOptions* options, const float x)](#oh_arkui_matrix4translationoptions_setx) | - | 设置矩阵运算的平移对象x轴方向的平移值。 |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4TranslationOptions* options, float* x)](#oh_arkui_matrix4translationoptions_getx) | - | 获取矩阵运算的平移对象x轴方向的平移值。 |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)](#oh_arkui_matrix4translationoptions_sety) | - | 设置矩阵运算的平移对象y轴方向的平移值。 |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)](#oh_arkui_matrix4translationoptions_gety) | - | 获取矩阵运算的平移对象y轴方向的平移值。 |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)](#oh_arkui_matrix4translationoptions_setz) | - | 设置矩阵运算的平移对象z轴方向的平移值。 |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)](#oh_arkui_matrix4translationoptions_getz) | - | 获取矩阵运算的平移对象z轴方向的平移值。 |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4TranslationOptions* options, const float x)](#oh_arkui_matrix4translationoptions_setx) | - | 设置矩阵运算的平移对象x轴方向的平移值，单位为px。 |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4TranslationOptions* options, float* x)](#oh_arkui_matrix4translationoptions_getx) | - | 获取矩阵运算的平移对象x轴方向的平移值，单位为px。如果从未设置x的值，其默认值为0。 |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)](#oh_arkui_matrix4translationoptions_sety) | - | 设置矩阵运算的平移对象y轴方向的平移值，单位为px。 |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)](#oh_arkui_matrix4translationoptions_gety) | - | 获取矩阵运算的平移对象y轴方向的平移值，单位为px。如果从未设置y的值，其默认值为0。 |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)](#oh_arkui_matrix4translationoptions_setz) | - | 设置矩阵运算的平移对象z轴方向的平移值，单位为px。 |
+| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)](#oh_arkui_matrix4translationoptions_getz) | - | 获取矩阵运算的平移对象z轴方向的平移值，单位为px。如果从未设置z的值，其默认值为0。 |
 | [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()](#oh_arkui_matrix4_createidentity) | - | 创建一个单位四阶矩阵对象。 |
 | [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)](#oh_arkui_matrix4_createbyelements) | - | 通过指定矩阵的每个元素来创建一个四阶矩阵对象。 |
 | [void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_dispose) | - | 销毁矩阵对象的指针。 |
@@ -468,8 +468,8 @@ enum ArkUI_BlendApplyType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BLEND_APPLY_TYPE_FAST = 0 | 在目标图像上按顺序混合视图的内容. |
-| BLEND_APPLY_TYPE_OFFSCREEN = 1 | 将此组件和子组件内容绘制到离屏画布上，然后整体进行混合. |
+| BLEND_APPLY_TYPE_FAST = 0 | 在目标图像上按顺序混合视图的内容。 |
+| BLEND_APPLY_TYPE_OFFSCREEN = 1 | 将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 |
 
 ### ArkUI_RenderFit
 
@@ -1221,7 +1221,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4Rotation
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options| 指向矩阵运算的旋转参数对象的指针。|
-| float* x | x轴方向的方向向量的值。如果从未设置x的值，其值将未定义。|
+| float* x | x轴方向的方向向量的值。如果从未设置x的值，其值将未定义。该参数与y、z方向向量共同构成旋转轴。|
 
 **返回：**
 
@@ -1271,7 +1271,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4Rotation
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options| 指向矩阵运算的旋转参数对象的指针。|
-| float* y | y轴方向的方向向量的值。如果从未设置y的值，其值将未定义。|
+| float* y | y轴方向的方向向量的值。如果从未设置y的值，其值将未定义。该参数与x、z方向向量共同构成旋转轴。|
 
 **返回：**
 
@@ -1321,7 +1321,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4Rotation
 | 参数项 | 描述 |
 | -- | -- |
 | const [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options| 指向矩阵运算的旋转参数对象的指针。|
-| float* z | z轴方向的方向向量的值。如果从未设置z的值，其值将未定义。|
+| float* z | z轴方向的方向向量的值。如果从未设置z的值，其值将未定义。该参数与x、y方向向量共同构成旋转轴。|
 
 **返回：**
 
@@ -1523,7 +1523,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4Translation
 
 **描述：**
 
-设置矩阵运算的平移对象x轴方向的平移值。
+设置矩阵运算的平移对象x轴方向的平移值，单位为px。
 
 **起始版本：** 24
 
@@ -1548,7 +1548,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 
 **描述：**
 
-获取矩阵运算的平移对象x轴方向的平移值。如果从未设置x的值，其默认值为0。
+获取矩阵运算的平移对象x轴方向的平移值，单位为px。如果从未设置x的值，其默认值为0。
 
 **起始版本：** 24
 
@@ -1573,7 +1573,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4Translation
 
 **描述：**
 
-设置矩阵运算的平移对象y轴方向的平移值。
+设置矩阵运算的平移对象y轴方向的平移值，单位为px。
 
 **起始版本：** 24
 
@@ -1598,7 +1598,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4Trans
 
 **描述：**
 
-获取矩阵运算的平移对象y轴方向的平移值。如果从未设置y的值，其默认值为0。
+获取矩阵运算的平移对象y轴方向的平移值，单位为px。如果从未设置y的值，其默认值为0。
 
 **起始版本：** 24
 
@@ -1623,7 +1623,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4Translation
 
 **描述：**
 
-设置矩阵运算的平移对象z轴方向的平移值。
+设置矩阵运算的平移对象z轴方向的平移值，单位为px。
 
 **起始版本：** 24
 
@@ -1648,7 +1648,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4Trans
 
 **描述：**
 
-获取矩阵运算的平移对象z轴方向的平移值。如果从未设置z的值，其默认值为0。
+获取矩阵运算的平移对象z轴方向的平移值，单位为px。如果从未设置z的值，其默认值为0。
 
 **起始版本：** 24
 
@@ -1827,7 +1827,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* option
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
-| const float to | 路径动画的终点进度，取值范围为[0.0, 1.0]，且需满足to大或等于起点进度from；否则将返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)错误码。<br>from的含义参考[OH_ArkUI_MotionPathOptions_SetFrom](#oh_arkui_motionpathoptions_setfrom)。 |
+| const float to | 路径动画的终点进度，取值范围为[0.0, 1.0]，且需满足to大于或等于起点进度from；否则将返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)错误码。<br>from的含义参考[OH_ArkUI_MotionPathOptions_SetFrom](#oh_arkui_motionpathoptions_setfrom)。 |
 
 **返回：**
 
@@ -1955,7 +1955,7 @@ void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)
 ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)
 ```
 
-**描述**
+**描述：**
 
 设置阴影选项的模糊半径。
 
@@ -2241,7 +2241,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| bool* isFill | 是否用阴影填充组件内部。true表示用阴影填充组件内部，false表示不用阴影填充组件内部。 |
+| bool* isFill | 是否用阴影填充组件内部。true表示用阴影填充组件内部，false表示不用阴影填充组件内部。默认值为false。 |
 
 **返回：**
 

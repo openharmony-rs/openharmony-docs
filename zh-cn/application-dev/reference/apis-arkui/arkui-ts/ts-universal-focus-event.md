@@ -30,7 +30,7 @@ onFocus(event: () => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
@@ -40,7 +40,7 @@ onFocus(event: () => void): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## onBlur
 
@@ -52,7 +52,7 @@ onBlur(event:()&nbsp;=&gt;&nbsp;void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
@@ -62,7 +62,7 @@ onBlur(event:()&nbsp;=&gt;&nbsp;void): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| T | 返回当前组件，可用于链式调用。 |
 
 ## 示例
 
@@ -85,40 +85,37 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
-        .focusable(true)
         .onFocus(() => {
-          this.oneButtonColor = '#FFFFFF'
+          this.oneButtonColor = '#FFFFFF';
         })
         .onBlur(() => {
-          this.oneButtonColor = '#0066FF'
+          this.oneButtonColor = '#0066FF';
         })
       Button('Second Button')
         .backgroundColor(this.twoButtonColor)
         .width(260)
         .height(70)
         .fontColor(Color.Black)
-        .focusable(true)
         .onFocus(() => {
-          this.twoButtonColor = '#FFFFFF'
+          this.twoButtonColor = '#FFFFFF';
         })
         .onBlur(() => {
-          this.twoButtonColor = '#87CEFA'
+          this.twoButtonColor = '#87CEFA';
         })
       Button('Third Button')
         .backgroundColor(this.threeButtonColor)
         .width(260)
         .height(70)
         .fontColor(Color.Black)
-        .focusable(true)
         .onFocus(() => {
-          this.threeButtonColor = '#FFFFFF'
+          this.threeButtonColor = '#FFFFFF';
         })
         .onBlur(() => {
-          this.threeButtonColor = '#90EE90'
+          this.threeButtonColor = '#90EE90';
         })
     }.width('100%').margin({ top: 20 })
   }
 }
 ```
 
- ![focus](figures/focus.png) 
+ ![focus](figures/focus.png)

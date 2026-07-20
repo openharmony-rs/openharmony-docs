@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-为组件提供自定义手势判定能力。开发者可根据需要，在手势识别期间，决定是否响应手势。
+为组件提供自定义手势判定能力。开发者可根据需要，在手势识别期间，结合手势类型、触点位置等信息决定是否响应手势，适用于需要自定义组件手势响应逻辑、按区域控制手势响应或过滤特定手势的场景。
 
 >  **说明：**
 >
-> 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## onGestureJudgeBegin
@@ -32,7 +32,7 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 **参数：**
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11对象说明), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | 是     | 自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。 |
+| callback      | (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11对象说明), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | 是     | 自定义手势判定回调。当手势即将成功时触发，用于根据手势信息和基础手势事件决定是否继续响应手势。其中gestureInfo表示当前手势的类型、标识等信息，event表示当前手势事件信息；返回GestureJudgeResult用于指定手势判定结果。 |
 
 **返回值：**
 
@@ -51,25 +51,25 @@ onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称    | 类型                                       | 只读 | 可选 | 说明         |
 | ---------| ---------------------------------------- | ---- | ---- | -----------|
-| target   | [EventTarget](ts-universal-events-click.md#eventtarget8) | 否 | 否 | 触发手势事件的元素对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| timestamp| number | 否 | 否 | 事件时间戳，触发事件时距离系统启动的时间间隔。<br>单位：ns<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| source   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8) | 否 | 否 | 事件输入设备的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| pressure<sup>9+</sup> | number | 否 | 否 | 按压的压力大小。<br/>默认值：0<br/>取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| tiltX<sup>9+</sup> | number | 否 | 否 | 手写笔在设备平面上的投影与设备平面X轴的夹角。<br/>单位：deg<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| tiltY<sup>9+</sup> | number | 否 | 否 |手写笔在设备平面上的投影与设备平面Y轴的夹角。<br/>单位：deg<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| rollAngle<sup>17+</sup> | number | 否 | 是 | 手写笔与设备平面的夹角。<br/>单位：deg<br/>**卡片能力：** 从API version 17开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9) | 否 | 否 | 事件输入源的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| axisHorizontal<sup>12+</sup> | number | 否 | 是 | 水平轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br/>对于Shift+鼠标滚轮触发的横向滚动场景，axisHorizontal为0，滚动值体现在axisVertical中。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| axisVertical<sup>12+</sup> | number | 否 | 是 | 垂直轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br/>对于Shift+鼠标滚轮触发的横向滚动场景，滚动值体现在axisVertical中。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| axisPinch<sup>21+</sup> | number | 否 | 是 |  双指缩放比例。<br/>默认值：0<br/>**说明：**<br/>仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。<br/>缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。<br/>取值范围：[0, +∞)<br/>**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| deviceId<sup>12+</sup> | number | 否 | 是 | 触发当前事件的输入设备ID。<br/>默认值：0<br />取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| targetDisplayId<sup>15+</sup> | number | 否 | 是 | 事件发生的屏幕ID。  <br/>默认值：0<br />取值范围：[0, +∞)<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| target   | [EventTarget](./ts-universal-events-click.md#eventtarget8) | 否 | 否 | 触发手势事件的元素对象。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| timestamp | number | 否 | 否 | 事件时间戳，触发事件时距离系统启动的时间间隔。<br>单位：ns<br>取值范围：[0, +∞)<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| source   | [SourceType](./ts-gesture-settings.md#sourcetype枚举说明8) | 否 | 否 | 事件输入设备的类型。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| pressure<sup>9+</sup> | number | 否 | 否 | 按压的压力大小。<br>默认值：0<br>取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。在部分设备中，由于设备的硬件参数配置不同，可能会返回大于1的值。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| tiltX<sup>9+</sup> | number | 否 | 否 | 手写笔在设备平面上的投影与设备平面X轴的夹角。<br>单位：deg<br>默认值：0<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| tiltY<sup>9+</sup> | number | 否 | 否 |手写笔在设备平面上的投影与设备平面Y轴的夹角。<br>单位：deg<br>默认值：0<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| rollAngle<sup>17+</sup> | number | 否 | 是 | 手写笔与设备平面的夹角。<br>单位：deg<br>**卡片能力：** 从API version 17开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| sourceTool<sup>9+</sup> | [SourceTool](./ts-gesture-settings.md#sourcetool枚举说明9) | 否 | 否 | 事件输入源的类型。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| axisHorizontal<sup>12+</sup> | number | 否 | 是 | 水平轴值。<br>默认值：0<br>**说明：**<br>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br>对于Shift+鼠标滚轮触发的横向滚动场景，axisHorizontal为0，滚动值体现在axisVertical中。<br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| axisVertical<sup>12+</sup> | number | 否 | 是 | 垂直轴值。<br>默认值：0<br>**说明：**<br>当前仅在鼠标滚轮或触控板双指滑动触发的Pan手势，或使用Ctrl+鼠标滚轮触发的Pinch手势中可以获取。<br>对于Shift+鼠标滚轮触发的横向滚动场景，滚动值体现在axisVertical中。<br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| axisPinch<sup>21+</sup> | number | 否 | 是 |  双指缩放比例。<br>默认值：0<br>**说明：**<br>仅在触控板上通过双指缩放操作触发的Pinch手势，或在轴事件中，可以获取该值；在其他场景下，获取到的将是默认值。<br>缩放比例是指在双指缩放事件触发过程中，双指当前距离与最初按下时距离的比值。<br>取值范围：[0, +∞)<br>**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| deviceId<sup>12+</sup> | number | 否 | 是 | 触发当前事件的输入设备ID。<br>默认值：0<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| targetDisplayId<sup>15+</sup> | number | 否 | 是 | 事件发生的屏幕ID。  <br>默认值：0<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### getModifierKeyState<sup>12+</sup>
 
 getModifierKeyState?(keys: Array\<string>): boolean
 
-获取修饰键按压状态。报错信息请参考以下错误码。支持修饰键'Ctrl'\|'Alt'\|'Shift'。
+获取修饰键按压状态，可用于在手势事件处理中判断Ctrl、Alt、Shift修饰键是否被按下，以处理组合键交互逻辑。报错信息请参考以下错误码。支持修饰键'Ctrl'\|'Alt'\|'Shift'。
 
 >  **说明：**
 >
@@ -85,7 +85,7 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| keys  | Array&lt;string&gt; | 是   | 修饰键列表。 |
+| keys  | Array&lt;string&gt; | 是   | 修饰键列表，数组元素支持 'Ctrl'、'Alt'、'Shift'，用于查询指定修饰键是否均处于按压状态。 |
 
 **返回值：**
 
@@ -125,40 +125,40 @@ struct Index {
     .height(200)
     .borderWidth(2)
     .onDragStart(() => {
-      this.message = 'drag'
-      console.info("Drag start.")
+      this.message = 'drag';
+      console.info('Drag start.');
     })
     .gesture(
       TapGesture()
-        .tag("tap1")// 设置点击手势标志
+        .tag('tap1') // 设置点击手势标志
         .onAction(() => {
-          this.message = 'tap1'
+          this.message = 'tap1';
         })
     )
     .gesture(
       LongPressGesture()
-        .tag("longPress1")// 设置长按手势标志
+        .tag('longPress1') // 设置长按手势标志
         .onAction(() => {
-          this.message = 'longPress'
+          this.message = 'longPress';
         })
     )
     .gesture(
       SwipeGesture()
-        .tag("swipe1")// 设置快滑手势标志
+        .tag('swipe1') // 设置快滑手势标志
         .onAction(() => {
-          this.message = 'swipe1'
+          this.message = 'swipe1';
         })
     )
     .gesture(
       PanGesture()
-        .tag("pan1")// 设置滑动手势标志
+        .tag('pan1') // 设置滑动手势标志
         .onActionStart(() => {
-          this.message = 'pan1'
+          this.message = 'pan1';
         })
     )
     .gesture(
       PinchGesture()
-        .tag("pinch1")// 设置捏合手势标志
+        .tag('pinch1') // 设置捏合手势标志
         .onActionStart(() => {
           this.message = 'pinch1'
         })
@@ -167,22 +167,22 @@ struct Index {
       // 若该手势类型为长按手势，转换为长按手势事件
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
         let longPressEvent = event as LongPressGestureEvent;
-        console.info(`repeat ${longPressEvent.repeat}`)
+        console.info(`repeat ${longPressEvent.repeat}`);
       }
       // 若该手势类型为快滑手势，转换为快滑手势事件
       if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
         let swipeEvent = event as SwipeGestureEvent;
-        console.info(`angle ${swipeEvent.angle}`)
+        console.info(`angle ${swipeEvent.angle}`);
       }
       // 若该手势类型为滑动手势，转换为滑动手势事件
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
-        console.info(`velocity ${panEvent.velocity}`)
+        console.info(`velocity ${panEvent.velocity}`);
       }
       // 若该手势类型为捏合手势，转换为捏合手势事件
       if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
         let pinchEvent = event as PinchGestureEvent;
-        console.info(`axisPinch ${pinchEvent.axisPinch}`)
+        console.info(`axisPinch ${pinchEvent.axisPinch}`);
       }
       // 自定义判定标准
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
@@ -201,7 +201,7 @@ struct Index {
 
 ### 示例2（自定义区域手势判定）
 
-该示例通过配置onGestureJudgeBegin判定区域决定长按手势和拖拽是否响应。
+该示例通过配置onGestureJudgeBegin，根据触发位置所在区域决定长按手势和拖动手势是否响应。
 
 ```ts
 // xxx.ets
@@ -216,10 +216,10 @@ struct Index {
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
-        Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽")
+        Text('Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽')
           .width('100%')
           .fontSize(20)
-          .fontColor('#ffdd00')
+          .fontColor('0xffdd00')
           .backgroundColor(0xeeddaa00)
         Stack({ alignContent: Alignment.Center }) {
           Column() {
@@ -232,7 +232,7 @@ struct Index {
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
             .onDragStart(() => {
-              this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" })
+              this.promptAction.showToast({ message: 'Drag 下半区蓝色区域，Image响应' });
             })
             .width('200vp').height('200vp')
           // Stack的上半区是绑定了长按手势的浮动区域
@@ -244,11 +244,11 @@ struct Index {
           .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
             // 确定gestureInfo的tag标志是否有值
             if (gestureInfo.tag) {
-              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`)
+              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`);
             }
             console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
             console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
-            console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
+            console.info(`pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
               `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourceTool ${event.sourceTool.toString()}`);
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
@@ -263,9 +263,9 @@ struct Index {
           .gesture(GestureGroup(GestureMode.Parallel,
             LongPressGesture()
               .onAction((event: GestureEvent) => {
-                this.promptAction.showToast({ message: "LongPressGesture 长按上半区 红色区域，红色区域响应" })
+                this.promptAction.showToast({ message: 'LongPressGesture 长按上半区 红色区域，红色区域响应' });
               })
-              .tag("tap111")
+              .tag('tap111')
           ))
 
         }.width('100%')
@@ -278,7 +278,7 @@ struct Index {
 
 ### 示例3（实时监测参与手势的有效触点的数量及其简要信息）
 
-该示例通过配置fingerInfos实时检测参与手势的有效触点数量、各个触点ID及其坐标
+该示例通过配置onGestureJudgeBegin回调，读取fingerInfos实时检测参与手势的有效触点数量、各个触点ID及其坐标。
 
 ```ts
 // xxx.ets
@@ -297,7 +297,7 @@ struct GestureDetectorExample {
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
 
-        Text(`触点数量: ${this.fingerCount}`)
+        Text(`触点数量：${this.fingerCount}`)
           .fontSize(16)
           .margin({ top: 8 })
 
@@ -319,35 +319,36 @@ struct GestureDetectorExample {
           GestureGroup(GestureMode.Exclusive,
             TapGesture()
               .onAction(() => {
-                this.message = '单击事件'
+                this.message = '单击事件';
               }),
             LongPressGesture()
               .onAction(() => {
-                this.message = '长按事件'
+                this.message = '长按事件';
               }),
             PanGesture()
               .onActionStart(() => {
-                this.message = '拖动开始'
+                this.message = '拖动开始';
               })
               .onActionUpdate(() => {
-                this.message = '拖动中...'
+                this.message = '拖动中...';
               })
               .onActionEnd(() => {
-                this.message = '拖动结束'
-                this.fingerCount = 0
-                this.fingerDetails = ''
+                this.message = '拖动结束';
+                this.fingerCount = 0;
+                this.fingerDetails = '';
               })
           )
         )
         .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
           // 获取 fingerInfos 信息
           if (event?.fingerInfos) {
-            this.fingerCount = event.fingerInfos.length
+            this.fingerCount = event.fingerInfos.length;
             this.fingerDetails = event.fingerInfos.map(finger =>
             `ID：${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
-            ).join('\n')
-            console.info(`触点信息：${JSON.stringify(event.fingerInfos)}`)
+            ).join('\n');
+            console.info(`触点信息：${JSON.stringify(event.fingerInfos)}`);
           }
+          // 当触点数量超过2个时，拒绝当前手势。
           if (this.fingerCount > 2) {
             return GestureJudgeResult.REJECT
           }

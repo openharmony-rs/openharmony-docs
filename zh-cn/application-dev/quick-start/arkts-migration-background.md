@@ -57,6 +57,7 @@ class Person {
     return this.name;
   }
 }
+// ...
   let buddy = new Person()
   // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
   let len = buddy.getName().length; // 0, 没有运行时异常
@@ -78,6 +79,7 @@ class Person1 {
     return this.name;
   }
 }
+// ...
   let buddy = new Person1()
   // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
 

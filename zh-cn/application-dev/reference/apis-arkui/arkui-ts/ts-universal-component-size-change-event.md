@@ -6,11 +6,11 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-该事件指组件显示的尺寸发生变化时触发的事件。
+该事件指组件显示的尺寸发生变化时触发的事件，可用于监听组件因布局变化导致的尺寸更新，获取变化前后的宽高信息，适用于需要根据组件实际绘制尺寸处理后续逻辑的场景。
 
 >  **说明：**
 >
-> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
@@ -24,9 +24,9 @@ onSizeChange(event: SizeChangeCallback): T
 
 >**说明：**
 >
-> 1. 该接口在布局发生变化时触发，由于计算精度的关系，其返回值可能与真实物理尺寸存在细微的差异。
+> 1. 该接口在布局发生变化时触发，由于计算精度的关系，其返回值可能与真实物理尺寸存在差异。
 >
-> 2. onSizeChange是布局过程中触发的同步回调，直接在其中更改状态变量存在被纳入动画闭包的风险。具体而言，动画会对比动画前的布局与动画闭包后的布局，若onSizeChange的回调在动画前的布局中同步触发，那么onSizeChange回调中所做的变更将与动画闭包中的变更一同纳入动画过程。为了避免此类问题，可在onSizeChange中使用延迟时间为0的[setTimeout](../../../reference/common/js-apis-timer.md#settimeout)或[postFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postframecallback12)，将UI处理逻辑延后至异步执行。
+> 2. onSizeChange是布局过程中触发的同步回调，直接在其中更改状态变量存在被纳入动画闭包的风险。具体而言，动画会对比动画前的布局与动画闭包后的布局，若onSizeChange的回调在动画前的布局中同步触发，那么onSizeChange回调中所做的变更将与动画闭包中的变更一同纳入动画过程。为了避免此类问题，可在onSizeChange中使用延迟时间为0ms的[setTimeout](../../../reference/common/js-apis-timer.md#settimeout)或[postFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postframecallback12)，将UI处理逻辑延后至异步执行。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -34,11 +34,11 @@ onSizeChange(event: SizeChangeCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [SizeChangeCallback](#sizechangecallback) | 是   | 目标元素变化前后的尺寸。 |
+| event | [SizeChangeCallback](#sizechangecallback) | 是   | 组件尺寸变化时触发的回调函数，用于获取目标元素变化前后的尺寸。 |
 
 **返回值：**
 
@@ -58,7 +58,7 @@ type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -68,7 +68,7 @@ type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 
 ## 示例
 
-该示例通过Text组件设置组件尺寸变化事件，当Text尺寸变化时可以触发onSizeChange事件，获取相关参数。
+该示例通过Text组件设置组件尺寸变化事件，当Text尺寸变化时可以触发onSizeChange事件，获取oldValue和newValue参数。
 
 ```ts
 // xxx.ets
@@ -85,11 +85,11 @@ struct AreaExample {
         .margin(30)
         .fontSize(20)
         .onClick(() => {
-          this.value = this.value + 'Text'
+          this.value = this.value + 'Text';
         })
         .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
-          console.info(`Ace: on size change, oldValue is ${JSON.stringify(oldValue)} value is ${JSON.stringify(newValue)}`)
-          this.sizeValue = JSON.stringify(newValue)
+          console.info(`Ace: on size change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
+          this.sizeValue = JSON.stringify(newValue);
         })
       Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
     }

@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供应用启动参数数据结构[AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md)以及设置和获取相关函数。
+提供应用启动参数数据结构[AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md)以及设置和获取相关函数，用于启动Ability时配置窗口参数，支持设置窗口模式、位置、大小、显示效果和样式，支持不同窗口模式、多屏显示、动画效果和自定义窗口图标等场景。
 
 **引用文件：** <AbilityKit/ability_runtime/start_options.h>
 

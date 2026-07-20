@@ -11,6 +11,8 @@
 >
 >The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+Built-in environment variables are used to reflect the system environment status. You can query built-in environment variables (such as the color mode and layout direction) through [Environment](./ts-state-management.md#environment).
+
 ## ColorMode
 
 Enumerates system color modes.

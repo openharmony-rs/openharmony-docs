@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-基础组件，用于挂载自定义节点（如[FrameNode](../js-apis-arkui-frameNode.md)或[BuilderNode](../js-apis-arkui-builderNode.md)），并通过[NodeController](../js-apis-arkui-nodeController.md)动态控制节点的上树和下树。组件不支持尾随添加子节点，接受一个[NodeController](../js-apis-arkui-nodeController.md)实例接口，需与NodeController组合使用。
+基础组件，用于挂载自定义节点（如[FrameNode](../js-apis-arkui-frameNode.md)或[BuilderNode](../js-apis-arkui-builderNode.md)中获取的根节点FrameNode），并通过[NodeController](../js-apis-arkui-nodeController.md)动态控制节点的上树和下树，适用于需要在组件树中动态插入、移除自定义节点以实现UI按需加载与节点复用的场景，可提升页面渲染效率并降低节点创建开销。组件不支持尾随添加子节点，接受一个[NodeController](../js-apis-arkui-nodeController.md)实例，需与NodeController组合使用。
 
 > **说明：**
 >
@@ -45,11 +45,11 @@ NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 | controller | import('../api/@ohos.arkui.node').[NodeController](../js-apis-arkui-nodeController.md) | 是   | NodeController用于控制NodeContainer中的节点的上树和下树，反映NodeContainer容器的生命周期。 |
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)。
+支持[通用属性](./ts-component-general-attributes.md)，但不支持[动态属性设置](./ts-universal-attributes-attribute-modifier.md)。
 
 ## 事件
 
-支持[通用事件](ts-component-general-events.md)。
+支持[通用事件](./ts-component-general-events.md)。
 
 ## 示例
 
@@ -83,7 +83,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.rootNode === null) {
       this.rootNode = new BuilderNode(uiContext);
-      this.rootNode.build(this.wrapBuilder, { text: "This is a Text" })
+      this.rootNode.build(this.wrapBuilder, { text: 'This is a Text' })
     }
     return this.rootNode.getFrameNode();
   }
@@ -97,13 +97,13 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceEvenly }) {
-      Text("This is a NodeContainer contains a text and a button ")
+      Text('This is a NodeContainer contains a text and a button ')
         .fontSize(9)
         .fontColor(0xCCCCCC)
       NodeContainer(this.baseNode)
         .borderWidth(1)
         .onClick(() => {
-          console.info("click event");
+          console.info('click event');
         })
     }
     .padding({ left: 35, right: 35, top: 35 })
@@ -112,4 +112,4 @@ struct Index {
   }
 }
 ```
-![patternlock](figures/nodeContainer_sample.jpg)
+![NodeContainer示例](figures/nodeContainer_sample.jpg)

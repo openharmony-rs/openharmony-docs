@@ -29,7 +29,7 @@ typedef struct {...} ArkUI_GridItemSize
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t rowSpan | GridItem占用的行数，用于设置GridItem在行方向上的跨度。 |
-| uint32_t columnSpan | GridItem占用的列数，用于设置GridItem在列方向上的跨度。 |
+| uint32_t rowSpan | GridItem占用的行数，用于设置GridItem在行方向上的跨度。取值范围：[1, +∞)，设置为0时按1处理；Grid横向布局时，超过Grid实际行数的值按实际行数处理。 |
+| uint32_t columnSpan | GridItem占用的列数，用于设置GridItem在列方向上的跨度。取值范围：[1, +∞)，设置为0时按1处理；Grid纵向布局时，超过Grid实际列数的值按实际列数处理。 |
 
 

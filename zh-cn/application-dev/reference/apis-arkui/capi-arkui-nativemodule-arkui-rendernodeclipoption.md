@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption;
+typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
 ```
 
 ## 概述

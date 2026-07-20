@@ -887,7 +887,7 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 
 - [in] detach_cb: 解绑回调，一般在序列化时调用，可在对象解绑时执行一些清理操作。
 
-- [in] attach_cb: 绑定回调，一般在序列化时调用。
+- [in] attach_cb: 绑定回调，一般在反序列化时调用。
 
 - [in] native_object: 需要传递给回调的参数，不能为空。
 

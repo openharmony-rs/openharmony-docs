@@ -230,10 +230,10 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
-| builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是    | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。|
+| builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是    | 自定义组件构建函数。<br>**说明：** 不支持全局builder。<br>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。|
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;      | 是    | 截图返回结果的回调。支持在回调中获取离屏组件绘制区域坐标和大小。 |
-| delay<sup>12+</sup>   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置syncLoad为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒 <br/> 取值范围：[0, +∞)，小于0时按默认值处理。 |
-| checkImageStatus<sup>12+</sup>  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成。为false，则不会校验图片解码状态。如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
+| delay<sup>12+</sup>   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br> 当使用PixelMap资源或对Image组件设置syncLoad为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br> 默认值：300 <br> 单位：毫秒 <br> 取值范围：[0, +∞)，小于0时按默认值处理。 |
+| checkImageStatus<sup>12+</sup>  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成。为false，则不会校验图片解码状态。如果没有完成检查，则会放弃截图并返回异常。<br>默认值：false|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | 否    | 截图相关的自定义参数。 |
 
 **错误码：** 
@@ -244,7 +244,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
-| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br/>适用版本：12+ |
+| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>适用版本：12+ |
 
 > **说明：**
 > 
@@ -340,9 +340,9 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
-| builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是    | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。 |
-| delay<sup>12+</sup>   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置syncLoad为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒|
-| checkImageStatus<sup>12+</sup>  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成。为false，则不会校验图片解码状态。如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
+| builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是    | 自定义组件构建函数。<br>**说明：** 不支持全局builder。<br>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。 |
+| delay<sup>12+</sup>   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br> 当使用PixelMap资源或对Image组件设置syncLoad为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br> 默认值：300 <br> 单位：毫秒|
+| checkImageStatus<sup>12+</sup>  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成。为false，则不会校验图片解码状态。如果没有完成检查，则会放弃截图并返回异常。<br>默认值：false|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | 否    | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -358,7 +358,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | ------ | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
-| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br/>适用版本：12+ |
+| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br>适用版本：12+ |
 
 > **说明：**
 > 
@@ -424,7 +424,7 @@ struct OffscreenSnapshotExample {
 }
 ```
 
-![componentcreate](figures/componentcreate.gif) 
+![componentcreate](figures/componentcreate.gif)
 
 ## componentSnapshot.getSync<sup>12+</sup>
 
@@ -445,15 +445,15 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ---------------------------------------- |
 | id   | string | 是    | 目标组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)。 |
-| options       | [SnapshotOptions](#snapshotoptions12)                              | 否    | 截图相关的自定义参数。 |
+| options       | [SnapshotOptions](#snapshotoptions12)                              | 否    | 截图相关的自定义参数，用于在需要自定义截图行为时传入，例如设置缩放比例、等待渲染完成、截图区域、色彩空间或动态范围等。不传入时使用默认截图配置。 |
 
 **返回值：**
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 组件截图的PixelMap对象，用于表示截取到的组件图像。 |
 
-**错误码：** 
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
@@ -462,10 +462,10 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>适用版本：23+ |
 
 > **说明：**
-> 
+>
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
 
 **示例：**
@@ -489,17 +489,17 @@ struct SnapshotExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
           try {
             // 建议使用this.getUIContext().getComponentSnapshot().getSync()
-            let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
-            this.pixmap = pixelmap
+            let pixelmap = componentSnapshot.getSync('root', { scale: 2, waitUntilRenderFinished: true });
+            this.pixmap = pixelmap;
           } catch (error) {
-            console.error(`getSync errorCode:${error.code} message:${error.message}`)
+            console.error(`getSync error message:${error.message}`);
           }
         }).margin(10)
     }
@@ -526,21 +526,23 @@ struct SnapshotExample {
 
 | 名称        | 类型     | 只读 | 可选 | 说明                   |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | number | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
-| maxHeight | number | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxWidth  | number | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：[0, +∞)<br>单位：px |
+| maxHeight | number | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：[0, +∞)<br>单位：px |
 
 ## SnapshotOptions<sup>12+</sup>
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称           | 类型            |    只读       |    可选           |   说明                    |
 | ---------------|------------     | -------------|---------------| -----------------------------|
-| scale           | number | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
-| waitUntilRenderFinished    | boolean | 否 | 是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  | 是 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | 否  | 是 | 指定截图使用的色彩空间。<br/>默认值：{colorSpace: SRGB, isAuto: false}<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | 否  | 是 | 指定截图使用的动态范围模式。<br/>默认值：{dynamicRangeMode: STANDARD, isAuto: false}<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| scale           | number | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br> 默认值：1 <br>**说明：** <br>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
+| waitUntilRenderFinished    | boolean | 否 | 是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当前时刻需要重绘区域的大小。<br>默认值：false <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  | 是 | 指定截图的矩形区域范围，默认为整个组件。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | 否  | 是 | 指定截图使用的色彩空间。<br>默认值：{colorSpace: SRGB, isAuto: false}<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | 否  | 是 | 指定截图使用的动态范围模式。<br>默认值：{dynamicRangeMode: STANDARD, isAuto: false}<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## ColorModeOptions<sup>23+</sup>
 
@@ -548,16 +550,18 @@ struct SnapshotExample {
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| colorSpace | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 否 | 是 | 指定截图使用的色彩空间。<br/>如果知道被截图组件使用的色彩空间，可以通过`colorSpace`字段指定，并将`isAuto`设置为false，以达到预期的截图效果。<br/>取值范围：[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)中DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。<br/>默认值：SRGB <br/>如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。 |
-| isAuto | boolean | 否 | 是 | 是否由系统自动决定所使用的色彩空间。<br/>支持取值为：true表示系统自动决定所使用的色彩空间；false表示使用通过`colorSpace`字段设置的色彩空间类型进行截图。取非法值时，按默认值false处理。<br/>默认值：false<br/>离屏截图仅支持设置为false，否则会返回错误码160004。<br/>当`isAuto`设置为true时，建议将[SnapshotOptions](#snapshotoptions12)中的`waitUntilRenderFinished`字段也设置为true，以便确保系统可以正常检测到所用的模式。<br/>在不确定组件使用的色彩空间时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的色彩空间。<br/>当`isAuto`为true时，`colorSpace`字段设置的值会被忽略。此时，如果被截图组件同时包含不同色彩空间的子组件时，截图的色彩空间为优先级最高的色彩空间类型，优先级排序为DISPLAY_BT2020_SRGB > DISPLAY_P3 > SRGB。 |
+| colorSpace | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 否 | 是 | 指定截图使用的色彩空间。<br>如果知道被截图组件使用的色彩空间，可以通过`colorSpace`字段指定，并将`isAuto`设置为false，以达到预期的截图效果。<br>取值范围：[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)中DISPLAY_P3、SRGB、DISPLAY_BT2020_SRGB。<br>默认值：SRGB <br>如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。 |
+| isAuto | boolean | 否 | 是 | 是否由系统自动决定所使用的色彩空间。<br>支持取值为：true表示系统自动决定所使用的色彩空间；false表示使用通过`colorSpace`字段设置的色彩空间类型进行截图。取非法值时，按默认值false处理。<br>默认值：false<br>离屏截图仅支持设置为false，否则会返回错误码160004。<br>当`isAuto`设置为true时，建议将[SnapshotOptions](#snapshotoptions12)中的`waitUntilRenderFinished`字段也设置为true，以便确保系统可以正常检测到所用的模式。<br>在不确定组件使用的色彩空间时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的色彩空间。<br>当`isAuto`为true时，`colorSpace`字段设置的值会被忽略。此时，如果被截图组件同时包含不同色彩空间的子组件时，截图的色彩空间为优先级最高的色彩空间类型，优先级排序为DISPLAY_BT2020_SRGB > DISPLAY_P3 > SRGB。 |
 
 **示例：**
 
-``` ts  
+```ts
 import { image } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
@@ -576,17 +580,17 @@ struct SnapshotColorModeExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error(`error:${JSON.stringify(error)}`)
+              console.error(`error:${JSON.stringify(error)}`);
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, {
             scale: 2,
             waitUntilRenderFinished: true,
@@ -610,16 +614,18 @@ struct SnapshotColorModeExample {
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| dynamicRangeMode| [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12枚举说明) | 否 | 是 | 指定截图使用的动态范围模式。<br/> 默认情况下，系统以[STANDARD](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12枚举说明)模式进行截图。如果知道被截图组件使用的动态范围模式，可通过`dynamicRangeMode`字段指定具体的动态范围模式，并将`isAuto`设置为false，以达到预期的截图效果。<br/>虽然动态范围模式有三种，但是HIGH和CONSTRAINT的表现均为HDR（高动态范围）。STANDARD模式对应表现为SDR（标准动态范围）。<br/>在指定了合法的动态范围模式之后，截图实际采用的动态范围会受到被截图组件和设置值的双重影响，具体如下：<br/>1. 当被截图组件的动态范围为SDR时，即使指定动态范围模式为HIGH，截图实际采用的动态范围为SDR。<br/>2. 当被截图组件的动态范围为HDR时，截图实际采用的动态范围为指定的动态范围模式。<br/>3. 当配置[色彩空间](#colormodeoptions23)为SRGB或DISPLAY_P3时，截图实际采用的动态范围为SDR。<br/>4. 如果被截图组件同时包含SDR和HDR两种动态范围的子组件时，则当作HDR处理。<br/>5. 如果3和4的条件同时被满足，则截图实际采用的动态范围为SDR。<br/>取值范围：[DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12枚举说明) 枚举值。<br/>默认值：STANDARD <br/>如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。 |
-|isAuto | boolean | 否 | 是 | 是否由系统自动决定所使用的动态范围模式。<br/>支持取值为：true表示系统自动决定所使用的动态范围模式；false表示使用通过`dynamicRangeMode`字段设置的动态范围类型进行截图。取非法值时，按默认值false处理。<br/>默认值：false<br/>离屏截图仅支持设置为false，否则会返回错误码160004。<br/>当`isAuto`设置为true时，建议将[SnapshotOptions](#snapshotoptions12)中的`waitUntilRenderFinished`字段也设置为true，以便确保系统可以正常检测到所用的模式。<br/>在不确定组件使用的动态范围模式时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的动态范围模式。<br/> 当`isAuto`为true时，`dynamicRangeMode`字段设置的值会被忽略。 |
+| dynamicRangeMode| [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12枚举说明) | 否 | 是 | 指定截图使用的动态范围模式。<br> 默认情况下，系统以[STANDARD](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12枚举说明)模式进行截图。如果知道被截图组件使用的动态范围模式，可通过`dynamicRangeMode`字段指定具体的动态范围模式，并将`isAuto`设置为false，以达到预期的截图效果。<br>虽然动态范围模式有三种，但是HIGH和CONSTRAINT的表现均为HDR（高动态范围）。STANDARD模式对应表现为SDR（标准动态范围）。<br>在指定了合法的动态范围模式之后，截图实际采用的动态范围会受到被截图组件和设置值的双重影响，具体如下：<br>1. 当被截图组件的动态范围为SDR时，即使指定动态范围模式为HIGH，截图实际采用的动态范围为SDR。<br>2. 当被截图组件的动态范围为HDR时，截图实际采用的动态范围为指定的动态范围模式。<br>3. 当配置[色彩空间](#colormodeoptions23)为SRGB或DISPLAY_P3时，截图实际采用的动态范围为SDR。<br>4. 如果被截图组件同时包含SDR和HDR两种动态范围的子组件时，则当作HDR处理。<br>5. 如果3和4的条件同时被满足，则截图实际采用的动态范围为SDR。<br>取值范围：[DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12枚举说明) 枚举值。<br>默认值：STANDARD <br>如果值为undefined、null或未设置，则使用默认值截图；其他异常值会导致截图失败，返回错误码160003。 |
+|isAuto | boolean | 否 | 是 | 是否由系统自动决定所使用的动态范围模式。<br>支持取值为：true表示系统自动决定所使用的动态范围模式；false表示使用通过`dynamicRangeMode`字段设置的动态范围类型进行截图。取非法值时，按默认值false处理。<br>默认值：false<br>离屏截图仅支持设置为false，否则会返回错误码160004。<br>当`isAuto`设置为true时，建议将[SnapshotOptions](#snapshotoptions12)中的`waitUntilRenderFinished`字段也设置为true，以便确保系统可以正常检测到所用的模式。<br>在不确定组件使用的动态范围模式时，建议将`isAuto`设置为true，让系统根据实际情况自动决定使用的动态范围模式。<br> 当`isAuto`为true时，`dynamicRangeMode`字段设置的值会被忽略。 |
 
 **示例：**
 
-``` ts
+```ts
 import { image } from '@kit.ImageKit';
 
 @Entry
@@ -637,17 +643,17 @@ struct SnapshotDynamicRangeExample {
           .width(200)
           .height(200)
           .margin(5)
-          .id("root")
+          .id('root')
       }
 
-      Button("click to generate UI snapshot")
+      Button('click to generate UI snapshot')
         .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+          this.getUIContext().getComponentSnapshot().get('root', (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error(`error:${JSON.stringify(error)}`)
+              console.error(`error:${JSON.stringify(error)}`);
               return;
             }
-            this.pixmap = pixmap
+            this.pixmap = pixmap;
           }, {
             scale: 2,
             waitUntilRenderFinished: true,
@@ -667,24 +673,28 @@ struct SnapshotDynamicRangeExample {
 
 ## SnapshotRegionType<sup>15+</sup>
 
-type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
+type SnapshotRegionType = SnapshotRegion | LocalizedSnapshotRegion
 
 表示组件截图区域，取值类型为下表中的任一类型。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型   | 说明   |
 | ------ | ------ |
 | [SnapshotRegion](#snapshotregion15) | 表示组件截图的矩形区域。 |
-| [LocalizedSnapshotRegion ](#localizedsnapshotregion15) | 表示组件截图的矩形区域，根据布局方向确定是否对矩形区域水平翻转，若布局方向为RTL，则把指定的截图区域做左右翻转处理以适应RTL布局方向。 |
+| [LocalizedSnapshotRegion](#localizedsnapshotregion15) | 表示组件截图的矩形区域，根据布局方向确定是否对矩形区域水平翻转，若布局方向为RTL，则把指定的截图区域做左右翻转处理以适应RTL布局方向。 |
 
 ## SnapshotRegion<sup>15+</sup>
 
 定义组件截图的矩形区域。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -701,6 +711,8 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
@@ -711,7 +723,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 | bottom | number | 否  | 否   | 布局方向为LTR时表示截图区域矩形右下角的y轴坐标，布局方向为RTL时表示截图区域矩形左下角的y轴坐标。<br>单位：px <br>取值范围：[0, 组件高度] |
 
 > **说明：**
-> 
+>
 > 直接使用componentSnapshot可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取绑定实例的componentSnapshot。
 
 **示例：**
@@ -729,31 +741,31 @@ struct SnapshotExample {
       Row() {
         Column() {
           TextClock()
-          Button("Button ABCDE").type(ButtonType.Normal)
+          Button('Button ABCDE').type(ButtonType.Normal)
           Row() {
             Checkbox()
-            Text("√")
-            Text(" | ")
+            Text('√')
+            Text(' | ')
             Checkbox()
-            Text("×")
+            Text('×')
           }.align(Alignment.Start)
 
           TextInput()
         }
         .align(Alignment.Start)
-        .id("component1")
-        .width("600px")
-        .height("600px")
+        .id('component1')
+        .width('600px')
+        .height('600px')
         .borderRadius(6)
         .borderWidth(2)
         .borderColor(Color.Green)
 
       }
 
-      Button("get capture")
+      Button('get capture')
         .onClick(() => {
           try {
-            let pixelmap = this.getUIContext().getComponentSnapshot().getSync("component1",
+            let pixelmap = this.getUIContext().getComponentSnapshot().getSync('component1',
               {
                 scale: 2,
                 waitUntilRenderFinished: true,
@@ -764,13 +776,13 @@ struct SnapshotExample {
                   bottom: 240
                 }
               })
-            this.pixmap = pixelmap
+            this.pixmap = pixelmap;
           } catch (error) {
-            console.error(`getSync errorCode:${error.code} message:${error.message}`)
+            console.error(`getSync error message:${error.message}`);
           }
         }).margin(10)
-      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")
-    }.width("100%").align(Alignment.Center)
+      Image(this.pixmap).border({ color: Color.Black, width: 2 }).width('600px')
+    }.width('100%').align(Alignment.Center)
   }
 }
 ```

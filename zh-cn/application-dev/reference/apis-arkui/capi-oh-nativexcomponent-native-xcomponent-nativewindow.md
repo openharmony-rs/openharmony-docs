@@ -12,7 +12,7 @@ typedef struct NativeWindow OHNativeWindow
 
 ## 概述
 
-提供封装的NativeWindow实例。
+NativeWindow是对原生窗口的封装，用于在Native层提供可供图形渲染的表面，支持获取窗口能力、设置/获取窗口属性、刷新窗口缓冲区等操作，适用于在Native层进行图形渲染、图像显示输出等场景。
 
 **起始版本：** 19
 

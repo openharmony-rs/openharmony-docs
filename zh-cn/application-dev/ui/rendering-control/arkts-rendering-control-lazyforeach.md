@@ -1501,7 +1501,7 @@ struct ImageFlickeringDuringRerenders {
 
 @Component
 struct ImageFlickeringChildComponent {
-  // 用状态变量来驱动UI刷新，而不是通过Lazyforeach的api来驱动UI刷新
+  // 用状态变量来驱动UI刷新，而不是通过LazyForEach的api来驱动UI刷新
   @ObjectLink data: ImageFliceringStringData;
 
   build() {

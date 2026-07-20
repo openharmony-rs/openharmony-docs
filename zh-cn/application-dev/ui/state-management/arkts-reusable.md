@@ -831,9 +831,9 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-### 列表滚动-Foreach使用场景
+### 列表滚动-ForEach使用场景
 
-使用Foreach创建可复用的自定义组件，由于Foreach渲染控制语法的全展开属性，导致复用组件无法复用。示例中点击update，数据刷新成功，但滑动列表时，ListItemView无法复用。点击clear，再次点击update，ListItemView复用成功，因为一帧内重复创建多个已被销毁的自定义组件。
+使用ForEach创建可复用的自定义组件，由于ForEach渲染控制语法的全展开属性，导致复用组件无法复用。示例中点击update，数据刷新成功，但滑动列表时，ListItemView无法复用。点击clear，再次点击update，ListItemView复用成功，因为一帧内重复创建多个已被销毁的自定义组件。
 
 <!-- @[list_scrolling_with_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithForEach.ets) -->
 
@@ -930,7 +930,7 @@ struct ListItemView {
   @State item: string = '';
 
   aboutToAppear(): void {
-    // 点击 update，首次进入，上下滑动，由于Foreach折叠展开属性，无法复用。
+    // 点击 update，首次进入，上下滑动，由于ForEach折叠展开属性，无法复用。
     hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToAppear=====ListItemView==创建了==' + this.item);
   }
 
@@ -1031,7 +1031,7 @@ struct MyComponent {
             // 使用可复用自定义组件。
             ReusableChildComponent({ item: item });
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2) // 设置GridItem的缓存数量。
       .columnsTemplate('1fr 1fr 1fr')
@@ -1166,7 +1166,6 @@ struct ReusableChildComponent {
   struct Index {
     @State minSize: number = 50; // 最小值50
     @State maxSize: number = 80; // 最大值80
-    @State fontSize: number = 24; // 字体大小为24
     @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
     scroller: Scroller = new Scroller();
     dataSource: WaterFlowDataSource = new WaterFlowDataSource();
@@ -1572,18 +1571,18 @@ struct ReusableChildComponent {
 
 ``` TypeScript
 class LimitedMyDataSource implements IDataSource {
-  private dataArray: string[] = [];
+  private dataArray: number[] = [];
   private listener: DataChangeListener | undefined;
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: number): number {
     return this.dataArray[index];
   }
 
-  public pushData(data: string): void {
+  public pushData(data: number): void {
     this.dataArray.push(data);
   }
 
@@ -1607,7 +1606,7 @@ struct LimitedIndex {
 
   aboutToAppear() {
     for (let i = 0; i < 1000; i++) { // 循环1000次
-      this.data.pushData(i + '');
+      this.data.pushData(i);
     }
   }
 
@@ -1757,7 +1756,7 @@ struct MyComponent {
         .onAppear(() => {
           hilog.info(DOMAIN, TAG, BUNDLE + `ListItem ${index} onAppear`);
         })
-      }, (item: number) => item.toString())
+      }, (item: string) => item)
     }
     .width('100%')
     .height('100%')

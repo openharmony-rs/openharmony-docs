@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供[应用启动框架](../../application-models/app-startup.md)配置信息的定义。
+本模块提供[应用启动框架](../../application-models/app-startup.md)配置信息的定义，用于配置任务超时时间和启动框架的监听器。
 
 > **说明：**
 >

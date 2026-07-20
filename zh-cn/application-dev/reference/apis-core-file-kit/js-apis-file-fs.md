@@ -7792,7 +7792,7 @@ filter(name: string): boolean
 
 ## ReadTextOptions<sup>11+</sup>
 
-可选项类型，支持readText接口使用，ReadTextOptions继承至[ReadOptions](#readoptions11)。
+可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](#readoptions11)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7804,7 +7804,7 @@ filter(name: string): boolean
 
 ## WriteOptions<sup>11+</sup>
 
-可选项类型，支持write接口使用，WriteOptions继承至[Options](#options11)。
+可选项类型，支持write接口使用，WriteOptions继承自[Options](#options11)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

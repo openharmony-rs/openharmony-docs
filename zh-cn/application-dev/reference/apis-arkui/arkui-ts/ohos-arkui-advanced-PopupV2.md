@@ -40,12 +40,6 @@ PopupV2(options: PopupV2InitInfo): void
 | ------- | ----------------------------- | ---- | --------------------- |
 | options | [PopupV2InitInfo](#popupv2initinfo) | 是   | 定义PopupV2组件的配置参数。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| void | 无返回值。用于构建PopupV2组件，显示特定样式的气泡。 |
-
 ## PopupV2InitInfo
 
 定义PopupV2的具体样式参数。

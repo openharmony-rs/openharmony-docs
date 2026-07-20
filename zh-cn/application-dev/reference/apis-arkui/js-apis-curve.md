@@ -304,7 +304,7 @@ customCurve(interpolate: (fraction: number) => number): ICurve
 import { curves } from '@kit.ArkUI';
 let interpolate = (fraction: number): number => {
   return Math.sqrt(fraction);
-}
+};
 let curve = curves.customCurve(interpolate); // 创建一个用户自定义插值曲线
 ```
 
@@ -378,7 +378,7 @@ steps(count: number, end: boolean): string
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.stepsCurve](#curvesstepscurve9)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[curves.stepsCurve](#curvesstepscurve9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

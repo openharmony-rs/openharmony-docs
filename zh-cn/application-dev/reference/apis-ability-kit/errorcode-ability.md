@@ -32,7 +32,7 @@ The specified ability does not exist.
     ```bash
     hdc shell bm dump -a
     ```
-3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的hap和ability，说明ability所属的hap未被安装。
+3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若查询结果中没有包含ability所属的HAP，说明该HAP未被安装。
     ```bash
     hdc shell bm dump -n 包名
     ```
@@ -2790,6 +2790,61 @@ System Error. 1. Failed to connect to the system service; 2. The system service 
 
 1. 退出应用后重新尝试。
 2. 重启设备后重新尝试。
+
+## 35600060 Function不存在
+
+**错误信息**
+
+The function does not exist.
+
+**错误描述**
+
+函数不存在。
+
+**可能原因**
+
+需要执行的Function没有在系统中注册。
+
+**处理步骤**
+
+1. 检查需要执行的Function信息是否拼写错误。
+2. 检查需要执行的Function是否已注册。
+
+## 35600061 Function执行失败
+
+**错误信息**
+
+The function execution failed.
+
+**错误描述**
+
+函数执行失败。
+
+**可能原因**
+
+系统故障、abc加载或者执行异常。
+
+**处理步骤**
+
+检查函数执行条件是否具备，稍后重试。
+
+## 35600062 Function执行超时
+
+**错误信息**
+
+The function execution timed out.
+
+**错误描述**
+
+函数执行超时。
+
+**可能原因**
+
+实现逻辑复杂、外部服务响应慢、数据量过大或系统资源紧张导致执行时间过长。
+
+**处理步骤**
+
+检查函数执行过程和执行环境，稍后重试。
 <!--DelEnd-->
 
 ## 16000161 当前进程的处理流程尚未结束，无法调用此API
@@ -2827,6 +2882,44 @@ The current process still has another UIAbility, and this API cannot be called.
 **处理步骤**
 
 调用方保证当前进程中只有一个UIAbility且处于退出状态。
+
+## 16000163 文件类型错误
+
+**错误信息**
+
+The file type is incorrect.
+
+**错误描述**
+
+文件类型错误。
+
+**可能原因**
+
+1. 调用appMemoryOptimizer.evictFilePages接口时，传入的fileNames数组里的文件名未以`.so`、`.hap`或`.hsp`结尾。
+2. 调用appMemoryOptimizer.evictModuleFilePages接口时，`memory_optimizer.json`配置文件中`evictFilePages`数组里的文件名未以`.so`、`.hap`或`.hsp`结尾。
+
+**处理步骤**
+
+1. 若调用appMemoryOptimizer.evictFilePages接口，检查传入的fileNames数组，确保所有文件名均以`.so`、`.hap`或`.hsp`结尾。
+2. 若调用appMemoryOptimizer.evictModuleFilePages接口，检查对应模块的`memory_optimizer.json`配置文件，确保`evictFilePages`数组中所有文件名均以`.so`、`.hap`或`.hsp`结尾。
+
+## 16000164 解析配置文件失败
+
+**错误信息**
+
+Failed to parse the configuration file.
+
+**错误描述**
+
+解析配置文件失败。
+
+**可能原因**
+
+调用appMemoryOptimizer.evictModuleFilePages接口时，`memory_optimizer.json`配置文件不存在、路径错误或内容格式错误。
+
+**处理步骤**
+
+检查对应模块目录下`src/main/resources/rawfile/memory_optimizer.json`配置文件是否存在，并确认其内容格式是否正确。
 
 ## 35600004 指定的AgentCard版本低于当前版本
 

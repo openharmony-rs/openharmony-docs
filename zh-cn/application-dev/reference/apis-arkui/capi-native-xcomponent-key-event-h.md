@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于访问Native XComponent键盘事件所使用到的枚举类型。
+声明用于访问Native XComponent按键事件所使用到的枚举类型。
 
 **引用文件：** <ace/xcomponent/native_xcomponent_key_event.h>
 
@@ -118,8 +118,8 @@ enum OH_NativeXComponent_KeyCode
 | KEY_TAB = 2049 | Tab键。 |
 | KEY_SPACE = 2050 | 空格键。 |
 | KEY_SYM = 2051 | 符号修改器按键。 |
-| KEY_EXPLORER = 2052 | 浏览器功能键，此键用于启动浏览器应用程序。 |
-| KEY_ENVELOPE = 2053 | 电子邮件功能键，此键用于启动电子邮件应用程序。 |
+| KEY_EXPLORER = 2052 | 浏览器功能键，用于启动浏览器应用程序。 |
+| KEY_ENVELOPE = 2053 | 电子邮件功能键，用于启动电子邮件应用程序。 |
 | KEY_ENTER = 2054 | 回车键。 |
 | KEY_DEL = 2055 | 退格键。 |
 | KEY_GRAVE = 2056 | 按键'`'。 |
@@ -129,7 +129,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_RIGHT_BRACKET = 2060 | 按键']'。 |
 | KEY_BACKSLASH = 2061 | 按键'\\'。 |
 | KEY_SEMICOLON = 2062 | 按键';'。 |
-| KEY_APOSTROPHE = 2063 | 按键''' (单引号)。 |
+| KEY_APOSTROPHE = 2063 | 按键'''（单引号）。 |
 | KEY_SLASH = 2064 | 按键'/'。 |
 | KEY_AT = 2065 | 按键'@'。 |
 | KEY_PLUS = 2066 | 按键'+'。 |
@@ -192,7 +192,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_VIRTUAL_MULTITASK = 2210 | 虚拟多任务键。 |
 | KEY_SLEEP = 2600 | 睡眠键。 |
 | KEY_ZENKAKU_HANKAKU = 2601 | 日文全宽/半宽键。 |
-| KEY_102ND = 2602 | 102nd按键。 |
+| KEY_102ND = 2602 | 非美式键盘布局（102键）上的额外按键，通常位于左Shift键右侧（对应'<'、'>'或'\|'、'\'字符）。 |
 | KEY_RO = 2603 | 日文Ro键。 |
 | KEY_KATAKANA = 2604 | 日文片假名键。 |
 | KEY_HIRAGANA = 2605 | 日文平假名键。 |
@@ -245,7 +245,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_REPLY = 2653 | 答复键。 |
 | KEY_FORWARDMAIL = 2654 | 邮件转发键。 |
 | KEY_SAVE = 2655 | 保存键。 |
-| KEY_DOCUMENTS = 2656 | 文件键。 |
+| KEY_DOCUMENTS = 2656 | 文档键。 |
 | KEY_VIDEO_NEXT = 2657 | 下一个视频键。 |
 | KEY_VIDEO_PREV = 2658 | 上一个视频键。 |
 | KEY_BRIGHTNESS_CYCLE = 2659 | 背光渐变键。 |
@@ -255,10 +255,10 @@ enum OH_NativeXComponent_KeyCode
 | KEY_GOTO = 2663 | 进入键。 |
 | KEY_INFO = 2664 | 信息查看键。 |
 | KEY_PROGRAM = 2665 | 程序键。 |
-| KEY_PVR = 2666 | 个人录像机(PVR)键。 |
+| KEY_PVR = 2666 | 个人录像机（PVR）键。 |
 | KEY_SUBTITLE = 2667 | 字幕键。 |
 | KEY_FULL_SCREEN = 2668 | 全屏键。 |
-| KEY_KEYBOARD = 2669 | 键盘。 |
+| KEY_KEYBOARD = 2669 | 键盘键，用于唤起或切换键盘功能键。 |
 | KEY_ASPECT_RATIO = 2670 | 屏幕纵横比调节键。 |
 | KEY_PC = 2671 | PC键。 |
 | KEY_TV = 2672 | TV键。 |
@@ -275,10 +275,10 @@ enum OH_NativeXComponent_KeyCode
 | KEY_VIDEO = 2683 | 视频键。 |
 | KEY_MEMO = 2684 | 备忘录键。 |
 | KEY_CALENDAR = 2685 | 日历键。 |
-| KEY_RED = 2686 | 红色指示器。 |
-| KEY_GREEN = 2687 | 绿色指示器。 |
-| KEY_YELLOW = 2688 | 黄色指示器。 |
-| KEY_BLUE = 2689 | 蓝色指示器。 |
+| KEY_RED = 2686 | 红色按键。 |
+| KEY_GREEN = 2687 | 绿色按键。 |
+| KEY_YELLOW = 2688 | 黄色按键。 |
+| KEY_BLUE = 2689 | 蓝色按键。 |
 | KEY_CHANNELUP = 2690 | 频道向上键。 |
 | KEY_CHANNELDOWN = 2691 | 频道向下键。 |
 | KEY_LAST = 2692 | 末尾键。 |
@@ -315,10 +315,10 @@ enum OH_NativeXComponent_KeyCode
 | KEY_KBD_LAYOUT_NEXT = 2723 | 下一个键盘布局键。 |
 | KEY_BRIGHTNESS_MIN = 2724 | 最小亮度键。 |
 | KEY_BRIGHTNESS_MAX = 2725 | 最大亮度键。 |
-| KEY_KBDINPUTASSIST_PREV = 2726 | 键盘输入Assist_Previous。 |
+| KEY_KBDINPUTASSIST_PREV = 2726 | 键盘输入辅助上一个候选。 |
 | KEY_KBDINPUTASSIST_NEXT = 2727 | 键盘输入Assist_Next。 |
-| KEY_KBDINPUTASSIST_PREVGROUP = 2728 | 键盘输入Assist_PreviousGroup。 |
-| KEY_KBDINPUTASSIST_NEXTGROUP = 2729 | 键盘输入Assist_NextGroup。 |
+| KEY_KBDINPUTASSIST_PREVGROUP = 2728 | 键盘输入辅助上一个候选组。 |
+| KEY_KBDINPUTASSIST_NEXTGROUP = 2729 | 键盘输入辅助下一个候选组。 |
 | KEY_KBDINPUTASSIST_ACCEPT = 2730 | 键盘输入Assist_Accept。 |
 | KEY_KBDINPUTASSIST_CANCEL = 2731 | 键盘输入Assist_Cancel。 |
 | KEY_FRONT = 2800 | 挡风玻璃除雾器开关。 |
@@ -326,7 +326,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_WAKEUP = 2802 | 唤醒键。 |
 | KEY_SENDFILE = 2803 | 发送文件按键。 |
 | KEY_DELETEFILE = 2804 | 删除文件按键。 |
-| KEY_XFER = 2805 | 文件传输(XFER)按键。 |
+| KEY_XFER = 2805 | 文件传输（XFER）按键。 |
 | KEY_PROG1 = 2806 | 程序键1。 |
 | KEY_PROG2 = 2807 | 程序键2。 |
 | KEY_MSDOS = 2808 | MS-DOS键（微软磁盘操作系统）。 |
@@ -351,16 +351,16 @@ enum OH_NativeXComponent_KeyCode
 | KEY_F24 = 2827 | 按键'F24'。 |
 | KEY_PROG3 = 2828 | 程序键3。 |
 | KEY_PROG4 = 2829 | 程序键4。 |
-| KEY_DASHBOARD = 2830 | 仪表板。 |
+| KEY_DASHBOARD = 2830 | 仪表板键，用于打开或切换到仪表板界面。 |
 | KEY_SUSPEND = 2831 | 挂起键。 |
-| KEY_HP = 2832 | 高阶路径键。 |
+| KEY_HP = 2832 | HP功能键。 |
 | KEY_SOUND = 2833 | 音量键。 |
 | KEY_QUESTION = 2834 | 疑问按键。 |
 | KEY_CONNECT = 2836 | 连接键。 |
 | KEY_SPORT = 2837 | 运动按键。 |
 | KEY_SHOP = 2838 | 商城键。 |
-| KEY_ALTERASE = 2839 | 交替键。 |
-| KEY_SWITCHVIDEOMODE = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出/等）。 |
+| KEY_ALTERASE = 2839 | 交替擦除键。 |
+| KEY_SWITCHVIDEOMODE = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出等）。 |
 | KEY_BATTERY = 2842 | 电池按键。 |
 | KEY_BLUETOOTH = 2843 | 蓝牙按键。 |
 | KEY_WLAN = 2844 | 无线局域网。 |

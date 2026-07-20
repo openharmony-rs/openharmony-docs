@@ -145,15 +145,21 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            g_thisPicture->errorCode = OH_ImagePackerNative_Create(&g_thisPicture->imagePacker);
        }
        
-       char strFormat[MAX_FORMAT_LENGTH];
-       size_t strFormatSize;
-       napi_get_value_string_utf8(env, args[0], strFormat, MAX_FORMAT_LENGTH, &strFormatSize);
+       char strFormat[MAX_FORMAT_LENGTH] = {0};
+       size_t strFormatSize = 0;
+       if (napi_get_value_string_utf8(env, args[0], strFormat, sizeof(strFormat), &strFormatSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "PackToDataFromPicture napi_get_value_string_utf8 failed!");
+           delete[] outData;
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       strFormat[MAX_FORMAT_LENGTH - 1] = '\0';
        OH_LOG_DEBUG(LOG_APP, "PackToDataFromPicture format: %{public}s", strFormat);
    
        Image_MimeType format;
        format.size = strFormatSize;
        format.data = const_cast<char *>(strFormat);
-       uint32_t quality = 95;
+       // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+       uint32_t quality = 90;
        bool needsPackProperties = true;
        int32_t desiredDynamicRange = AUTO;
        SetPackOptions(g_thisPicture->packerOptions, format, quality, needsPackProperties, desiredDynamicRange);
@@ -198,15 +204,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            g_thisPicture->errorCode = OH_ImagePackerNative_Create(&g_thisPicture->imagePacker);
        }
        
-       char strFormat[MAX_FORMAT_LENGTH];
-       size_t strFormatSize;
-       napi_get_value_string_utf8(env, args[1], strFormat, MAX_FORMAT_LENGTH, &strFormatSize);
+       char strFormat[MAX_FORMAT_LENGTH] = {0};
+       size_t strFormatSize = 0;
+       if (napi_get_value_string_utf8(env, args[1], strFormat, sizeof(strFormat), &strFormatSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "PackToFileFromPicture napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       strFormat[MAX_FORMAT_LENGTH - 1] = '\0';
        OH_LOG_INFO(LOG_APP, "PackToFileFromPicture format: %{public}s", strFormat);
    
        Image_MimeType format;
        format.size = strFormatSize;
        format.data = const_cast<char *>(strFormat);
-       uint32_t quality = 95;
+       // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
+       uint32_t quality = 90;
        bool needsPackProperties = false;
        int32_t desiredDynamicRange = SDR;
        SetPackOptions(g_thisPicture->packerOptions, format, quality, needsPackProperties, desiredDynamicRange);

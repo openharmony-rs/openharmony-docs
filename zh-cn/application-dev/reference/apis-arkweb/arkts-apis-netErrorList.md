@@ -84,7 +84,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_SSL_NO_RENEGOTIATION | -123 | 对方发送了SSL no_renegotiation警报消息。|
 |ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES | -124 | Winsock有时会报告写入的数据多于传递的数据。这可能是由于LSP损坏。|
 |ERR_SSL_DECOMPRESSION_FAILURE_ALERT | -125 | SSL对等端向本端发送了致命的解压失败警报。当对等方错误地认为它支持DEFLATE压缩时，通常会发生这种情况。|
-|ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | SSL对等端向本端发送了致命的bad_record_mac警报。一个对DELEGATE支持有问题的服务器可能发生这个情况。|
+|ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | SSL对等端向本端发送了致命的bad_record_mac警报。一个对DEFLATE支持有问题的服务器可能发生这个情况。|
 |ERR_PROXY_AUTH_REQUESTED | -127 | 代理请求身份验证（用于隧道建立）。|
 |ERR_PROXY_CONNECTION_FAILED | -130 | 无法创建到代理服务器的连接。域名解析或连接套接字时出错。请注意，这不包括HTTP代理的实际“CONNECT”方法期间的故障。|
 |ERR_MANDATORY_PROXY_CONFIGURATION_FAILED | -131 |  无法使用强制代理配置。目前，这意味着无法获取、解析或执行强制的PAC脚本。|

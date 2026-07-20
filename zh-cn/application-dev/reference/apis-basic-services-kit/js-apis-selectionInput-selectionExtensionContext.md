@@ -9,7 +9,7 @@
 
 SelectionExtensionContext是[SelectionExtensionAbility](./js-apis-selectionInput-selectionExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext拉起同应用内其他Ability。适用于在划词扩展场景中需要跳转至应用内其他页面的情况，帮助用户在划词操作后快速获取相关功能或信息。
+每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext拉起同应用内其他Ability。适用于在划词扩展场景中需要跳转至应用内其他Ability的情况，帮助用户在划词操作后快速获取与划词内容关联的功能或信息。
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 startAbility(want: Want): Promise\<void>
 
-拉起同应用内的目标Ability。使用Promise异步回调。
+拉起同应用内的目标Ability，适用于在划词扩展场景中需要跳转至应用内其他Ability的情况。系统根据Want对象中指定的bundleName和abilityName匹配并调度启动目标Ability。使用Promise异步回调。关于Ability启动机制，请参见[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -42,7 +42,7 @@ startAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 需要拉起的目标应用信息，包括Ability名称、Bundle名称等。仅支持拉起同应用内的Ability。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 需要拉起的目标应用信息。主要字段包括bundleName（目标应用的Bundle名称）和abilityName（目标Ability名称）。设置后系统将根据其中指定的bundleName和abilityName查找并拉起对应的Ability。仅支持拉起同应用内的Ability。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ startAbility(want: Want): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，未标明的通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |

@@ -116,6 +116,7 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
   import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -202,6 +203,7 @@ startAbility(want: Want): Promise\<void\>
   import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
     async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -358,8 +360,8 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
         storage.setOrCreate('session', pageLoader);
         pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
-        const err: BusinessError = err as BusinessError;
-        console.error(`Failed to loadContent. Code: ${err.code}, message: ${err.message}`);
+        const error: BusinessError = err as BusinessError;
+        console.error(`Failed to loadContent. Code: ${error.code}, message: ${error.message}`);
       }
       return result;
     }

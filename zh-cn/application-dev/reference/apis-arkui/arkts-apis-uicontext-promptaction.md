@@ -83,7 +83,7 @@ struct Index {
               .then(() => {
                 let topOrder: LevelOrder = this.promptAction.getTopOrder();
                 if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
+                  console.info('topOrder: ' + topOrder.getOrder());
                 }
               })
               .catch((err: BusinessError) => {
@@ -163,7 +163,7 @@ struct Index {
               .then(() => {
                 let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
                 if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                  console.info('bottomOrder: ' + bottomOrder.getOrder());
                 }
               })
               .catch((err: BusinessError) => {
@@ -214,7 +214,7 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 该示例通过调用openToast和closeToast接口，展示了弹出以及关闭Toast的功能。
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { PromptAction, promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -231,6 +231,7 @@ struct Index {
           this.promptAction.openToast({
             message: 'Toast Message',
             duration: 10000,
+            showMode:promptAction.ToastShowMode.DEFAULT,
           }).then((toastId: number) => {
             this.toastId = toastId;
           })
@@ -321,7 +322,7 @@ showToast(options: promptAction.ShowToastOptions): void
 从API版本26.0.0开始，参数options的类型[promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions)中新增了systemMaterial属性。
 
 ```ts
-import { PromptAction, uiMaterial } from '@kit.ArkUI';
+import { PromptAction, promptAction, uiMaterial } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -338,7 +339,8 @@ struct Index {
             this.promptAction.showToast({
               message: 'Message Info',
               duration: 2000,
-              // 控制是否设置系统材质
+              showMode:promptAction.ToastShowMode.DEFAULT,
+              // 设置系统材质
               systemMaterial: new uiMaterial.ImmersiveMaterial({
                 style: uiMaterial.ImmersiveStyle.THIN
               })
@@ -818,7 +820,7 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗配置。用于设置自定义弹窗的内容、样式、位置等属性。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则以showInSubWindow的设置为准，在子窗口中显示，不显示蒙层。|
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗选项。用于设置自定义弹窗的内容、样式、位置等属性。<br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则以showInSubWindow的设置为准，在子窗口中显示，不显示蒙层。|
 
 **返回值：**
 
@@ -1201,7 +1203,7 @@ struct Index {
                   console.info('succeeded');
                 })
                 .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                  console.error(`CloseCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
             }, 2000); // 2秒后自动关闭
           })

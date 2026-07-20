@@ -136,7 +136,7 @@ struct RepeatExampleWithTemplates {
           .key((item: string, index: number): string => JSON.stringify(item)) // 键值生成函数
           .virtualScroll({ totalCount: this.dataArr.length }) // 打开懒加载，totalCount为期望加载的数据长度
           .templateId((item: string, index: number): string => { // 根据返回值寻找对应的模板子组件进行渲染
-            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // 前5个节点模板为A，接下来的5个为B，其余为默认模板
+            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // 前5个节点模板为A，接下来的6个为B，其余为默认模板
           })
           .template('A', (ri: RepeatItem<string>) => { // 'A'模板
             ListItem() {
@@ -927,23 +927,27 @@ struct RepeatVirtualScroll {
           })
           .virtualScroll({ totalCount: this.simpleList.length })
           .templateId((item: Repeat006Clazz, index: number) => {
-            return (index % 2 === 0) ? 'odd' : 'even';
+            return (index % 2 === 0) ? 'even' : 'odd';
           })
           .template('odd', (ri) => {
-            Text(`[odd] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Blue)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[odd] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Blue)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 3 })
           .template('even', (ri) => {
-            Text(`[even] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Green)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[even] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Green)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 1 })
       }
       .cachedCount(2)
@@ -958,7 +962,7 @@ struct RepeatVirtualScroll {
 }
 ```
 
-该示例代码展示了100项自定义类`RepeatClazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
+该示例代码展示了100项自定义类`Repeat006Clazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
 
 ![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 

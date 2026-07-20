@@ -222,7 +222,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading uri');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundPool. Code: ${err.code}, message: ${err.message}');
+        console.error(`Failed to load soundPool. Code: ${err.code}, message: ${err.message}`);
       });
     }); // '/test_01.mp3' 作为样例，使用时需要传入文件对应路径。
   }
@@ -652,7 +652,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       console.info('Succeeded in playing soundpool');
       streamID = streamId;
     },(err: BusinessError) => {
-      console.error('Failed to play soundpool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to play soundpool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1020,7 +1020,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setPriority(streamID, 1).then(() => {
       console.info('Succeeded in setting Priority soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1269,7 +1269,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setVolume(streamID, 0.5, 0.5).then(() => {
       console.info('Succeeded in setVolume soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setVolume soundPool and catch error is ' + err.message);
+      console.error(`Failed to setVolume soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1431,7 +1431,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.unload(soundID).then(() => {
       console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to unload soundPool and catch error is ' + err.message);
+      console.error(`Failed to unload soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1535,7 +1535,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.release().then(() => {
       console.info('Succeeded in releasing soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to release soundPool and catch error is ' + err.message);
+      console.error(`Failed to release soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });

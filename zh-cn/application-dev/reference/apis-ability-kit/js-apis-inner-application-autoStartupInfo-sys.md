@@ -5,6 +5,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+
 定义开机自启动应用组件信息。
 
 > **说明：**
@@ -35,6 +36,7 @@
 ```ts
 import { autoStartupManager, common } from '@kit.AbilityKit';
 
+// 设置应用开机自启动
 autoStartupManager.setApplicationAutoStartup({
   bundleName: 'com.example.autostartupapp',
   moduleName: 'entry',

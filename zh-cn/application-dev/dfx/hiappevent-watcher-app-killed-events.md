@@ -35,8 +35,8 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | time     | number | 事件触发时间，单位为ms。 |
 | reason  | string | 终止原因，原因范围详见[reason字段说明](#reason字段说明)。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| app_running_unique_id | string | 应用运行时唯一关联的id。<br/>**说明**：从API version 24开始支持该参数。 |
-| bundle_version | string | 应用版本信息。<br/>**说明**：从API version 24开始支持该参数。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
+| bundle_version | string | 应用版本信息。<br>**说明**：从API version 24开始支持该参数。 |
 
 ### reason字段说明
 
@@ -58,9 +58,9 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | IllegalAudioRendererBySuspend | 应用的音频播放未申请合理的后台任务，其退至后台后仍有大量音频播放。       |
 | PowerSaveClean                | 整机切换到省电模式或应急模式。                 |
 | VrsKill                       | 三方应用检测到恶意进程后，调用PC端病毒检测处置服务接口终止进程。                |
-| RssThresholdKiller            | 应用的RSS（Resident Size Set）占用超标。  |
+| RssThresholdKiller            | 应用的RSS（Resident Set Size）占用超标。  |
 | OomKiller                     | 整机低内存，触发内核管控，按一定策略终止应用。                  |
-| CpaKiller                     | DRM（Digital Right Management）业务申请内存但是内存不足时，按一定策略终止进程以回收内存。        |
+| CpaKiller                     | DRM（Digital Rights Management）业务申请内存但是内存不足时，按一定策略终止进程以回收内存。        |
 | KillApplication               | 应用主动退出。                         |
 | OnRemoteDied                  | 远程服务死亡。                          |
 | Restart                       | 应用重启。                           |

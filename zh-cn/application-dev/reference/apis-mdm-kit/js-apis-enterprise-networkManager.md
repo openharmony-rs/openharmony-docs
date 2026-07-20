@@ -554,15 +554,17 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-为设备添加防火墙过滤规则。适用于企业网络安全管控场景，例如限制特定IP地址的网络访问、防止恶意网络攻击、控制应用程序的网络通信、实现网络访问的白名单或黑名单管理，帮助企业精细化控制网络访问，防止网络攻击和数据泄露。
+为设备添加防火墙过滤规则。<!--RP3--><!--RP3End-->适用于企业网络安全管控场景，例如限制特定IP地址的网络访问、防止恶意网络攻击、控制应用程序的网络通信、实现网络访问的允许名单或禁用名单管理，帮助企业精细化控制网络访问，防止网络攻击和数据泄露。
 
 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
 
 从API version 23开始，支持[LogType](#logtype23)。
 
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
-
-设备重启，将会清空防火墙过滤规则。
+> **说明：**
+>
+> - 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
+> - 设备重启，将会清空防火墙过滤规则。
+> - 规则匹配顺序：先匹配域名过滤规则（由[addDomainFilterRule](#networkmanageradddomainfilterrule)添加），再匹配本接口添加的IP防火墙规则；在域名规则或IP规则中，均按[Action](#action)为ALLOW、DENY、REJECT的顺序进行匹配。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -767,7 +769,7 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-为设备添加域名过滤规则。
+为设备添加域名过滤规则。<!--RP3--><!--RP3End-->
 
 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
 
@@ -775,9 +777,10 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 > **说明：**
 >
-> - 添加ALLOW规则后会自动添加默认DENY规则，不在ALLOW规则之内的域名解析数据包将被丢弃或拦截。
+> - 添加[Action](#action)为ALLOW规则后会自动添加默认DENY规则，不在ALLOW规则之内的域名解析数据包将被丢弃或拦截。
 > - 添加的规则在设备重启后会被清空。
 > - 为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。
+> - 规则匹配顺序：先匹配本接口添加的域名过滤规则，再匹配IP防火墙规则（由[addFirewallRule](#networkmanageraddfirewallrule)添加）；在域名规则或IP规则中，均按[Action](#action)为ALLOW、DENY、REJECT的顺序进行匹配。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
