@@ -1,10 +1,12 @@
 # Interface (AVSessionController)
+
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ac4acd4a37fa94a3ba52b83bccb46e5c0a85c11e translatedAt=2026-07-20T01:52:21.861Z pushedAt=2026-07-20T07:02:07.740Z -->
 
 Through the AV session controller, you can query the session ID, send commands and events to a session, and obtain session metadata and playback state information.
 
@@ -28,7 +30,6 @@ import { avSession } from '@kit.AVSessionKit';
 | Name     | Type  | Read-Only| Optional| Description                                   |
 | :-------- | :----- | :--- | :--- | :-------------------------------------- |
 | sessionId<sup>10+</sup> | string | Yes  | No  | Unique session ID of the AVSessionController object.|
-
 
 **Example**
 
@@ -523,7 +524,6 @@ import { Key, KeyEvent } from '@kit.InputKit';
 let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
 let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
-
 avsessionController.sendAVKeyEvent(event).then(() => {
   console.info('Succeeded in sending AV key event.');
 });
@@ -641,7 +641,7 @@ avsessionController.getLaunchAbility((agent: object) => {
 
 getRealPlaybackPositionSync(): number
 
-Obtains the playback position.
+Obtains the current playback position. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1357,30 +1357,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600111  | The desktop lyrics feature is not supported. |
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let enabled: boolean = await controller.isDesktopLyricEnabled()
-          console.info(`desktop lyric enabled:${enabled}`)
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.isDesktopLyricEnabled();
 ```
 
 ## onDesktopLyricEnabled<sup>23+</sup>
@@ -1409,33 +1386,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricEnabled((enabled: boolean) => {
-            console.info(`desktop lyric enabled state : ${enabled}`);
-          })
-          console.info('Succeeded in setting onDesktopLyricEnabled.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricEnabled((enabled: boolean) => {
+  console.info(`desktop lyric enabled state : ${enabled}`);
+})
 ```
 
 ## offDesktopLyricEnabled<sup>23+</sup>
@@ -1464,31 +1419,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricEnabled();
-          console.info('Succeeded in setting offDesktopLyricEnabled.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricEnabled();
 ```
 
 ## setDesktopLyricVisible<sup>23+</sup>
@@ -1528,30 +1461,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          await controller.setDesktopLyricVisible(true);
-          console.info('Succeeded in setting desktop lyric visible.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.setDesktopLyricVisible(true);
 ```
 
 ## isDesktopLyricVisible<sup>23+</sup>
@@ -1583,31 +1493,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600111  | The desktop lyrics feature is not supported. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let visible: boolean = await controller.isDesktopLyricVisible();
-          console.info(`isDesktopLyricVisible: ${visible}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.isDesktopLyricVisible();
 ```
 
 ## onDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1636,32 +1524,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
-            console.info(`desktop lyric visible state: ${visible}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+  console.info(`desktop lyric visible state: ${visible}`);
+});
 ```
 
 ## offDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1690,30 +1557,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricVisibilityChanged();
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricVisibilityChanged();
 ```
 
 ## setDesktopLyricState<sup>23+</sup>
@@ -1753,33 +1599,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let state: avSession.DesktopLyricState = {
-            isLocked: true,
-          };
-          await controller.setDesktopLyricState(state);
-          console.info('Succeeded in setting desktop lyric state.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+avcontroller.setDesktopLyricState(state);
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -1813,30 +1636,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
-          console.info(`getDesktopLyricState: ${state.isLocked}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.getDesktopLyricState();
 ```
 
 ## onDesktopLyricStateChanged<sup>23+</sup>
@@ -1865,32 +1665,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-            console.info(`desktop lyric isLocked : ${state.isLocked}`);
-          })
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+  console.info(`desktop lyric isLocked : ${state.isLocked}`);
+})
 ```
 
 ## offDesktopLyricStateChanged<sup>23+</sup>
@@ -1919,30 +1698,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricStateChanged();
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricStateChanged();
 ```
 
 ## on('metadataChange')<sup>10+</sup>
@@ -1962,7 +1720,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'metadataChange'** is triggered when the session metadata requires an update.<br>"Requires an update" means the corresponding property value has been reset, regardless of whether the new value matches the old one.|
-| filter   | Array\<keyof AVMetadata>\|'all' | Yes  |The value **'all'** indicates that any call state field change will trigger the event, and **Array\<keyof AVMetadata>** indicates that only changes to the listed call state field will trigger the event.|
+| filter   | Array\<keyof AVMetadata>\|'all' | Yes   |The value **'all'** indicates that any metadata field change will trigger the event, and **Array\<keyof AVMetadata>** indicates that only changes to the listed metadata field will trigger the event.|
 | callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | Yes  | Callback used for subscription. The **data** parameter in the callback indicates the metadata that requires an update, but not the complete current metadata set.  |
 
 **Error codes**
@@ -2778,22 +2536,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
-});
+avcontroller.on('extrasChange', (extras) => {
+  console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
 if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('extrasChange', (extras) => {
-    console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
-  });
-}
 ```
 
 ## off('extrasChange')<sup>10+</sup>
@@ -2967,6 +2712,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | 6600103  | The session controller does not exist. |
 
 **Example**
+
 ```ts
 let metaData: avSession.AVMetadata = avsessionController.getAVMetadataSync();
 ```
@@ -3256,4 +3002,343 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 let validCommands: Array<avSession.AVControlCommandType> = avsessionController.getValidCommandsSync();
+```
+
+## getSupportedPlaySpeeds
+
+getSupportedPlaySpeeds(): Promise\<Array\<number>>
+
+Obtains an array of playback speeds supported by the application. This API uses a promise to return the result.
+
+The array is set using the [setSupportedPlaySpeeds](arkts-apis-avsession-AVSession.md#setsupportedplayspeeds) API. If the application has not set the array or sets it to an empty array, an empty array is returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Return value**
+
+| Type           | Description                          |
+| -------------- | ----------------------------- |
+| Promise\<Array\<number>> | Promise used to return an array of supported playback speeds. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.getSupportedPlaySpeeds().then((speeds: number[]) => {
+  console.info(`Succeeded in getting supported play speeds, size: ${speeds.length}`);
+});
+```
+
+## getSupportedLoopModes
+
+getSupportedLoopModes(): Promise\<Array\<LoopMode>>
+
+Obtains an array of loop modes supported by the application. This API uses a promise to return the result.
+
+The array is set using the [setSupportedLoopModes](arkts-apis-avsession-AVSession.md#setsupportedloopmodes) API. If the application has not set the array or sets it to an empty array, an empty array is returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Return value**
+
+| Type           | Description                          |
+| -------------- | ----------------------------- |
+| Promise\<Array\<[LoopMode](arkts-apis-avsession-e.md#loopmode10)>> | Promise used to return an array of supported loop modes. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.getSupportedLoopModes().then((loopModes: avSession.LoopMode[]) => {
+  console.info(`Succeeded in getting supported loop modes, size: ${loopModes.length}`);
+});
+```
+
+## getMediaCenterControlType
+
+getMediaCenterControlType(): Promise\<Array\<AVMediaCenterControlType>>
+
+Obtains an array of control types with display priorities set using [setMediaCenterControlType](arkts-apis-avsession-AVSession.md#setmediacentercontroltype). This API uses a promise to return the result.
+
+If the application has not set the array or sets it to an empty array, an empty array is returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Return value**
+
+| Type           | Description                          |
+| -------------- | ----------------------------- |
+| Promise\<Array\<[AVMediaCenterControlType](arkts-apis-avsession-t.md#avmediacentercontroltype)>> | Promise used to return the list of control types that the app prefers to display. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.getMediaCenterControlType().then((types: avSession.AVMediaCenterControlType[]) => {
+  console.info(`Succeeded in getting media center control types, size: ${types.length}`);
+});
+```
+
+## onMediaCenterControlTypeChanged
+
+onMediaCenterControlTypeChanged(callback: Callback\<Array\<AVMediaCenterControlType>>): void
+
+Subscribes to the control type list change events. This API uses an asynchronous callback to return the result.
+
+The control types are set using the [setMediaCenterControlType](arkts-apis-avsession-AVSession.md#setmediacentercontroltype) API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name | Type                   | Mandatory | Description                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[AVMediaCenterControlType](arkts-apis-avsession-t.md#avmediacentercontroltype)>> | Yes   | Callback used to return an array of control types after change. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.onMediaCenterControlTypeChanged((types: avSession.AVMediaCenterControlType[]) => {
+  console.info(`Media center control types changed, size: ${types.length}`);
+});
+```
+
+## offMediaCenterControlTypeChanged
+
+offMediaCenterControlTypeChanged(callback?: Callback\<Array\<AVMediaCenterControlType>>): void
+
+Unsubscribes from the control type list change events.
+
+The control types are set using the [setMediaCenterControlType](arkts-apis-avsession-AVSession.md#setmediacentercontroltype) API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name | Type                   | Mandatory | Description                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[AVMediaCenterControlType](arkts-apis-avsession-t.md#avmediacentercontroltype)>> | No   | Callback used to return the result. This parameter is optional. If it is not specified, all control type list change events are unsubscribed from. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.offMediaCenterControlTypeChanged();
+```
+
+## onSupportedPlaySpeedsChange
+
+onSupportedPlaySpeedsChange(callback: Callback\<Array\<number>>): void
+
+Subscribes to supported playback speed change events. This API uses an asynchronous callback to return the result.
+
+The playback speeds are set by using the [setSupportedPlaySpeeds](arkts-apis-avsession-AVSession.md#setsupportedplayspeeds) API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name | Type                   | Mandatory | Description                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback  | Callback\<Array\<number>> | Yes   | Callback used to return an array of supported playback speeds after change. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.onSupportedPlaySpeedsChange((speeds: number[]) => {
+  console.info(`Supported play speeds changed, size: ${speeds.length}`);
+});
+```
+
+## offSupportedPlaySpeedsChange
+
+offSupportedPlaySpeedsChange(callback?: Callback\<Array\<number>>): void
+
+Unsubscribes from the supported playback speed change events.
+
+The playback speeds are set using the [setSupportedPlaySpeeds](arkts-apis-avsession-AVSession.md#setsupportedplayspeeds) API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name | Type                   | Mandatory | Description                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<number>> | No   | Callback used to return the result. This parameter is optional. If it is not specified, all supported playback speed change events are unsubscribed from. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.offSupportedPlaySpeedsChange();
+```
+
+## onSupportedLoopModesChange
+
+onSupportedLoopModesChange(callback: Callback\<Array\<LoopMode>>): void
+
+Subscribes to supported loop mode change events. This API uses an asynchronous callback to return the result.
+
+The loop modes are set using the [setSupportedLoopModes](arkts-apis-avsession-AVSession.md#setsupportedloopmodes) API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name | Type                   | Mandatory | Description                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[LoopMode](arkts-apis-avsession-e.md#loopmode10)>> | Yes   | Callback used to return an array of supported loop modes after change. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.onSupportedLoopModesChange((loopModes: avSession.LoopMode[]) => {
+  console.info(`Supported loop modes changed, size: ${loopModes.length}`);
+});
+```
+
+## offSupportedLoopModesChange
+
+offSupportedLoopModesChange(callback?: Callback\<Array\<LoopMode>>): void
+
+Unsubscribes from the supported loop mode change events.
+
+The loop modes are set using the [setSupportedLoopModes](arkts-apis-avsession-AVSession.md#setsupportedloopmodes) API.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name | Type                   | Mandatory | Description                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[LoopMode](arkts-apis-avsession-e.md#loopmode10)>> | No   | Callback used to return the result. If it is not specified, all supported loop mode change events are unsubscribed from. |
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID | Error Message |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**Example**
+
+```ts
+avcontroller.offSupportedLoopModesChange();
 ```

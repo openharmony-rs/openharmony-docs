@@ -1,10 +1,12 @@
 # Functions
+
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ac4acd4a37fa94a3ba52b83bccb46e5c0a85c11e translatedAt=2026-07-20T01:51:53.964Z pushedAt=2026-07-20T07:02:07.738Z -->
 
 > **NOTE**
 >

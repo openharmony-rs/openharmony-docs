@@ -1,10 +1,12 @@
 # native_deviceinfo.h
+
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ac4acd4a37fa94a3ba52b83bccb46e5c0a85c11e translatedAt=2026-07-20T01:51:33.403Z pushedAt=2026-07-20T07:02:07.736Z -->
 
 ## Overview
 
@@ -33,7 +35,7 @@ Declares the definitions of playback control device information.
 
 | Name| Description|
 | -- | -- |
-| [AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceInfo, AVSession_AVCastCategory *aVCastCategory)](#oh_deviceinfo_getavcastcategory) | Obtains the cast category of the target device.|
+| [AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceInfo, AVSession_AVCastCategory *aVCastCategory)](#oh_deviceinfo_getavcastcategory) | Obtains the AVCast category of the target device. |
 | [AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, char **deviceId)](#oh_deviceinfo_getdeviceid) | Obtains the device ID of the target device.|
 | [AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, char **deviceName)](#oh_deviceinfo_getdevicename) | Obtains the name of the target device.|
 | [AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, AVSession_DeviceType *deviceType)](#oh_deviceinfo_getdevicetype) | Obtains the type of the target device.|
@@ -49,7 +51,7 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 
 **Description**
 
-Obtains the cast category of the target device.
+Obtains the AVCast category of the target device.
 
 **Since:** 23
 
@@ -82,8 +84,8 @@ Obtains the device ID of the target device.
 
 | Name| Description|
 | -- | -- |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| char **deviceId | Double pointer to the device ID.|
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the **deviceInfo** instance.|
+| char **deviceId | Pointer to the device ID. |
 
 **Return value**
 
@@ -107,8 +109,8 @@ Obtains the name of the target device.
 
 | Name| Description|
 | -- | -- |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| char **deviceName | Double pointer to the device name.|
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the **deviceInfo** instance.|
+| char **deviceName | Pointer to the device name. |
 
 **Return value**
 
@@ -157,8 +159,8 @@ Obtains the protocols supported by the target device.
 
 | Name| Description|
 | -- | -- |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| uint32_t *deviceProtocolType | Pointer to the protocol supported by the device.|
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the **deviceInfo** instance.|
+| uint32_t *deviceProtocolType | Pointer to the protocol types supported by the device. |
 
 **Return value**
 
