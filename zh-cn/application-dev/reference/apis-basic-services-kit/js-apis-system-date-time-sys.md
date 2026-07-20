@@ -26,8 +26,8 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
-| STARTUP | 0    | 自系统启动以来经过的毫秒数，包括深度睡眠时间。   |
-| ACTIVE  | 1    | 自系统启动以来经过的毫秒数，不包括深度睡眠时间。 |
+| STARTUP | 0    | 自系统启动以来经过的时间，包括深度睡眠时间。   |
+| ACTIVE  | 1    | 自系统启动以来经过的时间，不包括深度睡眠时间。 |
 
 ## systemDateTime.setTime
 
@@ -45,7 +45,7 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 | 参数名   | 类型            | 必填 | 说明                                       |
 | -------- | ----------- | ---- | ---------------- |
-| time     | number                    | 是   | 目标时间戳(ms)，且必须>0。                         |
+| time     | number                    | 是   | 目标时间戳（ms），且必须>0。                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 设置系统时间的结果回调，设置成功时err为undefined，设置失败时err为错误对象。 |
 
 **错误码：**
@@ -74,8 +74,8 @@ try {
     }
     console.info(`Succeeded in setting time`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -96,7 +96,7 @@ setTime(time : number) : Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| time   | number | 是   | 目标时间戳(ms)，且必须>0。 |
+| time   | number | 是   | 目标时间戳（ms），且必须>0。 |
 
 **返回值：**
 
@@ -128,8 +128,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to set time. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -142,7 +142,7 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 > 
-> 从 API version 9开始支持，从API version 10开始废弃。建议使用[systemDateTime.setTime](#systemdatetimesettime)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[systemDateTime.setTime](#systemdatetimesettime)替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -181,8 +181,8 @@ try {
     }
     console.info(`Succeeded in setting date.`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -194,7 +194,7 @@ setDate(date: Date): Promise&lt;void&gt;
 设置系统日期，使用Promise异步回调。
 
 > **说明：**
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[systemDateTime.setTime](#systemdatetimesettime)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[systemDateTime.setTime](#systemdatetimesettime)替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -236,8 +236,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set date. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -285,8 +285,8 @@ try {
     }
     console.info(`Succeeded in setting timezone.`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -337,8 +337,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to set timezone. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -381,8 +381,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to update ntp time. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to update ntp time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -419,8 +419,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let time: number = systemDateTime.getNtpTime();
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to get ntp time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -477,8 +477,8 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`Failed to set autotime. Code: ${error.code}, message: ${error.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to set autotime. Code: ${error.code}, message: ${error.message}`);
 }
 ```

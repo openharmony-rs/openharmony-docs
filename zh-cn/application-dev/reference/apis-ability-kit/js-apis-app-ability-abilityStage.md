@@ -221,7 +221,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onDestroy<sup>12+<sup>
+### onDestroy<sup>12+</sup>
 
 onDestroy(): void
 
@@ -243,7 +243,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTermination<sup>15+<sup>
+### onPrepareTermination<sup>15+</sup>
 
 onPrepareTermination(): AbilityConstant.PrepareTermination
 
@@ -284,7 +284,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### onPrepareTerminationAsync<sup>15+<sup>
+### onPrepareTerminationAsync<sup>15+</sup>
 
 onPrepareTerminationAsync(): Promise\<AbilityConstant.PrepareTermination>
 

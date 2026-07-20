@@ -4510,25 +4510,6 @@
 
 **起始版本**：18
 
-## ohos.permission.ACCESS_DDK_USB_SERIAL
-
-允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
-
-支持以下类型的外设扩展驱动开发：
-
-外设以USB总线接入主机，且满足：
-
-1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
-2. 外设支持通过USB接口模拟传统的串行通信。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：18
-
 ## ohos.permission.ACCESS_CUSTOM_RINGTONE
 
 允许应用访问铃音库。
@@ -6742,6 +6723,34 @@
 **是否支持证书授权**：true
 
 **支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
+
+允许应用创建内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.APPEND_SIGN_CONTENT_TRUST
+
+允许应用追加内容证真签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
 

@@ -1,7 +1,7 @@
 # 系统字体的信息获取和使用（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -109,22 +109,22 @@
      wordBreak: text.WordBreak.NORMAL
    };
    // 获取全局字体集实例
-   let fontCollection = text.FontCollection.getGlobalInstance(); // 获取Arkui全局FC
+   let fontCollection = text.FontCollection.getGlobalInstance();
    // 创建一个段落生成器
-   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
 5. 先后将textStyle1和textStyle2添加到段落样式中并添加文字。
    <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   let str:string = '模块描述\n';
+   let str: string = '模块描述\n';
    // 添加第一种文本样式和对应文本内容
-   ParagraphGraphBuilder.pushStyle(textStyle1);
-   ParagraphGraphBuilder.addText(str);
+   paragraphBuilder.pushStyle(textStyle1);
+   paragraphBuilder.addText(str);
    // 添加第二种文本样式和对应文本内容
-   ParagraphGraphBuilder.pushStyle(textStyle2);
-   ParagraphGraphBuilder.addText(str);
+   paragraphBuilder.pushStyle(textStyle2);
+   paragraphBuilder.addText(str);
    ```
 
 6. 生成段落，用于后续绘制使用。
@@ -132,7 +132,7 @@
    <!-- @[arkts_use_and_change_system_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   let paragraph = ParagraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    ```
 
 效果展示如下：

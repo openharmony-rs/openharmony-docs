@@ -20,7 +20,7 @@
 
 本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCapture进行录屏，详细的API声明请参考[AVScreenCapture API参考](../../reference/apis-media-kit/capi-avscreencapture.md)。
 
-如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
+如果配置了采集麦克风音频数据，需申请对应麦克风权限ohos.permission.MICROPHONE和长时任务。配置方式请参考[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
 从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
@@ -55,7 +55,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    #include <string>
    ```
 
-2. 创建AVScreenCapture实例capture。
+2. 创建AVScreenCapture实例g_avCapture。
 
    <!-- @[screenCapture_create_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -65,7 +65,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 3. 配置录屏参数。
 
-   创建AVScreenCapture实例capture后，可以设置录屏所需要的参数。
+   创建AVScreenCapture实例g_avCapture后，可以设置录屏所需要的参数。
 
    其中，录屏存文件时默认录制内录，麦克风可以动态开关，可以同时内外录制。
 
@@ -137,7 +137,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    
    
 
-4. 调用StartScreenRecording()方法开始进行录屏。
+4. 调用OH_AVScreenCapture_StartScreenRecording()方法开始进行录屏。
 
    <!-- @[screenCapture_startScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -145,7 +145,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
 
-5. 调用StopScreenRecording()方法停止录制。
+5. 调用OH_AVScreenCapture_StopScreenRecording()方法停止录制。
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -153,7 +153,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
 
-6. 调用Release()方法销毁实例，释放资源。
+6. 调用OH_AVScreenCapture_Release()方法销毁实例，释放资源。
 
    <!-- @[screenCapture_releaseScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    

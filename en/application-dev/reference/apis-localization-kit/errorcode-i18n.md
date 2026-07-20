@@ -6,6 +6,7 @@
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=cc8fe8b0f1b2859346994908b98ebf9b3df1ff9d translatedAt=2026-07-17T00:22:36.065Z pushedAt=2026-07-17T02:59:02.723Z -->
 
 > **NOTE**
 >
@@ -23,13 +24,12 @@ This error code is reported if an invalid parameter value is passed to the API.
 
 **Possible Causes**
 
-Parameter verification has failed. The probable cause is that the value of an input parameter is invalid.
- 
+Parameter verification failed. The possible cause is that the value of an input parameter is invalid.
+
 **Solution**
 
-Check whether the values of input parameters are correct.
+Verify input parameter values.
 
-<!--Del-->
 ## 8900001 Parameter Verification Error
 
 **Error Message**
@@ -42,9 +42,8 @@ This error code is reported if an invalid parameter value is passed to the API.
 
 **Possible Causes**
 
-Parameter verification has failed. The probable cause is that the value of an input parameter is invalid.
- 
+Parameter verification failed. The possible cause is that the value of an input parameter is invalid.
+
 **Solution**
 
-Check whether the values of input parameters are correct.
-<!--DelEnd-->
+Verify input parameter values.

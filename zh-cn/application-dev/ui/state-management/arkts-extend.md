@@ -147,6 +147,7 @@
     }
   }
   ```
+  
   ![](figures/arkts-extend-1.gif)
 
 ## 限制条件

@@ -17,7 +17,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - Particle在息屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
+> - Particle在熄屏之后再次打开或者切换后台再次唤起，粒子动画会自动暂停。
 
 
 ## 子组件
@@ -1276,7 +1276,7 @@ struct ParticleExample5 {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->  
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1302,7 +1302,7 @@ struct ParticleExample6 {
       index: 0,
       emitRate: 100,
       annulusRegion: {
-        center:{x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
+        center: {x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
         outerRadius: this.outRadius, // 圆环的外圆半径
         innerRadius: this.inRadius, // 圆环的内圆半径
         startAngle: this.startAngle, // 圆环的起始角度
@@ -1313,7 +1313,7 @@ struct ParticleExample6 {
 
   // 创建的时候，环形发射器的初始设置
   @State region: ParticleAnnulusRegion = {
-    center:{x:this.centerX, y: this.centerY},
+    center: {x:this.centerX, y: this.centerY},
     outerRadius: this.outRadius,
     innerRadius: this.inRadius,
     startAngle: -90,
