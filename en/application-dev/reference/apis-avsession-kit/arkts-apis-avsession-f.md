@@ -1,12 +1,10 @@
 # Functions
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ac4acd4a37fa94a3ba52b83bccb46e5c0a85c11e translatedAt=2026-07-20T01:51:53.964Z pushedAt=2026-07-20T07:02:07.738Z -->
 
 > **NOTE**
 >
@@ -59,6 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -120,6 +119,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -134,7 +135,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           let sessionId: string;  // Used as an input parameter of subsequent functions.
 
-          avSession.createAVSession(context, tag, "audio", async (data: avSession.AVSession) => {
+          avSession.createAVSession(context, tag, "audio", async (err:BusinessError, data: avSession.AVSession) => {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
@@ -184,6 +185,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -305,6 +307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -359,6 +362,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -496,7 +500,7 @@ Unsubscribes from session creation events. After unsubscription, the event will 
 
 | Name  | Type      | Mandatory| Description      |
 | -------- | ----------| ---- | ----------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to report the session descriptor. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.                              |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.                              |
 
 **Error codes**
 
@@ -545,7 +549,7 @@ Unsubscribes from session destroy events. After unsubscription, the event will n
 
 | Name  | Type       | Mandatory| Description                     |
 | -------- | -----------| ---- | -------------------------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to report the session descriptor. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.|
 
 **Error codes**
 
@@ -594,7 +598,7 @@ Unsubscribes from the top session change events. After unsubscription, the event
 
 | Name  | Type             | Mandatory| Description                       |
 | -------- | -----------------| ---- | ---------------------------- |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to report the session descriptor. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.|
 
 **Error codes**
 
