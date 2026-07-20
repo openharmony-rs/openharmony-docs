@@ -27,7 +27,7 @@ typedef struct OH_AVRecorder_Metadata {...} OH_AVRecorder_Metadata
 | 名称 | 描述 |
 | -- | -- |
 | char* genre | 媒体资源的体裁分类。 |
-| char* videoOrientation | 视频的旋转方向，单位为度。 |
+| char* videoOrientation | 视频的旋转方向，仅支持特定角度值：0、90、180、270，单位为度。 |
 | [OH_AVRecorder_Location](capi-avrecorder-oh-avrecorder-location.md) location | 视频的地理位置信息。 |
 | [OH_AVRecorder_MetadataTemplate](capi-avrecorder-oh-avrecorder-metadatatemplate.md) customInfo | 从 moov.meta.list 读取的自定义参数键值映射。 |
 
